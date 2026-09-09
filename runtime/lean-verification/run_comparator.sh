@@ -10,4 +10,4 @@ docker run --rm --name cans-comparator-ns --user 501:20 --network none \
   -v "$PWD/work/lean-verification:/verify:ro" \
   -v "$PWD/work/lean-verification/independent-source/.lake:/verify/independent-source/.lake" \
   -w /verify/independent-source concentration-aware-ns:checker /bin/bash -c \
-  'export PATH=/verify/toolchain/bin:$PATH; lake env /verify/packages/Comparator/.lake/build/bin/comparator ComparatorChallenges/NavierStokes.json'
+  'export PATH=/verify/toolchain/checker-wrappers:/verify/toolchain/bin:$PATH; lake env /verify/packages/Comparator/.lake/build/bin/comparator ComparatorChallenges/NavierStokes.json'

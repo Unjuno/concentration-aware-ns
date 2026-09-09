@@ -151,3 +151,19 @@ The first with-Git solution build hit `Too many open files` with soft nofile
 still match the fresh extraction. The runner now requests
 `--ulimit nofile=1048576:1048576`; the retry has a separate raised-nofile log.
 No theorem rejection or successful kernel verification follows from this failure.
+
+The raised-nofile attempt also encountered open-file errors. Reading live process
+limits confirmed 1,048,576 for Comparator and its Lean children, so increasing
+that limit alone did not resolve the failure. Multiple Lean children were active.
+Comparator's safeLakeBuild only passes PATH, HOME and LEAN_ABORT_ON_PANIC; it drops
+the outer LEAN_NUM_THREADS setting. Concurrency/resource pressure is a hypothesis,
+not a proven cause of the remaining open-file error (the host bind mount is also
+an implementation boundary).
+
+The next attempt uses lake-limited.sh, copied as executable to
+work/lean-verification/toolchain/checker-wrappers/lake. PATH selects it first; it
+sets LEAN_NUM_THREADS=2 and executes the unchanged Lake binary. Its location is
+inside Comparator's already-authorized executable toolchain prefix. Original
+Lean/Lake binaries, theorem sources and Comparator sources are unchanged. The
+runner records this PATH and the limited-workers log keeps this attempt separate.
+The previous attempt was explicitly stopped after observed errors (exit 137).
