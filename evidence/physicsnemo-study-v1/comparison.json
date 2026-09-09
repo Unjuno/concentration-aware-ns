@@ -19,6 +19,14 @@
       "max_validation_continuity_residual": 0.04888805009712205
     },
     {
+      "case": "n64-nt17",
+      "velocity_relative_l2": 0.01799964267949479,
+      "gradient_peak_error_autograd_samples": 0.009702551333754755,
+      "vorticity_peak_error_autograd_samples": 0.009690457701784531,
+      "max_validation_momentum_residual": 0.4443627790828409,
+      "max_validation_continuity_residual": 0.0410875766645753
+    },
+    {
       "case": "n64-nt5",
       "velocity_relative_l2": 0.0195663411664332,
       "gradient_peak_error_autograd_samples": 0.009375298532788175,
@@ -29,8 +37,8 @@
     {
       "case": "n64-nt9",
       "velocity_relative_l2": 0.018594970138590933,
-      "gradient_peak_error_autograd_samples": null,
-      "vorticity_peak_error_autograd_samples": null,
+      "gradient_peak_error_autograd_samples": 0.009560259472687788,
+      "vorticity_peak_error_autograd_samples": 0.009547603585471763,
       "max_validation_momentum_residual": 0.4411308733672248,
       "max_validation_continuity_residual": 0.0427111897881558
     }

@@ -1,0 +1,32 @@
+{
+  "expected_cases": 5,
+  "completed_cases": 5,
+  "quality": "UNCERTAIN",
+  "cases": [
+    {
+      "case": "n16-nt5",
+      "velocity_relative_l2": 0.019923100924691704,
+      "archive_sha256": "b38143256e9f6d1acb8d4ab61aee235f41c963f9ac32b93610676f71b3e268cd"
+    },
+    {
+      "case": "n32-nt5",
+      "velocity_relative_l2": 0.020048912667509227,
+      "archive_sha256": "4bee9bb4d22d1586b77b5de632bb30ac02b01cae94b57a307ffaa9f3e45b7b2b"
+    },
+    {
+      "case": "n64-nt5",
+      "velocity_relative_l2": 0.0195663411664332,
+      "archive_sha256": "a9744971f5c08a264f64ade1fef4f308810f2de42a13bdafad2926953f05fecd"
+    },
+    {
+      "case": "n64-nt9",
+      "velocity_relative_l2": 0.018594970138590933,
+      "archive_sha256": "786655b548611eb948d4c84fee15493238e9a97cdebd2f31584acdcf2d895f45"
+    },
+    {
+      "case": "n64-nt17",
+      "velocity_relative_l2": 0.01799964267949479,
+      "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b"
+    }
+  ]
+}

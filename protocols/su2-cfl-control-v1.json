@@ -1,0 +1,10 @@
+{
+  "status": "frozen before execution",
+  "n": 16,
+  "dt": 0.001,
+  "end": 0.005,
+  "CFL_NUMBER": 100,
+  "inner_cap": 3000,
+  "residual_threshold": -10,
+  "purpose": "Compare iteration cost and accuracy at unchanged residual threshold; original study remains unchanged"
+}

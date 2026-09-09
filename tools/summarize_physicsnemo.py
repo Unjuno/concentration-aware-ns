@@ -1,4 +1,5 @@
 """Summarize only archived completed PINN cases; do not read an active training log."""
+import hashlib
 import json
 from pathlib import Path
 import tarfile
@@ -8,8 +9,12 @@ for archive in sorted(root.glob('*.tar.gz')):
     with tarfile.open(archive) as tar:
         if tar.extractfile('exit_code').read().strip()!=b'0':raise ValueError('incomplete archive')
         d=json.load(tar.extractfile('diagnostics.json'))
+        checkpoint_hash=hashlib.sha256(tar.extractfile('weights.pt').read()).hexdigest()
+        evaluation_hash=hashlib.sha256(tar.extractfile('evaluation.npz').read()).hexdigest()
     gradient=root/(archive.name.removesuffix('.tar.gz')+'-gradient.json')
     g=json.loads(gradient.read_text()) if gradient.exists() else {}
+    if g and (g.get('checkpoint_sha256')!=checkpoint_hash or g.get('evaluation_sha256')!=evaluation_hash):
+        raise ValueError(f'Derivative evidence does not match archive: {archive}')
     rows.append({'case':archive.name.removesuffix('.tar.gz'),'velocity_relative_l2':d['velocity_relative_l2'],
       'gradient_peak_error_autograd_samples':g.get('gradient_peak_relative_error_samples'),
       'vorticity_peak_error_autograd_samples':g.get('vorticity_peak_relative_error_samples'),

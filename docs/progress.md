@@ -325,3 +325,16 @@ Direct checkpoint differentiation supplements FD2 for each completed spatial cas
 The comparison tool reads completed archives, not live training logs. Audit.md
 was reconciled with current pins, licenses, evidence and SU2's submitted Q&A;
 PhysicsNeMo's explicit time-derivative contract is not classified as a defect.
+
+## PhysicsNeMo five-case matrix completed
+
+All five runs completed and native autograd derivative evidence was matched to
+archived checkpoint/evaluation hashes. At n64, increasing time nodes from 5 to 9
+to 17 yields velocity errors 0.0195663, 0.0185950 and 0.0179996 for this paired
+seed and fixed 5000-update budget. This is not a universal convergence claim.
+The report includes held-out residuals and finite-sample derivative errors;
+continuous peak certification, optimizer and seed uncertainty remain open.
+
+SU2 still runs its unchanged study. A separate preregistered n16, five-step
+CFL=100 control is testing iteration cost under the same -10 residual criterion;
+no study parameters were silently changed.

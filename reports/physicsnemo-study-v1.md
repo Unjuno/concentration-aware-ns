@@ -1,0 +1,17 @@
+# PhysicsNeMo sampling study v1 — completed matrix, uncertain quality
+
+All five fixed-budget, paired-seed runs completed. All derivative reports were matched to archived checkpoint and evaluation hashes. This is a collocation-density comparison, not time-integration convergence.
+
+| Case | Velocity relative L2 | Autograd gradient peak relative error at samples | Max held-out momentum residual |
+|---|---:|---:|---:|
+| n16-nt5 | 0.0199231 | 0.00908978 | 0.432989 |
+| n32-nt5 | 0.0200489 | 0.00938002 | 0.434902 |
+| n64-nt17 | 0.0179996 | 0.00970255 | 0.444363 |
+| n64-nt5 | 0.0195663 | 0.0093753 | 0.459978 |
+| n64-nt9 | 0.018595 | 0.00956026 | 0.441131 |
+
+Spatial density changes are small and nonmonotonic at the fixed optimization budget. Increasing time-node count in this single seed reduces final velocity error, but does not establish an asymptotic rate, optimizer convergence or seed-independent improvement.
+
+The held-out residuals are nondimensional and unnormalized; no universal physical tolerance is inferred from their magnitude. Local peak errors are measured at finite sample points, not certified continuous extrema. The network enforces periodicity and initial velocity, but not exact incompressibility.
+
+The independent validation points and times differ from training samples. All network weights, predicted fields and training logs are in the neighboring evidence directory. No full acceptance-gate PASS or upstream defect claim is assigned. AMR is not part of this fixed-architecture PINN configuration.

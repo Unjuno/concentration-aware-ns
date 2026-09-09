@@ -1,0 +1,15 @@
+{
+  "scope": "Analytic derivative of trained network at saved evaluation points, not continuous extrema.",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "evaluation_sha256": "93d664ccf21d52df3472f1377c20a9c4b4886e6099bb09e73e28ba52f2b65682",
+  "prediction_difference": 0.0,
+  "max_gradient_autograd_samples": 20.132853044331124,
+  "max_vorticity_autograd_samples": 28.471684991831996,
+  "max_gradient_fd2": 19.725350785629704,
+  "max_vorticity_fd2": 27.89540416347962,
+  "gradient_peak_relative_error_samples": 0.009702551333754755,
+  "vorticity_peak_relative_error_samples": 0.009690457701784531,
+  "maximum_gradient_field_error_samples": 0.2509277804721862,
+  "maximum_vorticity_field_error_samples": 0.35040270145576896,
+  "quality": "UNCERTAIN"
+}
