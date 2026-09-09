@@ -301,3 +301,15 @@ This fixed-budget study cannot by itself establish optimizer convergence or
 seed-independent accuracy. Each completed case archives weights, predictions,
 training logs and independent validation results. The shared PDE extraction was
 rechecked and leaves the exact-reference residual results unchanged.
+
+## First PINN matrix case and derivative attribution
+
+The n16/nt5, 5000-update case completed with velocity relative L2 0.0199231 on the
+independent shifted 64^3 grid. Reloading the checkpoint exactly reproduces every
+saved velocity sample. Direct network autograd at those same points gives peak
+gradient=20.1206 and vorticity=28.4544, whereas FD2 gives 19.7145 and 27.8801.
+The autograd peak errors relative to analytic peaks at those samples are about
+0.91%. This separates a postprocessing contribution from network error; it is
+not a bound on continuous extrema or a complete quality PASS. Raw case and
+checkpoint-linked derivative diagnostics are published. Remaining matrix cases
+continue in the original process; the SU2 sweep is also still active.
