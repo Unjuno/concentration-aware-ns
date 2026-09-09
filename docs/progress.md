@@ -232,3 +232,19 @@ installation logs and a frozen minimal CPU dependency list are retained. This
 proves a working residual-evaluation path only; neural training, spatial/time
 sampling studies, local acceptance and the PhysicsNeMo audit conclusion remain
 incomplete. The full package's optional features were not installed or tested.
+
+## SU2 localized study-v1 launched
+
+The frozen protocol runs n=16/32/64 at dt=0.001 and n=64 at dt=0.0005/0.00025,
+all to updated solution time 0.05. The upstream source-time convention is retained
+and disclosed. Each step must meet all four residual thresholds to count as
+converged; completion alone does not grant quality acceptance. The reader checks
+unique periodic vertex coordinates, reports duplicate-value disagreement and
+preserves both output/source time and updated solution time. SU2's vertex phase
+differs from OpenFOAM's cell-center phase; peak comparisons must retain that fact.
+
+The reader was exercised on the completed pilot (512 unique points, zero periodic
+duplicate mismatch, five converged steps, velocity error 0.0267038). Three targeted
+reader tests check arbitrary mesh row ordering, missing points and changed time
+conventions. The full unit suite now passes 19 tests. The larger sweep is running;
+no full-study outcome has been assigned.

@@ -1,0 +1,89 @@
+{
+  "parameters": {
+    "n": 8,
+    "dt": 0.001,
+    "end": 0.005,
+    "sigma": 0.5,
+    "nu": 0.01,
+    "status": "pilot; convergence unverified"
+  },
+  "quality": "UNCERTAIN",
+  "updated_solution_time": 0.005,
+  "reported_and_source_time": 0.004,
+  "steps": 5,
+  "converged_steps": 5,
+  "periodic_duplicate_max_mismatch": 0.0,
+  "unique_points": 512,
+  "velocity_relative_l2": 0.02670384619620707,
+  "computed": {
+    "mean_kinetic_energy": 0.057943209929177786,
+    "max_gradient_fd2": 5.74393487255134,
+    "max_vorticity_fd2": 8.121798618517929,
+    "max_divergence_fd2": 0.38777286208321154,
+    "gradient_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "vorticity_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      3.4499266076164146e-28,
+      0.006157872368533286,
+      0.02367503157507307,
+      0.01735069236774791,
+      0.009128994554162027,
+      0.0015902383495129504,
+      4.038071414855038e-05,
+      8.118170548033902e-31
+    ],
+    "spectrum_energy": 0.0579432099291778,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "reference_sampled_fd2": {
+    "mean_kinetic_energy": 0.059583849857024807,
+    "max_gradient_fd2": 5.875637859368888,
+    "max_vorticity_fd2": 8.309406748312302,
+    "max_divergence_fd2": 0.3776541776095472,
+    "gradient_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "vorticity_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      1.7594387611197048e-35,
+      0.006190764569105925,
+      0.023970080679051035,
+      0.017870300490235844,
+      0.00973048173006925,
+      0.0017749962449011133,
+      4.722614366164142e-05,
+      1.430621649116185e-36
+    ],
+    "spectrum_energy": 0.059583849857024807,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "reference_gradient_peak_samples": 21.060444570797344,
+  "reference_vorticity_peak_samples": 29.78396634162842,
+  "gradient_peak_relative_error_samples": 0.7272643104355002,
+  "vorticity_peak_relative_error_samples": 0.7273097033028049,
+  "sha256": {
+    "restart_00004.csv": "9188d90db6a6ccc80788039da1d8ccc9966f368e027c9f5f65b915b2e726f5a0",
+    "case.cfg": "fa96d6233da6ef3feaaaecc145796928a4b9fa1ab5121ca9f400cd372b530e2e",
+    "mesh.su2": "23ece0d48234cd2156189b6386b46cb307cb5aa27a2369b178d902af1cd04dff",
+    "history.csv": "1689d0b60b31dc8aadb581827c39ab3425719641da0fc34d58cfad31f235eaa8",
+    "solver.log": "cbc5e73b9c47947a0047f1518140d464005b368308e3f5f2982deb9716851c7c"
+  }
+}

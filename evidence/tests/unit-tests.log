@@ -14,8 +14,11 @@ test_nonfinite_cannot_generate_diagnostics (test_metrics.MetricsTests.test_nonfi
 test_divergence_and_periodicity (test_reference.ReferenceTests.test_divergence_and_periodicity) ... ok
 test_independent_finite_difference_residual_converges (test_reference.ReferenceTests.test_independent_finite_difference_residual_converges) ... ok
 test_invalid_width (test_reference.ReferenceTests.test_invalid_width) ... ok
+test_changed_time_convention_rejected (test_su2_reader.SU2ReaderTests.test_changed_time_convention_rejected) ... ok
+test_missing_periodic_grid_point_rejected (test_su2_reader.SU2ReaderTests.test_missing_periodic_grid_point_rejected) ... ok
+test_reordered_vertex_grid_and_time (test_su2_reader.SU2ReaderTests.test_reordered_vertex_grid_and_time) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 0.051s
+Ran 19 tests in 0.078s
 
 OK

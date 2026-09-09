@@ -1,0 +1,12 @@
+{
+  "status":"frozen before execution",
+  "sigma":0.5,"nu":0.01,"end":0.05,
+  "spatial_n":[16,32,64],"spatial_dt":0.001,
+  "temporal_n":64,"temporal_dt":[0.001,0.0005,0.00025],
+  "inner_cap":3000,"log10_residual_threshold":-10,
+  "image":"concentration-aware-ns:su2",
+  "relative_error_thresholds":{"velocity_l2":0.02,"energy":0.02,"max_gradient":0.05,"max_vorticity":0.05},
+  "time_contract":"Completed k updates represent k*dt; unmodified source is evaluated at (k-1)*dt. Preserve both, do not silently shift the analytic reference.",
+  "sampling":"SU2 vertex grid. Remove duplicated periodic endpoints after verifying coordinates and report periodic value mismatch. Phase differs from OpenFOAM cell centers.",
+  "quality":"No PASS from residual convergence alone; derivative and temporal uncertainties remain explicit."
+}
