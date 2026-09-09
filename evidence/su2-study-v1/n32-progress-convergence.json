@@ -1,0 +1,19 @@
+{
+  "scope": "Completed newline-terminated history rows only; no run completion or final accuracy claim.",
+  "history_prefix_sha256": "f64e174d4553cf18acc0ac542bc69fce2d0a0fa6e31a42b769f5b1a45092b0da",
+  "history_rows": 1,
+  "threshold_log10_strict": -10.0,
+  "converged_rows": 0,
+  "unconverged_rows": [
+    {
+      "time_iter": 0,
+      "inner_iter": 2999,
+      "residuals": {
+        "rms[P]": -9.553895816,
+        "rms[U]": -9.421828648,
+        "rms[V]": -9.443823823,
+        "rms[W]": -9.466627999
+      }
+    }
+  ]
+}

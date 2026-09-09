@@ -25,3 +25,14 @@ https://github.com/su2code/SU2/discussions/2890. It should not be presented as t
 established cause of this case's entire error.
 
 Evidence: evidence/su2-study-v1/n16-review.json and n16-dt0.001.tar.gz.
+
+## n32 in-progress convergence observation
+
+The first completed time-history row has Inner_Iter=2999 (3,000 iterations),
+with log10 residuals P=-9.553895816, U=-9.421828648, V=-9.443823823,
+W=-9.466627999. None passes the frozen strict -10 threshold. The preserved
+first-step history and `n32-progress-convergence.json` record this observation.
+The run remains in progress; no final field accuracy is inferred. Later steps
+converging would not retroactively make this step converged. The baseline protocol
+is unchanged. Any higher-cap or altered-CFL follow-up must be reported separately
+and cannot replace the frozen run without preserving its outcome.
