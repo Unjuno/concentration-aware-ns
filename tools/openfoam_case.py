@@ -26,7 +26,7 @@ def generate(root, n=8, dt=0.001, end=0.005, sigma=0.5, nu=0.01):
     write('system/blockMeshDict', 'scale 1;\nvertices (\n'+ '\n'.join('('+ ' '.join(map(str,v))+')' for v in vertices)+f'\n);\nblocks (hex (0 1 2 3 4 5 6 7) ({n} {n} {n}) simpleGrading (1 1 1));\nedges ();\nboundary (\n'+boundary+'\n);')
     write('system/controlDict', f'''solver incompressibleFluid;
 startFrom startTime; startTime 0; stopAt endTime; endTime {end}; deltaT {dt};
-writeControl timeStep; writeInterval 1; writeFormat ascii; writePrecision 16;
+writeControl runTime; writeInterval {end}; writeFormat ascii; writePrecision 16;
 writeCompression off; timeFormat general; timePrecision 12; runTimeModifiable false;''')
     write('system/fvSchemes', '''ddtSchemes { default Euler; }
 gradSchemes { default Gauss linear; }
@@ -40,7 +40,10 @@ pFinal { $p; }
 U { solver smoothSolver; smoother symGaussSeidel; tolerance 1e-10; relTol 0; }
 UFinal { $U; }
 }
-PIMPLE { nOuterCorrectors 3; nCorrectors 2; nNonOrthogonalCorrectors 0; pRefCell 0; pRefValue 0; }''')
+PIMPLE {
+ nOuterCorrectors 12; nCorrectors 2; nNonOrthogonalCorrectors 0; pRefCell 0; pRefValue 0;
+ outerCorrectorResidualControl { p { tolerance 1e-8; relTol 0; } U { tolerance 1e-8; relTol 0; } }
+}''')
     write('constant/momentumTransport', 'simulationType laminar;')
     write('constant/physicalProperties', f'viscosityModel constant; nu {nu} [m^2/s];')
     coordinates = (np.arange(n)+0.5)*L/n

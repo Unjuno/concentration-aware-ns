@@ -1,0 +1,84 @@
+{
+  "parameters": {
+    "n": 8,
+    "dt": 0.001,
+    "end": 0.005,
+    "sigma": 0.5,
+    "nu": 0.01,
+    "purpose": "integration pilot, not production"
+  },
+  "quality": "UNCERTAIN",
+  "standard_acceptance": "UNCERTAIN",
+  "note": "Diagnostics only. Analytic peaks are evaluated at cell centers, not continuous extrema.",
+  "velocity_relative_l2": 0.14636938765109317,
+  "gradient_peak_relative_error_cell_samples": 0.44762534737513954,
+  "vorticity_peak_relative_error_cell_samples": 0.4227322118521548,
+  "reference_gradient_peak_cell_samples": 7.753044681679052,
+  "reference_vorticity_peak_cell_samples": 10.221313388541489,
+  "computed": {
+    "mean_kinetic_energy": 0.08409874737481869,
+    "max_gradient_fd2": 4.282585362827488,
+    "max_vorticity_fd2": 5.900434971769302,
+    "max_divergence_fd2": 0.7884387581936587,
+    "gradient_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "vorticity_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      2.944025601634419e-35,
+      0.006767577376339838,
+      0.028456089636846073,
+      0.027382773151888244,
+      0.018664913611122654,
+      0.002812503648563613,
+      1.488995005826155e-05,
+      1.0341734482271736e-33
+    ],
+    "spectrum_energy": 0.08409874737481869,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "reference_sampled_fd2": {
+    "mean_kinetic_energy": 0.09027818478897494,
+    "max_gradient_fd2": 4.2971207457474225,
+    "max_vorticity_fd2": 5.89885793762202,
+    "max_divergence_fd2": 1.4573105958618433,
+    "gradient_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "vorticity_peak_index": [
+      4,
+      4,
+      4
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      1.0554105559463903e-33,
+      0.006766185247650544,
+      0.02879971017113378,
+      0.029221314911224677,
+      0.021707971917955312,
+      0.003765708347425891,
+      1.729419358471733e-05,
+      2.1092051845403666e-34
+    ],
+    "spectrum_energy": 0.09027818478897492,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "sha256": {
+    "parameters.json": "181a0a60e2dbdf3665b36e5f911ad3e642e6c85ee67b172bcc7d9b1e21d16072",
+    "log.foamRun": "813c0d5fbeb84b9ef5c13c00076e214e3de8c7c24f5601d7487edcf3e5132d1f",
+    "0.005/U": "b96d1a0eac55a2a5ef64c60eb70a1ff694b891b3fe2a9763cdd846dffa95dfa6",
+    "0.005/C": "8fd6036c3135b9a650e289ead8ecb4f17091e804edc89177ad4ed4fffd198630"
+  }
+}

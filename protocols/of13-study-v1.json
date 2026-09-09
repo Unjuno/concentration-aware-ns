@@ -1,0 +1,9 @@
+{
+  "status": "frozen before study-v1 execution; hypothesis remains unverified",
+  "sigma": 0.5, "nu": 0.01, "end": 0.05,
+  "spatial_n": [16,32,64], "spatial_dt": 0.001,
+  "temporal_n": 64, "temporal_dt": [0.001,0.0005,0.00025],
+  "outer_corrector_tolerance": 1e-8, "outer_corrector_limit": 12,
+  "relative_error_thresholds": {"velocity_l2":0.02,"energy":0.02,"max_gradient":0.05,"max_vorticity":0.05},
+  "caveats": ["These are benchmark thresholds, not safety tolerances.","Continuous extrema and derivative/sampling uncertainties must be resolved before a local quality verdict.","Spatial and temporal sweeps must demonstrate error separation; extend if finest results are insufficient.","AMR and other solvers are separate required studies."]
+}

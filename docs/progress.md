@@ -59,3 +59,18 @@ Neither a repository commit nor checker tests complete the benchmark goal.
 - Docker status query returned EOF; a bounded socket ping timed out after 10 s.
   Pilot exec session remains open, with no solver output. Runtime completion is
   unresolved; no shared Docker restart or duplicate pilot launch was attempted.
+
+## OpenFOAM pilot completed; study-v1 prepared
+
+The existing pilot process returned exit 0. blockMesh and foamRun logs end with
+End. At t=0.005, a solver-written C field agrees with the generated cell ordering
+within 1e-12. The 8^3 diagnostic velocity relative L2 error is approximately 0.146;
+FD2 peak errors against analytic values at cell centers are approximately 0.448
+(gradient) and 0.423 (vorticity). These include underresolution and derivative
+errors, so no software-defect or acceptance-miss conclusion follows.
+
+Added an ASCII field analyzer which requires verified coordinates and a completed
+physical time. Study-v1 parameters/thresholds are frozen in protocols before its
+execution; the generator now uses ordinary outerCorrectorResidualControl and
+writes only at final time to limit disk usage. Full reference independence,
+continuous extrema and uncertainty assessment remain required.
