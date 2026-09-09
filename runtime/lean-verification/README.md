@@ -94,3 +94,11 @@ ABI v8. Both allowed and denied reads exited at sandbox setup, so this is **not*
 a passing denial test. Reproduce with `python3
 runtime/lean-verification/check_landrun.py`. Compatibility and AF_UNIX protection
 must be resolved before claiming a successful sandboxed Comparator run.
+
+Follow-up: pinned Comparator/Main.lean:81 itself passes `--best-effort` to
+landrun. Repeating the filesystem controls with this exact compatibility option
+succeeds: the allowed read returns its expected contents and the denied read
+fails with Permission denied. Thus the strict-default ABI mismatch is not by
+itself a blocker for Comparator's actual invocation. Both results are retained;
+run `check_landrun.py --best-effort` to reproduce the compatible control.
+This test still does not establish AF_UNIX restrictions or complete isolation.

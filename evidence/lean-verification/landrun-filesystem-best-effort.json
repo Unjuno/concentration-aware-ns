@@ -1,0 +1,39 @@
+{
+  "scope": "Read permission positive/negative control only; no AF_UNIX or sandbox escape assurance.",
+  "passed": true,
+  "command_base": [
+    "docker",
+    "run",
+    "--rm",
+    "--user",
+    "501:20",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/verify/checker-bin/landrun",
+    "-v",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/lean-verification:/verify:ro",
+    "concentration-aware-ns:su2",
+    "--rox",
+    "/usr",
+    "--rox",
+    "/lib",
+    "--ro",
+    "/verify/sandbox-smoke/allowed.txt",
+    "--best-effort"
+  ],
+  "results": [
+    {
+      "case": "allowed",
+      "exit_code": 0,
+      "stdout": "allowed-control\n",
+      "stderr": ""
+    },
+    {
+      "case": "denied",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "/usr/bin/cat: /verify/sandbox-smoke/denied.txt: Permission denied\n"
+    }
+  ]
+}
