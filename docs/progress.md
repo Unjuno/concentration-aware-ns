@@ -204,3 +204,15 @@ master executable). Searches for MMS, MMS time and physical time found no direct
 duplicate; issue 690 concerns adding time-varying boundary conditions. The bug
 report template was reviewed. A general correction needs review across time
 schemes and restart/multizone paths; the intervention alone does not establish it.
+
+## Analytic interpretation narrowed after self-audit
+
+The uniform control confirms old-time MMS forcing, but both old- and next-time
+recurrences are first-order consistent. The evidence does not establish a
+fundamentally inconsistent time integrator. An intentional explicit-source
+contract remains an alternative explanation. Before upstream submission, the
+report must distinguish the observed recurrence from the desired MMS time
+contract and avoid extending this result to unrelated production simulations.
+The full derivation and limitations are in docs/analytic-self-audit.md. The user
+requested analytic priority and skepticism toward simulation-derived conclusions;
+GOAL.md revision 4 records that constraint without reducing project scope.

@@ -57,3 +57,16 @@ The user pointed to OpenAI's repository. It is now identified and pinned in
 `docs/openai-source.md`. Audit its actual definitions and constructive witness
 before transferring the discovery to numerical impact claims. The existing MMS
 is a calibration problem, not a substitute for auditing that construction.
+
+## Revision 4 — analytic priority and self-falsification
+
+The user explicitly cautioned against over-trusting simulation or amplifying our
+own cached conclusions. Before interpreting numerical output, derive the governing
+identity, assumptions, time/space conventions and discriminating predictions.
+Distinguish an analytic implication, a source-code observation, an empirical
+result and a proposed interpretation. Test alternatives that could invalidate
+our interpretation. Re-read authoritative evidence when a conclusion changes;
+prior summaries and successful runs are pointers, not proof. Simulations remain
+permitted as supporting evidence and do not establish the new theorem, molecular
+alignment, universal solver failure or engineering danger. Preserve the full
+three-project and identified-construction scope.
