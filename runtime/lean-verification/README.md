@@ -102,3 +102,14 @@ fails with Permission denied. Thus the strict-default ABI mismatch is not by
 itself a blocker for Comparator's actual invocation. Both results are retained;
 run `check_landrun.py --best-effort` to reproduce the compatible control.
 This test still does not establish AF_UNIX restrictions or complete isolation.
+
+`no_unix.c` is a Linux aarch64 seccomp launcher for testing denial of AF_UNIX
+socket/socketpair syscalls, with no_new_privs inherited across exec. Compile in
+the SU2 image with `gcc -Wall -Wextra -Werror -O2 /src/no_unix.c -o /out/no_unix`.
+`check_no_unix.py` tests a child process: without the launcher both UNIX socket
+operations work; with it both return EPERM, while AF_INET socket creation works.
+Results are in no-unix-smoke.json. This is not yet a claim of equivalence to the
+Comparator README's systemd restriction: inherited descriptors and alternative
+interfaces such as io_uring need consideration before that claim. Keep this
+launcher experimental until those conditions and a complete Comparator run have
+been checked.

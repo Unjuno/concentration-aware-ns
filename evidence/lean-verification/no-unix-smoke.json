@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Socket creation and socketpair denial inherited by a child; no claim about preexisting descriptors or all sandbox escape paths.",
+  "results": {
+    "baseline": {
+      "unix_socket": "allowed",
+      "unix_pair": "allowed",
+      "inet_socket": "allowed"
+    },
+    "restricted": {
+      "unix_socket": "EPERM",
+      "unix_pair": "EPERM",
+      "inet_socket": "allowed"
+    }
+  }
+}
