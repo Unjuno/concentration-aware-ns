@@ -47,3 +47,15 @@ Neither a repository commit nor checker tests complete the benchmark goal.
   Do not interpret this as a solver failure or restart a possibly live run.
 - Runtime documentation/recipe are reproducible setup artifacts. Solver execution,
   C++ forcing correctness and the space/time studies remain unverified.
+
+## Source identification and post-processing
+
+- Located `openai/NavierStokesAndEuler` at the user's direction; recorded pinned
+  statement audit in `docs/openai-source.md`. This replaces the missing-source
+  issue, not the independent-proof-check requirement.
+- Added uniform periodic-grid gradient/vorticity and shell-spectrum diagnostics.
+  Verified known Fourier-mode energy, Parseval normalization and second-order
+  derivative convergence; 13 unit tests pass. Raw output: `evidence/tests/`.
+- Docker status query returned EOF; a bounded socket ping timed out after 10 s.
+  Pilot exec session remains open, with no solver output. Runtime completion is
+  unresolved; no shared Docker restart or duplicate pilot launch was attempted.

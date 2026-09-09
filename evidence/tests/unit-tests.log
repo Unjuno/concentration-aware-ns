@@ -1,0 +1,18 @@
+test_invalid_numeric_values (test_gate.GateTests.test_invalid_numeric_values) ... ok
+test_missing_evidence_never_reproduces (test_gate.GateTests.test_missing_evidence_never_reproduces) ... ok
+test_missing_required_metric (test_gate.GateTests.test_missing_required_metric) ... ok
+test_passing_local_errors (test_gate.GateTests.test_passing_local_errors) ... ok
+test_standard_failure_is_not_a_missed_acceptance (test_gate.GateTests.test_standard_failure_is_not_a_missed_acceptance) ... ok
+test_valid_discrepancy (test_gate.GateTests.test_valid_discrepancy) ... ok
+test_constant_velocity_has_only_zero_mode (test_metrics.MetricsTests.test_constant_velocity_has_only_zero_mode) ... ok
+test_derivative_converges_to_known_peak (test_metrics.MetricsTests.test_derivative_converges_to_known_peak) ... ok
+test_known_mode_and_parseval (test_metrics.MetricsTests.test_known_mode_and_parseval) ... ok
+test_nonfinite_cannot_generate_diagnostics (test_metrics.MetricsTests.test_nonfinite_cannot_generate_diagnostics) ... ok
+test_divergence_and_periodicity (test_reference.ReferenceTests.test_divergence_and_periodicity) ... ok
+test_independent_finite_difference_residual_converges (test_reference.ReferenceTests.test_independent_finite_difference_residual_converges) ... ok
+test_invalid_width (test_reference.ReferenceTests.test_invalid_width) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.331s
+
+OK

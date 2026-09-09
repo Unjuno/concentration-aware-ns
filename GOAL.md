@@ -50,3 +50,10 @@ The ambiguous phrase concerning analytical work is operationalized as deriving
 and checking this manufactured solution, not promising to solve open regularity
 problems. A paper/construction beyond the supplied proposal needs an identifiable
 primary source before it can support a claim of a new discovery.
+
+## Revision 3 — source located
+
+The user pointed to OpenAI's repository. It is now identified and pinned in
+`docs/openai-source.md`. Audit its actual definitions and constructive witness
+before transferring the discovery to numerical impact claims. The existing MMS
+is a calibration problem, not a substitute for auditing that construction.
