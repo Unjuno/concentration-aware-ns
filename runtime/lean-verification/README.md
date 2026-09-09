@@ -61,3 +61,25 @@ under the same Docker invocation above with `--cpus=2 --memory=10g`, container
 name `cans-lean-ns-build`, and final command
 `lake build +NavierStokes.ComparatorSolution`. Its log is retained separately
 as navier-stokes-build.log. A started build is not a successful check.
+
+## Independent checker preparation
+
+`evidence/lean-verification/checker-archives.json` pins and hashes additional
+landrun and nanoda source archives, extracted under work/lean-verification/
+checker-sources without Git repositories. Landrun's go.mod requires Go 1.24;
+nanoda identifies version 0.4.16 and Apache-2.0 in Cargo.toml. These tools have
+not yet been built or executed.
+
+Comparator's pinned README has additional trust preconditions: the challenge
+and its imports must be trusted; potentially adversarial solution compilation
+must not previously have compromised the checking environment; the process must
+not be privileged. The current ordinary proof build is therefore not by itself
+an independent Comparator validation environment. Prepare a fresh verified
+challenge environment for that stage and record which artifacts are trusted.
+
+The observed OrbStack kernel is 7.0.14-orbstack-00380-ga7e0a2dc9535. Comparator's
+README explicitly prescribes restricting AF_UNIX through systemd-run for the
+landrun issue it says is fixed in Linux 7.1. A Docker invocation alone does not
+establish this condition. Verify an equivalent restriction or the documented
+systemd path before claiming the full independent-check guarantees. Do not use
+the development fake-landrun wrapper to claim sandboxed validation.
