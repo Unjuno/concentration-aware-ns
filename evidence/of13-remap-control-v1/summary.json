@@ -1,0 +1,42 @@
+[
+  {
+    "case": "cap100000",
+    "cells": 30416,
+    "velocity_relative_volume_l2": 0.005000888140656764,
+    "original_amr_velocity_error": 0.2808393894045173,
+    "centers_match": true,
+    "quality": "UNCERTAIN",
+    "parameters": {
+      "n": 16,
+      "dt": 0.001,
+      "end": 0.05,
+      "sigma": 0.5,
+      "nu": 0.01,
+      "purpose": "distinguish inherited/remapping error from final mesh error",
+      "mesh_cells": 30416,
+      "source_case": "cap100000",
+      "adaptation": false
+    },
+    "archive_sha256": "1fcb813da07abc85033b7562d255f8f3b7a0186b217dfc50bbff68882cc15008"
+  },
+  {
+    "case": "cap5000",
+    "cells": 7624,
+    "velocity_relative_volume_l2": 0.018780450860202316,
+    "original_amr_velocity_error": 0.27563885219966916,
+    "centers_match": true,
+    "quality": "UNCERTAIN",
+    "parameters": {
+      "n": 16,
+      "dt": 0.001,
+      "end": 0.05,
+      "sigma": 0.5,
+      "nu": 0.01,
+      "purpose": "distinguish inherited/remapping error from final mesh error",
+      "mesh_cells": 7624,
+      "source_case": "cap5000",
+      "adaptation": false
+    },
+    "archive_sha256": "6772eaf0a1bba541331c47d95c48a4b24586b2136701a585b5a6349fc82e75fc"
+  }
+]

@@ -126,3 +126,13 @@ inference explicitly rather than pretending a level file existed. The completed
 Uniform dt=0.0005 also completed with velocity relative L2 0.00491960; the final
 dt=0.00025 run remains active. The nearly unchanged error indicates spatial error
 may dominate; final temporal comparison is needed before concluding separation.
+
+## Refined-mesh initialization controls completed
+
+On the same final meshes, initializing the exact field directly and disabling
+remeshing gives errors 0.0187805 (7624 cells) and 0.00500089 (30416 cells), compared
+with 0.275639 and 0.280839 in the adaptive histories. Cell-center correspondence
+was verified. Final mesh geometry alone therefore does not explain the large AMR
+errors. Initial coarse-field representation, interpolation and dynamic flux
+correction remain the relevant combined confounder; this control does not isolate
+those individually. Raw artifacts: evidence/of13-remap-control-v1.
