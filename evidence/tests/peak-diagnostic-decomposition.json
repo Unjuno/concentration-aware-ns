@@ -1,0 +1,143 @@
+{
+  "scope": "Exact algebraic decomposition of peak scalar discrepancies. Maxima may occur at different points; terms are not independent causal error components or field norm errors.",
+  "cases": [
+    {
+      "group": "of13-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "archive_sha256": "6a22d096dd17f0ffe65f0800cf60804d4f6eab6533b02daa97330fb069218da7",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 11.67990718108207,
+          "computed_fd2_peak": 11.84974879801097,
+          "reference_sampling_and_fd2_signed_deficit": 0.41988364625974367,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.008435674872975684,
+          "total_signed_deficit": 0.411447971386768
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 16.45570652347514,
+          "computed_fd2_peak": 16.665214530906123,
+          "reference_sampling_and_fd2_signed_deficit": 0.42206732036296357,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.007358026467430838,
+          "total_signed_deficit": 0.41470929389553274
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "archive_sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 17.334342520871346,
+          "computed_fd2_peak": 17.492172410209747,
+          "reference_sampling_and_fd2_signed_deficit": 0.13903976959849873,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.007839077699394804,
+          "total_signed_deficit": 0.13120069189910394
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 24.50852589572209,
+          "computed_fd2_peak": 24.724297231617022,
+          "reference_sampling_and_fd2_signed_deficit": 0.1392482586717198,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0075779977094709555,
+          "total_signed_deficit": 0.13167026096224885
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "archive_sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 19.376933836371524,
+          "computed_fd2_peak": 19.43828107160282,
+          "reference_sampling_and_fd2_signed_deficit": 0.037588567310802144,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0030469877767579836,
+          "total_signed_deficit": 0.03454157953404416
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 27.402711638743586,
+          "computed_fd2_peak": 27.488816851823113,
+          "reference_sampling_and_fd2_signed_deficit": 0.03760300148111644,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0030240583383508318,
+          "total_signed_deficit": 0.034578943142765606
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "archive_sha256": "c1e11fe62fd205c8bdc03993cfa624689cf29f6ba0db0e2a043b96854642fa4d",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 19.376933836371524,
+          "computed_fd2_peak": 19.438815863013605,
+          "reference_sampling_and_fd2_signed_deficit": 0.037588567310802144,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0030735497381183595,
+          "total_signed_deficit": 0.034515017572683784
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 27.402711638743586,
+          "computed_fd2_peak": 27.48956920861783,
+          "reference_sampling_and_fd2_signed_deficit": 0.03760300148111644,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0030504814869281045,
+          "total_signed_deficit": 0.03455251999418833
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.001.tar.gz",
+      "archive_sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 19.376933836371524,
+          "computed_fd2_peak": 19.439591333925232,
+          "reference_sampling_and_fd2_signed_deficit": 0.037588567310802144,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0031120657426302214,
+          "total_signed_deficit": 0.03447650156817192
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 27.402711638743586,
+          "computed_fd2_peak": 27.490666220455974,
+          "reference_sampling_and_fd2_signed_deficit": 0.03760300148111644,
+          "difference_of_fd2_peaks_normalized_by_global_reference": -0.0030890090937681926,
+          "total_signed_deficit": 0.034513992387348244
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 14.470024345939489,
+          "computed_fd2_peak": 12.59463080097603,
+          "reference_sampling_and_fd2_signed_deficit": 0.2813044117597624,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.09314684168846481,
+          "total_signed_deficit": 0.3744512534482272
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 20.463704677896498,
+          "computed_fd2_peak": 17.77192411630625,
+          "reference_sampling_and_fd2_signed_deficit": 0.2813044117597624,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.09453668554039159,
+          "total_signed_deficit": 0.37584109730015397
+        }
+      }
+    }
+  ]
+}
