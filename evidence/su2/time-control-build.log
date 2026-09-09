@@ -1,0 +1,114 @@
+#0 building with "orbstack" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 185B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/concentration-aware-ns:su2
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 617B done
+#4 DONE 0.1s
+
+#5 [1/4] FROM docker.io/library/concentration-aware-ns:su2@sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643
+#5 resolve docker.io/library/concentration-aware-ns:su2@sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643 0.0s done
+#5 DONE 0.1s
+
+#6 [2/4] COPY helper.cpp replace.py /tmp/
+#6 DONE 0.0s
+
+#7 [3/4] RUN python3 /tmp/replace.py && ninja -C /opt/SU2/build -j2 install
+#7 0.158 ninja: Entering directory `/opt/SU2/build'
+#7 0.760 [1/8] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CUserDefinedSolution.cpp.o
+#7 0.775 [2/8] Linking static target Common/src/libSU2Common.a
+#7 0.929 [3/8] Linking target SU2_DEF/src/SU2_DEF
+#7 1.061 [4/8] Linking target SU2_DOT/src/SU2_DOT
+#7 1.111 [5/8] Linking target SU2_CFD/src/SU2_CFD
+#7 1.132 [6/8] Linking target SU2_GEO/src/SU2_GEO
+#7 1.221 [7/8] Linking target SU2_SOL/src/SU2_SOL
+#7 1.221 [7/8] Installing files
+#7 1.343 Installing subdir /opt/SU2/SU2_PY/../externals/FADO to /opt/su2-install/bin/FADO
+#7 1.343 Installing SU2_CFD/src/SU2_CFD to /opt/su2-install/bin
+#7 1.343 Installing SU2_DEF/src/SU2_DEF to /opt/su2-install/bin
+#7 1.343 Installing SU2_DOT/src/SU2_DOT to /opt/su2-install/bin
+#7 1.343 Installing SU2_GEO/src/SU2_GEO to /opt/su2-install/bin
+#7 1.343 Installing SU2_SOL/src/SU2_SOL to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/continuous_adjoint.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/compute_uncertainty.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/finite_differences.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/mesh_deformation.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/parallel_computation.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/parallel_computation_fsi.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/shape_optimization.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/merge_solution.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/set_ffd_design_var.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/compute_polar.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/discrete_adjoint.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/direct_differentiation.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/fsi_computation.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2_CFD.py to /opt/su2-install/bin
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/__init__.py to /opt/su2-install/bin/SU2
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/eval/design.py to /opt/su2-install/bin/SU2/eval
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/eval/functions.py to /opt/su2-install/bin/SU2/eval
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/eval/gradients.py to /opt/su2-install/bin/SU2/eval
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/eval/__init__.py to /opt/su2-install/bin/SU2/eval
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/config.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/config_options.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/data.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/filelock.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/redirect.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/state.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/tools.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/historyMap.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/io/__init__.py to /opt/su2-install/bin/SU2/io
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/opt/project.py to /opt/su2-install/bin/SU2/opt
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/opt/scipy_tools.py to /opt/su2-install/bin/SU2/opt
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/opt/__init__.py to /opt/su2-install/bin/SU2/opt
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/adjoint.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/deform.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/direct.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/interface.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/merge.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/geometry.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/projection.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/run/__init__.py to /opt/su2-install/bin/SU2/run
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/bunch.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/filter_adjoint.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/lhc_unif.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/misc.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/mp_eval.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/ordered_bunch.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/ordered_dict.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/plot.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/polarSweepLib.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/which.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/switch.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2/util/__init__.py to /opt/su2-install/bin/SU2/util
+#7 1.343 Installing /opt/SU2/SU2_PY/FSI_tools/__init__.py to /opt/su2-install/bin/FSI_tools
+#7 1.343 Installing /opt/SU2/SU2_PY/FSI_tools/FSIInterface.py to /opt/su2-install/bin/FSI_tools
+#7 1.343 Installing /opt/SU2/SU2_PY/FSI_tools/FSI_config.py to /opt/su2-install/bin/FSI_tools
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2_Nastran/__init__.py to /opt/su2-install/bin/SU2_Nastran
+#7 1.343 Installing /opt/SU2/SU2_PY/SU2_Nastran/pysu2_nastran.py to /opt/su2-install/bin/SU2_Nastran
+#7 DONE 1.4s
+
+#8 [4/4] WORKDIR /case
+#8 DONE 0.1s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 1.3s done
+#9 exporting manifest sha256:94558109b0ebbbce8d54ae228ae3cf2a0f8a6990ee7a58f9de0ab08fb8130bfb
+#9 exporting manifest sha256:94558109b0ebbbce8d54ae228ae3cf2a0f8a6990ee7a58f9de0ab08fb8130bfb 0.0s done
+#9 exporting config sha256:f0eb0dcfc0c63192c7cdb10abefdd85310337dde7a82e34f5643f042c57077b3 0.0s done
+#9 exporting attestation manifest sha256:48b5d0217d057651d3cf4652197e3ce06ea68041dec1440da576a91ed046225b 0.0s done
+#9 exporting manifest list sha256:f003d34ad25ecb9b82ba79fec92dd8d0ee029a6886123361c537ed47125c2e41 0.0s done
+#9 naming to docker.io/library/concentration-aware-ns:su2-time-control done
+#9 unpacking to docker.io/library/concentration-aware-ns:su2-time-control
+#9 unpacking to docker.io/library/concentration-aware-ns:su2-time-control 0.2s done
+#9 DONE 1.6s

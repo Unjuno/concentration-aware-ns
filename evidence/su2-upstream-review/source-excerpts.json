@@ -1,0 +1,26 @@
+{
+  "upstream_license": "LGPL-2.1-or-later",
+  "upstream": "https://github.com/su2code/SU2",
+  "excerpts": [
+    {
+      "file": "CSinglezoneDriver.cpp",
+      "line": 120,
+      "text": "config_container[ZONE_0]->SetPhysicalTime(static_cast<su2double>(TimeIter)*config_container[ZONE_0]->GetDelta_UnstTimeND());"
+    },
+    {
+      "file": "CSinglezoneDriver.cpp",
+      "line": 122,
+      "text": "config_container[ZONE_0]->SetPhysicalTime(0.0);"
+    },
+    {
+      "file": "CIncEulerSolver.cpp",
+      "line": 1861,
+      "text": "if (config->GetTime_Marching() != TIME_MARCHING::STEADY) time = config->GetPhysicalTime();"
+    },
+    {
+      "file": "CIncEulerSolver.cpp",
+      "line": 1877,
+      "text": "VerificationSolution->GetMMSSourceTerm(coor, time, sourceMan.data());"
+    }
+  ]
+}

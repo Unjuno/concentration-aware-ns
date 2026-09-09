@@ -1,0 +1,1 @@
+{"status":"frozen before intervention execution","base_protocol":"su2-time-control-v1.json","intervention":"Only single-zone SetPhysicalTime uses TimeIter+1","prediction":"Each step matches the base protocol next-time prediction within 1e-7","scope":"Diagnostic intervention, not a general fix"}

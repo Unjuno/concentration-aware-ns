@@ -1,0 +1,11 @@
+{
+  "status":"frozen before control execution",
+  "purpose":"Isolate MMS source time from spatial discretization",
+  "reference":"u=(1+t^2,0,0), p=0, f=(2t,0,0), rho=1, nu=0.01",
+  "n":4,"end":0.5,"dt":[0.1,0.05,0.025],
+  "time_scheme":"DUAL_TIME_STEPPING-1ST_ORDER",
+  "inner_cap":1000,"log10_residual_threshold":-10,
+  "predictions":{"source_at_previous_time":"u_x(k)=1+dt^2*k*(k-1)","source_at_next_time":"u_x(k)=1+dt^2*k*(k+1)"},
+  "comparison_absolute_tolerance":1e-7,
+  "scope":"Unmodified upstream driver and source assembly; custom analytic MMS helper. Does not replace localized benchmark or prove higher-order/restart behavior."
+}

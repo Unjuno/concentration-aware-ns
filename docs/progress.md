@@ -184,3 +184,23 @@ t=0 initialization. This suggests a source/reference phase mismatch, but the
 localized pilot does not isolate it from spatial errors. Next verification:
 a spatially uniform, explicitly time-dependent manufactured control, preserving
 the main concentration benchmark. This is a candidate, not a reported defect.
+
+## SU2 time-indexing control reproduced and intervention verified
+
+A spatially uniform control removes spatial discretization from the question:
+u=(1+t^2,0,0), p=0 and f=(2t,0,0), initialized at t=0. On a periodic 4^3 mesh,
+five/ten/twenty first-order dual-time updates (dt=0.1/0.05/0.025, final physical
+update time 0.5) match u_x=1+dt^2*k*(k-1), i.e. source at the previous time.
+All four residual criteria are met at every update. A diagnostic image changing
+only single-zone SetPhysicalTime to (TimeIter+1)*dt instead matches
+u_x=1+dt^2*k*(k+1), the backward-Euler source-at-next-time recurrence. Full
+per-step errors and raw archives are saved for both variants. This establishes
+the source-time behavior in this configuration; neither recurrence equals the
+continuous exact solution at finite dt, so ordinary truncation error is separate.
+
+The current master bc15466602a687d6fb796d5df7a12ce3fde0949a still contains the
+same MMS time assignment and source consumer (source inspection, not a fresh
+master executable). Searches for MMS, MMS time and physical time found no direct
+duplicate; issue 690 concerns adding time-varying boundary conditions. The bug
+report template was reviewed. A general correction needs review across time
+schemes and restart/multizone paths; the intervention alone does not establish it.

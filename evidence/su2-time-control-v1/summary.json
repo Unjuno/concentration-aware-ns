@@ -1,0 +1,344 @@
+{
+  "image_id": "sha256:f003d34ad25ecb9b82ba79fec92dd8d0ee029a6886123361c537ed47125c2e41",
+  "cases": [
+    {
+      "dt": 0.1,
+      "steps": [
+        {
+          "step": 1,
+          "reported_time": 0.0,
+          "mean_ux": 1.0,
+          "spatial_spread": 0.0,
+          "max_error_previous_time_prediction": 0.0,
+          "max_error_next_time_prediction": 0.020000000000000018,
+          "all_residuals_met": true
+        },
+        {
+          "step": 2,
+          "reported_time": 0.1,
+          "mean_ux": 1.0199999999994092,
+          "spatial_spread": 1.6039836125969487e-11,
+          "max_error_previous_time_prediction": 8.628875391991642e-12,
+          "max_error_next_time_prediction": 0.040000000007410996,
+          "all_residuals_met": true
+        },
+        {
+          "step": 3,
+          "reported_time": 0.2,
+          "mean_ux": 1.0599999999997214,
+          "spatial_spread": 3.114397628678489e-11,
+          "max_error_previous_time_prediction": 1.663891247005722e-11,
+          "max_error_next_time_prediction": 0.06000000001450512,
+          "all_residuals_met": true
+        },
+        {
+          "step": 4,
+          "reported_time": 0.3,
+          "mean_ux": 1.1200000000005939,
+          "spatial_spread": 3.3440805680129415e-11,
+          "max_error_previous_time_prediction": 1.7882806346847246e-11,
+          "max_error_next_time_prediction": 0.08000000001555785,
+          "all_residuals_met": true
+        },
+        {
+          "step": 5,
+          "reported_time": 0.4,
+          "mean_ux": 1.200000000001684,
+          "spatial_spread": 3.239208901106849e-11,
+          "max_error_previous_time_prediction": 1.7255086248724183e-11,
+          "max_error_next_time_prediction": 0.10000000001513709,
+          "all_residuals_met": true
+        }
+      ],
+      "matches_previous_time": true,
+      "matches_next_time": false,
+      "archive_sha256": "43d1bf1d3b777f287d37109514eab9350d695a988c445c053ab755a99c3b6adb"
+    },
+    {
+      "dt": 0.05,
+      "steps": [
+        {
+          "step": 1,
+          "reported_time": 0.0,
+          "mean_ux": 1.0,
+          "spatial_spread": 0.0,
+          "max_error_previous_time_prediction": 0.0,
+          "max_error_next_time_prediction": 0.004999999999999893,
+          "all_residuals_met": true
+        },
+        {
+          "step": 2,
+          "reported_time": 0.05,
+          "mean_ux": 1.0049999999995967,
+          "spatial_spread": 1.0341949518988258e-11,
+          "max_error_previous_time_prediction": 5.375033751420233e-12,
+          "max_error_next_time_prediction": 0.010000000004966925,
+          "all_residuals_met": true
+        },
+        {
+          "step": 3,
+          "reported_time": 0.1,
+          "mean_ux": 1.0149999999991886,
+          "spatial_spread": 1.841393704182792e-11,
+          "max_error_previous_time_prediction": 9.654055332930511e-12,
+          "max_error_next_time_prediction": 0.015000000008760006,
+          "all_residuals_met": true
+        },
+        {
+          "step": 4,
+          "reported_time": 0.15,
+          "mean_ux": 1.029999999998801,
+          "spatial_spread": 2.456590486588084e-11,
+          "max_error_previous_time_prediction": 1.3000933662965508e-11,
+          "max_error_next_time_prediction": 0.02000000001156499,
+          "all_residuals_met": true
+        },
+        {
+          "step": 5,
+          "reported_time": 0.2,
+          "mean_ux": 1.0499999999985075,
+          "spatial_spread": 2.7641000599487597e-11,
+          "max_error_previous_time_prediction": 1.4801049275092737e-11,
+          "max_error_next_time_prediction": 0.025000000012839863,
+          "all_residuals_met": true
+        },
+        {
+          "step": 6,
+          "reported_time": 0.25,
+          "mean_ux": 1.0749999999981958,
+          "spatial_spread": 3.054201336283313e-11,
+          "max_error_previous_time_prediction": 1.655497960939556e-11,
+          "max_error_next_time_prediction": 0.03000000001398706,
+          "all_residuals_met": true
+        },
+        {
+          "step": 7,
+          "reported_time": 0.3,
+          "mean_ux": 1.1049999999978997,
+          "spatial_spread": 3.2506886071814733e-11,
+          "max_error_previous_time_prediction": 1.786792935831727e-11,
+          "max_error_next_time_prediction": 0.0350000000146391,
+          "all_residuals_met": true
+        },
+        {
+          "step": 8,
+          "reported_time": 0.35,
+          "mean_ux": 1.1399999999976524,
+          "spatial_spread": 3.304601037257271e-11,
+          "max_error_previous_time_prediction": 1.8479884289490656e-11,
+          "max_error_next_time_prediction": 0.04000000001456616,
+          "all_residuals_met": true
+        },
+        {
+          "step": 9,
+          "reported_time": 0.4,
+          "mean_ux": 1.1799999999974795,
+          "spatial_spread": 3.235012258073766e-11,
+          "max_error_previous_time_prediction": 1.82709403162562e-11,
+          "max_error_next_time_prediction": 0.04500000001407911,
+          "all_residuals_met": true
+        },
+        {
+          "step": 10,
+          "reported_time": 0.45,
+          "mean_ux": 1.2249999999973986,
+          "spatial_spread": 3.285394178931256e-11,
+          "max_error_previous_time_prediction": 1.8531842727043113e-11,
+          "max_error_next_time_prediction": 0.050000000014322143,
+          "all_residuals_met": true
+        }
+      ],
+      "matches_previous_time": true,
+      "matches_next_time": false,
+      "archive_sha256": "8ce1dd88a5a53a00894278ac24f24f7df54ee96efaad06c586532644e0791fd8"
+    },
+    {
+      "dt": 0.025,
+      "steps": [
+        {
+          "step": 1,
+          "reported_time": 0.0,
+          "mean_ux": 1.0,
+          "spatial_spread": 0.0,
+          "max_error_previous_time_prediction": 0.0,
+          "max_error_next_time_prediction": 0.0012499999999999734,
+          "all_residuals_met": true
+        },
+        {
+          "step": 2,
+          "reported_time": 0.025,
+          "mean_ux": 1.001249999999998,
+          "spatial_spread": 7.703171434059186e-12,
+          "max_error_previous_time_prediction": 3.9031000653722e-12,
+          "max_error_next_time_prediction": 0.002500000003800018,
+          "all_residuals_met": true
+        },
+        {
+          "step": 3,
+          "reported_time": 0.05,
+          "mean_ux": 1.0037499999999524,
+          "spatial_spread": 1.4211964938226629e-11,
+          "max_error_previous_time_prediction": 7.221112596766943e-12,
+          "max_error_next_time_prediction": 0.0037500000069909945,
+          "all_residuals_met": true
+        },
+        {
+          "step": 4,
+          "reported_time": 0.075,
+          "mean_ux": 1.0074999999998837,
+          "spatial_spread": 2.1158186314096383e-11,
+          "max_error_previous_time_prediction": 1.0774048320172369e-11,
+          "max_error_next_time_prediction": 0.005000000010384031,
+          "all_residuals_met": true
+        },
+        {
+          "step": 5,
+          "reported_time": 0.1,
+          "mean_ux": 1.0124999999997968,
+          "spatial_spread": 2.7519986289803455e-11,
+          "max_error_previous_time_prediction": 1.4044099216903305e-11,
+          "max_error_next_time_prediction": 0.006250000013475976,
+          "all_residuals_met": true
+        },
+        {
+          "step": 6,
+          "reported_time": 0.125,
+          "mean_ux": 1.0187499999996983,
+          "spatial_spread": 3.275313353867659e-11,
+          "max_error_previous_time_prediction": 1.6753043396988687e-11,
+          "max_error_next_time_prediction": 0.007500000016000152,
+          "all_residuals_met": true
+        },
+        {
+          "step": 7,
+          "reported_time": 0.15,
+          "mean_ux": 1.0262499999995964,
+          "spatial_spread": 3.6627145760803614e-11,
+          "max_error_previous_time_prediction": 1.8780976773768998e-11,
+          "max_error_next_time_prediction": 0.008750000017845982,
+          "all_residuals_met": true
+        },
+        {
+          "step": 8,
+          "reported_time": 0.175,
+          "mean_ux": 1.0349999999994972,
+          "spatial_spread": 3.911604373740829e-11,
+          "max_error_previous_time_prediction": 2.011302235871426e-11,
+          "max_error_next_time_prediction": 0.01000000001900303,
+          "all_residuals_met": true
+        },
+        {
+          "step": 9,
+          "reported_time": 0.2,
+          "mean_ux": 1.044999999999392,
+          "spatial_spread": 4.2156944601856594e-11,
+          "max_error_previous_time_prediction": 2.173305979624729e-11,
+          "max_error_next_time_prediction": 0.011250000020423867,
+          "all_residuals_met": true
+        },
+        {
+          "step": 10,
+          "reported_time": 0.225,
+          "mean_ux": 1.0562499999992967,
+          "spatial_spread": 4.3570036467599493e-11,
+          "max_error_previous_time_prediction": 2.2531088106347852e-11,
+          "max_error_next_time_prediction": 0.012500000021039126,
+          "all_residuals_met": true
+        },
+        {
+          "step": 11,
+          "reported_time": 0.25,
+          "mean_ux": 1.0687499999991976,
+          "spatial_spread": 4.53690418567021e-11,
+          "max_error_previous_time_prediction": 2.3530954962325268e-11,
+          "max_error_next_time_prediction": 0.013750000021838016,
+          "all_residuals_met": true
+        },
+        {
+          "step": 12,
+          "reported_time": 0.275,
+          "mean_ux": 1.0824999999990954,
+          "spatial_spread": 4.7440940065257564e-11,
+          "max_error_previous_time_prediction": 2.4676927168343354e-11,
+          "max_error_next_time_prediction": 0.015000000022763915,
+          "all_residuals_met": true
+        },
+        {
+          "step": 13,
+          "reported_time": 0.3,
+          "mean_ux": 1.0974999999990107,
+          "spatial_spread": 4.767297667740422e-11,
+          "max_error_previous_time_prediction": 2.488986794446646e-11,
+          "max_error_next_time_prediction": 0.016250000022782984,
+          "all_residuals_met": true
+        },
+        {
+          "step": 14,
+          "reported_time": 0.325,
+          "mean_ux": 1.113749999998926,
+          "spatial_spread": 4.816103071902944e-11,
+          "max_error_previous_time_prediction": 2.523803388498891e-11,
+          "max_error_next_time_prediction": 0.017500000022923068,
+          "all_residuals_met": true
+        },
+        {
+          "step": 15,
+          "reported_time": 0.35,
+          "mean_ux": 1.1312499999988395,
+          "spatial_spread": 4.881117732224993e-11,
+          "max_error_previous_time_prediction": 2.5673019266037045e-11,
+          "max_error_next_time_prediction": 0.01875000002313798,
+          "all_residuals_met": true
+        },
+        {
+          "step": 16,
+          "reported_time": 0.375,
+          "mean_ux": 1.1499999999987527,
+          "spatial_spread": 4.954103793863851e-11,
+          "max_error_previous_time_prediction": 2.6155078103329288e-11,
+          "max_error_next_time_prediction": 0.020000000023385978,
+          "all_residuals_met": true
+        },
+        {
+          "step": 17,
+          "reported_time": 0.4,
+          "mean_ux": 1.1699999999986648,
+          "spatial_spread": 5.027889216080439e-11,
+          "max_error_previous_time_prediction": 2.6646018724818532e-11,
+          "max_error_next_time_prediction": 0.021250000023633087,
+          "all_residuals_met": true
+        },
+        {
+          "step": 18,
+          "reported_time": 0.425,
+          "mean_ux": 1.1912499999986077,
+          "spatial_spread": 4.9050985495568966e-11,
+          "max_error_previous_time_prediction": 2.613487204428111e-11,
+          "max_error_next_time_prediction": 0.022500000022916078,
+          "all_residuals_met": true
+        },
+        {
+          "step": 19,
+          "reported_time": 0.45,
+          "mean_ux": 1.2137499999985513,
+          "spatial_spread": 4.798406116890419e-11,
+          "max_error_previous_time_prediction": 2.5707880269010275e-11,
+          "max_error_next_time_prediction": 0.02375000002227612,
+          "all_residuals_met": true
+        },
+        {
+          "step": 20,
+          "reported_time": 0.475,
+          "mean_ux": 1.2374999999984977,
+          "spatial_spread": 4.700995148709808e-11,
+          "max_error_previous_time_prediction": 2.5330848529847572e-11,
+          "max_error_next_time_prediction": 0.025000000021679236,
+          "all_residuals_met": true
+        }
+      ],
+      "matches_previous_time": true,
+      "matches_next_time": false,
+      "archive_sha256": "952cfc46d36d36482d98eeab9b7415a598b2ab88559af6eb39622d2b1a9524c8"
+    }
+  ]
+}
