@@ -15,3 +15,9 @@ This supports a configuration-level explanation for the baseline's initial
 residual deficit in this one step. It does not prove full-horizon accuracy,
 general optimality of CFL=100, or wall-clock speedup. The frozen baseline sweep
 continues unchanged and must retain its unconverged initial steps in its report.
+
+A direct configuration diff is saved in evidence/su2-n32-cfl-control-v1/config.diff.
+Besides CFL=10 to 100, the control changes MAX_TIME=.05 to .001 and TIME_ITER=50
+to 1, adds PARAVIEW_ASCII output, and changes output frequency from 50 to 1.
+All other configuration lines match. The comparison concerns the common first
+physical step, not runs with identical horizons or output workloads.
