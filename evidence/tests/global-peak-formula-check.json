@@ -1,0 +1,169 @@
+{
+  "seed": 1909,
+  "scope": "Finite-sample implementation consistency and counterexample search, including exact center; does not prove the global inequality.",
+  "passed": true,
+  "cases": [
+    {
+      "sigma": 0.05,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.05,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 0.05,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 0.1,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.1,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 0.1,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 0.25,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.25,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.25,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.5,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.5,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 0.5,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 1.0,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 1.0,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 1.0,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0
+    },
+    {
+      "sigma": 3.0,
+      "time": 0.0,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 3.0,
+      "time": 0.05,
+      "points": 20001,
+      "largest_gradient_ratio": 1.0,
+      "largest_vorticity_ratio": 1.0000000000000002,
+      "center_gradient_ratio": 1.0,
+      "center_vorticity_ratio": 1.0000000000000002
+    },
+    {
+      "sigma": 3.0,
+      "time": 2.0,
+      "points": 20001,
+      "largest_gradient_ratio": 0.9999999999999998,
+      "largest_vorticity_ratio": 0.9999999999999999,
+      "center_gradient_ratio": 0.9999999999999998,
+      "center_vorticity_ratio": 0.9999999999999999
+    }
+  ]
+}
