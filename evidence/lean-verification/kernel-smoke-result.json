@@ -1,0 +1,23 @@
+{
+  "scope": "Lean exporter to independent kernel integration smoke only; Nat.add_comm, not Navier-Stokes",
+  "exit_code": 0,
+  "declarations_checked": 52,
+  "typechecker_errors": 0,
+  "pretty_printer_errors": [
+    "Unable to print axioms"
+  ],
+  "export_sha256": "13dacc18f00a06253cef4467454787b7edf34aca8c0c991ed2bc26195825acd5",
+  "export_command": "lake env .lake/build/bin/lean4export Init -- Nat.add_comm",
+  "config": {
+    "export_file_path": "/verify/kernel-smoke/nat.ndjson",
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "unpermitted_axiom_hard_error": true,
+    "nat_extension": true,
+    "string_extension": true,
+    "print_success_message": true
+  }
+}
