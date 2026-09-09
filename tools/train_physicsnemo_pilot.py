@@ -1,4 +1,5 @@
 """Actual PINN training pilot; record failure/accuracy without acceptance claims."""
+import argparse
 import json
 import logging
 from pathlib import Path
@@ -11,8 +12,9 @@ from physicsnemo.sym.eq.phy_informer import PhysicsInformer
 from tools.reference import fields
 from tools.metrics import diagnostics
 
-p=json.loads(Path('protocols/physicsnemo-pinn-pilot-v1.json').read_text())
-root=Path('work/physicsnemo-pinn-pilot-v1');root.mkdir(exist_ok=False)
+parser=argparse.ArgumentParser();parser.add_argument('--protocol',default='protocols/physicsnemo-pinn-pilot-v1.json');parser.add_argument('--output',default='work/physicsnemo-pinn-pilot-v1');args=parser.parse_args()
+p=json.loads(Path(args.protocol).read_text())
+root=Path(args.output);root.mkdir(parents=True,exist_ok=False)
 (root/'parameters.json').write_text(json.dumps(p,indent=2)+'\n')
 torch.set_default_dtype(torch.float64);torch.set_num_threads(p['threads']);torch.manual_seed(p['seed'])
 rng=np.random.default_rng(p['seed'])
@@ -50,7 +52,7 @@ with (root/'training.jsonl').open('w') as log:
             row={'iteration':step+1,'loss':float(loss.detach()),'elapsed_seconds':time.monotonic()-start}
             log.write(json.dumps(row)+'\n');log.flush();print(row,flush=True)
 torch.save(net.state_dict(),root/'weights.pt')
-n=p['evaluation_n'];axis=(np.arange(n)+.5)*2*np.pi/n
+n=p['evaluation_n'];axis=(np.arange(n)+p.get('evaluation_phase',.5))*2*np.pi/n
 xyz=np.stack(np.meshgrid(axis,axis,axis,indexing='ij'),axis=-1).reshape(-1,3)
 chunks=[]
 with torch.no_grad():
@@ -63,5 +65,13 @@ result={'quality':'UNCERTAIN','velocity_relative_l2':float(np.linalg.norm(u-ref[
         'reference_vorticity_peak_samples':float(np.linalg.norm(ref['vorticity'],axis=-1).max()),
         'elapsed_seconds':time.monotonic()-start,'scope':p['scope']}
 np.savez_compressed(root/'evaluation.npz',coordinates=xyz,velocity=u)
+validation_rng=np.random.default_rng(p.get('validation_seed',1481))
+validation=[]
+for at in (0.0073,0.0231,0.0437):
+    xyz_v=validation_rng.uniform(0,2*np.pi,(256,3))
+    x=torch.tensor(xyz_v,requires_grad=True);t=torch.full((len(x),1),at,requires_grad=True)
+    rs=residual(x,t,fields(xyz_v,at)['force'])
+    validation.append({'time':at,'mean_squared_residuals':{k:float((v.detach()**2).mean()) for k,v in rs.items()},'max_absolute_residuals':{k:float(v.detach().abs().max()) for k,v in rs.items()}})
+result['independent_validation']=validation
 (root/'diagnostics.json').write_text(json.dumps(result,indent=2)+'\n')
 (root/'exit_code').write_text('0\n');print('COMPLETE',result['velocity_relative_l2'],flush=True)

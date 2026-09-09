@@ -288,3 +288,16 @@ The native model imports additional core dependencies beyond the earlier residua
 only audit. These were installed without modifying upstream source, and the CPU
 dependency freeze was refreshed. A three-resolution/multiple-time-node sampling
 study and independent validation residuals remain to be implemented and run.
+
+## PhysicsNeMo sampling matrix launched
+
+Study-v1 freezes five paired-seed runs: spatial lattice n=16/32/64 with five time
+nodes, plus n=64 with nine and seventeen time nodes. Each receives 5000 Adam
+updates with the same model, initial seed and batch budget. Evaluation uses a
+64^3 lattice shifted by phase 0.37, distinct from all training lattices, and native
+residual evaluation at independent random coordinates and three off-lattice times.
+Time-node spacing is a collocation choice, not a numerical integrator time step.
+This fixed-budget study cannot by itself establish optimizer convergence or
+seed-independent accuracy. Each completed case archives weights, predictions,
+training logs and independent validation results. The shared PDE extraction was
+rechecked and leaves the exact-reference residual results unchanged.

@@ -1,0 +1,9 @@
+{
+  "residual_values_unchanged": true,
+  "maximum_absolute_residuals": {
+    "continuity": 4.440892098500626e-16,
+    "momentum_x": 1.908195823574488e-15,
+    "momentum_y": 7.008282842946301e-16,
+    "momentum_z": 7.216449660063518e-16
+  }
+}
