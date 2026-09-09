@@ -42,3 +42,27 @@ claims, not yet reproduced results of this benchmark.
    actuator amplitude, bandwidth or spatial-resolution constraints.
 6. Follow source license terms before redistributing code. Source inspection used
    GitHub API; no second project repository was created or cloned.
+
+## Definition/bridge inspection
+
+Inspected ComparatorDefinitions.lean and ComparatorTheorem.lean at the same pin.
+The definitions require joint smoothness of f on space x [0,infinity). Whole-space
+forcing has derivative bounds decaying faster than every polynomial in space and
+time; periodic forcing has unit spatial periods and analogous temporal bounds.
+The whole-space solution class includes a uniform-in-time kinetic-energy bound.
+The periodic class explicitly requires both velocity and pressure to be periodic.
+
+The periodic bridge uses zero initial velocity and rescaled forcing
+f_nu(x,t)=nu^2 f(nu*t,x). It derives decay from smooth periodic forcing with compact
+future time support. This is a stronger restriction than merely finite values at
+selected sample times. None of these statements alone specifies actuator limits.
+
+ActualCandidateAssembly uses noncomputable definitions and calls a selected
+candidate construction. This is not a flaw in a mathematical existence proof;
+it means an executable floating-point case needs an additional extraction and
+truncation argument. Reading these modules does not verify their proof closure.
+
+Sources:
+- https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorDefinitions.lean
+- https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorTheorem.lean
+- https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ActualCandidateAssembly.lean

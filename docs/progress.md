@@ -74,3 +74,14 @@ physical time. Study-v1 parameters/thresholds are frozen in protocols before its
 execution; the generator now uses ordinary outerCorrectorResidualControl and
 writes only at final time to limit disk usage. Full reference independence,
 continuous extrema and uncertainty assessment remain required.
+
+## Study-v1 partial results
+
+16^3 and 32^3 completed with 50/50 outer-loop convergence messages each. Velocity
+relative L2 errors are 0.0654 and 0.0187. Gradient peak errors at cell sample sites
+are 0.224 and 0.0678. Applying FD2 to the analytic samples alone produces errors
+0.235 and 0.0762, respectively: the apparent peak discrepancy is substantially
+explained by derivative/sampling resolution, not evidence of a solver defect.
+64^3 and the temporal sweep are still running. Completed-case raw inputs, fields,
+logs and diagnostics are archived in evidence/of13-study-v1; summary is partial.
+Full quality and hypothesis verdicts remain UNCERTAIN.

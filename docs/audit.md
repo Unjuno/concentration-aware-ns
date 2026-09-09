@@ -42,3 +42,13 @@ pin and current license/dependency review remain TODO.
 | REF-02 | source units/sign errors mimic solver error | confounder | analytic residual and simple forcing test |
 
 No upstream submission yet: no solver reproducer or completed duplicate search.
+
+### SU2 adapter clarification
+
+Resolved v8.5.0 to `12eb826f049ef7f67df974dfcb44cf36ee07c0f8`.
+LICENSE.md and CUserDefinedSolution.cpp identify LGPL-2.1-or-later.
+CUserDefinedSolution's constructor and methods intentionally abort until the user
+implements them. Selecting USER_DEFINED_SOLUTION in a config alone does not
+provide our MMS; an adapter patch and build are necessary. This is documented
+extension scaffolding, not a newly discovered bug.
+Source: https://github.com/su2code/SU2/blob/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/Common/src/toolboxes/MMS/CUserDefinedSolution.cpp
