@@ -1,0 +1,7 @@
+{
+  "command_exit_code": 0,
+  "downloaded_files": 8747,
+  "status": "cache retrieval completed; not project proof verification",
+  "log": "evidence/lean-verification/cache-get-mathlib-root.log",
+  "log_sha256": "1964d23b0eb0a41bea37a30c972e0092b13786b2f365c4811566406f9c9cfc76"
+}

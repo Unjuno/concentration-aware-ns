@@ -50,7 +50,14 @@ docker run --rm --name cans-lean-cache \
 Upstream Cache/Requests.lean runs the downstream manifest comparison only outside
 the mathlib root; Cache/IO.lean identifies that root by its Mathlib directory.
 This invocation requires no changes to the cache implementation or Lean sources.
-It successfully starts retrieval of 8,747 files from the official mathlib cache.
-Retrieval completion, project type checking, and independent Comparator/kernel
-checking remain separate outstanding steps. An origin warning is expected for
+Retrieval and decompression of all 8,747 files completed with exit code zero;
+cache-result.json records the log hash. Project type checking and independent
+Comparator/kernel checking remain separate outstanding steps. An origin warning is expected for
 source archives; the tool reports its official mathlib4 fallback explicitly.
+
+The first project proof build targets `+NavierStokes.ComparatorSolution`, which
+imports both R3 and periodic theorem adapters and prints their axioms. It runs
+under the same Docker invocation above with `--cpus=2 --memory=10g`, container
+name `cans-lean-ns-build`, and final command
+`lake build +NavierStokes.ComparatorSolution`. Its log is retained separately
+as navier-stokes-build.log. A started build is not a successful check.
