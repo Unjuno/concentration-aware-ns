@@ -313,3 +313,15 @@ The autograd peak errors relative to analytic peaks at those samples are about
 not a bound on continuous extrema or a complete quality PASS. Raw case and
 checkpoint-linked derivative diagnostics are published. Remaining matrix cases
 continue in the original process; the SU2 sweep is also still active.
+
+## Spatial PINN matrix complete; temporal comparisons continue
+
+All three spatial lattices with five time nodes completed. Relative velocity
+errors are 0.0199231 (n16), 0.0200489 (n32), and 0.0195663 (n64). This small,
+nonmonotonic change at fixed training budget does not establish convergence.
+Held-out momentum residual maxima are approximately 0.433–0.460 in this
+nondimensional setup, so the velocity error alone does not establish a solved PDE.
+Direct checkpoint differentiation supplements FD2 for each completed spatial case.
+The comparison tool reads completed archives, not live training logs. Audit.md
+was reconciled with current pins, licenses, evidence and SU2's submitted Q&A;
+PhysicsNeMo's explicit time-derivative contract is not classified as a defect.

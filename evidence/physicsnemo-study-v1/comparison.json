@@ -1,0 +1,38 @@
+{
+  "quality": "UNCERTAIN",
+  "scope": "Completed fixed-budget paired-seed runs only; residuals nondimensional, no universal tolerance implied.",
+  "cases": [
+    {
+      "case": "n16-nt5",
+      "velocity_relative_l2": 0.019923100924691704,
+      "gradient_peak_error_autograd_samples": 0.00908978053355244,
+      "vorticity_peak_error_autograd_samples": 0.009078073854054321,
+      "max_validation_momentum_residual": 0.4329887176002952,
+      "max_validation_continuity_residual": 0.05401024411889879
+    },
+    {
+      "case": "n32-nt5",
+      "velocity_relative_l2": 0.020048912667509227,
+      "gradient_peak_error_autograd_samples": 0.009380020321092607,
+      "vorticity_peak_error_autograd_samples": 0.009366444935953396,
+      "max_validation_momentum_residual": 0.4349018260141,
+      "max_validation_continuity_residual": 0.04888805009712205
+    },
+    {
+      "case": "n64-nt5",
+      "velocity_relative_l2": 0.0195663411664332,
+      "gradient_peak_error_autograd_samples": 0.009375298532788175,
+      "vorticity_peak_error_autograd_samples": 0.009361890615458042,
+      "max_validation_momentum_residual": 0.45997784244069856,
+      "max_validation_continuity_residual": 0.04877143335395351
+    },
+    {
+      "case": "n64-nt9",
+      "velocity_relative_l2": 0.018594970138590933,
+      "gradient_peak_error_autograd_samples": null,
+      "vorticity_peak_error_autograd_samples": null,
+      "max_validation_momentum_residual": 0.4411308733672248,
+      "max_validation_continuity_residual": 0.0427111897881558
+    }
+  ]
+}
