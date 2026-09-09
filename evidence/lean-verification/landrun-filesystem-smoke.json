@@ -1,0 +1,38 @@
+{
+  "scope": "Read permission positive/negative control only; no AF_UNIX or sandbox escape assurance.",
+  "passed": false,
+  "command_base": [
+    "docker",
+    "run",
+    "--rm",
+    "--user",
+    "501:20",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/verify/checker-bin/landrun",
+    "-v",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/lean-verification:/verify:ro",
+    "concentration-aware-ns:su2",
+    "--rox",
+    "/usr",
+    "--rox",
+    "/lib",
+    "--ro",
+    "/verify/sandbox-smoke/allowed.txt"
+  ],
+  "results": [
+    {
+      "case": "allowed",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[landrun:error] 2026/09/09 06:16:14 Failed to apply sandbox: failed to apply Landlock restrictions: missing kernel Landlock support. Got Landlock ABI v8, wanted {Landlock V9; FS: all; Net: all; Scoped: all}\n"
+    },
+    {
+      "case": "denied",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "[landrun:error] 2026/09/09 06:16:14 Failed to apply sandbox: failed to apply Landlock restrictions: missing kernel Landlock support. Got Landlock ABI v8, wanted {Landlock V9; FS: all; Net: all; Scoped: all}\n"
+    }
+  ]
+}

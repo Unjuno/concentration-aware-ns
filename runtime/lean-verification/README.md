@@ -83,3 +83,14 @@ landrun issue it says is fixed in Linux 7.1. A Docker invocation alone does not
 establish this condition. Verify an equivalent restriction or the documented
 systemd path before claiming the full independent-check guarantees. Do not use
 the development fake-landrun wrapper to claim sandboxed validation.
+
+The nanoda release binary built successfully using `cargo build --release
+--locked -j 2` in the digest-pinned Rust image recorded in nanoda-build.json.
+This is tool compilation only, not a proof check.
+
+The first real landrun filesystem control failed before executing either test:
+this pinned landrun requests Landlock ABI v9, but the current kernel provides
+ABI v8. Both allowed and denied reads exited at sandbox setup, so this is **not**
+a passing denial test. Reproduce with `python3
+runtime/lean-verification/check_landrun.py`. Compatibility and AF_UNIX protection
+must be resolved before claiming a successful sandboxed Comparator run.
