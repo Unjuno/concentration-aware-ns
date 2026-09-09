@@ -81,3 +81,18 @@ hashes, commands, exit status, raw logs, physical end time, sampling geometry,
 metric definitions, reference checks, resolution matrix and uncertainty budget.
 The current JSON checker checks required evidence flags and reported errors;
 human/source review is required to establish those flags from real artifacts.
+
+## Optional independent formula checks
+
+Install requirements-verification.txt in an isolated environment and run
+`python3 -m tools.check_reference_symbolic`. This differentiates the potential
+symbolically rather than reusing the hand-derived derivatives.
+`python3 -m tools.check_openfoam_force` compiles the generated codeAddSup body
+against actual OpenFOAM vector types, with a mock mesh/equation and varying cell
+volumes. It checks formula/assembly equivalence; solver equation-sign conventions
+still require independent PDE/run checks. Run it after the n16 study case exists.
+
+The exact Hessian at the concentration center also supplies one-sided analytic
+lower bounds on continuous gradient and vorticity maxima; see tools/peak_bounds.py.
+These can establish underestimation by a reported sampled FD2 peak, but cannot
+establish a quality PASS or separate solution error from postprocessing error.

@@ -1,6 +1,6 @@
 {
   "expected_cases": 5,
-  "completed_cases": 2,
+  "completed_cases": 3,
   "quality": "UNCERTAIN",
   "cases": [
     {
@@ -10,7 +10,7 @@
       "reference_only_fd_gradient_error": 0.23536483834146948,
       "time_steps": 50,
       "outer_converged_steps": 50,
-      "archive_sha256": "ced64580af0e4e7bfdb1a22732aaf9fdb2b56ee4fd3c449fa1c619394cdf0ef9"
+      "archive_sha256": "6a22d096dd17f0ffe65f0800cf60804d4f6eab6533b02daa97330fb069218da7"
     },
     {
       "case": "n32-dt0.001",
@@ -19,7 +19,16 @@
       "reference_only_fd_gradient_error": 0.07618176902172931,
       "time_steps": 50,
       "outer_converged_steps": 50,
-      "archive_sha256": "8d70f22731d488287fd4c82cb9d1dd99ac81acd6b6a0cd63e9c2262558b5f0eb"
+      "archive_sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953"
+    },
+    {
+      "case": "n64-dt0.001",
+      "velocity_relative_l2": 0.0049137444711323825,
+      "gradient_peak_relative_error_cell_samples": 0.01723435225700151,
+      "reference_only_fd_gradient_error": 0.020401992723900753,
+      "time_steps": 50,
+      "outer_converged_steps": 50,
+      "archive_sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb"
     }
   ]
 }

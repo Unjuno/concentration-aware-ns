@@ -1,0 +1,18 @@
+{
+  "method": "symbolic curl, Jacobian, Laplacian and time derivative from vector potential",
+  "sympy": "1.14.0",
+  "numpy": "2.5.2",
+  "seed": 571,
+  "points": 64,
+  "sigma": 0.5,
+  "nu": 0.01,
+  "max_absolute_errors": {
+    "u": 3.552713678800501e-15,
+    "grad_u": 7.993605777301127e-15,
+    "force": 5.684341886080802e-14,
+    "vorticity": 1.4210854715202004e-14
+  },
+  "tolerance": 1e-10,
+  "passed": true,
+  "limitations": "Fixed sigma and nu; not validation of C++ runtime source or arbitrary parameter values."
+}

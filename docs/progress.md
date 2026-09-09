@@ -85,3 +85,15 @@ explained by derivative/sampling resolution, not evidence of a solver defect.
 64^3 and the temporal sweep are still running. Completed-case raw inputs, fields,
 logs and diagnostics are archived in evidence/of13-study-v1; summary is partial.
 Full quality and hypothesis verdicts remain UNCERTAIN.
+
+## Three spatial grids and independent formula checks
+
+64^3 at dt=0.001 completed, giving velocity relative L2 error 0.00491374.
+The temporal runs at dt=0.0005 and 0.00025 remain in progress.
+Symbolic differentiation at 64 seeded points matches the NumPy reference with
+maximum absolute errors below 6e-14. The generated C++ forcing, compiled against
+OpenFOAM vector types and evaluated at 48 seeded points with non-unit volumes,
+matches within 8e-15. This mock assembly test does not prove the solver's force
+sign convention. Raw JSON results and runnable check scripts are preserved.
+Added one-sided analytic center bounds for continuous peaks, avoiding a claim
+that cell-sampled analytic maxima are the true continuous maxima.
