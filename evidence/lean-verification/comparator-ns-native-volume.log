@@ -1,0 +1,16 @@
+Building ComparatorChallenges.NavierStokes
+✖ [193/536] Running Mathlib.Tactic.Linter.DirectoryDependency
+error: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linter/DirectoryDependency.trace: read failed: permission denied (error code: 13)
+  file: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linter/DirectoryDependency.trace
+✖ [7089/7382] Running Mathlib.Data.List.SplitOn
+error: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/List/SplitOn.trace: read failed: permission denied (error code: 13)
+  file: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/List/SplitOn.trace
+✖ [7786/8095] Running Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
+error: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Typeclasses/NoAtoms.trace: read failed: permission denied (error code: 13)
+  file: /verify/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Measure/Typeclasses/NoAtoms.trace
+Some required targets logged failures:
+- Mathlib.Tactic.Linter.DirectoryDependency
+- Mathlib.Data.List.SplitOn
+- Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
+error: build failed
+uncaught exception: Child exited with 1

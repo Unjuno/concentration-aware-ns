@@ -182,3 +182,11 @@ run_comparator_volume.sh mounts this volume read-only, with only its
 independent-source/.lake subdirectory remounted writable using Docker's volume
 subpath support (server 29.4.0). Copy completion and execution success remain
 separate checks; verify them before reporting results from this attempt.
+
+The volume copy completed (exit zero); challenge files and landrun/nanoda binary
+hashes match their recorded originals. The first volume attempt stopped on three
+unreadable mathlib trace files. Inspection of NoAtoms.trace showed mode 600,
+owner 0:0 in the native volume versus 501:20 as seen on the macOS source. This is
+an ownership translation issue, not a theorem failure. All copied volume files
+were assigned to UID501:GID20 via `chown -R 501:20 /verify`; mounts remain read-only
+except the fresh .lake subtree. The retry uses comparator-ns-native-owned.log.

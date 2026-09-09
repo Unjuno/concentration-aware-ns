@@ -1,0 +1,9 @@
+{
+  "copy_exit_code": 0,
+  "challenge_hashes_match": true,
+  "binary_hashes": {
+    "landrun": "241e888d1a71eca20b83698fc8dbe4e89f589d64accc71763473af8fb616ea02",
+    "nanoda": "5b89175328f792cd9116253e1bc496e742dcc338d124b2ad785273a89a069d90"
+  },
+  "scope": "Named-volume copy identity checks for challenge files and two checker binaries; not complete toolchain integrity or proof validity."
+}
