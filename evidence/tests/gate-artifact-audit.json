@@ -1,0 +1,295 @@
+{
+  "scope": "Artifact byte identity only; does not validate scientific review flags or conclusions.",
+  "links_checked": 48,
+  "all_match": true,
+  "links": [
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/openfoam-force.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "docs/analytic-self-audit.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/openfoam-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/of13-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/of13-study-v1/n32-dt0.001.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/of13-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/openfoam-n32-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/openfoam-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/physicsnemo/residual-check.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/physicsnemo-study-v1/n16-nt5-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/physicsnemo-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/physicsnemo-study-v1/n16-nt5.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n16-nt5-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/physicsnemo/residual-check.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/physicsnemo-study-v1/n32-nt5-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/physicsnemo-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/physicsnemo-study-v1/n32-nt5.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n32-nt5-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/physicsnemo/residual-check.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/physicsnemo-study-v1/n64-nt17-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/physicsnemo-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/physicsnemo-study-v1/n64-nt17.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt17-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/physicsnemo/residual-check.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/physicsnemo-study-v1/n64-nt5-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/physicsnemo-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/physicsnemo-study-v1/n64-nt5.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt5-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/physicsnemo/residual-check.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/physicsnemo-study-v1/n64-nt9-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/physicsnemo-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/physicsnemo-study-v1/n64-nt9.tar.gz",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/physicsnemo-n64-nt9-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    }
+  ]
+}
