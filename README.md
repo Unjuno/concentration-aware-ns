@@ -3,8 +3,9 @@
 An evidence-first audit of whether conventional convergence or validation
 criteria can pass while local quantities of interest remain inaccurate.
 
-**Status: specification and audit infrastructure. No solver failure has been
-reproduced. No mathematical singularity or real-world hazard is claimed.**
+**Status: active benchmark execution. OpenFOAM and PhysicsNeMo comparison
+matrices are archived; the SU2 matrix is running. No general solver defect,
+mathematical singularity or real-world hazard is claimed.**
 
 Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
@@ -14,6 +15,10 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Verification protocol](docs/protocol.md)
 - [Source audit and candidate findings](docs/audit.md)
 - [Progress](docs/progress.md)
+- [Requirement-by-requirement completion audit](docs/completion-audit.md)
+- [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
+- [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
+- [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 
 ## Acceptance report checker
 
@@ -27,8 +32,9 @@ python3 tools/acceptance_gate.py examples/unverified.json
 ```
 
 The example intentionally returns `UNCERTAIN` (exit 2). The checker consumes
-evidence reports; it does not run a solver or verify the authenticity of evidence.
-It is an initial quality gate, not a certification or complete benchmark runner.
+evidence reports with hashed artifact references and error intervals; it does not
+run a solver or determine whether an evidence review is true. See
+[gate v2](docs/acceptance-gate-v2.md). It is triage, not certification.
 
 `tools/reference.py` implements the analytic velocity, velocity gradient,
 vorticity and forcing. Its tests check periodicity, divergence and second-order

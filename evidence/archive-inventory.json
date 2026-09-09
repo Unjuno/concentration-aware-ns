@@ -1,0 +1,231 @@
+{
+  "scope": "Archive readability and identity inventory only; absent exit codes remain absent. No scientific acceptance or proof verification.",
+  "archive_count": 25,
+  "archives": [
+    {
+      "archive": "evidence/of13-amr-v1/cap100000.tar.gz",
+      "sha256": "3b018829437498da8eeac80eb42448fc41689826a100946823835c4419f568c8",
+      "bytes": 8875802,
+      "members": 54,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-amr-v1/cap4096.tar.gz",
+      "sha256": "31ad29d51d947383b2be029a467e24f4f59926392d95a49e3f83669b6c02872f",
+      "bytes": 1281311,
+      "members": 43,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-amr-v1/cap5000.tar.gz",
+      "sha256": "d84d28c9fde9d60db505c7041233f044697d4075722ccf60fc4746b14eb6d97e",
+      "bytes": 2428619,
+      "members": 54,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-remap-control-v1/cap100000.tar.gz",
+      "sha256": "1fcb813da07abc85033b7562d255f8f3b7a0186b217dfc50bbff68882cc15008",
+      "bytes": 4216560,
+      "members": 42,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-remap-control-v1/cap5000.tar.gz",
+      "sha256": "6772eaf0a1bba541331c47d95c48a4b24586b2136701a585b5a6349fc82e75fc",
+      "bytes": 1077134,
+      "members": 42,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n16-dt0.001.tar.gz",
+      "sha256": "6a22d096dd17f0ffe65f0800cf60804d4f6eab6533b02daa97330fb069218da7",
+      "bytes": 294375,
+      "members": 20,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n32-dt0.001.tar.gz",
+      "sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953",
+      "bytes": 2231182,
+      "members": 20,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.00025.tar.gz",
+      "sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f",
+      "bytes": 18132269,
+      "members": 20,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.0005.tar.gz",
+      "sha256": "c1e11fe62fd205c8bdc03993cfa624689cf29f6ba0db0e2a043b96854642fa4d",
+      "bytes": 18076708,
+      "members": 20,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.001.tar.gz",
+      "sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb",
+      "bytes": 18037204,
+      "members": 20,
+      "has_diagnostics": true,
+      "recorded_exit_code": 0,
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-pinn-pilot-v1/case.tar.gz",
+      "sha256": "10d9634c83901e6206dbca584936ec21bb6532a27e21dbd46c8448b19e5ffd96",
+      "bytes": 791787,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-study-v1/n16-nt5.tar.gz",
+      "sha256": "b38143256e9f6d1acb8d4ab61aee235f41c963f9ac32b93610676f71b3e268cd",
+      "bytes": 6138563,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-study-v1/n32-nt5.tar.gz",
+      "sha256": "4bee9bb4d22d1586b77b5de632bb30ac02b01cae94b57a307ffaa9f3e45b7b2b",
+      "bytes": 6138964,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-study-v1/n64-nt17.tar.gz",
+      "sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+      "bytes": 6138992,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-study-v1/n64-nt5.tar.gz",
+      "sha256": "a9744971f5c08a264f64ade1fef4f308810f2de42a13bdafad2926953f05fecd",
+      "bytes": 6139121,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/physicsnemo-study-v1/n64-nt9.tar.gz",
+      "sha256": "786655b548611eb948d4c84fee15493238e9a97cdebd2f31584acdcf2d895f45",
+      "bytes": 6139297,
+      "members": 8,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/su2/su2-pilot-v1.tar.gz",
+      "sha256": "fff4196dc58d5fef03641ab30998929e68c48219e78093a5d63601500d936e56",
+      "bytes": 299852,
+      "members": 17,
+      "has_diagnostics": false,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2/su2-pilot-v2.tar.gz",
+      "sha256": "6d6b5af4b017e1d98d2c142ca1c800d15acc19d6c2f8a3067e98815c1248add8",
+      "bytes": 315267,
+      "members": 17,
+      "has_diagnostics": false,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-cfl-control-v1/case.tar.gz",
+      "sha256": "c5d80a1868fbffc8f9db517b2de28c611cb87b9d6eb2741f807266ab50e76e35",
+      "bytes": 2366512,
+      "members": 21,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": "UNCERTAIN"
+    },
+    {
+      "archive": "evidence/su2-time-control-v1/dt0.025.tar.gz",
+      "sha256": "952cfc46d36d36482d98eeab9b7415a598b2ab88559af6eb39622d2b1a9524c8",
+      "bytes": 137337,
+      "members": 48,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-time-control-v1/dt0.05.tar.gz",
+      "sha256": "8ce1dd88a5a53a00894278ac24f24f7df54ee96efaad06c586532644e0791fd8",
+      "bytes": 72130,
+      "members": 28,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-time-control-v1/dt0.1.tar.gz",
+      "sha256": "43d1bf1d3b777f287d37109514eab9350d695a988c445c053ab755a99c3b6adb",
+      "bytes": 39959,
+      "members": 18,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-time-control-v1-corrected/dt0.025.tar.gz",
+      "sha256": "5f9c7738902aadc98e9930c3801418f46db5227ff1596c8cecf92870ea9d4398",
+      "bytes": 137436,
+      "members": 48,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-time-control-v1-corrected/dt0.05.tar.gz",
+      "sha256": "d9094d65e71447274f053ed7286f3bd8a6359fa3e9d873d13e577aa85257aec9",
+      "bytes": 72173,
+      "members": 28,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    },
+    {
+      "archive": "evidence/su2-time-control-v1-corrected/dt0.1.tar.gz",
+      "sha256": "fb7af8e6115cafed136c61b5b6e0fceff542dc045ae4f2f0505eab055109caa5",
+      "bytes": 39836,
+      "members": 18,
+      "has_diagnostics": true,
+      "recorded_exit_code": "0",
+      "reported_quality": null
+    }
+  ]
+}

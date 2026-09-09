@@ -25,6 +25,6 @@ test_missing_periodic_grid_point_rejected (test_su2_reader.SU2ReaderTests.test_m
 test_reordered_vertex_grid_and_time (test_su2_reader.SU2ReaderTests.test_reordered_vertex_grid_and_time) ... ok
 
 ----------------------------------------------------------------------
-Ran 25 tests in 0.069s
+Ran 25 tests in 0.072s
 
 OK
