@@ -216,3 +216,19 @@ contract and avoid extending this result to unrelated production simulations.
 The full derivation and limitations are in docs/analytic-self-audit.md. The user
 requested analytic priority and skepticism toward simulation-derived conclusions;
 GOAL.md revision 4 records that constraint without reducing project scope.
+
+## PhysicsNeMo native residual evaluation executed
+
+Pinned v2.2.1 source was checksum-verified and imported unmodified in an isolated
+CPU audit environment. The exact transient 3D localized reference was evaluated
+by PhysicsInformer at 96 seeded points. Continuity residual max=4.44e-16 and
+momentum residual max=1.91e-15 (float64). Time derivatives were supplied explicitly:
+the source auto-differentiates x/y/z and warns that t derivatives are caller
+inputs. This is a documented interface constraint, not a discovered defect.
+
+An independent PyTorch differentiation of the scalar potential also matches the
+NumPy reference velocity, gradient and forcing below 1e-15. Raw diagnostics,
+installation logs and a frozen minimal CPU dependency list are retained. This
+proves a working residual-evaluation path only; neural training, spatial/time
+sampling studies, local acceptance and the PhysicsNeMo audit conclusion remain
+incomplete. The full package's optional features were not installed or tested.

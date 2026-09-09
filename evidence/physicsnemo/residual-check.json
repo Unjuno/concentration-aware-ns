@@ -1,0 +1,26 @@
+{
+  "samples": 96,
+  "seed": 481,
+  "time": 0.037,
+  "dtype": "float64",
+  "maximum_absolute_residuals": {
+    "continuity": 4.440892098500626e-16,
+    "momentum_x": 1.908195823574488e-15,
+    "momentum_y": 7.008282842946301e-16,
+    "momentum_z": 7.216449660063518e-16
+  },
+  "required_inputs": [
+    "u__t",
+    "v",
+    "v__t",
+    "u",
+    "p",
+    "fz",
+    "w",
+    "fx",
+    "w__t",
+    "fy",
+    "coordinates"
+  ],
+  "scope": "Exact manufactured field; time derivatives supplied explicitly, spatial derivatives by PhysicsInformer. No neural training or approximation-quality verdict."
+}
