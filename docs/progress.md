@@ -375,3 +375,13 @@ not an upstream solver defect.
 The selected Fourier-coefficient check is now a standalone reproducible command:
 `python3 -m tools.check_reference_fourier`. Its output exactly matches the
 previous recorded check in the verification environment.
+
+## Real-evidence OpenFOAM gate report
+
+The completed OpenFOAM study now has a readable report and a reproducible v2 gate
+input tied to the actual artifacts. The n32 diagnostic disparity is retained,
+but space/time and full standard-acceptance flags remain false because the
+asymptotic temporal regime and complete uncertainty review are unresolved. The
+result is UNCERTAIN in all gate fields; no flags were promoted merely to obtain
+REPRODUCED. Aggregate measurements are read from recorded summaries, not inferred
+from prior commentary. The report also records why no upstream bug is filed.

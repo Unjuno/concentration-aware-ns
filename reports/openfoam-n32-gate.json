@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "standard_acceptance": "UNCERTAIN",
+  "evidence": {
+    "reference_verified": true,
+    "forcing_verified": true,
+    "derivatives_verified": true,
+    "space_time_study_verified": false,
+    "thresholds_preregistered": true,
+    "raw_artifacts_reviewed": true,
+    "evaluation_time_verified": true,
+    "standard_acceptance_verified": false
+  },
+  "artifacts": {
+    "reference_verified": {
+      "path": "evidence/tests/reference-symbolic.json",
+      "sha256": "a1cac81ec2660302b91cb062f81bbe8414fb24aee8a9fede8495e859a70d9c42"
+    },
+    "forcing_verified": {
+      "path": "evidence/tests/openfoam-force.json",
+      "sha256": "2d13bb2c7645f5adf67a3f354f8ef2c8faa7d97d250afac0d7c970ae210110dd"
+    },
+    "derivatives_verified": {
+      "path": "docs/analytic-self-audit.md",
+      "sha256": "49204a2c579019ad9765370adb672b5a42cdcdb9c40f5e93241fd680ca7a335b"
+    },
+    "space_time_study_verified": {
+      "path": "evidence/tests/openfoam-time-comparison.json",
+      "sha256": "9d3bfd20b9308e4958f99dbe86b025220a2afb53f07f2c4a424f78fd96eb57bf"
+    },
+    "thresholds_preregistered": {
+      "path": "protocols/of13-study-v1.json",
+      "sha256": "ee5b2391884ddb1f53b84ea47577f0b48aed36578bb19dac4bc27ea990c9f921"
+    },
+    "raw_artifacts_reviewed": {
+      "path": "evidence/of13-study-v1/n32-dt0.001.tar.gz",
+      "sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953"
+    },
+    "evaluation_time_verified": {
+      "path": "evidence/of13-study-v1/summary.json",
+      "sha256": "192975162f47a628e5b4b9acdac8df24d3930aa06b1eabb60bfea86b01710dd0"
+    },
+    "standard_acceptance_verified": {
+      "path": "reports/openfoam-study-v1.md",
+      "sha256": "e2528a09361bb38d4f1f72dd04ddf49a13f53ee2dacb3d4a796d9f1213498668"
+    }
+  },
+  "metrics": [
+    {
+      "name": "max_gradient",
+      "error_lower": 0.13120069189910388,
+      "error_upper": null,
+      "tolerance": 0.05
+    },
+    {
+      "name": "max_vorticity",
+      "error_lower": 0.13167026096224888,
+      "error_upper": null,
+      "tolerance": 0.05
+    }
+  ],
+  "scope": "Reported sampled FD2 peak versus continuum maximum. Floating-point evaluation of analytic lower bounds, not interval certification.",
+  "unresolved": [
+    "Asymptotic temporal convergence not established",
+    "Full standard acceptance review incomplete",
+    "Continuous peak upper bounds and full uncertainty budget unavailable"
+  ],
+  "observed_aggregate_thresholds": {
+    "velocity_relative_l2": 0.018700085909315284,
+    "energy_relative_error": 0.0020104425638151867,
+    "velocity_tolerance": 0.02,
+    "energy_tolerance": 0.02
+  }
+}
