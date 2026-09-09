@@ -19,6 +19,10 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
+- [Exact global reference peaks](docs/reference-global-peaks.md)
+- [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
+- [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
+- [Upstream reporting decisions](reports/upstream-disposition.md)
 
 ## Acceptance report checker
 
@@ -40,6 +44,21 @@ run a solver or determine whether an evidence review is true. See
 vorticity and forcing. Its tests check periodicity, divergence and second-order
 convergence of a separate finite-difference reconstruction of the PDE forcing.
 These checks validate formula consistency; they do not constitute solver runs.
+
+## Replay published report generation
+
+After installing requirements.txt, run from the repository root:
+
+```sh
+python3 -m tools.replay_published_reports
+```
+
+This runs the tests, reconstructs the global-peak and derivative comparisons from
+archived fields, rebuilds the OpenFOAM and PhysicsNeMo gates, and checks every
+gate artifact hash. Logs and step exit codes are saved in evidence/report-replay.
+It does not rerun solvers, train networks or validate the OpenAI proof. The latest
+local replay completed all seven steps with 28 tests passing and no changes to
+the previously generated report files. Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication
 

@@ -1,0 +1,86 @@
+{
+  "scope": "Report generation replay only. No new solver/training/proof run and no scientific verdict upgrade.",
+  "success": true,
+  "steps": [
+    {
+      "step": "tests",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/tests.log",
+      "log_sha256": "972c744138acd76c3167ab9b4dde01c7638b57da710dc384f4fcf1a78e9e2544"
+    },
+    {
+      "step": "global_peaks",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/global_peaks.log",
+      "log_sha256": "ed6cf52254f13e83c342757827852a4d4eec8b2dea75cd369c540de8fd02c709"
+    },
+    {
+      "step": "peak_decomposition",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/peak_decomposition.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "spectral_derivatives",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/spectral_derivatives.log",
+      "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
+    },
+    {
+      "step": "openfoam_gate",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.build_openfoam_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_gate.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "physicsnemo_gates",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.build_physicsnemo_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/physicsnemo_gates.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "artifact_links",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.audit_gate_artifacts"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/artifact_links.log",
+      "log_sha256": "9546d941366f7fff329f5ce2aca587c2d5975b0bb1ebd2de992d433c1a9e82aa"
+    }
+  ]
+}
