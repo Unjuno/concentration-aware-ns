@@ -49,3 +49,13 @@ solver defect or certify the continuous peak of the numerical solution.
 The baseline protocol is unchanged. Higher-cap or altered-CFL controls must be
 reported separately. The full matrix and acceptance review remain incomplete.
 Evidence: evidence/su2-study-v1/n32-dt0.001.tar.gz and summary.json.
+
+## Raw-data diagnostic replay
+
+Run `python3 -m tools.replay_su2_diagnostics` to extract the necessary regular
+files into a temporary directory and recompute all diagnostics for completed
+cases. The n16 and n32 outputs exactly match their archived JSON values in the
+recorded environment, including velocity, derivatives, spectrum and history
+checks. `evidence/su2-study-v1/diagnostic-replay.json` records archive and source
+hashes. This verifies reproducible postprocessing with the same implementation;
+it is not independent validation of that implementation or a new solver run.
