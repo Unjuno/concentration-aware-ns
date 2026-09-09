@@ -1,0 +1,38 @@
+{
+  "scope": "Closed-form continuum integral; ordinary floating point, not interval-certified Bessel evaluation.",
+  "checks": [
+    {
+      "sigma": 0.25,
+      "time": 0.05,
+      "bessel_value": 0.03540547157250883,
+      "quadrature_value": 0.035405471572508854,
+      "absolute_difference": 2.0816681711721685e-17,
+      "quadrature_estimated_errors": [
+        1.0509783076801117e-14,
+        5.8155035855176585e-15
+      ]
+    },
+    {
+      "sigma": 0.5,
+      "time": 0.05,
+      "bessel_value": 0.06991747645268451,
+      "quadrature_value": 0.06991747645268448,
+      "absolute_difference": 2.7755575615628914e-17,
+      "quadrature_estimated_errors": [
+        1.057735868034997e-14,
+        8.075106433984178e-15
+      ]
+    },
+    {
+      "sigma": 1.0,
+      "time": 0.05,
+      "bessel_value": 0.12977302780305763,
+      "quadrature_value": 0.12977302780305763,
+      "absolute_difference": 0.0,
+      "quadrature_estimated_errors": [
+        2.151789577134052e-14,
+        1.1432158499522841e-14
+      ]
+    }
+  ]
+}

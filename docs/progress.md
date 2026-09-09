@@ -338,3 +338,15 @@ continuous peak certification, optimizer and seed uncertainty remain open.
 SU2 still runs its unchanged study. A separate preregistered n16, five-step
 CFL=100 control is testing iteration cost under the same -10 residual criterion;
 no study parameters were silently changed.
+
+## Continuum energy reference derived and checked
+
+Derived the exact mean kinetic energy using separated periodic integrals and
+scaled modified Bessel functions. Independent one-dimensional quadrature at
+sigma=0.25/0.5/1 agrees within 2.8e-17. This eliminates reference-grid quadrature
+from the energy comparison, but does not certify floating-point Bessel errors.
+The archived numerical sample means still combine solution and quadrature error.
+At OpenFOAM n32, energy error versus the continuum formula is 0.00201044, compared
+with the previously established >=13.12% gradient-peak underestimation bound.
+This supports separating aggregate and local diagnostics without attributing the
+latter entirely to the solver. PINN energy errors are approximately 1.01–1.06%.

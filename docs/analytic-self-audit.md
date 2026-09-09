@@ -73,3 +73,19 @@ closure, construction, scaling and finite truncations require their own audit.
 No result here establishes or refutes that theorem. A continuum singularity also
 does not imply molecular alignment without an additional microscopic model and
 a defined alignment observable.
+
+## Continuum energy independent of grid sampling
+
+For the localized calibration let β=1/σ², z=exp(-2β)I₀(2β) and
+v=exp(-2β)[I₀(2β)-I₂(2β)]/2, where I_j is the modified Bessel function.
+Separation of the three periodic integrals and oddness of the mixed sine terms
+give mean |u|²=28 β² exp(-2t) v z². The Bessel recurrence
+I₀(2β)-I₂(2β)=I₁(2β)/β therefore gives
+
+    mean kinetic energy = 7 β exp(-2t) [exp(-2β)I₁(2β)] [exp(-2β)I₀(2β)]².
+
+This is the spatial mean of |u|²/2 over the 2π-period cube, not the total integral.
+The factor 28 comes from |a|²=14 and the cross-product identity, after isotropic
+integration. tools/reference_energy.py evaluates the scaled Bessel factors to
+avoid overflow. Independent scalar quadrature checks the separated integrals;
+ordinary floating-point agreement is not an interval-certified error bound.

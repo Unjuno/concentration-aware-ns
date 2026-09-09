@@ -1,0 +1,75 @@
+{
+  "scope": "Sample mean versus exact continuum formula; numerical-field quadrature and solution errors are combined, not separately certified.",
+  "cases": [
+    {
+      "group": "of13-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.07044433769344033,
+      "relative_error": 0.007535472781434927
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.07005804152329953,
+      "relative_error": 0.0020104425638151867
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.0699488968800389,
+      "relative_error": 0.00044939304088950443
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.0699499488040056,
+      "relative_error": 0.0004644382630580792
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.001.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.06995196133450568,
+      "relative_error": 0.0004932226328922212
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n16-nt5.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.07062286058775488,
+      "relative_error": 0.010088809992273275
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n32-nt5.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.0706568470831001,
+      "relative_error": 0.010574904414863352
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt17.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.0706236937725769,
+      "relative_error": 0.010100726681265737
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt5.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.07065905859004493,
+      "relative_error": 0.01060653466036167
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt9.tar.gz",
+      "reference_continuum_mean_energy": 0.06991747645268451,
+      "computed_sample_mean_energy": 0.07063745205496974,
+      "relative_error": 0.010297505556746814
+    }
+  ]
+}
