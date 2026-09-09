@@ -1,0 +1,13 @@
+{
+  "sympy_version": "1.14.0",
+  "residuals": {
+    "continuity": "0",
+    "radial": "0",
+    "axial": "0",
+    "azimuthal": "0",
+    "vorticity": "0"
+  },
+  "axis_limit_u_theta_over_r": "Gamma/(2*pi*q(t))",
+  "assumptions": "nu>0, Gamma>0, q(t)>0, smooth a and q, qdot=4nu-aq; cylindrical expressions evaluated for r>0 with smooth axis extension",
+  "scope": "Algebraic consistency of specified continuum ansatz only; no proof of finite energy, self-generated strain, molecular alignment, or observability."
+}
