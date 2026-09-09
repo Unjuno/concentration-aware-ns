@@ -40,7 +40,7 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
 | SU-01 | conventional convergence with inaccurate local QoI | localized sweep running | complete grid/time matrix |
 | SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
-| ML-01 | aggregate and peak accuracy disagreement | native PINN sampling matrix running | complete matrix and uncertainty review |
+| ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |
 | ML-02 | automatic time derivative assumption | x/y/z-only autodiff, explicit t input; documented API behavior | no defect report warranted |
 | REF-01 | derivative/sampling artifacts mimic solver error | reproduced FD2 versus analytic/autograd differences | continuous-extremum uncertainty |
 | REF-02 | forcing formula error | symbolic/C++/autograd checks passed in stated scopes | preserve per-solver time/assembly distinctions |
@@ -77,7 +77,7 @@ The one-project-repository constraint is preserved; no additional fork is create
 A search for PhysicsInformer time-derivative issues found no match, but the source
 explicitly warns that nonspatial derivatives are caller-supplied. We implemented
 that contract and verified residuals. This does not warrant a defect report.
-Training inaccuracies alone likewise do not show a framework bug. An example
-improvement proposal can be assessed after the sampling matrix finishes.
+Training inaccuracies alone likewise do not show a framework bug. The completed matrix and reporting decision are recorded in
+reports/upstream-disposition.md; no demonstrated framework defect was found.
 
 Source: https://github.com/NVIDIA/physicsnemo/blob/1b961314e42a0625502ba1592d25f706f1e02a24/CONTRIBUTING.md
