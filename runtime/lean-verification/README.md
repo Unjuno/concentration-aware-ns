@@ -167,3 +167,18 @@ inside Comparator's already-authorized executable toolchain prefix. Original
 Lean/Lake binaries, theorem sources and Comparator sources are unchanged. The
 runner records this PATH and the limited-workers log keeps this attempt separate.
 The previous attempt was explicitly stopped after observed errors (exit 137).
+
+The limited-workers bind-mount attempt and the ordinary build both subsequently
+reported open-file errors. Both were explicitly stopped, preserving logs; exit
+137 followed docker stop. Observed macOS counts were kern.num_files=142452,
+kern.maxfiles=491520, kern.maxfilesperproc=245760; Linux file-nr was 136810.
+Ten inspected Lean processes in the Comparator container each had ten live file
+descriptors at inspection. These observations do not establish the root cause.
+A switch to Docker-native storage is the next controlled environment change.
+
+The named volume cans-lean-verification receives copies of toolchain, packages,
+independent-source, checker-bin and nanoda_bin. No new Git repository is created.
+run_comparator_volume.sh mounts this volume read-only, with only its
+independent-source/.lake subdirectory remounted writable using Docker's volume
+subpath support (server 29.4.0). Copy completion and execution success remain
+separate checks; verify them before reporting results from this attempt.
