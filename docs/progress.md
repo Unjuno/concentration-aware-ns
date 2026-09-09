@@ -31,3 +31,19 @@ Neither a repository commit nor checker tests complete the benchmark goal.
   test, not the required three-grid CFD experiment.
 - Broader independent reference verification, production parameter freezing,
   solver integration, run logs and upstream findings remain outstanding.
+
+## OpenFOAM runtime and pilot setup
+
+- Built the ARM64 runtime from Ubuntu 24.04 and the official Foundation
+  `openfoam13_20260624_arm64.deb`, verifying the package SHA256.
+- Built image ID:
+  `sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b`.
+- Build log and observed official package index are in `evidence/environment/`.
+- Added `tools/openfoam_case.py`: periodic 3D mesh, analytic initial velocity,
+  laminar incompressible configuration and coded analytic forcing.
+- Launched an 8^3-cell integration pilot at dt=0.001 through t=0.005 under a
+  non-root container user. Completion is **not verified**. The initial blockMesh
+  log remains empty and a separate Docker status request is also pending.
+  Do not interpret this as a solver failure or restart a possibly live run.
+- Runtime documentation/recipe are reproducible setup artifacts. Solver execution,
+  C++ forcing correctness and the space/time studies remain unverified.
