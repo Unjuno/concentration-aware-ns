@@ -1,0 +1,50 @@
+{
+  "scope": "Real trigonometric interpolant derivative at verified uniform cell centers; no intersample accuracy or convergence certification.",
+  "cases": [
+    {
+      "case": "n16-dt0.001.tar.gz",
+      "archive_sha256": "6a22d096dd17f0ffe65f0800cf60804d4f6eab6533b02daa97330fb069218da7",
+      "computed_gradient_peak": 15.5127357153762,
+      "reference_spectral_gradient_peak": 15.276858096883673,
+      "exact_global_gradient_peak": 20.13373197596784,
+      "computed_gradient_relative_l2_at_samples": 0.11039048550001145,
+      "reference_spectral_gradient_relative_l2_at_samples": 0.006136944537508216
+    },
+    {
+      "case": "n32-dt0.001.tar.gz",
+      "archive_sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953",
+      "computed_gradient_peak": 18.98661899375933,
+      "reference_spectral_gradient_peak": 18.76380216429961,
+      "exact_global_gradient_peak": 20.13373197596784,
+      "computed_gradient_relative_l2_at_samples": 0.03640087359905373,
+      "reference_spectral_gradient_relative_l2_at_samples": 4.938780832387259e-09
+    },
+    {
+      "case": "n64-dt0.00025.tar.gz",
+      "archive_sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f",
+      "computed_gradient_peak": 19.849502941802246,
+      "reference_spectral_gradient_peak": 19.78049535875606,
+      "exact_global_gradient_peak": 20.13373197596784,
+      "computed_gradient_relative_l2_at_samples": 0.00971466138870527,
+      "reference_spectral_gradient_relative_l2_at_samples": 1.6176445483613203e-14
+    },
+    {
+      "case": "n64-dt0.0005.tar.gz",
+      "archive_sha256": "c1e11fe62fd205c8bdc03993cfa624689cf29f6ba0db0e2a043b96854642fa4d",
+      "computed_gradient_peak": 19.850125044341343,
+      "reference_spectral_gradient_peak": 19.78049535875606,
+      "exact_global_gradient_peak": 20.13373197596784,
+      "computed_gradient_relative_l2_at_samples": 0.00970763644663403,
+      "reference_spectral_gradient_relative_l2_at_samples": 1.6176445483613203e-14
+    },
+    {
+      "case": "n64-dt0.001.tar.gz",
+      "archive_sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb",
+      "computed_gradient_peak": 19.85098099018671,
+      "reference_spectral_gradient_peak": 19.78049535875606,
+      "exact_global_gradient_peak": 20.13373197596784,
+      "computed_gradient_relative_l2_at_samples": 0.00969270733216996,
+      "reference_spectral_gradient_relative_l2_at_samples": 1.6176445483613203e-14
+    }
+  ]
+}
