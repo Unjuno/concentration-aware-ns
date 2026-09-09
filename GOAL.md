@@ -1,4 +1,4 @@
-# Goal — revision 1, 2026-09-09
+# Goal — revision 2, 2026-09-09
 
 Build a reproducible Concentration-Aware Navier–Stokes Verification Benchmark.
 Treat the supplied proposal as hypotheses. Verify primary sources, repository
@@ -36,3 +36,17 @@ do not quietly reduce the three-project scope or redefine completion.
 
 This file versions the operational goal. The desktop goal text is separately
 managed by the app; editing this file does not change the app's saved goal.
+
+## Expanded scope authorized 2026-09-09
+
+The user explicitly authorized starting work, upstream GitHub issues and related
+technical discussion. Create exactly one project repository. Extend the impact
+inventory to relevant numerical analysis, Scientific ML and fluid control claims;
+record searched scope and unassessed areas instead of claiming universal coverage.
+Develop the analytic reference problem and publish reproducible technical methods
+as defensive disclosure. Adversarial evaluation means trying to falsify the
+benchmark's claims and testing counterexamples, not treating projects as guilty.
+The ambiguous phrase concerning analytical work is operationalized as deriving
+and checking this manufactured solution, not promising to solve open regularity
+problems. A paper/construction beyond the supplied proposal needs an identifiable
+primary source before it can support a claim of a new discovery.

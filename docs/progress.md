@@ -20,3 +20,14 @@
 - Publish complete audit with report URLs or reasons not to submit.
 
 Neither a repository commit nor checker tests complete the benchmark goal.
+
+## Analytic reference implementation
+
+- Public repository created: https://github.com/Unjuno/concentration-aware-ns
+- Implemented smooth periodic u, grad(u), curl(u) and analytic forcing in NumPy.
+- Nine unit tests passed with `python3 -m unittest discover -s tests -v`.
+  The finite-difference reconstruction uses three stencil widths and verifies
+  approximately second-order error reduction. This is a formula consistency
+  test, not the required three-grid CFD experiment.
+- Broader independent reference verification, production parameter freezing,
+  solver integration, run logs and upstream findings remain outstanding.

@@ -17,9 +17,11 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 
 ## Acceptance report checker
 
-Python 3.10+; no third-party dependencies.
+Python 3.10+. The report checker needs no third-party dependencies; the analytic
+reference and its tests need NumPy.
 
 ```sh
+python3 -m pip install -r requirements.txt
 python3 -m unittest discover -s tests -v
 python3 tools/acceptance_gate.py examples/unverified.json
 ```
@@ -27,6 +29,11 @@ python3 tools/acceptance_gate.py examples/unverified.json
 The example intentionally returns `UNCERTAIN` (exit 2). The checker consumes
 evidence reports; it does not run a solver or verify the authenticity of evidence.
 It is an initial quality gate, not a certification or complete benchmark runner.
+
+`tools/reference.py` implements the analytic velocity, velocity gradient,
+vorticity and forcing. Its tests check periodicity, divergence and second-order
+convergence of a separate finite-difference reconstruction of the PDE forcing.
+These checks validate formula consistency; they do not constitute solver runs.
 
 ## Contribution and publication
 
