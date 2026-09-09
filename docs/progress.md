@@ -360,3 +360,18 @@ Three selected low-mode coefficients agree with a phase-corrected sampled FFT
 within 1.8e-17. This is a numerical check of those modes, not a proof eliminating
 aliasing at arbitrary resolution. The truncated-cube energy remainder is stored
 as signed floating-point evidence; no certified tail or quality PASS is inferred.
+
+## SU2 CFL control completed
+
+The CFL=100 five-step control completed under the same four -10 residual
+thresholds. Total first-five iterations decreased from 9320 at CFL=10 to 5216
+at CFL=100 (about 44%). At the first completed update, coordinates match exactly
+and maximum velocity difference is 8.25e-10. Later baseline fields were not
+written, so later field equality is unverified; fewer iterations is not a measured
+wall-time speedup. Raw control and baseline first-update evidence are archived.
+The unchanged full study remains active. This is setup optimization evidence,
+not an upstream solver defect.
+
+The selected Fourier-coefficient check is now a standalone reproducible command:
+`python3 -m tools.check_reference_fourier`. Its output exactly matches the
+previous recorded check in the verification environment.

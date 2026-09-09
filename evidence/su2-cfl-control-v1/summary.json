@@ -1,0 +1,21 @@
+{
+  "baseline_CFL": 10,
+  "control_CFL": 100,
+  "baseline_first_five_iterations": [
+    2118,
+    2000,
+    1863,
+    1732,
+    1607
+  ],
+  "control_first_five_iterations": [
+    1193,
+    1144,
+    1051,
+    955,
+    873
+  ],
+  "first_update_max_velocity_difference": 8.253849849991816e-10,
+  "scope": "Only first-update fields available in baseline while full study runs. Later field equality is unverified; iteration reduction is not a measured wall-time speedup.",
+  "archive_sha256": "c5d80a1868fbffc8f9db517b2de28c611cb87b9d6eb2741f807266ab50e76e35"
+}
