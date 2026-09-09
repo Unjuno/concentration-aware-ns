@@ -271,3 +271,20 @@ a general time-integrator defect. Read-back confirms the posted body matches the
 saved report exactly. Source inspection of newer master is distinguished from
 executed v8.5.0. No second repository or unsolicited duplicate issue was created.
 Maintainer interpretation is pending; the localized SU2 sweep is still running.
+
+## PhysicsNeMo learned-solution pilot completed
+
+A native FullyConnected network (3 layers, width 32, tanh) was trained for 500
+Adam updates using native PhysicsInformer residuals. Inputs enforce spatial
+periodicity; the ansatz u=u0+t*network enforces the exact initial velocity. No
+exact transient velocity labels are used. The training lattice is 16^3 with five
+time nodes, and a separate 32^3 lattice evaluates the final velocity at t=0.05.
+The final relative velocity L2 error is 0.0551001. This is an integration pilot,
+not evidence of convergence or sufficient accuracy; batch loss is not monotonic
+and the field is not exactly solenoidal. Checkpoint, evaluation arrays, parameters,
+training and console logs, plus hashes are archived in evidence/physicsnemo-pinn-pilot-v1.
+
+The native model imports additional core dependencies beyond the earlier residual
+only audit. These were installed without modifying upstream source, and the CPU
+dependency freeze was refreshed. A three-resolution/multiple-time-node sampling
+study and independent validation residuals remain to be implemented and run.

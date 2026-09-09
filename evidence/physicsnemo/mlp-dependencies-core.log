@@ -1,0 +1,106 @@
+Requirement already satisfied: torch==2.11.0 in ./work/physicsnemo-env/lib/python3.14/site-packages (2.11.0)
+Collecting timm
+  Downloading timm-1.0.29-py3-none-any.whl.metadata (43 kB)
+Collecting onnx
+  Downloading onnx-1.22.0-cp312-abi3-macosx_12_0_universal2.whl.metadata (8.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pandas
+  Downloading pandas-3.0.5-cp314-cp314-macosx_11_0_arm64.whl.metadata (79 kB)
+Collecting treelib
+  Downloading treelib-1.8.0-py3-none-any.whl.metadata (3.3 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting GitPython
+  Downloading gitpython-3.1.62-py3-none-any.whl.metadata (13 kB)
+Collecting h5py
+  Downloading h5py-3.16.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (3.0 kB)
+Collecting cftime
+  Downloading cftime-1.6.5-cp314-cp314-macosx_11_0_arm64.whl.metadata (8.7 kB)
+Requirement already satisfied: filelock in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (3.32.6)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (4.16.0)
+Requirement already satisfied: setuptools<82 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (81.0.0)
+Requirement already satisfied: sympy>=1.13.3 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (3.6.1)
+Requirement already satisfied: jinja2 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in ./work/physicsnemo-env/lib/python3.14/site-packages (from torch==2.11.0) (2026.7.0)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting torchvision (from timm)
+  Downloading torchvision-0.29.0-cp314-cp314-macosx_14_0_arm64.whl.metadata (5.7 kB)
+Requirement already satisfied: pyyaml in ./work/physicsnemo-env/lib/python3.14/site-packages (from timm) (6.0.3)
+Collecting huggingface_hub (from timm)
+  Downloading huggingface_hub-1.30.0-py3-none-any.whl.metadata (16 kB)
+Collecting safetensors (from timm)
+  Using cached safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl.metadata (4.2 kB)
+Requirement already satisfied: numpy>=1.23.2 in ./work/physicsnemo-env/lib/python3.14/site-packages (from onnx) (2.4.6)
+Collecting protobuf>=4.25.1 (from onnx)
+  Downloading protobuf-7.36.1-cp310-abi3-macosx_10_9_universal2.whl.metadata (595 bytes)
+Collecting ml_dtypes>=0.5.4 (from onnx)
+  Downloading ml_dtypes-0.6.0-cp314-cp314-macosx_10_15_universal2.whl.metadata (8.8 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./work/physicsnemo-env/lib/python3.14/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: six>=1.13.0 in ./work/physicsnemo-env/lib/python3.14/site-packages (from treelib) (1.17.0)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting gitdb<5,>=4.0.1 (from GitPython)
+  Using cached gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython)
+  Using cached smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./work/physicsnemo-env/lib/python3.14/site-packages (from sympy>=1.13.3->torch==2.11.0) (1.3.0)
+Collecting click<9.0.0,>=8.4.2 (from huggingface_hub->timm)
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting hf-xet<2.0.0,>=1.5.2 (from huggingface_hub->timm)
+  Using cached hf_xet-1.6.0-cp38-abi3-macosx_11_0_arm64.whl.metadata (4.9 kB)
+Collecting httpx<1,>=0.23.0 (from huggingface_hub->timm)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: packaging>=20.9 in ./work/physicsnemo-env/lib/python3.14/site-packages (from huggingface_hub->timm) (26.3)
+Requirement already satisfied: tqdm>=4.42.1 in ./work/physicsnemo-env/lib/python3.14/site-packages (from huggingface_hub->timm) (4.70.0)
+Collecting anyio (from httpx<1,>=0.23.0->huggingface_hub->timm)
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: certifi in ./work/physicsnemo-env/lib/python3.14/site-packages (from httpx<1,>=0.23.0->huggingface_hub->timm) (2026.7.22)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->huggingface_hub->timm)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Requirement already satisfied: idna in ./work/physicsnemo-env/lib/python3.14/site-packages (from httpx<1,>=0.23.0->huggingface_hub->timm) (3.19)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub->timm)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in ./work/physicsnemo-env/lib/python3.14/site-packages (from jinja2->torch==2.11.0) (3.0.3)
+INFO: pip is looking at multiple versions of torchvision to determine which version is compatible with other requirements. This could take a while.
+Collecting torchvision (from timm)
+  Downloading torchvision-0.28.0-cp314-cp314-macosx_14_0_arm64.whl.metadata (5.6 kB)
+  Downloading torchvision-0.27.1-cp314-cp314-macosx_14_0_arm64.whl.metadata (5.5 kB)
+  Downloading torchvision-0.27.0-cp314-cp314-macosx_14_0_arm64.whl.metadata (5.5 kB)
+  Downloading torchvision-0.26.0-cp314-cp314-macosx_12_0_arm64.whl.metadata (5.5 kB)
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision->timm)
+  Using cached pillow-12.3.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (9.1 kB)
+Downloading timm-1.0.29-py3-none-any.whl (2.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 11.8 MB/s  0:00:00
+Downloading onnx-1.22.0-cp312-abi3-macosx_12_0_universal2.whl (20.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.2/20.2 MB 12.0 MB/s  0:00:01
+Downloading pandas-3.0.5-cp314-cp314-macosx_11_0_arm64.whl (10.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.0/10.0 MB 10.6 MB/s  0:00:00
+Downloading treelib-1.8.0-py3-none-any.whl (30 kB)
+Downloading gitpython-3.1.62-py3-none-any.whl (222 kB)
+Using cached gitdb-4.0.12-py3-none-any.whl (62 kB)
+Using cached smmap-5.0.3-py3-none-any.whl (24 kB)
+Downloading h5py-3.16.0-cp314-cp314-macosx_11_0_arm64.whl (3.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 10.6 MB/s  0:00:00
+Downloading cftime-1.6.5-cp314-cp314-macosx_11_0_arm64.whl (485 kB)
+Downloading ml_dtypes-0.6.0-cp314-cp314-macosx_10_15_universal2.whl (562 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 562.6/562.6 kB 9.3 MB/s  0:00:00
+Downloading protobuf-7.36.1-cp310-abi3-macosx_10_9_universal2.whl (456 kB)
+Downloading huggingface_hub-1.30.0-py3-none-any.whl (796 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 796.8/796.8 kB 11.3 MB/s  0:00:00
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Using cached hf_xet-1.6.0-cp38-abi3-macosx_11_0_arm64.whl (3.9 MB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Using cached safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl (484 kB)
+Downloading torchvision-0.26.0-cp314-cp314-macosx_12_0_arm64.whl (1.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 10.5 MB/s  0:00:00
+Using cached pillow-12.3.0-cp314-cp314-macosx_11_0_arm64.whl (4.8 MB)
+Installing collected packages: treelib, smmap, safetensors, protobuf, pillow, ml_dtypes, hf-xet, h5py, h11, click, cftime, anyio, pandas, onnx, httpcore, gitdb, torchvision, httpx, GitPython, huggingface_hub, timm
+
+Successfully installed GitPython-3.1.62 anyio-4.15.1 cftime-1.6.5 click-8.5.0 gitdb-4.0.12 h11-0.16.0 h5py-3.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface_hub-1.30.0 ml_dtypes-0.6.0 onnx-1.22.0 pandas-3.0.5 pillow-12.3.0 protobuf-7.36.1 safetensors-0.8.0 smmap-5.0.3 timm-1.0.29 torchvision-0.26.0 treelib-1.8.0
+
+[notice] A new release of pip is available: 26.1.1 -> 26.2.1
+[notice] To update, run: /Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/physicsnemo-env/bin/python -m pip install --upgrade pip

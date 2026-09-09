@@ -1,0 +1,7 @@
+{
+  "quality": "UNCERTAIN",
+  "velocity_relative_l2": 0.05510008460813309,
+  "archive_sha256": "10d9634c83901e6206dbca584936ec21bb6532a27e21dbd46c8448b19e5ffd96",
+  "checkpoint_sha256": "a80c7e5ef8b14f04248309405dfb726b87fce3508d2c07181c413257b5824fb4",
+  "scope": "500-update integration pilot; no grid/time/seed convergence evidence"
+}

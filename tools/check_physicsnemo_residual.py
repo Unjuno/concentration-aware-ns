@@ -10,15 +10,7 @@ from physicsnemo.sym.eq.pde import PDE
 from physicsnemo.sym.eq.phy_informer import PhysicsInformer
 from tools.reference import fields
 
-class TransientNS(PDE):
-    def __init__(self):
-        self.dim=3
-        x,y,z,t=[Symbol(v) for v in ('x','y','z','t')];xs=(x,y,z)
-        us=[Function(v)(x,y,z,t) for v in ('u','v','w')];p=Function('p')(x,y,z,t)
-        self.equations={'continuity':sum(u.diff(q) for u,q in zip(us,xs))}
-        for i,name in enumerate(('x','y','z')):
-            u=us[i]
-            self.equations['momentum_'+name]=u.diff(t)+sum(v*u.diff(q) for v,q in zip(us,xs))+p.diff(xs[i])-.01*sum(u.diff(q,2) for q in xs)-Symbol('f'+name)
+from tools.physicsnemo_equations import TransientNS
 
 torch.set_default_dtype(torch.float64)
 rng=np.random.default_rng(481);points=rng.uniform(0,2*np.pi,(96,3));time=.037

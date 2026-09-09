@@ -1,0 +1,11 @@
+{
+  "status":"frozen before training",
+  "source_commit":"1b961314e42a0625502ba1592d25f706f1e02a24",
+  "n":16,"time_nodes":5,"end":0.05,"sigma":0.5,"nu":0.01,
+  "seed":709,"iterations":500,"batch":128,"layers":3,"width":32,
+  "learning_rate":0.001,"dtype":"float64","threads":2,
+  "ansatz":"u=u0(x)+t*MLP(sin(x),cos(x),t/end)[:3]; p=MLP[...,3]. Exact initial velocity and periodic inputs. No exact transient velocity labels.",
+  "loss":"Mean squared continuity plus sum of three mean squared momentum residuals, equally weighted, no adaptive weighting.",
+  "evaluation_n":32,
+  "scope":"Integration pilot before a preregistered spatial/temporal sampling matrix. Not a convergence or acceptance claim."
+}

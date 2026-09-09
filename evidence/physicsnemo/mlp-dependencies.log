@@ -1,0 +1,9 @@
+WARNING: Cache entry deserialization failed, entry ignored
+Collecting einops
+  Using cached einops-0.8.2-py3-none-any.whl.metadata (13 kB)
+Using cached einops-0.8.2-py3-none-any.whl (65 kB)
+Installing collected packages: einops
+Successfully installed einops-0.8.2
+
+[notice] A new release of pip is available: 26.1.1 -> 26.2.1
+[notice] To update, run: /Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/physicsnemo-env/bin/python -m pip install --upgrade pip
