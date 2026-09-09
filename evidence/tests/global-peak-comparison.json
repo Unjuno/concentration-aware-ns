@@ -1,0 +1,216 @@
+{
+  "scope": "Reported diagnostic peak versus exact global reference peak. Ordinary floating point, not interval certification or predicted-field supremum error.",
+  "derivation": "docs/reference-global-peaks.md",
+  "derivation_sha256": "2fa4257770c3429f18aba5d99aec50431cc7a44e4daa27a4c32c530ee20cd5fa",
+  "cases": [
+    {
+      "group": "of13-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/of13-study-v1/n16-dt0.001.tar.gz",
+      "sha256": "6a22d096dd17f0ffe65f0800cf60804d4f6eab6533b02daa97330fb069218da7",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 11.84974879801097,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.4114479713867679
+        },
+        "vorticity": {
+          "reported_peak": 16.665214530906123,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.4147092938955327
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/of13-study-v1/n32-dt0.001.tar.gz",
+      "sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 17.492172410209747,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.13120069189910388
+        },
+        "vorticity": {
+          "reported_peak": 24.724297231617022,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.13167026096224888
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/of13-study-v1/n64-dt0.00025.tar.gz",
+      "sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 19.43828107160282,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.03454157953404413
+        },
+        "vorticity": {
+          "reported_peak": 27.488816851823113,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.03457894314276566
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/of13-study-v1/n64-dt0.0005.tar.gz",
+      "sha256": "c1e11fe62fd205c8bdc03993cfa624689cf29f6ba0db0e2a043b96854642fa4d",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 19.438815863013605,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.034515017572683826
+        },
+        "vorticity": {
+          "reported_peak": 27.48956920861783,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.03455251999418829
+        }
+      }
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.001.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/of13-study-v1/n64-dt0.001.tar.gz",
+      "sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 19.439591333925232,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.03447650156817195
+        },
+        "vorticity": {
+          "reported_peak": 27.490666220455974,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.0345139923873482
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/su2-study-v1/n16-dt0.001.tar.gz",
+      "sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 12.59463080097603,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.37445125344822716
+        },
+        "vorticity": {
+          "reported_peak": 17.77192411630625,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.375841097300154
+        }
+      }
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n16-nt5-gradient.json",
+      "method": "autograd at saved samples",
+      "artifact": "evidence/physicsnemo-study-v1/n16-nt5-gradient.json",
+      "sha256": "95df86f3b780ed491ce5419173a0dc51bb8edb0384cbf4bf25f0afec348d3c29",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 20.12063476831109,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.0006505106789136406
+        },
+        "vorticity": {
+          "reported_peak": 28.454416729194012,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.0006665903799073503
+        }
+      }
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n32-nt5-gradient.json",
+      "method": "autograd at saved samples",
+      "artifact": "evidence/physicsnemo-study-v1/n32-nt5-gradient.json",
+      "sha256": "dc95165d0f0eb9a84066f9f5032ca0f161cc30151903e655f2dad62a321330bb",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 20.126421972654036,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.0003630724459097179
+        },
+        "vorticity": {
+          "reported_peak": 28.462548340760662,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.0003810040967673345
+        }
+      }
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt17-gradient.json",
+      "method": "autograd at saved samples",
+      "artifact": "evidence/physicsnemo-study-v1/n64-nt17-gradient.json",
+      "sha256": "9807fad93c07c7ae2f527ad15061578c87174c16f7a71bdc5128c6420701b139",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 20.132853044331124,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 4.365468050160359e-05
+        },
+        "vorticity": {
+          "reported_peak": 28.471684991831996,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 6.0120321340728644e-05
+        }
+      }
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt5-gradient.json",
+      "method": "autograd at saved samples",
+      "artifact": "evidence/physicsnemo-study-v1/n64-nt5-gradient.json",
+      "sha256": "cf3b0bba2d5f502b67f6c854579fe912b1faad93b660d2e539c58d6aa6e1eb0e",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 20.12632782307512,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.0003677486569086952
+        },
+        "vorticity": {
+          "reported_peak": 28.46241991607614,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.00038551443620193915
+        }
+      }
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt9-gradient.json",
+      "method": "autograd at saved samples",
+      "artifact": "evidence/physicsnemo-study-v1/n64-nt9-gradient.json",
+      "sha256": "2d7a803adf87aac74558fc736ba239077f27064089245b5fb02debb86a581cac",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 20.1300158314069,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.0001845730620322339
+        },
+        "vorticity": {
+          "reported_peak": 28.467656730132166,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.00020159489583815304
+        }
+      }
+    }
+  ]
+}
