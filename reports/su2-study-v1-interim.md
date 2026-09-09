@@ -1,4 +1,4 @@
-# SU2 localized study v1 — first completed case
+# SU2 localized study v1 — two completed cases
 
 The n16, dt=0.001 case completed 50 updates to t=0.05. All four residual thresholds
 were met at each update, and duplicated periodic values match exactly. The
@@ -16,7 +16,7 @@ The velocity error already exceeds the declared 2% criterion. Therefore this cas
 is not a reproduced miss by the full conventional accuracy criteria, despite
 iterative residual convergence. Derivative postprocessing contributes materially,
 and no upstream implementation fault is inferred from this coarse-grid result.
-The 32³ and remaining runs are still required before assessing the spatial/time
+The 64³ and remaining time-step runs are still required before assessing the spatial/time
 matrix. SU2 uses vertex samples, unlike OpenFOAM's cell centers, so the two coarse
 runs must not be compared as if their sample points were identical.
 
@@ -26,13 +26,26 @@ established cause of this case's entire error.
 
 Evidence: evidence/su2-study-v1/n16-review.json and n16-dt0.001.tar.gz.
 
-## n32 in-progress convergence observation
+## n32 completed result
 
-The first completed time-history row has Inner_Iter=2999 (3,000 iterations),
-with log10 residuals P=-9.553895816, U=-9.421828648, V=-9.443823823,
-W=-9.466627999. None passes the frozen strict -10 threshold. The preserved
-first-step history and `n32-progress-convergence.json` record this observation.
-The run remains in progress; no final field accuracy is inferred. Later steps
-converging would not retroactively make this step converged. The baseline protocol
-is unchanged. Any higher-cap or altered-CFL follow-up must be reported separately
-and cannot replace the frozen run without preserving its outcome.
+The n32, dt=0.001 case completed 50 updates to t=0.05 with exit code 0 and
+SU2's Exit Success marker. The archive SHA256 matches summary.json, and all
+five archived inputs match the diagnostic hashes. Periodic duplicates match.
+
+| Quantity | Result |
+|---|---:|
+| Sampled velocity relative L2 error | 2.27715% |
+| Completed updates meeting all four strict residual thresholds | 48 / 50 |
+| FD2 gradient peak discrepancy versus exact reference peak | 11.2359% |
+| FD2 vorticity peak discrepancy versus exact reference peak | 11.2412% |
+
+Updates 0 and 1 reached Inner_Iter=2999 (3,000 iterations) without satisfying
+all four strict log10 residual thresholds below -10. Later convergence does not
+retroactively make these updates converged. The velocity error also exceeds the
+frozen 2% criterion. Therefore this is not a conventional-PASS/local-FAIL finding.
+The derivative discrepancies include postprocessing error and do not isolate a
+solver defect or certify the continuous peak of the numerical solution.
+
+The baseline protocol is unchanged. Higher-cap or altered-CFL controls must be
+reported separately. The full matrix and acceptance review remain incomplete.
+Evidence: evidence/su2-study-v1/n32-dt0.001.tar.gz and summary.json.

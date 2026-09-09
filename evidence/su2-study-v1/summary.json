@@ -1,6 +1,6 @@
 {
   "expected_cases": 5,
-  "completed_cases": 1,
+  "completed_cases": 2,
   "quality": "UNCERTAIN",
   "cases": [
     {
@@ -9,6 +9,13 @@
       "converged_steps": 50,
       "steps": 50,
       "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466"
+    },
+    {
+      "case": "n32-dt0.001",
+      "velocity_relative_l2": 0.022771503203074223,
+      "converged_steps": 48,
+      "steps": 50,
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193"
     }
   ]
 }
