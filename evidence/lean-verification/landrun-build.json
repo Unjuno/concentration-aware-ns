@@ -1,0 +1,13 @@
+{
+  "source_commit": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+  "compiler": "go1.26.3 darwin/arm64",
+  "target": "linux/arm64",
+  "CGO_ENABLED": "0",
+  "command": "GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -C work/lean-verification/checker-sources/landrun -o ../../checker-bin/landrun ./cmd/landrun",
+  "binary_sha256": "241e888d1a71eca20b83698fc8dbe4e89f589d64accc71763473af8fb616ea02",
+  "build_exit_code": 0,
+  "help_exit_code": 0,
+  "runtime_user": "501:20",
+  "reported_version": "0.1.18",
+  "scope": "Build and nonprivileged startup only; sandbox enforcement not yet tested"
+}
