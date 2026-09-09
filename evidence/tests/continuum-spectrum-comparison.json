@@ -1,0 +1,132 @@
+{
+  "reference": {
+    "time": 0.05,
+    "sigma": 0.5,
+    "mode_cube_cutoff": 32,
+    "shell_energy": [
+      0.0,
+      0.005919680242454867,
+      0.02406805611328564,
+      0.020978050644944204,
+      0.01439133864061158,
+      0.003983327852191797,
+      0.000510816121429195,
+      6.0796042887320755e-05,
+      5.070069774430357e-06,
+      3.288934931208033e-07,
+      1.1485688691238087e-08,
+      3.3450785812740423e-10,
+      1.1103318694089018e-11,
+      3.071783656372122e-13,
+      5.135507456921768e-15,
+      1.0041439400026071e-16,
+      1.870362334549464e-18,
+      2.5864234246936504e-20,
+      2.687266242943168e-22,
+      2.9210060551160313e-24,
+      3.311704449094387e-26,
+      2.656291878606468e-28,
+      2.429985567883793e-30,
+      2.0182855979572858e-32,
+      1.5449896856617706e-34,
+      1.0911730280217688e-36,
+      5.878416339923606e-39,
+      3.021866117418295e-41,
+      1.6587294247513291e-43,
+      8.471090186581686e-46,
+      3.700587788543162e-48,
+      1.6414689173949516e-50,
+      6.823663489140582e-53,
+      2.447782453142588e-56,
+      1.1663090298663768e-61,
+      2.2292534599921471e-66,
+      2.180332769952662e-71,
+      2.397148310997118e-75,
+      3.2113623326050096e-79,
+      5.583932442840435e-83,
+      1.6599477289208307e-86,
+      8.515442649973465e-90,
+      7.98424653368235e-94,
+      1.1566364797300377e-96,
+      3.6026065544590074e-101,
+      9.675949254193056e-104,
+      2.5634995689308724e-109,
+      5.02623674968285e-117,
+      1.1843143633233826e-123,
+      3.450917589919898e-129,
+      4.682006230802793e-134,
+      8.00863449055949e-139,
+      6.0205992935070675e-143,
+      2.4349755273492406e-147,
+      2.2549233391664877e-152,
+      1.1621089722787266e-157
+    ],
+    "truncated_energy": 0.06991747645268444,
+    "continuum_energy": 0.06991747645268451,
+    "signed_energy_remainder_float": 6.938893903907228e-17,
+    "scope": "Analytic Fourier coefficients evaluated in floating point; remainder is not an interval-certified tail bound."
+  },
+  "scope": "Numerical sample FFT versus continuum shells truncated to |k_i|<=32; combines solution, sampling and aliasing effects.",
+  "cases": [
+    {
+      "group": "of13-study-v1",
+      "case": "n16-dt0.001.tar.gz",
+      "normalized_shell_l1_difference": 0.007535472781585821,
+      "computed_mean_energy": 0.07044433769344033
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "normalized_shell_l1_difference": 0.0020104425638160133,
+      "computed_mean_energy": 0.07005804152329953
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "normalized_shell_l1_difference": 0.00044939304089091834,
+      "computed_mean_energy": 0.0699488968800389
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "normalized_shell_l1_difference": 0.00046443826305927745,
+      "computed_mean_energy": 0.0699499488040056
+    },
+    {
+      "group": "of13-study-v1",
+      "case": "n64-dt0.001.tar.gz",
+      "normalized_shell_l1_difference": 0.0004932226328930099,
+      "computed_mean_energy": 0.06995196133450568
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n16-nt5.tar.gz",
+      "normalized_shell_l1_difference": 0.015426131652472273,
+      "computed_mean_energy": 0.07062286058775488
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n32-nt5.tar.gz",
+      "normalized_shell_l1_difference": 0.015162217781047187,
+      "computed_mean_energy": 0.0706568470831001
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt17.tar.gz",
+      "normalized_shell_l1_difference": 0.013048230674821241,
+      "computed_mean_energy": 0.0706236937725769
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt5.tar.gz",
+      "normalized_shell_l1_difference": 0.014748013919987738,
+      "computed_mean_energy": 0.07065905859004493
+    },
+    {
+      "group": "physicsnemo-study-v1",
+      "case": "n64-nt9.tar.gz",
+      "normalized_shell_l1_difference": 0.013618477015227856,
+      "computed_mean_energy": 0.07063745205496974
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "scope": "Sample FFT comparison at selected low modes; not an aliasing-free proof for arbitrary modes.",
+  "checks": [
+    {
+      "mode": [
+        1,
+        0,
+        0
+      ],
+      "maximum_complex_coefficient_error": 1.7354907271534562e-17
+    },
+    {
+      "mode": [
+        1,
+        2,
+        3
+      ],
+      "maximum_complex_coefficient_error": 6.6433777998696705e-19
+    },
+    {
+      "mode": [
+        4,
+        3,
+        2
+      ],
+      "maximum_complex_coefficient_error": 7.300938854662925e-19
+    }
+  ]
+}

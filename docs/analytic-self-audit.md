@@ -89,3 +89,20 @@ The factor 28 comes from |a|²=14 and the cross-product identity, after isotropi
 integration. tools/reference_energy.py evaluates the scaled Bessel factors to
 avoid overflow. Independent scalar quadrature checks the separated integrals;
 ordinary floating-point agreement is not an interval-certified error bound.
+
+## Continuum Fourier coefficients
+
+Use the Fourier convention ψ(x)=Σ_k ψ̂_k exp(i k·x) on [0,2π)^3 and β=1/σ².
+The generating series of exp(β cos(x-π)) gives
+
+    ψ̂_k = exp(-t) (-1)^(k₁+k₂+k₃) ∏_j [exp(-β) I_|k_j|(β)],
+    û_k = i (k×a) ψ̂_k,
+    E_k = (1/2) |k×a|² |ψ̂_k|².
+
+Thus continuum shell energy can be evaluated without sampling the reference on a
+grid. tools/reference_spectrum.py uses these coefficients. The finite cube
+|k_j|≤32 is summed and compared with the independently derived total energy;
+the signed floating-point remainder is reported, not promoted to a rigorous
+positive tail bound. Numerical FFT shell discrepancies combine solution and
+sampling/aliasing effects. Checking Parseval for an FFT alone only checks that
+FFT's own normalization, not agreement with this continuum spectrum.

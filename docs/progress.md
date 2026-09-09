@@ -350,3 +350,13 @@ At OpenFOAM n32, energy error versus the continuum formula is 0.00201044, compar
 with the previously established >=13.12% gradient-peak underestimation bound.
 This supports separating aggregate and local diagnostics without attributing the
 latter entirely to the solver. PINN energy errors are approximately 1.01–1.06%.
+
+## Analytic spectrum reference added
+
+Derived continuum Fourier coefficients using the separable Bessel expansion of
+ψ, then û_k=i(k×a)ψ̂_k. Archived FFT shell energies are now compared against this
+independent reference rather than only checking their own Parseval identity.
+Three selected low-mode coefficients agree with a phase-corrected sampled FFT
+within 1.8e-17. This is a numerical check of those modes, not a proof eliminating
+aliasing at arbitrary resolution. The truncated-cube energy remainder is stored
+as signed floating-point evidence; no certified tail or quality PASS is inferred.
