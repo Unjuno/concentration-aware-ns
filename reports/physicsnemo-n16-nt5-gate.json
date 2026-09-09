@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "case": "n16-nt5",
+  "standard_acceptance": "UNCERTAIN",
+  "evidence": {
+    "reference_verified": true,
+    "forcing_verified": true,
+    "derivatives_verified": true,
+    "space_time_study_verified": false,
+    "thresholds_preregistered": false,
+    "raw_artifacts_reviewed": true,
+    "evaluation_time_verified": true,
+    "standard_acceptance_verified": false
+  },
+  "artifacts": {
+    "reference_verified": {
+      "path": "evidence/physicsnemo/reference-autograd.json",
+      "sha256": "c1231f9e43c89e022a541c4d827bb288ac17393c4cea17e86024b13c0d0b9973"
+    },
+    "forcing_verified": {
+      "path": "evidence/physicsnemo/residual-check.json",
+      "sha256": "b69ceeca61e3082e023223db96cb62e1a6d43dd4e9a24868d11d072f30a9f5a9"
+    },
+    "derivatives_verified": {
+      "path": "evidence/physicsnemo-study-v1/n16-nt5-gradient.json",
+      "sha256": "95df86f3b780ed491ce5419173a0dc51bb8edb0384cbf4bf25f0afec348d3c29"
+    },
+    "space_time_study_verified": {
+      "path": "evidence/physicsnemo-study-v1/comparison.json",
+      "sha256": "d37d3d3af2b6096ee62557097545b53f9d2d460d5c840b2eb740a8ce56c1ce99"
+    },
+    "thresholds_preregistered": {
+      "path": "protocols/physicsnemo-study-v1.json",
+      "sha256": "6573c8cdb854e8948d4aa66286f3e4cbb6266ce814e128e027b210c2a2256e37"
+    },
+    "raw_artifacts_reviewed": {
+      "path": "evidence/physicsnemo-study-v1/n16-nt5.tar.gz",
+      "sha256": "b38143256e9f6d1acb8d4ab61aee235f41c963f9ac32b93610676f71b3e268cd"
+    },
+    "evaluation_time_verified": {
+      "path": "evidence/physicsnemo-study-v1/summary.json",
+      "sha256": "76a56fb8fec172fc5d395fedf1edfb15c7b8e85229acca89636939af269181fb"
+    },
+    "standard_acceptance_verified": {
+      "path": "reports/physicsnemo-study-v1.md",
+      "sha256": "b0384ecaf1d2740e684d6644e4d65fb4f4ad4a1e267bf9201e78a1ec5db6d2a6"
+    }
+  },
+  "metrics": [
+    {
+      "name": "max_gradient",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    },
+    {
+      "name": "max_vorticity",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    }
+  ],
+  "observed_samples": {
+    "case": "n16-nt5",
+    "velocity_relative_l2": 0.019923100924691704,
+    "gradient_peak_error_autograd_samples": 0.00908978053355244,
+    "vorticity_peak_error_autograd_samples": 0.009078073854054321,
+    "max_validation_momentum_residual": 0.4329887176002952,
+    "max_validation_continuity_residual": 0.05401024411889879
+  },
+  "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only.",
+  "threshold_scope": "5% is imported for comparison from the OpenFOAM protocol; PhysicsNeMo-specific preregistration is not established.",
+  "unresolved": [
+    "No continuous peak error enclosure",
+    "Fixed-budget single-seed sampling matrix does not establish optimizer or asymptotic convergence",
+    "PhysicsNeMo protocol does not explicitly preregister acceptance thresholds",
+    "No established full standard acceptance criterion for this trained network"
+  ],
+  "amr": "Not applicable to this fixed-architecture PINN experiment"
+}

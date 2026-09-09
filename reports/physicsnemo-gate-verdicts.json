@@ -1,0 +1,47 @@
+[
+  {
+    "case": "n16-nt5",
+    "report": "reports/physicsnemo-n16-nt5-gate.json",
+    "verdict": {
+      "standard_acceptance": "UNCERTAIN",
+      "local_quality": "UNCERTAIN",
+      "hypothesis": "UNCERTAIN"
+    }
+  },
+  {
+    "case": "n32-nt5",
+    "report": "reports/physicsnemo-n32-nt5-gate.json",
+    "verdict": {
+      "standard_acceptance": "UNCERTAIN",
+      "local_quality": "UNCERTAIN",
+      "hypothesis": "UNCERTAIN"
+    }
+  },
+  {
+    "case": "n64-nt17",
+    "report": "reports/physicsnemo-n64-nt17-gate.json",
+    "verdict": {
+      "standard_acceptance": "UNCERTAIN",
+      "local_quality": "UNCERTAIN",
+      "hypothesis": "UNCERTAIN"
+    }
+  },
+  {
+    "case": "n64-nt5",
+    "report": "reports/physicsnemo-n64-nt5-gate.json",
+    "verdict": {
+      "standard_acceptance": "UNCERTAIN",
+      "local_quality": "UNCERTAIN",
+      "hypothesis": "UNCERTAIN"
+    }
+  },
+  {
+    "case": "n64-nt9",
+    "report": "reports/physicsnemo-n64-nt9-gate.json",
+    "verdict": {
+      "standard_acceptance": "UNCERTAIN",
+      "local_quality": "UNCERTAIN",
+      "hypothesis": "UNCERTAIN"
+    }
+  }
+]
