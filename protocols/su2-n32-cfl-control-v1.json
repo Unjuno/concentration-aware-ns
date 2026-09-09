@@ -1,0 +1,13 @@
+{
+  "status": "frozen before execution",
+  "source_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "n": 32,
+  "dt": 0.001,
+  "end": 0.001,
+  "CFL_NUMBER": 100,
+  "inner_cap": 3000,
+  "residual_threshold": -10,
+  "threads": 2,
+  "comparison": "First physical step of frozen n32 study-v1, CFL 10; only CFL differs in the numerical solver settings. One-step output horizon.",
+  "purpose": "Test whether the first-step residual deficit is alleviated within the same iteration cap. No general speedup or final-time accuracy claim."
+}
