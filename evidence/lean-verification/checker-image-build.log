@@ -1,0 +1,92 @@
+#0 building with "orbstack" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.checker
+#1 transferring dockerfile: 195B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/concentration-aware-ns:su2
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/concentration-aware-ns:su2@sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643
+#4 resolve docker.io/library/concentration-aware-ns:su2@sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643 0.0s done
+#4 CACHED
+
+#5 [2/2] RUN apt-get update && apt-get install -y --no-install-recommends git     && rm -rf /var/lib/apt/lists/*
+#5 1.136 Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]
+#5 2.497 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+#5 4.759 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+#5 5.194 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+#5 5.621 Get:5 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]
+#5 6.062 Get:6 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]
+#5 6.211 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]
+#5 11.92 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]
+#5 12.16 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1624 kB]
+#5 12.36 Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2195 kB]
+#5 12.64 Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [2822 kB]
+#5 12.97 Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [92.2 kB]
+#5 12.98 Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [48.9 kB]
+#5 12.99 Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [671 B]
+#5 12.99 Get:15 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [36.3 kB]
+#5 12.99 Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [2697 kB]
+#5 13.31 Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1616 kB]
+#5 13.50 Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1308 kB]
+#5 13.65 Get:19 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [87.7 kB]
+#5 13.71 Fetched 34.4 MB in 14s (2535 kB/s)
+#5 13.71 Reading package lists...
+#5 14.41 Reading package lists...
+#5 15.10 Building dependency tree...
+#5 15.30 Reading state information...
+#5 15.60 The following additional packages will be installed:
+#5 15.60   git-man libcurl3t64-gnutls liberror-perl
+#5 15.60 Suggested packages:
+#5 15.60   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui
+#5 15.60   gitk gitweb git-cvs git-mediawiki git-svn
+#5 15.60 Recommended packages:
+#5 15.60   less ssh-client
+#5 15.63 The following NEW packages will be installed:
+#5 15.63   git git-man libcurl3t64-gnutls liberror-perl
+#5 16.05 0 upgraded, 4 newly installed, 0 to remove and 25 not upgraded.
+#5 16.05 Need to get 5229 kB of archives.
+#5 16.05 After this operation, 25.5 MB of additional disk space will be used.
+#5 16.05 Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.13 [330 kB]
+#5 17.27 Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liberror-perl all 0.17029-2 [25.6 kB]
+#5 17.28 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 git-man all 1:2.43.0-1ubuntu7.3 [1100 kB]
+#5 17.76 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 git arm64 1:2.43.0-1ubuntu7.3 [3774 kB]
+#5 18.33 debconf: delaying package configuration, since apt-utils is not installed
+#5 18.36 Fetched 5229 kB in 3s (2015 kB/s)
+#5 18.41 Selecting previously unselected package libcurl3t64-gnutls:arm64.
+#5 18.41 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12281 files and directories currently installed.)
+#5 18.41 Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.13_arm64.deb ...
+#5 18.43 Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.13) ...
+#5 18.46 Selecting previously unselected package liberror-perl.
+#5 18.46 Preparing to unpack .../liberror-perl_0.17029-2_all.deb ...
+#5 18.46 Unpacking liberror-perl (0.17029-2) ...
+#5 18.49 Selecting previously unselected package git-man.
+#5 18.49 Preparing to unpack .../git-man_1%3a2.43.0-1ubuntu7.3_all.deb ...
+#5 18.50 Unpacking git-man (1:2.43.0-1ubuntu7.3) ...
+#5 18.53 Selecting previously unselected package git.
+#5 18.53 Preparing to unpack .../git_1%3a2.43.0-1ubuntu7.3_arm64.deb ...
+#5 18.54 Unpacking git (1:2.43.0-1ubuntu7.3) ...
+#5 18.65 Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.13) ...
+#5 18.66 Setting up liberror-perl (0.17029-2) ...
+#5 18.67 Setting up git-man (1:2.43.0-1ubuntu7.3) ...
+#5 18.69 Setting up git (1:2.43.0-1ubuntu7.3) ...
+#5 18.71 Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+#5 DONE 18.8s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.7s done
+#6 exporting manifest sha256:0eb831cdbb8c14661bdf350c95ca025d2b06fa0e81499302c683e76e92f99748 0.0s done
+#6 exporting config sha256:0b51d58ddeaac865966a84e149e7ea2b00a0edd9fcb0869b18a162366fe00ecc 0.0s done
+#6 exporting attestation manifest sha256:efad26ac67925f95b00bef27e19f2e74175d3b906499b8e9b8b6b3c31935e361 0.0s done
+#6 exporting manifest list sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de 0.0s done
+#6 naming to docker.io/library/concentration-aware-ns:checker done
+#6 unpacking to docker.io/library/concentration-aware-ns:checker
+#6 unpacking to docker.io/library/concentration-aware-ns:checker 0.1s done
+#6 DONE 1.0s

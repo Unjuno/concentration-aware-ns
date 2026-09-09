@@ -121,3 +121,17 @@ explicitly inherited socket is usable without the launcher but closed with it,
 and that socket stdin is rejected. The original child socket denial test still
 passes. See check_no_unix_extended.py and no-unix-extended.json. These are bounded
 controls, not proof against every kernel or sandbox escape.
+
+The first Comparator invocation stopped at `which git` because the SU2 runtime
+image does not contain Git. Dockerfile.checker adds that runtime prerequisite;
+its build log is retained. Resulting local image ID:
+`sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de`.
+Apt packages are resolved at build time, so this recipe is not a fully pinned
+package mirror. No Git repository is created by adding the executable.
+
+`sh runtime/lean-verification/run_comparator.sh` now starts the actual Comparator
+challenge build. All sources/dependencies are mounted read-only; only the fresh
+project's .lake directory is writable. It runs as UID501, without a network,
+under the tested socket-control launcher. Logs distinguish the initial missing
+Git failure from the ongoing invocation with Git. A started challenge build is
+not a successful comparison or kernel check.
