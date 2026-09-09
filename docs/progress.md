@@ -248,3 +248,14 @@ duplicate mismatch, five converged steps, velocity error 0.0267038). Three targe
 reader tests check arbitrary mesh row ordering, missing points and changed time
 conventions. The full unit suite now passes 19 tests. The larger sweep is running;
 no full-study outcome has been assigned.
+
+## Acceptance triage strengthened
+
+The original flag/point-error prototype could not represent an uncertainty
+interval crossing a tolerance. Version 2 requires reviewed artifact hashes and
+error bounds, retains UNCERTAIN when an upper bound is unavailable, and supports
+proved failure from a one-sided lower bound. CLI success now requires both
+standard and local acceptance. Hashes establish byte identity only, not truth of
+a review. No solver report was reclassified as accepted. The 25-test suite covers
+threshold overlap, one-sided bounds, modified evidence and root escape as well as
+existing geometry/metric checks. SU2 study-v1 remains live in its original process.

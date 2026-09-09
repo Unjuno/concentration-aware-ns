@@ -79,8 +79,10 @@ accuracy threshold. Uncertainty and unperformed runs never become PASS.
 Source commit, patch, solver version, build/container digest, platform, input
 hashes, commands, exit status, raw logs, physical end time, sampling geometry,
 metric definitions, reference checks, resolution matrix and uncertainty budget.
-The current JSON checker checks required evidence flags and reported errors;
-human/source review is required to establish those flags from real artifacts.
+The v2 JSON checker binds required review flags to hashed evidence files and
+uses error intervals, including one-sided bounds. Human/source review is still
+required to establish the validity of those artifacts and bounds. See
+docs/acceptance-gate-v2.md; a matching hash is not scientific certification.
 
 ## Optional independent formula checks
 

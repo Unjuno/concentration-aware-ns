@@ -1,11 +1,17 @@
 test_nonfinite_rejected (test_amr_reader.AmrReaderTests.test_nonfinite_rejected) ... ok
 test_nonuniform_volumes_preserve_weights (test_amr_reader.AmrReaderTests.test_nonuniform_volumes_preserve_weights) ... ok
 test_uniform_volume_field (test_amr_reader.AmrReaderTests.test_uniform_volume_field) ... ok
-test_invalid_numeric_values (test_gate.GateTests.test_invalid_numeric_values) ... ok
+test_changed_artifact_invalidates_review (test_gate.GateTests.test_changed_artifact_invalidates_review) ... ok
+test_cli_status_requires_both_acceptances (test_gate.GateTests.test_cli_status_requires_both_acceptances) ... ok
+test_invalid_bounds (test_gate.GateTests.test_invalid_bounds) ... ok
+test_legacy_flags_are_insufficient (test_gate.GateTests.test_legacy_flags_are_insufficient) ... ok
 test_missing_evidence_never_reproduces (test_gate.GateTests.test_missing_evidence_never_reproduces) ... ok
 test_missing_required_metric (test_gate.GateTests.test_missing_required_metric) ... ok
-test_passing_local_errors (test_gate.GateTests.test_passing_local_errors) ... ok
-test_standard_failure_is_not_a_missed_acceptance (test_gate.GateTests.test_standard_failure_is_not_a_missed_acceptance) ... ok
+test_one_sided_bound_can_fail_but_cannot_pass (test_gate.GateTests.test_one_sided_bound_can_fail_but_cannot_pass) ... ok
+test_outside_root_rejected (test_gate.GateTests.test_outside_root_rejected) ... ok
+test_passing_intervals (test_gate.GateTests.test_passing_intervals) ... ok
+test_standard_failure_is_not_missed_acceptance (test_gate.GateTests.test_standard_failure_is_not_missed_acceptance) ... ok
+test_straddling_threshold_is_uncertain (test_gate.GateTests.test_straddling_threshold_is_uncertain) ... ok
 test_valid_discrepancy (test_gate.GateTests.test_valid_discrepancy) ... ok
 test_constant_velocity_has_only_zero_mode (test_metrics.MetricsTests.test_constant_velocity_has_only_zero_mode) ... ok
 test_derivative_converges_to_known_peak (test_metrics.MetricsTests.test_derivative_converges_to_known_peak) ... ok
@@ -19,6 +25,6 @@ test_missing_periodic_grid_point_rejected (test_su2_reader.SU2ReaderTests.test_m
 test_reordered_vertex_grid_and_time (test_su2_reader.SU2ReaderTests.test_reordered_vertex_grid_and_time) ... ok
 
 ----------------------------------------------------------------------
-Ran 19 tests in 0.078s
+Ran 25 tests in 0.069s
 
 OK
