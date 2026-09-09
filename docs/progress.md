@@ -259,3 +259,15 @@ standard and local acceptance. Hashes establish byte identity only, not truth of
 a review. No solver report was reclassified as accepted. The 25-test suite covers
 threshold overlap, one-sided bounds, modified evidence and root escape as well as
 existing geometry/metric checks. SU2 study-v1 remains live in its original process.
+
+## SU2 upstream discussion submitted
+
+Submitted https://github.com/su2code/SU2/discussions/2890 in Q&A after checking
+issues and discussions, including related temporal study discussion 1441.
+The report contains the uniform analytic recurrence, raw pinned reproducer,
+intervention and explicit limitations. It asks whether old-time MMS forcing is
+intentional and proposes documentation plus a regression case. It does not claim
+a general time-integrator defect. Read-back confirms the posted body matches the
+saved report exactly. Source inspection of newer master is distinguished from
+executed v8.5.0. No second repository or unsolicited duplicate issue was created.
+Maintainer interpretation is pending; the localized SU2 sweep is still running.
