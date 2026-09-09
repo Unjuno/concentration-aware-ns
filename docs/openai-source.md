@@ -66,3 +66,14 @@ Sources:
 - https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorDefinitions.lean
 - https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorTheorem.lean
 - https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ActualCandidateAssembly.lean
+
+## Further analytic inspection
+
+Re-read the pinned statements and inspected ProblemStatement and ComparatorBridge.
+SpeedUnboundedAtOne explicitly quantifies arbitrarily high speed arbitrarily near
+time 1 from below; this is stronger information than merely reading the negated
+global-existence wrapper. ActualCandidateAssembly.Witness retains a common integer
+schedule, three sums and extension/forcing data. No numerical schedule or tail
+bound has yet been extracted. `docs/analytic-transfer.md` derives the viscosity/
+period scaling and finite-tail residual requirements, conditionally on the source
+properties. File hashes are in evidence/openai-source/inspection-manifest.json.

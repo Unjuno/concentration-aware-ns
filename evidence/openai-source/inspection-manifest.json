@@ -1,0 +1,37 @@
+{
+  "repository": "https://github.com/openai/NavierStokesAndEuler",
+  "commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "verification": "source inspection only; no Lean build or proof-closure verification",
+  "files": [
+    {
+      "file": "NavierStokes/ActualCandidateAssembly.lean",
+      "sha256": "bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94",
+      "lines": 1187
+    },
+    {
+      "file": "NavierStokes/ComparatorBridge.lean",
+      "sha256": "cbb7731d5dc36363f0d4c3d1d3aba572302de4dc474d3a329b975d8d646c50ab",
+      "lines": 253
+    },
+    {
+      "file": "NavierStokes/ComparatorDefinitions.lean",
+      "sha256": "8d90e0f9eee14f8b01773852083a02fd58bda59d4de2abb60d1787bbc9f6ebf4",
+      "lines": 245
+    },
+    {
+      "file": "NavierStokes/ComparatorSolution.lean",
+      "sha256": "52950d5d618a8d34c9bfbdb16641c81c276e97b6d7fd2a76c08577353f0b0227",
+      "lines": 32
+    },
+    {
+      "file": "NavierStokes/ComparatorTheorem.lean",
+      "sha256": "94b2218013c242e55b8726523ca1151bc1bd5e2b55a5d6d0909cd867bf5e1f59",
+      "lines": 56
+    },
+    {
+      "file": "NavierStokes/ProblemStatement.lean",
+      "sha256": "d2f5cdf24a060acd41011b50492e89058991965e18d2cb797c58d915f95af633",
+      "lines": 168
+    }
+  ]
+}
