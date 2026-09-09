@@ -135,3 +135,12 @@ project's .lake directory is writable. It runs as UID501, without a network,
 under the tested socket-control launcher. Logs distinguish the initial missing
 Git failure from the ongoing invocation with Git. A started challenge build is
 not a successful comparison or kernel check.
+
+Negative kernel control: copy kernel-smoke/nat.ndjson, parse its JSON lines,
+replace the last record's `thm.value` (838) with expression index 0 (Sort 1),
+and write nat-invalid.ndjson. Keep the same nanoda configuration except for
+export_file_path. The unchanged export checked 52 declarations with zero type
+errors; the modified export exits 101 at `src/tc.rs:955` with a failed definitional
+ equality assertion. kernel-negative-control.json records the mutation, resulting
+file hash and actual stderr. This is rejection of one invalid proof, not a proof
+that nanoda has no checker bugs. The crash-style diagnostic is recorded verbatim.

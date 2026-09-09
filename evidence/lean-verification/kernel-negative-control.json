@@ -1,0 +1,11 @@
+{
+  "scope": "Negative control: replace final Nat.add_comm proof expression with Sort 1. This tests rejection of this invalid proof only.",
+  "mutation": {
+    "original_value_expression": 838,
+    "replacement_value_expression": 0
+  },
+  "export_sha256": "a12e501c6df59be37266d268f2c13e7f5d95a9bc6b7f4518e2f67d012a20ed6f",
+  "exit_code": 101,
+  "stdout": "",
+  "stderr": "\nthread 'main' (1) panicked at src/tc.rs:955:71:\nassertion failed: self.def_eq(u, v)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+}
