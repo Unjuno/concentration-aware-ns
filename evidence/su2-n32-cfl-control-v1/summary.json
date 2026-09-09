@@ -1,0 +1,14 @@
+{
+  "scope": "One-step control only; baseline first step failed residual threshold, so this is not a converged-to-converged accuracy comparison.",
+  "n": 32,
+  "CFL": 100,
+  "iterations": 1441,
+  "converged_steps": 1,
+  "baseline_CFL": 10,
+  "baseline_iterations": 3000,
+  "baseline_converged": false,
+  "velocity_max_component_difference_from_baseline_first_step": 4.193845273936417e-08,
+  "velocity_relative_l2_vs_reference": 0.0021426061084912303,
+  "archive_sha256": "dbe87cba7d339f9e3ec2c6ca56710ad31f4d82aab30cbc2822bebfce89b66d5d",
+  "baseline_first_restart_sha256": "a5fac9b039ede33936e240ee2e3def2d9c7ab4fca4601a03903aa89ca1bf4bc3"
+}
