@@ -1,0 +1,9 @@
+{
+  "image_id": "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643",
+  "build_exit_code": 0,
+  "pilots": {
+    "su2-pilot-v1": "fff4196dc58d5fef03641ab30998929e68c48219e78093a5d63601500d936e56",
+    "su2-pilot-v2": "6d6b5af4b017e1d98d2c142ca1c800d15acc19d6c2f8a3067e98815c1248add8"
+  },
+  "quality": "UNCERTAIN: time indexing unresolved"
+}

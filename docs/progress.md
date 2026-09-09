@@ -165,3 +165,22 @@ error, not an upstream bug. The rebuilt image is not yet certified or executed.
 The C++ velocity/forcing helper extracted literally from mms.patch independently
 matches the NumPy reference at 64 seeded points (maximum absolute differences
 8.33e-17 and 1.11e-16). This check excludes full SU2 assembly and scaling.
+
+## SU2 compiled and periodic pilot executed
+
+Pinned SU2/MMS image built successfully; image identity and build log are saved
+under evidence/su2. Two 8^3 periodic pilots ran five updates and exited with code
+zero. The 200-inner-iteration pilot stopped each update before reaching the
+requested residual threshold; it is retained as setup evidence. Raising the cap
+to 1000 yielded convergence in 545, 466, 462, 458 and 453 iterations, with all four
+reported log10 residuals below -10. Logged density=1 and viscosity=0.01 match the
+reference coefficients, and all three periodic pairs were matched.
+
+A time-indexing question must be resolved before assigning an error: history
+reports 0 through 0.004 for five dt=0.001 updates. At the pinned source,
+CSinglezoneDriver.cpp:120 passes TimeIter*dt to MMS, while the static first-order
+dual-time residual in CFVMFlowSolverBase.inl advances U^n to U^(n+1), from an exact
+t=0 initialization. This suggests a source/reference phase mismatch, but the
+localized pilot does not isolate it from spatial errors. Next verification:
+a spatially uniform, explicitly time-dependent manufactured control, preserving
+the main concentration benchmark. This is a candidate, not a reported defect.
