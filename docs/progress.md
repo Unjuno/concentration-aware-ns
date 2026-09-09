@@ -385,3 +385,13 @@ asymptotic temporal regime and complete uncertainty review are unresolved. The
 result is UNCERTAIN in all gate fields; no flags were promoted merely to obtain
 REPRODUCED. Aggregate measurements are read from recorded summaries, not inferred
 from prior commentary. The report also records why no upstream bug is filed.
+
+## First localized SU2 study case archived
+
+n16 completed all 50 updates with all residual criteria met and zero periodic
+duplicate mismatch. Velocity error=0.101648, continuum-reference energy error=
+0.120279, sampled FD2 gradient/vorticity peak errors≈0.374/0.376. The exact sampled
+reference itself has FD2 gradient-peak error≈0.281. This is a coarse-case accuracy
+failure, not a reproduced miss of the full conventional criteria: velocity alone
+already fails 2%. The n32 case is active. Interim report and hash-checked raw
+archive are published; no causal attribution to the time-contract question is made.

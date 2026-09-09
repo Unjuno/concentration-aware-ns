@@ -1,0 +1,17 @@
+{
+  "case": "n16-dt0.001",
+  "completed_steps": 50,
+  "converged_steps": 50,
+  "velocity_relative_l2": 0.10164793244804474,
+  "sampled_velocity_threshold": 0.02,
+  "sampled_velocity_criterion": "FAIL",
+  "continuum_reference_mean_energy": 0.06991747645268451,
+  "sampled_energy_relative_error": 0.1202787774156409,
+  "gradient_peak_relative_error_samples": 0.3744512534482272,
+  "vorticity_peak_relative_error_samples": 0.37584109730015397,
+  "reference_only_fd2_gradient_relative_error": 0.2813044117597624,
+  "periodic_duplicate_max_mismatch": 0.0,
+  "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+  "overall_quality": "UNCERTAIN",
+  "scope": "Coarse completed case; full space/time matrix incomplete. Failed velocity criterion is not a missed conventional acceptance."
+}
