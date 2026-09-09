@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "e44f67a2bc3c133c14856d73b697f77344b030e3fae2f798254b64dcefbbb772",
+  "challenge_files": {
+    "ComparatorChallenges/Euler.json": "56bc185a931f68d9a0f0265a3c00cb12771dccc85384eaf6546b37844b8adc84",
+    "ComparatorChallenges/Euler.lean": "b11e9bafc220c8126142a9c9281cfeab4872d8f74a7d4899fed206f7f6e1d4f7",
+    "ComparatorChallenges/NavierStokes.json": "7610ecead7b390d80ff7f4229a3ff8f18d630e046f7ad1de4f92c7e8e76845b8",
+    "ComparatorChallenges/NavierStokes.lean": "0cd193b8d5cbd0266e6e2f72e68dd5abcdcf2430ebd435dd9289737e9aa7da61",
+    "ComparatorChallenges/README.md": "f28c5f581d7bbc9504db467b88686a89ad5a94e4fd38b48a1866ae6224b5a1d8"
+  },
+  "scope": "Fresh archive extraction, only Lake path configuration changed. No solution compiled here yet. Shared dependency artifacts remain an explicit trust input."
+}
