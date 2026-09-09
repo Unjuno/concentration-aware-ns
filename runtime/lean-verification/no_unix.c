@@ -1,10 +1,12 @@
 /* Linux aarch64: deny new AF_UNIX sockets before executing a checker.
- * Not a complete sandbox; existing descriptors require separate control. */
+ * Close inherited descriptors and reject socket stdio; not a complete sandbox. */
 #include <errno.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/prctl.h>
+#include <sys/stat.h>
+#include <limits.h>
 #include <sys/socket.h>
 #include <sys/syscall.h>
 #include <linux/audit.h>
@@ -12,11 +14,24 @@
 #include <linux/seccomp.h>
 int main(int argc, char **argv) {
   if (argc < 2) { fprintf(stderr, "usage: no_unix COMMAND [ARGS]\n"); return 2; }
+  for (int fd = 0; fd < 3; fd++) {
+    struct stat st;
+    if (fstat(fd, &st) == 0 && S_ISSOCK(st.st_mode)) {
+      fprintf(stderr, "socket stdio rejected\n"); return 1;
+    }
+  }
+  if (syscall(__NR_close_range, 3U, UINT_MAX, 0U)) {
+    perror("close_range"); return 1;
+  }
   struct sock_filter code[] = {
     BPF_STMT(BPF_LD|BPF_W|BPF_ABS, offsetof(struct seccomp_data, arch)),
     BPF_JUMP(BPF_JMP|BPF_JEQ|BPF_K, AUDIT_ARCH_AARCH64, 1, 0),
     BPF_STMT(BPF_RET|BPF_K, SECCOMP_RET_KILL_PROCESS),
     BPF_STMT(BPF_LD|BPF_W|BPF_ABS, offsetof(struct seccomp_data, nr)),
+    BPF_JUMP(BPF_JMP|BPF_JEQ|BPF_K, __NR_io_uring_setup, 0, 1),
+    BPF_STMT(BPF_RET|BPF_K, SECCOMP_RET_ERRNO | EPERM),
+    BPF_JUMP(BPF_JMP|BPF_JEQ|BPF_K, __NR_pidfd_getfd, 0, 1),
+    BPF_STMT(BPF_RET|BPF_K, SECCOMP_RET_ERRNO | EPERM),
     BPF_JUMP(BPF_JMP|BPF_JEQ|BPF_K, __NR_socket, 1, 0),
     BPF_JUMP(BPF_JMP|BPF_JEQ|BPF_K, __NR_socketpair, 0, 3),
     BPF_STMT(BPF_LD|BPF_W|BPF_ABS, offsetof(struct seccomp_data, args[0])),

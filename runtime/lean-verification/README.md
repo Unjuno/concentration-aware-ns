@@ -113,3 +113,11 @@ Comparator README's systemd restriction: inherited descriptors and alternative
 interfaces such as io_uring need consideration before that claim. Keep this
 launcher experimental until those conditions and a complete Comparator run have
 been checked.
+
+The launcher now closes all inherited descriptors above stderr and rejects socket
+stdio. It denies io_uring_setup and pidfd_getfd to limit alternative socket
+creation/import paths. Extended positive/negative controls verify that an
+explicitly inherited socket is usable without the launcher but closed with it,
+and that socket stdin is rejected. The original child socket denial test still
+passes. See check_no_unix_extended.py and no-unix-extended.json. These are bounded
+controls, not proof against every kernel or sandbox escape.

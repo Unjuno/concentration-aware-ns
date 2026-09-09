@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Inherited socket descriptor closure, socket stdio rejection, and child syscall controls; not a complete sandbox audit.",
+  "results": {
+    "inherited_fd_baseline_exit": 0,
+    "inherited_fd_restricted_exit": 1,
+    "inherited_fd_restricted_stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nOSError: [Errno 9] Bad file descriptor\n",
+    "socket_stdio_exit": 1,
+    "socket_stdio_stderr": "socket stdio rejected\n",
+    "child_socket_creation": {
+      "unix_socket": "EPERM",
+      "unix_pair": "EPERM",
+      "inet_socket": "allowed"
+    }
+  }
+}
