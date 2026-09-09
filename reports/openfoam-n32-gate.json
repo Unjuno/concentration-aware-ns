@@ -42,7 +42,7 @@
     },
     "standard_acceptance_verified": {
       "path": "reports/openfoam-study-v1.md",
-      "sha256": "e2528a09361bb38d4f1f72dd04ddf49a13f53ee2dacb3d4a796d9f1213498668"
+      "sha256": "1884fb2741b355ef0e38622ee10c1be60330b6073956c2b3a2acdf94fd774fe9"
     }
   },
   "metrics": [
@@ -63,7 +63,7 @@
   "unresolved": [
     "Asymptotic temporal convergence not established",
     "Full standard acceptance review incomplete",
-    "Continuous peak upper bounds and full uncertainty budget unavailable"
+    "Reconstructed numerical-field peak bounds and full uncertainty budget unavailable"
   ],
   "observed_aggregate_thresholds": {
     "velocity_relative_l2": 0.018700085909315284,

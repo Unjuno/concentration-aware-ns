@@ -14,16 +14,20 @@ iteration criterion, not continuum accuracy by itself.
 
 For the 32³ case, velocity and energy errors are below the preregistered 2%
 aggregate thresholds. Nevertheless, the reported FD2 gradient and vorticity peaks
-underestimate the continuous maxima by at least approximately 13.12% and 13.17%,
-using analytic center-value lower bounds. This is a concrete diagnostic disparity.
-It is not evidence that the solver alone caused the peak error: exact-field
-sampling and FD2 account for an important part of the discrepancy.
+underestimate the continuous reference maxima by approximately 13.12% and 13.17%.
+The center values are now proved to be exact reference maxima in
+`docs/reference-global-peaks.md` (analytic derivation, not machine checked).
+For the gradient, sampling and FD2 applied to the exact field already produce a
+13.90% deficit; the computed FD2 peak is slightly higher than that control.
+Consequently the 13.12% figure must not be labeled isolated solver error.
+See `reports/peak-diagnostic-decomposition.md` for the signed decomposition and
+its limits: differences of maxima are not pointwise field errors.
 
 The temporal field differences are small, but their observed ratio gives an order
 of approximately 0.493 rather than demonstrating the expected asymptotic regime.
 The full space/time verification requirement therefore remains unresolved.
-Continuous peak upper bounds and a complete numerical uncertainty budget are also
-unavailable. The conservative v2 gate reports UNCERTAIN, even though specific
+Continuous reference maxima are analytically known; bounds for the reconstructed
+numerical field and a complete numerical uncertainty budget remain unavailable. The conservative v2 gate reports UNCERTAIN, even though specific
 aggregate thresholds and a one-sided peak discrepancy are individually observed.
 No claim of a fully reproduced acceptance failure or upstream bug is assigned.
 

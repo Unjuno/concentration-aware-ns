@@ -35,7 +35,7 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | reproduced diagnostic discrepancy; full acceptance hypothesis unverified | establish complete uncertainty budget |
+| OF-01 | residual convergence with inaccurate local gradients | diagnostic discrepancy largely present in exact-field FD2 control; full acceptance hypothesis unverified | establish complete uncertainty budget |
 | OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
 | SU-01 | conventional convergence with inaccurate local QoI | localized sweep running | complete grid/time matrix |

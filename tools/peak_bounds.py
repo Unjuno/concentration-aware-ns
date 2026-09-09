@@ -1,8 +1,9 @@
-"""One-sided analytic peak bounds for this MMS (not exact global extrema).
+"""Legacy one-sided interface for MMS peaks, now known to be exact global extrema.
 
 At x=(pi,pi,pi), Hessian(psi)=-exp(-t)/sigma^2 I. Thus
 ||grad u||_F=sqrt(28)exp(-t)/sigma^2 and ||curl u||=sqrt(56)exp(-t)/sigma^2.
-The true global maxima are at least these values. A reported peak below a
+The derivation in docs/reference-global-peaks.md proves these are global maxima.
+This legacy report deliberately retains its conservative one-sided fields. A reported peak below a
 threshold fraction of these lower bounds must underestimate the true maximum;
 a peak above them does not establish accuracy. Floating-point evaluation only.
 """

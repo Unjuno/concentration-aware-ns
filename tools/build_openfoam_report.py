@@ -25,7 +25,7 @@ report={'schema_version':2,'standard_acceptance':'UNCERTAIN','evidence':flags,
 'artifacts':{k:{'path':v,'sha256':hashlib.sha256(Path(v).read_bytes()).hexdigest()} for k,v in paths.items()},
 'metrics':[{'name':'max_'+name,'error_lower':bound[name]['relative_underestimation_lower_bound'],'error_upper':None,'tolerance':.05} for name in ('gradient','vorticity')],
 'scope':'Reported sampled FD2 peak versus continuum maximum. Floating-point evaluation of analytic lower bounds, not interval certification.',
-'unresolved':['Asymptotic temporal convergence not established','Full standard acceptance review incomplete','Continuous peak upper bounds and full uncertainty budget unavailable'],
+'unresolved':['Asymptotic temporal convergence not established','Full standard acceptance review incomplete','Reconstructed numerical-field peak bounds and full uncertainty budget unavailable'],
 'observed_aggregate_thresholds':{'velocity_relative_l2':case['velocity_relative_l2'],'energy_relative_error':energy['relative_error'],'velocity_tolerance':.02,'energy_tolerance':.02}}
 Path('reports/openfoam-n32-gate.json').write_text(json.dumps(report,indent=2)+'\n')
 Path('reports/openfoam-n32-verdict.json').write_text(json.dumps(evaluate(report,Path('.')),indent=2)+'\n')
