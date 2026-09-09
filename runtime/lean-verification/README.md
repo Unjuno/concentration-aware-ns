@@ -20,3 +20,37 @@ Source changes, if any are needed only for package path configuration, must be
 recorded separately from the original theorem source. Do not alter proof statements
 to obtain a successful check. A Lean build, cache reuse and independent kernel
 validation are distinct forms of evidence and must be reported separately.
+
+## Verified archive integration
+
+`use_archive_paths.py` rewrites only the project lake manifest and two direct
+requirements in lakefile.toml, preserving upstream backups. Run it after fetching
+and unpacking. `check_sources.py` compares every archived Lean source byte with
+the extracted copy; evidence/lean-verification/source-byte-check.json records
+counts and list hashes. This checks source identity, not theorem validity.
+
+The pinned Lean binary and `lake env lean --version` execute successfully in
+the existing SU2 Linux container image. The cache executable also builds.
+The initial downstream `lake exe cache get` exits because mathlib compares Git
+manifest entries with our path entries. No revision discrepancy is established
+by this diagnostic. The dependencies were fetched at their original pins.
+
+Run the built cache from mathlib's own directory under the project's Lake
+environment, preserving mathlib's original manifest and cache hash inputs:
+
+```sh
+docker run --rm --name cans-lean-cache \
+  -e XDG_CACHE_HOME=/verify/cache -e LEAN_NUM_THREADS=2 \
+  --entrypoint /bin/bash \
+  -v "$PWD/work/lean-verification:/verify" -w /verify/source \
+  concentration-aware-ns:su2 \
+  -c 'export PATH=/verify/toolchain/bin:$PATH; lake env bash -c "cd /verify/packages/mathlib && .lake/build/bin/cache get"'
+```
+
+Upstream Cache/Requests.lean runs the downstream manifest comparison only outside
+the mathlib root; Cache/IO.lean identifies that root by its Mathlib directory.
+This invocation requires no changes to the cache implementation or Lean sources.
+It successfully starts retrieval of 8,747 files from the official mathlib cache.
+Retrieval completion, project type checking, and independent Comparator/kernel
+checking remain separate outstanding steps. An origin warning is expected for
+source archives; the tool reports its official mathlib4 fallback explicitly.

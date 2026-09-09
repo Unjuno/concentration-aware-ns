@@ -1,0 +1,65 @@
+{
+  "scope": "Source byte identity only; not type checking or proof verification.",
+  "packages": [
+    {
+      "package": "project",
+      "unchanged_lean_files": 2486,
+      "source_list_sha256": "1705a471385516060d747028017af7fa3398f21fee77c3b26f4e0da4e8fc4710"
+    },
+    {
+      "package": "Comparator",
+      "unchanged_lean_files": 46,
+      "source_list_sha256": "ac9f5a87bc12a2faa4acb45fde9d1c476b55289c97674ef6fadac166d63504bd"
+    },
+    {
+      "package": "mathlib",
+      "unchanged_lean_files": 8933,
+      "source_list_sha256": "c26de40bac8175d8027f2175dfdf7229ac1426d678cd68b67e6d862a86dac0a2"
+    },
+    {
+      "package": "lean4export",
+      "unchanged_lean_files": 4,
+      "source_list_sha256": "5fbac737653911243e04d12166dddfd3db120c83c3a74573f1a31875a29259f6"
+    },
+    {
+      "package": "plausible",
+      "unchanged_lean_files": 28,
+      "source_list_sha256": "250c2c9e03e54e728040a290f579b665e61514617d21fc6e929c4010477c6100"
+    },
+    {
+      "package": "LeanSearchClient",
+      "unchanged_lean_files": 8,
+      "source_list_sha256": "3368f94f5fe667a839775b904f3d2dd6f8cdeec7f0ca11982218764945d8aa7a"
+    },
+    {
+      "package": "importGraph",
+      "unchanged_lean_files": 37,
+      "source_list_sha256": "4c6f581628419c7fd35afea6af01dbcc0ca4d830fcef5e68c7b6a99e4f40e9ce"
+    },
+    {
+      "package": "proofwidgets",
+      "unchanged_lean_files": 46,
+      "source_list_sha256": "cd445ec5d2f3acfb1c51cdd65d46dc7cd7a2807321ca0aae12d44a2aa3cfba6d"
+    },
+    {
+      "package": "aesop",
+      "unchanged_lean_files": 250,
+      "source_list_sha256": "46986d925cd65b7b7b75fead4d43663dd244ae25078b1bf8b1d0daeac2d9ea23"
+    },
+    {
+      "package": "Qq",
+      "unchanged_lean_files": 28,
+      "source_list_sha256": "4b76352302f6fff769627b3c9fdfd656cc8b49f36090d6cf7666dec6bd228f94"
+    },
+    {
+      "package": "batteries",
+      "unchanged_lean_files": 258,
+      "source_list_sha256": "8b59114f4943b5c62c21e9bff7053482d29fcc6d2e423fe6f1b5e9083e764f7d"
+    },
+    {
+      "package": "Cli",
+      "unchanged_lean_files": 5,
+      "source_list_sha256": "17bea997274712cec1008f57cc5d8578ba330bb10618fcb02e1368fee4da44b9"
+    }
+  ]
+}

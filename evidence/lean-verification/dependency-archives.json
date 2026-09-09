@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Comparator",
+    "revision": "19e111e2141cf333c7daff0f64c5f24acc91dd2e",
+    "url": "https://codeload.github.com/leanprover/comparator/tar.gz/19e111e2141cf333c7daff0f64c5f24acc91dd2e",
+    "sha256": "c1945f0dc463dfa125f5ef5fb89cd5e6e0dd3a88a225e945ef4db54cbb5be0ab"
+  },
+  {
+    "name": "mathlib",
+    "revision": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+    "url": "https://codeload.github.com/leanprover-community/mathlib4/tar.gz/85e3a25e006c35636f0e53b0e9296caca2685bc0",
+    "sha256": "24bce99dfdca4bda44c8f88218e688590e27c09309a86ce49a3e0fb684cd4e12"
+  },
+  {
+    "name": "lean4export",
+    "revision": "cacf989bd75f608700820f6afc595f32e7a99a4d",
+    "url": "https://codeload.github.com/leanprover/lean4export/tar.gz/cacf989bd75f608700820f6afc595f32e7a99a4d",
+    "sha256": "88924f160bcd1fee26b427ebcb041e7437bf0d50b23cafb970057690f9b975d6"
+  },
+  {
+    "name": "plausible",
+    "revision": "d9598f07b1bc701f1e3aae163d2681c1fd978793",
+    "url": "https://codeload.github.com/leanprover-community/plausible/tar.gz/d9598f07b1bc701f1e3aae163d2681c1fd978793",
+    "sha256": "3d2d55c52aea738ea00ec25464517e49466c0d473912ac8ad0492318429a2554"
+  },
+  {
+    "name": "LeanSearchClient",
+    "revision": "ba67e212be1197b84c1f1f6299488a10a3002713",
+    "url": "https://codeload.github.com/leanprover-community/LeanSearchClient/tar.gz/ba67e212be1197b84c1f1f6299488a10a3002713",
+    "sha256": "86b310055ff6437f1fc460d852a8577594365d46cacb254ad359f2ec0f846be3"
+  },
+  {
+    "name": "importGraph",
+    "revision": "d8823026ac7ef130c253089d95685f9877b95323",
+    "url": "https://codeload.github.com/leanprover-community/import-graph/tar.gz/d8823026ac7ef130c253089d95685f9877b95323",
+    "sha256": "ef24b44b5223e95d69cf02319c5cbbd401f2f691c324e68a83b909f728b15268"
+  },
+  {
+    "name": "proofwidgets",
+    "revision": "a8acbfd87375ff4abe14ce09db5b7664d383bc7f",
+    "url": "https://codeload.github.com/leanprover-community/ProofWidgets4/tar.gz/a8acbfd87375ff4abe14ce09db5b7664d383bc7f",
+    "sha256": "0462ac10edf88065afee6d34af3f471363dc4c3e24982ee4a387cc09132c8e93"
+  },
+  {
+    "name": "aesop",
+    "revision": "18889deb9e83ea7420ef51c160d6f88552e744e3",
+    "url": "https://codeload.github.com/leanprover-community/aesop/tar.gz/18889deb9e83ea7420ef51c160d6f88552e744e3",
+    "sha256": "f32aea9788f64585ce6e76754670d4851477c4444ab819adc659e71416644023"
+  },
+  {
+    "name": "Qq",
+    "revision": "507746ab8f4b643ccdacb2ec4cdb5853fa9f8ab3",
+    "url": "https://codeload.github.com/leanprover-community/quote4/tar.gz/507746ab8f4b643ccdacb2ec4cdb5853fa9f8ab3",
+    "sha256": "fedf39dd42040d2b34d68f8266c45788b37f2fa745fe244453bfcbc85ddb8e36"
+  },
+  {
+    "name": "batteries",
+    "revision": "d54dddc581e08be364c278052863524bff7a99a9",
+    "url": "https://codeload.github.com/leanprover-community/batteries/tar.gz/d54dddc581e08be364c278052863524bff7a99a9",
+    "sha256": "fb23eccad3a67d3f40a1f09ed1b7d84eb39bd404855e82f65a0a93a2668ebafb"
+  },
+  {
+    "name": "Cli",
+    "revision": "ab3a82db9fea14cf0fd7f5a2de650f4b534640af",
+    "url": "https://codeload.github.com/leanprover/lean4-cli/tar.gz/ab3a82db9fea14cf0fd7f5a2de650f4b534640af",
+    "sha256": "5f7ed1105ec3228de462b5cd5e6a85bba3726238d7c35c28d86173d80d6c69ce"
+  }
+]

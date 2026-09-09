@@ -1,0 +1,3 @@
+warning: manifest out of date: source kind (git/path) of dependency 'mathlib' changed; use `lake update mathlib` to update it
+warning: manifest out of date: source kind (git/path) of dependency 'Comparator' changed; use `lake update Comparator` to update it
+Lean (version 4.34.0-rc2, aarch64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)
