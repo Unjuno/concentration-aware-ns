@@ -1,0 +1,26 @@
+{
+  "observed_at_utc": "2026-09-09T07:26:13.380957+00:00",
+  "upstream_commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "exit_code": 0,
+  "exec_session": 36434,
+  "configuration": {
+    "challenge_module": "ComparatorChallenges.NavierStokes",
+    "solution_module": "NavierStokes.ComparatorSolution",
+    "enable_nanoda": true,
+    "theorem_names": [
+      "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+      "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "log": "evidence/lean-verification/comparator-ns-native-owned.log",
+  "log_sha256": "ec43689cc54201bfc23937e2d4a383965ea069281751566449abb888b340eb0c",
+  "nanoda_accepted": true,
+  "lean_default_kernel_accepted": true,
+  "comparator_final_success": true,
+  "scope": "Pinned NavierStokes challenge only. Does not independently establish physical applicability or validate Euler challenge."
+}
