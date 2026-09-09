@@ -1,3 +1,6 @@
+test_nonfinite_rejected (test_amr_reader.AmrReaderTests.test_nonfinite_rejected) ... ok
+test_nonuniform_volumes_preserve_weights (test_amr_reader.AmrReaderTests.test_nonuniform_volumes_preserve_weights) ... ok
+test_uniform_volume_field (test_amr_reader.AmrReaderTests.test_uniform_volume_field) ... ok
 test_invalid_numeric_values (test_gate.GateTests.test_invalid_numeric_values) ... ok
 test_missing_evidence_never_reproduces (test_gate.GateTests.test_missing_evidence_never_reproduces) ... ok
 test_missing_required_metric (test_gate.GateTests.test_missing_required_metric) ... ok
@@ -13,6 +16,6 @@ test_independent_finite_difference_residual_converges (test_reference.ReferenceT
 test_invalid_width (test_reference.ReferenceTests.test_invalid_width) ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 0.331s
+Ran 16 tests in 0.042s
 
 OK

@@ -20,9 +20,14 @@ def archive():
         time_dir=next(p for p in case.iterdir() if p.is_dir() and p.name[0].isdigit() and float(p.name)==d['parameters']['end'])
         files += [time_dir/name for name in ('U','p','C')]
         dest=target/(case.name+'.tar.gz')
-        with tarfile.open(dest,'w:gz') as tar:
-            for p in files:
-                tar.add(p,arcname=str(p.relative_to(case)))
+        if dest.exists():
+            with tarfile.open(dest,'r:gz') as tar:
+                if tar.extractfile('diagnostics.json').read() != (case/'diagnostics.json').read_bytes():
+                    raise ValueError(f'Existing archive differs; version explicitly: {dest}')
+        else:
+            with tarfile.open(dest,'w:gz') as tar:
+                for p in files:
+                    tar.add(p,arcname=str(p.relative_to(case)))
         rows.append({'case':case.name,'velocity_relative_l2':d['velocity_relative_l2'],
                      'gradient_peak_relative_error_cell_samples':d['gradient_peak_relative_error_cell_samples'],
                      'reference_only_fd_gradient_error':abs(d['reference_sampled_fd2']['max_gradient_fd2']-d['reference_gradient_peak_cell_samples'])/d['reference_gradient_peak_cell_samples'],

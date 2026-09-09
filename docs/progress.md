@@ -97,3 +97,32 @@ matches within 8e-15. This mock assembly test does not prove the solver's force
 sign convention. Raw JSON results and runnable check scripts are preserved.
 Added one-sided analytic center bounds for continuous peaks, avoiding a claim
 that cell-sampled analytic maxima are the true continuous maxima.
+
+## AMR comparison completed; attribution still open
+
+AMR study-v1 completed all three budgets at t=0.05:
+
+| maxCells | final cells | volume-weighted velocity relative L2 |
+|---|---:|---:|
+| 4096 | 4096 | 0.0654077 |
+| 5000 | 7624 | 0.275639 |
+| 100000 | 30416 | 0.280839 |
+
+The budget-only limit is not an exact cell-count ceiling. A source-tree example
+labels maxCells approximate; the observed overshoot is not classified as a defect.
+The no-refinement control matches the uniform 16^3 result. Increased refinement
+in this transient initialization does not reduce the velocity error. Coarse-to-fine
+initial-field interpolation and mesh/flux correction remain confounders. Next
+control: reuse the refined mesh with the analytic field initialized directly on
+that mesh, then solve without remeshing. No upstream defect claim is warranted.
+
+AMR setup corrections were to our adapter: Foundation uses time().name(), mesh
+changes need pcorr solver settings, and writeCellVolumes writes Vc. A no-refinement
+run need not emit cellLevel; the reader records its initial-grid/no-refinement
+inference explicitly rather than pretending a level file existed. The completed
+4096 case was reanalyzed, not rerun. Raw artifacts are in evidence/of13-amr-v1.
+16 unit tests pass, including nonuniform/constant volume field parsing.
+
+Uniform dt=0.0005 also completed with velocity relative L2 0.00491960; the final
+dt=0.00025 run remains active. The nearly unchanged error indicates spatial error
+may dominate; final temporal comparison is needed before concluding separation.

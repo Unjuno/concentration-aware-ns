@@ -1,0 +1,103 @@
+{
+  "expected_cases": 3,
+  "completed_cases": 3,
+  "quality": "UNCERTAIN",
+  "cases": [
+    {
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "sigma": 0.5,
+        "nu": 0.01,
+        "purpose": "AMR integration pilot, not production",
+        "amr": {
+          "maxCells": 100000,
+          "maxRefinement": 2,
+          "refineInterval": 2,
+          "sensor": "analytic exp(sum(cos(x-pi)-1)/sigma^2); recomputed by source hook before next adaptation"
+        }
+      },
+      "cells": 30416,
+      "level_counts": {
+        "0": 3472,
+        "1": 1856,
+        "2": 25088
+      },
+      "level_source": "written cellLevel field",
+      "cell_budget_reached_or_exceeded": false,
+      "max_level_reached": true,
+      "blocked_candidate_count": "UNOBSERVED",
+      "velocity_relative_volume_l2": 0.2808393894045173,
+      "max_gradient_gauss": 30.654536522992416,
+      "reference_max_gradient_cell_samples": 19.780495358756017,
+      "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+      "quality": "UNCERTAIN",
+      "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders.",
+      "archive_sha256": "3b018829437498da8eeac80eb42448fc41689826a100946823835c4419f568c8"
+    },
+    {
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "sigma": 0.5,
+        "nu": 0.01,
+        "purpose": "AMR integration pilot, not production",
+        "amr": {
+          "maxCells": 4096,
+          "maxRefinement": 2,
+          "refineInterval": 2,
+          "sensor": "analytic exp(sum(cos(x-pi)-1)/sigma^2); recomputed by source hook before next adaptation"
+        }
+      },
+      "cells": 4096,
+      "level_counts": {
+        "0": 4096
+      },
+      "level_source": "initial blockMesh count and no refinement events; budget disallows refinement",
+      "cell_budget_reached_or_exceeded": true,
+      "max_level_reached": false,
+      "blocked_candidate_count": "UNOBSERVED",
+      "velocity_relative_volume_l2": 0.06540772326711215,
+      "max_gradient_gauss": 11.849748798010975,
+      "reference_max_gradient_cell_samples": 15.275137433842028,
+      "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+      "quality": "UNCERTAIN",
+      "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders.",
+      "archive_sha256": "31ad29d51d947383b2be029a467e24f4f59926392d95a49e3f83669b6c02872f"
+    },
+    {
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "sigma": 0.5,
+        "nu": 0.01,
+        "purpose": "AMR integration pilot, not production",
+        "amr": {
+          "maxCells": 5000,
+          "maxRefinement": 2,
+          "refineInterval": 2,
+          "sensor": "analytic exp(sum(cos(x-pi)-1)/sigma^2); recomputed by source hook before next adaptation"
+        }
+      },
+      "cells": 7624,
+      "level_counts": {
+        "0": 3592,
+        "1": 4032
+      },
+      "level_source": "written cellLevel field",
+      "cell_budget_reached_or_exceeded": true,
+      "max_level_reached": false,
+      "blocked_candidate_count": "UNOBSERVED",
+      "velocity_relative_volume_l2": 0.27563885219966916,
+      "max_gradient_gauss": 16.095152549343457,
+      "reference_max_gradient_cell_samples": 18.763802163240758,
+      "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+      "quality": "UNCERTAIN",
+      "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders.",
+      "archive_sha256": "d84d28c9fde9d60db505c7041233f044697d4075722ccf60fc4746b14eb6d97e"
+    }
+  ]
+}

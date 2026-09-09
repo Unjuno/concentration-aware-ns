@@ -52,3 +52,12 @@ implements them. Selecting USER_DEFINED_SOLUTION in a config alone does not
 provide our MMS; an adapter patch and build are necessary. This is documented
 extension scaffolding, not a newly discovered bug.
 Source: https://github.com/su2code/SU2/blob/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/Common/src/toolboxes/MMS/CUserDefinedSolution.cpp
+
+### Current PhysicsNeMo API evidence
+
+v2.2.1 resolves to `1b961314e42a0625502ba1592d25f706f1e02a24`.
+The current ldc_pinns example (Apache-2.0 header) defines its PDE inline and uses
+PhysicsInformer with autodiff. It is steady 2D, so cannot itself stand in for the
+required transient 3D forced MMS. The adapter must explicitly add the third
+coordinate, time derivative, forcing and periodic conditions.
+Source: https://github.com/NVIDIA/physicsnemo/blob/1b961314e42a0625502ba1592d25f706f1e02a24/examples/cfd/ldc_pinns/train.py
