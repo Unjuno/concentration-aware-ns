@@ -70,3 +70,7 @@ speculative findings.
 
 Original files use MIT; upstream software retains its own licenses. Do not copy
 upstream source into this repository without preserving its applicable terms.
+
+The pinned OpenAI Navier–Stokes challenge passed the recorded independent check;
+see [verification result and scope](reports/openai-ns-independent-verification.md).
+This result is separate from the report replay and numerical benchmark gates.

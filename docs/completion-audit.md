@@ -14,10 +14,10 @@ measured behavior take precedence over prior progress summaries.
 | SU2 3-space/multiple-time comparison | Live study-v1 process and per-step history | Incomplete; n16 completed and archived, n32 container confirmed running; remaining cases pending |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2 comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker and 25 passing unit tests | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
+| Evidence-linked acceptance gate | v2 checker and 28 passing unit tests | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
-| OpenAI construction audit and transfer | Pinned predicates, witness interface, scaling derivation | Pinned source-byte audit and mathlib cache retrieval complete; NS proof build running. Independent proof closure and finite-stage extraction not verified |
+| OpenAI construction audit and transfer | Pinned predicates, witness interface, scaling derivation | Pinned NS challenge accepted by nanoda, Lean default kernel and Comparator with exit code 0; see reports/openai-ns-independent-verification.md. Finite-stage extraction and Euler challenge not independently verified |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Substantial artifacts published; final report and replay coverage still incomplete |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
