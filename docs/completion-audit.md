@@ -11,7 +11,7 @@ measured behavior take precedence over prior progress summaries.
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; asymptotic temporal convergence not established |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
-| SU2 3-space/multiple-time comparison | Live study-v1 process and per-step history | Incomplete; n16 completed and archived, n32 container confirmed running; remaining cases pending |
+| SU2 3-space/multiple-time comparison | Live study-v1 process and per-step history | Incomplete; n16 and n32 completed and archived, both fail the velocity threshold; n32 passes residual thresholds in 48/50 updates. n64 container confirmed running; remaining time-step cases pending |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2 comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
 | Evidence-linked acceptance gate | v2 checker and 28 passing unit tests | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
