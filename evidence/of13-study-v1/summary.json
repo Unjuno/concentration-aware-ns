@@ -1,6 +1,6 @@
 {
   "expected_cases": 5,
-  "completed_cases": 4,
+  "completed_cases": 5,
   "quality": "UNCERTAIN",
   "cases": [
     {
@@ -20,6 +20,15 @@
       "time_steps": 50,
       "outer_converged_steps": 50,
       "archive_sha256": "38659ceb8c8f87ee32e5db415deeb3b3e6a90505fa0eb76cf2763e1834878953"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "velocity_relative_l2": 0.004922647131639477,
+      "gradient_peak_relative_error_cell_samples": 0.017300592373775573,
+      "reference_only_fd_gradient_error": 0.020401992723900753,
+      "time_steps": 200,
+      "outer_converged_steps": 200,
+      "archive_sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f"
     },
     {
       "case": "n64-dt0.0005",

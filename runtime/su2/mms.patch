@@ -1,0 +1,106 @@
+--- a/Common/include/toolboxes/MMS/CUserDefinedSolution.hpp
++++ b/Common/include/toolboxes/MMS/CUserDefinedSolution.hpp
+@@ -37,6 +37,8 @@
+  * \author E. van der Weide, T. Economon
+  */
+ class CUserDefinedSolution final : public CVerificationSolution {
++ private:
++  su2double mmsDensity=1.0, mmsNu=0.01, mmsTemperature=1.0;
+  public:
+   /*!
+    * \brief Constructor of the class.
+--- a/Common/src/toolboxes/MMS/CUserDefinedSolution.cpp
++++ b/Common/src/toolboxes/MMS/CUserDefinedSolution.cpp
+@@ -25,44 +25,56 @@
+  * License along with SU2. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++// Modified for concentration-aware-ns: smooth periodic transient 3D MMS.
+ #include "../../../include/toolboxes/MMS/CUserDefinedSolution.hpp"
+-
++namespace {
++void localized(const su2double* x, su2double t, su2double nu, su2double* u, su2double* f) {
++  const su2double a[3]={1,2,3};
++  su2double q[3],r[3],s[3],exponent=-t,trace=0;
++  for(int j=0;j<3;++j) {
++    const su2double d=x[j]-acos(-1.0);
++    q[j]=-sin(d)/0.25; r[j]=-cos(d)/0.25; s[j]=sin(d)/0.25;
++    exponent+=(cos(d)-1)/0.25; trace+=q[j]*q[j]+r[j];
++  }
++  const su2double psi=exp(exponent);
++  auto cross=[&](const su2double* v,su2double* out) {
++    for(int i=0;i<3;++i) out[i]=v[(i+1)%3]*a[(i+2)%3]-v[(i+2)%3]*a[(i+1)%3];
++  };
++  su2double g[3];for(int i=0;i<3;++i)g[i]=psi*q[i];cross(g,u);
++  su2double conv[3]={0,0,0};
++  for(int j=0;j<3;++j) {
++    su2double h[3],du[3];
++    for(int i=0;i<3;++i)h[i]=psi*(q[i]*q[j]+(i==j?r[i]:0));
++    cross(h,du);for(int i=0;i<3;++i)conv[i]+=u[j]*du[i];
++  }
++  su2double lg[3],lap[3];
++  for(int i=0;i<3;++i)lg[i]=psi*(q[i]*trace+2*q[i]*r[i]+s[i]);
++  cross(lg,lap);for(int i=0;i<3;++i)f[i]=-u[i]+conv[i]-nu*lap[i];
++}
++}
+ CUserDefinedSolution::CUserDefinedSolution() : CVerificationSolution() {}
+-
+-CUserDefinedSolution::CUserDefinedSolution(unsigned short val_nDim, unsigned short val_nVar, unsigned short val_iMesh,
+-                                           CConfig* config)
+-    : CVerificationSolution(val_nDim, val_nVar, val_iMesh, config) {
+-  /*--- Write a message that the solution is initialized for a
+-   user-defined verification case. ---*/
+-
+-  if ((rank == MASTER_NODE) && (val_iMesh == MESH_0)) {
+-    cout << endl;
+-    cout << "Warning: Fluid properties and solution are being " << endl;
+-    cout << "         initialized for a user-defined verification case!!!" << endl;
+-    cout << endl << flush;
+-  }
+-
+-  SU2_MPI::Error("User must implement this function", CURRENT_FUNCTION);
++CUserDefinedSolution::CUserDefinedSolution(unsigned short nd,unsigned short nv,unsigned short im,CConfig* config)
++ : CVerificationSolution(nd,nv,im,config) {
++  if(nd!=3 || Kind_Solver!=MAIN_SOLVER::INC_NAVIER_STOKES || config->GetEnergy_Equation())
++    SU2_MPI::Error("MMS requires 3D incompressible Navier Stokes with energy disabled", CURRENT_FUNCTION);
++  if(config->GetKind_FluidModel()!=CONSTANT_DENSITY || config->GetKind_ViscosityModel()!=VISCOSITYMODEL::CONSTANT)
++    SU2_MPI::Error("MMS requires constant density and viscosity", CURRENT_FUNCTION);
++  mmsDensity=config->GetDensity_FreeStreamND();
++  mmsNu=config->GetViscosity_FreeStreamND()/mmsDensity;
++  mmsTemperature=config->GetTemperature_FreeStreamND();
++  if(fabs(mmsDensity-1.0)>1e-12 || fabs(mmsNu-0.01)>1e-12)
++    SU2_MPI::Error("MMS benchmark requires nondimensional rho=1 and nu=0.01", CURRENT_FUNCTION);
+ }
+-
+-CUserDefinedSolution::~CUserDefinedSolution() = default;
+-
+-void CUserDefinedSolution::GetBCState(const su2double* val_coords, const su2double val_t,
+-                                      su2double* val_solution) const {
+-  SU2_MPI::Error("User must implement this function", CURRENT_FUNCTION);
++CUserDefinedSolution::~CUserDefinedSolution()=default;
++void CUserDefinedSolution::GetSolution(const su2double* x,const su2double t,su2double* out) const {
++  su2double u[3],f[3];localized(x,t,mmsNu,u,f);
++  for(unsigned short i=0;i<nVar;++i)out[i]=0;
++  for(int i=0;i<3;++i)out[i+1]=u[i];out[nVar-1]=mmsTemperature;
+ }
+-
+-void CUserDefinedSolution::GetSolution(const su2double* val_coords, const su2double val_t,
+-                                       su2double* val_solution) const {
+-  SU2_MPI::Error("User must implement this function", CURRENT_FUNCTION);
++void CUserDefinedSolution::GetBCState(const su2double* x,const su2double t,su2double* out) const {GetSolution(x,t,out);}
++void CUserDefinedSolution::GetMMSSourceTerm(const su2double* x,const su2double t,su2double* out) const {
++  su2double u[3],f[3];localized(x,t,mmsNu,u,f);
++  for(unsigned short i=0;i<nVar;++i)out[i]=0;
++  for(int i=0;i<3;++i)out[i+1]=mmsDensity*f[i];
+ }
+-
+-void CUserDefinedSolution::GetMMSSourceTerm(const su2double* val_coords, const su2double val_t,
+-                                            su2double* val_source) const {
+-  SU2_MPI::Error("User must implement this function", CURRENT_FUNCTION);
+-}
+-
+-bool CUserDefinedSolution::IsManufacturedSolution() const {
+-  SU2_MPI::Error("User must implement this function", CURRENT_FUNCTION);
+-  return false; /* True if manufactured. */
+-}
++bool CUserDefinedSolution::IsManufacturedSolution() const {return true;}

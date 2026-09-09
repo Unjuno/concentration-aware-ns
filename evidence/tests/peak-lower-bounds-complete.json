@@ -1,0 +1,62 @@
+{
+  "n16-dt0.001": {
+    "gradient": {
+      "analytic_peak_lower_bound": 20.13373197596784,
+      "reported_fd2_peak": 11.84974879801097,
+      "relative_underestimation_lower_bound": 0.4114479713867679
+    },
+    "vorticity": {
+      "analytic_peak_lower_bound": 28.473396821598573,
+      "reported_fd2_peak": 16.665214530906123,
+      "relative_underestimation_lower_bound": 0.4147092938955327
+    }
+  },
+  "n32-dt0.001": {
+    "gradient": {
+      "analytic_peak_lower_bound": 20.13373197596784,
+      "reported_fd2_peak": 17.492172410209747,
+      "relative_underestimation_lower_bound": 0.13120069189910388
+    },
+    "vorticity": {
+      "analytic_peak_lower_bound": 28.473396821598573,
+      "reported_fd2_peak": 24.724297231617022,
+      "relative_underestimation_lower_bound": 0.13167026096224888
+    }
+  },
+  "n64-dt0.00025": {
+    "gradient": {
+      "analytic_peak_lower_bound": 20.13373197596784,
+      "reported_fd2_peak": 19.43828107160282,
+      "relative_underestimation_lower_bound": 0.03454157953404413
+    },
+    "vorticity": {
+      "analytic_peak_lower_bound": 28.473396821598573,
+      "reported_fd2_peak": 27.488816851823113,
+      "relative_underestimation_lower_bound": 0.03457894314276566
+    }
+  },
+  "n64-dt0.0005": {
+    "gradient": {
+      "analytic_peak_lower_bound": 20.13373197596784,
+      "reported_fd2_peak": 19.438815863013605,
+      "relative_underestimation_lower_bound": 0.034515017572683826
+    },
+    "vorticity": {
+      "analytic_peak_lower_bound": 28.473396821598573,
+      "reported_fd2_peak": 27.48956920861783,
+      "relative_underestimation_lower_bound": 0.03455251999418829
+    }
+  },
+  "n64-dt0.001": {
+    "gradient": {
+      "analytic_peak_lower_bound": 20.13373197596784,
+      "reported_fd2_peak": 19.439591333925232,
+      "relative_underestimation_lower_bound": 0.03447650156817195
+    },
+    "vorticity": {
+      "analytic_peak_lower_bound": 28.473396821598573,
+      "reported_fd2_peak": 27.490666220455974,
+      "relative_underestimation_lower_bound": 0.0345139923873482
+    }
+  }
+}

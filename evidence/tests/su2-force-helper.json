@@ -1,0 +1,11 @@
+{
+  "points": 64,
+  "seed": 984,
+  "time": 0.037,
+  "maximum_absolute_errors": {
+    "u": 8.326672684688674e-17,
+    "force": 1.1102230246251565e-16
+  },
+  "patch_sha256": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83",
+  "scope": "Compiled patch helper using double; not full SU2 integration, source sign, or nondimensionalization verification."
+}

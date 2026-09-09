@@ -16,6 +16,6 @@ test_independent_finite_difference_residual_converges (test_reference.ReferenceT
 test_invalid_width (test_reference.ReferenceTests.test_invalid_width) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 0.042s
+Ran 16 tests in 0.051s
 
 OK

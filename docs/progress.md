@@ -136,3 +136,32 @@ was verified. Final mesh geometry alone therefore does not explain the large AMR
 errors. Initial coarse-field representation, interpolation and dynamic flux
 correction remain the relevant combined confounder; this control does not isolate
 those individually. Raw artifacts: evidence/of13-remap-control-v1.
+
+## Uniform space/time sweep completed
+
+All five study-v1 cases reached t=0.05, with outer convergence recorded at every
+physical step (50, 50, 50, 100, 200 steps). The final dt=0.00025 velocity error is
+0.00492265. On the 64^3 mesh, adjacent temporal field differences normalized by
+the finest solution are 2.08819e-5 and 1.48385e-5. Their observed difference order
+is only 0.493; the results do not establish asymptotic first-order temporal
+convergence or justify Richardson extrapolation. They show small sensitivity
+for these three time steps while the total error remains about 0.49%.
+
+At 32^3 the velocity L2 error is below the preregistered 2% threshold, while the
+FD2 gradient peak underestimates the continuous maximum by at least 13.12%, using
+a one-sided analytic lower bound. This is a concrete mismatch between aggregate
+velocity accuracy and the reported local diagnostic. It is not an upstream
+solver defect: exact-reference sampling and finite differences are substantial
+contributors, and full standard acceptance and uncertainty gates remain open.
+Raw fifth-case archive and complete peak bounds are preserved. Reproduce the
+temporal comparison with `python3 -m tools.compare_openfoam_time`.
+
+## SU2 adapter build in progress
+
+The first build failed because our recipe disabled downloading MEL without
+providing its headers. The corrected recipe explicitly fetches and verifies the
+upstream-pinned MEL archive, alongside SU2 and Eigen. This is an experiment setup
+error, not an upstream bug. The rebuilt image is not yet certified or executed.
+The C++ velocity/forcing helper extracted literally from mms.patch independently
+matches the NumPy reference at 64 seeded points (maximum absolute differences
+8.33e-17 and 1.11e-16). This check excludes full SU2 assembly and scaling.
