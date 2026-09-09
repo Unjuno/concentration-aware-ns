@@ -1,0 +1,50 @@
+Building ComparatorChallenges.NavierStokes
+⚠ [8763/8763] Built ComparatorChallenges.NavierStokes (14s)
+warning: ComparatorChallenges/NavierStokes.lean:273:8: declaration uses `sorry`
+warning: ComparatorChallenges/NavierStokes.lean:280:8: declaration uses `sorry`
+Build completed successfully (8763 jobs).
+Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, NavierStokes.Comparator.navier_stokes_breakdown_R3, NavierStokes.Comparator.navier_stokes_breakdown_periodic, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from ComparatorChallenges.NavierStokes
+Building NavierStokes.ComparatorSolution
+✔ [6294/6373] Built NavierStokes.ProblemStatement (13s)
+✔ [7033/7110] Built NavierStokes.R3.ComparisonGronwall (19s)
+✔ [7043/7125] Built NavierStokes.R3.ScalarEnergyBound (19s)
+✔ [7074/7150] Built NavierStokes.R3.TemporalTestUniqueness (19s)
+✔ [7102/7178] Built NavierStokes.R3.HilbertFunctionalExtension (19s)
+✔ [7417/7493] Built NavierStokes.R3.ComparisonYoung (21s)
+✔ [8768/8844] Built NavierStokes.R3.CompactForceBound (17s)
+✔ [8769/8847] Built NavierStokes.R3.ProblemStatement (19s)
+✔ [8770/8847] Built NavierStokes.PeriodicIntegration (22s)
+✔ [8771/8847] Built NavierStokes.R3.ComparisonRateBound (15s)
+✔ [8772/8848] Built NavierStokes.DiagonalScale (25s)
+✔ [8773/8855] Built NavierStokes.PeriodicLocalization (27s)
+✔ [8774/8857] Built NavierStokes.SmoothCutoffs (31s)
+✔ [8775/8857] Built NavierStokes.ResidualRegularity (32s)
+✔ [8776/8862] Built NavierStokes.R3.CompactSchwartz (33s)
+✔ [8777/8862] Built NavierStokes.ResidualCalculus (32s)
+✔ [8778/8862] Built NavierStokes.SpatialCurl (43s)
+✔ [8779/8862] Built NavierStokes.R3.CompactTimeIntegral (35s)
+✖ [8780/8866] Building NavierStokes.SolenoidalDiagonal (14s)
+trace: .> LEAN_PATH=/verify/packages/Cli/.lake/build/lib/lean:/verify/packages/batteries/.lake/build/lib/lean:/verify/packages/Qq/.lake/build/lib/lean:/verify/packages/aesop/.lake/build/lib/lean:/verify/packages/proofwidgets/.lake/build/lib/lean:/verify/packages/importGraph/.lake/build/lib/lean:/verify/packages/LeanSearchClient/.lake/build/lib/lean:/verify/packages/plausible/.lake/build/lib/lean:/verify/packages/lean4export/.lake/build/lib/lean:/verify/packages/mathlib/.lake/build/lib/lean:/verify/packages/Comparator/.lake/build/lib/lean:/verify/independent-source/.lake/build/lib/lean /verify/toolchain/bin/lean /verify/independent-source/NavierStokes/SolenoidalDiagonal.lean -o /verify/independent-source/.lake/build/lib/lean/NavierStokes/SolenoidalDiagonal.olean -i /verify/independent-source/.lake/build/lib/lean/NavierStokes/SolenoidalDiagonal.ilean -c /verify/independent-source/.lake/build/ir/NavierStokes/SolenoidalDiagonal.c --setup /verify/independent-source/.lake/build/ir/NavierStokes/SolenoidalDiagonal.setup.json --json
+error: NavierStokes/SolenoidalDiagonal.lean:1:0: failed to open file '/verify/packages/aesop/.lake/build/lib/lean/Aesop/Frontend/Tactic.olean': Too many open files
+✖ [8781/8866] Building NavierStokes.AxisymmetricFields (13s)
+trace: .> LEAN_PATH=/verify/packages/Cli/.lake/build/lib/lean:/verify/packages/batteries/.lake/build/lib/lean:/verify/packages/Qq/.lake/build/lib/lean:/verify/packages/aesop/.lake/build/lib/lean:/verify/packages/proofwidgets/.lake/build/lib/lean:/verify/packages/importGraph/.lake/build/lib/lean:/verify/packages/LeanSearchClient/.lake/build/lib/lean:/verify/packages/plausible/.lake/build/lib/lean:/verify/packages/lean4export/.lake/build/lib/lean:/verify/packages/mathlib/.lake/build/lib/lean:/verify/packages/Comparator/.lake/build/lib/lean:/verify/independent-source/.lake/build/lib/lean /verify/toolchain/bin/lean /verify/independent-source/NavierStokes/AxisymmetricFields.lean -o /verify/independent-source/.lake/build/lib/lean/NavierStokes/AxisymmetricFields.olean -i /verify/independent-source/.lake/build/lib/lean/NavierStokes/AxisymmetricFields.ilean -c /verify/independent-source/.lake/build/ir/NavierStokes/AxisymmetricFields.c --setup /verify/independent-source/.lake/build/ir/NavierStokes/AxisymmetricFields.setup.json --json
+error: NavierStokes/AxisymmetricFields.lean:1:0: failed to open file '/verify/toolchain/lib/lean/Std/Time/Date/ValidDate.ir.sig': Too many open files
+✖ [8783/8866] Building NavierStokes.TimeLocalization (14s)
+trace: .> LEAN_PATH=/verify/packages/Cli/.lake/build/lib/lean:/verify/packages/batteries/.lake/build/lib/lean:/verify/packages/Qq/.lake/build/lib/lean:/verify/packages/aesop/.lake/build/lib/lean:/verify/packages/proofwidgets/.lake/build/lib/lean:/verify/packages/importGraph/.lake/build/lib/lean:/verify/packages/LeanSearchClient/.lake/build/lib/lean:/verify/packages/plausible/.lake/build/lib/lean:/verify/packages/lean4export/.lake/build/lib/lean:/verify/packages/mathlib/.lake/build/lib/lean:/verify/packages/Comparator/.lake/build/lib/lean:/verify/independent-source/.lake/build/lib/lean /verify/toolchain/bin/lean /verify/independent-source/NavierStokes/TimeLocalization.lean -o /verify/independent-source/.lake/build/lib/lean/NavierStokes/TimeLocalization.olean -i /verify/independent-source/.lake/build/lib/lean/NavierStokes/TimeLocalization.ilean -c /verify/independent-source/.lake/build/ir/NavierStokes/TimeLocalization.c --setup /verify/independent-source/.lake/build/ir/NavierStokes/TimeLocalization.setup.json --json
+error: NavierStokes/TimeLocalization.lean:1:0: failed to open file '/verify/toolchain/lib/lean/Lean/Meta/Tactic/Rewrite.ir.sig': Too many open files
+✖ [8787/8872] Building NavierStokes.JetBounds (18s)
+trace: .> LEAN_PATH=/verify/packages/Cli/.lake/build/lib/lean:/verify/packages/batteries/.lake/build/lib/lean:/verify/packages/Qq/.lake/build/lib/lean:/verify/packages/aesop/.lake/build/lib/lean:/verify/packages/proofwidgets/.lake/build/lib/lean:/verify/packages/importGraph/.lake/build/lib/lean:/verify/packages/LeanSearchClient/.lake/build/lib/lean:/verify/packages/plausible/.lake/build/lib/lean:/verify/packages/lean4export/.lake/build/lib/lean:/verify/packages/mathlib/.lake/build/lib/lean:/verify/packages/Comparator/.lake/build/lib/lean:/verify/independent-source/.lake/build/lib/lean /verify/toolchain/bin/lean /verify/independent-source/NavierStokes/JetBounds.lean -o /verify/independent-source/.lake/build/lib/lean/NavierStokes/JetBounds.olean -i /verify/independent-source/.lake/build/lib/lean/NavierStokes/JetBounds.ilean -c /verify/independent-source/.lake/build/ir/NavierStokes/JetBounds.c --setup /verify/independent-source/.lake/build/ir/NavierStokes/JetBounds.setup.json --json
+error: NavierStokes/JetBounds.lean:1:0: failed to open file '/verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/NNRat/Defs.olean.private': Too many open files
+✖ [8789/8875] Building NavierStokes.RadialAlias (21s)
+trace: .> LEAN_PATH=/verify/packages/Cli/.lake/build/lib/lean:/verify/packages/batteries/.lake/build/lib/lean:/verify/packages/Qq/.lake/build/lib/lean:/verify/packages/aesop/.lake/build/lib/lean:/verify/packages/proofwidgets/.lake/build/lib/lean:/verify/packages/importGraph/.lake/build/lib/lean:/verify/packages/LeanSearchClient/.lake/build/lib/lean:/verify/packages/plausible/.lake/build/lib/lean:/verify/packages/lean4export/.lake/build/lib/lean:/verify/packages/mathlib/.lake/build/lib/lean:/verify/packages/Comparator/.lake/build/lib/lean:/verify/independent-source/.lake/build/lib/lean /verify/toolchain/bin/lean /verify/independent-source/NavierStokes/RadialAlias.lean -o /verify/independent-source/.lake/build/lib/lean/NavierStokes/RadialAlias.olean -i /verify/independent-source/.lake/build/lib/lean/NavierStokes/RadialAlias.ilean -c /verify/independent-source/.lake/build/ir/NavierStokes/RadialAlias.c --setup /verify/independent-source/.lake/build/ir/NavierStokes/RadialAlias.setup.json --json
+error: NavierStokes/RadialAlias.lean:1:0: failed to open file '/verify/packages/mathlib/.lake/build/lib/lean/Mathlib/Topology/Algebra/IsUniformGroup/Defs.olean.server': Too many open files
+✔ [8792/8875] Built NavierStokes.CompactForceDecay (32s)
+✔ [8793/8877] Built NavierStokes.SpacetimeEndpoint (64s)
+✔ [8795/8879] Built NavierStokes.BorelExtension (34s)
+✔ [8796/8879] Built NavierStokes.PeriodicUniqueness (42s)
+✔ [8797/8879] Built NavierStokes.ComparatorDefinitions (70s)
+✔ [8798/8879] Built NavierStokes.Flatness (23s)
+✔ [8799/8884] Built NavierStokes.Scaling (30s)
+✔ [8800/8884] Built NavierStokes.FlatCutoff (31s)
+✔ [8801/8887] Built NavierStokes.DiophantineGraph (33s)
+✔ [8802/8887] Built NavierStokes.SlotGeometry (34s)

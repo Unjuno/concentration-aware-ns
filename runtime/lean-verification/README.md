@@ -144,3 +144,10 @@ errors; the modified export exits 101 at `src/tc.rs:955` with a failed definitio
  equality assertion. kernel-negative-control.json records the mutation, resulting
 file hash and actual stderr. This is rejection of one invalid proof, not a proof
 that nanoda has no checker bugs. The crash-style diagnostic is recorded verbatim.
+
+The first with-Git solution build hit `Too many open files` with soft nofile
+20,480 (hard 1,048,576). It was explicitly stopped after those errors; its exit
+137 must not be interpreted as evidence of an OOM kill. Challenge source hashes
+still match the fresh extraction. The runner now requests
+`--ulimit nofile=1048576:1048576`; the retry has a separate raised-nofile log.
+No theorem rejection or successful kernel verification follows from this failure.

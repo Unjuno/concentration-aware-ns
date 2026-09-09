@@ -2,7 +2,7 @@
 set -eu
 mkdir -p work/lean-verification/independent-source/.lake
 docker run --rm --name cans-comparator-ns --user 501:20 --network none \
-  --cpus=2 --memory=8g -e LEAN_NUM_THREADS=2 \
+  --cpus=2 --memory=8g --ulimit nofile=1048576:1048576 -e LEAN_NUM_THREADS=2 \
   -e COMPARATOR_LANDRUN=/verify/checker-bin/landrun \
   -e COMPARATOR_LEAN4EXPORT=/verify/packages/lean4export/.lake/build/bin/lean4export \
   -e COMPARATOR_NANODA=/verify/checker-sources/nanoda/target/release/nanoda_bin \
