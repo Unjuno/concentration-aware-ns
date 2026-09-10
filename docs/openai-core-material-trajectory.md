@@ -1,8 +1,11 @@
-# A material trajectory and deformation in the natural core
+# A material trajectory and deformation in the selected construction
 
 Source pin and core assumptions are those of openai-core-deformation.md.
-This is a hand-derived consequence of that core, not a verified transfer to the
-final assembled candidate. No numerical integration is used.
+Current status: the source-derived neighborhood-equality chain to the selected
+periodic candidate is completed in the final section below. The earlier sections
+record intermediate scopes and the checks that were then outstanding. No new Lean
+trajectory theorem has been compiled; this remains a hand-derived extension of
+the pinned source. No numerical integration is used.
 
 Let A=1/2+h, D=1/2-h, U(eta)=4eta+j, d=1-eta² and L=1-2h eta².
 NaturalAxisData.exists_unique_root gives a root eta_* in (-j/4,-j/5) of
@@ -157,3 +160,59 @@ along this axis curve and its selected-schedule hypotheses. The outer
 periodicization and time activation are now accounted for by named neighborhood
 equalities and explicit trajectory bounds. This source audit has not compiled a
 new theorem joining those facts into the final trajectory/deformation result.
+
+
+## Completed source-level neighborhood chain for the selected periodic witness
+
+The remaining initialized/direct-sum identities can be instantiated as follows.
+Here a is any SelectedSchedule in ActualCandidateAssembly.Witness for the fixed
+selected B and N0. Along the curve on the sufficiently late interval specified
+above:
+
+1. ActualCandidateAssembly.potentialStages is literally
+   GermCandidateAssembly.potentialStages with initialPotential and
+   positivePotential. Their AxisZeroOn hypotheses are supplied by the named
+   initialPotential_axisZeroOn and positivePotential_axisZeroOn theorems.
+2. MixedCandidateWitness.SelectedSchedule includes divergence of the real-valued
+   schedule to infinity, and a(0)>=1. q is positive and continuous on t<1.
+   Therefore GermCandidateAssembly.potentialSum_eq_base_germ applies at each
+   axis point of the curve with q<qbig and a(0)q<1/2. It identifies ASum on a
+   spacetime neighborhood with TailGaugePotential.finalPotential.
+3. ActualCandidateAssembly.directStages is LocalAngularDiagonal.rawSeries of
+   its actual directData. DirectAngularDiagonal.angularSum_axis_zero_germ,
+   together with LocalAngularDiagonal.angularSum_eq_potentialSum, makes BSum
+   zero on a spacetime neighborhood there. It uses the same schedule and
+   positive continuous q, the open localSlowDomain, and zero radius.
+4. Taking curls preserves neighborhood equality. TailGaugePotential's
+   finalPotential_sameCurl identifies the base curl with FinalSlowBase.velocity
+   for every t<1. Intersect with the open preterminal domain: the uncut actual
+   mixed velocity is neighborhood-equal to FinalSlowBase along the curve.
+5. MixedPeriodicAssembly.periodicVelocity_eventuallyEq preserves this equality
+   in the spatial plateau. TimeLocalization.activatedVelocity_eventuallyEq_late
+   preserves it for t>3/4. These are precisely the outer velocity operations
+   in ActualCandidateAssembly.Witness.
+
+Thus, as a source-derived mathematical consequence, the selected witness's
+periodic candidate velocity agrees with FinalSlowBase on a spacetime neighborhood
+of each sufficiently late point of the curve. All finite local derivatives
+agree there. The trajectory is a material trajectory of that candidate on this
+terminal interval, and its infinitesimal deformation has the singular values
+derived above. The transverse rotation is that of FinalSlowBase, not assumed
+equal to the original natural core's rotation.
+
+An explicit sufficient upper bound on tau is the minimum of
+
+    1/4, d_* qbig, d_*/(2 a(0)),
+    d_* (1/(8|eta_*|))^(1/D).
+
+Each quantity is positive; numerical values of the selected parameters have not
+been extracted. This supplies an existence-level terminal interval, not a
+numerically specified experiment. It applies to the explicitly constructed
+periodic witness, not every solution or a claim of molecular alignment.
+
+Validation distinction: the original configured NS target was independently
+accepted by both kernels. The new trajectory/deformation consequence is a
+hand-derived chain of inspected source identities with separate symbolic checks;
+it has not itself been encoded and accepted by those kernels. Physical phase
+transition, changing viscosity coefficients, finite-particle packing, and improved
+three-dimensional position certainty remain unestablished.

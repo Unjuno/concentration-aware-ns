@@ -1,6 +1,6 @@
 {
   "pin": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
-  "scope": "Inspected sources for the hand-derived FinalSlowBase axial profile and deformation transfer. Final actual candidate transfer remains incomplete.",
+  "scope": "Source identities for the hand-derived selected-periodic-witness trajectory transfer. No new Lean trajectory theorem compiled.",
   "sha256": {
     "EntranceAlignedBase.lean": "b7edc8b71658a095eef31897b57d874ec6958381198f6acff8d9905f822802d5",
     "FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
@@ -12,6 +12,9 @@
     "LocalAngularDiagonal.lean": "9da7c4034c502b84ca191e16f545c220a7b1bfa42c6f08f6dcfc300ecd9c9ec6",
     "MixedPeriodicAssembly.lean": "5be1155c4b334fd8921545462dae6048a854e14f19e0e99a8bdb94cd64e4a773",
     "SpatialLocalization.lean": "62afe29ed1dffe71e178784b76b5ea4cc965b1d2ca854602d982210e2de94785",
-    "ActualCandidateAssembly.lean": "bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94"
+    "ActualCandidateAssembly.lean": "bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94",
+    "MixedCandidateWitness.lean": "28e71eb4b5a072c7d44d7c1d3552bab2a4441cc1ef6aa21e990567a816377998",
+    "DirectAngularDiagonal.lean": "cf0ada62acda94278fa3c2f7f30688462ba9b2490740e3b73fe21a8d6939651f",
+    "TailGaugePotential.lean": "fe7b635fe047f4ebd57f05fb4991c8707fe66569f1d96d53847e18fcac173b54"
   }
 }
