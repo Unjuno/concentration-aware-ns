@@ -118,6 +118,25 @@
       }
     },
     {
+      "group": "su2-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/su2-study-v1/n32-dt0.001.tar.gz",
+      "sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 17.871524281209954,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.11235908461770117
+        },
+        "vorticity": {
+          "reported_peak": 25.272641880135644,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.11241212144506019
+        }
+      }
+    },
+    {
       "group": "physicsnemo-study-v1",
       "case": "n16-nt5-gradient.json",
       "method": "autograd at saved samples",

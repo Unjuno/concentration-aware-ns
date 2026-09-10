@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "972c744138acd76c3167ab9b4dde01c7638b57da710dc384f4fcf1a78e9e2544"
+      "log_sha256": "71dfda597db4b42f12d4b1daaa5a42947974896405104b27f9bde7b8d3e8bd35"
     },
     {
       "step": "global_peaks",
@@ -25,7 +25,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/global_peaks.log",
-      "log_sha256": "ed6cf52254f13e83c342757827852a4d4eec8b2dea75cd369c540de8fd02c709"
+      "log_sha256": "05e5cabab2f5682d821c863a4352948ad291ddc1050a7bdfd8440d972a8b83e0"
     },
     {
       "step": "peak_decomposition",
@@ -48,6 +48,39 @@
       "exit_code": 0,
       "log": "evidence/report-replay/spectral_derivatives.log",
       "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
+    },
+    {
+      "step": "su2_archive_review",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.review_su2_archives"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_archive_review.log",
+      "log_sha256": "7e67dad6c1557473f689b82b756362b5a558d3c120d8ddb2a6fc49fced840ffb"
+    },
+    {
+      "step": "su2_diagnostic_replay",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.replay_su2_diagnostics"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_diagnostic_replay.log",
+      "log_sha256": "6f123d73b8f850717a668e1ee8ee9dba4151ab3d63d5a1bd7cfaca2e26dd2640"
+    },
+    {
+      "step": "su2_spectral_derivatives",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.compare_su2_spectral"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_spectral_derivatives.log",
+      "log_sha256": "61920e45178fd9a1d45a743106cccd2b16bb7cc81ed79ad0ce6b99760d3b65aa"
     },
     {
       "step": "openfoam_gate",

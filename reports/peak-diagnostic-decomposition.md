@@ -33,3 +33,9 @@ This strengthens the existing decision not to file an OpenFOAM defect report.
 It does not establish the broader hypothesis that a complete conventional
 verification workflow accepts an inaccurate local quantity. Existing UNCERTAIN
 gate outcomes remain unchanged.
+
+The completed SU2 n16 and n32 archives are now included in the generated
+decomposition. Their reference-FD2 gradient deficits are 28.1304% and 7.99182%,
+while total computed-FD2 deficits are 37.4451% and 11.2359%. See
+[the alternative spectral comparison](su2-spectral-gradient.md) for the same
+velocity fields evaluated with a different derivative diagnostic.

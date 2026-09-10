@@ -22,6 +22,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
+- [SU2 FD2 and spectral derivative comparison](reports/su2-spectral-gradient.md)
 - [Upstream reporting decisions](reports/upstream-disposition.md)
 
 ## Acceptance report checker
@@ -54,11 +55,12 @@ python3 -m tools.replay_published_reports
 ```
 
 This runs the tests, reconstructs the global-peak and derivative comparisons from
-archived fields, rebuilds the OpenFOAM and PhysicsNeMo gates, and checks every
-gate artifact hash. Logs and step exit codes are saved in evidence/report-replay.
-It does not rerun solvers, train networks or validate the OpenAI proof. The latest
-local replay completed all seven steps with 28 tests passing and no changes to
-the previously generated report files. Scientific UNCERTAIN results remain so.
+archived fields, reviews and replays completed SU2 diagnostics, rebuilds the
+OpenFOAM and PhysicsNeMo gates, and checks every gate artifact hash. Logs and
+step exit codes are saved in evidence/report-replay. It does not rerun solvers,
+train networks or validate the OpenAI proof. SU2 replay covers completed archives
+only; its case count must be checked against the required five-case matrix.
+Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication
 

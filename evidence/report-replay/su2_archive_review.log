@@ -1,0 +1,29 @@
+{
+  "scope": "Archived diagnostics and integrity review; does not independently recompute fields, certify continuous peaks, or complete the full acceptance gate.",
+  "expected_cases": 5,
+  "reviewed_cases": 2,
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "termination_and_input_hashes_verified": true,
+      "converged_steps": 50,
+      "steps": 50,
+      "velocity_relative_l2": 0.10164793244804474,
+      "velocity_tolerance": 0.02,
+      "observed_velocity_threshold": "FAIL",
+      "all_step_residual_thresholds": "PASS"
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "termination_and_input_hashes_verified": true,
+      "converged_steps": 48,
+      "steps": 50,
+      "velocity_relative_l2": 0.022771503203074223,
+      "velocity_tolerance": 0.02,
+      "observed_velocity_threshold": "FAIL",
+      "all_step_residual_thresholds": "FAIL"
+    }
+  ]
+}

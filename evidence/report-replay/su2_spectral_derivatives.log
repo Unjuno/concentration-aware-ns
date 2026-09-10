@@ -1,0 +1,72 @@
+{
+  "scope": "Real periodic trigonometric reconstruction differentiated at verified vertex samples, with the real Nyquist convention. No intersample peak certification or scientific verdict upgrade. Exact-reference control measures this diagnostic on the reference only.",
+  "environment": {
+    "python": "3.14.5",
+    "numpy": "2.5.2"
+  },
+  "source_sha256": {
+    "tools/compare_su2_spectral.py": "99533a7dd8dd9c525421847a70868146ba35a8492b63e2e0bcc44061b6f20f16",
+    "tools/spectral_derivative.py": "d9fbdde1238833cab2ca310b83586e17b5e47de63db11ef3eb7e0ab6c5457602",
+    "tools/reference.py": "8e8bba852e66a212d45d340628c3162dabc27c580e1a498f6e059fea2db2858c"
+  },
+  "expected_cases": 5,
+  "completed_cases": 2,
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "n": 16,
+      "dt": 0.001,
+      "updated_solution_time": 0.05,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "computed_max_abs_spectral_divergence": 1.602294697990909,
+      "reference_max_abs_spectral_divergence": 0.006579736499577882,
+      "metrics": {
+        "gradient": {
+          "computed_relative_l2_at_samples": 0.16447089992865468,
+          "reference_spectral_relative_l2_at_samples": 0.015158529541342744,
+          "computed_spectral_peak_samples": 16.89916569087897,
+          "reference_spectral_peak_samples": 19.947757629515156,
+          "exact_global_reference_peak": 20.13373197596784,
+          "computed_peak_signed_deficit": 0.16065408484377042
+        },
+        "vorticity": {
+          "computed_relative_l2_at_samples": 0.16124986137395012,
+          "reference_spectral_relative_l2_at_samples": 0.015139571739092047,
+          "computed_spectral_peak_samples": 23.810491145990188,
+          "reference_spectral_peak_samples": 28.210389378591717,
+          "exact_global_reference_peak": 28.473396821598573,
+          "computed_peak_signed_deficit": 0.16376358974041783
+        }
+      }
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "n": 32,
+      "dt": 0.001,
+      "updated_solution_time": 0.05,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "computed_max_abs_spectral_divergence": 0.09985070545038655,
+      "reference_max_abs_spectral_divergence": 2.6211054993119376e-09,
+      "metrics": {
+        "gradient": {
+          "computed_relative_l2_at_samples": 0.04111086161953714,
+          "reference_spectral_relative_l2_at_samples": 2.3413294585680578e-08,
+          "computed_spectral_peak_samples": 19.44235985037524,
+          "reference_spectral_peak_samples": 20.133731737060565,
+          "exact_global_reference_peak": 20.13373197596784,
+          "computed_peak_signed_deficit": 0.03433899519561703
+        },
+        "vorticity": {
+          "computed_relative_l2_at_samples": 0.04076114894849121,
+          "reference_spectral_relative_l2_at_samples": 2.341102943958716e-08,
+          "computed_spectral_peak_samples": 27.493979512914777,
+          "reference_spectral_peak_samples": 28.473396483732664,
+          "exact_global_reference_peak": 28.473396821598573,
+          "computed_peak_signed_deficit": 0.03439762789176094
+        }
+      }
+    }
+  ]
+}

@@ -13,8 +13,8 @@ measured behavior take precedence over prior progress summaries.
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
 | SU2 3-space/multiple-time comparison | Live study-v1 process and per-step history | Incomplete; n16 and n32 completed and archived, both fail the velocity threshold; n32 passes residual thresholds in 48/50 updates. n64 container confirmed running; remaining time-step cases pending |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
-| Local derivatives and spectra | Native/autograd/FD2 comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker and 28 passing unit tests | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
+| Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
+| Evidence-linked acceptance gate | v2 checker; 31 passing tests across the package | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
 | OpenAI construction audit and transfer | Pinned predicates, witness interface, scaling derivation | Pinned NS challenge accepted by nanoda, Lean default kernel and Comparator with exit code 0; see reports/openai-ns-independent-verification.md. Finite-stage extraction and Euler challenge not independently verified |
@@ -32,3 +32,8 @@ one reproducibility uncertainty only; it does not upgrade any scientific verdict
 PhysicsNeMo's frozen protocol lacks an explicit acceptance-threshold declaration;
 the new gate reports preserve that gap instead of claiming retrospective
 preregistration.
+
+On 2026-09-10 the report replay completed all ten steps with 31 tests passing.
+It now includes SU2 archive integrity, raw-data diagnostic replay and spectral
+derivative comparisons for the two completed cases. The full five-case SU2
+matrix remains incomplete; replay success does not change that requirement.

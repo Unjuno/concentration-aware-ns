@@ -138,6 +138,29 @@
           "total_signed_deficit": 0.37584109730015397
         }
       }
+    },
+    {
+      "group": "su2-study-v1",
+      "case": "n32-dt0.001.tar.gz",
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 18.52468072803054,
+          "computed_fd2_peak": 17.871524281209954,
+          "reference_sampling_and_fd2_signed_deficit": 0.07991818157994297,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.03244090303775823,
+          "total_signed_deficit": 0.1123590846177012
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 26.197854724212284,
+          "computed_fd2_peak": 25.272641880135644,
+          "reference_sampling_and_fd2_signed_deficit": 0.07991818157994308,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.03249393986511708,
+          "total_signed_deficit": 0.11241212144506016
+        }
+      }
     }
   ]
 }
