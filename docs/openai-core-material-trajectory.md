@@ -110,3 +110,26 @@ not a newly compiled Lean proof. It does not yet complete transfer through every
 actual mixed correction, cutoff, activation, periodicization, and chosen witness.
 In particular, the neighborhood and cutoff conditions along the moving trajectory
 must be checked in the actual assembled candidate, not just at the fixed origin.
+
+## Terminal cutoff conditions along the moving trajectory
+
+The cutoff check can be made quantitative in symbolic parameters. Along X(t),
+q=tau/d_* and X(t) stays on the spatial axis. For the support domain
+MixedAxisPreservation.localDomain(h,qbig), membership reduces to
+
+    0 < tau < d_* qbig.
+
+For the zeroth cutoff plateau, |scales(0) q|<1/2 reduces, if scales(0) is
+nonzero, to tau<d_*/(2|scales(0)|). If scales(0)=0 it holds automatically.
+TimeLocalization.activatedVelocity_eventuallyEq_late applies for t>3/4,
+i.e. tau<1/4. All three restrictions therefore hold on a nonempty terminal
+interval whenever qbig>0 and the schedule's first value is finite. They are
+conditions along this actual moving trajectory, not only at the origin.
+
+MixedAxisPreservation.mixedDiagonal_axis_jets explicitly transfers derivatives
+of every order on its plateau, provided its PotentialStage and AngularSupport
+hypotheses are instantiated. The actual candidate uses the initialized
+GermCandidateAssembly interface, so that instantiation must still be reconciled
+with its initial contribution and selected witness. Periodic spatial localization
+and the final chosen-field identity also remain to be checked. We do not yet
+claim the complete final-candidate trajectory theorem.
