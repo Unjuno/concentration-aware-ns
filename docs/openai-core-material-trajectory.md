@@ -1,0 +1,83 @@
+# A material trajectory and deformation in the natural core
+
+Source pin and core assumptions are those of openai-core-deformation.md.
+This is a hand-derived consequence of that core, not a verified transfer to the
+final assembled candidate. No numerical integration is used.
+
+Let A=1/2+h, D=1/2-h, U(eta)=4eta+j, d=1-eta² and L=1-2h eta².
+NaturalAxisData.exists_unique_root gives a root eta_* in (-j/4,-j/5) of
+
+    D eta_* + (1-eta_*²) U(eta_*) = 0
+
+under its SmallParameters assumptions (0<h,j<=1/1000). In particular d_*>0
+and L_*>0. Put tau=1-t and define the physical axial curve
+
+    q(t)=tau/d_*,   z(t)=eta_* q(t)^D,   X(t)=(0,0,z(t)).
+
+The similarity identity tau=q-z²q^(2h) holds because 2D+2h=1. Thus eta is
+exactly eta_* along the curve. Since A+D=1,
+
+    z'(t)=-(D eta_*/d_*) q^(-A)=U(eta_*) q^(-A).
+
+The last equality is the root equation. The transverse velocities are zero on
+the axis, and the axial velocity has exactly this value. Hence X'=u_core(t,X)
+for t<1 while the natural-core domain assumptions hold. The curve approaches
+the origin from negative z, with increasing positive axial speed. This is a
+material trajectory, unlike the fixed origin used in the previous calculation.
+
+## Deformation along that trajectory
+
+On the axis H=q^(-A)(4eta+j). Implicit differentiation yields
+q_z=2eta q^A/L and eta_z=d/(q^D L). Therefore
+
+    H_z=q^(-1)[4d-2A eta U(eta)]/L.
+
+At eta=eta_*, the root equation reduces this to H_z=C/tau, with
+
+    C=[4d_*²+2AD eta_*²]/L_* > 0.
+
+The Cartesian Jacobian along the curve is
+
+    G(t)=[ -C/(2tau)   -Omega(t)     0
+            Omega(t)  -C/(2tau)     0
+                  0           0    C/tau ],
+    Omega(t)=q(t)^(-h-1) f(0,eta_*).
+
+The diagonal and rotation generators commute. For a fixed initial t0<1,
+let tau0=1-t0. The deformation matrix F'=G F, F(t0)=I, has singular values
+
+    sigma_perp=(tau/tau0)^(C/2)   (twice),
+    sigma_axial=(tau/tau0)^(-C).
+
+It includes a transverse rotation with angle integral_(t0)^t Omega(s) ds.
+The determinant is exactly one. For infinitesimal initial displacements with
+nonzero axial component, the transverse-to-axial ratio decreases proportionally
+to (tau/tau0)^(3C/2). This is directional alignment of infinitesimal material
+separations in this core. It is not molecular orientation or finite-particle
+packing, and does not establish a phase transition.
+
+A small initial isotropic covariance, propagated by the linearized map F, has
+two decreasing eigenvalues and one increasing eigenvalue; its determinant stays
+constant. Thus directional alignment does not itself imply improved full-position
+certainty. Finite neighborhoods may leave the core; the linearization is not a
+uniform approximation for a fixed-size packet up to t=1.
+
+## Transfer to the actual assembled field remains open
+
+GermCandidateAssembly.potentialSum_eq_base_germ establishes neighborhood equality
+of the potential sum to a base potential on the cutoff plateau, under the stated
+zero-germ and local-finiteness hypotheses. MixedAxisPreservation also contains
+mixedDiagonal_eq_cutBase_germ and directDiagonal_zero_germ. These are stronger
+than mere axis value equality, but their target base is not automatically the
+NaturalCore field used above.
+
+FinalSlowBase.velocity uses a modulated coefficient family and a Borel-type
+assembly. Its origin value is shown to retain j tau^(-A)e_z. To transfer this
+trajectory and its Jacobian, verify the axis profile for nonzero eta, the
+necessary derivatives, cutoff hypotheses along X(t), and the final periodic
+assembly. Matching a value at the origin alone cannot establish these facts.
+
+Source identifiers newly inspected: NaturalAxisData.exists_unique_root,
+GermCandidateAssembly.potentialSum_eq_base_germ and origin_eventually_base,
+MixedAxisPreservation.mixedDiagonal_eq_cutBase_germ,
+FinalSlowBase.velocity and leading_origin. All refer to the existing fixed pin.

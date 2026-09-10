@@ -1,0 +1,12 @@
+{
+  "scope": "Symbolic coefficient and variational-equation checks after substituting the root equation; root existence and final-field transfer are not checked by this script.",
+  "sympy": "1.14.0",
+  "residuals": {
+    "exponent_sum": "0",
+    "coordinate_exponent": "0",
+    "trajectory_residual_coefficient": "0",
+    "strain_coefficient": "0",
+    "transverse_deformation": "0",
+    "axial_deformation": "0"
+  }
+}

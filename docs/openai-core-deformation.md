@@ -75,3 +75,7 @@ time and forcing, rather than insert nu into the same fixed core unchanged.
    of zeros in denominators; a heuristic rate ratio is not that calculation.
 4. Define the alignment and uncertainty observables before claiming improved
    predictability or inferring a microscopic transport coefficient.
+
+An actual core material trajectory and its infinitesimal deformation are now
+derived in [the trajectory note](openai-core-material-trajectory.md). Transfer to
+the final assembled field remains open.
