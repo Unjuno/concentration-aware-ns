@@ -10,7 +10,7 @@
     "tools/reference.py": "8e8bba852e66a212d45d340628c3162dabc27c580e1a498f6e059fea2db2858c"
   },
   "expected_cases": 5,
-  "completed_cases": 2,
+  "completed_cases": 3,
   "cases": [
     {
       "case": "n16-dt0.001",
@@ -65,6 +65,34 @@
           "reference_spectral_peak_samples": 28.473396483732664,
           "exact_global_reference_peak": 28.473396821598573,
           "computed_peak_signed_deficit": 0.03439762789176094
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "n": 64,
+      "dt": 0.001,
+      "updated_solution_time": 0.05,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "computed_max_abs_spectral_divergence": 0.023053683409319792,
+      "reference_max_abs_spectral_divergence": 6.616929226765933e-14,
+      "metrics": {
+        "gradient": {
+          "computed_relative_l2_at_samples": 0.0068088746605352414,
+          "reference_spectral_relative_l2_at_samples": 3.843234227114328e-15,
+          "computed_spectral_peak_samples": 20.042329761121007,
+          "reference_spectral_peak_samples": 20.13373197596785,
+          "exact_global_reference_peak": 20.13373197596784,
+          "computed_peak_signed_deficit": 0.0045397552205390535
+        },
+        "vorticity": {
+          "computed_relative_l2_at_samples": 0.006617819791754867,
+          "reference_spectral_relative_l2_at_samples": 3.2071347753588217e-15,
+          "computed_spectral_peak_samples": 28.344123939417823,
+          "reference_spectral_peak_samples": 28.473396821598584,
+          "exact_global_reference_peak": 28.473396821598573,
+          "computed_peak_signed_deficit": 0.004540128562486432
         }
       }
     }

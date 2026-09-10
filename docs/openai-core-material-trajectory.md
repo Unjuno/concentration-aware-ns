@@ -216,3 +216,29 @@ hand-derived chain of inspected source identities with separate symbolic checks;
 it has not itself been encoded and accepted by those kernels. Physical phase
 transition, changing viscosity coefficients, finite-particle packing, and improved
 three-dimensional position certainty remain unestablished.
+
+## Viscous stress and local dissipation along this trajectory
+
+For the derived strain S=diag(-C/2,-C/2,C)/tau, an incompressible Newtonian
+fluid has viscous stress per unit density 2nu S. Contracting with grad u gives
+
+    epsilon=2nu S:S=3nu C²/tau².
+
+The skew rotation cancels exactly. At fixed positive nu this grows without bound
+along the terminal trajectory, rather than tending to zero. The native selected
+construction has nu=1; the formula with nu is a constitutive evaluation, not a
+claim that the same unscaled solution works at every viscosity. The source's
+viscosity rescaling also changes the field, time and forcing.
+
+This distinguishes directional alignment from decreasing local viscous
+conversion of kinetic energy. It does not compute nu*Laplacian(u), a second-
+derivative quantity, nor its ratio to inertia, pressure or forcing. Large stress
+or dissipation need not imply a large viscous force at the same point. A
+pointwise divergence along one curve also does not establish divergent spatially
+integrated dissipation. No temperature evolution or phase transition follows
+without additional equations.
+
+Reproduce the algebra with
+`work/reference-check-env/bin/python -m tools.check_axis_dissipation` in the
+recorded SymPy environment (or run that module with SymPy 1.14.0 installed).
+Evidence: evidence/tests/openai-axis-dissipation.json.

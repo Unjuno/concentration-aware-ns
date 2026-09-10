@@ -1,0 +1,8 @@
+{
+  "scope": "Conditional incompressible Newtonian dissipation per unit mass for the hand-derived trajectory Jacobian. Does not compute the viscous force nu*Laplacian(u) or its ratio to inertia.",
+  "sympy": "1.14.0",
+  "strain": "Matrix([[-C/(2*tau), 0, 0], [0, -C/(2*tau), 0], [0, 0, C/tau]])",
+  "viscous_stress_per_unit_density": "Matrix([[-C*nu/tau, 0, 0], [0, -C*nu/tau, 0], [0, 0, 2*C*nu/tau]])",
+  "dissipation_per_unit_mass": "3*C**2*nu/tau**2",
+  "rotation_cancels": true
+}

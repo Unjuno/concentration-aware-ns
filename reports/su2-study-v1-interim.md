@@ -1,4 +1,4 @@
-# SU2 localized study v1 — two completed cases
+# SU2 localized study v1 — three completed cases
 
 The n16, dt=0.001 case completed 50 updates to t=0.05. All four residual thresholds
 were met at each update, and duplicated periodic values match exactly. The
@@ -59,3 +59,16 @@ recorded environment, including velocity, derivatives, spectrum and history
 checks. `evidence/su2-study-v1/diagnostic-replay.json` records archive and source
 hashes. This verifies reproducible postprocessing with the same implementation;
 it is not independent validation of that implementation or a new solver run.
+
+
+## n64, dt=0.001 completed result
+
+The frozen n64 case completed all 50 updates. Its archive hash and input hashes
+pass the integrity review, and raw-field diagnostic replay exactly matches the
+archived diagnostics. Velocity relative L2 error is 0.362505%, below the 2%
+threshold. FD2 gradient and vorticity peak discrepancies are 2.55164% and
+2.55168%; spectral peak discrepancies are 0.453976% and 0.454013%.
+These sampled comparisons are not certified continuous reconstructed-field peaks.
+Periodic duplicate values match exactly. Residual thresholds were met in 48/50
+updates; the first two failed. The remaining two time-step cases are still
+required, so no final quality or hypothesis PASS is assigned.
