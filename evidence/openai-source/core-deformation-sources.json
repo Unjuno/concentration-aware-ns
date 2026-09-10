@@ -1,0 +1,11 @@
+{
+  "pin": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "scope": "Source identities for a conditional hand-derived local strain calculation, not additional kernel verification.",
+  "files": {
+    "NaturalAxisData.lean": "4fff0e94f1b98acec9ac9efc83a7df8cfe83475e241d79d3697c8df2ab2835f8",
+    "SimilarityCoordinates.lean": "de85505217232fed653c70fb73edf5658c1bf995bb36792cab5a4653d063ca1f",
+    "NaturalProfile.lean": "c8c74b5eef59a4b221dad4f7cb6b075669dc3a20e70d632e914d97992fb249fb",
+    "NaturalCore.lean": "917d33e04cdd939d475a2e76de8a1ee250c8844320f7416144f56bfe63fbab0e",
+    "AxisymmetricFields.lean": "41d403ae4cec8887c17a80f621744399522a3247bddbcab64e577cb296b3020d"
+  }
+}

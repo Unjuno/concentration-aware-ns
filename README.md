@@ -19,6 +19,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
+- [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)

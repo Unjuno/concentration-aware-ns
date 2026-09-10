@@ -1,0 +1,8 @@
+{
+  "scope": "Symbolic curl and origin Jacobian of profile Taylor jets sufficient for this first derivative; not full candidate trajectory verification.",
+  "sympy": "1.14.0",
+  "gradient": "Matrix([[-2/tau, -Omega, 0], [Omega, -2/tau, 0], [0, 0, 4/tau]])",
+  "symmetric_part": "Matrix([[-2/tau, 0, 0], [0, -2/tau, 0], [0, 0, 4/tau]])",
+  "trace": "0",
+  "all_checks_passed": true
+}
