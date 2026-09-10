@@ -10,6 +10,8 @@
     "MixedAxisPreservation.lean": "b66076e1f17b6c66187319cf99c199d826fb8e375c86eff662ba4a1dcb4f9da5",
     "TimeLocalization.lean": "295de27f11ba189b9bd1263dc6571f7410947b3e6de1106d55f05440fdb79a70",
     "LocalAngularDiagonal.lean": "9da7c4034c502b84ca191e16f545c220a7b1bfa42c6f08f6dcfc300ecd9c9ec6",
-    "MixedPeriodicAssembly.lean": "5be1155c4b334fd8921545462dae6048a854e14f19e0e99a8bdb94cd64e4a773"
+    "MixedPeriodicAssembly.lean": "5be1155c4b334fd8921545462dae6048a854e14f19e0e99a8bdb94cd64e4a773",
+    "SpatialLocalization.lean": "62afe29ed1dffe71e178784b76b5ea4cc965b1d2ca854602d982210e2de94785",
+    "ActualCandidateAssembly.lean": "bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94"
   }
 }

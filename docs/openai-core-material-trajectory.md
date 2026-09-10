@@ -133,3 +133,27 @@ GermCandidateAssembly interface, so that instantiation must still be reconciled
 with its initial contribution and selected witness. Periodic spatial localization
 and the final chosen-field identity also remain to be checked. We do not yet
 claim the complete final-candidate trajectory theorem.
+
+## Spatial localization and actual witness interface
+
+SpatialLocalization.plateau is radialSquare(x)<1/32 and |z|<1/8. The trajectory
+has zero radial coordinate, so it lies in that plateau whenever
+
+    tau < d_* (1/(8|eta_*|))^(1/D).
+
+The bound is positive because eta_*<0 and D>0. MixedPeriodicAssembly's
+periodicVelocity_eventuallyEq states equality on a spacetime neighborhood to the
+uncut mixed velocity at every plateau point. Thus spatial localization and
+periodicization preserve all local derivatives there, not just the velocity
+value. Together with the preceding time/cutoff bounds, this supplies a nonempty
+terminal interval for all these geometric conditions.
+
+ActualCandidateAssembly.Witness identifies its candidate velocity explicitly as
+activatedVelocity(periodicVelocity(ASum,BSum)). Its witness theorem invokes
+GermCandidateAssembly with initialPotential_axisZeroOn and
+positivePotential_axisZeroOn. Consequently the remaining bookkeeping is the
+initialized potential/direct sum's neighborhood equality to the FinalSlowBase
+along this axis curve and its selected-schedule hypotheses. The outer
+periodicization and time activation are now accounted for by named neighborhood
+equalities and explicit trajectory bounds. This source audit has not compiled a
+new theorem joining those facts into the final trajectory/deformation result.
