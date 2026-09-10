@@ -1,0 +1,12 @@
+{
+  "pin": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "scope": "Inspected sources for the hand-derived FinalSlowBase axial profile and deformation transfer. Final actual candidate transfer remains incomplete.",
+  "sha256": {
+    "EntranceAlignedBase.lean": "b7edc8b71658a095eef31897b57d874ec6958381198f6acff8d9905f822802d5",
+    "FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "SlowBorelBase.lean": "10f39b7931e942874396afcdfdd88a806d36a785cd6ef55faed710014757a550",
+    "BaseResidual.lean": "0f1f9a492e8cea457406dd0b20df625c9bd0650bef5253da49c0c7ac766c0700",
+    "GermCandidateAssembly.lean": "8cb58c1ada5867cd1f92588f7362168bc999629e2fea13bbe33eee239bc6a164",
+    "MixedAxisPreservation.lean": "b66076e1f17b6c66187319cf99c199d826fb8e375c86eff662ba4a1dcb4f9da5"
+  }
+}

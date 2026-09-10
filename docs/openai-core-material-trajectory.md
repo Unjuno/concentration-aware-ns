@@ -81,3 +81,32 @@ Source identifiers newly inspected: NaturalAxisData.exists_unique_root,
 GermCandidateAssembly.potentialSum_eq_base_germ and origin_eventually_base,
 MixedAxisPreservation.mixedDiagonal_eq_cutBase_germ,
 FinalSlowBase.velocity and leading_origin. All refer to the existing fixed pin.
+
+## Transfer advanced to FinalSlowBase (source-derived, not new Lean verification)
+
+A further read of the actual coefficient assembly supplies more than the origin
+value: EntranceAlignedBase.modulated_leading_axis states axial_0(0,eta)=4eta+j
+for every eta in [-1,1], and modulated_positive_axis makes axial_n(0,eta)=0
+for all n>0 there. FinalSlowBase.coefficients uses this family.
+
+SlowBorelBase.streamFactor is q^(-A) times the slow sum of radial averages of
+these axial coefficients. ProfileHistories.average_at_axis returns the coefficient
+value at X=0. BaseResidual.slowSum_eq_leading_of_positive_zero removes all positive
+terms exactly, for any cutoff schedule. Together, these identities give
+
+    H_base(t,0,z)=q^(-A)(4eta+j)   for |eta|<1, t<1.
+
+AxisymmetricFields.velocity_on_axis then gives the same axial particle ODE as
+above. Smoothness allows differentiating this identity with respect to z along
+the axis. The two transverse diagonal Jacobian entries are -H_z/2 and the axial
+one is H_z. Thus the trajectory and the three deformation singular values carry
+over to this smooth axisymmetric FinalSlowBase. Its transverse rotation may
+differ; do not transfer the natural-core formula for Omega without checking the
+swirl coefficients. Rotation does not alter the singular values in this axis
+Jacobian structure.
+
+This is a deductive extension of the inspected definitions and theorem statements,
+not a newly compiled Lean proof. It does not yet complete transfer through every
+actual mixed correction, cutoff, activation, periodicization, and chosen witness.
+In particular, the neighborhood and cutoff conditions along the moving trajectory
+must be checked in the actual assembled candidate, not just at the fixed origin.
