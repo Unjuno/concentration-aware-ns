@@ -886,3 +886,15 @@ The pinned Lean check passes without sorryAx. To apply the previously
 proved limit, the physicalChart of the proposed material trajectory
 still needs to be identified as (q,(0,eta_star)) with q approaching zero
 from above. This identity alone does not prove that trajectory property.
+
+
+## Candidate trajectory scale limit
+
+`trajectory_scale_tends_zero_right` proves that tau/(1-eta²) tends to
+zero from above as tau tends to zero from above for -1<eta<1.
+The denominator's positivity and the one-sided target filter are
+proved explicitly. The pinned Lean check passes without sorryAx.
+This does not identify that expression with the source coordinateQ
+or prove the candidate curve is a material trajectory. Those coordinate
+and differential-equation identities remain necessary before applying
+this limit to the physical stream derivative.

@@ -1041,6 +1041,18 @@ theorem selected_stream_normalized_radial_derivative
   · have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
     exact SlowBorelBase.physicalChart_positive W.axis.small.h_pos hh1 hp
 
+theorem trajectory_scale_tends_zero_right
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    Filter.Tendsto (fun tau : ℝ => tau / (1 - eta^2))
+      (𝓝[>] (0 : ℝ)) (𝓝[>] (0 : ℝ)) := by
+  have hd : 0 < 1 - eta^2 := by nlinarith [heta.1, heta.2]
+  apply tendsto_nhdsWithin_iff.mpr
+  constructor
+  · simpa using (((continuousAt_id (x := (0 : ℝ))).div_const (1-eta^2)).tendsto.mono_left nhdsWithin_le_nhds)
+  · filter_upwards [self_mem_nhdsWithin] with tau htau
+    exact div_pos htau hd
+
+#print axioms trajectory_scale_tends_zero_right
 #print axioms selected_stream_normalized_radial_derivative
 #print axioms selected_averaged_derivative_sum_tends_natural
 #print axioms slowSum_axis_proportional
