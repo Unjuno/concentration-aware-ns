@@ -1,6 +1,8 @@
 /extension/AxisForceSign.lean:305:33: warning: `ContinuousMultilinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
 
 Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+'ConcentrationAware.candidate_axis_forward_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_inverse_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.trajectory_scale_tends_zero_right' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.selected_stream_normalized_radial_derivative' depends on axioms: [propext,
  Classical.choice,

@@ -1052,6 +1052,32 @@ theorem trajectory_scale_tends_zero_right
   · filter_upwards [self_mem_nhdsWithin] with tau htau
     exact div_pos htau hd
 
+theorem candidate_axis_forward_coordinate
+    (h q eta : ℝ) (hq : 0 < q) :
+    SimilarityCoordinates.forwardScalar (2*h) (eta*q^(CoordinateAlgebra.D h)) q =
+      q * (1-eta^2) := by
+  have powers : (q ^ CoordinateAlgebra.D h)^2 * q^(2*h) = q := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul hq.le, ← Real.rpow_add hq]
+    have exponent : CoordinateAlgebra.D h * (2 : ℝ) + 2*h = 1 := by
+      unfold CoordinateAlgebra.D
+      ring
+    norm_num only [Nat.cast_ofNat]
+    rw [exponent, Real.rpow_one]
+  unfold SimilarityCoordinates.forwardScalar
+  rw [mul_pow]
+  nlinarith [powers]
+
+theorem candidate_axis_inverse_coordinate
+    (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    SimilarityCoordinates.coordinateQ (2*h)
+      (q*(1-eta^2), eta*q^(CoordinateAlgebra.D h)) = q := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1, heta.2]
+  exact (SimilarityCoordinates.eq_coordinateQ (by positivity) (by linarith)
+    (mul_pos hq hd) hq (candidate_axis_forward_coordinate h q eta hq)).symm
+
+#print axioms candidate_axis_forward_coordinate
+#print axioms candidate_axis_inverse_coordinate
 #print axioms trajectory_scale_tends_zero_right
 #print axioms selected_stream_normalized_radial_derivative
 #print axioms selected_averaged_derivative_sum_tends_natural

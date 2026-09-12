@@ -898,3 +898,14 @@ This does not identify that expression with the source coordinateQ
 or prove the candidate curve is a material trajectory. Those coordinate
 and differential-equation identities remain necessary before applying
 this limit to the physical stream derivative.
+
+
+## Candidate inverse coordinate identification
+
+`candidate_axis_forward_coordinate` proves the forward scalar equation
+for tau=q(1-eta²), z=eta q^D. `candidate_axis_inverse_coordinate` uses
+the source positive-solution uniqueness theorem to show coordinateQ
+returns exactly q for h in (0,1/2), q>0 and eta in (-1,1).
+Both pass the pinned Lean check without sorryAx. Identification of the
+remaining physicalChart coordinates and proof of the material-trajectory
+ODE are still required; coordinate equality alone is not that ODE.
