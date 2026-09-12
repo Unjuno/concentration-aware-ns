@@ -933,3 +933,13 @@ chain rule and D-1=-A. The pinned Lean check passes without sorryAx.
 The root equation must still identify the prefactor with U(eta),
 and the actual base-velocity value on the curve must be verified
 before claiming the material-trajectory ODE formally.
+
+
+## Root-conditioned curve velocity
+
+`root_axis_curve_hasDerivAt` combines the candidate time derivative with
+the root equation D eta+(1-eta²) U(j,eta)=0. It proves the derivative is
+U(j,eta) q^(-A), deriving positivity of the denominator before division.
+The pinned Lean check passes without sorryAx. Equality with the actual
+baseVelocity evaluated on the curve is the remaining ODE bridge; this
+scalar formula alone is not the full vector material-trajectory theorem.

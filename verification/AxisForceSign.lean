@@ -1136,6 +1136,20 @@ theorem candidate_axis_curve_hasDerivAt
   apply hp.congr_deriv
   ring
 
+theorem root_axis_curve_hasDerivAt
+    (h j eta t : ℝ) (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H h j eta = 0) :
+    HasDerivAt (fun s : ℝ => eta * ((1-s)/(1-eta^2))^(CoordinateAlgebra.D h))
+      (NaturalAxisData.U j eta * ((1-t)/(1-eta^2))^(-CoordinateAlgebra.A h)) t := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have he : -(eta * CoordinateAlgebra.D h / (1-eta^2)) = NaturalAxisData.U j eta := by
+    rw [← neg_div, div_eq_iff hd.ne']
+    unfold NaturalAxisData.H NaturalAxisData.D NaturalAxisData.d at root
+    unfold CoordinateAlgebra.D
+    nlinarith [root]
+  simpa only [he] using candidate_axis_curve_hasDerivAt h eta t ht heta
+
+#print axioms root_axis_curve_hasDerivAt
 #print axioms candidate_axis_curve_hasDerivAt
 #print axioms candidate_normalized_stream_derivative_limit
 #print axioms candidate_axis_physicalChart
