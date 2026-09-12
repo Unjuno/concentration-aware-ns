@@ -368,3 +368,25 @@ ActivationContinuation's natural-collar identity and any coordinate/amplitude
 scaling. A nonzero scale factor must be retained when transferring the
 previous natural-core value -Z_*/(2L_*). The positive-order remainder bound
 is still required for the final asymptotic force ratio.
+
+## ACT-to-natural normalization check
+
+StressActivation.FromReference.histories stores FromReference.U as its axial
+field. Its definition returns N.refU on X<=N.endpoint; ReferencePath.refU
+returns N.U on that same interval. ReferencePath.Input.ofNatural assigns
+U:=F.U directly. Therefore this initial collar introduces no extra coordinate
+or amplitude multiplier between the ACT axial field and the natural family's
+physical U. The endpoint is positive, giving a right interval at the axis.
+
+NaturalProfile.ProfileFamily.U already equals the affine-rescaled function
+U_axis(eta)+(1/Lambda)*F.u(Lambda X,eta). Differentiation cancels the two
+Lambda factors. This rescaling is already included in IsNaturalSolution;
+applying it a second time would be an error. Together with the finite-modulation
+jet identity above, the leading derivative is consequently
+
+    partial_X a_0(0,eta_*) = -Z_*/(2 L_*) < 0.
+
+The remaining issue for B(q,eta_*) is now the positive-order derivative
+remainder only. Its vanishing requires a derivative-level asymptotic estimate
+for the selected slow sum; local finiteness at each q>0 alone is insufficient.
+This transfer remains a source-derived argument, not newly compiled Lean code.
