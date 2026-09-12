@@ -604,3 +604,21 @@ the selected slow-sum derivative limit with the derivative of
 sorryAx. The next formal identification is between this original nominal
 profile and the natural solution; the physical-field force-ratio limit
 is still not an end-to-end formal theorem.
+
+
+## Natural-profile derivative identification
+
+`original_axis_derivative_eq_natural` uses `Controls.natural_prefix`
+to identify the original nominal U derivative with
+`W.axis.natural.profile.family.U` at X = 0. This requires the source
+prefix condition `1 <= W.axis.scale`; it is explicit in the theorem.
+The equality holds in a two-sided neighborhood below 4/scale, and the
+positive scale supplies that neighborhood. No coordinate rescaling is
+inserted in this equality.
+`selected_axial_radial_derivative_tends_natural` composes the entire
+selected-coefficient, modulation and nominal-profile chain to identify
+the slow-sum derivative limit with this natural-profile derivative.
+Both statements pass the pinned Lean check without sorryAx. Discharging
+the scale condition for the final selected witness, applying the natural
+PDE sign identity, and transferring to the physical force ratio remain
+formalization work.
