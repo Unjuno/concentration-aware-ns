@@ -392,6 +392,27 @@ theorem axial_radial_derivative_tends_leading
   rw [he]
   exact sub_add_cancel _ _
 
+theorem selected_axial_radial_derivative_tends_leading
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (hh : 0 < F.data.h) (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let f := SlowBorelBase.bundleComponent W.axis.normalization
+      (FinalSlowBase.coefficients H v) 5
+    Filter.Tendsto (fun q : ℝ => deriv
+      (fun X => SlowBorelBase.slowSum a F.data.h f (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ)) (𝓝 (deriv (fun X => f 0 (X,eta)) 0)) := by
+  have hr : 0 ≤ FinalSlowBase.boxRadius W upper :=
+    (FinalSlowBase.terminal_pos W).le.trans (le_max_right _ _)
+  have hw : (0,eta) ∈ SlowBorelBase.innerBox 0 (FinalSlowBase.boxRadius W upper) :=
+    ⟨⟨le_rfl, hr⟩, heta⟩
+  exact axial_radial_derivative_tends_leading hw hh
+    (FinalSlowBase.coefficients_smooth H v)
+    (FinalSlowBase.scales_admissible H v upper B)
+
+#print axioms selected_axial_radial_derivative_tends_leading
 #print axioms axial_radial_derivative_tends_leading
 #print axioms axial_radial_tail_tends_zero
 #print axioms radial_derivative_limit_of_first_jet

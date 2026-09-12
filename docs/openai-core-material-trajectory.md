@@ -540,3 +540,21 @@ remainder; it does not assume interchange of an infinite sum and limit.
 The pinned Lean check passes without sorryAx. The remaining formal gap
 is transfer through the selected assembled physical field and combination
 with the physical Laplacian and material-acceleration identities.
+
+
+## Selected FinalSlowBase instance
+
+`selected_axial_radial_derivative_tends_leading` instantiates the full
+slow-sum derivative limit with `FinalSlowBase.coefficients` and
+`FinalSlowBase.scales`. It derives smoothness and admissibility from the
+source theorems. For every eta in [-1,1], it also proves membership of
+`(0,eta)` in the controlled inner box using positivity of the active
+right radius. Thus no independent admissibility or box-membership
+assumptions are left in this selected-instance theorem. The remaining
+hypotheses are the source certificate, modulation witness and positive h.
+The pinned Lean check passes without sorryAx. Identifying the leading
+coefficient derivative with the natural solution derivative still needs
+a formal one-sided-to-ordinary derivative argument: the source's
+`EntranceAlignedBase.modulated_zero_fields` supplies equality on X >= 0,
+which is not a two-sided neighborhood of X = 0. The physical-field and
+force-ratio transfers remain unformalized.
