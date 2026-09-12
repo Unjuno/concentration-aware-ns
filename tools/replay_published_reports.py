@@ -19,6 +19,7 @@ steps = [
     ('su2_time_comparison', [sys.executable, '-m', 'tools.compare_su2_time']),
     ('openfoam_gate', [sys.executable, '-m', 'tools.build_openfoam_report']),
     ('physicsnemo_gates', [sys.executable, '-m', 'tools.build_physicsnemo_report']),
+    ('su2_gates', [sys.executable, '-m', 'tools.build_su2_report']),
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),
 ]
 output = Path('evidence/report-replay');output.mkdir(exist_ok=True)

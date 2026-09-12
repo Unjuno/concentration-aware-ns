@@ -97,3 +97,19 @@ norms. No acceptance verdict is upgraded.
 Reproduce with `python3 -m tools.compare_su2_time`. The JSON evidence includes
 archive hashes, convergence counts and both differences in
 `evidence/tests/su2-time-comparison.json`.
+
+## Evidence-linked gates for every frozen case
+
+`python3 -m tools.build_su2_report` writes all five schema-2 gate/verdict pairs.
+Each includes residual-step counts, observed velocity error, sampled spectral
+derivative diagnostics, the archived case hash and eight evidence links.
+All current verdicts remain UNCERTAIN. This does not erase measured threshold
+violations: n16 and n32 exceed the protocol's 2% velocity tolerance, and all
+n64 runs plus n32 contain steps failing the frozen residual criterion.
+
+The derivative metric intervals are explicitly [0, unbounded], because no
+continuous reconstructed-field peak-error certificate is available. The zero
+is the trivial lower bound, not a measured zero error. Sampled spectral peak
+deficits remain observations and are not passed as certified error intervals.
+The derivative, space/time and full standard-review flags remain false.
+The full report replay now includes these gates and checks 88 artifact links.

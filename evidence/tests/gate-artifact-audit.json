@@ -1,6 +1,6 @@
 {
   "scope": "Artifact byte identity only; does not validate scientific review flags or conclusions.",
-  "links_checked": 48,
+  "links_checked": 88,
   "all_match": true,
   "links": [
     {
@@ -289,6 +289,246 @@
       "report": "reports/physicsnemo-n64-nt9-gate.json",
       "artifact": "standard_acceptance_verified",
       "path": "reports/physicsnemo-study-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/su2-force-helper.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/su2-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/su2-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/su2-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/su2-force-helper.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/su2-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/su2-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/su2-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/su2-force-helper.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/su2-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/su2-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/su2-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/su2-force-helper.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/su2-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/su2-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/su2-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/reference-symbolic.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/su2-force-helper.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "evidence/tests/su2-time-comparison.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/su2-study-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/su2-study-v1/summary.json",
       "status": "MATCH"
     }
   ]

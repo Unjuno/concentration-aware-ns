@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "standard_acceptance": "UNCERTAIN",
+  "evidence": {
+    "reference_verified": true,
+    "forcing_verified": true,
+    "derivatives_verified": false,
+    "space_time_study_verified": false,
+    "thresholds_preregistered": true,
+    "raw_artifacts_reviewed": true,
+    "evaluation_time_verified": true,
+    "standard_acceptance_verified": false
+  },
+  "artifacts": {
+    "reference_verified": {
+      "path": "evidence/tests/reference-symbolic.json",
+      "sha256": "a1cac81ec2660302b91cb062f81bbe8414fb24aee8a9fede8495e859a70d9c42"
+    },
+    "forcing_verified": {
+      "path": "evidence/tests/su2-force-helper.json",
+      "sha256": "4d1bc6158bf0dd658e5f6fd6c0446db827b4b2726e0ac01e6f113a286c8c907f"
+    },
+    "derivatives_verified": {
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "sha256": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3"
+    },
+    "space_time_study_verified": {
+      "path": "evidence/tests/su2-time-comparison.json",
+      "sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
+    },
+    "thresholds_preregistered": {
+      "path": "protocols/su2-study-v1.json",
+      "sha256": "d0cc3b9715a347ca70025524fe70cf1517c2fdce52a7153c7b36099e038b7670"
+    },
+    "raw_artifacts_reviewed": {
+      "path": "evidence/su2-study-v1/archive-review.json",
+      "sha256": "f5d2d2af0f4aee6a11e4ac8e070062119e41298c1a9710cf045b3dc5d8427bcd"
+    },
+    "evaluation_time_verified": {
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "sha256": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18"
+    },
+    "standard_acceptance_verified": {
+      "path": "evidence/su2-study-v1/summary.json",
+      "sha256": "b9ef9794b62dc134282ab4330cfefcb849dba60e2b3f116a1aff8615296d97b7"
+    }
+  },
+  "metrics": [
+    {
+      "name": "max_gradient",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    },
+    {
+      "name": "max_vorticity",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    }
+  ],
+  "scope": "No certified continuum peak-error interval. [0, unbounded] records missing bounds, not zero measured error. Gate flags preserve unresolved review requirements.",
+  "observations": {
+    "case": "n16-dt0.001",
+    "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+    "velocity_relative_l2": 0.10164793244804474,
+    "velocity_tolerance": 0.02,
+    "converged_steps": 50,
+    "steps": 50,
+    "all_steps_meet_residual_threshold": true,
+    "sample_spectral_metrics": {
+      "gradient": {
+        "computed_relative_l2_at_samples": 0.16447089992865468,
+        "reference_spectral_relative_l2_at_samples": 0.015158529541342744,
+        "computed_spectral_peak_samples": 16.89916569087897,
+        "reference_spectral_peak_samples": 19.947757629515156,
+        "exact_global_reference_peak": 20.13373197596784,
+        "computed_peak_signed_deficit": 0.16065408484377042
+      },
+      "vorticity": {
+        "computed_relative_l2_at_samples": 0.16124986137395012,
+        "reference_spectral_relative_l2_at_samples": 0.015139571739092047,
+        "computed_spectral_peak_samples": 23.810491145990188,
+        "reference_spectral_peak_samples": 28.210389378591717,
+        "exact_global_reference_peak": 28.473396821598573,
+        "computed_peak_signed_deficit": 0.16376358974041783
+      }
+    }
+  },
+  "unresolved": [
+    "Continuum numerical-field peak bounds and uncertainty budget absent",
+    "Time comparison does not isolate inner-iteration error",
+    "Full standard acceptance review including energy not encoded here"
+  ]
+}

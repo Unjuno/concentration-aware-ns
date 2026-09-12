@@ -116,6 +116,17 @@
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "step": "su2_gates",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.build_su2_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_gates.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
       "step": "artifact_links",
       "command": [
         "/opt/homebrew/opt/python@3.14/bin/python3.14",
@@ -124,7 +135,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/artifact_links.log",
-      "log_sha256": "9546d941366f7fff329f5ce2aca587c2d5975b0bb1ebd2de992d433c1a9e82aa"
+      "log_sha256": "d89e3369bbce819f7b6bf168e32ff7cee5941f3ed946867a6c44e781a4a9028c"
     }
   ]
 }
