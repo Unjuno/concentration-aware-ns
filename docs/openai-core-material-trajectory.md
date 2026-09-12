@@ -503,3 +503,10 @@ derivatives at X=0, its X derivative converges to the leading derivative as
 q tends to zero. This is now one Lean theorem rather than two disconnected
 facts. Identifying this generic prefix with SlowBorelBase.uncutPrefix and
 combining its limit with the selected tail estimate remain formalization steps.
+
+`chart_radial_derivative_eq_fderiv` checks the chain-rule identity between
+the ordinary derivative of X -> g(q,X,eta) and the Frechet derivative of g
+applied to (0,1,0), under DifferentiableAt. This supplies the coordinate
+interpretation needed for the tail estimate. The remaining formal bridge
+identifies the order-one iterated derivative with that Frechet derivative
+and combines the tail and prefix limits for the selected smooth slow sum.

@@ -303,6 +303,16 @@ theorem first_jet_radial_component_tends_zero
     fun_prop
   simpa only [Function.comp_def, ContinuousMultilinearMap.zero_apply] using hc.continuousAt.tendsto.comp hr
 
+theorem chart_radial_derivative_eq_fderiv
+    (g : SlowBorelBase.Chart → ℝ) (q X eta : ℝ)
+    (hg : DifferentiableAt ℝ g (q,(X,eta))) :
+    deriv (fun x => g (q,(x,eta))) X =
+      fderiv ℝ g (q,(X,eta)) (0,(1,0)) := by
+  have curve : HasDerivAt (fun x : ℝ => (q,(x,eta))) (0,(1,0)) X :=
+    (hasDerivAt_const X q).prodMk ((hasDerivAt_id X).prodMk (hasDerivAt_const X eta))
+  exact (hg.hasFDerivAt.comp_hasDerivAt X curve).deriv
+
+#print axioms chart_radial_derivative_eq_fderiv
 #print axioms first_jet_radial_component_tends_zero
 #print axioms axial_derivative_tail_tends_zero
 #print axioms power_bounded_remainder_tends_zero
