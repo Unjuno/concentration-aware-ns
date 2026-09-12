@@ -716,6 +716,25 @@ theorem physical_stream_laplacian_of_sliceC2
     (directional H hH (0,(1,0))) (directional H hH (0,(0,1)))
     (directional _ hU (0,(0,1)))
 
+theorem selected_stream_sliceC2
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    AxisymmetricResidual.SliceC2
+      (SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+        W.axis.normalization (FinalSlowBase.coefficients H v)) t := by
+  intro x
+  have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+  have hs := SlowBorelBase.physicalProfile_smoothAt
+    (FinalSlowBase.scales_admissible H v upper B).strictMono W.axis.small.h_pos hh1
+    (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
+      W.axis.normalization (0 : Fin 7)) (-CoordinateAlgebra.A F.data.h)
+    (p := AxisymmetricFields.profilePoint t x) ht
+  exact hs.of_le (by simp)
+
+#print axioms selected_stream_sliceC2
 #print axioms physical_stream_laplacian_of_sliceC2
 #print axioms physical_stream_laplacian_on_axis
 #print axioms stream_axial_second_derivative_on_axis

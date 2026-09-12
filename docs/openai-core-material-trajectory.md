@@ -739,3 +739,17 @@ second-derivative regularity, not an assumed smooth extension across
 the singular time. The pinned Lean check passes without sorryAx.
 The actual constructed profiles still need to be shown to satisfy
 these SliceC2 hypotheses; the force-ratio limit remains unformalized.
+
+
+## Actual selected stream regularity
+
+`selected_stream_sliceC2` supplies SliceC2 for the actual
+`streamFactor (FinalSlowBase.scales ...) ... (FinalSlowBase.coefficients ...)`
+at every physical time t < 1. It derives h < 1/2 from the stored small
+parameter bound, strict monotonicity from scale admissibility, and
+coefficient smoothness from the FinalSlowBase theorem. No added
+regularity assumption is used. The pinned Lean check passes without
+sorryAx. The swirl-derived transverse profiles and axial velocity
+H+s H_s still require their corresponding regularity and velocity
+identification before the physical Laplacian theorem can be applied
+to the actual base velocity.
