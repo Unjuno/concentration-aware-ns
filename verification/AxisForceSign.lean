@@ -1679,6 +1679,50 @@ theorem material_curve_chain_rule
   rw [het,hes,← map_add]
   simpa only [Function.comp_def,id_eq,Prod.mk_add_mk,add_zero,zero_add] using hcomp
 
+theorem actual_candidate_material_acceleration
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let t := 1-q*(1-eta^2)
+    ProblemStatement.temporalDerivative u t (curve t) + ProblemStatement.advection u t (curve t) =
+      AxisymmetricResidual.pack 0 0
+        (CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h *
+          NaturalAxisData.U CorrectionInitialization.ActualPrimary.nominal.axis.j eta /
+          (1-eta^2) * q^(-CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h-1)) := by
+  intro u curve
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    actual_candidate_material_trajectory B N0 hN a ha eta heta root,
+    actual_candidate_velocity_time_derivative B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hc hv hq
+  dsimp only
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2)=q := by field_simp; ring
+  have hcurve : curve (1-q*(1-eta^2)) = AxisymmetricResidual.pack 0 0
+      (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)) := by
+    dsimp [curve]
+    rw [hqt]
+  rw [← hcurve] at he
+  have hopen : IsOpen BaseResidual.past := isOpen_Iio.prod isOpen_univ
+  have hb := ((FinalSlowBase.velocity_smooth CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B).contDiffAt
+      (hopen.mem_nhds (show (1-q*(1-eta^2),curve (1-q*(1-eta^2))) ∈ BaseResidual.past from
+        ⟨ht,Set.mem_univ _⟩))).differentiableAt (by simp)
+  have hu : DifferentiableAt ℝ u (1-q*(1-eta^2),curve (1-q*(1-eta^2))) :=
+    hb.congr_of_eventuallyEq he
+  exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
+
+#print axioms actual_candidate_material_acceleration
 #print axioms material_curve_chain_rule
 #print axioms actual_candidate_velocity_time_derivative
 #print axioms selected_base_axis_velocity_time_derivative

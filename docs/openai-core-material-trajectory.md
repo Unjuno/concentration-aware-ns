@@ -1240,3 +1240,19 @@ The pinned Lean check succeeds without sorryAx. This bridges the two
 definitions of material acceleration conditionally; the actual field's
 differentiability must still be supplied and the resulting derivative
 identified with the previously proved concrete formula.
+
+
+## Actual Eulerian material acceleration identified
+
+`actual_candidate_material_acceleration` identifies the source
+temporalDerivative+advection of the actual activated periodic velocity
+with pack(0,0,(A U/d) q^(-A-1)) along the terminal root trajectory.
+Differentiability is derived from FinalSlowBase.velocity_smooth on the
+open preterminal domain and transferred through the established germ
+equality. The material-trajectory derivative and the velocity-composition
+derivative then coincide by the chain rule and uniqueness of derivatives.
+The pinned Lean check succeeds without sorryAx. No extra differentiability
+premise remains; the geometric threshold, diverging schedule, eta interval
+and root equation remain explicit. The force-ratio denominator is now
+identified with the actual PDE material acceleration. The explicit
+physical axial H_zz scaling and final force-limit composition remain.
