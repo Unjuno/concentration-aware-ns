@@ -815,3 +815,14 @@ without sorryAx. Component 0 is the radial average, whereas the
 existing negative derivative limit concerns raw axial component 5.
 The averaging derivative identity linking these components, including
 its factor 1/2 on the axis, remains a necessary formal bridge.
+
+
+## Radial differentiation under the averaging integral
+
+`radial_derivative_compact_integral` proves interchange of radialPartial
+and integration over [0,1] under the source compact-parameter smoothness
+hypotheses. It evaluates the integrated Frechet derivative in direction
+(1,0), complementing the source's parameterPartial theorem in direction
+(0,1). The pinned Lean check passes without sorryAx. Applying this to
+F(tX,eta) and evaluating the integral of t at X=0 remains the next step;
+the averaging factor 1/2 is not yet formally established here.

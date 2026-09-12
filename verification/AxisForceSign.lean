@@ -897,6 +897,24 @@ theorem selected_stream_radial_derivative_physical
     (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
       W.axis.normalization (0 : Fin 7)) (-CoordinateAlgebra.A F.data.h) hp
 
+open MeasureTheory in
+ theorem radial_derivative_compact_integral
+    {s : Set ProfileHistories.Point} {G : ProfileHistories.Point → ℝ → ℝ}
+    (hs : IsOpen s)
+    (hG : ∀ p ∈ s, ∀ t ∈ Set.Icc (0 : ℝ) 1,
+      ContDiffAt ℝ ∞ (fun z : ProfileHistories.Point × ℝ => G z.1 z.2) (p,t))
+    {p : ProfileHistories.Point} (hp : p ∈ s) :
+    ProfileHistories.radialPartial (fun q => ∫ t in (0 : ℝ)..1, G q t) p =
+      ∫ t in (0 : ℝ)..1, ProfileHistories.radialPartial (fun q => G q t) p := by
+  have hi : IntervalIntegrable (fun t => fderiv ℝ (fun q => G q t) p) volume 0 1 :=
+    ((ProfileHistories.compact_parameter_fderiv_continuous hG).comp
+      (continuous_const.prodMk continuous_id).continuousOn
+      (fun _ ht => ⟨hp,ht⟩)).intervalIntegrable_of_Icc zero_le_one
+  unfold ProfileHistories.radialPartial
+  rw [(ProfileHistories.compact_parameter_integral_hasFDerivAt hs hG hp).fderiv]
+  exact ContinuousLinearMap.intervalIntegral_apply hi (1,0)
+
+#print axioms radial_derivative_compact_integral
 #print axioms selected_stream_radial_derivative_physical
 #print axioms selected_base_velocity_laplacian_on_axis
 #print axioms selected_base_velocity_slice_eq
