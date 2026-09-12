@@ -1,0 +1,7 @@
+{
+  "commit": "3af64ecb094e91be668679c2a9649523f80a30ca",
+  "scope": "Tracked-files-only git archive in a fresh non-git directory, using existing system Python environment. Not a clean dependency installation or solver rerun.",
+  "exit_code": 0,
+  "stdout": "{\n  \"success\": true,\n  \"completed_steps\": 12\n}\n",
+  "stderr": ""
+}

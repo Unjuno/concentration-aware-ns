@@ -3,8 +3,8 @@
 An evidence-first audit of whether conventional convergence or validation
 criteria can pass while local quantities of interest remain inaccurate.
 
-**Status: active benchmark execution. OpenFOAM and PhysicsNeMo comparison
-matrices are archived; the SU2 matrix is running. No general solver defect,
+**Status: all three comparison matrices are archived; final evidence review
+is ongoing. No general solver defect,
 mathematical singularity or real-world hazard is claimed.**
 
 Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
@@ -16,9 +16,11 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Source audit and candidate findings](docs/audit.md)
 - [Progress](docs/progress.md)
 - [Requirement-by-requirement completion audit](docs/completion-audit.md)
+- [Three-target comparative audit](reports/comparative-audit.md)
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
+- [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
@@ -57,10 +59,9 @@ python3 -m tools.replay_published_reports
 
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics, rebuilds the
-OpenFOAM and PhysicsNeMo gates, and checks every gate artifact hash. Logs and
+OpenFOAM, SU2 and PhysicsNeMo gates, and checks every gate artifact hash. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
-train networks or validate the OpenAI proof. SU2 replay covers completed archives
-only; its case count must be checked against the required five-case matrix.
+train networks or validate the OpenAI proof. The current replay covers all five required SU2 cases.
 Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication
@@ -77,3 +78,18 @@ upstream source into this repository without preserving its applicable terms.
 The pinned OpenAI Navier–Stokes challenge passed the recorded independent check;
 see [verification result and scope](reports/openai-ns-independent-verification.md).
 This result is separate from the report replay and numerical benchmark gates.
+
+## Additional analytic and aggregate checks
+
+Install `requirements-verification.txt` in a separate Python environment, then run:
+
+```sh
+python -m tools.review_su2_standard
+python -m tools.check_axis_force
+python -m tools.check_axis_dissipation
+```
+
+These checks are separate from the twelve-step report replay. The force and
+dissipation checks verify symbolic algebra, not the complete source-hypothesis
+chain or molecular applicability. The aggregate review does not certify
+continuous numerical-field energy.
