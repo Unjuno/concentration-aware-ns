@@ -292,6 +292,18 @@ theorem axial_derivative_tail_tends_zero
     Filter.Eventually.filter_mono nhdsWithin_le_nhds (gt_mem_nhds hd)] with q hq hqd
   exact hb q hq hqd w hw
 
+theorem first_jet_radial_component_tends_zero
+    (r : ℝ → ContinuousMultilinearMap ℝ
+      (fun _ : Fin 1 => SlowBorelBase.Chart) ℝ)
+    (hr : Filter.Tendsto r (𝓝[>] (0 : ℝ)) (𝓝 0)) :
+    Filter.Tendsto (fun q => r q (fun _ => (0,(1,0))))
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  have hc : Continuous (fun L : ContinuousMultilinearMap ℝ
+      (fun _ : Fin 1 => SlowBorelBase.Chart) ℝ => L (fun _ => (0,(1,0)))) := by
+    fun_prop
+  simpa only [Function.comp_def, ContinuousMultilinearMap.zero_apply] using hc.continuousAt.tendsto.comp hr
+
+#print axioms first_jet_radial_component_tends_zero
 #print axioms axial_derivative_tail_tends_zero
 #print axioms power_bounded_remainder_tends_zero
 #print axioms uncut_prefix_derivative_tends_leading
