@@ -734,6 +734,29 @@ theorem selected_stream_sliceC2
     (p := AxisymmetricFields.profilePoint t x) ht
   exact hs.of_le (by simp)
 
+theorem selected_stream_axial_velocity_sliceC2
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    let stream := SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v)
+    AxisymmetricResidual.SliceC2
+      (fun p => stream p + p.2.1 * AxisymmetricFields.partialS stream p) t := by
+  intro stream x
+  have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+  have hs : ContDiffAt ℝ ∞ stream (AxisymmetricFields.profilePoint t x) :=
+    SlowBorelBase.physicalProfile_smoothAt
+      (FinalSlowBase.scales_admissible H v upper B).strictMono W.axis.small.h_pos hh1
+      (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
+        W.axis.normalization (0 : Fin 7)) (-CoordinateAlgebra.A F.data.h) ht
+  have hder : ContDiffAt ℝ 2 (AxisymmetricFields.partialS stream)
+      (AxisymmetricFields.profilePoint t x) := by
+    exact (hs.fderiv_right (m := 2) (by simp)).clm_apply contDiffAt_const
+  exact (hs.of_le (by simp)).add ((contDiffAt_snd.fst).mul hder)
+
+#print axioms selected_stream_axial_velocity_sliceC2
 #print axioms selected_stream_sliceC2
 #print axioms physical_stream_laplacian_of_sliceC2
 #print axioms physical_stream_laplacian_on_axis

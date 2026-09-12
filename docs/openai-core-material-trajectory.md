@@ -753,3 +753,15 @@ sorryAx. The swirl-derived transverse profiles and axial velocity
 H+s H_s still require their corresponding regularity and velocity
 identification before the physical Laplacian theorem can be applied
 to the actual base velocity.
+
+
+## Actual stream-derived axial velocity regularity
+
+`selected_stream_axial_velocity_sliceC2` proves SliceC2 of
+H+s partialS H for the actual selected stream at every t<1.
+The source's infinite-order pointwise smoothness supplies the derivative
+regularity needed for partialS H to be C2; the multiplication and addition
+then give C2 of the axial profile. No extra axial-velocity regularity
+hypothesis is assumed. The pinned Lean check passes without sorryAx.
+The transverse-profile regularity, identification with baseVelocity,
+and final physical force-ratio transfer remain to be formalized.
