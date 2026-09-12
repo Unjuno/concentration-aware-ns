@@ -715,3 +715,16 @@ for U=H+s H_s at s=0, since the two axial slices agree identically.
 The pinned Lean check passes without sorryAx. These explicit smoothness
 hypotheses still need to be supplied for the actual physical profiles;
 the statements do not yet establish the final assembled-field limit.
+
+
+## Combined physical stream Laplacian identity
+
+`physical_stream_laplacian_on_axis` now combines the Cartesian Laplacian
+and both stream-to-velocity derivative identities into
+(Delta u)_z = 4 H_s + H_zz on the axis for the regular axisymmetric
+velocity with axial component H+s H_s. Axial slice differentiability of
+that component is derived from SliceC2, not separately assumed.
+The remaining smoothness assumptions on H and its derivatives are explicit.
+The pinned Lean check passes without sorryAx. Instantiating those
+hypotheses with the constructed stream and identifying the resulting
+physical derivative with the selected slow-sum limit are still required.

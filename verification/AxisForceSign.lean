@@ -664,6 +664,33 @@ theorem stream_axial_second_derivative_on_axis
     axial_second_derivative_eq_slice H t z hH hHZ]
   simp only [zero_mul, add_zero]
 
+theorem physical_stream_laplacian_on_axis
+    (H B F : AxisymmetricFields.Profile) (t z : ℝ)
+    (hB : AxisymmetricResidual.SliceC2 B t)
+    (hF : AxisymmetricResidual.SliceC2 F t)
+    (hU : AxisymmetricResidual.SliceC2
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) t)
+    (hH : ∀ w : ℝ, DifferentiableAt ℝ H (t,(0,w)))
+    (hS : DifferentiableAt ℝ (AxisymmetricFields.partialS H) (t,(0,z)))
+    (hHZ : DifferentiableAt ℝ (AxisymmetricFields.partialZ H) (t,(0,z)))
+    (hUZ : DifferentiableAt ℝ (AxisymmetricFields.partialZ
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)) (t,(0,z))) :
+    ProblemStatement.spatialLaplacian (AxisymmetricResidual.velocity B F
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)) t
+      (AxisymmetricResidual.pack 0 0 z) 2 =
+      4 * AxisymmetricFields.partialS H (t,(0,z)) +
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ H) (t,(0,z)) := by
+  have hUd : ∀ w : ℝ, DifferentiableAt ℝ
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) (t,(0,w)) := by
+    intro w
+    simpa [AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy] using
+      hU.differentiable (AxisymmetricResidual.pack 0 0 w)
+  rw [physical_axial_laplacian_on_axis hB hF hU z,
+    stream_axial_radial_derivative_on_axis H t z (hH z) hS,
+    stream_axial_second_derivative_on_axis H t z hH hUd hHZ hUZ]
+  ring
+
+#print axioms physical_stream_laplacian_on_axis
 #print axioms stream_axial_second_derivative_on_axis
 #print axioms axial_slice_derivative_eq_partialZ
 #print axioms axial_second_derivative_eq_slice
