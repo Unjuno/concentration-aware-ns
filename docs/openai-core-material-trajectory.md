@@ -803,3 +803,15 @@ check without sorryAx. This establishes the formula for the actual
 base velocity, not yet for the final periodic assembled candidate.
 The physical H_s/slow-sum relation, H_zz asymptotics and material
 acceleration comparison remain formalization work.
+
+
+## Selected physical radial derivative formula
+
+`selected_stream_radial_derivative_physical` instantiates the source
+`partialS_physicalProfile` theorem for the actual selected stream.
+It identifies H_s with the physical profile of exponent -A-1 built
+from partialX of bundle component 0. The pinned Lean check passes
+without sorryAx. Component 0 is the radial average, whereas the
+existing negative derivative limit concerns raw axial component 5.
+The averaging derivative identity linking these components, including
+its factor 1/2 on the axis, remains a necessary formal bridge.

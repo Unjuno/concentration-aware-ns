@@ -879,6 +879,25 @@ theorem selected_base_velocity_laplacian_on_axis
   rw [he]
   exact formula
 
+theorem selected_stream_radial_derivative_physical
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (p : SlowBorelBase.Chart) (hp : p.1 < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    AxisymmetricFields.partialS (SlowBorelBase.streamFactor a F.data.h W.axis.normalization d) p =
+    SlowBorelBase.physicalProfile a F.data.h (-CoordinateAlgebra.A F.data.h - 1)
+      (fun j => SimilarityProfile.partialX
+        (SlowBorelBase.bundleComponent W.axis.normalization d 0 j)) p := by
+  have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+  exact SlowBorelBase.partialS_physicalProfile
+    (FinalSlowBase.scales_admissible H v upper B).strictMono W.axis.small.h_pos hh1
+    (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
+      W.axis.normalization (0 : Fin 7)) (-CoordinateAlgebra.A F.data.h) hp
+
+#print axioms selected_stream_radial_derivative_physical
 #print axioms selected_base_velocity_laplacian_on_axis
 #print axioms selected_base_velocity_slice_eq
 #print axioms curl_velocity_eq_profile_velocity
