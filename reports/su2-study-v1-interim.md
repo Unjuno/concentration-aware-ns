@@ -113,3 +113,26 @@ is the trivial lower bound, not a measured zero error. Sampled spectral peak
 deficits remain observations and are not passed as certified error intervals.
 The derivative, space/time and full standard-review flags remain false.
 The full report replay now includes these gates and checks 88 artifact links.
+
+## Observed aggregate acceptance review
+
+`python -m tools.review_su2_standard` (NumPy/SciPy environment) compares the
+archived sample mean energy with the analytic continuum integral and checks
+the frozen velocity/energy thresholds alongside all-step residual convergence.
+
+| Case | Velocity error | Energy error | Every step converged |
+|---|---:|---:|---|
+| n16 dt=.001 | 10.1648% | 12.0279% | Yes |
+| n32 dt=.001 | 2.2772% | 2.4642% | No |
+| n64 dt=.001 | 0.3625% | 0.3551% | No |
+| n64 dt=.0005 | 0.3647% | 0.3553% | No |
+| n64 dt=.00025 | 0.3660% | 0.3553% | No |
+
+No case meets all three observed checks. The conjunction is an explicit audit
+convention, not a retroactively preregistered definition of standard acceptance.
+This prevents presenting these runs as established examples of standard PASS
+with local FAIL. Their individual errors and residual failures remain useful
+benchmark evidence and do not by themselves establish a solver defect.
+Energy quadrature and solution error are combined; continuous numerical-field
+energy is not certified. Schema-2 conservative verdicts remain unchanged.
+Evidence: evidence/tests/su2-standard-review.json, with archive SHA256 values.
