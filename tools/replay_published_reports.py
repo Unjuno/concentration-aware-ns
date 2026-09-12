@@ -16,6 +16,7 @@ steps = [
     ('su2_archive_review', [sys.executable, '-m', 'tools.review_su2_archives']),
     ('su2_diagnostic_replay', [sys.executable, '-m', 'tools.replay_su2_diagnostics']),
     ('su2_spectral_derivatives', [sys.executable, '-m', 'tools.compare_su2_spectral']),
+    ('su2_time_comparison', [sys.executable, '-m', 'tools.compare_su2_time']),
     ('openfoam_gate', [sys.executable, '-m', 'tools.build_openfoam_report']),
     ('physicsnemo_gates', [sys.executable, '-m', 'tools.build_physicsnemo_report']),
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),

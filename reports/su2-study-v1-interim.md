@@ -72,3 +72,28 @@ These sampled comparisons are not certified continuous reconstructed-field peaks
 Periodic duplicate values match exactly. Residual thresholds were met in 48/50
 updates; the first two failed. The remaining two time-step cases are still
 required, so no final quality or hypothesis PASS is assigned.
+
+## All five frozen runs completed: endpoint temporal comparison
+
+All five archives now pass byte-integrity review and exact diagnostic replay.
+The n64 runs at dt=0.001, 0.0005 and 0.00025 reach t=0.05, with respectively
+48/50, 97/100 and 193/200 steps meeting all four strict residual criteria.
+Completion does not imply convergence of every inner solve.
+
+Direct differences of endpoint velocity fields on the verified periodic n64
+vertex lattice give RMS vector differences 5.3558517845476045e-5 and
+2.6794894751638003e-5 for successive halvings. Their observed order is
+0.9991578874547687. Relative L2 differences to the finer field are
+0.00014348070046906172 and 0.00007178225425111923.
+
+This is consistent with first-order endpoint behavior for this sequence,
+but is not an error certificate: inner solves include unconverged steps,
+only two successive differences are available, and spatial/model error remains.
+The velocity errors against the exact solution slightly increase across these
+time refinements; that fact alone would miss the near-first-order differences
+between the computed fields. Do not estimate order from differences of error
+norms. No acceptance verdict is upgraded.
+
+Reproduce with `python3 -m tools.compare_su2_time`. The JSON evidence includes
+archive hashes, convergence counts and both differences in
+`evidence/tests/su2-time-comparison.json`.

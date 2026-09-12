@@ -1,0 +1,41 @@
+{
+  "scope": "Direct fixed-grid endpoint field differences; descriptive observed order only. Unconverged inner solves and absence of an asymptotic regime prevent a temporal error certificate.",
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "converged_steps": 48,
+      "steps": 50
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "converged_steps": 97,
+      "steps": 100
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "converged_steps": 193,
+      "steps": 200
+    }
+  ],
+  "differences": [
+    {
+      "coarse": "n64-dt0.001",
+      "fine": "n64-dt0.0005",
+      "rms_vector": 5.3558517845476045e-05,
+      "max_vector": 0.0010678632028212284,
+      "relative_l2_to_finer": 0.00014348070046906172
+    },
+    {
+      "coarse": "n64-dt0.0005",
+      "fine": "n64-dt0.00025",
+      "rms_vector": 2.6794894751638003e-05,
+      "max_vector": 0.0005350649315841356,
+      "relative_l2_to_finer": 7.178225425111923e-05
+    }
+  ],
+  "observed_order": 0.9991578874547687,
+  "temporal_error_certified": false
+}

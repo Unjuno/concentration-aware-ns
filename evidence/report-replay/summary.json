@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "bf90614b056fd32e1e8f0c8d9c58dff25c4881c837fc70c75779437d84543e09"
+      "log_sha256": "2c2abb7b747d81a8ddbb006f5fe04e9fa2183e4592c9ec7d34e97e979b7b8a9c"
     },
     {
       "step": "global_peaks",
@@ -81,6 +81,17 @@
       "exit_code": 0,
       "log": "evidence/report-replay/su2_spectral_derivatives.log",
       "log_sha256": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3"
+    },
+    {
+      "step": "su2_time_comparison",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.compare_su2_time"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_time_comparison.log",
+      "log_sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
     },
     {
       "step": "openfoam_gate",
