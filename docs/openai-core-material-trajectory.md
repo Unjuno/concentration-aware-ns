@@ -390,3 +390,47 @@ The remaining issue for B(q,eta_*) is now the positive-order derivative
 remainder only. Its vanishing requires a derivative-level asymptotic estimate
 for the selected slow sum; local finiteness at each q>0 alone is insufficient.
 This transfer remains a source-derived argument, not newly compiled Lean code.
+
+## Derivative remainder vanishes for the selected schedule
+
+FinalSlowBase.scales_admissible gives AdmissibleScales for the actual seven-
+component coefficientBundle on innerBox 0 (boxRadius W upper). Component 5
+is the axial coefficient itself. Projecting to this component (a continuous
+linear map of norm at most one) retains the admissible derivative bounds.
+The fixed point w_*=(0,eta_*) belongs to this box: |eta_*|<1 and the box
+radius bounds the positive activeRight radius.
+
+Apply SlowBorelBase.exists_ordinary_uncut_tail with M=1, Jmin=1, P=2h
+to the projected axial coefficient family. It supplies a finite J>=1 and
+delta>0 such that the full first derivative of slowSum-uncutPrefix is bounded
+by 2^(-J) q^(2h) at (q,w_*) for 0<q<delta. Evaluate that derivative on the
+unit X direction. The finite uncut prefix has derivative
+
+    partial_X a_0(w_*) + sum_(j=1)^J q^(2hj) partial_X a_j(w_*).
+
+Each coefficient here is a fixed finite real number. For 0<q<=1, every
+q^(2hj)<=q^(2h). Thus the finite prefix difference and the bounded tail
+both are O(q^(2h)), establishing
+
+    B(q,eta_*) = -Z_*/(2L_*) + O(q^(2h)).
+
+This uses a derivative bound for the entire remaining sum, not an exchange
+of a limit with infinitely many terms. No explicit numerical remainder
+constant or usable finite-time crossover is obtained from the existential
+schedule theorem.
+
+Combining with q=tau/d_* and the earlier H_zz estimate gives, for the selected
+completed periodic witness on its terminal material trajectory, at native nu=1,
+
+    (Laplacian u)_z / (D_t u)_z
+        = -Z_*/(L_* A U_* d_*) + O(tau^(2h)).
+
+The limit is strictly negative and nonzero. The previously established local
+spacetime equality to FinalSlowBase transfers the required velocity derivatives
+to the selected witness. Consequently directional alignment does not imply
+vanishing relative axial viscous force in this particular construction.
+This result is specific to the selected trajectory and witness; it is not a
+universal molecular model, a phase-transition statement, or a solution for
+viscosity as a material property. Pressure and forcing have not been separately
+quantified. The whole new consequence remains hand-derived from the pinned
+source; no additional Lean theorem has been compiled.

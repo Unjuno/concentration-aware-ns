@@ -12,6 +12,7 @@
     "AssembledSlowBase.lean": "c0a4c39b0f7cb8e975b925f8a9ea342b65ff19e14a956392310385e47138221b",
     "StressActivation.lean": "cf4920c889087fb0a7fa3c334cd48e4d0ae7598e39bc9c30939285fffdf9099d",
     "ReferencePath.lean": "906261b8e3fe1f94345eb1176e58c1f2c9d6ed3bb404c576afe12a473513efe8",
-    "NominalProfile.lean": "e0e218e1b70505e2d0831a7641e69332036395a01bcc7df00ad6493392e1229f"
+    "NominalProfile.lean": "e0e218e1b70505e2d0831a7641e69332036395a01bcc7df00ad6493392e1229f",
+    "FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314"
   }
 }
