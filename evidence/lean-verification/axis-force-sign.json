@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "source": "verification/AxisForceSign.lean",
+  "source_sha256": "679bceb10a981ef72c04afe4312d41c53ef7cae684bebc27b3cdc26c0ec44756",
+  "environment": "Saved pinned Lean v4.34.0-rc2 verification volume; lake env lean; read-only source and extension mounts; network disabled",
+  "scope": "Scalar sign lemma only, conditional on root/pressure hypotheses and positive denominator factors. Not the velocity identity, asymptotic transfer or independent nanoda check.",
+  "initial_attempt": "Failed due to missing NavierStokes namespace opening; corrected before successful check."
+}
