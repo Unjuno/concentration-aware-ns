@@ -728,3 +728,14 @@ The remaining smoothness assumptions on H and its derivatives are explicit.
 The pinned Lean check passes without sorryAx. Instantiating those
 hypotheses with the constructed stream and identifying the resulting
 physical derivative with the selected slow-sum limit are still required.
+
+
+## Laplacian bridge with source SliceC2 assumptions
+
+`physical_stream_laplacian_of_sliceC2` derives all derivative-existence
+conditions in the combined identity from SliceC2 of B, F, H and
+U=H+s H_s at the fixed time. It uses the source's pointwise Frechet
+second-derivative regularity, not an assumed smooth extension across
+the singular time. The pinned Lean check passes without sorryAx.
+The actual constructed profiles still need to be shown to satisfy
+these SliceC2 hypotheses; the force-ratio limit remains unformalized.

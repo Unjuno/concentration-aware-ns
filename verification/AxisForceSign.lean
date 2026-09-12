@@ -690,6 +690,33 @@ theorem physical_stream_laplacian_on_axis
     stream_axial_second_derivative_on_axis H t z hH hUd hHZ hUZ]
   ring
 
+theorem physical_stream_laplacian_of_sliceC2
+    (H B F : AxisymmetricFields.Profile) (t z : ℝ)
+    (hB : AxisymmetricResidual.SliceC2 B t)
+    (hF : AxisymmetricResidual.SliceC2 F t)
+    (hH : AxisymmetricResidual.SliceC2 H t)
+    (hU : AxisymmetricResidual.SliceC2
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) t) :
+    ProblemStatement.spatialLaplacian (AxisymmetricResidual.velocity B F
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)) t
+      (AxisymmetricResidual.pack 0 0 z) 2 =
+      4 * AxisymmetricFields.partialS H (t,(0,z)) +
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ H) (t,(0,z)) := by
+  have atAxis (G : AxisymmetricFields.Profile) (hg : AxisymmetricResidual.SliceC2 G t)
+      (w : ℝ) : ContDiffAt ℝ 2 G (t,(0,w)) := by
+    simpa [AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy] using
+      hg (AxisymmetricResidual.pack 0 0 w)
+  have directional (G : AxisymmetricFields.Profile) (hg : AxisymmetricResidual.SliceC2 G t)
+      (direction : AxisymmetricFields.ProfilePoint) :
+      DifferentiableAt ℝ (fun p => fderiv ℝ G p direction) (t,(0,z)) := by
+    exact (((atAxis G hg z).fderiv_right (m := 1) (by norm_num)).clm_apply
+      contDiffAt_const).differentiableAt (by norm_num)
+  exact physical_stream_laplacian_on_axis H B F t z hB hF hU
+    (fun w => (atAxis H hH w).differentiableAt (by norm_num))
+    (directional H hH (0,(1,0))) (directional H hH (0,(0,1)))
+    (directional _ hU (0,(0,1)))
+
+#print axioms physical_stream_laplacian_of_sliceC2
 #print axioms physical_stream_laplacian_on_axis
 #print axioms stream_axial_second_derivative_on_axis
 #print axioms axial_slice_derivative_eq_partialZ
