@@ -664,3 +664,15 @@ is negative for all sufficiently small positive q. The pinned Lean
 check passes without sorryAx. This removes the separately assumed root,
 pressure datum and domain conditions; it does not yet discharge the P
 bound for the final witness or prove the physical force-ratio limit.
+
+
+## Prepared outgoing amplitude bound
+
+`prepared_root_with_negative_radial_derivative` specializes the root/sign
+result to `PreparedOutgoing.PreparedProfile`, using its stored
+`amplitude_lower` proof of P >= 2. No separate pressure-amplitude
+hypothesis is required for this statement. A nominal witness for this
+prepared profile, its cone certificate and modulation witness remain
+inputs; this does not itself construct or identify the final periodic
+witness. The pinned Lean check passes without sorryAx. Full physical
+Laplacian and material-acceleration transfer is still unformalized.

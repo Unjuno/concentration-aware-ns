@@ -17,7 +17,7 @@ measured behavior take precedence over prior progress summaries.
 | Evidence-linked acceptance gate | v2 checker; 31 tests in the recorded replay; gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 88 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
-| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. Additional trajectory, strain and nonzero axial viscous-force ratio are hand-derived, not newly Lean-verified. Euler and finite-stage extraction remain unperformed. |
+| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. Additional trajectory, strain and full axial viscous-force ratio remain hand-derived. New pinned Lean proofs cover the selected slow-sum radial derivative limit, its natural-profile identification and eventual negative sign at an existing root. Euler and finite-stage extraction remain unperformed. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published; tracked-only export and fresh-venv postprocessing pass. Solver-build reproduction and analytic-hypothesis review remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
@@ -40,8 +40,9 @@ Remaining completion work:
    interpreted as completed reviews merely because verdict files exist. Preserve
    observed failures separately from unknown continuous-peak accuracy.
 3. Independently review the new source-to-trajectory implication chain; symbolic
-   identities do not cover theorem hypotheses. A new Lean proof would strengthen
-   this but has not been performed. Do not describe original kernel acceptance
+   identities do not cover theorem hypotheses. New Lean proofs now establish the chart derivative chain through the natural
+   profile, including a root with eventual negative derivative. They do not yet
+   establish the physical Laplacian/material-acceleration limit. Do not describe original kernel acceptance
    as verification of our new result.
 4. Tracked-only export and fresh-venv postprocessing succeeded (see
    evidence/fresh-environment-check.json). SU2 discussion read-back is refreshed

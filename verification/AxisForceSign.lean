@@ -581,6 +581,21 @@ theorem exists_selected_root_with_negative_radial_derivative
   exact ⟨eta, interval, root, selected_axial_radial_derivative_eventually_negative
     H v upper eta B heta point inside interval root pressure⟩
 
+theorem prepared_root_with_negative_radial_derivative
+    (prepared : PreparedOutgoing.PreparedProfile)
+    {W : NominalProfile.Witness prepared.profile}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ) :
+    ∃ eta : ℝ, eta ∈ Set.Ioo (-W.axis.j / 4) (-W.axis.j / 5) ∧
+      NaturalAxisData.H prepared.profile.data.h W.axis.j eta = 0 ∧
+      ∀ᶠ q in 𝓝[>] (0 : ℝ), deriv (fun X =>
+        SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) prepared.profile.data.h
+          (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+          (q,(X,eta))) 0 < 0 := by
+  exact exists_selected_root_with_negative_radial_derivative H v upper B prepared.amplitude_lower
+
+#print axioms prepared_root_with_negative_radial_derivative
 #print axioms exists_selected_root_with_negative_radial_derivative
 #print axioms selected_axial_radial_derivative_eventually_negative
 #print axioms selected_natural_derivative_negative
