@@ -558,3 +558,19 @@ a formal one-sided-to-ordinary derivative argument: the source's
 `EntranceAlignedBase.modulated_zero_fields` supplies equality on X >= 0,
 which is not a two-sided neighborhood of X = 0. The physical-field and
 force-ratio transfers remain unformalized.
+
+
+## One-sided agreement and the leading derivative
+
+`deriv_eq_of_nonnegative_agreement` proves equality of ordinary derivatives
+at zero for two differentiable scalar functions that agree on X >= 0,
+using uniqueness of the derivative within the closed right half-line.
+`selected_leading_derivative_eq_modulated` applies it to the actual
+component-5 zeroth coefficient and `v.profiles.U`, using
+`EntranceAlignedBase.modulated_zero_fields`. The coefficient's
+smoothness is derived from the source. This theorem currently retains
+an explicit differentiability hypothesis for the modulated U slice;
+deriving it from the profile's open-domain smoothness is still needed.
+Both statements pass the pinned Lean check without sorryAx. Neither
+statement yet identifies the modulated derivative with the natural
+solution or proves the full physical force-ratio limit.

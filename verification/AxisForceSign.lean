@@ -412,6 +412,38 @@ theorem selected_axial_radial_derivative_tends_leading
     (FinalSlowBase.coefficients_smooth H v)
     (FinalSlowBase.scales_admissible H v upper B)
 
+theorem deriv_eq_of_nonnegative_agreement
+    (f g : ℝ → ℝ) (hf : DifferentiableAt ℝ f 0) (hg : DifferentiableAt ℝ g 0)
+    (agree : ∀ x : ℝ, 0 ≤ x → f x = g x) : deriv f 0 = deriv g 0 := by
+  have he : derivWithin f (Set.Ici 0) 0 = derivWithin g (Set.Ici 0) 0 :=
+    derivWithin_congr (fun x hx => agree x hx) (agree 0 le_rfl)
+  rw [hf.derivWithin (uniqueDiffWithinAt_Ici 0),
+    hg.derivWithin (uniqueDiffWithinAt_Ici 0)] at he
+  exact he
+
+theorem selected_leading_derivative_eq_modulated
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (eta : ℝ)
+    (heta : |eta| ≤ 1)
+    (hv : DifferentiableAt ℝ (fun X => v.profiles.U (X,eta)) 0) :
+    deriv (fun X => SlowBorelBase.bundleComponent W.axis.normalization
+      (FinalSlowBase.coefficients H v) 5 0 (X,eta)) 0 =
+    deriv (fun X => v.profiles.U (X,eta)) 0 := by
+  refine deriv_eq_of_nonnegative_agreement _ _ ?_ hv ?_
+  · have hf := SlowBorelBase.bundleComponent_smooth
+      (FinalSlowBase.coefficients_smooth H v) W.axis.normalization (5 : Fin 7) 0
+    have curve : HasDerivAt (fun X : ℝ => (X,eta)) (1,0) 0 :=
+      (hasDerivAt_id 0).prodMk (hasDerivAt_const 0 eta)
+    exact (hf.differentiable (by simp)).differentiableAt.comp 0 curve.differentiableAt
+  · intro X hX
+    simpa [SlowBorelBase.bundleComponent, SlowBorelBase.coefficientBundle,
+      FinalSlowBase.coefficients] using
+      (EntranceAlignedBase.modulated_zero_fields H v (p := (X,eta)) hX heta).2.1
+
+#print axioms deriv_eq_of_nonnegative_agreement
+#print axioms selected_leading_derivative_eq_modulated
 #print axioms selected_axial_radial_derivative_tends_leading
 #print axioms axial_radial_derivative_tends_leading
 #print axioms axial_radial_tail_tends_zero
