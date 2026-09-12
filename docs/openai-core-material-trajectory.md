@@ -242,3 +242,29 @@ Reproduce the algebra with
 `work/reference-check-env/bin/python -m tools.check_axis_dissipation` in the
 recorded SymPy environment (or run that module with SymPy 1.14.0 installed).
 Evidence: evidence/tests/openai-axis-dissipation.json.
+
+## Axial viscous force: the missing radial derivative
+
+The axisymmetric identity u_z=H+s H_s, s=(x²+y²)/2, gives exactly
+
+    (Laplacian u)_z|axis = H_zz(t,0,z) + 4 H_s(t,0,z).
+
+Indeed the coefficient of s in u_z is 2 H_s, and Laplacian_xy s=2.
+Axis values of H determine H_zz but do not determine H_s. Consequently the
+axis trajectory and strain alone cannot settle the viscous-force claim.
+
+For the natural-core expression H=q^(-A)V(s/q,eta), the second term is
+4 q^(-A-1) V_X(0,eta). Along the derived trajectory the material acceleration
+is exactly A U_* d_*^A tau^(-A-1) in the axial direction. Thus this radial
+viscous contribution has the same time exponent as material acceleration;
+its coefficient must be determined before asserting relative suppression.
+The axial H_zz contribution scales as q^(-A-2D), whose ratio to acceleration
+scales as tau^(2h). This decay of one contribution does not prove decay of
+the full Laplacian. These exponent statements concern the natural core;
+transferring off-axis radial derivatives to FinalSlowBase requires its actual
+modulated coefficients, not just the established common axis value.
+
+This identifies a concrete remaining calculation: extract H_s for FinalSlowBase
+on eta=eta_*, including the positive-order slow-sum terms, then compare the
+complete axial Laplacian with acceleration, pressure gradient and forcing.
+No conclusion about a viscosity drop is claimed here.

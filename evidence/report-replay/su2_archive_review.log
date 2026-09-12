@@ -1,7 +1,7 @@
 {
   "scope": "Archived diagnostics and integrity review; does not independently recompute fields, certify continuous peaks, or complete the full acceptance gate.",
   "expected_cases": 5,
-  "reviewed_cases": 3,
+  "reviewed_cases": 5,
   "cases": [
     {
       "case": "n16-dt0.001",
@@ -32,6 +32,28 @@
       "converged_steps": 48,
       "steps": 50,
       "velocity_relative_l2": 0.003625047685324406,
+      "velocity_tolerance": 0.02,
+      "observed_velocity_threshold": "PASS",
+      "all_step_residual_thresholds": "FAIL"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "termination_and_input_hashes_verified": true,
+      "converged_steps": 97,
+      "steps": 100,
+      "velocity_relative_l2": 0.00364683093911086,
+      "velocity_tolerance": 0.02,
+      "observed_velocity_threshold": "PASS",
+      "all_step_residual_thresholds": "FAIL"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "termination_and_input_hashes_verified": true,
+      "converged_steps": 193,
+      "steps": 200,
+      "velocity_relative_l2": 0.003659666959336511,
       "velocity_tolerance": 0.02,
       "observed_velocity_threshold": "PASS",
       "all_step_residual_thresholds": "FAIL"

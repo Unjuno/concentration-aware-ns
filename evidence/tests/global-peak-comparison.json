@@ -138,6 +138,44 @@
     },
     {
       "group": "su2-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/su2-study-v1/n64-dt0.00025.tar.gz",
+      "sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 19.616947800202844,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.025667579978805866
+        },
+        "vorticity": {
+          "reported_peak": 27.742542705586445,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.025667963699285035
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "method": "sampled FD2",
+      "artifact": "evidence/su2-study-v1/n64-dt0.0005.tar.gz",
+      "sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "metrics": {
+        "gradient": {
+          "reported_peak": 19.617953173429044,
+          "analytic_global_peak": 20.13373197596784,
+          "relative_discrepancy": 0.02561764521125265
+        },
+        "vorticity": {
+          "reported_peak": 27.743964212366457,
+          "analytic_global_peak": 28.473396821598573,
+          "relative_discrepancy": 0.02561803966707632
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
       "case": "n64-dt0.001.tar.gz",
       "method": "sampled FD2",
       "artifact": "evidence/su2-study-v1/n64-dt0.001.tar.gz",

@@ -5,6 +5,8 @@ of13-study-v1/n64-dt0.0005.tar.gz: gradient=3.451502%, vorticity=3.455252%
 of13-study-v1/n64-dt0.001.tar.gz: gradient=3.447650%, vorticity=3.451399%
 su2-study-v1/n16-dt0.001.tar.gz: gradient=37.445125%, vorticity=37.584110%
 su2-study-v1/n32-dt0.001.tar.gz: gradient=11.235908%, vorticity=11.241212%
+su2-study-v1/n64-dt0.00025.tar.gz: gradient=2.566758%, vorticity=2.566796%
+su2-study-v1/n64-dt0.0005.tar.gz: gradient=2.561765%, vorticity=2.561804%
 su2-study-v1/n64-dt0.001.tar.gz: gradient=2.551637%, vorticity=2.551684%
 physicsnemo-study-v1/n16-nt5-gradient.json: gradient=0.065051%, vorticity=0.066659%
 physicsnemo-study-v1/n32-nt5-gradient.json: gradient=0.036307%, vorticity=0.038100%

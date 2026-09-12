@@ -10,7 +10,7 @@
     "tools/reference.py": "8e8bba852e66a212d45d340628c3162dabc27c580e1a498f6e059fea2db2858c"
   },
   "expected_cases": 5,
-  "completed_cases": 3,
+  "completed_cases": 5,
   "cases": [
     {
       "case": "n16-dt0.001",
@@ -93,6 +93,62 @@
           "reference_spectral_peak_samples": 28.473396821598584,
           "exact_global_reference_peak": 28.473396821598573,
           "computed_peak_signed_deficit": 0.004540128562486432
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "n": 64,
+      "dt": 0.0005,
+      "updated_solution_time": 0.05,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "computed_max_abs_spectral_divergence": 0.023043691514751607,
+      "reference_max_abs_spectral_divergence": 6.616929226765933e-14,
+      "metrics": {
+        "gradient": {
+          "computed_relative_l2_at_samples": 0.006849365364135568,
+          "reference_spectral_relative_l2_at_samples": 3.843234227114328e-15,
+          "computed_spectral_peak_samples": 20.0401406295383,
+          "reference_spectral_peak_samples": 20.13373197596785,
+          "exact_global_reference_peak": 20.13373197596784,
+          "computed_peak_signed_deficit": 0.004648484768807599
+        },
+        "vorticity": {
+          "computed_relative_l2_at_samples": 0.0066595287905693345,
+          "reference_spectral_relative_l2_at_samples": 3.2071347753588217e-15,
+          "computed_spectral_peak_samples": 28.34102948651048,
+          "reference_spectral_peak_samples": 28.473396821598584,
+          "exact_global_reference_peak": 28.473396821598573,
+          "computed_peak_signed_deficit": 0.004648807303092369
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "n": 64,
+      "dt": 0.00025,
+      "updated_solution_time": 0.05,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "computed_max_abs_spectral_divergence": 0.02303877619127559,
+      "reference_max_abs_spectral_divergence": 6.616929226765933e-14,
+      "metrics": {
+        "gradient": {
+          "computed_relative_l2_at_samples": 0.006871759825074651,
+          "reference_spectral_relative_l2_at_samples": 3.843234227114328e-15,
+          "computed_spectral_peak_samples": 20.039062082359173,
+          "reference_spectral_peak_samples": 20.13373197596785,
+          "exact_global_reference_peak": 20.13373197596784,
+          "computed_peak_signed_deficit": 0.004702053932259957
+        },
+        "vorticity": {
+          "computed_relative_l2_at_samples": 0.0066825873227792845,
+          "reference_spectral_relative_l2_at_samples": 3.2071347753588217e-15,
+          "computed_spectral_peak_samples": 28.339504180405537,
+          "reference_spectral_peak_samples": 28.473396821598584,
+          "exact_global_reference_peak": 28.473396821598573,
+          "computed_peak_signed_deficit": 0.004702376819736213
         }
       }
     }

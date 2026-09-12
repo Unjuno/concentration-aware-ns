@@ -164,6 +164,52 @@
     },
     {
       "group": "su2-study-v1",
+      "case": "n64-dt0.00025.tar.gz",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 19.717934958525127,
+          "computed_fd2_peak": 19.616947800202844,
+          "reference_sampling_and_fd2_signed_deficit": 0.02065176083296529,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.005015819145840632,
+          "total_signed_deficit": 0.025667579978805918
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 27.885371040336807,
+          "computed_fd2_peak": 27.742542705586445,
+          "reference_sampling_and_fd2_signed_deficit": 0.02065176083296524,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.005016202866319745,
+          "total_signed_deficit": 0.025667963699284986
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
+      "case": "n64-dt0.0005.tar.gz",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "metrics": {
+        "gradient": {
+          "global_reference_peak": 20.13373197596784,
+          "reference_fd2_peak": 19.717934958525127,
+          "computed_fd2_peak": 19.617953173429044,
+          "reference_sampling_and_fd2_signed_deficit": 0.02065176083296529,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.00496588437828738,
+          "total_signed_deficit": 0.025617645211252666
+        },
+        "vorticity": {
+          "global_reference_peak": 28.473396821598573,
+          "reference_fd2_peak": 27.885371040336807,
+          "computed_fd2_peak": 27.743964212366457,
+          "reference_sampling_and_fd2_signed_deficit": 0.02065176083296524,
+          "difference_of_fd2_peaks_normalized_by_global_reference": 0.004966278834111055,
+          "total_signed_deficit": 0.025618039667076296
+        }
+      }
+    },
+    {
+      "group": "su2-study-v1",
       "case": "n64-dt0.001.tar.gz",
       "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
       "metrics": {

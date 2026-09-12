@@ -11,7 +11,7 @@
     "tools/metrics.py": "624f998773b9e5a6c4cd9a3c5ddb89284267484b945433d3cc145add57cf1427"
   },
   "expected_cases": 5,
-  "replayed_cases": 3,
+  "replayed_cases": 5,
   "cases": [
     {
       "case": "n16-dt0.001",
@@ -26,6 +26,16 @@
     {
       "case": "n64-dt0.001",
       "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "recomputed_diagnostics_exact_match": true
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "recomputed_diagnostics_exact_match": true
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
       "recomputed_diagnostics_exact_match": true
     }
   ]
