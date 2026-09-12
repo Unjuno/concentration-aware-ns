@@ -1161,6 +1161,22 @@ theorem candidate_axis_physicalChart
   rw [hD]
   simp [ne_of_gt (Real.rpow_pos_of_pos hq (CoordinateAlgebra.D h))]
 
+theorem candidate_axis_source_coordinates
+    (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let w : ProblemStatement.SpaceTime :=
+      (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0 (eta*q^(CoordinateAlgebra.D h)))
+    PhysicalWaveSum.physicalQ h w = q ∧
+      PhysicalGraphBounds.radialProjection w = 0 ∧ DirectAngularDiagonal.radius w = 0 := by
+  dsimp only
+  have ht : 1-(1-q*(1-eta^2)) = q*(1-eta^2) := by ring
+  constructor
+  · simpa only [PhysicalWaveSum.physicalQ, SimilarityProfile.q,
+      AxisymmetricFields.profilePoint, AxisymmetricResidual.pack_two, ht] using
+      candidate_axis_inverse_coordinate h q eta hh hh1 hq heta
+  · simp [PhysicalGraphBounds.radialProjection_apply, DirectAngularDiagonal.radius,
+      PolarCharts.radius]
+
 theorem candidate_normalized_stream_derivative_limit
     {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
     (H : NominalConeAssembly.Certificate W)
@@ -1399,6 +1415,42 @@ theorem candidate_axis_eventually_localization_conditions
   simpa [SpatialLocalization.plateau,SpatialLocalization.radialSquare] using
     (show (0:ℝ)<1/32 ∧ |eta*q^(CoordinateAlgebra.D h)|<1/8 from ⟨by norm_num,hzq⟩)
 
+theorem terminal_diagonal_eq_selected_base_germ
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper qbig : ℝ) (B : ℕ)
+    (initial : ProblemStatement.VelocityField) (stages : ℕ → ProblemStatement.VelocityField)
+    (D : ℕ → DirectAngularDiagonal.AngularData (LocalAngularDiagonal.localSlowDomain F.data.h qbig))
+    (hi : GermCandidateAssembly.AxisZeroOn (MixedAxisPreservation.localDomain F.data.h qbig) initial)
+    (hs : ∀ j, GermCandidateAssembly.AxisZeroOn (MixedAxisPreservation.localDomain F.data.h qbig) (stages j))
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hqbig : 0 < qbig) :
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let w : ProblemStatement.SpaceTime :=
+      (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0 (eta*q^(CoordinateAlgebra.D F.data.h)))
+    TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ F.data.h)
+        (GermCandidateAssembly.potentialStages H v upper B initial stages))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ F.data.h)
+        (LocalAngularDiagonal.rawSeries D))) =ᶠ[𝓝 w] FinalSlowBase.velocity H v upper B := by
+  have hg := candidate_axis_eventually_localization_conditions F.data.h eta (a 0) qbig
+    F.data.h_lt_half hqbig
+  filter_upwards [hg,self_mem_nhdsWithin] with q hg hq
+  dsimp only
+  have hc := candidate_axis_source_coordinates F.data.h q eta F.data.h_pos F.data.h_lt_half hq heta
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2) < 1 := by nlinarith [mul_pos hq hd]
+  apply diagonal_activated_periodic_eq_selected_base_germ H v upper qbig B initial stages D hi hs a ha
+  · exact ⟨ht, by simpa only [hc.1] using hg.1⟩
+  · exact hc.2.1
+  · exact hc.2.2
+  · simpa only [hc.1] using hg.2.1
+  · exact hg.2.2.1
+  · exact hg.2.2.2
+
+#print axioms terminal_diagonal_eq_selected_base_germ
+#print axioms candidate_axis_source_coordinates
 #print axioms candidate_axis_eventually_localization_conditions
 #print axioms diagonal_activated_periodic_eq_selected_base_germ
 #print axioms activated_periodic_eq_selected_base_germ

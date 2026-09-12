@@ -1114,3 +1114,25 @@ needed by the diagonal germ transfer. Converting q to the source
 physicalQ on this packed spacetime curve, supplying its preterminal
 local-domain membership and axis identities, and instantiating the
 selected primitive stage data still need to be combined explicitly.
+
+
+## Terminal diagonal-to-base neighborhood equality
+
+`candidate_axis_source_coordinates` identifies physicalQ with q on
+the packed spacetime curve and proves both source axis conditions.
+`terminal_diagonal_eq_selected_base_germ` combines that identity with
+the eventual localization conditions and the diagonal transfer theorem.
+For eta in (-1,1), qbig>0 and sufficiently small positive q, the
+activated periodic diagonal field equals the selected base velocity
+in a spacetime neighborhood of the curve point. Local-domain membership,
+cutoff plateau, spatial plateau and late time are now derived rather
+than independently assumed at each point. Both theorems pass the pinned
+Lean check without sorryAx.
+
+The remaining input is the primitive stage data with AxisZeroOn and
+AngularData conditions and a diverging scale sequence. Instantiation
+with the final selected construction is still required. The theorem
+does not assume the root equation, so it proves local field equality
+along these curves without by itself declaring them material trajectories.
+The existing root-trajectory theorem and physical derivative/force
+identifications still need to be connected to the final field.
