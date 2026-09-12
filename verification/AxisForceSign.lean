@@ -426,11 +426,17 @@ theorem selected_leading_derivative_eq_modulated
     (H : NominalConeAssembly.Certificate W)
     {ld : ModulatedProfileAssembly.LoopData W}
     (v : ModulatedProfileAssembly.Witness ld) (eta : ℝ)
-    (heta : |eta| ≤ 1)
-    (hv : DifferentiableAt ℝ (fun X => v.profiles.U (X,eta)) 0) :
+    (heta : |eta| ≤ 1) :
     deriv (fun X => SlowBorelBase.bundleComponent W.axis.normalization
       (FinalSlowBase.coefficients H v) 5 0 (X,eta)) 0 =
     deriv (fun X => v.profiles.U (X,eta)) 0 := by
+  have hp : (0,eta) ∈ ld.domain.carrier :=
+    ld.domain_nonnegative (p := (0,eta)) le_rfl (ld.parameters_contains (abs_le.mp heta))
+  have curve : HasDerivAt (fun X : ℝ => (X,eta)) (1,0) 0 :=
+    (hasDerivAt_id 0).prodMk (hasDerivAt_const 0 eta)
+  have hv : DifferentiableAt ℝ (fun X => v.profiles.U (X,eta)) 0 :=
+    ((v.profiles.U_smooth.contDiffAt (ld.domain.isOpen.mem_nhds hp)).differentiableAt
+      (by simp)).comp 0 curve.differentiableAt
   refine deriv_eq_of_nonnegative_agreement _ _ ?_ hv ?_
   · have hf := SlowBorelBase.bundleComponent_smooth
       (FinalSlowBase.coefficients_smooth H v) W.axis.normalization (5 : Fin 7) 0
@@ -442,6 +448,23 @@ theorem selected_leading_derivative_eq_modulated
       FinalSlowBase.coefficients] using
       (EntranceAlignedBase.modulated_zero_fields H v (p := (X,eta)) hX heta).2.1
 
+theorem selected_axial_radial_derivative_tends_modulated
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (hh : 0 < F.data.h) (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
+    Filter.Tendsto (fun q : ℝ => deriv (fun X =>
+      SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+        (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+        (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ)) (𝓝 (deriv (fun X => v.profiles.U (X,eta)) 0)) := by
+  have limit := selected_axial_radial_derivative_tends_leading H v upper eta B hh heta
+  dsimp only at limit
+  rw [selected_leading_derivative_eq_modulated H v eta (abs_le.mpr heta)] at limit
+  exact limit
+
+#print axioms selected_axial_radial_derivative_tends_modulated
 #print axioms deriv_eq_of_nonnegative_agreement
 #print axioms selected_leading_derivative_eq_modulated
 #print axioms selected_axial_radial_derivative_tends_leading

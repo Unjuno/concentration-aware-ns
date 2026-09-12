@@ -574,3 +574,18 @@ deriving it from the profile's open-domain smoothness is still needed.
 Both statements pass the pinned Lean check without sorryAx. Neither
 statement yet identifies the modulated derivative with the natural
 solution or proves the full physical force-ratio limit.
+
+
+## Modulated-profile limit without an extra differentiability assumption
+
+The explicit differentiability hypothesis described in the preceding section
+has now been removed from `selected_leading_derivative_eq_modulated`.
+`LoopData.parameters_contains` and `domain_nonnegative` place the axis point
+inside the profile's open domain; `v.profiles.U_smooth` then supplies ordinary
+slice differentiability by composition with X -> (X,eta).
+`selected_axial_radial_derivative_tends_modulated` combines this identity
+with the selected slow-sum limit. Its conclusion is the ordinary derivative
+of the actual modulated U profile, without an extra smoothness hypothesis.
+All printed statements pass the pinned Lean check without sorryAx.
+Transfer from the modulated profile to the natural solution and then to
+the assembled physical-field force ratio remains to be formalized.
