@@ -1100,3 +1100,17 @@ with the indicated conditions. Instantiating these data with the final
 selected witness and proving the terminal trajectory meets the geometric
 conditions remain separate obligations, as does the full physical force
 ratio identification.
+
+
+## Eventual geometric localization conditions
+
+`candidate_axis_eventually_localization_conditions` proves simultaneously,
+as q approaches zero from above, q<qbig, |a0 q|<1/2,
+3/4<1-q(1-eta²), and pack(0,0,eta q^D) in the source spatial plateau.
+It assumes h<1/2 and qbig>0, deriving D>0 and using continuity of
+q^D at zero; no numerical threshold is inferred. The pinned Lean check
+passes without sorryAx. This supplies the scalar and spatial geometry
+needed by the diagonal germ transfer. Converting q to the source
+physicalQ on this packed spacetime curve, supplying its preterminal
+local-domain membership and axis identities, and instantiating the
+selected primitive stage data still need to be combined explicitly.

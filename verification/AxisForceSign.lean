@@ -1370,6 +1370,36 @@ theorem diagonal_activated_periodic_eq_selected_base_germ
       (LocalAngularDiagonal.localSlowDomain_open F.data.h_pos F.data.h_lt_half qbig)
       D ha hq hp hw hradius
 
+theorem candidate_axis_eventually_localization_conditions
+    (h eta a0 qbig : ℝ) (hh : h < 1/2) (hqbig : 0 < qbig) :
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+      q < qbig ∧ |a0*q| < 1/2 ∧ 3/4 < 1-q*(1-eta^2) ∧
+      AxisymmetricResidual.pack 0 0 (eta*q^(CoordinateAlgebra.D h)) ∈ SpatialLocalization.plateau := by
+  have hD : 0 < CoordinateAlgebra.D h := by unfold CoordinateAlgebra.D; linarith
+  have hp : ContinuousAt (fun q : ℝ => q^(CoordinateAlgebra.D h)) 0 :=
+    Real.continuousAt_rpow_const _ _ (Or.inr hD.le)
+  have hz : (0 : ℝ)^(CoordinateAlgebra.D h) = 0 := Real.zero_rpow hD.ne'
+  have hzlim : Filter.Tendsto (fun q : ℝ => |eta*q^(CoordinateAlgebra.D h)|)
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+    simpa only [hz,mul_zero,abs_zero] using
+      ((hp.tendsto.mono_left nhdsWithin_le_nhds).const_mul eta).abs
+  have hid : Filter.Tendsto (fun q : ℝ => q) (𝓝[>] (0 : ℝ)) (𝓝 0) :=
+    continuousAt_id.tendsto.mono_left nhdsWithin_le_nhds
+  have halim : Filter.Tendsto (fun q : ℝ => |a0*q|) (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+    simpa using (hid.const_mul a0).abs
+  have htlim : Filter.Tendsto (fun q : ℝ => 1-q*(1-eta^2))
+      (𝓝[>] (0 : ℝ)) (𝓝 1) := by
+    simpa using ((tendsto_const_nhds (x := (1 : ℝ))).sub
+      (hid.mul_const (1-eta^2)))
+  filter_upwards [hid.eventually (gt_mem_nhds hqbig),
+    halim.eventually (gt_mem_nhds (show (0:ℝ)<1/2 by norm_num)),
+    htlim.eventually (lt_mem_nhds (show (3/4:ℝ)<1 by norm_num)),
+    hzlim.eventually (gt_mem_nhds (show (0:ℝ)<1/8 by norm_num))] with q hq ha ht hzq
+  refine ⟨hq,ha,ht,?_⟩
+  simpa [SpatialLocalization.plateau,SpatialLocalization.radialSquare] using
+    (show (0:ℝ)<1/32 ∧ |eta*q^(CoordinateAlgebra.D h)|<1/8 from ⟨by norm_num,hzq⟩)
+
+#print axioms candidate_axis_eventually_localization_conditions
 #print axioms diagonal_activated_periodic_eq_selected_base_germ
 #print axioms activated_periodic_eq_selected_base_germ
 #print axioms selected_normalized_force_ratio_limit
