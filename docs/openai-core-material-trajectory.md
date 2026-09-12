@@ -862,3 +862,15 @@ Both pass the pinned Lean check without sorryAx. The next bridge is to
 identify the sum of component-5 derivatives with the ordinary derivative
 whose asymptotic limit has already been proved, then include the physical
 q^(-A-1) factor in H_s.
+
+
+## Averaged derivative sum limit
+
+`selected_averaged_derivative_sum_tends_natural` identifies the sum of
+component-5 derivatives with the ordinary X derivative of its slow sum
+using `hasDerivAt_slowSum_X`. It combines the selected derivative limit
+and the averaging identity to prove that the component-0 derivative
+sum tends to one half of the natural-profile radial derivative as q
+approaches zero from above. The pinned Lean check passes without sorryAx.
+The physical multiplier q^(-A-1) and evaluation along the material
+trajectory remain to be connected before this gives an H_s asymptotic.

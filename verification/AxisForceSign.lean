@@ -995,6 +995,30 @@ theorem averaged_derivative_slowSum_at_axis
   exact slowSum_axis_proportional ha h q eta (1/2) hq _ _
     (fun j => bundle_average_derivative_at_axis C d hd j eta)
 
+theorem selected_averaged_derivative_sum_tends_natural
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
+    Filter.Tendsto (fun q : ℝ => SlowBorelBase.slowSum
+      (FinalSlowBase.scales H v upper B) F.data.h
+      (fun j => SimilarityProfile.partialX (SlowBorelBase.bundleComponent W.axis.normalization
+        (FinalSlowBase.coefficients H v) 0 j)) (q,(0,eta)))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ((1/2 : ℝ) * deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0)) := by
+  have limit := (selected_axial_radial_derivative_tends_natural H v upper eta B
+    W.axis.small.h_pos heta).const_mul (1/2 : ℝ)
+  apply limit.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  have ha := (FinalSlowBase.scales_admissible H v upper B).strictMono
+  have hd := FinalSlowBase.coefficients_smooth H v
+  rw [(SlowBorelBase.hasDerivAt_slowSum_X ha F.data.h
+    (SlowBorelBase.bundleComponent_smooth hd W.axis.normalization (5 : Fin 7)) hq 0 eta).deriv]
+  exact (averaged_derivative_slowSum_at_axis ha F.data.h q eta W.axis.normalization hq
+    (FinalSlowBase.coefficients H v) hd).symm
+
+#print axioms selected_averaged_derivative_sum_tends_natural
 #print axioms slowSum_axis_proportional
 #print axioms averaged_derivative_slowSum_at_axis
 #print axioms bundle_average_derivative_at_axis
