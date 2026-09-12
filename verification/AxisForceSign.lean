@@ -464,6 +464,37 @@ theorem selected_axial_radial_derivative_tends_modulated
   rw [selected_leading_derivative_eq_modulated H v eta (abs_le.mpr heta)] at limit
   exact limit
 
+theorem modulated_axis_derivative_eq_original
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (eta : ℝ) :
+    deriv (fun X => v.profiles.U (X,eta)) 0 =
+      deriv (fun X => W.profiles.U (X,eta)) 0 := by
+  have hlo : 0 < ld.modulation.left :=
+    (div_pos (by norm_num : (0 : ℝ) < 4) W.axis.scale_pos).trans ld.after_initial
+  have he : (fun X => v.profiles.U (X,eta)) =ᶠ[𝓝 (0 : ℝ)]
+      (fun X => W.profiles.U (X,eta)) := by
+    filter_upwards [gt_mem_nhds hlo] with X hX
+    exact (v.fields_outside (p := (X,eta)) (by intro hp; linarith [hp.1])).2
+  exact he.deriv_eq
+
+theorem selected_axial_radial_derivative_tends_original
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (hh : 0 < F.data.h) (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
+    Filter.Tendsto (fun q : ℝ => deriv (fun X =>
+      SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+        (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+        (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ)) (𝓝 (deriv (fun X => W.profiles.U (X,eta)) 0)) := by
+  have limit := selected_axial_radial_derivative_tends_modulated H v upper eta B hh heta
+  rw [modulated_axis_derivative_eq_original v eta] at limit
+  exact limit
+
+#print axioms modulated_axis_derivative_eq_original
+#print axioms selected_axial_radial_derivative_tends_original
 #print axioms selected_axial_radial_derivative_tends_modulated
 #print axioms deriv_eq_of_nonnegative_agreement
 #print axioms selected_leading_derivative_eq_modulated

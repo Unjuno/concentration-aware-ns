@@ -589,3 +589,18 @@ of the actual modulated U profile, without an extra smoothness hypothesis.
 All printed statements pass the pinned Lean check without sorryAx.
 Transfer from the modulated profile to the natural solution and then to
 the assembled physical-field force ratio remains to be formalized.
+
+
+## Removal of the finite modulation at the axis
+
+`modulated_axis_derivative_eq_original` uses `Witness.fields_outside`
+and positivity of the modulation's left endpoint to prove two-sided
+neighborhood equality of the modulated and original U slices at X = 0.
+Unlike coefficient-extension equality, this step requires no half-line
+argument: the source theorem holds throughout that neighborhood.
+`selected_axial_radial_derivative_tends_original` therefore identifies
+the selected slow-sum derivative limit with the derivative of
+`W.profiles.U` at `(0,eta)`. Both pass the pinned Lean check without
+sorryAx. The next formal identification is between this original nominal
+profile and the natural solution; the physical-field force-ratio limit
+is still not an end-to-end formal theorem.
