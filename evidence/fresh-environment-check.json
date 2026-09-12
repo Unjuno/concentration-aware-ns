@@ -1,0 +1,73 @@
+{
+  "commit": "a9ff4ab6eed51db6badfa19ff79eecbae489ff3d",
+  "scope": "Tracked-only export and fresh venv, same host Python interpreter; no solver or proof rerun.",
+  "checks": [
+    {
+      "command": [
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification.txt"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "packages": [
+    "mpmath==1.3.0",
+    "numpy==2.5.3",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "success": true,
+  "logs": [
+    {
+      "path": "evidence/fresh-environment-logs/check-0.log",
+      "sha256": "4df7634049a7c2d73dd5aec64ff9161c93c98084c2f7dd5cd8592390a91319ca"
+    },
+    {
+      "path": "evidence/fresh-environment-logs/check-1.log",
+      "sha256": "ba5041ff8b5c019c8ec9420a88c504d8f21b68f3555ee73d815cf5b155abf8c9"
+    },
+    {
+      "path": "evidence/fresh-environment-logs/check-2.log",
+      "sha256": "f554b70b6a329e1147543d11bdb202dd21402223f281a89a3ecd8fe32f2d6278"
+    },
+    {
+      "path": "evidence/fresh-environment-logs/check-3.log",
+      "sha256": "0174831ffa43ca8a9e0aaced3f66f28ae35d0797313fceea0e6e772fea7ccbd9"
+    },
+    {
+      "path": "evidence/fresh-environment-logs/check-4.log",
+      "sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    }
+  ]
+}

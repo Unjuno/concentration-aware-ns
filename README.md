@@ -93,3 +93,10 @@ These checks are separate from the twelve-step report replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
 chain or molecular applicability. The aggregate review does not certify
 continuous numerical-field energy.
+
+The tracked-only export at commit `a9ff4ab` was also checked in a newly
+created virtual environment: dependency installation, the twelve-step replay
+and all three additional checks succeeded. See
+[evidence](evidence/fresh-environment-check.json) for exact versions and logs.
+This validates postprocessing on the recorded host; it does not rerun the
+PDE solvers or independently prove the new analytic consequence.
