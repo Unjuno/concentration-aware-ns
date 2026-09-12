@@ -6,6 +6,7 @@ import NavierStokes.FinalSlowBase
 import NavierStokes.TailGaugePotential
 import NavierStokes.MixedPeriodicAssembly
 import NavierStokes.TimeLocalization
+import NavierStokes.GermCandidateAssembly
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -1339,6 +1340,37 @@ theorem activated_periodic_eq_selected_base_germ
   exact (TimeLocalization.activatedVelocity_eventuallyEq_late _ hlate w.2).trans
     ((MixedPeriodicAssembly.periodicVelocity_eventuallyEq potential direct hplateau).trans hm)
 
+theorem diagonal_activated_periodic_eq_selected_base_germ
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper qbig : ℝ) (B : ℕ)
+    (initial : ProblemStatement.VelocityField) (stages : ℕ → ProblemStatement.VelocityField)
+    (D : ℕ → DirectAngularDiagonal.AngularData (LocalAngularDiagonal.localSlowDomain F.data.h qbig))
+    (hi : GermCandidateAssembly.AxisZeroOn (MixedAxisPreservation.localDomain F.data.h qbig) initial)
+    (hs : ∀ j, GermCandidateAssembly.AxisZeroOn (MixedAxisPreservation.localDomain F.data.h qbig) (stages j))
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (w : ProblemStatement.SpaceTime)
+    (hw : w ∈ MixedAxisPreservation.localDomain F.data.h qbig)
+    (haxis : PhysicalGraphBounds.radialProjection w = 0)
+    (hradius : DirectAngularDiagonal.radius w = 0)
+    (hsmall : |a 0 * PhysicalWaveSum.physicalQ F.data.h w| < 1/2)
+    (hlate : 3/4 < w.1) (hplateau : w.2 ∈ SpatialLocalization.plateau) :
+    TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ F.data.h)
+        (GermCandidateAssembly.potentialStages H v upper B initial stages))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ F.data.h)
+        (LocalAngularDiagonal.rawSeries D))) =ᶠ[𝓝 w] FinalSlowBase.velocity H v upper B := by
+  have hq := (PhysicalWaveSum.physicalQ_smoothAt F.data.h_pos F.data.h_lt_half hw.1).continuousAt
+  have hp := PhysicalWaveSum.physicalQ_pos F.data.h_pos F.data.h_lt_half hw.1
+  apply activated_periodic_eq_selected_base_germ H v upper B _ _ w hw.1 hlate hplateau
+  · exact GermCandidateAssembly.potentialSum_eq_base_germ ha hq hp
+      (hi w hw haxis) (fun j => hs j w hw haxis) hsmall
+  · exact DirectAngularDiagonal.angularSum_axis_zero_germ
+      (LocalAngularDiagonal.localSlowDomain_open F.data.h_pos F.data.h_lt_half qbig)
+      D ha hq hp hw hradius
+
+#print axioms diagonal_activated_periodic_eq_selected_base_germ
 #print axioms activated_periodic_eq_selected_base_germ
 #print axioms selected_normalized_force_ratio_limit
 #print axioms normalized_force_ratio_limit

@@ -1079,3 +1079,24 @@ This verifies the outer transfer operation, not yet that the concrete
 ASum/BSum satisfy the two germ premises on the complete terminal
 trajectory. Those premises and the physical second-derivative identity
 remain necessary for the final force-ratio theorem.
+
+
+## Diagonal sums discharge the outer germ premises
+
+`diagonal_activated_periodic_eq_selected_base_germ` applies the outer
+transfer theorem to the initialized potential sum and the direct angular
+sum themselves. The potential germ follows from primitive stagewise
+AxisZeroOn conditions, the scale sequence tending to infinity, positive
+continuous physical q, and the zeroth cutoff plateau. The direct-field
+germ follows from `angularSum_axis_zero_germ` and the annular support
+conditions carried by AngularData; mere vanishing of its axis value is
+not used as a substitute for neighborhood equality. The pinned Lean
+check succeeds with only the allowed standard axioms.
+
+Explicit remaining premises are the local-domain membership, two source
+representations of axis membership, cutoff plateau, spatial plateau,
+and late time. This theorem uses arbitrary primitive initial/stage data
+with the indicated conditions. Instantiating these data with the final
+selected witness and proving the terminal trajectory meets the geometric
+conditions remain separate obligations, as does the full physical force
+ratio identification.
