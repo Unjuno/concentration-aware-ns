@@ -448,3 +448,19 @@ universal molecular model, a phase-transition statement, or a solution for
 viscosity as a material property. Pressure and forcing have not been separately
 quantified. The whole new consequence remains hand-derived from the pinned
 source; no additional Lean theorem has been compiled.
+
+## Machine-checked scalar part
+
+`verification/AxisForceSign.lean` now proves both negativity of the actual
+scalar expression and existence of a root with that property, from
+SmallParameters, PressureData and positive viscosity. Positivity of the actual
+L, A, U and d factors is derived internally. Lean reports only propext,
+Classical.choice and Quot.sound for both theorems.
+
+Replay with `sh runtime/lean-verification/check_axis_sign.sh` after provisioning
+the pinned checker image and cans-lean-verification volume using the existing
+verification setup. The runner mounts both original sources and extensions
+read-only and disables networking. This is a Lean kernel check, not a second
+nanoda validation. It does not yet formalize the field-derivative identity,
+trajectory transfer or asymptotic remainder argument. The complete force-limit
+conclusion above therefore remains hand-derived.

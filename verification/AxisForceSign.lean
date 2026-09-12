@@ -47,5 +47,18 @@ theorem actual_axis_force_ratio_negative
   exact axial_force_ratio_negative small interval root (pressure.negative eta heI)
     (pressure.deriv_nonpos heI hen) hnu hL hA hU hd
 
+theorem exists_negative_axis_force_ratio
+    {h j nu : ℝ} {P : ℝ → ℝ}
+    (small : NaturalAxisData.SmallParameters h j)
+    (pressure : NaturalAxisData.PressureData P) (hnu : 0 < nu) :
+    ∃ eta : ℝ, eta ∈ Set.Ioo (-j / 4) (-j / 5) ∧
+      NaturalAxisData.H h j eta = 0 ∧
+      -nu * NaturalAxisData.Z h j P eta /
+        (NaturalAxisData.L h eta * NaturalAxisData.A h *
+         NaturalAxisData.U j eta * NaturalAxisData.d eta) < 0 := by
+  obtain ⟨eta, hi, hr, _⟩ := NaturalAxisData.exists_root_with_positive_Z small pressure
+  exact ⟨eta, hi, hr, actual_axis_force_ratio_negative small hi hr pressure hnu⟩
+
 #print axioms actual_axis_force_ratio_negative
+#print axioms exists_negative_axis_force_ratio
 end ConcentrationAware

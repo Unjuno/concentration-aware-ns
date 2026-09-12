@@ -1,14 +1,15 @@
 {
   "exit_code": 0,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "5206f2e5c2525172c3cb20a2f3318753c3d02691e8f93670235ca12e05a0944f",
+  "source_sha256": "2ce11dc6cbb31de7dc32bf0481f81bdbb35451e0d8d417eff31f2964738b5037",
   "environment": "Saved pinned Lean v4.34.0-rc2 verification volume; lake env lean; read-only source and extension mounts; network disabled",
-  "scope": "Actual scalar coefficient sign from SmallParameters, root interval/equation, PressureData and positive viscosity. Denominator positivity derived internally. Does not identify the coefficient with the full field or prove its asymptotic limit.",
+  "scope": "Existence of a root with negative actual scalar coefficient from SmallParameters, PressureData and positive viscosity. Does not identify it with the full field derivative or prove asymptotic convergence.",
   "initial_attempt": "Failed due to missing NavierStokes namespace opening; corrected before successful check.",
   "axioms": [
     "propext",
     "Classical.choice",
     "Quot.sound"
   ],
-  "log_sha256": "fccff199072df0e3c3a491874467652958c9167cc852b55680581662d2f56a46"
+  "log_sha256": "5981ccb3bd2ee02cbbfd633bafe11e051c07399a47b198cdfc61fc21e684e1a6",
+  "replay": "sh runtime/lean-verification/check_axis_sign.sh"
 }
