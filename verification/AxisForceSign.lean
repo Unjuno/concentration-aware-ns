@@ -1,6 +1,7 @@
 import NavierStokes.NaturalAxisData
 import NavierStokes.NaturalProfile
 import NavierStokes.SlowBorelBase
+import NavierStokes.FinalSlowBase
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -171,6 +172,25 @@ theorem axial_component_derivative_tail
       (SlowBorelBase.bundleComponent_smooth smooth C 5) ha 1 1 (2*h)
   exact ⟨J, hJ, delta, hd, fun q hq hqd w hw => bound 1 (by omega) q hq hqd w hw⟩
 
+theorem selected_axial_component_derivative_tail
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (hh : 0 < F.data.h) :
+    let a := FinalSlowBase.scales H v upper B
+    let f := SlowBorelBase.bundleComponent W.axis.normalization
+      (FinalSlowBase.coefficients H v) 5
+    ∃ J : ℕ, 1 ≤ J ∧ ∃ delta : ℝ, 0 < delta ∧
+      ∀ q : ℝ, 0 < q → q < delta →
+      ∀ w ∈ SlowBorelBase.innerBox 0 (FinalSlowBase.boxRadius W upper),
+      ‖iteratedFDeriv ℝ 1 (fun y => SlowBorelBase.slowSum a F.data.h f y -
+        SlowBorelBase.uncutPrefix F.data.h f J y) (q,w)‖ ≤
+        (1/2 : ℝ)^J * q^(2*F.data.h) := by
+  exact axial_component_derivative_tail hh (FinalSlowBase.coefficients_smooth H v)
+    (FinalSlowBase.scales_admissible H v upper B)
+
+#print axioms selected_axial_component_derivative_tail
 #print axioms axial_component_derivative_tail
 #print axioms natural_radial_derivative_quantitative
 #print axioms natural_radial_derivative_negative_at_root

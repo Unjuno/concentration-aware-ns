@@ -488,3 +488,11 @@ strict bound `partialY u < -j/(10 L)`. It supplies a margin from zero for the
 leading term. Turning that margin into an explicit finite-q guarantee for the
 completed field still requires a quantitative remainder constant and cutoff
 scale; an existential asymptotic estimate does not provide a numerical time.
+
+`selected_axial_component_derivative_tail` now instantiates the first-derivative
+remainder bound on FinalSlowBase.coefficients and FinalSlowBase.scales, using
+their actual smoothness and admissibility theorems. It applies on the selected
+innerBox, assuming positive F.data.h and the source's certificate/witness
+objects. Thus admissibility is no longer supplied as a separate unconnected
+hypothesis. The next formal step remains evaluating the derivative on the X
+direction and proving convergence of the finite positive-order prefix.

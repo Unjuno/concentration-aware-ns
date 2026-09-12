@@ -1,3 +1,4 @@
+'ConcentrationAware.selected_axial_component_derivative_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axial_component_derivative_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.natural_radial_derivative_quantitative' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.natural_radial_derivative_negative_at_root' depends on axioms: [propext,
