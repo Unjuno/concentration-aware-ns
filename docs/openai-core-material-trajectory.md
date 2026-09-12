@@ -1,5 +1,19 @@
 # A material trajectory and deformation in the selected construction
 
+Current result (source-derived; not a new Lean theorem): along the selected
+terminal axial trajectory, infinitesimal material separations align while the
+axial viscous-force/material-acceleration ratio tends to a strictly negative,
+nonzero constant. The derivative-level slow-sum remainder estimate completes
+the argument in the final sections. Earlier headings saying a transfer
+"remains open" record intermediate history and are superseded by those sections.
+
+Reproducible algebra check: with SymPy 1.14.0 installed, run
+`python -m tools.check_axis_force`. It checks the Cartesian Laplacian factor,
+the natural axial equation's sign, and the axial derivative exponent. Output:
+`evidence/tests/openai-axis-force-symbolic.json`. These checks do not verify
+all theorem hypotheses or the source-transfer chain.
+
+
 Source pin and core assumptions are those of openai-core-deformation.md.
 Current status: the source-derived neighborhood-equality chain to the selected
 periodic candidate is completed in the final section below. The earlier sections
