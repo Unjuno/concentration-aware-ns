@@ -17,6 +17,7 @@ Hint: Omit it from the simp argument list.
     zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero, sub_zero, neg_zero]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.material_curve_chain_rule' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_candidate_velocity_time_derivative' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]

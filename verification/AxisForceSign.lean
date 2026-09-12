@@ -1653,6 +1653,33 @@ theorem actual_candidate_velocity_time_derivative
   rw [hqt] at hv
   exact hv.congr_of_eventuallyEq hcomp
 
+theorem material_curve_chain_rule
+    (u : ProblemStatement.VelocityField) (curve : ℝ → ProblemStatement.Space) (t : ℝ)
+    (hu : DifferentiableAt ℝ u (t,curve t))
+    (hc : HasDerivAt curve (u (t,curve t)) t) :
+    HasDerivAt (fun s : ℝ => u (s,curve s))
+      (ProblemStatement.temporalDerivative u t (curve t) +
+        ProblemStatement.advection u t (curve t)) t := by
+  have hpath := (hasDerivAt_id t).prodMk hc
+  have hcomp := hu.hasFDerivAt.comp_hasDerivAt t hpath
+  have htime := hu.hasFDerivAt.comp_hasDerivAt t
+    ((hasDerivAt_id t).prodMk (hasDerivAt_const t (curve t)))
+  have hspace := hu.hasFDerivAt.comp (curve t)
+    ((hasFDerivAt_const t (curve t)).prodMk (hasFDerivAt_id (curve t)))
+  have het : ProblemStatement.temporalDerivative u t (curve t) =
+      fderiv ℝ u (t,curve t) (1,0) := by
+    exact htime.deriv
+  have hes : ProblemStatement.advection u t (curve t) =
+      fderiv ℝ u (t,curve t) (0,u (t,curve t)) := by
+    unfold ProblemStatement.advection ProblemStatement.spatialDerivative
+    have hh := hspace.fderiv
+    change fderiv ℝ (fun y => u (t,y)) (curve t) = _ at hh
+    rw [hh]
+    simp
+  rw [het,hes,← map_add]
+  simpa only [Function.comp_def,id_eq,Prod.mk_add_mk,add_zero,zero_add] using hcomp
+
+#print axioms material_curve_chain_rule
 #print axioms actual_candidate_velocity_time_derivative
 #print axioms selected_base_axis_velocity_time_derivative
 #print axioms axis_velocity_formula_hasDerivAt

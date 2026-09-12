@@ -1227,3 +1227,16 @@ derivative. With that equation the existing actual material-trajectory
 theorem identifies X as a material curve. A formal equality to the
 source Eulerian timeDerivative+advection expression and the explicit
 physical H_zz calculation remain to be connected in the full ratio.
+
+
+## Source Eulerian material derivative chain rule
+
+`material_curve_chain_rule` uses exactly ProblemStatement.temporalDerivative
+and ProblemStatement.advection. Given differentiability of u at (t,X(t))
+and X'(t)=u(t,X(t)), it proves the derivative of u(t,X(t)) is their sum.
+The proof decomposes the spacetime derivative on (1,u) into its actions
+on (1,0) and (0,u), deriving both partial derivatives by composition.
+The pinned Lean check succeeds without sorryAx. This bridges the two
+definitions of material acceleration conditionally; the actual field's
+differentiability must still be supplied and the resulting derivative
+identified with the previously proved concrete formula.
