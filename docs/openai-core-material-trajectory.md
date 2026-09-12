@@ -636,3 +636,17 @@ only the witness's existing separation and positive-scale properties.
 `selected_axial_radial_derivative_tends_natural` consequently also has
 no extra scale lower bound. The updated pinned Lean check passes without
 sorryAx. Natural PDE sign and physical force-ratio connections remain.
+
+
+## Eventual sign of the selected axial radial derivative
+
+`selected_natural_derivative_negative` applies the natural PDE sign lemma
+to the actual family stored in W.axis.natural.profile.
+`selected_axial_radial_derivative_eventually_negative` combines that
+negative limit with the selected slow-sum convergence theorem: for all
+sufficiently small positive q, the component-5 X derivative is negative.
+The statements retain explicit axis-domain membership, window membership,
+root interval/equation, and PressureData hypotheses. These hypotheses
+have not yet been discharged here for a final selected root. Both pass
+the pinned Lean check without sorryAx. This is a chart-component sign,
+not yet a sign theorem for the physical Laplacian or the full force ratio.

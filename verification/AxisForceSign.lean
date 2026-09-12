@@ -521,6 +521,39 @@ theorem selected_axial_radial_derivative_tends_natural
   rw [original_axis_derivative_eq_natural W eta] at limit
   exact limit
 
+theorem selected_natural_derivative_negative
+    {F : OutgoingProfile.Profile} (W : NominalProfile.Witness F) (eta : ℝ)
+    (point : (0,eta) ∈ NaturalProfile.domain W.axis.scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right)
+    (interval : eta ∈ Set.Ioo (-W.axis.j / 4) (-W.axis.j / 5))
+    (root : NaturalAxisData.H F.data.h W.axis.j eta = 0)
+    (pressure : NaturalAxisData.PressureData F.axisDatum) :
+    deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 < 0 := by
+  exact natural_radial_derivative_negative_at_root W.axis.natural.profile.family.natural
+    point inside W.axis.small interval root pressure
+
+theorem selected_axial_radial_derivative_eventually_negative
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Icc (-1 : ℝ) 1)
+    (point : (0,eta) ∈ NaturalProfile.domain W.axis.scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right)
+    (interval : eta ∈ Set.Ioo (-W.axis.j / 4) (-W.axis.j / 5))
+    (root : NaturalAxisData.H F.data.h W.axis.j eta = 0)
+    (pressure : NaturalAxisData.PressureData F.axisDatum) :
+    ∀ᶠ q in 𝓝[>] (0 : ℝ), deriv (fun X =>
+      SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+        (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+        (q,(X,eta))) 0 < 0 := by
+  have limit := selected_axial_radial_derivative_tends_natural H v upper eta B
+    W.axis.small.h_pos heta
+  exact limit.eventually (gt_mem_nhds
+    (selected_natural_derivative_negative W eta point inside interval root pressure))
+
+#print axioms selected_axial_radial_derivative_eventually_negative
+#print axioms selected_natural_derivative_negative
 #print axioms original_axis_derivative_eq_natural
 #print axioms selected_axial_radial_derivative_tends_natural
 #print axioms modulated_axis_derivative_eq_original
