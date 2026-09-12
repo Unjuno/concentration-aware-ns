@@ -1,0 +1,10 @@
+{
+  "scope": "Source identities for hand-derived radial coefficient formula; no new kernel-checked theorem or coefficient asymptotic bound.",
+  "files": {
+    "ProfileHistories.lean": "1e4176760ac0ec433f72c57a632362fafcff5d420246689b3fad18a06d1d35e7",
+    "PhysicalCoordinateBounds.lean": "b69675f414a1fcb6a152d8f361bdc218b43a8d4a69357fe542ac58618288a743",
+    "SlowBorelBase.lean": "10f39b7931e942874396afcdfdd88a806d36a785cd6ef55faed710014757a550",
+    "SolenoidalDiagonal.lean": "548b6292d7e41f434ec996ee2d6ee683c526339422da18ff9ee96a93486329c7",
+    "EntranceAlignedBase.lean": "b7edc8b71658a095eef31897b57d874ec6958381198f6acff8d9905f822802d5"
+  }
+}

@@ -268,3 +268,44 @@ This identifies a concrete remaining calculation: extract H_s for FinalSlowBase
 on eta=eta_*, including the positive-order slow-sum terms, then compare the
 complete axial Laplacian with acceleration, pressure gradient and forcing.
 No conclusion about a viscosity drop is claimed here.
+
+## Radial coefficient for the actual FinalSlowBase assembly
+
+Write a_j(X,eta) for FinalSlowBase's modulated axial coefficient of order j,
+chi for the scalar cutoff used by cutStage, and k_j for its selected integer
+scale. These symbols avoid confusing the coefficient family with A=1/2+h.
+ProfileHistories.average is exactly integral_0^1 a_j(v X,eta) dv. Smoothness
+therefore gives partial_X average(a_j)(0,eta)=partial_X a_j(0,eta)/2.
+PhysicalCoordinateBounds.qCoord depends only on time and z; consequently q
+and eta are independent of physical s at fixed time,z, and X=s/q.
+SlowBorelBase.slowSum retains the order-zero coefficient uncut and adds
+cutoff-weighted positive orders with powers q^(2hj). Thus at the axis,
+
+    B(q,eta) = partial_X a_0(0,eta)
+               + sum_(j>=1) chi(k_j q) q^(2hj) partial_X a_j(0,eta),
+    H_s = (1/2) q^(-A-1) B(q,eta),
+    (Laplacian u)_z = H_zz + 2 q^(-A-1) B(q,eta).
+
+At each fixed q>0 this cutoff sum is locally finite under the selected scale
+hypotheses, so differentiation here is a finite local operation. It does not
+justify taking q to zero term by term without the weighted derivative bounds.
+The established identity a_j(0,eta)=0 for j>0 does NOT imply that its X
+derivative is zero. This is precisely the information absent from axis values.
+
+On eta=eta_* the material acceleration is A U_* d_*^A tau^(-A-1),
+so the signed axial ratio of the radial viscous contribution to acceleration is
+
+    2 nu B(q,eta_*) / (A U_* d_*),   q=tau/d_*.
+
+The remaining axial H_zz contribution has a ratio proportional to tau^(2h),
+as derived above. Therefore decay of the complete axial viscous-force ratio
+requires control of B(q,eta_*); it cannot be inferred from alignment. Even
+this axial comparison alone would not resolve pressure and forcing balance.
+The construction's native nu is one. This is a source-derived formula, not
+a computed coefficient value or a new Lean theorem. The next unresolved
+step is to determine partial_X a_0 and bound the full positive-order remainder.
+
+Inspected definitions: ProfileHistories.average; PhysicalCoordinateBounds.qCoord,
+xCoord and etaCoord; SlowBorelBase.positiveCoefficient, slowStage, slowSum,
+physicalProfile, bundleComponent and streamFactor. Source byte hashes are
+recorded in evidence/openai-source/radial-coefficient-sources.json.
