@@ -942,6 +942,36 @@ theorem average_radial_derivative_at_axis
   rw [intervalIntegral.integral_mul_const]
   norm_num [integral_id]
 
+theorem bundle_average_derivative_at_axis
+    (C : ℝ) (d : SlowBorelBase.Coefficients)
+    (hd : SlowBorelBase.SmoothCoefficients d) (j : ℕ) (eta : ℝ) :
+    SimilarityProfile.partialX (SlowBorelBase.bundleComponent C d 0 j) (0,eta) =
+      (1/2 : ℝ) * SimilarityProfile.partialX (SlowBorelBase.bundleComponent C d 5 j) (0,eta) := by
+  have he := average_radial_derivative_at_axis SlowBorelBase.globalRadialDomain
+    (d.axial j) (hd.axial j).contDiffOn eta (Set.mem_univ _)
+  have h0 : SlowBorelBase.bundleComponent C d 0 j = ProfileHistories.average (d.axial j) := by
+    funext w
+    simp [SlowBorelBase.bundleComponent, SlowBorelBase.coefficientBundle]
+  have h5 : SlowBorelBase.bundleComponent C d 5 j = d.axial j := by
+    funext w
+    simp [SlowBorelBase.bundleComponent, SlowBorelBase.coefficientBundle]
+  rw [h0,h5]
+  exact he
+
+theorem selected_bundle_average_derivative_at_axis
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (j : ℕ) (eta : ℝ) :
+    SimilarityProfile.partialX (SlowBorelBase.bundleComponent W.axis.normalization
+      (FinalSlowBase.coefficients H v) 0 j) (0,eta) =
+      (1/2 : ℝ) * SimilarityProfile.partialX (SlowBorelBase.bundleComponent W.axis.normalization
+        (FinalSlowBase.coefficients H v) 5 j) (0,eta) := by
+  exact bundle_average_derivative_at_axis W.axis.normalization _
+    (FinalSlowBase.coefficients_smooth H v) j eta
+
+#print axioms bundle_average_derivative_at_axis
+#print axioms selected_bundle_average_derivative_at_axis
 #print axioms average_radial_derivative_at_axis
 #print axioms radial_derivative_compact_integral
 #print axioms selected_stream_radial_derivative_physical

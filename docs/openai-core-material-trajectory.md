@@ -837,3 +837,15 @@ integral derivative theorem, the Frechet chain rule for (rX,eta), and
 the integral of r over [0,1]. The pinned Lean check passes without
 sorryAx. Applying this identity to the selected coefficient bundle and
 its slow sum remains the next connection to the physical H_s limit.
+
+
+## Selected coefficient bundle averaging identity
+
+`bundle_average_derivative_at_axis` identifies bundle components 0 and 5
+as functions before differentiating, and applies the average theorem on
+the global radial domain. `selected_bundle_average_derivative_at_axis`
+instantiates it with FinalSlowBase coefficients for every order j and eta.
+It proves partialX(component 0 j)(0,eta) = (1/2) partialX(component 5 j)(0,eta).
+Both pass the pinned Lean check without sorryAx. Transferring this
+coefficient identity through the locally finite slow sum, and connecting
+the resulting physical derivative to its asymptotic limit, remain pending.
