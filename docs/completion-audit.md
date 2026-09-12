@@ -54,3 +54,11 @@ Remaining completion work:
 
 This remains an interim audit, not a declaration that all goal requirements
 have been completed.
+
+Correction to analytic evidence: the force-ratio geometric factor d=1-eta²
+was inverted in earlier revisions. Current symbolic and Lean sign checks
+use -nu*d*Z/(L*A*U). The historical fresh-environment check-3.log records
+the superseded formula and is retained as a run record, not evidence for
+the corrected coefficient. The current axis-force symbolic JSON and Lean
+verification JSON contain the corrected run. Strict negativity survives;
+full physical-force identification remains incomplete.

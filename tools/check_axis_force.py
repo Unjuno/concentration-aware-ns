@@ -45,8 +45,10 @@ assert acceleration_residual==0
 # Compare coefficients after substituting q=tau/d along the trajectory.
 nu,Zstar,Lstar,Astar,Ustar,dstar=s.symbols('nu Zstar Lstar Astar Ustar dstar',positive=True)
 B=-Zstar/(2*Lstar)
-ratio=s.simplify(2*nu*B/(Astar*Ustar*dstar))
-assert ratio==-nu*Zstar/(Lstar*Astar*Ustar*dstar)
+radial_force=2*nu*B*q**(-Astar-1)
+material_acceleration=Astar*Ustar/dstar*q**(-Astar-1)
+ratio=s.simplify(radial_force/material_acceleration)
+assert ratio==-nu*Zstar*dstar/(Lstar*Astar*Ustar)
 result={'scope':'Symbolic algebra and exponent checks only. Does not verify source hypothesis transfer, the tail theorem application, or physical applicability.','sympy':s.__version__,'cartesian_laplacian_axis_identity':True,'natural_axis_equation_equals_negative_Z':True,'eulerian_material_acceleration_matches_root_trajectory':True,'axis_acceleration':'A*U/d*q^(-A-1)','Hzz_q_exponent':'-A-2D','Hzz_coefficient':str(coefficient),'axial_Hzz_relative_decay_exponent':'2h','leading_signed_force_ratio':str(ratio)}
 Path('evidence/tests/openai-axis-force-symbolic.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

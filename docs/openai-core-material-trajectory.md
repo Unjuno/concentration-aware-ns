@@ -309,7 +309,7 @@ derivative is zero. This is precisely the information absent from axis values.
 On eta=eta_* the material acceleration is A U_* d_*^A tau^(-A-1),
 so the signed axial ratio of the radial viscous contribution to acceleration is
 
-    2 nu B(q,eta_*) / (A U_* d_*),   q=tau/d_*.
+    2 nu d_* B(q,eta_*) / (A U_*),   q=tau/d_*.
 
 The remaining axial H_zz contribution has a ratio proportional to tau^(2h),
 as derived above. Therefore decay of the complete axial viscous-force ratio
@@ -342,7 +342,7 @@ Z_* > j/5 by Z_at_root_lower / exists_root_with_positive_Z. Since L_*>0,
 For the natural core V is the radial average of U, so B=U_X and the signed
 radial viscous-force / material-acceleration ratio equals
 
-    -nu Z_* / (L_* A U_* d_*),
+    -nu d_* Z_* / (L_* A U_*),
 
 which is strictly negative and independent of tau. U_*>0 follows from the
 root equation and eta_*<0. The axial H_zz contribution has a ratio tending
@@ -437,7 +437,7 @@ Combining with q=tau/d_* and the earlier H_zz estimate gives, for the selected
 completed periodic witness on its terminal material trajectory, at native nu=1,
 
     (Laplacian u)_z / (D_t u)_z
-        = -Z_*/(L_* A U_* d_*) + O(tau^(2h)).
+        = -d_* Z_*/(L_* A U_*) + O(tau^(2h)).
 
 The limit is strictly negative and nonzero. The previously established local
 spacetime equality to FinalSlowBase transfers the required velocity derivatives
@@ -994,3 +994,18 @@ The transverse velocities vanish on this axis. SymPy 1.14.0 reduces
 the difference to zero. This checks the denominator independently of
 the trajectory differentiation, but remains symbolic algebra, not a
 Lean theorem about the final localized periodic velocity.
+
+
+## Correction: geometric factor in the force ratio
+
+A direct division by the independently checked acceleration exposed a
+coefficient error in earlier revisions: d_*=1-eta_*² belongs in the
+numerator, not the denominator. In q coordinates, the radial force is
+2 nu B q^(-A-1) and acceleration is (A U_*/d_*) q^(-A-1).
+Their ratio is therefore 2 nu d_* B/(A U_*), and its limit is
+-nu d_* Z_*/(L_* A U_*). The symbolic check now constructs and divides
+the two dimensional expressions instead of entering a presumed ratio.
+The scalar Lean sign statements have been corrected as well. Since
+d_*>0, this changes the coefficient but not its strict negative sign.
+Earlier kernel acceptance established the stated scalar inequality;
+it did not establish that the old coefficient was the physical ratio.

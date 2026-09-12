@@ -8,5 +8,5 @@
   "Hzz_q_exponent": "-A-2D",
   "Hzz_coefficient": "(32*eta**5*h**2 + 32*eta**5*h + 4*eta**4*h**2*j + 2*eta**4*h*j - 32*eta**3*h - 32*eta**3 + 4*eta**2*h**2*j - 4*eta**2*h*j - 3*eta**2*j + 24*eta + 2*h*j + j)/(8*eta**6*h**3 - 12*eta**4*h**2 + 6*eta**2*h - 1)",
   "axial_Hzz_relative_decay_exponent": "2h",
-  "leading_signed_force_ratio": "-Zstar*nu/(Astar*Lstar*Ustar*dstar)"
+  "leading_signed_force_ratio": "-Zstar*dstar*nu/(Astar*Lstar*Ustar)"
 }
