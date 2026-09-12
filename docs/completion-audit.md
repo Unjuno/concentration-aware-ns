@@ -18,7 +18,7 @@ measured behavior take precedence over prior progress summaries.
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
 | OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. Additional trajectory, strain and nonzero axial viscous-force ratio are hand-derived, not newly Lean-verified. Euler and finite-stage extraction remain unperformed. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Substantial artifacts published; final report and replay coverage still incomplete |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published; tracked-only export and fresh-venv postprocessing pass. Solver-build reproduction and analytic-hypothesis review remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -34,8 +34,8 @@ be repaired retrospectively.
 
 Remaining completion work:
 
-1. Consolidate the three solver reports into a final comparative audit, including
-   energy, spectral and derivative uncertainty and why each final verdict follows.
+1. Comparative audit now exists at reports/comparative-audit.md. Retain its
+   bounded conclusions: no certified standard-PASS/local-FAIL case is established.
 2. Reconcile standard-acceptance checks: current false review flags cannot be
    interpreted as completed reviews merely because verdict files exist. Preserve
    observed failures separately from unknown continuous-peak accuracy.
@@ -43,8 +43,10 @@ Remaining completion work:
    identities do not cover theorem hypotheses. A new Lean proof would strengthen
    this but has not been performed. Do not describe original kernel acceptance
    as verification of our new result.
-4. Check final public reproduction instructions against actual available inputs
-   and environments, and refresh upstream disposition evidence where relevant.
+4. Tracked-only export and fresh-venv postprocessing succeeded (see
+   evidence/fresh-environment-check.json). SU2 discussion read-back is refreshed
+   with no comments; no endorsement is inferred. Full solver builds were not
+   repeated by this postprocessing check.
 5. Audit the requested impact analysis against what the evidence supports.
    No finite benchmark can establish all industrial or molecular consequences;
    explicitly bound findings by solver versions, cases and construction hypotheses.

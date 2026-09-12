@@ -1,0 +1,19 @@
+{
+  "checked_at_utc": "2026-09-12T09:01:06.832104+00:00",
+  "scope": "Read-only GitHub GraphQL discussion snapshot; absence of comments is not upstream agreement.",
+  "response": {
+    "data": {
+      "repository": {
+        "discussion": {
+          "url": "https://github.com/su2code/SU2/discussions/2890",
+          "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+          "updatedAt": "2026-09-09T05:33:15Z",
+          "comments": {
+            "totalCount": 0,
+            "nodes": []
+          }
+        }
+      }
+    }
+  }
+}
