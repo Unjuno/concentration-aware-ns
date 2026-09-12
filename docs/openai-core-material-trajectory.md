@@ -309,3 +309,35 @@ Inspected definitions: ProfileHistories.average; PhysicalCoordinateBounds.qCoord
 xCoord and etaCoord; SlowBorelBase.positiveCoefficient, slowStage, slowSum,
 physicalProfile, bundleComponent and streamFactor. Source byte hashes are
 recorded in evidence/openai-source/radial-coefficient-sources.json.
+
+## Natural-core leading coefficient is strictly nonzero at the root
+
+Evaluate IsNaturalSolution.axial_equation at X=0. NaturalAxisBridge defines
+radialDifferential 1 U = X U_XX + U_X. Axis values and their eta derivatives
+therefore give the exact identity
+
+    2 L(eta) U_X(0,eta) = -Z(h,j,P0)(eta).
+
+Here Z is exactly NaturalAxisData.Z, including the pressure value and derivative;
+no pressure term was dropped. At the selected negative root, PressureData
+(negative pressure <= -1 and eta P0' >= 0) implies
+Z_* > j/5 by Z_at_root_lower / exists_root_with_positive_Z. Since L_*>0,
+
+    U_X(0,eta_*) = -Z_*/(2 L_*) < -j/(10 L_*) < 0.
+
+For the natural core V is the radial average of U, so B=U_X and the signed
+radial viscous-force / material-acceleration ratio equals
+
+    -nu Z_* / (L_* A U_* d_*),
+
+which is strictly negative and independent of tau. U_*>0 follows from the
+root equation and eta_*<0. The axial H_zz contribution has a ratio tending
+to zero as tau^(2h). Thus the full axial viscous-force ratio for the natural
+core tends to this nonzero negative constant: alignment on this trajectory
+does not suppress the relative axial viscous force in that core.
+
+Scope is essential: applying this conclusion to the completed candidate still
+requires proving that its leading modulated profile has the same radial jet
+near this axis and that the positive-order derivative remainder tends to zero.
+The previous axis-value transfer alone cannot supply either fact. This is a
+hand-derived consequence of inspected source equations, not a new Lean result.
