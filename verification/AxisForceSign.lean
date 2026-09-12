@@ -312,6 +312,20 @@ theorem chart_radial_derivative_eq_fderiv
     (hasDerivAt_const X q).prodMk ((hasDerivAt_id X).prodMk (hasDerivAt_const X eta))
   exact (hg.hasFDerivAt.comp_hasDerivAt X curve).deriv
 
+theorem radial_derivative_limit_of_first_jet
+    (g : SlowBorelBase.Chart → ℝ) (eta : ℝ)
+    (smooth : ∀ q : ℝ, 0 < q → DifferentiableAt ℝ g (q,(0,eta)))
+    (limit : Filter.Tendsto (fun q : ℝ => iteratedFDeriv ℝ 1 g (q,(0,eta)))
+      (𝓝[>] (0 : ℝ)) (𝓝 0)) :
+    Filter.Tendsto (fun q : ℝ => deriv (fun X => g (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  have component := first_jet_radial_component_tends_zero _ limit
+  apply component.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  rw [iteratedFDeriv_one_apply]
+  exact (chart_radial_derivative_eq_fderiv g q 0 eta (smooth q hq)).symm
+
+#print axioms radial_derivative_limit_of_first_jet
 #print axioms chart_radial_derivative_eq_fderiv
 #print axioms first_jet_radial_component_tends_zero
 #print axioms axial_derivative_tail_tends_zero
