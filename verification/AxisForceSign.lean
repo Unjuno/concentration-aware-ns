@@ -262,6 +262,38 @@ theorem uncut_prefix_derivative_tends_leading
     (fun X => f 0 (X,eta)) (fun j X => f (j+1) (X,eta))
     (fun j => c (j+1)) (hf 0) (fun j _ => hf (j+1))
 
+theorem power_bounded_remainder_tends_zero
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (r : ℝ → E) (h C : ℝ) (hh : 0 < h)
+    (bound : ∀ᶠ q in 𝓝[>] (0 : ℝ), ‖r q‖ ≤ C * q^(2*h)) :
+    Filter.Tendsto r (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  have he : 0 < 2*h := by positivity
+  have hc : ContinuousAt (fun q : ℝ => q^(2*h)) 0 :=
+    Real.continuousAt_rpow_const _ _ (Or.inr he.le)
+  have hz : (0 : ℝ)^(2*h) = 0 := Real.zero_rpow he.ne'
+  apply squeeze_zero_norm' bound
+  simpa only [hz, mul_zero] using
+    (hc.tendsto.mono_left nhdsWithin_le_nhds).const_mul C
+
+theorem axial_derivative_tail_tends_zero
+    {a : ℕ → ℕ} {h C : ℝ} {coeff : SlowBorelBase.Coefficients}
+    {K : Set SlowBorelBase.Inner} (w : SlowBorelBase.Inner) (hw : w ∈ K)
+    (hh : 0 < h) (smooth : SlowBorelBase.SmoothCoefficients coeff)
+    (admissible : SlowBorelBase.AdmissibleScales h
+      (SlowBorelBase.coefficientBundle C coeff) K a) :
+    ∃ J : ℕ, 1 ≤ J ∧ Filter.Tendsto (fun q : ℝ =>
+      iteratedFDeriv ℝ 1 (fun y =>
+        SlowBorelBase.slowSum a h (SlowBorelBase.bundleComponent C coeff 5) y -
+        SlowBorelBase.uncutPrefix h (SlowBorelBase.bundleComponent C coeff 5) J y) (q,w))
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  obtain ⟨J, hJ, delta, hd, hb⟩ := axial_component_derivative_tail hh smooth admissible
+  refine ⟨J, hJ, power_bounded_remainder_tends_zero _ h ((1/2 : ℝ)^J) hh ?_⟩
+  filter_upwards [self_mem_nhdsWithin,
+    Filter.Eventually.filter_mono nhdsWithin_le_nhds (gt_mem_nhds hd)] with q hq hqd
+  exact hb q hq hqd w hw
+
+#print axioms axial_derivative_tail_tends_zero
+#print axioms power_bounded_remainder_tends_zero
 #print axioms uncut_prefix_derivative_tends_leading
 #print axioms uncut_prefix_as_positive_sum
 #print axioms finite_prefix_derivative_tends_leading
