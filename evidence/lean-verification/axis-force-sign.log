@@ -1,3 +1,5 @@
+'ConcentrationAware.uncut_prefix_derivative_tends_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.uncut_prefix_as_positive_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.finite_prefix_derivative_tends_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.finite_prefix_radial_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.finite_positive_prefix_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -240,6 +240,30 @@ theorem finite_prefix_derivative_tends_leading
   simpa only [add_zero] using
     (finite_positive_prefix_tends_zero h hh J c).const_add baseDerivative
 
+theorem uncut_prefix_as_positive_sum
+    (h q X eta : ℝ) (f : ℕ → SlowBorelBase.Inner → ℝ) (J : ℕ) :
+    SlowBorelBase.uncutPrefix h f J (q,(X,eta)) =
+      f 0 (X,eta) + ∑ j ∈ Finset.range J,
+        q ^ (2*h*(j+1 : ℕ)) * f (j+1) (X,eta) := by
+  unfold SlowBorelBase.uncutPrefix
+  rw [Finset.sum_range_succ']
+  simp only [SlowBorelBase.positiveCoefficient, Nat.add_one_ne_zero,
+    ite_false, ite_eq_left, SlowBorelBase.powerCoefficient, smul_eq_mul, add_zero]
+
+theorem uncut_prefix_derivative_tends_leading
+    (h eta : ℝ) (hh : 0 < h) (J : ℕ)
+    (f : ℕ → SlowBorelBase.Inner → ℝ) (c : ℕ → ℝ)
+    (hf : ∀ j, HasDerivAt (fun X => f j (X,eta)) (c j) 0) :
+    Filter.Tendsto (fun q : ℝ => deriv
+      (fun X => SlowBorelBase.uncutPrefix h f J (q,(X,eta))) 0)
+      (𝓝 0) (𝓝 (c 0)) := by
+  simp_rw [uncut_prefix_as_positive_sum]
+  exact finite_prefix_derivative_tends_leading h (c 0) hh J
+    (fun X => f 0 (X,eta)) (fun j X => f (j+1) (X,eta))
+    (fun j => c (j+1)) (hf 0) (fun j _ => hf (j+1))
+
+#print axioms uncut_prefix_derivative_tends_leading
+#print axioms uncut_prefix_as_positive_sum
 #print axioms finite_prefix_derivative_tends_leading
 #print axioms finite_prefix_radial_derivative
 #print axioms finite_positive_prefix_tends_zero
