@@ -79,6 +79,31 @@ theorem natural_axis_radial_identity
   unfold NaturalAxisData.Z NaturalAxisData.H
   ring
 
+open scoped Topology
+
+theorem natural_axis_radial_identity_from_solution
+    {h j scale eta : ℝ} {P amp : ℝ → ℝ}
+    {f u v pr : ℝ × ℝ → ℝ}
+    (solution : NaturalProfile.IsNaturalSolution h j scale P amp f u v pr)
+    (point : (0, eta) ∈ NaturalProfile.domain scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left
+      NaturalAxisCoefficients.window.right) :
+    2 * NaturalAxisData.L h eta * NaturalAxisBridge.partialY u (0, eta) =
+      -NaturalAxisData.Z h j P eta := by
+  have hu : (fun e => u (0, e)) =ᶠ[𝓝 eta] NaturalAxisData.U j := by
+    filter_upwards [IsOpen.mem_nhds isOpen_Ioo inside] with e he
+    exact solution.U_axis e he
+  have hp : (fun e => pr (0, e)) =ᶠ[𝓝 eta] P := by
+    filter_upwards [IsOpen.mem_nhds isOpen_Ioo inside] with e he
+    exact solution.pressure_axis e he
+  apply natural_axis_radial_identity solution point (solution.U_axis eta inside)
+    (solution.pressure_axis eta inside)
+  · change deriv (fun e => u (0, e)) eta = 4
+    rw [hu.deriv_eq]
+    exact (NaturalProfile.uStar_hasDerivAt j eta).deriv
+  · exact hp.deriv_eq
+
+#print axioms natural_axis_radial_identity_from_solution
 #print axioms natural_axis_radial_identity
 #print axioms actual_axis_force_ratio_negative
 #print axioms exists_negative_axis_force_ratio

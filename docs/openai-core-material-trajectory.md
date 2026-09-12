@@ -464,3 +464,11 @@ read-only and disables networking. This is a Lean kernel check, not a second
 nanoda validation. It does not yet formalize the field-derivative identity,
 trajectory transfer or asymptotic remainder argument. The complete force-limit
 conclusion above therefore remains hand-derived.
+
+The additional theorem `natural_axis_radial_identity_from_solution` now derives
+`2 L partialY u = -Z` directly from IsNaturalSolution, domain membership and
+an interior eta. It derives the axial-value and eta-derivative identities from
+the solution's local axis equalities, rather than assuming their numerical
+values separately. The pinned Lean kernel accepts it with the same three
+reported axioms. This checks the natural-profile PDE-to-radial-derivative step;
+the completed-field transfer and asymptotic limit remain outside this theorem.
