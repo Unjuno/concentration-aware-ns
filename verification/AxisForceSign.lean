@@ -630,6 +630,43 @@ theorem stream_axial_radial_derivative_on_axis
   simp [AxisymmetricFields.partialS]
   ring
 
+theorem axial_slice_derivative_eq_partialZ
+    (G : AxisymmetricFields.Profile) (t s z : ℝ)
+    (hG : DifferentiableAt ℝ G (t,(s,z))) :
+    deriv (fun w => G (t,(s,w))) z = AxisymmetricFields.partialZ G (t,(s,z)) := by
+  have curve : HasDerivAt (fun w : ℝ => (t,(s,w))) (0,(0,1)) z :=
+    (hasDerivAt_const z t).prodMk ((hasDerivAt_const z s).prodMk (hasDerivAt_id z))
+  exact (hG.hasFDerivAt.comp_hasDerivAt z curve).deriv
+
+theorem axial_second_derivative_eq_slice
+    (G : AxisymmetricFields.Profile) (t z : ℝ)
+    (hG : ∀ w : ℝ, DifferentiableAt ℝ G (t,(0,w)))
+    (hZ : DifferentiableAt ℝ (AxisymmetricFields.partialZ G) (t,(0,z))) :
+    AxisymmetricFields.partialZ (AxisymmetricFields.partialZ G) (t,(0,z)) =
+      deriv (fun w => deriv (fun a => G (t,(0,a))) w) z := by
+  rw [← axial_slice_derivative_eq_partialZ _ t 0 z hZ]
+  congr 1
+  funext w
+  exact (axial_slice_derivative_eq_partialZ G t 0 w (hG w)).symm
+
+theorem stream_axial_second_derivative_on_axis
+    (H : AxisymmetricFields.Profile) (t z : ℝ)
+    (hH : ∀ w : ℝ, DifferentiableAt ℝ H (t,(0,w)))
+    (hU : ∀ w : ℝ, DifferentiableAt ℝ
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) (t,(0,w)))
+    (hHZ : DifferentiableAt ℝ (AxisymmetricFields.partialZ H) (t,(0,z)))
+    (hUZ : DifferentiableAt ℝ (AxisymmetricFields.partialZ
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)) (t,(0,z))) :
+    AxisymmetricFields.partialZ (AxisymmetricFields.partialZ
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)) (t,(0,z)) =
+    AxisymmetricFields.partialZ (AxisymmetricFields.partialZ H) (t,(0,z)) := by
+  rw [axial_second_derivative_eq_slice _ t z hU hUZ,
+    axial_second_derivative_eq_slice H t z hH hHZ]
+  simp only [zero_mul, add_zero]
+
+#print axioms stream_axial_second_derivative_on_axis
+#print axioms axial_slice_derivative_eq_partialZ
+#print axioms axial_second_derivative_eq_slice
 #print axioms stream_axial_radial_derivative_on_axis
 #print axioms physical_axial_laplacian_on_axis
 #print axioms prepared_root_with_negative_radial_derivative

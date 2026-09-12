@@ -702,3 +702,16 @@ algebraically with the preceding Cartesian formula, the radial part
 is therefore 4 partialS H. The axial second-derivative identity and
 instantiation of all smoothness hypotheses for the constructed field
 are still required before claiming the full physical identity formally.
+
+
+## Axial second derivative bridge
+
+`axial_slice_derivative_eq_partialZ` identifies the source partialZ
+with an ordinary axial slice derivative at differentiable points.
+`axial_second_derivative_eq_slice` repeats this identification, requiring
+slice-wide differentiability and differentiability of partialZ at the
+point. `stream_axial_second_derivative_on_axis` then proves U_zz=H_zz
+for U=H+s H_s at s=0, since the two axial slices agree identically.
+The pinned Lean check passes without sorryAx. These explicit smoothness
+hypotheses still need to be supplied for the actual physical profiles;
+the statements do not yet establish the final assembled-field limit.
