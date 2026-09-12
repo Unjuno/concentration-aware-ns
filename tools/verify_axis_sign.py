@@ -14,7 +14,7 @@ def verify():
     log=run.stdout+run.stderr
     logpath=Path('evidence/lean-verification/axis-force-sign.log')
     logpath.write_text(log)
-    expected=['natural_radial_derivative_negative_at_root','natural_axis_radial_identity_from_solution','natural_axis_radial_identity','actual_axis_force_ratio_negative','exists_negative_axis_force_ratio']
+    expected=['natural_radial_derivative_quantitative','natural_radial_derivative_negative_at_root','natural_axis_radial_identity_from_solution','natural_axis_radial_identity','actual_axis_force_ratio_negative','exists_negative_axis_force_ratio']
     printed=all("'ConcentrationAware."+name+"' depends on axioms:" in log for name in expected)
     reports=re.findall(r"'ConcentrationAware\.([^']+)' depends on axioms: \[(.*?)\]",log,re.S)
     allowed={'propext','Classical.choice','Quot.sound'}

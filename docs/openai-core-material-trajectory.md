@@ -480,3 +480,11 @@ interiority in the eta window, SmallParameters, the root equation/interval,
 and PressureData. This is a statement about the actual natural profile
 derivative, not merely an independently named scalar. It still does not
 formalize its transfer through the complete assembly or the force-ratio limit.
+
+The quantitative companion theorem `natural_radial_derivative_quantitative`
+proves `2 L partialY u < -j/5` under those same natural-solution and root
+hypotheses. Since the actual L is positive, this is the previously derived
+strict bound `partialY u < -j/(10 L)`. It supplies a margin from zero for the
+leading term. Turning that margin into an explicit finite-q guarantee for the
+completed field still requires a quantitative remainder constant and cutoff
+scale; an existential asymptotic estimate does not provide a numerical time.

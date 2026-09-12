@@ -132,6 +132,27 @@ theorem natural_radial_derivative_negative_at_root
   have hnonneg := mul_nonneg (mul_pos (by norm_num : (0:ℝ)<2) hL).le (le_of_not_gt hn)
   linarith
 
+theorem natural_radial_derivative_quantitative
+    {h j scale eta : ℝ} {P amp : ℝ → ℝ}
+    {f u v pr : ℝ × ℝ → ℝ}
+    (solution : NaturalProfile.IsNaturalSolution h j scale P amp f u v pr)
+    (point : (0, eta) ∈ NaturalProfile.domain scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left
+      NaturalAxisCoefficients.window.right)
+    (small : NaturalAxisData.SmallParameters h j)
+    (interval : eta ∈ Set.Ioo (-j / 4) (-j / 5))
+    (root : NaturalAxisData.H h j eta = 0)
+    (pressure : NaturalAxisData.PressureData P) :
+    2 * NaturalAxisData.L h eta * NaturalAxisBridge.partialY u (0, eta) < -j / 5 := by
+  have hen : eta < 0 := by linarith [interval.2, small.j_pos]
+  have helo : -1 < eta := by linarith [interval.1, small.j_le]
+  have heI : eta ∈ Set.Icc (-1 : ℝ) 1 := ⟨helo.le, by linarith⟩
+  have hz := NaturalAxisData.Z_at_root_lower small interval root
+    (pressure.negative eta heI) (pressure.deriv_nonpos heI hen)
+  rw [natural_axis_radial_identity_from_solution solution point inside]
+  linarith
+
+#print axioms natural_radial_derivative_quantitative
 #print axioms natural_radial_derivative_negative_at_root
 #print axioms natural_axis_radial_identity_from_solution
 #print axioms natural_axis_radial_identity
