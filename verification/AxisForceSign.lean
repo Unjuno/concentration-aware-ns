@@ -3,6 +3,9 @@ import NavierStokes.NaturalAxisData
 import NavierStokes.NaturalProfile
 import NavierStokes.SlowBorelBase
 import NavierStokes.FinalSlowBase
+import NavierStokes.TailGaugePotential
+import NavierStokes.MixedPeriodicAssembly
+import NavierStokes.TimeLocalization
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -1311,6 +1314,32 @@ theorem selected_base_material_trajectory
   have hv := hz.smul_const (ProblemStatement.coordinateVector 2)
   simpa [curve, AxisymmetricResidual.pack, mul_comm] using hv
 
+/-- Spatial periodization and late-time activation preserve the selected base
+    germ when the potential and direct correction germs have been established. -/
+theorem activated_periodic_eq_selected_base_germ
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (potential direct : ProblemStatement.VelocityField) (w : ProblemStatement.SpaceTime)
+    (ht : w.1 < 1) (hlate : 3/4 < w.1)
+    (hplateau : w.2 ∈ SpatialLocalization.plateau)
+    (hp : potential =ᶠ[𝓝 w] TailGaugePotential.finalPotential H v upper B)
+    (hd : direct =ᶠ[𝓝 w] fun _ => 0) :
+    TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity potential direct)
+      =ᶠ[𝓝 w] FinalSlowBase.velocity H v upper B := by
+  have hc := SolenoidalDiagonal.spatialCurl_eventuallyEq hp
+  have htime : ∀ᶠ y : ProblemStatement.SpaceTime in 𝓝 w, y.1 < 1 :=
+    (isOpen_lt continuous_fst continuous_const).mem_nhds ht
+  have hm : MixedPeriodicAssembly.velocity potential direct =ᶠ[𝓝 w]
+      FinalSlowBase.velocity H v upper B := by
+    filter_upwards [hc,hd,htime] with y hy hdy hty
+    simp only [MixedPeriodicAssembly.velocity,hy,hdy,add_zero]
+    exact TailGaugePotential.finalPotential_sameCurl H v upper B hty
+  exact (TimeLocalization.activatedVelocity_eventuallyEq_late _ hlate w.2).trans
+    ((MixedPeriodicAssembly.periodicVelocity_eventuallyEq potential direct hplateau).trans hm)
+
+#print axioms activated_periodic_eq_selected_base_germ
 #print axioms selected_normalized_force_ratio_limit
 #print axioms normalized_force_ratio_limit
 #print axioms radial_force_div_acceleration

@@ -2,10 +2,15 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "681e3c1907727f9fbf5e120a2b95d8294c064d3df0fc832a5a10dfa7c977a82e",
+  "source_sha256": "b1f5cf2f5d3d0cb9b22d4b58e41f2b183bca56b263c17374206fbb42f22d259a",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "1e4d721373133e2b41ace5632b7e2c94ec240bba110b61bd6236e9e8f735e486",
+  "log_sha256": "4df31a665093f3f7cf61b345eb4d79f130180cc1329c1fda739271b147426387",
   "axioms": {
+    "activated_periodic_eq_selected_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "selected_normalized_force_ratio_limit": [
       "propext",
       "Classical.choice",
@@ -356,6 +361,6 @@
   "expected_axiom_reports_present": true,
   "source_unchanged_during_run": true,
   "contains_sorryAx": false,
-  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory and its axis Laplacian identity. Full localized periodic-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory and its axis Laplacian identity. Outer localized periodic-field germ transfer is checked under explicit potential/direct germ premises. Their concrete assembly instantiation and the full physical asymptotic force limit are not formalized here. Not an independent nanoda check.",
   "replay": "python3 -m tools.verify_axis_sign"
 }

@@ -1063,3 +1063,19 @@ trajectory. h>0 gives decay in q, but no uniform finite-time decay rate
 as h approaches zero is claimed. These checks identify the previously
 unspecified K at the formula level. Lean identification with physical
 second derivatives and the final periodic witness remains unfinished.
+
+
+## Formal outer-localization transfer
+
+`activated_periodic_eq_selected_base_germ` proves a spacetime-neighborhood
+equality from the activated periodic mixed velocity to the selected
+FinalSlowBase velocity. It combines the source curl-germ congruence,
+`finalPotential_sameCurl`, spatial-cutoff/periodization plateau equality,
+and late-time activation equality. The conditions are t<1, t>3/4,
+spatial plateau membership, equality of the supplied potential germ
+with finalPotential, and a zero germ for the supplied direct field.
+The pinned Lean check succeeds with only the allowed standard axioms.
+This verifies the outer transfer operation, not yet that the concrete
+ASum/BSum satisfy the two germ premises on the complete terminal
+trajectory. Those premises and the physical second-derivative identity
+remain necessary for the final force-ratio theorem.
