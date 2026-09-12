@@ -1178,3 +1178,19 @@ The root equation remains an explicit premise of this theorem; root
 existence is proved elsewhere in this extension. This result establishes
 the material ODE for the actual field, not the physical viscous-force
 ratio, molecular trajectories, or a constitutive viscosity change.
+
+
+## Physical axial Laplacian of the actual periodic candidate
+
+`actual_candidate_axis_laplacian` transfers the source spatial Laplacian
+through the spacetime-neighborhood equality, then applies the proved
+selected-base stream identity. For the actual activated periodic field
+and all sufficiently small positive q on the axial curve, it proves
+(spatialLaplacian u)_2=4 partialS H+partialZ(partialZ H).
+This is the source's Cartesian physical Laplacian, not a symbolic
+replacement or a numerical finite difference. The pinned Lean kernel
+check passes without sorryAx. The root equation is not needed for
+this spatial identity; it is needed to interpret the curve as a
+material trajectory. The complete ratio still requires identification
+of the explicit H_zz scaling and material acceleration and combination
+with the selected radial derivative limit.

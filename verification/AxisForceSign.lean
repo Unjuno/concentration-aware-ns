@@ -1531,6 +1531,40 @@ theorem actual_candidate_material_trajectory
     CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper
     eta (1-q*(1-eta^2)) B ht heta root
 
+theorem actual_candidate_axis_laplacian
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let stream := SlowBorelBase.streamFactor
+      (FinalSlowBase.scales CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B)
+      CorrectionInitialization.ActualPrimary.h CorrectionInitialization.ActualPrimary.nominal.axis.normalization
+      (FinalSlowBase.coefficients CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation)
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let t := 1-q*(1-eta^2)
+    let z := eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)
+    ProblemStatement.spatialLaplacian u t (AxisymmetricResidual.pack 0 0 z) 2 =
+      4*AxisymmetricFields.partialS stream (t,(0,z)) +
+        AxisymmetricFields.partialZ (AxisymmetricFields.partialZ stream) (t,(0,z)) := by
+  intro u stream
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  dsimp only
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hl := congrArg (fun x : ProblemStatement.Space => x 2) (ResidualRegularity.spatialLaplacian_congr he)
+  change ProblemStatement.spatialLaplacian u _ _ 2 = _ at hl
+  rw [hl]
+  exact selected_base_velocity_laplacian_on_axis CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper
+    (1-q*(1-eta^2)) (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)) B ht
+
+#print axioms actual_candidate_axis_laplacian
 #print axioms actual_candidate_material_trajectory
 #print axioms exists_actual_schedule_with_terminal_base_germ
 #print axioms actual_candidate_terminal_base_germ
