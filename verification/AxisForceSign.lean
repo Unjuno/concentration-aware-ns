@@ -806,6 +806,32 @@ theorem selected_profile_velocity_laplacian_on_axis
     (selected_stream_sliceC2 H v upper t B ht)
     (selected_stream_axial_velocity_sliceC2 H v upper t B ht)
 
+theorem curl_velocity_eq_profile_velocity
+    (H K : AxisymmetricFields.Profile) (t : ℝ) (x : ProblemStatement.Space)
+    (hH : DifferentiableAt ℝ H (AxisymmetricFields.profilePoint t x))
+    (hK : DifferentiableAt ℝ K (AxisymmetricFields.profilePoint t x)) :
+    AxisymmetricFields.velocity H K (t,x) =
+    AxisymmetricResidual.velocity (fun p => AxisymmetricFields.partialZ H p / 2)
+      (fun p => -AxisymmetricFields.partialS K p)
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) (t,x) := by
+  ext i
+  fin_cases i <;> dsimp only
+  · change AxisymmetricFields.velocity H K (t,x) 0 = _
+    rw [AxisymmetricFields.velocity_zero H K t x hH hK]
+    simp [AxisymmetricResidual.velocity, AxisymmetricResidual.componentX,
+      AxisymmetricResidual.lift]
+    ring
+  · change AxisymmetricFields.velocity H K (t,x) 1 = _
+    rw [AxisymmetricFields.velocity_one H K t x hH hK]
+    simp [AxisymmetricResidual.velocity, AxisymmetricResidual.componentY,
+      AxisymmetricResidual.lift]
+    ring
+  · change AxisymmetricFields.velocity H K (t,x) 2 = _
+    rw [AxisymmetricFields.velocity_two H K t x hH hK]
+    simp [AxisymmetricResidual.velocity, AxisymmetricResidual.lift,
+      AxisymmetricFields.profilePoint]
+
+#print axioms curl_velocity_eq_profile_velocity
 #print axioms selected_profile_velocity_laplacian_on_axis
 #print axioms selected_transverse_profiles_sliceC2
 #print axioms selected_stream_axial_velocity_sliceC2

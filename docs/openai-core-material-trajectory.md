@@ -778,3 +778,14 @@ hypotheses remain. Both pass the pinned Lean check without sorryAx.
 The component-built velocity must still be identified with the curl-defined
 `SlowBorelBase.baseVelocity`, then transferred through the final assembly
 and related to the material acceleration and derivative limit.
+
+
+## Curl and component velocity agreement
+
+`curl_velocity_eq_profile_velocity` proves equality of the source
+curl-defined velocity H,K and the component velocity with profiles
+B=H_z/2, F=-K_s, U=H+s H_s at differentiable points. All three
+Cartesian components, including transverse signs, are checked by the
+pinned Lean run without sorryAx. This pointwise lemma still needs to
+be instantiated across a fixed-time spatial slice for the selected
+baseVelocity before transferring its spatial Laplacian.
