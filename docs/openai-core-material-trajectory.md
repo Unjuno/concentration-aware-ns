@@ -650,3 +650,17 @@ root interval/equation, and PressureData hypotheses. These hypotheses
 have not yet been discharged here for a final selected root. Both pass
 the pinned Lean check without sorryAx. This is a chart-component sign,
 not yet a sign theorem for the physical Laplacian or the full force ratio.
+
+
+## Root existence and domain hypotheses discharged
+
+`exists_selected_root_with_negative_radial_derivative` obtains a root
+in (-j/4,-j/5) from the source root-existence theorem and derives its
+membership in [-1,1], the natural analytic window and the axis domain.
+`OutgoingProfile.natural_axis_pressureData` supplies PressureData from
+the explicit remaining bound `2 <= F.data.core.P`. The conclusion is
+existence of a root at which the selected component-5 radial derivative
+is negative for all sufficiently small positive q. The pinned Lean
+check passes without sorryAx. This removes the separately assumed root,
+pressure datum and domain conditions; it does not yet discharge the P
+bound for the final witness or prove the physical force-ratio limit.

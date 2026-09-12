@@ -552,6 +552,36 @@ theorem selected_axial_radial_derivative_eventually_negative
   exact limit.eventually (gt_mem_nhds
     (selected_natural_derivative_negative W eta point inside interval root pressure))
 
+theorem exists_selected_root_with_negative_radial_derivative
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (hP : 2 ≤ F.data.core.P) :
+    ∃ eta : ℝ, eta ∈ Set.Ioo (-W.axis.j / 4) (-W.axis.j / 5) ∧
+      NaturalAxisData.H F.data.h W.axis.j eta = 0 ∧
+      ∀ᶠ q in 𝓝[>] (0 : ℝ), deriv (fun X =>
+        SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+          (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+          (q,(X,eta))) 0 < 0 := by
+  have pressure := F.natural_axis_pressureData hP
+  obtain ⟨eta, interval, root, _⟩ :=
+    NaturalAxisData.exists_root_with_positive_Z W.axis.small pressure
+  have hen : eta < 0 := by linarith [interval.2, W.axis.small.j_pos]
+  have helo : -1 < eta := by linarith [interval.1, W.axis.small.j_le]
+  have heta : eta ∈ Set.Icc (-1 : ℝ) 1 := ⟨helo.le, by linarith⟩
+  have inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left
+      NaturalAxisCoefficients.window.right := by
+    change -11 / 10 < eta ∧ eta < 11 / 10
+    constructor <;> linarith
+  have point : (0,eta) ∈ NaturalProfile.domain W.axis.scale := by
+    change (W.axis.scale * 0, eta) ∈ Set.Ioo (-20 : ℝ) 20 ×ˢ
+      Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right
+    exact ⟨by norm_num, inside⟩
+  exact ⟨eta, interval, root, selected_axial_radial_derivative_eventually_negative
+    H v upper eta B heta point inside interval root pressure⟩
+
+#print axioms exists_selected_root_with_negative_radial_derivative
 #print axioms selected_axial_radial_derivative_eventually_negative
 #print axioms selected_natural_derivative_negative
 #print axioms original_axis_derivative_eq_natural
