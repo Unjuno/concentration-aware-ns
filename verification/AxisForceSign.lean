@@ -1120,6 +1120,23 @@ theorem candidate_normalized_stream_derivative_limit
   rw [candidate_axis_physicalChart F.data.h q eta W.axis.small.h_pos hh1 hq heta] at he
   exact he.symm
 
+theorem candidate_axis_curve_hasDerivAt
+    (h eta t : ℝ) (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    HasDerivAt (fun s : ℝ => eta * ((1-s)/(1-eta^2))^(CoordinateAlgebra.D h))
+      (-(eta * CoordinateAlgebra.D h / (1-eta^2)) *
+        ((1-t)/(1-eta^2))^(-CoordinateAlgebra.A h)) t := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hq : 0 < (1-t)/(1-eta^2) := div_pos (by linarith) hd
+  have hc := ((hasDerivAt_const t (1 : ℝ)).sub (hasDerivAt_id t)).div_const (1-eta^2)
+  have he : CoordinateAlgebra.D h - 1 = -CoordinateAlgebra.A h := by
+    unfold CoordinateAlgebra.D CoordinateAlgebra.A
+    ring
+  have hp := (hc.rpow_const (p := CoordinateAlgebra.D h) (Or.inl hq.ne')).const_mul eta
+  simp only [Pi.sub_apply, id_eq, zero_sub, he] at hp
+  apply hp.congr_deriv
+  ring
+
+#print axioms candidate_axis_curve_hasDerivAt
 #print axioms candidate_normalized_stream_derivative_limit
 #print axioms candidate_axis_physicalChart
 #print axioms candidate_axis_forward_coordinate

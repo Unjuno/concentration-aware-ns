@@ -922,3 +922,14 @@ derivative as q approaches zero from above. Both pass the pinned Lean
 check without sorryAx. The curve has not yet been formally shown to
 solve the material-trajectory ODE; the H_zz and acceleration comparison
 and final assembled-field transfer also remain.
+
+
+## Candidate curve physical-time derivative
+
+`candidate_axis_curve_hasDerivAt` differentiates
+z(t)=eta ((1-t)/(1-eta²))^D for t<1 and -1<eta<1.
+It proves z'(t)=(-eta D/(1-eta²)) q^(-A), including the real-power
+chain rule and D-1=-A. The pinned Lean check passes without sorryAx.
+The root equation must still identify the prefactor with U(eta),
+and the actual base-velocity value on the curve must be verified
+before claiming the material-trajectory ODE formally.
