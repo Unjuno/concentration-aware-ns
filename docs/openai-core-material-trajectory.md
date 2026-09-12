@@ -525,3 +525,18 @@ ordinary differentiability of the remainder is not an extra assumption.
 The pinned Lean check passes without sorryAx. This does not yet formally
 combine the prefix and tail limits or transfer the result through the
 assembled physical field to the full viscous-force ratio.
+
+
+## Full slow-sum radial derivative limit
+
+`axial_radial_derivative_tends_leading` now combines the finite-prefix
+limit and the ordinary radial derivative tail limit. Under positive h,
+smooth coefficients, admissible scales and `(0,eta)` in the controlled
+inner set, the X derivative of the full axial component-5 slow sum at
+`(q,(0,eta))` tends to the X derivative of its zeroth coefficient as
+q approaches zero from above. Coefficient differentiability is derived
+from smoothness. The proof uses a finite prefix plus a controlled
+remainder; it does not assume interchange of an infinite sum and limit.
+The pinned Lean check passes without sorryAx. The remaining formal gap
+is transfer through the selected assembled physical field and combination
+with the physical Laplacian and material-acceleration identities.

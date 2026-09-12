@@ -2,10 +2,15 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "dbb1e9c7372f730ad38a07dc64a6104fa4cdd5f38bab05993afe74afff537db3",
+  "source_sha256": "eeece16b3486630cc74127ccd08079aed8119b4487c2796d1676af1b50bb8eea",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "c399ba400695441bfd16b1435e82e50fc9d2f08d1a6f4bc74b171b77f8dcd1c6",
+  "log_sha256": "3e741cf459c2f98e110d48e9978efa6951f0bdbf7505406604ab43307e9c721c",
   "axioms": {
+    "axial_radial_derivative_tends_leading": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "axial_radial_tail_tends_zero": [
       "propext",
       "Classical.choice",
@@ -106,6 +111,6 @@
   "expected_axiom_reports_present": true,
   "source_unchanged_during_run": true,
   "contains_sorryAx": false,
-  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits and ordinary radial derivative tail convergence. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence and the full axial slow-sum radial derivative limit. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
   "replay": "python3 -m tools.verify_axis_sign"
 }

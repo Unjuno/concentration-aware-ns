@@ -349,6 +349,50 @@ theorem axial_radial_tail_tends_zero
     exact ContDiffAt.sum (fun j _ => SlowBorelBase.positiveCoefficient_smoothAt hf h j hq)
   exact (hs.sub hp).differentiableAt (by simp)
 
+theorem axial_radial_derivative_tends_leading
+    {a : ℕ → ℕ} {h C eta : ℝ} {coeff : SlowBorelBase.Coefficients}
+    {K : Set SlowBorelBase.Inner} (hw : (0,eta) ∈ K)
+    (hh : 0 < h) (smooth : SlowBorelBase.SmoothCoefficients coeff)
+    (admissible : SlowBorelBase.AdmissibleScales h
+      (SlowBorelBase.coefficientBundle C coeff) K a) :
+    Filter.Tendsto (fun q : ℝ => deriv (fun X =>
+      SlowBorelBase.slowSum a h (SlowBorelBase.bundleComponent C coeff 5) (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ))
+      (𝓝 (deriv (fun X => SlowBorelBase.bundleComponent C coeff 5 0 (X,eta)) 0)) := by
+  let f := SlowBorelBase.bundleComponent C coeff 5
+  have hf : ∀ j, ContDiff ℝ ∞ (f j) := SlowBorelBase.bundleComponent_smooth smooth C 5
+  have curve : HasDerivAt (fun X : ℝ => (X,eta)) (1,0) 0 :=
+    (hasDerivAt_id 0).prodMk (hasDerivAt_const 0 eta)
+  have hd : ∀ j, DifferentiableAt ℝ (fun X => f j (X,eta)) 0 := by
+    intro j
+    exact ((hf j).differentiable (by simp)).differentiableAt.comp 0 curve.differentiableAt
+  obtain ⟨J, _, ht⟩ := axial_radial_tail_tends_zero hw hh smooth admissible
+  have hp := (uncut_prefix_derivative_tends_leading h eta hh J f
+    (fun j => deriv (fun X => f j (X,eta)) 0)
+    (fun j => (hd j).hasDerivAt)).mono_left (nhdsWithin_le_nhds (s := Set.Ioi (0 : ℝ)))
+  have total := ht.add hp
+  simp only [zero_add] at total
+  apply total.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  have hs : DifferentiableAt ℝ (fun X => SlowBorelBase.slowSum a h f (q,(X,eta))) 0 := by
+    have hc : HasDerivAt (fun X : ℝ => (q,(X,eta))) (0,(1,0)) 0 :=
+      (hasDerivAt_const 0 q).prodMk curve
+    exact ((SlowBorelBase.slowSum_smoothAt admissible.strictMono hf h
+      (y := (q,(0,eta))) hq).differentiableAt (by simp)).comp 0 hc.differentiableAt
+  have hprefix : DifferentiableAt ℝ (fun X => SlowBorelBase.uncutPrefix h f J (q,(X,eta))) 0 := by
+    simp_rw [uncut_prefix_as_positive_sum]
+    exact (finite_prefix_radial_derivative h q _ J (f := fun j X => f (j+1) (X,eta))
+      (base := fun X => f 0 (X,eta)) (c := fun j => deriv (fun X => f (j+1) (X,eta)) 0)
+      (hd 0).hasDerivAt (fun j _ => (hd (j+1)).hasDerivAt)).differentiableAt
+  change deriv (fun X => SlowBorelBase.slowSum a h f (q,(X,eta)) -
+    SlowBorelBase.uncutPrefix h f J (q,(X,eta))) 0 + _ = _
+  have he := deriv_sub hs hprefix
+  change deriv (fun X => SlowBorelBase.slowSum a h f (q,(X,eta)) -
+    SlowBorelBase.uncutPrefix h f J (q,(X,eta))) 0 = _ at he
+  rw [he]
+  exact sub_add_cancel _ _
+
+#print axioms axial_radial_derivative_tends_leading
 #print axioms axial_radial_tail_tends_zero
 #print axioms radial_derivative_limit_of_first_jet
 #print axioms chart_radial_derivative_eq_fderiv
