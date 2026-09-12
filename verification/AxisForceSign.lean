@@ -970,6 +970,33 @@ theorem selected_bundle_average_derivative_at_axis
   exact bundle_average_derivative_at_axis W.axis.normalization _
     (FinalSlowBase.coefficients_smooth H v) j eta
 
+theorem slowSum_axis_proportional
+    {a : ℕ → ℕ} (ha : StrictMono a) (h q eta c : ℝ) (hq : 0 < q)
+    (f g : ℕ → SlowBorelBase.Inner → ℝ)
+    (he : ∀ j, f j (0,eta) = c * g j (0,eta)) :
+    SlowBorelBase.slowSum a h f (q,(0,eta)) =
+      c * SlowBorelBase.slowSum a h g (q,(0,eta)) := by
+  obtain ⟨N, hN⟩ := SlowBorelBase.slowSum_finite_at_scale ha h hq
+  rw [hN f, hN g]
+  simp_rw [he]
+  rw [mul_add, Finset.mul_sum]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
+
+theorem averaged_derivative_slowSum_at_axis
+    {a : ℕ → ℕ} (ha : StrictMono a) (h q eta C : ℝ) (hq : 0 < q)
+    (d : SlowBorelBase.Coefficients) (hd : SlowBorelBase.SmoothCoefficients d) :
+    SlowBorelBase.slowSum a h
+      (fun j => SimilarityProfile.partialX (SlowBorelBase.bundleComponent C d 0 j)) (q,(0,eta)) =
+      (1/2 : ℝ) * SlowBorelBase.slowSum a h
+        (fun j => SimilarityProfile.partialX (SlowBorelBase.bundleComponent C d 5 j)) (q,(0,eta)) := by
+  exact slowSum_axis_proportional ha h q eta (1/2) hq _ _
+    (fun j => bundle_average_derivative_at_axis C d hd j eta)
+
+#print axioms slowSum_axis_proportional
+#print axioms averaged_derivative_slowSum_at_axis
 #print axioms bundle_average_derivative_at_axis
 #print axioms selected_bundle_average_derivative_at_axis
 #print axioms average_radial_derivative_at_axis

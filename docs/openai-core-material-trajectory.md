@@ -849,3 +849,16 @@ It proves partialX(component 0 j)(0,eta) = (1/2) partialX(component 5 j)(0,eta).
 Both pass the pinned Lean check without sorryAx. Transferring this
 coefficient identity through the locally finite slow sum, and connecting
 the resulting physical derivative to its asymptotic limit, remain pending.
+
+
+## Averaging identity through the slow sum
+
+`slowSum_axis_proportional` transfers a coefficient-wise proportionality
+at the axis through the actual slow sum for q>0 and strictly monotone
+scales. It uses the source's common finite-at-scale representation.
+`averaged_derivative_slowSum_at_axis` applies it to the radial derivatives
+of bundle components 0 and 5, retaining the exact factor 1/2.
+Both pass the pinned Lean check without sorryAx. The next bridge is to
+identify the sum of component-5 derivatives with the ordinary derivative
+whose asymptotic limit has already been proved, then include the physical
+q^(-A-1) factor in H_s.
