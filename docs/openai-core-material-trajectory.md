@@ -496,3 +496,10 @@ innerBox, assuming positive F.data.h and the source's certificate/witness
 objects. Thus admissibility is no longer supplied as a separate unconnected
 hypothesis. The next formal step remains evaluating the derivative on the X
 direction and proving convergence of the finite positive-order prefix.
+
+`finite_prefix_derivative_tends_leading` combines the finite weighted-sum
+derivative rule and positive-power limit. For a fixed finite prefix with
+derivatives at X=0, its X derivative converges to the leading derivative as
+q tends to zero. This is now one Lean theorem rather than two disconnected
+facts. Identifying this generic prefix with SlowBorelBase.uncutPrefix and
+combining its limit with the selected tail estimate remain formalization steps.
