@@ -1194,3 +1194,18 @@ this spatial identity; it is needed to interpret the curve as a
 material trajectory. The complete ratio still requires identification
 of the explicit H_zz scaling and material acceleration and combination
 with the selected radial derivative limit.
+
+
+## Time derivative of the actual base velocity along the curve
+
+`axis_velocity_formula_hasDerivAt` formally differentiates U*((1-t)/d)^(-A),
+obtaining (A U/d)*((1-t)/d)^(-A-1) with denominator positivity derived.
+`selected_base_axis_velocity_time_derivative` identifies the selected
+FinalSlowBase velocity evaluated on the curve with that vector formula
+in a time neighborhood and transfers its derivative. Both pass the
+pinned Lean check without sorryAx. This is now a derivative of the
+actual base velocity composition, not only a scalar algebra assertion.
+On the natural-axis root the curve is material by the earlier theorem.
+Transfer of this velocity-composition derivative to the actual periodic
+field and its identification with the Eulerian material derivative,
+as well as the explicit physical H_zz calculation, remain pending.
