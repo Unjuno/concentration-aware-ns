@@ -341,3 +341,30 @@ requires proving that its leading modulated profile has the same radial jet
 near this axis and that the positive-order derivative remainder tends to zero.
 The previous axis-value transfer alone cannot supply either fact. This is a
 hand-derived consequence of inspected source equations, not a new Lean result.
+
+## Leading radial jet survives the finite modulation
+
+The leading coefficient transfer can be strengthened beyond axis values.
+EntranceAlignedBase.modulated_zero_fields identifies a_0(X,eta) with
+v.profiles.U(X,eta) for X>=0 and |eta|<=1. The actual finiteModification
+certificate satisfies AssembledSlowBase.FiniteModification.fields: inside
+X<=lo it identifies v.profiles.U with the nominal W.profiles.U.
+More directly, EntranceAlignedBase.modified_ACT_fields identifies it with
+(nominalACT W).U whenever 0<=X<cutoffInner and eta belongs to S.
+S is open and contains [-1,1], and the cutoff radius is positive.
+
+Fix eta=eta_* in (-1,1). These identities hold on a right interval in X
+starting at zero, rather than merely at X=0. Both coefficient functions are
+smooth at the axis, so their ordinary X derivatives equal the common right
+derivative. Consequently
+
+    partial_X a_0(0,eta_*) = partial_X (nominalACT W).U(0,eta_*).
+
+Thus the finite modulation itself does not alter this leading radial jet.
+This argument does not use a claim that the positive-order terms vanish with
+their derivatives. It also does not silently equate the ACT normalization
+with NaturalProfile's unscaled X: the remaining transfer step is to trace
+ActivationContinuation's natural-collar identity and any coordinate/amplitude
+scaling. A nonzero scale factor must be retained when transferring the
+previous natural-core value -Z_*/(2L_*). The positive-order remainder bound
+is still required for the final asymptotic force ratio.
