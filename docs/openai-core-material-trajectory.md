@@ -1009,3 +1009,18 @@ The scalar Lean sign statements have been corrected as well. Since
 d_*>0, this changes the coefficient but not its strict negative sign.
 Earlier kernel acceptance established the stated scalar inequality;
 it did not establish that the old coefficient was the physical ratio.
+
+
+## Kernel-checked quotient and conditional force-limit assembly
+
+`radial_force_div_acceleration` verifies the division of
+2 nu B q^(-A-1) by (A U/d) q^(-A-1), deriving the necessary
+power nonvanishing from q>0. Its result is 2 nu d B/(A U).
+`normalized_force_ratio_limit` then proves that if B(q) tends to
+-Z/(2L) and h>0, the expression
+2 nu d/(A U) B(q) + K q^(2h) tends to -nu d Z/(L A U).
+Both pass the pinned Lean kernel with only the allowed standard axioms.
+This closes scalar quotient and limit assembly, including the geometric
+factor correction. It remains a conditional scalar theorem: identification
+of this expression with the complete localized periodic field's physical
+force-to-acceleration ratio is not an assumption verified by this theorem.

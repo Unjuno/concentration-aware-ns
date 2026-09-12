@@ -9,6 +9,15 @@ import NavierStokes.FinalSlowBase
 namespace ConcentrationAware
 open NavierStokes
 
+/-- Divide the radial viscous term by acceleration before assigning its limit. -/
+theorem radial_force_div_acceleration
+    (nu B A U d q : ℝ) (hA : A ≠ 0) (hU : U ≠ 0)
+    (hd : d ≠ 0) (hq : 0 < q) :
+    (2 * nu * B * q ^ (-A-1)) / ((A*U/d) * q ^ (-A-1)) =
+      2 * nu * d * B / (A*U) := by
+  have hp : q ^ (-A-1) ≠ 0 := ne_of_gt (Real.rpow_pos_of_pos hq _)
+  field_simp
+
  theorem axial_force_ratio_negative
     {h j eta : ℝ} {P : ℝ → ℝ}
     (small : NaturalAxisData.SmallParameters h j)
@@ -275,6 +284,27 @@ theorem power_bounded_remainder_tends_zero
   apply squeeze_zero_norm' bound
   simpa only [hz, mul_zero] using
     (hc.tendsto.mono_left nhdsWithin_le_nhds).const_mul C
+
+/-- Conditional scalar assembly: the radial limit plus the axial decaying term. -/
+theorem normalized_force_ratio_limit
+    (B : ℝ → ℝ) (nu d A U L Z K h : ℝ)
+    (hL : L ≠ 0) (hh : 0 < h)
+    (hB : Filter.Tendsto B (𝓝[>] (0 : ℝ)) (𝓝 (-Z/(2*L)))) :
+    Filter.Tendsto (fun q : ℝ => 2*nu*d/(A*U) * B q + K*q^(2*h))
+      (𝓝[>] (0 : ℝ)) (𝓝 (-nu*d*Z/(L*A*U))) := by
+  have he : 0 < 2*h := by positivity
+  have hc : ContinuousAt (fun q : ℝ => q^(2*h)) 0 :=
+    Real.continuousAt_rpow_const _ _ (Or.inr he.le)
+  have hz : (0 : ℝ)^(2*h) = 0 := Real.zero_rpow he.ne'
+  have ht := (hB.const_mul (2*nu*d/(A*U))).add
+    ((hc.tendsto.mono_left nhdsWithin_le_nhds).const_mul K)
+  have heq : 2*nu*d/(A*U) * (-Z/(2*L)) + K*(0:ℝ)^(2*h) =
+      -nu*d*Z/(L*A*U) := by
+    rw [hz]
+    simp only [mul_zero, add_zero]
+    ring
+  rw [heq] at ht
+  exact ht
 
 theorem axial_derivative_tail_tends_zero
     {a : ℕ → ℕ} {h C : ℝ} {coeff : SlowBorelBase.Coefficients}
@@ -1248,6 +1278,8 @@ theorem selected_base_material_trajectory
   have hv := hz.smul_const (ProblemStatement.coordinateVector 2)
   simpa [curve, AxisymmetricResidual.pack, mul_comm] using hv
 
+#print axioms normalized_force_ratio_limit
+#print axioms radial_force_div_acceleration
 #print axioms selected_base_material_trajectory
 #print axioms selected_base_velocity_on_candidate_axis
 #print axioms selected_stream_on_candidate_axis
