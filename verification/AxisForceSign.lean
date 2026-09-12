@@ -206,6 +206,22 @@ theorem finite_positive_prefix_tends_zero
     simpa only [hz, zero_mul] using hc.tendsto.mul_const (c j)
   simpa using tendsto_finsetSum (Finset.range J) each
 
+theorem finite_prefix_radial_derivative
+    (h q baseDerivative : ℝ) (J : ℕ)
+    (base : ℝ → ℝ) (f : ℕ → ℝ → ℝ) (c : ℕ → ℝ)
+    (hb : HasDerivAt base baseDerivative 0)
+    (hf : ∀ j ∈ Finset.range J, HasDerivAt (f j) (c j) 0) :
+    HasDerivAt
+      (fun X => base X + ∑ j ∈ Finset.range J,
+        q ^ (2*h*(j+1 : ℕ)) * f j X)
+      (baseDerivative + ∑ j ∈ Finset.range J,
+        q ^ (2*h*(j+1 : ℕ)) * c j) 0 := by
+  apply hb.add
+  convert (HasDerivAt.sum fun j hj => (hf j hj).const_mul (q ^ (2*h*(j+1 : ℕ)))) using 1
+  funext X
+  simp only [Finset.sum_apply]
+
+#print axioms finite_prefix_radial_derivative
 #print axioms finite_positive_prefix_tends_zero
 #print axioms selected_axial_component_derivative_tail
 #print axioms axial_component_derivative_tail
