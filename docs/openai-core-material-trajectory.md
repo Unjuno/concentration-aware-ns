@@ -1039,3 +1039,27 @@ With explicit natural-domain and open-window hypotheses, it proves
 The pinned Lean check succeeds without sorryAx. K remains an arbitrary
 constant; identification of the axial H_zz contribution with this term,
 and transfer to the complete localized periodic field, remain pending.
+
+
+## Explicit axial correction coefficient and independent derivative check
+
+Write Czz(eta)=q^(A+2D) H_zz; the symbolic result stores its complete
+rational expression in `evidence/tests/openai-axis-force-symbolic.json`.
+An independent calculation starts with H=q^(-A)(4 z q^(-D)+j) and
+tau=q-z² q^(2h). Applying partial_z+q_z partial_q twice at fixed tau,
+then substituting z=eta q^D, gives exactly the same Czz as the earlier
+(q,eta) derivative calculation. It does not reuse the earlier H_z formula.
+
+Direct division by acceleration (A U/d) q^(-A-1) gives
+K=nu d Czz/(A U), and verifies the entire decomposition
+
+    nu (H_zz+2 q^(-A-1) B(q)) / ((A U/d) q^(-A-1))
+      = 2 nu d B(q)/(A U) + K q^(2h).
+
+This is exact symbolic algebra under q>0 and nonzero A,U,d,L; the
+selected root supplies those nonvanishing conditions in the analytic
+argument. The fixed source parameters make K constant along the root
+trajectory. h>0 gives decay in q, but no uniform finite-time decay rate
+as h approaches zero is claimed. These checks identify the previously
+unspecified K at the formula level. Lean identification with physical
+second derivatives and the final periodic witness remains unfinished.
