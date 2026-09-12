@@ -914,6 +914,35 @@ open MeasureTheory in
   rw [(ProfileHistories.compact_parameter_integral_hasFDerivAt hs hG hp).fderiv]
   exact ContinuousLinearMap.intervalIntegral_apply hi (1,0)
 
+theorem average_radial_derivative_at_axis
+    (D : ProfileHistories.RadialDomain) (F : ProfileHistories.Field)
+    (hF : ContDiffOn ℝ ∞ F D.carrier) (eta : ℝ) (hp : (0,eta) ∈ D.carrier) :
+    ProfileHistories.radialPartial (ProfileHistories.average F) (0,eta) =
+      (1/2 : ℝ) * ProfileHistories.radialPartial F (0,eta) := by
+  unfold ProfileHistories.average
+  rw [radial_derivative_compact_integral D.isOpen
+    (ProfileHistories.average_integrand_smooth D hF) hp]
+  have integrand (r : ℝ) :
+      ProfileHistories.radialPartial (fun q => F (r*q.1,q.2)) (0,eta) =
+      r * ProfileHistories.radialPartial F (0,eta) := by
+    have hf := (hF.contDiffAt (D.isOpen.mem_nhds hp)).differentiableAt (by simp)
+    have hc : HasFDerivAt (fun q : ℝ × ℝ => (r*q.1,q.2))
+        ((r • ContinuousLinearMap.fst ℝ ℝ ℝ).prod (ContinuousLinearMap.snd ℝ ℝ ℝ)) (0,eta) := by
+      exact (hasFDerivAt_fst.const_mul r).prodMk hasFDerivAt_snd
+    have hf2 : HasFDerivAt F (fderiv ℝ F (0,eta)) (r*0,eta) := by simpa using hf.hasFDerivAt
+    have hd := hf2.comp (0,eta) hc
+    have he := congrArg (fun L => L (1,0)) hd.fderiv
+    change (fderiv ℝ (fun q => F (r*q.1,q.2)) (0,eta)) (1,0) = _ at he
+    unfold ProfileHistories.radialPartial
+    rw [he]
+    simp
+    simpa only [Prod.smul_mk, smul_eq_mul, mul_one, mul_zero] using
+      (fderiv ℝ F (0,eta)).map_smul r (1, (0 : ℝ))
+  simp_rw [integrand]
+  rw [intervalIntegral.integral_mul_const]
+  norm_num [integral_id]
+
+#print axioms average_radial_derivative_at_axis
 #print axioms radial_derivative_compact_integral
 #print axioms selected_stream_radial_derivative_physical
 #print axioms selected_base_velocity_laplacian_on_axis

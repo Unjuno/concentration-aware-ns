@@ -826,3 +826,14 @@ hypotheses. It evaluates the integrated Frechet derivative in direction
 (0,1). The pinned Lean check passes without sorryAx. Applying this to
 F(tX,eta) and evaluating the integral of t at X=0 remains the next step;
 the averaging factor 1/2 is not yet formally established here.
+
+
+## Averaging factor at the axis proved
+
+`average_radial_derivative_at_axis` proves radialPartial (average F)
+(0,eta) = (1/2) radialPartial F (0,eta) for a smooth field on the
+source radial domain containing the axis point. It combines the compact
+integral derivative theorem, the Frechet chain rule for (rX,eta), and
+the integral of r over [0,1]. The pinned Lean check passes without
+sorryAx. Applying this identity to the selected coefficient bundle and
+its slow sum remains the next connection to the physical H_s limit.
