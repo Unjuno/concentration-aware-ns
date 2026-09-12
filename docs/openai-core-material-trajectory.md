@@ -967,3 +967,18 @@ Both pass the pinned Lean check without sorryAx. The physical-time
 curve derivative and velocity evaluation now have matching scalar
 expressions; packaging them into a vector trajectory theorem, and
 transferring to the final periodic candidate, remain pending.
+
+
+## Verified material trajectory of the selected base velocity
+
+`selected_base_material_trajectory` now combines the time derivative
+and actual velocity evaluation into the vector ODE X'(t)=baseVelocity(t,X(t)),
+for t<1, eta in (-1,1), and the natural-axis root equation. Here
+X(t)=pack(0,0,eta*((1-t)/(1-eta²))^D). This is an actual material
+trajectory of the selected base field, rather than a curve chosen only
+for asymptotic evaluation. The pinned Lean run exits 0, reports only
+propext, Classical.choice, and Quot.sound, and contains no sorryAx.
+Transfer to the final localized periodic candidate and the complete
+asymptotic viscous-force ratio remain outside this formalized result.
+It establishes no molecular alignment, phase transition, or reduction
+of the constitutive viscosity coefficient.

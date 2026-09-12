@@ -1222,6 +1222,33 @@ theorem selected_base_velocity_on_candidate_axis
     zero_pow (by decide : 2 ≠ 0), zero_add, zero_div, zero_mul, add_zero, sub_zero, neg_zero]
   rw [selected_stream_on_candidate_axis H v upper q eta B hq heta]
 
+theorem selected_base_material_trajectory
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta t : ℝ) (B : ℕ)
+    (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H F.data.h W.axis.j eta = 0) :
+    let curve := fun s : ℝ => AxisymmetricResidual.pack 0 0
+      (eta * ((1-s)/(1-eta^2))^(CoordinateAlgebra.D F.data.h))
+    HasDerivAt curve
+      (SlowBorelBase.baseVelocity (FinalSlowBase.scales H v upper B) F.data.h
+        W.axis.normalization (FinalSlowBase.coefficients H v) (t,curve t)) t := by
+  intro curve
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hq : 0 < (1-t)/(1-eta^2) := div_pos (by linarith) hd
+  have he := selected_base_velocity_on_candidate_axis H v upper ((1-t)/(1-eta^2)) eta B hq heta
+  have timeeq : 1-((1-t)/(1-eta^2))*(1-eta^2) = t := by
+    field_simp
+    ring
+  rw [timeeq] at he
+  change HasDerivAt _ _ t
+  rw [he]
+  have hz := root_axis_curve_hasDerivAt F.data.h W.axis.j eta t ht heta root
+  have hv := hz.smul_const (ProblemStatement.coordinateVector 2)
+  simpa [curve, AxisymmetricResidual.pack, mul_comm] using hv
+
+#print axioms selected_base_material_trajectory
 #print axioms selected_base_velocity_on_candidate_axis
 #print axioms selected_stream_on_candidate_axis
 #print axioms selected_stream_sum_axis_value
