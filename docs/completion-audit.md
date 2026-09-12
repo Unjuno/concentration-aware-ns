@@ -1,4 +1,4 @@
-# Completion audit — interim, 2026-09-09
+# Completion audit — interim, 2026-09-12
 
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
@@ -11,13 +11,13 @@ measured behavior take precedence over prior progress summaries.
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; asymptotic temporal convergence not established |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
-| SU2 3-space/multiple-time comparison | Live study-v1 process and per-step history | Incomplete; n16 and n32 completed and archived, both fail the velocity threshold; n32 passes residual thresholds in 48/50 updates. n64 dt=.001 now completed with velocity error 0.362505% and 48/50 residual passes; the remaining time-step cases are pending |
+| SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 31 passing tests across the package | OpenFOAM n32 and all five PhysicsNeMo reports generated; 48 artifact hashes verified. SU2 reports pending |
+| Evidence-linked acceptance gate | v2 checker; 31 tests in the recorded replay; gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 88 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
-| OpenAI construction audit and transfer | Pinned predicates, witness interface, scaling derivation | Pinned NS challenge accepted by nanoda, Lean default kernel and Comparator with exit code 0; see reports/openai-ns-independent-verification.md. Finite-stage extraction and Euler challenge not independently verified |
+| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. Additional trajectory, strain and nonzero axial viscous-force ratio are hand-derived, not newly Lean-verified. Euler and finite-stage extraction remain unperformed. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Substantial artifacts published; final report and replay coverage still incomplete |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
@@ -25,15 +25,29 @@ substitute for an unperformed required run or a missing final report. The archiv
 inventory verifies readability and identity only. A recorded zero exit code does
 not prove accuracy, convergence or the correctness of the underlying review.
 
-Latest gate-link audit: `python3 -m tools.audit_gate_artifacts` independently
-checks all linked files even when scientific review flags are false. All 48 links
-in the six current gate reports match their recorded SHA256 values. This removes
-one reproducibility uncertainty only; it does not upgrade any scientific verdict.
-PhysicsNeMo's frozen protocol lacks an explicit acceptance-threshold declaration;
-the new gate reports preserve that gap instead of claiming retrospective
-preregistration.
+Current report replay covers twelve steps, including all five SU2 archive
+reviews, diagnostic replays, spectral derivatives, direct temporal differences
+and gate generation. The recorded 31 tests and 88 matching artifact links
+verify their stated implementation and provenance scopes, not continuum accuracy.
+PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
+be repaired retrospectively.
 
-On 2026-09-10 the report replay completed all ten steps with 31 tests passing.
-It now includes SU2 archive integrity, raw-data diagnostic replay and spectral
-derivative comparisons for the two completed cases. The full five-case SU2
-matrix remains incomplete; replay success does not change that requirement.
+Remaining completion work:
+
+1. Consolidate the three solver reports into a final comparative audit, including
+   energy, spectral and derivative uncertainty and why each final verdict follows.
+2. Reconcile standard-acceptance checks: current false review flags cannot be
+   interpreted as completed reviews merely because verdict files exist. Preserve
+   observed failures separately from unknown continuous-peak accuracy.
+3. Independently review the new source-to-trajectory implication chain; symbolic
+   identities do not cover theorem hypotheses. A new Lean proof would strengthen
+   this but has not been performed. Do not describe original kernel acceptance
+   as verification of our new result.
+4. Check final public reproduction instructions against actual available inputs
+   and environments, and refresh upstream disposition evidence where relevant.
+5. Audit the requested impact analysis against what the evidence supports.
+   No finite benchmark can establish all industrial or molecular consequences;
+   explicitly bound findings by solver versions, cases and construction hypotheses.
+
+This remains an interim audit, not a declaration that all goal requirements
+have been completed.
