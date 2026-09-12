@@ -190,6 +190,23 @@ theorem selected_axial_component_derivative_tail
   exact axial_component_derivative_tail hh (FinalSlowBase.coefficients_smooth H v)
     (FinalSlowBase.scales_admissible H v upper B)
 
+open scoped BigOperators
+
+theorem finite_positive_prefix_tends_zero
+    (h : ℝ) (hh : 0 < h) (J : ℕ) (c : ℕ → ℝ) :
+    Filter.Tendsto (fun q : ℝ => ∑ j ∈ Finset.range J,
+      q ^ (2*h*(j+1 : ℕ)) * c j) (𝓝 0) (𝓝 0) := by
+  have each : ∀ j ∈ Finset.range J,
+      Filter.Tendsto (fun q : ℝ => q ^ (2*h*(j+1 : ℕ)) * c j) (𝓝 0) (𝓝 0) := by
+    intro j hj
+    have exponent : 0 < 2*h*(j+1 : ℕ) := by positivity
+    have hc : ContinuousAt (fun q : ℝ => q ^ (2*h*(j+1 : ℕ))) 0 := by
+      exact Real.continuousAt_rpow_const _ _ (Or.inr exponent.le)
+    have hz : (0 : ℝ) ^ (2*h*(j+1 : ℕ)) = 0 := Real.zero_rpow exponent.ne'
+    simpa only [hz, zero_mul] using hc.tendsto.mul_const (c j)
+  simpa using tendsto_finsetSum (Finset.range J) each
+
+#print axioms finite_positive_prefix_tends_zero
 #print axioms selected_axial_component_derivative_tail
 #print axioms axial_component_derivative_tail
 #print axioms natural_radial_derivative_quantitative
