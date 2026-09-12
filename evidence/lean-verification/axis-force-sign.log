@@ -17,6 +17,7 @@ Hint: Omit it from the simp argument list.
     zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero, sub_zero, neg_zero]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.actual_candidate_material_trajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.exists_actual_schedule_with_terminal_base_germ' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]

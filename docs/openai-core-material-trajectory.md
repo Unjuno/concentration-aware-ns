@@ -1158,3 +1158,23 @@ stronger first theorem applies to every diverging schedule, including
 any schedule in that full source witness. The material ODE and full
 physical force-to-acceleration limit still require their final transfer
 and derivative identifications; this is not yet the complete theorem.
+
+
+## Material trajectory for the actual activated periodic field
+
+`actual_candidate_material_trajectory` transfers the vector material ODE
+from the selected base to the actual activated periodic ASum/BSum field.
+For eta in (-1,1) satisfying the natural-axis root equation, it proves
+X'(t)=u(t,X(t)) at t=1-q(1-eta²) for all sufficiently small positive q,
+where X(t)=pack(0,0,eta*((1-t)/(1-eta²))^D). The derivative is with
+respect to physical time t, not q. The proof uses the previously verified
+neighborhood equality at the curve point and derives the positive
+denominator, preterminal time, and parameter conversion explicitly.
+It applies to the actual primitive stages for each admissible B,N0 and
+any diverging schedule, hence to schedules carried by the source witness.
+The pinned Lean check passes with only the allowed standard axioms.
+
+The root equation remains an explicit premise of this theorem; root
+existence is proved elsewhere in this extension. This result establishes
+the material ODE for the actual field, not the physical viscous-force
+ratio, molecular trajectories, or a constitutive viscosity change.
