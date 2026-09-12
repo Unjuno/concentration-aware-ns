@@ -2,10 +2,15 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "6ff702eba9492d40adb33e757e9e3583b6f415ea547eee9ebaefdda2bc938e9c",
+  "source_sha256": "05ef18fbd0af52fd2b5a433b421b73626ac19f4484551edd2187459b343a7913",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "6b17f23191e855311a536615430331ce7eea74c690d786b800ba9f941e3c426b",
+  "log_sha256": "41b895eafc4af9b6ca466d4b67b4085c5e6f9bc5f8ba7406f72f598021a0973c",
   "axioms": {
+    "selected_stream_sum_axis_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "root_axis_curve_hasDerivAt": [
       "propext",
       "Classical.choice",

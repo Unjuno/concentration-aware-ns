@@ -1149,6 +1149,40 @@ theorem root_axis_curve_hasDerivAt
     nlinarith [root]
   simpa only [he] using candidate_axis_curve_hasDerivAt h eta t ht heta
 
+theorem selected_stream_sum_axis_value
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
+    SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+      (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 0)
+      (q,(0,eta)) = 4*eta+W.axis.j := by
+  have hv (j : ℕ) : SlowBorelBase.bundleComponent W.axis.normalization
+      (FinalSlowBase.coefficients H v) 0 j (0,eta) =
+      (FinalSlowBase.coefficients H v).axial j (0,eta) := by
+    simp [SlowBorelBase.bundleComponent, SlowBorelBase.coefficientBundle,
+      ProfileHistories.average_at_axis]
+  obtain ⟨N,hN⟩ := SlowBorelBase.slowSum_finite_at_scale
+    (FinalSlowBase.scales_admissible H v upper B).strictMono F.data.h hq
+  rw [hN]
+  simp_rw [hv]
+  have hz : ∑ j ∈ Finset.range N, SlowBorelBase.coefficientWeight
+      (FinalSlowBase.scales H v upper B) F.data.h q j *
+      (FinalSlowBase.coefficients H v).axial j (0,eta) = 0 := by
+    apply Finset.sum_eq_zero
+    intro j hj
+    by_cases hzero : j=0
+    · subst j
+      simp [SlowBorelBase.coefficientWeight]
+    · have he := (EntranceAlignedBase.modulated_positive_axis H v
+        (Nat.pos_of_ne_zero hzero) (abs_le.mpr heta)).2.1
+      change _ * (EntranceAlignedBase.modulatedCoefficients H v).axial j (0,eta) = 0
+      rw [he,mul_zero]
+  rw [hz,add_zero]
+  exact EntranceAlignedBase.modulated_leading_axis H v heta
+
+#print axioms selected_stream_sum_axis_value
 #print axioms root_axis_curve_hasDerivAt
 #print axioms candidate_axis_curve_hasDerivAt
 #print axioms candidate_normalized_stream_derivative_limit

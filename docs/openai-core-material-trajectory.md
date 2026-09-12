@@ -943,3 +943,15 @@ U(j,eta) q^(-A), deriving positivity of the denominator before division.
 The pinned Lean check passes without sorryAx. Equality with the actual
 baseVelocity evaluated on the curve is the remaining ODE bridge; this
 scalar formula alone is not the full vector material-trajectory theorem.
+
+
+## Exact selected stream sum on the axis
+
+`selected_stream_sum_axis_value` proves the selected component-0 slow
+sum equals 4 eta+j at (q,0,eta) for q>0 and eta in [-1,1]. It uses
+the average-at-axis identity, the source modulated leading-axis theorem,
+and vanishing positive-order axial coefficients. The common finite
+sum representation handles the cutoff weights, including order zero.
+The pinned Lean check passes without sorryAx. Multiplying by q^(-A)
+and applying the source velocity-at-axis formula remain the next steps
+to identify the actual baseVelocity along the candidate curve.
