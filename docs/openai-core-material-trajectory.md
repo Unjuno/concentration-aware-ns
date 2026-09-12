@@ -676,3 +676,16 @@ prepared profile, its cone certificate and modulation witness remain
 inputs; this does not itself construct or identify the final periodic
 witness. The pinned Lean check passes without sorryAx. Full physical
 Laplacian and material-acceleration transfer is still unformalized.
+
+
+## Cartesian Laplacian bridge
+
+`physical_axial_laplacian_on_axis` specializes the source Cartesian
+`spatialLaplacian_velocity` theorem at (0,0,z), under its SliceC2
+hypotheses. It proves that the axial component equals 2 U_s + U_zz,
+where U here denotes the axial velocity profile and s=(x²+y²)/2.
+The pinned Lean check passes without sorryAx. This U must not be
+confused with the stream potential H: U=H+s H_s is the additional
+identity needed to obtain the previously symbolic 4 H_s + H_zz formula.
+Instantiation with the actual slow-base physical profiles and transfer
+through the final assembled field remain open formalization steps.

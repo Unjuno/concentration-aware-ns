@@ -1,3 +1,4 @@
+import NavierStokes.AxisymmetricResidual
 import NavierStokes.NaturalAxisData
 import NavierStokes.NaturalProfile
 import NavierStokes.SlowBorelBase
@@ -595,6 +596,20 @@ theorem prepared_root_with_negative_radial_derivative
           (q,(X,eta))) 0 < 0 := by
   exact exists_selected_root_with_negative_radial_derivative H v upper B prepared.amplitude_lower
 
+theorem physical_axial_laplacian_on_axis
+    {B F U : AxisymmetricFields.Profile} {t : ℝ}
+    (hB : AxisymmetricResidual.SliceC2 B t)
+    (hF : AxisymmetricResidual.SliceC2 F t)
+    (hU : AxisymmetricResidual.SliceC2 U t) (z : ℝ) :
+    ProblemStatement.spatialLaplacian (AxisymmetricResidual.velocity B F U) t
+      (AxisymmetricResidual.pack 0 0 z) 2 =
+      2 * AxisymmetricFields.partialS U (t,(0,z)) +
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ U) (t,(0,z)) := by
+  rw [AxisymmetricResidual.spatialLaplacian_velocity hB hF hU]
+  simp [AxisymmetricResidual.laplaceScalar, AxisymmetricFields.profilePoint,
+    AxisymmetricFields.radialEnergy]
+
+#print axioms physical_axial_laplacian_on_axis
 #print axioms prepared_root_with_negative_radial_derivative
 #print axioms exists_selected_root_with_negative_radial_derivative
 #print axioms selected_axial_radial_derivative_eventually_negative
