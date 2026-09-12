@@ -982,3 +982,15 @@ Transfer to the final localized periodic candidate and the complete
 asymptotic viscous-force ratio remain outside this formalized result.
 It establishes no molecular alignment, phase transition, or reduction
 of the constitutive viscosity coefficient.
+
+
+## Independent Eulerian acceleration check
+
+`tools/check_axis_force.py` now evaluates (partial_t + u_z partial_z)u_z
+directly from u_z=q^(-A)U, using q_t=-1/L and eta_t=D eta/(q L)
+at fixed z. On the root D eta+(1-eta²)U=0, it agrees exactly with
+A U/(1-eta²) q^(-A-1), the material-trajectory acceleration.
+The transverse velocities vanish on this axis. SymPy 1.14.0 reduces
+the difference to zero. This checks the denominator independently of
+the trajectory differentiation, but remains symbolic algebra, not a
+Lean theorem about the final localized periodic velocity.

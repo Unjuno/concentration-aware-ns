@@ -28,11 +28,25 @@ coefficient=s.simplify(Hzz*q**(A+2*D))
 assert q not in coefficient.free_symbols
 assert s.simplify((A+1)-(A+2*D)-2*h)==0
 
+# Independent Eulerian material derivative, rather than differentiating a
+# presumed trajectory twice. The implicit chart tau=q-z²*q^(2h) gives
+# q_t=-1/L and eta_t=D*eta/(q*L), with z held fixed.
+axis_velocity=q**(-A)*U
+qt=-1/L
+etat=D*e/(q*L)
+qz=2*e*q**A/L
+etaz=d*q**(-D)/L
+material=s.diff(axis_velocity,q)*(qt+axis_velocity*qz)+s.diff(axis_velocity,e)*(etat+axis_velocity*etaz)
+expected_acceleration=A*U/d*q**(-A-1)
+root_j=-D*e/d-4*e
+acceleration_residual=s.simplify(s.expand_power_base((material-expected_acceleration).subs(j,root_j),force=True))
+assert acceleration_residual==0
+
 # Compare coefficients after substituting q=tau/d along the trajectory.
 nu,Zstar,Lstar,Astar,Ustar,dstar=s.symbols('nu Zstar Lstar Astar Ustar dstar',positive=True)
 B=-Zstar/(2*Lstar)
 ratio=s.simplify(2*nu*B/(Astar*Ustar*dstar))
 assert ratio==-nu*Zstar/(Lstar*Astar*Ustar*dstar)
-result={'scope':'Symbolic algebra and exponent checks only. Does not verify source hypothesis transfer, the tail theorem application, or physical applicability.','sympy':s.__version__,'cartesian_laplacian_axis_identity':True,'natural_axis_equation_equals_negative_Z':True,'Hzz_q_exponent':'-A-2D','Hzz_coefficient':str(coefficient),'axial_Hzz_relative_decay_exponent':'2h','leading_signed_force_ratio':str(ratio)}
+result={'scope':'Symbolic algebra and exponent checks only. Does not verify source hypothesis transfer, the tail theorem application, or physical applicability.','sympy':s.__version__,'cartesian_laplacian_axis_identity':True,'natural_axis_equation_equals_negative_Z':True,'eulerian_material_acceleration_matches_root_trajectory':True,'axis_acceleration':'A*U/d*q^(-A-1)','Hzz_q_exponent':'-A-2D','Hzz_coefficient':str(coefficient),'axial_Hzz_relative_decay_exponent':'2h','leading_signed_force_ratio':str(ratio)}
 Path('evidence/tests/openai-axis-force-symbolic.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

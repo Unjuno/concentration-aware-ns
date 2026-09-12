@@ -341,6 +341,6 @@
   "expected_axiom_reports_present": true,
   "source_unchanged_during_run": true,
   "contains_sorryAx": false,
-  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence and the full axial slow-sum radial derivative limit. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence the full axial slow-sum radial derivative limit, the selected base-field material trajectory and its axis Laplacian identity. Full localized periodic-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
   "replay": "python3 -m tools.verify_axis_sign"
 }
