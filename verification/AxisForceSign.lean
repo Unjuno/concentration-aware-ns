@@ -552,6 +552,39 @@ theorem selected_axial_radial_derivative_tends_natural
   rw [original_axis_derivative_eq_natural W eta] at limit
   exact limit
 
+theorem selected_normalized_force_ratio_limit
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta nu K : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Icc (-1 : ℝ) 1)
+    (point : (0,eta) ∈ NaturalProfile.domain W.axis.scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right) :
+    Filter.Tendsto (fun q : ℝ =>
+      2*nu*NaturalAxisData.d eta/(NaturalAxisData.A F.data.h*NaturalAxisData.U W.axis.j eta) *
+        deriv (fun X => SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
+          (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
+          (q,(X,eta))) 0 + K*q^(2*F.data.h))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 (-nu*NaturalAxisData.d eta*NaturalAxisData.Z F.data.h W.axis.j F.axisDatum eta /
+        (NaturalAxisData.L F.data.h eta*NaturalAxisData.A F.data.h*NaturalAxisData.U W.axis.j eta))) := by
+  have hesq : eta^2 ≤ 1 := by nlinarith [heta.1,heta.2]
+  have hprod : F.data.h*eta^2 ≤ F.data.h := by
+    nlinarith [W.axis.small.h_pos]
+  have hL : 0 < NaturalAxisData.L F.data.h eta := by
+    unfold NaturalAxisData.L
+    nlinarith [W.axis.small.h_le]
+  have eqn := natural_axis_radial_identity_from_solution W.axis.natural.profile.family.natural point inside
+  have heq : deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 =
+      -NaturalAxisData.Z F.data.h W.axis.j F.axisDatum eta / (2*NaturalAxisData.L F.data.h eta) := by
+    apply (eq_div_iff (ne_of_gt (mul_pos (by norm_num) hL))).2
+    change 2 * NaturalAxisData.L F.data.h eta *
+      deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 = _ at eqn
+    nlinarith [eqn]
+  have hb := selected_axial_radial_derivative_tends_natural H v upper eta B W.axis.small.h_pos heta
+  rw [heq] at hb
+  exact normalized_force_ratio_limit _ nu _ _ _ _ _ K F.data.h hL.ne' W.axis.small.h_pos hb
+
 theorem selected_natural_derivative_negative
     {F : OutgoingProfile.Profile} (W : NominalProfile.Witness F) (eta : ℝ)
     (point : (0,eta) ∈ NaturalProfile.domain W.axis.scale)
@@ -1278,6 +1311,7 @@ theorem selected_base_material_trajectory
   have hv := hz.smul_const (ProblemStatement.coordinateVector 2)
   simpa [curve, AxisymmetricResidual.pack, mul_comm] using hv
 
+#print axioms selected_normalized_force_ratio_limit
 #print axioms normalized_force_ratio_limit
 #print axioms radial_force_div_acceleration
 #print axioms selected_base_material_trajectory

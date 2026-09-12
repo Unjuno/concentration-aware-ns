@@ -1024,3 +1024,18 @@ This closes scalar quotient and limit assembly, including the geometric
 factor correction. It remains a conditional scalar theorem: identification
 of this expression with the complete localized periodic field's physical
 force-to-acceleration ratio is not an assumption verified by this theorem.
+
+
+## Selected-coefficient force-limit assembly
+
+`selected_normalized_force_ratio_limit` now instantiates the conditional
+scalar limit with the radial derivative of the selected component-5
+slow sum. Its limit is derived from the existing selected slow-sum
+convergence theorem and the natural profile's axial equation, rather
+than supplied as an independent convergence assumption. The theorem
+derives L>0 from the source small-parameter bounds and eta in [-1,1].
+With explicit natural-domain and open-window hypotheses, it proves
+2 nu d/(A U) B_selected(q) + K q^(2h) tends to -nu d Z/(L A U).
+The pinned Lean check succeeds without sorryAx. K remains an arbitrary
+constant; identification of the axial H_zz contribution with this term,
+and transfer to the complete localized periodic field, remain pending.
