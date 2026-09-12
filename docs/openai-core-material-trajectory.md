@@ -765,3 +765,16 @@ then give C2 of the axial profile. No extra axial-velocity regularity
 hypothesis is assumed. The pinned Lean check passes without sorryAx.
 The transverse-profile regularity, identification with baseVelocity,
 and final physical force-ratio transfer remain to be formalized.
+
+
+## Selected transverse profiles and Laplacian instance
+
+`selected_transverse_profiles_sliceC2` derives SliceC2 of H_z/2 and
+-K_s from the actual selected stream H and swirl potential K.
+`selected_profile_velocity_laplacian_on_axis` combines all selected
+regularity results and proves the axial Laplacian formula for the
+component-built velocity at every t<1. No additional regularity
+hypotheses remain. Both pass the pinned Lean check without sorryAx.
+The component-built velocity must still be identified with the curl-defined
+`SlowBorelBase.baseVelocity`, then transferred through the final assembly
+and related to the material acceleration and derivative limit.

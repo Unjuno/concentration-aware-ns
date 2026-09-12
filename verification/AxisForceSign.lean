@@ -756,6 +756,58 @@ theorem selected_stream_axial_velocity_sliceC2
     exact (hs.fderiv_right (m := 2) (by simp)).clm_apply contDiffAt_const
   exact (hs.of_le (by simp)).add ((contDiffAt_snd.fst).mul hder)
 
+theorem selected_transverse_profiles_sliceC2
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    AxisymmetricResidual.SliceC2
+      (fun p => AxisymmetricFields.partialZ (SlowBorelBase.streamFactor a F.data.h W.axis.normalization d) p / 2) t ∧
+    AxisymmetricResidual.SliceC2
+      (fun p => -AxisymmetricFields.partialS (SlowBorelBase.swirlPotential a F.data.h W.axis.normalization d) p) t := by
+  intro a d
+  have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+  have smooth (i : Fin 7) (b : ℝ) (x : ProblemStatement.Space) :=
+    SlowBorelBase.physicalProfile_smoothAt
+      (FinalSlowBase.scales_admissible H v upper B).strictMono W.axis.small.h_pos hh1
+      (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
+        W.axis.normalization i) b (p := AxisymmetricFields.profilePoint t x) ht
+  constructor
+  · intro x
+    exact (((smooth 0 (-CoordinateAlgebra.A F.data.h) x).fderiv_right
+      (m := 2) (by simp)).clm_apply contDiffAt_const).div_const 2
+  · intro x
+    exact (((smooth 1 (1 / 2 - CoordinateAlgebra.A F.data.h) x).fderiv_right
+      (m := 2) (by simp)).clm_apply contDiffAt_const).neg
+
+theorem selected_profile_velocity_laplacian_on_axis
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t z : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    let stream := SlowBorelBase.streamFactor a F.data.h W.axis.normalization d
+    let swirl := SlowBorelBase.swirlPotential a F.data.h W.axis.normalization d
+    ProblemStatement.spatialLaplacian (AxisymmetricResidual.velocity
+      (fun p => AxisymmetricFields.partialZ stream p / 2)
+      (fun p => -AxisymmetricFields.partialS swirl p)
+      (fun p => stream p + p.2.1 * AxisymmetricFields.partialS stream p)) t
+      (AxisymmetricResidual.pack 0 0 z) 2 =
+      4 * AxisymmetricFields.partialS stream (t,(0,z)) +
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ stream) (t,(0,z)) := by
+  intro a d stream swirl
+  have transverse := selected_transverse_profiles_sliceC2 H v upper t B ht
+  exact physical_stream_laplacian_of_sliceC2 stream _ _ t z transverse.1 transverse.2
+    (selected_stream_sliceC2 H v upper t B ht)
+    (selected_stream_axial_velocity_sliceC2 H v upper t B ht)
+
+#print axioms selected_profile_velocity_laplacian_on_axis
+#print axioms selected_transverse_profiles_sliceC2
 #print axioms selected_stream_axial_velocity_sliceC2
 #print axioms selected_stream_sliceC2
 #print axioms physical_stream_laplacian_of_sliceC2
