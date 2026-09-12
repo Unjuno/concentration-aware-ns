@@ -1018,6 +1018,30 @@ theorem selected_averaged_derivative_sum_tends_natural
   exact (averaged_derivative_slowSum_at_axis ha F.data.h q eta W.axis.normalization hq
     (FinalSlowBase.coefficients H v) hd).symm
 
+theorem selected_stream_normalized_radial_derivative
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (p : SlowBorelBase.Chart) (hp : p.1 < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    let chart := SlowBorelBase.physicalChart F.data.h p
+    chart.1 ^ (CoordinateAlgebra.A F.data.h + 1) *
+      AxisymmetricFields.partialS (SlowBorelBase.streamFactor a F.data.h W.axis.normalization d) p =
+    SlowBorelBase.slowSum a F.data.h
+      (fun j => SimilarityProfile.partialX (SlowBorelBase.bundleComponent W.axis.normalization d 0 j)) chart := by
+  dsimp only
+  rw [selected_stream_radial_derivative_physical H v upper B p hp]
+  unfold SlowBorelBase.physicalProfile
+  simp only [smul_eq_mul]
+  rw [← mul_assoc, ← Real.rpow_add]
+  · ring_nf
+    simp
+  · have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+    exact SlowBorelBase.physicalChart_positive W.axis.small.h_pos hh1 hp
+
+#print axioms selected_stream_normalized_radial_derivative
 #print axioms selected_averaged_derivative_sum_tends_natural
 #print axioms slowSum_axis_proportional
 #print axioms averaged_derivative_slowSum_at_axis

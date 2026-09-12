@@ -874,3 +874,15 @@ sum tends to one half of the natural-profile radial derivative as q
 approaches zero from above. The pinned Lean check passes without sorryAx.
 The physical multiplier q^(-A-1) and evaluation along the material
 trajectory remain to be connected before this gives an H_s asymptotic.
+
+
+## Normalized physical radial derivative
+
+`selected_stream_normalized_radial_derivative` proves the exact identity
+q^(A+1) H_s(p) = slowSum of component-0 radial derivatives at the
+physicalChart of p, for p.time<1. Positivity of q comes from the source
+coordinate theorem and justifies cancellation of the real powers.
+The pinned Lean check passes without sorryAx. To apply the previously
+proved limit, the physicalChart of the proposed material trajectory
+still needs to be identified as (q,(0,eta_star)) with q approaching zero
+from above. This identity alone does not prove that trajectory property.
