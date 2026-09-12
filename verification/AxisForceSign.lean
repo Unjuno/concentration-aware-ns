@@ -103,6 +103,36 @@ theorem natural_axis_radial_identity_from_solution
     exact (NaturalProfile.uStar_hasDerivAt j eta).deriv
   · exact hp.deriv_eq
 
+theorem natural_radial_derivative_negative_at_root
+    {h j scale eta : ℝ} {P amp : ℝ → ℝ}
+    {f u v pr : ℝ × ℝ → ℝ}
+    (solution : NaturalProfile.IsNaturalSolution h j scale P amp f u v pr)
+    (point : (0, eta) ∈ NaturalProfile.domain scale)
+    (inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left
+      NaturalAxisCoefficients.window.right)
+    (small : NaturalAxisData.SmallParameters h j)
+    (interval : eta ∈ Set.Ioo (-j / 4) (-j / 5))
+    (root : NaturalAxisData.H h j eta = 0)
+    (pressure : NaturalAxisData.PressureData P) :
+    NaturalAxisBridge.partialY u (0, eta) < 0 := by
+  have hen : eta < 0 := by linarith [interval.2, small.j_pos]
+  have helo : -1 < eta := by linarith [interval.1, small.j_le]
+  have heI : eta ∈ Set.Icc (-1 : ℝ) 1 := ⟨helo.le, by linarith⟩
+  have hesq : eta ^ 2 < 1 := by nlinarith
+  have hprod : h * eta ^ 2 ≤ h := by
+    nlinarith [mul_nonneg small.h_pos.le (sub_nonneg.mpr hesq.le)]
+  have hL : 0 < NaturalAxisData.L h eta := by
+    unfold NaturalAxisData.L
+    nlinarith [small.h_le]
+  have hz := NaturalAxisData.Z_at_root_lower small interval root
+    (pressure.negative eta heI) (pressure.deriv_nonpos heI hen)
+  have eqn := natural_axis_radial_identity_from_solution solution point inside
+  have hzpos : 0 < NaturalAxisData.Z h j P eta := by linarith [small.j_pos]
+  by_contra hn
+  have hnonneg := mul_nonneg (mul_pos (by norm_num : (0:ℝ)<2) hL).le (le_of_not_gt hn)
+  linarith
+
+#print axioms natural_radial_derivative_negative_at_root
 #print axioms natural_axis_radial_identity_from_solution
 #print axioms natural_axis_radial_identity
 #print axioms actual_axis_force_ratio_negative

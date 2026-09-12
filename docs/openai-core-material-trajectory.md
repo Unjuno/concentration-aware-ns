@@ -472,3 +472,11 @@ the solution's local axis equalities, rather than assuming their numerical
 values separately. The pinned Lean kernel accepts it with the same three
 reported axioms. This checks the natural-profile PDE-to-radial-derivative step;
 the completed-field transfer and asymptotic limit remain outside this theorem.
+
+`natural_radial_derivative_negative_at_root` additionally combines the natural
+PDE identity with the root/pressure sign theorem, deriving partialY u(0,eta)<0.
+It assumes IsNaturalSolution, membership of the axis point in its domain,
+interiority in the eta window, SmallParameters, the root equation/interval,
+and PressureData. This is a statement about the actual natural profile
+derivative, not merely an independently named scalar. It still does not
+formalize its transfer through the complete assembly or the force-ratio limit.

@@ -1,7 +1,7 @@
 {
   "exit_code": 0,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "c62986eabb1cdf2c9d988a44911358ee712cedce40b7880893cfb8fe789f20c2",
+  "source_sha256": "05c8172a6fac8d76b97b3da368193383a66811147c574ed1abdc72b300d05192",
   "environment": "Saved pinned Lean v4.34.0-rc2 verification volume; lake env lean; read-only source and extension mounts; network disabled",
   "scope": "Existence of a root with negative actual scalar coefficient from SmallParameters, PressureData and positive viscosity. Does not identify it with the full field derivative or prove asymptotic convergence.",
   "initial_attempt": "Failed due to missing NavierStokes namespace opening; corrected before successful check.",
@@ -10,7 +10,8 @@
     "Classical.choice",
     "Quot.sound"
   ],
-  "log_sha256": "caf83535e5d12045354ed27b082b7ef97735878ad47a07018403572f35a4d4bd",
+  "log_sha256": "ddb2e47b35916f90cdbb43a89b7fda63a2b8b5b40b5d2fe2403ddecca4ca972a",
   "replay": "sh runtime/lean-verification/check_axis_sign.sh",
-  "radial_identity_scope": "Natural axial PDE implies 2 L partialY u = -Z from IsNaturalSolution, domain membership and interior eta. Axis values and eta derivatives are now derived from the solution structure and neighborhood equality."
+  "radial_identity_scope": "Natural axial PDE implies 2 L partialY u = -Z from IsNaturalSolution, domain membership and interior eta. Axis values and eta derivatives are now derived from the solution structure and neighborhood equality.",
+  "radial_sign_scope": "Natural solution radial derivative is strictly negative at a root satisfying the parameter/pressure conditions, provided domain membership and interior eta. Full assembled-field and asymptotic transfer remain unformalized."
 }
