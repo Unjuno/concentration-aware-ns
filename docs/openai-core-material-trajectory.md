@@ -689,3 +689,16 @@ confused with the stream potential H: U=H+s H_s is the additional
 identity needed to obtain the previously symbolic 4 H_s + H_zz formula.
 Instantiation with the actual slow-base physical profiles and transfer
 through the final assembled field remain open formalization steps.
+
+
+## Stream-to-velocity radial derivative factor
+
+`stream_axial_radial_derivative_on_axis` proves
+partialS (H + s partialS H) = 2 partialS H at s = 0, assuming
+ordinary differentiability of H and partialS H at the axis point.
+It uses the full Frechet product rule and the actual source partialS
+definition. The pinned Lean check passes without sorryAx. Combined
+algebraically with the preceding Cartesian formula, the radial part
+is therefore 4 partialS H. The axial second-derivative identity and
+instantiation of all smoothness hypotheses for the constructed field
+are still required before claiming the full physical identity formally.

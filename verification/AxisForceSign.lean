@@ -609,6 +609,28 @@ theorem physical_axial_laplacian_on_axis
   simp [AxisymmetricResidual.laplaceScalar, AxisymmetricFields.profilePoint,
     AxisymmetricFields.radialEnergy]
 
+theorem stream_axial_radial_derivative_on_axis
+    (H : AxisymmetricFields.Profile) (t z : ℝ)
+    (hH : DifferentiableAt ℝ H (t,(0,z)))
+    (hS : DifferentiableAt ℝ (AxisymmetricFields.partialS H) (t,(0,z))) :
+    AxisymmetricFields.partialS
+      (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p) (t,(0,z)) =
+      2 * AxisymmetricFields.partialS H (t,(0,z)) := by
+  have coord : HasFDerivAt (fun p : AxisymmetricFields.ProfilePoint => p.2.1)
+      ((ContinuousLinearMap.fst ℝ ℝ ℝ).comp (ContinuousLinearMap.snd ℝ ℝ (ℝ × ℝ)))
+      (t,(0,z)) := by
+    exact hasFDerivAt_fst.comp (t,(0,z)) hasFDerivAt_snd
+  have hd := hH.hasFDerivAt.add (coord.mul hS.hasFDerivAt)
+  have he := congrArg (fun L => L (0,(1,0))) hd.fderiv
+  change (fderiv ℝ (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)
+    (t,(0,z))) (0,(1,0)) = _ at he
+  change (fderiv ℝ (fun p => H p + p.2.1 * AxisymmetricFields.partialS H p)
+    (t,(0,z))) (0,(1,0)) = _
+  rw [he]
+  simp [AxisymmetricFields.partialS]
+  ring
+
+#print axioms stream_axial_radial_derivative_on_axis
 #print axioms physical_axial_laplacian_on_axis
 #print axioms prepared_root_with_negative_radial_derivative
 #print axioms exists_selected_root_with_negative_radial_derivative
