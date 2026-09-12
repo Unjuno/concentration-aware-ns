@@ -909,3 +909,16 @@ returns exactly q for h in (0,1/2), q>0 and eta in (-1,1).
 Both pass the pinned Lean check without sorryAx. Identification of the
 remaining physicalChart coordinates and proof of the material-trajectory
 ODE are still required; coordinate equality alone is not that ODE.
+
+
+## Physical chart and normalized derivative limit on the candidate curve
+
+`candidate_axis_physicalChart` proves that the full physical chart maps
+(1-q(1-eta²),0,eta q^D) to (q,0,eta), including the time shift and
+matching the two source conventions for D.
+`candidate_normalized_stream_derivative_limit` then proves that
+q^(A+1) H_s along this curve tends to half the natural-profile radial
+derivative as q approaches zero from above. Both pass the pinned Lean
+check without sorryAx. The curve has not yet been formally shown to
+solve the material-trajectory ODE; the H_zz and acceleration comparison
+and final assembled-field transfer also remain.

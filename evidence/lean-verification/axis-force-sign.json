@@ -2,10 +2,20 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "e6aa41924a488efe7155cc29875c2777f3adcb970b406e31601eea6d1e57a8a3",
+  "source_sha256": "c5ae8274db8700946edb64f63a2ca8a0cb3befc41b69b3cda7678d6787414615",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "315ae2f2e6ae9f602d089966e3d77233aca8911f02321f86ec6f5a70fdeb77da",
+  "log_sha256": "3374a77abe987ebcdc21821fd4ea9ab264b5630111fe85f95ba507e5d2cec296",
   "axioms": {
+    "candidate_normalized_stream_derivative_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_physicalChart": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "candidate_axis_forward_coordinate": [
       "propext",
       "Classical.choice",

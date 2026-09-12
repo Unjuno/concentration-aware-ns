@@ -1076,6 +1076,52 @@ theorem candidate_axis_inverse_coordinate
   exact (SimilarityCoordinates.eq_coordinateQ (by positivity) (by linarith)
     (mul_pos hq hd) hq (candidate_axis_forward_coordinate h q eta hq)).symm
 
+theorem candidate_axis_physicalChart
+    (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    SlowBorelBase.physicalChart h
+      (1-q*(1-eta^2), (0, eta*q^(CoordinateAlgebra.D h))) = (q,(0,eta)) := by
+  have he := candidate_axis_inverse_coordinate h q eta hh hh1 hq heta
+  have ht : 1-(1-q*(1-eta^2)) = q*(1-eta^2) := by ring
+  simp only [SlowBorelBase.physicalChart, PhysicalCoordinateBounds.physicalQ,
+    PhysicalCoordinateBounds.physicalX, PhysicalCoordinateBounds.physicalEta,
+    Function.comp_apply, PhysicalCoordinateBounds.timeShift,
+    PhysicalCoordinateBounds.xCoord, PhysicalCoordinateBounds.etaCoord,
+    PhysicalCoordinateBounds.qCoord, ht, he, zero_div]
+  have hD : PhysicalCoordinateBounds.D (2*h) = CoordinateAlgebra.D h := by
+    unfold PhysicalCoordinateBounds.D CoordinateAlgebra.D
+    ring
+  rw [hD]
+  simp [ne_of_gt (Real.rpow_pos_of_pos hq (CoordinateAlgebra.D h))]
+
+theorem candidate_normalized_stream_derivative_limit
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    Filter.Tendsto (fun q : ℝ => q^(CoordinateAlgebra.A F.data.h+1) *
+      AxisymmetricFields.partialS (SlowBorelBase.streamFactor
+        (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+        (FinalSlowBase.coefficients H v))
+        (1-q*(1-eta^2), (0, eta*q^(CoordinateAlgebra.D F.data.h))))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ((1/2 : ℝ) * deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0)) := by
+  have limit := selected_averaged_derivative_sum_tends_natural H v upper eta B
+    ⟨heta.1.le,heta.2.le⟩
+  apply limit.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  have hh1 : F.data.h < 1/2 := by linarith [W.axis.small.h_le]
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2) < 1 := by nlinarith [mul_pos hq hd]
+  have he := selected_stream_normalized_radial_derivative H v upper B
+    (1-q*(1-eta^2), (0, eta*q^(CoordinateAlgebra.D F.data.h))) ht
+  dsimp only at he
+  rw [candidate_axis_physicalChart F.data.h q eta W.axis.small.h_pos hh1 hq heta] at he
+  exact he.symm
+
+#print axioms candidate_normalized_stream_derivative_limit
+#print axioms candidate_axis_physicalChart
 #print axioms candidate_axis_forward_coordinate
 #print axioms candidate_axis_inverse_coordinate
 #print axioms trajectory_scale_tends_zero_right
