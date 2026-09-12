@@ -510,3 +510,18 @@ applied to (0,1,0), under DifferentiableAt. This supplies the coordinate
 interpretation needed for the tail estimate. The remaining formal bridge
 identifies the order-one iterated derivative with that Frechet derivative
 and combines the tail and prefix limits for the selected smooth slow sum.
+
+
+## Ordinary radial derivative of the actual slow-sum tail
+
+`axial_radial_tail_tends_zero` in `verification/AxisForceSign.lean` now
+connects the first-jet remainder estimate to the ordinary X derivative of
+`slowSum - uncutPrefix` for axial bundle component 5 at `(q,(0,eta))`.
+For positive h, smooth coefficients, admissible scales and `(0,eta)` in
+the controlled inner set, it proves that there exists J >= 1 for which
+this derivative tends to zero as q approaches zero from above.
+Smoothness is derived from the source definitions and admissibility;
+ordinary differentiability of the remainder is not an extra assumption.
+The pinned Lean check passes without sorryAx. This does not yet formally
+combine the prefix and tail limits or transfer the result through the
+assembled physical field to the full viscous-force ratio.

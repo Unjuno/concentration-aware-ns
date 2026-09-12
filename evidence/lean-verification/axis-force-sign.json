@@ -2,10 +2,15 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "e8bb2ee6d37562d057c93f329bdbe0cf18a19ce219cda11ec40076808588e313",
+  "source_sha256": "dbb1e9c7372f730ad38a07dc64a6104fa4cdd5f38bab05993afe74afff537db3",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "04cd819063ff372a015c7604404c1b82387eb6319f4efbc17877322981bc181e",
+  "log_sha256": "c399ba400695441bfd16b1435e82e50fc9d2f08d1a6f4bc74b171b77f8dcd1c6",
   "axioms": {
+    "axial_radial_tail_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "radial_derivative_limit_of_first_jet": [
       "propext",
       "Classical.choice",
@@ -101,6 +106,6 @@
   "expected_axiom_reports_present": true,
   "source_unchanged_during_run": true,
   "contains_sorryAx": false,
-  "scope": "Pinned Lean check of scalar sign, existence and natural-profile radial derivative lemmas. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits and ordinary radial derivative tail convergence. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
   "replay": "python3 -m tools.verify_axis_sign"
 }

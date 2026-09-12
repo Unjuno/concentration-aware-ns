@@ -81,7 +81,7 @@ theorem natural_axis_radial_identity
   unfold NaturalAxisData.Z NaturalAxisData.H
   ring
 
-open scoped Topology
+open scoped Topology ContDiff
 
 theorem natural_axis_radial_identity_from_solution
     {h j scale eta : ℝ} {P amp : ℝ → ℝ}
@@ -325,6 +325,31 @@ theorem radial_derivative_limit_of_first_jet
   rw [iteratedFDeriv_one_apply]
   exact (chart_radial_derivative_eq_fderiv g q 0 eta (smooth q hq)).symm
 
+theorem axial_radial_tail_tends_zero
+    {a : ℕ → ℕ} {h C eta : ℝ} {coeff : SlowBorelBase.Coefficients}
+    {K : Set SlowBorelBase.Inner} (hw : (0,eta) ∈ K)
+    (hh : 0 < h) (smooth : SlowBorelBase.SmoothCoefficients coeff)
+    (admissible : SlowBorelBase.AdmissibleScales h
+      (SlowBorelBase.coefficientBundle C coeff) K a) :
+    ∃ J : ℕ, 1 ≤ J ∧ Filter.Tendsto (fun q : ℝ =>
+      deriv (fun X =>
+        SlowBorelBase.slowSum a h (SlowBorelBase.bundleComponent C coeff 5) (q,(X,eta)) -
+        SlowBorelBase.uncutPrefix h (SlowBorelBase.bundleComponent C coeff 5) J (q,(X,eta))) 0)
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  obtain ⟨J, hJ, limit⟩ := axial_derivative_tail_tends_zero (0,eta) hw hh smooth admissible
+  refine ⟨J, hJ, radial_derivative_limit_of_first_jet _ eta ?_ limit⟩
+  intro q hq
+  have hf := SlowBorelBase.bundleComponent_smooth smooth C (5 : Fin 7)
+  have hs := SlowBorelBase.slowSum_smoothAt admissible.strictMono hf h (y := (q,(0,eta))) hq
+  have hp : ContDiffAt ℝ ∞
+      (SlowBorelBase.uncutPrefix h (SlowBorelBase.bundleComponent C coeff 5) J)
+      (q,(0,eta)) := by
+    unfold SlowBorelBase.uncutPrefix
+    apply ((hf 0).comp contDiff_snd).contDiffAt.add
+    exact ContDiffAt.sum (fun j _ => SlowBorelBase.positiveCoefficient_smoothAt hf h j hq)
+  exact (hs.sub hp).differentiableAt (by simp)
+
+#print axioms axial_radial_tail_tends_zero
 #print axioms radial_derivative_limit_of_first_jet
 #print axioms chart_radial_derivative_eq_fderiv
 #print axioms first_jet_radial_component_tends_zero
