@@ -955,3 +955,15 @@ sum representation handles the cutoff weights, including order zero.
 The pinned Lean check passes without sorryAx. Multiplying by q^(-A)
 and applying the source velocity-at-axis formula remain the next steps
 to identify the actual baseVelocity along the candidate curve.
+
+
+## Actual base velocity on the candidate curve
+
+`selected_stream_on_candidate_axis` includes the physical q^(-A)
+factor in the stream value. `selected_base_velocity_on_candidate_axis`
+uses the full spatial-slice velocity identity to prove the actual base
+velocity equals pack(0,0,q^(-A) U(j,eta)) on the candidate curve.
+Both pass the pinned Lean check without sorryAx. The physical-time
+curve derivative and velocity evaluation now have matching scalar
+expressions; packaging them into a vector trajectory theorem, and
+transferring to the final periodic candidate, remain pending.

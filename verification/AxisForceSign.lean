@@ -1182,6 +1182,48 @@ theorem selected_stream_sum_axis_value
   rw [hz,add_zero]
   exact EntranceAlignedBase.modulated_leading_axis H v heta
 
+theorem selected_stream_on_candidate_axis
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v)
+      (1-q*(1-eta^2), (0,eta*q^(CoordinateAlgebra.D F.data.h))) =
+      q^(-CoordinateAlgebra.A F.data.h) * NaturalAxisData.U W.axis.j eta := by
+  have hh1 : F.data.h < 1/2 := by linarith [W.axis.small.h_le]
+  unfold SlowBorelBase.streamFactor SlowBorelBase.physicalProfile
+  rw [candidate_axis_physicalChart F.data.h q eta W.axis.small.h_pos hh1 hq heta]
+  simp only [smul_eq_mul]
+  rw [selected_stream_sum_axis_value H v upper q eta B hq ⟨heta.1.le,heta.2.le⟩]
+  rfl
+
+theorem selected_base_velocity_on_candidate_axis
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    SlowBorelBase.baseVelocity (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v)
+      (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0 (eta*q^(CoordinateAlgebra.D F.data.h))) =
+      AxisymmetricResidual.pack 0 0
+        (q^(-CoordinateAlgebra.A F.data.h) * NaturalAxisData.U W.axis.j eta) := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2) < 1 := by nlinarith [mul_pos hq hd]
+  have he := congrFun (selected_base_velocity_slice_eq H v upper (1-q*(1-eta^2)) B ht)
+    (AxisymmetricResidual.pack 0 0 (eta*q^(CoordinateAlgebra.D F.data.h)))
+  rw [he]
+  simp only [AxisymmetricResidual.velocity, AxisymmetricResidual.componentX,
+    AxisymmetricResidual.componentY, AxisymmetricResidual.lift,
+    AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy,
+    AxisymmetricResidual.pack_zero, AxisymmetricResidual.pack_one, AxisymmetricResidual.pack_two,
+    zero_pow (by decide : 2 ≠ 0), zero_add, zero_div, zero_mul, add_zero, sub_zero, neg_zero]
+  rw [selected_stream_on_candidate_axis H v upper q eta B hq heta]
+
+#print axioms selected_base_velocity_on_candidate_axis
+#print axioms selected_stream_on_candidate_axis
 #print axioms selected_stream_sum_axis_value
 #print axioms root_axis_curve_hasDerivAt
 #print axioms candidate_axis_curve_hasDerivAt
