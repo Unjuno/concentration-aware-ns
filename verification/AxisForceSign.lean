@@ -1,4 +1,5 @@
 import NavierStokes.NaturalAxisData
+import NavierStokes.NaturalProfile
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -59,6 +60,26 @@ theorem exists_negative_axis_force_ratio
   obtain ⟨eta, hi, hr, _⟩ := NaturalAxisData.exists_root_with_positive_Z small pressure
   exact ⟨eta, hi, hr, actual_axis_force_ratio_negative small hi hr pressure hnu⟩
 
+theorem natural_axis_radial_identity
+    {h j scale eta : ℝ} {P amp : ℝ → ℝ}
+    {f u v pr : ℝ × ℝ → ℝ}
+    (solution : NaturalProfile.IsNaturalSolution h j scale P amp f u v pr)
+    (point : (0, eta) ∈ NaturalProfile.domain scale)
+    (uval : u (0, eta) = NaturalAxisData.U j eta)
+    (pval : pr (0, eta) = P eta)
+    (uderiv : NaturalAxisBridge.partialEta u (0, eta) = 4)
+    (pderiv : NaturalAxisBridge.partialEta pr (0, eta) = deriv P eta) :
+    2 * NaturalAxisData.L h eta * NaturalAxisBridge.partialY u (0, eta) =
+      -NaturalAxisData.Z h j P eta := by
+  have eqn := solution.axial_equation (0, eta) point
+  simp only [NaturalAxisBridge.radialDifferential, NaturalProfile.transportH,
+    Nat.cast_one, zero_mul, mul_zero, one_mul, zero_add, sub_zero, uval, pval,
+    uderiv, pderiv] at eqn
+  rw [eqn]
+  unfold NaturalAxisData.Z NaturalAxisData.H
+  ring
+
+#print axioms natural_axis_radial_identity
 #print axioms actual_axis_force_ratio_negative
 #print axioms exists_negative_axis_force_ratio
 end ConcentrationAware

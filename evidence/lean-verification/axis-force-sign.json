@@ -1,7 +1,7 @@
 {
   "exit_code": 0,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "2ce11dc6cbb31de7dc32bf0481f81bdbb35451e0d8d417eff31f2964738b5037",
+  "source_sha256": "2391a8e8344def4f491a8a46fd9b49a6029546ed64728dc5415fddb1557690bf",
   "environment": "Saved pinned Lean v4.34.0-rc2 verification volume; lake env lean; read-only source and extension mounts; network disabled",
   "scope": "Existence of a root with negative actual scalar coefficient from SmallParameters, PressureData and positive viscosity. Does not identify it with the full field derivative or prove asymptotic convergence.",
   "initial_attempt": "Failed due to missing NavierStokes namespace opening; corrected before successful check.",
@@ -10,6 +10,7 @@
     "Classical.choice",
     "Quot.sound"
   ],
-  "log_sha256": "5981ccb3bd2ee02cbbfd633bafe11e051c07399a47b198cdfc61fc21e684e1a6",
-  "replay": "sh runtime/lean-verification/check_axis_sign.sh"
+  "log_sha256": "2b95c91e1077484c79d50ac5610a766af73c6e49de693a02e3c2ff7a87029e97",
+  "replay": "sh runtime/lean-verification/check_axis_sign.sh",
+  "radial_identity_scope": "Natural axial PDE implies 2 L partialY u = -Z when axis values and eta derivative identities are supplied explicitly. Derivation of those supplied identities from local axis equalities remains unformalized."
 }
