@@ -1,17 +1,41 @@
 {
   "exit_code": 0,
+  "success": true,
   "source": "verification/AxisForceSign.lean",
   "source_sha256": "05c8172a6fac8d76b97b3da368193383a66811147c574ed1abdc72b300d05192",
-  "environment": "Saved pinned Lean v4.34.0-rc2 verification volume; lake env lean; read-only source and extension mounts; network disabled",
-  "scope": "Existence of a root with negative actual scalar coefficient from SmallParameters, PressureData and positive viscosity. Does not identify it with the full field derivative or prove asymptotic convergence.",
-  "initial_attempt": "Failed due to missing NavierStokes namespace opening; corrected before successful check.",
-  "axioms": [
-    "propext",
-    "Classical.choice",
-    "Quot.sound"
-  ],
+  "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
   "log_sha256": "ddb2e47b35916f90cdbb43a89b7fda63a2b8b5b40b5d2fe2403ddecca4ca972a",
-  "replay": "sh runtime/lean-verification/check_axis_sign.sh",
-  "radial_identity_scope": "Natural axial PDE implies 2 L partialY u = -Z from IsNaturalSolution, domain membership and interior eta. Axis values and eta derivatives are now derived from the solution structure and neighborhood equality.",
-  "radial_sign_scope": "Natural solution radial derivative is strictly negative at a root satisfying the parameter/pressure conditions, provided domain membership and interior eta. Full assembled-field and asymptotic transfer remain unformalized."
+  "axioms": {
+    "natural_radial_derivative_negative_at_root": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_axis_radial_identity_from_solution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_axis_radial_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_axis_force_ratio_negative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_negative_axis_force_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "only_allowed_axioms": true,
+  "expected_axiom_reports_present": true,
+  "source_unchanged_during_run": true,
+  "contains_sorryAx": false,
+  "scope": "Pinned Lean check of scalar sign, existence and natural-profile radial derivative lemmas. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.",
+  "replay": "python3 -m tools.verify_axis_sign"
 }

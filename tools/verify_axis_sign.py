@@ -1,0 +1,31 @@
+"""Run the pinned Lean check and bind its result to exact source bytes."""
+import hashlib
+import json
+import re
+from pathlib import Path
+import subprocess
+
+
+def verify():
+    source=Path('verification/AxisForceSign.lean')
+    runner=Path('runtime/lean-verification/check_axis_sign.sh')
+    source_hash=hashlib.sha256(source.read_bytes()).hexdigest()
+    run=subprocess.run(['sh',str(runner)],capture_output=True,text=True)
+    log=run.stdout+run.stderr
+    logpath=Path('evidence/lean-verification/axis-force-sign.log')
+    logpath.write_text(log)
+    expected=['natural_radial_derivative_negative_at_root','natural_axis_radial_identity_from_solution','natural_axis_radial_identity','actual_axis_force_ratio_negative','exists_negative_axis_force_ratio']
+    printed=all("'ConcentrationAware."+name+"' depends on axioms:" in log for name in expected)
+    reports=re.findall(r"'ConcentrationAware\.([^']+)' depends on axioms: \[(.*?)\]",log,re.S)
+    allowed={'propext','Classical.choice','Quot.sound'}
+    axioms={name:[x.strip() for x in body.split(',') if x.strip()] for name,body in reports}
+    allowed_only=all(name in axioms and set(axioms[name])<=allowed for name in expected)
+    unchanged=hashlib.sha256(source.read_bytes()).hexdigest()==source_hash
+    success=run.returncode==0 and printed and allowed_only and 'sorryAx' not in log and unchanged
+    result={'exit_code':run.returncode,'success':success,'source':str(source),'source_sha256':source_hash,'runner_sha256':hashlib.sha256(runner.read_bytes()).hexdigest(),'log_sha256':hashlib.sha256(logpath.read_bytes()).hexdigest(),'axioms':axioms,'only_allowed_axioms':allowed_only,'expected_axiom_reports_present':printed,'source_unchanged_during_run':unchanged,'contains_sorryAx':'sorryAx' in log,'scope':'Pinned Lean check of scalar sign, existence and natural-profile radial derivative lemmas. Full assembled-field identity and asymptotic force limit are not formalized here. Not an independent nanoda check.','replay':'python3 -m tools.verify_axis_sign'}
+    Path('evidence/lean-verification/axis-force-sign.json').write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps(result,indent=2))
+    return success
+
+if __name__=='__main__':
+    raise SystemExit(0 if verify() else 1)
