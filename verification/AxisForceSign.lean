@@ -7,6 +7,7 @@ import NavierStokes.TailGaugePotential
 import NavierStokes.MixedPeriodicAssembly
 import NavierStokes.TimeLocalization
 import NavierStokes.GermCandidateAssembly
+import NavierStokes.ActualCandidateAssembly
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -1449,6 +1450,56 @@ theorem terminal_diagonal_eq_selected_base_germ
   · exact hg.2.2.1
   · exact hg.2.2.2
 
+theorem actual_candidate_terminal_base_germ
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let w : ProblemStatement.SpaceTime :=
+      (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0
+        (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)))
+    TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN))) =ᶠ[𝓝 w]
+      FinalSlowBase.velocity CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B := by
+  exact terminal_diagonal_eq_selected_base_germ
+    CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation
+    CorrectionInitialization.ActualPrimary.upper (ActualCandidateConstruction.qbig B N0) B
+    (ActualCandidateAssembly.initialPotential B N0) (ActualCandidateAssembly.positivePotential B N0 hN)
+    (ActualCandidateAssembly.directData B N0 hN)
+    (ActualCandidateAssembly.initialPotential_axisZeroOn B N0)
+    (ActualCandidateAssembly.positivePotential_axisZeroOn B N0 hN) a ha eta heta
+    (ActualCandidateConstruction.qbig_pos B N0)
+
+theorem exists_actual_schedule_with_terminal_base_germ
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    ∃ a : ℕ → ℕ,
+      MixedCandidateWitness.SelectedSchedule CorrectionInitialization.ActualPrimary.h
+        (ActualCandidateConstruction.qbig B N0)
+        (ActualCandidateAssembly.potentialStages B N0 hN)
+        (ActualCandidateAssembly.directStages B N0 hN)
+        (ActualCandidateAssembly.pressureStages B N0 hN) a ∧
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let w : ProblemStatement.SpaceTime :=
+      (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0
+        (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)))
+    TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ)) (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ)) (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN))) =ᶠ[𝓝 w]
+      FinalSlowBase.velocity CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B := by
+  obtain ⟨a,hs,_⟩ := ActualCandidateAssembly.witness B N0 hN
+  exact ⟨a,hs,actual_candidate_terminal_base_germ B N0 hN
+    (fun j => (a j : ℝ)) hs.2.2.2.2.1 eta heta⟩
+
+#print axioms exists_actual_schedule_with_terminal_base_germ
+#print axioms actual_candidate_terminal_base_germ
 #print axioms terminal_diagonal_eq_selected_base_germ
 #print axioms candidate_axis_source_coordinates
 #print axioms candidate_axis_eventually_localization_conditions

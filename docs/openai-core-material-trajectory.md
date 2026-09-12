@@ -1136,3 +1136,25 @@ does not assume the root equation, so it proves local field equality
 along these curves without by itself declaring them material trajectories.
 The existing root-trajectory theorem and physical derivative/force
 identifications still need to be connected to the final field.
+
+
+## Instantiation with actual candidate data and witness schedule
+
+`actual_candidate_terminal_base_germ` instantiates the terminal transfer
+with ActualCandidateAssembly.initialPotential, positivePotential and
+directData. Both AxisZeroOn obligations and qbig positivity are discharged
+using the original construction's theorems. This works for each B,N0
+with the source geometric threshold satisfied and each diverging schedule.
+`exists_actual_schedule_with_terminal_base_germ` obtains a schedule
+from ActualCandidateAssembly.witness and extracts its divergence from
+SelectedSchedule. The resulting activated periodic ASum/BSum has the
+selected base germ eventually along the curve. Both proofs pass the
+pinned Lean check without sorryAx. No new primitive correction or
+annular-support hypotheses remain in these two results.
+
+The existential theorem retains SelectedSchedule, but does not repeat
+the source witness's forcing/consequence fields in its conclusion. The
+stronger first theorem applies to every diverging schedule, including
+any schedule in that full source witness. The material ODE and full
+physical force-to-acceleration limit still require their final transfer
+and derivative identifications; this is not yet the complete theorem.

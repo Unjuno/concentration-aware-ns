@@ -2,10 +2,20 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "96a3d56fb27e291a959ea9c64c1849c57b26a0035301b5170ec2e10c496f9f27",
+  "source_sha256": "14b4ace88985302a801f407c57502d9b6ca3b19b684449fcd1b75c9dba27698d",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "942bc1e2dc052285a9b6d5bd0c1dad97eab4b05d3240bc8ca6fe7d0e41f2c318",
+  "log_sha256": "bd15cf69ed16caccd29cda8fcafbf635b38e4ec4aa200aebc37eba73329bc041",
   "axioms": {
+    "exists_actual_schedule_with_terminal_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_terminal_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "terminal_diagonal_eq_selected_base_germ": [
       "propext",
       "Classical.choice",
