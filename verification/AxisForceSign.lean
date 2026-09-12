@@ -831,6 +831,56 @@ theorem curl_velocity_eq_profile_velocity
     simp [AxisymmetricResidual.velocity, AxisymmetricResidual.lift,
       AxisymmetricFields.profilePoint]
 
+theorem selected_base_velocity_slice_eq
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    let stream := SlowBorelBase.streamFactor a F.data.h W.axis.normalization d
+    let swirl := SlowBorelBase.swirlPotential a F.data.h W.axis.normalization d
+    (fun x => SlowBorelBase.baseVelocity a F.data.h W.axis.normalization d (t,x)) =
+    (fun x => AxisymmetricResidual.velocity
+      (fun p => AxisymmetricFields.partialZ stream p / 2)
+      (fun p => -AxisymmetricFields.partialS swirl p)
+      (fun p => stream p + p.2.1 * AxisymmetricFields.partialS stream p) (t,x)) := by
+  intro a d stream swirl
+  funext x
+  have hh1 : F.data.h < 1 / 2 := by linarith [W.axis.small.h_le]
+  have hk := SlowBorelBase.physicalProfile_smoothAt
+    (FinalSlowBase.scales_admissible H v upper B).strictMono W.axis.small.h_pos hh1
+    (SlowBorelBase.bundleComponent_smooth (FinalSlowBase.coefficients_smooth H v)
+      W.axis.normalization (1 : Fin 7)) (1 / 2 - CoordinateAlgebra.A F.data.h)
+    (p := AxisymmetricFields.profilePoint t x) ht
+  exact curl_velocity_eq_profile_velocity stream swirl t x
+    ((selected_stream_sliceC2 H v upper t B ht).differentiable x)
+    (hk.differentiableAt (by simp))
+
+theorem selected_base_velocity_laplacian_on_axis
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t z : ℝ) (B : ℕ)
+    (ht : t < 1) :
+    let a := FinalSlowBase.scales H v upper B
+    let d := FinalSlowBase.coefficients H v
+    let stream := SlowBorelBase.streamFactor a F.data.h W.axis.normalization d
+    ProblemStatement.spatialLaplacian
+      (SlowBorelBase.baseVelocity a F.data.h W.axis.normalization d) t
+      (AxisymmetricResidual.pack 0 0 z) 2 =
+      4 * AxisymmetricFields.partialS stream (t,(0,z)) +
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ stream) (t,(0,z)) := by
+  have formula := selected_profile_velocity_laplacian_on_axis H v upper t z B ht
+  have he := selected_base_velocity_slice_eq H v upper t B ht
+  dsimp only at formula he ⊢
+  unfold ProblemStatement.spatialLaplacian ProblemStatement.spatialDerivative at formula ⊢
+  rw [he]
+  exact formula
+
+#print axioms selected_base_velocity_laplacian_on_axis
+#print axioms selected_base_velocity_slice_eq
 #print axioms curl_velocity_eq_profile_velocity
 #print axioms selected_profile_velocity_laplacian_on_axis
 #print axioms selected_transverse_profiles_sliceC2

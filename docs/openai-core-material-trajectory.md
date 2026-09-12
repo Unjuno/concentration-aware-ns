@@ -789,3 +789,17 @@ Cartesian components, including transverse signs, are checked by the
 pinned Lean run without sorryAx. This pointwise lemma still needs to
 be instantiated across a fixed-time spatial slice for the selected
 baseVelocity before transferring its spatial Laplacian.
+
+
+## Actual baseVelocity Laplacian
+
+`selected_base_velocity_slice_eq` proves equality of the entire spatial
+velocity slice for t<1, using the selected stream and swirl regularity.
+`selected_base_velocity_laplacian_on_axis` rewrites the spatial derivative
+and Laplacian through that function equality and obtains
+(Delta baseVelocity)_z = 4 H_s + H_zz at (0,0,z).
+No added smoothness hypotheses are present. Both pass the pinned Lean
+check without sorryAx. This establishes the formula for the actual
+base velocity, not yet for the final periodic assembled candidate.
+The physical H_s/slow-sum relation, H_zz asymptotics and material
+acceleration comparison remain formalization work.
