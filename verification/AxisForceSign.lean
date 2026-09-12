@@ -1610,6 +1610,50 @@ theorem actual_candidate_axis_laplacian
     CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper
     (1-q*(1-eta^2)) (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)) B ht
 
+theorem actual_candidate_velocity_time_derivative
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+      HasDerivAt (fun s : ℝ => u (s,curve s))
+        (AxisymmetricResidual.pack 0 0
+          (CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h *
+            NaturalAxisData.U CorrectionInitialization.ActualPrimary.nominal.axis.j eta /
+            (1-eta^2) * q^(-CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h-1)))
+        (1-q*(1-eta^2)) := by
+  intro u curve
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2)=q := by field_simp; ring
+  have hc : curve (1-q*(1-eta^2)) = AxisymmetricResidual.pack 0 0
+      (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)) := by
+    dsimp [curve]
+    rw [hqt]
+  have hscalar := candidate_axis_curve_hasDerivAt CorrectionInitialization.ActualPrimary.h eta
+    (1-q*(1-eta^2)) ht heta
+  have hcont : ContinuousAt curve (1-q*(1-eta^2)) := by
+    simpa [curve,AxisymmetricResidual.pack] using
+      (hscalar.smul_const (ProblemStatement.coordinateVector 2)).continuousAt
+  have hpath := continuousAt_id.prodMk hcont
+  rw [← hc] at he
+  have hcomp := he.comp_tendsto hpath
+  have hv := selected_base_axis_velocity_time_derivative
+    CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation
+    CorrectionInitialization.ActualPrimary.upper eta (1-q*(1-eta^2)) B ht heta
+  dsimp only at hv
+  rw [hqt] at hv
+  exact hv.congr_of_eventuallyEq hcomp
+
+#print axioms actual_candidate_velocity_time_derivative
 #print axioms selected_base_axis_velocity_time_derivative
 #print axioms axis_velocity_formula_hasDerivAt
 #print axioms actual_candidate_axis_laplacian

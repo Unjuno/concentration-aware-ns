@@ -1209,3 +1209,21 @@ On the natural-axis root the curve is material by the earlier theorem.
 Transfer of this velocity-composition derivative to the actual periodic
 field and its identification with the Eulerian material derivative,
 as well as the explicit physical H_zz calculation, remain pending.
+
+
+## Velocity-composition derivative for the actual periodic field
+
+`actual_candidate_velocity_time_derivative` proves, for sufficiently
+small positive q, that the physical-time derivative of u(t,X(t)) for
+the actual activated periodic velocity is pack(0,0,(A U/d) q^(-A-1))
+at t=1-q d. It composes the spacetime germ equality with the continuous
+curve, whose continuity is derived from its proved derivative. Thus
+it transfers the derivative in a time neighborhood rather than
+differentiating a pointwise equality. The pinned Lean check passes
+without sorryAx.
+
+The theorem does not require the root equation for this composition
+derivative. With that equation the existing actual material-trajectory
+theorem identifies X as a material curve. A formal equality to the
+source Eulerian timeDerivative+advection expression and the explicit
+physical H_zz calculation remain to be connected in the full ratio.
