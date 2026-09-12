@@ -495,14 +495,15 @@ theorem selected_axial_radial_derivative_tends_original
 
 theorem original_axis_derivative_eq_natural
     {F : OutgoingProfile.Profile} (W : NominalProfile.Witness F)
-    (hscale : 1 ≤ W.axis.scale) (eta : ℝ) :
+    (eta : ℝ) :
     deriv (fun X => W.profiles.U (X,eta)) 0 =
       deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 := by
   have hlo : 0 < 4 / W.axis.scale := div_pos (by norm_num) W.axis.scale_pos
   have he : (fun X => W.profiles.U (X,eta)) =ᶠ[𝓝 (0 : ℝ)]
       (fun X => W.axis.natural.profile.family.U (X,eta)) := by
-    filter_upwards [gt_mem_nhds hlo] with X hX
-    exact (W.controls.natural_prefix W.separated hscale (p := (X,eta)) hX.le).2
+    filter_upwards [gt_mem_nhds hlo, gt_mem_nhds NominalProfile.Xi_pos] with X hX hXi
+    exact (W.controls.physical_before_Xi W.separated (p := (X,eta)) hXi.le).1.trans
+      (W.controls.seed_initial (p := (X,eta)) hX.le).2
   exact he.deriv_eq
 
 theorem selected_axial_radial_derivative_tends_natural
@@ -510,15 +511,14 @@ theorem selected_axial_radial_derivative_tends_natural
     (H : NominalConeAssembly.Certificate W)
     {ld : ModulatedProfileAssembly.LoopData W}
     (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
-    (hh : 0 < F.data.h) (heta : eta ∈ Set.Icc (-1 : ℝ) 1)
-    (hscale : 1 ≤ W.axis.scale) :
+    (hh : 0 < F.data.h) (heta : eta ∈ Set.Icc (-1 : ℝ) 1) :
     Filter.Tendsto (fun q : ℝ => deriv (fun X =>
       SlowBorelBase.slowSum (FinalSlowBase.scales H v upper B) F.data.h
         (SlowBorelBase.bundleComponent W.axis.normalization (FinalSlowBase.coefficients H v) 5)
         (q,(X,eta))) 0)
       (𝓝[>] (0 : ℝ)) (𝓝 (deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0)) := by
   have limit := selected_axial_radial_derivative_tends_original H v upper eta B hh heta
-  rw [original_axis_derivative_eq_natural W hscale eta] at limit
+  rw [original_axis_derivative_eq_natural W eta] at limit
   exact limit
 
 #print axioms original_axis_derivative_eq_natural

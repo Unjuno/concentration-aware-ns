@@ -622,3 +622,17 @@ Both statements pass the pinned Lean check without sorryAx. Discharging
 the scale condition for the final selected witness, applying the natural
 PDE sign identity, and transferring to the physical force ratio remain
 formalization work.
+
+
+## Scale restriction removed from the natural derivative limit
+
+The previous section's additional `1 <= W.axis.scale` hypothesis is no
+longer needed. The full-prefix theorem used it to fit 4/scale below Xi,
+but equality near X = 0 only requires the intersection X < 4/scale and
+X < Xi. Both endpoints are strictly positive in the source.
+`original_axis_derivative_eq_natural` now composes
+`physical_before_Xi` with `seed_initial` on that neighborhood, using
+only the witness's existing separation and positive-scale properties.
+`selected_axial_radial_derivative_tends_natural` consequently also has
+no extra scale lower bound. The updated pinned Lean check passes without
+sorryAx. Natural PDE sign and physical force-ratio connections remain.
