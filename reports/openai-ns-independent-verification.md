@@ -23,4 +23,14 @@ historical evidence.
 This verifies acceptance of these formal targets under the recorded checker
 configuration. It does not establish that molecular alignment follows, validate
 physical continuum assumptions, or constitute an independent check of the Euler
-challenge. The benchmark's SU2 resolution/time-step matrix remains incomplete.
+challenge. The benchmark's SU2 resolution/time-step matrix is recorded separately in the comparative audit; comparator acceptance does not validate those numerical results.
+
+
+Our subsequent analytic extension is checked separately by
+`python -m tools.verify_axis_sign`. It includes the actual assembled field's
+physical axial force-to-acceleration limit and a strict negative sign under
+explicit root and PressureData assumptions. PressureData is not yet instantiated
+unconditionally for the pinned actualProfile. See
+`docs/openai-core-material-trajectory.md` for the pressure-retention audit.
+This extension uses the pinned Lean checker, not an independent nanoda replay;
+the original comparator result above must not be cited as checking the extension.

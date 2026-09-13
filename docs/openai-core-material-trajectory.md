@@ -1,25 +1,27 @@
 # A material trajectory and deformation in the selected construction
 
-Current result (source-derived; not a new Lean theorem): along the selected
-terminal axial trajectory, infinitesimal material separations align while the
-axial viscous-force/material-acceleration ratio tends to a strictly negative,
-nonzero constant. The derivative-level slow-sum remainder estimate completes
-the argument in the final sections. Earlier headings saying a transfer
-"remains open" record intermediate history and are superseded by those sections.
+Current result: the Lean extension checks the actual assembled field's axial
+viscous-force/material-acceleration limit. Strict negativity is conditional on
+the stated root interval/equation and PressureData. The pressure condition has
+not been discharged for FinalSlowBase.actualProfile; see the final pressure
+retention audit. Consequently this document does not establish an unconditional
+negative-limit theorem for the pinned selected profile.
 
-Reproducible algebra check: with SymPy 1.14.0 installed, run
-`python -m tools.check_axis_force`. It checks the Cartesian Laplacian factor,
-the natural axial equation's sign, and the axial derivative exponent. Output:
-`evidence/tests/openai-axis-force-symbolic.json`. These checks do not verify
-all theorem hypotheses or the source-transfer chain.
+The infinitesimal material-separation alignment calculation below remains a
+hand-derived extension with symbolic checks, not a fully formalized deformation
+theorem. It establishes neither molecular orientation nor a phase transition.
+Earlier sections record intermediate results and outstanding work at that time;
+the current summary and final audits supersede their status descriptions.
 
+Reproduce the symbolic algebra with SymPy 1.14.0 using
+`python -m tools.check_axis_force`; output is
+`evidence/tests/openai-axis-force-symbolic.json`. Reproduce the Lean extension
+with `python -m tools.verify_axis_sign`; its source-bound result is
+`evidence/lean-verification/axis-force-sign.json`. These are separate checks;
+the extension has not undergone the independent nanoda check used for the
+original upstream targets. No numerical integration is used here.
 
 Source pin and core assumptions are those of openai-core-deformation.md.
-Current status: the source-derived neighborhood-equality chain to the selected
-periodic candidate is completed in the final section below. The earlier sections
-record intermediate scopes and the checks that were then outstanding. No new Lean
-trajectory theorem has been compiled; this remains a hand-derived extension of
-the pinned source. No numerical integration is used.
 
 Let A=1/2+h, D=1/2-h, U(eta)=4eta+j, d=1-eta² and L=1-2h eta².
 NaturalAxisData.exists_unique_root gives a root eta_* in (-j/4,-j/5) of
