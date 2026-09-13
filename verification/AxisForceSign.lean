@@ -1144,6 +1144,42 @@ theorem candidate_axis_inverse_coordinate
   exact (SimilarityCoordinates.eq_coordinateQ (by positivity) (by linarith)
     (mul_pos hq hd) hq (candidate_axis_forward_coordinate h q eta hq)).symm
 
+theorem candidate_axis_coordinateQ_hasDerivAt
+    (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    HasDerivAt (fun z : ℝ => SimilarityCoordinates.coordinateQ (2*h) (q*(1-eta^2),z))
+      (2*eta*q^(CoordinateAlgebra.A h)/NaturalAxisData.L h eta)
+      (eta*q^(CoordinateAlgebra.D h)) := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht := mul_pos hq hd
+  have he := candidate_axis_inverse_coordinate h q eta hh hh1 hq heta
+  have hpow : (q^CoordinateAlgebra.D h)^2*q^(2*h-1)=1 := by
+    rw [← Real.rpow_natCast,← Real.rpow_mul hq.le,← Real.rpow_add hq]
+    norm_num only [Nat.cast_ofNat]
+    have hex : CoordinateAlgebra.D h*2+(2*h-1)=0 := by unfold CoordinateAlgebra.D; ring
+    rw [hex,Real.rpow_zero]
+  have hs : SimilarityCoordinates.scalarSlope (2*h) (eta*q^CoordinateAlgebra.D h) q =
+      NaturalAxisData.L h eta := by
+    unfold SimilarityCoordinates.scalarSlope NaturalAxisData.L
+    rw [mul_pow]
+    calc
+      _ = 1-2*h*eta^2*((q^CoordinateAlgebra.D h)^2*q^(2*h-1)) := by ring
+      _ = _ := by rw [hpow]; ring
+  have hf := ((SimilarityCoordinates.coordinateQ_smooth (by positivity : 0<2*h)
+    (by linarith : 2*h<1) (p := (q*(1-eta^2),eta*q^CoordinateAlgebra.D h)) ht).differentiableAt (by simp)).hasFDerivAt
+  have hc := hf.comp_hasDerivAt (eta*q^CoordinateAlgebra.D h)
+    ((hasDerivAt_const _ (q*(1-eta^2))).prodMk (hasDerivAt_id _))
+  rw [SimilarityCoordinates.coordinateQ_fderiv_apply (by positivity) (by linarith) ht,he,hs] at hc
+  have hp : q^CoordinateAlgebra.D h*q^(2*h)=q^CoordinateAlgebra.A h := by
+    rw [← Real.rpow_add hq]
+    congr 1
+    unfold CoordinateAlgebra.D CoordinateAlgebra.A
+    ring
+  apply hc.congr_deriv
+  dsimp only
+  rw [zero_add,mul_one]
+  rw [show 2*(eta*q^CoordinateAlgebra.D h)*q^(2*h)=2*eta*(q^CoordinateAlgebra.D h*q^(2*h)) by ring,hp]
+
 theorem candidate_axis_physicalChart
     (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
     (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
@@ -1722,6 +1758,7 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms candidate_axis_coordinateQ_hasDerivAt
 #print axioms actual_candidate_material_acceleration
 #print axioms material_curve_chain_rule
 #print axioms actual_candidate_velocity_time_derivative

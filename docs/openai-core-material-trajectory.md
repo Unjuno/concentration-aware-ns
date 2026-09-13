@@ -1256,3 +1256,15 @@ premise remains; the geometric threshold, diverging schedule, eta interval
 and root equation remain explicit. The force-ratio denominator is now
 identified with the actual PDE material acceleration. The explicit
 physical axial H_zz scaling and final force-limit composition remain.
+
+
+## Physical axial derivative of the implicit similarity coordinate
+
+`candidate_axis_coordinateQ_hasDerivAt` proves the fixed-time spatial
+derivative q_z=2 eta q^A/L at the candidate axis point. It starts from
+the source coordinateQ_smooth and coordinateQ_fderiv_apply theorems,
+identifies the implicit coordinate with q, and reduces scalarSlope to
+L using positive-real power identities. This is not differentiation
+along the moving trajectory. The pinned Lean check passes without
+sorryAx. The eta_z and stream axial derivatives still need to be
+combined to obtain the explicit physical H_zz formula.
