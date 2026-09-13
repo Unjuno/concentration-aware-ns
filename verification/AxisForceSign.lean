@@ -1534,6 +1534,61 @@ theorem selected_stream_axis_hasDerivAt
   simpa only [axialGradientCoefficient,mul_div_assoc] using
     axis_velocity_expression_axial_derivative F.data.h W.axis.j q eta F.data.h_pos F.data.h_lt_half hq heta
 
+theorem selected_stream_axis_deriv_expression
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t z : ℝ) (B : ℕ) (ht : t < 1) :
+    deriv (fun y : ℝ => SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v) (t,(0,y))) z =
+    (SimilarityCoordinates.coordinateQ (2*F.data.h) (1-t,z))^(-1:ℝ) *
+      axialGradientCoefficient F.data.h W.axis.j (SimilarityCoordinates.coordinateEta (2*F.data.h) (1-t,z)) := by
+  let q := SimilarityCoordinates.coordinateQ (2*F.data.h) (1-t,z)
+  let eta := SimilarityCoordinates.coordinateEta (2*F.data.h) (1-t,z)
+  have ha : 0 < 2*F.data.h := by linarith [F.data.h_pos]
+  have ha1 : 2*F.data.h < 1 := by linarith [F.data.h_lt_half]
+  have hp : 0 < (1-t,z).1 := by dsimp; linarith
+  have hq : 0 < q := (SimilarityCoordinates.coordinateQ_spec ha ha1 hp).1
+  have heta : eta ∈ Set.Ioo (-1 : ℝ) 1 :=
+    abs_lt.mp (SimilarityCoordinates.coordinateEta_abs_lt_one ha ha1 hp)
+  have htime : 1-q*(1-eta^2)=t := by
+    have he := SimilarityCoordinates.tau_coordinate_identity ha ha1 hp
+    change 1-t=q*(1-eta^2) at he
+    linarith
+  have hD : (1-2*F.data.h)/2=CoordinateAlgebra.D F.data.h := by unfold CoordinateAlgebra.D; ring
+  have hz : eta*q^CoordinateAlgebra.D F.data.h=z := by
+    dsimp [eta,SimilarityCoordinates.coordinateEta]
+    rw [hD]
+    exact div_mul_cancel₀ z (ne_of_gt (Real.rpow_pos_of_pos hq _))
+  have he := (selected_stream_axis_hasDerivAt H v upper q eta B hq heta).deriv
+  rw [htime,hz] at he
+  exact he
+
+theorem selected_stream_axis_second_derivative
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    deriv (fun z : ℝ => deriv (fun y : ℝ => SlowBorelBase.streamFactor
+      (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+      (FinalSlowBase.coefficients H v) (1-q*(1-eta^2),(0,y))) z)
+      (eta*q^CoordinateAlgebra.D F.data.h) =
+    q^(-CoordinateAlgebra.A F.data.h-2*CoordinateAlgebra.D F.data.h)*
+      (-2*eta*axialGradientCoefficient F.data.h W.axis.j eta +
+        (1-eta^2)*deriv (axialGradientCoefficient F.data.h W.axis.j) eta)/NaturalAxisData.L F.data.h eta := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have htime : 1-(1-q*(1-eta^2))=q*(1-eta^2) := by ring
+  have he : (fun z : ℝ => deriv (fun y : ℝ => SlowBorelBase.streamFactor
+      (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+      (FinalSlowBase.coefficients H v) (1-q*(1-eta^2),(0,y))) z) = _ :=
+    funext (fun z => selected_stream_axis_deriv_expression H v upper (1-q*(1-eta^2)) z B ht)
+  rw [he]
+  simp only [htime]
+  exact (concrete_axial_gradient_expression_derivative F.data.h W.axis.j q eta
+    F.data.h_pos F.data.h_lt_half hq heta).deriv
+
 theorem selected_base_velocity_on_candidate_axis
     {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
     (H : NominalConeAssembly.Certificate W)
@@ -1958,6 +2013,8 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms selected_stream_axis_second_derivative
+#print axioms selected_stream_axis_deriv_expression
 #print axioms selected_stream_axis_hasDerivAt
 #print axioms selected_stream_axis_expression
 #print axioms concrete_axial_gradient_expression_derivative

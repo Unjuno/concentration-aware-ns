@@ -1338,3 +1338,17 @@ slice derivative equals q^(-1)*axialGradientCoefficient. Both pass the
 pinned Lean check without sorryAx. The second derivative still needs
 this first-derivative identity throughout an axial neighborhood and
 its conversion to partialZ(partialZ stream).
+
+
+## Actual axial-slice second derivative
+
+`selected_stream_axis_deriv_expression` extends the first-derivative
+identity to every axial z at each t<1 using the inverse coordinate
+reconstruction. `selected_stream_axis_second_derivative` differentiates
+that full function equality and obtains the explicit q^(-A-2D)
+coefficient for the second ordinary spatial derivative of the actual
+selected stream slice. Both pass the pinned Lean check without sorryAx.
+No pointwise equality is differentiated in isolation. The remaining
+conversion is from this iterated one-dimensional axial derivative to
+partialZ(partialZ stream), supplying the stream's existing regularity,
+then substituting it into the actual-field Laplacian and force ratio.
