@@ -1367,3 +1367,17 @@ check without sorryAx. This establishes decay of the axial part after
 normalization, not decay of the complete viscous term: the radial
 4Hs contribution has a nonzero leading limit. Combining those two
 parts with the actual-field Laplacian and material acceleration remains.
+
+
+## Full normalized axial Laplacian limit for actual velocity
+
+`selected_normalized_axis_laplacian_limit` combines 4Hs and Hzz
+using the physical Cartesian Laplacian identity. Its limit after
+multiplication by q^(A+1) is twice the natural profile's radial
+derivative. `actual_normalized_axis_laplacian_limit` transfers this
+full limit to the actual activated periodic ASum/BSum field through
+the source Laplacian congruence theorem. Both pass the pinned Lean
+check without sorryAx. The result retains the radial contribution;
+it is not an inference from decay of Hzz alone. The remaining ratio
+step is division by the already identified, nonzero material
+acceleration coefficient and natural-profile sign identification.

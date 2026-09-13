@@ -2077,6 +2077,59 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+theorem selected_normalized_axis_laplacian_limit
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    Filter.Tendsto (fun q : ℝ => q^(CoordinateAlgebra.A F.data.h+1)*
+      ProblemStatement.spatialLaplacian (FinalSlowBase.velocity H v upper B)
+        (1-q*(1-eta^2)) (AxisymmetricResidual.pack 0 0 (eta*q^CoordinateAlgebra.D F.data.h)) 2)
+      (𝓝[>] (0 : ℝ))
+      (𝓝 (2*deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0)) := by
+  have hr := (candidate_normalized_stream_derivative_limit H v upper eta B heta).const_mul 4
+  have hz := selected_normalized_second_axial_derivative_tends_zero H v upper eta B heta
+  have hl := hr.add hz
+  have hc : 4*((1/2:ℝ)*deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0)+0 =
+      2*deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 := by ring
+  rw [hc] at hl
+  apply hl.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have he := selected_base_velocity_laplacian_on_axis H v upper (1-q*(1-eta^2))
+    (eta*q^CoordinateAlgebra.D F.data.h) B ht
+  change ProblemStatement.spatialLaplacian (FinalSlowBase.velocity H v upper B) _ _ 2 = _ at he
+  rw [he]
+  ring
+
+theorem actual_normalized_axis_laplacian_limit
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    Filter.Tendsto (fun q : ℝ => q^(CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h+1)*
+      ProblemStatement.spatialLaplacian u (1-q*(1-eta^2))
+        (AxisymmetricResidual.pack 0 0 (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)) 2)
+      (𝓝[>] (0 : ℝ))
+      (𝓝 (2*deriv (fun X => CorrectionInitialization.ActualPrimary.nominal.axis.natural.profile.family.U (X,eta)) 0)) := by
+  intro u
+  have hl := selected_normalized_axis_laplacian_limit CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper eta B heta
+  apply hl.congr'
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta] with q he
+  have hh := congrArg (fun x : ProblemStatement.Space => x 2)
+    (ResidualRegularity.spatialLaplacian_congr he)
+  change ProblemStatement.spatialLaplacian u _ _ 2 = _ at hh
+  rw [hh]
+
+#print axioms actual_normalized_axis_laplacian_limit
+#print axioms selected_normalized_axis_laplacian_limit
 #print axioms selected_normalized_second_axial_derivative_tends_zero
 #print axioms selected_stream_physical_second_axial_derivative
 #print axioms selected_stream_axis_second_derivative
