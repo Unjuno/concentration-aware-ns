@@ -2177,6 +2177,58 @@ theorem actual_viscous_acceleration_ratio_limit
   field_simp
   rfl
 
+theorem actual_ratio_has_strictly_negative_limit
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta nu : ℝ) (hnu : 0 < nu)
+    (interval : eta ∈ Set.Ioo (-CorrectionInitialization.ActualPrimary.nominal.axis.j/4)
+      (-CorrectionInitialization.ActualPrimary.nominal.axis.j/5))
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0)
+    (pressure : NaturalAxisData.PressureData CorrectionInitialization.ActualPrimary.outgoing.axisDatum) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    ∃ ell : ℝ, ell < 0 ∧
+    Filter.Tendsto (fun q : ℝ =>
+      nu*ProblemStatement.spatialLaplacian u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) 2 /
+        ((ProblemStatement.temporalDerivative u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) +
+          ProblemStatement.advection u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2)))) 2))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ell) := by
+  intro u curve
+  let W := CorrectionInitialization.ActualPrimary.nominal
+  have hen : eta < 0 := by linarith [interval.2,W.axis.small.j_pos]
+  have helo : -1 < eta := by linarith [interval.1,W.axis.small.j_le]
+  have heta : eta ∈ Set.Ioo (-1 : ℝ) 1 := ⟨helo,by linarith⟩
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hD : 0 < NaturalAxisData.D CorrectionInitialization.ActualPrimary.h := by
+    unfold NaturalAxisData.D
+    linarith [W.axis.small.h_le]
+  have hU : 0 < NaturalAxisData.U W.axis.j eta := by
+    have he := root
+    unfold NaturalAxisData.H NaturalAxisData.d at he
+    nlinarith [mul_neg_of_pos_of_neg hD hen]
+  have hA : 0 < CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h := by
+    unfold CoordinateAlgebra.A
+    linarith [W.axis.small.h_pos]
+  have inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right := by
+    change -11/10 < eta ∧ eta < 11/10
+    constructor <;> linarith
+  have point : (0,eta) ∈ NaturalProfile.domain W.axis.scale := by
+    change (W.axis.scale*0,eta) ∈ Set.Ioo (-20:ℝ) 20 ×ˢ
+      Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right
+    exact ⟨by norm_num,inside⟩
+  have hn := selected_natural_derivative_negative W eta point inside interval root pressure
+  refine ⟨_, ?_, actual_viscous_acceleration_ratio_limit B N0 hN a ha eta nu heta root hU.ne'⟩
+  exact div_neg_of_neg_of_pos (mul_neg_of_pos_of_neg hnu (mul_neg_of_pos_of_neg (by norm_num) hn))
+    (div_pos (mul_pos hA hU) hd)
+
+#print axioms actual_ratio_has_strictly_negative_limit
 #print axioms actual_viscous_acceleration_ratio_limit
 #print axioms actual_normalized_axis_laplacian_limit
 #print axioms selected_normalized_axis_laplacian_limit

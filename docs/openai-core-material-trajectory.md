@@ -1399,3 +1399,19 @@ need to be attached in one result, discharging nonvanishing at the
 selected negative root and expressing the limit as -nu*d*Z/(L*A*U).
 For the source PDE the viscosity is one; arbitrary nu here only
 scales the reported Laplacian and does not construct a new solution.
+
+
+## Strictly negative limit of the actual physical ratio
+
+`actual_ratio_has_strictly_negative_limit` combines the actual-field
+ratio limit with the natural derivative sign theorem. It derives
+eta in (-1,1), d>0, D>0, U>0 and A>0 from the selected negative
+root interval and source small parameters. The natural domain/window
+conditions are discharged explicitly. For nu>0 it proves existence
+of a strictly negative limit of the physical axial ratio; U
+nonvanishing is no longer an independent premise. The pinned Lean
+check passes without sorryAx. PressureData and the root interval/equation
+remain explicit; their closed instantiation from the actual prepared
+profile is still to be supplied in a final existence statement.
+This conditional result concerns the source constructed flow and
+does not establish molecular alignment or changing constitutive viscosity.
