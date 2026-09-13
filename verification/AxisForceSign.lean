@@ -1297,6 +1297,36 @@ theorem axis_first_derivative_expression_derivative
       ((1-eta^2)*M'/NaturalAxisData.L h eta)*(q^(-1:ℝ)*q^(-CoordinateAlgebra.D h)) := by ring
     _ = _ := by rw [hp1,hp2]; ring
 
+noncomputable def axialGradientCoefficient (h j eta : ℝ) : ℝ :=
+  (4*(1-eta^2)-2*CoordinateAlgebra.A h*eta*(4*eta+j))/NaturalAxisData.L h eta
+
+ theorem axialGradientCoefficient_differentiableAt
+    (h j eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    DifferentiableAt ℝ (axialGradientCoefficient h j) eta := by
+  have hsq : eta^2 < 1 := by nlinarith [heta.1,heta.2]
+  have hprod : h*eta^2 ≤ h := by nlinarith
+  have hL : NaturalAxisData.L h eta ≠ 0 := by unfold NaturalAxisData.L; nlinarith
+  unfold axialGradientCoefficient
+  apply DifferentiableAt.div
+  · fun_prop
+  · unfold NaturalAxisData.L
+    fun_prop
+  · exact hL
+
+theorem concrete_axial_gradient_expression_derivative
+    (h j q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    HasDerivAt (fun z : ℝ =>
+      (SimilarityCoordinates.coordinateQ (2*h) (q*(1-eta^2),z))^(-1:ℝ) *
+        axialGradientCoefficient h j (SimilarityCoordinates.coordinateEta (2*h) (q*(1-eta^2),z)))
+      (q^(-CoordinateAlgebra.A h-2*CoordinateAlgebra.D h)*
+        (-2*eta*axialGradientCoefficient h j eta+(1-eta^2)*deriv (axialGradientCoefficient h j) eta)/
+        NaturalAxisData.L h eta)
+      (eta*q^CoordinateAlgebra.D h) :=
+  axis_first_derivative_expression_derivative h q eta hh hh1 hq heta
+    (axialGradientCoefficient h j) _ (axialGradientCoefficient_differentiableAt h j eta hh hh1 heta).hasDerivAt
+
 theorem candidate_axis_physicalChart
     (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
     (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
@@ -1875,6 +1905,8 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms concrete_axial_gradient_expression_derivative
+#print axioms axialGradientCoefficient_differentiableAt
 #print axioms axis_first_derivative_expression_derivative
 #print axioms axis_velocity_expression_axial_derivative
 #print axioms candidate_axis_coordinateEta_hasDerivAt

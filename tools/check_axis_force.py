@@ -26,6 +26,9 @@ Hz=q**(-1)*(4*d-2*A*e*U)/L
 Hzz=s.diff(Hz,q)*2*e*q**A/L+s.diff(Hz,e)*d*q**(-D)/L
 coefficient=s.simplify(Hzz*q**(A+2*D))
 assert q not in coefficient.free_symbols
+M=(4*d-2*A*e*U)/L
+C_from_gradient=s.cancel((-2*e*M+d*s.diff(M,e))/L)
+assert s.simplify(C_from_gradient-coefficient)==0
 assert s.simplify((A+1)-(A+2*D)-2*h)==0
 
 # Independent Eulerian material derivative, rather than differentiating a
@@ -71,6 +74,6 @@ radial_force=2*nu*B*q**(-Astar-1)
 material_acceleration=Astar*Ustar/dstar*q**(-Astar-1)
 ratio=s.simplify(radial_force/material_acceleration)
 assert ratio==-nu*Zstar*dstar/(Lstar*Astar*Ustar)
-result={'scope':'Symbolic algebra and exponent checks only. Does not verify source hypothesis transfer, the tail theorem application, or physical applicability.','sympy':s.__version__,'cartesian_laplacian_axis_identity':True,'natural_axis_equation_equals_negative_Z':True,'eulerian_material_acceleration_matches_root_trajectory':True,'axis_acceleration':'A*U/d*q^(-A-1)','independent_implicit_second_derivative_matches':True,'axial_force_ratio_equals_K_q_2h':True,'full_force_ratio_decomposition_matches':True,'K_formula':'nu*d*Czz/(A*U)','K_expanded':str(K),'Hzz_q_exponent':'-A-2D','Hzz_coefficient':str(coefficient),'axial_Hzz_relative_decay_exponent':'2h','leading_signed_force_ratio':str(ratio)}
+result={'scope':'Symbolic algebra and exponent checks only. Does not verify source hypothesis transfer, the tail theorem application, or physical applicability.','sympy':s.__version__,'cartesian_laplacian_axis_identity':True,'natural_axis_equation_equals_negative_Z':True,'eulerian_material_acceleration_matches_root_trajectory':True,'axis_acceleration':'A*U/d*q^(-A-1)','independent_implicit_second_derivative_matches':True,'axial_force_ratio_equals_K_q_2h':True,'full_force_ratio_decomposition_matches':True,'K_formula':'nu*d*Czz/(A*U)','K_expanded':str(K),'concrete_gradient_coefficient_matches_Hzz':True,'Hzz_q_exponent':'-A-2D','Hzz_coefficient':str(coefficient),'axial_Hzz_relative_decay_exponent':'2h','leading_signed_force_ratio':str(ratio)}
 Path('evidence/tests/openai-axis-force-symbolic.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

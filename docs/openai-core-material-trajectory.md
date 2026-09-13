@@ -1308,3 +1308,17 @@ velocity derivative must still be instantiated, and neighborhood
 identification with the actual stream must precede a claim about its
 physical H_zz. This is a verified differentiation rule, not yet that
 complete identification.
+
+
+## Concrete coefficient instantiation for second differentiation
+
+`axialGradientCoefficient` is the concrete rational function
+M=(4(1-eta²)-2 A eta(4 eta+j))/L. Its differentiability is proved
+from h in (0,1/2) and eta in (-1,1), including L nonvanishing.
+`concrete_axial_gradient_expression_derivative` instantiates the second
+differentiation rule with this M and its actual derivative. The pinned
+Lean check passes without sorryAx. The symbolic check independently
+confirms (-2 eta M+(1-eta²) M')/L equals the previously stored Czz
+rational expression. Lean still represents M' using deriv; it does
+not yet identify the complete physical stream second derivative.
+The neighborhood equality needed for that identification remains.
