@@ -2,10 +2,15 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "d07fcafe5918c7781484c934833888383bdc7c99f1a95c033691eee18ff453bf",
+  "source_sha256": "1ae5864d4a826aeac3e07f531e37c916684305e31eea093a10b1779110a626f5",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "600d28d188b4abd89d447e901732347bee34371fba41af8c3d8aa6701f991098",
+  "log_sha256": "9d14d039ffb035d7329aa031f67b50ac38f5644e1a429f7de44dc6b5f9df6a3a",
   "axioms": {
+    "actual_viscous_acceleration_ratio_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "actual_normalized_axis_laplacian_limit": [
       "propext",
       "Classical.choice",

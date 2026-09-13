@@ -2128,6 +2128,56 @@ theorem actual_normalized_axis_laplacian_limit
   change ProblemStatement.spatialLaplacian u _ _ 2 = _ at hh
   rw [hh]
 
+theorem actual_viscous_acceleration_ratio_limit
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta nu : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0)
+    (hU : NaturalAxisData.U CorrectionInitialization.ActualPrimary.nominal.axis.j eta ≠ 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    Filter.Tendsto (fun q : ℝ =>
+      nu*ProblemStatement.spatialLaplacian u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) 2 /
+        ((ProblemStatement.temporalDerivative u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) +
+          ProblemStatement.advection u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2)))) 2))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ((nu*(2*deriv (fun X => CorrectionInitialization.ActualPrimary.nominal.axis.natural.profile.family.U (X,eta)) 0)) /
+        (CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h *
+          NaturalAxisData.U CorrectionInitialization.ActualPrimary.nominal.axis.j eta/(1-eta^2)))) := by
+  intro u curve
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hA : CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h ≠ 0 := by
+    unfold CoordinateAlgebra.A
+    linarith [CorrectionInitialization.ActualPrimary.outgoing.data.h_pos]
+  have hl := ((actual_normalized_axis_laplacian_limit B N0 hN a ha eta heta).const_mul nu).div_const
+    (CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h *
+      NaturalAxisData.U CorrectionInitialization.ActualPrimary.nominal.axis.j eta/(1-eta^2))
+  apply hl.congr'
+  filter_upwards [actual_candidate_material_acceleration B N0 hN a ha eta heta root,
+    self_mem_nhdsWithin] with q he hq
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2)=q := by field_simp; ring
+  have hc : curve (1-q*(1-eta^2)) = AxisymmetricResidual.pack 0 0
+      (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h) := by dsimp [curve]; rw [hqt]
+  have he2 := congrArg (fun x : ProblemStatement.Space => x 2) he
+  change (ProblemStatement.temporalDerivative u _ _ + ProblemStatement.advection u _ _) 2 = _ at he2
+  rw [he2]
+  simp only [AxisymmetricResidual.pack_two]
+  rw [hc]
+  have hp : q^(-CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h-1) =
+      (q^(CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h+1))⁻¹ := by
+    rw [show -CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h-1 =
+      -(CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h+1) by ring,Real.rpow_neg hq.le]
+  rw [hp]
+  field_simp
+  rfl
+
+#print axioms actual_viscous_acceleration_ratio_limit
 #print axioms actual_normalized_axis_laplacian_limit
 #print axioms selected_normalized_axis_laplacian_limit
 #print axioms selected_normalized_second_axial_derivative_tends_zero

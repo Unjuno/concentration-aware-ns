@@ -1381,3 +1381,21 @@ check without sorryAx. The result retains the radial contribution;
 it is not an inference from decay of Hzz alone. The remaining ratio
 step is division by the already identified, nonzero material
 acceleration coefficient and natural-profile sign identification.
+
+
+## Actual viscous-force/material-acceleration ratio limit
+
+`actual_viscous_acceleration_ratio_limit` now states the ratio using
+ProblemStatement.spatialLaplacian, temporalDerivative and advection
+of the actual activated periodic field. Along the root trajectory,
+it proves the limit nu*(2 partial_X U_natural)/(A U/d). The proof
+uses the full normalized Laplacian limit and the actual material
+acceleration identity, with q>0 and the positive-power cancellation.
+The interval, root equation and U nonvanishing are explicit premises.
+The pinned Lean check succeeds without sorryAx. This is a theorem
+about the physical field ratio, not merely the earlier normalized
+scalar expression. The natural-axis identity and sign theorem still
+need to be attached in one result, discharging nonvanishing at the
+selected negative root and expressing the limit as -nu*d*Z/(L*A*U).
+For the source PDE the viscosity is one; arbitrary nu here only
+scales the reported Laplacian and does not construct a new solution.
