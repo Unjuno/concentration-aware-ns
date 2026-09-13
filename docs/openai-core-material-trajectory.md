@@ -1352,3 +1352,18 @@ No pointwise equality is differentiated in isolation. The remaining
 conversion is from this iterated one-dimensional axial derivative to
 partialZ(partialZ stream), supplying the stream's existing regularity,
 then substituting it into the actual-field Laplacian and force ratio.
+
+
+## Physical Hzz identity and normalized decay
+
+`selected_stream_physical_second_axial_derivative` supplies the source
+stream regularity and converts the iterated axial-slice derivative to
+partialZ(partialZ stream). Thus the explicit q^(-A-2D) coefficient
+is now identified with physical Hzz.
+`selected_normalized_second_axial_derivative_tends_zero` proves
+q^(A+1) Hzz tends to zero along the curve, using the exact exponent
+cancellation A+1-A-2D=2h and source h>0. Both pass the pinned Lean
+check without sorryAx. This establishes decay of the axial part after
+normalization, not decay of the complete viscous term: the radial
+4Hs contribution has a nonzero leading limit. Combining those two
+parts with the actual-field Laplacian and material acceleration remains.

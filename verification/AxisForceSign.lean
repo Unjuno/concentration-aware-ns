@@ -1589,6 +1589,70 @@ theorem selected_stream_axis_second_derivative
   exact (concrete_axial_gradient_expression_derivative F.data.h W.axis.j q eta
     F.data.h_pos F.data.h_lt_half hq heta).deriv
 
+theorem selected_stream_physical_second_axial_derivative
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let stream := SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v)
+    AxisymmetricFields.partialZ (AxisymmetricFields.partialZ stream)
+      (1-q*(1-eta^2),(0,eta*q^CoordinateAlgebra.D F.data.h)) =
+    q^(-CoordinateAlgebra.A F.data.h-2*CoordinateAlgebra.D F.data.h)*
+      (-2*eta*axialGradientCoefficient F.data.h W.axis.j eta +
+        (1-eta^2)*deriv (axialGradientCoefficient F.data.h W.axis.j) eta)/NaturalAxisData.L F.data.h eta := by
+  intro stream
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hs := selected_stream_sliceC2 H v upper (1-q*(1-eta^2)) B ht
+  have hat (z : ℝ) : ContDiffAt ℝ 2 stream (1-q*(1-eta^2),(0,z)) := by
+    simpa [AxisymmetricFields.profilePoint,AxisymmetricFields.radialEnergy] using
+      hs (AxisymmetricResidual.pack 0 0 z)
+  have hz : DifferentiableAt ℝ (AxisymmetricFields.partialZ stream)
+      (1-q*(1-eta^2),(0,eta*q^CoordinateAlgebra.D F.data.h)) := by
+    exact (((hat _).fderiv_right (m := 1) (by norm_num)).clm_apply
+      contDiffAt_const).differentiableAt (by norm_num)
+  rw [axial_second_derivative_eq_slice stream _ _
+    (fun z => (hat z).differentiableAt (by norm_num)) hz]
+  exact selected_stream_axis_second_derivative H v upper q eta B hq heta
+
+theorem selected_normalized_second_axial_derivative_tends_zero
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper eta : ℝ) (B : ℕ)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let stream := SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v)
+    Filter.Tendsto (fun q : ℝ => q^(CoordinateAlgebra.A F.data.h+1)*
+      AxisymmetricFields.partialZ (AxisymmetricFields.partialZ stream)
+        (1-q*(1-eta^2),(0,eta*q^CoordinateAlgebra.D F.data.h)))
+      (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+  intro stream
+  let C := (-2*eta*axialGradientCoefficient F.data.h W.axis.j eta +
+    (1-eta^2)*deriv (axialGradientCoefficient F.data.h W.axis.j) eta)/NaturalAxisData.L F.data.h eta
+  have hex : 0 < 2*F.data.h := by linarith [F.data.h_pos]
+  have hp : ContinuousAt (fun q : ℝ => q^(2*F.data.h)) 0 :=
+    Real.continuousAt_rpow_const _ _ (Or.inr hex.le)
+  have hl : Filter.Tendsto (fun q : ℝ => C*q^(2*F.data.h)) (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+    simpa only [Real.zero_rpow hex.ne',mul_zero] using
+      (hp.tendsto.mono_left nhdsWithin_le_nhds).const_mul C
+  apply hl.congr'
+  filter_upwards [self_mem_nhdsWithin] with q hq
+  rw [selected_stream_physical_second_axial_derivative H v upper q eta B hq heta]
+  have he : q^(CoordinateAlgebra.A F.data.h+1)*q^(-CoordinateAlgebra.A F.data.h-2*CoordinateAlgebra.D F.data.h)=q^(2*F.data.h) := by
+    rw [← Real.rpow_add hq]
+    congr 1
+    unfold CoordinateAlgebra.D
+    ring
+  dsimp [C]
+  rw [show q^(CoordinateAlgebra.A F.data.h+1)*(q^(-CoordinateAlgebra.A F.data.h-2*CoordinateAlgebra.D F.data.h)*
+    (-2*eta*axialGradientCoefficient F.data.h W.axis.j eta+(1-eta^2)*deriv (axialGradientCoefficient F.data.h W.axis.j) eta)/NaturalAxisData.L F.data.h eta) =
+    (q^(CoordinateAlgebra.A F.data.h+1)*q^(-CoordinateAlgebra.A F.data.h-2*CoordinateAlgebra.D F.data.h))*
+    ((-2*eta*axialGradientCoefficient F.data.h W.axis.j eta+(1-eta^2)*deriv (axialGradientCoefficient F.data.h W.axis.j) eta)/NaturalAxisData.L F.data.h eta) by ring,he]
+  ring
+
 theorem selected_base_velocity_on_candidate_axis
     {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
     (H : NominalConeAssembly.Certificate W)
@@ -2013,6 +2077,8 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms selected_normalized_second_axial_derivative_tends_zero
+#print axioms selected_stream_physical_second_axial_derivative
 #print axioms selected_stream_axis_second_derivative
 #print axioms selected_stream_axis_deriv_expression
 #print axioms selected_stream_axis_hasDerivAt
