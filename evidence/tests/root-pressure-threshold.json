@@ -1,0 +1,18 @@
+{
+  "scope": "Exact local algebra only. The diagnostic pressure jet is not shown to arise from an outgoing, nominal, or actual profile.",
+  "sympy": "1.14.0",
+  "root_identity": "Z = 4*A*eta*(P-Pcrit) when H=0",
+  "Pcrit": "(1-2*eta*U)*U/(4*eta) + d*Pprime/(4*A*eta)",
+  "sign_equivalence_under_A_positive_eta_negative": "Z>0 iff P<Pcrit",
+  "weak_pressure_negativity_insufficient_for_local_sign": true,
+  "diagnostic": {
+    "h": "1/1000",
+    "eta": "-1/5000",
+    "j": "28118749/31249998750",
+    "P": "-1/1000000",
+    "Pprime": "-1/1000000000",
+    "Z": "-260408329146625416638326667/5208332916666675000000000000000",
+    "Pcrit": "-260410416646458416641666667/2087499833000003340000000000"
+  },
+  "upstream_counterexample": false
+}

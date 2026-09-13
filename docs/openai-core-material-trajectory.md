@@ -1503,3 +1503,31 @@ profile's pressure data, existence of an axial curve with a strictly negative
 physical-ratio limit. The multiplier nu scales the Laplacian in the reported
 ratio and does not construct a new solution for arbitrary viscosity. No
 molecular, phase-transition or constitutive-viscosity conclusion is added.
+
+
+## Exact local pressure threshold
+
+An independent algebra diagnostic isolates the missing quantitative condition.
+At a root H=0, define
+
+    Pcrit = (1-2*eta*U)*U/(4*eta) + d*Pprime/(4*A*eta).
+    Z = 4*A*eta*(P-Pcrit).
+
+Since A>0 and eta<0, Z>0 is equivalent to P<Pcrit. This local condition can
+replace the stronger global pressure ≤ -1 bound in a future sign proof, provided
+it is actually derived for the selected profile. The derivative contribution
+is retained; dropping it changes the threshold.
+
+`python -m tools.check_root_pressure_threshold` (SymPy 1.14.0) checks the
+identity exactly and supplies rational diagnostic values with h=1/1000,
+eta=-1/5000, j chosen from H=0, P=-1/1000000 and Pprime=-1/1000000000.
+The small-parameter and root-interval constraints hold, but Z is strictly
+negative. Thus even both strict sign facts P<0 and Pprime<0 do not suffice
+for Z>0 as a local algebra implication. Results are saved in
+`evidence/tests/root-pressure-threshold.json`.
+
+These local pressure values have not been realized by an outgoing or nominal
+profile. This is not a counterexample to the source construction or its theorem.
+It excludes a proposed shortcut in our additional proof, and identifies the
+quantitative comparison to seek in the retained source properties. The exact
+threshold analysis is symbolic, not yet a Lean theorem.
