@@ -2228,6 +2228,36 @@ theorem actual_ratio_has_strictly_negative_limit
   exact div_neg_of_neg_of_pos (mul_neg_of_pos_of_neg hnu (mul_neg_of_pos_of_neg (by norm_num) hn))
     (div_pos (mul_pos hA hU) hd)
 
+theorem exists_actual_root_with_negative_physical_ratio
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (nu : ℝ) (hnu : 0 < nu)
+    (pressure : NaturalAxisData.PressureData CorrectionInitialization.ActualPrimary.outgoing.axisDatum) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    ∃ eta : ℝ,
+      eta ∈ Set.Ioo (-CorrectionInitialization.ActualPrimary.nominal.axis.j/4)
+        (-CorrectionInitialization.ActualPrimary.nominal.axis.j/5) ∧
+      NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+        CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0 ∧
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    ∃ ell : ℝ, ell < 0 ∧
+    Filter.Tendsto (fun q : ℝ =>
+      nu*ProblemStatement.spatialLaplacian u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) 2 /
+        ((ProblemStatement.temporalDerivative u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) +
+          ProblemStatement.advection u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2)))) 2))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ell) := by
+  intro u
+  obtain ⟨eta, interval, root, _⟩ := NaturalAxisData.exists_unique_root
+    CorrectionInitialization.ActualPrimary.nominal.axis.small
+  exact ⟨eta, interval, root,
+    actual_ratio_has_strictly_negative_limit B N0 hN a ha eta nu hnu interval root pressure⟩
+
 /-- Retain the pressure bound in an existential profile. This does not
 identify the witness with the upstream arbitrary actualProfile choice. -/
 theorem exists_profileData_with_pressure :
@@ -2261,6 +2291,7 @@ theorem exists_pressure_profile_with_negative_slow_sum :
     exists_selected_root_with_negative_radial_derivative
       p.certificate p.modulation upper B hp⟩
 
+#print axioms exists_actual_root_with_negative_physical_ratio
 #print axioms exists_pressure_profile_with_negative_slow_sum
 #print axioms exists_profileData_with_pressure
 #print axioms actual_ratio_has_strictly_negative_limit

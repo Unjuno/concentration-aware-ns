@@ -1486,3 +1486,20 @@ existential witness is not automatically substituted through these definitions.
 A full existential periodic-field result requires carrying the correction and
 localization assembly for that same witness, or deriving sufficient pressure
 control for the existing choice.
+
+
+## Root existence for the pinned actual candidate
+
+`exists_actual_root_with_negative_physical_ratio` obtains the root directly
+from ActualPrimary.nominal.axis.small and NaturalAxisData.exists_unique_root,
+then applies the checked physical-ratio theorem for the same actual candidate.
+The root interval and root equation are now conclusions of this corollary.
+PressureData remains its explicit unproved hypothesis; the existing geometric
+threshold, divergent schedule and positive multiplier assumptions are unchanged.
+
+This result concerns the pinned actualProfile, unlike the separately constructed
+pressure-qualified existential profile above. It proves, conditional on that
+profile's pressure data, existence of an axial curve with a strictly negative
+physical-ratio limit. The multiplier nu scales the Laplacian in the reported
+ratio and does not construct a new solution for arbitrary viscosity. No
+molecular, phase-transition or constitutive-viscosity conclusion is added.
