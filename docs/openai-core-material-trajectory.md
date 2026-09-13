@@ -1447,3 +1447,21 @@ a separately identified prepared witness through the full assembly. Silently
 replacing actualProfile would change the subject of the theorem. No upstream
 issue is warranted by this finding. The current extension source, shell runner
 and log hashes were checked against the successful verification JSON.
+
+
+## A pressure-qualified profile exists
+
+`exists_profileData_with_pressure` now proves that there exists a complete
+FinalSlowBase.ProfileData with both amplitude 2 ≤ P and PressureData. It starts
+from PreparedOutgoing.exists_prepared, uses NominalConeAssembly.exists_certificate
+for that same prepared profile, and applies the finite-modulation existence
+theorem. Thus the outgoing profile, nominal certificate and modulation all
+belong to the same witness; the pressure bound is retained in the existential
+conclusion rather than inferred from an arbitrary choice.
+
+The pinned Lean check succeeds with only propext, Classical.choice and Quot.sound.
+This proves that retaining the stronger condition is compatible with the nominal
+and finite-modulation construction. It does not identify this witness with
+FinalSlowBase.actualProfile or transfer the hard-coded actual-candidate assembly
+to it. That remaining distinction is necessary for the unconditional physical
+ratio claim; the original source has not been modified.

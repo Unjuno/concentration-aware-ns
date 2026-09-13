@@ -2228,6 +2228,20 @@ theorem actual_ratio_has_strictly_negative_limit
   exact div_neg_of_neg_of_pos (mul_neg_of_pos_of_neg hnu (mul_neg_of_pos_of_neg (by norm_num) hn))
     (div_pos (mul_pos hA hU) hd)
 
+/-- Retain the pressure bound in an existential profile. This does not
+identify the witness with the upstream arbitrary actualProfile choice. -/
+theorem exists_profileData_with_pressure :
+    ∃ p : FinalSlowBase.ProfileData,
+      2 ≤ p.outgoing.data.core.P ∧
+      NaturalAxisData.PressureData p.outgoing.axisDatum := by
+  obtain ⟨d⟩ := PreparedOutgoing.exists_prepared
+  obtain ⟨W, H⟩ := NominalConeAssembly.exists_certificate d
+  obtain ⟨ld, v, hc⟩ := ModulatedProfileAssembly.exists_of_certificate W H
+  let p : FinalSlowBase.ProfileData := ⟨d.profile, W, H, ld, v, hc⟩
+  exact ⟨p, d.amplitude_lower,
+    d.profile.natural_axis_pressureData d.amplitude_lower⟩
+
+#print axioms exists_profileData_with_pressure
 #print axioms actual_ratio_has_strictly_negative_limit
 #print axioms actual_viscous_acceleration_ratio_limit
 #print axioms actual_normalized_axis_laplacian_limit
