@@ -1280,3 +1280,17 @@ the power and denominator cancellations. The pinned Lean check passes
 without sorryAx. Both required first coordinate derivatives are now
 formalized. The stream's first and second axial derivatives still need
 to be assembled and identified with the physical H_zz expression.
+
+
+## Axial derivative of the source-coordinate velocity expression
+
+`axis_velocity_expression_axial_derivative` combines the verified
+coordinateQ and coordinateEta derivatives to differentiate
+coordinateQ^(-A)*(4 coordinateEta+j) at fixed physical time. It obtains
+q^(-1)*(4(1-eta²)-2 A eta(4 eta+j))/L, including both coordinate
+contributions and positive-real power cancellation. The pinned Lean
+check passes without sorryAx and agrees with the symbolic first
+derivative. This theorem concerns the explicit source-coordinate
+expression. Its identification with the selected stream in an axial
+neighborhood and the second spatial derivative remain to be combined
+before claiming the physical H_zz formula.

@@ -14,7 +14,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp only [id_eq] at hp
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-/extension/AxisForceSign.lean:1401:34: warning: This simp argument is unused:
+/extension/AxisForceSign.lean:1435:34: warning: This simp argument is unused:
   zero_add
 
 Hint: Omit it from the simp argument list.
@@ -24,6 +24,9 @@ Hint: Omit it from the simp argument list.
     zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero, sub_zero, neg_zero]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.axis_velocity_expression_axial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'ConcentrationAware.candidate_axis_coordinateEta_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.candidate_axis_coordinateQ_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_candidate_material_acceleration' depends on axioms: [propext, Classical.choice, Quot.sound]
