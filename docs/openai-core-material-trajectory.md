@@ -1322,3 +1322,19 @@ confirms (-2 eta M+(1-eta²) M')/L equals the previously stored Czz
 rational expression. Lean still represents M' using deriv; it does
 not yet identify the complete physical stream second derivative.
 The neighborhood equality needed for that identification remains.
+
+
+## Actual stream identity on the entire preterminal axis
+
+`selected_stream_axis_expression` proves the actual selected stream
+equals coordinateQ^(-A)*(4 coordinateEta+j) at (t,0,z) for every
+t<1 and every z. It uses coordinate positivity, eta in (-1,1), and
+the source time/axial reconstruction identities to apply the candidate
+axis value theorem. Thus it supplies an equality on the full axial
+slice, not merely at a single curve point.
+`selected_stream_axis_hasDerivAt` transfers the explicit first axial
+derivative through this function equality, proving the actual stream
+slice derivative equals q^(-1)*axialGradientCoefficient. Both pass the
+pinned Lean check without sorryAx. The second derivative still needs
+this first-derivative identity throughout an axial neighborhood and
+its conversion to partialZ(partialZ stream).

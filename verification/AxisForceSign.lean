@@ -1481,6 +1481,59 @@ theorem selected_stream_on_candidate_axis
   rw [selected_stream_sum_axis_value H v upper q eta B hq ⟨heta.1.le,heta.2.le⟩]
   rfl
 
+theorem selected_stream_axis_expression
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t z : ℝ) (B : ℕ) (ht : t < 1) :
+    SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B) F.data.h
+      W.axis.normalization (FinalSlowBase.coefficients H v) (t,(0,z)) =
+    (SimilarityCoordinates.coordinateQ (2*F.data.h) (1-t,z))^(-CoordinateAlgebra.A F.data.h) *
+      (4*SimilarityCoordinates.coordinateEta (2*F.data.h) (1-t,z)+W.axis.j) := by
+  let q := SimilarityCoordinates.coordinateQ (2*F.data.h) (1-t,z)
+  let eta := SimilarityCoordinates.coordinateEta (2*F.data.h) (1-t,z)
+  have ha : 0 < 2*F.data.h := by linarith [F.data.h_pos]
+  have ha1 : 2*F.data.h < 1 := by linarith [F.data.h_lt_half]
+  have hp : 0 < (1-t,z).1 := by dsimp; linarith
+  have hq : 0 < q := (SimilarityCoordinates.coordinateQ_spec ha ha1 hp).1
+  have heta : eta ∈ Set.Ioo (-1 : ℝ) 1 :=
+    abs_lt.mp (SimilarityCoordinates.coordinateEta_abs_lt_one ha ha1 hp)
+  have htime : 1-q*(1-eta^2)=t := by
+    have he := SimilarityCoordinates.tau_coordinate_identity ha ha1 hp
+    change 1-t=q*(1-eta^2) at he
+    linarith
+  have hD : (1-2*F.data.h)/2=CoordinateAlgebra.D F.data.h := by unfold CoordinateAlgebra.D; ring
+  have hz : eta*q^CoordinateAlgebra.D F.data.h=z := by
+    dsimp [eta,SimilarityCoordinates.coordinateEta]
+    rw [hD]
+    exact div_mul_cancel₀ z (ne_of_gt (Real.rpow_pos_of_pos hq _))
+  have he := selected_stream_on_candidate_axis H v upper q eta B hq heta
+  rw [htime,hz] at he
+  exact he
+
+theorem selected_stream_axis_hasDerivAt
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper q eta : ℝ) (B : ℕ)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    HasDerivAt (fun z : ℝ => SlowBorelBase.streamFactor
+      (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+      (FinalSlowBase.coefficients H v) (1-q*(1-eta^2),(0,z)))
+      (q^(-1:ℝ)*axialGradientCoefficient F.data.h W.axis.j eta)
+      (eta*q^CoordinateAlgebra.D F.data.h) := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have htime : 1-(1-q*(1-eta^2))=q*(1-eta^2) := by ring
+  have he : (fun z : ℝ => SlowBorelBase.streamFactor
+      (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+      (FinalSlowBase.coefficients H v) (1-q*(1-eta^2),(0,z))) = _ :=
+    funext (fun z => selected_stream_axis_expression H v upper (1-q*(1-eta^2)) z B ht)
+  rw [he]
+  simp only [htime]
+  simpa only [axialGradientCoefficient,mul_div_assoc] using
+    axis_velocity_expression_axial_derivative F.data.h W.axis.j q eta F.data.h_pos F.data.h_lt_half hq heta
+
 theorem selected_base_velocity_on_candidate_axis
     {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
     (H : NominalConeAssembly.Certificate W)
@@ -1905,6 +1958,8 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms selected_stream_axis_hasDerivAt
+#print axioms selected_stream_axis_expression
 #print axioms concrete_axial_gradient_expression_derivative
 #print axioms axialGradientCoefficient_differentiableAt
 #print axioms axis_first_derivative_expression_derivative
