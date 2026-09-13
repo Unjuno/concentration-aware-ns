@@ -2241,6 +2241,27 @@ theorem exists_profileData_with_pressure :
   exact ⟨p, d.amplitude_lower,
     d.profile.natural_axis_pressureData d.amplitude_lower⟩
 
+/-- One pressure-qualified profile works for every slow-scale lower bound.
+The root and negative radial derivative concern its assembled slow sum. -/
+theorem exists_pressure_profile_with_negative_slow_sum :
+    ∃ p : FinalSlowBase.ProfileData,
+      NaturalAxisData.PressureData p.outgoing.axisDatum ∧
+      ∀ (upper : ℝ) (B : ℕ), ∃ eta : ℝ,
+        eta ∈ Set.Ioo (-p.nominal.axis.j / 4) (-p.nominal.axis.j / 5) ∧
+        NaturalAxisData.H p.outgoing.data.h p.nominal.axis.j eta = 0 ∧
+        ∀ᶠ q in 𝓝[>] (0 : ℝ), deriv (fun X =>
+          SlowBorelBase.slowSum
+            (FinalSlowBase.scales p.certificate p.modulation upper B)
+            p.outgoing.data.h
+            (SlowBorelBase.bundleComponent p.nominal.axis.normalization
+              (FinalSlowBase.coefficients p.certificate p.modulation) 5)
+            (q,(X,eta))) 0 < 0 := by
+  obtain ⟨p, hp, pressure⟩ := exists_profileData_with_pressure
+  exact ⟨p, pressure, fun upper B =>
+    exists_selected_root_with_negative_radial_derivative
+      p.certificate p.modulation upper B hp⟩
+
+#print axioms exists_pressure_profile_with_negative_slow_sum
 #print axioms exists_profileData_with_pressure
 #print axioms actual_ratio_has_strictly_negative_limit
 #print axioms actual_viscous_acceleration_ratio_limit

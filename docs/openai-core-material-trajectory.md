@@ -1465,3 +1465,24 @@ and finite-modulation construction. It does not identify this witness with
 FinalSlowBase.actualProfile or transfer the hard-coded actual-candidate assembly
 to it. That remaining distinction is necessary for the unconditional physical
 ratio claim; the original source has not been modified.
+
+
+## Pressure and negative slow-sum derivative share one witness
+
+`exists_pressure_profile_with_negative_slow_sum` combines the retained-pressure
+existence theorem with the selected slow-sum sign theorem. A single ProfileData
+satisfies PressureData and, for every upper parameter and natural-number scale
+lower bound B, admits a root in (-j/4,-j/5) where the component-5 radial derivative
+of its assembled slow sum is eventually strictly negative as q tends to zero
+from above. Pressure and root existence are conclusions here, not external
+assumptions. The existential root is inside the quantification over upper and B;
+this statement does not assert a uniform q threshold over those parameters.
+
+This closes the existence/sign chain at the slow-base level. It still does not
+assert the physical force ratio for the upstream actualProfile. In particular,
+CorrectionInitialization.lean:3886 aliases profile to FinalSlowBase.actualProfile,
+and ActualCandidateAssembly opens that ActualPrimary namespace. The stronger
+existential witness is not automatically substituted through these definitions.
+A full existential periodic-field result requires carrying the correction and
+localization assembly for that same witness, or deriving sufficient pressure
+control for the existing choice.
