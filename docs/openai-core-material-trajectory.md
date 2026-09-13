@@ -1268,3 +1268,15 @@ L using positive-real power identities. This is not differentiation
 along the moving trajectory. The pinned Lean check passes without
 sorryAx. The eta_z and stream axial derivatives still need to be
 combined to obtain the explicit physical H_zz formula.
+
+
+## Physical axial derivative of eta
+
+`candidate_axis_coordinateEta_hasDerivAt` proves eta_z=(1-eta²)q^(-D)/L
+from the source coordinateEta definition at fixed time. It derives
+coordinateQ positivity for each axial argument before replacing division
+by a negative real power, applies the verified q derivative, and proves
+the power and denominator cancellations. The pinned Lean check passes
+without sorryAx. Both required first coordinate derivatives are now
+formalized. The stream's first and second axial derivatives still need
+to be assembled and identified with the physical H_zz expression.
