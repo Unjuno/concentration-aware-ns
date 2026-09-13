@@ -41,8 +41,7 @@ Remaining completion work:
    observed failures separately from unknown continuous-peak accuracy.
 3. Independently review the new source-to-trajectory implication chain; symbolic
    identities do not cover theorem hypotheses. New Lean proofs now establish the chart derivative chain through the natural
-   profile, including a root with eventual negative derivative, the selected base-field vector material trajectory, and its axis Laplacian identity. An independent symbolic Eulerian material-acceleration calculation agrees with the trajectory formula. These checks do not yet
-   establish the physical Laplacian/material-acceleration limit. Do not describe original kernel acceptance
+   profile, including a root with eventual negative derivative, the selected base-field vector material trajectory, and its axis Laplacian identity. An independent symbolic Eulerian material-acceleration calculation agrees with the trajectory formula. Current Lean proofs establish the physical Laplacian/material-acceleration limit and strict negative sign under explicit root and PressureData assumptions. Unconditional instantiation for actualProfile remains unproved. Do not describe original kernel acceptance
    as verification of our new result.
 4. Tracked-only export and fresh-venv postprocessing succeeded (see
    evidence/fresh-environment-check.json). SU2 discussion read-back is refreshed
@@ -61,4 +60,4 @@ use -nu*d*Z/(L*A*U). The historical fresh-environment check-3.log records
 the superseded formula and is retained as a run record, not evidence for
 the corrected coefficient. The current axis-force symbolic JSON and Lean
 verification JSON contain the corrected run. Strict negativity survives;
-full physical-force identification remains incomplete.
+physical-force identification is checked conditionally; unconditional pressure instantiation remains incomplete. See the pressure-hypothesis retention audit in docs/openai-core-material-trajectory.md.

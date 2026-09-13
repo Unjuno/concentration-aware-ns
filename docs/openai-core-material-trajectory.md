@@ -1415,3 +1415,33 @@ remain explicit; their closed instantiation from the actual prepared
 profile is still to be supplied in a final existence statement.
 This conditional result concerns the source constructed flow and
 does not establish molecular alignment or changing constitutive viscosity.
+
+
+## Pressure-hypothesis retention audit
+
+Inspection of the pinned source identifies a gap in our proposed unconditional
+corollary. FinalSlowBase.lean:619 stores outgoing, nominal, certificate, loop,
+modulation and fullTrueCone in ProfileData, but no prepared-profile witness or
+bound 2 ≤ outgoing.data.core.P. Its actualProfile is Classical.choice of
+Nonempty ProfileData. A property used when proving nonemptiness does not by
+itself become a property of this arbitrary choice unless retained in the type
+or proved for all its members.
+
+NaturalAxisCoefficients.lean:299 (CoefficientFamily) stores coefficient bounds
+and identities, not the pressure amplitude bound. NaturalProfile.lean:559
+(ProfileFamily) stores equations, approximation, positivity and slope, not
+PressureData. This rules out projecting the missing assumption from these
+records, but does not rule out deriving it from their other properties.
+
+SchedulePressure.natural_axis_pressureData explicitly requires 2 ≤ P.
+SchedulePressure.axisPressure_neg and axisPressure_deriv_neg hold without this
+bound; however strict pressure negativity is weaker than PressureData's
+pressure ≤ -1 requirement and cannot simply replace it in our sign proof.
+
+This finding concerns our extension, not an established defect in the upstream
+Navier–Stokes theorem. The actual physical-ratio result remains conditional.
+Next work must derive sufficient pressure control from retained data, or carry
+a separately identified prepared witness through the full assembly. Silently
+replacing actualProfile would change the subject of the theorem. No upstream
+issue is warranted by this finding. The current extension source, shell runner
+and log hashes were checked against the successful verification JSON.
