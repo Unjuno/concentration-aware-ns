@@ -1294,3 +1294,17 @@ derivative. This theorem concerns the explicit source-coordinate
 expression. Its identification with the selected stream in an axial
 neighborhood and the second spatial derivative remain to be combined
 before claiming the physical H_zz formula.
+
+
+## Second axial differentiation rule
+
+`axis_first_derivative_expression_derivative` differentiates the
+source-coordinate expression q^(-1) M(eta) at fixed physical time.
+Given HasDerivAt M M' eta, it proves the result
+q^(-A-2D)*(-2 eta M+(1-eta²)M')/L, deriving the q exponent
+from the two coordinate derivatives. The pinned Lean check passes
+without sorryAx. The concrete rational coefficient M from the first
+velocity derivative must still be instantiated, and neighborhood
+identification with the actual stream must precede a claim about its
+physical H_zz. This is a verified differentiation rule, not yet that
+complete identification.

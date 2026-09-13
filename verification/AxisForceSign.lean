@@ -1258,6 +1258,45 @@ theorem axis_velocity_expression_axial_derivative
       (4*(1-eta^2)/NaturalAxisData.L h eta)*(q^(-CoordinateAlgebra.A h)*q^(-CoordinateAlgebra.D h)) := by ring
     _ = _ := by rw [hpow1,hpow2]; ring
 
+theorem axis_first_derivative_expression_derivative
+    (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
+    (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (M : ℝ → ℝ) (M' : ℝ) (hM : HasDerivAt M M' eta) :
+    HasDerivAt (fun z : ℝ =>
+      (SimilarityCoordinates.coordinateQ (2*h) (q*(1-eta^2),z))^(-1:ℝ) *
+        M (SimilarityCoordinates.coordinateEta (2*h) (q*(1-eta^2),z)))
+      (q^(-CoordinateAlgebra.A h-2*CoordinateAlgebra.D h)*
+        (-2*eta*M eta+(1-eta^2)*M')/NaturalAxisData.L h eta)
+      (eta*q^CoordinateAlgebra.D h) := by
+  have he := candidate_axis_inverse_coordinate h q eta hh hh1 hq heta
+  have hD : (1-2*h)/2=CoordinateAlgebra.D h := by unfold CoordinateAlgebra.D; ring
+  have heta0 : SimilarityCoordinates.coordinateEta (2*h)
+      (q*(1-eta^2),eta*q^CoordinateAlgebra.D h)=eta := by
+    simp [SimilarityCoordinates.coordinateEta,he,hD,ne_of_gt (Real.rpow_pos_of_pos hq (CoordinateAlgebra.D h))]
+  have hqd := candidate_axis_coordinateQ_hasDerivAt h q eta hh hh1 hq heta
+  have hed := candidate_axis_coordinateEta_hasDerivAt h q eta hh hh1 hq heta
+  have hm : HasDerivAt M M' (SimilarityCoordinates.coordinateEta (2*h)
+      (q*(1-eta^2),eta*q^CoordinateAlgebra.D h)) := by rw [heta0]; exact hM
+  have hp := (hqd.rpow_const (p := (-1:ℝ)) (Or.inl (by rw [he]; exact hq.ne'))).mul
+    (hm.comp (eta*q^CoordinateAlgebra.D h) hed)
+  simp only [Function.comp_apply] at hp
+  rw [he,heta0] at hp
+  have hp1 : q^(-1-1:ℝ)*q^CoordinateAlgebra.A h = q^(-CoordinateAlgebra.A h-2*CoordinateAlgebra.D h) := by
+    rw [← Real.rpow_add hq]
+    congr 1
+    unfold CoordinateAlgebra.A CoordinateAlgebra.D
+    ring
+  have hp2 : q^(-1:ℝ)*q^(-CoordinateAlgebra.D h) = q^(-CoordinateAlgebra.A h-2*CoordinateAlgebra.D h) := by
+    rw [← Real.rpow_add hq]
+    congr 1
+    unfold CoordinateAlgebra.A CoordinateAlgebra.D
+    ring
+  apply hp.congr_deriv
+  calc
+    _ = (-2*eta*M eta/NaturalAxisData.L h eta)*(q^(-1-1:ℝ)*q^CoordinateAlgebra.A h) +
+      ((1-eta^2)*M'/NaturalAxisData.L h eta)*(q^(-1:ℝ)*q^(-CoordinateAlgebra.D h)) := by ring
+    _ = _ := by rw [hp1,hp2]; ring
+
 theorem candidate_axis_physicalChart
     (h q eta : ℝ) (hh : 0 < h) (hh1 : h < 1/2)
     (hq : 0 < q) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
@@ -1836,6 +1875,7 @@ theorem actual_candidate_material_acceleration
     hb.congr_of_eventuallyEq he
   exact (material_curve_chain_rule u curve (1-q*(1-eta^2)) hu hc).unique hv
 
+#print axioms axis_first_derivative_expression_derivative
 #print axioms axis_velocity_expression_axial_derivative
 #print axioms candidate_axis_coordinateEta_hasDerivAt
 #print axioms candidate_axis_coordinateQ_hasDerivAt
