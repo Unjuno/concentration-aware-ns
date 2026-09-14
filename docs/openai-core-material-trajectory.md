@@ -1531,3 +1531,21 @@ profile. This is not a counterexample to the source construction or its theorem.
 It excludes a proposed shortcut in our additional proof, and identifies the
 quantitative comparison to seek in the retained source properties. The exact
 threshold analysis is symbolic, not yet a Lean theorem.
+
+
+## Local pressure threshold checked in Lean
+
+`root_pressure_threshold_identity` proves the exact root identity against the
+pinned NaturalAxisData.Z definition, including the pressure derivative term.
+`root_Z_positive_iff_pressure_below_threshold` proves the equivalence Z>0 iff
+P<Pcrit under A>0, eta<0 and H=0. Both pass the pinned Lean check with only
+propext, Classical.choice and Quot.sound; the preceding symbolic identity is
+therefore now also formally checked. The rational diagnostic remains a separate
+SymPy check, not a constructed-profile counterexample.
+
+No global smoothness or PressureData hypothesis is needed for this algebraic
+equivalence. Lean's deriv is used as the local derivative value; identifying it
+with a physical pressure derivative still uses the source regularity theorems.
+The remaining task is to prove the local threshold for the actual profile or
+carry the pressure-qualified alternative through the complete assembly. This
+new equivalence alone does not discharge either task.

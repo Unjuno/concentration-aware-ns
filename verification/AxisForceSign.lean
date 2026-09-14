@@ -14,6 +14,38 @@ import NavierStokes.ActualCandidateAssembly
 namespace ConcentrationAware
 open NavierStokes
 
+/-- Exact local pressure threshold at the distinguished root. -/
+theorem root_pressure_threshold_identity
+    (h j eta : ℝ) (P : ℝ → ℝ)
+    (hA : NaturalAxisData.A h ≠ 0) (he : eta ≠ 0)
+    (root : NaturalAxisData.H h j eta = 0) :
+    NaturalAxisData.Z h j P eta = 4 * NaturalAxisData.A h * eta *
+      (P eta - ((1-2*eta*NaturalAxisData.U j eta)*NaturalAxisData.U j eta/(4*eta) +
+        NaturalAxisData.d eta * deriv P eta/(4*NaturalAxisData.A h*eta))) := by
+  unfold NaturalAxisData.Z
+  rw [root]
+  field_simp
+  <;> ring
+
+/-- Unlike global PressureData, this equivalence uses only the local pressure jet. -/
+theorem root_Z_positive_iff_pressure_below_threshold
+    (h j eta : ℝ) (P : ℝ → ℝ)
+    (hA : 0 < NaturalAxisData.A h) (he : eta < 0)
+    (root : NaturalAxisData.H h j eta = 0) :
+    0 < NaturalAxisData.Z h j P eta ↔
+      P eta < ((1-2*eta*NaturalAxisData.U j eta)*NaturalAxisData.U j eta/(4*eta) +
+        NaturalAxisData.d eta * deriv P eta/(4*NaturalAxisData.A h*eta)) := by
+  rw [root_pressure_threshold_identity h j eta P hA.ne' he.ne root]
+  have hn : 4 * NaturalAxisData.A h * eta < 0 :=
+    mul_neg_of_pos_of_neg (mul_pos (by norm_num) hA) he
+  constructor
+  · intro hz
+    by_contra hp
+    have hd := sub_nonneg.mpr (le_of_not_gt hp)
+    exact (not_lt_of_ge (mul_nonpos_of_nonpos_of_nonneg hn.le hd)) hz
+  · intro hp
+    exact mul_pos_of_neg_of_neg hn (sub_neg.mpr hp)
+
 /-- Divide the radial viscous term by acceleration before assigning its limit. -/
 theorem radial_force_div_acceleration
     (nu B A U d q : ℝ) (hA : A ≠ 0) (hU : U ≠ 0)
@@ -2291,6 +2323,8 @@ theorem exists_pressure_profile_with_negative_slow_sum :
     exists_selected_root_with_negative_radial_derivative
       p.certificate p.modulation upper B hp⟩
 
+#print axioms root_pressure_threshold_identity
+#print axioms root_Z_positive_iff_pressure_below_threshold
 #print axioms exists_actual_root_with_negative_physical_ratio
 #print axioms exists_pressure_profile_with_negative_slow_sum
 #print axioms exists_profileData_with_pressure
