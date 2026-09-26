@@ -3455,4 +3455,72 @@ theorem outgoing_root_Z_positive_of_prefix_bound
 
 #print axioms outgoing_root_Z_positive_of_prefix_bound
 
+theorem actual_ratio_negative_of_local_Z
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta nu : ℝ) (hnu : 0 < nu)
+    (interval : eta ∈ Set.Ioo (-CorrectionInitialization.ActualPrimary.nominal.axis.j/4)
+      (-CorrectionInitialization.ActualPrimary.nominal.axis.j/5))
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0)
+    (hz : 0 < NaturalAxisData.Z CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j
+      CorrectionInitialization.ActualPrimary.outgoing.axisDatum eta) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))
+    ∃ ell : ℝ, ell < 0 ∧
+    Filter.Tendsto (fun q : ℝ =>
+      nu*ProblemStatement.spatialLaplacian u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) 2 /
+        ((ProblemStatement.temporalDerivative u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2))) +
+          ProblemStatement.advection u (1-q*(1-eta^2)) (curve (1-q*(1-eta^2)))) 2))
+      (𝓝[>] (0 : ℝ))
+      (𝓝 ell) := by
+  intro u curve
+  let W := CorrectionInitialization.ActualPrimary.nominal
+  have hen : eta < 0 := by linarith [interval.2,W.axis.small.j_pos]
+  have helo : -1 < eta := by linarith [interval.1,W.axis.small.j_le]
+  have heta : eta ∈ Set.Ioo (-1 : ℝ) 1 := ⟨helo,by linarith⟩
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hD : 0 < NaturalAxisData.D CorrectionInitialization.ActualPrimary.h := by
+    unfold NaturalAxisData.D
+    linarith [W.axis.small.h_le]
+  have hU : 0 < NaturalAxisData.U W.axis.j eta := by
+    have he := root
+    unfold NaturalAxisData.H NaturalAxisData.d at he
+    nlinarith [mul_neg_of_pos_of_neg hD hen]
+  have hA : 0 < CoordinateAlgebra.A CorrectionInitialization.ActualPrimary.h := by
+    unfold CoordinateAlgebra.A
+    linarith [W.axis.small.h_pos]
+  have inside : eta ∈ Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right := by
+    change -11/10 < eta ∧ eta < 11/10
+    constructor <;> linarith
+  have point : (0,eta) ∈ NaturalProfile.domain W.axis.scale := by
+    change (W.axis.scale*0,eta) ∈ Set.Ioo (-20:ℝ) 20 ×ˢ
+      Set.Ioo NaturalAxisCoefficients.window.left NaturalAxisCoefficients.window.right
+    exact ⟨by norm_num,inside⟩
+  have hn : deriv (fun X => W.axis.natural.profile.family.U (X,eta)) 0 < 0 := by
+    have eqn := natural_axis_radial_identity_from_solution
+      W.axis.natural.profile.family.natural point inside
+    have hL := NaturalAxisData.L_pos W.axis.small ⟨heta.1.le, heta.2.le⟩
+    by_contra hnot
+    have hnonneg : 0 ≤ NaturalAxisBridge.partialY W.axis.natural.profile.family.U (0,eta) :=
+      le_of_not_gt hnot
+    change 2 * NaturalAxisData.L CorrectionInitialization.ActualPrimary.h eta *
+      NaturalAxisBridge.partialY W.axis.natural.profile.family.U (0,eta) =
+      -NaturalAxisData.Z CorrectionInitialization.ActualPrimary.h
+        CorrectionInitialization.ActualPrimary.nominal.axis.j
+        CorrectionInitialization.ActualPrimary.outgoing.axisDatum eta at eqn
+    change 0 < NaturalAxisData.L CorrectionInitialization.ActualPrimary.h eta at hL
+    nlinarith [mul_nonneg hL.le hnonneg]
+  refine ⟨_, ?_, actual_viscous_acceleration_ratio_limit B N0 hN a ha eta nu heta root hU.ne'⟩
+  exact div_neg_of_neg_of_pos (mul_neg_of_pos_of_neg hnu (mul_neg_of_pos_of_neg (by norm_num) hn))
+    (div_pos (mul_pos hA hU) hd)
+
+#print axioms actual_ratio_negative_of_local_Z
+
 end ConcentrationAware

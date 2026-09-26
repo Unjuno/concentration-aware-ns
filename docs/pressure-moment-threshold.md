@@ -194,3 +194,24 @@ not imply failure of the exact weighted-moment condition.
 
 Both source-pin checks pass 148 axiom reports with only the permitted standard
 axioms, and all five verifier fault tests pass. No nanoda extension run is claimed.
+
+## Connection to the actual physical ratio
+
+`actual_ratio_negative_of_local_Z` connects the local Z>0 condition to the
+strictly negative limiting viscous-term/material-acceleration ratio of the
+unchanged actual assembled field. It retains the geometric scale threshold,
+diverging diagonal schedule, root interval/equation and positive multiplier.
+Unlike the earlier `actual_ratio_has_strictly_negative_limit`, it does not
+require global PressureData. The proof uses the natural-axis radial identity,
+positivity of L, and the already checked actual ratio limit.
+
+Together with `outgoing_root_Z_positive_iff_moment_threshold`, this makes the
+actual weighted-moment inequality a route to the physical conclusion, rather
+than merely a standalone scalar diagnostic. The prefix amplitude bound is a
+sufficient route to that inequality. Neither inequality is proved for the
+selected actual profile. The multiplier still does not construct a family of
+solutions with different viscosities, and no constitutive-viscosity conclusion
+follows from a negative ratio of vector components.
+
+Both source pins pass 149 axiom reports with the permitted standard axioms;
+all five verifier fault tests pass. This is not a nanoda check of the extension.

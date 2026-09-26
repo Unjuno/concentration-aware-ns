@@ -272,3 +272,4 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
  Classical.choice,
  Quot.sound]
 'ConcentrationAware.outgoing_root_Z_positive_of_prefix_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_ratio_negative_of_local_Z' depends on axioms: [propext, Classical.choice, Quot.sound]
