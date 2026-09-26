@@ -1,0 +1,120 @@
+{
+  "commit": "60302db8e779b387304ff4f5d925bb6566f0b3bc",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "9b153c29f1caf1b5b92d70d27eee9e15a7f5b7e539d3d9580c71f6836d633ec3",
+  "archive_sha256": "22853073b5fece590734961053f5b6cb1d250592003705508af3783759ebb371",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "venv",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "382d9016132a61ef818fdc79ebd67d53f8686938bfc9c43f39e130d07afacf02"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "a9bf17072457cb3f8287be71c7589c1147c3d633fcfadc67b0f689f577729c46"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "f554b70b6a329e1147543d11bdb202dd21402223f281a89a3ecd8fe32f2d6278"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-v2/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "18176cb15efc7ac746fd0b292c8f5cacd0fc986cc1e076a737193d2bc0f2d6ac"
+    }
+  ],
+  "success": false,
+  "packages": [
+    "mpmath==1.3.0",
+    "numpy==2.5.3",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 66,
+  "changed_files": [
+    "evidence/tests/su2-spectral-gradient.json",
+    "reports/su2-n16-dt0.001-gate.json",
+    "reports/su2-n32-dt0.001-gate.json",
+    "reports/su2-n64-dt0.00025-gate.json",
+    "reports/su2-n64-dt0.0005-gate.json",
+    "reports/su2-n64-dt0.001-gate.json"
+  ],
+  "replay_steps": 13,
+  "replay_success": true
+}

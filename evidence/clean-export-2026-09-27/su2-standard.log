@@ -1,0 +1,70 @@
+{
+  "scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. The conjunction is an audit convention, not a newly preregistered gate. It does not certify continuous numerical-field energy or peak errors.",
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "velocity_relative_l2": 0.10164793244804474,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.1202787774156409,
+      "observed_checks": {
+        "velocity": false,
+        "energy": false,
+        "all_steps_residual": true
+      },
+      "observed_conjunction": "FAIL"
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "velocity_relative_l2": 0.022771503203074223,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.024642320463917587,
+      "observed_checks": {
+        "velocity": false,
+        "energy": false,
+        "all_steps_residual": false
+      },
+      "observed_conjunction": "FAIL"
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "velocity_relative_l2": 0.003625047685324406,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.0035513863579329764,
+      "observed_checks": {
+        "velocity": true,
+        "energy": true,
+        "all_steps_residual": false
+      },
+      "observed_conjunction": "FAIL"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "velocity_relative_l2": 0.00364683093911086,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.00355258891627159,
+      "observed_checks": {
+        "velocity": true,
+        "energy": true,
+        "all_steps_residual": false
+      },
+      "observed_conjunction": "FAIL"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "velocity_relative_l2": 0.003659666959336511,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.0035530437003643326,
+      "observed_checks": {
+        "velocity": true,
+        "energy": true,
+        "all_steps_residual": false
+      },
+      "observed_conjunction": "FAIL"
+    }
+  ]
+}

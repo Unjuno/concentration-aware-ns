@@ -127,3 +127,12 @@ All thirteen completed successfully, with 36 tests and 93 gate artifact links.
 The six BDF2 control runs are separate from the eleven localized acceptance
 reports; their successful residual and recurrence checks do not change those
 UNCERTAIN verdicts. The updated OpenAI assembly build and unchanged extension check have now completed successfully; see evidence/upstream-refresh/updated-verification-summary.json. New-pin independent Comparator/nanoda verification subsequently completed successfully for the R3 and periodic challenge; evidence/upstream-refresh/updated-comparator-result.json records it. Neither check discharges the pressure premise.
+
+
+Clean-export refresh (2026-09-27, commit `60302db`): thirteen replay steps and
+five additional checks exited zero in a fresh same-host environment. Strict
+byte equality failed in six of 66 compared files. All inspected differences
+were NumPy version metadata and propagated hashes; numeric results/verdicts
+were unchanged. See `evidence/clean-export-2026-09-27/README.md` for the exact
+scope, preserved failure, differences and logs. This adds reproducibility
+evidence without discharging the open physical, analytic or formal premises.

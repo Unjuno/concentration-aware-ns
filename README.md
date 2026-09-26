@@ -107,3 +107,11 @@ and all three additional checks succeeded. See
 [evidence](evidence/fresh-environment-check.json) for exact versions and logs.
 This validates postprocessing on the recorded host; it does not rerun the
 PDE solvers or independently prove the new analytic consequence.
+
+
+The [2026-09-27 clean-export replay](evidence/clean-export-2026-09-27/README.md)
+tests fixed commit `60302db` with thirteen replay steps and five additional
+checks in a fresh environment. All commands succeeded, but strict byte equality
+failed in six of 66 compared files: NumPy version metadata and dependent hashes
+changed. Inspected numeric results and verdicts were unchanged. The failed
+strict result and original logs are preserved rather than relabeled as PASS.
