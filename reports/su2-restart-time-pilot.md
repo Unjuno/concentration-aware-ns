@@ -71,3 +71,19 @@ executed. A general correction must define how to initialize absolute output
 time, especially for variable steps, rather than blindly substituting iteration
 number times the current dt. The source also has other CUR_TIME consumers;
 this audit does not infer their runtime effects from the history discrepancy.
+
+
+## Upstream disposition
+
+Existing issue [#2353](https://github.com/su2code/SU2/issues/2353) already covers
+target-time semantics and explicitly documents two-state BDF2 restart. Related
+PR #2857 is closed and unmerged; its discussion raises moving-mesh restart and
+discrete-adjoint compatibility concerns. Issue #1681 concerns zero-valued
+explicit-scheme screen fields, a different reported setup. The search was
+bounded and does not prove that no other duplicate exists.
+
+The new same-variant field/history comparison was submitted as a
+[supplement to #2353](https://github.com/su2code/SU2/issues/2353#issuecomment-5849620199),
+with the fixed-version scope, raw data, failed time gate and compatibility
+limits. Read-back matches the submitted text and is archived in
+`upstream-comment-readback.json`. No new issue or general-fix PR was created.
