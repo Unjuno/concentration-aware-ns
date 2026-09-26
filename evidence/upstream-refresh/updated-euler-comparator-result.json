@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-09-26T16:18:46.196831+00:00",
+  "finished_at_utc": "2026-09-26T18:26:28.918726+00:00",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "exit_code": 0,
+  "runner_sha256": "68ff68474748b8aafdb6d042307928dfdd37cad7494b86194788efc776de3f07",
+  "log": "evidence/upstream-refresh/updated-euler-comparator.log",
+  "log_sha256": "3f4e51a2808eadbf5f19ad85f267289d91670ef4df16db8aa47f2e4657f10799",
+  "scope": "Updated-pin public Euler challenge only; no verification of our extension or molecular applicability."
+}

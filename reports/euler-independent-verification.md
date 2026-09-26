@@ -1,4 +1,4 @@
-# Euler independent verification — in progress
+# Euler independent verification — accepted at the pinned revision
 
 Source pin: `openai/NavierStokesAndEuler` at
 `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`.
@@ -49,15 +49,24 @@ targets, the allowed axiom policy (`propext`, `Quot.sound`, `Classical.choice`),
 and successful Lean/default-kernel and nanoda checks. Process completion and
 full logs must be inspected before claiming acceptance.
 
-At this report revision the solution dependency build is still running.
-No Euler independent-verification PASS is claimed. The previously completed
-Navier–Stokes Comparator run does not substitute for this run. A successful
-kernel check would still leave human review of mathematical definitions and
-physical interpretation as a separate task.
+The separate Euler run completed on 2026-09-27 JST (2026-09-26
+18:26:28 UTC), with exit code 0 after 10,591 build jobs. Both configured
+theorems reported only `propext`, `Classical.choice` and `Quot.sound`.
+The full log records `nanoda kernel accepts the solution`,
+`Lean default kernel accepts the solution`, and the final line
+`Your solution is okay!`. The recorded-result audit passed all nine checks.
+
+Evidence: [full log](../evidence/upstream-refresh/updated-euler-comparator.log),
+[execution result](../evidence/upstream-refresh/updated-euler-comparator-result.json),
+and [consistency audit](../evidence/upstream-refresh/updated-euler-comparator-audit.json).
+This is independent kernel acceptance of the configured Euler challenge at the
+pinned revision. It does not verify our extension, resolve the actual-profile
+pressure premise, or establish molecular/constitutive consequences. Human
+review of definitions and physical interpretation remains a separate task.
 
 ## Recorded-result audit
 
-After the live run finishes and its result JSON is written, run:
+To reproduce the completed recorded-result audit, run:
 
 ```sh
 python3 -m tools.audit_comparator_result \

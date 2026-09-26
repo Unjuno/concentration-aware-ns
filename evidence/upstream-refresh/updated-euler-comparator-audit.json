@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "checks": {
+    "exit_zero": true,
+    "log_hash_matches": true,
+    "source_pin_matches": true,
+    "nanoda_enabled": true,
+    "targets_nonempty_unique": true,
+    "target_axioms_present_and_permitted": true,
+    "nanoda_accepted": true,
+    "lean_accepted": true,
+    "final_success": true
+  },
+  "targets": [
+    "Euler.euler_breakdown_R3",
+    "Euler.exists_compact_smooth_euler_singularity"
+  ],
+  "scope": "Recorded log and configuration consistency only; not a new kernel run or source semantics audit.",
+  "result_sha256": "b239495aab3b710c7b9f8db246ce0aed4bb2e019e99a0506289a195fa3bfb67b",
+  "inputs_sha256": "bd50ea3a9a263f77f0dea0f1b7db02b9b21ea8b360432143852f214e183cda4d"
+}
