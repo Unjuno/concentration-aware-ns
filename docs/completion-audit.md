@@ -1,8 +1,12 @@
-# Completion audit — interim, 2026-09-26
+# Completion audit — interim, 2026-09-27
 
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
+
+The table is current as of September 27; dated entries below retain historical
+run scopes. The [impact-scope report](../reports/impact-scope.md) now maps each
+finding to a supported improvement and the evidence required to extend it.
 
 | Requirement | Inspected evidence | Current conclusion |
 |---|---|---|
@@ -15,9 +19,9 @@ measured behavior take precedence over prior progress summaries.
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
 | Evidence-linked acceptance gate | v2 checker; 36 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
-| Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
-| Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
-| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. The selected base-field material trajectory and its transfer to the actual activated periodic field are now Lean-verified; strain remains hand-derived; the full physical axial viscous-force ratio is Lean-checked under explicit pressure assumptions. Root existence and the local pressure-threshold equivalence are checked, but the actual profile threshold remains unproved. New pinned Lean proofs cover the selected slow-sum radial derivative limit, its natural-profile identification and eventual negative sign at an existing root. Euler and finite-stage extraction remain unperformed. |
+| Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question and six-case BDF2 order-reduction follow-up submitted; no general-fix claim |
+| Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
+| OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current 125-report extension checks; docs/axis-flow-derivative.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Uniqueness and nonlinear-flow identification have classical proofs, not an end-to-end Lean proof. Compact-interval finite-displacement bounds have non-effective constants. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. Euler and finite-stage extraction remain unperformed. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published; tracked-only export and fresh-venv postprocessing pass. Solver-build reproduction and analytic-hypothesis review remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
@@ -25,9 +29,9 @@ substitute for an unperformed required run or a missing final report. The archiv
 inventory verifies readability and identity only. A recorded zero exit code does
 not prove accuracy, convergence or the correctness of the underlying review.
 
-Current report replay covers twelve steps, including all five SU2 archive
+Current report replay covers thirteen steps, including all five SU2 archive
 reviews, diagnostic replays, spectral derivatives, direct temporal differences
-and gate generation. The current 36 tests and 93 matching artifact links
+and gate generation, including the separate BDF2 control. The current 36 tests and 93 matching artifact links
 verify their stated implementation and provenance scopes, not continuum accuracy.
 PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
 be repaired retrospectively.
@@ -50,7 +54,19 @@ Remaining completion work:
    repeated by this postprocessing check.
 5. Audit the requested impact analysis against what the evidence supports.
    No finite benchmark can establish all industrial or molecular consequences;
-   explicitly bound findings by solver versions, cases and construction hypotheses.
+   reports/impact-scope.md now bounds findings by solver versions, cases and
+   construction hypotheses. Effective finite-packet bounds and the actual-profile
+   pressure premise remain unresolved; publication of the scope report does not
+   discharge them.
+
+September 27 reconciliation and replay: all thirteen archived-input replay
+steps completed with exit code zero, including 36 tests and 93 matching artifact
+links. Comparison values and localized verdicts did not change. Both existing
+125-declaration Lean results still match the current extension source and log
+hashes; no new Lean execution is claimed by this reconciliation. The comparative
+report now includes the six BDF2 controls and distinguishes checked deformation
+components from the classical nonlinear-flow argument. No new solver runs,
+training runs, upstream messages or theorem changes occurred in this audit.
 
 This remains an interim audit, not a declaration that all goal requirements
 have been completed.

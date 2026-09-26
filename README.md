@@ -87,12 +87,18 @@ Install `requirements-verification.txt` in a separate Python environment, then r
 python -m tools.review_su2_standard
 python -m tools.check_axis_force
 python -m tools.check_axis_dissipation
+python -m tools.check_axis_deformation
 ```
 
-These checks are separate from the twelve-step report replay. The force and
+These checks are separate from the thirteen-step report replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
 chain or molecular applicability. The aggregate review does not certify
 continuous numerical-field energy.
+
+The current [analytic connection](docs/axis-flow-derivative.md) distinguishes
+Lean-checked component lemmas from the classical nonlinear-flow argument.
+The [comparative audit](reports/comparative-audit.md) includes the separate SU2
+BDF2 reproducer; the eleven localized acceptance verdicts remain UNCERTAIN.
 
 The tracked-only export at commit `a9ff4ab` was also checked in a newly
 created virtual environment: dependency installation, the twelve-step replay

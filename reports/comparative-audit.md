@@ -37,8 +37,13 @@ individual measured threshold violations.
   report. The approximate maxCells behavior agrees with inspected semantics.
 - SU2: source-time contract clarification, with a separate controlled reproducer.
   [Discussion 2890](https://github.com/su2code/SU2/discussions/2890) is the upstream
-  report. Both source-time variants in the control were first-order consistent;
-  no general inconsistency claim follows from the observed time offset.
+  report. The original first-order control was followed by six uniform BDF2
+  runs: the original source timing gives first-order error, while the diagnostic
+  time shift recovers second-order error. All inner residual thresholds pass
+  for these controls. See [the BDF2 report](su2-bdf2-source-time.md) and the
+  [upstream follow-up](https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462).
+  This isolates order reduction for the pinned uniform MMS source path; it
+  does not validate a general time-shift patch or certify the localized runs.
 - PhysicsNeMo: model/training and evaluation limitations in this configuration.
   Explicit caller-supplied time derivatives agree with the documented API.
   No framework defect demonstrated; the standalone validation benchmark is
@@ -50,8 +55,14 @@ The separate OpenAI construction analysis checks the actual assembled field's
 axial material trajectory and physical viscous-force/material-acceleration ratio
 in Lean. A strictly negative limit remains conditional on quantitative pressure
 data for the selected profile; root existence is supplied by a checked corollary.
-Infinitesimal deformation remains hand-derived with symbolic checks. The original
-NS target's independent kernel acceptance does not verify this extension, and
+The full axis Jacobian, explicit variational solution, inverse identity and
+eventual axis smoothness are now Lean-checked (125 reports on both pins).
+[Uniqueness](../docs/axis-variational-uniqueness.md) and
+[nonlinear-flow derivative identification](../docs/axis-flow-derivative.md)
+have classical proofs; the complete connection is not yet Lean-formalized.
+The latter gives a quadratic local remainder on each fixed interval ending
+before the singular time, with non-effective constants. The original NS
+target's independent kernel acceptance does not verify this extension, and
 none of these results establishes molecular alignment or a phase transition.
 
 ## Evidence and reproduction
@@ -60,7 +71,7 @@ Read [OpenFOAM](openfoam-study-v1.md), [SU2](su2-study-v1-interim.md),
 [PhysicsNeMo](physicsnemo-study-v1.md), and
 [upstream disposition](upstream-disposition.md) for details. Raw archives and
 input hashes are in the corresponding evidence directories. Run
-`python3 -m tools.replay_published_reports` for the twelve-step report replay;
+`python3 -m tools.replay_published_reports` for the thirteen-step report replay;
 this does not rerun solvers or train networks. Run
 `python -m tools.review_su2_standard` with NumPy/SciPy for the additional SU2
 aggregate review, and `python -m tools.check_axis_force` with SymPy 1.14.0 for
