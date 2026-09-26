@@ -1,4 +1,4 @@
-"""Replay deterministic report generation from published archived inputs.
+"""Replay report generation and exact algebra checks from published inputs.
 
 Does not rerun PDE solvers, train networks, or verify the OpenAI proof.
 """
@@ -21,6 +21,9 @@ steps = [
     ('openfoam_gate', [sys.executable, '-m', 'tools.build_openfoam_report']),
     ('physicsnemo_gates', [sys.executable, '-m', 'tools.build_physicsnemo_report']),
     ('su2_gates', [sys.executable, '-m', 'tools.build_su2_report']),
+    ('root_pressure_threshold', [sys.executable, '-m', 'tools.check_root_pressure_threshold']),
+    ('pressure_moment_threshold', [sys.executable, '-m', 'tools.check_pressure_moment_threshold']),
+    ('cone_sign_symmetry', [sys.executable, '-m', 'tools.check_cone_sign_symmetry']),
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),
 ]
 output = Path('evidence/report-replay');output.mkdir(exist_ok=True)
@@ -33,6 +36,6 @@ for name, command in steps:
     if run.returncode:
         break
 success = len(records)==len(steps) and all(r['exit_code']==0 for r in records)
-(output/'summary.json').write_text(json.dumps({'scope':'Report generation replay only. No new solver/training/proof run and no scientific verdict upgrade.', 'success':success, 'steps':records},indent=2)+'\n')
+(output/'summary.json').write_text(json.dumps({'scope':'Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.', 'success':success, 'steps':records},indent=2)+'\n')
 print(json.dumps({'success':success,'completed_steps':len(records)},indent=2))
 raise SystemExit(0 if success else 1)

@@ -51,7 +51,7 @@ These checks validate formula consistency; they do not constitute solver runs.
 
 ## Replay published report generation
 
-After installing requirements.txt, run from the repository root:
+After installing requirements-verification.txt, run from the repository root:
 
 ```sh
 python3 -m tools.replay_published_reports
@@ -59,7 +59,8 @@ python3 -m tools.replay_published_reports
 
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics, rebuilds the
-OpenFOAM, SU2 and PhysicsNeMo gates, and checks every gate artifact hash. Logs and
+OpenFOAM, SU2 and PhysicsNeMo gates, checks the root-pressure and pressure-moment
+identities and cone sign symmetry, and checks every gate artifact hash. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
 train networks or validate the OpenAI proof. The current replay covers all five required SU2 cases.
 Scientific UNCERTAIN results remain so.
@@ -91,7 +92,7 @@ python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
 ```
 
-These checks are separate from the thirteen-step report replay. The force and
+These checks are separate from the sixteen-step report and exact-algebra replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
 chain or molecular applicability. The aggregate review does not certify
 continuous numerical-field energy.

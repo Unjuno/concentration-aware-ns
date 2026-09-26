@@ -18,7 +18,7 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 36 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 45 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question and six-case BDF2 order-reduction follow-up submitted; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. Nonlinear-flow identification still uses a classical proof; there is no end-to-end Lean flow theorem. Compact-interval finite-displacement bounds have non-effective constants. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has now been accepted by nanoda and Lean, with exit code 0 and all recorded-result checks passing (reports/euler-independent-verification.md); this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
@@ -29,9 +29,10 @@ substitute for an unperformed required run or a missing final report. The archiv
 inventory verifies readability and identity only. A recorded zero exit code does
 not prove accuracy, convergence or the correctness of the underlying review.
 
-Current report replay covers thirteen steps, including all five SU2 archive
+Current report and exact-algebra replay covers sixteen steps, including all five SU2 archive
 reviews, diagnostic replays, spectral derivatives, direct temporal differences
-and gate generation, including the separate BDF2 control. The current 36 tests and 93 matching artifact links
+and gate generation, including the separate BDF2 control, root-pressure identities,
+pressure-moment threshold and cone sign symmetry. The current 45 tests and 93 matching artifact links
 verify their stated implementation and provenance scopes, not continuum accuracy.
 PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
 be repaired retrospectively.
@@ -136,3 +137,12 @@ were NumPy version metadata and propagated hashes; numeric results/verdicts
 were unchanged. See `evidence/clean-export-2026-09-27/README.md` for the exact
 scope, preserved failure, differences and logs. This adds reproducibility
 evidence without discharging the open physical, analytic or formal premises.
+
+
+Integrated pressure-analysis replay (2026-09-27): all sixteen steps exited zero,
+including 45 tests and 93 matching artifact links. The three added algebra
+checks reproduced their existing JSON exactly; existing comparison values and
+gate reports were unchanged. The current replay requires
+`requirements-verification.txt` for SymPy and SciPy. Logs and hashes are in
+`evidence/report-replay/summary.json`. This is not a new clean-export, solver,
+training or Lean run, and it does not resolve the actual-profile pressure gap.

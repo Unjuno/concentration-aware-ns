@@ -1,11 +1,11 @@
 {
-  "scope": "Report generation replay only. No new solver/training/proof run and no scientific verdict upgrade.",
+  "scope": "Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.",
   "success": true,
   "steps": [
     {
       "step": "tests",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "unittest",
         "discover",
@@ -14,12 +14,12 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "9cd79d6eeec6d15b6b46937636380374b1bd7aae181d70a34ab8ae8eb6639afd"
+      "log_sha256": "fabfd332189918e28a0871d501f89246a77ebff59189a3758b563d635031fc19"
     },
     {
       "step": "global_peaks",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_global_peaks"
       ],
@@ -30,7 +30,7 @@
     {
       "step": "peak_decomposition",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.decompose_peak_diagnostic"
       ],
@@ -41,7 +41,7 @@
     {
       "step": "spectral_derivatives",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_openfoam_spectral"
       ],
@@ -52,7 +52,7 @@
     {
       "step": "su2_archive_review",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.review_su2_archives"
       ],
@@ -63,7 +63,7 @@
     {
       "step": "su2_diagnostic_replay",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.replay_su2_diagnostics"
       ],
@@ -74,7 +74,7 @@
     {
       "step": "su2_spectral_derivatives",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_su2_spectral"
       ],
@@ -85,7 +85,7 @@
     {
       "step": "su2_time_comparison",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_su2_time"
       ],
@@ -96,7 +96,7 @@
     {
       "step": "su2_bdf2_control",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_su2_bdf2_control"
       ],
@@ -107,7 +107,7 @@
     {
       "step": "openfoam_gate",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_openfoam_report"
       ],
@@ -118,7 +118,7 @@
     {
       "step": "physicsnemo_gates",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_physicsnemo_report"
       ],
@@ -129,7 +129,7 @@
     {
       "step": "su2_gates",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_su2_report"
       ],
@@ -138,9 +138,42 @@
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "step": "root_pressure_threshold",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_root_pressure_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/root_pressure_threshold.log",
+      "log_sha256": "ccc567315bdbb012e080a477900961ef90233159b042385f3d978c3b56cc4da6"
+    },
+    {
+      "step": "pressure_moment_threshold",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_pressure_moment_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/pressure_moment_threshold.log",
+      "log_sha256": "5481a91d11b7e16a1701c3fcbb71671d081e20889a598a41fe1e8697413187a4"
+    },
+    {
+      "step": "cone_sign_symmetry",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_cone_sign_symmetry"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/cone_sign_symmetry.log",
+      "log_sha256": "f542f1288d1a10d0159adeb7087ef1abe08e6242c672da0a3a30aef7e8d6032f"
+    },
+    {
       "step": "artifact_links",
       "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.audit_gate_artifacts"
       ],
