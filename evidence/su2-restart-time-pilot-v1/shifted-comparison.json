@@ -1,0 +1,25 @@
+{
+  "scope": "Same-variant split versus continuous comparison at saved steps 3 and 4. Does not establish physical accuracy, temporal order, cross-version restart or a general fix.",
+  "comparisons": [
+    {
+      "saved_index": 2,
+      "max_differences": {
+        "Pressure": 1.4216058885629934e-15,
+        "Velocity_x": 1.1102230246251565e-15,
+        "Velocity_y": 3.355605723842636e-17,
+        "Velocity_z": 3.382710778154774e-17
+      },
+      "within_tolerance": true
+    },
+    {
+      "saved_index": 3,
+      "max_differences": {
+        "Pressure": 1.9633003989910636e-15,
+        "Velocity_x": 1.1102230246251565e-15,
+        "Velocity_y": 7.769663818574246e-17,
+        "Velocity_z": 7.499968528168477e-17
+      },
+      "within_tolerance": true
+    }
+  ]
+}

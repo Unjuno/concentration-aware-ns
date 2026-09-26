@@ -43,3 +43,8 @@ scope of the already posted finding without providing a new runtime defect.
 A subsequent [two-step Dirichlet pilot](su2-boundary-time-pilot.md) now observes
 the boundary time in both existing images and the unchanged history time labels.
 The temporal-order and restart regressions listed above remain unperformed.
+
+The [restart pilot](su2-restart-time-pilot.md) subsequently found matching
+same-variant fields but a one-step discrepancy in restarted history labels.
+The checker preserves that failure. The general restart contract and source
+attribution remain under investigation.

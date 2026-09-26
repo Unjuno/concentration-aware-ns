@@ -1,0 +1,9 @@
+{
+ "status":"frozen before execution",
+ "n":4,"dt":0.1,"end":0.4,"restart_iter":2,"inner_cap":1000,
+ "scheme":"DUAL_TIME_STEPPING-2ND_ORDER",
+ "boundary":"MARKER_CUSTOM on all six faces",
+ "prefix":"The archived two-step boundary pilot, same variant; copy both saved history states",
+ "comparison_absolute_tolerance":1e-7,"log10_residual_threshold":-10,
+ "scope":"Same-variant split versus continuous comparison at saved steps 3 and 4. Does not establish physical accuracy, temporal order, cross-version restart or a general fix."
+}
