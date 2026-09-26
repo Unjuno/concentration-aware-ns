@@ -1,0 +1,18 @@
+{
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "scope": "Source inspection of retained hypotheses only; no impossibility theorem or new kernel execution.",
+  "files": {
+    "work/upstream-refresh/build-source/NavierStokes/NominalProfile.lean": "59f2977035db50e680ee38cf4503c47497e50a58a6043d083fdd8755dac06c88",
+    "work/upstream-refresh/build-source/NavierStokes/OutgoingProfile.lean": "c62ac452804940732e017daa7ae11545e3db58ee22b5effa395dc3ff9afde520",
+    "work/upstream-refresh/build-source/NavierStokes/NominalConeAssembly.lean": "ad0f8947723416c950c1e3cbb82bac8c83b03ef25fa5aba495a3e29508b14cb5",
+    "work/upstream-refresh/build-source/NavierStokes/ActivationContinuation.lean": "569aac3c37212cfe327dd392f5647d2184f06e5043605d8b6a6e59e510f73c3b",
+    "work/upstream-refresh/build-source/NavierStokes/NaturalEntrance.lean": "05d4871c68cbf59486ba5a34fe42c3c3963218e2ba7be2408363d5f8a8f26af3"
+  },
+  "findings": {
+    "nominal_witness": "NominalProfile.lean:2481 retains outgoing_specification and axis data",
+    "specification": "OutgoingProfile.lean:557 has no explicit core.P lower bound; exists_profile_for_data at line 594 takes any P>0",
+    "certificate": "NominalConeAssembly.lean:1362 retains relaxed, initial, outgoing cone conditions",
+    "entrance": "NaturalEntrance.lean:1096 retains source_lower, slope_positive, cone_margin; existence theorem line 1109 uses abs(Z) cutoff condition",
+    "remaining_obligation": "Derive a quantitative moment bound from these retained conditions, or carry the qualified witness through assembly. Absence of a field does not prove non-derivability."
+  }
+}

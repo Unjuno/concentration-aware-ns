@@ -64,3 +64,36 @@ Next obligation: derive a quantitative moment or amplitude bound from retained
 nominal/certificate data, or carry the pressure-qualified existential witness
 through the complete assembly. The present reduction narrows that obligation;
 it does not identify a new material-viscosity law.
+
+## Retained-condition audit
+
+The selected `ProfileData` contains a `NominalProfile.Witness`. Its
+`outgoing_specification` field (NominalProfile.lean:2481) carries the full
+`OutgoingProfile.Specification`, not just smoothness. That record
+(OutgoingProfile.lean:557) includes pressure identities and ideal-prefix
+formulas, but no explicit lower bound on core amplitude b. The construction
+`exists_profile_for_data` (line 594) takes any b>0, with parameter-dependent
+smallness thresholds. This prevents treating that construction theorem as a
+uniform numerical amplitude bound. It does not exhibit an arbitrary small-b
+complete `ProfileData`, because nominal and cone conditions still have to hold.
+
+The retained `NominalConeAssembly.Certificate` (line 1362) has relaxed-cone,
+initial true-cone and outgoing true-cone conditions. `IsTrue` (line 31) means
+`IsRelaxed` plus a shear-size inequality. In turn, `IsRelaxed`
+(ActivationContinuation.lean:147) is stated in shear and stress coordinates;
+it is not literally the moment threshold above. These field inequalities
+might imply a useful bound, but an axis-limit/coordinate argument is required.
+Neither positivity of a stress coordinate nor a cone certificate can be
+silently relabeled as Z>0.
+
+The nested `NaturalEntrance.EntranceProfile` (line 1096) retains source,
+slope and cone-margin inequalities. Its existence theorem (line 1109) uses
+a cutoff condition involving |Z|, not a direct Z>0 premise. Again, this is
+an audit of explicit hypotheses, not a proof that their consequences cannot
+supply the desired bound.
+
+The inspected source hashes and declaration locations are saved in
+`evidence/upstream-refresh/pressure-retained-conditions.json`. No upstream
+bug or counterexample follows from this audit. The next concrete proof route
+is to express the retained cone inequalities in the actual natural-axis jets
+and determine whether they constrain the weighted moment above.
