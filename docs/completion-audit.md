@@ -96,3 +96,11 @@ standard-acceptance decision. The raw review can be regenerated separately with
 The integration replay passed all twelve steps and 36 tests; all 93 artifact
 links match (five additional SU2 aggregate-review links). All eleven gate
 verdict files are unchanged.
+
+
+The forcing-scope comparison is now explicit in
+`reports/forcing-scope-audit.md`: the implemented manufactured force is analytic
+for fixed positive sigma, while the construction and later regularity/density
+results have different forcing quantifiers and hypotheses. This addresses part
+of the impact audit without extending any numerical verdict to singularities.
+Full follow-up-paper proof review and updated-source compatibility remain open.
