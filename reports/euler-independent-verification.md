@@ -11,6 +11,14 @@ The entry-point hashes were read from the live container and matched the local
 pinned source. Checker fingerprints and the exact challenge configuration are
 in `evidence/upstream-refresh/updated-euler-comparator-inputs.json`.
 
+A subsequent live-container audit checked all 2,669 regular files from the
+pinned source archive. Every file matched, allowing only the two previously
+recorded local dependency configuration overrides (`lakefile.toml` and
+`lake-manifest.json`). There were no missing or mismatched files. The archive
+hash, overrides, observation time and scope are recorded in
+`evidence/upstream-refresh/euler-live-source-integrity.json`. Generated build
+files are excluded; this is source identity evidence, not kernel acceptance.
+
 ## What this challenge asks
 
 `Euler.euler_breakdown_R3` asserts existence of rapidly decaying smooth,

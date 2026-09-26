@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-09-26T16:21:59.500271+00:00",
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "source_archive_sha256": "9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7",
+  "container": "cans-updated-comparator-euler",
+  "files_checked": 2669,
+  "configuration_overrides": {
+    "lake-manifest.json": "db8c236ee5bede059b13198f41249a94e7d6b084cd13a4c2f77bfe59edb6ff61",
+    "lakefile.toml": "78c5927d6078008293d3d82e4b9ab1df2f36035947a9afdbcad49b83d8a51429"
+  },
+  "missing": [],
+  "mismatched": [],
+  "success": true,
+  "scope": "Every regular file in pinned source archive compared with live read-only container source; two recorded local dependency configuration overrides. Generated build files excluded. Does not establish theorem acceptance."
+}
