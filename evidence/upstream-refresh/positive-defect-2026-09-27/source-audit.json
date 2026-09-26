@@ -1,0 +1,45 @@
+{
+  "observed_at_utc": "2026-09-26T15:19:57.764285+00:00",
+  "repository": "researchathomology/NS_ENERGY_DEFECT_REDUCTION",
+  "commit": "fe8b8217b2e342fb5fc0dc8514e651b5df12d930",
+  "files": {
+    "README.md": {
+      "sha256": "7ebf297736ed1b9deccd3138d143a4f5c29361d10797093130938262b93e5691",
+      "bytes": 5811,
+      "git_blob_sha": "a32ed9f32eb677aee9775ea89ff7bcb963af30fa"
+    },
+    "EnergyDefect/EnergyDefect.lean": {
+      "sha256": "c216dcbbb09ccebc97a370b529c36cc6a380808a8eeb9166b0d2d715d17bc229",
+      "bytes": 10233,
+      "git_blob_sha": "3dad52b4c6f3006d4114ef906549e5ed196e0462"
+    },
+    "EnergyDefect/ValidatedProof.lean": {
+      "sha256": "7c8ffa52026b6dbe67573118ea3227ff9b68b7d200dc49fad2fbbafefa6587c8",
+      "bytes": 8662,
+      "git_blob_sha": "de06f7f7687cff0de4af871cc790ce49aefe7a9d"
+    },
+    "lean-toolchain": {
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "bytes": 25,
+      "git_blob_sha": "025e59548e48cf71f2744154e2890beefe30a258"
+    },
+    "lake-manifest.json": {
+      "sha256": "0026d14794ed9d279b6ed02b4862895b6a442c8853ecd9bd4050978949906168",
+      "bytes": 3146,
+      "git_blob_sha": "05d0a2d04b9229ec7b9e6e3a48244bad6c6879cd"
+    },
+    "LICENSE": {
+      "sha256": "71102c0ea81565635a83a1f8b9973a158dd0a2b21df03b4919634cec419c662b",
+      "bytes": 10776
+    },
+    "NOTICE": {
+      "sha256": "0895c8bc4e968b6f3b8458564f07eb8e80149c7e800daf30f42d947a68ea2aae",
+      "bytes": 563
+    }
+  },
+  "paper": "https://arxiv.org/html/2609.23868v1",
+  "scope": "Pinned source and theorem-assumption inspection only; no local compilation or numerical replay.",
+  "upstream_readme_build_status": "README reports package not rebuilt after regeneration; this is not evidence of a build failure.",
+  "openai_main_at_observation": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "openai_main_matches_previously_verified_pin": true
+}

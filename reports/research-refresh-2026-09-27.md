@@ -1,0 +1,74 @@
+# Research refresh: 2026-09-27 (JST)
+
+## Newly identified follow-up
+
+[Petrillo and Glimm, arXiv:2609.23868v1, September 20](https://arxiv.org/html/2609.23868v1)
+formulate a positive energy-defect target for unforced periodic Navier–Stokes
+at fixed positive viscosity. Their target implies blowup; the converse is
+not established. They distinguish a flux lower bound over finitely many
+resolved scales from a uniform bound at arbitrarily fine scales. The paper
+does not construct a solution realizing its target. Its formal library uses
+abstract functions and sequences; connection to formal Navier–Stokes solution
+objects remains outside that library. These are useful limits on inference,
+not a new proof of unforced blowup or changing material viscosity.
+
+## Pinned source inspection
+
+Inspected [commit fe8b8217b2e342fb5fc0dc8514e651b5df12d930](https://github.com/researchathomology/NS_ENERGY_DEFECT_REDUCTION/tree/fe8b8217b2e342fb5fc0dc8514e651b5df12d930).
+Selected source files, Apache license, notice, toolchain and dependency manifest
+are archived under `evidence/upstream-refresh/positive-defect-2026-09-27/`.
+`source-audit.json` records hashes and observation time. This is source
+inspection, **not a local Lean build or independent-kernel verification**.
+
+Concrete declaration boundaries in `EnergyDefect/EnergyDefect.lean`:
+
+| Declaration | Input that must still be established for a physical/PDE application |
+|---|---|
+| `flux_tendsto_defect` | Shell balance identity and three convergence hypotheses |
+| `averaged_tail_floor_le_defect` | Convergence to the defect and a lower bound for every sufficiently large index |
+| `defect_gives_averaged_tail_floor` | An already positive limiting defect, above the proposed lower bound |
+
+`ValidatedProof.lean` likewise takes the computed lower bound, analytic upper
+bound and enclosure assumptions as inputs to `validated_epoch_ends_inside`.
+None of these inspected declarations supplies a particular Navier–Stokes
+trajectory satisfying the inputs.
+
+The pinned README reports that the regenerated 17-module package has not been
+rebuilt as a whole, while describing successful older builds. This is an
+unresolved build-evidence item, **not an observed compilation failure**. Do not
+promote the older build to validation of this pin, or file an upstream defect
+on that basis. No upstream issue was submitted for this inspection.
+
+## Consequences for our work
+
+Our finite-resolution acceptance gates remain accuracy diagnostics. A measured
+flux plateau, energy-budget residual or localized gradient cannot on its own
+certify a continuum singularity. For a forced periodic smooth solution, an
+energy-budget diagnostic must include external work:
+
+`E(t0) - E(t1) + integral <f,u> - nu * integral ||grad u||^2`.
+
+That residual should vanish for the exact smooth solution. A nonzero numerical
+value first requires checking quadrature, spatial/time errors and forcing
+alignment. A nonperiodic domain additionally requires the appropriate boundary
+fluxes. This is our diagnostic implication, not a claim that the new paper
+proves our benchmark correct.
+
+The user's concentration → alignment → viscosity hypothesis therefore retains
+separate obligations: identify deformation with the flow derivative, quantify
+directional contraction/extension, and supply a constitutive or microscopic
+model before claiming material viscosity changes. Energy loss beyond a fixed
+viscosity budget is not a derivation of a smaller viscosity coefficient.
+
+## Refresh checks and remaining work
+
+- GitHub API still reports OpenAI `main` at
+  `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, matching our previously checked pin.
+- [Cao–Chi–Nie arXiv:2609.10262](https://arxiv.org/abs/2609.10262) still lists
+  September 22 v4; its page says the change was abstract metadata, with the
+  manuscript unchanged. Search snippets containing an older title are stale.
+- No extension theorem changed in this refresh. The existing 123-report
+  Lean checks are historical results for the unchanged extension. Variational
+  uniqueness and identification with a nonlinear flow derivative remain open.
+- This search is bounded literature surveillance, not an exhaustive claim
+  that every new result has been found.
