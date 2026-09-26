@@ -1,0 +1,1139 @@
+{
+  "retrieved_utc": "2026-09-26T13:24:30.973734+00:00",
+  "base": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "status": "ahead",
+  "ahead_by": 1,
+  "api_file_count": 188,
+  "scope": "GitHub compare response; file list may be API-limited. No new Lean verification.",
+  "files": [
+    {
+      "filename": "NavierStokes.lean",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ActivationCone.lean",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "filename": "NavierStokes/ActivationContinuation.lean",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "filename": "NavierStokes/ActiveAnnulusWeight.lean",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "filename": "NavierStokes/ActualBasePressureBounds.lean",
+      "status": "added",
+      "additions": 151,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AppendixHeatResults.lean",
+      "status": "added",
+      "additions": 177,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AppendixJoiningResults.lean",
+      "status": "added",
+      "additions": 101,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisAnalyticCoefficients.lean",
+      "status": "added",
+      "additions": 79,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisAnalyticRadialSeries.lean",
+      "status": "added",
+      "additions": 87,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisInverseFactors.lean",
+      "status": "added",
+      "additions": 264,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisJointAnalytic.lean",
+      "status": "added",
+      "additions": 125,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisModelBounds.lean",
+      "status": "added",
+      "additions": 60,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/AxisRootPressureBounds.lean",
+      "status": "added",
+      "additions": 75,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/BaseAngularGrowth.lean",
+      "status": "added",
+      "additions": 127,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ClosedIntervalCk.lean",
+      "status": "added",
+      "additions": 337,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ClosedIntervalCkOperators.lean",
+      "status": "added",
+      "additions": 282,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ClosedIntervalJetAlgebra.lean",
+      "status": "added",
+      "additions": 293,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ClosedIntervalMomentRepair.lean",
+      "status": "added",
+      "additions": 236,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/CommonCoverWithin.lean",
+      "status": "added",
+      "additions": 127,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/CompactHolomorphicFamily.lean",
+      "status": "added",
+      "additions": 61,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ComparatorR3Theorem.lean",
+      "status": "modified",
+      "additions": 8,
+      "deletions": 6
+    },
+    {
+      "filename": "NavierStokes/ComparatorTheorem.lean",
+      "status": "modified",
+      "additions": 7,
+      "deletions": 8
+    },
+    {
+      "filename": "NavierStokes/CurrentPhysicalRadialClosure.lean",
+      "status": "added",
+      "additions": 99,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ExponentialMomentMatrix.lean",
+      "status": "added",
+      "additions": 124,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/FlatPrimitivePaper.lean",
+      "status": "added",
+      "additions": 113,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericAngularRecovery.lean",
+      "status": "added",
+      "additions": 162,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericDiagonalSchedule.lean",
+      "status": "added",
+      "additions": 151,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericDifferentialPolynomial.lean",
+      "status": "added",
+      "additions": 283,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericFactorSupport.lean",
+      "status": "added",
+      "additions": 139,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericJetRateAlgebra.lean",
+      "status": "added",
+      "additions": 62,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericRealization.lean",
+      "status": "added",
+      "additions": 200,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericRealizationBounds.lean",
+      "status": "added",
+      "additions": 288,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericSolenoidalRealization.lean",
+      "status": "added",
+      "additions": 229,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericSummationRealization.lean",
+      "status": "added",
+      "additions": 133,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericSupportLocalCoefficients.lean",
+      "status": "added",
+      "additions": 227,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericSupportLocalSummation.lean",
+      "status": "added",
+      "additions": 165,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericSupportedPolynomial.lean",
+      "status": "added",
+      "additions": 285,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericTupleRealization.lean",
+      "status": "added",
+      "additions": 214,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericTupleSupport.lean",
+      "status": "added",
+      "additions": 190,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/GenericVelocityRates.lean",
+      "status": "added",
+      "additions": 218,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/HolomorphicFamilyAnalytic.lean",
+      "status": "added",
+      "additions": 98,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LabelCounting.lean",
+      "status": "added",
+      "additions": 334,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LabelCountingFinite.lean",
+      "status": "added",
+      "additions": 148,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LeadingStressWeights.lean",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "filename": "NavierStokes/LocalAngularGrowth.lean",
+      "status": "added",
+      "additions": 251,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalAngularScalar.lean",
+      "status": "added",
+      "additions": 108,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalHeatExterior.lean",
+      "status": "added",
+      "additions": 153,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalHeatFormula.lean",
+      "status": "added",
+      "additions": 140,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalHeatPressure.lean",
+      "status": "added",
+      "additions": 107,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalJetBounds.lean",
+      "status": "added",
+      "additions": 112,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalPaperDomain.lean",
+      "status": "added",
+      "additions": 96,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalPaperHeat.lean",
+      "status": "added",
+      "additions": 74,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalPaperTheorem.lean",
+      "status": "added",
+      "additions": 186,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalPotentialRebundle.lean",
+      "status": "added",
+      "additions": 271,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalResidualFlatness.lean",
+      "status": "added",
+      "additions": 131,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalScaleApproach.lean",
+      "status": "added",
+      "additions": 107,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalScaleGeometry.lean",
+      "status": "added",
+      "additions": 62,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalScheduleAngular.lean",
+      "status": "added",
+      "additions": 76,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/LocalScheduleWitness.lean",
+      "status": "added",
+      "additions": 165,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/MeanLocalCoefficient.lean",
+      "status": "added",
+      "additions": 98,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/MeanLocalDefectBounds.lean",
+      "status": "added",
+      "additions": 333,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ModulatedProfileJetRates.lean",
+      "status": "added",
+      "additions": 443,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/MomentRepairPicard.lean",
+      "status": "added",
+      "additions": 105,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/MomentRepairPicardConvergence.lean",
+      "status": "added",
+      "additions": 75,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/NaturalAxisCoefficients.lean",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 12
+    },
+    {
+      "filename": "NavierStokes/NaturalAxisJointAnalytic.lean",
+      "status": "added",
+      "additions": 163,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/NaturalAxisRange.lean",
+      "status": "added",
+      "additions": 252,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/NaturalCore.lean",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "filename": "NavierStokes/NaturalEntrance.lean",
+      "status": "modified",
+      "additions": 20,
+      "deletions": 35
+    },
+    {
+      "filename": "NavierStokes/NaturalExitBounds.lean",
+      "status": "added",
+      "additions": 244,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/NaturalExitParameterJets.lean",
+      "status": "added",
+      "additions": 230,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/NaturalProfile.lean",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 6
+    },
+    {
+      "filename": "NavierStokes/NominalProfile.lean",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "filename": "NavierStokes/OutgoingNegativeSlopeCone.lean",
+      "status": "added",
+      "additions": 156,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PaperAdditionalResults.lean",
+      "status": "added",
+      "additions": 30,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PaperLocalization.lean",
+      "status": "added",
+      "additions": 52,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PaperResults.lean",
+      "status": "added",
+      "additions": 4,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ParameterizedMomentRepair.lean",
+      "status": "added",
+      "additions": 95,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ParticularOneSided.lean",
+      "status": "added",
+      "additions": 225,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ParticularWithinBounds.lean",
+      "status": "added",
+      "additions": 73,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ParticularWithinPressure.lean",
+      "status": "added",
+      "additions": 164,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicComparatorSolution.lean",
+      "status": "added",
+      "additions": 43,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicPaperComparator.lean",
+      "status": "added",
+      "additions": 54,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicPaperScalingSupport.lean",
+      "status": "added",
+      "additions": 111,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicPaperSupport.lean",
+      "status": "added",
+      "additions": 110,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicPaperTheorem.lean",
+      "status": "added",
+      "additions": 164,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicViscosity.lean",
+      "status": "added",
+      "additions": 78,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodicViscosityUniqueness.lean",
+      "status": "added",
+      "additions": 113,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodizeLatticeCover.lean",
+      "status": "added",
+      "additions": 27,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PeriodizePDE.lean",
+      "status": "added",
+      "additions": 153,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/PositiveAxisDifferential.lean",
+      "status": "added",
+      "additions": 286,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/QuadraticLinearization.lean",
+      "status": "added",
+      "additions": 46,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ActualCandidate.lean",
+      "status": "added",
+      "additions": 155,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/CandidateBreakdown.lean",
+      "status": "added",
+      "additions": 79,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ComparatorBridge.lean",
+      "status": "added",
+      "additions": 90,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/DelayedExtension.lean",
+      "status": "added",
+      "additions": 89,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ForceL2Norm.lean",
+      "status": "added",
+      "additions": 96,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Approximation.lean",
+      "status": "added",
+      "additions": 154,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Blowup.lean",
+      "status": "added",
+      "additions": 78,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3BoxIntegral.lean",
+      "status": "added",
+      "additions": 90,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3CandidateStrong.lean",
+      "status": "added",
+      "additions": 123,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3CandidateUniqueness.lean",
+      "status": "added",
+      "additions": 116,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3CompactCurve.lean",
+      "status": "added",
+      "additions": 76,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3CompactHelpers.lean",
+      "status": "added",
+      "additions": 85,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Comparison.lean",
+      "status": "added",
+      "additions": 120,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Continuity.lean",
+      "status": "added",
+      "additions": 108,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Curve.lean",
+      "status": "added",
+      "additions": 128,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Definitions.lean",
+      "status": "added",
+      "additions": 77,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3DivCurlFourier.lean",
+      "status": "added",
+      "additions": 228,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Embedding.lean",
+      "status": "added",
+      "additions": 94,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Energy.lean",
+      "status": "added",
+      "additions": 130,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3MaximalLifespan.lean",
+      "status": "added",
+      "additions": 118,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Operations.lean",
+      "status": "added",
+      "additions": 90,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3PressureDistribution.lean",
+      "status": "added",
+      "additions": 148,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3PressureOrthogonality.lean",
+      "status": "added",
+      "additions": 119,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Products.lean",
+      "status": "added",
+      "additions": 102,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3StrongSolution.lean",
+      "status": "added",
+      "additions": 93,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3Transport.lean",
+      "status": "added",
+      "additions": 148,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3UniformApproximation.lean",
+      "status": "added",
+      "additions": 93,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3WeakEmbedding.lean",
+      "status": "added",
+      "additions": 147,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/H3WeakStrong.lean",
+      "status": "added",
+      "additions": 115,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/IntegratedDissipation.lean",
+      "status": "added",
+      "additions": 294,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/L2TimeDerivative.lean",
+      "status": "added",
+      "additions": 124,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ParabolicCalculus.lean",
+      "status": "added",
+      "additions": 87,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ParabolicDefinitions.lean",
+      "status": "added",
+      "additions": 34,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ParabolicEnergy.lean",
+      "status": "added",
+      "additions": 63,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ParabolicScaling.lean",
+      "status": "added",
+      "additions": 141,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ParabolicSupport.lean",
+      "status": "added",
+      "additions": 71,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/PositiveTimeForce.lean",
+      "status": "added",
+      "additions": 82,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/SharpEnergyBound.lean",
+      "status": "added",
+      "additions": 68,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/SpatialCauchySchwarz.lean",
+      "status": "added",
+      "additions": 46,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/SpatialEnergyScaling.lean",
+      "status": "added",
+      "additions": 52,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/SpatialSupportScaling.lean",
+      "status": "added",
+      "additions": 62,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/Theorem.lean",
+      "status": "added",
+      "additions": 81,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ViscosityScaling.lean",
+      "status": "added",
+      "additions": 197,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ViscousEnergyBalance.lean",
+      "status": "added",
+      "additions": 114,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/R3/ViscousUniqueness.lean",
+      "status": "added",
+      "additions": 59,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ReferenceBounds.lean",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "filename": "NavierStokes/ReferenceEndpointRate.lean",
+      "status": "added",
+      "additions": 310,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ReferenceUniformJets.lean",
+      "status": "added",
+      "additions": 410,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/ReferenceUniformStocks.lean",
+      "status": "added",
+      "additions": 461,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/RegularSingularIntegral.lean",
+      "status": "added",
+      "additions": 49,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SeedConePaper.lean",
+      "status": "added",
+      "additions": 91,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SeedHandbackJets.lean",
+      "status": "added",
+      "additions": 392,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpActualStageBounds.lean",
+      "status": "added",
+      "additions": 78,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpCommonGraphJets.lean",
+      "status": "added",
+      "additions": 61,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpCurrentModeJets.lean",
+      "status": "added",
+      "additions": 196,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpCurrentParticularBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpCurrentPhysicalPhase.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpGeometricModeJets.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpGluedStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpGraphBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpLogWeights.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpMeanJetBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpMeanStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpParticularGluing.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpParticularStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhaseJetAlgebra.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhysicalCarrier.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhysicalCopyBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhysicalLogBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhysicalLoss.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpPhysicalPhase.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SharpWaveStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SmoothExponentialMomentMatrix.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SmoothPowerMomentMatrix.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/SmoothQuadraticBranch.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/TerminalEdgePaper.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/TorusCoverDegree.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/TorusCoverLattice.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/TrueConeLoopPaper.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/UniformQuadraticBranch.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainActualStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainBaseBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainCompactBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainHeatBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainHeatCompact.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainHeatGeometry.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainHeatScaling.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainInitializationBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainPhysicalCompact.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainPhysicalStageTheorem.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainPrefixBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WholeDomainStageBounds.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WithinJointODE.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "NavierStokes/WithinPathFamily.lean",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "README.md",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 0
+    },
+    {
+      "filename": "formalization.yaml",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 0
+    }
+  ]
+}

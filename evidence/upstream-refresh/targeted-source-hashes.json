@@ -1,0 +1,9 @@
+{
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "source_prefix": "https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/",
+  "sha256": {
+    "PaperResults.lean": "9e4032915e85ddeb9b1452250730422614a36351b27991277866df2b2349c477",
+    "FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "NaturalAxisData.lean": "4fff0e94f1b98acec9ac9efc83a7df8cfe83475e241d79d3697c8df2ab2835f8"
+  }
+}
