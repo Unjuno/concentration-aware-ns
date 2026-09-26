@@ -2499,4 +2499,71 @@ theorem selected_root_axial_stretch_hasDerivAt
 
 #print axioms selected_root_axial_stretch_hasDerivAt
 
+
+theorem selected_root_velocity_axial_hasDerivAt
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t eta : ℝ) (B : ℕ)
+    (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hroot : NaturalAxisData.H F.data.h W.axis.j eta = 0) :
+    HasDerivAt (fun z : ℝ => FinalSlowBase.velocity H v upper B
+      (t,AxisymmetricResidual.pack 0 0 z) 2)
+      (materialStretchCoefficient F.data.h eta / (1-t))
+      (eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h) := by
+  have hf : (fun z : ℝ => FinalSlowBase.velocity H v upper B
+      (t,AxisymmetricResidual.pack 0 0 z) 2) =
+      (fun z : ℝ => SlowBorelBase.streamFactor
+        (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+        (FinalSlowBase.coefficients H v) (t,(0,z))) := by
+    funext z
+    change SlowBorelBase.baseVelocity _ _ _ _ _ 2 = _
+    rw [congrFun (selected_base_velocity_slice_eq H v upper t B ht)
+      (AxisymmetricResidual.pack 0 0 z)]
+    simp only [AxisymmetricResidual.velocity, AxisymmetricResidual.lift,
+      AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy,
+      AxisymmetricResidual.pack_zero, AxisymmetricResidual.pack_one, AxisymmetricResidual.pack_two,
+      zero_pow (by decide : 2 ≠ 0), zero_add, zero_div, zero_mul, add_zero]
+  rw [hf]
+  exact selected_root_axial_stretch_hasDerivAt H v upper t eta B ht heta hroot
+
+theorem actual_root_velocity_axial_hasDerivAt
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    HasDerivAt (fun z : ℝ => u (1-q*(1-eta^2),AxisymmetricResidual.pack 0 0 z) 2)
+      (materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta / (q*(1-eta^2)))
+      (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h) := by
+  intro u
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2)=q := by field_simp; ring
+  have hcont : ContinuousAt (fun z : ℝ => AxisymmetricResidual.pack 0 0 z)
+      (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h) := by
+    simpa [AxisymmetricResidual.pack] using
+      ((hasDerivAt_id (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)).smul_const
+        (ProblemStatement.coordinateVector 2)).continuousAt
+  have hcomp := he.comp_tendsto (continuousAt_const.prodMk hcont)
+  have hc := hcomp.mono (fun z hz => congrArg (fun x : ProblemStatement.Space => x 2) hz)
+  have hv := selected_root_velocity_axial_hasDerivAt
+    CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation
+    CorrectionInitialization.ActualPrimary.upper (1-q*(1-eta^2)) eta B ht heta root
+  rw [hqt] at hv
+  have htime : 1-(1-q*(1-eta^2))=q*(1-eta^2) := by ring
+  rw [htime] at hv
+  exact hv.congr_of_eventuallyEq hc
+
+#print axioms selected_root_velocity_axial_hasDerivAt
+#print axioms actual_root_velocity_axial_hasDerivAt
+
 end ConcentrationAware

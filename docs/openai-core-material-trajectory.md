@@ -1578,3 +1578,25 @@ root-coefficient identity, rather than assuming the inverse-coordinate chain.
 Together with C>0 this establishes a positive axial derivative in this selected
 base setting. The transfer of the full Jacobian to the actual assembled field
 and the matrix deformation ODE remain open.
+
+
+## Axial velocity derivative transferred to the actual assembled field
+
+`selected_root_velocity_axial_hasDerivAt` identifies the selected base velocity's
+third Cartesian component on the full axial line with streamFactor and applies
+the C/(1-t) derivative result. `actual_root_velocity_axial_hasDerivAt` then uses
+the already-proved spacetime neighborhood equality to transfer that derivative
+to the activated periodic assembled velocity. For eta in (-1,1) satisfying the
+actual natural-axis root equation, and any real schedule tending to infinity,
+with B,N0 and the stated geometric threshold, eventually as q approaches zero
+from above it proves
+
+    d/dz u_3(1-q*(1-eta²), (0,0,z)) at z=eta*q^D
+      = C / (q*(1-eta²)).
+
+This is an eventual axial derivative of the actual assembled field under the
+explicit assembly/schedule/root hypotheses, not merely a scalar ansatz. It
+does not require PressureData. The root is conditional in this theorem; earlier
+source root-existence results can supply it. This closes the axial-entry transfer
+step only. Transverse entries, the full deformation ODE and finite-particle
+interpretations remain unproved here.

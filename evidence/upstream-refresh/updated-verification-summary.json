@@ -3,15 +3,15 @@
   "target": "NavierStokes.ActualCandidateAssembly",
   "build_exit_code": 0,
   "extension_success": true,
-  "extension_axiom_reports": 107,
+  "extension_axiom_reports": 109,
   "extension_source_unchanged_from_original_pinned_check": true,
   "artifacts": {
     "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
     "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
     "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
-    "updated-axis-force-sign.json": "1902c462d3b84bfb1c2a3cd80a6f7e2de6b5cd1d53384ec74786e6c562ae9636",
-    "updated-axis-force-sign.log": "0ee80dc6a6077926282758a28e106b9f49a5c7e7ad8d8cb8f1587e8a4b5dff54"
+    "updated-axis-force-sign.json": "f31472cafe7313f9923b84ef025408ebc61ea45a7f4ad5e185b2c8e92d5d6234",
+    "updated-axis-force-sign.log": "cd79853e26380b112a450a88a2a864ce6430454f4426089b785d05187f2e9bc6"
   },
   "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved.",
-  "extension_revision_note": "Root stretching coefficient and selected-base C/(1-t) derivative connection replayed against both source pins. Earlier 104-report and 106-report runs remain in commits cae2ac5 and 4d91da1."
+  "extension_revision_note": "Selected-base and actual assembled axial velocity derivatives replayed against both pins. Earlier 104/106/107 report runs remain in commits cae2ac5, 4d91da1, 9b9e077."
 }

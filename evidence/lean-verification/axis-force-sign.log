@@ -192,3 +192,14 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.root_axial_gradient_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.materialStretchCoefficient_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.selected_root_axial_stretch_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2526:36: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [AxisymmetricResidual.velocity, AxisymmetricResidual.lift, AxisymmetricFields.profilePoint,
+    AxisymmetricFields.radialEnergy, AxisymmetricResidual.pack_zero, AxisymmetricResidual.pack_one,
+    AxisymmetricResidual.pack_two, zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.selected_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]

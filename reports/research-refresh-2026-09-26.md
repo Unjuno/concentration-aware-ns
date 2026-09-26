@@ -258,3 +258,11 @@ The next extension replay adds the selected-base axial derivative connection
 C/(1-t). Both pins pass all 107 required axiom reports. This connects the
 coefficient calculation to the previously proved stream derivative, while
 leaving the full Jacobian/matrix-ODE transfer explicit as unfinished work.
+
+
+Both source pins now pass 109 extension axiom reports after adding the
+selected-base velocity-component derivative and its transfer to the actual
+activated periodic field. The actual axial entry equals C/(q*(1-eta²))
+eventually as q tends to zero from above, under explicit root and schedule
+hypotheses. No PressureData assumption is used for this axial stretching result.
+The full Jacobian and matrix deformation remain separate unfinished steps.
