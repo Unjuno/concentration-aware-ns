@@ -1568,3 +1568,13 @@ This does not yet formalize the full Cartesian Jacobian, its matrix ODE, the
 singular-value formulas, or their transfer to the actual assembled trajectory.
 Those are the remaining steps before calling the complete deformation argument
 Lean-verified. In particular, no finite-particle or molecular claim follows.
+
+
+`selected_root_axial_stretch_hasDerivAt` now connects that algebra to the
+selected base's streamFactor derivative. For t<1, -1<eta<1 and H(h,j,eta)=0,
+at z=eta*((1-t)/(1-eta²))^D it proves the derivative is exactly C/(1-t).
+It invokes the previously checked selected-stream derivative and the exact
+root-coefficient identity, rather than assuming the inverse-coordinate chain.
+Together with C>0 this establishes a positive axial derivative in this selected
+base setting. The transfer of the full Jacobian to the actual assembled field
+and the matrix deformation ODE remain open.

@@ -2464,4 +2464,39 @@ theorem materialStretchCoefficient_pos (h eta : ℝ)
 #print axioms root_axial_gradient_coefficient
 #print axioms materialStretchCoefficient_pos
 
+
+/-- The selected base's axial stream derivative is the stretching coefficient
+    divided by remaining time, on the distinguished root trajectory. -/
+theorem selected_root_axial_stretch_hasDerivAt
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t eta : ℝ) (B : ℕ)
+    (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hroot : NaturalAxisData.H F.data.h W.axis.j eta = 0) :
+    HasDerivAt (fun z : ℝ => SlowBorelBase.streamFactor
+      (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+      (FinalSlowBase.coefficients H v) (t,(0,z)))
+      (materialStretchCoefficient F.data.h eta / (1-t))
+      (eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h) := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have htau : 0 < 1-t := sub_pos.mpr ht
+  let q : ℝ := (1-t)/(1-eta^2)
+  have hq : 0 < q := div_pos htau hd
+  have hs := selected_stream_axis_hasDerivAt H v upper q eta B hq heta
+  have he : 1-q*(1-eta^2)=t := by
+    dsimp [q]
+    rw [div_mul_cancel₀ _ (ne_of_gt hd)]
+    ring
+  have hc : q^(-1:ℝ)*axialGradientCoefficient F.data.h W.axis.j eta =
+      materialStretchCoefficient F.data.h eta / (1-t) := by
+    rw [← root_axial_gradient_coefficient F.data.h W.axis.j eta hroot,
+      Real.rpow_neg_one]
+    dsimp [q]
+    field_simp
+  rw [he,hc] at hs
+  exact hs
+
+#print axioms selected_root_axial_stretch_hasDerivAt
+
 end ConcentrationAware

@@ -252,3 +252,9 @@ all 106 axiom reports with the same extension bytes, only permitted axioms and
 no sorryAx. The current summary hashes refer to this replay. The earlier
 104-report compatibility run remains available at commit cae2ac5. Full matrix
 deformation and molecular interpretations remain outside these two lemmas.
+
+
+The next extension replay adds the selected-base axial derivative connection
+C/(1-t). Both pins pass all 107 required axiom reports. This connects the
+coefficient calculation to the previously proved stream derivative, while
+leaving the full Jacobian/matrix-ODE transfer explicit as unfinished work.

@@ -191,3 +191,4 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.exists_negative_axis_force_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.root_axial_gradient_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.materialStretchCoefficient_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_root_axial_stretch_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
