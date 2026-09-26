@@ -43,6 +43,10 @@
     "standard_acceptance_verified": {
       "path": "evidence/su2-study-v1/summary.json",
       "sha256": "b9ef9794b62dc134282ab4330cfefcb849dba60e2b3f116a1aff8615296d97b7"
+    },
+    "observed_aggregate_review": {
+      "path": "evidence/tests/su2-standard-review.json",
+      "sha256": "f554b70b6a329e1147543d11bdb202dd21402223f281a89a3ecd8fe32f2d6278"
     }
   },
   "metrics": [
@@ -61,6 +65,20 @@
   ],
   "scope": "No certified continuum peak-error interval. [0, unbounded] records missing bounds, not zero measured error. Gate flags preserve unresolved review requirements.",
   "observations": {
+    "aggregate_review": {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "velocity_relative_l2": 0.003625047685324406,
+      "continuum_reference_energy": 0.06991747645268451,
+      "sample_energy_relative_error": 0.0035513863579329764,
+      "observed_checks": {
+        "velocity": true,
+        "energy": true,
+        "all_steps_residual": false
+      },
+      "observed_conjunction": "FAIL"
+    },
+    "aggregate_review_scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. The conjunction is an audit convention, not a newly preregistered gate. It does not certify continuous numerical-field energy or peak errors.",
     "case": "n64-dt0.001",
     "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
     "velocity_relative_l2": 0.003625047685324406,
@@ -90,6 +108,6 @@
   "unresolved": [
     "Continuum numerical-field peak bounds and uncertainty budget absent",
     "Time comparison does not isolate inner-iteration error",
-    "Full standard acceptance review including energy not encoded here"
+    "Observed aggregate review is encoded separately; its conjunction was not preregistered and does not certify continuous-field accuracy"
   ]
 }

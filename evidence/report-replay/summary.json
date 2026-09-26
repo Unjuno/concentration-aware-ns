@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "447097acf1c9dd3079e9184ea7f57308bee2e03d3b1a8e861eace90fc7d7c4a4"
+      "log_sha256": "21735610deb6fb8140b42e62aaf71dd08a56d85382f714139d3586617bb7ca33"
     },
     {
       "step": "global_peaks",
@@ -135,7 +135,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/artifact_links.log",
-      "log_sha256": "d89e3369bbce819f7b6bf168e32ff7cee5941f3ed946867a6c44e781a4a9028c"
+      "log_sha256": "10c609b8f92a3e9cda553de13f1176eddfcc5ce20c724553b0b614d5ea2ed023"
     }
   ]
 }

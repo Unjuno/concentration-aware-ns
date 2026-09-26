@@ -1,6 +1,6 @@
 {
   "scope": "Artifact byte identity only; does not validate scientific review flags or conclusions.",
-  "links_checked": 88,
+  "links_checked": 93,
   "all_match": true,
   "links": [
     {
@@ -340,6 +340,12 @@
       "status": "MATCH"
     },
     {
+      "report": "reports/su2-n16-dt0.001-gate.json",
+      "artifact": "observed_aggregate_review",
+      "path": "evidence/tests/su2-standard-review.json",
+      "status": "MATCH"
+    },
+    {
       "report": "reports/su2-n32-dt0.001-gate.json",
       "artifact": "reference_verified",
       "path": "evidence/tests/reference-symbolic.json",
@@ -388,6 +394,12 @@
       "status": "MATCH"
     },
     {
+      "report": "reports/su2-n32-dt0.001-gate.json",
+      "artifact": "observed_aggregate_review",
+      "path": "evidence/tests/su2-standard-review.json",
+      "status": "MATCH"
+    },
+    {
       "report": "reports/su2-n64-dt0.00025-gate.json",
       "artifact": "reference_verified",
       "path": "evidence/tests/reference-symbolic.json",
@@ -436,6 +448,12 @@
       "status": "MATCH"
     },
     {
+      "report": "reports/su2-n64-dt0.00025-gate.json",
+      "artifact": "observed_aggregate_review",
+      "path": "evidence/tests/su2-standard-review.json",
+      "status": "MATCH"
+    },
+    {
       "report": "reports/su2-n64-dt0.0005-gate.json",
       "artifact": "reference_verified",
       "path": "evidence/tests/reference-symbolic.json",
@@ -484,6 +502,12 @@
       "status": "MATCH"
     },
     {
+      "report": "reports/su2-n64-dt0.0005-gate.json",
+      "artifact": "observed_aggregate_review",
+      "path": "evidence/tests/su2-standard-review.json",
+      "status": "MATCH"
+    },
+    {
       "report": "reports/su2-n64-dt0.001-gate.json",
       "artifact": "reference_verified",
       "path": "evidence/tests/reference-symbolic.json",
@@ -529,6 +553,12 @@
       "report": "reports/su2-n64-dt0.001-gate.json",
       "artifact": "standard_acceptance_verified",
       "path": "evidence/su2-study-v1/summary.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/su2-n64-dt0.001-gate.json",
+      "artifact": "observed_aggregate_review",
+      "path": "evidence/tests/su2-standard-review.json",
       "status": "MATCH"
     }
   ]

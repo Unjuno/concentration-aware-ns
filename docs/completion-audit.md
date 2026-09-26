@@ -14,7 +14,7 @@ measured behavior take precedence over prior progress summaries.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 36 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 88 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 36 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
 | OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. The selected base-field material trajectory and its transfer to the actual activated periodic field are now Lean-verified; strain remains hand-derived; the full physical axial viscous-force ratio is Lean-checked under explicit pressure assumptions. Root existence and the local pressure-threshold equivalence are checked, but the actual profile threshold remains unproved. New pinned Lean proofs cover the selected slow-sum radial derivative limit, its natural-profile identification and eventual negative sign at an existing root. Euler and finite-stage extraction remain unperformed. |
@@ -27,7 +27,7 @@ not prove accuracy, convergence or the correctness of the underlying review.
 
 Current report replay covers twelve steps, including all five SU2 archive
 reviews, diagnostic replays, spectral derivatives, direct temporal differences
-and gate generation. The current 36 tests and 88 matching artifact links
+and gate generation. The current 36 tests and 93 matching artifact links
 verify their stated implementation and provenance scopes, not continuum accuracy.
 PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
 be repaired retrospectively.
@@ -36,9 +36,11 @@ Remaining completion work:
 
 1. Comparative audit now exists at reports/comparative-audit.md. Retain its
    bounded conclusions: no certified standard-PASS/local-FAIL case is established.
-2. Reconcile standard-acceptance checks: current false review flags cannot be
-   interpreted as completed reviews merely because verdict files exist. Preserve
-   observed failures separately from unknown continuous-peak accuracy.
+2. SU2 observed aggregate checks are now included in each case report with a
+   hashed review artifact and archive-identity check. All five observed
+   conjunctions fail. Their post-hoc definition remains distinct from a
+   preregistered acceptance gate; continuous-peak and inner-iteration uncertainty
+   remain. OpenFOAM and PhysicsNeMo standard-acceptance limitations remain recorded.
 3. Independently review the new source-to-trajectory implication chain; symbolic
    identities do not cover theorem hypotheses. New Lean proofs now establish the chart derivative chain through the natural
    profile, including a root with eventual negative derivative, the selected base-field vector material trajectory, and its axis Laplacian identity. An independent symbolic Eulerian material-acceleration calculation agrees with the trajectory formula. Current Lean proofs establish the physical Laplacian/material-acceleration limit and strict negative sign under explicit root and PressureData assumptions. Unconditional instantiation for actualProfile remains unproved. Do not describe original kernel acceptance
@@ -80,3 +82,17 @@ comparison values and gate reports were unchanged. The run is recorded in
 `evidence/report-replay/summary.json`. It is a replay of archived-input
 postprocessing, not a fresh solver, training, or Lean run. Historical fresh-venv
 records retain their own earlier scope and are not relabeled as this run.
+
+
+SU2 aggregate-review integration (2026-09-26): the report builder now carries
+velocity, energy and all-step residual observations from
+`evidence/tests/su2-standard-review.json`, hashes that artifact and checks that
+each reviewed archive matches the case archive. It no longer incorrectly says
+that energy review is absent from the report. This addition does not change the
+conservative gate flags or promote post-hoc observed FAIL to a preregistered
+standard-acceptance decision. The raw review can be regenerated separately with
+`python -m tools.review_su2_standard` in the verification dependency environment.
+
+The integration replay passed all twelve steps and 36 tests; all 93 artifact
+links match (five additional SU2 aggregate-review links). All eleven gate
+verdict files are unchanged.
