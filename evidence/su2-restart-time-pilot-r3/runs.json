@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "original",
+    "mode": "continuous",
+    "exit_code": 0,
+    "archive_sha256": "f978986f24c3907dc13e523ac725a451b702b6e5269e40a0068da6bd27ac4575"
+  },
+  {
+    "variant": "original",
+    "mode": "resumed",
+    "exit_code": 0,
+    "archive_sha256": "067c3918cca9361590ec2b6d9cfb7bc8d0f2850dce54216ebaa7dacadd4e2287"
+  },
+  {
+    "variant": "shifted",
+    "mode": "continuous",
+    "exit_code": 0,
+    "archive_sha256": "375c11a0e9bfd455bf1bf5b7d1c60d42c76d2785aab7b45e14c1b1e5a762abb2"
+  },
+  {
+    "variant": "shifted",
+    "mode": "resumed",
+    "exit_code": 0,
+    "archive_sha256": "79e4e8722d3813718ce232ca6a2945eff8aefb4ce026295a92195aea7e3e301d"
+  }
+]

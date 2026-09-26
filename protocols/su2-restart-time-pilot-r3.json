@@ -1,0 +1,17 @@
+{
+  "status": "frozen before execution",
+  "n": 4,
+  "dt": 0.1,
+  "end": 0.5,
+  "restart_iter": 3,
+  "inner_cap": 1000,
+  "scheme": "DUAL_TIME_STEPPING-2ND_ORDER",
+  "boundary": "MARKER_CUSTOM on all six faces",
+  "prefix": "Use saved indices 1 and 2 from the existing same-variant continuous run",
+  "comparison_absolute_tolerance": 1e-07,
+  "log10_residual_threshold": -10,
+  "scope": "Same-variant split versus continuous comparison at saved steps 3 and 4. Does not establish physical accuracy, temporal order, cross-version restart or a general fix.",
+  "prefix_root": "evidence/su2-restart-time-pilot-v1",
+  "prefix_template": "{variant}-continuous.tar.gz",
+  "prediction": "At restart index R=3 and dt=.1, history accumulator predicts times .1,.2 at indices 3,4; continuous history is .3,.4. Fields should agree within 1e-7."
+}

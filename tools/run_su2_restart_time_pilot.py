@@ -1,16 +1,18 @@
 """Compare same-image BDF2 continuation with a two-state restart."""
-import csv,hashlib,json,shutil,subprocess,tarfile
+import argparse,hashlib,json,subprocess,tarfile
 from pathlib import Path
 import numpy as np
 from tools.su2_case import generate
-p=json.loads(Path('protocols/su2-restart-time-pilot-v1.json').read_text())
-root=Path('work/su2-restart-time-pilot-v1');root.mkdir(exist_ok=False)
-out=Path('evidence/su2-restart-time-pilot-v1');out.mkdir(exist_ok=False)
+parser=argparse.ArgumentParser();parser.add_argument('--protocol',default='protocols/su2-restart-time-pilot-v1.json');args=parser.parse_args()
+protocol=Path(args.protocol);p=json.loads(protocol.read_text());name=protocol.stem
+root=Path('work')/name;root.mkdir(exist_ok=False)
+out=Path('evidence')/name;out.mkdir(exist_ok=False)
+R=p['restart_iter'];steps=round(p['end']/p['dt']);assert 2<=R<steps
 results=[]
 for variant,suffix in [('original',''),('shifted','-corrected')]:
  image='concentration-aware-ns:su2-time-control'+suffix
  identity=subprocess.check_output(['docker','image','inspect',image,'--format','{{.Id}}'],text=True).strip()
- prefix=Path('evidence/su2-boundary-time-pilot-v1')/(variant+'.tar.gz')
+ prefix=Path(p.get('prefix_root','evidence/su2-boundary-time-pilot-v1'))/p.get('prefix_template','{variant}.tar.gz').format(variant=variant)
  prefixhash=hashlib.sha256(prefix.read_bytes()).hexdigest()
  for mode in ['continuous','resumed']:
   case=root/f'{variant}-{mode}';generate(case,n=p['n'],dt=p['dt'],end=p['end'],inner=p['inner_cap'])
@@ -18,9 +20,9 @@ for variant,suffix in [('original',''),('shifted','-corrected')]:
   if mode=='resumed':
    with tarfile.open(prefix) as tar:
     params=json.load(tar.extractfile('parameters.json'));assert params['image_id']==identity
-    for k in [0,1]:
+    for k in [R-2,R-1]:
      name=f'restart_{k:05d}.csv';(case/name).write_bytes(tar.extractfile(name).read())
-   with cfg.open('a') as f:f.write('RESTART_SOL= YES\nRESTART_ITER= 2\nREAD_BINARY_RESTART= NO\nSOLUTION_FILENAME= restart\n')
+   with cfg.open('a') as f:f.write(f'RESTART_SOL= YES\nRESTART_ITER= {R}\nREAD_BINARY_RESTART= NO\nSOLUTION_FILENAME= restart\n')
   (case/'parameters.json').write_text(json.dumps({**p,'variant':variant,'mode':mode,'image_id':identity,'prefix_sha256':prefixhash},indent=2)+'\n')
   cmd=['docker','run','--rm','--network','none','--cpus=2','--memory=4g','--user','501:20','-e','OMP_NUM_THREADS=2','-v',f'{case.resolve()}:/case',image,'SU2_CFD','case.cfg']
   (case/'command.json').write_text(json.dumps(cmd)+'\n')
@@ -34,7 +36,7 @@ for variant,suffix in [('original',''),('shifted','-corrected')]:
   print(variant,mode,run.returncode,flush=True)
   if run.returncode:raise SystemExit(run.returncode)
  comparisons=[]
- for k in [2,3]:
+ for k in range(R,steps):
   left=np.genfromtxt(root/f'{variant}-continuous'/f'restart_{k:05d}.csv',delimiter=',',names=True)
   right=np.genfromtxt(root/f'{variant}-resumed'/f'restart_{k:05d}.csv',delimiter=',',names=True)
   assert np.array_equal(left['PointID'],right['PointID'])

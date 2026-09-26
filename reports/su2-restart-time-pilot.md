@@ -87,3 +87,28 @@ The new same-variant field/history comparison was submitted as a
 with the fixed-version scope, raw data, failed time gate and compatibility
 limits. Read-back matches the submitted text and is archived in
 `upstream-comment-readback.json`. No new issue or general-fix PR was created.
+
+## Independent prediction check at restart index 3
+
+The subsequent protocol `su2-restart-time-pilot-r3.json` was frozen before its
+four new solver invocations. It predicts a two-step output-clock offset for
+R=3, imports saved states 1 and 2 from the existing same-image continuous
+archive, and compares against a fresh five-step run. Both variants finish
+successfully. Fields at indices 3 and 4 agree within 2.659e-15; all saved
+inner residuals meet the same threshold. The expected time-label failure
+persists: continuous times are 0.3,0.4 while resumed times are 0.1,0.2.
+The exact accumulator model matches all 14 new history rows.
+
+```sh
+python3 -m tools.run_su2_restart_time_pilot --protocol protocols/su2-restart-time-pilot-r3.json
+python3 -m tools.check_su2_restart_time_pilot --protocol protocols/su2-restart-time-pilot-r3.json
+python3 -m tools.check_su2_output_clock --protocol protocols/su2-restart-time-pilot-r3.json
+```
+
+The field/time checker intentionally exits 1; the accumulator-model checker
+exits 0. Both the original R=2 archive and new R=3 archive retain that same
+distinction under the generalized replay. New evidence lives in
+`evidence/su2-restart-time-pilot-r3/`. This tests the restart-index dependence
+predicted before the run, while remaining a fixed-dt, static-mesh pilot. It
+adds no variable-step or discrete-adjoint evidence. No additional upstream
+comment was posted for this follow-up.

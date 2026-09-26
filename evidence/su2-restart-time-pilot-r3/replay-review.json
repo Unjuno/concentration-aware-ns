@@ -10,14 +10,16 @@
         0.0,
         0.1,
         0.2,
-        0.3
+        0.3,
+        0.4
       ],
       "worst_log10_residual": -10.00075304,
       "expected_continuous_times": [
         0.0,
         0.1,
         0.2,
-        0.30000000000000004
+        0.30000000000000004,
+        0.4
       ],
       "history_time_matches": true
     },
@@ -28,10 +30,10 @@
         0.1,
         0.2
       ],
-      "worst_log10_residual": -10.03617148,
+      "worst_log10_residual": -10.03618226,
       "expected_continuous_times": [
-        0.2,
-        0.30000000000000004
+        0.30000000000000004,
+        0.4
       ],
       "history_time_matches": false
     },
@@ -42,14 +44,16 @@
         0.0,
         0.1,
         0.2,
-        0.3
+        0.3,
+        0.4
       ],
       "worst_log10_residual": -10.00075313,
       "expected_continuous_times": [
         0.0,
         0.1,
         0.2,
-        0.30000000000000004
+        0.30000000000000004,
+        0.4
       ],
       "history_time_matches": true
     },
@@ -60,10 +64,10 @@
         0.1,
         0.2
       ],
-      "worst_log10_residual": -10.03618278,
+      "worst_log10_residual": -10.01823461,
       "expected_continuous_times": [
-        0.2,
-        0.30000000000000004
+        0.30000000000000004,
+        0.4
       ],
       "history_time_matches": false
     }
@@ -71,42 +75,42 @@
   "comparisons": [
     {
       "variant": "original",
-      "saved_index": 2,
+      "saved_index": 3,
       "max_differences": {
-        "Pressure": 1.487525380650112e-15,
+        "Pressure": 1.478851763270228e-15,
         "Velocity_x": 1.1102230246251565e-15,
-        "Velocity_y": 3.049318610115481e-17,
-        "Velocity_z": 3.0005295123536335e-17
+        "Velocity_y": 3.2390539903004445e-17,
+        "Velocity_z": 3.4450524030726903e-17
       }
     },
     {
       "variant": "original",
-      "saved_index": 3,
+      "saved_index": 4,
       "max_differences": {
-        "Pressure": 1.6839828143044855e-15,
+        "Pressure": 1.7222009408845995e-15,
         "Velocity_x": 1.1102230246251565e-15,
-        "Velocity_y": 6.830473686658678e-17,
-        "Velocity_z": 6.602791230436722e-17
-      }
-    },
-    {
-      "variant": "shifted",
-      "saved_index": 2,
-      "max_differences": {
-        "Pressure": 1.4216058885629934e-15,
-        "Velocity_x": 1.1102230246251565e-15,
-        "Velocity_y": 3.355605723842636e-17,
-        "Velocity_z": 3.382710778154774e-17
+        "Velocity_y": 7.330561938717617e-17,
+        "Velocity_z": 8.249423279899082e-17
       }
     },
     {
       "variant": "shifted",
       "saved_index": 3,
       "max_differences": {
-        "Pressure": 1.9633003989910636e-15,
+        "Pressure": 2.658680567368954e-15,
         "Velocity_x": 1.1102230246251565e-15,
-        "Velocity_y": 7.769663818574246e-17,
-        "Velocity_z": 7.499968528168477e-17
+        "Velocity_y": 5.930585883495709e-17,
+        "Velocity_z": 5.930585883495709e-17
+      }
+    },
+    {
+      "variant": "shifted",
+      "saved_index": 4,
+      "max_differences": {
+        "Pressure": 1.4801528058772107e-15,
+        "Velocity_x": 1.1102230246251565e-15,
+        "Velocity_y": 1.0690233420707074e-16,
+        "Velocity_z": 1.016168486162039e-16
       }
     }
   ]

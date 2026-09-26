@@ -1,9 +1,10 @@
 """Replay archived same-variant continuation comparisons and time/residual checks."""
-import csv,hashlib,io,json,math,tarfile
+import argparse,csv,hashlib,io,json,math,tarfile
 from pathlib import Path
 import numpy as np
-root=Path('evidence/su2-restart-time-pilot-v1')
-p=json.loads(Path('protocols/su2-restart-time-pilot-v1.json').read_text())
+parser=argparse.ArgumentParser();parser.add_argument('--protocol',default='protocols/su2-restart-time-pilot-v1.json');args=parser.parse_args()
+protocol=Path(args.protocol);p=json.loads(protocol.read_text());root=Path('evidence')/protocol.stem
+R=p['restart_iter'];steps=round(p['end']/p['dt'])
 rows=[];fields={}
 runs=json.loads((root/'runs.json').read_text())
 assert {(r['variant'],r['mode']) for r in runs}=={(v,m) for v in ['original','shifted'] for m in ['continuous','resumed']}
@@ -14,26 +15,26 @@ for run in runs:
  with tarfile.open(path) as tar:
   assert tar.extractfile('exit_code').read().strip()==b'0'
   params=json.load(tar.extractfile('parameters.json'));assert all(params[k]==v for k,v in p.items())
-  prefix=Path('evidence/su2-boundary-time-pilot-v1')/(run['variant']+'.tar.gz')
+  prefix=Path(p.get('prefix_root','evidence/su2-boundary-time-pilot-v1'))/p.get('prefix_template','{variant}.tar.gz').format(variant=run['variant'])
   assert hashlib.sha256(prefix.read_bytes()).hexdigest()==params['prefix_sha256']
   if run['mode']=='resumed':
    with tarfile.open(prefix) as pre:
-    for k in [0,1]:
+    for k in [R-2,R-1]:
      name=f'restart_{k:05d}.csv';assert tar.extractfile(name).read()==pre.extractfile(name).read()
-  name='history.csv' if run['mode']=='continuous' else 'history_00002.csv'
+  name='history.csv' if run['mode']=='continuous' else f'history_{R:05d}.csv'
   history=[{k.strip().strip('"'):float(v) for k,v in row.items()} for row in csv.DictReader(io.StringIO(tar.extractfile(name).read().decode()))]
-  expected=[0,.1,.2,.3] if run['mode']=='continuous' else [.2,.3]
+  expected=[k*p['dt'] for k in range(0 if run['mode']=='continuous' else R,steps)]
   assert len(history)==len(expected)
   time_matches=all(abs(r['Cur_Time']-t)<1e-12 for r,t in zip(history,expected))
   residuals=[r[k] for r in history for k in ['rms[P]','rms[U]','rms[V]','rms[W]']]
   assert all(math.isfinite(x) and x<p['log10_residual_threshold'] for x in residuals)
   rows.append({'variant':run['variant'],'mode':run['mode'],'times':[r['Cur_Time'] for r in history],'worst_log10_residual':max(residuals),'expected_continuous_times':expected,'history_time_matches':time_matches})
-  for k in [2,3]:fields[run['variant'],run['mode'],k]=np.genfromtxt(io.BytesIO(tar.extractfile(f'restart_{k:05d}.csv').read()),delimiter=',',names=True)
+  for k in range(R,steps):fields[run['variant'],run['mode'],k]=np.genfromtxt(io.BytesIO(tar.extractfile(f'restart_{k:05d}.csv').read()),delimiter=',',names=True)
 comparisons=[]
 for variant in ['original','shifted']:
- for k in [2,3]:
+ for k in range(R,steps):
   left,right=[fields[variant,mode,k] for mode in ['continuous','resumed']]
-  assert np.array_equal(left['PointID'],right['PointID']) and len(left)==125
+  assert np.array_equal(left['PointID'],right['PointID']) and len(left)==(p['n']+1)**3
   errors={name:float(np.max(abs(left[name]-right[name]))) for name in ['Pressure','Velocity_x','Velocity_y','Velocity_z']}
   assert all(math.isfinite(v) and v<p['comparison_absolute_tolerance'] for v in errors.values())
   comparisons.append({'variant':variant,'saved_index':k,'max_differences':errors})
