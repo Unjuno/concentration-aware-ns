@@ -118,3 +118,13 @@ No molecular degrees of freedom or constitutive evolution law appears in
 this flow. The result concerns continuum material separations. In particular,
 the local volume-preserving contraction/extension cannot itself establish
 smaller particles, molecular orientation, or decreasing material viscosity.
+
+## Refined estimate using the exact propagator
+
+[The packet-bound note](axis-packet-bound.md) removes the transverse rotation
+from the linear amplification factor and derives a nonlinear comparison bound.
+Given a valid tube radius rho and Hessian bound M, it supplies an explicit
+sufficient initial-displacement radius and error formula using C and t0,T.
+It also distinguishes relative error in a contracting direction from error
+normalized by the largest singular value. The actual rho and M remain
+uncomputed; the refinement does not certify a particular packet yet.

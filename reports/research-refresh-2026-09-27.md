@@ -96,3 +96,14 @@ at the classical analytic level. That argument is not yet end-to-end
 Lean-formalized. The tube radius and derivative bounds are non-effective;
 uniform fixed-packet control through t=1 and the actual-profile pressure
 witness are still open.
+
+## Propagator-based finite-packet estimate
+
+The [packet-bound note](../docs/axis-packet-bound.md) refines the generic
+Gronwall estimate using the exact operator norm of F(t)F(s)^(-1). Rotation
+drops out of the linear amplification. A scalar nonlinear comparison supplies
+an explicit sufficient packet radius and remainder conditional on the tube
+radius and Hessian bound. Nine symbolic residuals vanish and three algebraic
+controls pass; this is not a new Lean run or PDE simulation. The actual tube
+and Hessian constants remain non-effective, and a separate stronger condition
+is needed to resolve relative error in contracting transverse directions.

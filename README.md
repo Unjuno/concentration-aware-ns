@@ -88,6 +88,7 @@ python -m tools.review_su2_standard
 python -m tools.check_axis_force
 python -m tools.check_axis_dissipation
 python -m tools.check_axis_deformation
+python -m tools.check_axis_packet_bound
 ```
 
 These checks are separate from the thirteen-step report replay. The force and
