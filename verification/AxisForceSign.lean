@@ -2863,4 +2863,30 @@ theorem axisDeformation_inverse (r s theta : ℝ) (dx : ProblemStatement.Space)
 
 #print axioms axisDeformation_inverse
 
+theorem actual_candidate_axis_contDiffAt
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+      ContDiffAt ℝ ∞ u (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0
+        (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))) := by
+  intro u
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hp : (1-q*(1-eta^2), AxisymmetricResidual.pack 0 0
+      (eta*q^(CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h))) ∈
+      BaseResidual.past := ⟨ht, Set.mem_univ _⟩
+  exact ((FinalSlowBase.velocity_smooth CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B).contDiffAt
+    (BaseResidual.past_isOpen.mem_nhds hp)).congr_of_eventuallyEq he
+
+#print axioms actual_candidate_axis_contDiffAt
+
 end ConcentrationAware

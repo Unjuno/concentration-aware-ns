@@ -1718,3 +1718,19 @@ singular values and the constant determinant.
 The remaining nonlinear-flow identification and finite-packet obligations are
 listed explicitly in that note. Neither uniqueness nor a determinant of one
 implies molecular orientation or reduced material viscosity.
+
+## Classical nonlinear-flow identification on compact terminal intervals
+
+[The flow-derivative note](axis-flow-derivative.md) connects the previously
+constructed deformation to the nonlinear material flow by a compact-tube
+argument and an explicit O(|h|^2) Taylor/Gronwall remainder. It extracts one
+terminal interval from the finite collection of eventual source statements.
+Neighborhood equality with the smooth selected base supplies an open smooth
+domain around the trajectory. The added `actual_candidate_axis_contDiffAt`
+lemma checks pointwise smoothness of the assembled field on the eventual axis.
+
+The connection and error estimate are classical proofs, not an end-to-end
+Lean verification. For each fixed T<1 a common initial neighborhood exists;
+its size and the derivative bounds are not computed. A fixed finite packet
+up to t=1, molecular alignment, and a constitutive viscosity change remain
+unsupported.

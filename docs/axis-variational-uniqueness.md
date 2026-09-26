@@ -110,3 +110,13 @@ arbitrary real g and omega and positive r,s. It does not verify the mean
 value theorem, interval hypotheses, the nonlinear flow's regularity, or a
 material constitutive law. Those limits prevent an algebra PASS from being
 reported as a new Navier–Stokes proof or reduced viscosity.
+
+## Subsequent connection to the nonlinear flow
+
+[The flow-derivative note](axis-flow-derivative.md) now supplies the classical
+compact-tube and difference-quotient argument under the actual terminal-axis
+hypotheses. It obtains a quadratic finite-displacement remainder on every
+fixed interval ending at T<1. The complete connection is not Lean-formalized,
+and the neighborhood size and derivative bounds are not effective estimates.
+This advances the classical identification obligation above without asserting
+uniform control of a fixed packet up to the singular endpoint.

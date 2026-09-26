@@ -83,3 +83,16 @@ uniqueness proof using the conserved vector J*y, with eight independent
 symbolic identities and three rejected sign/rate perturbations. Full
 uniqueness is not yet Lean-formalized; identification with a nonlinear flow
 derivative and finite-packet bounds remain outstanding.
+
+## Subsequent connection to the nonlinear material flow
+
+Both pins now pass 125 axiom reports, including
+`actual_candidate_axis_contDiffAt`: eventual spacetime smoothness of the actual
+assembled field at the axis. [The flow-derivative argument](../docs/axis-flow-derivative.md)
+joins the source hypotheses on one terminal interval, constructs a compact
+smooth tube for each T<1, and derives a quadratic displacement remainder.
+It identifies the explicit deformation with the nonlinear flow derivative
+at the classical analytic level. That argument is not yet end-to-end
+Lean-formalized. The tube radius and derivative bounds are non-effective;
+uniform fixed-packet control through t=1 and the actual-profile pressure
+witness are still open.
