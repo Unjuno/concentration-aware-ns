@@ -1,0 +1,53 @@
+{
+  "scope": "Boundary time observation pilot only; no temporal-order, restart, source-isolation, or general-fix claim. Interior residuals reported independently.",
+  "cases": [
+    {
+      "variant": "original",
+      "exit_code": 0,
+      "image_id": "sha256:f003d34ad25ecb9b82ba79fec92dd8d0ee029a6886123361c537ed47125c2e41",
+      "steps": [
+        {
+          "step": 1,
+          "boundary_nodes": 98,
+          "old_time_boundary_max_error": 0.0,
+          "target_time_boundary_max_error": 0.010000000000000009,
+          "reported_time": 0.0,
+          "all_inner_residuals_met": true
+        },
+        {
+          "step": 2,
+          "boundary_nodes": 98,
+          "old_time_boundary_max_error": 0.0,
+          "target_time_boundary_max_error": 0.030000000000000027,
+          "reported_time": 0.1,
+          "all_inner_residuals_met": true
+        }
+      ],
+      "archive_sha256": "67e5d778d49f0b611bf78de8ef66fe5d52dfa3d0713d048d86c3dfdca1f30ad0"
+    },
+    {
+      "variant": "shifted",
+      "exit_code": 0,
+      "image_id": "sha256:390273a02a77007c74c7699cb4d2853624102b6fbca0cf18e904a457a6110c9b",
+      "steps": [
+        {
+          "step": 1,
+          "boundary_nodes": 98,
+          "old_time_boundary_max_error": 0.010000000000000009,
+          "target_time_boundary_max_error": 0.0,
+          "reported_time": 0.0,
+          "all_inner_residuals_met": true
+        },
+        {
+          "step": 2,
+          "boundary_nodes": 98,
+          "old_time_boundary_max_error": 0.030000000000000027,
+          "target_time_boundary_max_error": 0.0,
+          "reported_time": 0.1,
+          "all_inner_residuals_met": true
+        }
+      ],
+      "archive_sha256": "c50f625b17bf56938726a37feda10b7645d15c2ed7c14f96db628f027ba0d3fe"
+    }
+  ]
+}

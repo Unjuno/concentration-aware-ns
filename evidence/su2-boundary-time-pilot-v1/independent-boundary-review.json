@@ -1,0 +1,29 @@
+{
+  "scope": "Raw archive replay with node-ID boundary selection, independent of coordinate selection in runner. No temporal-order or restart claim.",
+  "checks": [
+    {
+      "variant": "original",
+      "step": 1,
+      "node_id_boundary_count": 98,
+      "predicted_boundary_error": 0.0
+    },
+    {
+      "variant": "original",
+      "step": 2,
+      "node_id_boundary_count": 98,
+      "predicted_boundary_error": 0.0
+    },
+    {
+      "variant": "shifted",
+      "step": 1,
+      "node_id_boundary_count": 98,
+      "predicted_boundary_error": 0.0
+    },
+    {
+      "variant": "shifted",
+      "step": 2,
+      "node_id_boundary_count": 98,
+      "predicted_boundary_error": 0.0
+    }
+  ]
+}

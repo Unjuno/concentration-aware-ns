@@ -39,3 +39,7 @@ BDF2 follow-up. The existing response recommends this distinction:
 [SU2 discussion response](https://github.com/su2code/SU2/discussions/2890#discussioncomment-18418174).
 No additional upstream message was submitted, because this audit sharpens the
 scope of the already posted finding without providing a new runtime defect.
+
+A subsequent [two-step Dirichlet pilot](su2-boundary-time-pilot.md) now observes
+the boundary time in both existing images and the unchanged history time labels.
+The temporal-order and restart regressions listed above remain unperformed.
