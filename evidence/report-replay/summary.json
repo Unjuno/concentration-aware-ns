@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "c9209c62c236710e56a3e65f2dd70fa2b9204fb54178d6642a917092f94ae841"
+      "log_sha256": "0487d9ffcc1d95f1c5a63a042a2060292c96c2e3211ac71c5e9118d29f838254"
     },
     {
       "step": "global_peaks",
@@ -114,6 +114,17 @@
       "exit_code": 0,
       "log": "evidence/report-replay/su2_boundary_time_pilot.log",
       "log_sha256": "cab044c1cf74ab8bfa1b17c059007189747e6a02c9fe07a94cd1aa6ca8f73526"
+    },
+    {
+      "step": "su2_restart_findings",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.replay_su2_restart_findings"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_restart_findings.log",
+      "log_sha256": "d06d19561ee31fa69972274cca0dc8e308cfbf32a1c7a6dcf54acceb1f5d81fb"
     },
     {
       "step": "openfoam_gate",

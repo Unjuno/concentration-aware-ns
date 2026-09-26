@@ -112,3 +112,14 @@ distinction under the generalized replay. New evidence lives in
 predicted before the run, while remaining a fixed-dt, static-mesh pilot. It
 adds no variable-step or discrete-adjoint evidence. No additional upstream
 comment was posted for this follow-up.
+
+
+## Reproducing the finding in the common replay
+
+`python3 -m tools.replay_su2_restart_findings` runs the raw-data checkers for
+both protocols and validates their complete expected result shape. It exits
+zero only when field comparison passes and the specific history-clock mismatch
+is reproduced. Each raw checker still exits 1. The wrapper records
+`scientific_time_continuity_pass=false`; it never treats arbitrary nonzero
+exit status as a reproduced finding. This step is now part of the eighteen-step
+common replay. Five fault tests cover the distinction.

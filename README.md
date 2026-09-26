@@ -59,7 +59,8 @@ python3 -m tools.replay_published_reports
 
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics and the
-Dirichlet boundary-time pilot, rebuilds the
+Dirichlet boundary-time pilot, reproduces the specific restart-history mismatch,
+rebuilds the
 OpenFOAM, SU2 and PhysicsNeMo gates, checks the root-pressure and pressure-moment
 identities and cone sign symmetry, and checks every gate artifact hash. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
@@ -93,7 +94,7 @@ python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
 ```
 
-These checks are separate from the seventeen-step report and exact-algebra replay. The force and
+These checks are separate from the eighteen-step report and exact-algebra replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
 chain or molecular applicability. The aggregate review does not certify
 continuous numerical-field energy.
