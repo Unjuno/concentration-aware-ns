@@ -1,0 +1,14 @@
+test_altered_log (test_comparator_result.ComparatorResultAudit.test_altered_log) ... ok
+test_complete_record (test_comparator_result.ComparatorResultAudit.test_complete_record) ... ok
+test_duplicate_or_empty_targets (test_comparator_result.ComparatorResultAudit.test_duplicate_or_empty_targets) ... ok
+test_failed_exit_despite_success_text (test_comparator_result.ComparatorResultAudit.test_failed_exit_despite_success_text) ... ok
+test_forbidden_axiom (test_comparator_result.ComparatorResultAudit.test_forbidden_axiom) ... ok
+test_missing_each_acceptance (test_comparator_result.ComparatorResultAudit.test_missing_each_acceptance) ... ok
+test_nanoda_disabled (test_comparator_result.ComparatorResultAudit.test_nanoda_disabled) ... ok
+test_trailing_failure (test_comparator_result.ComparatorResultAudit.test_trailing_failure) ... ok
+test_wrong_source (test_comparator_result.ComparatorResultAudit.test_wrong_source) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

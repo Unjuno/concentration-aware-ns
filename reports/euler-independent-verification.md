@@ -54,3 +54,25 @@ No Euler independent-verification PASS is claimed. The previously completed
 Navier–Stokes Comparator run does not substitute for this run. A successful
 kernel check would still leave human review of mathematical definitions and
 physical interpretation as a separate task.
+
+## Recorded-result audit
+
+After the live run finishes and its result JSON is written, run:
+
+```sh
+python3 -m tools.audit_comparator_result \
+  --result evidence/upstream-refresh/updated-euler-comparator-result.json \
+  --inputs evidence/upstream-refresh/updated-euler-comparator-inputs.json \
+  --output evidence/upstream-refresh/updated-euler-comparator-audit.json
+```
+
+The auditor checks exit status, log hash, source pin, both named axiom reports,
+configured permitted axioms, nanoda enablement and acceptance, Lean acceptance,
+and the final Comparator success line. Nine unit tests exercise missing
+acceptance lines, forbidden axioms, altered logs, wrong pins, invalid targets,
+failed exit status and trailing failure text. Results are recorded in
+`evidence/upstream-refresh/comparator-audit-tests.log`. A separate smoke check
+accepted the previously completed Navier–Stokes run using its recorded
+configuration. Neither that smoke check nor these synthetic tests establish
+Euler acceptance. The auditor verifies recorded evidence consistency; it is
+not a cryptographic attestation that arbitrary supplied logs are genuine.
