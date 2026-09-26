@@ -3379,4 +3379,29 @@ theorem root_pressure_moment_identity
 
 #print axioms root_pressure_moment_identity
 
+/-- The moments are the outgoing schedule's actual integrals, not free jets. -/
+theorem outgoing_root_pressure_moment_identity
+    (F : OutgoingProfile.Profile) (j eta : ℝ)
+    (hA : NaturalAxisData.A F.data.h ≠ 0) (hd : NaturalAxisData.d eta ≠ 0)
+    (root : NaturalAxisData.H F.data.h j eta = 0) :
+    let g := SchedulePressure.clockWeight F.data
+    let a := SchedulePressure.shapeExponent F.data
+    let M0 := ∫ y : ℝ, g y * PressureDatum.kernel (a y) eta
+    let M1 := ∫ y : ℝ, g y * a y * PressureDatum.kernel (a y) eta
+    NaturalAxisData.Z F.data.h j F.axisDatum eta = -2*NaturalAxisData.A F.data.h*eta *
+      (M0 + NaturalAxisData.d eta*M1/(NaturalAxisData.A F.data.h*(1+eta^2)) -
+        NaturalAxisData.D F.data.h/(2*NaturalAxisData.d eta) *
+          (1+2*NaturalAxisData.D F.data.h*eta^2/NaturalAxisData.d eta)) := by
+  intro g a M0 M1
+  apply root_pressure_moment_identity F.data.h j eta M0 M1 F.axisDatum hA hd root
+  · rw [F.axisDatum_eq, SchedulePressure.axisPressure_eq]
+    dsimp [PressureDatum.pressure, M0, g, a]
+    ring
+  · rw [F.axisDatum_eq, SchedulePressure.axisPressure_eq,
+      PressureDatum.deriv_pressure (SchedulePressure.admissible F.data)]
+    dsimp [M1, g, a]
+    ring
+
+#print axioms outgoing_root_pressure_moment_identity
+
 end ConcentrationAware

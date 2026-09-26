@@ -144,3 +144,20 @@ those formulas with the outgoing integrals and establishing their quantitative
 lower bound are separate obligations. Both source-pin extension runs pass
 145 axiom reports using only propext, Classical.choice and Quot.sound; the
 five verifier fault tests pass. This extension was not checked by nanoda.
+
+
+## Actual outgoing integral instantiation
+
+`outgoing_root_pressure_moment_identity` now replaces the two abstract pressure
+jet hypotheses with the actual outgoing integrals. It uses `axisDatum_eq`,
+`SchedulePressure.axisPressure_eq`, and `PressureDatum.deriv_pressure` under
+the schedule's proved admissibility. The statement holds for any outgoing
+profile with the specified root and nonzero A,d, including the outgoing
+profile contained in the selected `ProfileData`. It does not change that
+selected witness. Both source-pin checks pass 146 axiom reports with only
+the allowed standard axioms; all five verifier fault tests pass.
+
+This supersedes the earlier unperformed integral-instantiation obligation.
+The quantitative lower bound on the resulting moments remains unproved.
+Neither this identity nor the existing cone inequalities establish Z>0 for
+the actual profile without that additional step.

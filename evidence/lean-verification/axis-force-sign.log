@@ -267,3 +267,4 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.outgoing_root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
