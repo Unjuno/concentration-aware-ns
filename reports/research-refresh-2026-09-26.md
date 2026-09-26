@@ -79,3 +79,21 @@ branches or physical predictions. The radial coefficient can still vanish,
 and controlling profile derivatives remains necessary. In particular this does
 not discharge the pressure threshold for our actualProfile. The distinction
 between declining axial viscosity and declining total viscous force is retained.
+
+## Extension dependency delta
+
+`python -m tools.audit_lean_dependency_delta` traverses the old pinned local
+NavierStokes imports and intersects them with the saved comparison inventory.
+It finds 506 modules with no missing local files, including 10 changed modules.
+Only NaturalProfile changes among the extension's ten direct imports, but the
+transitive changes also include NaturalAxisCoefficients, NaturalCore,
+NaturalEntrance, NominalProfile, ReferenceBounds, LeadingStressWeights and three
+activation modules. See `evidence/upstream-refresh/extension-dependency-impact.json`.
+
+Direct inspection of NaturalProfile's diff shows six theorem signatures changing
+from NaturalAxisData.SmallParameters to NaturalAxisRange.Parameters, including
+axial_equation_reconstruct and exists_profileFamily. This identifies a parameter
+interface change to check, not a demonstrated failure of our extension. New
+modules imported by the updated versions and external dependencies are outside
+this old-closure scan. A fresh build remains necessary before claiming updated
+source compatibility; the old pinned proof environment is unchanged.
