@@ -1,0 +1,28 @@
+{
+  "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "container": "cans-updated-comparator-euler",
+  "observed_hashes": {
+    "ComparatorChallenges/Euler.json": "56bc185a931f68d9a0f0265a3c00cb12771dccc85384eaf6546b37844b8adc84",
+    "ComparatorChallenges/Euler.lean": "b11e9bafc220c8126142a9c9281cfeab4872d8f74a7d4899fed206f7f6e1d4f7",
+    "Euler/Solution.lean": "5dced6caecbfd85d952ff9537e420a85d4f38386e2c655a9c569a21b7139ea4f",
+    "/verify/checker-bin/landrun": "241e888d1a71eca20b83698fc8dbe4e89f589d64accc71763473af8fb616ea02",
+    "/verify/checker-bin/no_unix": "c47f6879a52cc0b594d1760963301ea7b242527e6ebe114669337a2e0cca3964",
+    "/verify/checker-sources/nanoda/target/release/nanoda_bin": "5b89175328f792cd9116253e1bc496e742dcc338d124b2ad785273a89a069d90",
+    "/verify/packages/Comparator/.lake/build/bin/comparator": "6b36c7d582bb5ef787f5855b1d9824886e4555f968cd91fb074515af79d65b97"
+  },
+  "configuration": {
+    "challenge_module": "ComparatorChallenges.Euler",
+    "solution_module": "Euler.Solution",
+    "enable_nanoda": true,
+    "theorem_names": [
+      "Euler.euler_breakdown_R3",
+      "Euler.exists_compact_smooth_euler_singularity"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "local_source_matches_container": true
+}
