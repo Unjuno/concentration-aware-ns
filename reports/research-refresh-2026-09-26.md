@@ -244,3 +244,11 @@ result and log/input hashes. The full log is archived alongside it. This
 supersedes the started status above. It is independent kernel acceptance for
 these two formal theorems, not independent verification of our extension or
 evidence for the proposed molecular/viscosity interpretation.
+
+
+The extension subsequently gained two stretch-coefficient lemmas: its exact
+root identity and positivity. Both original and updated source pins now pass
+all 106 axiom reports with the same extension bytes, only permitted axioms and
+no sorryAx. The current summary hashes refer to this replay. The earlier
+104-report compatibility run remains available at commit cae2ac5. Full matrix
+deformation and molecular interpretations remain outside these two lemmas.

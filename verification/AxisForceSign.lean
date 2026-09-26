@@ -2427,4 +2427,41 @@ theorem exists_pressure_profile_with_negative_slow_sum :
 #print axioms natural_axis_radial_identity
 #print axioms actual_axis_force_ratio_negative
 #print axioms exists_negative_axis_force_ratio
+
+/-- Axial stretching coefficient on the distinguished material root. -/
+noncomputable def materialStretchCoefficient (h eta : ℝ) : ℝ :=
+  (4*(1-eta^2)^2 + 2*CoordinateAlgebra.A h*CoordinateAlgebra.D h*eta^2) /
+    NaturalAxisData.L h eta
+
+theorem root_axial_gradient_coefficient (h j eta : ℝ)
+    (hroot : NaturalAxisData.H h j eta = 0) :
+    (1-eta^2)*axialGradientCoefficient h j eta = materialStretchCoefficient h eta := by
+  have hr : CoordinateAlgebra.D h*eta+(1-eta^2)*(4*eta+j)=0 := by
+    simpa [NaturalAxisData.H, NaturalAxisData.D, NaturalAxisData.d,
+      NaturalAxisData.U, CoordinateAlgebra.D] using hroot
+  have hm := congrArg (fun x : ℝ => 2*CoordinateAlgebra.A h*eta*x) hr
+  unfold axialGradientCoefficient materialStretchCoefficient
+  rw [← mul_div_assoc]
+  congr 1
+  nlinarith only [hm]
+
+theorem materialStretchCoefficient_pos (h eta : ℝ)
+    (hh : 0 < h) (hh1 : h < 1/2) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    0 < materialStretchCoefficient h eta := by
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have hA : 0 < CoordinateAlgebra.A h := by unfold CoordinateAlgebra.A; linarith
+  have hD : 0 < CoordinateAlgebra.D h := by unfold CoordinateAlgebra.D; linarith
+  have hL : 0 < NaturalAxisData.L h eta := by
+    unfold NaturalAxisData.L
+    have hm := mul_pos hh hd
+    nlinarith
+  unfold materialStretchCoefficient
+  apply div_pos _ hL
+  have hs := sq_pos_of_pos hd
+  have hp : 0 ≤ 2*CoordinateAlgebra.A h*CoordinateAlgebra.D h*eta^2 := by positivity
+  nlinarith
+
+#print axioms root_axial_gradient_coefficient
+#print axioms materialStretchCoefficient_pos
+
 end ConcentrationAware

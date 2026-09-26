@@ -1549,3 +1549,22 @@ with a physical pressure derivative still uses the source regularity theorems.
 The remaining task is to prove the local threshold for the actual profile or
 carry the pressure-qualified alternative through the complete assembly. This
 new equivalence alone does not discharge either task.
+
+
+## Stretch-coefficient identity and positivity checked in Lean
+
+The extension now defines materialStretchCoefficient as
+
+    C = (4*(1-eta²)² + 2*A(h)*D(h)*eta²) / L(h,eta).
+
+`root_axial_gradient_coefficient` proves
+(1-eta²)*axialGradientCoefficient(h,j,eta)=C directly from H(h,j,eta)=0.
+`materialStretchCoefficient_pos` proves C>0 for 0<h<1/2 and -1<eta<1.
+The earlier selected-stream axial derivative theorem supplies the coefficient
+q^(-1)*axialGradientCoefficient, so this checks the algebraic coefficient used
+in the hand-derived C/(1-t) expression along q=(1-t)/(1-eta²).
+
+This does not yet formalize the full Cartesian Jacobian, its matrix ODE, the
+singular-value formulas, or their transfer to the actual assembled trajectory.
+Those are the remaining steps before calling the complete deformation argument
+Lean-verified. In particular, no finite-particle or molecular claim follows.
