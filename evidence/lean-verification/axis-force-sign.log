@@ -234,3 +234,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.selectedAxisOmega_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_candidate_axis_contDiffAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.compact_jet_bound_from_selected_base_germs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.cutoff_stage_jets_zero_above_index' depends on axioms: [propext, Classical.choice, Quot.sound]

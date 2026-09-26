@@ -2889,4 +2889,39 @@ theorem actual_candidate_axis_contDiffAt
 
 #print axioms actual_candidate_axis_contDiffAt
 
+theorem compact_jet_bound_from_selected_base_germs
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ)
+    (u : ProblemStatement.SpaceTime → ProblemStatement.Space)
+    (K : Set ProblemStatement.SpaceTime) (hK : IsCompact K)
+    (hpast : K ⊆ BaseResidual.past)
+    (he : ∀ w ∈ K, u =ᶠ[𝓝 w] FinalSlowBase.velocity H v upper B)
+    (m : ℕ) :
+    ∃ M : ℝ, 1 ≤ M ∧ ∀ w ∈ K, ‖iteratedFDeriv ℝ m u w‖ ≤ M := by
+  obtain ⟨M, hM, hb⟩ := SlowBorelBase.compact_jet_bound BaseResidual.past_isOpen
+    (FinalSlowBase.velocity_smooth H v upper B) hK hpast m
+  refine ⟨M, hM, ?_⟩
+  intro w hw
+  rw [(SolenoidalDiagonal.iteratedFDeriv_eventuallyEq (he w hw) m).self_of_nhds]
+  exact hb w hw
+
+#print axioms compact_jet_bound_from_selected_base_germs
+
+theorem cutoff_stage_jets_zero_above_index
+    (a : ℕ → ℕ) (ha : StrictMono a) (J j m : ℕ)
+    (qmin q b : ℝ) (f : SlowBorelBase.Inner → ℝ)
+    (w : SlowBorelBase.Inner) (hqmin : 0 < qmin) (hq : qmin ≤ q)
+    (hJ : 1 < (J : ℝ)*qmin) (hj : J ≤ j) :
+    iteratedFDeriv ℝ m (SlowBorelBase.powerStage (a j) b f) (q,w) = 0 := by
+  have hJa : (J : ℝ) ≤ (a j : ℝ) := by exact_mod_cast hj.trans (ha.id_le j)
+  have hcut : 1 < (a j : ℝ)*q := calc
+    1 < (J : ℝ)*qmin := hJ
+    _ ≤ (a j : ℝ)*qmin := mul_le_mul_of_nonneg_right hJa hqmin.le
+    _ ≤ (a j : ℝ)*q := mul_le_mul_of_nonneg_left hq (Nat.cast_nonneg _)
+  exact SlowBorelBase.powerStage_jet_zero (a j) b f hcut w m
+
+#print axioms cutoff_stage_jets_zero_above_index
+
 end ConcentrationAware

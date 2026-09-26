@@ -3,15 +3,15 @@
   "target": "NavierStokes.ActualCandidateAssembly",
   "build_exit_code": 0,
   "extension_success": true,
-  "extension_axiom_reports": 125,
+  "extension_axiom_reports": 127,
   "extension_source_unchanged_from_original_pinned_check": true,
   "artifacts": {
     "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
     "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
     "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
-    "updated-axis-force-sign.json": "c42afcc930290df31bba7c92f6394ab7ce557eb5a485b31673009b06ce89867d",
-    "updated-axis-force-sign.log": "9bffa6d08a9943cd55884ceee8389d8ecf3866e12595b448c74d93184ff8d040"
+    "updated-axis-force-sign.json": "47db3e19304d3c515982d08e79f42cd9ce2a00fed9deb2a29aef60c4a31e8ed3",
+    "updated-axis-force-sign.log": "0db514aec3103a6d335a2cdefa80abbc17d51c28937e020a60886fd09de48f9c"
   },
   "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved.",
-  "extension_revision_note": "Eventual spacetime smoothness of the actual assembled axis field replayed against both pins. Nonlinear-flow derivative identification and compact-interval quadratic remainder are classical arguments, not yet formalized."
+  "extension_revision_note": "Compact derivative-bound transfer through selected-base germs and cutoff-stage jet vanishing above an explicit index condition replayed against both pins. No numerical Hessian constant or executable profile extracted."
 }

@@ -107,3 +107,16 @@ radius and Hessian bound. Nine symbolic residuals vanish and three algebraic
 controls pass; this is not a new Lean run or PDE simulation. The actual tube
 and Hessian constants remain non-effective, and a separate stronger condition
 is needed to resolve relative error in contracting transverse directions.
+
+## Source dependencies for packet constants
+
+[The source audit](../docs/packet-constant-dependencies.md) identifies compact
+jet bounds and the finite cutoff-stage route. Two new extension lemmas transfer
+uniform derivative bounds from the selected base through neighborhood equality
+on a compact set, and prove all scalar cutoff-stage jets vanish for j>=J when
+J*qmin>1 and q>=qmin>0. The latter uses only strict increase of the natural
+cutoff schedule. This is progress toward finite-stage extraction, not extraction
+of executable coefficient data or a numerical Hessian bound. The actual profile,
+schedule and compact maxima remain existential in the inspected source.
+Both source-pin runs now pass 127 extension axiom reports; the five gate-fault
+tests pass. No solver or training rerun is part of this change.

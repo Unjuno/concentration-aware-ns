@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "c4d6576c3e5b8784bcff1df91df8b0bc31b96416905a23e2449341ee9fe3b43a",
+  "source_sha256": "efeaccdc7f013291b0131871a741ae9e01877f81ea56b5cced7a5b3c3bf7f038",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "9bffa6d08a9943cd55884ceee8389d8ecf3866e12595b448c74d93184ff8d040",
+  "log_sha256": "0db514aec3103a6d335a2cdefa80abbc17d51c28937e020a60886fd09de48f9c",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -627,6 +627,16 @@
       "Quot.sound"
     ],
     "actual_candidate_axis_contDiffAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "compact_jet_bound_from_selected_base_germs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cutoff_stage_jets_zero_above_index": [
       "propext",
       "Classical.choice",
       "Quot.sound"

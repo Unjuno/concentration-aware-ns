@@ -96,3 +96,9 @@ Lean-formalized. The actual tube radius rho and Hessian bound M remain
 non-effective. No fixed-size packet is certified through t=1, and no molecular
 or constitutive-viscosity law is inferred. The source pressure-witness gap
 remains separate from this deformation estimate.
+
+[The constant-dependency audit](packet-constant-dependencies.md) now identifies
+the compact derivative bound and finite-stage cutoff route in the source.
+Uniform full-spacetime derivative bounds transfer through base-field germs,
+and sufficiently high cutoff stages have zero jets above an explicit index
+condition J*qmin>1. Neither result supplies numerical rho or M yet.
