@@ -1734,3 +1734,12 @@ Lean verification. For each fixed T<1 a common initial neighborhood exists;
 its size and the derivative bounds are not computed. A fixed finite packet
 up to t=1, molecular alignment, and a constitutive viscosity change remain
 unsupported.
+
+## Pressure moments retained from the outgoing schedule
+
+The [pressure-moment reduction](pressure-moment-threshold.md) now expresses the
+root sign using the correlated integral formulas for pressure and its derivative.
+It yields an exact weighted-moment threshold and a pointwise sufficient outgoing
+amplitude bound. Symbolic identities and opposite-sign rational moment controls
+are checked in `evidence/tests/pressure-moment-threshold.json`. No actual-profile
+moment bound, complete-profile counterexample or new Lean result is claimed.
