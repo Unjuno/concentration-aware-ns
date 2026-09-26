@@ -34,3 +34,16 @@ unconditionally for the pinned actualProfile. See
 `docs/openai-core-material-trajectory.md` for the pressure-retention audit.
 This extension uses the pinned Lean checker, not an independent nanoda replay;
 the original comparator result above must not be cited as checking the extension.
+
+
+## Updated source pin independently checked (2026-09-26)
+
+Pin f9e8bc5b38b6e212696e8a30e3e91517af887bbd passes the same public R3/periodic
+challenge: solution build, nanoda kernel, Lean default kernel, final Comparator
+success and process exit code 0. Challenge statements/configuration match the
+original pin byte for byte. New results and logs are separate under
+`evidence/upstream-refresh/updated-comparator-result.json` and
+`evidence/upstream-refresh/updated-comparator.log`. The source/dependency/checker
+mounts are read-only except the updated project's .lake output subtree.
+This does not extend the result to Euler, our own extension's independent kernel
+verification, or physical molecular interpretation.

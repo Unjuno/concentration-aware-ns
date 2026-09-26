@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-09-26T14:38:48.208711+00:00",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "exit_code": 0,
+  "exec_session": 88584,
+  "configuration": {
+    "challenge_module": "ComparatorChallenges.NavierStokes",
+    "solution_module": "NavierStokes.ComparatorSolution",
+    "enable_nanoda": true,
+    "theorem_names": [
+      "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+      "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "log": "evidence/upstream-refresh/updated-comparator.log",
+  "log_sha256": "d213fcfa4fed10f0c38d08a16f9a70e23173e492f2aa48df5191c9f89c36090b",
+  "inputs_sha256": "01933cd5b3fedb6673945c4261c362db13b5569a9a7cf2ef437a8b2a4e81c24f",
+  "nanoda_accepted": true,
+  "lean_default_kernel_accepted": true,
+  "comparator_final_success": true,
+  "scope": "Updated-pin public R3 and periodic NavierStokes challenge only. Does not independently verify our extension, Euler, physical applicability or actualProfile pressure premise."
+}

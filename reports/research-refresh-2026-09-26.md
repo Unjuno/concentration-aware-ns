@@ -228,3 +228,19 @@ Only the updated project's .lake subtree is writable. The old dependency/checker
 volume and updated theorem sources remain read-only, with networking disabled.
 This run is not yet complete. Its results must remain separate from the already
 successful original-pin independent check and from our extension's Lean check.
+
+
+## Updated independent verification completed
+
+The same comparator invocation completed with exit code 0. After the 9371-job
+solution build and export, nanoda accepted the solution, Lean's default kernel
+accepted it, and Comparator reported final success. Both public challenge
+theorems (R3 and periodic) list only propext, Classical.choice and Quot.sound.
+The unchanged challenge statement is checked against the updated source pin
+f9e8bc5b38b6e212696e8a30e3e91517af887bbd.
+
+`evidence/upstream-refresh/updated-comparator-result.json` records the terminal
+result and log/input hashes. The full log is archived alongside it. This
+supersedes the started status above. It is independent kernel acceptance for
+these two formal theorems, not independent verification of our extension or
+evidence for the proposed molecular/viscosity interpretation.
