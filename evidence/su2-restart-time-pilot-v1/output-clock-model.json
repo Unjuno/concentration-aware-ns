@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "scope": "Exact arithmetic model reproduces all archived history times. Assumes fresh zero-valued history fields and fixed dt; not a dynamic-step or full output lifecycle proof.",
+  "rows": [
+    {
+      "variant": "original",
+      "mode": "continuous",
+      "iteration": 0,
+      "accumulator_time": "0",
+      "index_time": "0",
+      "offset": "0"
+    },
+    {
+      "variant": "original",
+      "mode": "continuous",
+      "iteration": 1,
+      "accumulator_time": "1/10",
+      "index_time": "1/10",
+      "offset": "0"
+    },
+    {
+      "variant": "original",
+      "mode": "continuous",
+      "iteration": 2,
+      "accumulator_time": "1/5",
+      "index_time": "1/5",
+      "offset": "0"
+    },
+    {
+      "variant": "original",
+      "mode": "continuous",
+      "iteration": 3,
+      "accumulator_time": "3/10",
+      "index_time": "3/10",
+      "offset": "0"
+    },
+    {
+      "variant": "original",
+      "mode": "resumed",
+      "iteration": 2,
+      "accumulator_time": "1/10",
+      "index_time": "1/5",
+      "offset": "-1/10"
+    },
+    {
+      "variant": "original",
+      "mode": "resumed",
+      "iteration": 3,
+      "accumulator_time": "1/5",
+      "index_time": "3/10",
+      "offset": "-1/10"
+    },
+    {
+      "variant": "shifted",
+      "mode": "continuous",
+      "iteration": 0,
+      "accumulator_time": "0",
+      "index_time": "0",
+      "offset": "0"
+    },
+    {
+      "variant": "shifted",
+      "mode": "continuous",
+      "iteration": 1,
+      "accumulator_time": "1/10",
+      "index_time": "1/10",
+      "offset": "0"
+    },
+    {
+      "variant": "shifted",
+      "mode": "continuous",
+      "iteration": 2,
+      "accumulator_time": "1/5",
+      "index_time": "1/5",
+      "offset": "0"
+    },
+    {
+      "variant": "shifted",
+      "mode": "continuous",
+      "iteration": 3,
+      "accumulator_time": "3/10",
+      "index_time": "3/10",
+      "offset": "0"
+    },
+    {
+      "variant": "shifted",
+      "mode": "resumed",
+      "iteration": 2,
+      "accumulator_time": "1/10",
+      "index_time": "1/5",
+      "offset": "-1/10"
+    },
+    {
+      "variant": "shifted",
+      "mode": "resumed",
+      "iteration": 3,
+      "accumulator_time": "1/5",
+      "index_time": "3/10",
+      "offset": "-1/10"
+    }
+  ]
+}

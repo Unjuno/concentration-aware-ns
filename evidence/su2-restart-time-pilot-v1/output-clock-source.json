@@ -1,0 +1,24 @@
+{
+  "commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/src/output/COutput.cpp",
+  "sha256": "fae73ea849b9a47f204cd0714aadb88080810959e2ad1e767f0e8d61bbf671c8",
+  "matches_local": true,
+  "scope": "Pinned output clock source, distinct from driver PhysicalTime.",
+  "excerpts": [
+    {
+      "line": 2095,
+      "text": "  AddHistoryOutput(\"CUR_TIME\", \"Cur_Time\", ScreenOutputFormat::SCIENTIFIC, \"TIME_DOMAIN\", \"Current physical time (s)\");\n  /// Description: The current time step\n  AddHistoryOutput(\"TIME_STEP\", \"Time_Step\", ScreenOutputFormat::SCIENTIFIC, \"TIME_DOMAIN\", \"Current time step (s)\");\n\n  /// BEGIN_GROUP: WALL_TIME, DESCRIPTION: Wall-clock timing information.\n  /// DESCRIPTION: The current iteration wall-clock time.\n  AddHistoryOutput(\"ITER_TIME\", \"Time(sec)\", ScreenOutputFormat::FIXED, \"WALL_TIME\", \"Time per iteration (s)\");\n  /// DESCRIPTION: Currently used wall-clock time.\n  AddHistoryOutput(\"WALL_TIME\", \"Time(sec)\", ScreenOutputFormat::SCIENTIFIC, \"WALL_TIME\", \"Average wall-clock time since the start of inner iterations.\");\n  /// END_GROUP\n\n  AddHistoryOutput(\"NONPHYSICAL_POINTS\", \"Nonphysical_Points\", ScreenOutputFormat::INTEGER, \"NONPHYSICAL_POINTS\", \"The number of non-physical points in the solution\");\n\n}\n\nvoid COutput::RequestCommonHistory(bool dynamic) {\n"
+    },
+    {
+      "line": 2282,
+      "text": "void COutput::LoadCommonHistoryData(const CConfig *config) {\n\n  SetHistoryOutputValue(\"TIME_STEP\", config->GetDelta_UnstTimeND()*config->GetTime_Ref());\n\n  /*--- Update the current time only if the time iteration has changed ---*/\n\n  if (SU2_TYPE::Int(GetHistoryFieldValue(\"TIME_ITER\")) != static_cast<int>(curTimeIter)) {\n    SetHistoryOutputValue(\"CUR_TIME\",  GetHistoryFieldValue(\"CUR_TIME\") + GetHistoryFieldValue(\"TIME_STEP\"));\n  }\n\n  SetHistoryOutputValue(\"TIME_ITER\",  curTimeIter);\n  SetHistoryOutputValue(\"INNER_ITER\", curInnerIter);\n  SetHistoryOutputValue(\"OUTER_ITER\", curOuterIter);\n\n  su2double StopTime, UsedTime, IterTime;\n\n  StopTime = SU2_MPI::Wtime();"
+    }
+  ],
+  "initialization_header": {
+    "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/include/output/COutput.hpp",
+    "sha256": "9492a1b3de8a2c32817442f7997ade522481301e02c886d83d91f357ecff80c9",
+    "matches_local": true,
+    "line": 120,
+    "excerpt": "\n  /** \\brief Structure to store information for a history output field.\n   *\n   *  The stored information is printed to the history file and to screen.\n   * Each individual instance represents a single field (i.e. column) in the history file or on screen.\n   */\n  struct HistoryOutputField {\n    /*! \\brief The name of the field, i.e. the name that is printed in the screen or file header.*/\n    string              fieldName = \"\";\n    /*! \\brief The value of the field. */\n    su2double           value = 0.0;\n    /*! \\brief The format that is used to print this value to screen. */\n    ScreenOutputFormat  screenFormat = ScreenOutputFormat::FIXED;\n    /*! \\brief The group this field belongs to. */\n    string              outputGroup  =\"\";\n    /*! \\brief The field type*/\n    HistoryFieldType     fieldType = HistoryFieldType::DEFAULT;\n    /*! \\brief String containing the description of the field */\n    string              description = \"\";\n    /*! \\brief Default constructor. */\n    HistoryOutputField() {}\n    /*! \\brief Constructor to initialize all members. */\n    HistoryOutputField(string fieldName_, ScreenOutputFormat screenFormat_, string OutputGroup_,\n                       HistoryFieldType fieldType_, string description_):\n      fieldName(std::move(fieldName_)), value(0.0), screenFormat(screenFormat_),\n      outputGroup(std::move(OutputGroup_)), fieldType(fieldType_), description(std::move(description_)){}\n  };\n\n  /*! \\brief Associative map to access data stored in the history output fields by a string identifier. */\n  std::map<string, HistoryOutputField >         historyOutput_Map;\n  /*! \\brief Vector that contains the keys of the ::historyOutput_Map in the order of their insertion. */"
+  }
+}

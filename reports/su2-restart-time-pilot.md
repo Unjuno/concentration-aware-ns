@@ -42,3 +42,32 @@ committed archives and intentionally exits 1 while the time comparison fails;
 common replay without preserving that distinction. No additional upstream
 message has yet been submitted. This does not establish temporal order,
 cross-version restart correctness, or a general timing fix.
+
+## Source attribution of the observed label difference
+
+The v8.5.0 `COutput.cpp` and `COutput.hpp` were independently fetched at the
+runtime pin and match the local files byte-for-byte. Their hashes and excerpts
+are in `output-clock-source.json`. History fields initialize to zero
+(`COutput.hpp:130,144`). `COutput::LoadCommonHistoryData` (`COutput.cpp:2282`)
+adds one TIME_STEP to CUR_TIME whenever the stored TIME_ITER differs from the
+current iteration, then updates TIME_ITER. It does not read driver PhysicalTime
+in that update. The field description calls CUR_TIME the current physical time.
+
+For a fresh history object with fixed dt, first iteration 0 leaves its clock
+at zero; first iteration R>0 advances it only to dt. Subsequent iteration changes
+add one dt. Consequently the simple accumulator model predicts index-time
+offset (1-R)*dt after a restart at R>0. For the exercised R=2 case, it predicts
+-0.1. This model matches all 12 archived history rows in both variants exactly
+using rational arithmetic:
+
+```sh
+python3 -m tools.check_su2_output_clock
+```
+
+The model result is in `output-clock-model.json`. Its success explains the
+recorded time mismatch; it does not turn the failed continuity comparison into
+a pass. Other restart indices and variable-dt output lifecycles have not been
+executed. A general correction must define how to initialize absolute output
+time, especially for variable steps, rather than blindly substituting iteration
+number times the current dt. The source also has other CUR_TIME consumers;
+this audit does not infer their runtime effects from the history discrepancy.
