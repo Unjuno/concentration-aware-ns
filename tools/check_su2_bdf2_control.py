@@ -9,14 +9,18 @@ import math
 from pathlib import Path
 import tarfile
 
+protocol=json.loads(Path('protocols/su2-bdf2-control-v1.json').read_text())
 results=[]
 for suffix in ('','-corrected'):
     root=Path('evidence/su2-bdf2-control-v1'+suffix)
     summary=json.loads((root/'summary.json').read_text())
+    assert [case['dt'] for case in summary['cases']]==protocol['dt']
     cases=[]
     for case in summary['cases']:
         archive=root/f"dt{case['dt']}.tar.gz"
         assert hashlib.sha256(archive.read_bytes()).hexdigest()==case['archive_sha256']
+        assert [step['step'] for step in case['steps']]==list(range(1,round(protocol['end']/case['dt'])+1))
+        endpoint_error=None
         with tarfile.open(archive) as tar:
             diag=json.load(tar.extractfile('diagnostics.json'))
             assert diag['steps']==case['steps']
@@ -26,6 +30,10 @@ for suffix in ('','-corrected'):
             assert len(history)==len(case['steps'])
             for step,row in zip(case['steps'],history):
                 values=np.genfromtxt(tar.extractfile(f"restart_{step['step']-1:05d}.csv"),delimiter=',',names=True)['Velocity_x']
+                assert values.size>0 and np.isfinite(values).all()
+                target_time=step['step']*case['dt']
+                endpoint_error=float(np.max(np.abs(values-(1+target_time**2))))
+                assert abs(endpoint_error-step['max_error_continuous_at_target'])<1e-14
                 assert abs(float(values.mean())-step['mean_ux'])<1e-14
                 assert abs(float(np.ptp(values))-step['spatial_spread'])<1e-14
                 row={key.strip().strip('\"'):float(value) for key,value in row.items()}
@@ -44,7 +52,7 @@ for suffix in ('','-corrected'):
             assert discrepancy<1e-7
             assert step['all_residuals_met']
             discrepancies.append(discrepancy)
-        cases.append({'dt':float(h),'endpoint_error':case['steps'][-1]['max_error_continuous_at_target'],
+        cases.append({'dt':float(h),'endpoint_error':endpoint_error,
                       'max_bound_on_formula_discrepancy':max(discrepancies),'all_step_residuals_met':True,
                       'archive_sha256':case['archive_sha256']})
     errors=[c['endpoint_error'] for c in cases]

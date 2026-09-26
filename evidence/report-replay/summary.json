@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "21735610deb6fb8140b42e62aaf71dd08a56d85382f714139d3586617bb7ca33"
+      "log_sha256": "f474fabb64ea2e2ae2a6e51449153ad506aa0d2fe7e76005f9747bda36083654"
     },
     {
       "step": "global_peaks",
@@ -92,6 +92,17 @@
       "exit_code": 0,
       "log": "evidence/report-replay/su2_time_comparison.log",
       "log_sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
+    },
+    {
+      "step": "su2_bdf2_control",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "tools.check_su2_bdf2_control"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_bdf2_control.log",
+      "log_sha256": "542db82a10ce6251f02ad690e3c08baa988674a67f52a695b1f61afe7aa7c08e"
     },
     {
       "step": "openfoam_gate",

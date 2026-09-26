@@ -65,3 +65,10 @@ of all SU2 source terms, current master binaries, moving grids, boundary states,
 restart, multizone or compressible solvers. Separating stored-state time from
 target time deserves review across those consumers before proposing a patch.
 No claim about concentration, mathematical blow-up or physical viscosity follows.
+
+The BDF2 checker is included in `python3 -m tools.replay_published_reports`.
+The integrated replay passed all thirteen steps and 36 tests. Endpoint errors
+used for convergence orders are recomputed from raw restart velocities, with
+finite-value, complete-case and complete-step checks. The strengthened replay
+leaves all reported BDF2 values unchanged. This adds postprocessing verification,
+not another solver run.

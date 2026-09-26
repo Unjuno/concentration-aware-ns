@@ -103,3 +103,11 @@ for fixed positive sigma, while the construction and later regularity/density
 results have different forcing quantifiers and hypotheses. This addresses part
 of the impact audit without extending any numerical verdict to singularities.
 Full follow-up-paper proof review and updated-source compatibility remain open.
+
+
+BDF2 follow-up replay integration (2026-09-26): the common replay now has thirteen
+steps, including raw-archive BDF2 recurrence and endpoint-error verification.
+All thirteen completed successfully, with 36 tests and 93 gate artifact links.
+The six BDF2 control runs are separate from the eleven localized acceptance
+reports; their successful residual and recurrence checks do not change those
+UNCERTAIN verdicts. The updated OpenAI assembly build is still running.
