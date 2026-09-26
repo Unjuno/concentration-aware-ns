@@ -102,3 +102,9 @@ the compact derivative bound and finite-stage cutoff route in the source.
 Uniform full-spacetime derivative bounds transfer through base-field germs,
 and sufficiently high cutoff stages have zero jets above an explicit index
 condition J*qmin>1. Neither result supplies numerical rho or M yet.
+
+[The actual-root exponent enclosure](axis-stretch-range.md) now proves
+7999999/2000000 <= C < 4 without a pressure premise. Its upper bound gives
+explicit conservative replacements a<=Q^(-4) and
+I<=(1-t0)*(Q^(-3)-1)/3 in the packet-radius and remainder formulas. This
+removes the need to evaluate C; numerical rho and M are still missing.

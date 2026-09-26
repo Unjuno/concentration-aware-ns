@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "9a3c44d23890bf6e89275fd65af1da5e35ba43d3231cd58a58fd07e68bfbea8f",
+  "source_sha256": "9fb5bef00c730b034a5e5c4f947bf71e6aff0f67b41258d65c72223f948b2673",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "aeb1331a52a9f304dd24e3f42c46b777e75274e3a43f1e1d0fd520ea36550c9f",
+  "log_sha256": "50fa8492e9dd3b68010c1ef72217352811a20112902a50a25fc5e35f7a2ced7a",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -657,6 +657,21 @@
       "Quot.sound"
     ],
     "physicalProfile_eventuallyEq_cutPrefix_of_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "materialStretchCoefficient_enclosure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_root_stretch_enclosure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_actual_root_with_stretch_enclosure": [
       "propext",
       "Classical.choice",
       "Quot.sound"

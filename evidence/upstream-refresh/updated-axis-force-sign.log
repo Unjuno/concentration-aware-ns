@@ -244,3 +244,8 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.physicalProfile_eventuallyEq_cutPrefix_of_index' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAware.materialStretchCoefficient_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.natural_root_stretch_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.exists_actual_root_with_stretch_enclosure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

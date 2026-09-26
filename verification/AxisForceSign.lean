@@ -2982,4 +2982,59 @@ theorem physicalProfile_eventuallyEq_cutPrefix_of_index
 
 #print axioms physicalProfile_eventuallyEq_cutPrefix_of_index
 
+theorem materialStretchCoefficient_enclosure (h eta : ℝ)
+    (hh : 0 < h) (hh1 : h ≤ 1/1000)
+    (heta : eta ∈ Set.Ioo (-1/4000 : ℝ) 0) :
+    (7999999/2000000 : ℝ) ≤ materialStretchCoefficient h eta ∧
+      materialStretchCoefficient h eta < 4 := by
+  have he : 0 < eta^2 := sq_pos_of_ne_zero (ne_of_lt heta.2)
+  have hemax : eta^2 ≤ (1/16000000 : ℝ) := by nlinarith [heta.1, heta.2]
+  have hAD : 0 ≤ (1/2+h)*(1/2-h) := mul_nonneg (by linarith) (by linarith)
+  have hADe : 0 ≤ 2*((1/2+h)*(1/2-h))*eta^2 := by positivity
+  have hhe : 0 ≤ h*eta^2 := by positivity
+  have hhemax : h*eta^2 ≤ (1/1000 : ℝ)*(1/16000000 : ℝ) :=
+    mul_le_mul hh1 hemax he.le (by norm_num)
+  have hL : 0 < 1-2*h*eta^2 := by nlinarith
+  have hLle : 1-2*h*eta^2 ≤ 1 := by nlinarith
+  have hlow : (7999999/2000000 : ℝ) ≤
+      4*(1-eta^2)^2+2*(1/2+h)*(1/2-h)*eta^2 := by
+    nlinarith [sq_nonneg (eta^2)]
+  have hQ : 0 < 15/2-8*h+2*h^2-4*eta^2 := by
+    nlinarith [sq_nonneg h]
+  have hprod := mul_pos he hQ
+  unfold materialStretchCoefficient NaturalAxisData.L CoordinateAlgebra.A CoordinateAlgebra.D
+  constructor
+  · apply (le_div_iff₀ hL).mpr
+    have := mul_le_mul_of_nonneg_left hLle (by norm_num : (0:ℝ) ≤ 7999999/2000000)
+    nlinarith
+  · apply (div_lt_iff₀ hL).mpr
+    nlinarith
+
+theorem natural_root_stretch_enclosure (h j eta : ℝ)
+    (p : NaturalAxisData.SmallParameters h j)
+    (heta : eta ∈ Set.Ioo (-j/4) (-j/5)) :
+    (7999999/2000000 : ℝ) ≤ materialStretchCoefficient h eta ∧
+      materialStretchCoefficient h eta < 4 := by
+  apply materialStretchCoefficient_enclosure h eta p.h_pos p.h_le
+  constructor <;> linarith [heta.1,heta.2,p.j_pos,p.j_le]
+
+#print axioms materialStretchCoefficient_enclosure
+#print axioms natural_root_stretch_enclosure
+
+theorem exists_actual_root_with_stretch_enclosure :
+    ∃ eta : ℝ,
+      eta ∈ Set.Ioo (-CorrectionInitialization.ActualPrimary.nominal.axis.j/4)
+        (-CorrectionInitialization.ActualPrimary.nominal.axis.j/5) ∧
+      NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+        CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0 ∧
+      (7999999/2000000 : ℝ) ≤
+        materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta ∧
+      materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta < 4 := by
+  obtain ⟨eta, heta, hroot, _⟩ := NaturalAxisData.exists_unique_root
+    CorrectionInitialization.ActualPrimary.nominal.axis.small
+  exact ⟨eta, heta, hroot, natural_root_stretch_enclosure _ _ eta
+    CorrectionInitialization.ActualPrimary.nominal.axis.small heta⟩
+
+#print axioms exists_actual_root_with_stretch_enclosure
+
 end ConcentrationAware

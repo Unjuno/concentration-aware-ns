@@ -131,3 +131,15 @@ not the uncut asymptotic prefix. These identities advance finite extraction
 without claiming executable coefficients or a certified numerical Hessian.
 Both pins pass 131 extension axiom reports with only the allowed standard
 axioms. The five verification-gate fault tests also pass.
+
+## Actual-root stretching exponent enclosure
+
+The extension now proves 7999999/2000000 <= C < 4 for an existing root of
+the actual nominal witness, using its SmallParameters and the proved root
+interval. [The enclosure note](../docs/axis-stretch-range.md) gives the exact
+algebra and conservative packet formulas obtained by replacing the unknown C
+with its upper bound 4. No PressureData hypothesis or numerical flow is used.
+The actual tube radius and Hessian bound remain uncomputed; full coefficient
+extraction has not been achieved.
+Both source-pin checks pass 134 axiom reports; the five verifier fault tests
+pass. The numerical benchmark verdicts are unchanged.
