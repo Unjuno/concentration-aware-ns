@@ -3,15 +3,15 @@
   "target": "NavierStokes.ActualCandidateAssembly",
   "build_exit_code": 0,
   "extension_success": true,
-  "extension_axiom_reports": 134,
+  "extension_axiom_reports": 137,
   "extension_source_unchanged_from_original_pinned_check": true,
   "artifacts": {
     "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
     "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
     "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
-    "updated-axis-force-sign.json": "37a542737fc79139be5dc5f6c82657cb99b6b7b10b526b3ab861d2ce2f4cea1f",
-    "updated-axis-force-sign.log": "50fa8492e9dd3b68010c1ef72217352811a20112902a50a25fc5e35f7a2ced7a"
+    "updated-axis-force-sign.json": "1d0277865e3132fb0a2a220bc412c3e684b6658d38c441943e3a7b3def2be413",
+    "updated-axis-force-sign.log": "83f042d70541a1c607c5df286b5e07cb6994af11870dfafa45efc23cdcf9fe2c"
   },
   "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved.",
-  "extension_revision_note": "Exact stretching-exponent enclosure and root existence for the actual nominal witness replayed against both pins. No pressure premise, executable coefficient extraction or certified numerical Hessian claimed."
+  "extension_revision_note": "Root-coefficient identification in the full selected/actual Jacobian and the explicit deformation ODE using the actual assembled spatial derivative replayed against both pins. Nonlinear-flow identification and variational uniqueness remain classical."
 }

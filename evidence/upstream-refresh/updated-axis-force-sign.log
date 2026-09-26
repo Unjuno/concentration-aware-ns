@@ -249,3 +249,6 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.exists_actual_root_with_stretch_enclosure' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAware.selected_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_deformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]

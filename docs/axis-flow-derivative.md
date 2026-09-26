@@ -20,8 +20,8 @@ The relevant extension statements are:
 |---|---|
 | `actual_candidate_terminal_base_germ` | Near each sufficiently late axis point, u equals the same selected base velocity in a spacetime neighborhood |
 | `actual_candidate_material_trajectory` | X'=u(t,X(t)) for all sufficiently late t<1 |
-| `actual_candidate_axis_jacobian` | The full spatial Jacobian along that axis |
-| `actual_root_velocity_axial_hasDerivAt` and the selected-root coefficient identity | Axial rate g=C/(1-t) at the chosen root |
+| `actual_root_axis_jacobian` | The full spatial Jacobian with the root coefficient g=C/(1-t) and selected rotation rate already substituted |
+| `actual_root_deformation_hasDerivAt` | The explicit deformation solves the variational equation using that actual assembled-field derivative, eventually on the terminal axis |
 | `selectedAxisOmega_continuousOn` | Continuity of the rotation coefficient omega on t<1 |
 | upstream `FinalSlowBase.velocity_smooth` | Smoothness of the selected base on the open spacetime domain t<1 |
 
@@ -32,13 +32,22 @@ on whose terminal interval (t_star,1) the required trajectory and Jacobian
 identities hold. This is a classical extraction of an interval from the
 eventual statements, not an effective numerical value of t_star.
 
-To join the separate Jacobian and axial-rate statements, apply the full
-spatial derivative to the axial basis vector and then project to the third
-coordinate. The chain rule gives the derivative of z -> u_3(t,(0,0,z))
-as hz. Uniqueness of that scalar derivative and the root axial-derivative
-statement give hz=C/(1-t). The two transverse diagonal entries are therefore
--C/(2*(1-t)); the off-diagonal entries use the same selected-field omega.
-This identifies the entire G on the common terminal interval.
+The separate Jacobian and axial-rate statements are now joined in Lean.
+`selected_root_axis_jacobian` identifies partialZ(streamFactor) with C/(1-t)
+through the ordinary axial derivative and substitutes it into the full matrix.
+`actual_root_axis_jacobian` transfers that exact matrix through the spacetime
+germ to the assembled field. Thus the diagonal entries and rotation rate in
+G are identified in one formal statement, rather than only by the classical
+chain-rule argument used in the previous revision.
+
+`actual_root_deformation_hasDerivAt` then combines the matrix identity with
+the constructed rotation/stretch derivative, so its right-hand side is
+literally the spatial Frechet derivative of the actual assembled velocity
+applied to the deformation. This is an eventual-in-q statement. Although the
+formula can use any t0<1 as its normalization time, it is an initial-value
+solution for the actual field on [t0,T] only when t0 is also in the common
+terminal interval. No assertion about an earlier portion of the actual flow
+is inferred from eventual equality.
 
 At every point of that trajectory the neighborhood-equality statement gives
 an open neighborhood where u equals the smooth base velocity. Intersect with

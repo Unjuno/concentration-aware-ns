@@ -3037,4 +3037,119 @@ theorem exists_actual_root_with_stretch_enclosure :
 
 #print axioms exists_actual_root_with_stretch_enclosure
 
+theorem selected_root_axis_jacobian
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t eta : ℝ) (B : ℕ)
+    (ht : t < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hroot : NaturalAxisData.H F.data.h W.axis.j eta = 0)
+    (dx : ProblemStatement.Space) :
+    let z := eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h
+    let g := materialStretchCoefficient F.data.h eta/(1-t)
+    let omega := selectedAxisOmega H v upper B eta t
+    fderiv ℝ (fun x => FinalSlowBase.velocity H v upper B (t,x))
+      (AxisymmetricResidual.pack 0 0 z) dx =
+      AxisymmetricResidual.pack (-g/2*dx 0-omega*dx 1)
+        (omega*dx 0-g/2*dx 1) (g*dx 2) := by
+  intro z g omega
+  let stream := SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B)
+    F.data.h W.axis.normalization (FinalSlowBase.coefficients H v)
+  have hs : DifferentiableAt ℝ stream (t,(0,z)) := by
+    simpa [stream, AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy]
+      using (selected_stream_sliceC2 H v upper t B ht).differentiable
+        (AxisymmetricResidual.pack 0 0 z)
+  have hz : AxisymmetricFields.partialZ stream (t,(0,z)) = g := by
+    rw [← axial_slice_derivative_eq_partialZ stream t 0 z hs]
+    exact (selected_root_axial_stretch_hasDerivAt H v upper t eta B ht heta hroot).deriv
+  have hj := selected_base_axis_jacobian H v upper t z B ht dx
+  dsimp only at hj
+  change AxisymmetricFields.partialZ (SlowBorelBase.streamFactor
+    (FinalSlowBase.scales H v upper B) F.data.h W.axis.normalization
+    (FinalSlowBase.coefficients H v)) (t,(0,z)) = g at hz
+  rw [hz] at hj
+  exact hj
+
+theorem actual_root_axis_jacobian
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let t := 1-q*(1-eta^2)
+    let z := eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h
+    let g := materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta/(q*(1-eta^2))
+    let omega := selectedAxisOmega CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta t
+    ∀ dx : ProblemStatement.Space,
+      fderiv ℝ (fun x => u (t,x)) (AxisymmetricResidual.pack 0 0 z) dx =
+        AxisymmetricResidual.pack (-g/2*dx 0-omega*dx 1)
+          (omega*dx 0-g/2*dx 1) (g*dx 2) := by
+  intro u
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  dsimp only
+  intro dx
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2) = q := by field_simp; ring
+  have htime : 1-(1-q*(1-eta^2)) = q*(1-eta^2) := by ring
+  have heder := congrArg (fun L : ProblemStatement.Space →L[ℝ] ProblemStatement.Space => L dx)
+    (ResidualRegularity.space_fderiv_congr he)
+  change fderiv ℝ (fun x => u (1-q*(1-eta^2),x)) _ dx = _ at heder
+  rw [heder]
+  have hj := selected_root_axis_jacobian CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper
+    (1-q*(1-eta^2)) eta B ht heta root dx
+  dsimp only at hj
+  rw [hqt, htime] at hj
+  exact hj
+
+#print axioms selected_root_axis_jacobian
+#print axioms actual_root_axis_jacobian
+
+theorem actual_root_deformation_hasDerivAt
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta t0 : ℝ) (ht0 : t0 < 1) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let C := materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta
+    let omega := selectedAxisOmega CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ), ∀ dx : ProblemStatement.Space,
+    let t := 1-q*(1-eta^2)
+    let z := eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h
+    let v := fun s => axisDeformation (terminalScale t0 (C/2) s)
+      (terminalScale t0 (-C) s) (rotationAngle omega t0 s) dx
+    HasDerivAt v (fderiv ℝ (fun x => u (t,x)) (AxisymmetricResidual.pack 0 0 z) (v t)) t := by
+  intro u C omega
+  filter_upwards [actual_root_axis_jacobian B N0 hN a ha eta heta root,
+    self_mem_nhdsWithin] with q hj hq
+  intro dx t z v
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : t < 1 := by dsimp [t]; nlinarith [mul_pos hq hd]
+  have htime : 1-t = q*(1-eta^2) := by dsimp [t]; ring
+  have hω : ContinuousOn omega (Set.Iio (1:ℝ)) :=
+    selectedAxisOmega_continuousOn CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta heta
+  have hv := integratedDeformation_hasDerivAt omega t0 C t dx hω ht0 ht
+  dsimp only at hj hv
+  rw [hj (v t)]
+  rw [htime] at hv
+  exact hv
+
+#print axioms actual_root_deformation_hasDerivAt
+
 end ConcentrationAware

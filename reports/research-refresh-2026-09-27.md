@@ -143,3 +143,18 @@ The actual tube radius and Hessian bound remain uncomputed; full coefficient
 extraction has not been achieved.
 Both source-pin checks pass 134 axiom reports; the five verifier fault tests
 pass. The numerical benchmark verdicts are unchanged.
+
+## Variational equation connected to the actual Jacobian
+
+`selected_root_axis_jacobian` substitutes C/(1-t) into the complete selected
+matrix. `actual_root_axis_jacobian` transfers the same identified matrix to
+the assembled field. `actual_root_deformation_hasDerivAt` then verifies the
+explicit deformation equation with the actual spatial Frechet derivative on
+its right-hand side, eventually on the terminal axis. This closes a formal
+coefficient/ODE connection; the compact-interval extraction, full variational
+uniqueness and nonlinear-flow identification remain classical arguments.
+An earlier normalization time outside the terminal interval does not give an
+initial-value solution for the actual field before that interval.
+Both source pins pass 137 axiom reports with only the permitted standard
+axioms. All five verification-gate fault tests pass. No numerical solver run
+or molecular interpretation is part of this verification.
