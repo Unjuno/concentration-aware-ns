@@ -115,3 +115,11 @@ append check_suffix and run `lake env lean` with the existing checker environmen
 as in runtime/lean-verification/check_axis_sign.sh. Existing selected small
 parameters need not be enlarged to use the new interface. PressureData is not
 supplied by this parameter conversion; the pressure-threshold gap is unchanged.
+
+The bounded range check now has an executable replay:
+`python3 -m tools.verify_upstream_range`. It checks the reviewed source hash,
+constructs and hashes the appended axiom-report file, runs the network-isolated
+checker, and requires successful exit, the expected axiom report, no sorryAx,
+and unchanged inputs. A real replay succeeded; command, runner hash and result
+are in `evidence/upstream-refresh/range-replay.json`. This command uses the
+previously provisioned checker volume; it is not a clean-room new-pin build.
