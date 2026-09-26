@@ -1,0 +1,51 @@
+{
+  "observed_at_utc": "2026-09-26T19:35:43.410587+00:00",
+  "commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "scope": "Three-file time consumer source audit; not all consumers or runtime behavior.",
+  "files": [
+    {
+      "path": "SU2_CFD/src/drivers/CSinglezoneDriver.cpp",
+      "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/src/drivers/CSinglezoneDriver.cpp",
+      "sha256": "fadb4335afeeed521f40b16c00b1f3116c9006ed4f385e141d607e6e3550246e",
+      "matches_local": true,
+      "hits": [
+        {
+          "line": 120,
+          "context": "  /*--- Store the current physical time in the config container, as\n   this can be used for verification / MMS. This should also be more\n   general once the drivers are more stable. ---*/\n\n  if (config_container[ZONE_0]->GetTime_Marching() != TIME_MARCHING::STEADY)\n    config_container[ZONE_0]->SetPhysicalTime(static_cast<su2double>(TimeIter)*config_container[ZONE_0]->GetDelta_UnstTimeND());\n  else\n    config_container[ZONE_0]->SetPhysicalTime(0.0);\n\n\n  /*--- Set the initial condition for EULER/N-S/RANS ---------------------------------------------*/\n  if (config_container[ZONE_0]->GetFluidProblem()) {\n    solver_container[ZONE_0][INST_0][MESH_0][FLOW_SOL]->SetInitialCondition(geometry_container[ZONE_0][INST_0],\n                                                                            solver_container[ZONE_0][INST_0],\n                                                                            config_container[ZONE_0], TimeIter);\n  }\n  if (config_container[ZONE_0]->GetKind_Species_Model() != SPECIES_MODEL::NONE) {"
+        },
+        {
+          "line": 122,
+          "context": "   general once the drivers are more stable. ---*/\n\n  if (config_container[ZONE_0]->GetTime_Marching() != TIME_MARCHING::STEADY)\n    config_container[ZONE_0]->SetPhysicalTime(static_cast<su2double>(TimeIter)*config_container[ZONE_0]->GetDelta_UnstTimeND());\n  else\n    config_container[ZONE_0]->SetPhysicalTime(0.0);\n\n\n  /*--- Set the initial condition for EULER/N-S/RANS ---------------------------------------------*/\n  if (config_container[ZONE_0]->GetFluidProblem()) {\n    solver_container[ZONE_0][INST_0][MESH_0][FLOW_SOL]->SetInitialCondition(geometry_container[ZONE_0][INST_0],\n                                                                            solver_container[ZONE_0][INST_0],\n                                                                            config_container[ZONE_0], TimeIter);\n  }\n  if (config_container[ZONE_0]->GetKind_Species_Model() != SPECIES_MODEL::NONE) {\n    solver_container[ZONE_0][INST_0][MESH_0][SPECIES_SOL]->SetInitialCondition(geometry_container[ZONE_0][INST_0],\n                                                                                solver_container[ZONE_0][INST_0],"
+        }
+      ]
+    },
+    {
+      "path": "SU2_CFD/src/solvers/CIncEulerSolver.cpp",
+      "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/src/solvers/CIncEulerSolver.cpp",
+      "sha256": "5c0906f2a4719eb9050410a91be63e992d8b6ba63d07983ad67aa10265db11db",
+      "matches_local": true,
+      "hits": [
+        {
+          "line": 1861,
+          "context": "  if (VerificationSolution) {\n    if ( VerificationSolution->IsManufacturedSolution() ) {\n\n      /*--- Get the physical time. ---*/\n      su2double time = 0.0;\n      if (config->GetTime_Marching() != TIME_MARCHING::STEADY) time = config->GetPhysicalTime();\n\n      AD::StartNoSharedReading();\n\n      /*--- Loop over points ---*/\n      SU2_OMP_FOR_STAT(omp_chunk_size)\n      for (auto iPoint = 0ul; iPoint < nPointDomain; iPoint++) {\n\n        /*--- Get control volume size. ---*/\n        su2double Volume = geometry->nodes->GetVolume(iPoint);\n\n        /*--- Get the current point coordinates. ---*/"
+        }
+      ]
+    },
+    {
+      "path": "SU2_CFD/include/solvers/CFVMFlowSolverBase.inl",
+      "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl",
+      "sha256": "b8e54f986ce075052e54586c6f12026c785262f96875426bb6e918ae374b3c46",
+      "matches_local": true,
+      "hits": [
+        {
+          "line": 559,
+          "context": "  /*--- Check if there actually is an exact solution for this\n        verification case, if computed at all. ---*/\n  if (VerificationSolution && VerificationSolution->ExactSolutionKnown()) {\n    /*--- Get the physical time if necessary. ---*/\n    su2double time = 0.0;\n    if (config->GetTime_Marching() != TIME_MARCHING::STEADY) time = config->GetPhysicalTime();\n\n    /*--- Reset the global error measures to zero. ---*/\n    for (unsigned short iVar = 0; iVar < nVar; iVar++) {\n      VerificationSolution->SetError_RMS(iVar, 0.0);\n      VerificationSolution->SetError_Max(iVar, 0.0, 0);\n    }\n\n    /*--- Loop over all owned points. ---*/\n    for (unsigned long iPoint = 0; iPoint < nPointDomain; iPoint++) {\n      /* Set the pointers to the coordinates and solution of this DOF. */\n      const su2double* coor = geometry->nodes->GetCoord(iPoint);"
+        },
+        {
+          "line": 1533,
+          "context": "    bool implicit = (config->GetKind_TimeIntScheme() == EULER_IMPLICIT);\n\n    /*--- Get the physical time. ---*/\n\n    su2double time = 0.0;\n    if (config->GetTime_Marching() != TIME_MARCHING::STEADY) time = config->GetPhysicalTime();\n\n    /*--- Loop over all the vertices on this boundary marker ---*/\n\n    SU2_OMP_FOR_STAT(OMP_MIN_SIZE)\n    for (iVertex = 0; iVertex < geometry->nVertex[val_marker]; iVertex++) {\n      /*--- Get the point index for the current node. ---*/\n\n      iPoint = geometry->vertex[val_marker][iVertex]->GetNode();\n\n      /*--- Check if the node belongs to the domain (i.e, not a halo node) ---*/\n"
+        }
+      ]
+    }
+  ]
+}

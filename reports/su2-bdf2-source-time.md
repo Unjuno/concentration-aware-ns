@@ -72,3 +72,9 @@ used for convergence orders are recomputed from raw restart velocities, with
 finite-value, complete-case and complete-step checks. The strengthened replay
 leaves all reported BDF2 values unchanged. This adds postprocessing verification,
 not another solver run.
+
+The [time-consumer scope audit](su2-time-consumer-scope.md) independently matches
+three relevant source files to the pinned runtime revision and separates the
+source, verification-error and Dirichlet-boundary consumers. Its proposed
+boundary/restart regressions remain unperformed; it does not expand the scope
+of the six archived runs.
