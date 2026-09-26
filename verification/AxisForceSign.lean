@@ -3152,4 +3152,68 @@ theorem actual_root_deformation_hasDerivAt
 
 #print axioms actual_root_deformation_hasDerivAt
 
+theorem eventually_scale_to_terminal_interval (d : ℝ) (hd : 0 < d)
+    (P : ℝ → Prop) (he : ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ), P (1-q*d)) :
+    ∃ tstar : ℝ, tstar < 1 ∧ ∀ t ∈ Set.Ioo tstar 1, P t := by
+  obtain ⟨eps, heps, hsub⟩ := mem_nhdsGT_iff_exists_Ioo_subset.mp he
+  refine ⟨1-eps*d, ?_, ?_⟩
+  · nlinarith [mul_pos heps hd]
+  · intro t ht
+    have hq : 0 < (1-t)/d := div_pos (by linarith [ht.2]) hd
+    have hqeps : (1-t)/d < eps := (div_lt_iff₀ hd).mpr (by linarith [ht.1])
+    have hP := hsub ⟨hq,hqeps⟩
+    have htime : 1-((1-t)/d)*d = t := by rw [div_mul_cancel₀ _ hd.ne']; ring
+    change P (1-((1-t)/d)*d) at hP
+    rwa [htime] at hP
+
+theorem actual_root_common_terminal_interval
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)
+    let C := materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta
+    let omega := selectedAxisOmega CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta
+    ∃ tstar : ℝ, tstar < 1 ∧ ∀ t ∈ Set.Ioo tstar 1,
+      (u =ᶠ[𝓝 (t,curve t)] FinalSlowBase.velocity CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B) ∧
+      HasDerivAt curve (u (t,curve t)) t ∧
+      ContDiffAt ℝ ∞ u (t,curve t) ∧
+      ∀ dx : ProblemStatement.Space,
+        fderiv ℝ (fun x => u (t,x)) (curve t) dx =
+          AxisymmetricResidual.pack (-(C/(1-t))/2*dx 0-omega t*dx 1)
+            (omega t*dx 0-(C/(1-t))/2*dx 1) ((C/(1-t))*dx 2) := by
+  intro u curve C omega
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  apply eventually_scale_to_terminal_interval (1-eta^2) hd
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    actual_candidate_material_trajectory B N0 hN a ha eta heta root,
+    actual_candidate_axis_contDiffAt B N0 hN a ha eta heta,
+    actual_root_axis_jacobian B N0 hN a ha eta heta root] with q hg hc hs hj
+  have hqt : (1-(1-q*(1-eta^2)))/(1-eta^2) = q := by field_simp; ring
+  have htime : 1-(1-q*(1-eta^2)) = q*(1-eta^2) := by ring
+  have hcurve : curve (1-q*(1-eta^2)) = AxisymmetricResidual.pack 0 0
+      (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h) := by
+    dsimp [curve]
+    rw [hqt]
+  refine ⟨?_, hc, ?_, ?_⟩
+  · rw [hcurve]
+    exact hg
+  · rw [hcurve]
+    exact hs
+  · intro dx
+    rw [hcurve, htime]
+    exact hj dx
+
+#print axioms eventually_scale_to_terminal_interval
+#print axioms actual_root_common_terminal_interval
+
 end ConcentrationAware

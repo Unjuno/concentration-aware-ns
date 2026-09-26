@@ -158,3 +158,16 @@ initial-value solution for the actual field before that interval.
 Both source pins pass 137 axiom reports with only the permitted standard
 axioms. All five verification-gate fault tests pass. No numerical solver run
 or molecular interpretation is part of this verification.
+
+## One shared terminal interval
+
+`eventually_scale_to_terminal_interval` converts a right-neighborhood property
+in q to an interval in t=1-d*q. `actual_root_common_terminal_interval` now
+supplies one t_star<1 for the conjunction of the actual material equation,
+spacetime smoothness, identified root Jacobian and base-field germ. Interval
+extraction is no longer only a classical step. The start time remains
+existential, and the nonlinear-flow continuation and uniqueness arguments
+still have their separately stated formalization limits.
+Both source-pin runs pass 139 axiom reports and all five verification-gate
+fault tests pass. Numerical benchmark verdicts and the pressure-premise
+status remain unchanged.

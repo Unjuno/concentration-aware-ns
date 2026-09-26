@@ -18,6 +18,7 @@ The relevant extension statements are:
 
 | Statement | What it supplies |
 |---|---|
+| `actual_root_common_terminal_interval` | One t_star<1 on whose entire terminal interval the material equation, spacetime smoothness, root Jacobian and base-field germ equality all hold |
 | `actual_candidate_terminal_base_germ` | Near each sufficiently late axis point, u equals the same selected base velocity in a spacetime neighborhood |
 | `actual_candidate_material_trajectory` | X'=u(t,X(t)) for all sufficiently late t<1 |
 | `actual_root_axis_jacobian` | The full spatial Jacobian with the root coefficient g=C/(1-t) and selected rotation rate already substituted |
@@ -26,11 +27,13 @@ The relevant extension statements are:
 | upstream `FinalSlowBase.velocity_smooth` | Smoothness of the selected base on the open spacetime domain t<1 |
 
 All eventual statements use q_core approaching 0 from the right, with
-t=1-d*q_core. A finite intersection of these eventual sets contains
-0<q_core<epsilon for some epsilon>0. Hence there is a **single** t_star<1
-on whose terminal interval (t_star,1) the required trajectory and Jacobian
-identities hold. This is a classical extraction of an interval from the
-eventual statements, not an effective numerical value of t_star.
+t=1-d*q_core. `eventually_scale_to_terminal_interval` now formalizes the
+conversion: an interval 0<q_core<epsilon becomes 1-d*epsilon<t<1.
+`actual_root_common_terminal_interval` applies it to the conjunction of the
+four needed properties. The **single** t_star therefore works simultaneously
+for the material equation, spacetime smoothness, identified Jacobian and
+spacetime base-field germ throughout (t_star,1). This interval extraction is
+Lean-checked; t_star is still existential, with no effective numerical value.
 
 The separate Jacobian and axial-rate statements are now joined in Lean.
 `selected_root_axis_jacobian` identifies partialZ(streamFactor) with C/(1-t)
@@ -43,11 +46,14 @@ chain-rule argument used in the previous revision.
 `actual_root_deformation_hasDerivAt` then combines the matrix identity with
 the constructed rotation/stretch derivative, so its right-hand side is
 literally the spatial Frechet derivative of the actual assembled velocity
-applied to the deformation. This is an eventual-in-q statement. Although the
+applied to the deformation. That lemma is an eventual-in-q statement. Although the
 formula can use any t0<1 as its normalization time, it is an initial-value
 solution for the actual field on [t0,T] only when t0 is also in the common
 terminal interval. No assertion about an earlier portion of the actual flow
-is inferred from eventual equality.
+is inferred from eventual equality. The common-interval lemma now supplies
+the shared terminal interval for the field identities, so t_star<t0<=T<1
+is an explicit admissible initial-time condition for the classical flow
+argument below.
 
 At every point of that trajectory the neighborhood-equality statement gives
 an open neighborhood where u equals the smooth base velocity. Intersect with

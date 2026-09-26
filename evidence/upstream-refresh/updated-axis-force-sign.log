@@ -252,3 +252,5 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.selected_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_deformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.eventually_scale_to_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_common_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]

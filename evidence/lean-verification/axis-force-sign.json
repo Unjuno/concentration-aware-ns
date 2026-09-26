@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "148bf35f590e4a66d697854c593782409cba6e7209327a72333bf513f45e86de",
+  "source_sha256": "42c23a27b8df0af487525bdd034df8854554d0fc479bd70a9794c04e835ef56c",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "83f042d70541a1c607c5df286b5e07cb6994af11870dfafa45efc23cdcf9fe2c",
+  "log_sha256": "a343d2de022450587c850f6aa60d833f3c19a83d944710e517b0459d6d0d24ee",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -687,6 +687,16 @@
       "Quot.sound"
     ],
     "actual_root_deformation_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "eventually_scale_to_terminal_interval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_root_common_terminal_interval": [
       "propext",
       "Classical.choice",
       "Quot.sound"
