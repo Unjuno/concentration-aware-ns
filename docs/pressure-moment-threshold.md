@@ -2,7 +2,8 @@
 
 Scope: source pin `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`.
 This is an exact algebraic reduction, not a proof of the remaining bound for
-`FinalSlowBase.actualProfile` and not a new Lean theorem.
+`FinalSlowBase.actualProfile`. The root identity is now also checked in Lean;
+the subsequent inequalities retain the scope stated below.
 
 The outgoing pressure is not an arbitrary negative jet. In
 `NavierStokes/SchedulePressure.lean`, `axisPressure_eq` identifies it with
@@ -131,3 +132,15 @@ all retained conditions together fail to determine the sign. Additional
 pressure/jet relations could break this coordinate symmetry. The unresolved
 step must use such relations or the pressure-qualified witness, rather than
 cone membership alone.
+
+
+## Formal root identity
+
+`ConcentrationAware.root_pressure_moment_identity` proves the displayed identity
+against the upstream `NaturalAxisData.Z` definition. It assumes the root
+equation, nonzero A and d, and the two pressure-moment formulas. The algebra
+is therefore formally connected to the correct source definition. Instantiating
+those formulas with the outgoing integrals and establishing their quantitative
+lower bound are separate obligations. Both source-pin extension runs pass
+145 axiom reports using only propext, Classical.choice and Quot.sound; the
+five verifier fault tests pass. This extension was not checked by nanoda.

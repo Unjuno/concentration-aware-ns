@@ -263,3 +263,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
  Classical.choice,
  Quot.sound]
 'ConcentrationAware.actual_root_variational_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:3378:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]

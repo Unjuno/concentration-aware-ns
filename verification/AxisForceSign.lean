@@ -3355,4 +3355,28 @@ theorem actual_root_variational_unique
 
 #print axioms actual_root_variational_unique
 
+/-- Local pressure moments, connected directly to the upstream Z definition. -/
+theorem root_pressure_moment_identity
+    (h j eta M0 M1 : ℝ) (P : ℝ → ℝ)
+    (hA : NaturalAxisData.A h ≠ 0) (hd : NaturalAxisData.d eta ≠ 0)
+    (root : NaturalAxisData.H h j eta = 0)
+    (hp : P eta = -M0/2)
+    (hp' : deriv P eta = 2*eta*M1/(1+eta^2)) :
+    NaturalAxisData.Z h j P eta = -2*NaturalAxisData.A h*eta *
+      (M0 + NaturalAxisData.d eta*M1/(NaturalAxisData.A h*(1+eta^2)) -
+        NaturalAxisData.D h/(2*NaturalAxisData.d eta) *
+          (1+2*NaturalAxisData.D h*eta^2/NaturalAxisData.d eta)) := by
+  have he : (1:ℝ)+eta^2 ≠ 0 := ne_of_gt (by positivity)
+  have hu : NaturalAxisData.U j eta =
+      -NaturalAxisData.D h*eta/NaturalAxisData.d eta := by
+    apply (eq_div_iff hd).mpr
+    unfold NaturalAxisData.H at root
+    nlinarith
+  unfold NaturalAxisData.Z
+  rw [root, hp, hp', hu]
+  field_simp
+  <;> ring
+
+#print axioms root_pressure_moment_identity
+
 end ConcentrationAware
