@@ -1703,3 +1703,18 @@ axis curve, using previously checked profile regularity and curve continuity.
 This closes the angular-primitive construction step. It does not yet prove
 uniqueness of the variational solution or identify it with the derivative of
 a nonlinear flow map on a common terminal interval.
+
+## Classical variational uniqueness and an independent algebra check
+
+The [variational uniqueness note](axis-variational-uniqueness.md) now supplies
+a classical proof: the inverse rotation/stretch map J satisfies J'=-JG,
+so Jy is constant for every solution y'=Gy. The identity initial value then
+forces y=F*y(t0). This closes uniqueness at the classical analytic level;
+the complete argument is not yet Lean-formalized. An independent SymPy check
+verifies eight inverse/ODE/geometry identities and rejects three deliberately
+incorrect sign/rate conventions. It also checks the Gram matrix used for the
+singular values and the constant determinant.
+
+The remaining nonlinear-flow identification and finite-packet obligations are
+listed explicitly in that note. Neither uniqueness nor a determinant of one
+implies molecular orientation or reduced material viscosity.

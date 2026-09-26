@@ -72,3 +72,14 @@ viscosity budget is not a derivation of a smaller viscosity coefficient.
   uniqueness and identification with a nonlinear flow derivative remain open.
 - This search is bounded literature surveillance, not an exhaustive claim
   that every new result has been found.
+
+## Subsequent analytic work: variational uniqueness
+
+The subsequent extension adds `axisDeformation_inverse`; both source pins
+pass 124 axiom reports with only the allowed standard axioms. The earlier
+123-report statement above describes the literature-refresh revision.
+[The new note](../docs/axis-variational-uniqueness.md) gives a classical
+uniqueness proof using the conserved vector J*y, with eight independent
+symbolic identities and three rejected sign/rate perturbations. Full
+uniqueness is not yet Lean-formalized; identification with a nonlinear flow
+derivative and finite-packet bounds remain outstanding.

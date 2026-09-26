@@ -2848,4 +2848,19 @@ theorem selectedAxisOmega_continuousOn
 
 #print axioms selectedAxisOmega_continuousOn
 
+theorem axisDeformation_inverse (r s theta : ℝ) (dx : ProblemStatement.Space)
+    (hr : r ≠ 0) (hs : s ≠ 0) :
+    axisDeformation r⁻¹ s⁻¹ (-theta) (axisDeformation r s theta dx) = dx := by
+  ext i
+  fin_cases i <;>
+    simp [axisDeformation, AxisymmetricResidual.pack, ProblemStatement.coordinateVector,
+      Real.cos_neg, Real.sin_neg]
+  · field_simp
+    linear_combination (dx 0) * (Real.sin_sq_add_cos_sq theta)
+  · field_simp
+    linear_combination (dx 1) * (Real.sin_sq_add_cos_sq theta)
+  · field_simp
+
+#print axioms axisDeformation_inverse
+
 end ConcentrationAware
