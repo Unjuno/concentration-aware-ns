@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "085b6499067d4335fc6166a5b06c1684348844f1a8629456c8667c1dff818e76",
+  "source_sha256": "ba7b3eeb4eec4ab025dad13103bd801b4a889ac5360045aef7cec1ddf6a69646",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "44bbc4acb9570adc3d6a2d937242f969ca83f099a0c7a253ef7cb70fd5dd3ea0",
+  "log_sha256": "f93451b4aff6b248e0fa74870837ca616f0d26f2df9bf5db0afda126fc531a47",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -552,6 +552,16 @@
       "Quot.sound"
     ],
     "axisymmetric_velocity_jacobian_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_axis_jacobian": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_axis_jacobian": [
       "propext",
       "Classical.choice",
       "Quot.sound"

@@ -204,3 +204,8 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.selected_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisymmetric_velocity_jacobian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2628:10: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.selected_base_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -2585,4 +2585,94 @@ theorem axisymmetric_velocity_jacobian_on_axis
 
 #print axioms axisymmetric_velocity_jacobian_on_axis
 
+
+theorem selected_base_axis_jacobian
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper t z : ℝ) (B : ℕ)
+    (ht : t < 1) (dx : ProblemStatement.Space) :
+    let stream := SlowBorelBase.streamFactor (FinalSlowBase.scales H v upper B)
+      F.data.h W.axis.normalization (FinalSlowBase.coefficients H v)
+    let swirl := SlowBorelBase.swirlPotential (FinalSlowBase.scales H v upper B)
+      F.data.h W.axis.normalization (FinalSlowBase.coefficients H v)
+    let hz := AxisymmetricFields.partialZ stream (t,(0,z))
+    let omega := -AxisymmetricFields.partialS swirl (t,(0,z))
+    fderiv ℝ (fun x => FinalSlowBase.velocity H v upper B (t,x))
+      (AxisymmetricResidual.pack 0 0 z) dx =
+      AxisymmetricResidual.pack (-hz/2*dx 0-omega*dx 1)
+        (omega*dx 0-hz/2*dx 1) (hz*dx 2) := by
+  intro stream swirl hz omega
+  let U : AxisymmetricFields.Profile := fun p => stream p+p.2.1*AxisymmetricFields.partialS stream p
+  have htrans := selected_transverse_profiles_sliceC2 H v upper t B ht
+  have hU := (selected_stream_axial_velocity_sliceC2 H v upper t B ht).differentiable
+  have hS := (selected_stream_sliceC2 H v upper t B ht).differentiable
+  have hu : DifferentiableAt ℝ U (t,(0,z)) := by
+    simpa [U, stream, AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy]
+      using hU (AxisymmetricResidual.pack 0 0 z)
+  have hs : DifferentiableAt ℝ stream (t,(0,z)) := by
+    simpa [stream, AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy]
+      using hS (AxisymmetricResidual.pack 0 0 z)
+  have hzu : AxisymmetricFields.partialZ U (t,(0,z)) = hz := by
+    rw [← axial_slice_derivative_eq_partialZ U t 0 z hu]
+    change deriv (fun w => stream (t,(0,w)) + 0*AxisymmetricFields.partialS stream (t,(0,w))) z = _
+    simp only [zero_mul,add_zero]
+    exact axial_slice_derivative_eq_partialZ stream t 0 z hs
+  change fderiv ℝ (fun x => SlowBorelBase.baseVelocity _ _ _ _ (t,x)) _ dx = _
+  rw [selected_base_velocity_slice_eq H v upper t B ht]
+  rw [axisymmetric_velocity_jacobian_on_axis _ _ _ t z
+    htrans.1.differentiable htrans.2.differentiable hU dx]
+  change AxisymmetricResidual.pack (-(hz/2)*dx 0-omega*dx 1)
+    (omega*dx 0-hz/2*dx 1) (AxisymmetricFields.partialZ U (t,(0,z))*dx 2) = _
+  rw [hzu]
+  congr 1 <;> ring
+
+#print axioms selected_base_axis_jacobian
+
+
+theorem actual_candidate_axis_jacobian
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let stream := SlowBorelBase.streamFactor
+      (FinalSlowBase.scales CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B)
+      CorrectionInitialization.ActualPrimary.h CorrectionInitialization.ActualPrimary.nominal.axis.normalization
+      (FinalSlowBase.coefficients CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation)
+    let swirl := SlowBorelBase.swirlPotential
+      (FinalSlowBase.scales CorrectionInitialization.ActualPrimary.certificate
+        CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B)
+      CorrectionInitialization.ActualPrimary.h CorrectionInitialization.ActualPrimary.nominal.axis.normalization
+      (FinalSlowBase.coefficients CorrectionInitialization.ActualPrimary.certificate CorrectionInitialization.ActualPrimary.modulation)
+    ∀ᶠ q : ℝ in 𝓝[>] (0 : ℝ),
+    let t := 1-q*(1-eta^2)
+    let z := eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h
+    let hz := AxisymmetricFields.partialZ stream (t,(0,z))
+    let omega := -AxisymmetricFields.partialS swirl (t,(0,z))
+    ∀ dx : ProblemStatement.Space,
+      fderiv ℝ (fun x => u (t,x)) (AxisymmetricResidual.pack 0 0 z) dx =
+        AxisymmetricResidual.pack (-hz/2*dx 0-omega*dx 1)
+          (omega*dx 0-hz/2*dx 1) (hz*dx 2) := by
+  intro u stream swirl
+  filter_upwards [actual_candidate_terminal_base_germ B N0 hN a ha eta heta,
+    self_mem_nhdsWithin] with q he hq
+  dsimp only
+  intro dx
+  have hd : 0 < 1-eta^2 := by nlinarith [heta.1,heta.2]
+  have ht : 1-q*(1-eta^2)<1 := by nlinarith [mul_pos hq hd]
+  have hj := congrArg (fun L : ProblemStatement.Space →L[ℝ] ProblemStatement.Space => L dx)
+    (ResidualRegularity.space_fderiv_congr he)
+  change fderiv ℝ (fun x => u (1-q*(1-eta^2),x)) _ dx = _ at hj
+  rw [hj]
+  exact selected_base_axis_jacobian CorrectionInitialization.ActualPrimary.certificate
+    CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper
+    (1-q*(1-eta^2)) (eta*q^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h) B ht dx
+
+#print axioms actual_candidate_axis_jacobian
+
 end ConcentrationAware

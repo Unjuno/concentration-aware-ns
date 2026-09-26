@@ -273,3 +273,11 @@ well: a transverse block [-b,-f;f,-b] and axial entry partialZ(u), with no
 axis singularity. Both pins pass 110 extension axiom reports. This establishes
 the matrix shape under slice differentiability; it does not by itself establish
 contraction or identify the full actual-field matrix coefficients.
+
+
+September 27 extension update: both pins now pass 112 axiom reports. The
+selected-base full Jacobian and its eventual transfer to the actual assembled
+field are checked. Its diagonal is (-hz/2,-hz/2,hz), with transverse rotation
+coefficient omega=-partialS(swirlPotential). The deformation ODE and its
+singular-value solution remain unfinished; the first-derivative transfer is
+no longer an open step.

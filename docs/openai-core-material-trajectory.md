@@ -1620,3 +1620,31 @@ requires coefficient identification/sign. Specialization to b=partialZ(H)/2,
 f=-partialS(K), u=H+s*partialS(H), and transfer of the complete matrix to the
 actual assembled field remain to be connected. The earlier actual-field axial
 entry theorem is already checked separately.
+
+
+## Selected and actual full Jacobian transfer checked
+
+`selected_base_axis_jacobian` identifies the selected base's complete Cartesian
+Frechet derivative on the axis as
+
+    [ -hz/2   -omega   0
+       omega  -hz/2   0
+       0       0     hz ],
+
+where hz=partialZ(streamFactor) and omega=-partialS(swirlPotential), evaluated
+at the same spacetime/profile point. The proof uses the previously established
+slice regularity, the generic axisymmetric Jacobian, and the identity
+partialZ(H+s*partialS(H))=partialZ(H) at s=0.
+
+`actual_candidate_axis_jacobian` transfers this complete matrix to the activated
+periodic assembled velocity eventually as q tends to zero from above, for the
+stated geometric threshold, schedule tending to infinity and eta in (-1,1).
+It follows from spacetime neighborhood equality and ordinary Frechet-derivative
+locality. The root equation is unnecessary for this matrix-shape transfer; it
+is needed for the previously proved hz=C/(q*(1-eta²)) identification.
+
+This closes the full first-derivative transfer step left open above. The matrix
+deformation ODE, its singular-value solution and finite-neighborhood control
+remain separate tasks. Omega is identified as a derivative of the actual
+selected swirl potential; a further explicit time formula has not been proved
+in this extension. No molecular alignment or changing viscosity is established.
