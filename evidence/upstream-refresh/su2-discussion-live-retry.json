@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-09-26T13:57:37.164600+00:00",
+  "exit_code": 0,
+  "response": {
+    "data": {
+      "repository": {
+        "discussion": {
+          "url": "https://github.com/su2code/SU2/discussions/2890",
+          "updatedAt": "2026-09-13T03:31:51Z",
+          "answerChosenAt": null,
+          "comments": {
+            "totalCount": 1,
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "Y3Vyc29yOnYyOpK0MjAyNi0wOS0xM1QwMzozMTo1MFrOARkJ_g=="
+            },
+            "nodes": [
+              {
+                "author": {
+                  "login": "sbryngelson"
+                },
+                "body": "Yeah, I think your diagnosis is right.\r\n\r\nAt the master commit you linked, the single-zone driver sets `PhysicalTime = TimeIter * dt` during [Preprocess](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/drivers/CSinglezoneDriver.cpp#L106-L122). That same value is then passed to [`GetMMSSourceTerm`](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/solvers/CIncEulerSolver.cpp#L1854-L1880), while the dual-time residual treats the current iterate as `U^{n+1}` and forms either the BDF1 or BDF2 time derivative against the stored previous states ([residual assembly](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/solvers/CIncEulerSolver.cpp#L2837-L2902)).\r\n\r\nSo for a nonautonomous MMS source, the current sequence is basically\r\n\r\n`solve for U^{n+1}` using `f(t_n)`,\r\n\r\nwhich gives exactly the old-time recurrence you measured. It is still first-order consistent under `DT_STEPPING_1ST`, so I would not call the integrator inconsistent, but it is not a backward Euler evaluation of the time-dependent forcing.\r\n\r\nThe potentially more important case is `DT_STEPPING_2ND`. The state derivative there is BDF2, but if the forcing is still evaluated at `t_n`, then\r\n\r\n`f(t_{n+1}) - f(t_n) = O(dt)`,\r\n\r\nso the lagged forcing can reduce the temporal convergence to first order for a genuinely time-dependent source. I would include both first- and second-order dual-time cases in the regression.\r\n\r\nI would avoid treating the `(TimeIter + 1) * dt` edit as the complete fix. `PhysicalTime` is used for more than the source term: it is also passed into the [verification-solution error calculation](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl#L535-L575) and [time-dependent verification boundary states](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl#L1518-L1553). Globally advancing it may fix this reproducer while changing output and other semantics elsewhere.\r\n\r\nMy preference would be to define the time levels explicitly. something like stored-state time versus target/solution time\u2014and use the target time for MMS source and boundary evaluation. Then the output and restart paths can keep whichever convention they require.\r\n\r\ntldr; yes, the current source explains your observed recurrence, and the uniform transient MMS case looks like a good regression test. The remaining maintainer question is whether the old-time source evaluation was intentional or is just an ambiguous physical-time convention.",
+                "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18418174",
+                "createdAt": "2026-09-13T03:31:50Z",
+                "replies": {
+                  "totalCount": 0,
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": null
+                  },
+                  "nodes": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

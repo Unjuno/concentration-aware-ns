@@ -1,0 +1,22 @@
+{
+  "status": "frozen before control execution",
+  "purpose": "Test reported BDF2 order reduction caused by lagged MMS forcing",
+  "reference": "u=(1+t^2,0,0), p=0, f=(2t,0,0), rho=1, nu=0.01",
+  "n": 4,
+  "end": 0.5,
+  "dt": [
+    0.1,
+    0.05,
+    0.025
+  ],
+  "time_scheme": "DUAL_TIME_STEPPING-2ND_ORDER",
+  "inner_cap": 1000,
+  "log10_residual_threshold": -10,
+  "predictions": {
+    "initial_history": "U[-1]=U[0]=1; hypothesis checked against every saved step",
+    "source_at_previous_time": "3 U[k]-4 U[k-1]+U[k-2]=4 dt^2 (k-1)",
+    "source_at_next_time": "3 U[k]-4 U[k-1]+U[k-2]=4 dt^2 k"
+  },
+  "comparison_absolute_tolerance": 1e-07,
+  "scope": "Uniform transient control only. Compare original driver and existing time-shift intervention. Startup history assumption must match per-step results. No general fix claim."
+}
