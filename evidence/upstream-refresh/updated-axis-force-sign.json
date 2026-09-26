@@ -1,0 +1,536 @@
+{
+  "exit_code": 0,
+  "success": true,
+  "source": "verification/AxisForceSign.lean",
+  "source_sha256": "50f831ac2116a28bc5ea52458c60eb1647aa639a32578749fc20254a576b4758",
+  "runner_sha256": "3320328929bf29a75e2cc9830986a4109ec06a4ce2e8005aba14edae9b6d56a1",
+  "log_sha256": "82ca2d2ecd0bba79b2c72030244abbfd7b7c726e69c9662870d94d68f129bc14",
+  "axioms": {
+    "root_pressure_threshold_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "root_Z_positive_iff_pressure_below_threshold": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_actual_root_with_negative_physical_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_pressure_profile_with_negative_slow_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_profileData_with_pressure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_ratio_has_strictly_negative_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_viscous_acceleration_ratio_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_normalized_axis_laplacian_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_normalized_axis_laplacian_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_normalized_second_axial_derivative_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_physical_second_axial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_axis_second_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_axis_deriv_expression": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_axis_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_axis_expression": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "concrete_axial_gradient_expression_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axialGradientCoefficient_differentiableAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axis_first_derivative_expression_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axis_velocity_expression_axial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_coordinateEta_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_coordinateQ_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_material_acceleration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "material_curve_chain_rule": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_velocity_time_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_axis_velocity_time_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axis_velocity_formula_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_axis_laplacian": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_material_trajectory": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_actual_schedule_with_terminal_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_candidate_terminal_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "terminal_diagonal_eq_selected_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_source_coordinates": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_eventually_localization_conditions": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "diagonal_activated_periodic_eq_selected_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "activated_periodic_eq_selected_base_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_normalized_force_ratio_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "normalized_force_ratio_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "radial_force_div_acceleration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_material_trajectory": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_velocity_on_candidate_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_on_candidate_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_sum_axis_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "root_axis_curve_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_curve_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_normalized_stream_derivative_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_physicalChart": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_forward_coordinate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "candidate_axis_inverse_coordinate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "trajectory_scale_tends_zero_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_normalized_radial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_averaged_derivative_sum_tends_natural": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "slowSum_axis_proportional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "averaged_derivative_slowSum_at_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "bundle_average_derivative_at_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_bundle_average_derivative_at_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "average_radial_derivative_at_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "radial_derivative_compact_integral": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_radial_derivative_physical": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_velocity_laplacian_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_base_velocity_slice_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "curl_velocity_eq_profile_velocity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_profile_velocity_laplacian_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_transverse_profiles_sliceC2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_axial_velocity_sliceC2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_stream_sliceC2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physical_stream_laplacian_of_sliceC2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physical_stream_laplacian_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "stream_axial_second_derivative_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_slice_derivative_eq_partialZ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_second_derivative_eq_slice": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "stream_axial_radial_derivative_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physical_axial_laplacian_on_axis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prepared_root_with_negative_radial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_selected_root_with_negative_radial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_radial_derivative_eventually_negative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_natural_derivative_negative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "original_axis_derivative_eq_natural": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_radial_derivative_tends_natural": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "modulated_axis_derivative_eq_original": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_radial_derivative_tends_original": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_radial_derivative_tends_modulated": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "deriv_eq_of_nonnegative_agreement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_leading_derivative_eq_modulated": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_radial_derivative_tends_leading": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_radial_derivative_tends_leading": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_radial_tail_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "radial_derivative_limit_of_first_jet": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "chart_radial_derivative_eq_fderiv": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "first_jet_radial_component_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_derivative_tail_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "power_bounded_remainder_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "uncut_prefix_derivative_tends_leading": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "uncut_prefix_as_positive_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "finite_prefix_derivative_tends_leading": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "finite_prefix_radial_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "finite_positive_prefix_tends_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selected_axial_component_derivative_tail": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_component_derivative_tail": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_radial_derivative_quantitative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_radial_derivative_negative_at_root": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_axis_radial_identity_from_solution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "natural_axis_radial_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_axis_force_ratio_negative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "exists_negative_axis_force_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "only_allowed_axioms": true,
+  "expected_axiom_reports_present": true,
+  "source_unchanged_during_run": true,
+  "contains_sorryAx": false,
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory and its axis Laplacian identity. Includes concrete actual-candidate assembly germ transfer, the physical axial Laplacian and material acceleration, and their asymptotic ratio. Strict negativity remains conditional on the stated root interval/equation and PressureData; unconditional pressure instantiation for actualProfile is not established. Does not prove molecular alignment, phase transition, or changing constitutive viscosity. Not an independent nanoda check.",
+  "replay": "python3 -m tools.verify_updated_axis_sign"
+}

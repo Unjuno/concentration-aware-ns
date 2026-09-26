@@ -197,3 +197,21 @@ directly on those aliases. Evidence is saved in physicsnemo-compatibility-remova
 and physicsnemo-direct-import-audit.json under evidence/upstream-refresh.
 This is only an impact review of that commit, not a transitive-import or runtime
 compatibility test of v2.3. The original pinned v2.2.1 experiment is unchanged.
+
+
+## Updated build and extension completed
+
+The previously running build finished with exit code 0: all 3679 jobs for
+NavierStokes.ActualCandidateAssembly completed. The post-build comparison finds
+all 2669 source/config files unchanged, with the same manifest hash as the
+pre-completion check. The extension was then run against the updated project
+artifacts: exit code 0, all 104 axiom reports present, only allowed axioms, and
+no sorryAx. AxisForceSign.lean is byte-identical to the extension previously
+checked against the original pin; no compatibility edits were required.
+
+`evidence/upstream-refresh/updated-verification-summary.json` binds the new
+results and logs by hash. Old-pin proof evidence remains separate. These results
+supersede the historical started/not-yet-executed statuses above. They establish
+targeted Lean build and extension compatibility, not independent nanoda or
+comparator verification of the new pin. The actualProfile pressure premise,
+molecular interpretation and physical constitutive-viscosity claim remain open.

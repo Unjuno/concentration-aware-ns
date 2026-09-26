@@ -1,0 +1,9 @@
+{
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "files_checked": 2669,
+  "missing": [],
+  "mismatched": [],
+  "extra_nonbuild_files": [],
+  "input_file_manifest_sha256": "725300ad86a7db18ef1e6d142b8ae45937c1bb38e42cf1eb53c1c2f597ac619b",
+  "scope": "Post-build source/config bytes compared with prepared input; generated .lake artifacts excluded."
+}

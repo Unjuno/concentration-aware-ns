@@ -1,0 +1,16 @@
+{
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "target": "NavierStokes.ActualCandidateAssembly",
+  "build_exit_code": 0,
+  "extension_success": true,
+  "extension_axiom_reports": 104,
+  "extension_source_unchanged_from_original_pinned_check": true,
+  "artifacts": {
+    "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
+    "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
+    "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
+    "updated-axis-force-sign.json": "dfeb66be7cb7a954b875c09d63bba1b08079ba403147c41fcf242c8fe2c5f097",
+    "updated-axis-force-sign.log": "82ca2d2ecd0bba79b2c72030244abbfd7b7c726e69c9662870d94d68f129bc14"
+  },
+  "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved."
+}
