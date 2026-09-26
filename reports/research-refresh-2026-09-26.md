@@ -157,3 +157,19 @@ and Quot.sound. Exact composition and source/check/log hashes are saved in
 `evidence/upstream-refresh/range-pressure-check.json`. This gives a usable
 quantitative lemma for pressure-qualified profiles, not an unconditional theorem
 about our actual candidate. The separate updated assembly build remains ongoing.
+
+
+## Separate extension compatibility runner
+
+`python3 -m tools.verify_updated_axis_sign` now uses the prepared updated source
+volume with both source and dependency volumes mounted read-only. It reuses the
+existing axiom/exit-code/source-integrity gate, but writes only to
+`evidence/upstream-refresh/updated-axis-force-sign.{json,log}`. The original pinned
+proof evidence is preserved. Five existing gate fault-injection tests pass after
+the output-path refactor. The updated extension run has not yet been executed;
+it depends on successful completion of the assembly build.
+
+SU2 discussion refresh encountered a live GraphQL TLS handshake timeout. The
+web fallback showed unanswered/zero comments, but its crawl was reported as last
+week, so it does not establish the current absence of replies. The distinction
+is recorded in `evidence/upstream-refresh/su2-discussion-refresh.json`.

@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-09-26T13:56:11.144723+00:00",
+  "url": "https://github.com/su2code/SU2/discussions/2890",
+  "live_graphql_status": "failed",
+  "error": "TLS handshake timeout",
+  "fallback": "web fetch displayed Unanswered and 0 comments; index reported crawled last week",
+  "conclusion": "No new reply observed in available fallback, but current live reply state was not verified."
+}
