@@ -211,3 +211,19 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.actual_candidate_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_transverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2738:6: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/extension/AxisForceSign.lean:2738:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'ConcentrationAware.terminalScale_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.terminalScale_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2766:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/extension/AxisForceSign.lean:2769:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.powerLawDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]

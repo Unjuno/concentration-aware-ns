@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "ace095401d009e58dd24c47f7a2a657723cbd81d339c61d808b71dcb4ef5e4d5",
+  "source_sha256": "85a046e417b182b723a5bb3cd2ea35b754ed1f214e9f7e3239d46c14711daa1e",
   "runner_sha256": "3320328929bf29a75e2cc9830986a4109ec06a4ce2e8005aba14edae9b6d56a1",
-  "log_sha256": "16b2a7ea5e58ca6d7e550d62459e9528885ce2c09ee9893caf7b3d5bf49ac1cf",
+  "log_sha256": "c6fa56ccde791d63db03d3139b48621b47496bf62ec811088a5eb30bf99d7f71",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -572,6 +572,26 @@
       "Quot.sound"
     ],
     "axisDeformation_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "terminalScale_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "terminalScale_initial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axisDeformation_initial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "powerLawDeformation_hasDerivAt": [
       "propext",
       "Classical.choice",
       "Quot.sound"

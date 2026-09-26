@@ -288,3 +288,11 @@ A rotation/stretch map satisfies the axis Jacobian ODE under explicit scalar
 derivative assumptions, and its transverse squared norm is exactly r² times
 the initial squared norm. Concrete power-law initial-value solutions and
 their interpretation as the flow derivative are not yet formalized.
+
+
+September 27: both pins now pass 118 extension axiom reports. The power-law
+rates with exponents C/2 and -C satisfy the scalar equations and equal 1 at
+t0; zero initial angle gives identity deformation. Their rotation/stretch
+combination satisfies the C/(1-t) matrix ODE under the explicit theta'=omega
+hypothesis. Angular primitive existence, uniqueness and nonlinear-flow
+derivative identification remain open in this formal extension.

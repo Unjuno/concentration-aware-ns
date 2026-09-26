@@ -2713,4 +2713,63 @@ theorem axisDeformation_hasDerivAt
 #print axioms axisDeformation_transverse_square
 #print axioms axisDeformation_hasDerivAt
 
+
+noncomputable def terminalScale (t0 exponent t : ℝ) : ℝ := ((1-t)/(1-t0))^exponent
+
+theorem terminalScale_hasDerivAt (t0 exponent t : ℝ) (ht0 : t0 < 1) (ht : t < 1) :
+    HasDerivAt (terminalScale t0 exponent)
+      (-exponent/(1-t)*terminalScale t0 exponent t) t := by
+  have hden : 0 < 1-t0 := sub_pos.mpr ht0
+  have htau : 0 < 1-t := sub_pos.mpr ht
+  have hq : 0 < (1-t)/(1-t0) := div_pos htau hden
+  have hc := ((hasDerivAt_const t (1 : ℝ)).sub (hasDerivAt_id t)).div_const (1-t0)
+  have hp := hc.rpow_const (p := exponent) (Or.inl hq.ne')
+  simp only [Pi.sub_apply,id_eq,zero_sub] at hp
+  have he : ((1-t)/(1-t0))^(exponent-1) = ((1-t)/(1-t0))^exponent / ((1-t)/(1-t0)) := by
+    apply (eq_div_iff hq.ne').mpr
+    calc
+      _ = ((1-t)/(1-t0))^(exponent-1)*((1-t)/(1-t0))^(1:ℝ) := by rw [Real.rpow_one]
+      _ = ((1-t)/(1-t0))^((exponent-1)+1) := (Real.rpow_add hq _ _).symm
+      _ = _ := by congr 1; ring
+  apply hp.congr_deriv
+  rw [he]
+  unfold terminalScale
+  field_simp
+  <;> ring
+
+theorem terminalScale_initial (t0 exponent : ℝ) (ht0 : t0 < 1) :
+    terminalScale t0 exponent t0 = 1 := by
+  unfold terminalScale
+  rw [div_self (ne_of_gt (sub_pos.mpr ht0)),Real.one_rpow]
+
+theorem axisDeformation_initial (t0 C : ℝ) (dx : ProblemStatement.Space) (ht0 : t0 < 1) :
+    axisDeformation (terminalScale t0 (C/2) t0) (terminalScale t0 (-C) t0) 0 dx = dx := by
+  rw [terminalScale_initial t0 (C/2) ht0, terminalScale_initial t0 (-C) ht0]
+  ext i
+  fin_cases i <;> simp [axisDeformation,AxisymmetricResidual.pack,ProblemStatement.coordinateVector]
+
+#print axioms terminalScale_hasDerivAt
+#print axioms terminalScale_initial
+#print axioms axisDeformation_initial
+
+
+theorem powerLawDeformation_hasDerivAt
+    (t0 C t omega : ℝ) (theta : ℝ → ℝ) (dx : ProblemStatement.Space)
+    (ht0 : t0 < 1) (ht : t < 1) (hθ : HasDerivAt theta omega t) :
+    let v := axisDeformation (terminalScale t0 (C/2) t) (terminalScale t0 (-C) t) (theta t) dx
+    HasDerivAt (fun u => axisDeformation (terminalScale t0 (C/2) u)
+      (terminalScale t0 (-C) u) (theta u) dx)
+      (AxisymmetricResidual.pack (-(C/(1-t))/2*v 0-omega*v 1)
+        (omega*v 0-(C/(1-t))/2*v 1) ((C/(1-t))*v 2)) t := by
+  have hr : HasDerivAt (terminalScale t0 (C/2))
+      (-(C/(1-t))/2*terminalScale t0 (C/2) t) t := by
+    convert terminalScale_hasDerivAt t0 (C/2) t ht0 ht using 1 <;> ring
+  have hs : HasDerivAt (terminalScale t0 (-C))
+      ((C/(1-t))*terminalScale t0 (-C) t) t := by
+    convert terminalScale_hasDerivAt t0 (-C) t ht0 ht using 1 <;> ring
+  exact axisDeformation_hasDerivAt (terminalScale t0 (C/2)) (terminalScale t0 (-C))
+    theta t (C/(1-t)) omega dx hr hs hθ
+
+#print axioms powerLawDeformation_hasDerivAt
+
 end ConcentrationAware

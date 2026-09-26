@@ -1666,3 +1666,20 @@ used in the hand-derived singular-value argument without assuming a bounded
 rotation angle. Instantiating the power-law rates, their initial conditions,
 an angular primitive and the variational-flow interpretation remains necessary
 for the complete deformation statement.
+
+
+## Power-law deformation and initial scaling checked
+
+`terminalScale_hasDerivAt` proves that ((1-t)/(1-t0))^p has derivative
+-p/(1-t) times itself for t0,t<1. `terminalScale_initial` proves its initial
+value is 1. `axisDeformation_initial` proves that the combined map at t0
+is the identity when its initial rotation angle is zero.
+
+`powerLawDeformation_hasDerivAt` substitutes the exponents C/2 and -C into
+the rotation/stretch ODE, proving its rate is the matrix with diagonal
+(-C/(2*(1-t)),-C/(2*(1-t)),C/(1-t)) and transverse rotation omega.
+The hypothesis theta'=omega is retained explicitly. All these are derivative
+and initial-value identities; existence of the appropriate angular primitive,
+uniqueness and identification with the derivative of the nonlinear flow are
+not supplied by these lemmas. They also do not give uniform finite-packet
+control as t approaches 1.
