@@ -1,0 +1,23 @@
+{
+  "scope": "Exact auxiliary stationary solution and observation identities. Not the current manufactured case, a numerical solver run, or a singular solution.",
+  "resolutions": [
+    16,
+    32,
+    64
+  ],
+  "frequency": 128,
+  "velocity": "(0,sin(m*x)/m,0)",
+  "pressure": 0,
+  "forcing": "(0,nu*m*sin(m*x),0)",
+  "divergence_zero": true,
+  "advection_zero": true,
+  "steady_NS_balance": true,
+  "nodal_samples_zero": true,
+  "cell_center_samples_zero": true,
+  "cell_averages_zero": true,
+  "continuous_gradient_frobenius_max": 1,
+  "continuous_vorticity_max": 1,
+  "mean_kinetic_energy": "1/65536",
+  "sympy": "1.14.0",
+  "interpretation": "Finite samples and cell averages alone cannot upper-bound continuous derivative maxima without additional regularity, spectral or reconstruction assumptions. Force and initial data differ from the main benchmark."
+}
