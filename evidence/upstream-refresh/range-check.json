@@ -1,0 +1,19 @@
+{
+  "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "dependency_commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "source_url": "https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/NaturalAxisRange.lean",
+  "source_sha256": "30777f3cb6cb5c7445ab1d098c51dd282ec898c945d26dca8e242c1aefa97606",
+  "check_sha256": "69060365a79e848b3ac5e0eb054988d7d97f6a0af72d8fcc4a5f98488cc505ec",
+  "log_sha256": "6ede07956df9206b304d1ca26e08bcc2862236b9ff4a0d78fc1194d5e29be50e",
+  "exit_code": 0,
+  "scope": "Entire new NaturalAxisRange source checked against old pinned dependencies, with appended ofSmall axiom report. Not a full new-pin build or extension compatibility result.",
+  "check_suffix": "\n#print axioms NavierStokes.NaturalAxisRange.ofSmall\n",
+  "old_bounds": {
+    "h": "1/1000",
+    "j": "1/1000"
+  },
+  "new_bounds": {
+    "h": "1/100",
+    "j": "1/20"
+  }
+}

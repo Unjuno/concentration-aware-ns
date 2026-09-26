@@ -97,3 +97,21 @@ interface change to check, not a demonstrated failure of our extension. New
 modules imported by the updated versions and external dependencies are outside
 this old-closure scan. A fresh build remains necessary before claiming updated
 source compatibility; the old pinned proof environment is unchanged.
+
+## New parameter range checked against old dependencies
+
+The new NaturalAxisRange module broadens h≤1/1000 and j≤1/1000 to h≤1/100
+and j≤1/20. Its ofSmall theorem and CoeOut instance explicitly retain old small
+parameters. We compiled the entire downloaded module with the old pinned Lean
+and NaturalAxisData dependencies, appending an ofSmall axiom report. The process
+exited 0 and the report contains only propext, Classical.choice and Quot.sound.
+Source/check/log hashes and the exact appended suffix are in
+`evidence/upstream-refresh/range-check.json`; output is in `range-check.log`.
+
+This establishes that this range adapter checks in that recorded mixed-source
+context. It does not certify the whole new revision, its new dependency closure,
+or our extension against it. The source is retrieved from the manifest URL;
+append check_suffix and run `lake env lean` with the existing checker environment
+as in runtime/lean-verification/check_axis_sign.sh. Existing selected small
+parameters need not be enlarged to use the new interface. PressureData is not
+supplied by this parameter conversion; the pressure-threshold gap is unchanged.
