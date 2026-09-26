@@ -3425,4 +3425,34 @@ theorem outgoing_root_Z_positive_iff_moment_threshold
 
 #print axioms outgoing_root_Z_positive_iff_moment_threshold
 
+/-- A quantitative prefix bound suffices without assuming global PressureData. -/
+theorem outgoing_root_Z_positive_of_prefix_bound
+    (F : OutgoingProfile.Profile) (j eta : ℝ)
+    (hA : 0 < NaturalAxisData.A F.data.h) (hd : 0 < NaturalAxisData.d eta)
+    (he : eta < 0) (root : NaturalAxisData.H F.data.h j eta = 0)
+    (hbound : NaturalAxisData.D F.data.h/(2*NaturalAxisData.d eta) *
+        (1+2*NaturalAxisData.D F.data.h*eta^2/NaturalAxisData.d eta) <
+      5*F.data.core.P^2*OutgoingSchedule.shape eta^2) :
+    0 < NaturalAxisData.Z F.data.h j F.axisDatum eta := by
+  apply (outgoing_root_Z_positive_iff_moment_threshold F j eta hA hd.ne' he root).mpr
+  have hm0 := SchedulePressure.axisPressure_lower_bound F.data eta
+  rw [SchedulePressure.axisPressure_eq] at hm0
+  unfold PressureDatum.pressure at hm0
+  have hmass : 5*F.data.core.P^2*OutgoingSchedule.shape eta^2 ≤
+      ∫ y : ℝ, SchedulePressure.clockWeight F.data y *
+        PressureDatum.kernel (SchedulePressure.shapeExponent F.data y) eta := by
+    linarith
+  have hm1 : 0 ≤ ∫ y : ℝ, SchedulePressure.clockWeight F.data y *
+      SchedulePressure.shapeExponent F.data y *
+      PressureDatum.kernel (SchedulePressure.shapeExponent F.data y) eta := by
+    apply MeasureTheory.integral_nonneg
+    intro y
+    exact mul_nonneg (mul_nonneg (SchedulePressure.clockWeight_pos F.data y).le
+      (SchedulePressure.shapeExponent_bounds F.data y).1) (PressureDatum.kernel_pos _ _).le
+  exact lt_of_lt_of_le (hbound.trans_le hmass)
+    (le_add_of_nonneg_right (div_nonneg (mul_nonneg hd.le hm1)
+      (mul_nonneg hA.le (by positivity))))
+
+#print axioms outgoing_root_Z_positive_of_prefix_bound
+
 end ConcentrationAware

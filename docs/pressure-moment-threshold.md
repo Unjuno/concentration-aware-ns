@@ -176,3 +176,21 @@ This identifies the exact remaining local sign obligation; it does not prove
 that the selected profile satisfies it, or make it equivalent to the stronger
 global PressureData condition. No additional solver, training or nanoda run
 is claimed.
+
+## Source-based sufficient prefix bound in Lean
+
+`outgoing_root_Z_positive_of_prefix_bound` now derives Z>0 from
+`T < 5*b^2*shape(eta)^2`, with A>0, d>0, eta<0 and the root equation.
+It uses the upstream `axisPressure_lower_bound` to bound M0, and proves M1
+nonnegative from the actual clock weight, shape exponent and kernel.
+There are no free pressure-jet or moment assumptions in this sufficient
+condition. Since shape(eta)=1/(1+eta^2), its amplitude criterion is the
+previously derived `b^2 > T*(1+eta^2)^2/5`.
+
+The quantitative amplitude inequality is still an explicit hypothesis. The
+selected actual profile's positive amplitude has not been shown to satisfy
+it. This is a sufficient route, so failure to prove that amplitude bound would
+not imply failure of the exact weighted-moment condition.
+
+Both source-pin checks pass 148 axiom reports with only the permitted standard
+axioms, and all five verifier fault tests pass. No nanoda extension run is claimed.
