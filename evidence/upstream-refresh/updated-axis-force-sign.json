@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "efeaccdc7f013291b0131871a741ae9e01877f81ea56b5cced7a5b3c3bf7f038",
+  "source_sha256": "9a3c44d23890bf6e89275fd65af1da5e35ba43d3231cd58a58fd07e68bfbea8f",
   "runner_sha256": "3320328929bf29a75e2cc9830986a4109ec06a4ce2e8005aba14edae9b6d56a1",
-  "log_sha256": "0db514aec3103a6d335a2cdefa80abbc17d51c28937e020a60886fd09de48f9c",
+  "log_sha256": "aeb1331a52a9f304dd24e3f42c46b777e75274e3a43f1e1d0fd520ea36550c9f",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -637,6 +637,26 @@
       "Quot.sound"
     ],
     "cutoff_stage_jets_zero_above_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "slowSum_eq_cutPrefix_of_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "slowSum_eventuallyEq_cutPrefix_of_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "slowSum_jet_eq_cutPrefix_of_index": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physicalProfile_eventuallyEq_cutPrefix_of_index": [
       "propext",
       "Classical.choice",
       "Quot.sound"

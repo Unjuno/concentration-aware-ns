@@ -10,9 +10,9 @@ Source inspection uses OpenAI commit
 also checked against the original pin. No coefficient values or ODE trajectory
 were sampled to infer the bounds.
 
-Both source-pin runs pass 127 extension axiom reports, using only the allowed
-standard axioms. The five verification-gate fault tests also pass. These are
-checks of the stated lemmas and acceptance path, not numerical extraction.
+The current source-bound extension reports record the checks of the stated
+lemmas against both pins. These are checks of identities and the acceptance
+path, not numerical extraction.
 
 ## A uniform derivative bound can be transferred
 
@@ -51,12 +51,24 @@ that cutoff stage zero. The new extension lemma
 `cutoff_stage_jets_zero_above_index` checks this implication for arbitrary
 scalar coefficients, exponents and derivative orders.
 
-Classically, on the open region q_chart>1/J the positive-stage sum therefore
-reduces to the finitely many indices below J, plus the separately retained
-leading profile. The extension checks the individual vanishing jets; the
-complete finite-sum replacement and its chart composition are not new Lean
-theorems in this change. A valid qmin must bound the chart coordinate on the
-**whole tube**. Substituting its value only on the axis would leave a gap.
+The subsequent extension now checks the complete scalar finite-sum replacement:
+`slowSum_eq_cutPrefix_of_index` identifies `slowSum` with `cutPrefix` whenever
+q_chart>0 and J*q_chart>1. The source `cutPrefix J` includes indices 0 through
+J; its index-J term is zero under this condition. The leading profile is
+retained separately. No uncut prefix is substituted for the cutoff prefix.
+
+`slowSum_eventuallyEq_cutPrefix_of_index` establishes equality on a common
+neighborhood, and `slowSum_jet_eq_cutPrefix_of_index` transfers all derivative
+orders. No coefficient regularity premise is needed for these locality
+identities; using the resulting derivatives as classical smooth derivatives
+still requires the existing smoothness facts. Finally,
+`physicalProfile_eventuallyEq_cutPrefix_of_index` retains neighborhood equality
+after the physical-chart composition and multiplication by its q-power.
+
+A valid qmin must bound the chart coordinate on the **whole tube**. Substituting
+its value only on the axis would leave a gap. Equality for the scalar physical
+profiles is not yet an executable finite formula for the complete assembled
+velocity with every primitive, spatial curl and profile parameter extracted.
 
 This reduction avoids estimating an infinite tail on a compact interval away
 from t=1. It does not make the remaining coefficient functions or cutoff
@@ -81,8 +93,8 @@ for a velocity Hessian estimate without proving the relevant derivative link.
 These are limits of the extracted evidence, not a theorem that numerical
 realization is impossible. A future certificate can provide rho, qmin, the
 finite active data and derivative enclosures, then use the explicit packet
-inequality. At present only the existence/transfer and stage-vanishing steps
-are formalized. No particular finite packet is certified, and no pressure
+inequality. The existence/transfer, stage-vanishing and scalar finite-prefix
+locality steps are formalized. No particular finite packet is certified, and no pressure
 condition or material-viscosity conclusion follows from these bounds.
 
 ## Source anchors

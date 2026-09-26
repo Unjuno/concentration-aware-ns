@@ -238,3 +238,9 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
  Classical.choice,
  Quot.sound]
 'ConcentrationAware.cutoff_stage_jets_zero_above_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_eq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_eventuallyEq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_jet_eq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physicalProfile_eventuallyEq_cutPrefix_of_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -2924,4 +2924,62 @@ theorem cutoff_stage_jets_zero_above_index
 
 #print axioms cutoff_stage_jets_zero_above_index
 
+theorem slowSum_eq_cutPrefix_of_index
+    (a : ℕ → ℕ) (ha : StrictMono a) (h : ℝ)
+    (f : ℕ → SlowBorelBase.Inner → ℝ) (J : ℕ) (y : SlowBorelBase.Chart)
+    (hy : 0 < y.1) (hJ : 1 < (J : ℝ)*y.1) :
+    SlowBorelBase.slowSum a h f y = SlowBorelBase.cutPrefix a h f J y := by
+  change f 0 y.2 + (∑' j : ℕ, SlowBorelBase.slowStage a h f j y) =
+    f 0 y.2 + ∑ j ∈ Finset.range (J+1), SlowBorelBase.slowStage a h f j y
+  apply congrArg (fun z : ℝ => f 0 y.2 + z)
+  apply tsum_eq_sum
+  intro j hj
+  have hjJ : J ≤ j := by
+    have hj' : J+1 ≤ j := Nat.le_of_not_gt (by simpa only [Finset.mem_range] using hj)
+    omega
+  have hJa : (J : ℝ) ≤ (a j : ℝ) := by exact_mod_cast hjJ.trans (ha.id_le j)
+  have hcut : 1 < (a j : ℝ)*y.1 :=
+    hJ.trans_le (mul_le_mul_of_nonneg_right hJa hy.le)
+  simp only [SlowBorelBase.slowStage, SolenoidalDiagonal.cutStage,
+    SmoothCutoffs.scaledCutoff_zero_of_one_le_abs (hcut.le.trans (le_abs_self _)), zero_smul]
+
+theorem slowSum_eventuallyEq_cutPrefix_of_index
+    (a : ℕ → ℕ) (ha : StrictMono a) (h : ℝ)
+    (f : ℕ → SlowBorelBase.Inner → ℝ) (J : ℕ) (y : SlowBorelBase.Chart)
+    (hy : 0 < y.1) (hJ : 1 < (J : ℝ)*y.1) :
+    SlowBorelBase.slowSum a h f =ᶠ[𝓝 y] SlowBorelBase.cutPrefix a h f J := by
+  have hprod : Continuous (fun z : SlowBorelBase.Chart => (J : ℝ)*z.1) :=
+    continuous_const.mul continuous_fst
+  filter_upwards [continuous_fst.continuousAt (Ioi_mem_nhds hy),
+    hprod.continuousAt (Ioi_mem_nhds hJ)] with z hz hJz
+  exact slowSum_eq_cutPrefix_of_index a ha h f J z hz hJz
+
+theorem slowSum_jet_eq_cutPrefix_of_index
+    (a : ℕ → ℕ) (ha : StrictMono a) (h : ℝ)
+    (f : ℕ → SlowBorelBase.Inner → ℝ) (J m : ℕ) (y : SlowBorelBase.Chart)
+    (hy : 0 < y.1) (hJ : 1 < (J : ℝ)*y.1) :
+    iteratedFDeriv ℝ m (SlowBorelBase.slowSum a h f) y =
+      iteratedFDeriv ℝ m (SlowBorelBase.cutPrefix a h f J) y := by
+  exact (SolenoidalDiagonal.iteratedFDeriv_eventuallyEq
+    (slowSum_eventuallyEq_cutPrefix_of_index a ha h f J y hy hJ) m).self_of_nhds
+
+#print axioms slowSum_eq_cutPrefix_of_index
+#print axioms slowSum_eventuallyEq_cutPrefix_of_index
+#print axioms slowSum_jet_eq_cutPrefix_of_index
+
+theorem physicalProfile_eventuallyEq_cutPrefix_of_index
+    (a : ℕ → ℕ) (ha : StrictMono a) (h b : ℝ)
+    (hh : 0 < h) (hh1 : h < 1/2)
+    (f : ℕ → SlowBorelBase.Inner → ℝ) (J : ℕ) (p : SlowBorelBase.Chart)
+    (hp : p.1 < 1) (hJ : 1 < (J : ℝ)*(SlowBorelBase.physicalChart h p).1) :
+    SlowBorelBase.physicalProfile a h b f =ᶠ[𝓝 p]
+      (fun z => (SlowBorelBase.physicalChart h z).1 ^ b •
+        SlowBorelBase.cutPrefix a h f J (SlowBorelBase.physicalChart h z)) := by
+  have he := (slowSum_eventuallyEq_cutPrefix_of_index a ha h f J
+    (SlowBorelBase.physicalChart h p) (SlowBorelBase.physicalChart_positive hh hh1 hp) hJ).comp_tendsto (SlowBorelBase.physicalChart_smoothAt hh hh1 hp).continuousAt
+  filter_upwards [he] with z hz
+  exact congrArg (fun x : ℝ => (SlowBorelBase.physicalChart h z).1 ^ b • x) hz
+
+#print axioms physicalProfile_eventuallyEq_cutPrefix_of_index
+
 end ConcentrationAware

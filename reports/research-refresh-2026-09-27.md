@@ -120,3 +120,14 @@ of executable coefficient data or a numerical Hessian bound. The actual profile,
 schedule and compact maxima remain existential in the inspected source.
 Both source-pin runs now pass 127 extension axiom reports; the five gate-fault
 tests pass. No solver or training rerun is part of this change.
+
+## Exact finite-sum replacement
+
+Four subsequent extension lemmas now establish equality of the scalar slow sum
+with its finite cutoff prefix under J*q>1, neighborhood equality, all-order
+jet equality, and neighborhood equality after physical-chart composition and
+the restored q-power. The cutoff prefix retains the original cutoffs; it is
+not the uncut asymptotic prefix. These identities advance finite extraction
+without claiming executable coefficients or a certified numerical Hessian.
+Both pins pass 131 extension axiom reports with only the allowed standard
+axioms. The five verification-gate fault tests also pass.
