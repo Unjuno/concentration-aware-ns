@@ -1,0 +1,16 @@
+{
+  "scope": "Exact chain-rule and scalar radial-Laplacian checks. Not verification of the paper, its simulations, or the sign of our actual-profile force ratio.",
+  "source": "https://arxiv.org/html/2609.17642v1",
+  "source_equations": "(1), (3), and radial operator in (4b)",
+  "sympy": "1.14.0",
+  "time_operator_matches": true,
+  "axial_operator_matches": true,
+  "scalar_radial_laplacian_matches": true,
+  "second_axial_scaling_matches": true,
+  "time_operator": "q^(b-1)/L * (-b*f + D*eta*f_eta + X*f_X)",
+  "axial_operator": "q^(b-D)/L * (2*b*eta*f + d*f_eta - 2*eta*X*f_X)",
+  "scalar_radial_laplacian": "2*q^(b-1)*(f_X + X*f_XX)",
+  "axial_to_radial_power_difference": "2h",
+  "domain": "q>0, L!=0; cylindrical computation r!=0 with axis limit only where smooth extension exists",
+  "interpretation": "Positive h suppresses the axial power relative to the radial power for fixed bounded profile derivatives. It does not show vanishing total viscosity or a nonzero radial coefficient."
+}

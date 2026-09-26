@@ -63,3 +63,19 @@ Next priorities: audit the new source pin against our extension; compare the
 radial/axial viscous operators with Duraiswami; read the density theorem's exact
 norms and hypotheses; then map these results to the benchmark's measurement
 limitations. No new upstream defect report is justified by this refresh alone.
+
+## Independent operator comparison
+
+`python -m tools.check_similarity_operators` in the verification environment now
+checks Duraiswami's equations (1), (3) and the scalar radial operator of (4b)
+against implicit differentiation of physical coordinates. Inverting the
+(t,z,r²) Jacobian independently reproduces both time and axial chain rules.
+A second axial derivative scales as q^(b-2D), while the radial scalar Laplacian
+is 2 q^(b-1) (f_X+X f_XX). Their power difference is 2h. SymPy 1.14.0 checks
+all identities exactly; evidence is in `evidence/tests/similarity-operators.json`.
+
+This confirms the coordinate/operator comparison, not the paper's numerical
+branches or physical predictions. The radial coefficient can still vanish,
+and controlling profile derivatives remains necessary. In particular this does
+not discharge the pressure threshold for our actualProfile. The distinction
+between declining axial viscosity and declining total viscous force is retained.
