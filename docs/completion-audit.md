@@ -1,4 +1,4 @@
-# Completion audit — interim, 2026-09-12
+# Completion audit — interim, 2026-09-26
 
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
@@ -14,10 +14,10 @@ measured behavior take precedence over prior progress summaries.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 31 tests in the recorded replay; gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 88 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 36 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 88 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question submitted; no blanket defect claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | No demonstrated defect yet; final conclusions remain to be reconciled |
-| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. The selected base-field material trajectory and its transfer to the actual activated periodic field are now Lean-verified; strain and the full axial viscous-force ratio remain hand-derived. New pinned Lean proofs cover the selected slow-sum radial derivative limit, its natural-profile identification and eventual negative sign at an existing root. Euler and finite-stage extraction remain unperformed. |
+| OpenAI construction audit and transfer | Independent NS kernel logs; docs/openai-core-material-trajectory.md; symbolic force/dissipation checks | Original NS target verified. The selected base-field material trajectory and its transfer to the actual activated periodic field are now Lean-verified; strain remains hand-derived; the full physical axial viscous-force ratio is Lean-checked under explicit pressure assumptions. Root existence and the local pressure-threshold equivalence are checked, but the actual profile threshold remains unproved. New pinned Lean proofs cover the selected slow-sum radial derivative limit, its natural-profile identification and eventual negative sign at an existing root. Euler and finite-stage extraction remain unperformed. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published; tracked-only export and fresh-venv postprocessing pass. Solver-build reproduction and analytic-hypothesis review remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
@@ -27,7 +27,7 @@ not prove accuracy, convergence or the correctness of the underlying review.
 
 Current report replay covers twelve steps, including all five SU2 archive
 reviews, diagnostic replays, spectral derivatives, direct temporal differences
-and gate generation. The recorded 31 tests and 88 matching artifact links
+and gate generation. The current 36 tests and 88 matching artifact links
 verify their stated implementation and provenance scopes, not continuum accuracy.
 PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
 be repaired retrospectively.
@@ -71,3 +71,12 @@ temporary directories, so this check does not overwrite published proof evidence
 These tests exercise the Python acceptance/exit-code path, not Lean itself, and
 do not discharge the actual-profile pressure condition. No new Lean replay is
 claimed from this test run.
+
+
+Current-checkout report replay (2026-09-26): all twelve steps completed with
+exit code 0, including 36 tests and all 88 artifact byte-identity checks.
+Only the test log and its recorded hash changed during regeneration; generated
+comparison values and gate reports were unchanged. The run is recorded in
+`evidence/report-replay/summary.json`. It is a replay of archived-input
+postprocessing, not a fresh solver, training, or Lean run. Historical fresh-venv
+records retain their own earlier scope and are not relabeled as this run.

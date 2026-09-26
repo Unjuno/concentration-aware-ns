@@ -46,10 +46,13 @@ individual measured threshold violations.
 
 These are decisions from reproduced evidence. A claim about all affected
 industries, light, molecular alignment or phase transitions would exceed it.
-The separate OpenAI construction analysis derives an axial material trajectory,
-infinitesimal deformation and a nonzero limiting axial viscous-force ratio.
-That new consequence is hand-derived and symbolically checked; the independent
-kernel acceptance of the original NS target does not verify our extension.
+The separate OpenAI construction analysis checks the actual assembled field's
+axial material trajectory and physical viscous-force/material-acceleration ratio
+in Lean. A strictly negative limit remains conditional on quantitative pressure
+data for the selected profile; root existence is supplied by a checked corollary.
+Infinitesimal deformation remains hand-derived with symbolic checks. The original
+NS target's independent kernel acceptance does not verify this extension, and
+none of these results establishes molecular alignment or a phase transition.
 
 ## Evidence and reproduction
 
