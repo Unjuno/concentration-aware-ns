@@ -61,3 +61,13 @@ the superseded formula and is retained as a run record, not evidence for
 the corrected coefficient. The current axis-force symbolic JSON and Lean
 verification JSON contain the corrected run. Strict negativity survives;
 physical-force identification is checked conditionally; unconditional pressure instantiation remains incomplete. See the pressure-hypothesis retention audit in docs/openai-core-material-trajectory.md.
+
+Verification-gate fault injection (2026-09-26):
+`python3 -m unittest discover -s tests -p test_axis_verifier.py -v` passes five
+checks. The recorded successful axiom output is accepted; a failed subprocess,
+a missing required axiom report, a forbidden sorryAx, and source mutation during
+the mocked run are rejected with CLI exit code 1. Fixtures and outputs live in
+temporary directories, so this check does not overwrite published proof evidence.
+These tests exercise the Python acceptance/exit-code path, not Lean itself, and
+do not discharge the actual-profile pressure condition. No new Lean replay is
+claimed from this test run.
