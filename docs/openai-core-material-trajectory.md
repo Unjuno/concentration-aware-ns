@@ -1683,3 +1683,23 @@ and initial-value identities; existence of the appropriate angular primitive,
 uniqueness and identification with the derivative of the nonlinear flow are
 not supplied by these lemmas. They also do not give uniform finite-packet
 control as t approaches 1.
+
+
+## Angular primitive constructed from the selected field
+
+rotationAngle(omega,t0,t) is now defined as the interval integral of omega
+from t0 to t. `rotationAngle_hasDerivAt` uses continuity on (-infinity,1)
+to prove its derivative is omega(t) for t0,t<1, and `rotationAngle_initial`
+proves its initial value is zero. No integrability at the singular endpoint
+t=1 is assumed or required.
+
+`integratedDeformation_hasDerivAt` and `integratedDeformation_initial` combine
+this angle with the power-law stretch factors, giving the matrix ODE and
+identity initial condition under continuity of omega.
+
+Finally `selectedAxisOmega_continuousOn` supplies that continuity for the
+actual selected swirl potential evaluated along the distinguished candidate
+axis curve, using previously checked profile regularity and curve continuity.
+This closes the angular-primitive construction step. It does not yet prove
+uniqueness of the variational solution or identify it with the derivative of
+a nonlinear flow map on a common terminal interval.

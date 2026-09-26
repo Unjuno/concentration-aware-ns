@@ -2772,4 +2772,80 @@ theorem powerLawDeformation_hasDerivAt
 
 #print axioms powerLawDeformation_hasDerivAt
 
+
+noncomputable def rotationAngle (omega : ℝ → ℝ) (t0 t : ℝ) : ℝ :=
+  ∫ u in t0..t, omega u
+
+theorem rotationAngle_hasDerivAt (omega : ℝ → ℝ) (t0 t : ℝ)
+    (hω : ContinuousOn omega (Set.Iio (1:ℝ))) (ht0 : t0 < 1) (ht : t < 1) :
+    HasDerivAt (rotationAngle omega t0) (omega t) t := by
+  have hsub : Set.uIcc t0 t ⊆ Set.Iio (1:ℝ) := by
+    intro x hx
+    exact lt_of_le_of_lt hx.2 (max_lt ht0 ht)
+  exact intervalIntegral.integral_hasDerivAt_right
+    (hω.mono hsub).intervalIntegrable
+    (hω.stronglyMeasurableAtFilter isOpen_Iio t ht)
+    (hω.continuousAt (Iio_mem_nhds ht))
+
+theorem rotationAngle_initial (omega : ℝ → ℝ) (t0 : ℝ) :
+    rotationAngle omega t0 t0 = 0 := by simp [rotationAngle]
+
+theorem integratedDeformation_hasDerivAt
+    (omega : ℝ → ℝ) (t0 C t : ℝ) (dx : ProblemStatement.Space)
+    (hω : ContinuousOn omega (Set.Iio (1:ℝ))) (ht0 : t0 < 1) (ht : t < 1) :
+    let v := axisDeformation (terminalScale t0 (C/2) t) (terminalScale t0 (-C) t)
+      (rotationAngle omega t0 t) dx
+    HasDerivAt (fun u => axisDeformation (terminalScale t0 (C/2) u)
+      (terminalScale t0 (-C) u) (rotationAngle omega t0 u) dx)
+      (AxisymmetricResidual.pack (-(C/(1-t))/2*v 0-omega t*v 1)
+        (omega t*v 0-(C/(1-t))/2*v 1) ((C/(1-t))*v 2)) t := by
+  exact powerLawDeformation_hasDerivAt t0 C t (omega t) (rotationAngle omega t0) dx
+    ht0 ht (rotationAngle_hasDerivAt omega t0 t hω ht0 ht)
+
+theorem integratedDeformation_initial (omega : ℝ → ℝ) (t0 C : ℝ)
+    (dx : ProblemStatement.Space) (ht0 : t0 < 1) :
+    axisDeformation (terminalScale t0 (C/2) t0) (terminalScale t0 (-C) t0)
+      (rotationAngle omega t0 t0) dx = dx := by
+  rw [rotationAngle_initial]
+  exact axisDeformation_initial t0 C dx ht0
+
+#print axioms rotationAngle_hasDerivAt
+#print axioms rotationAngle_initial
+#print axioms integratedDeformation_hasDerivAt
+#print axioms integratedDeformation_initial
+
+
+noncomputable def selectedAxisOmega
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ) (eta t : ℝ) : ℝ :=
+  -AxisymmetricFields.partialS (SlowBorelBase.swirlPotential (FinalSlowBase.scales H v upper B)
+    F.data.h W.axis.normalization (FinalSlowBase.coefficients H v))
+    (t,(0,eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h))
+
+theorem selectedAxisOmega_continuousOn
+    {F : OutgoingProfile.Profile} {W : NominalProfile.Witness F}
+    (H : NominalConeAssembly.Certificate W)
+    {ld : ModulatedProfileAssembly.LoopData W}
+    (v : ModulatedProfileAssembly.Witness ld) (upper : ℝ) (B : ℕ) (eta : ℝ)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    ContinuousOn (selectedAxisOmega H v upper B eta) (Set.Iio (1:ℝ)) := by
+  intro t ht
+  have hc := (candidate_axis_curve_hasDerivAt F.data.h eta t ht heta).continuousAt
+  have hf := ((selected_transverse_profiles_sliceC2 H v upper t B ht).2
+    (AxisymmetricResidual.pack 0 0 (eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h))).continuousAt
+  have hf' : ContinuousAt (fun p => -AxisymmetricFields.partialS
+      (SlowBorelBase.swirlPotential (FinalSlowBase.scales H v upper B)
+        F.data.h W.axis.normalization (FinalSlowBase.coefficients H v)) p)
+      (t,(0,eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D F.data.h)) := by
+    simpa [AxisymmetricFields.profilePoint,AxisymmetricFields.radialEnergy] using hf
+  have hpath : ContinuousAt (fun s : ℝ =>
+      (s,((0:ℝ),eta*((1-s)/(1-eta^2))^CoordinateAlgebra.D F.data.h))) t :=
+    continuousAt_id.prodMk (continuousAt_const.prodMk hc)
+  have hcomp := hf'.comp_of_eq hpath rfl
+  exact hcomp.continuousWithinAt
+
+#print axioms selectedAxisOmega_continuousOn
+
 end ConcentrationAware

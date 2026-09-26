@@ -296,3 +296,11 @@ t0; zero initial angle gives identity deformation. Their rotation/stretch
 combination satisfies the C/(1-t) matrix ODE under the explicit theta'=omega
 hypothesis. Angular primitive existence, uniqueness and nonlinear-flow
 derivative identification remain open in this formal extension.
+
+
+September 27: both pins pass 123 extension axiom reports. The angular primitive
+is constructed by interval integration, with derivative omega and zero initial
+angle. Selected-axis omega is proved continuous on t<1. The resulting integrated
+deformation satisfies the explicit matrix ODE and identity initial value.
+Variational uniqueness and identification with the nonlinear flow derivative
+remain unfinished. No endpoint integrability at t=1 is asserted.

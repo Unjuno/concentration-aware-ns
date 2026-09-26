@@ -227,3 +227,8 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.powerLawDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.rotationAngle_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.rotationAngle_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selectedAxisOmega_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]

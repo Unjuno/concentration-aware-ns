@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "85a046e417b182b723a5bb3cd2ea35b754ed1f214e9f7e3239d46c14711daa1e",
+  "source_sha256": "5c9347efd51874defff432ddd1e66ced94381ca2ce955916a74a999b8ce62ab3",
   "runner_sha256": "3320328929bf29a75e2cc9830986a4109ec06a4ce2e8005aba14edae9b6d56a1",
-  "log_sha256": "c6fa56ccde791d63db03d3139b48621b47496bf62ec811088a5eb30bf99d7f71",
+  "log_sha256": "d94c8beb24e514f1ff7a2826c0e4a062735335d338e02303788512b15d0b340f",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -592,6 +592,31 @@
       "Quot.sound"
     ],
     "powerLawDeformation_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "rotationAngle_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "rotationAngle_initial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "integratedDeformation_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "integratedDeformation_initial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "selectedAxisOmega_continuousOn": [
       "propext",
       "Classical.choice",
       "Quot.sound"

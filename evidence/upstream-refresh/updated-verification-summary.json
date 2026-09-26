@@ -3,15 +3,15 @@
   "target": "NavierStokes.ActualCandidateAssembly",
   "build_exit_code": 0,
   "extension_success": true,
-  "extension_axiom_reports": 118,
+  "extension_axiom_reports": 123,
   "extension_source_unchanged_from_original_pinned_check": true,
   "artifacts": {
     "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
     "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
     "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
-    "updated-axis-force-sign.json": "90d19a58bf18290dcb88f4623ecf421fcfe64de659ea5e8565ffe5464604062f",
-    "updated-axis-force-sign.log": "c6fa56ccde791d63db03d3139b48621b47496bf62ec811088a5eb30bf99d7f71"
+    "updated-axis-force-sign.json": "3fe750a52b2763bcf65090210a60e99992894f0ded474455be103eb08a841f2d",
+    "updated-axis-force-sign.log": "d94c8beb24e514f1ff7a2826c0e4a062735335d338e02303788512b15d0b340f"
   },
   "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved.",
-  "extension_revision_note": "Power-law rates, initial scaling, identity initial deformation and conditional rotation/stretch ODE replayed against both pins. Historical runs retained in git."
+  "extension_revision_note": "Angular primitive, integrated deformation ODE/initial value and selected angular-rate continuity replayed against both pins. Historical runs retained in git."
 }
