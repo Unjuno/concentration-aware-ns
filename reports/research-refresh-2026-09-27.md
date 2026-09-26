@@ -171,3 +171,16 @@ still have their separately stated formalization limits.
 Both source-pin runs pass 139 axiom reports and all five verification-gate
 fault tests pass. Numerical benchmark verdicts and the pressure-premise
 status remain unchanged.
+
+## Formal variational uniqueness
+
+A compact-interval Gronwall argument now proves uniqueness for continuous
+linear operator coefficients. The explicit rotation/stretch matrix is realized
+as a continuous operator family, and its integrated deformation is the unique
+solution for the given initial displacement. `actual_root_variational_unique`
+applies this to the actual assembled-field derivative on every compact interval
+inside the shared terminal interval. Variational uniqueness is no longer only
+classical. Nonlinear-flow differentiability, effective packet constants and
+the actual-profile pressure premise remain separate obligations.
+Both source pins pass 144 extension axiom reports, and the five verifier-fault
+tests pass. No additional solver or training result is claimed.

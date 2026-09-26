@@ -23,6 +23,7 @@ The relevant extension statements are:
 | `actual_candidate_material_trajectory` | X'=u(t,X(t)) for all sufficiently late t<1 |
 | `actual_root_axis_jacobian` | The full spatial Jacobian with the root coefficient g=C/(1-t) and selected rotation rate already substituted |
 | `actual_root_deformation_hasDerivAt` | The explicit deformation solves the variational equation using that actual assembled-field derivative, eventually on the terminal axis |
+| `actual_root_variational_unique` | Every solution of that actual linear variational equation with the same initial displacement equals the explicit deformation on a compact terminal interval |
 | `selectedAxisOmega_continuousOn` | Continuity of the rotation coefficient omega on t<1 |
 | upstream `FinalSlowBase.velocity_smooth` | Smoothness of the selected base on the open spacetime domain t<1 |
 
@@ -114,6 +115,11 @@ was arbitrary, the derivative along the reference trajectory has the
 rotation/stretch formula at every later time below 1. The admissible
 neighborhood of initial data can shrink with T; no common neighborhood
 through the singular endpoint has been proved.
+
+Variational uniqueness itself is now Lean-checked by
+`actual_root_variational_unique`. The compact-tube continuation and
+difference-quotient argument in this section remain classical proofs; the
+new uniqueness theorem does not assume or prove a nonlinear flow derivative.
 
 ## Scope of the consequence
 

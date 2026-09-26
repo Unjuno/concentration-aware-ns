@@ -8,6 +8,7 @@ import NavierStokes.MixedPeriodicAssembly
 import NavierStokes.TimeLocalization
 import NavierStokes.GermCandidateAssembly
 import NavierStokes.ActualCandidateAssembly
+import Mathlib.Analysis.ODE.Gronwall
 
 /- This lemma checks only the sign of the derived scalar coefficient.
    It does not identify that coefficient with a velocity-field derivative. -/
@@ -3215,5 +3216,143 @@ theorem actual_root_common_terminal_interval
 
 #print axioms eventually_scale_to_terminal_interval
 #print axioms actual_root_common_terminal_interval
+
+theorem linear_variational_unique_on_compact_interval
+    (A : ℝ → ProblemStatement.Space →L[ℝ] ProblemStatement.Space)
+    (f g : ℝ → ProblemStatement.Space) (t0 T : ℝ)
+    (hA : ContinuousOn A (Set.Icc t0 T))
+    (hf : ContinuousOn f (Set.Icc t0 T))
+    (hg : ContinuousOn g (Set.Icc t0 T))
+    (hf' : ∀ t ∈ Set.Ico t0 T, HasDerivAt f (A t (f t)) t)
+    (hg' : ∀ t ∈ Set.Ico t0 T, HasDerivAt g (A t (g t)) t)
+    (hinit : f t0 = g t0) : Set.EqOn f g (Set.Icc t0 T) := by
+  obtain ⟨M, hM⟩ := isCompact_Icc.exists_bound_of_continuousOn hA
+  have hd : ∀ t ∈ Set.Ico t0 T,
+      HasDerivWithinAt (fun s => f s-g s) (A t (f t-g t)) (Set.Ici t) t := by
+    intro t ht
+    have hder := (hf' t ht).sub (hg' t ht)
+    rw [← map_sub] at hder
+    exact hder.hasDerivWithinAt
+  have hb : ∀ t ∈ Set.Ico t0 T,
+      ‖A t (f t-g t)‖ ≤ M*‖f t-g t‖ := by
+    intro t ht
+    exact ((A t).le_opNorm (f t-g t)).trans
+      (mul_le_mul_of_nonneg_right (hM t ⟨ht.1,ht.2.le⟩) (norm_nonneg _))
+  have hz := eq_zero_of_abs_deriv_le_mul_abs_self_of_eq_zero_right
+    (hf.sub hg) hd (sub_eq_zero.mpr hinit) hb
+  intro t ht
+  exact sub_eq_zero.mp (hz t ht)
+
+#print axioms linear_variational_unique_on_compact_interval
+
+noncomputable def axisRateLinearMap (g omega : ℝ) :
+    ProblemStatement.Space →ₗ[ℝ] ProblemStatement.Space where
+  toFun := fun dx => AxisymmetricResidual.pack (-g/2*dx 0-omega*dx 1)
+    (omega*dx 0-g/2*dx 1) (g*dx 2)
+  map_add' := by
+    intro x y
+    ext i
+    fin_cases i <;> simp [AxisymmetricResidual.pack, ProblemStatement.coordinateVector] <;> ring
+  map_smul' := by
+    intro r x
+    ext i
+    fin_cases i <;> simp [AxisymmetricResidual.pack, ProblemStatement.coordinateVector] <;> ring
+
+noncomputable def axisRateOperator (g omega : ℝ) :
+    ProblemStatement.Space →L[ℝ] ProblemStatement.Space :=
+  g • (axisRateLinearMap 1 0).toContinuousLinearMap +
+    omega • (axisRateLinearMap 0 1).toContinuousLinearMap
+
+theorem axisRateOperator_apply (g omega : ℝ) (dx : ProblemStatement.Space) :
+    axisRateOperator g omega dx =
+      AxisymmetricResidual.pack (-g/2*dx 0-omega*dx 1)
+        (omega*dx 0-g/2*dx 1) (g*dx 2) := by
+  ext i
+  fin_cases i <;>
+    simp [axisRateOperator, axisRateLinearMap, AxisymmetricResidual.pack,
+      ProblemStatement.coordinateVector] <;> ring
+
+theorem axisRateOperator_continuousOn (C : ℝ) (omega : ℝ → ℝ)
+    (hω : ContinuousOn omega (Set.Iio (1:ℝ))) :
+    ContinuousOn (fun t => axisRateOperator (C/(1-t)) (omega t)) (Set.Iio (1:ℝ)) := by
+  have hg : ContinuousOn (fun t : ℝ => C/(1-t)) (Set.Iio (1:ℝ)) :=
+    continuousOn_const.div (continuousOn_const.sub continuousOn_id)
+      (fun t ht => ne_of_gt (sub_pos.mpr ht))
+  exact (hg.smul continuousOn_const).add (hω.smul continuousOn_const)
+
+theorem integratedDeformation_unique_on_compact_interval
+    (omega : ℝ → ℝ) (C t0 T : ℝ) (dx : ProblemStatement.Space)
+    (hω : ContinuousOn omega (Set.Iio (1:ℝ))) (ht0 : t0 < 1) (hT : T < 1)
+    (f : ℝ → ProblemStatement.Space) (hf : ContinuousOn f (Set.Icc t0 T))
+    (hf' : ∀ t ∈ Set.Ico t0 T, HasDerivAt f
+      (AxisymmetricResidual.pack (-(C/(1-t))/2*f t 0-omega t*f t 1)
+        (omega t*f t 0-(C/(1-t))/2*f t 1) ((C/(1-t))*f t 2)) t)
+    (hinit : f t0 = dx) :
+    Set.EqOn f (fun t => axisDeformation (terminalScale t0 (C/2) t)
+      (terminalScale t0 (-C) t) (rotationAngle omega t0 t) dx) (Set.Icc t0 T) := by
+  let A := fun t => axisRateOperator (C/(1-t)) (omega t)
+  let v := fun t => axisDeformation (terminalScale t0 (C/2) t)
+    (terminalScale t0 (-C) t) (rotationAngle omega t0 t) dx
+  have hv' : ∀ t ∈ Set.Icc t0 T, HasDerivAt v (A t (v t)) t := by
+    intro t ht
+    rw [axisRateOperator_apply]
+    exact integratedDeformation_hasDerivAt omega t0 C t dx hω ht0 (lt_of_le_of_lt ht.2 hT)
+  apply linear_variational_unique_on_compact_interval A f v t0 T
+  · exact (axisRateOperator_continuousOn C omega hω).mono
+      (fun t ht => lt_of_le_of_lt ht.2 hT)
+  · exact hf
+  · intro t ht
+    exact (hv' t ht).continuousAt.continuousWithinAt
+  · intro t ht
+    rw [axisRateOperator_apply]
+    exact hf' t ht
+  · intro t ht
+    exact hv' t ⟨ht.1,ht.2.le⟩
+  · exact hinit.trans (integratedDeformation_initial omega t0 C dx ht0).symm
+
+#print axioms axisRateOperator_apply
+#print axioms axisRateOperator_continuousOn
+#print axioms integratedDeformation_unique_on_compact_interval
+
+theorem actual_root_variational_unique
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) (ha : Filter.Tendsto a Filter.atTop Filter.atTop)
+    (eta : ℝ) (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (root : NaturalAxisData.H CorrectionInitialization.ActualPrimary.h
+      CorrectionInitialization.ActualPrimary.nominal.axis.j eta = 0) :
+    let u := TimeLocalization.activatedVelocity (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ CorrectionInitialization.ActualPrimary.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+    let curve := fun t : ℝ => AxisymmetricResidual.pack 0 0
+      (eta*((1-t)/(1-eta^2))^CoordinateAlgebra.D CorrectionInitialization.ActualPrimary.h)
+    let C := materialStretchCoefficient CorrectionInitialization.ActualPrimary.h eta
+    let omega := selectedAxisOmega CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta
+    ∃ tstar : ℝ, tstar < 1 ∧ ∀ t0 T : ℝ, tstar < t0 → t0 ≤ T → T < 1 →
+      ∀ (dx : ProblemStatement.Space) (f : ℝ → ProblemStatement.Space),
+      ContinuousOn f (Set.Icc t0 T) →
+      (∀ t ∈ Set.Ico t0 T, HasDerivAt f
+        (fderiv ℝ (fun x => u (t,x)) (curve t) (f t)) t) →
+      f t0 = dx →
+      Set.EqOn f (fun t => axisDeformation (terminalScale t0 (C/2) t)
+        (terminalScale t0 (-C) t) (rotationAngle omega t0 t) dx) (Set.Icc t0 T) := by
+  intro u curve C omega
+  obtain ⟨tstar, hstar, hdata⟩ := actual_root_common_terminal_interval B N0 hN a ha eta heta root
+  refine ⟨tstar, hstar, ?_⟩
+  intro t0 T ht0 horder hT dx f hf hf' hinit
+  have hω : ContinuousOn omega (Set.Iio (1:ℝ)) :=
+    selectedAxisOmega_continuousOn CorrectionInitialization.ActualPrimary.certificate
+      CorrectionInitialization.ActualPrimary.modulation CorrectionInitialization.ActualPrimary.upper B eta heta
+  apply integratedDeformation_unique_on_compact_interval omega C t0 T dx hω
+    (lt_of_le_of_lt horder hT) hT f hf _ hinit
+  intro t ht
+  have hj := (hdata t ⟨lt_of_lt_of_le ht0 ht.1, lt_trans ht.2 hT⟩).2.2.2 (f t)
+  have hder := hf' t ht
+  rw [hj] at hder
+  exact hder
+
+#print axioms actual_root_variational_unique
 
 end ConcentrationAware

@@ -59,7 +59,9 @@ The full axis Jacobian, explicit variational solution, inverse identity and
 eventual axis smoothness are now Lean-checked (125 reports on both pins).
 [Uniqueness](../docs/axis-variational-uniqueness.md) and
 [nonlinear-flow derivative identification](../docs/axis-flow-derivative.md)
-have classical proofs; the complete connection is not yet Lean-formalized.
+now have different verification scopes: variational uniqueness is Lean-checked,
+while nonlinear-flow identification retains a classical proof. The complete
+connection is not yet Lean-formalized.
 The latter gives a quadratic local remainder on each fixed interval ending
 before the singular time, with non-effective constants. The original NS
 target's independent kernel acceptance does not verify this extension, and

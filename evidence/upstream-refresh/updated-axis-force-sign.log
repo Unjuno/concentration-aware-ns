@@ -1,23 +1,23 @@
-/extension/AxisForceSign.lean:28:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:29:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/extension/AxisForceSign.lean:328:5: warning: Variable name `hL` is not explicitly referenced.
+/extension/AxisForceSign.lean:329:5: warning: Variable name `hL` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
   [apply] _hL
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-/extension/AxisForceSign.lean:372:33: warning: `ContinuousMultilinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+/extension/AxisForceSign.lean:373:33: warning: `ContinuousMultilinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
 
 Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
-/extension/AxisForceSign.lean:1245:13: warning: This simp argument is unused:
+/extension/AxisForceSign.lean:1246:13: warning: This simp argument is unused:
   Pi.mul_apply
 
 Hint: Omit it from the simp argument list.
   [apply] simp only [id_eq] at hp
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-/extension/AxisForceSign.lean:1708:34: warning: This simp argument is unused:
+/extension/AxisForceSign.lean:1709:34: warning: This simp argument is unused:
   zero_add
 
 Hint: Omit it from the simp argument list.
@@ -192,7 +192,7 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.root_axial_gradient_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.materialStretchCoefficient_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.selected_root_axial_stretch_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:2526:36: warning: This simp argument is unused:
+/extension/AxisForceSign.lean:2527:36: warning: This simp argument is unused:
   zero_add
 
 Hint: Omit it from the simp argument list.
@@ -204,26 +204,26 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.selected_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisymmetric_velocity_jacobian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:2628:10: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:2629:10: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.selected_base_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_candidate_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_transverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:2738:6: warning: Unused tactic linter: `ring` does nothing
+/extension/AxisForceSign.lean:2739:6: warning: Unused tactic linter: `ring` does nothing
 
 Note: This linter can be disabled with `set_option linter.unusedTactic false`
-/extension/AxisForceSign.lean:2738:6: warning: this tactic is never executed
+/extension/AxisForceSign.lean:2739:6: warning: this tactic is never executed
 
 Note: This linter can be disabled with `set_option linter.unreachableTactic false`
 'ConcentrationAware.terminalScale_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.terminalScale_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axisDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:2766:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:2767:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/extension/AxisForceSign.lean:2769:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:2770:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.powerLawDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -254,3 +254,12 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'ConcentrationAware.actual_root_deformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.eventually_scale_to_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_common_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.linear_variational_unique_on_compact_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axisRateOperator_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisRateOperator_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_unique_on_compact_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.actual_root_variational_unique' depends on axioms: [propext, Classical.choice, Quot.sound]

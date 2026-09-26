@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "42c23a27b8df0af487525bdd034df8854554d0fc479bd70a9794c04e835ef56c",
+  "source_sha256": "e49dacbbed440384b533c6de6b3b8cadea0891e4b6754d82a9fec48520356a38",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "a343d2de022450587c850f6aa60d833f3c19a83d944710e517b0459d6d0d24ee",
+  "log_sha256": "0433d85355c2e40bffb36325b024377543d01915fd53d7156276befae179ddc7",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -697,6 +697,31 @@
       "Quot.sound"
     ],
     "actual_root_common_terminal_interval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "linear_variational_unique_on_compact_interval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axisRateOperator_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axisRateOperator_continuousOn": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "integratedDeformation_unique_on_compact_interval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_root_variational_unique": [
       "propext",
       "Classical.choice",
       "Quot.sound"

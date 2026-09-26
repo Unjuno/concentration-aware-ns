@@ -1,14 +1,38 @@
 # Uniqueness of the axial variational solution
 
-This is a classical analytic proof with an independent exact-algebra check.
-It supplements the Lean-checked construction of a solution in
-`verification/AxisForceSign.lean`. The uniqueness argument below has **not**
-yet been formalized in Lean. No numerical trajectory is used.
+This note retains a classical inverse-map proof with an independent
+exact-algebra check. The main uniqueness result is now also formalized by
+a Gronwall argument in `verification/AxisForceSign.lean`. No numerical
+trajectory is used. The inverse-map proof below and the new formal proof
+are different proofs of the same linear initial-value uniqueness statement.
 
 The algebraic inverse itself is now Lean-checked as
 `axisDeformation_inverse`, under r != 0 and s != 0, against both source pins.
-Each complete extension run reports 124 declarations, with no `sorryAx`.
-This establishes the inverse identity, not the entire uniqueness argument.
+The recorded inverse-identity revision passed 124 declarations, with no `sorryAx`.
+That earlier result establishes the inverse identity. The subsequent
+uniqueness lemmas described below establish initial-value uniqueness.
+
+## Formal uniqueness and actual-field application
+
+`linear_variational_unique_on_compact_interval` bounds a continuous family
+of continuous linear operators on a compact time interval. The difference
+of two solutions has zero initial value and derivative norm bounded by M
+times its own norm, so Mathlib's Gronwall lemma makes the difference zero.
+
+`axisRateOperator_apply` and `axisRateOperator_continuousOn` realize the
+explicit rotation/stretch matrix as a continuous family of operators.
+`integratedDeformation_unique_on_compact_interval` identifies every continuous
+solution of that matrix ODE with the integrated deformation, given the same
+initial displacement and the stated derivative equations.
+
+Finally `actual_root_variational_unique` uses the previously checked common
+terminal interval and actual Jacobian identity. It supplies t_star<1 such
+that for every t_star<t0<=T<1, any continuous solution of the actual field's
+linear variational equation with the specified initial displacement equals
+the explicit deformation on [t0,T]. The competing solution's equation is
+required on [t0,T), with endpoint continuity at T. This is uniqueness of
+the variational equation; differentiability of the nonlinear flow with
+respect to initial position is still supplied by the classical argument.
 
 ## Statement and proof
 
@@ -91,8 +115,8 @@ Once those facts and the coefficient identity D_x u=G are supplied, the
 uniqueness result above identifies D_x Phi with F. A neighborhood may depend
 on the chosen terminal time T<1. No uniform neighborhood up to t=1 or bound
 on the nonlinear remainder for a fixed finite packet follows from this
-argument. These remain outstanding obligations, alongside formalizing
-uniqueness itself. The independent pressure-witness gap also remains open.
+argument. These remain outstanding obligations at the level of the complete
+nonlinear-flow formalization. The independent pressure-witness gap also remains open.
 
 ## Reproduction and limits of the check
 
