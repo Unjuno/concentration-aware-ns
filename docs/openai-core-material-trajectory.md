@@ -1600,3 +1600,23 @@ does not require PressureData. The root is conditional in this theorem; earlier
 source root-existence results can supply it. This closes the axial-entry transfer
 step only. Transverse entries, the full deformation ODE and finite-particle
 interpretations remain unproved here.
+
+
+## Full axisymmetric Jacobian shape checked in Lean
+
+`axisymmetric_velocity_jacobian_on_axis` now specializes the upstream ordinary
+Frechet derivative theorem to the axis. For slice-differentiable profiles b,f,u,
+the Cartesian velocity (-x*b-y*f, x*f-y*b, u) has at (0,0,z) the derivative
+
+    G = [ -b  -f   0
+           f  -b   0
+           0   0   partialZ(u) ].
+
+Every coefficient is evaluated at (t,(s=0,z)); the proof uses the actual
+profile-composition Jacobian, without division by cylindrical radius. Thus the
+axis evaluation is justified rather than inferred by substituting r=0 in a
+singular cylindrical expression. The theorem does not impose b>0: contraction
+requires coefficient identification/sign. Specialization to b=partialZ(H)/2,
+f=-partialS(K), u=H+s*partialS(H), and transfer of the complete matrix to the
+actual assembled field remain to be connected. The earlier actual-field axial
+entry theorem is already checked separately.

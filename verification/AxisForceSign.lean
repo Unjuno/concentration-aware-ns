@@ -2566,4 +2566,23 @@ theorem actual_root_velocity_axial_hasDerivAt
 #print axioms selected_root_velocity_axial_hasDerivAt
 #print axioms actual_root_velocity_axial_hasDerivAt
 
+
+open AxisymmetricResidual AxisymmetricFields ProblemStatement in
+/-- Cartesian Jacobian on the symmetry axis, including transverse rotation. -/
+theorem axisymmetric_velocity_jacobian_on_axis
+    (b f u : AxisymmetricFields.Profile) (t z : ℝ)
+    (hb : SliceDifferentiable b t) (hf : SliceDifferentiable f t)
+    (hu : SliceDifferentiable u t) (v : ProblemStatement.Space) :
+    fderiv ℝ (fun x => AxisymmetricResidual.velocity b f u (t,x)) (pack 0 0 z) v =
+      pack (-b (t,(0,z))*v 0-f (t,(0,z))*v 1)
+        (f (t,(0,z))*v 0-b (t,(0,z))*v 1)
+        (AxisymmetricFields.partialZ u (t,(0,z))*v 2) := by
+  rw [(hasFDerivAt_velocity hb hf hu (pack 0 0 z)).fderiv]
+  ext i
+  fin_cases i <;> simp [velocityJacobian, packDerivative_apply,
+    profileDerivative_apply, lift, profilePoint, radialEnergy,
+    pack, coordinateVector, projection] <;> ring
+
+#print axioms axisymmetric_velocity_jacobian_on_axis
+
 end ConcentrationAware

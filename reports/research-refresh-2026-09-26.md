@@ -266,3 +266,10 @@ activated periodic field. The actual axial entry equals C/(q*(1-eta²))
 eventually as q tends to zero from above, under explicit root and schedule
 hypotheses. No PressureData assumption is used for this axial stretching result.
 The full Jacobian and matrix deformation remain separate unfinished steps.
+
+
+The general axisymmetric Cartesian Jacobian at the axis is now checked as
+well: a transverse block [-b,-f;f,-b] and axial entry partialZ(u), with no
+axis singularity. Both pins pass 110 extension axiom reports. This establishes
+the matrix shape under slice differentiability; it does not by itself establish
+contraction or identify the full actual-field matrix coefficients.

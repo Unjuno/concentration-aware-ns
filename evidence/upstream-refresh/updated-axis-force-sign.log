@@ -203,3 +203,4 @@ Hint: Omit it from the simp argument list.
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'ConcentrationAware.selected_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisymmetric_velocity_jacobian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
