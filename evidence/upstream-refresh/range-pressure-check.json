@@ -1,0 +1,13 @@
+{
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "dependency_commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "exit_code": 0,
+  "source_sha256": {
+    "NaturalAxisRange.lean": "30777f3cb6cb5c7445ab1d098c51dd282ec898c945d26dca8e242c1aefa97606",
+    "AxisRootPressureBounds.lean": "a4188512c8ea2e29f1b63ef80061cab2b4618cfe7ba7fc518ced91ba0d6d681d"
+  },
+  "check_sha256": "9848d5f9aa22d24bbd46e1bdb37e04ea8bee4f0e19ebe85dd3fee73a73e08bd6",
+  "log_sha256": "db9e2a39cd3f717e9fac1630b7f3df4c5fe1059b10bc7522ed31440c3d25ca65",
+  "composition": "Concatenate NaturalAxisRange then AxisRootPressureBounds after removing its import of NaturalAxisRange; append #print axioms NavierStokes.AxisRootPressureBounds.ideal_prefix_root_pressure_lower",
+  "scope": "Bounded check against old pinned dependencies, not a full updated-source build. Amplitude >=2 and ideal-prefix assumptions remain."
+}

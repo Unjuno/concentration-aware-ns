@@ -140,3 +140,20 @@ cans-lean-verification. Inputs and limits are recorded in updated-build-inputs.j
 the reusable execution command is runtime/lean-verification/check_updated_assembly.sh.
 The ongoing process log must not be treated as a successful result. Completion,
 extension compatibility, and independent comparator checking are separate steps.
+
+## New quantitative pressure-root lemma
+
+AxisRootPressureBounds.ideal_prefix_root_pressure_lower supplies a root with
+Z > j B²/20, retaining the pressure-prefix amplitude in the bound. It still
+requires B≥2, admissibility and the ideal-prefix identities. Thus its descriptive
+reference to the actual integral pressure does not assert that the arbitrary
+FinalSlowBase.actualProfile retains B≥2.
+
+We checked both new modules by concatenating NaturalAxisRange and
+AxisRootPressureBounds (removing only the second module's import of the first)
+against the old pinned dependency environment. Lean exited 0; the printed axiom
+report for ideal_prefix_root_pressure_lower contains only propext, Classical.choice
+and Quot.sound. Exact composition and source/check/log hashes are saved in
+`evidence/upstream-refresh/range-pressure-check.json`. This gives a usable
+quantitative lemma for pressure-qualified profiles, not an unconditional theorem
+about our actual candidate. The separate updated assembly build remains ongoing.
