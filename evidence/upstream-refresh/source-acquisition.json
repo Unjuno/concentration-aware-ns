@@ -1,0 +1,31 @@
+{
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "url": "https://codeload.github.com/openai/NavierStokesAndEuler/tar.gz/f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "archive_sha256": "9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7",
+  "archive_bytes": 6543801,
+  "source_directory": "work/upstream-refresh/source/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "configs": [
+    {
+      "path": "lean-toolchain",
+      "sha256": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88",
+      "same_as_old_configured_environment": true,
+      "old_upstream_sha256": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88",
+      "same_as_old_upstream": true
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "97b2804da5b9a2cd0aaf44ce42b7c39e9947beff9d2ac01a11e0d3d867af1c09",
+      "same_as_old_configured_environment": false,
+      "old_upstream_sha256": "97b2804da5b9a2cd0aaf44ce42b7c39e9947beff9d2ac01a11e0d3d867af1c09",
+      "same_as_old_upstream": true
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "5ec1dc8e009008d0efb9601cd38f6ba54e753fd538b0e5f8c3e6c5ec72ee1e09",
+      "same_as_old_configured_environment": false,
+      "old_upstream_sha256": "5ec1dc8e009008d0efb9601cd38f6ba54e753fd538b0e5f8c3e6c5ec72ee1e09",
+      "same_as_old_upstream": true
+    }
+  ],
+  "scope": "Source acquisition and configuration byte comparison only; no build."
+}

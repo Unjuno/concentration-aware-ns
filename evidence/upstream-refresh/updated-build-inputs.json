@@ -1,0 +1,22 @@
+{
+  "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "source_archive_sha256": "9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7",
+  "configured_files_only": [
+    "lake-manifest.json",
+    "lakefile.toml"
+  ],
+  "configured_hashes": {
+    "lake-manifest.json": "db8c236ee5bede059b13198f41249a94e7d6b084cd13a4c2f77bfe59edb6ff61",
+    "lakefile.toml": "78c5927d6078008293d3d82e4b9ab1df2f36035947a9afdbcad49b83d8a51429"
+  },
+  "source_volume": "cans-lean-updated",
+  "readonly_dependency_volume": "cans-lean-verification",
+  "target": "NavierStokes.ActualCandidateAssembly",
+  "network": "none",
+  "user": "501:20",
+  "cpus": 2,
+  "memory": "6g",
+  "LEAN_NUM_THREADS": 2,
+  "status": "build started; completion not asserted",
+  "scope": "Fresh upstream module artifacts in separate volume; previously provisioned dependencies are reused read-only. Not independent nanoda verification."
+}

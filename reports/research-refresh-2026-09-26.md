@@ -123,3 +123,20 @@ checker, and requires successful exit, the expected axiom report, no sorryAx,
 and unchanged inputs. A real replay succeeded; command, runner hash and result
 are in `evidence/upstream-refresh/range-replay.json`. This command uses the
 previously provisioned checker volume; it is not a clean-room new-pin build.
+
+## Updated assembly build started
+
+The full pinned updated archive has been acquired and hashed in
+`evidence/upstream-refresh/source-acquisition.json`. Comparison with the original
+old archive confirms identical lean-toolchain, lakefile.toml and lake-manifest.json
+bytes. The previously configured old checkout had local-path changes, which are
+recorded separately rather than mistaken for upstream changes.
+
+A fresh source/build area in Docker volume cans-lean-updated now builds
+NavierStokes.ActualCandidateAssembly. Only Lake manifest/config paths were changed
+to /verify/packages; a file-by-file comparison confirms theorem sources are
+unchanged. Old toolchain/dependency artifacts are mounted read-only from
+cans-lean-verification. Inputs and limits are recorded in updated-build-inputs.json;
+the reusable execution command is runtime/lean-verification/check_updated_assembly.sh.
+The ongoing process log must not be treated as a successful result. Completion,
+extension compatibility, and independent comparator checking are separate steps.
