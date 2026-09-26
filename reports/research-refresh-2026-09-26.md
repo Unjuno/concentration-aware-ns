@@ -281,3 +281,10 @@ field are checked. Its diagonal is (-hz/2,-hz/2,hz), with transverse rotation
 coefficient omega=-partialS(swirlPotential). The deformation ODE and its
 singular-value solution remain unfinished; the first-derivative transfer is
 no longer an open step.
+
+
+September 27 deformation update: both pins pass 114 extension axiom reports.
+A rotation/stretch map satisfies the axis Jacobian ODE under explicit scalar
+derivative assumptions, and its transverse squared norm is exactly r² times
+the initial squared norm. Concrete power-law initial-value solutions and
+their interpretation as the flow derivative are not yet formalized.

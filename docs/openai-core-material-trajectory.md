@@ -1648,3 +1648,21 @@ deformation ODE, its singular-value solution and finite-neighborhood control
 remain separate tasks. Omega is identified as a derivative of the actual
 selected swirl potential; a further explicit time formula has not been proved
 in this extension. No molecular alignment or changing viscosity is established.
+
+
+## Rotation/stretch deformation ODE identity checked
+
+The extension defines axisDeformation(r,s,theta) as a planar rotation multiplied
+by r on the transverse plane and multiplication by s on the axis.
+`axisDeformation_hasDerivAt` proves, for each initial displacement, that this map
+satisfies v'=Gv for G=[-g/2,-omega,0; omega,-g/2,0; 0,0,g] whenever
+r'=-g*r/2, s'=g*s and theta'=omega at the evaluation time. These scalar
+derivative hypotheses are explicit; neither existence nor uniqueness of the
+flow is asserted by this identity.
+
+`axisDeformation_transverse_square` proves v0²+v1²=r²*(dx0²+dx1²) exactly,
+so rotation cannot change the transverse norm. This validates the cancellation
+used in the hand-derived singular-value argument without assuming a bounded
+rotation angle. Instantiating the power-law rates, their initial conditions,
+an angular primitive and the variational-flow interpretation remains necessary
+for the complete deformation statement.

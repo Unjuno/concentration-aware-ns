@@ -209,3 +209,5 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.selected_base_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.actual_candidate_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_transverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -2675,4 +2675,42 @@ theorem actual_candidate_axis_jacobian
 
 #print axioms actual_candidate_axis_jacobian
 
+
+noncomputable def axisDeformation (r s theta : ℝ) (dx : ProblemStatement.Space) : ProblemStatement.Space :=
+  AxisymmetricResidual.pack
+    (r*(Real.cos theta*dx 0-Real.sin theta*dx 1))
+    (r*(Real.sin theta*dx 0+Real.cos theta*dx 1)) (s*dx 2)
+
+theorem axisDeformation_transverse_square (r s theta : ℝ) (dx : ProblemStatement.Space) :
+    (axisDeformation r s theta dx 0)^2+(axisDeformation r s theta dx 1)^2 =
+      r^2*((dx 0)^2+(dx 1)^2) := by
+  simp only [axisDeformation,AxisymmetricResidual.pack_zero,AxisymmetricResidual.pack_one]
+  calc
+    _ = r^2*((dx 0)^2+(dx 1)^2)*((Real.sin theta)^2+(Real.cos theta)^2) := by ring
+    _ = _ := by rw [Real.sin_sq_add_cos_sq]; ring
+
+theorem axisDeformation_hasDerivAt
+    (r s theta : ℝ → ℝ) (t g omega : ℝ) (dx : ProblemStatement.Space)
+    (hr : HasDerivAt r (-g/2*r t) t)
+    (hs : HasDerivAt s (g*s t) t)
+    (hθ : HasDerivAt theta omega t) :
+    let v := axisDeformation (r t) (s t) (theta t) dx
+    HasDerivAt (fun u => axisDeformation (r u) (s u) (theta u) dx)
+      (AxisymmetricResidual.pack (-g/2*v 0-omega*v 1)
+        (omega*v 0-g/2*v 1) (g*v 2)) t := by
+  intro v
+  have hx := hr.mul ((hθ.cos.mul_const (dx 0)).sub (hθ.sin.mul_const (dx 1)))
+  have hy := hr.mul ((hθ.sin.mul_const (dx 0)).add (hθ.cos.mul_const (dx 1)))
+  have hz := hs.mul_const (dx 2)
+  have hp := ((hx.smul_const (ProblemStatement.coordinateVector 0)).add
+    (hy.smul_const (ProblemStatement.coordinateVector 1))).add
+    (hz.smul_const (ProblemStatement.coordinateVector 2))
+  change HasDerivAt (fun u => axisDeformation (r u) (s u) (theta u) dx) _ t at hp
+  convert hp using 1
+  ext i
+  fin_cases i <;> simp [v,axisDeformation,AxisymmetricResidual.pack,ProblemStatement.coordinateVector] <;> ring
+
+#print axioms axisDeformation_transverse_square
+#print axioms axisDeformation_hasDerivAt
+
 end ConcentrationAware
