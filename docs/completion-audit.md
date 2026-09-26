@@ -46,8 +46,7 @@ Remaining completion work:
    profile, including a root with eventual negative derivative, the selected base-field vector material trajectory, and its axis Laplacian identity. An independent symbolic Eulerian material-acceleration calculation agrees with the trajectory formula. Current Lean proofs establish the physical Laplacian/material-acceleration limit and strict negative sign under explicit root and PressureData assumptions. Unconditional instantiation for actualProfile remains unproved. Do not describe original kernel acceptance
    as verification of our new result.
 4. Tracked-only export and fresh-venv postprocessing succeeded (see
-   evidence/fresh-environment-check.json). SU2 discussion read-back is refreshed
-   with no comments; no endorsement is inferred. Full solver builds were not
+   evidence/fresh-environment-check.json). SU2 discussion now has a September 13 response; the September 26 BDF2 follow-up reproduces the suggested order-reduction control and is posted with raw evidence. No general-fix endorsement is inferred. Full solver builds were not
    repeated by this postprocessing check.
 5. Audit the requested impact analysis against what the evidence supports.
    No finite benchmark can establish all industrial or molecular consequences;

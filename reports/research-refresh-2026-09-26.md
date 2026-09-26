@@ -173,3 +173,14 @@ SU2 discussion refresh encountered a live GraphQL TLS handshake timeout. The
 web fallback showed unanswered/zero comments, but its crawl was reported as last
 week, so it does not establish the current absence of replies. The distinction
 is recorded in `evidence/upstream-refresh/su2-discussion-refresh.json`.
+
+
+## Live SU2 response and BDF2 follow-up
+
+A successful live retry supersedes the stale cached zero-comment result.
+`evidence/upstream-refresh/su2-discussion-live-retry.json` records the September 13
+response. Its proposed BDF2 check was performed with the existing pinned runtime:
+six runs confirm the exact lagged/source-target recurrences, including startup,
+and all residual thresholds pass. See `reports/su2-bdf2-source-time.md`.
+The result was submitted as a reply in the existing discussion, not a duplicate
+issue or a claim that the broad PhysicalTime edit is ready to merge.
