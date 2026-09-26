@@ -184,3 +184,16 @@ six runs confirm the exact lagged/source-target recurrences, including startup,
 and all residual thresholds pass. See `reports/su2-bdf2-source-time.md`.
 The result was submitted as a reply in the existing discussion, not a duplicate
 issue or a claim that the broad PhysicalTime edit is ready to merge.
+
+
+## PhysicsNeMo compatibility removal
+
+The September 22 commit 426f7552 removes the opt-in pre-v2.0 compatibility layer
+and the PHYSICSNEMO_ENABLE_COMPAT hook for the v2.3 development tree. The migration
+guide enumerates replacement imports. Static comparison of all direct
+physicsnemo imports in our tools against both removed alias maps finds no match.
+The current FullyConnected, PhysicsInformer and PDE imports do not depend
+directly on those aliases. Evidence is saved in physicsnemo-compatibility-removal.json
+and physicsnemo-direct-import-audit.json under evidence/upstream-refresh.
+This is only an impact review of that commit, not a transitive-import or runtime
+compatibility test of v2.3. The original pinned v2.2.1 experiment is unchanged.

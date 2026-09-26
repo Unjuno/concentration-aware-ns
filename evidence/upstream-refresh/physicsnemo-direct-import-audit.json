@@ -1,0 +1,81 @@
+{
+  "commit": "426f7552da4b4fa675e404e8a4f437e27681b668",
+  "source_response_sha256": "04c6f9d47f5a9c163bcf1ee16baec46580d8882185194183bcbf1c4656a58763",
+  "removed_alias_count": 59,
+  "imports": [
+    {
+      "file": "tools/analyze_physicsnemo_gradient.py",
+      "line": 9,
+      "import": "physicsnemo.models.mlp.fully_connected",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/analyze_physicsnemo_gradient.py",
+      "line": 9,
+      "import": "physicsnemo.models.mlp.fully_connected.FullyConnected",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/check_physicsnemo_residual.py",
+      "line": 9,
+      "import": "physicsnemo.sym.eq.pde",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/check_physicsnemo_residual.py",
+      "line": 9,
+      "import": "physicsnemo.sym.eq.pde.PDE",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/check_physicsnemo_residual.py",
+      "line": 10,
+      "import": "physicsnemo.sym.eq.phy_informer",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/check_physicsnemo_residual.py",
+      "line": 10,
+      "import": "physicsnemo.sym.eq.phy_informer.PhysicsInformer",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/physicsnemo_equations.py",
+      "line": 6,
+      "import": "physicsnemo.sym.eq.pde",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/physicsnemo_equations.py",
+      "line": 6,
+      "import": "physicsnemo.sym.eq.pde.PDE",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/train_physicsnemo_pilot.py",
+      "line": 10,
+      "import": "physicsnemo.models.mlp.fully_connected",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/train_physicsnemo_pilot.py",
+      "line": 10,
+      "import": "physicsnemo.models.mlp.fully_connected.FullyConnected",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/train_physicsnemo_pilot.py",
+      "line": 11,
+      "import": "physicsnemo.sym.eq.phy_informer",
+      "removed_alias_matches": []
+    },
+    {
+      "file": "tools/train_physicsnemo_pilot.py",
+      "line": 11,
+      "import": "physicsnemo.sym.eq.phy_informer.PhysicsInformer",
+      "removed_alias_matches": []
+    }
+  ],
+  "direct_removed_alias_use": false,
+  "scope": "Static direct-import check only. Does not verify transitive imports or execute v2.3; pinned v2.2.1 results remain pinned."
+}
