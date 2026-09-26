@@ -1,0 +1,97 @@
+[
+  {
+    "file": "evidence/tests/su2-spectral-gradient.json",
+    "differences": [
+      {
+        "path": "/environment/numpy",
+        "before": "2.5.2",
+        "after": "2.5.3"
+      }
+    ]
+  },
+  {
+    "file": "reports/su2-n16-dt0.001-gate.json",
+    "differences": [
+      {
+        "path": "/artifacts/derivatives_verified/sha256",
+        "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+        "after": "16fed511d5babd112fc19a3a9ac8253bbc04c25e1477ce9d290f0524d60dec64"
+      },
+      {
+        "path": "/artifacts/evaluation_time_verified/sha256",
+        "before": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18",
+        "after": "274a32a9f02ffbc2cfe2f717c8808553d21a2868dfef045337dbb4b74ff489cc"
+      }
+    ]
+  },
+  {
+    "file": "reports/su2-n32-dt0.001-gate.json",
+    "differences": [
+      {
+        "path": "/artifacts/derivatives_verified/sha256",
+        "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+        "after": "16fed511d5babd112fc19a3a9ac8253bbc04c25e1477ce9d290f0524d60dec64"
+      },
+      {
+        "path": "/artifacts/evaluation_time_verified/sha256",
+        "before": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18",
+        "after": "274a32a9f02ffbc2cfe2f717c8808553d21a2868dfef045337dbb4b74ff489cc"
+      }
+    ]
+  },
+  {
+    "file": "reports/su2-n64-dt0.00025-gate.json",
+    "differences": [
+      {
+        "path": "/artifacts/derivatives_verified/sha256",
+        "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+        "after": "16fed511d5babd112fc19a3a9ac8253bbc04c25e1477ce9d290f0524d60dec64"
+      },
+      {
+        "path": "/artifacts/evaluation_time_verified/sha256",
+        "before": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18",
+        "after": "274a32a9f02ffbc2cfe2f717c8808553d21a2868dfef045337dbb4b74ff489cc"
+      }
+    ]
+  },
+  {
+    "file": "reports/su2-n64-dt0.0005-gate.json",
+    "differences": [
+      {
+        "path": "/artifacts/derivatives_verified/sha256",
+        "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+        "after": "16fed511d5babd112fc19a3a9ac8253bbc04c25e1477ce9d290f0524d60dec64"
+      },
+      {
+        "path": "/artifacts/evaluation_time_verified/sha256",
+        "before": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18",
+        "after": "274a32a9f02ffbc2cfe2f717c8808553d21a2868dfef045337dbb4b74ff489cc"
+      }
+    ]
+  },
+  {
+    "file": "reports/su2-n64-dt0.001-gate.json",
+    "differences": [
+      {
+        "path": "/artifacts/derivatives_verified/sha256",
+        "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+        "after": "16fed511d5babd112fc19a3a9ac8253bbc04c25e1477ce9d290f0524d60dec64"
+      },
+      {
+        "path": "/artifacts/evaluation_time_verified/sha256",
+        "before": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18",
+        "after": "274a32a9f02ffbc2cfe2f717c8808553d21a2868dfef045337dbb4b74ff489cc"
+      }
+    ]
+  },
+  {
+    "file": "evidence/su2-study-v1/diagnostic-replay.json",
+    "differences": [
+      {
+        "path": "/environment/numpy",
+        "before": "2.5.2",
+        "after": "2.5.3"
+      }
+    ]
+  }
+]
