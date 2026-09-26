@@ -161,3 +161,18 @@ This supersedes the earlier unperformed integral-instantiation obligation.
 The quantitative lower bound on the resulting moments remains unproved.
 Neither this identity nor the existing cone inequalities establish Z>0 for
 the actual profile without that additional step.
+
+
+## Formal necessary-and-sufficient condition
+
+`outgoing_root_Z_positive_iff_moment_threshold` now proves, for the actual
+outgoing integral formulas, that Z>0 is equivalent to the displayed weighted
+moment exceeding T. Assumptions are the root equation, A>0, eta<0 and d!=0.
+The proof uses the strictly positive multiplier -2*A*eta; it does not drop the
+derivative contribution. Both source pins pass 147 axiom reports with only
+the allowed standard axioms, and five verifier fault tests pass.
+
+This identifies the exact remaining local sign obligation; it does not prove
+that the selected profile satisfies it, or make it equivalent to the stronger
+global PressureData condition. No additional solver, training or nanoda run
+is claimed.

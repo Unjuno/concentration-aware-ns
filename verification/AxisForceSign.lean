@@ -3404,4 +3404,25 @@ theorem outgoing_root_pressure_moment_identity
 
 #print axioms outgoing_root_pressure_moment_identity
 
+/-- Exact remaining quantitative condition, with actual outgoing moments. -/
+theorem outgoing_root_Z_positive_iff_moment_threshold
+    (F : OutgoingProfile.Profile) (j eta : ℝ)
+    (hA : 0 < NaturalAxisData.A F.data.h) (hd : NaturalAxisData.d eta ≠ 0)
+    (he : eta < 0) (root : NaturalAxisData.H F.data.h j eta = 0) :
+    let g := SchedulePressure.clockWeight F.data
+    let a := SchedulePressure.shapeExponent F.data
+    let M0 := ∫ y : ℝ, g y * PressureDatum.kernel (a y) eta
+    let M1 := ∫ y : ℝ, g y * a y * PressureDatum.kernel (a y) eta
+    0 < NaturalAxisData.Z F.data.h j F.axisDatum eta ↔
+      NaturalAxisData.D F.data.h/(2*NaturalAxisData.d eta) *
+        (1+2*NaturalAxisData.D F.data.h*eta^2/NaturalAxisData.d eta) <
+      M0 + NaturalAxisData.d eta*M1/(NaturalAxisData.A F.data.h*(1+eta^2)) := by
+  intro g a M0 M1
+  rw [outgoing_root_pressure_moment_identity F j eta hA.ne' hd root]
+  have hc : 0 < -2*NaturalAxisData.A F.data.h*eta :=
+    mul_pos_of_neg_of_neg (mul_neg_of_neg_of_pos (by norm_num) hA) he
+  rw [mul_pos_iff_of_pos_left hc, sub_pos]
+
+#print axioms outgoing_root_Z_positive_iff_moment_threshold
+
 end ConcentrationAware

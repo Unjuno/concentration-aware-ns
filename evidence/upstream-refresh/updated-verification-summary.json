@@ -3,15 +3,15 @@
   "target": "NavierStokes.ActualCandidateAssembly",
   "build_exit_code": 0,
   "extension_success": true,
-  "extension_axiom_reports": 146,
+  "extension_axiom_reports": 147,
   "extension_source_unchanged_from_original_pinned_check": true,
   "artifacts": {
     "updated-build-result.json": "bb225180ac1528a859985649478e0590af87bcff140ee437ed2d2176e0d909c1",
     "updated-build.log": "1768b7253131be2d833d25b2a0ce1f6d84924868c5463eba0809e10b9a044505",
     "post-build-source-integrity.json": "b0f5f6f54540701bcaf6a67448aa2197a5eac2d1d1ec16407d124658fbd8910e",
-    "updated-axis-force-sign.json": "2e5caac70945d3c60a806e310aabcf7cc3ba05bd86bc7efd1d0b155fec71cb41",
-    "updated-axis-force-sign.log": "6552e297db3cff142a3f417a627ce50753528a89963f47971de2fff232b3aad0"
+    "updated-axis-force-sign.json": "400a9723fda02e66cada824d7445a0ddc5dbfd494fb72bfee72b1e5ec10b314b",
+    "updated-axis-force-sign.log": "d664b814fe480634b6c96a07f7999bb53244735ceefc7b1272ea238a9de4edb1"
   },
   "scope": "Targeted updated-source Lean build and unchanged extension check, reusing read-only common dependencies. Not an independent comparator/nanoda check of the new pin. Actual-profile pressure premise remains unproved.",
-  "extension_revision_note": "Outgoing pressure-moment identity instantiates actual integral and derivative formulas on both pins. Quantitative moment lower bound remains unproved."
+  "extension_revision_note": "Actual outgoing Z positivity is formally equivalent to the weighted pressure-moment threshold. Both pins checked; satisfaction of the threshold by the selected actual profile remains unproved."
 }
