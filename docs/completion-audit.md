@@ -29,10 +29,11 @@ substitute for an unperformed required run or a missing final report. The archiv
 inventory verifies readability and identity only. A recorded zero exit code does
 not prove accuracy, convergence or the correctness of the underlying review.
 
-Current report and exact-algebra replay covers sixteen steps, including all five SU2 archive
+Current report and exact-algebra replay covers seventeen steps, including all five SU2 archive
 reviews, diagnostic replays, spectral derivatives, direct temporal differences
 and gate generation, including the separate BDF2 control, root-pressure identities,
-pressure-moment threshold and cone sign symmetry. The current 45 tests and 93 matching artifact links
+pressure-moment threshold, cone sign symmetry and archived Dirichlet boundary-time
+pilot. The current 45 tests and 93 matching artifact links
 verify their stated implementation and provenance scopes, not continuum accuracy.
 PhysicsNeMo's missing preregistered threshold remains a limitation that cannot
 be repaired retrospectively.
@@ -146,3 +147,14 @@ gate reports were unchanged. The current replay requires
 `requirements-verification.txt` for SymPy and SciPy. Logs and hashes are in
 `evidence/report-replay/summary.json`. This is not a new clean-export, solver,
 training or Lean run, and it does not resolve the actual-profile pressure gap.
+
+
+Boundary-pilot replay integration: all seventeen steps completed with exit code
+zero, including the raw two-variant/two-step boundary checker, 45 tests and
+93 matching gate artifact links. This checker independently selects nodes by
+mesh numbering and reads residuals and time labels from the archives. It adds
+no temporal-order or restart claim. The existing localized gate verdicts remain
+UNCERTAIN. Separately, the current 149-report Lean extension now derives actual
+physical-ratio negativity from local Z>0, without global PressureData; the
+actual outgoing weighted-moment threshold is equivalent to that local sign
+condition. Its satisfaction for the selected profile remains unproved.

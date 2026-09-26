@@ -18,6 +18,7 @@ steps = [
     ('su2_spectral_derivatives', [sys.executable, '-m', 'tools.compare_su2_spectral']),
     ('su2_time_comparison', [sys.executable, '-m', 'tools.compare_su2_time']),
     ('su2_bdf2_control', [sys.executable, '-m', 'tools.check_su2_bdf2_control']),
+    ('su2_boundary_time_pilot', [sys.executable, '-m', 'tools.check_su2_boundary_time_pilot']),
     ('openfoam_gate', [sys.executable, '-m', 'tools.build_openfoam_report']),
     ('physicsnemo_gates', [sys.executable, '-m', 'tools.build_physicsnemo_report']),
     ('su2_gates', [sys.executable, '-m', 'tools.build_su2_report']),

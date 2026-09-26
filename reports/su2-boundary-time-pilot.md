@@ -31,6 +31,8 @@ Reproduce the solver runs, with the two images built as described in
 
 ```sh
 python3 -m tools.run_su2_boundary_time_pilot
+# Replay committed archives without Docker:
+python3 -m tools.check_su2_boundary_time_pilot
 ```
 
 The runner refuses an existing output directory. Frozen protocol:
