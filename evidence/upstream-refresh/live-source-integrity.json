@@ -1,0 +1,8 @@
+{
+  "files_checked": 2669,
+  "missing": [],
+  "mismatched": [],
+  "scope": "Live container source/config byte comparison with prepared host input; ignores generated build artifacts and does not assert build success.",
+  "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "input_file_manifest_sha256": "725300ad86a7db18ef1e6d142b8ae45937c1bb38e42cf1eb53c1c2f597ac619b"
+}
