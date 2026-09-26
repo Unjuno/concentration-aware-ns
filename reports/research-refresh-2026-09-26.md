@@ -215,3 +215,16 @@ supersede the historical started/not-yet-executed statuses above. They establish
 targeted Lean build and extension compatibility, not independent nanoda or
 comparator verification of the new pin. The actualProfile pressure premise,
 molecular interpretation and physical constitutive-viscosity claim remain open.
+
+
+## Updated independent comparator run started
+
+After the successful assembly and extension checks, the same tested Comparator
+and nanoda binaries are now running the updated source's public NavierStokes
+challenge. The challenge statement and JSON are byte-identical to the original
+pin. `updated-comparator-inputs.json` records live binary hashes and challenge
+hashes; `runtime/lean-verification/run_updated_comparator.sh` records the command.
+Only the updated project's .lake subtree is writable. The old dependency/checker
+volume and updated theorem sources remain read-only, with networking disabled.
+This run is not yet complete. Its results must remain separate from the already
+successful original-pin independent check and from our extension's Lean check.

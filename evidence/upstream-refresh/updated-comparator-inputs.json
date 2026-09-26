@@ -1,0 +1,22 @@
+{
+  "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "challenge_files": {
+    "ComparatorChallenges/NavierStokes.json": {
+      "sha256": "7610ecead7b390d80ff7f4229a3ff8f18d630e046f7ad1de4f92c7e8e76845b8",
+      "unchanged_from_original_pin": true
+    },
+    "ComparatorChallenges/NavierStokes.lean": {
+      "sha256": "0cd193b8d5cbd0266e6e2f72e68dd5abcdcf2430ebd435dd9289737e9aa7da61",
+      "unchanged_from_original_pin": true
+    }
+  },
+  "checker_hashes": [
+    "241e888d1a71eca20b83698fc8dbe4e89f589d64accc71763473af8fb616ea02  /verify/checker-bin/landrun",
+    "c47f6879a52cc0b594d1760963301ea7b242527e6ebe114669337a2e0cca3964  /verify/checker-bin/no_unix",
+    "5b89175328f792cd9116253e1bc496e742dcc338d124b2ad785273a89a069d90  /verify/checker-sources/nanoda/target/release/nanoda_bin",
+    "6b36c7d582bb5ef787f5855b1d9824886e4555f968cd91fb074515af79d65b97  /verify/packages/Comparator/.lake/build/bin/comparator"
+  ],
+  "runner_sha256": "a390bdec052205e21b5a677ba12a638aa4afbaa3caf12eee482ea3fa4d629b61",
+  "status": "started; no completion asserted",
+  "scope": "Public R3 and periodic challenge, enable_nanoda=true; does not independently check our extension."
+}
