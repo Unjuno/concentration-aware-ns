@@ -97,3 +97,37 @@ The inspected source hashes and declaration locations are saved in
 bug or counterexample follows from this audit. The next concrete proof route
 is to express the retained cone inequalities in the actual natural-axis jets
 and determine whether they constrain the weighted moment above.
+
+## Why the cone inequality alone does not select the axial sign
+
+At the same source pin, `ActivationContinuation.lean:23-30` defines
+
+```
+S = a*(1+(b/a)^2)
+P = p+q*b/a
+J = q-p*b/a
+Relaxed = (a>0) and (P>2) and (S<coneBound(P,J)).
+```
+
+Here P denotes the projected stress coordinate, not the pressure datum.
+`ConeAlgebra.lean:17` defines
+`coneBound(P,J)=P+J^2/4-|J|*sqrt((P-2)/2+J^2/16)`.
+Under `(b,q) -> (-b,-q)`, S and P stay fixed, J changes sign, and coneBound
+stays fixed. The extra true-cone inequality S>2 also stays fixed. For example,
+(a,b,p,q)=(1,2,2,4) and (1,-2,2,-4) both give S=5, P=10, J=0 and bound=10.
+Thus those coordinate inequalities alone cannot determine the sign of b.
+
+This loss of sign information also appears explicitly in
+`NaturalEntrance.ns_separated` (line 779): its hypothesis separates |Z| from
+zero, and its conclusion bounds |ns| away from zero. The subsequent cone-size
+estimate uses a squared second coordinate. It supplies no Z>0 conclusion.
+
+`python -m tools.check_cone_sign_symmetry` checks four exact identities and
+both rational coordinate examples; results are in
+`evidence/tests/cone-sign-symmetry.json`. This excludes the shortcut of inferring
+an axial sign from the bare cone inequalities. It does **not** construct two
+complete profiles, establish symmetry of the full PDE assembly, or show that
+all retained conditions together fail to determine the sign. Additional
+pressure/jet relations could break this coordinate symmetry. The unresolved
+step must use such relations or the pressure-qualified witness, rather than
+cone membership alone.

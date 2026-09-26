@@ -1,0 +1,33 @@
+{
+  "sympy": "1.14.0",
+  "checks": {
+    "shear_even": true,
+    "projection_preserved": true,
+    "transverse_reversed": true,
+    "bound_even": true
+  },
+  "true_cone_coordinate_examples": [
+    {
+      "a": "1",
+      "b": "2",
+      "p": "2",
+      "q": "4",
+      "shearSize": "5",
+      "projection": "10",
+      "transverse": "0",
+      "coneBound": "10"
+    },
+    {
+      "a": "1",
+      "b": "-2",
+      "p": "2",
+      "q": "-4",
+      "shearSize": "5",
+      "projection": "10",
+      "transverse": "0",
+      "coneBound": "10"
+    }
+  ],
+  "scope": "Exact coordinate algebra from ActivationContinuation and ConeAlgebra. Does not realize either tuple as an actual profile or prove whole-assembly sign symmetry.",
+  "actual_profile_pressure_gap_resolved": false
+}
