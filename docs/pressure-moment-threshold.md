@@ -215,3 +215,33 @@ follows from a negative ratio of vector components.
 
 Both source pins pass 149 axiom reports with the permitted standard axioms;
 all five verifier fault tests pass. This is not a nanoda check of the extension.
+
+## Uniform small-parameter sufficient amplitude
+
+The local sufficient criterion can be reduced to a fixed rational amplitude
+within the already-used small-parameter root range. Assume
+0<h<=1/1000, 0<j<=1/1000 and -j/4<eta<-j/5. Then x=eta² is between zero and
+1/16000000, and 0<D=1/2-h<1/2. The required squared amplitude threshold is
+
+```
+B = D/(10*(1-x)) * (1+2*D*x/(1-x)) * (1+x)^2
+  <= (1+x)^2/(20*(1-x)^2)
+  <= (16000001/15999999)^2 / 20
+  < (9/40)^2.
+```
+
+The first inequality bounds only positive factors, using D<=1/2 and 2D<=1.
+For the second, (1+x)/(1-x) increases for 0<=x<1: its difference between
+arguments y>=x is 2*(y-x)/((1-y)*(1-x)). The last inequality is checked with
+exact rational arithmetic by `python3 -m tools.check_uniform_prefix_threshold`;
+its result and strict margin are saved in
+`evidence/tests/uniform-prefix-threshold.json`.
+
+Consequently **b>=9/40 suffices for local Z>0** under these conditions and the
+root equation, via the source prefix lower bound. This is substantially weaker
+than b>=2, which was used for the stronger global pressure condition. It does
+not prove that the selected actual profile has b>=9/40; no retained quantitative
+bound on that chosen amplitude has been established. It also does not make the
+local sufficient condition necessary. The factor inequalities above are a
+classical proof; only the endpoint arithmetic is executable here, and no new
+Lean theorem or molecular-viscosity conclusion is claimed.

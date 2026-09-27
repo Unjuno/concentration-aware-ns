@@ -1,0 +1,10 @@
+{
+  "assumptions": "0<h<=1/1000; 0<j<=1/1000; -j/4<eta<-j/5; outgoing root equation and source prefix bound",
+  "eta_squared_upper": "1/16000000",
+  "amplitude_squared_threshold_upper": "256000032000001/5119999360000020",
+  "sufficient_amplitude": "9/40",
+  "strict_squared_margin": "255994848000001/409599948800001600",
+  "rational_comparison_pass": true,
+  "actual_profile_amplitude_bound_proved": false,
+  "scope": "Classical positive-factor inequality plus exact rational endpoint arithmetic, not a Lean proof or complete-profile existence construction"
+}
