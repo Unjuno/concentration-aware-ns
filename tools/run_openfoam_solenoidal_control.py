@@ -4,11 +4,11 @@ from pathlib import Path
 
 
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--check-inputs-only',action='store_true');args=parser.parse_args()
- protocol=Path('protocols/of13-solenoidal-startup-control-v1.json');spec=json.loads(protocol.read_text())
- prepared=json.loads(Path('evidence/tests/openfoam-solenoidal-case-preparation.json').read_text())
+ parser=argparse.ArgumentParser();parser.add_argument('--check-inputs-only',action='store_true');parser.add_argument('--protocol',default='protocols/of13-solenoidal-startup-control-v1.json');args=parser.parse_args()
+ protocol=Path(args.protocol);spec=json.loads(protocol.read_text());study=protocol.stem
+ prepared=json.loads((Path('evidence/tests')/('openfoam-solenoidal-case-preparation.json' if study=='of13-solenoidal-startup-control-v1' else study+'-preparation.json')).read_text())
  assert hashlib.sha256(protocol.read_bytes()).hexdigest()==prepared['protocol_sha256']
- root=Path('work/of13-solenoidal-startup-control-v1').resolve()
+ root=(Path('work')/study).resolve()
  for row in prepared['cases']:
   case=root/row['case']
   for name,digest in row['input_hashes'].items():assert hashlib.sha256((case/name).read_bytes()).hexdigest()==digest
@@ -18,7 +18,7 @@ def main():
  if args.check_inputs_only:return
  # Do not enqueue another run when Docker cannot answer a bounded read.
  subprocess.run(['docker','image','inspect',spec['image_id']],check=True,stdout=subprocess.DEVNULL,timeout=10)
- out=Path('evidence/of13-solenoidal-startup-control-v1');out.mkdir(exist_ok=False)
+ out=Path('evidence')/study;out.mkdir(exist_ok=False)
  results=[]
  for row in prepared['cases']:
   case=root/row['case']
