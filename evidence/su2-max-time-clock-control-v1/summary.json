@@ -1,0 +1,113 @@
+{
+  "scope": "Static fixed-dt singlezone BDF2, R=2. No moving-mesh, variable-step or multizone conclusion. Preserve deviations instead of changing predictions.",
+  "cases": [
+    {
+      "case": "original-continuous",
+      "archive_sha256": "83b6afa5d9d3d65396db4e9eb4f2f63430e9b96952b32d3baa3588a18942f947",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "times": [
+        "0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4"
+      ],
+      "checks": {
+        "exit_zero": true,
+        "predicted_indices": true,
+        "max_time_stop": true,
+        "iteration_cap_not_reached": true,
+        "residuals_met": true
+      }
+    },
+    {
+      "case": "original-resumed",
+      "archive_sha256": "2eeb18ba383ab3913864d2ff18484910a019568bf5ba776b37ab8fb35517fd7b",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "times": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4"
+      ],
+      "checks": {
+        "exit_zero": true,
+        "predicted_indices": true,
+        "max_time_stop": true,
+        "iteration_cap_not_reached": true,
+        "residuals_met": true
+      }
+    },
+    {
+      "case": "output-control-continuous",
+      "archive_sha256": "be56576674be88c87012fbd65a506ae1c149eac650f894c7d1bf49edd734be40",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "times": [
+        "0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4"
+      ],
+      "checks": {
+        "exit_zero": true,
+        "predicted_indices": true,
+        "max_time_stop": true,
+        "iteration_cap_not_reached": true,
+        "residuals_met": true
+      }
+    },
+    {
+      "case": "output-control-resumed",
+      "archive_sha256": "60dbcd7e20d9204866e04fd9f439d162b2963021a2a40442ff0bed975fc6a1c0",
+      "indices": [
+        2,
+        3,
+        4
+      ],
+      "times": [
+        "0.2",
+        "0.3",
+        "0.4"
+      ],
+      "checks": {
+        "exit_zero": true,
+        "predicted_indices": true,
+        "max_time_stop": true,
+        "iteration_cap_not_reached": true,
+        "residuals_met": true
+      }
+    }
+  ],
+  "field_comparisons": [
+    {
+      "mode": "continuous",
+      "maximum_difference": "0E-15",
+      "pass": true
+    },
+    {
+      "mode": "resumed",
+      "maximum_difference": "0E-15",
+      "pass": true
+    }
+  ],
+  "prediction_reproduced": true,
+  "general_fix_validated": false
+}
