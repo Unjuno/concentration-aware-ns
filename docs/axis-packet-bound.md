@@ -144,6 +144,12 @@ power-law tube/Hessian bounds. The piecewise exponent and integral are checked
 symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 `evidence/tests/packet-radius-scaling.json`.
 
+The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
+now supplies these envelope exponents existentially for the selected root:
+`rho(Q)=rho0*Q^D`, `k(Q)<=k0*Q^-40`, so the sufficient power is
+`Q^(Cstretch+39)`. The constants and endpoint neighborhood are still not
+effective, and this shrinking radius does not certify any fixed-size packet.
+
 ## Verification and remaining inputs
 
 `python -m tools.check_axis_packet_bound` in the pinned verification environment

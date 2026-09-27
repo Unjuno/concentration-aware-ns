@@ -122,6 +122,31 @@ continuum solution and forcing to that observable. None is present in the
 reviewed Lean source or the cited preprints. No phase transition or change in
 constitutive viscosity follows from the current results.
 
+## Additional September research check
+
+Constantin, Ignatova and Vicol's [17 September preprint](https://arxiv.org/abs/2609.20803)
+assumes anisotropic Type II bounds on the angular mean and exact axisymmetry in
+a collapsing core. Under those hypotheses it proves regularity for
+real-analytic forcing. Its corollary constrains which analytic or locally
+vanishing force profiles can accompany a construction satisfying those
+hypotheses; it does not refute a smooth, non-analytic forced construction and
+does not provide a molecular model.
+
+Petrillo and Glimm's [20 September preprint](https://arxiv.org/abs/2609.23868)
+sets positive finite-window energy defect as a separate target for unforced
+Leray-Hopf dynamics. It distinguishes that unforced question from the forced
+OpenAI construction and notes that finite pseudospectral computations cannot
+certify its Galerkin-uniform condition. This is a research direction, not an
+independent resolution or evidence about the present solver benchmark.
+
+The endpoint-rate-to-packet derivation now supplies exponents for the
+conditional shrinking-packet estimate: `r=D`, `kappa=40`, and sufficient
+initial-radius order `Q^(Cstretch+39)`, approximately `Q^43`. The prefactor,
+endpoint neighborhood and positive tube radius remain existential, and the
+certified radius tends to zero. Therefore it is progress toward a conditional
+continuum bound, not a fixed-size or molecular certificate. Details are in
+[`packet-constant-dependencies.md`](packet-constant-dependencies.md).
+
 ## Local verification added in this refresh
 
 `spatial_jet_norm_le_spacetime_jet_norm` now proves in Lean that restriction of
