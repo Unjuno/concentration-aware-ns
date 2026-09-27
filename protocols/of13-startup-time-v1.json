@@ -1,0 +1,13 @@
+{
+  "status": "frozen before execution",
+  "purpose": "Measure early-time timestep dependence with unchanged initial velocity and constructor flux",
+  "baseline": "of13-iteration-sensitivity-v1",
+  "n": 64,
+  "end": 0.001,
+  "dt": [0.001, 0.0005, 0.00025],
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "changes": "Only endTime and writeInterval; write every physical step",
+  "checks": "Zero exit, complete End log, exactly 1/2/4 converged steps, finite fields at common endpoint, unchanged initial U and solver tolerances",
+  "analysis": "Compare common-endpoint velocity fields and reference errors; preserve all step U,p,phi and logs to trace startup. No predeclared expected order or causal conclusion from this observation alone.",
+  "scope": "Early-time diagnostic of the original numerical trajectory; no initial-field or pressure-projection intervention"
+}

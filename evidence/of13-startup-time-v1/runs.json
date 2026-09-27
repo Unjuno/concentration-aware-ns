@@ -1,0 +1,18 @@
+[
+  {
+    "case": "n64-dt0.001",
+    "exit_code": 0,
+    "steps": 1,
+    "converged_steps": 1,
+    "complete_log": true,
+    "archive_sha256": "636be2718a8dbeb6f64eda0d7f7d23ffce3d38a11d2cc54f83ad75554782edbd"
+  },
+  {
+    "case": "n64-dt0.0005",
+    "exit_code": 0,
+    "steps": 2,
+    "converged_steps": 2,
+    "complete_log": true,
+    "archive_sha256": "6663f1254d204ec071ceea904ba08deade704bc00af2ebe675978e1d33d072fa"
+  }
+]
