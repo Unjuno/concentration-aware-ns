@@ -1,0 +1,41 @@
+{
+  "method": "independent hand-coded Fourier derivative evaluator versus direct SymPy differentiation",
+  "seed": 2741,
+  "sympy": "1.14.0",
+  "numpy": "2.5.2",
+  "cases": [
+    {
+      "N": 4,
+      "points": 65,
+      "max_absolute_errors": {
+        "u": 2.7755575615628914e-17,
+        "grad_u": 2.220446049250313e-16,
+        "vorticity": 1.1102230246251565e-16,
+        "force": 1.3877787807814457e-17
+      }
+    },
+    {
+      "N": 8,
+      "points": 65,
+      "max_absolute_errors": {
+        "u": 2.0816681711721685e-17,
+        "grad_u": 1.1102230246251565e-16,
+        "vorticity": 1.1102230246251565e-16,
+        "force": 2.0816681711721685e-17
+      }
+    },
+    {
+      "N": 16,
+      "points": 65,
+      "max_absolute_errors": {
+        "u": 6.938893903907228e-18,
+        "grad_u": 1.6653345369377348e-16,
+        "vorticity": 1.6653345369377348e-16,
+        "force": 2.0816681711721685e-17
+      }
+    }
+  ],
+  "tolerance": 1e-10,
+  "passed": true,
+  "limitations": "Formula implementation comparison only; no OpenFOAM/SU2/PhysicsNeMo run or solver sign-convention verification."
+}

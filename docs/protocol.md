@@ -42,6 +42,13 @@ selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
 SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
 claimed. Before solver runs, freeze spatial/time matrices and tolerances for
 this case separately from the existing Gaussian concentration case.
+An independent numerical formula comparison is also provided:
+`tools/high_gradient_reference.py` evaluates derivatives from the finite
+Fourier coefficients, while `tools/check_high_gradient_reference.py` constructs
+the potential and differentiates it directly with SymPy. Their u, gradient,
+vorticity and forcing values agree to below `1e-10` at 65 seeded points for
+each N. This checks the two formula evaluators, not OpenFOAM's equation sign or
+its C++ source assembly.
 
 ## Experimental matrix
 
