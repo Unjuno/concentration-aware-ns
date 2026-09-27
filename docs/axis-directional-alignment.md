@@ -86,6 +86,25 @@ shrinks, but the nonlinear remainder must shrink relative to the packet's
 initial axial component. A packet nearly perpendicular to the axis is harder to
 certify than one with a substantial axial component.
 
+For a specified initial direction `theta0` to the unoriented axis, set
+`s0=sin(theta0)`, `c0=cos(theta0)`, and choose a target angle
+`0<theta_target<pi/2`, with `m=tan(theta_target)`. The finite-packet bound
+certifies that target whenever
+
+```
+E = (m*c0 - Q^(3*C/2)*s0)/(1+m) > 0,
+delta <= E/(k*I(T)*(1+E)),
+delta < rho/(Q^(-C)+k*rho*I(T)).
+```
+
+The second inequality is omitted when `k*I(T)=0`; then the comparison error is
+zero and the linear angle alone decides the target. If `E<=0`, the linearized
+direction has not reached the requested target, so this sufficient finite-packet
+bound cannot certify it at that time. The displayed radius is the minimum of an
+angle-error limit and a tube-exit limit, and can be evaluated once `rho`, `M`,
+`T`, and the initial direction are supplied. The exact rearrangements are
+checked by the SymPy artifact below.
+
 For `C>1`,
 
 ```
@@ -98,6 +117,13 @@ limitation of this bound, not proof that a finite packet must lose alignment or
 leave the flow. The actual tube radius and Hessian bound have not been extracted
 for the selected profile, and the classical finite-flow differentiation and
 comparison are not an end-to-end Lean theorem.
+
+If one hypothetically held both `rho>0` and `k>0` fixed while taking `Q` to
+zero, the angle-error radius scales as `Q^(C-1)` for a fixed target strictly
+above zero, while the tube radius scales as `rho*Q^C`; the tube condition would
+be the stricter one. This is only a conditional scaling comparison: no such
+uniform `rho` has been proved, and these asymptotics must not be treated as an
+actual packet certificate.
 
 ## Scientific boundary and next evidence
 

@@ -1,7 +1,7 @@
 {
   "scope": "Exact symbolic consequences of the selected infinitesimal propagator and the previously derived conditional packet error bound. Not molecular dynamics, not a full Lean proof of nonlinear flow differentiation, and not effective constants for the selected profile.",
   "sympy": "1.14.0",
-  "source_sha256": "5cae645b4827a040d6f41516c1358d50f3951df3e3c31fd51a58d06e5685f509",
+  "source_sha256": "94c777ef0245beafff70fcb4c7b8d526765949c4499dfb4ef2a724554e5d568d",
   "conditions": [
     "0 < Q <= 1",
     "C > 1",
@@ -12,7 +12,10 @@
   "identities": {
     "linear_direction_ratio": "0",
     "finite_angle_bound_monotonicity": "0",
-    "singular_values_product": "0"
+    "singular_values_product": "0",
+    "target_angle_margin": "0",
+    "beta_threshold_saturates_relative_error": "0",
+    "initial_radius_threshold_saturates_beta": "0"
   },
   "time_integral_asymptotic_remainder": "-r*tau0/(C - 1)",
   "controls": {
@@ -26,7 +29,10 @@
     "finite_packet_tan_angle_upper_bound": "(Q^(3*C/2)*|h_perp| + epsilon) / (|h_z|-epsilon)",
     "epsilon": "k*delta^2*I(T)/(1-k*delta*I(T))",
     "exception": "h_z=0: the linearized displacement remains transverse",
-    "time_integral_with_r_Q_to_zero": "I(T)=tau0*(1/r-1)/(C-1), r=Q^(C-1)"
+    "time_integral_with_r_Q_to_zero": "I(T)=tau0*(1/r-1)/(C-1), r=Q^(C-1)",
+    "target_angle_margin": "E=(tan(theta_target)*cos(theta0)-Q^(3*C/2)*sin(theta0))/(1+tan(theta_target))",
+    "angle_condition": "requires E>0 and delta <= E/(k*I(T)*(1+E)) for k*I(T)>0",
+    "tube_condition": "delta < rho/(Q^(-C)+k*rho*I(T))"
   },
   "success": true
 }

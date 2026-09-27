@@ -275,3 +275,8 @@ finite-packet estimate remains classical and conditional. The separate SymPy
 identity checks are in `evidence/tests/axis-directional-alignment.json`. See
 `docs/axis-directional-alignment.md` and
 `evidence/lean-verification/axis-force-sign.json`.
+
+The finite-packet note now converts a target angle into explicit angle-error
+and tube-exit bounds on the initial radius. The formula is symbolically checked,
+but selected-profile values for `rho(T)` and `M(T)` are still missing, so no
+numerical packet is certified.

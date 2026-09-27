@@ -15,6 +15,11 @@ def main():
     delta, k, I = s.symbols('delta k I', positive=True)
     beta = k * delta * I
     eps = delta * beta / (1 - beta)
+    s0, c0, mtarget, E = s.symbols('s0 c0 mtarget E', positive=True)
+    linear_transverse = q**(3*C/2) * s0
+    angle_threshold = (mtarget*c0-linear_transverse)/(1+mtarget)
+    beta_threshold = E/(1+E)
+    delta_threshold = E/(k*I*(1+E))
     finite_bound = (q**(3*C/2) * hp + eps) / (hz - eps)
     x = s.symbols('x', nonnegative=True)
     ratio_gap = s.simplify(finite_bound - (x + eps)/(hz - eps))
@@ -31,6 +36,9 @@ def main():
         'finite_angle_bound_monotonicity': s.simplify(ratio_gap -
             (q**(3*C/2)*hp-x)/(hz-eps)),
         'singular_values_product': s.simplify(q**(C/2) * q**(C/2) * q**(-C) - 1),
+        'target_angle_margin': s.simplify(mtarget*c0-linear_transverse-(1+mtarget)*angle_threshold),
+        'beta_threshold_saturates_relative_error': s.simplify(beta_threshold/(1-beta_threshold)-E),
+        'initial_radius_threshold_saturates_beta': s.simplify((k*delta_threshold*I)-beta_threshold),
     }
     asymptotic_remainder = s.simplify(scaled_integral - tau0/(C-1))
     controls = {
@@ -54,6 +62,9 @@ def main():
             'epsilon': 'k*delta^2*I(T)/(1-k*delta*I(T))',
             'exception': 'h_z=0: the linearized displacement remains transverse',
             'time_integral_with_r_Q_to_zero': 'I(T)=tau0*(1/r-1)/(C-1), r=Q^(C-1)',
+            'target_angle_margin': 'E=(tan(theta_target)*cos(theta0)-Q^(3*C/2)*sin(theta0))/(1+tan(theta_target))',
+            'angle_condition': 'requires E>0 and delta <= E/(k*I(T)*(1+E)) for k*I(T)>0',
+            'tube_condition': 'delta < rho/(Q^(-C)+k*rho*I(T))',
         },
         'success': success,
     }
