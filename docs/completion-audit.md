@@ -280,3 +280,21 @@ The finite-packet note now converts a target angle into explicit angle-error
 and tube-exit bounds on the initial radius. The formula is symbolically checked,
 but selected-profile values for `rho(T)` and `M(T)` are still missing, so no
 numerical packet is certified.
+
+### Post-announcement density-paper intake, 2026-09-28
+
+The current arXiv v4 of 2609.10262 and its linked formalization project were
+inspected. The article claims force-space density thresholds from a compact
+OpenAI forced-blowup input; its Lean repository maps 27 article results and the
+latest recorded GitHub Actions run passed the architecture and Lean-contract
+jobs. Our local external-source checks are static only; a local Lean build was
+not run because the pinned Lean toolchain is unavailable in this environment.
+The downstream formalization therefore does not independently verify the
+OpenAI seed. “Dense” here refers to specified forcing norm topologies, not
+probability or molecular alignment. The result supports keeping forcing input
+identity and spectrum auditable across solver resolutions, but does not alter
+the frozen benchmark gates, solver verdicts, or upstream-reporting decisions.
+The version-history correction, dependency boundary and evidence record are
+in `docs/openai-refresh-2026-09-28.md` and
+`evidence/upstream-refresh/force-density-2026-09-28.json`. Whole-goal
+completion remains unproven.

@@ -35,14 +35,16 @@ used as its regularity certificate.
 | Manufactured benchmark | Fixed analytic forcing, initial data and positive sigma for each case; numerical resolution varies | Isolate solver and derivative-observation errors against the known solution | Numerical error implies a singular exact solution |
 | Pinned OpenAI witness | A specially constructed smooth force and flow; formal target checked at the recorded commit | Analyze that construction under explicitly tracked hypotheses | Every smooth or analytic force has the same behavior |
 | Constantin–Ignatova–Vicol, Theorem 1.1 | Analytic forcing, uniform spatial C2 bound, anisotropic angular-mean bounds and exact core symmetry | Identify which additional assumptions exclude this mechanism | Analytic forcing alone proves general 3D global regularity |
-| Cao–Chi–Nie density claim | The external force varies in a specified function-space topology | Motivate careful choice of norms in impact analysis | Instability or failure of one fixed-force solver run |
+| Cao–Chi–Nie force-density result, arXiv v4 | The smooth force varies; the density theorem takes the OpenAI compact forced blowup as an input and proves approximation thresholds in specified Sobolev topologies | Keep forcing realization/spectrum and per-grid input identity auditable; distinguish the topology of forcing perturbations from solution-discretization error | A likelihood of blowup, particle-position probability law, molecular alignment, or failure of a solver under one fixed force |
 | Duraiswami similarity comparison | A reduced core/boundary-value formulation | Compare derivative operators and radial/axial viscous powers | Establish molecular alignment, phase transition or the full construction's realizability |
 
 Primary sources: [regularity paper, v1](https://arxiv.org/html/2609.20803v1),
 [density paper, v4](https://arxiv.org/abs/2609.10262v4),
 [similarity study, v1](https://arxiv.org/html/2609.17642v1).
 The claims and version changes found during the refresh are recorded in
-research-refresh-2026-09-26.md. Full proof audits of these papers remain open.
+research-refresh-2026-09-26.md and the
+[2026-09-28 source and formalization refresh](../docs/openai-refresh-2026-09-28.md).
+Full local proof replay of these papers remains open.
 
 ## Consequences for the work plan
 

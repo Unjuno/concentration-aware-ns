@@ -13,6 +13,7 @@ below establishes physical danger, molecular alignment or changing viscosity.
 | PhysicsNeMo validation | v2.2.1 explicit time-derivative API checks and five fixed-budget training cases | Publish independent manufactured-solution residual and derivative checks alongside training loss | Fresh preregistration, seed/optimizer assessment and continuum extrema control; newer-version runtime validation is separate |
 | Axis material deformation | Selected terminal root under the recorded assembly/schedule hypotheses; checked components and classical flow argument | Use anisotropic contraction/extension, volume preservation and the quadratic local remainder to assess which continuum claims follow | End-to-end formalization and effective tube/Hessian estimates before certifying a particular finite packet |
 | Strict negative viscous-force/inertia limit | Pressure-qualified witness and stated root hypotheses | Retain the precise pressure condition in every sign claim | Link the pressure bound to `actualProfile`; qualified existence alone does not supply this |
+| Subcritical force-space density (Cao–Chi–Nie, arXiv:2609.10262v4) | Article claims breakdown-producing smooth forces are dense in relative `L¹_t Hˢ_x` for `s<1/2` on `T³` and `R³`, and in `L²_t Hˢ_x` for `s<-1/2` on `R³`; proof assumes the OpenAI compact blowup seed | Keep the manufactured forcing byte-identical across resolutions; report its resolved spectrum and any force-representation error separately from solution error | Independently check the downstream proof closure and establish relevance to a fixed force/solver before changing gates; force-space density is not probability, molecular alignment, or a solver defect |
 
 ## Reporting disposition
 
@@ -32,6 +33,11 @@ It is not a numerical reproduction of the OpenAI singular construction.
 The [forcing audit](forcing-scope-audit.md) records their different assumptions.
 The later energy-defect paper concerns another target and does not transfer
 its hypotheses to these runs; see [the research refresh](research-refresh-2026-09-27.md).
+The force-density follow-up varies the external force in a specified weak
+function-space topology. Its scaling thresholds motivate documenting forcing
+resolution and cross-mesh input identity, while leaving the current fixed-force
+acceptance gates and solver verdicts unchanged; see the
+[2026-09-28 source refresh](../docs/openai-refresh-2026-09-28.md).
 
 The [flow-derivative argument](../docs/axis-flow-derivative.md) describes
 infinitesimal continuum separations, with a non-effective local finite-packet
