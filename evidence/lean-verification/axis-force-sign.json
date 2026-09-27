@@ -2,9 +2,9 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/AxisForceSign.lean",
-  "source_sha256": "2696b5e6f237c3b2323bd62f5a3c826b17544419be6eec1bc8c38a280d24d8ce",
+  "source_sha256": "a440e8152b4246b9da10d93241cae8a7d93a8953991d914fffab4b58993078e7",
   "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
-  "log_sha256": "bde0ac900a09233e7b9bc96c470e272375cb21ecf93e7cd36aeddd81852d4daf",
+  "log_sha256": "348d3f279233f052a00453dbc8f893e07629c104d9b1add0ed6f7025bc7c3138",
   "axioms": {
     "root_pressure_threshold_identity": [
       "propext",
@@ -576,6 +576,11 @@
       "Classical.choice",
       "Quot.sound"
     ],
+    "axisDeformation_initial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "terminalScale_hasDerivAt": [
       "propext",
       "Classical.choice",
@@ -586,7 +591,7 @@
       "Classical.choice",
       "Quot.sound"
     ],
-    "axisDeformation_initial": [
+    "axisDeformation_directional_ratio_sq": [
       "propext",
       "Classical.choice",
       "Quot.sound"
@@ -756,6 +761,6 @@
   "expected_axiom_reports_present": true,
   "source_unchanged_during_run": true,
   "contains_sorryAx": false,
-  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory and its axis Laplacian identity. Includes concrete actual-candidate assembly germ transfer, the physical axial Laplacian and material acceleration, and their asymptotic ratio. Strict negativity remains conditional on the stated root interval/equation and PressureData; unconditional pressure instantiation for actualProfile is not established. Does not prove molecular alignment, phase transition, or changing constitutive viscosity. Not an independent nanoda check.",
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory, its axis Laplacian identity, and the exact squared directional ratio of the infinitesimal deformation. Includes concrete actual-candidate assembly germ transfer, the physical axial Laplacian and material acceleration, and their asymptotic ratio. Strict negativity remains conditional on the stated root interval/equation and PressureData; unconditional pressure instantiation for actualProfile is not established. Does not prove molecular alignment, phase transition, or changing constitutive viscosity. Not an independent nanoda check.",
   "replay": "python3 -m tools.verify_axis_sign"
 }

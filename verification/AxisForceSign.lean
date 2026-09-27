@@ -2749,10 +2749,51 @@ theorem axisDeformation_initial (t0 C : ℝ) (dx : ProblemStatement.Space) (ht0 
   ext i
   fin_cases i <;> simp [axisDeformation,AxisymmetricResidual.pack,ProblemStatement.coordinateVector]
 
+#print axioms axisDeformation_initial
 #print axioms terminalScale_hasDerivAt
 #print axioms terminalScale_initial
-#print axioms axisDeformation_initial
 
+/-- Exact directional contraction/extension ratio of the selected linearized
+material deformation. This is an infinitesimal continuum statement. -/
+theorem axisDeformation_directional_ratio_sq
+    (t0 t C : ℝ) (dx : ProblemStatement.Space)
+    (ht0 : t0 < 1) (ht : t < 1) (hz : dx 2 ≠ 0) :
+    let Q := (1-t)/(1-t0)
+    ((axisDeformation (terminalScale t0 (C/2) t) (terminalScale t0 (-C) t) 0 dx 0)^2 +
+      (axisDeformation (terminalScale t0 (C/2) t) (terminalScale t0 (-C) t) 0 dx 1)^2) /
+      (axisDeformation (terminalScale t0 (C/2) t) (terminalScale t0 (-C) t) 0 dx 2)^2 =
+      Q^(3*C) * ((dx 0)^2+(dx 1)^2)/(dx 2)^2 := by
+  dsimp only
+  let Q : ℝ := (1-t)/(1-t0)
+  have hQ : 0 < Q := div_pos (by linarith) (by linarith)
+  have hr : terminalScale t0 (C/2) t ^ 2 = Q^C := by
+    rw [terminalScale]
+    change (Q^(C/2))^2 = Q^C
+    rw [← Real.rpow_natCast (Q^(C/2)) 2, ← Real.rpow_mul hQ.le]
+    congr 1
+    ring
+  have hs : terminalScale t0 (-C) t ^ 2 = Q^(-2*C) := by
+    rw [terminalScale]
+    change (Q^(-C))^2 = Q^(-2*C)
+    rw [← Real.rpow_natCast (Q^(-C)) 2, ← Real.rpow_mul hQ.le]
+    congr 1
+    ring
+  rw [axisDeformation_transverse_square]
+  simp only [axisDeformation, AxisymmetricResidual.pack_two]
+  rw [hr, mul_pow, hs]
+  have hpow : Q^C / Q^(-2*C) = Q^(3*C) := by
+    rw [← Real.rpow_sub hQ]
+    congr 1
+    ring
+  have hQneg : Q^(-2*C) ≠ 0 := ne_of_gt (Real.rpow_pos_of_pos hQ _)
+  have hratio : Q^C * ((dx 0)^2+(dx 1)^2) /
+      (Q^(-2*C) * (dx 2)^2) =
+      (Q^C / Q^(-2*C)) * ((dx 0)^2+(dx 1)^2)/(dx 2)^2 := by
+    field_simp [hz, hQneg]
+    <;> ring
+  rw [hratio, hpow]
+
+#print axioms axisDeformation_directional_ratio_sq
 
 theorem powerLawDeformation_hasDerivAt
     (t0 C t omega : ℝ) (theta : ℝ → ℝ) (dx : ProblemStatement.Space)

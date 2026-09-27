@@ -217,13 +217,20 @@ Note: This linter can be disabled with `set_option linter.unusedTactic false`
 /extension/AxisForceSign.lean:2739:6: warning: this tactic is never executed
 
 Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'ConcentrationAware.axisDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.terminalScale_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.terminalScale_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ConcentrationAware.axisDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:2767:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:2793:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/extension/AxisForceSign.lean:2793:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'ConcentrationAware.axisDeformation_directional_ratio_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2808:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/extension/AxisForceSign.lean:2770:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:2811:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.powerLawDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -263,7 +270,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
  Classical.choice,
  Quot.sound]
 'ConcentrationAware.actual_root_variational_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
-/extension/AxisForceSign.lean:3378:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/extension/AxisForceSign.lean:3419:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'ConcentrationAware.root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]

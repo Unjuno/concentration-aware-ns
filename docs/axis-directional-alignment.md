@@ -34,6 +34,21 @@ The source-derived exponent enclosure in [axis-stretch-range.md](axis-stretch-ra
 has `C >= 7999999/2000000 > 1`. Consequently the integral in the finite-packet
 comparison below grows without bound as `Q -> 0`.
 
+The squared ratio identity for the actual deformation map is now a theorem in
+`verification/AxisForceSign.lean` and passes the pinned Lean runner with only
+`propext`, `Classical.choice`, and `Quot.sound`; the accepted run and exact
+source hash are in `evidence/lean-verification/axis-force-sign.json`. In
+formula form it proves
+
+```
+|| (F h)_perp ||^2 / |(F h)_z|^2
+  = Q^(3*C) * |h_perp|^2 / |h_z|^2,
+```
+
+for `h_z != 0`. Together with the existing positive coefficient enclosure,
+this formalizes the infinitesimal directional contraction/extension ratio.
+The nonlinear finite-packet comparison below remains classical and conditional.
+
 ## What the finite-displacement estimate adds
 
 Fix a compact terminal interval ending at `T<1`. Suppose a smooth tube of radius
@@ -97,6 +112,6 @@ data cannot substitute for those bounds.
 
 `work/reference-check-env/bin/python -m tools.check_axis_directional_alignment`
 checks the exact singular-value ratio, finite-angle expression and the
-`C>1` asymptotic. The check is algebraic support for this note; the nonlinear
-flow estimate itself remains classical and conditional. Output:
+`C>1` asymptotic. The exact linear deformation identity is also Lean-checked;
+the nonlinear flow estimate itself remains classical and conditional. Output:
 `evidence/tests/axis-directional-alignment.json`.

@@ -270,5 +270,8 @@ The selected continuum deformation now has an explicit angle formula for
 infinitesimal separations and a conditional finite-packet angle bound with its
 exceptional transverse subspace stated. The finite-packet bound still needs
 effective tube-radius and Hessian constants and does not model molecules. Exact
-symbolic algebra passes in `evidence/tests/axis-directional-alignment.json`;
-this is not an end-to-end Lean proof. See `docs/axis-directional-alignment.md`.
+linearized squared-ratio algebra passes the pinned Lean runner; the nonlinear
+finite-packet estimate remains classical and conditional. The separate SymPy
+identity checks are in `evidence/tests/axis-directional-alignment.json`. See
+`docs/axis-directional-alignment.md` and
+`evidence/lean-verification/axis-force-sign.json`.
