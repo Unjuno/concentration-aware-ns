@@ -125,3 +125,10 @@ question is how phi is initialized/corrected and how its first-step treatment
 couples to pressure and velocity. No solver defect follows from this diagnostic.
 Reproduce with `python3 -m tools.check_openfoam_initial_flux`; values and initial
 field hashes are in `evidence/tests/openfoam-initial-flux.json`.
+
+The three-case iteration-sensitivity follow-up is now complete; the earlier
+pending statements above describe intermediate states. All 350 steps converged,
+and every same-dt field shift is below 7e-15. Observed temporal order remains
+0.49291429. See [the completed sensitivity report](openfoam-iteration-sensitivity.md)
+for the full comparison and limitations. Tightening these iteration settings
+did not resolve the temporal-convergence gap.

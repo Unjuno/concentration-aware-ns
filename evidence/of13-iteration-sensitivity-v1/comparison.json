@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "same_dt_relative_field_shift": 6.550462585349278e-15,
+      "steps": 50,
+      "outer_converged_steps": 50,
+      "all_steps_outer_converged": true,
+      "input_sha256": {
+        "work/of13-iteration-sensitivity-v1/n64-dt0.001/0.05/U": "daa13ad8e5966283973c030e5635da0d09419a4b7750d08221c4cdc46b502f8b",
+        "work/of13-study-v1/n64-dt0.001/0.05/U": "003f0dea205fe00676806c4a79514be536a2b001da120ad8d5eb4ecfb7f20910",
+        "work/of13-iteration-sensitivity-v1/n64-dt0.001/log.foamRun": "e48dccb96571a3ea00ff86b92d9035dbf40371422762662e4c2f501d6446a283"
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "same_dt_relative_field_shift": 6.77896612311825e-15,
+      "steps": 100,
+      "outer_converged_steps": 100,
+      "all_steps_outer_converged": true,
+      "input_sha256": {
+        "work/of13-iteration-sensitivity-v1/n64-dt0.0005/0.05/U": "e15dde6fc04e6fe2bd2569728d3ea6eb9256e71f6a68f4af75c5bfc7e4438395",
+        "work/of13-study-v1/n64-dt0.0005/0.05/U": "293d61644b09d37a442a93668aa481e76cf7d40678a631485643634401fd6971",
+        "work/of13-iteration-sensitivity-v1/n64-dt0.0005/log.foamRun": "e68543af95b309b93d5dde91db58a80f2f23dbba71d03f6d9ad3d2df51a0b68a"
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "same_dt_relative_field_shift": 4.829246503110354e-15,
+      "steps": 200,
+      "outer_converged_steps": 200,
+      "all_steps_outer_converged": true,
+      "input_sha256": {
+        "work/of13-iteration-sensitivity-v1/n64-dt0.00025/0.05/U": "405354f19744b5dc450b1e5ce469ae28a53b77b281ce6e0d73d92440baa8ea0d",
+        "work/of13-study-v1/n64-dt0.00025/0.05/U": "82249837cb6db1e45eb67918a7b454fc58244301fe76ab437601df2384f68dee",
+        "work/of13-iteration-sensitivity-v1/n64-dt0.00025/log.foamRun": "f469f538275946ddf036476e0ee37e62a2d13a3d07a7274bc79645590d2ec931"
+      }
+    }
+  ],
+  "original": {
+    "cosine": 0.8830965338688921,
+    "norm_order": 0.4929142901055509,
+    "best_fit_scale": 1.2427682996009546,
+    "first_order_defect": 0.7139121317493679,
+    "relative_differences": [
+      2.088193954635579e-05,
+      1.4838460588162544e-05
+    ]
+  },
+  "tighter_iteration": {
+    "cosine": 0.8830965338412232,
+    "norm_order": 0.49291428988850333,
+    "best_fit_scale": 1.242768299375047,
+    "first_order_defect": 0.7139121319655931,
+    "relative_differences": [
+      2.0881939544187858e-05,
+      1.4838460588854423e-05
+    ]
+  },
+  "quality": "UNCERTAIN",
+  "scope": "Iteration sensitivity and observed difference geometry, not proof of asymptotic convergence or a continuum error bound"
+}

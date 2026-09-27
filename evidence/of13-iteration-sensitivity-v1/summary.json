@@ -1,0 +1,30 @@
+{
+  "expected_cases": 3,
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "exit_code": 0,
+      "log_ends_with_End": true,
+      "time_steps": 50,
+      "outer_converged_steps": 50,
+      "archive_sha256": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "exit_code": 0,
+      "log_ends_with_End": true,
+      "time_steps": 100,
+      "outer_converged_steps": 100,
+      "archive_sha256": "910b92e3d9fb463bd3ac08524439c655d9e9403d785a79a14eb877d8c7398e7f"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "exit_code": 0,
+      "log_ends_with_End": true,
+      "time_steps": 200,
+      "outer_converged_steps": 200,
+      "archive_sha256": "d66d3a76aa4f822c1dd2cb4ca5cc46fb935ae6d53173ce1eabbf24baf4495d72"
+    }
+  ],
+  "quality": "UNCERTAIN"
+}
