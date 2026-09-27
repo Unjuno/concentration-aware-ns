@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "velocity_relative_reference_error": 0.002556829524060482,
+      "relative_change_from_initial": 0.0027448353110094154,
+      "pressure_range": 4.9048272063693545,
+      "endpoint_U_sha256": "4e7b40b65758736db7934e7f673d5e7a0acb85c958d48333899c760514be145c"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "velocity_relative_reference_error": 0.0025568534883604267,
+      "relative_change_from_initial": 0.0027449621272117282,
+      "pressure_range": 0.38967221634473653,
+      "endpoint_U_sha256": "be254d1542f97d1853b9f765d097fa1399bbdc28795fdf66a4c99e2327765631"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "velocity_relative_reference_error": 0.002556892403184971,
+      "relative_change_from_initial": 0.0027450506168344856,
+      "pressure_range": 0.3897035543702182,
+      "endpoint_U_sha256": "d06935d50f7630b774e2028bf75db6410230ab1f591fd941c2a933baac7565ba"
+    }
+  ],
+  "temporal_differences": {
+    "cosine": 0.9566473061843596,
+    "norm_order": 0.9260094399327246,
+    "best_fit_scale": 1.8176425075763467,
+    "first_order_defect": 0.3066553580077063,
+    "relative_differences": [
+      4.1044260106990206e-07,
+      2.1602092106680719e-07
+    ]
+  },
+  "scope": "Common early endpoint t=0.001, original initial U, tightened iteration settings; finite triple is not proof of asymptotic order or startup causation",
+  "quality": "UNCERTAIN"
+}

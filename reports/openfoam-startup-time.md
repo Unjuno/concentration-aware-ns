@@ -112,3 +112,24 @@ and container states. A missing observation or timed-out request alone is not
 permission to duplicate a run. If the old attempt terminates, preserve its
 exit/log evidence and use an explicitly distinct attempt directory rather
 than overwriting any original inputs or outputs.
+
+### Runtime recovery and complete baseline triple
+
+The Docker daemon subsequently answered `_ping` with `OK`, and the original
+pending runner returned exit 0 for dt=0.00025: four expected steps, four outer
+convergences, and a complete End log. No restart or replacement run was issued
+by this task. The third archive SHA256 is
+`e92267dafdc248e2142610639c5d7f440d6250b6315acc13cd1f05411dd6c5c6`.
+The earlier timeout evidence remains a historical observation.
+
+`python3 -m tools.check_openfoam_startup_time` now passes its completeness,
+input, geometry, convergence and finite-field checks for the full triple.
+At common t=0.001, the observed difference-norm order is 0.92600944 and the
+successive-difference cosine is 0.95664731. Relative reference velocity errors
+are 0.00255682952, 0.00255685349 and 0.00255689240. These observations do not
+establish asymptotic convergence or explain the later t=0.05 order of 0.4929.
+The archived comparison retains quality UNCERTAIN.
+
+The frozen solenoidal-initial-field intervention has now started after its
+input-manifest and exact-image preflight passed. It remains a separate initial
+value problem, and its result is not yet available in this update.

@@ -14,5 +14,13 @@
     "converged_steps": 2,
     "complete_log": true,
     "archive_sha256": "6663f1254d204ec071ceea904ba08deade704bc00af2ebe675978e1d33d072fa"
+  },
+  {
+    "case": "n64-dt0.00025",
+    "exit_code": 0,
+    "steps": 4,
+    "converged_steps": 4,
+    "complete_log": true,
+    "archive_sha256": "e92267dafdc248e2142610639c5d7f440d6250b6315acc13cd1f05411dd6c5c6"
   }
 ]
