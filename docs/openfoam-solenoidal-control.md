@@ -101,3 +101,19 @@ proof for the full PIMPLE iteration. Combined with the *conditional leading
 model* p≈pi/dt, they distinguish an O(dx²/dt) startup response from a continuum
 pressure singularity. The order of grid and timestep limits matters; this
 does not authorize extrapolating the full solver behavior from the model.
+
+### Archived control postprocessing
+
+After all three intervention runs finish, execute
+`python3 -m tools.check_openfoam_solenoidal_control`.
+The reader requires every archive, verifies the prepared input hashes and protocol,
+checks successful termination and convergence at every expected time step, and
+reports pressure range, gauge-centered pressure impulse RMS, and velocity
+increment relative to each run's own initial field. Equal-volume cell RMS is
+appropriate for this uniform mesh. It does not score the changed initial-value
+problem against the original MMS or automatically assign a causal verdict.
+
+The missing-archive rejection was exercised before execution: exit 1,
+`INCOMPLETE: no result written`, listing all three missing archives. This checks
+only the missing-data boundary. The successful real-data path remains unverified
+until the shared Docker runtime is recovered and the runs complete.
