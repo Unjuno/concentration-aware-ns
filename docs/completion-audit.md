@@ -358,3 +358,27 @@ verifies the integral bound and piecewise exponent identities. Neither the
 endpoint envelopes nor their constants are established for the selected
 profile, and the result is not a fixed-packet counterexample. See
 `docs/axis-packet-bound.md` and `evidence/tests/packet-radius-scaling.json`.
+
+### Current archived-report replay and selected-profile gap, 2026-09-28
+
+The locked-dependency replay was rerun against the current checkout:
+`work/clean-export-2026-09-27-locked/venv/bin/python -m
+tools.replay_published_reports`. All 23 configured steps exited successfully;
+the acceptance-audit suite ran 54 tests and the artifact audit matched all 93
+links. This is archived-input report and exact-algebra replay only. It does not
+include new solver, training, or Lean execution and does not alter any scientific
+verdict.
+
+The source audit reconfirmed a material instantiation gap. In the pinned OpenAI
+source, `FinalSlowBase.actualProfile` is `Classical.choice profileData_nonempty`;
+the `ProfileData` record retains nominal, cone and modulation witnesses but no
+explicit amplitude lower bound or `PressureData` field. Our Lean extension
+constructs a separate pressure-qualified `ProfileData` from
+`PreparedOutgoing.exists_prepared`, but explicitly does not identify it with the
+upstream choice. Thus existence of a pressure-qualified profile does not yet
+establish the negative force-ratio result for the selected profile. This is not
+an upstream counterexample or evidence that no implication follows from the
+retained fields; deriving that implication or changing the selected construction
+remains open. The replay and source cross-reference are recorded in
+`evidence/report-replay/summary.json`, `evidence/report-replay/tests.log`,
+`docs/pressure-moment-threshold.md`, and `verification/AxisForceSign.lean`.
