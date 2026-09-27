@@ -1,0 +1,207 @@
+{
+  "scope": "Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.",
+  "success": true,
+  "steps": [
+    {
+      "step": "tests",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/tests.log",
+      "log_sha256": "5a694201d783dfa38b34e4be82df1c7871d06880b0007458abb7a595a2ec780e"
+    },
+    {
+      "step": "global_peaks",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/global_peaks.log",
+      "log_sha256": "cdad40df4aad32d60b5be31c1e7e97c7695eac8d876761aa0100117a6f89c95a"
+    },
+    {
+      "step": "peak_decomposition",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/peak_decomposition.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "spectral_derivatives",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/spectral_derivatives.log",
+      "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
+    },
+    {
+      "step": "su2_archive_review",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.review_su2_archives"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_archive_review.log",
+      "log_sha256": "f5d2d2af0f4aee6a11e4ac8e070062119e41298c1a9710cf045b3dc5d8427bcd"
+    },
+    {
+      "step": "su2_diagnostic_replay",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.replay_su2_diagnostics"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_diagnostic_replay.log",
+      "log_sha256": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18"
+    },
+    {
+      "step": "su2_spectral_derivatives",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.compare_su2_spectral"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_spectral_derivatives.log",
+      "log_sha256": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3"
+    },
+    {
+      "step": "su2_time_comparison",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.compare_su2_time"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_time_comparison.log",
+      "log_sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
+    },
+    {
+      "step": "su2_bdf2_control",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_su2_bdf2_control"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_bdf2_control.log",
+      "log_sha256": "542db82a10ce6251f02ad690e3c08baa988674a67f52a695b1f61afe7aa7c08e"
+    },
+    {
+      "step": "su2_boundary_time_pilot",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_su2_boundary_time_pilot"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_boundary_time_pilot.log",
+      "log_sha256": "cab044c1cf74ab8bfa1b17c059007189747e6a02c9fe07a94cd1aa6ca8f73526"
+    },
+    {
+      "step": "su2_restart_findings",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.replay_su2_restart_findings"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_restart_findings.log",
+      "log_sha256": "d06d19561ee31fa69972274cca0dc8e308cfbf32a1c7a6dcf54acceb1f5d81fb"
+    },
+    {
+      "step": "openfoam_gate",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.build_openfoam_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_gate.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "physicsnemo_gates",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.build_physicsnemo_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/physicsnemo_gates.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "su2_gates",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.build_su2_report"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_gates.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "root_pressure_threshold",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_root_pressure_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/root_pressure_threshold.log",
+      "log_sha256": "ccc567315bdbb012e080a477900961ef90233159b042385f3d978c3b56cc4da6"
+    },
+    {
+      "step": "pressure_moment_threshold",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_pressure_moment_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/pressure_moment_threshold.log",
+      "log_sha256": "5481a91d11b7e16a1701c3fcbb71671d081e20889a598a41fe1e8697413187a4"
+    },
+    {
+      "step": "cone_sign_symmetry",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_cone_sign_symmetry"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/cone_sign_symmetry.log",
+      "log_sha256": "f542f1288d1a10d0159adeb7087ef1abe08e6242c672da0a3a30aef7e8d6032f"
+    },
+    {
+      "step": "artifact_links",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.audit_gate_artifacts"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/artifact_links.log",
+      "log_sha256": "10c609b8f92a3e9cda553de13f1176eddfcc5ce20c724553b0b614d5ea2ed023"
+    }
+  ]
+}

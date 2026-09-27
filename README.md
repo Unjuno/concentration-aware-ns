@@ -118,3 +118,16 @@ checks in a fresh environment. All commands succeeded, but strict byte equality
 failed in six of 66 compared files: NumPy version metadata and dependent hashes
 changed. Inspected numeric results and verdicts were unchanged. The failed
 strict result and original logs are preserved rather than relabeled as PASS.
+
+
+For byte-level reproduction of the recorded Python postprocessing baseline,
+use `requirements-verification-locked.txt`. The ordinary verification requirements
+retain their supported NumPy range. A tracked-only, fresh-venv check is:
+
+```sh
+python3 -m tools.check_clean_export --locked --destination work/clean-export-locked
+```
+
+The fixed-commit check at `5b8e305` passes all 75 compared report/test files
+unchanged; see `evidence/clean-export-2026-09-27-locked/README.md`. Its scope is
+same-host Python postprocessing, not solver, training or Lean reproduction.

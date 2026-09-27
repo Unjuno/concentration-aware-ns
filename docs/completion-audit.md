@@ -167,3 +167,12 @@ result for both R=2 and R=3. Scientific history-time continuity remains FAIL;
 reproduction success does not relabel it. Five fault tests reject wrong exit
 codes, missing rows, wrong times and nonfinite/large field differences.
 No new solver or Lean run is part of this integration.
+
+
+Locked-dependency replay: at commit `5b8e305`, a fresh tracked-only export
+passes eighteen replay steps and five additional checks; all 75 compared
+report/test files match byte-for-byte. Evidence is in
+`evidence/clean-export-2026-09-27-locked/`. This closes the observed dependency
+version drift for that explicit same-host configuration. Supported-range
+NumPy 2.5.3 failures remain preserved, and no cross-platform, solver-build,
+training or Lean reproducibility conclusion is added.
