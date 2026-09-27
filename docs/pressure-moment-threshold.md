@@ -245,3 +245,17 @@ bound on that chosen amplitude has been established. It also does not make the
 local sufficient condition necessary. The factor inequalities above are a
 classical proof; only the endpoint arithmetic is executable here, and no new
 Lean theorem or molecular-viscosity conclusion is claimed.
+
+The executable check now covers both intermediate algebraic steps as well.
+Writing U(x)=(1+x)²/(20(1-x)²), it verifies by symbolic cancellation:
+
+```
+U(x)-B = (1+x)^2*(1-2D)*(1+2D*x)/(20*(1-x)^2)
+U(y)-U(x) = (y-x)*(1-x*y)/(5*(1-y)^2*(1-x)^2).
+```
+
+Each right side is nonnegative for 0<D<=1/2 and 0<=x<=y<1. These identities
+supply explicit certificates for the positive-factor inequalities; the sign
+argument still uses those stated real bounds. This strengthens the executable
+check beyond its original endpoint-only scope without resolving the selected
+profile's amplitude condition.
