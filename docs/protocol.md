@@ -24,6 +24,25 @@ must be based on the reference field, not the computed field. Validate a
 nontrivial transient case so exact initialization cannot mask time-integration
 errors. A second reference/derivative implementation is still TODO.
 
+An additional analytic stress-test candidate isolates small velocity amplitude
+from large local derivatives. On the same periodic cube, set
+
+    chi(y,z)=((1+cos(y))/2)^4 ((1+cos(z))/2)^4
+    psi_N=chi sin(N x)/N^2,  u_N=curl((0,0,psi_N))
+    f_N=(u_N dot grad)u_N - nu Delta(u_N),  p=0.
+
+For positive integer N this is smooth, periodic and divergence-free. The
+analytic bound `||u_N||_infinity <= 1/N + 2/N^2` tends to zero, while
+`partial_x (u_N)_y = chi sin(N x)` attains magnitude one at
+`(x,y,z)=(pi/(2N),0,0)`. Thus value/energy agreement alone cannot imply
+gradient accuracy. This is a verification stress case, not a singularity model.
+The symbolic checker derives the exact forcing identity, divergence, vorticity,
+selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
+`tools/check_high_gradient_mms.py`. It has not yet been run through OpenFOAM,
+SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
+claimed. Before solver runs, freeze spatial/time matrices and tolerances for
+this case separately from the existing Gaussian concentration case.
+
 ## Experimental matrix
 
 - At least three successively finer spatial grids at fixed sigma and sufficiently

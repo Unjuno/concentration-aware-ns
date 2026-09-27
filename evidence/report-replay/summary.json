@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "30dfd1b2cd83ffc186361b6285eaef95cf3f2da58075194886d6676837a8a690"
+      "log_sha256": "5291f24fe12a08de81440ee5c500535937fb0371e9e01f69c47224cd8592e115"
     },
     {
       "step": "global_peaks",
@@ -213,6 +213,17 @@
       "exit_code": 0,
       "log": "evidence/report-replay/uniform_prefix_threshold.log",
       "log_sha256": "97691d66980e87e0d96fbe03be3411365216ec2e03b5134aa24fdb4f49dda207"
+    },
+    {
+      "step": "high_gradient_mms",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.check_high_gradient_mms"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/high_gradient_mms.log",
+      "log_sha256": "28bee8e26c8eec121caeea65a2c5a0059c8d6ab41db50b98c73f179e51606c12"
     },
     {
       "step": "openfoam_iteration_archives",

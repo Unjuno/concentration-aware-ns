@@ -18,12 +18,12 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 54 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 55 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 23-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 24-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -220,9 +220,10 @@ Required next evidence, in dependency order:
    the t=0.05 temporal result. Avoid treating a changed initial-value problem
    as a repair of the original benchmark or assuming its result in advance.
 
-The common replay now has 21 passing steps and 54 tests. It includes a fresh
+The current common replay has 24 passing steps and 55 tests. It includes a fresh
 six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
-and exact uniform-prefix threshold algebra. It excludes pending solver runs.
+exact uniform-prefix threshold algebra, and the localized high-gradient MMS
+audit. It excludes solver runs for that new MMS case.
 The analytic actualProfile moment/amplitude obligation and non-effective
 packet constants remain unresolved. Whole-goal completion is not established.
 
@@ -382,3 +383,22 @@ retained fields; deriving that implication or changing the selected construction
 remains open. The replay and source cross-reference are recorded in
 `evidence/report-replay/summary.json`, `evidence/report-replay/tests.log`,
 `docs/pressure-moment-threshold.md`, and `verification/AxisForceSign.lean`.
+
+### Localized high-gradient manufactured solution, 2026-09-28
+
+Added a second analytic periodic MMS candidate with vector potential
+`A=(0,0,chi(y,z) sin(Nx)/N^2)`, where
+`chi=((1+cos y)/2)^4 ((1+cos z)/2)^4`. Exact symbolic checks verify
+divergence-free velocity, the steady forced Navier–Stokes identity, its
+selected derivative and vorticity formulas, and the envelope's finite Fourier
+expansion. Orthogonality gives exact volume means for `N=4,8,16`. The velocity
+supremum is bounded above by `1/N+2/N^2`, while `partial_x u_y` attains one at
+the localized envelope center; this analytically separates small velocity
+amplitude from an order-one local derivative.
+
+This case is now in `docs/protocol.md`, `tools/check_high_gradient_mms.py`,
+`tests/test_high_gradient_mms.py` and `evidence/tests/high-gradient-mms.json`.
+The locked report replay now has 24 successful steps and 55 tests. No solver was
+run for this new case, so there is no claim that OpenFOAM, SU2 or PhysicsNeMo
+currently misses the peak. Discrete forcing implementation, three-grid and
+multi-step-size studies, thresholds, and cross-solver comparison remain open.

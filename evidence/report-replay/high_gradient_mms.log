@@ -1,0 +1,50 @@
+{
+  "scope": "Exact continuum MMS identities; no CFD solver was run and no acceptance-gate failure is claimed.",
+  "domain": "[0,2*pi]^3 periodic",
+  "potential": "A=(0,0, chi(y,z)*sin(N*x)/N^2), chi=((1+cos(y))/2)^4*((1+cos(z))/2)^4",
+  "velocity": "u=curl(A)=(chi_y*sin(N*x)/N^2, -chi*cos(N*x)/N, 0)",
+  "equation": "(u dot grad)u = nu*Delta(u) + f, p=0, nu=1/100",
+  "exact_checks": {
+    "divergence_free": true,
+    "steady_ns_residual_zero": true,
+    "localized_gradient_formula": true,
+    "vorticity_formula": true,
+    "envelope_fourier_identity": true
+  },
+  "cases": [
+    {
+      "N": 4,
+      "velocity_sup_upper_bound": "3/8",
+      "selected_gradient_component_peak": "1 (attained at x=pi/(2N), y=z=0)",
+      "vorticity_at_same_point": "9/8",
+      "mean_velocity_squared": "2760615/2147483648",
+      "mean_selected_gradient_component_squared": "41409225/2147483648",
+      "mean_vorticity_squared": "94922685/4294967296"
+    },
+    {
+      "N": 8,
+      "velocity_sup_upper_bound": "5/32",
+      "selected_gradient_component_peak": "1 (attained at x=pi/(2N), y=z=0)",
+      "vorticity_at_same_point": "33/32",
+      "mean_velocity_squared": "168397515/549755813888",
+      "mean_selected_gradient_component_squared": "41409225/2147483648",
+      "mean_vorticity_squared": "1370326815/68719476736"
+    },
+    {
+      "N": 16,
+      "velocity_sup_upper_bound": "9/128",
+      "selected_gradient_component_peak": "1 (attained at x=pi/(2N), y=z=0)",
+      "vorticity_at_same_point": "129/128",
+      "mean_velocity_squared": "665308215/8796093022208",
+      "mean_selected_gradient_component_squared": "41409225/2147483648",
+      "mean_vorticity_squared": "21379264335/1099511627776"
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "The velocity bound follows from ||chi||inf<=1 and ||chi_y||inf<=2; it is an upper bound, not an exact velocity peak.",
+    "The local derivative and vorticity values are continuum identities, not discrete-resolution results.",
+    "A fixed N case may be resolved by sufficient refinement; no solver was tested.",
+    "This benchmark stress test implies no blow-up, molecular alignment, particle-position concentration, or constitutive-viscosity law."
+  ]
+}
