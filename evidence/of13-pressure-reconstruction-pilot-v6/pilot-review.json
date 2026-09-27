@@ -1,0 +1,30 @@
+{
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "original_source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+  "diagnostic_source_sha256": "93296a20bf95eff44e957d57d91fc1c7183cdc2b1b17ec41d1769e3ac0248ab2",
+  "diagnostic_library_sha256": "93dff1fc99558a6f9073d819ea91af72783cf3e38e1e172f3817e06f0c2a76a8",
+  "diagnostic_library_loaded_from": "/diag/lib/libincompressibleFluid.so",
+  "exit_code": 0,
+  "steps": 50,
+  "instrumentation_calls": 10,
+  "endpoint_fields": {
+    "U": {
+      "byte_identical": true,
+      "baseline_sha256": "5a660c548896ae87c99faba8c532b6bce3ba99722ed03abc223654be0a67b8b5",
+      "diagnostic_sha256": "5a660c548896ae87c99faba8c532b6bce3ba99722ed03abc223654be0a67b8b5"
+    },
+    "p": {
+      "byte_identical": true,
+      "baseline_sha256": "3dc03f2068eaafdbff2c2f4ca1c00ea3b86ff19f1f676838369184546713cc02",
+      "diagnostic_sha256": "3dc03f2068eaafdbff2c2f4ca1c00ea3b86ff19f1f676838369184546713cc02"
+    },
+    "phi": {
+      "byte_identical": true,
+      "baseline_sha256": "2adf202df19b1887c1190b022989ca3f24965003a814b34724d7c9b6c506a205",
+      "diagnostic_sha256": "2adf202df19b1887c1190b022989ca3f24965003a814b34724d7c9b6c506a205"
+    }
+  },
+  "noninterference_pass": true,
+  "scope": "n=16 endpoint pilot only; build and source telemetry do not establish temporal-error causality.",
+  "archive_sha256": "7ee7dded5e3b0c1ba2070c76c3a58a42800796c6aeead02e9cff69880a9212ca"
+}

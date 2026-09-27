@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "ad47eb3e0a49a2a3995a95983bbda666e3f34ebd991b1abcf5704bf559d4c69d"
+      "log_sha256": "fd0b77e1d38f923a923e57edef45bcbe64951797f07e6e32c660c8a1b58f6cc0"
     },
     {
       "step": "global_peaks",
@@ -224,6 +224,17 @@
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_iteration_archives.log",
       "log_sha256": "1456179ffb6cc9431ef0d14de97ba4938a5522307af27b8f4aecdd58a2b4df51"
+    },
+    {
+      "step": "openfoam_pressure_pilot",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "-m",
+        "tools.replay_openfoam_pressure_pilot"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_pressure_pilot.log",
+      "log_sha256": "06569f83aad89fee46511f34e1f98d62a7dc7215456f8db56e74cb6686f3f924"
     },
     {
       "step": "openfoam_solenoidal_startup",

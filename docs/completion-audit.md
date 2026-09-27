@@ -244,3 +244,10 @@ suppression. The planned initialization-sensitivity experiment is complete,
 but it does not resolve the original temporal acceptance gap. See
 `reports/openfoam-solenoidal-late-control.md`. Whole-goal completion remains
 unproven, including the independent analytic obligations.
+
+The common replay has been extended with the archive-only n=16 pressure
+reconstruction pilot. In the locked-dependency environment, 23/23 replay steps
+now pass. The pilot proves byte-identical endpoint fields under diagnostic
+instrumentation and verifies the final-call pressure/velocity algebra at
+roundoff. It does not yet attribute the n=64 temporal discrepancy; an instrumented
+three-dt run is the next scoped experiment.
