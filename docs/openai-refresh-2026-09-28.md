@@ -158,3 +158,27 @@ connects the existing existential compact spacetime derivative bound to a
 spatial Hessian bound on the same compact set, conditional on the existing
 local-germ equality premise. It remains non-effective: no numerical Hessian
 constant, tube radius, or finite packet certificate was extracted.
+
+## Additional independent numerical study, 2026-09-28
+
+The 22 September preprint [*Self-similar swirl between contracting porous
+walls*](https://arxiv.org/abs/2609.17642) revisits an older exact swirl solution
+in similarity variables related to the OpenAI construction and reports a
+collocation solver, symbolic/exterior/manufactured-solution checks, resolution
+studies and parameter sweeps. Its authors report that their attempted axis-core
+join met the moment identities numerically at one setting, but the true-cone
+condition failed for every smooth profile they tested. This is a useful
+independent numerical stress test of a reduced construction and a concrete
+reason to audit the cone-to-axis implication. It is not a reproduction of the
+full OpenAI construction, a proof of failure, or an independent verification of
+the blow-up theorem; numerical nonconvergence or a restricted ansatz may explain
+the failure. The source and scope are recorded without changing any benchmark
+verdict.
+
+The 22 September [*Cascade mechanisms for Navier-Stokes blow-up*]
+(https://arxiv.org/abs/2609.26790) studies a mixed
+Desnyansky–Novikov–Obukhov shell model and states a finite-time cascade blow-up
+result for that model. This is a discrete-scale cascade analogue, not a theorem
+for the full Navier–Stokes equations and not evidence of molecular alignment or
+vanishing viscosity. It may inform future scale-resolved diagnostics, provided
+the model is kept distinct from the physical equations.
