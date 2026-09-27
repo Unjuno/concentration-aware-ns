@@ -42,3 +42,36 @@ startup pressure here is not evidence of continuum blow-up or physical hazard.
 temporary directories and explicitly reports 2 of 3 cases and no evaluated
 three-case order. Its output is `partial-step-diagnostics.json`; the missing
 case remains pending and is not classified as passing or failing numerically.
+
+## Leading discrete Poisson model
+
+On the fixed periodic grid, if rAU=dt+O(dt²) and HbyA=U0+O(dt),
+and the remaining corrected-flux terms do not change the leading startup
+balance, the pressure equation suggests
+
+```
+L_h pi = D_h U0, mean(pi)=0,
+p = pi/dt + O(1).
+```
+
+Here D_h is centered divergence of arithmetic face flux and L_h is the uniform
+nearest-neighbor Laplacian. These are a leading-balance model's assumptions,
+not proved asymptotics of the full PIMPLE iteration. The model is solved using
+the exact discrete Fourier symbol -sum(4*sin(k_j*dx/2)^2/dx²), not a continuum
+Laplacian substituted for the discrete operator. Real-space residual is below
+4.6e-16. The input is only initial U, not fitted observed pressure.
+
+Comparing pi with gauge-centered dt*p at each run's first step gives relative
+L2 differences 0.0302216 (dt=0.001) and 0.0151275 (dt=0.0005), with directional
+cosines 0.999543 and 0.999886. The residual approximately halves with dt. The
+predicted impulse range is 0.00490576, compared with 0.00490483 and 0.00490521.
+This is more specific support for a startup projection interpretation than the
+range scaling alone. It is a post-hoc model comparison, not a calibrated
+acceptance test or evidence about the missing third run. It does not explain
+the later temporal-order behavior by itself.
+
+`python3 -m tools.check_openfoam_startup_poisson` reproduces the model and
+records pressure/initial-field hashes in `poisson-model.json`. Finite-dt
+transport, forcing and the full ddtCorr/PIMPLE behavior remain outside this
+leading model. No singular physical pressure follows from a fixed-grid
+initialization response as dt is changed.

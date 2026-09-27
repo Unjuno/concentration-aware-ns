@@ -1,0 +1,24 @@
+{
+  "initial_U_sha256": "d2f715af44de514f8a40f9bd72a947f30cdb3ed71e56547b33837a52d6f1f0d1",
+  "poisson_max_absolute_residual": 4.579669976578771e-16,
+  "cases": [
+    {
+      "dt": 0.001,
+      "pressure_sha256": "05f7a216fe6353b33dcbea946f684810950751f9b908b7fddf3c73304b096442",
+      "relative_centered_pressure_impulse_error": 0.030221608503567296,
+      "observed_impulse_range": 0.004904827206369354,
+      "model_impulse_range": 0.004905757528762192,
+      "cosine": 0.999543249116295
+    },
+    {
+      "dt": 0.0005,
+      "pressure_sha256": "fce31155fff767f249a6e4c48a151b5c91552f259a2e665e62e13e83a407f9ce",
+      "relative_centered_pressure_impulse_error": 0.015127461734954847,
+      "observed_impulse_range": 0.004905205296011284,
+      "model_impulse_range": 0.004905757528762192,
+      "cosine": 0.9998855809973483
+    }
+  ],
+  "model": "Uniform periodic nearest-neighbor Laplacian(pi)=central_div(U0), mean(pi)=0; leading approximation rAU~dt and HbyA~U0 predicts dt*p~pi",
+  "scope": "Frozen-grid leading startup balance only. Ignores finite-dt transport/source and pressure-correction details; comparison is post-hoc, not a causal intervention or complete solver derivation."
+}
