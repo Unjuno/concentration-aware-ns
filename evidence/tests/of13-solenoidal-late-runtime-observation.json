@@ -1,0 +1,17 @@
+{
+  "utc": "2026-09-27T07:25:42.581047+00:00",
+  "session_id": 67162,
+  "case": "n64-dt0.001",
+  "log_sha256": "3e050028b920e5f8aafe896c71e0e5a807f8ae9edfa2f036e210dc44009f83de",
+  "log_bytes": 303788,
+  "last_lines": [
+    "PIMPLE: Iteration 2",
+    "smoothSolver:  Solving for Ux, Initial residual = 1.601810551852574e-06, Final residual = 9.543512519603036e-15, No Iterations 2",
+    "smoothSolver:  Solving for Uy, Initial residual = 1.575882340672924e-06, Final residual = 1.48583132107752e-14, No Iterations 2",
+    "smoothSolver:  Solving for Uz, Initial residual = 1.599843804373814e-06, Final residual = 1.256106854453507e-14, No Iterations 2"
+  ],
+  "docker_ping_exit": 28,
+  "docker_ping_stdout": "",
+  "docker_ping_stderr": "curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received\n",
+  "scope": "Observation only; no terminal exit, restart or replacement run inferred."
+}
