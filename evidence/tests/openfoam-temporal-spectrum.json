@@ -1,0 +1,124 @@
+{
+  "studies": [
+    {
+      "study": "of13-iteration-sensitivity-v1",
+      "archives": {
+        "evidence/of13-iteration-sensitivity-v1/n64-dt0.001.tar.gz": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543",
+        "evidence/of13-iteration-sensitivity-v1/n64-dt0.0005.tar.gz": "910b92e3d9fb463bd3ac08524439c655d9e9403d785a79a14eb877d8c7398e7f",
+        "evidence/of13-iteration-sensitivity-v1/n64-dt0.00025.tar.gz": "d66d3a76aa4f822c1dd2cb4ca5cc46fb935ae6d53173ce1eabbf24baf4495d72"
+      },
+      "parseval_relative_defects": [
+        2.1186920605901187e-16,
+        2.0979822841271227e-16
+      ],
+      "bands": [
+        {
+          "band": "0<=k<=4",
+          "difference_energy_fractions": [
+            0.37012030337781693,
+            0.19876063975668917
+          ],
+          "norm_order": 0.9413953838200025,
+          "first_order_defect_energy_fraction": 0.013195836087087446
+        },
+        {
+          "band": "4<k<=8",
+          "difference_energy_fractions": [
+            0.41691573799515824,
+            0.47094566426206635
+          ],
+          "norm_order": 0.40501189768681223,
+          "first_order_defect_energy_fraction": 0.5303111332369067
+        },
+        {
+          "band": "8<k<=16",
+          "difference_energy_fractions": [
+            0.20821374074758137,
+            0.31628177932150386
+          ],
+          "norm_order": 0.19134170699314984,
+          "first_order_defect_energy_fraction": 0.4351562279838479
+        },
+        {
+          "band": "16<k<=32",
+          "difference_energy_fractions": [
+            0.004331052347372017,
+            0.013098522721283106
+          ],
+          "norm_order": -0.30539300810557307,
+          "first_order_defect_energy_fraction": 0.020073295069242946
+        },
+        {
+          "band": "k>32",
+          "difference_energy_fractions": [
+            0.0004191655320713682,
+            0.0009133939384574471
+          ],
+          "norm_order": -0.0689442733566868,
+          "first_order_defect_energy_fraction": 0.0012635076229149244
+        }
+      ]
+    },
+    {
+      "study": "of13-solenoidal-late-control-v2",
+      "archives": {
+        "evidence/of13-solenoidal-late-control-v2/n64-dt0.001.tar.gz": "d8a7ca3f37f46fe52828b06344831b52f2a701d4fc6c8cc86e87545b2c79f8f6",
+        "evidence/of13-solenoidal-late-control-v2/n64-dt0.0005.tar.gz": "3d1ece1f0ccb8cb695b896800770b7025a69a4eba17f80d215e0ae0dd6317ccf",
+        "evidence/of13-solenoidal-late-control-v2/n64-dt0.00025.tar.gz": "0af7c77f39d5d74202677baf8f871fbb9ae592f431ac7122920ef51d346f2cbf"
+      },
+      "parseval_relative_defects": [
+        0.0,
+        2.1189019387169591e-16
+      ],
+      "bands": [
+        {
+          "band": "0<=k<=4",
+          "difference_energy_fractions": [
+            0.37027208009742385,
+            0.19959914675041882
+          ],
+          "norm_order": 0.9452284863350249,
+          "first_order_defect_energy_fraction": 0.011289720167924414
+        },
+        {
+          "band": "4<k<=8",
+          "difference_energy_fractions": [
+            0.41622849941731793,
+            0.4651345610924522
+          ],
+          "norm_order": 0.4193521833653465,
+          "first_order_defect_energy_fraction": 0.5197415821433125
+        },
+        {
+          "band": "8<k<=16",
+          "difference_energy_fractions": [
+            0.20869901962716278,
+            0.3209518958216634
+          ],
+          "norm_order": 0.18902174883262518,
+          "first_order_defect_energy_fraction": 0.4469823543761421
+        },
+        {
+          "band": "16<k<=32",
+          "difference_energy_fractions": [
+            0.004380730230084988,
+            0.013392800683718453
+          ],
+          "norm_order": -0.30661882481081115,
+          "first_order_defect_energy_fraction": 0.020700111691211786
+        },
+        {
+          "band": "k>32",
+          "difference_energy_fractions": [
+            0.0004196706280104653,
+            0.000921595651747085
+          ],
+          "norm_order": -0.0679498288310517,
+          "first_order_defect_energy_fraction": 0.0012862316214091373
+        }
+      ]
+    }
+  ],
+  "scope": "Post-hoc radial integer-wave-number bands on verified uniform 2pi-periodic mesh. Bands partition all modes; energy fractions concern temporal differences, not total solution energy. No continuum error bound or causal diagnosis.",
+  "quality": "UNCERTAIN"
+}
