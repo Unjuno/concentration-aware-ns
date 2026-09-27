@@ -221,3 +221,16 @@ next-action list above are now satisfied. Step 4 (late-time causal attribution)
 and the independent analytic obligations remain open. The new control archive
 reader passes on the real six-archive comparison; this does not change any
 original acceptance gate or claim whole-goal completion.
+
+### Replay integration on 2026-09-28 JST
+
+The common replay now includes the completed archive-only solenoidal startup
+comparison: 22/22 steps pass using
+`work/clean-export-2026-09-27-locked/venv/bin/python -m tools.replay_published_reports`.
+The original system-Python attempt failed at step 15 because SymPy was absent;
+its summary and error log remain in
+`evidence/report-replay-missing-sympy-2026-09-28/`. This is an environment failure,
+not a numerical finding. The successful run uses the existing locked-dependency
+venv against the current checkout; it is not a new clean-export or solver replay.
+The startup diagnostic JSON was regenerated without a tracked difference.
+The late-time v2 intervention is still running and is excluded from this pass.

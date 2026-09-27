@@ -29,6 +29,7 @@ steps = [
     ('su2_output_clock_control', [sys.executable, '-m', 'tools.check_su2_output_clock_control']),
     ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),
     ('openfoam_iteration_archives', [sys.executable, '-m', 'tools.replay_openfoam_iteration_archives']),
+    ('openfoam_solenoidal_startup', [sys.executable, '-m', 'tools.check_openfoam_solenoidal_control']),
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),
 ]
 output = Path('evidence/report-replay');output.mkdir(exist_ok=True)
