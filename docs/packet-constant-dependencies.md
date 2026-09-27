@@ -71,9 +71,11 @@ The selected center curve is `X(s)=K*(1-s)^D`, with
 `K=eta/(1-eta^2)^D` and `D=(1-2h)/2` in `[0.499,0.5)`. For a fixed `rho0>0`,
 choose the interval start `t0` sufficiently close to 1 and use the constant
 radius `rho(Q)=rho0*Q^D` over `[t0,T]`. Since `Q^D <= ((1-s)/tau0)^D` for
-`s<=T`, every point in this tube lies within
-`(|K|+rho0)*tau0^D` of the terminal point. Thus the tube fits the existential
-endpoint neighborhood after choosing `t0` sufficiently close to 1. This proves
+`s<=T`, the spatial distance from the tube to the terminal point is at most
+`(|K|+rho0)*tau0^D`. The time-coordinate distance is at most `tau0`, and
+`tau0<=tau0^D` for `0<tau0<=1` and `D<1`. Thus the full spacetime distance is
+at most `(1+|K|+rho0)*tau0^D`. The tube fits the existential endpoint
+neighborhood after choosing `t0` sufficiently close to 1. This proves
 the endpoint-envelope hypotheses of the classical packet comparison
 existentially, with `r=D` and `kappa=40`.
 
