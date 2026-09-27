@@ -98,8 +98,9 @@ python -m tools.check_particle_position_probability
 These checks are separate from the eighteen-step report and exact-algebra replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
 chain or molecular applicability. The particle-probability check assumes
-isotropic infinitesimal directions and separates their angular probability
-from volume-preserving position transport. The aggregate review does not
+isotropic infinitesimal directions; its Gaussian position statistics are a
+global affine tangent-map toy model, not a finite-packet prediction for the
+nonlinear flow. The aggregate review does not
 certify continuous numerical-field energy.
 
 The current [analytic connection](docs/axis-flow-derivative.md) distinguishes

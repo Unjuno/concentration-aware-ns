@@ -4,6 +4,12 @@ This is a conditional calculation from the selected continuum flow derivative,
 not a molecular model. It resolves two different meanings of “particles become
 more predictable”: orientation of infinitesimal separations can concentrate
 near the axis, while the spatial probability density need not concentrate.
+The position-density and Gaussian calculations below apply the tangent matrix
+as a global affine map to a toy ensemble. The actual theorem supplies a local
+flow derivative; it does not establish that an unbounded Gaussian cloud stays
+inside a region where the nonlinear flow is represented by that affine map.
+Those position probabilities are therefore an exact linear-model comparison,
+not predictions for a finite packet in the constructed flow.
 The flow-derivative scope and updated source transfer are recorded in
 [`axis-flow-derivative.md`](axis-flow-derivative.md) and
 `evidence/upstream-refresh/updated-axis-force-sign.json` (OpenAI source pin
@@ -30,6 +36,26 @@ product is one, its differential entropy is unchanged, and its peak density is
 unchanged. The cloud narrows transversely while stretching axially; this is not
 three-dimensional positional concentration or a general reduction of position
 uncertainty.
+
+The same Gaussian model makes the positional tradeoff explicit. Let `r>0` be
+a fixed transverse radius and `L>0` a fixed axial half-length. Independence of
+the Gaussian coordinates gives
+
+```
+P(distance_to_axis <= r)
+  = 1 - exp(-r^2/(2 Q^C))                         -> 1,
+
+P(inside cylinder of radius r and |z| <= L)
+  = (1-exp(-r^2/(2 Q^C))) erf(L Q^C/sqrt(2))
+  ~ sqrt(2/pi) L Q^C                              -> 0.
+```
+
+Thus nearly all of this model's mass enters any fixed-radius *infinite* tube,
+but the mass in a cylinder with fixed finite length tends to zero because the
+axial spread grows. This is a precise sense in which transverse position
+relative to the axis becomes localized while 3D location, peak density, and
+volume do not concentrate. The event depends on the chosen observation window;
+it is not an intrinsic increase in certainty for every position question.
 
 There is nevertheless a precise directional-probability consequence under an
 explicit extra model. Sample an initial *infinitesimal separation direction*
@@ -64,8 +90,8 @@ forces, molecular alignment, phase change and constitutive viscosity are not
 modeled.
 
 `python3 -m tools.check_particle_position_probability` checks the determinant,
-Gaussian covariance/peak identities, the angular event boundary, and an exact
-rational example symbolically. Its output is
+Gaussian covariance/peak and tube/cylinder probability identities, the angular
+event boundary, and an exact rational example symbolically. Its output is
 `evidence/tests/particle-position-probability.json`. These symbolic checks do
 not prove the continuum flow-derivative theorem; see
 [`axis-flow-derivative.md`](axis-flow-derivative.md) for that proof's scope.

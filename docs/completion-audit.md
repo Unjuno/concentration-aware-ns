@@ -322,3 +322,13 @@ sharpens the user's direction-alignment idea while rejecting the inference that
 it establishes concentrated absolute positions or molecular predictability.
 Finite-packet and kinetic-model premises remain open; the acceptance gates and
 solver verdicts are unchanged. See `docs/particle-position-probability.md`.
+
+In the global affine tangent-map toy calculation, observation regions separate:
+mass in any fixed-radius infinite axis tube tends to one, while mass in a fixed
+finite cylinder is asymptotic to `sqrt(2/pi)*L*Q^C` and tends to zero. This
+illustrates how transverse localization can coexist with increasing axial
+uncertainty, unchanged peak density and constant differential entropy. The
+actual nonlinear-flow theorem does not establish the affine map on an
+unbounded Gaussian cloud. Symbolic limit checks pass after substituting
+`z=Q^C`, which avoids a symbolic-exponent limitation in the CAS. No microscopic
+or finite-packet claim is added.
