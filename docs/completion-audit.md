@@ -13,16 +13,16 @@ finding to a supported improvement and the evidence required to extend it.
 | One project repository | Current git remote, public Unjuno/concentration-aware-ns | Satisfied; upstream sources held as archives, no extra project fork |
 | Source/version/license audit | docs/audit.md, runtime recipes, pinned source files | Three targets identified; runtime dependencies have stated reproducibility limits |
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
-| OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; asymptotic temporal convergence not established |
+| OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; three tighter-iteration controls add 350 converged steps without changing endpoints materially or the observed order 0.493. Asymptotic temporal convergence remains unproved. |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 50 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
-| Genuine upstream reporting | SU2 Q&A 2890 with read-back verification | Time-contract question and six-case BDF2 order-reduction follow-up submitted; no general-fix claim |
+| Evidence-linked acceptance gate | v2 checker; 54 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. Nonlinear-flow identification still uses a classical proof; there is no end-to-end Lean flow theorem. Compact-interval finite-displacement bounds have non-effective constants. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has now been accepted by nanoda and Lean, with exit code 0 and all recorded-result checks passing (reports/euler-independent-verification.md); this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published; fresh-venv postprocessing commands succeed, while the latest strict byte-equality gate fails on recorded version metadata and propagated hashes. Solver-build reproduction and analytic-hypothesis review remain separate |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 21-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -176,3 +176,37 @@ report/test files match byte-for-byte. Evidence is in
 version drift for that explicit same-host configuration. Supported-range
 NumPy 2.5.3 failures remain preserved, and no cross-platform, solver-build,
 training or Lean reproducibility conclusion is added.
+
+
+## Current next-action audit after startup controls
+
+The completed work narrows rather than closes the remaining numerical question.
+The three tight-iteration runs and archive-only replay rule out a material
+endpoint response to those specific tolerance changes. Constructor probes
+establish the initial discrete face-flux mismatch. Two completed early-time
+runs and an unfitted leading Poisson model support a startup pressure/velocity
+response, but do not establish its causal role in later-time order reduction.
+Spatial operator checks show this initialization correction shrinks with mesh
+refinement; none of these results proves a physical singularity.
+
+Required next evidence, in dependency order:
+
+1. Resolve the actual state of the pending dt=0.00025 startup request. Its host
+   process remains live and a Docker daemon ping timed out; no replacement run
+   is justified solely from that observation. Preserve the two completed cases.
+2. Complete the three-case common-endpoint startup comparison. The published
+   comparator requires all cases; partial pressure/velocity evidence is labeled
+   separately and cannot be promoted to a three-level result.
+3. Execute the frozen initial-divergence intervention once Docker is responsive.
+   All three prepared input manifests pass, and only initial U differs. A
+   successful prediction would identify the initial impulse's dependency on
+   initial discrete divergence, not certify the original MMS acceptance gate.
+4. Only then select an experiment to test whether that startup mechanism affects
+   the t=0.05 temporal result. Avoid treating a changed initial-value problem
+   as a repair of the original benchmark or assuming its result in advance.
+
+The common replay now has 21 passing steps and 54 tests. It includes a fresh
+six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
+and exact uniform-prefix threshold algebra. It excludes pending solver runs.
+The analytic actualProfile moment/amplitude obligation and non-effective
+packet constants remain unresolved. Whole-goal completion is not established.
