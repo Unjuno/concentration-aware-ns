@@ -81,3 +81,23 @@ the generic packet algebra conditional until the equality-tube radius is
 controlled. Recent related preprints are recorded with their distinct forcing
 and regularity hypotheses. This revision adds evidence; it does not waive any
 solver, upstream-audit, publication or completion requirement above.
+
+## Revision 6 — skeptical particle-alignment audit and late-September refresh
+
+The user proposed that a continuum blow-up or accelerating contraction could
+make molecular positions more deterministic, align particles, or sharply reduce
+viscous effectiveness. Treat this as a hypothesis, not as an interpretation
+already implied by the theorem. Distinguish Eulerian profile narrowing from
+Lagrangian material-line deformation and both from molecular orientation or
+particle-position probability. The Navier–Stokes field alone provides no
+particle ensemble or kinetic bridge. Duraiswami's 15 September leading-order
+study reports only a fraction of a material-particle revolution per decade and
+model-dependent liquid/gas continuum cutoffs before molecular scales; it also
+omits the full pulse annulus and higher-order/full forced evolution. Use it as a
+countercheck, not as a definitive physical simulation. Other newly checked
+preprints concern conditional regularity, force-space density, and an unforced
+positive-energy-defect search; each has different hypotheses and none supplies
+the molecular implication. The detailed sources, numerical limitations and
+falsifiable follow-up are recorded in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. Preserve the
+full project goal and current solver gates.
