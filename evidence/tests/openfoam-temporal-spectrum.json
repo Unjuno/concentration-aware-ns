@@ -57,7 +57,54 @@
           "norm_order": -0.0689442733566868,
           "first_order_defect_energy_fraction": 0.0012635076229149244
         }
-      ]
+      ],
+      "centered_divergence_decomposition": {
+        "coarse_difference": {
+          "real_stencil_symbol_relative_defect": 5.849530277564869e-16,
+          "energy_fractions": {
+            "longitudinal": 0.0922263472775399,
+            "transverse_nonzero_symbol": 0.9077736520550085,
+            "zero_symbol_kernel": 6.674514917718055e-10
+          },
+          "energies": [
+            1.4748486805059313e-06,
+            1.4516771101238528e-05,
+            1.0673630486296986e-14
+          ]
+        },
+        "fine_difference": {
+          "real_stencil_symbol_relative_defect": 3.821162397388406e-16,
+          "energy_fractions": {
+            "longitudinal": 0.5004879802938148,
+            "transverse_nonzero_symbol": 0.49951201707621706,
+            "zero_symbol_kernel": 2.6299683002385804e-09
+          },
+          "energies": [
+            4.041309711916852e-06,
+            4.0334290638592585e-06,
+            2.1236307068849264e-14
+          ]
+        },
+        "first_order_defect": {
+          "real_stencil_symbol_relative_defect": 5.007905562069548e-16,
+          "energy_fractions": {
+            "longitudinal": 0.9747209947635318,
+            "transverse_nonzero_symbol": 0.025279000708827933,
+            "zero_symbol_kernel": 4.527640144289057e-09
+          },
+          "energies": [
+            7.944421915293251e-06,
+            2.060354176290694e-07,
+            3.6902337981934727e-14
+          ]
+        },
+        "component_norm_orders": {
+          "longitudinal": -0.7271279886749338,
+          "transverse_nonzero_symbol": 0.9238209042349832,
+          "zero_symbol_kernel": -0.49624096767124115
+        },
+        "symbol": "q_j=sin(k_j*dx)/dx; zero and Nyquist entries set exactly zero; eight zero-symbol modes kept separate"
+      }
     },
     {
       "study": "of13-solenoidal-late-control-v2",
@@ -116,7 +163,54 @@
           "norm_order": -0.0679498288310517,
           "first_order_defect_energy_fraction": 0.0012862316214091373
         }
-      ]
+      ],
+      "centered_divergence_decomposition": {
+        "coarse_difference": {
+          "real_stencil_symbol_relative_defect": 5.844696790843362e-16,
+          "energy_fractions": {
+            "longitudinal": 0.09091893535183164,
+            "transverse_nonzero_symbol": 0.9090810639716272,
+            "zero_symbol_kernel": 6.765409732747578e-10
+          },
+          "energies": [
+            1.4527662811139597e-06,
+            1.4525932485092352e-05,
+            1.0810244422266964e-14
+          ]
+        },
+        "fine_difference": {
+          "real_stencil_symbol_relative_defect": 3.75605476307337e-16,
+          "energy_fractions": {
+            "longitudinal": 0.4963742370357123,
+            "transverse_nonzero_symbol": 0.5036257604573023,
+            "zero_symbol_kernel": 2.5069851592885455e-09
+          },
+          "energies": [
+            3.9685209141113235e-06,
+            4.026496973726355e-06,
+            2.0043391243304e-14
+          ]
+        },
+        "first_order_defect": {
+          "real_stencil_symbol_relative_defect": 5.045170608871393e-16,
+          "energy_fractions": {
+            "longitudinal": 0.9744054835092111,
+            "transverse_nonzero_symbol": 0.025594512397603932,
+            "zero_symbol_kernel": 4.093185003850637e-09
+          },
+          "energies": [
+            7.789944515742798e-06,
+            2.0461690216149226e-07,
+            3.272321904207091e-14
+          ]
+        },
+        "component_norm_orders": {
+          "longitudinal": -0.7248993927541627,
+          "transverse_nonzero_symbol": 0.9255168127541314,
+          "zero_symbol_kernel": -0.4453637414841341
+        },
+        "symbol": "q_j=sin(k_j*dx)/dx; zero and Nyquist entries set exactly zero; eight zero-symbol modes kept separate"
+      }
     }
   ],
   "scope": "Post-hoc radial integer-wave-number bands on verified uniform 2pi-periodic mesh. Bands partition all modes; energy fractions concern temporal differences, not total solution energy. No continuum error bound or causal diagnosis.",

@@ -33,3 +33,30 @@ suppressed initial impulse or highest-frequency noise is sufficient. Any
 operator intervention must retain the original baseline and state whether it
 changes the discrete problem. No additional solver run was used here, and all
 original acceptance gates remain unchanged.
+
+## Centered-divergence decomposition
+
+Use the verified uniform-grid centered derivative symbol q_j=sin(k_j dx)/dx.
+For each nonzero q, split each Fourier vector F into q(q dot F)/|q|² and its
+orthogonal complement. Keep the eight all-zero/axis-Nyquist symbol combinations
+separate; do not divide by their zero symbol. Squared component norms add to
+the original norm within 1e-12 relative, and the transverse symbol divergence
+vanishes to roundoff. An independently evaluated real-space centered stencil
+agrees with i q dot F within 1e-12 relative for both differences and their
+first-order defect. This verifies the array-axis/component correspondence.
+
+| Diagnostic | Original tight baseline | Projected-initial control |
+|---|---:|---:|
+| Longitudinal fraction of squared first-order defect | 97.4721% | 97.4405% |
+| Transverse component observed order | 0.92382 | 0.92552 |
+| Longitudinal component observed order | -0.72713 | -0.72490 |
+
+The zero-symbol kernel contributes less than 5e-9 of squared defect norm.
+Thus the poor full-vector order is primarily associated with the centered
+cell-velocity longitudinal component, while the transverse component is much
+closer to first-order scaling. This does not assert failure of face-flux
+continuity: the solver's corrected face flux and the centered divergence of
+cell velocity are distinct discrete quantities. It motivates analysis of
+ongoing pressure/flux correction and cell-velocity reconstruction. Projecting
+reported outputs would change the evaluated quantity and cannot retrospectively
+turn the original MMS gate into PASS.
