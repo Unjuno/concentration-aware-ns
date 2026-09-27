@@ -83,6 +83,67 @@ Ignoring this distinction can make a good absolute error bound appear to
 certify a contracting direction that it does not resolve. This is directly
 relevant to the proposed alignment inference.
 
+## Power-law envelopes toward the endpoint
+
+The sufficient initial radius can be generalized without pretending the
+unknown tube and Hessian constants are uniform. Let `Q=(1-T)/(1-t0) -> 0`,
+assume `C>1`, and suppose for each terminal interval `[t0,T]` an available tube
+has radius `rho(Q)=rho0*Q^r`, while its half-Hessian bound satisfies
+`k(Q)<=k0*Q^(-kappa)`, with fixed positive `rho0,k0` and exponents `r,kappa>=0`.
+These are hypotheses about endpoint-dependent bounds, not established facts
+for the selected profile.
+
+The exact integral obeys
+
+```
+I(Q) = tau0*(Q^(1-C)-1)/(C-1)
+     <= tau0/(C-1)*Q^(1-C).
+```
+
+Writing `d=kappa-r-1`, the tube denominator is bounded by
+
+```
+Q^(-C) + B*Q^(-C-d),      B=k0*rho0*tau0/(C-1).
+```
+
+If `d>=0`, the second power dominates and the tube condition is ensured by an
+initial radius no larger than a constant times `Q^(C+kappa-1)`. If `d<=0`,
+the first power dominates, giving a tube radius allowance of order `Q^(C+r)`.
+The angle-error condition from the previous section requires order
+`Q^(C+kappa-1)` for a fixed non-transverse initial direction and fixed positive
+target angle: its linear margin tends to
+`tan(theta_target)*cos(theta0)/(1+tan(theta_target)) > 0`. In the `d<=0` case,
+`C+r >= C+kappa-1`, so the tube condition is at least as restrictive. Combined,
+a sufficient power is therefore
+
+```
+delta(Q) = O(Q^(C + max(r,kappa-1))).
+```
+
+For explicit constants, put
+`B=k0*rho0*tau0/(C-1)` and
+`p=C+max(r,kappa-1)`. Since each denominator term is at most its dominant
+power for `0<Q<=1`, the tube allowance is at least
+`rho0/(1+B)*Q^p`; choosing a smaller prefactor makes the strict tube
+inequality hold. For the angle condition, put
+`E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))>0`. Eventually
+`E(Q)>=E0/2`, while `E(Q)<=E0`, so
+`E(Q)/(1+E(Q)) >= E0/(2*(1+E0))`. Thus the angle-error condition is ensured by
+`delta <= E0*(C-1)/(2*(1+E0)*k0*tau0) * Q^(C+kappa-1)`. As `p>=C+kappa-1`,
+choosing a sufficiently small common constant in front of `Q^p` satisfies
+both bounds. The case `k(Q)=0` has no nonlinear remainder and omits the angle
+division by `k`.
+
+For bounded Hessian (`kappa=0`) and a tube radius bounded below (`r=0`), this
+reduces to `O(Q^C)`, agreeing with the fixed-constant special case. Since
+`C>1`, the sufficient radius still tends to zero under all `r,kappa>=0`.
+This proves only that this particular estimate certifies shrinking initial
+packets under the stated envelopes. It does not show that an actual packet of
+fixed size loses alignment, nor that the selected solution has any such
+power-law tube/Hessian bounds. The piecewise exponent and integral are checked
+symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
+`evidence/tests/packet-radius-scaling.json`.
+
 ## Verification and remaining inputs
 
 `python -m tools.check_axis_packet_bound` in the pinned verification environment

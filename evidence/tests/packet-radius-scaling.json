@@ -1,0 +1,33 @@
+{
+  "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
+  "sympy": "1.14.0",
+  "source_sha256": "29ed155960be6698ed1621e5349c891bb6ce34ca6dd61b4de48a8d169acae59f",
+  "assumptions": {
+    "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
+    "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
+    "initial_direction": "fixed angle theta0<pi/2 to the unoriented axis",
+    "target_angle": "fixed 0<theta_star<pi/2, so the linear angle margin is eventually positive"
+  },
+  "formulas": {
+    "I_upper": "I(Q)<=tau0/(C-1)*Q^(1-C)",
+    "tube_radius_sufficient_power": "Q^(C+max(r,kappa-1))",
+    "angle_error_sufficient_power": "Q^(C+kappa-1)",
+    "combined_sufficient_initial_radius_power": "Q^(C+max(r,kappa-1))",
+    "fixed_rho_bounded_k_case": "Q^C"
+  },
+  "residuals": {
+    "integral_upper_difference": "0",
+    "tube_power_case_kappa_ge_r_plus_1": "0",
+    "tube_power_case_kappa_le_r_plus_1": "0",
+    "angle_power_case_kappa_ge_r_plus_1": "0",
+    "angle_power_case_kappa_le_r_plus_1": "0",
+    "second_denominator_case_kappa_ge_r_plus_1": "0",
+    "second_denominator_case_kappa_le_r_plus_1": "0"
+  },
+  "controls": {
+    "representative_kappa_ge_r_plus_1_case": true,
+    "representative_kappa_le_r_plus_1_case": true,
+    "fixed_tube_bounded_hessian_special_case_is_Q_to_C": true
+  },
+  "success": true
+}

@@ -89,6 +89,14 @@ Hessian bounds still missing from the finite-packet analysis. Interparticle
 forces, molecular alignment, phase change and constitutive viscosity are not
 modeled.
 
+The existing nonlinear remainder estimate yields a conditional rate for how
+small a certified initial packet must be if the available tube radius and
+Hessian bound obey power laws. For `rho(Q)=rho0 Q^r` and `M(Q)/2=O(Q^-kappa)`,
+it is sufficient to take `delta(Q)=O(Q^(C+max(r,kappa-1)))`; this tends to zero
+for the audited `C>1`. No such endpoint envelopes or constants have been
+established for the selected profile. Details and the piecewise derivation are
+in [`axis-packet-bound.md`](axis-packet-bound.md).
+
 `python3 -m tools.check_particle_position_probability` checks the determinant,
 Gaussian covariance/peak and tube/cylinder probability identities, the angular
 event boundary, and an exact rational example symbolically. Its output is

@@ -92,6 +92,7 @@ python -m tools.check_axis_force
 python -m tools.check_axis_dissipation
 python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
+python -m tools.check_packet_radius_scaling
 python -m tools.check_particle_position_probability
 ```
 

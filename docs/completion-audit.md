@@ -332,3 +332,14 @@ actual nonlinear-flow theorem does not establish the affine map on an
 unbounded Gaussian cloud. Symbolic limit checks pass after substituting
 `z=Q^C`, which avoids a symbolic-exponent limitation in the CAS. No microscopic
 or finite-packet claim is added.
+
+### Conditional finite-packet radius scaling, 2026-09-28
+
+The classical tube and angle-error sufficient conditions were combined under
+explicit endpoint envelopes `rho(Q)=rho0*Q^r` and `k(Q)<=k0*Q^-kappa`.
+Splitting `kappa-r-1` by sign gives a joint sufficient initial-radius power
+`Q^(C+max(r,kappa-1))`; for `C>1`, this tends to zero. The new SymPy check
+verifies the integral bound and piecewise exponent identities. Neither the
+endpoint envelopes nor their constants are established for the selected
+profile, and the result is not a fixed-packet counterexample. See
+`docs/axis-packet-bound.md` and `evidence/tests/packet-radius-scaling.json`.
