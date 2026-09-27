@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "published_comparison_reproduced": true,
+  "archives": [
+    {
+      "archive": "evidence/of13-iteration-sensitivity-v1/n64-dt0.001.tar.gz",
+      "sha256": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.001.tar.gz",
+      "sha256": "855e06eff4a4ca981e7947b45ff222527a4d19812c88afc1267488116824e8fb"
+    },
+    {
+      "archive": "evidence/of13-iteration-sensitivity-v1/n64-dt0.0005.tar.gz",
+      "sha256": "910b92e3d9fb463bd3ac08524439c655d9e9403d785a79a14eb877d8c7398e7f"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.0005.tar.gz",
+      "sha256": "c1e11fe62fd205c8bdc03993cfa624689cf29f6ba0db0e2a043b96854642fa4d"
+    },
+    {
+      "archive": "evidence/of13-iteration-sensitivity-v1/n64-dt0.00025.tar.gz",
+      "sha256": "d66d3a76aa4f822c1dd2cb4ca5cc46fb935ae6d53173ce1eabbf24baf4495d72"
+    },
+    {
+      "archive": "evidence/of13-study-v1/n64-dt0.00025.tar.gz",
+      "sha256": "19c0ab0440bc1ed748cb1661ad3c206343b56a7255230bb72ee1db016c3f096f"
+    }
+  ],
+  "scope": "Fresh-directory replay using archived fields and the published comparison routine; no solver run or independent numerical algorithm validation"
+}

@@ -47,3 +47,16 @@ The constructor-only startup probe is documented separately in
 `docs/openfoam-startup-flux.md`; it establishes a discrete initialization
 observation but has not established causation for this temporal-order result.
 No OpenFOAM upstream defect report is justified by these controls alone.
+
+Fresh-directory archived-input replay now reconstructs this comparison from
+six published archives (three original, three tighter-iteration cases), with
+no reliance on the retained work directories. The regenerated comparison JSON
+matches the published result exactly. `archive-replay.json` records archive
+hashes and scope. Run `python3 -m tools.replay_openfoam_iteration_archives`.
+This reuses the published comparison routine; it is not an independent numerical
+algorithm or a new solver execution.
+
+The common report replay now includes this reconstruction, the SU2 output-clock
+archived control and the uniform pressure-prefix threshold. All 21 steps pass,
+including 54 unit tests. Pending startup/intervention runs are excluded from
+that success claim, and scientific UNCERTAIN verdicts remain unchanged.

@@ -42,7 +42,7 @@
     },
     "standard_acceptance_verified": {
       "path": "reports/openfoam-study-v1.md",
-      "sha256": "1884fb2741b355ef0e38622ee10c1be60330b6073956c2b3a2acdf94fd774fe9"
+      "sha256": "de0e3fa77b2df2874cac662172ab8ac98b5193d18a5dc506f84086f53c57fdb1"
     }
   },
   "metrics": [

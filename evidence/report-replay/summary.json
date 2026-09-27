@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "0487d9ffcc1d95f1c5a63a042a2060292c96c2e3211ac71c5e9118d29f838254"
+      "log_sha256": "52dad1c82db668e0b45fcea782bbba437866d1d0f3a593cf13b0e5dd0422fdd1"
     },
     {
       "step": "global_peaks",
@@ -191,6 +191,39 @@
       "exit_code": 0,
       "log": "evidence/report-replay/cone_sign_symmetry.log",
       "log_sha256": "f542f1288d1a10d0159adeb7087ef1abe08e6242c672da0a3a30aef7e8d6032f"
+    },
+    {
+      "step": "su2_output_clock_control",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_su2_output_clock_control"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_output_clock_control.log",
+      "log_sha256": "994e1bcf92ddf3d0ff71b3061f30f17970f0a90076718331c2b364fd5348c4ac"
+    },
+    {
+      "step": "uniform_prefix_threshold",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_uniform_prefix_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/uniform_prefix_threshold.log",
+      "log_sha256": "97691d66980e87e0d96fbe03be3411365216ec2e03b5134aa24fdb4f49dda207"
+    },
+    {
+      "step": "openfoam_iteration_archives",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.replay_openfoam_iteration_archives"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_iteration_archives.log",
+      "log_sha256": "1456179ffb6cc9431ef0d14de97ba4938a5522307af27b8f4aecdd58a2b4df51"
     },
     {
       "step": "artifact_links",

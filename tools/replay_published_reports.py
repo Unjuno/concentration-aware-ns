@@ -26,6 +26,9 @@ steps = [
     ('root_pressure_threshold', [sys.executable, '-m', 'tools.check_root_pressure_threshold']),
     ('pressure_moment_threshold', [sys.executable, '-m', 'tools.check_pressure_moment_threshold']),
     ('cone_sign_symmetry', [sys.executable, '-m', 'tools.check_cone_sign_symmetry']),
+    ('su2_output_clock_control', [sys.executable, '-m', 'tools.check_su2_output_clock_control']),
+    ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),
+    ('openfoam_iteration_archives', [sys.executable, '-m', 'tools.replay_openfoam_iteration_archives']),
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),
 ]
 output = Path('evidence/report-replay');output.mkdir(exist_ok=True)
