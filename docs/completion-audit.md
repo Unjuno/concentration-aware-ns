@@ -4,7 +4,7 @@ The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
 
-The table is current as of September 27; dated entries below retain historical
+The table is current as of September 28; dated entries below retain historical
 run scopes. The [impact-scope report](../reports/impact-scope.md) now maps each
 finding to a supported improvement and the evidence required to extend it.
 
@@ -22,6 +22,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. Nonlinear-flow identification still uses a classical proof; there is no end-to-end Lean flow theorem. Compact-interval finite-displacement bounds have non-effective constants. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has now been accepted by nanoda and Lean, with exit code 0 and all recorded-result checks passing (reports/euler-independent-verification.md); this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
+| OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 21-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
@@ -247,7 +248,18 @@ unproven, including the independent analytic obligations.
 
 The common replay has been extended with the archive-only n=16 pressure
 reconstruction pilot. In the locked-dependency environment, 23/23 replay steps
-now pass. The pilot proves byte-identical endpoint fields under diagnostic
+pass. The pilot proves byte-identical endpoint fields under diagnostic
 instrumentation and verifies the final-call pressure/velocity algebra at
 roundoff. It does not yet attribute the n=64 temporal discrepancy; an instrumented
-three-dt run is the next scoped experiment.
+three-dt run is now complete for its endpoint-only gate; see the update below.
+
+### n=64 pressure endpoint reconstruction, 2026-09-28
+
+The frozen v3 three-dt OpenFOAM 13 diagnostic matrix completed and its retained
+archives independently replay. Each run exited zero and has same-dt byte identity
+for endpoint U/p/phi. This closes that experiment's endpoint gate only; it does
+not identify the temporal-order mechanism or support molecular/constitutive
+claims. The locked environment completed all 23 configured report-replay steps. The
+whole project remains incomplete under the unresolved analytic and solver gates
+listed above. See `reports/openfoam-pressure-reconstruction.md` and
+`evidence/of13-pressure-reconstruction-n64-v3/`.
