@@ -1,0 +1,17 @@
+{
+  "case": "n64-dt0.001",
+  "archive_sha256": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543",
+  "modified_tolerances_verified": true,
+  "final_field_hash_verified": true,
+  "tight_outer_iterations": {
+    "min": 6,
+    "max": 7,
+    "total": 349
+  },
+  "baseline_outer_iterations": {
+    "min": 6,
+    "max": 6,
+    "total": 300
+  },
+  "scope": "Archived executed-input and log review, not a temporal accuracy certificate"
+}

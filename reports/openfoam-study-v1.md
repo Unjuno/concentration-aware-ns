@@ -78,3 +78,11 @@ change this endpoint. This is one completed case, not a three-step temporal
 conclusion; the two smaller timesteps remain in progress. The completed raw
 archive and `first-case-comparison.json` are saved in
 `evidence/of13-iteration-sensitivity-v1`.
+
+An archive-level review confirms the tightened solver dictionary and final-field
+hash. The new log records 349 total outer iterations (6–7 per step), compared
+with 300 (6 per step) in the baseline. The additional iterations therefore
+occurred despite the almost unchanged final velocity. This supports the
+same-dt sensitivity observation and excludes simply comparing the original
+field file against itself. The review is saved in
+`first-case-archive-review.json`; it is not evidence about the two pending cases.
