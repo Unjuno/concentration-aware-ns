@@ -1,0 +1,90 @@
+{
+  "runtime_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "initial_phi_file_present": false,
+  "files": [
+    {
+      "path": "/opt/openfoam13/applications/modules/incompressibleFluid/incompressibleFluid.C",
+      "sha256": "07435202057db9850178690b61b4bc99cf46202cac9b0e78163a5f6ff52ae9d5",
+      "excerpts": [
+        {
+          "term": "phi_",
+          "line": 91,
+          "excerpt": "        ),\n        mesh\n    ),\n\n    phi_\n    (\n        IOobject\n        (\n            \"phi\",\n            runTime.name(),\n            mesh,\n            IOobject::READ_IF_PRESENT,"
+        },
+        {
+          "term": "phi_",
+          "line": 111,
+          "excerpt": "    (\n        incompressible::momentumTransportModel::New\n        (\n            U_,\n            phi_,\n            viscosity\n        )\n    ),\n\n    MRF(mesh),\n\n    p(p_),"
+        },
+        {
+          "term": "phi_",
+          "line": 120,
+          "excerpt": "    MRF(mesh),\n\n    p(p_),\n    U(U_),\n    phi(phi_)\n{\n    mesh.schemes().setFluxRequired(p.name());\n\n    momentumTransport->validate();\n\n    if (transient())\n    {"
+        },
+        {
+          "term": "linearInterpolate(U_)",
+          "line": 101,
+          "excerpt": "            mesh,\n            IOobject::READ_IF_PRESENT,\n            IOobject::AUTO_WRITE\n        ),\n        linearInterpolate(U_) & mesh.Sf()\n    ),\n\n    viscosity(viscosityModel::New(mesh)),\n\n    momentumTransport\n    (\n        incompressible::momentumTransportModel::New"
+        },
+        {
+          "term": "preSolve()",
+          "line": 163,
+          "excerpt": "\n\n// * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //\n\nvoid Foam::solvers::incompressibleFluid::preSolve()\n{\n    if ((mesh.dynamic() || MRF.size()) && !Uf.valid())\n    {\n        Info<< \"Constructing face momentum Uf\" << endl;\n\n        // Ensure the U BCs are up-to-date before constructing Uf\n        U_.correctBoundaryConditions();"
+        },
+        {
+          "term": "prePredictor()",
+          "line": 202,
+          "excerpt": "    mesh_.update();\n}\n\n\nvoid Foam::solvers::incompressibleFluid::prePredictor()\n{}\n\n\nvoid Foam::solvers::incompressibleFluid::momentumTransportPredictor()\n{\n    momentumTransport->predict();\n}"
+        }
+      ]
+    },
+    {
+      "path": "/opt/openfoam13/applications/modules/incompressibleFluid/momentumPredictor.C",
+      "sha256": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+      "excerpts": [
+        {
+          "term": "fvm::ddt(U)",
+          "line": 38,
+          "excerpt": "    volVectorField& U(U_);\n\n    tUEqn =\n    (\n        fvm::ddt(U) + fvm::div(phi, U)\n      + MRF.DDt(U)\n      + momentumTransport->divDevSigma(U)\n     ==\n        fvModels().source(U)\n    );\n    fvVectorMatrix& UEqn = tUEqn.ref();\n"
+        },
+        {
+          "term": "fvModels().source(U)",
+          "line": 42,
+          "excerpt": "        fvm::ddt(U) + fvm::div(phi, U)\n      + MRF.DDt(U)\n      + momentumTransport->divDevSigma(U)\n     ==\n        fvModels().source(U)\n    );\n    fvVectorMatrix& UEqn = tUEqn.ref();\n\n    UEqn.relax();\n\n    fvConstraints().constrain(UEqn);\n"
+        }
+      ]
+    },
+    {
+      "path": "/opt/openfoam13/applications/modules/incompressibleFluid/correctPressure.C",
+      "sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+      "excerpts": [
+        {
+          "term": "fvc::flux(HbyA)",
+          "line": 52,
+          "excerpt": "    volVectorField HbyA(constrainHbyA(rAU*UEqn.H(), U, p));\n    surfaceScalarField phiHbyA\n    (\n        \"phiHbyA\",\n        fvc::flux(HbyA)\n      + fvc::interpolate(rAU)*fvc::ddtCorr(U, phi, Uf)\n    );\n\n    MRF.makeRelative(phiHbyA);\n\n    if (p.needReference())\n    {"
+        },
+        {
+          "term": "fvc::ddtCorr",
+          "line": 53,
+          "excerpt": "    surfaceScalarField phiHbyA\n    (\n        \"phiHbyA\",\n        fvc::flux(HbyA)\n      + fvc::interpolate(rAU)*fvc::ddtCorr(U, phi, Uf)\n    );\n\n    MRF.makeRelative(phiHbyA);\n\n    if (p.needReference())\n    {\n        fvc::makeRelative(phiHbyA, U);"
+        },
+        {
+          "term": "fvm::laplacian",
+          "line": 91,
+          "excerpt": "    while (pimple.correctNonOrthogonal())\n    {\n        fvScalarMatrix pEqn\n        (\n            fvm::laplacian(rAtU(), p)\n         ==\n            fvc::div(phiHbyA)\n          - p_rghEqnSource\n        );\n\n        pEqn.setReference\n        ("
+        },
+        {
+          "term": "phi = phiHbyA",
+          "line": 107,
+          "excerpt": "        pEqn.solve();\n\n        if (pimple.finalNonOrthogonalIter())\n        {\n            phi = phiHbyA - pEqn.flux();\n        }\n    }\n\n    continuityErrors();\n\n    // Explicitly relax pressure for momentum corrector\n    p.relax();"
+        },
+        {
+          "term": "U = HbyA",
+          "line": 116,
+          "excerpt": "\n    // Explicitly relax pressure for momentum corrector\n    p.relax();\n\n    U = HbyA - rAtU*fvc::grad(p);\n    U.correctBoundaryConditions();\n    fvConstraints().constrain(U);\n\n    // Correct Uf if the mesh is moving\n    fvc::correctUf(Uf, U, phi, MRF);\n\n    // Make the fluxes relative to the mesh motion"
+        }
+      ]
+    }
+  ],
+  "scope": "Source installed in the actual running image; not a rebuilt-binary/source equivalence proof or full lifecycle audit"
+}
