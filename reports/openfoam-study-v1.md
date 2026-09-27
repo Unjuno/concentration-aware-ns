@@ -50,3 +50,21 @@ python3 tools/acceptance_gate.py reports/openfoam-n32-gate.json --artifact-root 
 Exit 2 is the expected result. Hash-matched review artifacts do not make the
 scientific review infallible, and the unresolved flags must not be set merely to
 obtain a desired verdict.
+
+## Directional temporal check
+
+The archived timestep differences are not simply one common leading error
+vector scaled by the timestep. With a=U(dt)-U(dt/2), b=U(dt/2)-U(dt/4),
+`python3 -m tools.check_openfoam_temporal_alignment` finds cosine(a,b)=0.88310,
+best-fit a≈1.24277*b, and ||a-2b||/||a||=0.71391. The component of a orthogonal
+to b is 46.92% of ||a||. Input hashes match the earlier temporal comparison.
+These are post-hoc consistency diagnostics, not new acceptance thresholds or
+proof of the cause. They strengthen the reason not to extrapolate a
+first-order temporal error bound from this triple.
+
+The cases already write 16 significant digits. Current linear/outer absolute
+stopping tolerances are 1e-10/1e-8 with at most 12 outer correctors. A frozen
+follow-up protocol, `protocols/of13-iteration-sensitivity-v1.json`, retains the
+same three timesteps and changes these to 1e-12/1e-10 and 40 correctors. It
+will compare same-dt field shifts and temporal directions before attributing
+the observed order to time discretization. That follow-up has not yet run.

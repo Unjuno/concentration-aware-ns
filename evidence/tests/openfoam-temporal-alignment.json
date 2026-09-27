@@ -1,0 +1,32 @@
+{
+  "cases": [
+    "n64-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "input_sha256": {
+    "work/of13-study-v1/n64-dt0.001/0.05/U": "003f0dea205fe00676806c4a79514be536a2b001da120ad8d5eb4ecfb7f20910",
+    "work/of13-study-v1/n64-dt0.0005/0.05/U": "293d61644b09d37a442a93668aa481e76cf7d40678a631485643634401fd6971",
+    "work/of13-study-v1/n64-dt0.00025/0.05/U": "82249837cb6db1e45eb67918a7b454fc58244301fe76ab437601df2384f68dee"
+  },
+  "difference_cosine": 0.8830965338688921,
+  "best_fit_coarse_to_fine_difference_scale": 1.2427682996009546,
+  "norm_ratio": 1.407284766656621,
+  "observed_norm_order": 0.4929142901055511,
+  "orthogonal_fraction_of_coarse_difference": 0.46919133822860704,
+  "first_order_defect_relative_to_coarse_difference": 0.7139121317493679,
+  "component_norms": [
+    [
+      0.002601836457248094,
+      0.0024268378748690533,
+      0.001825520411985091
+    ],
+    [
+      0.001897210314666558,
+      0.0016907536478081389,
+      0.0012714888598040072
+    ]
+  ],
+  "interpretation": "For a single leading first-order temporal error vector, coarse difference approaches twice the fine difference. These post-hoc diagnostics test that consistency, not a bound or attribution to solver, iteration or spatial error.",
+  "acceptance": "UNCERTAIN"
+}
