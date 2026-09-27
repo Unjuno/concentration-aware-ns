@@ -74,6 +74,20 @@ training runs, upstream messages or theorem changes occurred in this audit.
 This remains an interim audit, not a declaration that all goal requirements
 have been completed.
 
+### Quantitative copy-support hole, 2026-09-28
+
+The updated OpenAI source's `SupportData.sum_support` now feeds a new Lean
+extension, `verification/SupportHole.lean`. The theorem
+`copy_sum_zero_below_physical_hole` proves that a supported copy-family sum
+vanishes whenever its physical transverse radius is below
+`a*sqrt(physicalQ/2)`. The proof uses the dyadic active-band comparison and
+the annulus-to-physical-radius identity, and compiled with the pinned checker
+environment. This is a generic primitive-family result. It does not yet show
+that all actual candidate stages, direct curls, and the full cutoff series
+share one coefficient on a complete tube. The packet-radius transfer and
+completion verdict therefore remain unresolved; see
+`docs/packet-constant-dependencies.md`.
+
 Correction to analytic evidence: the force-ratio geometric factor d=1-eta²
 was inverted in earlier revisions. Current symbolic and Lean sign checks
 use -nu*d*Z/(L*A*U). The historical fresh-environment check-3.log records

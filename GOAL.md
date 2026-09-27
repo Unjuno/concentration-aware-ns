@@ -101,3 +101,16 @@ the molecular implication. The detailed sources, numerical limitations and
 falsifiable follow-up are recorded in
 `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. Preserve the
 full project goal and current solver gates.
+
+## Revision 7 — source-supported tube-radius route under audit
+
+The refreshed OpenAI source exposes positive, scale-explicit inner support
+radii for the actual initial copy waves, particular/signed annular terms, and
+mean streams. This may yield a uniform assembled-field equality tube of radius
+proportional to `sqrt(1-t)` and repair the withdrawn packet-radius exponent.
+Treat this as a proof obligation, not as an achieved result: formalize that all
+stage and direct sums inherit the common support hole on a complete tube and
+verify the tube stays in every cited band/domain. The derivation and exact
+source boundary are recorded in `docs/packet-constant-dependencies.md`. A
+generic Lean lemma now proves the pointwise hole for any supported copy-family
+sum; the all-stage assembly and tube-domain transfer remain open.

@@ -100,6 +100,73 @@ uniform neighborhood radius for that growing prefix nor numerical derivative
 enclosures. A quantitative support-width theorem uniform over the relevant
 stages, or direct bounds for the assembled field, is still required.
 
+## New support-hole route inspected on 2026-09-28
+
+The pinned source has a potentially stronger route than the finite-prefix
+germ argument: its actual perturbation ingredients have **positive inner
+support radii**, not merely axis-zero germs. The relevant exact source facts
+are:
+
+- Initial copy potentials use `InitialPhysicalData.innerRadius =
+  PrimaryTargetBounds.leftRadius / 4`. Their `SupportData.geometry_support`
+  puts every nonzero copy term in a normalized annulus. Since the active band
+  obeys `physicalQ/2 <= Q_n`, physical radius is at least the annular inner
+  radius times `sqrt(Q_n)`, hence at least
+  `PrimaryTargetBounds.leftRadius/(4*sqrt(2))*sqrt(physicalQ)`.
+- Actual particular fields use `BandAnnulus` support in
+  `ActualCurrentWaveSupport`: nonzero terms have
+  `profileRadius >= PrimaryTargetBounds.leftRadius`. The signed exterior field
+  is supported in `ActualPolarCoverage.active`, whose lower edge is
+  `activeLeft`; the identity `profileRadius^2/2 = cartesianChart_X` gives the
+  same physical-radius bound. Since
+  `profileRadius = physical radius/sqrt(physicalQ)`, both are outside
+  `PrimaryTargetBounds.leftRadius*sqrt(physicalQ)` on their valid regions.
+- Every constructed angular/stream mean family uses
+  `ActualMeanStageData.innerRadius = (ActualInitialization.geometry.patch.a/4)
+  * sqrt(physicalQ)`, and `coefficient_vanishes` proves the scalar coefficient
+  is zero below that radius.
+
+Thus a candidate common support-hole coefficient for all these primitive
+components is
+
+    c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0.
+
+At any point in their validity regions, every perturbation component vanishes
+when its transverse radius `r < c0*sqrt(physicalQ)`. The chart identity
+`tau = q*(1-eta^2)` gives `physicalQ=q >= tau`; hence a spatial tube around an
+axial center curve with
+
+    rho(Q) = (c0*sqrt(tau0)/2) * sqrt(Q),
+    tau = tau0*Q,
+
+would lie strictly inside this support hole, provided the tube remains in the
+bands/domains where the cited support facts apply. On such a tube, the
+perturbation **fields themselves**, not only their germs at the axis, are zero.
+If all stage and direct-field sums inherit this common pointwise support hole,
+the assembled velocity equals its smooth base there. This would provide the
+previously missing power-law tube envelope with `r=1/2`; combined with the
+base Hessian rate `kappa=40`, the generic packet exponent would again be
+`Cstretch+39`, conditionally on all remaining hypotheses and constants.
+
+The initial-copy part is now formalized in
+`verification/SupportHole.lean` as
+`copy_sum_zero_below_physical_hole`. It states that any `CopyFamily` satisfying
+the pinned `SupportData` contract is exactly zero when its physical radius is
+below `a*sqrt(physicalQ/2)`. It was compiled against the pinned OpenAI source
+and Lean environment after deriving the witness through
+`SupportData.sum_support`, `labelRegion_active_relation`, and the explicit
+annulus-to-physical-radius scale identity. This proves a generic primitive
+copy-family implication, not that every actual stage satisfies one uniform
+parameter tuple.
+
+The full support-hole transfer is **not yet proved**. The source extension
+does not yet prove the common-hole implication through the full
+`ActualCandidateAssembly`/`GermCandidateAssembly` cutoff series on a complete
+spacetime tube, including valid-band/domain coverage and the direct curl field.
+The exact numeric value of `leftRadius` and `patch.a` is also non-effective.
+Therefore keep the published packet exponent withdrawn until that aggregate
+implication and the tube's domain conditions are formalized and checked.
+
 ## Finite-stage cutoff with a known chart lower bound
 
 There is also a useful finite reduction. Suppose q_chart>=qmin>0 throughout
