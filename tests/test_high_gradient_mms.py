@@ -12,7 +12,7 @@ class HighGradientMmsTests(unittest.TestCase):
         self.assertTrue(result["passed"])
         self.assertEqual([case["N"] for case in result["cases"]], [4, 8, 16])
         self.assertEqual(
-            [case["selected_gradient_component_peak"] for case in result["cases"]],
+            [case["selected_gradient_component_peak_at_t0"] for case in result["cases"]],
             ["1 (attained at x=pi/(2N), y=z=0)"] * 3,
         )
 

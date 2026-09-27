@@ -9,24 +9,24 @@ import sympy as sp
 
 
 def run() -> dict:
-    x, y, z = sp.symbols("x y z", real=True)
+    x, y, z, t = sp.symbols("x y z t", real=True)
     N = sp.symbols("N", integer=True, positive=True)
     nu = sp.Rational(1, 100)
     g = ((1 + sp.cos(y)) / 2)**4
     h = ((1 + sp.cos(z)) / 2)**4
     chi = g * h
-    psi = chi * sp.sin(N*x) / N**2
+    psi = sp.exp(-t) * chi * sp.sin(N*x) / N**2
     u = sp.Matrix([sp.diff(psi, y), -sp.diff(psi, x), 0])
     grad = u.jacobian([x, y, z])
     div = sp.trigsimp(sp.diff(u[0], x) + sp.diff(u[1], y) + sp.diff(u[2], z))
     lap = sp.Matrix([sum(sp.diff(u[i], q, 2) for q in (x, y, z)) for i in range(3)])
     conv = grad * u
-    forcing = conv - nu * lap
-    residual = conv - nu * lap - forcing
+    forcing = sp.diff(u, t) + conv - nu * lap
+    residual = sp.diff(u, t) + conv - nu * lap - forcing
     omega_z = sp.diff(u[1], x) - sp.diff(u[0], y)
-    derivative_identity = sp.trigsimp(grad[1, 0] - chi * sp.sin(N*x))
+    derivative_identity = sp.trigsimp(grad[1, 0] - sp.exp(-t)*chi*sp.sin(N*x))
     vorticity_identity = sp.trigsimp(
-        omega_z - (chi - sp.diff(chi, y, 2)/N**2) * sp.sin(N*x))
+        omega_z - sp.exp(-t)*(chi - sp.diff(chi, y, 2)/N**2) * sp.sin(N*x))
 
     # g(y)=cos(y/2)^8 has a finite Fourier expansion. Orthogonality gives
     # exact normalized means by zero-mode sums, without quadrature.
@@ -49,7 +49,7 @@ def run() -> dict:
 
     identities = {
         "divergence_free": div == 0,
-        "steady_ns_residual_zero": all(sp.expand(v) == 0 for v in residual),
+        "time_dependent_ns_residual_zero": all(sp.expand(v) == 0 for v in residual),
         "localized_gradient_formula": derivative_identity == 0,
         "vorticity_formula": vorticity_identity == 0,
         "envelope_fourier_identity": fourier_identity,
@@ -63,18 +63,18 @@ def run() -> dict:
         cases.append({
             "N": n,
             "velocity_sup_upper_bound": f"{sp.sstr(sp.Rational(1,n)+2*sp.Rational(1,n**2))}",
-            "selected_gradient_component_peak": "1 (attained at x=pi/(2N), y=z=0)",
-            "vorticity_at_same_point": sp.sstr(1 + 2*sp.Rational(1,n**2)),
-            "mean_velocity_squared": at_n(mean_u2),
-            "mean_selected_gradient_component_squared": at_n(mean_gradient_component2),
-            "mean_vorticity_squared": at_n(mean_omega2),
+            "selected_gradient_component_peak_at_t0": "1 (attained at x=pi/(2N), y=z=0)",
+            "vorticity_at_same_point_t0": sp.sstr(1 + 2*sp.Rational(1,n**2)),
+            "mean_velocity_squared_at_t0": at_n(mean_u2),
+            "mean_selected_gradient_component_squared_at_t0": at_n(mean_gradient_component2),
+            "mean_vorticity_squared_at_t0": at_n(mean_omega2),
         })
     result = {
         "scope": "Exact continuum MMS identities; no CFD solver was run and no acceptance-gate failure is claimed.",
         "domain": "[0,2*pi]^3 periodic",
-        "potential": "A=(0,0, chi(y,z)*sin(N*x)/N^2), chi=((1+cos(y))/2)^4*((1+cos(z))/2)^4",
-        "velocity": "u=curl(A)=(chi_y*sin(N*x)/N^2, -chi*cos(N*x)/N, 0)",
-        "equation": "(u dot grad)u = nu*Delta(u) + f, p=0, nu=1/100",
+        "potential": "A=(0,0, exp(-t)*chi(y,z)*sin(N*x)/N^2), chi=((1+cos(y))/2)^4*((1+cos(z))/2)^4",
+        "velocity": "u=curl(A)=exp(-t)*(chi_y*sin(N*x)/N^2, -chi*cos(N*x)/N, 0)",
+        "equation": "partial_t(u)+(u dot grad)u = nu*Delta(u) + f, p=0, nu=1/100",
         "exact_checks": identities,
         "cases": cases,
         "passed": all(identities.values()),

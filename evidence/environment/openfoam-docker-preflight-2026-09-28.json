@@ -1,0 +1,14 @@
+{
+  "scope": "OpenFOAM execution environment preflight only; no container was started or modified.",
+  "date": "2026-09-28",
+  "docker_context": "orbstack",
+  "docker_info": {
+    "timeout_seconds": 3,
+    "result": "no response before bounded timeout"
+  },
+  "orbstack_processes_observed": [
+    "2721 /Applications/OrbStack.app/Contents/Frameworks/OrbStack Helper.app/Contents/MacOS/OrbStack Helper vmgr -build-id macho:05775f98b4bb3d75b88520220872c248 -handoff",
+    "2728 /Applications/OrbStack.app/Contents/MacOS/OrbStack --internal-cli-background"
+  ],
+  "decision": "do not restart daemon because existing OrbStack processes may own unrelated containers; solver and C++ mock remain unrun"
+}

@@ -16,12 +16,15 @@ def envelope_derivatives(q):
     return out
 
 
-def fields(points, N=8, nu=0.01):
-    """Return u, grad_u[i,j], vorticity and steady force at (...,3) points."""
+def fields(points, N=8, nu=0.01, time=0.0):
+    """Return u, grad_u[i,j], vorticity and force at (...,3) points.
+
+    The manufactured field has scalar amplitude exp(-time).
+    """
     points = np.asarray(points, dtype=float)
     if points.ndim == 0 or points.shape[-1] != 3:
         raise ValueError("points must have final dimension 3")
-    if not np.isfinite(points).all() or not np.isfinite([N, nu]).all():
+    if not np.isfinite(points).all() or not np.isfinite([N, nu, time]).all():
         raise ValueError("inputs must be finite")
     if int(N) != N or N < 1 or nu <= 0:
         raise ValueError("N must be a positive integer and nu must be positive")
@@ -54,5 +57,10 @@ def fields(points, N=8, nu=0.01):
     omega = np.stack((chi_z*cx/N,
                       chi_yz*sx/N**2,
                       (chi-chi_yy/N**2)*sx), axis=-1)
-    force = np.einsum("...ij,...j->...i", grad, u) - nu*lap
+    decay = np.exp(-time)
+    u *= decay
+    grad *= decay
+    omega *= decay
+    lap *= decay
+    force = -u + np.einsum("...ij,...j->...i", grad, u) - nu*lap
     return {"u": u, "grad_u": grad, "vorticity": omega, "force": force}

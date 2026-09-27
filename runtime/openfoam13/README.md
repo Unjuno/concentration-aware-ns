@@ -22,3 +22,18 @@ From the repository root, `runtime/openfoam13/run-pilot.sh` generates a fresh
 generation. Run only when `work/of13-pilot` is absent; the generator refuses to
 overwrite existing evidence. Coded forcing compiles as a non-root user matching
 the host UID. This pilot's completion has not yet been verified; see progress.
+
+The localized high-gradient manufactured profile can be generated without
+changing the existing Gaussian case:
+
+```sh
+python3 -m tools.openfoam_case work/of13-high-gradient-pilot \
+  --n 16 --profile high-gradient --frequency 4
+```
+
+Its frozen spatial/time matrix and quality thresholds are in
+`protocols/high-gradient-of13-v1.json`. Before solver execution, compile and
+compare the `codedFvModel` forcing with the independent symbolic/NumPy
+reference using `python3 -m tools.check_high_gradient_openfoam_force`. That
+checker requires the pinned local OpenFOAM image and Docker; it tests a mock
+mesh/equation, not a PDE run or the live solver's source sign convention.

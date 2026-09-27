@@ -1,0 +1,12 @@
+{
+  "scope": "Host compiler preflight for the generated C++ mock only; no source compilation result.",
+  "date": "2026-09-28",
+  "compiler_path": "/usr/bin/c++",
+  "compiler_probe": {
+    "exit_code": 69,
+    "stdout": "",
+    "stderr": "You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.\n"
+  },
+  "result": "Xcode license gate prevents invoking the compiler; no license setting was changed",
+  "independent_of_docker_preflight": "yes"
+}

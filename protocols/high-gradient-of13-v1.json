@@ -1,0 +1,41 @@
+{
+  "status": "frozen protocol; no solver run has been performed",
+  "target": "OpenFOAM Foundation 13",
+  "profile": "localized analytic high-gradient periodic MMS",
+  "domain": "[0,2*pi)^3",
+  "frequency_N": 4,
+  "amplitude": "exp(-t)",
+  "viscosity": 0.01,
+  "end_time": 0.05,
+  "spatial_matrix": {
+    "cell_counts": [16, 32, 64],
+    "delta_t": 0.001
+  },
+  "temporal_matrix": {
+    "cell_count": 64,
+    "delta_t": [0.001, 0.0005, 0.00025]
+  },
+  "standard_acceptance": {
+    "complete_end_time_required": true,
+    "outer_corrector_residual_absolute": 1e-8,
+    "maximum_outer_correctors": 12
+  },
+  "local_quality_relative_error_thresholds": {
+    "velocity_l2": 0.02,
+    "energy": 0.02,
+    "max_gradient": 0.05,
+    "max_vorticity": 0.05,
+    "shell_spectrum": 0.05
+  },
+  "amr": {
+    "required": true,
+    "compare_with": "uniform n=64 control",
+    "record": ["requested_refinement", "actual_cell_count", "maximum_level", "blocked_candidates", "cell_budget"]
+  },
+  "interpretation": [
+    "standard solver acceptance and local numerical quality are separate verdicts",
+    "a reproduced acceptance blind spot requires standard acceptance PASS, local quality FAIL, and adequate independent resolution evidence",
+    "a coarse-grid local failure alone is classified as underresolution, not a software defect",
+    "no inference about singularity, blow-up, molecular alignment, real-world hazard, or constitutive viscosity is allowed"
+  ]
+}

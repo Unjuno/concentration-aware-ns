@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "f16f1f4a2cb8adda81588d5c8e3ebd81263cc423f6b89a5624bfef75caff7aa9"
+      "log_sha256": "657a8214e91b3c029d78753f27dda54c254a45d048e36adc7aab6a073723f51e"
     },
     {
       "step": "global_peaks",
@@ -223,7 +223,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/high_gradient_mms.log",
-      "log_sha256": "28bee8e26c8eec121caeea65a2c5a0059c8d6ab41db50b98c73f179e51606c12"
+      "log_sha256": "a3debd090adc8fc06152b286ff02d4638ca769aafe7b21803ed5f9fd5ba7beb8"
     },
     {
       "step": "high_gradient_reference",
@@ -234,7 +234,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/high_gradient_reference.log",
-      "log_sha256": "ad3ee77e14eca859942d61bdb6a0232d60ac8cfe893d6ba50b50dd5fec5d8ca1"
+      "log_sha256": "c7cbb24bcd2245b59653d2d523bbf5ab5a750ec45fb90b5b2c7639cd0e6b6c04"
     },
     {
       "step": "openfoam_iteration_archives",
