@@ -10,6 +10,8 @@
   ],
   "timeout_seconds": 8,
   "result": "timed out before image metadata was returned",
+  "source_commit": "07c8799",
+  "source_tree_clean": true,
   "runner": "tools.run_high_gradient_openfoam",
   "side_effects": {
     "case_tree_created": false,
