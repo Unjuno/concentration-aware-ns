@@ -1,0 +1,11 @@
+{
+  "observed_utc": "2026-09-27T03:28:41.620476+00:00",
+  "context": "orbstack",
+  "endpoint": "unix:///Users/taka/.orbstack/run/docker.sock",
+  "read_only_ping": {
+    "exit_code": 28,
+    "stdout": "",
+    "stderr": "curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received\n"
+  },
+  "scope": "Bounded daemon liveness probe; original docker-run and docker-ps requests not cancelled or restarted"
+}

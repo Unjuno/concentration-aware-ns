@@ -50,3 +50,18 @@ file is introduced. Parameters explicitly label the changed initial problem.
 hash, protocol identity and prepared-only status. These are input checks, not
 solver results. No additional Docker request has been enqueued while the
 existing baseline and docker-ps requests remain pending.
+
+Execution is now available via `python3 -m tools.run_openfoam_solenoidal_control`.
+Its `--check-inputs-only` mode passed for all three prepared cases without
+contacting Docker. Actual execution checks every input against the frozen
+manifest, refuses a prior execution, and requires a bounded successful image
+inspection before issuing any docker-run request. Runs and archives retain
+failure evidence rather than silently overwriting it. The preflight is an
+availability check, not a guarantee that Docker cannot later stall.
+
+At the recorded liveness check, OrbStack's Docker socket failed to answer
+GET /_ping within five seconds (curl exit 28). The existing baseline request
+and docker-ps request remain alive and unmodified. The bounded observation is
+saved in `evidence/of13-startup-time-v1/docker-liveness.json`; it does not
+establish that either pending request has terminated. Intervention execution
+has not been attempted while this infrastructure condition persists.
