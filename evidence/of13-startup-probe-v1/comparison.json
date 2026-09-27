@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "n": 16,
+      "max_actual_divergence": 0.620668896594091,
+      "maximum_cellwise_difference": 1.5154544286133387e-14,
+      "tolerance_pass": true
+    },
+    {
+      "n": 32,
+      "max_actual_divergence": 0.2171882819777128,
+      "maximum_cellwise_difference": 5.678096881567285e-14,
+      "tolerance_pass": true
+    },
+    {
+      "n": 64,
+      "max_actual_divergence": 0.05672386630871446,
+      "maximum_cellwise_difference": 1.3340153634522345e-13,
+      "tolerance_pass": true
+    }
+  ],
+  "scope": "Actual solver-constructor output before time advancement agrees with independent arithmetic face-flux divergence; no temporal-error causation claim"
+}

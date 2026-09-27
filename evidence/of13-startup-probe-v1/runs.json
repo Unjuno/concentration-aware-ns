@@ -1,0 +1,17 @@
+[
+  {
+    "n": 16,
+    "exit_code": 0,
+    "archive_sha256": "405455c5931ef4838558278b0b7d4b725220c160518993fdc4292edd9b9cbbe7"
+  },
+  {
+    "n": 32,
+    "exit_code": 0,
+    "archive_sha256": "5a3e68692c5c51efbbd3d5f23b6a4fdf2d9d5b9cc503fb9e943068cf4d73a7d3"
+  },
+  {
+    "n": 64,
+    "exit_code": 0,
+    "archive_sha256": "7574313c2f7072d54e272c69389da2b1d728fe2d0162fbd3d8a2743a16605bc0"
+  }
+]

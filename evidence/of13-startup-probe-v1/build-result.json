@@ -1,0 +1,7 @@
+{
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "build_exit_code": 0,
+  "executable_sha256": "74dbbc98517e3f02b4f28c79ab8f5721e880e62d8aee8b276f9110fce5732341",
+  "build_log_sha256": "e6c5e3ef215bad959f0845a82160af4e69c99a8825fe8dd626cf09fbb8cff510",
+  "initial_attempt": "Container python3 absent (exit 127); no probe ran. Copied installed source and prepared on host before successful container wmake build."
+}

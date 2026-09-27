@@ -1,0 +1,10 @@
+{
+  "status": "frozen before probe execution",
+  "purpose": "Observe actual constructor-initialized face flux before timestep or pressure correction",
+  "image": "concentration-aware-ns:of13",
+  "source": "Installed foamRun launcher, copied with a single post-constructor diagnostic insertion",
+  "grids": [16, 32, 64],
+  "prediction": "With no initial phi file, constructor phi divergence matches arithmetic face interpolation of recorded initial U on the uniform periodic mesh",
+  "absolute_comparison_tolerance": 1e-11,
+  "constraints": "Do not time-advance or mutate original cases. Record original launcher hash, diagnostic patch, compiled command, image identity, logs and observed fields. This tests initialization only, not cause of temporal convergence behavior."
+}

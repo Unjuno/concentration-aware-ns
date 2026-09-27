@@ -34,3 +34,33 @@ The installed file hashes, line excerpts and running-image identity are recorded
 in `evidence/tests/openfoam-startup-source.json`. Image identity was checked
 against the experiment provenance. This audits installed source, not an
 independent source-to-binary rebuild. No upstream defect is claimed.
+
+## Constructor-only runtime observation
+
+A diagnostic launcher now instantiates the installed incompressibleFluid solver,
+writes registered phi and fvc::div(phi), and returns before setDeltaT or the
+time loop. It links the installed solver libraries and does not alter their
+constructor. The copied baseline cases have no 0/phi; their U inputs remain
+byte-identical. No positive-time output directory is created.
+
+At n=16,32,64, observed divergence agrees cellwise with the independent
+arithmetic-flux calculation to 1.52e-14, 5.68e-14 and 1.34e-13 respectively,
+below the preregistered absolute tolerance 1e-11. Thus the initially uncorrected
+flux is now observed in the runtime constructor path, rather than merely
+inferred from source. Later preSolve hooks are outside this observation.
+
+The probe protocol, source preparation, execution and comparison are
+`protocols/of13-startup-probe-v1.json`, `runtime/of13-startup-probe/prepare.py`,
+`tools/run_openfoam_startup_probe.py` and `tools/check_openfoam_startup_probe.py`.
+Build the copied launcher with wmake in the recorded image, mounting the probe
+workspace at /probe; Make/files places startupProbe there. Source preparation
+takes the installed foamRun directory and output app directory as arguments.
+The image has no Python, so preparation runs on the host. The first failed
+Python-in-container attempt and successful build are distinguished in the
+build-result record. Three complete case archives, build log, image/executable
+identities and comparison live in `evidence/of13-startup-probe-v1`.
+
+This establishes an initialization mismatch between continuum solenoidality
+and the solver's initial discrete flux. It still does not establish a solver
+bug or explain the anomalous temporal order; a controlled treatment of the
+startup projection would be needed for that attribution.
