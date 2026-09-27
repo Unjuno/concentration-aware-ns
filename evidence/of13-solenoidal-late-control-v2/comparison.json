@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": {
+        "of13-solenoidal-late-control-v2": "d8a7ca3f37f46fe52828b06344831b52f2a701d4fc6c8cc86e87545b2c79f8f6",
+        "of13-iteration-sensitivity-v1": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543"
+      },
+      "relative_endpoint_shift": 7.012560410254953e-05,
+      "steps_each": 50
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": {
+        "of13-solenoidal-late-control-v2": "3d1ece1f0ccb8cb695b896800770b7025a69a4eba17f80d215e0ae0dd6317ccf",
+        "of13-iteration-sensitivity-v1": "910b92e3d9fb463bd3ac08524439c655d9e9403d785a79a14eb877d8c7398e7f"
+      },
+      "relative_endpoint_shift": 6.94861974812057e-05,
+      "steps_each": 100
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": {
+        "of13-solenoidal-late-control-v2": "0af7c77f39d5d74202677baf8f871fbb9ae592f431ac7122920ef51d346f2cbf",
+        "of13-iteration-sensitivity-v1": "d66d3a76aa4f822c1dd2cb4ca5cc46fb935ae6d53173ce1eabbf24baf4495d72"
+      },
+      "relative_endpoint_shift": 6.831106140193798e-05,
+      "steps_each": 200
+    }
+  ],
+  "control": {
+    "cosine": 0.883956318440816,
+    "norm_order": 0.4994883785526625,
+    "best_fit_scale": 1.2496597699461947,
+    "first_order_defect": 0.7073373934307066,
+    "relative_differences": [
+      2.0873496417661618e-05,
+      1.4765026041558628e-05
+    ]
+  },
+  "baseline": {
+    "cosine": 0.8830965338412232,
+    "norm_order": 0.49291428988850333,
+    "best_fit_scale": 1.242768299375047,
+    "first_order_defect": 0.7139121319655931,
+    "relative_differences": [
+      2.0881939544187858e-05,
+      1.4838460588854423e-05
+    ]
+  },
+  "protocol_sha256": "89bc97d8b24fe21f772a393da1b7d615f75da12f19423fa00f8e4c7f3f770824",
+  "quality": "UNCERTAIN",
+  "scope": "Changed initial-value problem at t=0.05. A change in observed order supports sensitivity to initialization but neither uniquely identifies a mechanism nor repairs original MMS acceptance."
+}

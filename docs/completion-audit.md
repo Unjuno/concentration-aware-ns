@@ -234,3 +234,13 @@ not a numerical finding. The successful run uses the existing locked-dependency
 venv against the current checkout; it is not a new clean-export or solver replay.
 The startup diagnostic JSON was regenerated without a tracked difference.
 The late-time v2 intervention is still running and is excluded from this pass.
+
+### Late-time intervention result
+
+All three v2 late-time controls are complete and the six-archive comparator
+passes. Projecting initial U changes observed temporal order from 0.49291429
+to 0.49948838; the late-time anomaly persists despite the early impulse
+suppression. The planned initialization-sensitivity experiment is complete,
+but it does not resolve the original temporal acceptance gap. See
+`reports/openfoam-solenoidal-late-control.md`. Whole-goal completion remains
+unproven, including the independent analytic obligations.

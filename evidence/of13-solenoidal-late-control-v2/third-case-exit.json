@@ -1,0 +1,18 @@
+{
+  "container": "cb270433a3393c1ed29e50e0e9e56dea94c936b65e75a42ac3b505afc2dfc9ad",
+  "image": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-27T16:19:10.600424176Z",
+    "FinishedAt": "2026-09-27T16:37:27.66248551Z"
+  },
+  "scope": "Independent third-case exit evidence; no accuracy verdict."
+}

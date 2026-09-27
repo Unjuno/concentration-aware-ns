@@ -1,4 +1,4 @@
-# Late-time initialization intervention: execution pending
+# Late-time initialization intervention: completed comparison
 
 Protocol: `protocols/of13-solenoidal-late-control-v1.json`, frozen in commit
 4d13fc0 before execution. The three n=64 cases use dt=0.001, 0.0005,
@@ -59,3 +59,34 @@ The dt=0.0005 case completed with exit 0 and 100/100 converged steps. Docker's
 retained state independently confirms exited/0. Its raw archive, runner record
 and `second-case-exit.json` are published in the v2 evidence directory. The
 final dt=0.00025 case has started. Three-level comparison remains pending.
+
+
+## Completed comparison
+
+All three v2 controls completed with exit 0 and 50/50, 100/100 and 200/200
+converged steps. The archive-only comparator passed on the six control/baseline
+archives using the locked-dependency Python environment. It verified prepared
+input hashes, identical non-initial-velocity inputs, matching cell centers,
+finite fields, every expected time, complete End logs and convergence counts.
+Retained Docker state independently confirms the third exit as well.
+
+| Endpoint difference diagnostic at t=0.05 | Original tight baseline | Projected initial U |
+|---|---:|---:|
+| Observed norm order | 0.4929142899 | 0.4994883786 |
+| Successive difference cosine | 0.8830965338 | 0.8839563184 |
+| First-order defect | 0.7139121320 | 0.7073373934 |
+
+The same-dt relative endpoint shifts are 7.01256e-5, 6.94862e-5 and
+6.83111e-5. Although the preceding early-time intervention substantially
+suppressed the leading pressure impulse, this late-time intervention does
+not restore first-order difference scaling on this triple. It therefore does
+not support the proposed simple explanation that removing this initial
+impulse resolves the later order reduction. This is a finite-resolution
+sensitivity result, not proof that initialization has no effect or that
+OpenFOAM's implementation is defective.
+
+The original smooth-MMS acceptance gate remains UNCERTAIN. No molecular
+alignment, viscosity change or continuum singularity follows. The residual
+late-time difference geometry needs a separate explanation; do not repeat
+initialization-only controls as though this hypothesis were confirmed.
+Full measurements and six archive hashes are in the v2 `comparison.json`.
