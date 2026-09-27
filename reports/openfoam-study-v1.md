@@ -97,3 +97,11 @@ propagation and spatial discretization can also rotate a temporal error vector;
 this projection neither identifies a defect nor proves iterative noise.
 The extended temporal-alignment checker records these projections against the
 same input field hashes.
+
+The dt=0.0005 tighter-iteration case also completed: exit zero and all 100
+steps report outer convergence. Its same-dt relative velocity field shift is
+6.77897e-15, with reference error 0.00491959901806828 versus baseline
+0.00491959901806825. Both completed timesteps therefore retain essentially the
+same endpoints under this tolerance change. The finest dt=0.00025 case is
+running; the three-level temporal result is still pending. Raw evidence and
+`second-case-comparison.json` are preserved alongside the first case.

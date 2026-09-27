@@ -1,0 +1,12 @@
+{
+  "case": "n64-dt0.0005",
+  "relative_same_dt_field_shift": 6.77896612311825e-15,
+  "baseline_relative_velocity_error": 0.004919599018068253,
+  "tight_relative_velocity_error": 0.004919599018068284,
+  "input_sha256": {
+    "work/of13-iteration-sensitivity-v1/n64-dt0.0005/0.05/U": "e15dde6fc04e6fe2bd2569728d3ea6eb9256e71f6a68f4af75c5bfc7e4438395",
+    "work/of13-study-v1/n64-dt0.0005/0.05/U": "293d61644b09d37a442a93668aa481e76cf7d40678a631485643634401fd6971"
+  },
+  "scope": "Second completed case only; full temporal comparison pending",
+  "quality": "UNCERTAIN"
+}
