@@ -145,10 +145,12 @@ symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 `evidence/tests/packet-radius-scaling.json`.
 
 The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
-now supplies these envelope exponents existentially for the selected root:
-`rho(Q)=rho0*Q^D`, `k(Q)<=k0*Q^-40`, so the sufficient power is
-`Q^(Cstretch+39)`. The constants and endpoint neighborhood are still not
-effective, and this shrinking radius does not certify any fixed-size packet.
+now supplies the Hessian exponent `kappa=40` for the smooth base field. The
+assembled field is known to equal that base locally along the trajectory, but
+the radius of the full equality tube has no established lower envelope as
+`T` approaches 1. Therefore the generic formula above is not yet instantiated
+with a selected-construction tube exponent `r`; in particular, the earlier
+candidate `Q^(Cstretch+39)` order is not established for the assembled field.
 
 ## Verification and remaining inputs
 

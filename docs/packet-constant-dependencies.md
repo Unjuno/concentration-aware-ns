@@ -49,51 +49,46 @@ numerically enclosed or made executable by those estimates. They do not
 establish `PressureData` for `actualProfile`, nor produce a spacetime tube
 radius or chart lower bound.
 
-### Endpoint rate transferred to shrinking packets
+### Endpoint Hessian rate and the missing tube-radius transfer
 
-There is a further conditional consequence when the actual-base rate is joined
-to the selected-root trajectory. At derivative order two,
-`ActualBaseVelocityBounds.velocity_rate` uses
-`heatLoss(2)=(4*2+2)*(2+2)=40`, so it supplies an existential endpoint bound
-
-```
-||D^2 u(w)|| <= C2*q(w)^(-40)
-```
-
-for all w in some unspecified endpoint neighborhood. The locally checked
+At derivative order two, `ActualBaseVelocityBounds.velocity_rate` uses
+`heatLoss(2)=(4*2+2)*(2+2)=40`. It supplies an existential endpoint bound
+`||D^2 u_base(w)|| <= C2*q(w)^(-40)` on an unspecified neighborhood for the
+selected smooth base velocity. The locally checked
 `spatial_jet_norm_le_spacetime_jet_norm` transfers this to the spatial Hessian.
-The similarity identity is `tau=q*(1-eta^2)` with `|eta|<1`; hence `q>=tau`
-and on `[t0,T]` the half-Hessian factor is at most
-`k(Q) <= (C2/2)*tau0^(-40)*Q^(-40)`, where `tau0=1-t0` and
-`Q=(1-T)/tau0`.
+On the similarity chart, `tau=q*(1-eta^2)` and `|eta|<1`, so `q>=tau`.
+Consequently, wherever the assembled field is known to equal that base, the
+half-Hessian factor on `[t0,T]` is at most
+`(C2/2)*tau0^(-40)*Q^(-40)`, with `tau0=1-t0` and `Q=(1-T)/tau0`.
 
-The selected center curve is `X(s)=K*(1-s)^D`, with
-`K=eta/(1-eta^2)^D` and `D=(1-2h)/2` in `[0.499,0.5)`. For a fixed `rho0>0`,
-choose the interval start `t0` sufficiently close to 1 and use the constant
-radius `rho(Q)=rho0*Q^D` over `[t0,T]`. Since `Q^D <= ((1-s)/tau0)^D` for
-`s<=T`, the spatial distance from the tube to the terminal point is at most
-`(|K|+rho0)*tau0^D`. The time-coordinate distance is at most `tau0`, and
-`tau0<=tau0^D` for `0<tau0<=1` and `D<1`. Thus the full spacetime distance is
-at most `(1+|K|+rho0)*tau0^D`. The tube fits the existential endpoint
-neighborhood after choosing `t0` sufficiently close to 1. This proves
-the endpoint-envelope hypotheses of the classical packet comparison
-existentially, with `r=D` and `kappa=40`.
+This does **not** establish the earlier claimed tube radius
+`rho(Q)=rho0*Q^D` or the resulting `Q^(Cstretch+39)` packet-radius order for
+the assembled field. `actual_candidate_terminal_base_germ` gives neighborhood
+equality at each point of the selected trajectory. For every fixed compact
+terminal interval, compactness and openness yield some positive tube radius;
+they give no lower bound on how that radius depends on `T` as `T` approaches
+1. The tube's geometric closeness to the endpoint only places it inside the
+base's endpoint-rate neighborhood; it does not place it inside the separate
+open union where the assembled field equals the base. These two neighborhoods
+cannot be conflated.
 
-Substitution into the already checked envelope algebra gives the sufficient
-initial packet-radius power
-`delta(Q)=O(Q^(Cstretch+39))`, where `Cstretch` is the axis stretching
-coefficient in `docs/axis-stretch-range.md`. This is roughly a power of 43.
-The exact exponent is retained because the coefficient is not exactly four.
-This is a real analytic strengthening over leaving the tube/Hessian exponents
-wholly hypothetical: it derives a shrinking-packet envelope from the pinned
-source's rate statement and the exact chart/trajectory geometry.
+This is a genuine quantifier issue: an open neighborhood of every point on a
+nonclosed terminal graph need not have any power-law thickness near its limit.
+For example, the open set
+`O={(t,x): t<1, |x-X(t)|<exp(-1/(1-t))}` contains a spatial neighborhood of
+each graph point. On `[t0,T]` its largest uniform tube radius is at most
+`exp(-1/(1-T))`, which decays faster than every power of
+`Q=(1-T)/(1-t0)`. This example is not a model of the constructed velocity; it
+shows why openness and compactness alone cannot prove the missing power lower
+bound.
 
-It still gives no explicit prefactor, no numerical interval for `t0`, no
-particular positive `rho0`, and no executable packet certificate. The
-source-rate constant and endpoint neighborhood are existential; the argument
-that the nonlinear flow follows its tangent map remains classical. Because
-`delta(Q)` tends to zero, this does not certify a fixed-size packet up to the
-singular time and does not imply molecular alignment or a constitutive law.
+The generic algebra in `tools.check_packet_radius_scaling` remains valid under
+its explicit assumptions. To instantiate it for this construction, one still
+needs a quantitative lower envelope for the assembled-field base-equality
+tube radius (or another direct Hessian estimate for the assembled field) as
+well as the classical nonlinear-flow argument. Until then the packet exponent
+is conditional on such an envelope, not an established result for the selected
+construction. No fixed-size packet or molecular conclusion follows.
 
 ## Finite-stage cutoff with a known chart lower bound
 

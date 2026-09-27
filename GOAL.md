@@ -71,15 +71,13 @@ permitted as supporting evidence and do not establish the new theorem, molecular
 alignment, universal solver failure or engineering danger. Preserve the full
 three-project and identified-construction scope.
 
-## Revision 5 — September 2026 analytic and research refresh
+## Revision 5 — September 2026 research refresh and hostile tube audit
 
-The OpenAI source's actual-base second-derivative rate is now connected, with
-its hypotheses exposed, to the selected-root tube geometry and the existing
-classical packet comparison. The resulting `Q^(Cstretch+39)` initial-radius
-order is conditional and shrinking; it does not establish behavior of a
-fixed-size packet, molecules, phase change or constitutive viscosity. Recent
-related preprints are recorded with their distinct forcing and regularity
-hypotheses. Continue to challenge this transfer and preserve the requirement
-for effective constants and an end-to-end flow argument. This revision adds
-evidence; it does not waive any solver, upstream-audit, publication or
-completion requirement above.
+The OpenAI source's actual-base second-derivative rate gives a base-field
+Hessian exponent, but hostile review found no quantitative lower envelope for
+the neighborhood where the assembled field equals that base. The previously
+reported `Q^(Cstretch+39)` transfer to the assembled field is withdrawn. Keep
+the generic packet algebra conditional until the equality-tube radius is
+controlled. Recent related preprints are recorded with their distinct forcing
+and regularity hypotheses. This revision adds evidence; it does not waive any
+solver, upstream-audit, publication or completion requirement above.

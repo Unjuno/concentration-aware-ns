@@ -139,12 +139,13 @@ OpenAI construction and notes that finite pseudospectral computations cannot
 certify its Galerkin-uniform condition. This is a research direction, not an
 independent resolution or evidence about the present solver benchmark.
 
-The endpoint-rate-to-packet derivation now supplies exponents for the
-conditional shrinking-packet estimate: `r=D`, `kappa=40`, and sufficient
-initial-radius order `Q^(Cstretch+39)`, approximately `Q^43`. The prefactor,
-endpoint neighborhood and positive tube radius remain existential, and the
-certified radius tends to zero. Therefore it is progress toward a conditional
-continuum bound, not a fixed-size or molecular certificate. Details are in
+The source derivative rate supplies a base-field Hessian exponent
+`kappa=40`, but a hostile scope check found that the assembled-field equality
+tube has only a positive radius on each fixed compact interval; no lower
+envelope as `T` approaches 1 has been established. Therefore the proposed
+`r=D` and `Q^(Cstretch+39)` transfer to the assembled field is withdrawn. The
+generic packet algebra remains conditional on an available tube-radius
+envelope. Details and the exact logical gap are in
 [`packet-constant-dependencies.md`](packet-constant-dependencies.md).
 
 ## Local verification added in this refresh
