@@ -25,3 +25,21 @@ initialization. This longer experiment tests whether the later temporal
 comparison also changes. Even a change would not isolate every feature of the
 projected initial velocity, certify an asymptotic limit, or establish an
 upstream implementation defect. No numerical result is available yet.
+
+## Recovery on 2026-09-28 JST
+
+Docker became responsive, but the original session handle was missing and no
+host runner or running Docker container remained. The first case had a solver
+End log and endpoint fields, but no captured exit code; it is preserved as
+`n64-dt0.001-unverified-exit.tar.gz`, not a validated completed run. The other
+two cases were not executed by that runner. No task-issued daemon restart was
+performed. See `evidence/of13-solenoidal-late-control-v1/recovery.json`.
+
+A fresh attempt uses protocol `of13-solenoidal-late-control-v2`, the identical
+solver inputs and exact image, and separate work/evidence paths. Its stopped
+containers and cidfiles are retained to permit authoritative exit-status
+recovery if the host runner disappears again. Preparation manifests were
+revalidated before launch. The v2 runner is in progress; use
+`python3 -m tools.check_openfoam_solenoidal_late --study of13-solenoidal-late-control-v2`
+only after all three archives have completed. Do not mix unverified v1 output
+into the complete v2 triple.
