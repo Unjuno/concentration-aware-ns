@@ -1,0 +1,29 @@
+{
+  "status": "frozen before instrumented solver build or execution",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "source_path": "/opt/openfoam13/applications/modules/incompressibleFluid/correctPressure.C",
+  "source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+  "purpose": "Reconstruct actual pressure/velocity correction at matched calls without approximating rAtU by dt",
+  "record_before_pressure_relaxation": [
+    "p",
+    "phiHbyA",
+    "corrected phi"
+  ],
+  "record_immediately_before_velocity_assignment": [
+    "HbyA after consistent branch",
+    "rAU",
+    "rAtU",
+    "p after relaxation",
+    "fvc::grad(p)",
+    "rAtU*fvc::grad(p)"
+  ],
+  "record_after_velocity_assignment": [
+    "U before boundary and fvConstraints operations",
+    "U after constraints"
+  ],
+  "identity": "U_before_constraints = HbyA - rAtU*grad(p) at the same correction call",
+  "identity_tolerance": "Relative L2 residual <=1e-12, and absolute max residual <=1e-12*max(1,max_abs_U,max_abs_HbyA,max_abs_correction)",
+  "pilot": "Use a separate copy of the existing n16 case; compare uninstrumented and instrumented endpoint U,p,phi byte-for-byte before trusting diagnostics. No physics or solver dictionary changes.",
+  "provenance": "Retain source patch, compiled library identity, exact loaded-library path, call/time tags, exit states, all failed pilots. Do not overwrite installed library.",
+  "scope": "Endpoint algebra only. No accumulated-history attribution from final-call output. If pilot changes endpoint outputs, stop and diagnose instrumentation before larger runs."
+}
