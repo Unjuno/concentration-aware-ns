@@ -105,3 +105,23 @@ steps report outer convergence. Its same-dt relative velocity field shift is
 same endpoints under this tolerance change. The finest dt=0.00025 case is
 running; the three-level temporal result is still pending. Raw evidence and
 `second-case-comparison.json` are preserved alongside the first case.
+
+## Initial sampled-flux candidate
+
+An additional diagnostic applies arithmetic face interpolation to the recorded
+initial velocity on each uniform periodic mesh, then sums oriented face fluxes.
+It independently agrees with centered FD2 divergence. At n=16,32,64 the maximum
+absolute divergences are 0.620669, 0.217188 and 0.0567239; RMS values are
+0.0600987, 0.0169109 and 0.00435940. The initial U values match the analytic
+field at the generator's coordinates; saved cell centers agree within 4e-15.
+An initial check using saved centers with an overly tight 1e-14 velocity
+comparison exposed only this coordinate-rounding difference; the diagnostic
+now checks geometry separately and evaluates the generator coordinates.
+
+This is a discrete compatibility observation despite continuum div(u)=0.
+It does **not** establish that OpenFOAM uses these uncorrected initial fluxes,
+nor that startup projection causes the temporal-order result. The next source
+question is how phi is initialized/corrected and how its first-step treatment
+couples to pressure and velocity. No solver defect follows from this diagnostic.
+Reproduce with `python3 -m tools.check_openfoam_initial_flux`; values and initial
+field hashes are in `evidence/tests/openfoam-initial-flux.json`.

@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "n": 16,
+      "initial_U_sha256": "ed22f55a2109c782cf392bc128aafeaa55012093491870533d7c3b9256d3d720",
+      "divergence_max": 0.6206688965940927,
+      "divergence_rms": 0.06009871159350602,
+      "mean_divergence": -3.1086109164232822e-19,
+      "flux_and_centered_difference_match": true
+    },
+    {
+      "n": 32,
+      "initial_U_sha256": "73c763c78a6b56ad1b6df59b0029ee9260e40e6184b955cacb419f12ade1a7ba",
+      "divergence_max": 0.21718828197768758,
+      "divergence_rms": 0.016910919120194733,
+      "mean_divergence": -9.897050593074466e-20,
+      "flux_and_centered_difference_match": true
+    },
+    {
+      "n": 64,
+      "initial_U_sha256": "d2f715af44de514f8a40f9bd72a947f30cdb3ed71e56547b33837a52d6f1f0d1",
+      "divergence_max": 0.05672386630872084,
+      "divergence_rms": 0.004359397512414406,
+      "mean_divergence": -2.4898136437846133e-21,
+      "flux_and_centered_difference_match": true
+    }
+  ],
+  "scope": "Arithmetic face-flux diagnostic on the recorded uniform periodic initial velocity; actual OpenFOAM phi initialization/correction is not traced here",
+  "interpretation": "Continuum solenoidality does not make these sampled arithmetic face fluxes discretely divergence-free. Startup projection is a candidate to investigate, not an established explanation of temporal order.",
+  "upstream_defect_established": false
+}
