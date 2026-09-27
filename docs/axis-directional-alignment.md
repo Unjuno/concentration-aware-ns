@@ -136,6 +136,14 @@ fields. A fixed-size continuum-packet claim first needs effective `rho(T)` and
 `M(T)` bounds, then an independently checked finite-packet calculation. Solver
 data cannot substitute for those bounds.
 
+Under an additional isotropic random-direction model, the probability of an
+infinitesimal separation lying within a fixed angle of the axis has a closed
+form. The derivation also shows why this orientation probability does not mean
+the absolute position density concentrates: the map has determinant one. See
+[`particle-position-probability.md`](particle-position-probability.md) and its
+symbolic artifact. The model remains about infinitesimal continuum directions,
+not molecular positions or a finite packet.
+
 `work/reference-check-env/bin/python -m tools.check_axis_directional_alignment`
 checks the exact singular-value ratio, finite-angle expression and the
 `C>1` asymptotic. The exact linear deformation identity is also Lean-checked;

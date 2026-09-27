@@ -92,12 +92,15 @@ python -m tools.check_axis_force
 python -m tools.check_axis_dissipation
 python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
+python -m tools.check_particle_position_probability
 ```
 
 These checks are separate from the eighteen-step report and exact-algebra replay. The force and
 dissipation checks verify symbolic algebra, not the complete source-hypothesis
-chain or molecular applicability. The aggregate review does not certify
-continuous numerical-field energy.
+chain or molecular applicability. The particle-probability check assumes
+isotropic infinitesimal directions and separates their angular probability
+from volume-preserving position transport. The aggregate review does not
+certify continuous numerical-field energy.
 
 The current [analytic connection](docs/axis-flow-derivative.md) distinguishes
 Lean-checked component lemmas from the classical nonlinear-flow argument.

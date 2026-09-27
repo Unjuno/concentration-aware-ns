@@ -37,7 +37,11 @@ SU2 matrix or automatically upgrade current gates.
 
 ## Molecular alignment hypothesis
 
-The suggestion that continuum concentration entails particle alignment remains
-unverified. Specify position versus velocity alignment, a molecular model, and
-a limiting relation before testing it. Linearity and geometric alignment are
-different properties. No present benchmark result establishes this implication.
+For isotropically distributed infinitesimal continuum directions, the selected
+local flow derivative does yield a model-dependent angular-event probability
+that tends to one near the singular time; see
+[`particle-position-probability.md`](particle-position-probability.md). Its
+determinant-one map preserves a centered Gaussian's peak density and entropy,
+so directional alignment does not imply spatial concentration. The extension
+to finite particles or molecules remains unverified. It needs a microscopic
+model, an observable, and an effective bridge to the continuum flow.

@@ -309,3 +309,16 @@ MMS run tests this target, and the paper supplies no microscopic alignment
 bridge. The finding is recorded as a research direction only; gates and
 verdicts are unchanged. See the added subsection in
 `docs/openai-refresh-2026-09-28.md`.
+
+### Direction probability versus spatial concentration, 2026-09-28
+
+The audited local deformation gives a conditional closed-form probability that
+an isotropically sampled infinitesimal separation lies within a chosen angle of
+the axis. Its limit is one as the singular time is approached. The same map has
+unit determinant, so an initially isotropic Gaussian retains its peak density
+and differential entropy while becoming transversely narrower and axially
+wider. The symbolic identities pass in the reference-check environment. This
+sharpens the user's direction-alignment idea while rejecting the inference that
+it establishes concentrated absolute positions or molecular predictability.
+Finite-packet and kinetic-model premises remain open; the acceptance gates and
+solver verdicts are unchanged. See `docs/particle-position-probability.md`.
