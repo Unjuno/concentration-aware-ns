@@ -1,0 +1,42 @@
+{
+  "completed_cases": 2,
+  "expected_cases": 3,
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "636be2718a8dbeb6f64eda0d7f7d23ffce3d38a11d2cc54f83ad75554782edbd",
+      "steps": [
+        {
+          "time": 0.001,
+          "relative_reference_velocity_error": 0.002556829524060482,
+          "relative_velocity_change_from_initial": 0.0027448353110094154,
+          "pressure_range": 4.9048272063693545,
+          "dt_times_pressure_range": 0.004904827206369354
+        }
+      ]
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "6663f1254d204ec071ceea904ba08deade704bc00af2ebe675978e1d33d072fa",
+      "steps": [
+        {
+          "time": 0.0005,
+          "relative_reference_velocity_error": 0.0025555184324122554,
+          "relative_velocity_change_from_initial": 0.002603890849354581,
+          "pressure_range": 9.810410592022569,
+          "dt_times_pressure_range": 0.004905205296011284
+        },
+        {
+          "time": 0.001,
+          "relative_reference_velocity_error": 0.0025568534883604267,
+          "relative_velocity_change_from_initial": 0.0027449621272117282,
+          "pressure_range": 0.38967221634473653,
+          "dt_times_pressure_range": 0.00019483610817236827
+        }
+      ]
+    }
+  ],
+  "three_case_order_evaluated": false,
+  "quality": "UNCERTAIN",
+  "scope": "Completed archives only; pressure range is gauge-independent and reference pressure is zero. Neither missing cases nor startup causation are inferred."
+}
