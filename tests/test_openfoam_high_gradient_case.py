@@ -7,6 +7,7 @@ import numpy as np
 
 from tools.high_gradient_reference import fields
 from tools.openfoam_case import generate
+from tools.openfoam_amr_case import generate_amr
 
 
 class OpenFoamHighGradientCaseTests(unittest.TestCase):
@@ -33,6 +34,22 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             points = np.stack((x,y,z), axis=-1).reshape(-1,3)
             expected = fields(points, N=4, nu=0.01, time=0)["u"]
             np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-15)
+
+    def test_amr_generator_uses_analytic_envelope_sensor(self):
+        with tempfile.TemporaryDirectory() as directory:
+            case=Path(directory)/"amr"
+            generate_amr(case,max_cells=5000,max_level=2,end=0.005,
+                         profile="high-gradient",frequency=4,n=4,dt=0.001)
+            model=(case/"constant/fvModels").read_text()
+            self.assertIn('volScalarField& sensor =',model)
+            self.assertIn('sensor[celli] = chi;',model)
+            self.assertIn('sensor.correctBoundaryConditions();',model)
+            mesh=(case/"constant/dynamicMeshDict").read_text()
+            self.assertIn('field refineSensor;',mesh)
+            self.assertIn('maxCells 5000;',mesh)
+            params=json.loads((case/"parameters.json").read_text())
+            self.assertEqual(params['profile'],'high-gradient')
+            self.assertIn('localized envelope chi',params['amr']['sensor'])
 
 
 if __name__ == "__main__":

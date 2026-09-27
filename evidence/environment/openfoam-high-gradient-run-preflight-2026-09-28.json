@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-28",
+  "command": [
+    "docker",
+    "image",
+    "inspect",
+    "concentration-aware-ns:of13",
+    "--format",
+    "{{.Id}} {{.Os}}/{{.Architecture}}"
+  ],
+  "timeout_seconds": 8,
+  "result": "timed out before image metadata was returned",
+  "runner": "tools.run_high_gradient_openfoam",
+  "side_effects": {
+    "case_tree_created": false,
+    "solver_started": false
+  },
+  "interpretation": "Docker/OrbStack availability failure only; no OpenFOAM result or hypothesis verdict."
+}

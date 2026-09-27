@@ -18,7 +18,7 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 57 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 58 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
@@ -220,7 +220,7 @@ Required next evidence, in dependency order:
    the t=0.05 temporal result. Avoid treating a changed initial-value problem
    as a repair of the original benchmark or assuming its result in advance.
 
-The current common replay has 25 passing steps and 57 tests. It includes a fresh
+The current common replay has 25 passing steps and 58 tests. It includes a fresh
 six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
 exact uniform-prefix threshold algebra, and the localized high-gradient MMS
 plus its independent symbolic-versus-NumPy derivative comparison. It excludes
@@ -400,7 +400,7 @@ derivative.
 
 This case is now in `docs/protocol.md`, `tools/check_high_gradient_mms.py`,
 `tests/test_high_gradient_mms.py` and `evidence/tests/high-gradient-mms.json`.
-The locked report replay now has 25 successful steps and 57 tests. A second
+The locked report replay now has 25 successful steps and 58 tests. A second
 implementation evaluates fields from hand-coded Fourier derivative formulas;
 direct SymPy differentiation agrees for velocity, gradient, vorticity and
 forcing at 65 seeded points for each `N`, with maximum component error below
@@ -419,3 +419,25 @@ changed. Its preflight is in
 Consequently no solver result or C++ compile result is claimed, and there is no
 evidence that a solver misses the peak. The spatial/time matrix, AMR run,
 threshold results and cross-solver comparisons remain open.
+
+The high-gradient AMR path now uses the analytic `chi(y,z)` envelope as its
+refinement sensor. `tools/openfoam_amr_case.py`, `tools/analyze_amr.py` and
+`tools/run_high_gradient_amr.py` support the frozen 4096/5000/100000 cell
+budgets and compare nonuniform fields to the exact time-dependent reference.
+The five-case uniform matrix also has a provenance-recording runner in
+`tools/run_high_gradient_openfoam.py`; both runners check the immutable image
+and require a clean committed source tree before creating a work tree. Case
+generation, sensor wiring and the 58-test suite pass, but neither high-gradient
+matrix has been run. The blocked-candidate count is explicitly `UNOBSERVED`
+unless runtime evidence exposes it. Spectrum remains unavailable on the
+nonuniform mesh without a validated reconstruction.
+The uniform runner was invoked once after preparation; its bounded eight-second
+Docker image-inspect preflight timed out and created no case tree. The exact
+result is in `evidence/environment/openfoam-high-gradient-run-preflight-2026-09-28.json`.
+
+The post-announcement mathematical and physical literature scan, including the
+OpenAI source refresh and explicit molecular-bridge audit, is summarized in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. That note also
+corrects the live SU2 Q&A status: a maintainer replied on September 13 and the
+author added the BDF2 control on September 26; GitHub has not marked an accepted
+answer.

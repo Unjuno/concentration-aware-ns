@@ -37,3 +37,20 @@ compare the `codedFvModel` forcing with the independent symbolic/NumPy
 reference using `python3 -m tools.check_high_gradient_openfoam_force`. That
 checker requires the pinned local OpenFOAM image and Docker; it tests a mock
 mesh/equation, not a PDE run or the live solver's source sign convention.
+
+Run the frozen five-case uniform matrix with
+`python3 -m tools.run_high_gradient_openfoam`. It creates a new
+`work/of13-high-gradient-v1` tree only after verifying the local image and
+records the immutable image ID, source commit, protocol hash, inputs, commands,
+logs and diagnostic outputs. It requires a clean committed source tree before
+preflight so the recorded revision names the source actually used. Verdicts
+remain `UNCERTAIN` until their separate acceptance gates are implemented and
+satisfied.
+
+Generate and run the frozen AMR budget sweep with
+`python3 -m tools.run_high_gradient_amr`. It creates a new
+`work/of13-high-gradient-amr-v1` tree only after verifying a clean committed
+source tree and the local image. The analytic sensor is the prescribed
+`chi(y,z)` envelope; the report records observed levels/budgets and explicitly
+leaves blocked refinement candidates `UNOBSERVED` if OpenFOAM does not expose
+them.

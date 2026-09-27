@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 import numpy as np
 from tools.reference import fields
+from tools.high_gradient_reference import fields as high_gradient_fields
 from tools.metrics import diagnostics
 
 
@@ -38,18 +39,35 @@ def analyze(case):
     if not np.allclose(centers,points,atol=1e-12,rtol=0):
         raise ValueError('unverified mesh ordering/geometry')
     u=vectors(time_dir/'U',n**3)
-    ref=fields(centers,t,sigma=params['sigma'],nu=params['nu'])
+    if params.get('profile','gaussian') == 'high-gradient':
+        ref=high_gradient_fields(centers,N=params['frequency'],nu=params['nu'],time=t)
+    else:
+        ref=fields(centers,t,sigma=params['sigma'],nu=params['nu'])
     def grid(v):
         return v.reshape(n,n,n,3).transpose(2,1,0,3)
     actual=diagnostics(grid(u)); sampled=diagnostics(grid(ref['u']))
     exact_g=float(np.linalg.norm(ref['grad_u'],axis=(-2,-1)).max())
     exact_w=float(np.linalg.norm(ref['vorticity'],axis=-1).max())
+    if params.get('profile','gaussian') == 'high-gradient':
+        grad_fd2=np.stack([(np.roll(grid(u),-1,axis=j)-np.roll(grid(u),1,axis=j))/(4*np.pi/n)
+                           for j in range(3)],axis=-1)
+        selected_peak=float(np.abs(grad_fd2[...,1,0]).max())
+        selected_reference_sample=float(np.abs(ref['grad_u'][:,1,0]).max())
+        selected_reference_continuous=float(np.exp(-t))
+    else:
+        selected_peak=None
+        selected_reference_sample=None
+        selected_reference_continuous=None
     result={'parameters':params,'quality':'UNCERTAIN','standard_acceptance':'UNCERTAIN',
             'note':'Diagnostics only. Analytic peaks are evaluated at cell centers, not continuous extrema.',
             'velocity_relative_l2':float(np.linalg.norm(u-ref['u'])/np.linalg.norm(ref['u'])),
             'gradient_peak_relative_error_cell_samples':abs(actual['max_gradient_fd2']-exact_g)/exact_g,
             'vorticity_peak_relative_error_cell_samples':abs(actual['max_vorticity_fd2']-exact_w)/exact_w,
             'reference_gradient_peak_cell_samples':exact_g,'reference_vorticity_peak_cell_samples':exact_w,
+            'selected_gradient_component_fd2_peak':selected_peak,
+            'selected_gradient_component_reference_sample_peak':selected_reference_sample,
+            'selected_gradient_component_reference_continuous_peak':selected_reference_continuous,
+            'continuous_full_gradient_peak_certified':False if selected_peak is not None else None,
             'computed':actual,'reference_sampled_fd2':sampled,
             'sha256':{str(p.relative_to(case)):hashlib.sha256(p.read_bytes()).hexdigest()
                       for p in [case/'parameters.json',case/'log.foamRun',time_dir/'U',time_dir/'C']}}
