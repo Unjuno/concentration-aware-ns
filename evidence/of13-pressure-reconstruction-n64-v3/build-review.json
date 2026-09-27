@@ -1,0 +1,85 @@
+{
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "original_source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+  "diagnostic_source_sha256": "bc8b13a317c9ec679784f5b1361f551850c2ba4f9d00a0a630afe2228ca34273",
+  "diagnostic_library_sha256": "93dff1fc99558a6f9073d819ea91af72783cf3e38e1e172f3817e06f0c2a76a8",
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "runner_exit": 0,
+      "docker_exit": 0,
+      "steps": 50,
+      "endpoint_instrumentation_calls": 14,
+      "endpoint_fields": {
+        "U": {
+          "byte_identical": true,
+          "baseline_sha256": "daa13ad8e5966283973c030e5635da0d09419a4b7750d08221c4cdc46b502f8b",
+          "diagnostic_sha256": "daa13ad8e5966283973c030e5635da0d09419a4b7750d08221c4cdc46b502f8b"
+        },
+        "p": {
+          "byte_identical": true,
+          "baseline_sha256": "e0179957e9870f56b56eecb04b1e0538844720dbd5dc4f0672449c4198d6dafe",
+          "diagnostic_sha256": "e0179957e9870f56b56eecb04b1e0538844720dbd5dc4f0672449c4198d6dafe"
+        },
+        "phi": {
+          "byte_identical": true,
+          "baseline_sha256": "55433ed30cdf0404491750ceb76bc66653d3148581b05e902d5c3906291c9118",
+          "diagnostic_sha256": "55433ed30cdf0404491750ceb76bc66653d3148581b05e902d5c3906291c9118"
+        }
+      },
+      "noninterference_pass": true
+    },
+    {
+      "case": "n64-dt0.0005",
+      "runner_exit": 0,
+      "docker_exit": 0,
+      "steps": 100,
+      "endpoint_instrumentation_calls": 12,
+      "endpoint_fields": {
+        "U": {
+          "byte_identical": true,
+          "baseline_sha256": "e15dde6fc04e6fe2bd2569728d3ea6eb9256e71f6a68f4af75c5bfc7e4438395",
+          "diagnostic_sha256": "e15dde6fc04e6fe2bd2569728d3ea6eb9256e71f6a68f4af75c5bfc7e4438395"
+        },
+        "p": {
+          "byte_identical": true,
+          "baseline_sha256": "33c26707ff0ce61533455d91bbed2372808cba1f39008e642a80df30ca686f2b",
+          "diagnostic_sha256": "33c26707ff0ce61533455d91bbed2372808cba1f39008e642a80df30ca686f2b"
+        },
+        "phi": {
+          "byte_identical": true,
+          "baseline_sha256": "3a87ccf592ec9f81e5c2f2440a27a7279c11ce7e4591488b0f6c90b9bb05505f",
+          "diagnostic_sha256": "3a87ccf592ec9f81e5c2f2440a27a7279c11ce7e4591488b0f6c90b9bb05505f"
+        }
+      },
+      "noninterference_pass": true
+    },
+    {
+      "case": "n64-dt0.00025",
+      "runner_exit": 0,
+      "docker_exit": 0,
+      "steps": 200,
+      "endpoint_instrumentation_calls": 12,
+      "endpoint_fields": {
+        "U": {
+          "byte_identical": true,
+          "baseline_sha256": "405354f19744b5dc450b1e5ce469ae28a53b77b281ce6e0d73d92440baa8ea0d",
+          "diagnostic_sha256": "405354f19744b5dc450b1e5ce469ae28a53b77b281ce6e0d73d92440baa8ea0d"
+        },
+        "p": {
+          "byte_identical": true,
+          "baseline_sha256": "fcca15bb986b3d4fa829515400804690ec19660a5c4f8eb13b89ecbb994a586a",
+          "diagnostic_sha256": "fcca15bb986b3d4fa829515400804690ec19660a5c4f8eb13b89ecbb994a586a"
+        },
+        "phi": {
+          "byte_identical": true,
+          "baseline_sha256": "99d4a513a59ac7b871c1d8088f5b1f7fe50b23e61c99647b6db277f0c6ca6a65",
+          "diagnostic_sha256": "99d4a513a59ac7b871c1d8088f5b1f7fe50b23e61c99647b6db277f0c6ca6a65"
+        }
+      },
+      "noninterference_pass": true
+    }
+  ],
+  "quality": "UNCERTAIN",
+  "scope": "Endpoint correction attribution across three dt values. Does not reconstruct trajectory history or assert an upstream defect."
+}

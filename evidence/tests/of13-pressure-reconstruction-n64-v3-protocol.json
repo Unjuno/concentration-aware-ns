@@ -1,0 +1,4 @@
+{
+  "protocol_sha256": "a88b63d7f442c10f92bc80ad177829da19e9e347ffd249d88092d31d7ff43886",
+  "status": "frozen before v3 solver-case execution; all three cases subsequently exited 0 and passed endpoint noninterference checks"
+}

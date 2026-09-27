@@ -1,0 +1,17 @@
+{
+  "protocol": "protocols/of13-pressure-reconstruction-n64-v3.json",
+  "protocol_sha256": "a88b63d7f442c10f92bc80ad177829da19e9e347ffd249d88092d31d7ff43886",
+  "status": "PASS_FOR_DECLARED_ENDPOINT_GATE",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "original_source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+  "diagnostic_source_sha256": "bc8b13a317c9ec679784f5b1361f551850c2ba4f9d00a0a630afe2228ca34273",
+  "diagnostic_library_sha256": "93dff1fc99558a6f9073d819ea91af72783cf3e38e1e172f3817e06f0c2a76a8",
+  "cases": [
+    {"case": "n64-dt0.001", "runner_exit": 0, "docker_exit": 0, "steps": 50, "endpoint_instrumentation_calls": 14, "U_p_phi_byte_identical_to_same_dt_baseline": true},
+    {"case": "n64-dt0.0005", "runner_exit": 0, "docker_exit": 0, "steps": 100, "endpoint_instrumentation_calls": 12, "U_p_phi_byte_identical_to_same_dt_baseline": true},
+    {"case": "n64-dt0.00025", "runner_exit": 0, "docker_exit": 0, "steps": 200, "endpoint_instrumentation_calls": 12, "U_p_phi_byte_identical_to_same_dt_baseline": true}
+  ],
+  "independent_replay": "evidence/of13-pressure-reconstruction-n64-v3/independent-replay.json",
+  "quality": "UNCERTAIN",
+  "scope": "Endpoint algebra and same-dt noninterference only; no trajectory history or inference about molecular alignment, phase transition, changed material viscosity, or upstream defect."
+}

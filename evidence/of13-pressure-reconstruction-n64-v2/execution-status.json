@@ -10,9 +10,13 @@
     "library_sha256": "93dff1fc99558a6f9073d819ea91af72783cf3e38e1e172f3817e06f0c2a76a8"
   },
   "case_execution": {
-    "status": "NOT_STARTED",
-    "cases": [],
-    "reason": "After the diagnostic library build, case execution could not be resumed: Docker image-inspect calls timed out before the case loop. No n64-v2 solver case was started."
+    "status": "STARTUP_FAILED_BEFORE_SOLVER",
+    "case": "n64-dt0.001",
+    "runner_exit": 127,
+    "docker_exit": 127,
+    "foamRun_started": false,
+    "finding": "Outer Bash expanded $LD_LIBRARY_PATH before su; after OpenFOAM bashrc set it, the inner export overwrote it with /diag/lib:. blockMesh then failed to load libblockMesh.so. This is a runner quoting defect, not solver evidence.",
+    "archive": "evidence/of13-pressure-reconstruction-n64-v2/startup-failure-n64-dt0.001.tar.gz"
   },
-  "next_action": "Retry the frozen n64-v2 case triple when the Docker daemon responds reliably; the runner verifies and reuses the built diagnostic library."
+  "next_action": "Use the frozen v3 protocol and single-quoted su -c payload so $LD_LIBRARY_PATH is expanded in the target shell."
 }
