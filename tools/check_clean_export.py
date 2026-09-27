@@ -21,6 +21,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--revision', default='HEAD')
     parser.add_argument('--destination', required=True)
+    parser.add_argument('--locked', action='store_true', help='Use recorded postprocessing dependency versions')
     args = parser.parse_args()
     repo = Path(__file__).resolve().parents[1]
     commit = subprocess.check_output(
@@ -40,6 +41,7 @@ def main():
     baseline = {str(path.relative_to(checkout)): digest(path) for path in observed}
     result = {
         'commit': commit,
+        'dependency_mode': 'locked' if args.locked else 'supported-range',
         'scope': 'Tracked-only fixed-commit export, fresh venv, same host/interpreter. '
                  'No solver build, training, Lean execution or verdict upgrade.',
         'runner_sha256': digest(Path(__file__)),
@@ -69,7 +71,8 @@ def main():
     if not run('venv', [sys.executable, '-m', 'venv', str(env)]):
         return 1
     python = str(env/'bin/python')
-    commands = [('install', [python, '-m', 'pip', 'install', '-r', 'requirements-verification.txt'])]
+    requirements = 'requirements-verification-locked.txt' if args.locked else 'requirements-verification.txt'
+    commands = [('install', [python, '-m', 'pip', 'install', '-r', requirements])]
     commands += [(name, [python, '-m', module]) for name, module in [
         ('report-replay', 'tools.replay_published_reports'),
         ('su2-standard', 'tools.review_su2_standard'),
