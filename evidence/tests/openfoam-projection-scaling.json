@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "n": 16,
+      "input_sha256": "ed22f55a2109c782cf392bc128aafeaa55012093491870533d7c3b9256d3d720",
+      "minimum_L2_correction_relative": 0.051998501986496276,
+      "face_laplacian_model_cell_correction_relative": 0.03158150794525104,
+      "pressure_impulse_rms": 0.0044354379808631056,
+      "discrete_divergence_rms": 0.06009871159350602
+    },
+    {
+      "n": 32,
+      "input_sha256": "73c763c78a6b56ad1b6df59b0029ee9260e40e6184b955cacb419f12ade1a7ba",
+      "minimum_L2_correction_relative": 0.010923491727011236,
+      "face_laplacian_model_cell_correction_relative": 0.009684990374067873,
+      "pressure_impulse_rms": 0.0010907116567978395,
+      "discrete_divergence_rms": 0.016910919120194726
+    },
+    {
+      "n": 64,
+      "input_sha256": "d2f715af44de514f8a40f9bd72a947f30cdb3ed71e56547b33837a52d6f1f0d1",
+      "minimum_L2_correction_relative": 0.002632403755961653,
+      "face_laplacian_model_cell_correction_relative": 0.002554932392374342,
+      "pressure_impulse_rms": 0.000271625986922288,
+      "discrete_divergence_rms": 0.004359397512414409
+    }
+  ],
+  "observed_spatial_orders": {
+    "minimum_L2_correction_relative": [
+      2.251035969773773,
+      2.052981401234491
+    ],
+    "face_laplacian_model_cell_correction_relative": [
+      1.7052575382088853,
+      1.9224654992977952
+    ],
+    "pressure_impulse_rms": [
+      2.0238068139585574,
+      2.005576341277158
+    ],
+    "discrete_divergence_rms": [
+      1.8293789891681778,
+      1.955754406156932
+    ]
+  },
+  "scope": "Algebraic operators applied to archived initial samples; no new solver execution and no proven asymptotic rate from three samples",
+  "interpretation": "Quantifies whether fixed-grid startup correction shrinks under spatial refinement; does not explain late-time temporal-order result"
+}

@@ -65,3 +65,39 @@ and docker-ps request remain alive and unmodified. The bounded observation is
 saved in `evidence/of13-startup-time-v1/docker-liveness.json`; it does not
 establish that either pending request has terminated. Intervention execution
 has not been attempted while this infrastructure condition persists.
+
+## Spatial refinement of the initialization correction
+
+Applying the same algebraic operators to the recorded 16³,32³,64³ initial
+fields gives:
+
+| n | Minimum-L2 correction / initial norm | Face-Laplacian model cell correction / initial norm |
+|---:|---:|---:|
+| 16 | 0.0519985 | 0.0315815 |
+| 32 | 0.0109235 | 0.00968499 |
+| 64 | 0.00263240 | 0.00255493 |
+
+The minimum-correction observed orders are 2.251 and 2.053; the pressure-impulse
+RMS orders are 2.024 and 2.006. These are operator calculations on archived
+initial samples, not solver reruns. `python3 -m tools.check_openfoam_projection_scaling`
+records the exact input hashes and metrics in
+`evidence/tests/openfoam-projection-scaling.json`.
+
+A classical consistency argument explains why this can be a vanishing spatial
+effect even when pressure scales as 1/dt at fixed grid. For smooth periodic
+continuum div(U0)=0, centered differentiation has uniform O(dx²) divergence
+error, by its Taylor remainder with bounded third derivatives. On a 2pi
+periodic domain with even n>=4, the smallest nonzero centered derivative-vector
+symbol magnitude is at least 2/pi. The orthogonal correction therefore obeys
+||correction||_h <= (pi/2)||D_c U0||_h, including preservation of the entire
+zero-symbol kernel. Thus its absolute norm is O(dx²). The relative statement
+also requires the sampled initial velocity norm to stay bounded away from zero,
+as it does asymptotically for this smooth nonzero field.
+
+For the nearest-neighbor pressure model, the smallest nonzero magnitude of
+-L_h is at least (2/pi)². Hence ||pi||_h <= (pi²/4)||D_c U0||_h=O(dx²).
+These are classical operator/Taylor bounds, not Lean-checked theorems or a
+proof for the full PIMPLE iteration. Combined with the *conditional leading
+model* p≈pi/dt, they distinguish an O(dx²/dt) startup response from a continuum
+pressure singularity. The order of grid and timestep limits matters; this
+does not authorize extrapolating the full solver behavior from the model.
