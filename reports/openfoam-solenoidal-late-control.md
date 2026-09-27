@@ -52,3 +52,10 @@ U and p bytes exactly match the preserved unverified-exit v1 fields; the v1
 missing exit status remains missing. Archive and container evidence are in
 `evidence/of13-solenoidal-late-control-v2/first-case-review.json` and `runs.json`.
 The dt=0.0005 case has started. No three-case temporal conclusion is available.
+
+### Second v2 case complete
+
+The dt=0.0005 case completed with exit 0 and 100/100 converged steps. Docker's
+retained state independently confirms exited/0. Its raw archive, runner record
+and `second-case-exit.json` are published in the v2 evidence directory. The
+final dt=0.00025 case has started. Three-level comparison remains pending.

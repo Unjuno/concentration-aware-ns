@@ -1,0 +1,18 @@
+{
+  "container": "c831598f1e46d0a099b572f117f8c0901d93ab52bf834a5b635debf64d6da5e1",
+  "image": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-27T16:09:08.304723223Z",
+    "FinishedAt": "2026-09-27T16:19:00.850134632Z"
+  },
+  "scope": "Independent Docker exit-state observation for second case; no temporal convergence conclusion."
+}
