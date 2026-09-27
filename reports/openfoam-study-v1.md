@@ -86,3 +86,14 @@ occurred despite the almost unchanged final velocity. This supports the
 same-dt sensitivity observation and excludes simply comparing the original
 field file against itself. The review is saved in
 `first-case-archive-review.json`; it is not evidence about the two pending cases.
+
+Projection onto the analytic endpoint velocity separates an amplitude direction
+from other field differences. The two timestep differences have amplitude
+coefficients 1.44210e-5 and 7.53761e-6 (ratio about 1.913), but their orthogonal
+remainders are respectively 72.34% and 86.14% of the difference norms. These
+percentages are norms, not additive energy shares. Thus a scalar amplitude
+comparison alone misses much of the changing spatial pattern. Nonlinear
+propagation and spatial discretization can also rotate a temporal error vector;
+this projection neither identifies a defect nor proves iterative noise.
+The extended temporal-alignment checker records these projections against the
+same input field hashes.

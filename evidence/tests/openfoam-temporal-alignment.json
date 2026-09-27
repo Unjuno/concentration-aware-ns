@@ -9,6 +9,16 @@
     "work/of13-study-v1/n64-dt0.0005/0.05/U": "293d61644b09d37a442a93668aa481e76cf7d40678a631485643634401fd6971",
     "work/of13-study-v1/n64-dt0.00025/0.05/U": "82249837cb6db1e45eb67918a7b454fc58244301fe76ab437601df2384f68dee"
   },
+  "reference_amplitude_projections": [
+    {
+      "reference_amplitude_coefficient": 1.442096980249479e-05,
+      "non_amplitude_norm_fraction": 0.723389471766198
+    },
+    {
+      "reference_amplitude_coefficient": 7.5376112262874e-06,
+      "non_amplitude_norm_fraction": 0.861437335222219
+    }
+  ],
   "difference_cosine": 0.8830965338688921,
   "best_fit_coarse_to_fine_difference_scale": 1.2427682996009546,
   "norm_ratio": 1.407284766656621,

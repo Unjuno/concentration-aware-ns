@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import numpy as np
 from tools.analyze_openfoam import vectors
+from tools.reference import fields
 
 root = Path('work/of13-study-v1')
 names = ['n64-dt0.001', 'n64-dt0.0005', 'n64-dt0.00025']
@@ -17,9 +18,18 @@ aa, bb, ab = float(a@a), float(b@b), float(a@b)
 assert aa > 0 and bb > 0
 scale = ab/bb
 orth = a-scale*b
+reference = fields(c[0], time=.05)['u'].ravel()
+reference_sq = float(reference@reference)
+projections = []
+for difference in [a, b]:
+    coefficient = float(difference@reference/reference_sq)
+    residual = difference-coefficient*reference
+    projections.append({'reference_amplitude_coefficient': coefficient,
+                        'non_amplitude_norm_fraction': float(np.linalg.norm(residual)/np.linalg.norm(difference))})
 result = {
     'cases': names,
     'input_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
+    'reference_amplitude_projections': projections,
     'difference_cosine': ab/np.sqrt(aa*bb),
     'best_fit_coarse_to_fine_difference_scale': scale,
     'norm_ratio': np.sqrt(aa/bb),
