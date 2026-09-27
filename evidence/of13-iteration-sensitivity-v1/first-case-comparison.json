@@ -1,0 +1,12 @@
+{
+  "case": "n64-dt0.001",
+  "scope": "First completed case only; temporal-order conclusion requires all three timesteps",
+  "relative_same_dt_field_shift": 6.550462585349278e-15,
+  "baseline_relative_velocity_error": 0.0049137444711323825,
+  "tight_relative_velocity_error": 0.0049137444711323695,
+  "input_sha256": {
+    "work/of13-iteration-sensitivity-v1/n64-dt0.001/0.05/U": "daa13ad8e5966283973c030e5635da0d09419a4b7750d08221c4cdc46b502f8b",
+    "work/of13-study-v1/n64-dt0.001/0.05/U": "003f0dea205fe00676806c4a79514be536a2b001da120ad8d5eb4ecfb7f20910"
+  },
+  "quality": "UNCERTAIN"
+}

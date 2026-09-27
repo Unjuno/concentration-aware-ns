@@ -68,3 +68,13 @@ follow-up protocol, `protocols/of13-iteration-sensitivity-v1.json`, retains the
 same three timesteps and changes these to 1e-12/1e-10 and 40 correctors. It
 will compare same-dt field shifts and temporal directions before attributing
 the observed order to time discretization. That follow-up has not yet run.
+
+The iteration-sensitivity follow-up has now completed its dt=0.001 case:
+exit zero, all 50 physical steps report outer convergence, and final cell
+centers match the original. The same-dt final velocity relative field shift
+is 6.55046e-15; relative reference errors are 0.00491374447113238 (original)
+and 0.00491374447113237 (tight). Thus the stricter settings do not materially
+change this endpoint. This is one completed case, not a three-step temporal
+conclusion; the two smaller timesteps remain in progress. The completed raw
+archive and `first-case-comparison.json` are saved in
+`evidence/of13-iteration-sensitivity-v1`.
