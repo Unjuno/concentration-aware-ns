@@ -37,3 +37,16 @@ must not become a new benchmark acceptance score. Compare its startup
 pressure impulse and increment from its own initial field to the original
 case. Even a successful removal of the initial impulse would not by itself
 explain the later time-convergence order.
+
+All three intervention cases are now prepared under
+`work/of13-solenoidal-startup-control-v1`. Reproduce preparation with
+`python3 -m tools.prepare_openfoam_solenoidal_cases` after restoring the
+baseline startup inputs. The script checks the archived projected-U hash,
+rechecks divergence, and compares all copied solver inputs bytewise. Only
+`0/U` differs, and even its boundary dictionary remains identical. No 0/phi
+file is introduced. Parameters explicitly label the changed initial problem.
+
+`evidence/tests/openfoam-solenoidal-case-preparation.json` records every input
+hash, protocol identity and prepared-only status. These are input checks, not
+solver results. No additional Docker request has been enqueued while the
+existing baseline and docker-ps requests remain pending.
