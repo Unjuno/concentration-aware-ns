@@ -231,3 +231,45 @@ condition or material-viscosity conclusion follows from these bounds.
 - [Compact derivative bounds and cutoff jets](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/SlowBorelBase.lean)
 - [Chosen scales](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/EntranceAlignedBase.lean)
 - [Actual profile and smooth base velocity](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/FinalSlowBase.lean)
+
+### Follow-up source map: common-support assembly theorem
+
+A closer pass through the updated source found a stronger assembly interface
+than the previous paragraph suggested. `PhysicalStageSupport.actual_patch_support`
+gives a shared outer-radius constant for every stage once the native-radius
+bounds and common-band inequalities are supplied. More generally,
+`candidate_support_inputs` transfers this to the literal initial field, every
+potential stage, every `rawSeries` direct stage, and the pressure stages through
+explicit `EqOn` representation hypotheses. Its output is precisely
+`SublevelShrinkingSupport`, whose pointwise content is that nonzero values must
+lie at transverse radius at least `C*sqrt(physicalQ)`.
+
+The selected assembly already exposes many of the required representation facts:
+`ActualCandidateAssembly.initialPotential_support`,
+`positivePotential_support`, and `directStages_support` give generic outer
+support statements; `potentialStages_zero/succ` and `directStages_eq` identify
+the actual stage sequences; `positivePotential_on_chart` and
+`direct_on_chart` relate them to physical chart pieces; and
+`ActualCandidateAssembly.witness` consumes the stage support and endpoint data
+for its final cutoff schedule. These are strong structural ingredients, and
+make a blanket claim that “the support hole is not transferred through any
+stages” inaccurate.
+
+The remaining requested theorem is narrower and quantitative: specialize the
+native-family bounds in `actual_coherent_families_support` (or the broader
+`actual_patch_support`) to the selected families; verify its first-band lower
+inequalities for all stages from the exact recurrence; transfer its common
+support conclusion through the actual representations and cutoff schedule to
+the selected full velocity; then show the proposed spatial tube stays inside
+the physical sublevel and all applicable charts. The generic theorem's
+parameters make these obligations visible rather than discharging them by
+openness. No theorem found in the inspected `ActualCandidateAssembly` lines
+already states the final equality of the assembled velocity and base on a
+uniform `sqrt(1-t)` tube. Accordingly the packet exponent remains conditional
+until this specialization and tube lemma are checked.
+
+The evidence update corrects the earlier broad claim: per-stage support
+transfer is present in the upstream library; selected-uniform constants,
+cutoff-sum specialization and tube geometry are the exact remaining audit
+items. No numerical packet or material interpretation follows from the
+structural support lemmas alone.
