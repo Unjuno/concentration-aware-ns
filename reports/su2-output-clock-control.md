@@ -46,3 +46,21 @@ pressure/velocity values compare exactly at CSV precision. The machine-readable
 result is `evidence/su2-output-clock-control-v1/independent-review.json`.
 This validates the archived comparison, not the physical model, variable-step
 behavior, or every possible consumer of the output clock.
+
+## Direct stopping consumer found
+
+A fresh byte-for-byte check against the pinned v8.5.0 source confirms that
+`CSinglezoneDriver::Monitor` reads `CUR_TIME` (line 267), compares it with
+`MAX_TIME` (line 296), and includes that condition directly in `StopCalc`
+(line 306). `GetCauchyCorrectedTimeConvergence` also uses the same clock for
+its BDF2 delay. Its false return cannot override the driver's independent
+`FinalTimeReached` OR condition. Thus the source exposes a termination path,
+not merely history display. These excerpts and pinned hashes are saved in
+`stop-consumer-source.json` beside the raw experiment archives.
+
+The existing field-invariance experiment does not test this path: its iteration
+cap binds. Protocol `su2-max-time-clock-control-v1.json` freezes a follow-up
+with MAX_TIME=0.35, dt=0.1 and TIME_ITER=20. It predicts an extra iteration
+for the original R=2 restart. This remains a source-derived prediction pending
+execution, not a reproduced stopping defect. The nonintegral threshold avoids
+ambiguity from floating-point equality at an exact time-step boundary.

@@ -1,0 +1,42 @@
+{
+  "commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "scope": "Singlezone MAX_TIME direct consumer and BDF2 time-convergence helper; runtime effect not yet tested",
+  "files": [
+    {
+      "path": "SU2_CFD/src/drivers/CSinglezoneDriver.cpp",
+      "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/src/drivers/CSinglezoneDriver.cpp",
+      "sha256": "fadb4335afeeed521f40b16c00b1f3116c9006ed4f385e141d607e6e3550246e",
+      "matches_local": true,
+      "excerpts": [
+        {
+          "first_line": 260,
+          "last_line": 269,
+          "text": "  su2double MaxTime, CurTime;\n  bool TimeDomain, InnerConvergence, TimeConvergence, FinalTimeReached, MaxIterationsReached;\n\n  nInnerIter = config_container[ZONE_0]->GetnInner_Iter();\n  InnerIter  = config_container[ZONE_0]->GetInnerIter();\n  nTimeIter  = config_container[ZONE_0]->GetnTime_Iter();\n  MaxTime    = config_container[ZONE_0]->GetMax_Time();\n  CurTime    = output_container[ZONE_0]->GetHistoryFieldValue(\"CUR_TIME\");\n\n  TimeDomain = config_container[ZONE_0]->GetTime_Domain();"
+        },
+        {
+          "first_line": 290,
+          "last_line": 307,
+          "text": "  if (TimeDomain == YES) {\n\n    /*--- Check whether the outer time integration has reached the final time ---*/\n\n    TimeConvergence = GetTimeConvergence();\n\n    FinalTimeReached = CurTime >= MaxTime;\n    MaxIterationsReached = TimeIter+1 >= nTimeIter;\n\n    if ((FinalTimeReached || MaxIterationsReached || TimeConvergence) && (rank == MASTER_NODE)){\n      cout << \"\\n----------------------------- Solver Exit -------------------------------\";\n      if (TimeConvergence) cout << \"\\nAll windowed time-averaged convergence criteria are fullfilled.\" << endl;\n      if (FinalTimeReached) cout << \"\\nMaximum time reached (MAX_TIME = \" << MaxTime << \"s).\" << endl;\n      if (MaxIterationsReached) cout << \"\\nMaximum number of time iterations reached (TIME_ITER = \" << nTimeIter << \").\" << endl;\n      cout << \"-------------------------------------------------------------------------\" << endl;\n    }\n    StopCalc = FinalTimeReached || MaxIterationsReached || TimeConvergence;\n  }"
+        },
+        {
+          "first_line": 320,
+          "last_line": 323,
+          "text": "bool CSinglezoneDriver::GetTimeConvergence() const{\n  SU2_ZONE_SCOPED\n  return output_container[ZONE_0]->GetCauchyCorrectedTimeConvergence(config_container[ZONE_0]);\n}"
+        }
+      ]
+    },
+    {
+      "path": "SU2_CFD/src/output/COutput.cpp",
+      "url": "https://raw.githubusercontent.com/su2code/SU2/12eb826f049ef7f67df974dfcb44cf36ee07c0f8/SU2_CFD/src/output/COutput.cpp",
+      "sha256": "fae73ea849b9a47f204cd0714aadb88080810959e2ad1e767f0e8d61bbf671c8",
+      "matches_local": true,
+      "excerpts": [
+        {
+          "first_line": 805,
+          "last_line": 826,
+          "text": "    TimeConvergence = cauchyTimeConverged;\n  }\n  \n  // Handle max time delay for 2nd order time stepping\n  // Delay stopping at max_time to ensure both timestep N and N-1 are written for proper restart\n  if(config->GetTime_Marching() == TIME_MARCHING::DT_STEPPING_2ND){\n    const su2double cur_time = GetHistoryFieldValue(\"CUR_TIME\");\n    const su2double max_time = config->GetMax_Time();\n    const bool final_time_reached = (cur_time >= max_time);\n    \n    // If max_time is reached on first detection, delay the stop\n    if(final_time_reached && !maxTimeDelayActive){\n      maxTimeDelayActive = true;\n      TimeConvergence = false;  // Delay stop to run one more iteration\n    }\n    else if(maxTimeDelayActive){\n      TimeConvergence = true;   // Now allow stop\n      maxTimeDelayActive = false;   // Reset for next run\n    }\n  }\n  \n  return TimeConvergence;"
+        }
+      ]
+    }
+  ]
+}

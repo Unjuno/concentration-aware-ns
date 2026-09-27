@@ -1,0 +1,14 @@
+{
+  "status": "frozen before runs",
+  "purpose": "Test whether restart output-clock offset changes singlezone MAX_TIME termination when TIME_ITER does not bind",
+  "baseline": "su2-restart-time-pilot-v1/original",
+  "images": ["concentration-aware-ns:su2-time-control", "concentration-aware-ns:su2-output-clock-control"],
+  "modes": ["continuous", "resumed"],
+  "restart_iter": 2,
+  "time_step": 0.1,
+  "max_time": 0.35,
+  "time_iter": 20,
+  "prediction": "Original continuous and output-clock-control continuous/resumed first reach MAX_TIME at index 4; original resumed first reaches it at index 5 because its output clock is behind by 0.1",
+  "checks": ["all solver exits zero", "history indices contiguous with expected final index", "termination log identifies MAX_TIME and not TIME_ITER", "all saved inner residuals below -10", "common-index pressure/velocity differences between same-mode images below 1e-7"],
+  "scope": "Static fixed-dt singlezone BDF2, R=2. No moving-mesh, variable-step or multizone conclusion. Preserve deviations instead of changing predictions."
+}
