@@ -95,3 +95,20 @@ must not be called an exact discrete Helmholtz projection without specifying
 the relevant face/cell operators. The full solver uses corrected face flux
 and cell velocity separately. Causal intervention and the later-time behavior
 remain unresolved; Docker's third-case request is still pending.
+
+## Shared-runtime recovery boundary
+
+The host volume has approximately 1.7 TiB available; simple host-disk exhaustion
+is not supported by that observation. OrbStack processes are present, while
+multiple Docker clients remain waiting and the bounded daemon ping has timed
+out. The third case still has an empty container log and no solver log.
+Before requesting any shared-runtime restart, all pending-case input hashes
+were saved in `recovery-input-snapshot.json`. Completed archives remain intact.
+
+A shared OrbStack restart requires confirmation because it can interrupt
+containers belonging to other work. Confirmation has been requested; no restart
+has occurred. After any authorized recovery, first inspect the original runner
+and container states. A missing observation or timed-out request alone is not
+permission to duplicate a run. If the old attempt terminates, preserve its
+exit/log evidence and use an explicitly distinct attempt directory rather
+than overwriting any original inputs or outputs.
