@@ -1,4 +1,12 @@
 {
+  "operator_review": {
+    "cell_divergence_after_model_max": 0.0029199365501932917,
+    "cell_divergence_before_max": 0.05672386630871995,
+    "residual_divergence_symbol_max_error": 3.766301506780145e-15,
+    "face_flux_model_divergence_max": 4.579669976578771e-16,
+    "symbol": "sum_j sin(theta_j/2)^4 / sum_j sin(theta_j/2)^2 for nonzero modes",
+    "scope": "Leading model only; cell gradient/divergence composition differs from face-flux Laplacian"
+  },
   "initial_U_sha256": "d2f715af44de514f8a40f9bd72a947f30cdb3ed71e56547b33837a52d6f1f0d1",
   "poisson_max_absolute_residual": 4.579669976578771e-16,
   "cases": [

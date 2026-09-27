@@ -85,3 +85,29 @@ produced a byte-identical diagnostic executable. The replay commands, build log
 and hash comparison are archived as `rebuild-*` files. This is reproducibility
 within the same recorded runtime image, not a rebuild of OpenFOAM itself from
 independently fetched sources or a cross-platform reproducibility guarantee.
+
+## Why the cell-divergence diagnostic can remain nonzero
+
+In the leading startup model, pressure impulse pi solves L_h pi = D_c U0,
+where L_h is the nearest-neighbor face-flux Laplacian. The cell update is
+U*=U0-G_c pi, with centered cell gradient G_c. On a periodic uniform mesh,
+L_h has symbol -4 sum(sin(theta_j/2)^2)/dx², whereas D_c G_c has symbol
+-sum(sin(theta_j)^2)/dx². Therefore the residual cell divergence has multiplier
+
+```
+D_c U* = [sum sin(theta_j/2)^4 / sum sin(theta_j/2)^2] D_c U0
+```
+
+mode by mode away from the zero mode. The multiplier is between zero and one,
+but generally nonzero. This follows from sin(theta)^2=4s(1-s), with
+s=sin(theta/2)^2. It is an operator distinction, not a failed pressure solve.
+It gives an L2 contraction of this divergence for the model; it does not imply
+pointwise contraction at every cell or apply automatically to the full solver.
+
+The n=64 initial field gives model-corrected maximum cell divergence 0.00291994
+versus 0.0567239 initially, while corrected face-flux divergence is below
+4.6e-16. Direct real-space cell correction and the residual-symbol formula agree
+to 3.8e-15. These quantities are recorded in the `operator_review` portion of
+`evidence/of13-startup-time-v1/poisson-model.json`. This is still the leading
+startup model, not a newly observed full-solver face-flux result. It explains
+why the two diagnostics must be separated in the acceptance analysis.
