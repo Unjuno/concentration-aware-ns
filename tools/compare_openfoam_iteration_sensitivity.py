@@ -1,6 +1,7 @@
 """Compare only completed tighter-tolerance cases with the archived baseline."""
 import hashlib
 import json
+import re
 from pathlib import Path
 import numpy as np
 from tools.analyze_openfoam import vectors
@@ -11,6 +12,13 @@ def alignment(us):
     na, nb = np.linalg.norm(a), np.linalg.norm(b)
     assert na > 0 and nb > 0
     return {'cosine':float(a@b/(na*nb)), 'norm_order':float(np.log2(na/nb)), 'best_fit_scale':float(a@b/(nb*nb)), 'first_order_defect':float(np.linalg.norm(a-2*b)/na), 'relative_differences':[float(na/np.linalg.norm(us[-1])), float(nb/np.linalg.norm(us[-1]))]}
+
+
+def completed_times(log):
+    """OpenFOAM 13 writes dimensional time as e.g. `Time = 0.05s`."""
+    return [float(value) for value in re.findall(
+        r'^Time = ([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)s?\s*$',
+        log, re.M)]
 
 
 def main():
@@ -24,9 +32,9 @@ def main():
         assert json.loads((case/'exit.json').read_text())['exit_code'] == 0
         log = (case/'log.foamRun').read_text()
         assert log.rstrip().endswith('End')
-        times = [line for line in log.splitlines() if line.startswith('Time = ')]
+        times = completed_times(log)
         expected = round(spec['end']/dt)
-        assert len(times) == expected and float(times[-1].split('=')[1]) == spec['end']
+        assert len(times) == expected and times[-1] == spec['end']
         c, co = vectors(case/'0.05/C', spec['n']**3), vectors(old/'0.05/C', spec['n']**3)
         assert np.array_equal(c, co)
         u, v = vectors(case/'0.05/U', spec['n']**3), vectors(old/'0.05/U', spec['n']**3)
