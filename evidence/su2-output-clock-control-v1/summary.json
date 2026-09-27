@@ -1,0 +1,28 @@
+{
+  "scope": "Static fixed-dt BDF2 output-only causal control; no general fix or variable-step claim",
+  "image_id": "sha256:6a0591f3afab36fe8b77c13240079003b517a83b4409f7a71beb66140b30e8b5",
+  "cases": [
+    {
+      "mode": "continuous",
+      "exit_code": 0,
+      "times": [
+        0.0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "same_mode_field_max_difference": 0.0,
+      "archive_sha256": "4828dd55df10d296282fefee1267b228a5711bb75c5da84791f1257529259f7f"
+    },
+    {
+      "mode": "resumed",
+      "exit_code": 0,
+      "times": [
+        0.2,
+        0.3
+      ],
+      "same_mode_field_max_difference": 0.0,
+      "archive_sha256": "9566edaa7f0d7e8c45a34afdd7e88613bc8687511a88debd6f1ca9f3eeb1f145"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "image_id": "sha256:6a0591f3afab36fe8b77c13240079003b517a83b4409f7a71beb66140b30e8b5",
+  "log_sha256": "b1e749159426744f5538ee3c3e62526d223656c204d61525c528db6937d994bd",
+  "scope": "Diagnostic image build and source fingerprints; not a general patch validation.",
+  "source_hashes": "2e43a441fcbe22f647da33d8377207a81e2d5159b6991b98652c5b64e3acb1e0  /opt/SU2/SU2_CFD/src/output/COutput.cpp\nfadb4335afeeed521f40b16c00b1f3116c9006ed4f385e141d607e6e3550246e  /opt/SU2/SU2_CFD/src/drivers/CSinglezoneDriver.cpp\n5c0906f2a4719eb9050410a91be63e992d8b6ba63d07983ad67aa10265db11db  /opt/SU2/SU2_CFD/src/solvers/CIncEulerSolver.cpp\nb8e54f986ce075052e54586c6f12026c785262f96875426bb6e918ae374b3c46  /opt/SU2/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl\n"
+}

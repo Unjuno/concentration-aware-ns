@@ -1,0 +1,8 @@
+{
+  "scope": "Output-only fixed-dt diagnostic build inputs; no completed runtime comparison yet.",
+  "parent_image_id": "sha256:f003d34ad25ecb9b82ba79fec92dd8d0ee029a6886123361c537ed47125c2e41",
+  "inputs": {
+    "runtime/su2-output-clock-control/Dockerfile": "04923e55325064e004a9325b057b6ae9277ef6bf95994e476d46fdd311ec5efd",
+    "runtime/su2-output-clock-control/replace.py": "2108765c59a369a10d4b1cf6ed51ab6cff2cdac3cffcd5e6192b44f1f351cfb2"
+  }
+}
