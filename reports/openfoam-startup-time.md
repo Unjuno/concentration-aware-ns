@@ -75,3 +75,23 @@ records pressure/initial-field hashes in `poisson-model.json`. Finite-dt
 transport, forcing and the full ddtCorr/PIMPLE behavior remain outside this
 leading model. No singular physical pressure follows from a fixed-grid
 initialization response as dt is changed.
+
+## Velocity-side check of the same leading model
+
+The same pi predicts a cell velocity correction -G_h pi, using centered
+cell-gradient G_h. Its norm relative to the recorded initial U is 0.00255493239.
+No observed velocity is fitted to construct this correction. Subtracting the
+known continuum evolution exp(-dt)*U0 from each first-step velocity, the
+relative residual against -G_h pi is 0.0337911 and 0.0169169 for dt=0.001
+and 0.0005. The respective direction cosines are 0.999429 and 0.999857.
+Thus both pressure impulse and velocity error approach the same leading
+startup balance over these two runs, with approximately halving discrepancies.
+
+The predicted 0.2555% initial correction is a fixed-grid discrete effect; it
+is not a proof of a nonzero continuum limit. These first-step comparisons are
+at different physical times. In addition, the collocated G_h,D_h composition
+is not the nearest-neighbor pressure Laplacian L_h, so this cell-velocity map
+must not be called an exact discrete Helmholtz projection without specifying
+the relevant face/cell operators. The full solver uses corrected face flux
+and cell velocity separately. Causal intervention and the later-time behavior
+remain unresolved; Docker's third-case request is still pending.

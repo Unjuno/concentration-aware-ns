@@ -3,6 +3,12 @@
   "poisson_max_absolute_residual": 4.579669976578771e-16,
   "cases": [
     {
+      "velocity_model": {
+        "endpoint_U_sha256": "4e7b40b65758736db7934e7f673d5e7a0acb85c958d48333899c760514be145c",
+        "relative_remainder_to_predicted_correction": 0.03379105554790445,
+        "error_correction_cosine": 0.9994289683305727,
+        "predicted_relative_initial_velocity_change": 0.002554932392374338
+      },
       "dt": 0.001,
       "pressure_sha256": "05f7a216fe6353b33dcbea946f684810950751f9b908b7fddf3c73304b096442",
       "relative_centered_pressure_impulse_error": 0.030221608503567296,
@@ -11,6 +17,12 @@
       "cosine": 0.999543249116295
     },
     {
+      "velocity_model": {
+        "endpoint_U_sha256": "b19ca6182c1e1be41c94ffb0e3c13b3d3d48e05c51c7ce6342d655c897f94a36",
+        "relative_remainder_to_predicted_correction": 0.016916853900307227,
+        "error_correction_cosine": 0.999856907920272,
+        "predicted_relative_initial_velocity_change": 0.002554932392374338
+      },
       "dt": 0.0005,
       "pressure_sha256": "fce31155fff767f249a6e4c48a151b5c91552f259a2e665e62e13e83a407f9ce",
       "relative_centered_pressure_impulse_error": 0.015127461734954847,
