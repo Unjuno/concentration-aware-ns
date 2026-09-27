@@ -1,0 +1,68 @@
+{
+  "protocol_sha256": "89bc97d8b24fe21f772a393da1b7d615f75da12f19423fa00f8e4c7f3f770824",
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "baseline": "work/of13-iteration-sensitivity-v1/n64-dt0.001",
+      "changed_input_files": [
+        "0/U"
+      ],
+      "input_hashes": {
+        "0/U": "936c07f7147c647a2d5dfe1827df93e8230e62fab185c582f59f9e25df4db47e",
+        "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+        "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+        "system/fvSolution": "63930ce65d6bd62770b1ea4d48c59cf7c1497cfbda4ec8fef0a7f79c4dbcf1ba",
+        "system/blockMeshDict": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5",
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "constant/fvModels": "ee9b76baf92c5513aca204d64cc2c0074325138f57bd724146f316c111f7a07c",
+        "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+        "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+      },
+      "discrete_divergence_max": 9.159339953157541e-15,
+      "solver_executed": false
+    },
+    {
+      "case": "n64-dt0.0005",
+      "baseline": "work/of13-iteration-sensitivity-v1/n64-dt0.0005",
+      "changed_input_files": [
+        "0/U"
+      ],
+      "input_hashes": {
+        "0/U": "936c07f7147c647a2d5dfe1827df93e8230e62fab185c582f59f9e25df4db47e",
+        "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+        "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+        "system/fvSolution": "63930ce65d6bd62770b1ea4d48c59cf7c1497cfbda4ec8fef0a7f79c4dbcf1ba",
+        "system/blockMeshDict": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5",
+        "system/controlDict": "badca44f17ccd54365bb65f6861f4b187076d68d13782bbfb6869b974484d651",
+        "constant/fvModels": "ee9b76baf92c5513aca204d64cc2c0074325138f57bd724146f316c111f7a07c",
+        "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+        "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+      },
+      "discrete_divergence_max": 9.159339953157541e-15,
+      "solver_executed": false
+    },
+    {
+      "case": "n64-dt0.00025",
+      "baseline": "work/of13-iteration-sensitivity-v1/n64-dt0.00025",
+      "changed_input_files": [
+        "0/U"
+      ],
+      "input_hashes": {
+        "0/U": "936c07f7147c647a2d5dfe1827df93e8230e62fab185c582f59f9e25df4db47e",
+        "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+        "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+        "system/fvSolution": "63930ce65d6bd62770b1ea4d48c59cf7c1497cfbda4ec8fef0a7f79c4dbcf1ba",
+        "system/blockMeshDict": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5",
+        "system/controlDict": "0683ddaf204c9ce4e5efed6e3379fc59a6f15a5fc06d89a46075563c6f1bb34b",
+        "constant/fvModels": "ee9b76baf92c5513aca204d64cc2c0074325138f57bd724146f316c111f7a07c",
+        "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+        "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+      },
+      "discrete_divergence_max": 9.159339953157541e-15,
+      "solver_executed": false
+    }
+  ],
+  "status": "prepared only; no Docker request issued",
+  "scope": "Changed initial-value problem at t=0.05. A change in observed order supports sensitivity to initialization but neither uniquely identifies a mechanism nor repairs original MMS acceptance.",
+  "execution_evidence_update": "Before execution, enabled retaining container exit state; all solver inputs reverified unchanged."
+}

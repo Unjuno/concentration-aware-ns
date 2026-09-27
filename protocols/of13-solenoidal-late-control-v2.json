@@ -1,0 +1,22 @@
+{
+  "status": "frozen before solver execution",
+  "purpose": "Test whether initial discrete-divergence projection changes late-time temporal difference geometry",
+  "n": 64,
+  "dt": [
+    0.001,
+    0.0005,
+    0.00025
+  ],
+  "end": 0.05,
+  "baseline": "of13-iteration-sensitivity-v1",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "change": "Replace initial U only with the recorded minimum-L2 centered-divergence-free projection; retain pressure=0, no initial phi, forcing and tight solver settings",
+  "input_check": "Projected U must match recorded hash; real-space divergence maximum below 1e-12 and unchanged periodic boundaries",
+  "prediction": "Exploratory attribution: compare three-level endpoint difference order and direction with original tight-iteration baseline (order 0.49291429). No directional success threshold is assumed.",
+  "measurements": "Endpoint U differences across dt, their norm order and cosine, same-dt control/baseline field shift, exit and every-step convergence. No original-MMS acceptance score.",
+  "scope": "Changed initial-value problem at t=0.05. A change in observed order supports sensitivity to initialization but neither uniquely identifies a mechanism nor repairs original MMS acceptance.",
+  "retry_of": "of13-solenoidal-late-control-v1",
+  "retry_reason": "Original runner handle lost; first-case solver End but no exit status; remaining cases unexecuted.",
+  "retain_container": true,
+  "exit_evidence": "Retain stopped container and cidfile so Docker State.ExitCode can be recovered if the host runner is interrupted."
+}

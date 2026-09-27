@@ -1,0 +1,12 @@
+{
+  "utc": "2026-09-27T16:02:54.820963+00:00",
+  "prior_session": 67162,
+  "session_lookup": "Unknown process id",
+  "runner_process_found": false,
+  "docker_running_containers": [],
+  "first_case_End": true,
+  "exit_record_exists": false,
+  "archive": "evidence/of13-solenoidal-late-control-v1/n64-dt0.001-unverified-exit.tar.gz",
+  "archive_sha256": "f728fbb14c654bd367a614714c225d434103bff8215ae2b542e0d7f48861fad6",
+  "decision": "Preserve unverified-exit first case; do not fabricate exit status. Fresh identical-specification attempt in v2; no old live runner or running container observed."
+}

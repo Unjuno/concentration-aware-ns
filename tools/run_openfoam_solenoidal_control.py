@@ -23,6 +23,8 @@ def main():
  for row in prepared['cases']:
   case=root/row['case']
   command=['docker','run','--rm','--network','none','--entrypoint','/bin/bash','-v',f'{case}:/case',spec['image_id'],'-c','useradd -o -u "$1" -m runner && su runner -s /bin/bash -c "source /opt/openfoam13/etc/bashrc && cd /case && blockMesh > log.blockMesh 2>&1 && foamRun > log.foamRun 2>&1 && foamPostProcess -func writeCellCentres -latestTime > log.centres 2>&1"','--',str(os.getuid())]
+  if spec.get('retain_container',False):
+   command[command.index('--rm'):command.index('--rm')+1]=['--cidfile',str(case/'container-id')]
   (case/'command.json').write_text(json.dumps(command)+'\n')
   print('START '+case.name,flush=True)
   with (case/'log.container').open('w') as log:run=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)

@@ -1,4 +1,5 @@
 """Archive-only late-time initialization sensitivity, without MMS acceptance."""
+import argparse
 import hashlib
 import json
 import tarfile
@@ -10,7 +11,9 @@ from tools.compare_openfoam_iteration_sensitivity import alignment, completed_ti
 
 
 def main():
-    study = 'of13-solenoidal-late-control-v1'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--study', default='of13-solenoidal-late-control-v1')
+    study = parser.parse_args().study
     protocol = Path('protocols') / (study + '.json')
     spec = json.loads(protocol.read_text())
     manifest = json.loads((Path('evidence/tests') / (study + '-preparation.json')).read_text())
