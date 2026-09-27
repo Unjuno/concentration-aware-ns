@@ -90,6 +90,16 @@ well as the classical nonlinear-flow argument. Until then the packet exponent
 is conditional on such an envelope, not an established result for the selected
 construction. No fixed-size packet or molecular conclusion follows.
 
+The finite-stage cutoff lemmas do not close this gap by themselves. If a whole
+tube has `q_chart>=qmin`, choosing `J=floor(1/qmin)+1` makes every stage
+`j>=J` vanish there because `a(j)>=j` and `J*qmin>1`. But the retained prefix
+has O(1/qmin) stages, and the axis-zero germ hypotheses give a possibly
+stage- and point-dependent neighborhood for each retained stage. The checked
+finite-prefix identities preserve equality and jets; they provide neither a
+uniform neighborhood radius for that growing prefix nor numerical derivative
+enclosures. A quantitative support-width theorem uniform over the relevant
+stages, or direct bounds for the assembled field, is still required.
+
 ## Finite-stage cutoff with a known chart lower bound
 
 There is also a useful finite reduction. Suppose q_chart>=qmin>0 throughout
