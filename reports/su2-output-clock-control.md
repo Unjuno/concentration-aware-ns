@@ -33,3 +33,16 @@ This is **not a proposed general fix**: multiplication by the current dt is
 not cumulative time for variable steps. Moving meshes, discrete adjoints,
 other CUR_TIME consumers and stop conditions require separate validation.
 No claim is made that the original source/boundary time lag is repaired.
+
+## Independent archived-data replay
+
+`python3 -m tools.check_su2_output_clock_control` checks the saved archives
+without running the solver or importing the execution runner. It parses CSV
+numbers with Python Decimal instead of NumPy. The replay verifies archive and
+baseline hashes, protocol/image metadata, identical configuration/mesh/imported
+restart bytes, complete 125-node IDs and coordinates, finite entries, converged
+residuals, and both original and intervened history clocks. All 3,000 saved
+pressure/velocity values compare exactly at CSV precision. The machine-readable
+result is `evidence/su2-output-clock-control-v1/independent-review.json`.
+This validates the archived comparison, not the physical model, variable-step
+behavior, or every possible consumer of the output clock.
