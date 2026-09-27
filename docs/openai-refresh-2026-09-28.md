@@ -161,24 +161,26 @@ constant, tube radius, or finite packet certificate was extracted.
 
 ## Additional independent numerical study, 2026-09-28
 
-The 22 September preprint [*Self-similar swirl between contracting porous
+The 15 September preprint [*Self-similar swirl between contracting porous
 walls*](https://arxiv.org/abs/2609.17642) revisits an older exact swirl solution
 in similarity variables related to the OpenAI construction and reports a
 collocation solver, symbolic/exterior/manufactured-solution checks, resolution
-studies and parameter sweeps. Its authors report that their attempted axis-core
-join met the moment identities numerically at one setting, but the true-cone
-condition failed for every smooth profile they tested. This is a useful
-independent numerical stress test of a reduced construction and a concrete
-reason to audit the cone-to-axis implication. It is not a reproduction of the
-full OpenAI construction, a proof of failure, or an independent verification of
-the blow-up theorem; numerical nonconvergence or a restricted ansatz may explain
-the failure. The source and scope are recorded without changing any benchmark
-verdict.
+studies and parameter sweeps. In the reduced porous-wall profile problem, the
+authors report that the moment identities require an axial through-flow and
+that a nonsymmetric core meets them numerically to 0.2%. Their reported
+Rayleigh-type cone criterion with axial shear requires radii of order `10^20`;
+the axisymmetric profile calculations and moderate-inflow/strong-swirl axial
+spectrum also have stated scope and convergence limitations. These results
+motivate auditing the similarity reduction and cone-to-axis implication. They
+do not reproduce the full OpenAI construction, prove its failure, or verify its
+blow-up theorem. The paper's own physical discussion says that it found no
+indication that the mechanism is reachable in a flow one computes or builds.
 
-The 22 September [*Cascade mechanisms for Navier-Stokes blow-up*]
-(https://arxiv.org/abs/2609.26790) studies a mixed
-Desnyansky–Novikov–Obukhov shell model and states a finite-time cascade blow-up
-result for that model. This is a discrete-scale cascade analogue, not a theorem
-for the full Navier–Stokes equations and not evidence of molecular alignment or
-vanishing viscosity. It may inform future scale-resolved diagnostics, provided
-the model is kept distinct from the physical equations.
+The 22 September preprint [*Cascade mechanisms for Navier–Stokes
+blow-up*](https://arxiv.org/abs/2609.26790) reviews an inverse-cascade result
+for 3D Navier–Stokes in sharp regularity classes and develops related results
+for Obukhov dyadic and mixed Desnyansky–Novikov–Obukhov models. Its abstract's
+finite-time forward-cascade theorem is for the mixed shell model, not the full
+Navier–Stokes equations. This scale-model result may inform future
+scale-resolved diagnostics, but it is not evidence of molecular alignment,
+particle-position concentration, or vanishing viscosity.

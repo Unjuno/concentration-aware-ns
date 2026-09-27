@@ -45,3 +45,31 @@ determinant-one map preserves a centered Gaussian's peak density and entropy,
 so directional alignment does not imply spatial concentration. The extension
 to finite particles or molecules remains unverified. It needs a microscopic
 model, an observable, and an effective bridge to the continuum flow.
+
+## Small-amplitude, large-gradient perturbations
+
+The independent porous-wall study describes a high-frequency radial
+oscillation in the OpenAI construction that changes a shear quantity by order
+one while changing the profile and moments by order `1/N`. This suggests a
+useful analytic stress test for concentration-aware verification: low-order
+averages or field-amplitude agreement need not control local derivatives. The
+paper's reduced numerical problem is not evidence that the OpenAI proof is
+wrong; its precise comparison must be audited against the original hypotheses
+before using it to make any such claim.
+
+The scale separation itself has an elementary model. With logarithmic
+coordinate `s=log X`, a compactly supported smooth envelope `chi(s)` that is
+identically one on a nonempty interval, and
+`r_N(s)=N^(-1) chi(s) sin(Ns)`,
+
+    ||r_N||_infinity <= ||chi||_infinity/N,
+    d r_N/ds = chi(s) cos(Ns) + N^(-1) chi'(s) sin(Ns).
+
+Thus the perturbation vanishes uniformly while its first derivative does not
+converge uniformly to zero. Its second derivative includes a term of size
+`N*chi(s) sin(Ns)`. This does not show that any solver's residual or ordinary
+QoI passes while its gradient fails; it only proves why that implication needs
+an independent derivative estimate. A future MMS case can use a *fixed*
+finite `N` family with analytic forcing and compare value, gradient and Hessian
+errors across grids, then separately test whether a preregistered coarse gate
+misses those errors. Do not infer a singular limit by sending `N` to infinity.
