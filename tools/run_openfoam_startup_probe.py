@@ -4,6 +4,7 @@ from pathlib import Path
 root=Path('work/of13-startup-probe-v1').resolve()
 out=Path('evidence/of13-startup-probe-v1');out.mkdir(exist_ok=False)
 spec=json.loads(Path('protocols/of13-startup-probe-v1.json').read_text())
+image=json.loads(Path('evidence/of13-startup-probe-v1/build-result.json').read_text())['image_id']
 rows=[]
 for n in spec['grids']:
  case=root/f'n{n}';case.mkdir(exist_ok=False)
@@ -14,7 +15,7 @@ for n in spec['grids']:
  for p in (source/'constant').iterdir():
   if p.is_file():shutil.copyfile(p,case/'constant'/p.name)
  assert not (case/'0/phi').exists()
- command=['docker','run','--rm','--network','none','--entrypoint','/bin/bash','-v',f'{root}:/probe',spec['image'],'-c','useradd -o -u "$1" -m runner && su runner -s /bin/bash -c "source /opt/openfoam13/etc/bashrc && cd /probe/n'+str(n)+' && blockMesh > log.blockMesh 2>&1 && /probe/startupProbe > log.probe 2>&1"','--',str(os.getuid())]
+ command=['docker','run','--rm','--network','none','--entrypoint','/bin/bash','-v',f'{root}:/probe',image,'-c','useradd -o -u "$1" -m runner && su runner -s /bin/bash -c "source /opt/openfoam13/etc/bashrc && cd /probe/n'+str(n)+' && blockMesh > log.blockMesh 2>&1 && /probe/startupProbe > log.probe 2>&1"','--',str(os.getuid())]
  (case/'command.json').write_text(json.dumps(command)+'\n')
  with (case/'log.container').open('w') as log:run=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)
  (case/'exit.json').write_text(json.dumps({'exit_code':run.returncode})+'\n')
