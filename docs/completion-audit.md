@@ -263,3 +263,12 @@ claims. The locked environment completed all 23 configured report-replay steps. 
 whole project remains incomplete under the unresolved analytic and solver gates
 listed above. See `reports/openfoam-pressure-reconstruction.md` and
 `evidence/of13-pressure-reconstruction-n64-v3/`.
+
+### Directional-alignment audit, 2026-09-28
+
+The selected continuum deformation now has an explicit angle formula for
+infinitesimal separations and a conditional finite-packet angle bound with its
+exceptional transverse subspace stated. The finite-packet bound still needs
+effective tube-radius and Hessian constants and does not model molecules. Exact
+symbolic algebra passes in `evidence/tests/axis-directional-alignment.json`;
+this is not an end-to-end Lean proof. See `docs/axis-directional-alignment.md`.

@@ -135,6 +135,11 @@ a fixed-size particle packet arbitrarily close to t=1. Neither the source
 hypotheses nor this proof use the unresolved PressureData witness premise;
 that premise is needed for the separate strict force-ratio sign claim.
 
+The angle-level statement and its finite-packet error condition are derived in
+[axis-directional-alignment.md](axis-directional-alignment.md). In particular,
+alignment excludes the purely transverse subspace and remains conditional on
+effective tube-radius and Hessian bounds.
+
 No molecular degrees of freedom or constitutive evolution law appears in
 this flow. The result concerns continuum material separations. In particular,
 the local volume-preserving contraction/extension cannot itself establish
