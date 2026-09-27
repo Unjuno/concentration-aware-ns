@@ -2951,6 +2951,40 @@ theorem compact_jet_bound_from_selected_base_germs
 
 #print axioms compact_jet_bound_from_selected_base_germs
 
+/-- Restrict a full spacetime Frechet jet to spatial directions at fixed time.
+The time-zero component of `ContinuousLinearMap.inr` vanishes, and its
+operator norm is one for the product Euclidean norm. -/
+theorem spatial_jet_norm_le_spacetime_jet_norm
+    (u : ProblemStatement.SpaceTime → ProblemStatement.Space)
+    (m : ℕ) (hu : ContDiff ℝ m u) (t : ℝ) (x : ProblemStatement.Space) :
+    ‖iteratedFDeriv ℝ m (fun y : ProblemStatement.Space => u (t, y)) x‖ ≤
+      ‖iteratedFDeriv ℝ m u (t, x)‖ := by
+  let L : ProblemStatement.Space →L[ℝ] ProblemStatement.SpaceTime :=
+    ContinuousLinearMap.inr ℝ ℝ ProblemStatement.Space
+  let shift : ProblemStatement.SpaceTime → ProblemStatement.SpaceTime :=
+    fun z => z + (t, 0)
+  let f : ProblemStatement.SpaceTime → ProblemStatement.Space := u ∘ shift
+  have hshift : ContDiff ℝ m shift := contDiff_id.add contDiff_const
+  have hf : ContDiff ℝ m f := hu.comp hshift
+  have hL : ‖L‖ = 1 := by
+    simpa [L] using (ContinuousLinearMap.norm_inr ℝ ℝ ProblemStatement.Space)
+  have hcomp : (fun y : ProblemStatement.Space => u (t, y)) = f ∘ L := by
+    funext y
+    simp [f, shift, L]
+  rw [hcomp, L.iteratedFDeriv_comp_right hf x le_rfl]
+  change ‖(iteratedFDeriv ℝ m (fun z => u (z + (t, 0))) (L x)).compContinuousLinearMap
+      (fun _ => L)‖ ≤ ‖iteratedFDeriv ℝ m u (t, x)‖
+  rw [iteratedFDeriv_comp_add_right m (t, 0) (L x)]
+  calc
+    ‖(iteratedFDeriv ℝ m u (L x + (t, 0))).compContinuousLinearMap (fun _ => L)‖
+        ≤ ‖iteratedFDeriv ℝ m u (L x + (t, 0))‖ * ‖L‖ ^ m := by
+          simpa [Finset.prod_const, Fintype.card_fin] using
+            (ContinuousMultilinearMap.norm_compContinuousLinearMap_le
+              (iteratedFDeriv ℝ m u (L x + (t, 0))) (fun _ => L))
+    _ = ‖iteratedFDeriv ℝ m u (t, x)‖ := by simp [L, hL]
+
+#print axioms spatial_jet_norm_le_spacetime_jet_norm
+
 theorem cutoff_stage_jets_zero_above_index
     (a : ℕ → ℕ) (ha : StrictMono a) (J j m : ℕ)
     (qmin q b : ℝ) (f : SlowBorelBase.Inner → ℝ)

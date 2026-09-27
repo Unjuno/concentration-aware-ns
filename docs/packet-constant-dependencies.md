@@ -5,10 +5,12 @@ the actual assembled field equals its smooth base, a tube radius rho, and a
 uniform spatial Hessian bound M. This audit identifies which source results
 supply existence and which data still lack numerical certificates.
 
-Source inspection uses OpenAI commit
-`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`; the added extension lemmas are
-also checked against the original pin. No coefficient values or ODE trajectory
-were sampled to infer the bounds.
+Source inspection was refreshed on 2026-09-28 against OpenAI commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, the only commit after the prior
+pin `8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538` (188 Lean files changed or
+added). The refresh adds actual-base velocity and pressure jet-rate estimates
+to the evidence inventory below. No coefficient values or ODE trajectory were
+sampled to infer bounds.
 
 The current source-bound extension reports record the checks of the stated
 lemmas against both pins. These are checks of identities and the acceptance
@@ -32,11 +34,20 @@ points. Its hypothesis is neighborhood equality throughout K. Equality on
 the axis alone would not supply a bound on a tube. The classical open-union
 and compact-tube construction in the flow note supplies such a K existentially.
 
-At m=2 the formal statement concerns the full spacetime derivative. Restrict
-each argument to a spatial vector through the linear embedding v -> (0,v).
-This embedding has norm one for the source product norm, so the same bound
-controls the spatial Hessian. This restriction argument is classical here;
-the new Lean lemma does not separately formalize that last composition.
+At m=2 the new lemma `spatial_jet_norm_le_spacetime_jet_norm` formalizes the
+restriction to fixed-time spatial directions via the norm-one linear map
+v -> (0,v). Thus the same existential bound controls the spatial Hessian on
+K, provided the stated neighborhood-equality hypothesis holds.
+
+The refreshed upstream source also contains `ActualBaseVelocityBounds` and
+`ActualBasePressureBounds`. These give polynomial-in-similarity-radius bounds
+for each prescribed derivative order on the actual base fields, including a
+whole-endpoint pressure rate after gluing to the heat exterior. They narrow
+the analytic growth question but remain existential `JetRate`/`FiniteJetRate`
+statements: compact derivative maxima and the selected profile/scales are not
+numerically enclosed or made executable by those estimates. They do not
+establish `PressureData` for `actualProfile`, nor produce a spacetime tube
+radius or chart lower bound.
 
 ## Finite-stage cutoff with a known chart lower bound
 
