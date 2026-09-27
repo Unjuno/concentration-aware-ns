@@ -298,3 +298,14 @@ The version-history correction, dependency boundary and evidence record are
 in `docs/openai-refresh-2026-09-28.md` and
 `evidence/upstream-refresh/force-density-2026-09-28.json`. Whole-goal
 completion remains unproven.
+
+### Independent recent-work scan, 2026-09-28
+
+The 20 September *Positive Defect Problem* preprint was reviewed alongside the
+OpenAI source refresh. It provides a distinct, machine-checked reduction from
+positive energy defect to an averaged fine-shell energy-flux floor, but says a
+finite Galerkin computation cannot certify that uniform condition. No existing
+MMS run tests this target, and the paper supplies no microscopic alignment
+bridge. The finding is recorded as a research direction only; gates and
+verdicts are unchanged. See the added subsection in
+`docs/openai-refresh-2026-09-28.md`.

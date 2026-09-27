@@ -87,6 +87,28 @@ finite computation alone cannot witness its Galerkin-uniform criterion. This
 helps keep the forced construction distinct from ordinary unforced fluid
 behavior; it is a preprint, not a settled consensus result.
 
+### What the newer unforced-search target does and does not add
+
+The preprint's target is positive energy defect on a finite time window. Its
+formal reduction expresses this through an averaged lower bound on energy flux
+out of sufficiently fine Littlewood–Paley shells; a pointwise-in-time floor is
+sufficient but stronger. The authors report twelve pseudo-spectral runs at
+`128^3` and `256^3`, while explicitly stating that finite computation cannot
+certify the required Galerkin-uniform bound. This is a useful research lead for
+a *different* unforced-flow program, not evidence that the forced OpenAI
+construction or this repository's smooth fixed-force MMS develops a singularity.
+
+The current benchmark already records shell spectra, local errors, spatial and
+temporal sweeps, and explicitly limits conclusions to its tested matrix. It
+does not compute the preprint's time-windowed fine-shell flux floor. Adding that
+observable would be a new exploratory study with its own weak-solution,
+filtering, aliasing, viscous-dissipation and convergence requirements; a
+finite-grid positive value alone would not certify the theorem's criterion.
+Accordingly, this update adds a research pointer only and leaves the frozen
+acceptance thresholds and all solver verdicts unchanged. The new target also
+contains no particle-position law, molecular alignment measurement, or
+constitutive-viscosity consequence.
+
 ## Consequences for the molecular alignment hypothesis
 
 The new source estimates and the existing conditional axis calculation are
