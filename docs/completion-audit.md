@@ -210,3 +210,14 @@ six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
 and exact uniform-prefix threshold algebra. It excludes pending solver runs.
 The analytic actualProfile moment/amplitude obligation and non-effective
 packet constants remain unresolved. Whole-goal completion is not established.
+
+### Startup intervention completion update
+
+The original pending baseline completed without a task-issued runtime restart;
+all three baseline and all three solenoidal control cases are now complete.
+`reports/openfoam-solenoidal-startup-control.md` records the observed suppression
+of the leading startup pressure impulse and its limits. Steps 1–3 in the
+next-action list above are now satisfied. Step 4 (late-time causal attribution)
+and the independent analytic obligations remain open. The new control archive
+reader passes on the real six-archive comparison; this does not change any
+original acceptance gate or claim whole-goal completion.

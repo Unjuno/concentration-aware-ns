@@ -1,0 +1,26 @@
+[
+  {
+    "case": "n64-dt0.001",
+    "exit_code": 0,
+    "complete_log": true,
+    "steps": 1,
+    "converged_steps": 1,
+    "archive_sha256": "bc4f7d57f12e0537087b68717e13bcaa2c21c1e15b697f1921765def09bbe03a"
+  },
+  {
+    "case": "n64-dt0.0005",
+    "exit_code": 0,
+    "complete_log": true,
+    "steps": 2,
+    "converged_steps": 2,
+    "archive_sha256": "41093324a1e5dd81015b208622126c84e3a0b5c95a18f2bd487e3d17f79fa01e"
+  },
+  {
+    "case": "n64-dt0.00025",
+    "exit_code": 0,
+    "complete_log": true,
+    "steps": 4,
+    "converged_steps": 4,
+    "archive_sha256": "39550b5d3c1beb0c22d09e5c83b92db2df2032206dee487d5080da6396c7fc0c"
+  }
+]

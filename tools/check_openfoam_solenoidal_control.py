@@ -63,7 +63,23 @@ def main():
                     'pressure_range': float(np.ptp(p)),
                     'centered_pressure_impulse_rms': float(dt * np.sqrt(np.mean((p - p.mean()) ** 2))),
                 })
-            rows.append({'case': name, 'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(), 'steps': steps})
+            baseline_archive = Path('evidence') / spec['baseline'] / (name + '.tar.gz')
+            with tarfile.open(baseline_archive) as baseline:
+                assert json.load(baseline.extractfile('exit.json'))['exit_code'] == 0
+                baseline_log = baseline.extractfile('log.foamRun').read().decode()
+                assert baseline_log.rstrip().endswith('End')
+                assert completed_times(baseline_log) == times
+                baseline_path = Path(folder) / 'baseline-first-p'
+                baseline_path.write_bytes(baseline.extractfile(format(times[0], '.12g') + '/p').read())
+                bp = values(baseline_path, count)
+                assert np.isfinite(bp).all()
+                impulse = float(dt * np.sqrt(np.mean((bp - bp.mean()) ** 2)))
+                assert impulse > 0
+            rows.append({'case': name, 'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
+                         'baseline_archive_sha256': hashlib.sha256(baseline_archive.read_bytes()).hexdigest(),
+                         'baseline_first_pressure_impulse_rms': impulse,
+                         'first_pressure_impulse_control_over_baseline': steps[0]['centered_pressure_impulse_rms'] / impulse,
+                         'steps': steps})
     result = {'cases': rows, 'quality': 'UNCERTAIN', 'scope': spec['scope'],
               'protocol_sha256': manifest['protocol_sha256'],
               'interpretation': 'Measurements only; no original-MMS accuracy score or automatic causal verdict. RMS uses equal-volume cells of the uniform mesh.'}
