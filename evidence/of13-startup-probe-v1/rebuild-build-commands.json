@@ -1,0 +1,28 @@
+[
+  [
+    "docker",
+    "cp",
+    "71d702054542db1a000512b7bdd45c1e4718d3b1576b2b2d9f3f508cfd1e12a1:/opt/openfoam13/applications/solvers/foamRun",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/of13-startup-probe-rebuild/installed-foamRun"
+  ],
+  [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "runtime/of13-startup-probe/prepare.py",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/of13-startup-probe-rebuild/installed-foamRun",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/of13-startup-probe-rebuild/app"
+  ],
+  [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/bin/bash",
+    "-v",
+    "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/of13-startup-probe-rebuild:/probe",
+    "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "-c",
+    "source /opt/openfoam13/etc/bashrc && cd /probe/app && wmake > /probe/build.log 2>&1"
+  ]
+]

@@ -64,3 +64,24 @@ This establishes an initialization mismatch between continuum solenoidality
 and the solver's initial discrete flux. It still does not establish a solver
 bug or explain the anomalous temporal order; a controlled treatment of the
 startup projection would be needed for that attribution.
+
+A dedicated build command now removes the dependency on a live solver container:
+
+```sh
+python3 -m tools.build_openfoam_startup_probe
+python3 -m tools.run_openfoam_startup_probe
+python3 -m tools.check_openfoam_startup_probe
+```
+
+Use a fresh checkout/work directory with the baseline work cases restored and
+the exact locally available image ID recorded in build-result.json. Existing
+probe work/evidence directories are deliberately rejected. The build tool
+extracts source from a newly created, unstarted container of that exact image,
+removes that temporary container, prepares source on the host, then builds
+without network access. It does not fall back to the current mutable image tag.
+
+A fresh build in `work/of13-startup-probe-rebuild` completed with exit zero and
+produced a byte-identical diagnostic executable. The replay commands, build log
+and hash comparison are archived as `rebuild-*` files. This is reproducibility
+within the same recorded runtime image, not a rebuild of OpenFOAM itself from
+independently fetched sources or a cross-platform reproducibility guarantee.

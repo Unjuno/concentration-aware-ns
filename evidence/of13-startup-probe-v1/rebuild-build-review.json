@@ -1,0 +1,7 @@
+{
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "exit_code": 0,
+  "binary_exists": true,
+  "executable_sha256": "74dbbc98517e3f02b4f28c79ab8f5721e880e62d8aee8b276f9110fce5732341",
+  "matches_original_executable": true
+}
