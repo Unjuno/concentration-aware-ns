@@ -60,3 +60,26 @@ cell velocity are distinct discrete quantities. It motivates analysis of
 ongoing pressure/flux correction and cell-velocity reconstruction. Projecting
 reported outputs would change the evaluated quantity and cannot retrospectively
 turn the original MMS gate into PASS.
+
+## Endpoint pressure-gradient proxy: insufficient explanation
+
+The recorded solver source corrects cell velocity as U=HbyA-rAtU*grad(p).
+As a deliberately limited post-hoc diagnostic, form
+P=-Gc(dt0*p0-3*dt1*p1+2*dt2*p2), and compare it to the longitudinal part L of
+U0-3U1+2U2. This approximates the inverse momentum diagonal by dt and omits
+HbyA and its history. It is not the solver's actual pressure correction.
+
+| Proxy diagnostic | Baseline | Initial-field control |
+|---|---:|---:|
+| Cosine(P,L) | -0.86599 | -0.86533 |
+| Best fitted coefficient for L≈cP | -60.7648 | -60.1229 |
+| Unfitted relative residual | 1.01237 | 1.01248 |
+| Fitted relative residual | 0.50006 | 0.50120 |
+
+The unfitted proxy fails to explain the observed defect; its negative fit is
+not a physical coefficient or evidence of a sign bug. Even fitting a scalar
+leaves about half the norm unexplained. A correlation after fitting cannot
+replace reconstruction of the actual HbyA, rAtU and pressure/flux correction
+terms. The data therefore does not support attributing the discrepancy to the
+endpoint pressure gradient alone. Further instrumentation must retain these
+terms and distinguish endpoint algebra from accumulated evolution.

@@ -58,6 +58,14 @@
           "first_order_defect_energy_fraction": 0.0012635076229149244
         }
       ],
+      "pressure_gradient_proxy": {
+        "proxy": "-centered_grad of (dt0*p0 - 3*dt1*p1 + 2*dt2*p2); rAU approximated by dt, not measured",
+        "cosine_with_longitudinal_defect": -0.8659919322134072,
+        "best_fit_coefficient": -60.76475212159114,
+        "unfitted_relative_residual": 1.0123668120617213,
+        "fitted_relative_residual": 0.5000579699807846,
+        "scope": "Post-hoc correlation only. HbyA, variable rAU and pressure/flux history are not reconstructed."
+      },
       "centered_divergence_decomposition": {
         "coarse_difference": {
           "real_stencil_symbol_relative_defect": 5.849530277564869e-16,
@@ -164,6 +172,14 @@
           "first_order_defect_energy_fraction": 0.0012862316214091373
         }
       ],
+      "pressure_gradient_proxy": {
+        "proxy": "-centered_grad of (dt0*p0 - 3*dt1*p1 + 2*dt2*p2); rAU approximated by dt, not measured",
+        "cosine_with_longitudinal_defect": -0.8653305744011924,
+        "best_fit_coefficient": -60.122859280052324,
+        "unfitted_relative_residual": 1.0124801456028045,
+        "fitted_relative_residual": 0.5012015532762124,
+        "scope": "Post-hoc correlation only. HbyA, variable rAU and pressure/flux history are not reconstructed."
+      },
       "centered_divergence_decomposition": {
         "coarse_difference": {
           "real_stencil_symbol_relative_defect": 5.844696790843362e-16,
