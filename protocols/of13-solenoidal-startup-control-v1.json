@@ -1,0 +1,14 @@
+{
+  "status": "frozen before solver execution",
+  "purpose": "Test whether eliminating initial discrete divergence removes the leading inverse-dt startup pressure response",
+  "n": 64,
+  "dt": [0.001, 0.0005, 0.00025],
+  "end": 0.001,
+  "baseline": "of13-startup-time-v1",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "change": "Replace initial U only with the recorded minimum-L2 centered-divergence-free projection; retain pressure=0, no initial phi, forcing and tight solver settings",
+  "input_check": "Projected U must match recorded hash; real-space divergence maximum below 1e-12 and unchanged periodic boundaries",
+  "prediction": "The leading fixed initial-divergence pressure impulse is removed; first-step dt times centered pressure should decrease toward zero with dt instead of the original approximately constant impulse",
+  "measurements": "All step pressure ranges, first-step centered pressure impulse norm, velocity increment from each case's own initial field, exits and per-step convergence. Preserve deviations from prediction.",
+  "scope": "Changed initial value problem, not an acceptance run for the original continuum MMS. Startup response only; does not establish the cause of late-time order or propose a production fix."
+}

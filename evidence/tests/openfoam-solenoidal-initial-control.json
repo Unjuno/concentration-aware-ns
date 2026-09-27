@@ -1,0 +1,11 @@
+{
+  "source_U_sha256": "d2f715af44de514f8a40f9bd72a947f30cdb3ed71e56547b33837a52d6f1f0d1",
+  "control_U_sha256": "936c07f7147c647a2d5dfe1827df93e8230e62fab185c582f59f9e25df4db47e",
+  "relative_initial_field_change": 0.0026324037559616546,
+  "initial_divergence_max": 0.05672386630871995,
+  "control_divergence_max": 9.159339953157541e-15,
+  "normalized_orthogonality_defect": 5.201012037187331e-14,
+  "zero_symbol_modes_preserved": 8,
+  "scope": "Orthogonal projection onto centered discrete divergence kernel on uniform periodic grid; changed initial condition is a causal diagnostic, not the original MMS acceptance case",
+  "solver_executed": false
+}
