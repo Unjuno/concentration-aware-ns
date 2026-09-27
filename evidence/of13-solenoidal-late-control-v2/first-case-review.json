@@ -1,0 +1,29 @@
+{
+  "container": "80967a78681c38d1e90beeec002b881e4d9a476048f70ae62981a223a36ad16d",
+  "image": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-27T16:03:20.480224295Z",
+    "FinishedAt": "2026-09-27T16:08:58.60376317Z"
+  },
+  "endpoint_hashes": {
+    "evidence/of13-solenoidal-late-control-v2/n64-dt0.001.tar.gz": {
+      "0.05/U": "7bf1193525cd61c7b329c7f4258ad2a9cdf6f62e127058333dbc2618c389b76c",
+      "0.05/p": "62171469640a8e5acd06149d8e4aa7cfac0857a6b556f7cf96daee118dbd056d"
+    },
+    "evidence/of13-solenoidal-late-control-v1/n64-dt0.001-unverified-exit.tar.gz": {
+      "0.05/U": "7bf1193525cd61c7b329c7f4258ad2a9cdf6f62e127058333dbc2618c389b76c",
+      "0.05/p": "62171469640a8e5acd06149d8e4aa7cfac0857a6b556f7cf96daee118dbd056d"
+    }
+  },
+  "endpoints_identical": true,
+  "scope": "First case only; identical archived fields do not recover the missing original exit status or establish temporal convergence."
+}

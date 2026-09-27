@@ -43,3 +43,12 @@ revalidated before launch. The v2 runner is in progress; use
 `python3 -m tools.check_openfoam_solenoidal_late --study of13-solenoidal-late-control-v2`
 only after all three archives have completed. Do not mix unverified v1 output
 into the complete v2 triple.
+
+### First v2 case complete
+
+The dt=0.001 retry completed with exit 0 and 50/50 converged steps. Retained
+Docker state independently confirms exited/0 on the pinned image. Its endpoint
+U and p bytes exactly match the preserved unverified-exit v1 fields; the v1
+missing exit status remains missing. Archive and container evidence are in
+`evidence/of13-solenoidal-late-control-v2/first-case-review.json` and `runs.json`.
+The dt=0.0005 case has started. No three-case temporal conclusion is available.

@@ -1,0 +1,10 @@
+[
+  {
+    "case": "n64-dt0.001",
+    "exit_code": 0,
+    "complete_log": true,
+    "steps": 50,
+    "converged_steps": 50,
+    "archive_sha256": "d8a7ca3f37f46fe52828b06344831b52f2a701d4fc6c8cc86e87545b2c79f8f6"
+  }
+]
