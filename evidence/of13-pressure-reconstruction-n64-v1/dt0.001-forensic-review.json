@@ -1,0 +1,26 @@
+{
+  "quality": "UNCERTAIN",
+  "case": "n64-dt0.001; runner/container exit unavailable",
+  "observed": {
+    "foamRun_log_ends_with_End": true,
+    "converged_steps": 50,
+    "write_time_diagnostic_calls": 14
+  },
+  "algebra": {
+    "velocity_update_identity_relative_l2": 2.1209487917451514e-16,
+    "velocity_update_identity_max_abs": 8.881784197001252e-16,
+    "post_constraints_relative_change": 0.0,
+    "final_U_vs_after_constraints_relative_l2": 0.0,
+    "pressure_relaxation_relative_change": 0.0,
+    "final_p_vs_after_relax_relative_l2": 0.0,
+    "corrected_face_flux_vs_phi_relative_l2": 0.0
+  },
+  "same_dt_noninterference": {
+    "U_byte_identical_to_baseline": true,
+    "p_byte_identical_to_baseline": true,
+    "phi_byte_identical_to_baseline": true
+  },
+  "diagnostic_archive_sha256": "18e87c88e67cf0cb9ccaacbbc50c9f16da2f1a208562ca4e261636a2e12e63fd",
+  "baseline_archive_sha256": "d038f14add5081d9ec1015c4a7c87edc4e91ec148aa97fb9eccb32257e37b543",
+  "interpretation": "Endpoint algebra and same-dt noninterference only; unknown process exit, no earlier correction history, and incomplete dt triple."
+}

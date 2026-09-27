@@ -1,0 +1,23 @@
+{
+  "status": "frozen before diagnostic build and solver execution",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "cases": [
+    "n64-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "baseline": "of13-iteration-sensitivity-v1",
+  "output_time": 0.05,
+  "only_change": "Compile the same write-time diagnostic snapshots that passed n=16 byte-identity pilot; retain original solver inputs, image and library installation.",
+  "measurements": [
+    "HbyA, rAU, rAtU, relaxed pressure, pressure gradient and rAtU*grad(p) at final write-time correction call",
+    "face flux before/after pressure solve",
+    "cell velocity before/after boundary and fvConstraints operations",
+    "same-dt byte identity of endpoint U,p,phi"
+  ],
+  "scope": "Endpoint correction attribution across three dt values. Does not reconstruct trajectory history or assert an upstream defect.",
+  "source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+  "retry_of": "of13-pressure-reconstruction-n64-v1",
+  "retry_reason": "v1 runner used --rm and aborted at docker inspect after 50-step log ended in End; retain containers and write exit evidence before postprocessing",
+  "study": "of13-pressure-reconstruction-n64-v2"
+}

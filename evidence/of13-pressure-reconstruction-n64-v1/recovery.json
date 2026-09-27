@@ -1,0 +1,11 @@
+{
+  "case": "n64-dt0.001",
+  "quality": "UNCERTAIN",
+  "runner_exit": "unavailable; runner aborted while inspecting a --rm container after docker run returned",
+  "observed": {
+    "foamRun_log_ends_with_End": true,
+    "converged_steps": 50,
+    "write_time_diagnostic_calls": 14
+  },
+  "archive": "n64-dt0.001-unverified-exit.tar.gz"
+}

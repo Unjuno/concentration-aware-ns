@@ -1,0 +1,18 @@
+{
+  "protocol": "protocols/of13-pressure-reconstruction-n64-v2.json",
+  "protocol_sha256": "e5e28d9565ec69aa55b09ccce7c454da51b2185e61149910c1e440a57b6985b2",
+  "diagnostic_build": {
+    "status": "PASS",
+    "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "original_source_sha256": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+    "diagnostic_source_sha256": "93296a20bf95eff44e957d57d91fc1c7183cdc2b1b17ec41d1769e3ac0248ab2",
+    "matches_n16_pilot_source": true,
+    "library_sha256": "93dff1fc99558a6f9073d819ea91af72783cf3e38e1e172f3817e06f0c2a76a8"
+  },
+  "case_execution": {
+    "status": "NOT_STARTED",
+    "cases": [],
+    "reason": "After the diagnostic library build, case execution could not be resumed: Docker image-inspect calls timed out before the case loop. No n64-v2 solver case was started."
+  },
+  "next_action": "Retry the frozen n64-v2 case triple when the Docker daemon responds reliably; the runner verifies and reuses the built diagnostic library."
+}
