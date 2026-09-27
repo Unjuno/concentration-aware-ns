@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "cases": [
+    {
+      "case": "original-continuous",
+      "final_index": 4,
+      "raw_archive_checks_pass": true
+    },
+    {
+      "case": "original-resumed",
+      "final_index": 5,
+      "raw_archive_checks_pass": true
+    },
+    {
+      "case": "output-control-continuous",
+      "final_index": 4,
+      "raw_archive_checks_pass": true
+    },
+    {
+      "case": "output-control-resumed",
+      "final_index": 4,
+      "raw_archive_checks_pass": true
+    }
+  ],
+  "common_index_restart_files_byte_identical": true,
+  "scope": "Raw archive check before upstream report; not independent solver validation"
+}

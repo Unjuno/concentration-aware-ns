@@ -50,5 +50,9 @@ it does not certify the simulator's physical accuracy or a general repair.
 This is a fixed-dt, static singlezone result. Moving meshes, multizone,
 variable-step accumulation and adjoints are not tested. The diagnostic formula
 is unsuitable as a general variable-step fix. Existing source/boundary timing
-issues and the meaning of absolute endpoint labels remain separate. No new
-upstream post has yet been made for this stopping experiment.
+issues and the meaning of absolute endpoint labels remain separate. The stopping experiment was reported as a focused follow-up on existing
+[SU2 #2353](https://github.com/su2code/SU2/issues/2353#issuecomment-5851174679).
+The submitted body and API readback are preserved; the readback matches.
+Before posting, raw archives were checked again for stopping indices, residuals,
+exit/log conditions and byte-identical common-index restart files. This review
+is recorded in `publication-review.json`; it does not validate a general repair.
