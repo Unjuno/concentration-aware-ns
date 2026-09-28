@@ -83,14 +83,36 @@ of a vanishing potential is zero.
 
 The source gives the chart identity and inner annulus bounds for the initial
 copy waves, actual mean families, particular waves, and signed exterior terms.
-The existing Lean extension proves the copy-sum inner-hole implication. It
-does not yet instantiate one common `c₀` for the selected initial and every
-positive stage, transfer local zero through the selected cutoff sums and spatial
-curl, or prove the final time/spatial localization equality on the full cusp
-tube. This note supplies a classical quantitative geometry lemma for that
-formal proof; it is not an end-to-end Lean result or an executable numerical
-certificate. The constants depend on noncomputable selected source data, so no
-numerical tube radius is claimed.
+A source reread at the same pin now identifies one stage-independent candidate
+coefficient for all primitive corrections:
+
+    c₀ = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0.
+
+The copy term uses `InitialPhysicalData.potential_zero_exterior` and its
+physical-copy annulus; every positive particular/signed stage is zero outside
+the same nominal active annulus; and the actual mean stream stages share the
+fixed initialization-patch lower radius. The existing Lean extension proves
+the generic copy-sum inner-hole implication, while upstream assembly lemmas
+already provide pointwise or germ-zero statements for the actual primitive
+terms. These facts strengthen the support-hole premise beyond an axis-only
+germ argument.
+
+The remaining gap is now specifically the transfer to the complete selected
+field: package the uniform stage-zero region through the selected infinite
+cutoff sums and derivatives of the potential sum, then through direct-field,
+periodic spatial localization and time activation. No end-to-end Lean theorem
+yet states that the final activated velocity equals its base on the full cusp
+tube. This is not an executable numerical certificate; the selected constants
+are existential, so no numerical tube radius is claimed.
+
+Source lemmas are pinned in [`InitialPhysicalData.lean`
+(`potential_zero_exterior`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/InitialPhysicalData.lean),
+[`ActualCandidateAssembly.lean`
+(`particular_zero_germs`, `signed_zero_germs`, `positivePotential_curl`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCandidateAssembly.lean),
+[`ActualCurrentWaveSupport.lean`
+(`current_field_active_germs`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCurrentWaveSupport.lean),
+and [`ActualMeanStageData.lean`
+(`innerRadius`, `coefficient_vanishes`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualMeanStageData.lean).
 
 The algebraic identities `2D+2h=1`, the chart-factor identity, and the
 derivative factorization are independently checked by

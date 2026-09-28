@@ -315,3 +315,68 @@ report/test files exactly; all 26 report steps and 85 tests passed. This proves
 the bounded Python postprocessing replay, not solver/training/Lean reproduction
 or completion of the support-hole-to-final-field theorem. The saved run and
 hashes are under `evidence/clean-export-2026-09-28-cusp-tube/`.
+
+## Revision 21 — late-September source and research check
+
+The current primary-source refresh confirms the OpenAI NavierStokesAndEuler
+repository still reports zero `sorry` declarations and formalizes the forced
+Navier–Stokes alternatives (C)/(D), plus unforced Euler results; Lean checking
+validates the encoded statements against Lean's kernel but does not by itself
+establish that the paper's encoding matches every intended analytic/physical
+claim. The Clay Institute's 11 September statement says the problem has
+"apparently been settled" and that evaluation/credit will be deliberately
+unhurried. No newer official evaluation was found in this pass.
+
+New September papers/preprints include a forced-data distribution result
+(arXiv:2609.10262), a neural-forcing candidate/certification proposal
+(arXiv:2609.23934), and a shell-model cascade study (arXiv:2609.26790).
+They extend mathematical discussion of force topology, fixed-force validation,
+and scale transfer. The latter is a shell-model result, not a theorem about
+molecular trajectories. None establishes particle alignment, deterministic
+molecular positions, or a velocity-induced collapse of material viscosity;
+those remain separate physical hypotheses requiring a kinetic/constitutive
+model and experiment. Numerical simulation may itself be wrong or
+under-resolved and is retained only as conditional evidence.
+
+The current OpenFOAM Foundation 13 matrix remains incomplete: four of six
+uniform cases have complete archives; n=64, dt=0.0005 has a preserved partial
+log with 36 observed steps and no verified container exit, while dt=0.00025
+has not run. A zero-CPU orphan Docker client and a long-running `docker info`
+call remain visible, with no `foamRun` process observed. Container/daemon state
+is unknown. Do not restart OrbStack or disturb unrelated containers without
+explicit authorization; resume only after read-only container state queries
+work, preserving the partial evidence.
+
+The concrete result relevant to the initial proposal is still bounded: the
+completed n=16/n=32 cases pass standard acceptance but fail local-quality
+acceptance, whereas n=64/n=128 pass both. This is a resolution-sensitive
+benchmark outcome, not a solver defect or blow-up signal. Finish the frozen
+time-refinement matrix and dedicated AMR budgets, then complete the SU2 and
+PhysicsNeMo audit before considering any additional upstream report. Recheck
+existing issue/PR status first to avoid duplicates.
+
+## Revision 22 — stage-uniform primitive support hole
+
+A pinned-source reread narrowed the remaining analytic gap. The copy,
+particular, signed and mean correction primitives admit a shared positive
+inner-hole coefficient
+
+    c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0,
+
+where `leftRadius` and `patch.a` are the selected positive source constants.
+The initial physical copy annulus supplies the first term; every positive
+particular/signed stage lies outside the same nominal active annulus; and the
+mean stream/direct families use the fixed initialization-patch radius. This
+corrects Revision 19's implication that selected-uniform primitive constants
+were still missing. The coefficient is existential and non-numerical.
+
+The remaining analytic target is now the passage from these stage-uniform zero
+regions to the complete selected weighted series, its spatial curl, direct
+field sum, periodic spatial localization and final time activation on a
+quantitative cusp tube. Existing source lemmas provide component decompositions
+and per-stage zero germs, but no end-to-end theorem has yet been checked for the
+final activated velocity. Keep the packet estimate conditional, do not claim a
+Lean proof of the tube, and do not infer molecular alignment or constitutive
+viscosity change. The exact source map and corrected status are recorded in
+`docs/packet-constant-dependencies.md` and
+`docs/support-hole-tube-geometry.md`.
