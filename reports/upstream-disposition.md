@@ -45,3 +45,21 @@ Current target/default-branch heads and focused duplicate searches are recorded
 in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`. The
 inventory is intentionally scoped and is not an exhaustive review of every open
 issue in the three repositories.
+
+The issue #2007 reproduction is now directly rerunnable with
+`work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007`;
+its source hash, odd/even controls, and transpose results are in
+`evidence/upstream-refresh/physicsnemo-issue-2007-reproduction.json`. As of the
+latest live metadata check, issue #2007 remains open and PR #2008 remains open,
+unmerged, and behind `main`. Since the existing PR contains the targeted fix,
+we do not file a duplicate issue or PR. The full upstream test suite remains
+unrun, so this disposition is limited to the focused reproducer and current
+targeted review.
+
+The same reproducer was run against the exact PR #2008 head
+`7407608723062dc11ba5332e9ff3774f42bb02d9`. Its source hash is
+`f66a9028c0a18804471c260a32aed1e3b0e9b59655df0c821d4bb904cdd8c983`; the odd
+and even axis-mode controls and odd/even transpose controls all pass. The
+separate result is `evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json`.
+This verifies the focused counterexample is repaired by the existing diff, not
+that the whole framework or PR has passed its full test suite.

@@ -274,3 +274,17 @@ their solver verdicts do not change. Classify this as our evaluation-harness
 bug, not an upstream solver defect. Details and the rerunnable audit artifact
 are in `reports/internal-gate-self-audit-2026-09-28.md` and
 `evidence/tests/high-gradient-time-sequence.json`.
+
+## Revision 18 — rerunnable PhysicsNeMo odd-width audit
+
+The targeted PhysicsNeMo spectrum defect is already tracked upstream in
+Issue #2007 with fix PR #2008, so no duplicate post is warranted. The local
+audit previously retained outputs and source hashes but lacked its exact
+reproducer. Added a CPU script that loads the unmodified `power_spectrum.py`
+directly, checks even/odd axis-mode controls and deterministic transpose
+symmetry, and writes source-hashed evidence. The current main/release source
+file hash still matches the audited defective implementation; PR #2008 remains
+the existing remediation path. The exact PR head was independently run through
+the same even/odd and transpose controls and suppressed the counterexample;
+that does not substitute for its full upstream CI/test suite or merge review.
+Full upstream-suite validation remains open.

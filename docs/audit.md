@@ -105,6 +105,39 @@ issue or code change is justified. Reproduction, source hashes, environment and
 scope are recorded in
 `evidence/upstream-refresh/physicsnemo-power-spectrum-odd-width-2026-09-28.json`.
 
+The focused CPU reproducer is now checked in as
+`tools/reproduce_physicsnemo_issue_2007.py`. With the unmodified source already
+under `work/physicsnemo-source` and the recorded `work/physicsnemo-env`, run
+`work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007`.
+It emits `evidence/upstream-refresh/physicsnemo-issue-2007-reproduction.json`,
+including the source-file SHA256, Torch version, even/odd axis-wave controls,
+and deterministic transpose-symmetry checks. The reproduced file hash is
+`13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`, which
+matches the recorded v2.2.2 and current-main target file. This improves
+reproduction of the existing issue; it is not a full upstream suite run and
+does not justify a duplicate report.
+
+The same tool also tested the exact PR #2008 head
+`7407608723062dc11ba5332e9ff3774f42bb02d9` with `--expect-fixed`. The odd/even
+axis-wave and transpose controls pass on that version; its source hash and
+results are preserved in
+`evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json`. This
+confirms the existing patch resolves this focused counterexample, while leaving
+full-suite and merge/review status unresolved.
+
+To regenerate the focused fix-validation artifact, fetch only the target file
+from the pinned PR head and run the same tool:
+
+```sh
+gh api 'repos/NVIDIA/physicsnemo/contents/physicsnemo/metrics/general/power_spectrum.py?ref=7407608723062dc11ba5332e9ff3774f42bb02d9' --jq .content \
+  | python3 -c 'import base64,sys;sys.stdout.buffer.write(base64.b64decode(sys.stdin.read()))' \
+  > /tmp/physicsnemo-pr2008-power_spectrum.py
+work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007 \
+  --source-file /tmp/physicsnemo-pr2008-power_spectrum.py --expect-fixed \
+  --source-reference 'NVIDIA/physicsnemo PR #2008 head 7407608723062dc11ba5332e9ff3774f42bb02d9' \
+  --output evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json
+```
+
 The related periodic-gradient concern is also already tracked: PhysicsInformer
 Issue #2001 identifies the caller-facing periodic assumption, while #1852 and
 open draft PR #1853 concern a lower-level nonperiodic mode. Our current MMS is
