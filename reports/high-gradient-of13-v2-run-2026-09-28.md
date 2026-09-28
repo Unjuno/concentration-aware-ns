@@ -128,3 +128,33 @@ container removal could not be verified, so this case is INCOMPLETE with no
 quality verdict. Its inputs, command and raw logs are preserved. The smaller-dt
 case and all dedicated high-gradient AMR budgets remain unrun. Do not interpret
 this runtime stall as an OpenFOAM solver defect or a numerical result.
+
+## Docker observability follow-up (2026-09-28)
+
+Read-only host checks found the original `docker run` client (PID 91031) still
+waiting, but no host `foamRun` process. The case log remains unchanged at
+11:51:31 JST and ends in PIMPLE iteration 5; there is no `exit.json`. OrbStack
+reports `Running`. The selected Docker context is `orbstack` and points to
+`/Users/taka/.orbstack/run/docker.sock`, but `orbctl doctor` reports that the
+PATH-selected CLI is the Nix Docker binary rather than OrbStack's wrapper.
+Several earlier `docker ps`/`inspect` requests are also still waiting. This
+documents a CLI PATH inconsistency alongside an unresponsive API path; it does
+not establish which caused the stall or whether the container remains alive.
+No process was signalled and OrbStack was not restarted.
+
+The runner now accepts an absolute `CANS_DOCKER_CLI` override, resolves and
+records the Docker context (or accepts `CANS_DOCKER_CONTEXT`), and pins that
+context on every engine command. `CANS_OF13_RUN_ROOT` selects a fresh run
+directory; `CANS_OF13_EVIDENCE_ROOT` selects a separate publication directory,
+and archival refuses to overwrite a nonempty custom evidence directory. The next
+run's environment manifest records the invoked CLI path, resolved executable,
+executable SHA-256, version and context. For this host the intended explicit selectors are
+`CANS_DOCKER_CLI=/Users/taka/.orbstack/bin/docker` and
+`CANS_DOCKER_CONTEXT=orbstack`. A later attempt should set unique
+`CANS_OF13_RUN_ROOT` and `CANS_OF13_EVIDENCE_ROOT` paths so the partial run and
+published archives remain intact. The existing frozen run manifest describes
+the earlier run and is not retroactively rewritten. Seven unit tests cover CLI,
+context and collision-safe output path selection; the full repository suite passes 82 tests. Before any
+continuation, the Docker API and this named container still need an authoritative
+state check. Keep the partial case and use a fresh, collision-free run directory
+if a rerun becomes safe; do not infer completion from the client timeout.

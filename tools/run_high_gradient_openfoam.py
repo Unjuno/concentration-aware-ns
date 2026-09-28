@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -18,10 +19,51 @@ def sha256(path):
     return h.hexdigest()
 
 
+def resolve_docker_cli():
+    """Resolve and validate the Docker CLI, preferring an explicit absolute path."""
+    requested = os.environ.get("CANS_DOCKER_CLI")
+    if requested:
+        candidate = Path(requested).expanduser()
+        if not candidate.is_absolute():
+            raise ValueError("CANS_DOCKER_CLI must be an absolute path")
+    else:
+        found = shutil.which("docker")
+        if not found:
+            raise FileNotFoundError("docker CLI was not found on PATH")
+        candidate = Path(found)
+
+    candidate = candidate.absolute()
+    resolved = candidate.resolve(strict=True)
+    if not resolved.is_file() or not os.access(resolved, os.X_OK):
+        raise ValueError(f"Docker CLI is not an executable file: {candidate}")
+    return str(candidate), str(resolved)
+
+
+def resolve_docker_context(docker_cli):
+    """Resolve the CLI's context so every engine command can pin it explicitly."""
+    requested = os.environ.get("CANS_DOCKER_CONTEXT")
+    if requested:
+        context = requested.strip()
+    else:
+        context = subprocess.run(
+            [docker_cli, "context", "show"], capture_output=True, text=True,
+            timeout=8, check=True,
+        ).stdout.strip()
+    if not context:
+        raise ValueError("Docker context resolved to an empty name")
+    return context
+
+
+def resolve_run_root():
+    return Path(os.environ.get(
+        "CANS_OF13_RUN_ROOT", "work/of13-high-gradient-v2"
+    )).expanduser().resolve()
+
+
 def main():
     protocol_path = Path("protocols/high-gradient-of13-v2.json")
     spec = json.loads(protocol_path.read_text())
-    root = Path("work/of13-high-gradient-v2").resolve()
+    root = resolve_run_root()
     dirty = subprocess.run(
         ["git", "status", "--porcelain", "--untracked-files=all"],
         capture_output=True, text=True, check=True,
@@ -31,8 +73,14 @@ def main():
     source_commit = subprocess.run(
         ["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True
     ).stdout.strip()
+    docker_cli, docker_cli_resolved = resolve_docker_cli()
+    docker_context = resolve_docker_context(docker_cli)
+    docker = [docker_cli, "--context", docker_context]
+    docker_cli_version = subprocess.run(
+        [*docker, "--version"], capture_output=True, text=True, timeout=8, check=True
+    ).stdout.strip()
     image_info = subprocess.run(
-        ["docker", "image", "inspect", "concentration-aware-ns:of13",
+        [*docker, "image", "inspect", "concentration-aware-ns:of13",
          "--format", "{{.Id}} {{.Os}}/{{.Architecture}}"],
         capture_output=True, text=True, timeout=8, check=True,
     ).stdout.strip()
@@ -42,6 +90,11 @@ def main():
         "source_commit": source_commit,
         "container_image_id": image_id,
         "container_platform": image_platform,
+        "docker_cli": docker_cli,
+        "docker_cli_resolved": docker_cli_resolved,
+        "docker_cli_sha256": sha256(docker_cli_resolved),
+        "docker_cli_version": docker_cli_version,
+        "docker_context": docker_context,
         "protocol_sha256": sha256(protocol_path),
         "scope": "OpenFOAM Foundation 13 high-gradient uniform-grid matrix",
     }, indent=2) + "\n")
@@ -61,7 +114,7 @@ def main():
             for path in sorted(case.rglob("*")) if path.is_file()
         }, indent=2) + "\n")
         command = [
-            "docker", "run", "--rm", "--name", f"cans-hg-{case.name}",
+            *docker, "run", "--rm", "--name", f"cans-hg-{case.name}",
             "--network", "none", "--entrypoint", "/bin/bash",
             "-v", f"{case}:/case", image_id, "-c",
             "useradd -o -u \"$1\" -m runner && su runner -s /bin/bash -c "

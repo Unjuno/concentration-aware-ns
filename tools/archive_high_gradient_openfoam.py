@@ -174,10 +174,26 @@ def archive_completed(work_root, evidence_root, protocol_path):
     return manifest
 
 
+def resolve_archive_roots():
+    work_root = Path(os.environ.get(
+        "CANS_OF13_RUN_ROOT", "work/of13-high-gradient-v2"
+    )).expanduser().resolve()
+    evidence_override = os.environ.get("CANS_OF13_EVIDENCE_ROOT")
+    evidence_root = Path(
+        evidence_override or "evidence/of13-high-gradient-v2"
+    ).expanduser().resolve()
+    if evidence_override and evidence_root.exists() and any(evidence_root.iterdir()):
+        raise FileExistsError(
+            f"refusing to overwrite a nonempty evidence directory: {evidence_root}"
+        )
+    return work_root, evidence_root
+
+
 def main():
+    work_root, evidence_root = resolve_archive_roots()
     manifest = archive_completed(
-        "work/of13-high-gradient-v2",
-        "evidence/of13-high-gradient-v2",
+        work_root,
+        evidence_root,
         "protocols/high-gradient-of13-v2.json",
     )
     print(json.dumps({
