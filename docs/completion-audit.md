@@ -24,7 +24,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes; all 93 artifact links match. Current verification reports 73 unittest-discovery tests and 75 pytest tests plus five subtests. Full current-tree clean export and solver-build reproduction remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -221,11 +221,11 @@ Required next evidence, in dependency order:
    the t=0.05 temporal result. Avoid treating a changed initial-value problem
    as a repair of the original benchmark or assuming its result in advance.
 
-The current common replay has 25 passing steps and 59 tests. It includes a fresh
-six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
-exact uniform-prefix threshold algebra, and the localized high-gradient MMS
-plus its independent symbolic-versus-NumPy derivative comparison. It excludes
-solver runs for that new MMS case.
+At the historical update, the common replay had 25 passing steps and 59 tests.
+It includes a fresh six-archive OpenFOAM comparison reconstruction, the SU2
+output-clock replay, exact uniform-prefix threshold algebra, and the localized
+high-gradient MMS plus its independent symbolic-versus-NumPy derivative
+comparison. It excludes solver runs for that new MMS case.
 The analytic actualProfile moment/amplitude obligation and non-effective
 packet constants remain unresolved. Whole-goal completion is not established.
 
@@ -401,7 +401,7 @@ derivative.
 
 This case is now in `docs/protocol.md`, `tools/check_high_gradient_mms.py`,
 `tests/test_high_gradient_mms.py` and `evidence/tests/high-gradient-mms.json`.
-The locked report replay now has 25 successful steps and 59 tests. A second
+The locked report replay then had 25 successful steps and 59 tests. A second
 implementation evaluates fields from hand-coded Fourier derivative formulas;
 direct SymPy differentiation agrees for velocity, gradient, vorticity and
 forcing at 65 seeded points for each `N`, with maximum component error below
@@ -491,3 +491,14 @@ INCOMPLETE/UNCERTAIN, with no solver-defect or physical-singularity inference.
 The completed n=128 archive is published as two checksummed Zstandard parts
 under GitHub's per-file limit, with reconstruction instructions in
 `evidence/of13-high-gradient-v2/README-n128-archive.md`.
+
+### Current locked replay refresh, 2026-09-28
+
+The locked same-host environment replayed all 25 configured report steps with
+zero failures. Its unittest discovery ran 73 tests, and the artifact audit
+matched all 93 links. The separate current verification environment passed 75
+pytest tests and five subtests. The refreshed high-gradient MMS replay log
+now includes selected-point Frobenius-gradient lower bounds; its independent
+reference-comparison replay log records NumPy 2.5.2 from the locked environment. This replay
+updates archived analytic/report artifacts only; it does not rerun any solver,
+continue the stalled Docker case, or upgrade a scientific verdict.
