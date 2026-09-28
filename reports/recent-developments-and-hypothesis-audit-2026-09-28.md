@@ -199,3 +199,24 @@ must not be silently substituted into an in-progress run; a future replication
 should record and compare the exact tagged source/package while preserving the
 current image digest. Do not conflate Foundation OpenFOAM with the distinct
 OpenCFD v2606 line. Sources: [Foundation v13 patches](https://openfoam.org/news/v13-patch/), [OpenCFD v2606 release](https://www.openfoam.com/news/main-news/openfoam-v2606).
+
+## Late 28 September literature check: a discrete cascade model
+
+Cheskidov, Dai, and Palasek submitted *Cascade mechanisms for Navier–Stokes
+blow-up* on 22 September ([arXiv:2609.26790](https://arxiv.org/abs/2609.26790)).
+Its new finite-time result is for a mixed Desnyansky–Novikov–Obukhov dyadic
+shell model: finitely supported initial modal amplitudes, no forcing, and a
+forward cascade toward higher shells. The paper says the full proof of this
+theorem will appear in a companion paper. The authors explicitly distinguish
+these shell-model results from the full Navier–Stokes PDE and note that most
+negative dyadic results have not transferred to that PDE setting.
+
+This offers a mathematically precise scale-transfer analogy, not evidence that
+continuum fluid particles physically align. Shell amplitudes are not molecular
+positions or an ensemble probability law. For our benchmark it suggests a
+possible later diagnostic—time-resolved energy by spectral band and cumulative
+inter-band flux—alongside local gradient and vorticity errors. Such a diagnostic
+would need a verified energy/work balance (including external-force work),
+resolution controls, and a statement that finite-resolution flux is not a
+continuum singularity certificate. It does not change any current solver
+verdict or justify an upstream defect report.
