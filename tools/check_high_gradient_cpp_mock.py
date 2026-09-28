@@ -2,7 +2,9 @@
 
 This is an offline syntax/algebra check, not an OpenFOAM header or solver test.
 """
+import hashlib
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -14,10 +16,26 @@ from tools.high_gradient_reference import fields
 from tools.openfoam_case import generate
 
 
-def main():
-    compiler = shutil.which("c++") or shutil.which("clang++") or shutil.which("g++")
-    if not compiler:
+def resolve_compiler():
+    requested = os.environ.get("CXX")
+    if requested:
+        found = requested if Path(requested).is_absolute() else shutil.which(requested)
+    else:
+        found = None
+        for name in ("c++", "clang++", "g++"):
+            found = shutil.which(name)
+            if found:
+                break
+    if not found:
         raise RuntimeError("no host C++ compiler found")
+    compiler = Path(found).expanduser().resolve(strict=True)
+    if not compiler.is_file() or not os.access(compiler, os.X_OK):
+        raise ValueError(f"C++ compiler is not executable: {found}")
+    return str(compiler)
+
+
+def main():
+    compiler = resolve_compiler()
     n, frequency, now = 4, 4, 0.037
     rng = np.random.default_rng(8831)
     points = rng.uniform(0, 2*np.pi, (48, 3))
@@ -41,8 +59,11 @@ class vector { scalar a[3]; public:
  vector(scalar x=0,scalar y=0,scalar z=0):a{x,y,z}{}
  scalar& operator[](label i){return a[i];} scalar operator[](label i) const{return a[i];}
  scalar x()const{return a[0];} scalar y()const{return a[1];} scalar z()const{return a[2];}
+ vector& operator+=(const vector& b){for(int i=0;i<3;++i)a[i]+=b[i];return *this;}
  vector& operator-=(const vector& b){for(int i=0;i<3;++i)a[i]-=b[i];return *this;}
 };
+inline vector operator+(vector a,const vector& b){return a+=b;}
+inline vector operator-(vector a,const vector& b){return a-=b;}
 inline vector operator*(scalar s,const vector& v){return vector(s*v[0],s*v[1],s*v[2]);}
 inline vector operator*(const vector& v,scalar s){return s*v;}
 using vectorField=std::vector<vector>; using scalarField=std::vector<scalar>;
@@ -77,8 +98,10 @@ BODY
     error=float(np.max(np.abs(actual-expected)))
     version=subprocess.run([compiler,"--version"],capture_output=True,text=True,check=True).stdout.splitlines()[0]
     result={"scope":"Generated codeAddSup C++ body with minimal mock types; no OpenFOAM headers or solver.",
-            "compiler":version,"seed":8831,"points":len(points),"time":now,"N":frequency,
-            "fvModels_sha256":__import__("hashlib").sha256(source.encode()).hexdigest(),
+            "compiler":version,"compiler_path":compiler,
+            "compiler_sha256":hashlib.sha256(Path(compiler).read_bytes()).hexdigest(),
+            "seed":8831,"points":len(points),"time":now,"N":frequency,
+            "fvModels_sha256":hashlib.sha256(source.encode()).hexdigest(),
             "max_absolute_force_error":error,"tolerance":1e-10,"passed":error<1e-10,
             "limitations":"Does not establish compatibility with Foundation headers or live solver source sign convention."}
     out=Path("evidence/tests/high-gradient-cpp-mock.json");out.parent.mkdir(parents=True,exist_ok=True)

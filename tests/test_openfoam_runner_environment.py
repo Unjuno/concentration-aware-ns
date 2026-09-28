@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from tools.archive_high_gradient_openfoam import resolve_archive_roots
+from tools.check_high_gradient_cpp_mock import resolve_compiler
 from tools.run_high_gradient_openfoam import (
     resolve_docker_cli,
     resolve_docker_context,
@@ -69,6 +70,19 @@ class DockerCliResolutionTests(unittest.TestCase):
             }):
                 with self.assertRaisesRegex(FileExistsError, "refusing to overwrite"):
                     resolve_archive_roots()
+
+    def test_explicit_absolute_cxx_is_resolved(self):
+        with tempfile.TemporaryDirectory() as directory:
+            compiler = Path(directory) / "clang++"
+            compiler.write_text("#!/bin/sh\nexit 0\n")
+            compiler.chmod(0o755)
+            with patch.dict(os.environ, {"CXX": str(compiler)}):
+                self.assertEqual(resolve_compiler(), str(compiler.resolve()))
+
+    def test_missing_explicit_cxx_fails_instead_of_falling_back(self):
+        with patch.dict(os.environ, {"CXX": "/missing/compiler"}):
+            with self.assertRaises(FileNotFoundError):
+                resolve_compiler()
 
 
 if __name__ == "__main__":

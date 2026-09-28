@@ -168,3 +168,29 @@ context and collision-safe output path selection; the full repository suite pass
 continuation, the Docker API and this named container still need an authoritative
 state check. Keep the partial case and use a fresh, collision-free run directory
 if a rerun becomes safe; do not infer completion from the client timeout.
+
+## Offline forcing-body compilation (2026-09-28)
+
+The generated `codedFvModel` body now compiles against the repository's minimal
+Foam-like C++ mock using Nix Clang 21.1.8. At 48 seeded points, time 0.037 and
+N=4, its force agrees with the independent analytic evaluator to maximum
+absolute error `1.3877787807814457e-17` (threshold `1e-10`). The exact compiler
+path and executable SHA-256, generated `fvModels` source SHA-256 and result are
+in `evidence/tests/high-gradient-cpp-mock.json`. The mock initially failed
+because its vector type omitted addition/subtraction operators used by the
+generated expression; adding those operators fixed the harness, after which
+compilation and numerical comparison passed. This is a mock-harness correction,
+not evidence of an OpenFOAM defect. The check does not include Foundation
+headers, validate the live solver's source sign convention, or run a solver.
+Reproduce with:
+
+```sh
+CXX=/nix/store/l32bv33wqwkj2l1y8dp5x6h9r3q9im77-clang-wrapper-21.1.8/bin/clang++ \
+  uv run --with-requirements requirements-verification-locked.txt -- \
+  python -m tools.check_high_gradient_cpp_mock
+```
+
+The compiler selection is now explicit and hashed in the output. Two additional
+compiler-resolution tests bring the focused environment tests to nine and the
+full Python suite to 84 passing tests. The API-stalled solver matrix and AMR
+results remain unchanged.

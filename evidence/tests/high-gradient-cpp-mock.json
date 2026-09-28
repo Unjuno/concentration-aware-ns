@@ -1,0 +1,15 @@
+{
+  "scope": "Generated codeAddSup C++ body with minimal mock types; no OpenFOAM headers or solver.",
+  "compiler": "clang version 21.1.8",
+  "compiler_path": "/nix/store/l32bv33wqwkj2l1y8dp5x6h9r3q9im77-clang-wrapper-21.1.8/bin/clang++",
+  "compiler_sha256": "c153f41f0f7abe9e5ebdca376f8318e1f5c8a90159c9f47be8c95c9bcf6fc81c",
+  "seed": 8831,
+  "points": 48,
+  "time": 0.037,
+  "N": 4,
+  "fvModels_sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f",
+  "max_absolute_force_error": 1.3877787807814457e-17,
+  "tolerance": 1e-10,
+  "passed": true,
+  "limitations": "Does not establish compatibility with Foundation headers or live solver source sign convention."
+}
