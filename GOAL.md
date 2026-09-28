@@ -188,8 +188,10 @@ The same suite passed locally on Python 3.12 (74 tests and five subtests). Its
 scope is analytic checks, gates, adapters and input generators; it does not run
 CFD solvers. The successful run reported GitHub's Node 20 removal warning, so
 the workflow now uses `actions/checkout@v5` and `actions/setup-python@v6` for
-Node 24; that version update awaits its own CI confirmation. At the latest
-observation the existing n=128 Foundation 13 job remains live at t=0.034s.
+Node 24; the updated-action PR check passed. The hosted runner warned that
+`ubuntu-latest` will migrate, so the workflow now pins `ubuntu-24.04`; this
+runner pin awaits CI confirmation. At the latest observation the existing
+n=128 Foundation 13 job remains live at t=0.039s.
 
 ## Revision 12 — high-gradient AMR input-generation checks
 
