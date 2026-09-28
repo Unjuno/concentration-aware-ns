@@ -502,3 +502,13 @@ now includes selected-point Frobenius-gradient lower bounds; its independent
 reference-comparison replay log records NumPy 2.5.2 from the locked environment. This replay
 updates archived analytic/report artifacts only; it does not rerun any solver,
 continue the stalled Docker case, or upgrade a scientific verdict.
+
+A fresh tracked-only replay of commit `0a950128f0d49701d6323b8ccd58f71b7e20e715`
+on 2026-09-28 also completed all 25 report steps, SU2 standard review, and four
+symbolic axis checks with exit code zero. The strict 111-file byte comparison
+returned nonzero for one field only: the tracked high-gradient reference JSON
+records NumPy 2.5.3, while the locked environment regenerates it with NumPy
+2.5.2. Removing that version string makes the JSON objects identical. This is
+a preserved metadata-only reproducibility mismatch, not a numerical discrepancy
+or a clean-export PASS; details and sanitized command outcomes are in
+`evidence/clean-export-2026-09-28-current/`.
