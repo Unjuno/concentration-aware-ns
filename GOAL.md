@@ -182,10 +182,12 @@ runner remains unexecuted, as does validation of any nonuniform-grid spectrum.
 ## Revision 13 — Python verification CI
 
 A GitHub Actions workflow now runs the full Python suite on Python 3.12 for
-pushes and pull requests. The same suite passed locally on Python 3.12 (74
-tests and five subtests). Its scope is analytic checks, gates, adapters and
-input generators; it does not run CFD solvers. At the latest observation the
-existing n=128 Foundation 13 job remains live at t=0.030s.
+pull requests and pushes to `main`. Both duplicate runs on the first PR update
+passed; the branch filter now prevents duplicate feature-branch push/PR runs.
+The same suite passed locally on Python 3.12 (74 tests and five subtests). Its
+scope is analytic checks, gates, adapters and input generators; it does not run
+CFD solvers. At the latest observation the existing n=128 Foundation 13 job
+remains live at t=0.033s.
 
 ## Revision 12 — high-gradient AMR input-generation checks
 
