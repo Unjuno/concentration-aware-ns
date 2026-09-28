@@ -1,5 +1,5 @@
 {
-  "captured_at_utc": "2026-09-28T01:36:41.846979+00:00",
+  "captured_at_utc": "2026-09-28T03:10:58.223063+00:00",
   "protocol": "protocols/high-gradient-of13-v2.json",
   "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
   "run_environment": {
@@ -47,20 +47,27 @@
       "local_quality": "PASS",
       "time_steps": 50,
       "converged_steps": 50
+    },
+    {
+      "case": "n128-dt0.001",
+      "archive": "n128-dt0.001.tar.gz (reconstructed from zstd package)",
+      "archive_sha256": "595d27fe2e0ca061e727624444406419870bff8d06d11a38f911fdcebd19e0f0",
+      "source_log_sha256": "af65c5d3a600d07be3e41e7249d2d70ef33f358b0979431f473f26b16f782ebe",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 50,
+      "converged_steps": 50,
+      "publication_package": "n128-dt0.001.tar.zst.parts.json"
     }
   ],
   "incomplete_cases": [
     {
-      "case": "n128-dt0.001",
-      "archived": false,
-      "observed_steps": 1,
-      "observed_converged_steps": 0,
-      "log_ends_with_End": false,
-      "log_sha256": "1ae51f7fba1518eb184d7440a079da9946837b437321b1b94731b73c14fa158c"
-    },
-    {
       "case": "n64-dt0.0005",
-      "archived": false
+      "archived": false,
+      "observed_steps": 36,
+      "observed_converged_steps": 35,
+      "log_ends_with_End": false,
+      "log_sha256": "5670afd00e9208ee426530d9a5551a2e4116e4554087195e091cb9459525399c"
     },
     {
       "case": "n64-dt0.00025",

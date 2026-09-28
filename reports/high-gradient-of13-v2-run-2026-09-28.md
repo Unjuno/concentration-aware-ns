@@ -107,3 +107,24 @@ read-only `docker exec ... ps` succeeded and observed container PID 221
 (`foamRun`) in runnable state, with 66% CPU and 12.9% memory reported by `ps`.
 This is positive evidence of ongoing solver computation during the quiet log
 interval, not an exit or runtime failure. No case verdict is available yet.
+
+
+## Later completion and temporal-runner status (2026-09-28)
+
+The n=128, dt=0.001 run subsequently completed at t=0.05 with zero runner exit,
+50 time steps, 50 PIMPLE convergence records, final `End`, and endpoint U/p/C/phi
+fields. Its diagnostics report standard acceptance PASS and local quality PASS.
+The original case tree was archived and its members were checked against source
+files; see `evidence/of13-high-gradient-v2/manifest.json` and
+`evidence/of13-high-gradient-v2/README-n128-archive.md` (the 169 MiB tar is published as a checksummed, split Zstandard package because GitHub rejects a single file above 100 MiB).
+
+The same serial runner then automatically began n=64, dt=0.0005. The partial
+case has 36 `Time =` records through t=0.018, of which 35 have five-iteration
+PIMPLE convergence records; the final record is an incomplete step.
+`log.foamRun` last changed at 11:51:31 JST and has no final `End`; `exit.json`
+and diagnostics are absent. The host runner was stopped after no solver process
+was observable and the Docker client/control commands remained blocked. Docker
+container removal could not be verified, so this case is INCOMPLETE with no
+quality verdict. Its inputs, command and raw logs are preserved. The smaller-dt
+case and all dedicated high-gradient AMR budgets remain unrun. Do not interpret
+this runtime stall as an OpenFOAM solver defect or a numerical result.

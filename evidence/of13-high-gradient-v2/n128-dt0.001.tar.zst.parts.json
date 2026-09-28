@@ -1,0 +1,21 @@
+{
+  "format": "zstandard-compressed tar archive split into GitHub-compatible parts",
+  "archive": "n128-dt0.001.tar.zst",
+  "archive_bytes": 119695830,
+  "archive_sha256": "5971eb9a14febb21f61f6e433d4afde299170687e219e97fff4f48d9451d9790",
+  "source_tar_gz_sha256": "595d27fe2e0ca061e727624444406419870bff8d06d11a38f911fdcebd19e0f0",
+  "parts": [
+    {
+      "path": "n128-dt0.001.tar.zst.part-aa",
+      "bytes": 83886080,
+      "sha256": "10d701d5dd403dfc29cd4fe37b9d498ca6def997023ad283367f0f05e22b5342"
+    },
+    {
+      "path": "n128-dt0.001.tar.zst.part-ab",
+      "bytes": 35809750,
+      "sha256": "a89d78deca47e812464d73b5f6364e2b2073a9ff24417202963b6e767bd86f44"
+    }
+  ],
+  "reassemble": "cat n128-dt0.001.tar.zst.part-* > n128-dt0.001.tar.zst",
+  "decompress": "zstd -d n128-dt0.001.tar.zst -o n128-dt0.001.tar.gz"
+}

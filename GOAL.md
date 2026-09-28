@@ -222,3 +222,28 @@ benchmark additions are audit leads, not confirmed defects or solver evidence.
 The current OpenFOAM Foundation 13 run stays pinned to its existing image and
 continues separately; any patch-level replication must get its own source and
 image manifest. No scope or completion gate is relaxed.
+
+
+## Revision 15 — n=128 completion and temporal runner stall
+
+The original OpenFOAM Foundation 13 uniform runner completed n=128, dt=0.001
+at t=0.05 with exit code zero, 50 recorded steps, 50 five-iteration PIMPLE
+convergences, and the `End` marker. Independent acceptance analysis reports
+standard acceptance PASS and local quality PASS; its original case tree was
+archived and content-verified at
+`evidence/of13-high-gradient-v2/README-n128-archive.md` (the 169 MiB tar is published as a checksummed, split Zstandard package because GitHub rejects a single file above 100 MiB). The manifest now has
+four of six uniform cases complete, with the full matrix still
+INCOMPLETE/UNCERTAIN because both smaller-dt n=64 cases remain incomplete.
+
+The automatically started n=64, dt=0.0005 case reached `Time = 0.018s` on its 36th step; 35 earlier steps have
+PIMPLE convergence records, each in five iterations. Its log stopped changing
+at 2026-09-28 11:51:31 JST. At a later check no `foamRun` process was observable;
+the host runner and Docker CLI had zero CPU, and Docker/OrbStack control commands
+were unresponsive. The host runner was terminated to prevent a hung sequence
+from retaining the lane; its partial input/logs remain intact with no exit.json
+and no solver verdict. A Docker stop request was issued but has not returned, so
+container removal and daemon health are unverified. No global OrbStack restart
+was attempted. A different queued task was told the lane has no observed solver
+process but Docker state could not be confirmed. Resume only after container/daemon
+state can be queried reliably; preserve this partial run and restart that frozen
+case only from a clean, verified container after recording the prior attempt.

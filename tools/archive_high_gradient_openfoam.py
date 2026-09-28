@@ -124,13 +124,22 @@ def archive_completed(work_root, evidence_root, protocol_path):
 
         archive_path = evidence_root / f"{name}.tar.gz"
         if archive_path.exists():
-            verify_archive(archive_path, case, name)
-        else:
-            with tarfile.open(archive_path, "w:gz") as archive:
-                for path in sorted(case.rglob("*")):
-                    if path.is_file():
-                        archive.add(path, arcname=f"{name}/{path.relative_to(case)}")
-            verify_archive(archive_path, case, name)
+            try:
+                verify_archive(archive_path, case, name)
+            except (OSError, EOFError, tarfile.TarError, ValueError):
+                archive_path.unlink()
+        if not archive_path.exists():
+            temporary_archive = archive_path.with_suffix(archive_path.suffix + ".tmp")
+            try:
+                with tarfile.open(temporary_archive, "w:gz") as archive:
+                    for path in sorted(case.rglob("*")):
+                        if path.is_file():
+                            archive.add(path, arcname=f"{name}/{path.relative_to(case)}")
+                verify_archive(temporary_archive, case, name)
+                temporary_archive.replace(archive_path)
+            except Exception:
+                temporary_archive.unlink(missing_ok=True)
+                raise
         completed.append({
             "case": name,
             "archive": archive_path.name,
