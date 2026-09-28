@@ -189,9 +189,12 @@ scope is analytic checks, gates, adapters and input generators; it does not run
 CFD solvers. The successful run reported GitHub's Node 20 removal warning, so
 the workflow now uses `actions/checkout@v5` and `actions/setup-python@v6` for
 Node 24; the updated-action PR check passed. The hosted runner warned that
-`ubuntu-latest` will migrate, so the workflow now pins `ubuntu-24.04`; this
-runner pin awaits CI confirmation. At the latest observation the existing
-n=128 Foundation 13 job remains live at t=0.039s.
+`ubuntu-latest` will migrate, so the workflow now pins `ubuntu-24.04`; the
+resulting PR check also passed. At the latest observation the existing n=128
+Foundation 13 job remains live at t=0.041s. Although its solver log did not
+advance for roughly four minutes, a read-only Docker exec observed the
+container's `foamRun` process in runnable state at 66% CPU and 12.9% memory;
+this distinguishes active computation from a stopped container.
 
 ## Revision 12 — high-gradient AMR input-generation checks
 

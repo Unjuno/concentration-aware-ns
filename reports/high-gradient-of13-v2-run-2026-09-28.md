@@ -98,3 +98,12 @@ The high-gradient AMR case generator now has three focused unit checks for
 sensor initialization/update, dynamic-refinement limits and the minimum
 refinement interval. They pass as input-generation checks only; compiled
 source-hook integration and runtime mesh adaptation remain untested.
+
+## Container activity check
+
+At a later observation the log remained at `Time = 0.041s` for roughly four
+minutes, but the host runner and Docker client were still live. A bounded,
+read-only `docker exec ... ps` succeeded and observed container PID 221
+(`foamRun`) in runnable state, with 66% CPU and 12.9% memory reported by `ps`.
+This is positive evidence of ongoing solver computation during the quiet log
+interval, not an exit or runtime failure. No case verdict is available yet.
