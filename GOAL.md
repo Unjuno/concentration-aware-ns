@@ -247,3 +247,17 @@ was attempted. A different queued task was told the lane has no observed solver
 process but Docker state could not be confirmed. Resume only after container/daemon
 state can be queried reliably; preserve this partial run and restart that frozen
 case only from a clean, verified container after recording the prior attempt.
+
+## Revision 16 — related unforced-Euler construction and gradient sensitivity
+
+The OpenAI announcement links a separate unforced 3D Euler construction. Its
+primary paper explicitly builds iterated localized oscillatory packets whose
+velocity increments carry an inverse-frequency factor while phase
+differentiation restores an order-one gradient increment. Record this as a
+cross-problem analytic reason to keep local-gradient acceptance separate from
+aggregate velocity error. Euler has no viscous stress, and this construction
+does not validate molecular alignment, a material-viscosity change, or the
+forced Navier–Stokes numerical cases. The primary-source distinction and exact
+scope are documented in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; the frozen
+benchmark and three-project audit scope are unchanged.
