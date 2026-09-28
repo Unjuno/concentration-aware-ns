@@ -54,3 +54,14 @@ source tree and the local image. The analytic sensor is the prescribed
 `chi(y,z)` envelope; the report records observed levels/budgets and explicitly
 leaves blocked refinement candidates `UNOBSERVED` if OpenFOAM does not expose
 them.
+
+The AMR generator requires `refine_interval >= 2`. In the inspected Foundation
+13 startup path, the mesh refiner can query its sensor before the first
+`fvModels.correct()` call has registered the coded sensor field. The default
+interval leaves one update step to initialize that field before refinement;
+this is a source-order safeguard, not an observed solver defect or a completed
+runtime validation. The pinned refiner implementation looks up the configured
+field by name in
+[`refiner_fvMeshTopoChanger.C`](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C).
+Runtime startup and AMR behavior still require execution against the pinned
+image.

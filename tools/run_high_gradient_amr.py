@@ -40,7 +40,8 @@ def main():
         case=root/f'cap{cap}'
         generate_amr(case,max_cells=cap,max_level=amr['max_refinement'],end=spec['end_time'],
                      profile='high-gradient',frequency=spec['frequency_N'],
-                     n=amr['baseline_cell_count'],dt=spatial['delta_t'])
+                     n=amr['baseline_cell_count'],dt=spatial['delta_t'],
+                     refine_interval=amr['refine_interval'])
         hashes={str(p.relative_to(case)):sha256(p) for p in sorted(case.rglob('*')) if p.is_file()}
         (case/'input-hashes.json').write_text(json.dumps(hashes,indent=2)+'\n')
         command=['docker','run','--rm','--name',f'cans-hg-amr-{cap}','--entrypoint','/bin/bash',

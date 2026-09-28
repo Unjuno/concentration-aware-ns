@@ -48,7 +48,8 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             case=Path(directory)/"amr"
             generate_amr(case,max_cells=5000,max_level=2,end=0.005,
-                         profile="high-gradient",frequency=4,n=4,dt=0.001)
+                         profile="high-gradient",frequency=4,n=4,dt=0.001,
+                         refine_interval=4)
             model=(case/"constant/fvModels").read_text()
             self.assertIn('volScalarField& sensor =',model)
             self.assertIn('sensor[celli] = chi;',model)
@@ -56,9 +57,16 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             mesh=(case/"constant/dynamicMeshDict").read_text()
             self.assertIn('field refineSensor;',mesh)
             self.assertIn('maxCells 5000;',mesh)
+            self.assertIn('refineInterval 4;',mesh)
             params=json.loads((case/"parameters.json").read_text())
             self.assertEqual(params['profile'],'high-gradient')
+            self.assertEqual(params['amr']['refineInterval'],4)
             self.assertIn('localized envelope chi',params['amr']['sensor'])
+
+    def test_amr_interval_must_allow_sensor_initialization_before_refinement(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "integer >= 2"):
+                generate_amr(Path(directory) / "amr", refine_interval=1)
 
     def test_analyzer_separates_fd2_peak_from_continuous_reference(self):
         n, frequency, end = 8, 2, 0.05

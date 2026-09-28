@@ -6,7 +6,10 @@ from tools.openfoam_case import generate
 
 
 def generate_amr(path, max_cells=5000, max_level=1, end=0.01,
-                 profile='gaussian', frequency=4, n=16, dt=0.001):
+                 profile='gaussian', frequency=4, n=16, dt=0.001,
+                 refine_interval=2):
+    if int(refine_interval) != refine_interval or refine_interval < 2:
+        raise ValueError('refine_interval must be an integer >= 2 so the source hook initializes the sensor first')
     generate(path,n=n,dt=dt,end=end,profile=profile,frequency=frequency)
     path=Path(path)
     model=path/'constant/fvModels'
@@ -39,14 +42,14 @@ def generate_amr(path, max_cells=5000, max_level=1, end=0.01,
     (path/'constant/dynamicMeshDict').write_text(f'''FoamFile {{ format ascii; class dictionary; object dynamicMeshDict; }}
 topoChanger {{
  type refiner; libs ("libfvMeshTopoChangers.so");
- refineInterval 2; field refineSensor;
+ refineInterval {refine_interval}; field refineSensor;
  lowerRefineLevel 0.01; upperRefineLevel 1.1;
  nBufferLayers 1; maxRefinement {max_level}; maxCells {max_cells};
  dumpLevel true;
 }}
 ''')
     p=json.loads((path/'parameters.json').read_text())
-    p.update(purpose='AMR integration pilot, not production',amr={'maxCells':max_cells,'maxRefinement':max_level,'refineInterval':2,
+    p.update(purpose='AMR integration pilot, not production',amr={'maxCells':max_cells,'maxRefinement':max_level,'refineInterval':refine_interval,
         'sensor':'analytic Gaussian concentration' if profile=='gaussian' else 'analytic localized envelope chi(y,z), recomputed by source hook before adaptation'},
         profile=profile,frequency=frequency)
     (path/'parameters.json').write_text(json.dumps(p,indent=2))
