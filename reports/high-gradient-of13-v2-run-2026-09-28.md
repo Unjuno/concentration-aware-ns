@@ -56,8 +56,8 @@ outer correctors recorded for completed steps through 0.008s. The step ending
 at 0.009s was still inside its PIMPLE loop at the latest log read. The previous
 logged state reported cumulative `ExecutionTime = 498.94 s` and `ClockTime =
 2309 s`; these are solver run counters, not a measured per-step duration. At a
-later same-process observation the case reached `Time = 0.013s`, with five
-outer correctors recorded through 0.012s and iteration 2 underway for the next
+later same-process observation the case reached `Time = 0.014s`, with five
+outer correctors recorded through 0.013s and iteration 1 underway for the next
 step. The host runner and docker client were still live. No exit code,
 completed-case archive, or quality verdict is available. The two smaller-dt
 cases remain unstarted and the matrix remains INCOMPLETE/UNCERTAIN. Preserve
