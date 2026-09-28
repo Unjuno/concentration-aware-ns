@@ -1466,6 +1466,28 @@ FinalSlowBase.actualProfile or transfer the hard-coded actual-candidate assembly
 to it. That remaining distinction is necessary for the unconditional physical
 ratio claim; the original source has not been modified.
 
+### Where the amplitude fact is lost
+
+The pinned-source audit makes the gap concrete. `PreparedOutgoing.PreparedProfile`
+has an `amplitude_lower : 2 ≤ profile.data.core.P` field, and its
+`exists_prepared` proof constructs it from `P := max 2
+(OutgoingEntranceCone.amplitudeThreshold M)`. `NominalConeAssembly.exists_nominal_cone`
+then returns only `(F, W, Certificate W)`, dropping the `PreparedProfile` wrapper
+and its stored inequality. `FinalSlowBase.ProfileData` stores that outgoing
+profile and the later witnesses but has no amplitude-bound field; its
+`profileData_nonempty` uses the lossy existential before defining
+`actualProfile := Classical.choice profileData_nonempty`.
+
+This is a provenance gap in the downstream extension's selected-witness
+argument, not evidence that the OpenAI construction is false or internally
+inconsistent. The clean repair path is to carry the prepared witness or its
+amplitude proof through the nominal-cone and finite-modulation records, then
+select `actualProfile` from the enriched record. A separate existential
+pressure-qualified profile does not repair the existing choice retroactively.
+Source files were rehashed at the pinned `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`
+revision during this audit; local hashes are listed in the current turn's
+evidence rather than treated as source-level theorem proof.
+
 
 ## Pressure and negative slow-sum derivative share one witness
 
