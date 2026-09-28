@@ -21,3 +21,27 @@ contract, or a concrete example change with evidence of its benefit and a fresh
 duplicate check. A small residual, a single inaccurate network, or a sampled
 maximum alone is insufficient. Missing studies remain missing; a decision not to
 post does not complete those studies.
+
+## PhysicsNeMo source refresh, 2026-09-28
+
+The released v2.2.2 and current main (`426f7552da4b4fa675e404e8a4f437e27681b668`)
+share the same `power_spectrum.py` hash, and the odd-width axis-centering defect
+in Issue #2007 reproduces on both. PR #2008 already provides the direct fix and
+targeted regression tests; we independently ran its revised function on even,
+odd and rectangular shapes and observed the intended axis and transpose
+invariance. Our independent reproduction was posted to the existing issue:
+[comment](https://github.com/NVIDIA/physicsnemo/issues/2007#issuecomment-5861349072).
+The PR is still open and behind current main, and we did not run the full
+PhysicsNeMo suite. The benchmark uses even grid counts, so the odd-width defect
+does not alter its current spectrum measurements. No duplicate defect report
+or unrelated contribution was opened.
+
+For boundary handling, PhysicsInformer issue #2001 and lower-level feature
+issue #1852 / draft PR #1853 already cover the periodic-only limitation. The
+current manufactured solution is periodic, so we leave that issue family to
+its existing maintainers and report no new defect.
+
+Current target/default-branch heads and focused duplicate searches are recorded
+in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`. The
+inventory is intentionally scoped and is not an exhaustive review of every open
+issue in the three repositories.

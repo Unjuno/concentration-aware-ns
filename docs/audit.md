@@ -1,6 +1,6 @@
 # Primary-source audit
 
-Updated 2026-09-09. Source observations, reproduced behaviors and unresolved
+Updated 2026-09-09, with a current inventory addendum dated 2026-09-28. Source observations, reproduced behaviors and unresolved
 quality claims are distinguished below. This remains an interim audit.
 
 ## OpenFOAM Foundation 13
@@ -81,3 +81,36 @@ Training inaccuracies alone likewise do not show a framework bug. The completed 
 reports/upstream-disposition.md; no demonstrated framework defect was found.
 
 Source: https://github.com/NVIDIA/physicsnemo/blob/1b961314e42a0625502ba1592d25f706f1e02a24/CONTRIBUTING.md
+
+### Current repository and PhysicsNeMo follow-up (2026-09-28)
+
+The Foundation 13 repository still resolves to the audited source commit
+`18870c24d21c6b982e2cdec27b2f59738cca5f90`; its current public open issue list
+contains no issue matching this benchmark's high-gradient MMS or coded forcing.
+SU2 v8.5.0 remains the experimental target, while the moving `master` branch
+has advanced to `bc15466602a687d6fb796d5df7a12ce3fde0949a`; the existing Q&A
+and pinned-version results are not silently re-labeled as main-branch tests.
+
+PhysicsNeMo's latest release is v2.2.2 (`072465a1a56817f180f64dee8a4069a1612b2d9e`,
+Apache-2.0); current main is `426f7552da4b4fa675e404e8a4f437e27681b668`.
+An independent CPU reproducer confirmed open Issue #2007 on both snapshots:
+the 33x33, wavenumber-5 spectrum differs by axis and fails transpose symmetry.
+The correction is already proposed in [PR #2008](https://github.com/NVIDIA/physicsnemo/pull/2008),
+which is open and behind current main. We ran its modified function on the
+reported odd/even shapes and verified the symmetry correction, but did not run
+the full PhysicsNeMo suite. Since the concentration-aware benchmark uses even
+uniform grids, this issue does not alter its current spectra; no duplicate
+issue or code change is justified. Reproduction, source hashes, environment and
+scope are recorded in
+`evidence/upstream-refresh/physicsnemo-power-spectrum-odd-width-2026-09-28.json`.
+
+The related periodic-gradient concern is also already tracked: PhysicsInformer
+Issue #2001 identifies the caller-facing periodic assumption, while #1852 and
+open draft PR #1853 concern a lower-level nonperiodic mode. Our current MMS is
+periodic, so these reports do not identify a defect in the present benchmark.
+No additional boundary issue was filed.
+
+Current target/default-branch heads and the focused SU2 duplicate searches are
+summarized in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`.
+That inventory is intentionally scoped; it does not claim that all open issues
+in these large repositories were individually reviewed.
