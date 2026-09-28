@@ -1,0 +1,35 @@
+{
+  "observed_at_utc": "2026-09-28T04:57:08Z",
+  "scope": "read-only recovery diagnosis; no container or OrbStack state was changed",
+  "docker_context": "orbstack",
+  "orbctl_status": "Running",
+  "orbctl_doctor": {
+    "result": "warning",
+    "path_docker_cli": "/run/current-system/sw/bin/docker",
+    "resolved_docker_cli": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+    "note": "PATH Docker CLI is not OrbStack's wrapper"
+  },
+  "after_terminating_stale_read_only_ps_inspect_clients": {
+    "orb_stack_docker_wrapper_ps_timeout_seconds": 8,
+    "orb_stack_docker_wrapper_ps_result": "timed out without container status",
+    "docker_socket_open_fd_rows": 58
+  },
+  "orbstack_vmgr_log": {
+    "last_modified_local": "2026-09-28 11:45:13 JST",
+    "predates_target_case_log_update": true,
+    "recent_history_contains_unrelated_container_pids_controller_rejection": true,
+    "causal_link_to_target_case": "not established"
+  },
+  "target_case": {
+    "relative_path": "work/of13-high-gradient-v2/n64-dt0.0005",
+    "docker_run_client": "still present, zero CPU at observation",
+    "log_modified_at_local": "2026-09-28 11:51:31 JST",
+    "log_bytes": 161124,
+    "log_sha256": "5670afd00e9208ee426530d9a5551a2e4116e4554087195e091cb9459525399c",
+    "time_records": 36,
+    "completed_pimple_records": 35,
+    "log_ends_with_End": false,
+    "exit_record_present": false
+  },
+  "interpretation": "The PATH mismatch is real but does not explain the current timeout: OrbStack status is Running, and its own Docker wrapper also timed out after stale read-only clients were removed. The container's actual state remains unknown; do not infer solver termination from the frozen host-side log."
+}

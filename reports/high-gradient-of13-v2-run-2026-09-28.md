@@ -201,5 +201,28 @@ CXX=/nix/store/l32bv33wqwkj2l1y8dp5x6h9r3q9im77-clang-wrapper-21.1.8/bin/clang++
 
 The compiler selection is now explicit and hashed in the output. Two additional
 compiler-resolution tests bring the focused environment tests to nine and the
-full Python suite to 84 passing tests. The API-stalled solver matrix and AMR
+full Python suite to 85 passing tests. The API-stalled solver matrix and AMR
 results remain unchanged.
+
+## OrbStack API recheck after runner cleanup
+
+At 2026-09-28 04:57 UTC, OrbStack still reported `Running`, while its doctor
+reported that the PATH-selected Docker CLI resolves to the Nix package rather
+than OrbStack's wrapper. Stale read-only `docker ps/inspect` clients were
+terminated; a fresh `~/.orbstack/bin/docker --context orbstack ps` still timed
+out after eight seconds, and `lsof` showed 58 file-descriptor rows for the
+Docker socket. This makes the PATH mismatch insufficient to explain the
+current failure, although the underlying engine cause remains unknown.
+
+OrbStack's `vmgr.log` was last modified at 11:45 JST, before the target case's
+last solver log update at 11:51 JST. Its recent history also contains a kernel
+`fork rejected by pids controller` event for an unrelated container. This is a
+possible shared-VM resource-pressure clue, not a causal diagnosis for this case;
+the log had no later engine error that identifies the stalled request.
+
+The preserved `n64-dt0.0005` case log is unchanged at 36 time records and 35
+completed PIMPLE convergence records; it has no terminal `End` marker or
+`exit.json`. The foreground `docker run` client is still present without CPU
+activity. Container state therefore remains **unknown**, not confirmed stopped;
+no solver restart or OrbStack restart was attempted. Hash and command details
+are in `evidence/environment/orbstack-docker-hang-recheck-2026-09-28.json`.
