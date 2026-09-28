@@ -135,3 +135,20 @@ to runtime integration and accuracy: static source algebra supports the sign,
 but only an actual solver run can test the compiled case, pressure correction,
 and requested convergence metrics. Preserve the audit manifest and never
 promote it into a solver-run PASS.
+
+## Revision 9 — first frozen OpenFOAM high-gradient matrix execution
+
+The pinned Foundation 13 image became available and the frozen uniform-grid
+runner started at source commit `0e0288f`. The n=16 and n=32 cases completed
+with standard acceptance PASS but local-quality FAIL; their reference-only
+FD2 floors already exceed the preregistered fine-grid threshold, so they are
+underresolution observations. The n=64 case completed with both gates PASS.
+The n=128 container began its first time step but produced no new log output
+for more than 25 minutes while Docker inspection/top/stats calls also remained
+pending. Preserve the live runner and all partial files; do not infer a solver
+result or restart OrbStack from this observation. The n=128 and two smaller-dt
+n=64 cases are still required before the protocol's matrix verdict. Completed
+case archives, hashes and a cautious incomplete-matrix manifest are in
+`evidence/of13-high-gradient-v2/`; the current report is
+`reports/high-gradient-of13-v2-run-2026-09-28.md`. The new archive utility
+accepts only complete cases and marks incomplete matrices UNCERTAIN.

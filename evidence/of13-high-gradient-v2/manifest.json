@@ -1,0 +1,76 @@
+{
+  "captured_at_utc": "2026-09-28T01:36:41.846979+00:00",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "run_environment": {
+    "source_commit": "0e0288f98209f856931352ebfa5dad0f1aad0014",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+    "scope": "OpenFOAM Foundation 13 high-gradient uniform-grid matrix"
+  },
+  "expected_cases": [
+    "n16-dt0.001",
+    "n32-dt0.001",
+    "n64-dt0.001",
+    "n128-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "completed_cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive": "n16-dt0.001.tar.gz",
+      "archive_sha256": "a500dd1d3946f7e468d33257d3b866550af55db678749c6b4f7cb6f8be35ee62",
+      "source_log_sha256": "d05b1b23413d9ecc40598b5fe3ec6f8b5d8546a4a8e1e9e0d89ad1c9ede247f2",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "time_steps": 50,
+      "converged_steps": 50
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive": "n32-dt0.001.tar.gz",
+      "archive_sha256": "94e684e5d698862021be002eaef8c9bdef4387f9b582831e8edc931a4146c70d",
+      "source_log_sha256": "2bad7608ff659186a7a6ea3b59fc40fbb1352fcfcec07c3e7a99854b07884acd",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "time_steps": 50,
+      "converged_steps": 50
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive": "n64-dt0.001.tar.gz",
+      "archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e",
+      "source_log_sha256": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 50,
+      "converged_steps": 50
+    }
+  ],
+  "incomplete_cases": [
+    {
+      "case": "n128-dt0.001",
+      "archived": false,
+      "observed_steps": 1,
+      "observed_converged_steps": 0,
+      "log_ends_with_End": false,
+      "log_sha256": "1ae51f7fba1518eb184d7440a079da9946837b437321b1b94731b73c14fa158c"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archived": false
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archived": false
+    }
+  ],
+  "matrix_status": "INCOMPLETE",
+  "problem_reproduction": {
+    "status": "UNCERTAIN",
+    "reason": "required run matrix is incomplete"
+  },
+  "interpretation": "Only complete cases with zero runner exit, full expected time-step and PIMPLE-convergence counts, End log marker, and endpoint U/p/C/phi fields are archived. Partial cases remain UNCERTAIN."
+}
