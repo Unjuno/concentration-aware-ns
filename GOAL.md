@@ -152,3 +152,16 @@ case archives, hashes and a cautious incomplete-matrix manifest are in
 `evidence/of13-high-gradient-v2/`; the current report is
 `reports/high-gradient-of13-v2-run-2026-09-28.md`. The new archive utility
 accepts only complete cases and marks incomplete matrices UNCERTAIN.
+
+## Revision 10 — analytic high-gradient identities and slow n=128 execution
+
+The high-gradient MMS now records exact selected-point Frobenius-gradient and
+vorticity values as lower bounds on the continuous maxima, without claiming
+they are sharp global peaks. A reproducible derivation note and independent
+SymPy-versus-Fourier formula comparison are checked in. Both formula tests pass;
+they do not certify a numerical solver. The original Foundation 13 n=128 runner
+remains live and has advanced to 0.009 seconds of the 0.05-second interval,
+with an observed completed-step execution time near 499 seconds. Preserve and
+reobserve the same run; do not restart it or treat resource cost as a solver
+failure. The spatial/time matrix and its reproduction verdict remain
+INCOMPLETE/UNCERTAIN.

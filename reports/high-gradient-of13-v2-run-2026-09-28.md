@@ -47,3 +47,29 @@ manifest records its observed step count and log hash. The reusable
 step count, convergence count, `End` marker and endpoint fields all pass its
 completion checks; it verifies archive contents against source files before
 reporting them.
+
+## Later live-run observation (2026-09-28 01:48 UTC)
+
+The same original runner and Docker client PIDs remained live; no replacement
+container was started. The n=128 case had reached `Time = 0.009s`, with five
+outer correctors recorded for completed steps through 0.008s. The step ending
+at 0.009s was still inside its PIMPLE loop at the latest log read. The previous
+logged step reported `ExecutionTime = 498.94 s` and `ClockTime = 2309 s`;
+the host run had been active for roughly 44 minutes. These timings make the
+remaining 41 steps impractical to finish promptly on this run, but the live
+process is not a terminal failure. No exit code, completed-case archive, or
+quality verdict is available. The two smaller-dt cases remain unstarted and the
+matrix remains INCOMPLETE/UNCERTAIN. Preserve the partial tree and process for
+later observation; don't infer a solver defect from runtime cost.
+
+## Analytic reference follow-up
+
+Separately, the exact high-gradient MMS identities were extended to report the
+Frobenius-gradient norm and vorticity at a selected analytic point, explicitly
+as lower bounds on their continuous maxima rather than asserting global
+maximality. A short derivation and both replay commands are in
+`docs/high-gradient-analytic-checks.md`. The symbolic identities pass, and an
+independently coded Fourier evaluator agrees with direct SymPy differentiation
+for velocity, full gradient, vorticity and forcing at the recorded points.
+These are continuum formula checks, not solver integration or a numerical
+acceptance verdict.

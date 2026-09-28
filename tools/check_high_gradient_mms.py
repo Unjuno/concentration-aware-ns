@@ -28,6 +28,15 @@ def run() -> dict:
     vorticity_identity = sp.trigsimp(
         omega_z - sp.exp(-t)*(chi - sp.diff(chi, y, 2)/N**2) * sp.sin(N*x))
 
+    # At the selected point x=pi/(2N), y=z=0, first derivatives of chi
+    # vanish, chi=1, and chi_yy=-2. The only nonzero velocity-gradient entries
+    # are du_x/dy=chi_yy/N^2 and du_y/dx=1, so the Frobenius norm is exact.
+    gradient_frobenius_at_peak = sp.simplify(sp.sqrt(
+        grad[0, 1]**2 + grad[1, 0]**2).subs(
+            {x: sp.pi/(2*N), y: 0, z: 0, t: 0}))
+    omega_z_at_peak = sp.simplify(omega_z.subs(
+        {x: sp.pi/(2*N), y: 0, z: 0, t: 0}))
+
     # g(y)=cos(y/2)^8 has a finite Fourier expansion. Orthogonality gives
     # exact normalized means by zero-mode sums, without quadrature.
     coeff = {
@@ -52,6 +61,11 @@ def run() -> dict:
         "time_dependent_ns_residual_zero": all(sp.expand(v) == 0 for v in residual),
         "localized_gradient_formula": derivative_identity == 0,
         "vorticity_formula": vorticity_identity == 0,
+        "gradient_frobenius_at_selected_peak": sp.simplify(
+            gradient_frobenius_at_peak - sp.sqrt(1 + 4/N**4)) == 0,
+        "vorticity_at_selected_peak": sp.simplify(
+            omega_z_at_peak - (1 + 2/N**2)) == 0,
+        "selected_point_is_exact_lower_bound_on_continuous_peaks": True,
         "envelope_fourier_identity": fourier_identity,
     }
     if not all(identities.values()):
@@ -64,6 +78,7 @@ def run() -> dict:
             "N": n,
             "velocity_sup_upper_bound": f"{sp.sstr(sp.Rational(1,n)+2*sp.Rational(1,n**2))}",
             "selected_gradient_component_peak_at_t0": "1 (attained at x=pi/(2N), y=z=0)",
+            "gradient_frobenius_at_selected_point_t0": sp.sstr(sp.sqrt(1 + 4*sp.Rational(1,n**4))),
             "vorticity_at_same_point_t0": sp.sstr(1 + 2*sp.Rational(1,n**2)),
             "mean_velocity_squared_at_t0": at_n(mean_u2),
             "mean_selected_gradient_component_squared_at_t0": at_n(mean_gradient_component2),
@@ -81,6 +96,7 @@ def run() -> dict:
         "limitations": [
             "The velocity bound follows from ||chi||inf<=1 and ||chi_y||inf<=2; it is an upper bound, not an exact velocity peak.",
             "The local derivative and vorticity values are continuum identities, not discrete-resolution results.",
+            "The selected-point values are rigorous lower bounds on the continuous Frobenius-gradient and vorticity maxima, but are not asserted to be the global maxima.",
             "A fixed N case may be resolved by sufficient refinement; no solver was tested.",
             "This benchmark stress test implies no blow-up, molecular alignment, particle-position concentration, or constitutive-viscosity law.",
         ],
