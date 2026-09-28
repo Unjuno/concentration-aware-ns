@@ -31,16 +31,20 @@ python3 -m tools.openfoam_case work/of13-high-gradient-pilot \
   --n 16 --profile high-gradient --frequency 4
 ```
 
-Its frozen spatial/time matrix and quality thresholds are in
-`protocols/high-gradient-of13-v1.json`. Before solver execution, compile and
+The original unrun matrix is preserved as `protocols/high-gradient-of13-v1.json`.
+The active successor matrix and quality thresholds are in
+`protocols/high-gradient-of13-v2.json`; a reference-only FD2 floor audit added
+n=128 so both n=64 and n=128 meet the 5% derivative thresholds even on exact
+sampled data. See `evidence/tests/high-gradient-fd2-resolution-floor.json`.
+Before solver execution, compile and
 compare the `codedFvModel` forcing with the independent symbolic/NumPy
 reference using `python3 -m tools.check_high_gradient_openfoam_force`. That
 checker requires the pinned local OpenFOAM image and Docker; it tests a mock
 mesh/equation, not a PDE run or the live solver's source sign convention.
 
-Run the frozen five-case uniform matrix with
+Run the frozen six-case uniform matrix with
 `python3 -m tools.run_high_gradient_openfoam`. It creates a new
-`work/of13-high-gradient-v1` tree only after verifying the local image and
+`work/of13-high-gradient-v2` tree only after verifying the local image and
 records the immutable image ID, source commit, protocol hash, inputs, commands,
 logs and diagnostic outputs. It requires a clean committed source tree before
 preflight so the recorded revision names the source actually used. Verdicts
@@ -49,7 +53,7 @@ satisfied.
 
 Generate and run the frozen AMR budget sweep with
 `python3 -m tools.run_high_gradient_amr`. It creates a new
-`work/of13-high-gradient-amr-v1` tree only after verifying a clean committed
+`work/of13-high-gradient-amr-v2` tree only after verifying a clean committed
 source tree and the local image. The analytic sensor is the prescribed
 `chi(y,z)` envelope; the report records observed levels/budgets and explicitly
 leaves blocked refinement candidates `UNOBSERVED` if OpenFOAM does not expose

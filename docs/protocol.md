@@ -40,9 +40,12 @@ The symbolic checker derives the exact forcing identity, divergence, vorticity,
 selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
 `tools/check_high_gradient_mms.py`. It has not yet been run through OpenFOAM,
 SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
-claimed. The OpenFOAM spatial/time matrix and thresholds are frozen in
-`protocols/high-gradient-of13-v1.json`, separately from the existing Gaussian
-concentration case.
+claimed. The original unrun OpenFOAM matrix is preserved in
+`protocols/high-gradient-of13-v1.json`. The active six-case successor and its
+reference-only derivative-resolution audit are in
+`protocols/high-gradient-of13-v2.json` and
+`evidence/tests/high-gradient-fd2-resolution-floor.json`, separately from the
+existing Gaussian concentration case.
 An independent numerical formula comparison is also provided:
 `tools/high_gradient_reference.py` evaluates derivatives from the finite
 Fourier coefficients, while `tools/check_high_gradient_reference.py` constructs

@@ -18,9 +18,10 @@ def sha256(path):
 
 
 def main():
-    spec=json.loads(Path('protocols/high-gradient-of13-v1.json').read_text())
+    protocol_path=Path('protocols/high-gradient-of13-v2.json')
+    spec=json.loads(protocol_path.read_text())
     amr=spec['amr']; spatial=spec['spatial_matrix']
-    root=Path('work/of13-high-gradient-amr-v1').resolve()
+    root=Path('work/of13-high-gradient-amr-v2').resolve()
     dirty=subprocess.run(['git','status','--porcelain','--untracked-files=all'],
                          capture_output=True,text=True,check=True).stdout.strip()
     if dirty:
@@ -33,7 +34,7 @@ def main():
     root.mkdir(parents=True,exist_ok=False)
     (root/'run-environment.json').write_text(json.dumps({
         'source_commit':git,'container_image_id':image,'container_platform':platform,
-        'protocol_sha256':sha256('protocols/high-gradient-of13-v1.json'),
+        'protocol_sha256':sha256(protocol_path),
         'scope':'OpenFOAM Foundation 13 high-gradient AMR sweep'},indent=2)+'\n')
     cases=[]
     for cap in amr['cell_budgets']:
@@ -57,7 +58,7 @@ def main():
         result=analyze(case)
         (case/'diagnostics.json').write_text(json.dumps(result,indent=2)+'\n')
         cases.append(result)
-    summary={'protocol':'protocols/high-gradient-of13-v1.json','cases':cases,
+    summary={'protocol':str(protocol_path),'cases':cases,
              'scope':'AMR and uniform-grid comparison inputs; no blind-spot verdict without all quality gates.'}
     (root/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps({'completed':len(cases),'root':str(root)},indent=2))

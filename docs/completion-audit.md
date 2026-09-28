@@ -18,7 +18,7 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 60 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 61 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
@@ -406,8 +406,13 @@ direct SymPy differentiation agrees for velocity, gradient, vorticity and
 forcing at 65 seeded points for each `N`, with maximum component error below
 `2.3e-16`. OpenFOAM's case generator now emits the matching time-dependent
 `codedFvModel`, and a unit test reads back the generated cell initialization.
-The new Foundation 13 matrix and quality thresholds are frozen in
-`protocols/high-gradient-of13-v1.json`; a mock-mesh C++ compiler check is
+The original Foundation 13 matrix and quality thresholds are preserved in
+`protocols/high-gradient-of13-v1.json`; before any solver run, the FD2
+reference-only floor audit showed that n=16 and n=32 exceed the 5% gradient and
+vorticity thresholds even for exact sampled data. The additive successor
+`protocols/high-gradient-of13-v2.json` adds n=128, giving two spatial levels
+(n=64,128) below both derivative floors; the reproducible audit is
+`evidence/tests/high-gradient-fd2-resolution-floor.json`. A mock-mesh C++ compiler check is
 available at `tools/check_high_gradient_openfoam_force.py`. It has not run:
 the selected OrbStack Docker context did not answer `docker info` within 3 s,
 recorded at `evidence/environment/openfoam-docker-preflight-2026-09-28.json`.
@@ -424,7 +429,7 @@ The high-gradient AMR path now uses the analytic `chi(y,z)` envelope as its
 refinement sensor. `tools/openfoam_amr_case.py`, `tools/analyze_amr.py` and
 `tools/run_high_gradient_amr.py` support the frozen 4096/5000/100000 cell
 budgets and compare nonuniform fields to the exact time-dependent reference.
-The five-case uniform matrix also has a provenance-recording runner in
+The six-case v2 uniform matrix also has a provenance-recording runner in
 `tools/run_high_gradient_openfoam.py`; both runners check the immutable image
 and require a clean committed source tree before creating a work tree. Case
 generation, sensor wiring and the 59-test suite pass, but neither high-gradient

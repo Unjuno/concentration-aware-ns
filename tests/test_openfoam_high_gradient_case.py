@@ -9,6 +9,7 @@ from tools.high_gradient_reference import fields
 from tools.analyze_openfoam import analyze
 from tools.openfoam_case import generate
 from tools.openfoam_amr_case import generate_amr
+from tools.check_high_gradient_fd2_floor import audit
 
 
 class OpenFoamHighGradientCaseTests(unittest.TestCase):
@@ -99,6 +100,15 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             )
             self.assertFalse(result["continuous_full_gradient_peak_certified"])
             self.assertEqual(result["quality"], "UNCERTAIN")
+
+    def test_frozen_matrix_has_two_fine_grids_below_reference_fd2_floor(self):
+        result = audit()
+        rows = {row["n"]: row for row in result["rows"]}
+        self.assertGreater(rows[16]["exact_solution_fd2_gradient_peak_relative_error"], 0.05)
+        self.assertGreater(rows[32]["exact_solution_fd2_gradient_peak_relative_error"], 0.05)
+        self.assertLess(rows[64]["exact_solution_fd2_gradient_peak_relative_error"], 0.05)
+        self.assertLess(rows[128]["exact_solution_fd2_gradient_peak_relative_error"], 0.05)
+        self.assertTrue(result["at_least_two_finer_grids_meet_both_derivative_thresholds"])
 
 
 if __name__ == "__main__":

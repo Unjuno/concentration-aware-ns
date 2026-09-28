@@ -1,4 +1,4 @@
-"""Run the frozen five-case high-gradient OpenFOAM matrix once."""
+"""Run the frozen six-case high-gradient OpenFOAM matrix once."""
 import hashlib
 import json
 import os
@@ -18,9 +18,9 @@ def sha256(path):
 
 
 def main():
-    protocol_path = Path("protocols/high-gradient-of13-v1.json")
+    protocol_path = Path("protocols/high-gradient-of13-v2.json")
     spec = json.loads(protocol_path.read_text())
-    root = Path("work/of13-high-gradient-v1").resolve()
+    root = Path("work/of13-high-gradient-v2").resolve()
     dirty = subprocess.run(
         ["git", "status", "--porcelain", "--untracked-files=all"],
         capture_output=True, text=True, check=True,
