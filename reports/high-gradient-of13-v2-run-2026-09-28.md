@@ -56,9 +56,9 @@ outer correctors recorded for completed steps through 0.008s. The step ending
 at 0.009s was still inside its PIMPLE loop at the latest log read. The previous
 logged state reported cumulative `ExecutionTime = 498.94 s` and `ClockTime =
 2309 s`; these are solver run counters, not a measured per-step duration. At a
-later same-process observation the case reached `Time = 0.021s`, with five
-outer correctors recorded for completed steps through 0.020s and the next step
-underway. The host runner and docker client were still live. No exit code,
+later same-process observation the case reached `Time = 0.024s`, with five
+outer correctors recorded through 0.023s and the next step underway. The host
+runner and docker client were still live. No exit code,
 completed-case archive, or quality verdict is available. The two smaller-dt
 cases remain unstarted and the matrix remains INCOMPLETE/UNCERTAIN. Preserve
 the partial tree and process for later observation; don't infer a solver defect
@@ -75,6 +75,16 @@ independently coded Fourier evaluator agrees with direct SymPy differentiation
 for velocity, full gradient, vorticity and forcing at the recorded points.
 These are continuum formula checks, not solver integration or a numerical
 acceptance verdict.
+
+The older `evidence/of13-amr-v1/` sweep is not a substitute for this protocol's
+AMR requirement: it used the Gaussian profile and was already classified
+UNCERTAIN because source sensing, remapping and gradient reconstruction were
+not separated. A dedicated high-gradient AMR runner exists at
+`tools/run_high_gradient_amr.py`, but its three cell-budget cases have not run.
+Run that frozen v2 sweep only after the current serial uniform-mesh runner
+releases the OpenFOAM container; then compare against the v2 uniform n=64
+control and preserve budget/level histories. Nonuniform-mesh spectrum remains
+unavailable until a reconstruction is validated.
 
 The spectral reference for this MMS is also now derived directly from its
 finite complex Fourier coefficients and checked against resolved cell-centered

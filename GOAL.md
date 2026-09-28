@@ -160,10 +160,10 @@ vorticity values as lower bounds on the continuous maxima, without claiming
 they are sharp global peaks. A reproducible derivation note and independent
 SymPy-versus-Fourier formula comparison are checked in. Both formula tests pass;
 they do not certify a numerical solver. The original Foundation 13 n=128 runner
-remains live and has advanced to 0.021 seconds of the 0.05-second interval,
+remains live and has advanced to 0.024 seconds of the 0.05-second interval,
 with a logged cumulative OpenFOAM `ExecutionTime` near 499 seconds at that
-point (not a per-step timing). Preserve and reobserve the same run; do not restart it or treat
-resource cost as a solver failure. The spatial/time matrix and its reproduction
+point (not a per-step timing). Preserve and reobserve the same run; do not
+restart it or treat resource cost as a solver failure. The spatial/time matrix and its reproduction
 verdict remain INCOMPLETE/UNCERTAIN.
 
 ## Revision 11 — independent finite-mode spectrum reference
@@ -175,4 +175,6 @@ table, which was corrected before accepting the tests. The corrected independent
 shell sums pass against the sampled FFT. The formula and correction history are
 documented in `docs/high-gradient-spectrum.md`; this is reference validation,
 not a solver result. Meanwhile, the original n=128 OpenFOAM process remains live
-at t=0.021s, so the spatial/time matrix is still incomplete.
+at t=0.024s, so the spatial/time matrix is still incomplete. The older Gaussian
+AMR sweep does not satisfy high-gradient v2; its dedicated three-budget v2 AMR
+runner remains unexecuted, as does validation of any nonuniform-grid spectrum.
