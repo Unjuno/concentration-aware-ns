@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-28",
+  "repository": "https://github.com/NVIDIA/physicsnemo",
+  "released_tag": {
+    "name": "v2.2.2",
+    "commit": "072465a1a56817f180f64dee8a4069a1612b2d9e",
+    "license": "Apache-2.0",
+    "license_file": "LICENSE.txt",
+    "license_sha256": "f804cfd52b3bacfd16cb9e80c1af55ccd97a0c41159fc06452d7b8b44432149f"
+  },
+  "current_main": {
+    "commit": "426f7552da4b4fa675e404e8a4f437e27681b668",
+    "commit_date": "2026-09-22T19:45:38Z",
+    "message": "Remove physicsnemo compatibility layer (#1997)",
+    "same_target_source_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552"
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.11.0",
+    "device": "CPU",
+    "source_hash_matches_local_and_tag_and_main": true
+  },
+  "reproduction": {
+    "target": "physicsnemo/metrics/general/power_spectrum.py",
+    "input": "33x33 cosine, wavenumber 5, tested along each axis; seeded random transpose check",
+    "height_axis_power_peak": 10.083333015441895,
+    "width_axis_split_peaks": [6.1875, 5.041666507720947],
+    "transpose_invariance": false,
+    "tolerance": {"rtol": 0.0001, "atol": 0.000001},
+    "classification": "Reproduced existing upstream issue #2007 on both released v2.2.2 and current main; defect affects odd-width grids. The benchmark's current uniform spatial matrices use even n, so no impact on its current measurements."
+  },
+  "existing_upstream_tracking": {
+    "issue": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+    "fix_pr": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+    "fix_pr_state": "OPEN",
+    "fix_pr_head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+    "fix_pr_base": "ff5d19d08123de47ca446caed1d70a225d540184",
+    "fix_pr_merge_state": "BEHIND",
+    "independent_fix_test": "Axis symmetry and transpose invariance passed for (32,32), (33,33), and (32,33) inputs using PR source directly; full upstream test suite not run.",
+    "our_issue_comment": "https://github.com/NVIDIA/physicsnemo/issues/2007#issuecomment-5861349072"
+  },
+  "related_periodic_boundary_tracking": {
+    "informer_issue": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+    "lower_level_feature_issue": "https://github.com/NVIDIA/physicsnemo/issues/1852",
+    "lower_level_pr": "https://github.com/NVIDIA/physicsnemo/pull/1853",
+    "lower_level_pr_state": "OPEN_DIRTY",
+    "scope_note": "This benchmark uses periodic domains. No new boundary issue is filed; the PhysicsInformer warning/consumer-scope gap is already tracked by #2001, while #1852/#1853 cover a lower-level optional one-sided mode."
+  },
+  "reporting_decision": "No duplicate issue or PR filed. Existing issue #2007 and PR #2008 already describe and fix the odd-width defect; independent reproduction and even-grid scope assessment were added to the issue discussion.",
+  "limitations": [
+    "No full PhysicsNeMo suite was run.",
+    "The open PR has not merged; its base is behind current main.",
+    "No odd-width PhysicsNeMo spectrum is used by the current high-gradient OpenFOAM protocol."
+  ]
+}

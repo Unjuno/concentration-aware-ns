@@ -21,3 +21,45 @@ contract, or a concrete example change with evidence of its benefit and a fresh
 duplicate check. A small residual, a single inaccurate network, or a sampled
 maximum alone is insufficient. Missing studies remain missing; a decision not to
 post does not complete those studies.
+
+## PhysicsNeMo source refresh, 2026-09-28
+
+The released v2.2.2 and current main (`426f7552da4b4fa675e404e8a4f437e27681b668`)
+share the same `power_spectrum.py` hash, and the odd-width axis-centering defect
+in Issue #2007 reproduces on both. PR #2008 already provides the direct fix and
+targeted regression tests; we independently ran its revised function on even,
+odd and rectangular shapes and observed the intended axis and transpose
+invariance. Our independent reproduction was posted to the existing issue:
+[comment](https://github.com/NVIDIA/physicsnemo/issues/2007#issuecomment-5861349072).
+The PR is still open and behind current main, and we did not run the full
+PhysicsNeMo suite. The benchmark uses even grid counts, so the odd-width defect
+does not alter its current spectrum measurements. No duplicate defect report
+or unrelated contribution was opened.
+
+For boundary handling, PhysicsInformer issue #2001 and lower-level feature
+issue #1852 / draft PR #1853 already cover the periodic-only limitation. The
+current manufactured solution is periodic, so we leave that issue family to
+its existing maintainers and report no new defect.
+
+Current target/default-branch heads and focused duplicate searches are recorded
+in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`. The
+inventory is intentionally scoped and is not an exhaustive review of every open
+issue in the three repositories.
+
+The issue #2007 reproduction is now directly rerunnable with
+`work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007`;
+its source hash, odd/even controls, and transpose results are in
+`evidence/upstream-refresh/physicsnemo-issue-2007-reproduction.json`. As of the
+latest live metadata check, issue #2007 remains open and PR #2008 remains open,
+unmerged, and behind `main`. Since the existing PR contains the targeted fix,
+we do not file a duplicate issue or PR. The full upstream test suite remains
+unrun, so this disposition is limited to the focused reproducer and current
+targeted review.
+
+The same reproducer was run against the exact PR #2008 head
+`7407608723062dc11ba5332e9ff3774f42bb02d9`. Its source hash is
+`f66a9028c0a18804471c260a32aed1e3b0e9b59655df0c821d4bb904cdd8c983`; the odd
+and even axis-mode controls and odd/even transpose controls all pass. The
+separate result is `evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json`.
+This verifies the focused counterexample is repaired by the existing diff, not
+that the whole framework or PR has passed its full test suite.

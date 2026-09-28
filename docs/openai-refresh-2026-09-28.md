@@ -8,6 +8,8 @@ has one commit after the previously audited pin `8937a8f4cbc7abaab5e9e97d1cc7f5d
 or adds 188 Lean files (25,143 insertions, 81 deletions). It includes actual-base
 velocity and pressure derivative-rate estimates, whole-domain compact/stage
 bounds, and expanded forced/unforced comparison material.
+The repository's public Issues API returned no issues at this check; we found no
+specific repository defect supported well enough to report upstream.
 
 Two relevant new source modules are:
 

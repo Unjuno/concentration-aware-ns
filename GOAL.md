@@ -114,3 +114,338 @@ verify the tube stays in every cited band/domain. The derivation and exact
 source boundary are recorded in `docs/packet-constant-dependencies.md`. A
 generic Lean lemma now proves the pointwise hole for any supported copy-family
 sum; the all-stage assembly and tube-domain transfer remain open.
+
+## Revision 8 — photon-fluid comparison and OpenFOAM sign source audit
+
+The user renewed the photon-fluid idea, correcting that photons are discrete.
+Record photon fluids as a separate, established analogue-model research track:
+in selected nonlinear optical platforms, collective field intensity and phase
+map to effective density and velocity. Published experiments report both
+threshold-like suppression of optical obstacle drag and dispersive-wave
+transitions. These results motivate a concrete full-wave-versus-reduced-fluid
+comparison, but do not establish ordinary material-viscosity loss, molecular
+ordering, or a realization of the OpenAI 3D Navier–Stokes construction. Keep
+the model, observables, geometry and validity regime explicit; do not replace
+the original solver-benchmark goal with this analogy.
+
+A pinned-source audit now verifies the generated Foundation 13 MMS forcing
+sign through the coded model callback, `fvModels().source(U)`, matrix
+subtraction and Euler time assembly. This narrows the previous test limitation
+to runtime integration and accuracy: static source algebra supports the sign,
+but only an actual solver run can test the compiled case, pressure correction,
+and requested convergence metrics. Preserve the audit manifest and never
+promote it into a solver-run PASS.
+
+## Revision 9 — first frozen OpenFOAM high-gradient matrix execution
+
+The pinned Foundation 13 image became available and the frozen uniform-grid
+runner started at source commit `0e0288f`. The n=16 and n=32 cases completed
+with standard acceptance PASS but local-quality FAIL; their reference-only
+FD2 floors already exceed the preregistered fine-grid threshold, so they are
+underresolution observations. The n=64 case completed with both gates PASS.
+The n=128 container began its first time step but produced no new log output
+for more than 25 minutes while Docker inspection/top/stats calls also remained
+pending. Preserve the live runner and all partial files; do not infer a solver
+result or restart OrbStack from this observation. The n=128 and two smaller-dt
+n=64 cases are still required before the protocol's matrix verdict. Completed
+case archives, hashes and a cautious incomplete-matrix manifest are in
+`evidence/of13-high-gradient-v2/`; the current report is
+`reports/high-gradient-of13-v2-run-2026-09-28.md`. The new archive utility
+accepts only complete cases and marks incomplete matrices UNCERTAIN.
+
+## Revision 10 — analytic high-gradient identities and slow n=128 execution
+
+The high-gradient MMS now records exact selected-point Frobenius-gradient and
+vorticity values as lower bounds on the continuous maxima, without claiming
+they are sharp global peaks. A reproducible derivation note and independent
+SymPy-versus-Fourier formula comparison are checked in. Both formula tests pass;
+they do not certify a numerical solver. The original Foundation 13 n=128 runner
+remains live and has advanced to 0.024 seconds of the 0.05-second interval,
+with a logged cumulative OpenFOAM `ExecutionTime` near 499 seconds at that
+point (not a per-step timing). Preserve and reobserve the same run; do not
+restart it or treat resource cost as a solver failure. The spatial/time matrix and its reproduction
+verdict remain INCOMPLETE/UNCERTAIN.
+
+## Revision 11 — independent finite-mode spectrum reference
+
+The high-gradient MMS now has a separate exact finite-Fourier shell-energy
+evaluator. It was cross-checked against resolved cell-centered FFTs for
+N=4,8,16. That comparison caught a factor-of-two error in the first coefficient
+table, which was corrected before accepting the tests. The corrected independent
+shell sums pass against the sampled FFT. The formula and correction history are
+documented in `docs/high-gradient-spectrum.md`; this is reference validation,
+not a solver result. Meanwhile, the original n=128 OpenFOAM process remains live
+at t=0.027s, so the spatial/time matrix is still incomplete. The older Gaussian
+AMR sweep does not satisfy high-gradient v2; its dedicated three-budget v2 AMR
+runner remains unexecuted, as does validation of any nonuniform-grid spectrum.
+
+## Revision 13 — Python verification CI
+
+A GitHub Actions workflow now runs the full Python suite on Python 3.12 for
+pull requests and pushes to `main`. Both duplicate runs on the first PR update
+passed; the branch filter now prevents duplicate feature-branch push/PR runs.
+The same suite passed locally on Python 3.12 (74 tests and five subtests). Its
+scope is analytic checks, gates, adapters and input generators; it does not run
+CFD solvers. The successful run reported GitHub's Node 20 removal warning, so
+the workflow now uses `actions/checkout@v5` and `actions/setup-python@v6` for
+Node 24; the updated-action PR check passed. The hosted runner warned that
+`ubuntu-latest` will migrate, so the workflow now pins `ubuntu-24.04`; the
+resulting PR check also passed. At the latest observation the existing n=128
+Foundation 13 job remains live at t=0.041s. Although its solver log did not
+advance for roughly four minutes, a read-only Docker exec observed the
+container's `foamRun` process in runnable state at 66% CPU and 12.9% memory;
+this distinguishes active computation from a stopped container.
+
+## Revision 12 — high-gradient AMR input-generation checks
+
+Three new unit tests exercise the high-gradient AMR case generator: sensor
+creation/update and boundary correction, refinement limits/budget, and the
+minimum refine interval needed to initialize the sensor. They pass but do not
+test OpenFOAM's runtime adaptation or mesh-level/budget behavior. The original
+uniform n=128 process remains live and has reached t=0.027s; uniform/time and
+high-gradient AMR solver matrices remain incomplete.
+
+
+## Revision 14 — late-September literature and upstream refresh
+
+A new dated source audit is recorded in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. Rechecked
+related work includes the conditional regularity result for analytic forcing,
+the latest version of force-space density results, and a neural-forcing
+proposal. None verifies molecular alignment, material-viscosity collapse, or
+an OpenFOAM/SU2/PhysicsNeMo defect. They sharpen the next falsification tasks:
+compare the OpenAI force against analyticity/local-vanishing hypotheses; state
+topologies when testing robustness; and require fixed-force replay plus exact
+time/spectrum contracts for numerical candidates. SU2's active target-time PR
+and PhysicsNeMo 26.08 mesh calculus/epistemic uncertainty/CFD surrogate
+benchmark additions are audit leads, not confirmed defects or solver evidence.
+The current OpenFOAM Foundation 13 run stays pinned to its existing image and
+continues separately; any patch-level replication must get its own source and
+image manifest. No scope or completion gate is relaxed.
+
+
+## Revision 15 — n=128 completion and temporal runner stall
+
+The original OpenFOAM Foundation 13 uniform runner completed n=128, dt=0.001
+at t=0.05 with exit code zero, 50 recorded steps, 50 five-iteration PIMPLE
+convergences, and the `End` marker. Independent acceptance analysis reports
+standard acceptance PASS and local quality PASS; its original case tree was
+archived and content-verified at
+`evidence/of13-high-gradient-v2/README-n128-archive.md` (the 169 MiB tar is published as a checksummed, split Zstandard package because GitHub rejects a single file above 100 MiB). The manifest now has
+four of six uniform cases complete, with the full matrix still
+INCOMPLETE/UNCERTAIN because both smaller-dt n=64 cases remain incomplete.
+
+The automatically started n=64, dt=0.0005 case reached `Time = 0.018s` on its 36th step; 35 earlier steps have
+PIMPLE convergence records, each in five iterations. Its log stopped changing
+at 2026-09-28 11:51:31 JST. At a later check no `foamRun` process was observable;
+the host runner and Docker CLI had zero CPU, and Docker/OrbStack control commands
+were unresponsive. The host runner was terminated to prevent a hung sequence
+from retaining the lane; its partial input/logs remain intact with no exit.json
+and no solver verdict. A Docker stop request was issued but has not returned, so
+container removal and daemon health are unverified. No global OrbStack restart
+was attempted. A different queued task was told the lane has no observed solver
+process but Docker state could not be confirmed. Resume only after container/daemon
+state can be queried reliably; preserve this partial run and restart that frozen
+case only from a clean, verified container after recording the prior attempt.
+
+## Revision 16 — related unforced-Euler construction and gradient sensitivity
+
+The OpenAI announcement links a separate unforced 3D Euler construction. Its
+primary paper explicitly builds iterated localized oscillatory packets whose
+velocity increments carry an inverse-frequency factor while phase
+differentiation restores an order-one gradient increment. Record this as a
+cross-problem analytic reason to keep local-gradient acceptance separate from
+aggregate velocity error. Euler has no viscous stress, and this construction
+does not validate molecular alignment, a material-viscosity change, or the
+forced Navier–Stokes numerical cases. The primary-source distinction and exact
+scope are documented in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; the frozen
+benchmark and three-project audit scope are unchanged.
+
+## Revision 17 — acceptance parser false-pass control
+
+Adversarial self-testing found that the OpenFOAM standard-acceptance parser
+could accept a synthetic log with the right record count and final time but
+duplicate/skipped intermediate time labels. The checker now validates every
+logged timestamp against the frozen fixed-step schedule and has a regression
+test that rejects the counterexample. A hash-checked audit of all four complete
+high-gradient v2 archives confirms their existing logs follow the schedule;
+their solver verdicts do not change. Classify this as our evaluation-harness
+bug, not an upstream solver defect. Details and the rerunnable audit artifact
+are in `reports/internal-gate-self-audit-2026-09-28.md` and
+`evidence/tests/high-gradient-time-sequence.json`.
+
+## Revision 18 — rerunnable PhysicsNeMo odd-width audit
+
+The targeted PhysicsNeMo spectrum defect is already tracked upstream in
+Issue #2007 with fix PR #2008, so no duplicate post is warranted. The local
+audit previously retained outputs and source hashes but lacked its exact
+reproducer. Added a CPU script that loads the unmodified `power_spectrum.py`
+directly, checks even/odd axis-mode controls and deterministic transpose
+symmetry, and writes source-hashed evidence. The current main/release source
+file hash still matches the audited defective implementation; PR #2008 remains
+the existing remediation path. The exact PR head was independently run through
+the same even/odd and transpose controls and suppressed the counterexample;
+that does not substitute for its full upstream CI/test suite or merge review.
+Full upstream-suite validation remains open.
+
+## Revision 19 — conditional support-hole cusp tube and source-bound correction
+
+The similarity equation now has an explicit classical geometric estimate for
+the full spatial tube of radius `c*sqrt(1-t)` around the selected axis curve.
+Writing `eta=z/q^(1/2-h)`, the normalized map
+`F(eta)=eta*(1-eta^2)^(-(1/2-h))` has derivative bounded below by `1-2h`;
+this controls axial tube displacement, chart margin, and the localization
+plateaus once a common positive inner-support coefficient is supplied. Exact
+algebraic identities are checked and included in archived report replay. This
+does not yet prove that every selected primitive, cutoff sum, spatial curl and
+final localized velocity share the required inner hole. A source audit also
+corrected an earlier misdescription: `SublevelShrinkingSupport` is an outer
+support bound, while inner support comes from separate annular lower bounds.
+Do not promote the conditional cusp geometry to a Lean-checked assembled-field
+theorem, a numerical packet certificate, or a molecular conclusion.
+
+## Revision 20 — locked replay restored on the current commit
+
+The current NumPy-2.5.3 evidence metadata mismatch was resolved by regenerating
+the analytic reference artifact under the repository's locked NumPy 2.5.2
+environment, preserving the earlier failed replay as historical evidence. A
+fresh tracked-only export at commit `03ce175` reproduced all 113 compared
+report/test files exactly; all 26 report steps and 85 tests passed. This proves
+the bounded Python postprocessing replay, not solver/training/Lean reproduction
+or completion of the support-hole-to-final-field theorem. The saved run and
+hashes are under `evidence/clean-export-2026-09-28-cusp-tube/`.
+
+## Revision 21 — late-September source and research check
+
+The current primary-source refresh confirms the OpenAI NavierStokesAndEuler
+repository still reports zero `sorry` declarations and formalizes the forced
+Navier–Stokes alternatives (C)/(D), plus unforced Euler results; Lean checking
+validates the encoded statements against Lean's kernel but does not by itself
+establish that the paper's encoding matches every intended analytic/physical
+claim. The Clay Institute's 11 September statement says the problem has
+"apparently been settled" and that evaluation/credit will be deliberately
+unhurried. No newer official evaluation was found in this pass.
+
+New September papers/preprints include a forced-data distribution result
+(arXiv:2609.10262), a neural-forcing candidate/certification proposal
+(arXiv:2609.23934), and a shell-model cascade study (arXiv:2609.26790).
+They extend mathematical discussion of force topology, fixed-force validation,
+and scale transfer. The latter is a shell-model result, not a theorem about
+molecular trajectories. None establishes particle alignment, deterministic
+molecular positions, or a velocity-induced collapse of material viscosity;
+those remain separate physical hypotheses requiring a kinetic/constitutive
+model and experiment. Numerical simulation may itself be wrong or
+under-resolved and is retained only as conditional evidence.
+
+The current OpenFOAM Foundation 13 matrix remains incomplete: four of six
+uniform cases have complete archives; n=64, dt=0.0005 has a preserved partial
+log with 36 observed steps and no verified container exit, while dt=0.00025
+has not run. A zero-CPU orphan Docker client and a long-running `docker info`
+call remain visible, with no `foamRun` process observed. Container/daemon state
+is unknown. Do not restart OrbStack or disturb unrelated containers without
+explicit authorization; resume only after read-only container state queries
+work, preserving the partial evidence.
+
+The concrete result relevant to the initial proposal is still bounded: the
+completed n=16/n=32 cases pass standard acceptance but fail local-quality
+acceptance, whereas n=64/n=128 pass both. This is a resolution-sensitive
+benchmark outcome, not a solver defect or blow-up signal. Finish the frozen
+time-refinement matrix and dedicated AMR budgets, then complete the SU2 and
+PhysicsNeMo audit before considering any additional upstream report. Recheck
+existing issue/PR status first to avoid duplicates.
+
+## Revision 22 — stage-uniform primitive support hole
+
+A pinned-source reread narrowed the remaining analytic gap. The copy,
+particular, signed and mean correction primitives admit a shared positive
+inner-hole coefficient
+
+    c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0,
+
+where `leftRadius` and `patch.a` are the selected positive source constants.
+The initial physical copy annulus supplies the first term; every positive
+particular/signed stage lies outside the same nominal active annulus; and the
+mean stream/direct families use the fixed initialization-patch radius. This
+corrects Revision 19's implication that selected-uniform primitive constants
+were still missing. The coefficient is existential and non-numerical.
+
+The remaining analytic target is now the passage from these stage-uniform zero
+regions to the complete selected weighted series, its spatial curl, direct
+field sum, periodic spatial localization and final time activation on a
+quantitative cusp tube. Existing source lemmas provide component decompositions
+and per-stage zero germs, but no end-to-end theorem has yet been checked for the
+final activated velocity. Keep the packet estimate conditional, do not claim a
+Lean proof of the tube, and do not infer molecular alignment or constitutive
+viscosity change. The exact source map and corrected status are recorded in
+`docs/packet-constant-dependencies.md` and
+`docs/support-hole-tube-geometry.md`.
+
+## Revision 23 — compiled exterior-transfer theorem and remaining tube geometry
+
+The actual selected construction now has a compiling Lean extension at
+`verification/SupportHoleAssembly.lean`. Its theorem composes the exterior
+identities for stage zero, all positive potential stages and all direct stages
+with cutoff local finiteness, spatial curl, periodic localization and late-time
+activation. Under explicit exterior, zeroth-cutoff plateau, spatial-plateau and
+late-time hypotheses, the final activated velocity is eventually equal to
+the selected smooth-base velocity.
+
+The pinned source archive is retained under `work/` with SHA-256
+`9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7`. Lean
+4.34.0-rc2 and pinned mathlib commit
+`85e3a25e006c35636f0e53b0e9296caca2685bc0` were obtained from a verified source
+archive and populated Lean cache. The five imported upstream modules built
+successfully (3,679 jobs), and the extension compiled with `lake env lean` in
+the upstream project environment. This verifies the conditional exterior
+equality theorem. It does not verify the whole moving cusp-tube inclusion: the
+quantitative chart, ball, sublevel and plateau inequalities have not yet been
+formalized and connected to its hypotheses. No numerical tube radius or
+physical/molecular conclusion is claimed.
+
+The initial copy and mean terms were separately checked against the same
+annular inner-hole mechanism; source assembly lemmas show their exterior zero
+behavior, so they are not an independent obstruction. The remaining proof
+target is specifically to formalize the whole-tube geometry and instantiate
+the checked transfer theorem uniformly for every point in that tube.
+
+
+## Revision 24 — radial-hole bridge and actual exterior scale
+
+The Lean extension now includes
+`selected_inner_exterior_velocity_germ_of_radial_hole`. It uses the source
+identity `physicalPosition[0]^2/(2*physicalQ)=cartesianChart.2.1` to convert a
+strict inner-radius condition into exclusion from the actual active annulus,
+then applies the compiled selected-field equality theorem. Its explicit
+remaining hypotheses are `q<Q_res`, the zeroth-cutoff plateau, spatial
+localization plateau, and late-time activation.
+
+A scale audit found the exterior cutoff must be stated more tightly than the
+physical construction's `qbig`: the source defines
+`residualBand=firstBand+1` and `qbig=2*ChartScales.Q(residualBand)`, while
+`ActualExteriorPrefix.exteriorDomain` requires
+`q<ChartScales.Q(residualBand)`. Accordingly, the moving-tube condition was
+corrected to `tau<s0*Q_res`. The whole-ball proof deriving this chart bound
+and all plateaus for every tube point is still not formalized. This narrows a
+concrete precondition; it does not change the conditional status of the
+cusp-tube claim.
+
+The same n=64, dt=0.0005 OpenFOAM attempt was rechecked on 2026-09-28: its
+`log.foamRun` still has its 11:51:31 timestamp, host PID 91031 is still waiting,
+and an 8-second read-only query through OrbStack's own Docker CLI timed out.
+No `foamRun` process appeared in the host process listing. Container state is
+still unknown; no solver or daemon restart was attempted.
+
+
+## Revision 25 — Lean-checked similarity-chart upper bound
+
+`verification/SupportHoleAssembly.lean` now formalizes
+`physicalQ_time_identity` by pulling the pinned source's implicit similarity
+equation back to Cartesian spacetime. It also proves
+`physicalQ_le_of_eta_margin`: under `|eta|<=beta<1`, the physical similarity
+scale satisfies `q<=(1-t)/(1-beta^2)`. This verifies the chart upper-bound
+step used to place a tube inside `q<Q_res`, once a uniform eta margin is
+available. The remaining geometric proof is to derive that margin for every
+point in each shrinking spatial ball using the derivative lower bound for the
+normalized axial map, then combine radial and localization bounds. No solver or
+physical conclusion follows from this analytic lemma.

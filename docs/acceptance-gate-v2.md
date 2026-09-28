@@ -33,3 +33,10 @@ otherwise exit 2 denotes uncertainty. This fixes the earlier CLI behavior where
 local PASS alone could return success despite uncertain standard acceptance.
 Legacy flag-only reports are now uncertain. No existing solver case has been
 upgraded to full acceptance by this change.
+
+The OpenFOAM run-level checker also verifies that every logged time equals
+`i*delta_t` for `i=1..end_time/delta_t`, within `1e-9*max(1,|end_time|)` in
+the configured time units. A complete-looking log with duplicate or skipped
+time labels is a failed run-level gate, even if its record count and final time
+match. This checks the logged schedule; it does not independently prove that
+the solver advanced its internal physical clock correctly.

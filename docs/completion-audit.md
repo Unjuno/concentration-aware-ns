@@ -14,16 +14,17 @@ finding to a supported improvement and the evidence required to extend it.
 | Source/version/license audit | docs/audit.md, runtime recipes, pinned source files | Three targets identified; runtime dependencies have stated reproducibility limits |
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; three tighter-iteration controls add 350 converged steps without changing endpoints materially or the observed order 0.493. Asymptotic temporal convergence remains unproved. |
+| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest.json`; frozen protocol; n128 archive package | Four of six cases complete. n16/n32/n64/n128 at dt=.001 complete; n128 passes both standard and local-quality gates. n64 dt=.0005 stopped at t=.018 with 35/100 converged steps; dt=.00025 unstarted. Full matrix remains INCOMPLETE/UNCERTAIN. |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 57 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; evidence/tests/gate-artifact-audit.json; internal timestamp-sequence audit | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. The run-level parser's duplicate/skipped-time false-pass was found synthetically and corrected; all four complete high-gradient v2 archives pass the new fixed-step sequence check. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes; all 93 artifact links match. Current verification reports 75 unittest-discovery tests and 77 pytest tests plus five subtests. Full current-tree clean export and solver-build reproduction remain separate |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -87,6 +88,30 @@ that all actual candidate stages, direct curls, and the full cutoff series
 share one coefficient on a complete tube. The packet-radius transfer and
 completion verdict therefore remain unresolved; see
 `docs/packet-constant-dependencies.md`.
+
+### Conditional cusp-tube chart estimate and source-bound correction
+
+The similarity equation `tau=q-z^2 q^(2h)` yields the normalized coordinate
+`F(eta)=eta*(1-eta^2)^(-D)`, `D=1/2-h`. Its derivative factors as
+`(1-eta^2)^(-D-1)*(1-2*h*eta^2)`, bounded below by `1-2h>0` on `|eta|<1`.
+This gives a uniform inverse bound: an axial displacement of at most
+`c*sqrt(tau)` around the selected axis curve changes eta by at most
+`c*tau^h/(1-2h)`. Conditional on a common primitive inner-support coefficient
+`c0`, choose c smaller than both `c0` and the chart-margin allowance. For
+sufficiently small tau, the full spatial ball of radius `c*sqrt(tau)` remains
+inside the physical sublevel and spatial/time localization plateaus, and lies
+inside the proposed support hole. The exact algebraic identities are checked
+in `evidence/tests/support-hole-tube-geometry.json`; derivation and explicit
+smallness conditions are in `docs/support-hole-tube-geometry.md`. This is a
+classical conditional chart estimate, not a Lean-checked assembly theorem or a
+numerical packet certificate.
+
+This audit also corrects a source-description error in an earlier note:
+OpenAI's `SublevelShrinkingSupport` is an outer support bound (nonzero values
+have radius at most the stated shrinking outer radius). It does not establish
+an inner hole. The candidate hole depends on separate lower annulus bounds;
+selected-stage transfer, cutoff sums, curl, and final-field equality remain
+unproved.
 
 Correction to analytic evidence: the force-ratio geometric factor d=1-eta²
 was inverted in earlier revisions. Current symbolic and Lean sign checks
@@ -220,11 +245,11 @@ Required next evidence, in dependency order:
    the t=0.05 temporal result. Avoid treating a changed initial-value problem
    as a repair of the original benchmark or assuming its result in advance.
 
-The current common replay has 25 passing steps and 57 tests. It includes a fresh
-six-archive OpenFOAM comparison reconstruction, the SU2 output-clock replay,
-exact uniform-prefix threshold algebra, and the localized high-gradient MMS
-plus its independent symbolic-versus-NumPy derivative comparison. It excludes
-solver runs for that new MMS case.
+At the historical update, the common replay had 25 passing steps and 59 tests.
+It includes a fresh six-archive OpenFOAM comparison reconstruction, the SU2
+output-clock replay, exact uniform-prefix threshold algebra, and the localized
+high-gradient MMS plus its independent symbolic-versus-NumPy derivative
+comparison. It excludes solver runs for that new MMS case.
 The analytic actualProfile moment/amplitude obligation and non-effective
 packet constants remain unresolved. Whole-goal completion is not established.
 
@@ -400,14 +425,19 @@ derivative.
 
 This case is now in `docs/protocol.md`, `tools/check_high_gradient_mms.py`,
 `tests/test_high_gradient_mms.py` and `evidence/tests/high-gradient-mms.json`.
-The locked report replay now has 25 successful steps and 57 tests. A second
+The locked report replay then had 25 successful steps and 59 tests. A second
 implementation evaluates fields from hand-coded Fourier derivative formulas;
 direct SymPy differentiation agrees for velocity, gradient, vorticity and
 forcing at 65 seeded points for each `N`, with maximum component error below
 `2.3e-16`. OpenFOAM's case generator now emits the matching time-dependent
 `codedFvModel`, and a unit test reads back the generated cell initialization.
-The new Foundation 13 matrix and quality thresholds are frozen in
-`protocols/high-gradient-of13-v1.json`; a mock-mesh C++ compiler check is
+The original Foundation 13 matrix and quality thresholds are preserved in
+`protocols/high-gradient-of13-v1.json`; before any solver run, the FD2
+reference-only floor audit showed that n=16 and n=32 exceed the 5% gradient and
+vorticity thresholds even for exact sampled data. The additive successor
+`protocols/high-gradient-of13-v2.json` adds n=128, giving two spatial levels
+(n=64,128) below both derivative floors; the reproducible audit is
+`evidence/tests/high-gradient-fd2-resolution-floor.json`. A mock-mesh C++ compiler check is
 available at `tools/check_high_gradient_openfoam_force.py`. It has not run:
 the selected OrbStack Docker context did not answer `docker info` within 3 s,
 recorded at `evidence/environment/openfoam-docker-preflight-2026-09-28.json`.
@@ -419,3 +449,98 @@ changed. Its preflight is in
 Consequently no solver result or C++ compile result is claimed, and there is no
 evidence that a solver misses the peak. The spatial/time matrix, AMR run,
 threshold results and cross-solver comparisons remain open.
+
+The high-gradient AMR path now uses the analytic `chi(y,z)` envelope as its
+refinement sensor. `tools/openfoam_amr_case.py`, `tools/analyze_amr.py` and
+`tools/run_high_gradient_amr.py` support the frozen 4096/5000/100000 cell
+budgets and compare nonuniform fields to the exact time-dependent reference.
+The six-case v2 uniform matrix also has a provenance-recording runner in
+`tools/run_high_gradient_openfoam.py`; both runners check the immutable image
+and require a clean committed source tree before creating a work tree. Case
+generation, sensor wiring and the current test suite pass, but neither high-gradient
+matrix has been run. The blocked-candidate count is explicitly `UNOBSERVED`
+unless runtime evidence exposes it. Spectrum remains unavailable on the
+nonuniform mesh without a validated reconstruction.
+An offline analyzer control now verifies that the sampled central-FD2 component
+peak differs from its exact cell-sample derivative peak by the predicted
+`sin(N*dx)/(N*dx)` factor; the continuous full-gradient peak remains uncertified
+and the result stays `UNCERTAIN`.
+
+The uniform runner was invoked once after preparation; its bounded eight-second
+Docker image-inspect preflight timed out and created no case tree. The exact
+result is in `evidence/environment/openfoam-high-gradient-run-preflight-2026-09-28.json`.
+
+The post-announcement mathematical and physical literature scan, including the
+OpenAI source refresh and explicit molecular-bridge audit, is summarized in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. That note also
+corrects the live SU2 Q&A status: a maintainer replied on September 13 and the
+author added the BDF2 control on September 26; GitHub has not marked an accepted
+answer.
+
+### High-gradient acceptance gate integration, 2026-09-28
+
+The uniform analyzer now computes relative velocity, energy, FD2 gradient,
+vorticity and sampled shell-spectrum errors, and the runner writes separate
+standard-acceptance and local-quality verdicts. Standard acceptance requires
+the requested endpoint, expected number of time steps, one PIMPLE convergence
+record per step within the configured outer-corrector limit, and an `fvSolution`
+whose outer-corrector count and absolute `p`/`U` residual controls match the
+frozen protocol. This parser was tested against the preserved Foundation 13 n64
+run archive as well as synthetic pass/fail/truncated/misconfigured logs. The matrix-level blind-spot verdict requires both
+n=64 and n=128 to pass standard acceptance and fail local quality; these are
+the two levels whose exact-reference FD2 floors clear the preregistered gradient
+and vorticity thresholds. Missing evidence stays UNCERTAIN. All 68 tests and
+the 25-step archived report replay passed. This is gate implementation evidence
+only; the high-gradient OpenFOAM matrix and AMR sweep had not run at this
+historical update.
+
+### High-gradient OpenFOAM execution update, 2026-09-28
+
+The original six-case uniform runner completed and archived the n=128,
+dt=0.001 case at t=.05 with exit code 0, 50/50 PIMPLE-converged steps and an
+`End` marker. Its standard acceptance and local-quality gates both PASS. The
+coarse n=16 and n=32 cases remain standard PASS/local FAIL but are below the
+preregistered exact-reference FD2 resolution floors; n=64 and n=128 at dt=.001
+are standard PASS/local PASS. These observations do not reproduce a persistent
+acceptance blind spot.
+
+The runner then started n=64, dt=.0005 and stopped logging at t=.018. The
+preserved log has 36 time records, 35 completed convergence records, and no
+terminal marker or exit record. At the last live audit there was no observable
+`foamRun` process, while the Docker client and Docker/OrbStack inventory/stop
+requests remained unresponsive. The container's terminal state is unknown; its
+partial inputs and logs remain preserved. The final dt=.00025 case and all
+three high-gradient AMR budgets remain unrun. Accordingly, v2 remains
+INCOMPLETE/UNCERTAIN, with no solver-defect or physical-singularity inference.
+The completed n=128 archive is published as two checksummed Zstandard parts
+under GitHub's per-file limit, with reconstruction instructions in
+`evidence/of13-high-gradient-v2/README-n128-archive.md`.
+
+### Current locked replay refresh, 2026-09-28
+
+The locked same-host environment replayed all 25 configured report steps with
+zero failures. Its unittest discovery ran 73 tests, and the artifact audit
+matched all 93 links. The separate current verification environment passed 75
+pytest tests and five subtests. The refreshed high-gradient MMS replay log
+now includes selected-point Frobenius-gradient lower bounds; its independent
+reference-comparison replay log records NumPy 2.5.2 from the locked environment. This replay
+updates archived analytic/report artifacts only; it does not rerun any solver,
+continue the stalled Docker case, or upgrade a scientific verdict.
+
+A fresh tracked-only replay of commit `0a950128f0d49701d6323b8ccd58f71b7e20e715`
+on 2026-09-28 also completed all 25 report steps, SU2 standard review, and four
+symbolic axis checks with exit code zero. The strict 111-file byte comparison
+returned nonzero for one field only: the tracked high-gradient reference JSON
+records NumPy 2.5.3, while the locked environment regenerates it with NumPy
+2.5.2. Removing that version string makes the JSON objects identical. This is
+a preserved metadata-only reproducibility mismatch, not a numerical discrepancy
+or a clean-export PASS; details and sanitized command outcomes are in
+`evidence/clean-export-2026-09-28-current/`.
+
+The locked metadata baseline was then regenerated under NumPy 2.5.2 and the
+new support-hole geometry check was added to report replay. A fresh export of
+commit `03ce175fcf26d17869de330720f2dfe8a49c4481` now passes: 26 replay steps,
+85 unit tests, 113 compared report/test files, and zero changed files. This is
+Python postprocessing/replay evidence only, not a solver, training or Lean
+reproduction. Sanitized logs and hashes are preserved at
+`evidence/clean-export-2026-09-28-cusp-tube/`.

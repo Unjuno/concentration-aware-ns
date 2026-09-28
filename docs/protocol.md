@@ -40,9 +40,12 @@ The symbolic checker derives the exact forcing identity, divergence, vorticity,
 selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
 `tools/check_high_gradient_mms.py`. It has not yet been run through OpenFOAM,
 SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
-claimed. The OpenFOAM spatial/time matrix and thresholds are frozen in
-`protocols/high-gradient-of13-v1.json`, separately from the existing Gaussian
-concentration case.
+claimed. The original unrun OpenFOAM matrix is preserved in
+`protocols/high-gradient-of13-v1.json`. The active six-case successor and its
+reference-only derivative-resolution audit are in
+`protocols/high-gradient-of13-v2.json` and
+`evidence/tests/high-gradient-fd2-resolution-floor.json`, separately from the
+existing Gaussian concentration case.
 An independent numerical formula comparison is also provided:
 `tools/high_gradient_reference.py` evaluates derivatives from the finite
 Fourier coefficients, while `tools/check_high_gradient_reference.py` constructs
@@ -118,8 +121,17 @@ Install requirements-verification.txt in an isolated environment and run
 symbolically rather than reusing the hand-derived derivatives.
 `python3 -m tools.check_openfoam_force` compiles the generated codeAddSup body
 against actual OpenFOAM vector types, with a mock mesh/equation and varying cell
-volumes. It checks formula/assembly equivalence; solver equation-sign conventions
-still require independent PDE/run checks. Run it after the n16 study case exists.
+volumes. It checks formula/assembly equivalence. A pinned-source audit now
+traces the Foundation 13 `codedFvModel` callback through
+`fvModels().source(U)`, the
+`incompressibleFluid` momentum equation, matrix subtraction and Euler `ddt`
+assembly. It confirms that `source[cell] -= V*f` contributes the intended
+positive `+f` on the physical right-hand side, and that the mock's
+`-eqn.source()/V` extraction has the right sign. This is a static source-level
+result, not a live solver run; runtime integration, pressure coupling and the
+numerical time-discretization remain unverified. See
+`reports/openfoam-source-sign-audit-2026-09-28.md` and its pinned evidence JSON.
+Run the compile check when the n16 study case and OpenFOAM container are usable.
 
 The exact Hessian at the concentration center also supplies one-sided analytic
 lower bounds on continuous gradient and vorticity maxima; see tools/peak_bounds.py.

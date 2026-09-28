@@ -1,0 +1,72 @@
+{
+  "commit": "0a950128f0d49701d6323b8ccd58f71b7e20e715",
+  "runner_sha256": "5cd76e690e6fda8668bf57558d82619c7b8e2139f0e2cc0d10ffa53700fd46a8",
+  "source_archive_sha256": "73a748edfdc1dbad58dcae2fdee9a52fd505c38a896ff5f0523c1c9729efd37d",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "dependency_install_exit_code": 0,
+  "packages": [
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "checks": [
+    {
+      "name": "report-replay",
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "5a6323aca622c7288e119b33d26cb0b441d7fa4cacc2a1a9f1cdb9ea9bd17059"
+    },
+    {
+      "name": "su2-standard",
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "f554b70b6a329e1147543d11bdb202dd21402223f281a89a3ecd8fe32f2d6278"
+    },
+    {
+      "name": "axis-force",
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "18176cb15efc7ac746fd0b292c8f5cacd0fc986cc1e076a737193d2bc0f2d6ac"
+    }
+  ],
+  "report_replay_steps": 25,
+  "replay_success": true,
+  "compared_files": 111,
+  "changed_files": [
+    "evidence/tests/high-gradient-reference.json"
+  ],
+  "byte_reproduction_success": false,
+  "difference_review": {
+    "path": "evidence/tests/high-gradient-reference.json",
+    "field": "numpy",
+    "tracked": "2.5.3",
+    "locked_replay": "2.5.2",
+    "remaining_json_equal_after_removing_field": true
+  },
+  "unit_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "test_count": 85,
+    "log": "unittest.log"
+  }
+}

@@ -1,6 +1,6 @@
 # Primary-source audit
 
-Updated 2026-09-09. Source observations, reproduced behaviors and unresolved
+Updated 2026-09-28. Source observations, reproduced behaviors and unresolved
 quality claims are distinguished below. This remains an interim audit.
 
 ## OpenFOAM Foundation 13
@@ -11,6 +11,7 @@ Foundation adapter.
 
 - [Residual implementation](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/cfdTools/general/solutionControl/convergenceControl/singleRegionConvergenceControl/singleRegionConvergenceControl.C): compares configured fields' initial residuals with absolute thresholds.
 - [AMR implementation](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C): candidate selection and consistency refinement must both be considered in interpreting maxCells.
+- [AMR cell-budget source audit](../reports/openfoam-amr-source-budget-audit-2026-09-28.md): pinned source behavior, cap-5000 allowance arithmetic, and why budget-blocked candidates remain unobserved.
 - [Source hook](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvModels/general/codedFvModel/codedFvModel.H): coded fvModel is an integration candidate; forcing sign and units need execution tests.
 - [Reporting instructions](https://github.com/OpenFOAM/OpenFOAM-13): README directs bug reports to bugs.openfoam.org.
 
@@ -35,10 +36,11 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | diagnostic discrepancy largely present in exact-field FD2 control; full acceptance hypothesis unverified | establish complete uncertainty budget |
+| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 incomplete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while resolved n64/n128 are standard/local PASS | finish temporal cases; retain uncertainty until whole frozen matrix is complete |
 | OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
-| SU-01 | conventional convergence with inaccurate local QoI | localized sweep running | complete grid/time matrix |
+| OF-04 | high-gradient AMR accuracy under frozen budgets | generator and sensor tests pass; v2 AMR solver runs not yet executed | execute three budgets against the frozen uniform n=64 control |
+| SU-01 | conventional convergence with inaccurate local QoI | localized grid/time sweep complete; no standard-PASS/local-FAIL counterexample established, residual gate limits conclusions | investigate nonuniform/AMR and additional solver paths only under a distinct preregistered contract |
 | SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
 | ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |
 | ML-02 | automatic time derivative assumption | x/y/z-only autodiff, explicit t input; documented API behavior | no defect report warranted |
@@ -81,3 +83,69 @@ Training inaccuracies alone likewise do not show a framework bug. The completed 
 reports/upstream-disposition.md; no demonstrated framework defect was found.
 
 Source: https://github.com/NVIDIA/physicsnemo/blob/1b961314e42a0625502ba1592d25f706f1e02a24/CONTRIBUTING.md
+
+### Current repository and PhysicsNeMo follow-up (2026-09-28)
+
+The Foundation 13 repository still resolves to the audited source commit
+`18870c24d21c6b982e2cdec27b2f59738cca5f90`; its current public open issue list
+contains no issue matching this benchmark's high-gradient MMS or coded forcing.
+SU2 v8.5.0 remains the experimental target, while the moving `master` branch
+has advanced to `bc15466602a687d6fb796d5df7a12ce3fde0949a`; the existing Q&A
+and pinned-version results are not silently re-labeled as main-branch tests.
+
+PhysicsNeMo's latest release is v2.2.2 (`072465a1a56817f180f64dee8a4069a1612b2d9e`,
+Apache-2.0); current main is `426f7552da4b4fa675e404e8a4f437e27681b668`.
+An independent CPU reproducer confirmed open Issue #2007 on both snapshots:
+the 33x33, wavenumber-5 spectrum differs by axis and fails transpose symmetry.
+The correction is already proposed in [PR #2008](https://github.com/NVIDIA/physicsnemo/pull/2008),
+which is open and behind current main. We ran its modified function on the
+reported odd/even shapes and verified the symmetry correction, but did not run
+the full PhysicsNeMo suite. Since the concentration-aware benchmark uses even
+uniform grids, this issue does not alter its current spectra; no duplicate
+issue or code change is justified. Reproduction, source hashes, environment and
+scope are recorded in
+`evidence/upstream-refresh/physicsnemo-power-spectrum-odd-width-2026-09-28.json`.
+
+The focused CPU reproducer is now checked in as
+`tools/reproduce_physicsnemo_issue_2007.py`. With the unmodified source already
+under `work/physicsnemo-source` and the recorded `work/physicsnemo-env`, run
+`work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007`.
+It emits `evidence/upstream-refresh/physicsnemo-issue-2007-reproduction.json`,
+including the source-file SHA256, Torch version, even/odd axis-wave controls,
+and deterministic transpose-symmetry checks. The reproduced file hash is
+`13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`, which
+matches the recorded v2.2.2 and current-main target file. This improves
+reproduction of the existing issue; it is not a full upstream suite run and
+does not justify a duplicate report.
+
+The same tool also tested the exact PR #2008 head
+`7407608723062dc11ba5332e9ff3774f42bb02d9` with `--expect-fixed`. The odd/even
+axis-wave and transpose controls pass on that version; its source hash and
+results are preserved in
+`evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json`. This
+confirms the existing patch resolves this focused counterexample, while leaving
+full-suite and merge/review status unresolved.
+
+To regenerate the focused fix-validation artifact, fetch only the target file
+from the pinned PR head and run the same tool:
+
+```sh
+gh api 'repos/NVIDIA/physicsnemo/contents/physicsnemo/metrics/general/power_spectrum.py?ref=7407608723062dc11ba5332e9ff3774f42bb02d9' --jq .content \
+  | python3 -c 'import base64,sys;sys.stdout.buffer.write(base64.b64decode(sys.stdin.read()))' \
+  > /tmp/physicsnemo-pr2008-power_spectrum.py
+work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007 \
+  --source-file /tmp/physicsnemo-pr2008-power_spectrum.py --expect-fixed \
+  --source-reference 'NVIDIA/physicsnemo PR #2008 head 7407608723062dc11ba5332e9ff3774f42bb02d9' \
+  --output evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json
+```
+
+The related periodic-gradient concern is also already tracked: PhysicsInformer
+Issue #2001 identifies the caller-facing periodic assumption, while #1852 and
+open draft PR #1853 concern a lower-level nonperiodic mode. Our current MMS is
+periodic, so these reports do not identify a defect in the present benchmark.
+No additional boundary issue was filed.
+
+Current target/default-branch heads and the focused SU2 duplicate searches are
+summarized in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`.
+That inventory is intentionally scoped; it does not claim that all open issues
+in these large repositories were individually reviewed.

@@ -3,6 +3,7 @@ import argparse,json,re
 from pathlib import Path
 import numpy as np
 from tools.reference import fields
+from tools.high_gradient_reference import fields as high_gradient_fields
 from tools.analyze_openfoam import vectors
 
 
@@ -35,7 +36,10 @@ def analyze(case):
         levels=np.zeros(count); level_source='initial blockMesh count and no refinement events; budget disallows refinement'
     else:
         raise ValueError('cellLevel unavailable without a verified no-refinement history')
-    ref=fields(c,t,sigma=params['sigma'],nu=params['nu'])
+    if params.get('profile','gaussian') == 'high-gradient':
+        ref=high_gradient_fields(c,N=params['frequency'],nu=params['nu'],time=t)
+    else:
+        ref=fields(c,t,sigma=params['sigma'],nu=params['nu'])
     error=float(np.sqrt(np.sum(v*np.sum((u-ref['u'])**2,axis=1))/np.sum(v*np.sum(ref['u']**2,axis=1))))
     norm=float(np.linalg.norm(g,axis=(1,2)).max())
     counts={str(int(level)):int(np.sum(levels==level)) for level in np.unique(levels)}

@@ -159,13 +159,13 @@ annulus-to-physical-radius scale identity. This proves a generic primitive
 copy-family implication, not that every actual stage satisfies one uniform
 parameter tuple.
 
-The full support-hole transfer is **not yet proved**. The source extension
-does not yet prove the common-hole implication through the full
-`ActualCandidateAssembly`/`GermCandidateAssembly` cutoff series on a complete
-spacetime tube, including valid-band/domain coverage and the direct curl field.
-The exact numeric value of `leftRadius` and `patch.a` is also non-effective.
-Therefore keep the published packet exponent withdrawn until that aggregate
-implication and the tube's domain conditions are formalized and checked.
+The conditional transfer through the actual selected potential/direct sums,
+curl, periodic localization and time activation is now checked on the actual
+open exterior in `verification/SupportHoleAssembly.lean`. The remaining gap is
+to formalize the common-hole chart and whole-tube inequalities and connect them
+to this theorem; the exact numeric value of `leftRadius` and `patch.a` is also
+non-effective. Therefore keep the published packet exponent withdrawn until
+the tube inclusion and its domain conditions are formalized and checked.
 
 ## Finite-stage cutoff with a known chart lower bound
 
@@ -241,8 +241,10 @@ bounds and common-band inequalities are supplied. More generally,
 `candidate_support_inputs` transfers this to the literal initial field, every
 potential stage, every `rawSeries` direct stage, and the pressure stages through
 explicit `EqOn` representation hypotheses. Its output is precisely
-`SublevelShrinkingSupport`, whose pointwise content is that nonzero values must
-lie at transverse radius at least `C*sqrt(physicalQ)`.
+`SublevelShrinkingSupport`, which is an **outer** support bound: nonzero values
+must have transverse radius at most `C*sqrt(physicalQ)`. It does not prove an
+inner support hole. The inner-hole route instead uses separate annulus lower
+bounds for each primitive family.
 
 The selected assembly already exposes many of the required representation facts:
 `ActualCandidateAssembly.initialPotential_support`,
@@ -255,21 +257,63 @@ for its final cutoff schedule. These are strong structural ingredients, and
 make a blanket claim that “the support hole is not transferred through any
 stages” inaccurate.
 
-The remaining requested theorem is narrower and quantitative: specialize the
-native-family bounds in `actual_coherent_families_support` (or the broader
-`actual_patch_support`) to the selected families; verify its first-band lower
-inequalities for all stages from the exact recurrence; transfer its common
-support conclusion through the actual representations and cutoff schedule to
-the selected full velocity; then show the proposed spatial tube stays inside
-the physical sublevel and all applicable charts. The generic theorem's
-parameters make these obligations visible rather than discharging them by
-openness. No theorem found in the inspected `ActualCandidateAssembly` lines
-already states the final equality of the assembled velocity and base on a
-uniform `sqrt(1-t)` tube. Accordingly the packet exponent remains conditional
-until this specialization and tube lemma are checked.
+The conditional field transfer through the actual representations, selected
+cutoff sums, spatial curl and final localization is now checked on the actual
+open exterior by `verification/SupportHoleAssembly.lean`. The classical chart
+geometry for a whole `c*sqrt(1-t)` cusp tube is derived in
+[`support-hole-tube-geometry.md`](support-hole-tube-geometry.md), conditional on
+the shared coefficient. Its exponent and derivative identities have a
+symbolic check, but the tube argument is not yet formalized in Lean or
+connected to the extension theorem. Accordingly, the packet exponent remains
+conditional until the whole-tube inclusion is checked.
 
-The evidence update corrects the earlier broad claim: per-stage support
-transfer is present in the upstream library; selected-uniform constants,
-cutoff-sum specialization and tube geometry are the exact remaining audit
-items. No numerical packet or material interpretation follows from the
-structural support lemmas alone.
+### Follow-up: stage-uniform inner support coefficient
+
+A closer read of the pinned `ActualCandidateAssembly` and support files
+establishes a common coefficient for the primitive corrections; the older
+claim that this coefficient still had to be extracted stage by stage was too
+broad:
+
+- The initialized copy potential has the exact exterior identity
+  `InitialPhysicalData.potential_zero_exterior`. Its physical-copy annulus
+  gives the lower transverse-radius coefficient
+  `leftRadius/(4*sqrt(2))` relative to `sqrt(physicalQ)`.
+- At every positive stage `j`, the particular potential is built from the
+  same `ActualPrimary.nominal` annulus (`particular_zero_germs`), and the signed
+  potential is zero off that same `ActualPolarCoverage.active` annulus
+  (`signed_zero_germs`). The former is derived for the actual representative
+  by `ActualCurrentWaveSupport.current_field_active_germs`.
+- The temporal/rank mean stream families use the fixed initialization patch;
+  `ActualMeanStageData.innerRadius` is `(patch.a/4)*sqrt(physicalQ)` and
+  `coefficient_vanishes` proves the coefficient is zero below it. The actual
+  stream/direct stage constructors expose the corresponding fields.
+
+Thus a common geometric hole coefficient for these primitives is
+
+    c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0.
+
+This is a source-derived positive existential constant, not a numerical value.
+Each selected stage's correction terms have zero germs whenever the physical
+transverse radius lies strictly below `c0*sqrt(physicalQ)`. The source also
+proves component decompositions such as `positivePotential_curl`. The new
+extension `verification/SupportHoleAssembly.lean` composes actual selected-stage
+exterior identities, local finiteness and cutoff behavior, potential curl,
+the direct-stage sum, periodic spatial localization and time activation into
+a checked conditional field-equality theorem. Its domain is the actual open
+exterior, not a constructed whole cusp tube. The missing step is now the Lean
+formalization of whole-tube chart/domain/plateau inequalities and their
+connection to that theorem. This corrects the prior blanket wording about
+selected-uniform constants and aggregate transfer, but does not yet restore
+the conditional packet exponent.
+
+Pinned source locations: [`InitialPhysicalData.lean`
+(`potential_support`, `potential_zero_exterior`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/InitialPhysicalData.lean),
+[`ActualCandidateAssembly.lean`
+(`particular_zero_germs`, `signed_zero_germs`, `positivePotential_curl`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCandidateAssembly.lean),
+[`ActualCurrentWaveSupport.lean`
+(`current_field_active_germs`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCurrentWaveSupport.lean),
+and [`ActualMeanStageData.lean`
+(`innerRadius`, `coefficient_vanishes`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualMeanStageData.lean).
+
+No numerical packet or material interpretation follows from these structural
+lemmas alone.
