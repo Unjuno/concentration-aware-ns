@@ -49,6 +49,14 @@ vorticity and forcing. Its tests check periodicity, divergence and second-order
 convergence of a separate finite-difference reconstruction of the PDE forcing.
 These checks validate formula consistency; they do not constitute solver runs.
 
+## Continuous integration
+
+Pull requests run the Python verification suite on Python 3.12 through
+`.github/workflows/python-verification.yml`. This covers analytic formulas,
+acceptance gates, archive/reader logic and generated case inputs. It does not
+launch OpenFOAM, SU2 or PhysicsNeMo, and cannot turn an unrun solver matrix into
+a PASS.
+
 ## Replay published report generation
 
 After installing requirements-verification.txt, run from the repository root:
