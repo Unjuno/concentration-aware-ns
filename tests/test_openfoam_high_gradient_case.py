@@ -6,11 +6,20 @@ from pathlib import Path
 import numpy as np
 
 from tools.high_gradient_reference import fields
+from tools.analyze_openfoam import analyze
 from tools.openfoam_case import generate
 from tools.openfoam_amr_case import generate_amr
 
 
 class OpenFoamHighGradientCaseTests(unittest.TestCase):
+    @staticmethod
+    def write_vectors(path, values):
+        body = "FoamFile { format ascii; class volVectorField; object field; }\n"
+        body += f"internalField nonuniform List<vector>\n{len(values)}\n(\n"
+        body += "\n".join("(" + " ".join(f"{x:.17g}" for x in row) + ")"
+                             for row in values)
+        path.write_text(body + "\n);\n")
+
     def test_case_generation_uses_exact_profile_and_transient_forcing(self):
         with tempfile.TemporaryDirectory() as directory:
             case = Path(directory) / "case"
@@ -50,6 +59,38 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             params=json.loads((case/"parameters.json").read_text())
             self.assertEqual(params['profile'],'high-gradient')
             self.assertIn('localized envelope chi',params['amr']['sensor'])
+
+    def test_analyzer_separates_fd2_peak_from_continuous_reference(self):
+        n, frequency, end = 8, 2, 0.05
+        with tempfile.TemporaryDirectory() as directory:
+            case = Path(directory)
+            time_dir = case / str(end)
+            time_dir.mkdir()
+            axis = (np.arange(n) + 0.5) * 2 * np.pi / n
+            z, y, x = np.meshgrid(axis, axis, axis, indexing="ij")
+            centers = np.stack((x, y, z), axis=-1).reshape(-1, 3)
+            velocity = fields(centers, N=frequency, time=end)["u"]
+            self.write_vectors(time_dir / "C", centers)
+            self.write_vectors(time_dir / "U", velocity)
+            (case / "parameters.json").write_text(json.dumps({
+                "n": n, "end": end, "nu": 0.01, "profile": "high-gradient",
+                "frequency": frequency,
+            }))
+            (case / "log.foamRun").write_text("End\n")
+
+            result = analyze(case)
+            sinc = np.sin(frequency * 2 * np.pi / n) / (frequency * 2 * np.pi / n)
+            self.assertAlmostEqual(
+                result["selected_gradient_component_fd2_peak"] /
+                result["selected_gradient_component_reference_sample_peak"],
+                sinc, places=13,
+            )
+            self.assertAlmostEqual(
+                result["selected_gradient_component_reference_continuous_peak"],
+                np.exp(-end), places=15,
+            )
+            self.assertFalse(result["continuous_full_gradient_peak_certified"])
+            self.assertEqual(result["quality"], "UNCERTAIN")
 
 
 if __name__ == "__main__":
