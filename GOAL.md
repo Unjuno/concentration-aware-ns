@@ -114,3 +114,24 @@ verify the tube stays in every cited band/domain. The derivation and exact
 source boundary are recorded in `docs/packet-constant-dependencies.md`. A
 generic Lean lemma now proves the pointwise hole for any supported copy-family
 sum; the all-stage assembly and tube-domain transfer remain open.
+
+## Revision 8 — photon-fluid comparison and OpenFOAM sign source audit
+
+The user renewed the photon-fluid idea, correcting that photons are discrete.
+Record photon fluids as a separate, established analogue-model research track:
+in selected nonlinear optical platforms, collective field intensity and phase
+map to effective density and velocity. Published experiments report both
+threshold-like suppression of optical obstacle drag and dispersive-wave
+transitions. These results motivate a concrete full-wave-versus-reduced-fluid
+comparison, but do not establish ordinary material-viscosity loss, molecular
+ordering, or a realization of the OpenAI 3D Navier–Stokes construction. Keep
+the model, observables, geometry and validity regime explicit; do not replace
+the original solver-benchmark goal with this analogy.
+
+A pinned-source audit now verifies the generated Foundation 13 MMS forcing
+sign through the coded model callback, `fvModels().source(U)`, matrix
+subtraction and Euler time assembly. This narrows the previous test limitation
+to runtime integration and accuracy: static source algebra supports the sign,
+but only an actual solver run can test the compiled case, pressure correction,
+and requested convergence metrics. Preserve the audit manifest and never
+promote it into a solver-run PASS.

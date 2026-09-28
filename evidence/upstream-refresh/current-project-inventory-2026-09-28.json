@@ -1,5 +1,12 @@
 {
   "date": "2026-09-28",
+  "refresh_timestamp_utc": "2026-09-28 00:55:47 UTC",
+  "default_branch_head_recheck": {
+    "OpenFOAM Foundation 13": {"commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90", "commit_date": "2026-06-09T09:25:37Z"},
+    "SU2": {"commit": "bc15466602a687d6fb796d5df7a12ce3fde0949a", "commit_date": "2026-04-28T06:05:27Z"},
+    "OpenAI/NavierStokesAndEuler": {"commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd", "commit_date": "2026-09-10T11:51:24Z"},
+    "NVIDIA/physicsnemo": {"commit": "426f7552da4b4fa675e404e8a4f437e27681b668", "commit_date": "2026-09-22T19:45:38Z"}
+  },
   "scope": "Targeted current-repository metadata and issue searches; not an exhaustive review of all open issues.",
   "targets": {
     "OpenFOAM Foundation 13": {

@@ -15,6 +15,7 @@ The paper's physical sketch is an axisymmetric vortex core with inward swirl and
 - **A force-density result was revised through 22 September.** Cao, Chi, and Nie's v4 preprint says blow-up-producing smooth forces are dense in a relative time-integrated spatial `H^s` topology for `s < 1/2`, while preserving zero initial velocity, on the torus and whole space. Their construction starts from OpenAI's example and uses a cutoff to avoid nonlinear interaction. This is potentially important to how “small forcing perturbation” is defined: density in this weaker topology does not mean smallness in a stronger norm that controls pointwise derivatives, nor does it show physical reachability. Source: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262), latest v4 dated 22 September.
 - **A new weak-solution search target appeared 20 September.** Petrillo and Glimm formulate positive energy defect on a finite time window for unforced periodic Leray–Hopf solutions and reduce it to a time-averaged lower bound on fine Littlewood–Paley energy flux. They explicitly state that a finite pseudo-spectral computation cannot establish the required Galerkin-uniform ceiling; their 128³/256³ runs are exploratory and fail the scale requirement at the Kolmogorov wavenumber. This is a distinct unforced problem, not a validation of the forced construction or evidence about molecular positions. Source: [arXiv:2609.23868](https://arxiv.org/abs/2609.23868).
 - **The physical cutoff study itself reports numerical scope limits.** Duraiswami's preprint computes a leading-order profile and a related porous-wall model, but says it does not integrate the full forced evolution, pulse annulus, or higher-order corrections. It also reports non-converged branches/spectra in parts of its parameter sweep. Its order-of-magnitude water/air estimates therefore inform likely continuum cutoffs, rather than independently validating the entire singular construction. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), especially §§5–9.
+- **A 23 September essay addresses proof legibility, not fluid dynamics.** Alexander Gamburd's arXiv essay discusses how the community should interpret and scrutinize a large machine-produced formal proof. It is a perspective piece; it does not independently audit the Lean development or add a theorem about Navier–Stokes. It reinforces why a certificate, source closure, human-readable argument and physical interpretation need separate evidence. Source: [arXiv:2609.28591](https://arxiv.org/abs/2609.28591).
 
 ## Audit of the user's molecular/particle hypothesis
 
@@ -95,6 +96,29 @@ specified. That would be a separate mathematical/physical track; the current
 Navier–Stokes proof contains no photon variables and provides no such
 derivation.
 
+There is also a narrower experimental connection to the user's “resistance
+falls above/below a speed” intuition. Michel et al. directly measured an
+optical analogue of obstacle drag in a nonlinear crystal and observed its
+suppression in a low-Mach superfluid regime. Their setup is paraxial and
+effectively two-dimensional: intensity, phase gradient, and propagation
+distance map to density, velocity, and time. The critical behavior depends on
+the nonlinear response, obstacle size/strength, healing length and absorption;
+their curves did not collapse to a universal function of Mach number alone.
+This is a real threshold-like reduction of optical drag, not a finding that
+ordinary liquid viscosity vanishes through molecular alignment.
+[Michel et al., *Nature Communications* (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5974130/).
+
+Xu et al. later demonstrated optical rarefaction and dispersive-shock waves,
+with a critical-velocity transition to a large-contrast nonlinear periodic
+wave in a fiber photon fluid. The governing model is a defocusing nonlinear
+Schrödinger equation; neglecting its dispersive quantum-pressure term gives a
+gas-dynamics Euler analogy, while the full model remains dispersive. This
+offers a concrete comparison—full-wave solution versus reduced fluid model,
+tracking phase/intensity gradients and drag or cavitation thresholds—but it
+is an optical-analogue study with its own exact reference, not a numerical
+realization of the OpenAI forced Navier–Stokes construction.
+[Xu et al., *Nature Communications* (2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9170689/).
+
 As of this review, the Clay Institute's public statement still describes the
 claim as “apparently” settled and says its prize-evaluation process is
 deliberately unhurried; it is not an independent mathematical endorsement or
@@ -104,7 +128,21 @@ The live OpenAI Lean repository still points to
 `f9e8bc5b38b6e212696e8a30e3e91517af887bbd` on 28 September; its latest commit
 metadata is dated 10 September. This is a source-version check, not new
 independent validation. The public Clay page available in this check has no
-later statement than 11 September.
+later Navier–Stokes evaluation statement than 11 September, although its home
+page now notes the 23 September Clay Research Conference. A same-day metadata
+refresh found no newer default-branch commit for the pinned OpenFOAM Foundation
+13 source (9 June), SU2 master (28 April), OpenAI Lean source (10 September) or
+PhysicsNeMo main (22 September). The PhysicsNeMo odd-width issue #2007 remains
+open and fix PR #2008 remains open; neither has moved past the states recorded
+in the inventory. These are repository and page checks, not a claim that all
+project activity or independent review has stopped.
+
+The arXiv search also surfaced the 23 September essay above. It is a new
+conversation around the announcement, but does not change the benchmark's
+mathematical or physical evidence. The light-as-fluid idea remains grounded in
+the older, established quantum-fluid-of-light literature under specific
+nonlinear optical or cavity conditions, rather than constituting a new
+Navier–Stokes consequence.
 
 The more defensible immediate hypothesis is narrower: ordinary convergence or mean-field acceptance criteria may fail to certify local concentration-sensitive quantities in an under-resolved calculation. That claim can be tested with known smooth solutions, independent derivative/forcing checks, and fixed spatial/time refinement. The new preprints make forcing regularity and topology explicit axes for future controlled cases; they do not justify calling the base solver defective.
 
@@ -115,6 +153,7 @@ The more defensible immediate hypothesis is narrower: ordinary convergence or me
 3. Add a later, separately frozen test matrix for forcing regularity/smoothness and local concentration metrics, only after proving each reference field, forcing, and discrete derivative independently. Track both weak forcing norms and derivative-sensitive norms so an `H^s`-small perturbation is not mislabeled as small in every physically relevant sense.
 4. Keep the SU2 discussion about first-order dual-time MMS source-time semantics separate from the OpenAI proof. On 2026-09-28, Discussion #2890 showed a maintainer's substantive 13 September reply and the author's 26 September BDF2 follow-up; GitHub still labels the Q&A “Unanswered” because no accepted answer is marked. This is engagement, not evidence of an upstream solver defect or an accepted fix.
 5. Do not file a new upstream defect report based on the molecular interpretation, the partial n=64 run, or these preprints. The current evidence supports a research limitation and a benchmark direction, not a reproduced software defect.
+6. A new Foundation 13 source audit traces the generated force sign through `codedFvModel`, `fvModels().source(U)`, matrix equality/subtraction and Euler `ddt`. It confirms that the coded `source -= V*f` yields positive physical `+f` on the assembled RHS and validates the mock's `-source/V` extraction. The solver remains unrun; see `reports/openfoam-source-sign-audit-2026-09-28.md` and its hashed source manifest.
 
 ## Source and interpretation limits
 

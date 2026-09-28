@@ -121,8 +121,17 @@ Install requirements-verification.txt in an isolated environment and run
 symbolically rather than reusing the hand-derived derivatives.
 `python3 -m tools.check_openfoam_force` compiles the generated codeAddSup body
 against actual OpenFOAM vector types, with a mock mesh/equation and varying cell
-volumes. It checks formula/assembly equivalence; solver equation-sign conventions
-still require independent PDE/run checks. Run it after the n16 study case exists.
+volumes. It checks formula/assembly equivalence. A pinned-source audit now
+traces the Foundation 13 `codedFvModel` callback through
+`fvModels().source(U)`, the
+`incompressibleFluid` momentum equation, matrix subtraction and Euler `ddt`
+assembly. It confirms that `source[cell] -= V*f` contributes the intended
+positive `+f` on the physical right-hand side, and that the mock's
+`-eqn.source()/V` extraction has the right sign. This is a static source-level
+result, not a live solver run; runtime integration, pressure coupling and the
+numerical time-discretization remain unverified. See
+`reports/openfoam-source-sign-audit-2026-09-28.md` and its pinned evidence JSON.
+Run the compile check when the n16 study case and OpenFOAM container are usable.
 
 The exact Hessian at the concentration center also supplies one-sided analytic
 lower bounds on continuous gradient and vorticity maxima; see tools/peak_bounds.py.
