@@ -204,3 +204,21 @@ minimum refine interval needed to initialize the sensor. They pass but do not
 test OpenFOAM's runtime adaptation or mesh-level/budget behavior. The original
 uniform n=128 process remains live and has reached t=0.027s; uniform/time and
 high-gradient AMR solver matrices remain incomplete.
+
+
+## Revision 14 — late-September literature and upstream refresh
+
+A new dated source audit is recorded in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. Rechecked
+related work includes the conditional regularity result for analytic forcing,
+the latest version of force-space density results, and a neural-forcing
+proposal. None verifies molecular alignment, material-viscosity collapse, or
+an OpenFOAM/SU2/PhysicsNeMo defect. They sharpen the next falsification tasks:
+compare the OpenAI force against analyticity/local-vanishing hypotheses; state
+topologies when testing robustness; and require fixed-force replay plus exact
+time/spectrum contracts for numerical candidates. SU2's active target-time PR
+and PhysicsNeMo 26.08 mesh calculus/epistemic uncertainty/CFD surrogate
+benchmark additions are audit leads, not confirmed defects or solver evidence.
+The current OpenFOAM Foundation 13 run stays pinned to its existing image and
+continues separately; any patch-level replication must get its own source and
+image manifest. No scope or completion gate is relaxed.

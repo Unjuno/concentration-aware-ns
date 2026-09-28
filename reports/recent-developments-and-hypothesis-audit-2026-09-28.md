@@ -12,7 +12,7 @@ The paper's physical sketch is an axisymmetric vortex core with inward swirl and
 
 - **A numerical/physical follow-up appeared 15 September.** Ramani Duraiswami's preprint recasts the leading-order similarity equations, constructs and verifies a related porous-wall profile solver, and estimates when a real fluid would leave the continuum regime. For its illustrative water scaling it estimates cavitation around a 0.6–1 mm core, far before molecular lengths; in air it estimates compressibility/shock before rarefaction reaches molecular scales. It explicitly says the forced construction does not establish a mechanism reachable in flows normally computed or built, and leaves the unforced engineering equations unchanged. This is a useful physical cutoff analysis, but it is a single preprint with stated approximations: it does not numerically integrate the complete forced Navier–Stokes construction, including the oscillatory stress-realizing annulus and higher-order corrections. The paper marks its inception numbers as order-of-magnitude estimates, dependent on annulus content. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), [HTML, especially §8](https://arxiv.org/html/2609.17642v1).
 - **A conditional regularity theorem appeared 17 September.** Constantin, Ignatova, and Vicol show regularity at the proposed singular point under the construction's stated anisotropic Type-II bounds and an exactly axisymmetric collapsing core, if the force is real analytic in space; they conclude forces for that setup cannot be analytic (or vanish near the singular point under their stated conditions). This narrows a regularity boundary; it does not contradict a merely smooth compactly supported, non-analytic force. Source: [arXiv:2609.20803](https://arxiv.org/abs/2609.20803).
-- **A force-density result was revised through 22 September.** Cao, Chi, and Nie's v4 preprint says blow-up-producing smooth forces are dense in a relative time-integrated spatial `H^s` topology for `s < 1/2`, while preserving zero initial velocity, on the torus and whole space. Their construction starts from OpenAI's example and uses a cutoff to avoid nonlinear interaction. This is potentially important to how “small forcing perturbation” is defined: density in this weaker topology does not mean smallness in a stronger norm that controls pointwise derivatives, nor does it show physical reachability. Source: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262), latest v4 dated 22 September.
+- **A force-density result appeared 9 September and has a revised public version.** The current arXiv abstract for Cao and Chi says blow-up-producing smooth forces are dense in an inherited time-integrated spatial `H^s` topology for `s < 1/2` on the torus. A separate whole-space preprint states different thresholds for `L^1_t H^s_x` and `L^2_t H^s_x`. Their construction starts from OpenAI's example and uses a localized vector potential/cutoff to avoid nonlinear interaction. This is potentially important to how “small forcing perturbation” is defined: density in those specified topologies does not mean smallness in a norm controlling pointwise derivatives, nor does it show physical reachability. The abstracts do not support the earlier attribution to three authors or a shared torus-and-whole-space theorem; keep the papers distinct. Sources: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262), [arXiv:2609.10269](https://arxiv.org/abs/2609.10269).
 - **A new weak-solution search target appeared 20 September.** Petrillo and Glimm formulate positive energy defect on a finite time window for unforced periodic Leray–Hopf solutions and reduce it to a time-averaged lower bound on fine Littlewood–Paley energy flux. They explicitly state that a finite pseudo-spectral computation cannot establish the required Galerkin-uniform ceiling; their 128³/256³ runs are exploratory and fail the scale requirement at the Kolmogorov wavenumber. This is a distinct unforced problem, not a validation of the forced construction or evidence about molecular positions. Source: [arXiv:2609.23868](https://arxiv.org/abs/2609.23868).
 - **The physical cutoff study itself reports numerical scope limits.** Duraiswami's preprint computes a leading-order profile and a related porous-wall model, but says it does not integrate the full forced evolution, pulse annulus, or higher-order corrections. It also reports non-converged branches/spectra in parts of its parameter sweep. Its order-of-magnitude water/air estimates therefore inform likely continuum cutoffs, rather than independently validating the entire singular construction. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), especially §§5–9.
 - **A 23 September essay addresses proof legibility, not fluid dynamics.** Alexander Gamburd's arXiv essay discusses how the community should interpret and scrutinize a large machine-produced formal proof. It is a perspective piece; it does not independently audit the Lean development or add a theorem about Navier–Stokes. It reinforces why a certificate, source closure, human-readable argument and physical interpretation need separate evidence. Source: [arXiv:2609.28591](https://arxiv.org/abs/2609.28591).
@@ -158,3 +158,38 @@ The more defensible immediate hypothesis is narrower: ordinary convergence or me
 ## Source and interpretation limits
 
 The OpenAI blog/paper/repository are primary sources for what OpenAI claims and formalized. The cited arXiv items are primary sources for their authors' newly posted results, but they remain preprints. The porous-wall study is a separate reduced/leading-order computation, not an independent verification of every step of the OpenAI proof. The public [SU2 Discussion #2890](https://github.com/su2code/SU2/discussions/2890) now has a substantive maintainer reply and an author follow-up, while remaining unaccepted as a Q&A answer. The supplied ChatGPT share page exposed a title but no readable conversation body, so no technical claim from it is relied upon here.
+
+## Refresh since the initial 28 September pass
+
+The source pages were rechecked on 28 September. Force-density claims are
+interpreted from the latest abstracts: the torus and whole-space results are
+separate papers with different stated topologies and thresholds. They
+distinguish force-space density from fixed-force instability and numerical
+error regularity. This strengthens the need to state the topology whenever
+discussing robustness. Sources: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262),
+[arXiv:2609.10269](https://arxiv.org/abs/2609.10269).
+
+A separate 20 September neural-forcing preprint proposes computational
+candidate discovery followed by frozen-force replay and a continuum
+certification layer. It is a new claim, not validated evidence; assess it only
+through its exact hypotheses, public artifacts and independent replay rather
+than treating its abstract's certification claim as established. Source:
+[arXiv:2609.23934](https://arxiv.org/abs/2609.23934).
+
+Upstream software changes also matter to the independent cross-check plan:
+SU2 remains at 8.5.0 in its published release list, while its active PR queue
+includes a proposed fix for implicit target-time evaluation (#2857) and
+work on aeroacoustic spectrum analysis (#2851). These are not evidence of an
+SU2 defect in our MMS; they motivate explicit regression tests for requested
+physical-time sampling and spectrum normalization before interpreting a solver
+comparison. PhysicsNeMo 26.08 adds mesh calculus and per-point epistemic
+uncertainty plus deterministic/closed-form/sampling-based surrogate benchmark
+workflows. These can inform future surrogate uncertainty tests, but do not
+replace the frozen-force numerical solver matrix. Sources: [SU2 releases](https://github.com/su2code/SU2/releases), [SU2 PR #2857](https://github.com/su2code/SU2/pull/2857), [PhysicsNeMo 26.08 notes](https://docs.nvidia.com/physicsnemo/26.08/release-notes/index.html).
+
+OpenFOAM Foundation 13's pinned container remains the current reproducibility
+target. The Foundation's patch notice lists later 13 patch sources, but these
+must not be silently substituted into an in-progress run; a future replication
+should record and compare the exact tagged source/package while preserving the
+current image digest. Do not conflate Foundation OpenFOAM with the distinct
+OpenCFD v2606 line. Sources: [Foundation v13 patches](https://openfoam.org/news/v13-patch/), [OpenCFD v2606 release](https://www.openfoam.com/news/main-news/openfoam-v2606).
