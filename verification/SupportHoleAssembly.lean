@@ -10,9 +10,8 @@ import NavierStokes.TimeLocalization
 This extension composes the pinned source's exterior-stage identities with
 local finiteness, the zeroth cutoff plateau, curl, and the two outer
 localizations. It proves a local base-field equality on the actual open
-exterior. The separate cusp-tube geometry note supplies conditions under which
-a proposed tube lies in this exterior; this file does not formalize those
-geometric inequalities.
+exterior. This file formalizes the pointwise similarity-chart identity and its eta-margin
+upper bound, but does not prove the uniform eta margin over a moving cusp tube.
 -/
 
 noncomputable section
@@ -23,6 +22,39 @@ open NavierStokes
 open NavierStokes.CorrectionInitialization.ActualPrimary
 open Filter Set
 open scoped Topology
+
+/-- The implicit similarity equation pulled back to the actual Cartesian
+coordinates, with eta left in the source's normalized-coordinate form. -/
+theorem physicalQ_time_identity {w : ProblemStatement.SpaceTime}
+    (ht : w ∈ PhysicalWaveSum.preterminal) :
+    1 - w.1 = PhysicalWaveSum.physicalQ outgoing.data.h w *
+      (1 - SimilarityCoordinates.coordinateEta (2 * outgoing.data.h) (1 - w.1, w.2 2) ^ 2) := by
+  have hid := SimilarityCoordinates.tau_coordinate_identity
+    (mul_pos (by norm_num : (0 : ℝ) < 2) outgoing.data.h_pos)
+    (by linarith [outgoing.data.h_lt_half] : 2 * outgoing.data.h < 1)
+    (p := (1 - w.1, w.2 2)) (sub_pos.mpr ht)
+  simpa [PhysicalWaveSum.physicalQ, AxisymmetricFields.profilePoint,
+    SimilarityProfile.q] using hid
+
+/-- A uniform normalized-axial margin gives an upper bound for the physical
+similarity scale. -/
+theorem physicalQ_le_of_eta_margin {w : ProblemStatement.SpaceTime}
+    (ht : w ∈ PhysicalWaveSum.preterminal) {beta : ℝ}
+    (hbeta : 0 ≤ beta) (hbeta1 : beta < 1)
+    (heta : |SimilarityCoordinates.coordinateEta (2 * outgoing.data.h) (1 - w.1, w.2 2)| ≤ beta) :
+    PhysicalWaveSum.physicalQ outgoing.data.h w ≤ (1 - w.1) / (1 - beta ^ 2) := by
+  have hq := PhysicalWaveSum.physicalQ_pos outgoing.data.h_pos outgoing.data.h_lt_half ht
+  have hid := physicalQ_time_identity ht
+  have hetaBounds := abs_le.mp heta
+  have hetaSq : SimilarityCoordinates.coordinateEta (2 * outgoing.data.h) (1 - w.1, w.2 2) ^ 2 ≤ beta ^ 2 := by
+    nlinarith
+  have hden : 0 < 1 - beta ^ 2 := by nlinarith
+  rw [hid]
+  apply (le_div_iff₀ hden).2
+  have hprod : 0 ≤ PhysicalWaveSum.physicalQ outgoing.data.h w *
+      (beta ^ 2 - SimilarityCoordinates.coordinateEta (2 * outgoing.data.h) (1 - w.1, w.2 2) ^ 2) :=
+    mul_nonneg hq.le (sub_nonneg.mpr hetaSq)
+  nlinarith
 
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ

@@ -435,3 +435,17 @@ The same n=64, dt=0.0005 OpenFOAM attempt was rechecked on 2026-09-28: its
 and an 8-second read-only query through OrbStack's own Docker CLI timed out.
 No `foamRun` process appeared in the host process listing. Container state is
 still unknown; no solver or daemon restart was attempted.
+
+
+## Revision 25 — Lean-checked similarity-chart upper bound
+
+`verification/SupportHoleAssembly.lean` now formalizes
+`physicalQ_time_identity` by pulling the pinned source's implicit similarity
+equation back to Cartesian spacetime. It also proves
+`physicalQ_le_of_eta_margin`: under `|eta|<=beta<1`, the physical similarity
+scale satisfies `q<=(1-t)/(1-beta^2)`. This verifies the chart upper-bound
+step used to place a tube inside `q<Q_res`, once a uniform eta margin is
+available. The remaining geometric proof is to derive that margin for every
+point in each shrinking spatial ball using the derivative lower bound for the
+normalized axial map, then combine radial and localization bounds. No solver or
+physical conclusion follows from this analytic lemma.

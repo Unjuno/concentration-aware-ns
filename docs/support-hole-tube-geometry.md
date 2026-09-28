@@ -54,6 +54,14 @@ coefficient for all perturbation primitives. Then
 
     τ <= q <= τ/s₀.
 
+The upper-bound implication from a uniform eta margin has now been checked in
+Lean as `physicalQ_le_of_eta_margin` in
+`verification/SupportHoleAssembly.lean`: if `|eta|<=beta<1`, then
+`q<=tau/(1-beta²)`. The proof uses the pinned source's exact implicit chart
+identity and is independent of simulation. Taking
+`beta=|eta₀|+delta` yields the `q<=tau/s₀` estimate needed by the whole-tube
+argument.
+
 For any point in that ball the transverse radius r also satisfies
 `r<=c sqrt(τ)<c₀ sqrt(q)`. Thus the entire spatial ball lies strictly
 inside the proposed common support hole, provided the primitive support

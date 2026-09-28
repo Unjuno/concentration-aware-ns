@@ -64,6 +64,11 @@ axis curve parameterized by `eta0`, set `d=1-eta0²`,
 `tau<=q<=tau/s0` throughout a sufficiently narrow tube. A radius
 `c*sqrt(tau)` obeys `r<=c*sqrt(tau)<c0*sqrt(q)` whenever `c<c0`.
 
+The chart upper-bound step is now Lean-checked as
+`physicalQ_le_of_eta_margin`: a uniform normalized-coordinate margin
+`|eta|<=beta<1` implies `q<=tau/(1-beta^2)`. The remaining geometry proof
+must derive that margin uniformly on every point of the moving ball.
+
 The geometry note derives the remaining whole-ball conditions. In particular,
 `tau<s0*Q_res` places the tube in the exterior sublevel required by the
 checked theorem;
@@ -86,9 +91,9 @@ velocity and the selected smooth-base velocity on that open exterior, under
 explicit hypotheses. It compiled with the pinned Lean and dependency versions.
 
 The theorem does not yet show that a whole `c*sqrt(1-t)` tube satisfies those
-exterior and plateau hypotheses. The chart/ball inequalities in the previous
-section remain hand-derived; they need formalization and connection to the
-actual exterior domain before claiming a cusp-tube equality.
+exterior and plateau hypotheses. In particular, the uniform eta-margin bound
+on the ball is still hand-derived; it needs formalization and connection to
+the actual exterior domain before claiming a cusp-tube equality.
 
 ## Evidence boundary and next action
 
