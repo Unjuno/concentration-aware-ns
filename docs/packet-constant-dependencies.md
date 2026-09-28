@@ -241,8 +241,10 @@ bounds and common-band inequalities are supplied. More generally,
 `candidate_support_inputs` transfers this to the literal initial field, every
 potential stage, every `rawSeries` direct stage, and the pressure stages through
 explicit `EqOn` representation hypotheses. Its output is precisely
-`SublevelShrinkingSupport`, whose pointwise content is that nonzero values must
-lie at transverse radius at least `C*sqrt(physicalQ)`.
+`SublevelShrinkingSupport`, which is an **outer** support bound: nonzero values
+must have transverse radius at most `C*sqrt(physicalQ)`. It does not prove an
+inner support hole. The inner-hole route instead uses separate annulus lower
+bounds for each primitive family.
 
 The selected assembly already exposes many of the required representation facts:
 `ActualCandidateAssembly.initialPotential_support`,
@@ -255,21 +257,23 @@ for its final cutoff schedule. These are strong structural ingredients, and
 make a blanket claim that “the support hole is not transferred through any
 stages” inaccurate.
 
-The remaining requested theorem is narrower and quantitative: specialize the
-native-family bounds in `actual_coherent_families_support` (or the broader
-`actual_patch_support`) to the selected families; verify its first-band lower
-inequalities for all stages from the exact recurrence; transfer its common
-support conclusion through the actual representations and cutoff schedule to
-the selected full velocity; then show the proposed spatial tube stays inside
-the physical sublevel and all applicable charts. The generic theorem's
-parameters make these obligations visible rather than discharging them by
-openness. No theorem found in the inspected `ActualCandidateAssembly` lines
-already states the final equality of the assembled velocity and base on a
-uniform `sqrt(1-t)` tube. Accordingly the packet exponent remains conditional
-until this specialization and tube lemma are checked.
+The remaining requested theorem is narrower and quantitative: extract a common
+positive **inner** coefficient from the copy, mean, particular and signed
+annulus bounds; verify the relevant lower bounds for all selected stages from
+the exact recurrence; and transfer the resulting zero region through the
+actual representations, cutoff sums, spatial curl and final localization. The
+classical chart geometry for a whole `c*sqrt(1-t)` cusp tube is now derived in
+[`support-hole-tube-geometry.md`](support-hole-tube-geometry.md), conditional on
+that common coefficient. Its exponent and derivative identities have a
+symbolic check, but the tube argument is not yet formalized in Lean and no
+end-to-end source theorem states that the final assembled velocity equals its
+base on that tube. Accordingly, the packet exponent remains conditional until
+the selected-stage inner-support transfer and final-field equality are checked.
 
-The evidence update corrects the earlier broad claim: per-stage support
-transfer is present in the upstream library; selected-uniform constants,
-cutoff-sum specialization and tube geometry are the exact remaining audit
-items. No numerical packet or material interpretation follows from the
-structural support lemmas alone.
+The evidence update corrects two earlier broad claims: per-stage **outer**
+support transfer is present in the upstream library, while inner support is a
+distinct annular statement; and the tube geometry itself now has a conditional
+classical derivation. Selected-uniform inner constants, cutoff-sum/curl
+specialization and final-field equality are the remaining source audit items.
+No numerical packet or material interpretation follows from these structural
+lemmas alone.

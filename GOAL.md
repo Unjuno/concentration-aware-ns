@@ -288,3 +288,19 @@ the existing remediation path. The exact PR head was independently run through
 the same even/odd and transpose controls and suppressed the counterexample;
 that does not substitute for its full upstream CI/test suite or merge review.
 Full upstream-suite validation remains open.
+
+## Revision 19 — conditional support-hole cusp tube and source-bound correction
+
+The similarity equation now has an explicit classical geometric estimate for
+the full spatial tube of radius `c*sqrt(1-t)` around the selected axis curve.
+Writing `eta=z/q^(1/2-h)`, the normalized map
+`F(eta)=eta*(1-eta^2)^(-(1/2-h))` has derivative bounded below by `1-2h`;
+this controls axial tube displacement, chart margin, and the localization
+plateaus once a common positive inner-support coefficient is supplied. Exact
+algebraic identities are checked and included in archived report replay. This
+does not yet prove that every selected primitive, cutoff sum, spatial curl and
+final localized velocity share the required inner hole. A source audit also
+corrected an earlier misdescription: `SublevelShrinkingSupport` is an outer
+support bound, while inner support comes from separate annular lower bounds.
+Do not promote the conditional cusp geometry to a Lean-checked assembled-field
+theorem, a numerical packet certificate, or a molecular conclusion.

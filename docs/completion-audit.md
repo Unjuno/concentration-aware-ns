@@ -89,6 +89,30 @@ share one coefficient on a complete tube. The packet-radius transfer and
 completion verdict therefore remain unresolved; see
 `docs/packet-constant-dependencies.md`.
 
+### Conditional cusp-tube chart estimate and source-bound correction
+
+The similarity equation `tau=q-z^2 q^(2h)` yields the normalized coordinate
+`F(eta)=eta*(1-eta^2)^(-D)`, `D=1/2-h`. Its derivative factors as
+`(1-eta^2)^(-D-1)*(1-2*h*eta^2)`, bounded below by `1-2h>0` on `|eta|<1`.
+This gives a uniform inverse bound: an axial displacement of at most
+`c*sqrt(tau)` around the selected axis curve changes eta by at most
+`c*tau^h/(1-2h)`. Conditional on a common primitive inner-support coefficient
+`c0`, choose c smaller than both `c0` and the chart-margin allowance. For
+sufficiently small tau, the full spatial ball of radius `c*sqrt(tau)` remains
+inside the physical sublevel and spatial/time localization plateaus, and lies
+inside the proposed support hole. The exact algebraic identities are checked
+in `evidence/tests/support-hole-tube-geometry.json`; derivation and explicit
+smallness conditions are in `docs/support-hole-tube-geometry.md`. This is a
+classical conditional chart estimate, not a Lean-checked assembly theorem or a
+numerical packet certificate.
+
+This audit also corrects a source-description error in an earlier note:
+OpenAI's `SublevelShrinkingSupport` is an outer support bound (nonzero values
+have radius at most the stated shrinking outer radius). It does not establish
+an inner hole. The candidate hole depends on separate lower annulus bounds;
+selected-stage transfer, cutoff sums, curl, and final-field equality remain
+unproved.
+
 Correction to analytic evidence: the force-ratio geometric factor d=1-eta²
 was inverted in earlier revisions. Current symbolic and Lean sign checks
 use -nu*d*Z/(L*A*U). The historical fresh-environment check-3.log records
