@@ -163,6 +163,6 @@ they do not certify a numerical solver. The original Foundation 13 n=128 runner
 remains live and has advanced to 0.009 seconds of the 0.05-second interval,
 with a logged cumulative OpenFOAM `ExecutionTime` near 499 seconds at that
 point (not a per-step timing). The live-run report now observes progress to
-0.014 seconds. Preserve and reobserve the same run; do not restart it or treat
+0.016 seconds. Preserve and reobserve the same run; do not restart it or treat
 resource cost as a solver failure. The spatial/time matrix and its reproduction
 verdict remain INCOMPLETE/UNCERTAIN.
