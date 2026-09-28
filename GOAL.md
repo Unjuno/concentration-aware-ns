@@ -186,8 +186,10 @@ pull requests and pushes to `main`. Both duplicate runs on the first PR update
 passed; the branch filter now prevents duplicate feature-branch push/PR runs.
 The same suite passed locally on Python 3.12 (74 tests and five subtests). Its
 scope is analytic checks, gates, adapters and input generators; it does not run
-CFD solvers. At the latest observation the existing n=128 Foundation 13 job
-remains live at t=0.033s.
+CFD solvers. The successful run reported GitHub's Node 20 removal warning, so
+the workflow now uses `actions/checkout@v5` and `actions/setup-python@v6` for
+Node 24; that version update awaits its own CI confirmation. At the latest
+observation the existing n=128 Foundation 13 job remains live at t=0.034s.
 
 ## Revision 12 — high-gradient AMR input-generation checks
 
