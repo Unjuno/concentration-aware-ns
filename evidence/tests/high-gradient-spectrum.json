@@ -1,0 +1,44 @@
+{
+  "time": 0.137,
+  "tolerance": 2e-14,
+  "cases": [
+    {
+      "N": 4,
+      "uniform_grid": [
+        16,
+        16,
+        16
+      ],
+      "analytic_nonzero_shells": 4,
+      "sampled_nonzero_shells": 15,
+      "maximum_absolute_shell_error": 6.505213034913027e-19,
+      "total_energy_absolute_error": 7.589415207398531e-19
+    },
+    {
+      "N": 8,
+      "uniform_grid": [
+        32,
+        32,
+        32
+      ],
+      "analytic_nonzero_shells": 3,
+      "sampled_nonzero_shells": 29,
+      "maximum_absolute_shell_error": 4.0657581468206416e-20,
+      "total_energy_absolute_error": 4.0657581468206416e-20
+    },
+    {
+      "N": 16,
+      "uniform_grid": [
+        64,
+        64,
+        64
+      ],
+      "analytic_nonzero_shells": 2,
+      "sampled_nonzero_shells": 56,
+      "maximum_absolute_shell_error": 3.3881317890172014e-21,
+      "total_energy_absolute_error": 3.3881317890172014e-21
+    }
+  ],
+  "passed": true,
+  "scope": "Independent finite-mode analytic shell sum versus sampled FFT on resolved uniform grids; not a solver run or intersample solution-error certificate."
+}

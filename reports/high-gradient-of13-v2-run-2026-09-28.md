@@ -56,9 +56,9 @@ outer correctors recorded for completed steps through 0.008s. The step ending
 at 0.009s was still inside its PIMPLE loop at the latest log read. The previous
 logged state reported cumulative `ExecutionTime = 498.94 s` and `ClockTime =
 2309 s`; these are solver run counters, not a measured per-step duration. At a
-later same-process observation the case reached `Time = 0.016s`, with five
-outer correctors recorded through 0.015s and the next time step underway. The
-host runner and docker client were still live. No exit code,
+later same-process observation the case reached `Time = 0.021s`, with five
+outer correctors recorded for completed steps through 0.020s and the next step
+underway. The host runner and docker client were still live. No exit code,
 completed-case archive, or quality verdict is available. The two smaller-dt
 cases remain unstarted and the matrix remains INCOMPLETE/UNCERTAIN. Preserve
 the partial tree and process for later observation; don't infer a solver defect
@@ -75,3 +75,11 @@ independently coded Fourier evaluator agrees with direct SymPy differentiation
 for velocity, full gradient, vorticity and forcing at the recorded points.
 These are continuum formula checks, not solver integration or a numerical
 acceptance verdict.
+
+The spectral reference for this MMS is also now derived directly from its
+finite complex Fourier coefficients and checked against resolved cell-centered
+FFT samples. An initial factor-of-two coefficient error was detected by this
+independent comparison and corrected; the corrected spectral tests pass. See
+`docs/high-gradient-spectrum.md` and
+`evidence/tests/high-gradient-spectrum.json`. This strengthens the analytic
+reference only, not the in-progress OpenFOAM verdict.
