@@ -14,6 +14,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Source/version/license audit | docs/audit.md, runtime recipes, pinned source files | Three targets identified; runtime dependencies have stated reproducibility limits |
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; three tighter-iteration controls add 350 converged steps without changing endpoints materially or the observed order 0.493. Asymptotic temporal convergence remains unproved. |
+| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest.json`; frozen protocol; n128 archive package | Four of six cases complete. n16/n32/n64/n128 at dt=.001 complete; n128 passes both standard and local-quality gates. n64 dt=.0005 stopped at t=.018 with 35/100 converged steps; dt=.00025 unstarted. Full matrix remains INCOMPLETE/UNCERTAIN. |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
@@ -466,4 +467,27 @@ n=64 and n=128 to pass standard acceptance and fail local quality; these are
 the two levels whose exact-reference FD2 floors clear the preregistered gradient
 and vorticity thresholds. Missing evidence stays UNCERTAIN. All 68 tests and
 the 25-step archived report replay passed. This is gate implementation evidence
-only; the high-gradient OpenFOAM matrix and AMR sweep have not run.
+only; the high-gradient OpenFOAM matrix and AMR sweep had not run at this
+historical update.
+
+### High-gradient OpenFOAM execution update, 2026-09-28
+
+The original six-case uniform runner completed and archived the n=128,
+dt=0.001 case at t=.05 with exit code 0, 50/50 PIMPLE-converged steps and an
+`End` marker. Its standard acceptance and local-quality gates both PASS. The
+coarse n=16 and n=32 cases remain standard PASS/local FAIL but are below the
+preregistered exact-reference FD2 resolution floors; n=64 and n=128 at dt=.001
+are standard PASS/local PASS. These observations do not reproduce a persistent
+acceptance blind spot.
+
+The runner then started n=64, dt=.0005 and stopped logging at t=.018. The
+preserved log has 36 time records, 35 completed convergence records, and no
+terminal marker or exit record. At the last live audit there was no observable
+`foamRun` process, while the Docker client and Docker/OrbStack inventory/stop
+requests remained unresponsive. The container's terminal state is unknown; its
+partial inputs and logs remain preserved. The final dt=.00025 case and all
+three high-gradient AMR budgets remain unrun. Accordingly, v2 remains
+INCOMPLETE/UNCERTAIN, with no solver-defect or physical-singularity inference.
+The completed n=128 archive is published as two checksummed Zstandard parts
+under GitHub's per-file limit, with reconstruction instructions in
+`evidence/of13-high-gradient-v2/README-n128-archive.md`.

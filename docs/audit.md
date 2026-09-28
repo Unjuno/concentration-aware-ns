@@ -1,6 +1,6 @@
 # Primary-source audit
 
-Updated 2026-09-09, with a current inventory addendum dated 2026-09-28. Source observations, reproduced behaviors and unresolved
+Updated 2026-09-28. Source observations, reproduced behaviors and unresolved
 quality claims are distinguished below. This remains an interim audit.
 
 ## OpenFOAM Foundation 13
@@ -35,10 +35,11 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | diagnostic discrepancy largely present in exact-field FD2 control; full acceptance hypothesis unverified | establish complete uncertainty budget |
+| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 incomplete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while resolved n64/n128 are standard/local PASS | finish temporal cases; retain uncertainty until whole frozen matrix is complete |
 | OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
-| SU-01 | conventional convergence with inaccurate local QoI | localized sweep running | complete grid/time matrix |
+| OF-04 | high-gradient AMR accuracy under frozen budgets | generator and sensor tests pass; v2 AMR solver runs not yet executed | execute three budgets against the frozen uniform n=64 control |
+| SU-01 | conventional convergence with inaccurate local QoI | localized grid/time sweep complete; no standard-PASS/local-FAIL counterexample established, residual gate limits conclusions | investigate nonuniform/AMR and additional solver paths only under a distinct preregistered contract |
 | SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
 | ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |
 | ML-02 | automatic time derivative assumption | x/y/z-only autodiff, explicit t input; documented API behavior | no defect report warranted |
