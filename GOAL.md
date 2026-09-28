@@ -175,6 +175,15 @@ table, which was corrected before accepting the tests. The corrected independent
 shell sums pass against the sampled FFT. The formula and correction history are
 documented in `docs/high-gradient-spectrum.md`; this is reference validation,
 not a solver result. Meanwhile, the original n=128 OpenFOAM process remains live
-at t=0.024s, so the spatial/time matrix is still incomplete. The older Gaussian
+at t=0.027s, so the spatial/time matrix is still incomplete. The older Gaussian
 AMR sweep does not satisfy high-gradient v2; its dedicated three-budget v2 AMR
 runner remains unexecuted, as does validation of any nonuniform-grid spectrum.
+
+## Revision 12 — high-gradient AMR input-generation checks
+
+Three new unit tests exercise the high-gradient AMR case generator: sensor
+creation/update and boundary correction, refinement limits/budget, and the
+minimum refine interval needed to initialize the sensor. They pass but do not
+test OpenFOAM's runtime adaptation or mesh-level/budget behavior. The original
+uniform n=128 process remains live and has reached t=0.027s; uniform/time and
+high-gradient AMR solver matrices remain incomplete.

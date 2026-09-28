@@ -56,8 +56,8 @@ outer correctors recorded for completed steps through 0.008s. The step ending
 at 0.009s was still inside its PIMPLE loop at the latest log read. The previous
 logged state reported cumulative `ExecutionTime = 498.94 s` and `ClockTime =
 2309 s`; these are solver run counters, not a measured per-step duration. At a
-later same-process observation the case reached `Time = 0.024s`, with five
-outer correctors recorded through 0.023s and the next step underway. The host
+later same-process observation the case reached `Time = 0.027s`, with five
+outer correctors recorded through 0.026s and the next step underway. The host
 runner and docker client were still live. No exit code,
 completed-case archive, or quality verdict is available. The two smaller-dt
 cases remain unstarted and the matrix remains INCOMPLETE/UNCERTAIN. Preserve
@@ -93,3 +93,8 @@ independent comparison and corrected; the corrected spectral tests pass. See
 `docs/high-gradient-spectrum.md` and
 `evidence/tests/high-gradient-spectrum.json`. This strengthens the analytic
 reference only, not the in-progress OpenFOAM verdict.
+
+The high-gradient AMR case generator now has three focused unit checks for
+sensor initialization/update, dynamic-refinement limits and the minimum
+refinement interval. They pass as input-generation checks only; compiled
+source-hook integration and runtime mesh adaptation remain untested.
