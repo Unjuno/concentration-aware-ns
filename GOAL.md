@@ -261,3 +261,16 @@ forced Navier–Stokes numerical cases. The primary-source distinction and exact
 scope are documented in
 `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; the frozen
 benchmark and three-project audit scope are unchanged.
+
+## Revision 17 — acceptance parser false-pass control
+
+Adversarial self-testing found that the OpenFOAM standard-acceptance parser
+could accept a synthetic log with the right record count and final time but
+duplicate/skipped intermediate time labels. The checker now validates every
+logged timestamp against the frozen fixed-step schedule and has a regression
+test that rejects the counterexample. A hash-checked audit of all four complete
+high-gradient v2 archives confirms their existing logs follow the schedule;
+their solver verdicts do not change. Classify this as our evaluation-harness
+bug, not an upstream solver defect. Details and the rerunnable audit artifact
+are in `reports/internal-gate-self-audit-2026-09-28.md` and
+`evidence/tests/high-gradient-time-sequence.json`.

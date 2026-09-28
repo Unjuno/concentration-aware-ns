@@ -16,6 +16,15 @@ def standard_acceptance(log_text, end_time, delta_t, residual_tolerance, max_out
     ratio = end_time / delta_t
     expected_steps = round(ratio)
     aligned = math.isfinite(ratio) and abs(ratio - expected_steps) <= 1e-10
+    observed_times = [float(match[1]) for match in times]
+    time_tolerance = 1e-9 * max(1.0, abs(end_time))
+    time_sequence_mismatches = []
+    if aligned:
+        for i in range(max(len(observed_times), expected_steps)):
+            if (i >= len(observed_times) or i >= expected_steps
+                    or abs(observed_times[i] - delta_t * (i + 1)) > time_tolerance):
+                time_sequence_mismatches.append(i)
+    time_sequence_matches = aligned and not time_sequence_mismatches
     final_time = float(times[-1][1]) if times else None
     complete = log_text.rstrip().endswith("End") and final_time is not None and abs(final_time-end_time) <= 1e-12
     if not times or not aligned:
@@ -26,13 +35,16 @@ def standard_acceptance(log_text, end_time, delta_t, residual_tolerance, max_out
     config_valid = bool(outer_count and int(outer_count[1]) == max_outer_correctors and controls
                         and float(controls[1]) == residual_tolerance and float(controls[2]) == 0
                         and float(controls[3]) == residual_tolerance and float(controls[4]) == 0)
-    passed = complete and len(times) == expected_steps and not failed_steps and config_valid
+    passed = (complete and len(times) == expected_steps and time_sequence_matches
+              and not failed_steps and config_valid)
     status = "PASS" if passed else "FAIL" if complete and not malformed else "UNCERTAIN"
     return {
         "status": status,
         "complete_end_time": complete,
         "observed_time_steps": len(times),
         "expected_time_steps": expected_steps if aligned else None,
+        "time_sequence_matches_fixed_delta_t": time_sequence_matches,
+        "time_sequence_mismatches_zero_based": time_sequence_mismatches,
         "pimple_convergence_records": sum(n is not None for n in converged),
         "failed_or_missing_convergence_steps_zero_based": failed_steps,
         "maximum_observed_outer_correctors": max((n for n in converged if n is not None), default=None),

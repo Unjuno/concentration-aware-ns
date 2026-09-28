@@ -27,6 +27,18 @@ class HighGradientAcceptanceTests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(result["observed_time_steps"], 2)
         self.assertEqual(result["maximum_observed_outer_correctors"], 5)
+        self.assertTrue(result["time_sequence_matches_fixed_delta_t"])
+
+    def test_standard_gate_rejects_duplicate_or_skipped_time_records(self):
+        log = "\n".join(
+            line
+            for time_value in (0.001, 0.001, 0.003)
+            for line in (f"Time = {time_value:g}s", "PIMPLE: Converged in 5 iterations")
+        ) + "\nEnd\n"
+        result = standard_acceptance(log, 0.003, 0.001, 1e-8, 12, fv_solution())
+        self.assertEqual(result["status"], "FAIL")
+        self.assertFalse(result["time_sequence_matches_fixed_delta_t"])
+        self.assertEqual(result["time_sequence_mismatches_zero_based"], [1])
 
     def test_standard_gate_fails_completed_run_missing_convergence(self):
         log = "Time = 0.001s\nPIMPLE: Converged in 4 iterations\nTime = 0.002s\nEnd\n"
@@ -54,6 +66,17 @@ class HighGradientAcceptanceTests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(result["observed_time_steps"], 50)
         self.assertEqual(result["pimple_convergence_records"], 50)
+
+    def test_parser_accepts_a_preserved_high_gradient_v2_run_log(self):
+        archive = Path("evidence/of13-high-gradient-v2/n64-dt0.001.tar.gz")
+        with tarfile.open(archive) as tar:
+            params = json.load(tar.extractfile("n64-dt0.001/parameters.json"))
+            log = tar.extractfile("n64-dt0.001/log.foamRun").read().decode()
+            config = tar.extractfile("n64-dt0.001/system/fvSolution").read().decode()
+        result = standard_acceptance(log, params["end"], params["dt"], 1e-8, 12, config)
+        self.assertEqual(result["status"], "PASS")
+        self.assertTrue(result["time_sequence_matches_fixed_delta_t"])
+        self.assertEqual(result["time_sequence_mismatches_zero_based"], [])
 
     def test_blind_spot_requires_both_adequately_resolved_levels(self):
         self.assertEqual(matrix_reproduction([case(64, "PASS", "FAIL"), case(128, "PASS", "FAIL")])["status"], "REPRODUCED")
