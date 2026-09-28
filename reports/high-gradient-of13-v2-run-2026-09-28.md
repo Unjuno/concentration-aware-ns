@@ -142,6 +142,16 @@ documents a CLI PATH inconsistency alongside an unresponsive API path; it does
 not establish which caused the stall or whether the container remains alive.
 No process was signalled and OrbStack was not restarted.
 
+At 13:14 JST the same client had waited 90m44s. An explicit read-only request
+through OrbStack's own CLI (`/Users/taka/.orbstack/bin/docker --context
+orbstack image inspect concentration-aware-ns:of13`) timed out after 8 seconds.
+A direct HTTP `GET /_ping` over the configured Unix socket returned zero bytes
+and timed out after 5 seconds. `orbctl status` still said `Running`. These
+checks rule out the Nix CLI path as a sufficient explanation for the API
+failure, but they do not reveal the Docker engine's internal state or container
+liveness. No host `foamRun` process was observable; the container process state
+remains unknown.
+
 The runner now accepts an absolute `CANS_DOCKER_CLI` override, resolves and
 records the Docker context (or accepts `CANS_DOCKER_CONTEXT`), and pins that
 context on every engine command. `CANS_OF13_RUN_ROOT` selects a fresh run
