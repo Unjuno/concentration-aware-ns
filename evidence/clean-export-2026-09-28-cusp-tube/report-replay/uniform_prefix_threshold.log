@@ -1,0 +1,14 @@
+{
+  "assumptions": "0<h<=1/1000; 0<j<=1/1000; -j/4<eta<-j/5; outgoing root equation and source prefix bound",
+  "eta_squared_upper": "1/16000000",
+  "amplitude_squared_threshold_upper": "256000032000001/5119999360000020",
+  "sufficient_amplitude": "9/40",
+  "strict_squared_margin": "255994848000001/409599948800001600",
+  "rational_comparison_pass": true,
+  "symbolic_gap_identities_pass": true,
+  "amplitude_gap_factorization": "(1 - 2*D)*(x + 1)**2*(2*D*x + 1)/(20*(1 - x)**2)",
+  "endpoint_gap_factorization": "(-x + y)*(-x*y + 1)/(5*(1 - x)**2*(1 - y)**2)",
+  "sympy": "1.14.0",
+  "actual_profile_amplitude_bound_proved": false,
+  "scope": "Symbolically checked nonnegative-gap identities and exact rational endpoint arithmetic; factor signs use the stated real inequalities. Not a Lean proof or complete-profile existence construction"
+}

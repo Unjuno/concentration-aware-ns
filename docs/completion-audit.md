@@ -536,3 +536,11 @@ records NumPy 2.5.3, while the locked environment regenerates it with NumPy
 a preserved metadata-only reproducibility mismatch, not a numerical discrepancy
 or a clean-export PASS; details and sanitized command outcomes are in
 `evidence/clean-export-2026-09-28-current/`.
+
+The locked metadata baseline was then regenerated under NumPy 2.5.2 and the
+new support-hole geometry check was added to report replay. A fresh export of
+commit `03ce175fcf26d17869de330720f2dfe8a49c4481` now passes: 26 replay steps,
+85 unit tests, 113 compared report/test files, and zero changed files. This is
+Python postprocessing/replay evidence only, not a solver, training or Lean
+reproduction. Sanitized logs and hashes are preserved at
+`evidence/clean-export-2026-09-28-cusp-tube/`.

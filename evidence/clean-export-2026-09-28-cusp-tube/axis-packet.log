@@ -1,0 +1,36 @@
+{
+  "scope": "Symbolic identities and rational controls for docs/axis-packet-bound.md. Not a proof of the comparison theorem, certified rho/M estimates, a packet simulation, or end-to-end Lean verification.",
+  "sympy": "1.14.0",
+  "source_sha256": "e728d89297137637a0add16c95d12d639e2808536c078ec0ab1cf4d9225a6c6c",
+  "conditions": [
+    "0 < q <= 1",
+    "tau0 > 0",
+    "C > 0",
+    "k = M/2 >= 0",
+    "delta >= 0",
+    "k*delta*I < 1",
+    "A*delta/(1-k*delta*I) < rho"
+  ],
+  "residuals": {
+    "primitive_derivative_C_ne_one": "0",
+    "primitive_derivative_C_one": "0",
+    "primitive_initial_C_ne_one": "0",
+    "primitive_initial_C_one": "0",
+    "comparison_derivative_in_I": "0",
+    "remainder_identity": "0",
+    "tube_threshold_equality": "0",
+    "rotation_cancellation": "0",
+    "growth_bound_slack": "0"
+  },
+  "controls": {
+    "small_packet_bound_inside_tube": true,
+    "large_packet_bound_not_certified": true,
+    "omitting_denominator_is_detected": true
+  },
+  "rational_bounds": {
+    "small": "4/99",
+    "large": "4/19",
+    "tube": "1/10"
+  },
+  "success": true
+}

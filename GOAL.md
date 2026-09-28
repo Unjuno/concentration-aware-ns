@@ -304,3 +304,14 @@ corrected an earlier misdescription: `SublevelShrinkingSupport` is an outer
 support bound, while inner support comes from separate annular lower bounds.
 Do not promote the conditional cusp geometry to a Lean-checked assembled-field
 theorem, a numerical packet certificate, or a molecular conclusion.
+
+## Revision 20 — locked replay restored on the current commit
+
+The current NumPy-2.5.3 evidence metadata mismatch was resolved by regenerating
+the analytic reference artifact under the repository's locked NumPy 2.5.2
+environment, preserving the earlier failed replay as historical evidence. A
+fresh tracked-only export at commit `03ce175` reproduced all 113 compared
+report/test files exactly; all 26 report steps and 85 tests passed. This proves
+the bounded Python postprocessing replay, not solver/training/Lean reproduction
+or completion of the support-hole-to-final-field theorem. The saved run and
+hashes are under `evidence/clean-export-2026-09-28-cusp-tube/`.
