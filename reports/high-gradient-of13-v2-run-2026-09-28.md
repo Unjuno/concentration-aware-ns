@@ -99,6 +99,15 @@ sensor initialization/update, dynamic-refinement limits and the minimum
 refinement interval. They pass as input-generation checks only; compiled
 source-hook integration and runtime mesh adaptation remain untested.
 
+The AMR runner has since been aligned with the uniform-grid runner's engine
+provenance: it honors `CANS_DOCKER_CLI` and `CANS_DOCKER_CONTEXT`, passes the
+selected context on engine commands, and records the resolved CLI hash/version,
+context, image ID/platform and protocol hash. `CANS_OF13_AMR_RUN_ROOT` now
+provides a collision-free work-root override. The locked-dependency suite passes
+85 tests, including the new AMR-root resolution test. This is runner-level
+reproducibility evidence only; no v2 AMR case has run and the blocked-candidate
+count remains unobserved.
+
 ## Container activity check
 
 At a later observation the log remained at `Time = 0.041s` for roughly four

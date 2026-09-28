@@ -11,6 +11,7 @@ from tools.run_high_gradient_openfoam import (
     resolve_docker_context,
     resolve_run_root,
 )
+from tools.run_high_gradient_amr import resolve_amr_run_root
 
 
 class DockerCliResolutionTests(unittest.TestCase):
@@ -58,6 +59,12 @@ class DockerCliResolutionTests(unittest.TestCase):
             root = Path(directory) / "fresh-run"
             with patch.dict(os.environ, {"CANS_OF13_RUN_ROOT": str(root)}):
                 self.assertEqual(resolve_run_root(), root.resolve())
+
+    def test_amr_run_root_can_be_given_a_collision_free_path(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "fresh-amr-run"
+            with patch.dict(os.environ, {"CANS_OF13_AMR_RUN_ROOT": str(root)}):
+                self.assertEqual(resolve_amr_run_root(), root.resolve())
 
     def test_custom_evidence_root_refuses_existing_contents(self):
         with tempfile.TemporaryDirectory() as directory:
