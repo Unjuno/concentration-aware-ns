@@ -380,3 +380,58 @@ Lean proof of the tube, and do not infer molecular alignment or constitutive
 viscosity change. The exact source map and corrected status are recorded in
 `docs/packet-constant-dependencies.md` and
 `docs/support-hole-tube-geometry.md`.
+
+## Revision 23 — compiled exterior-transfer theorem and remaining tube geometry
+
+The actual selected construction now has a compiling Lean extension at
+`verification/SupportHoleAssembly.lean`. Its theorem composes the exterior
+identities for stage zero, all positive potential stages and all direct stages
+with cutoff local finiteness, spatial curl, periodic localization and late-time
+activation. Under explicit exterior, zeroth-cutoff plateau, spatial-plateau and
+late-time hypotheses, the final activated velocity is eventually equal to
+the selected smooth-base velocity.
+
+The pinned source archive is retained under `work/` with SHA-256
+`9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7`. Lean
+4.34.0-rc2 and pinned mathlib commit
+`85e3a25e006c35636f0e53b0e9296caca2685bc0` were obtained from a verified source
+archive and populated Lean cache. The five imported upstream modules built
+successfully (3,679 jobs), and the extension compiled with `lake env lean` in
+the upstream project environment. This verifies the conditional exterior
+equality theorem. It does not verify the whole moving cusp-tube inclusion: the
+quantitative chart, ball, sublevel and plateau inequalities have not yet been
+formalized and connected to its hypotheses. No numerical tube radius or
+physical/molecular conclusion is claimed.
+
+The initial copy and mean terms were separately checked against the same
+annular inner-hole mechanism; source assembly lemmas show their exterior zero
+behavior, so they are not an independent obstruction. The remaining proof
+target is specifically to formalize the whole-tube geometry and instantiate
+the checked transfer theorem uniformly for every point in that tube.
+
+
+## Revision 24 — radial-hole bridge and actual exterior scale
+
+The Lean extension now includes
+`selected_inner_exterior_velocity_germ_of_radial_hole`. It uses the source
+identity `physicalPosition[0]^2/(2*physicalQ)=cartesianChart.2.1` to convert a
+strict inner-radius condition into exclusion from the actual active annulus,
+then applies the compiled selected-field equality theorem. Its explicit
+remaining hypotheses are `q<Q_res`, the zeroth-cutoff plateau, spatial
+localization plateau, and late-time activation.
+
+A scale audit found the exterior cutoff must be stated more tightly than the
+physical construction's `qbig`: the source defines
+`residualBand=firstBand+1` and `qbig=2*ChartScales.Q(residualBand)`, while
+`ActualExteriorPrefix.exteriorDomain` requires
+`q<ChartScales.Q(residualBand)`. Accordingly, the moving-tube condition was
+corrected to `tau<s0*Q_res`. The whole-ball proof deriving this chart bound
+and all plateaus for every tube point is still not formalized. This narrows a
+concrete precondition; it does not change the conditional status of the
+cusp-tube claim.
+
+The same n=64, dt=0.0005 OpenFOAM attempt was rechecked on 2026-09-28: its
+`log.foamRun` still has its 11:51:31 timestamp, host PID 91031 is still waiting,
+and an 8-second read-only query through OrbStack's own Docker CLI timed out.
+No `foamRun` process appeared in the host process listing. Container state is
+still unknown; no solver or daemon restart was attempted.
