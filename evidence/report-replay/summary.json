@@ -14,7 +14,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "77ed22303b500e7b400853e43ab32ab6080a7b20c10c16d578620441a46b66b9"
+      "log_sha256": "989d04abb97b6474860a991326e54abeba6519102d0ce25e5d56e83e1ceb7fdc"
     },
     {
       "step": "global_peaks",

@@ -18,7 +18,7 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 61 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 68 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
@@ -432,7 +432,7 @@ budgets and compare nonuniform fields to the exact time-dependent reference.
 The six-case v2 uniform matrix also has a provenance-recording runner in
 `tools/run_high_gradient_openfoam.py`; both runners check the immutable image
 and require a clean committed source tree before creating a work tree. Case
-generation, sensor wiring and the 59-test suite pass, but neither high-gradient
+generation, sensor wiring and the current test suite pass, but neither high-gradient
 matrix has been run. The blocked-candidate count is explicitly `UNOBSERVED`
 unless runtime evidence exposes it. Spectrum remains unavailable on the
 nonuniform mesh without a validated reconstruction.
@@ -451,3 +451,19 @@ OpenAI source refresh and explicit molecular-bridge audit, is summarized in
 corrects the live SU2 Q&A status: a maintainer replied on September 13 and the
 author added the BDF2 control on September 26; GitHub has not marked an accepted
 answer.
+
+### High-gradient acceptance gate integration, 2026-09-28
+
+The uniform analyzer now computes relative velocity, energy, FD2 gradient,
+vorticity and sampled shell-spectrum errors, and the runner writes separate
+standard-acceptance and local-quality verdicts. Standard acceptance requires
+the requested endpoint, expected number of time steps, one PIMPLE convergence
+record per step within the configured outer-corrector limit, and an `fvSolution`
+whose outer-corrector count and absolute `p`/`U` residual controls match the
+frozen protocol. This parser was tested against the preserved Foundation 13 n64
+run archive as well as synthetic pass/fail/truncated/misconfigured logs. The matrix-level blind-spot verdict requires both
+n=64 and n=128 to pass standard acceptance and fail local quality; these are
+the two levels whose exact-reference FD2 floors clear the preregistered gradient
+and vorticity thresholds. Missing evidence stays UNCERTAIN. All 68 tests and
+the 25-step archived report replay passed. This is gate implementation evidence
+only; the high-gradient OpenFOAM matrix and AMR sweep have not run.

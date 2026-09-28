@@ -47,9 +47,12 @@ Run the frozen six-case uniform matrix with
 `work/of13-high-gradient-v2` tree only after verifying the local image and
 records the immutable image ID, source commit, protocol hash, inputs, commands,
 logs and diagnostic outputs. It requires a clean committed source tree before
-preflight so the recorded revision names the source actually used. Verdicts
-remain `UNCERTAIN` until their separate acceptance gates are implemented and
-satisfied.
+preflight so the recorded revision names the source actually used. Each case
+will report standard run acceptance separately from velocity, energy, gradient,
+vorticity and shell-spectrum quality. A blind spot is classified as reproduced
+only if standard acceptance passes and local quality fails at both n=64 and
+n=128, after the exact-reference FD2 floor audit confirms those levels clear
+the derivative thresholds. The run has not occurred; no verdict is available.
 
 Generate and run the frozen AMR budget sweep with
 `python3 -m tools.run_high_gradient_amr`. It creates a new

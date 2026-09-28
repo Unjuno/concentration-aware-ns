@@ -68,5 +68,13 @@
     "artifact": "evidence/tests/high-gradient-fd2-resolution-floor.json",
     "reason": "For the exact sampled MMS, periodic FD2 peak-gradient error exceeds the 5% local threshold at n=16 and n=32; adding n=128 provides a second finer grid below the threshold alongside n=64.",
     "solver_execution": "not performed; this is a reference-only stencil audit"
+  },
+  "problem_reproduction_rule": {
+    "required_fine_grid_counts": [
+      64,
+      128
+    ],
+    "classification": "REPRODUCED only if each grid has standard_acceptance PASS and local_quality FAIL; NOT_OBSERVED only if each passes both; otherwise UNCERTAIN",
+    "requires_reference_fd2_floor_within_threshold": true
   }
 }

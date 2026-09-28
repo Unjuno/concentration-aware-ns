@@ -82,12 +82,20 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             self.write_vectors(time_dir / "C", centers)
             self.write_vectors(time_dir / "U", velocity)
             (case / "parameters.json").write_text(json.dumps({
-                "n": n, "end": end, "nu": 0.01, "profile": "high-gradient",
+                "n": n, "dt": 0.001, "end": end, "nu": 0.01, "profile": "high-gradient",
                 "frequency": frequency,
             }))
-            (case / "log.foamRun").write_text("End\n")
+            log = "".join(f"Time = {i * 0.001:.3f}s\nPIMPLE: Converged in 4 iterations\n"
+                          for i in range(1, 51)) + "End\n"
+            (case / "log.foamRun").write_text(log)
 
-            result = analyze(case)
+            protocol = json.loads(Path("protocols/high-gradient-of13-v2.json").read_text())
+            (case / "system").mkdir()
+            (case / "system/fvSolution").write_text(
+                "PIMPLE { nOuterCorrectors 12; outerCorrectorResidualControl "
+                "{ p { tolerance 1e-8; relTol 0; } U { tolerance 1e-8; relTol 0; } } }"
+            )
+            result = analyze(case, protocol)
             sinc = np.sin(frequency * 2 * np.pi / n) / (frequency * 2 * np.pi / n)
             self.assertAlmostEqual(
                 result["selected_gradient_component_fd2_peak"] /
@@ -99,7 +107,9 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
                 np.exp(-end), places=15,
             )
             self.assertFalse(result["continuous_full_gradient_peak_certified"])
-            self.assertEqual(result["quality"], "UNCERTAIN")
+            self.assertEqual(result["standard_acceptance"]["status"], "PASS")
+            self.assertEqual(result["quality"], "FAIL")
+            self.assertIn("shell_spectrum", result["local_quality"]["metrics"])
 
     def test_frozen_matrix_has_two_fine_grids_below_reference_fd2_floor(self):
         result = audit()

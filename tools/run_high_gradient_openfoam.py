@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 from tools.analyze_openfoam import analyze
+from tools.high_gradient_acceptance import matrix_reproduction
 from tools.openfoam_case import generate
 
 
@@ -75,14 +76,33 @@ def main():
         (case / "exit.json").write_text(json.dumps({"exit_code": run.returncode}) + "\n")
         if run.returncode:
             raise RuntimeError(f"case {case.name} failed; preserve inputs and logs at {case}")
-        result = analyze(case)
+        result = analyze(case, spec)
         (case / "diagnostics.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
         cases.append(result)
 
+    floor_path = Path(spec["resolution_audit"]["artifact"])
+    floor = json.loads(floor_path.read_text())
+    expected_n = spatial["cell_counts"]
+    thresholds = spec["local_quality_relative_error_thresholds"]
+    if (floor.get("protocol") != str(protocol_path) or floor.get("n") != spec["frequency_N"]
+            or [row.get("n") for row in floor.get("rows", [])] != expected_n
+            or any(row.get("gradient_threshold") != thresholds["max_gradient"]
+                   or row.get("vorticity_threshold") != thresholds["max_vorticity"]
+                   for row in floor["rows"])):
+        raise ValueError("reference-only FD2 audit does not match the frozen protocol grid list")
+    passing_counts = [row["n"] for row in floor["rows"]
+                      if row.get("gradient_stencil_floor_within_threshold")
+                      and row.get("vorticity_stencil_floor_within_threshold")]
+    required_counts = tuple(spec["problem_reproduction_rule"]["required_fine_grid_counts"])
+    if not set(required_counts).issubset(passing_counts):
+        raise ValueError("protocol reproduction grids do not clear the reference-only FD2 thresholds")
+    reproduction = matrix_reproduction(cases, required_counts)
     (root / "summary.json").write_text(json.dumps({
         "protocol": str(protocol_path),
         "cases": cases,
-        "scope": "Diagnostics only; standard acceptance and continuous extrema remain UNCERTAIN.",
+        "problem_reproduction": reproduction,
+        "reference_only_resolution_audit": str(floor_path),
+        "scope": "Standard run acceptance and local numerical quality are reported separately. A reproduced blind spot requires persistent disagreement at both adequately resolved fine grids.",
     }, indent=2, allow_nan=False) + "\n")
     print(json.dumps({"completed": len(cases), "root": str(root)}, indent=2))
 
