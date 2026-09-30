@@ -81,14 +81,9 @@ def main() -> None:
             }
         )
 
-    # OpenAI core comparison is an exponent comparison only: if its stated
-    # profile coefficient is nonzero, a/W is proportional to tau**h.
-    for h in (1e-3, 0.01, 0.1):
-        ratio_at_tau = (1e-6) ** h
-        assert ratio_at_tau < 1.0
-
     output = {
         "status": "PASS_ARITHMETIC_ONLY",
+        "checker_scope": "reduced Burgers width/feedback parameterization only",
         "model": "q_dot=4*nu-a*q; W=Gamma/(pi*q); a=kappa*W",
         "derived": {
             "threshold": "kappa*Gamma > 4*pi*nu",
@@ -96,7 +91,7 @@ def main() -> None:
             "q": "4*nu*(T-t)/(mu-1)",
             "a": "mu/(T-t)",
             "W_peak": "mu/(kappa*(T-t))",
-            "openai_core_pointwise_a_over_W": "constant* tau**h when f(0,eta_*) != 0",
+            "openai_core_pointwise_a_over_W": "report-derived exponent comparison, not checked by this script",
             "global_peak_comparison": "not evaluated; axis path is not proved to attain spatial peak",
         },
         "cases": checks,
@@ -105,7 +100,8 @@ def main() -> None:
             "floating-point algebra check, not a formal proof",
             "does not solve or validate the Navier-Stokes PDE",
             "does not establish finite-energy blow-up or molecular consequences",
-            "OpenAI pointwise exponent comparison does not identify the global vorticity maximum",
+            "OpenAI exponent comparison is outside this checker's scope",
+            "the axis path is not proved to attain the global vorticity maximum",
         ],
     }
     out = Path("evidence/tests/burgers-feedback-mapping.json")

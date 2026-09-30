@@ -56,12 +56,13 @@
       "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
     }
   ],
+  "checker_scope": "reduced Burgers width/feedback parameterization only",
   "derived": {
     "W_peak": "mu/(kappa*(T-t))",
     "a": "mu/(T-t)",
     "global_peak_comparison": "not evaluated; axis path is not proved to attain spatial peak",
     "mu": "kappa*Gamma/(kappa*Gamma-4*pi*nu) > 1",
-    "openai_core_pointwise_a_over_W": "constant* tau**h when f(0,eta_*) != 0",
+    "openai_core_pointwise_a_over_W": "report-derived exponent comparison, not checked by this script",
     "q": "4*nu*(T-t)/(mu-1)",
     "threshold": "kappa*Gamma > 4*pi*nu"
   },
@@ -69,7 +70,8 @@
     "floating-point algebra check, not a formal proof",
     "does not solve or validate the Navier-Stokes PDE",
     "does not establish finite-energy blow-up or molecular consequences",
-    "OpenAI pointwise exponent comparison does not identify the global vorticity maximum"
+    "OpenAI exponent comparison is outside this checker's scope",
+    "the axis path is not proved to attain the global vorticity maximum"
   ],
   "model": "q_dot=4*nu-a*q; W=Gamma/(pi*q); a=kappa*W",
   "status": "PASS_ARITHMETIC_ONLY",
