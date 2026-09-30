@@ -557,3 +557,16 @@ remain locally under `work/`; tracked compact summaries are the two AMR v2
 manifest artifacts cited in the temporal addendum. The project goal remains
 active pending component-level diagnosis and the remaining cross-solver and
 analytic work.
+
+## Revision 32 — AMR continuity residual discriminator
+
+Read-only OpenFOAM post-processing of `div(phi)` on both high-gradient AMR
+endpoints and their same-final-mesh fixed controls found volume-weighted RMS
+continuity residuals roughly 1e-11 or less after normalization by `Urms/(2*pi)`.
+The solver logs' maximum local continuity error is below 3e-15 for all four
+cases. The 37–40% AMR-path velocity error therefore is not explained by a large
+discrete mass-flux imbalance at the endpoint or in the reported time-step
+continuity metrics. Momentum/field remapping and transient local effects remain
+unresolved; this diagnostic neither proves the solver correct nor establishes
+an upstream defect. The hash-linked post-processing output is
+`evidence/of13-high-gradient-amr-flux-balance-2026-09-30.json`.

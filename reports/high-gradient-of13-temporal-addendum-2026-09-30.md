@@ -90,3 +90,23 @@ projection remain possible contributors; these controls do not isolate them
 all. The per-case quality verdict remains UNCERTAIN, and no OpenFOAM defect
 report is justified without a more specific reproducible component-level
 violation. Raw logs and fields are retained locally for continued audit.
+
+### Endpoint and time-history continuity diagnostic
+
+As a post-processing-only discriminator, Foundation 13 `foamPostProcess
+-func "div(phi)" -latestTime` was applied to both AMR cases and the two
+same-mesh fixed controls. The volume-weighted endpoint RMS `div(phi)` divided
+by `Urms/(2*pi)` is `1.27e-11` and `8.78e-12` for the AMR cases, versus
+`6.20e-14` and `2.68e-14` for the fixed controls. The original solver logs also
+contain 496–566 continuity records per case; maximum `sum local` is
+`2.33e-15` to `2.96e-15`, with maximum absolute global imbalance below
+`5.7e-22`. Thus the large AMR velocity errors are not accompanied by a large
+endpoint discrete mass-flux divergence or by large reported time-step
+continuity errors. This narrows the mechanism search toward momentum/field
+transfer, flux mapping not captured by these aggregate continuity metrics, or
+other AMR history effects; it does not rule out transient local errors or
+identify any one cause. The post-processing-only artifact is
+`evidence/of13-high-gradient-amr-flux-balance-2026-09-30.json` and can be
+regenerated with `uv run --with-requirements requirements-verification.txt
+python -m tools.analyze_amr_flux_balance` after the raw `work/` trees are
+available.
