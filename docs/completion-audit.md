@@ -565,6 +565,13 @@ three standard Lean axioms. This does not imply independent review of the
 source argument. The symbolic tube-geometry checker also passes under the
 locked verification requirements with SymPy 1.14.0; its output explicitly
 limits itself to exact identities and does not prove the full tube inclusion.
+The formalization is in stacked PR
+https://github.com/Unjuno/concentration-aware-ns/pull/2, based on the current
+OpenFOAM runner PR branch because the support-hole extension is introduced
+there. Its Python verification CI passed (run 36688606215). This is a
+contribution to the benchmark repository; no defect issue was submitted to
+OpenAI or a solver project because this work establishes a conditional
+mathematical lemma rather than a reproducible upstream implementation defect.
 
 The OpenFOAM v2 manifest remains the authoritative matrix status: four of six
 cases complete, `n64-dt0.0005` partial and unarchived, `n64-dt0.00025` not
