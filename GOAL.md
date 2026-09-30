@@ -670,3 +670,17 @@ conclusion. Added the bounded result to the impact-scope matrix and the
 2026-09-30 development note; see `docs/fiber-vortex-literature-audit.md`.
 This updates the literature boundary only and leaves numerical solver verdicts
 unchanged.
+
+## Revision 41 — molecular rheology and temporal archive recheck
+
+Rechecked both frozen n64 temporal-addendum archives: their SHA-256 digests
+match their manifests, each archived solver log contains the `End` marker,
+and the manifests report 100/100 (`dt=0.0005`) and 200/200 (`dt=0.00025`)
+converged steps with both gates passing. Kept these as row-level reproduction
+evidence, not an asymptotic temporal-order or general defect claim. Added
+Jadhao–Robbins' squalane result to the impact matrix: molecular alignment
+saturates after only about a threefold viscosity decrease, while thinning
+continues. This supports a material-specific alignment/rheology connection
+but does not bridge the OpenAI continuum profile to molecules. See
+`docs/recent-developments-2026-09-30.md` and
+`reports/impact-scope.md`.

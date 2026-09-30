@@ -32,6 +32,27 @@ viscosity, experiments, and transfer to the OpenAI profile unsupported. The
 model distinction and implications are recorded in
 [`fiber-vortex-literature-audit.md`](fiber-vortex-literature-audit.md).
 
+## Molecular-rheology cross-check
+
+Jadhao and Robbins' nonequilibrium molecular-dynamics study of squalane
+under elastohydrodynamic-lubrication conditions reports alignment saturation
+after viscosity has fallen by roughly a factor of three; viscosity can then
+continue falling substantially with little further alignment. It is a
+material- and regime-specific result, not a constitutive law for the OpenAI
+flow or evidence that continuum stretching causes molecular alignment. The
+original scope assessment is in
+[`../reports/recent-developments-and-hypothesis-audit-2026-09-28.md`](../reports/recent-developments-and-hypothesis-audit-2026-09-28.md).
+
+## OpenFOAM temporal-row archive recheck
+
+The temporal addendum records n64 cases at `dt=0.0005` and `dt=0.00025` as
+100/100 and 200/200 converged steps, respectively, with standard acceptance
+and local quality both passing. This recheck confirmed each archive SHA-256
+against its manifest and found the `End` marker in each archived solver log.
+These are validated single rows under the frozen protocol, not a proof of
+asymptotic time order or a general solver verdict; see
+`evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`.
+
 ## Audit implications
 
 1. Treat the slender-core and componentwise Reynolds-number scalings as analytical targets for independent derivation and numerical postprocessing, not as molecular-scale conclusions.
