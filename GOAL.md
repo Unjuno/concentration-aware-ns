@@ -508,3 +508,16 @@ PR #2008's head passes the same CPU controls; the PR remains open and behind
 main. Fresh outputs, source hashes, inventory, and a bounded update to the
 existing PR are recorded in `reports/physicsnemo-refresh-2026-09-30.md`. No
 duplicate issue was filed. The full three-project scope remains active.
+
+## Revision 29 — one temporal OpenFOAM row completed
+
+The preserved v2 `n=64, dt=0.0005` case now completes all 100 steps with 100
+PIMPLE convergence records, endpoint fields and `End`; standard acceptance and
+all five preregistered local-quality metrics pass. A first post-run false
+rejection exposed a substring-count bug in the new runner (`ExecutionTime` was
+mistaken for a time-step row). The solver output was preserved and an
+independent line-anchored validator then confirmed and archived it. The
+regression fixture now includes `ExecutionTime`/`ClockTime` lines. A current
+cross-run manifest records five of six rows complete; `dt=0.00025` remains
+unstarted, so the overall matrix remains INCOMPLETE/UNCERTAIN. See
+`reports/high-gradient-of13-temporal-addendum-2026-09-30.md`.

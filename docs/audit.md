@@ -1,6 +1,6 @@
 # Primary-source audit
 
-Updated 2026-09-28. Source observations, reproduced behaviors and unresolved
+Updated 2026-09-30. Source observations, reproduced behaviors and unresolved
 quality claims are distinguished below. This remains an interim audit.
 
 ## OpenFOAM Foundation 13
@@ -36,7 +36,7 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 incomplete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while resolved n64/n128 are standard/local PASS | finish temporal cases; retain uncertainty until whole frozen matrix is complete |
+| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 incomplete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while n64/n128 at dt=.001 and n64 at dt=.0005 are standard/local PASS | run n64 dt=.00025; retain uncertainty until whole frozen matrix is complete |
 | OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
 | OF-04 | high-gradient AMR accuracy under frozen budgets | generator and sensor tests pass; v2 AMR solver runs not yet executed | execute three budgets against the frozen uniform n=64 control |
@@ -47,9 +47,20 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 | REF-01 | derivative/sampling artifacts mimic solver error | reproduced FD2 versus analytic/autograd differences | continuous-extremum uncertainty |
 | REF-02 | forcing formula error | symbolic/C++/autograd checks passed in stated scopes | preserve per-solver time/assembly distinctions |
 
+### OpenFOAM temporal addendum update (2026-09-30)
+
+The single n64/dt=.0005 rerun passed standard acceptance and all sampled local
+quality thresholds; the original run was partial and is retained separately.
+The quarter-step temporal case remains unstarted. The original v2 manifest is
+unchanged; `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`
+is the current cross-run status index. There is no defect or end-to-end matrix
+conclusion from this single PASS.
+
 SU2 time-contract reproducer submitted as [Q&A 2890](https://github.com/su2code/SU2/discussions/2890).
-OpenFOAM and PhysicsNeMo have no upstream defect report at this stage: observed
-accuracy limitations do not yet establish a violated implementation contract.
+No new duplicate OpenFOAM or PhysicsNeMo issue was filed: the sampled accuracy
+limitations do not establish a violated implementation contract, and the
+odd-width spectrum defect is already tracked in PhysicsNeMo issue #2007 / PR
+#2008. Its September 30 current-main recheck is recorded below.
 
 ### SU2 adapter clarification
 

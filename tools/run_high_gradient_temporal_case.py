@@ -4,11 +4,8 @@ import hashlib
 import json
 import os
 import subprocess
-import tarfile
-from datetime import datetime, timezone
 from pathlib import Path
 
-from tools.analyze_openfoam import analyze
 from tools.openfoam_case import generate
 from tools.run_high_gradient_openfoam import resolve_docker_cli, resolve_docker_context
 
@@ -94,51 +91,8 @@ def main():
     if run.returncode:
         raise RuntimeError(f"case {case.name} failed; preserved at {case}")
 
-    diagnostics = analyze(case, spec)
-    (case / "diagnostics.json").write_text(json.dumps(diagnostics, indent=2, allow_nan=False) + "\n")
-    expected_steps = round(spec["end_time"] / args.dt)
-    log = (case / "log.foamRun").read_text(errors="replace")
-    steps = log.count("Time = ")
-    converged = log.count("PIMPLE: Converged in")
-    endpoint = case / f"{spec['end_time']:g}"
-    fields = all((endpoint / name).is_file() for name in ("U", "p", "C", "phi"))
-    complete = (steps == expected_steps and converged == expected_steps
-                and log.rstrip().endswith("End") and fields)
-    if not complete:
-        raise RuntimeError(f"run exited zero but completion contract failed; preserved at {case}")
-
-    archive = root / f"{case.name}.tar.gz"
-    with tarfile.open(archive, "w:gz") as tar:
-        tar.add(case, arcname=case.name)
-    with tarfile.open(archive, "r:gz") as tar:
-        members = {member.name: member for member in tar.getmembers() if member.isfile()}
-        expected_paths = [path for path in case.rglob("*") if path.is_file()]
-        if len(members) != len(expected_paths):
-            raise RuntimeError("archive member count does not match the completed case")
-        for path in expected_paths:
-            member_name = f"{case.name}/{path.relative_to(case)}"
-            stream = tar.extractfile(members.get(member_name))
-            if stream is None or hashlib.sha256(stream.read()).hexdigest() != sha256(path):
-                raise RuntimeError(f"archive content verification failed: {member_name}")
-    manifest = {
-        "captured_at_utc": datetime.now(timezone.utc).isoformat(),
-        "matrix_status": "SINGLE_CASE_COMPLETE_NOT_FULL_MATRIX",
-        "case": case.name,
-        "complete": complete,
-        "time_steps": steps,
-        "converged_steps": converged,
-        "end_marker": True,
-        "endpoint_fields": ["U", "p", "C", "phi"],
-        "standard_acceptance": diagnostics["standard_acceptance"]["status"],
-        "local_quality": diagnostics.get("local_quality", {}).get("status", "UNCERTAIN"),
-        "archive": archive.name,
-        "archive_sha256": sha256(archive),
-        "source_log_sha256": sha256(case / "log.foamRun"),
-        "run_environment": "run-environment.json",
-        "scope": "One time-resolution row appended as a distinct source-pinned addendum; no full-matrix or defect claim.",
-    }
-    (root / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    print(json.dumps(manifest, indent=2))
+    from tools.validate_high_gradient_temporal_case import validate_and_archive
+    print(json.dumps(validate_and_archive(root), indent=2))
 
 
 if __name__ == "__main__":

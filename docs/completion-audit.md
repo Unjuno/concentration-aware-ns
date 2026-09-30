@@ -4,7 +4,7 @@ The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
 
-The table is current as of September 28; dated entries below retain historical
+The table is current as of September 30; dated entries below retain historical
 run scopes. The [impact-scope report](../reports/impact-scope.md) now maps each
 finding to a supported improvement and the evidence required to extend it.
 
@@ -14,7 +14,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Source/version/license audit | docs/audit.md, runtime recipes, pinned source files | Three targets identified; runtime dependencies have stated reproducibility limits |
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; three tighter-iteration controls add 350 converged steps without changing endpoints materially or the observed order 0.493. Asymptotic temporal convergence remains unproved. |
-| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest.json`; frozen protocol; n128 archive package | Four of six cases complete. n16/n32/n64/n128 at dt=.001 complete; n128 passes both standard and local-quality gates. n64 dt=.0005 stopped at t=.018 with 35/100 converged steps; dt=.00025 unstarted. Full matrix remains INCOMPLETE/UNCERTAIN. |
+| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; base manifest and temporal addendum | Five of six cases complete. n16/n32/n64/n128 at dt=.001 and n64 dt=.0005 complete; the latter passes standard and local-quality gates. n64 dt=.00025 unstarted. Full matrix remains INCOMPLETE/UNCERTAIN. |
 | AMR constraints and controls | Three AMR plus two fixed-refined-mesh archives | Runs complete; dynamic initialization/remapping attribution unresolved |
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
@@ -573,7 +573,21 @@ contribution to the benchmark repository; no defect issue was submitted to
 OpenAI or a solver project because this work establishes a conditional
 mathematical lemma rather than a reproducible upstream implementation defect.
 
-The OpenFOAM v2 manifest remains the authoritative matrix status: four of six
-cases complete, `n64-dt0.0005` partial and unarchived, `n64-dt0.00025` not
-started, overall INCOMPLETE/UNCERTAIN. Previous host PID observations are stale
-for the September 30 snapshot and are not treated as current container state.
+At the September 28 source-run snapshot, four of six cases were complete and
+`n64-dt0.0005` was partial. That attempt is retained in place. The newer
+September 30 cross-run status index below supersedes its completion count;
+previous host PID observations are stale and are not treated as current
+container state.
+
+## 2026-09-30 temporal addendum update
+
+The original September 28 v2 manifest remains unchanged as a source-run
+snapshot. The separate `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`
+joins the four original complete cases with a fifth, independently archived
+`n=64, dt=0.0005` case. That row has 100/100 steps and convergence records,
+standard acceptance PASS, and local quality PASS. The quarter-step row remains
+unstarted; the full matrix remains INCOMPLETE/UNCERTAIN. The first validator
+attempt miscounted `ExecutionTime` substrings after successful solver exit; the
+saved output was rechecked with a line-anchored gate and the regression is now
+covered. AMR cases remain unexecuted. See
+`reports/high-gradient-of13-temporal-addendum-2026-09-30.md`.
