@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-30",
+  "refresh_timestamp_utc": "2026-09-30T08:38:36Z",
+  "default_branch_head_recheck": {
+    "OpenFOAM Foundation 13": {
+      "commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "commit_date": "2026-06-09T09:25:37Z"
+    },
+    "SU2": {
+      "commit": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "commit_date": "2026-04-28T06:05:27Z"
+    },
+    "OpenAI/NavierStokesAndEuler": {
+      "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "commit_date": "2026-09-10T11:51:24Z"
+    },
+    "NVIDIA/physicsnemo": {
+      "commit": "eb8f95897eed9887295cb8110ba1017d2d670b58",
+      "commit_date": "2026-09-30T00:12:40Z"
+    }
+  },
+  "scope": "Targeted current-repository metadata and issue searches; not an exhaustive review of all open issues.",
+  "targets": {
+    "OpenFOAM Foundation 13": {
+      "repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+      "experimental_pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "current_head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "license_basis": "GPL-3.0-or-later source headers; GitHub API reports NOASSERTION",
+      "public_open_issues_observed": [
+        {
+          "number": 5,
+          "title": "Documentation does not reflect the source code"
+        },
+        {
+          "number": 4,
+          "title": "Installation on Almalinux"
+        },
+        {
+          "number": 3,
+          "title": "Migration to organization"
+        },
+        {
+          "number": 2,
+          "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases"
+        }
+      ],
+      "benchmark_specific_candidate_found": false
+    },
+    "SU2": {
+      "repository": "https://github.com/su2code/SU2",
+      "experimental_pin": {
+        "release": "v8.5.0",
+        "commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8"
+      },
+      "current_default_branch": "master",
+      "current_head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "license_basis": "LGPL-2.1-or-later LICENSE.md and reviewed source headers; GitHub API reports NOASSERTION",
+      "targeted_open_issue_searches": {
+        "MMS in title/body": [],
+        "time derivative in title/body": [],
+        "periodic gradient in title/body": []
+      },
+      "existing_related_discussion": "https://github.com/su2code/SU2/discussions/2890",
+      "interpretation": "No new duplicate defect report justified by these targeted searches; v8.5.0 results are not relabeled as current master tests."
+    },
+    "PhysicsNeMo": {
+      "repository": "https://github.com/NVIDIA/physicsnemo",
+      "latest_release": {
+        "tag": "v2.2.2",
+        "commit": "072465a1a56817f180f64dee8a4069a1612b2d9e"
+      },
+      "current_default_branch": "main",
+      "current_head": "eb8f95897eed9887295cb8110ba1017d2d670b58",
+      "license": "Apache-2.0",
+      "related_open_tracking": [
+        {
+          "number": 2007,
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+          "fix_pr": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+          "classification": "reproduced odd-width radial spectrum center defect; already tracked and fix proposed",
+          "current_main_reproduction": "reproduced 2026-09-30; see reports/physicsnemo-refresh-2026-09-30.md",
+          "fix_pr_state": "open, behind main, review required"
+        },
+        {
+          "number": 2001,
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+          "classification": "caller-facing periodic-gradient assumption; already tracked"
+        },
+        {
+          "number": 1852,
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/1852",
+          "fix_pr": "https://github.com/NVIDIA/physicsnemo/pull/1853",
+          "classification": "lower-level nonperiodic gradient feature; existing tracking"
+        }
+      ],
+      "benchmark_scope": "Current MMS spectra use even uniform grids; issue #2007 does not affect recorded benchmark results.",
+      "focused_reproduction_2026_09_30": {
+        "current_main_artifact": "evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-09-30.json",
+        "pr_head_artifact": "evidence/upstream-refresh/physicsnemo-pr2008-fix-validation-2026-09-30.json",
+        "current_main_odd_33x33_transpose_max_abs_difference": 0.10944843292236328,
+        "pr_head_odd_33x33_transpose_max_abs_difference": 3.5762786865234375e-07,
+        "scope": "CPU Torch 2.11.0 focused reproducer; full upstream suite not run"
+      }
+    }
+  },
+  "no_new_upstream_issue": "The only reproduced new-to-this-audit library defect is already represented by PhysicsNeMo issue #2007 and PR #2008; SU2/OpenFOAM targeted searches found no benchmark-specific duplicate candidate."
+}

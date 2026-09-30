@@ -499,3 +499,12 @@ assignment deliberately unhurried. See
 `docs/recent-developments-2026-09-30.md`. This adds a Lagrangian particle-track
 workstream as a separate, testable question; it does not revise any benchmark
 PASS/FAIL or imply physical blow-up.
+
+## Revision 28 — current-main PhysicsNeMo defect recheck
+
+A live refresh found PhysicsNeMo main had advanced since the prior inventory.
+The exact new main still reproduces tracked odd-width Issue #2007, while current
+PR #2008's head passes the same CPU controls; the PR remains open and behind
+main. Fresh outputs, source hashes, inventory, and a bounded update to the
+existing PR are recorded in `reports/physicsnemo-refresh-2026-09-30.md`. No
+duplicate issue was filed. The full three-project scope remains active.

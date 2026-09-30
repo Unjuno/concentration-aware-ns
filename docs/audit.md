@@ -149,3 +149,13 @@ Current target/default-branch heads and the focused SU2 duplicate searches are
 summarized in `evidence/upstream-refresh/current-project-inventory-2026-09-28.json`.
 That inventory is intentionally scoped; it does not claim that all open issues
 in these large repositories were individually reviewed.
+
+### Current PhysicsNeMo recheck (2026-09-30)
+
+PhysicsNeMo `main` advanced to `eb8f95897eed9887295cb8110ba1017d2d670b58`.
+We reran the focused odd-width reproducer against that exact current source:
+Issue #2007 still reproduces on 33x33, while the exact existing PR #2008 head
+passes the odd/even controls. The PR is still open and behind main, with review
+required. No full upstream suite was run and no duplicate issue was filed; see
+`reports/physicsnemo-refresh-2026-09-30.md` and the new structured artifacts.
+This defect remains outside our even-grid benchmark cases.

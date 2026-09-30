@@ -63,3 +63,12 @@ and even axis-mode controls and odd/even transpose controls all pass. The
 separate result is `evidence/upstream-refresh/physicsnemo-pr2008-fix-validation.json`.
 This verifies the focused counterexample is repaired by the existing diff, not
 that the whole framework or PR has passed its full test suite.
+
+## PhysicsNeMo current-main refresh, 2026-09-30
+
+The exact current-main source still reproduces the already-tracked odd-width
+Issue #2007. The existing PR #2008 head passes the same fixed controls but is
+still open and behind main. We added a fresh data point to that PR discussion;
+no duplicate report is appropriate. Details, commands, source hashes and raw
+outputs are in `reports/physicsnemo-refresh-2026-09-30.md` and
+`evidence/upstream-refresh/current-project-inventory-2026-09-30.json`.
