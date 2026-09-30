@@ -183,6 +183,13 @@ cancellation and the nonlinear denominator. Exact rational controls show one
 radius satisfying the tube criterion and another that cannot be certified by
 it; they are illustrative constants, not parameters of the OpenAI field.
 
+The rational controls include an explicit logical-boundary audit: one example
+is certified inside its tube (`4/99 < 1/10`), while another comparison upper
+exceeds the tube (`4/19 > 1/10`). The second case means only that this
+sufficient estimate cannot certify containment. It is deliberately not
+classified as an actual exit, finite-packet misalignment, molecular change,
+or constitutive-viscosity change; those claims require separate evidence.
+
 The scalar comparison and continuation proofs above are classical, not
 Lean-formalized. The actual tube radius rho and Hessian bound M remain
 non-effective. No fixed-size packet is certified through t=1, and no molecular

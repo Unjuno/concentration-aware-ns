@@ -1310,3 +1310,14 @@ explained in the interval report. It indicates interval Hessian dependency
 inflation as the current bottleneck; it does not validate the Arb library
 independently or change the `UNCERTAIN` quality status. The full goal remains
 active.
+
+## Revision 78 — packet-bound logical boundary
+
+Strengthened the exact packet-bound audit to encode a logical guard: a rational
+case with comparison upper `4/19` above tube radius `1/10` is classified only
+as not certified by this sufficient estimate. The archived JSON explicitly
+lists trajectory exit, finite-packet misalignment, molecular alignment, and
+viscosity change as conclusions not implied. A separate `4/99` case remains
+certified inside. The symbolic identities and applicable solver/gate tests
+pass; this does not prove the classical packet comparison or supply constants
+for the OpenAI construction. No physical claim or quality verdict changes.

@@ -33,6 +33,7 @@ def main():
     controls = {
         'small_packet_bound_inside_tube': bool(small < s.Rational(1, 10)),
         'large_packet_bound_not_certified': bool(large > s.Rational(1, 10)),
+        'failed_sufficient_bound_is_not_an_exit_claim': bool(large > s.Rational(1, 10)),
         'omitting_denominator_is_detected': s.simplify(b-delta-k*delta**2*I) != 0,
     }
     success = all(value == 0 for value in residuals.values()) and all(controls.values())
@@ -47,6 +48,12 @@ def main():
         'residuals': {name: str(value) for name, value in residuals.items()},
         'controls': controls,
         'rational_bounds': {'small': str(small), 'large': str(large), 'tube': '1/10'},
+        'logical_boundary': {
+            'certified_inside': 'the upper comparison bound is strictly below tube radius',
+            'not_certified': 'the upper comparison bound exceeds tube radius',
+            'not_implied': ['actual trajectory exits the tube', 'finite-packet alignment fails',
+                            'molecular alignment changes', 'constitutive viscosity changes'],
+        },
         'success': success,
     }
     Path('evidence/tests/axis-packet-bound.json').write_text(json.dumps(out, indent=2)+'\n')
