@@ -88,6 +88,22 @@ The nanoda release binary built successfully using `cargo build --release
 --locked -j 2` in the digest-pinned Rust image recorded in nanoda-build.json.
 This is tool compilation only, not a proof check.
 
+### Independent check of the analytic force-ratio extension
+
+`sh runtime/lean-verification/check_axis_force_nanoda.sh` recompiles the
+current `verification/AxisForceSign.lean` in the pinned Lean environment,
+exports the transitive proof closure for the actual-field ratio and local
+pressure-moment threshold, and checks it with nanoda. The runner pins both the
+extension source hash and checker image ID, disables networking, runs as the
+unprivileged UID, and applies the tested socket-control launcher. It writes
+the generated NDJSON, checker logs and a hash manifest into a fresh `work/`
+directory (about 1 GB for the current proof closure); it refuses to overwrite
+an existing result. The independent check validates proof terms, but it does
+not establish `Z>0` for the arbitrary `FinalSlowBase.actualProfile` choice or
+any molecular or material-viscosity conclusion. The captured run and exact
+artifact hashes are indexed at
+`evidence/lean-verification/axis-force-nanoda-2026-09-30.json`.
+
 The first real landrun filesystem control failed before executing either test:
 this pinned landrun requests Landlock ABI v9, but the current kernel provides
 ABI v8. Both allowed and denied reads exited at sandbox setup, so this is **not**

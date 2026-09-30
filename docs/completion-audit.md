@@ -26,6 +26,31 @@ finding to a supported improvement and the evidence required to extend it.
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes; all 93 artifact links match. Current verification reports 75 unittest-discovery tests and 77 pytest tests plus five subtests. Full current-tree clean export and solver-build reproduction remain separate |
 
+### Analytic result refreshed 2026-09-30
+
+The OpenAI extension was re-run in the pinned Lean checker environment from the
+current `verification/AxisForceSign.lean`; its 21,306-byte output is byte-equal
+to `evidence/lean-verification/axis-force-sign.log`, and the source hash matches
+`axis-force-sign.json`. It reports only `propext`, `Classical.choice`, and
+`Quot.sound`, with no `sorryAx`. The checked chain includes the selected
+candidate's full axial Laplacian limit, material acceleration, and their ratio.
+For a root in the prescribed interval, `actual_ratio_negative_of_local_Z`
+proves a strictly negative, nonzero limit under the local pressure-moment
+condition `Z>0`; `outgoing_root_Z_positive_iff_moment_threshold` gives its exact
+moment inequality. This sharpens the sufficient premise from global
+`PressureData`. Neither premise has been shown for the arbitrary
+`FinalSlowBase.actualProfile` choice, so the conclusion remains conditional at
+that selection boundary. It concerns viscous force divided by material
+acceleration on one trajectory, not a constitutive-viscosity law or molecular
+alignment. The `AxisForceSign.lean` ratio and moment-threshold proof closure
+has now passed an independent nanoda check (85,455 declarations, zero
+typechecker errors); its hash manifest and rerun script are in
+`evidence/lean-verification/axis-force-nanoda-2026-09-30.json` and
+`runtime/lean-verification/check_axis_force_nanoda.sh`. The separate
+`SupportHoleAssembly.lean` whole-tube transfer has only been checked by Lean's
+standard elaborator; an independent check and the complete tube instantiation
+remain outstanding.
+
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
 inventory verifies readability and identity only. A recorded zero exit code does

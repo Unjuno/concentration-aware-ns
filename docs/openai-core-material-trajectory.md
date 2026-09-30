@@ -2,16 +2,28 @@
 
 Current result: the Lean extension checks the actual assembled field's axial
 viscous-force/material-acceleration limit. Strict negativity is conditional on
-the stated root interval/equation and PressureData. The pressure condition has
-not been discharged for FinalSlowBase.actualProfile; see the final pressure
-retention audit. Consequently this document does not establish an unconditional
-negative-limit theorem for the pinned selected profile.
+the stated root interval/equation and local pressure-moment condition `Z>0`.
+The older theorem `actual_ratio_has_strictly_negative_limit` states the
+sufficient global `PressureData` hypothesis; the sharper
+`actual_ratio_negative_of_local_Z` theorem uses only the local sign. The exact
+moment threshold equivalent to `Z>0` is formalized, but neither condition has
+been discharged for `FinalSlowBase.actualProfile`. See the final pressure
+retention audit. Thus the candidate-field implication is checked, while an
+unconditional negative-limit claim for the pinned selected profile is not.
 
 The infinitesimal material-separation alignment calculation below remains a
 hand-derived extension with symbolic checks, not a fully formalized deformation
 theorem. It establishes neither molecular orientation nor a phase transition.
 Earlier sections record intermediate results and outstanding work at that time;
-the current summary and final audits supersede their status descriptions.
+the current summary and final audits supersede their status descriptions. In
+particular, the later Lean chain now combines the full physical axial Laplacian,
+the actual candidate material acceleration, and the selected slow-sum radial
+derivative limit. Conditional on `Z>0` at the root, the resulting axial ratio
+has a strictly negative, nonzero limit. This is evidence against the proposed
+inference that directional alignment alone makes viscous force negligible
+relative to material acceleration along this trajectory. It is not a claim
+about a constitutive viscosity change, pressure/forcing balance, or molecular
+alignment.
 
 Reproduce the symbolic algebra with SymPy 1.14.0 using
 `python -m tools.check_axis_force`; output is

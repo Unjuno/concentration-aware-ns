@@ -742,3 +742,17 @@ manifest. The Ubuntu apt index was not snapshot-pinned, and source-to-binary
 equivalence is not established; these remain explicit reproduction limits.
 Verified all five published AMR/remap archives and trees, valid JSON, clean
 diff formatting, and 91 tests (plus 5 subtests).
+
+## Revision 46 — independent kernel check of the analytic ratio
+
+Re-ran the pinned Lean extension from the current source and confirmed its
+output is byte-identical to the recorded Lean log. Then exported the actual
+candidate viscous/acceleration ratio, its `Z>0` specialization, and the exact
+pressure-moment threshold with lean4export, and independently checked the
+dependency closure with nanoda. Two runs checked 85,455 declarations with zero
+typechecker errors; the 949,729,487-byte export hashes matched. Added a guarded
+reproduction script and compact hash manifest; the generated proof closure
+stays under ignored `work/`, not in Git. This strengthens confidence in the
+conditional analytic theorem but does not prove its local pressure condition
+for the upstream `actualProfile` choice. No molecular or constitutive-viscosity
+claim is added.
