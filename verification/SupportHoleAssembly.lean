@@ -235,6 +235,50 @@ theorem coordinateEta_margin_of_axial_radius {h tau eta z δ : ℝ}
     _ ≤ δ + |eta| := add_le_add hstep (le_refl _)
     _ = |eta| + δ := by ring
 
+/-- The analytic tube scaling turns an axial spatial radius `c*sqrt(tau)`
+into a uniform eta margin for every `tau <= 1`. -/
+theorem coordinateEta_margin_of_sqrt_axial_radius {h tau eta z c : ℝ}
+    (hh : 0 < h) (hh1 : h < 1 / 2) (htau : 0 < tau) (htau1 : tau ≤ 1)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hc : 0 ≤ c)
+    (hball : |z - eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)| ≤
+      c * Real.sqrt tau) :
+    |SimilarityCoordinates.coordinateEta (2*h) (tau,z)| ≤
+      |eta| + c / (1 - 2*h) := by
+  have hD : 0 < CoordinateAlgebra.D h := by
+    unfold CoordinateAlgebra.D
+    linarith
+  have halpha : 0 < 1 - 2*h := by linarith
+  have hden : 0 < (1 - 2*h) * tau ^ ((1 - 2*h) / 2) := by positivity
+  have hexp : CoordinateAlgebra.D h + h = (1 : ℝ) / 2 := by
+    unfold CoordinateAlgebra.D
+    ring
+  have hpow : tau ^ ((1 : ℝ) / 2) =
+      tau ^ (CoordinateAlgebra.D h) * tau ^ h := by
+    rw [← Real.rpow_add htau]
+    congr 1
+    exact hexp.symm
+  have hscale : Real.sqrt tau / tau ^ (CoordinateAlgebra.D h) = tau ^ h := by
+    rw [Real.sqrt_eq_rpow, hpow]
+    field_simp [Real.rpow_pos_of_pos htau (CoordinateAlgebra.D h)]
+  have hscale_le : Real.sqrt tau / tau ^ (CoordinateAlgebra.D h) ≤ 1 := by
+    rw [hscale]
+    exact Real.rpow_le_one htau.le htau1 (by linarith)
+  have hscaledRadius :
+      |z - eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)| /
+        ((1 - 2*h) * tau ^ ((1 - 2*h) / 2)) ≤ c / (1 - 2*h) := by
+    calc
+      _ ≤ (c * Real.sqrt tau) / ((1 - 2*h) * tau ^ ((1 - 2*h) / 2)) :=
+        div_le_div_of_nonneg_right hball hden.le
+      _ = (c / (1 - 2*h)) *
+          (Real.sqrt tau / tau ^ (CoordinateAlgebra.D h)) := by
+        rw [show (1 - 2*h) / 2 = CoordinateAlgebra.D h by
+          unfold CoordinateAlgebra.D; ring]
+        field_simp [ne_of_gt (Real.rpow_pos_of_pos htau _)]
+      _ ≤ (c / (1 - 2*h)) * 1 :=
+        mul_le_mul_of_nonneg_left hscale_le (div_nonneg hc halpha.le)
+      _ = c / (1 - 2*h) := by ring
+  exact coordinateEta_margin_of_axial_radius hh hh1 htau heta hscaledRadius
+
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ
 whenever the first potential cutoff is on its unit plateau. -/

@@ -12,20 +12,20 @@
   },
   "extension": {
     "file": "../../verification/SupportHoleAssembly.lean",
-    "sha256": "8164f2345e80844c13ba986e22cfedc0a397b6839f4abc8fd5b245393b9e21e4",
+    "sha256": "945b1714398ca431661be1f4a46ccd4b5850f65856172ce5c74b20fb8f726cbf",
     "check_log": "extension-check.log",
     "status": "PASS",
-    "check_log_sha256": "bde294368bfed77c2cddf8cec271d398aee9cdbab3b26e1059281bd33adb0120"
+    "check_log_sha256": "7822fdef9ee9fb0b4da4f437510cfb42840a61953a92e639f65c2ac426d477ee"
   },
   "axiom_audit": {
     "log": "axiom-audit.log",
     "status": "PASS",
-    "for_all_three_new_lemmas": [
+    "sorryAx": false,
+    "for_all_four_new_lemmas": [
       "propext",
       "Classical.choice",
       "Quot.sound"
-    ],
-    "sorryAx": false
+    ]
   },
   "geometry_checker": {
     "command": "uv run --with-requirements requirements-verification.txt -- python -m tools.check_support_hole_tube_geometry",
@@ -39,7 +39,7 @@
   ],
   "scope": "Lean elaboration and dependency build only; not independent peer review, numerical simulation, a molecular model, or an end-to-end cusp-tube proof.",
   "unproved_geometric_obligations": [
-    "3D tube axial-radius bound",
+    "3D Euclidean tube ball to axial-radius bound",
     "time-varying center displacement",
     "transverse q/radius sublevel",
     "all cutoff and localization plateaus"

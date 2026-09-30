@@ -467,11 +467,19 @@ three-dimensional moving ball satisfies that axial hypothesis, or the radial
 sublevel and all cutoff/localization plateau inequalities, so no whole-tube
 instantiation or packet transfer is claimed.
 
+The follow-up lemma `coordinateEta_margin_of_sqrt_axial_radius` now discharges
+the analytic scaling factor for `tau<=1`: an axial displacement bounded by
+`c*sqrt(tau)` implies `|eta|<=|eta0|+c/(1-2h)`. It uses
+`tau^(1/2)=tau^D*tau^h` with `D=(1-2h)/2`, so `tau^h<=1`. This still assumes
+an axial-coordinate displacement bound; converting a full 3D Euclidean ball
+to that premise, plus the remaining tube sublevel and cutoff conditions,
+remains open.
+
 The pinned upstream `lake build` completed successfully (11,424 jobs) against
 the retained OpenAI/NavierStokesAndEuler snapshot. The published Comparator
 challenge modules emit explicit `sorry` warnings, while `ComparatorSolution`
 reports only `[propext, Classical.choice, Quot.sound]` for the two exposed
-Navier--Stokes breakdown theorem declarations. The three new local chart
+Navier--Stokes breakdown theorem declarations. The four new local chart
 lemmas also report only these standard Lean axioms; logs are in
 `evidence/openai-lean-2026-09-30/`. These outputs are scope-limited and are not
 independent peer review. The September 28 OpenFOAM

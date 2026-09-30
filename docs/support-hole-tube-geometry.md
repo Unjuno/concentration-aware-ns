@@ -229,3 +229,9 @@ radius bound for every point in the full Cartesian cusp ball, include any
 time-dependent center displacement, establish the transverse q/radius
 sublevel, and place the entire ball in each cutoff and localization plateau.
 Consequently the all-tube assembled-field transfer remains conditional.
+
+The follow-up lemma `coordinateEta_margin_of_sqrt_axial_radius` proves that,
+for `0<tau<=1`, an axial distance at most `c*sqrt(tau)` gives the margin
+`|eta| <= |eta0| + c/(1-2h)`. The scaling follows from
+`D=(1-2h)/2`, `D+h=1/2`, and `tau^h<=1`. It does not establish that a full
+three-dimensional Euclidean ball meets the axial-distance premise.

@@ -1,1 +1,3 @@
+command: lake env lean verification/SupportHoleAssembly.lean
 exit_code=0
+result: elaborated successfully; no diagnostics
