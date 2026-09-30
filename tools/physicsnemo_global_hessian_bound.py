@@ -18,9 +18,10 @@ def _exact_abs(value):
 def network_hessian_entry_bound(hidden_weights, output_weights, *, time_factor=Fraction(1, 20)):
     """Bound every spatial Hessian entry of time_factor*MLP(sin,cos,t/end).
 
-    Hidden layers use tanh; the output layer is linear. Inputs are ordered as
-    sin(x), cos(x), sin(y), cos(y), sin(z), cos(z), t/end. The final coordinate
-    is fixed in space. The bound uses |tanh'|<=1 and |tanh''|<=1.
+    Hidden layers use tanh; the output layer is linear. Inputs follow the
+    frozen training code: sin(x), sin(y), sin(z), cos(x), cos(y), cos(z), t/end.
+    The final coordinate is fixed in space. The bound uses |tanh'|<=1 and
+    |tanh''|<=1.
     """
     if len(hidden_weights) != 3:
         raise ValueError("the frozen architecture has exactly three hidden layers")
@@ -31,7 +32,7 @@ def network_hessian_entry_bound(hidden_weights, output_weights, *, time_factor=F
     d1 = [[Fraction(0) for _ in range(3)] for _ in range(7)]
     d2 = [[Fraction(0) for _ in range(9)] for _ in range(7)]
     for axis in range(3):
-        for feature in (2 * axis, 2 * axis + 1):
+        for feature in (axis, axis + 3):
             d1[feature][axis] = Fraction(1)
             d2[feature][3 * axis + axis] = Fraction(1)
 
@@ -64,22 +65,26 @@ def network_hessian_entry_bound(hidden_weights, output_weights, *, time_factor=F
 
 
 def total_error_hessian_entry_bound(network_bound):
-    """Add a global 580 bound for the analytic reference velocity Hessian."""
-    return Fraction(580) + network_bound
+    """Bound the endpoint error Hessian using 1-exp(-t) <= t = 1/20."""
+    return Fraction(29) + network_bound
 
 
 def best_case_uniform_grid_nodes(error_hessian_bound, *, tolerance=Fraction(1, 20)):
-    """Conservative per-axis node count for a best-case gradient cover.
+    """Optimistic lower bound on per-axis nodes for this gradient-cover bound.
 
     On a periodic 2pi cube, nearest-grid coordinate distance is pi/N. If every
     Hessian entry of the derivative-error field is bounded by B, its Frobenius
     gradient norm can change by at most 9*pi*B/N between a point and its nearest
-    grid node. We use pi<22/7 and an exact-reference peak lower bound of 19.
-    This assumes zero sampled-grid error, so it is an optimistic floor, not a
-    sufficient end-to-end certificate when grid samples are nonzero.
+    grid node. For a lower floor on N, use pi>3 and a rational upper bound 21
+    on the exact reference peak, granting the most generous (largest)
+    threshold. With zero sampled-grid error this gives a lower bound on nodes
+    required by this particular Hessian envelope; nonzero grid error can only
+    increase the count.
     """
     if error_hessian_bound < 0 or tolerance <= 0:
         raise ValueError("bounds and tolerance must be positive")
-    budget = tolerance * 19
-    required = Fraction(9 * 22, 7) * error_hessian_bound / budget
-    return (required.numerator + required.denominator - 1) // required.denominator
+    budget = tolerance * 21
+    required = Fraction(27) * error_hessian_bound / budget
+    # pi>3 and peak<21 make the actual requirement strictly greater than this
+    # rational, so use floor+1 even when the quotient is an integer.
+    return required.numerator // required.denominator + 1

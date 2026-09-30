@@ -725,11 +725,16 @@ The new exact-rational global Hessian cover audit processes all 25 frozen
 checkpoints and saves per-case weight/archive hashes and bounds in
 `evidence/tests/physicsnemo-global-hessian-coverage.json`. Under a hypothetical
 5% comparator, even a perfect-sample uniform-grid Lipschitz cover would need
-30,821–37,878 nodes per axis, so this global envelope is not a practical
+at least 9,465–13,743 nodes per axis under this envelope, so it is not a practical
 continuous-error certificate. Eight-point autograd checks sanity-check the
 network envelope but do not certify it; the analytic inequalities provide the
 bound. The illustrative threshold is not PhysicsNeMo-preregistered and no
-acceptance status changes. Local interval subdivision remains untested.
+acceptance status changes. Review found and corrected an input feature-order
+error in the first envelope; its old bounds are withdrawn. The checker now
+validates the frozen source expression and the regression suite covers the
+actual grouped sine/cosine mapping. A corrected optimistic floor uses an upper
+bound on the reference peak and lower bound on pi; local interval subdivision
+remains untested.
 
 ## External verification-method update
 

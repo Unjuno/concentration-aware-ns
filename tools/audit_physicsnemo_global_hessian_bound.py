@@ -6,6 +6,7 @@ import json
 import tarfile
 from fractions import Fraction
 from pathlib import Path
+import subprocess
 
 import torch
 
@@ -62,6 +63,22 @@ def audit(root=Path(".")):
     source_commit = expected_source_commit
     model_source = root / "work/physicsnemo-source/physicsnemo/models/mlp/fully_connected.py"
     trainer_source = root / "tools/train_physicsnemo_pilot.py"
+    harness_commit = source_summary["harness_commit"]
+    pinned_trainer = subprocess.check_output(
+        ["git", "-C", str(root), "show", f"{harness_commit}:tools/train_physicsnemo_pilot.py"]
+    )
+    current_trainer = trainer_source.read_bytes()
+    if pinned_trainer != current_trainer:
+        raise ValueError("current PhysicsNeMo trainer differs from the frozen run harness")
+    trainer_text = "".join(current_trainer.decode().split())
+    frozen_feature_expression = "torch.cat((torch.sin(x),torch.cos(x),t/p['end']),dim=1)"
+    if frozen_feature_expression not in trainer_text:
+        raise ValueError("frozen PhysicsNeMo input feature order changed")
+    mapping_witness = network_hessian_entry_bound(
+        [[[1, 0, 0, 1, 0, 0, 0]], [[1]], [[1]]], [[1], [0], [0]]
+    )
+    if mapping_witness != Fraction(7, 10):
+        raise AssertionError(f"feature-order regression witness changed: {mapping_witness}")
     paths = sorted((root / "evidence/physicsnemo-study-v1").glob("n*-nt*.tar.gz"))
     paths += sorted((root / "evidence/physicsnemo-seed-control-v1").glob("seed*-n*-nt*.tar.gz"))
     if len(paths) != 25:
@@ -102,19 +119,27 @@ def audit(root=Path(".")):
         "source": {
             "repository": "https://github.com/NVIDIA/physicsnemo",
             "commit": source_commit,
+            "harness_commit": harness_commit,
             "archive_sha256": frozen_source_protocol["source"]["archive_sha256"],
             "frozen_run_source_tree_check": tree_check,
+            "input_feature_order": ["sin(x)", "sin(y)", "sin(z)", "cos(x)", "cos(y)", "cos(z)", "t/end"],
             "fully_connected_py_sha256": _sha(model_source.read_bytes()),
-            "trainer_py_sha256": _sha(trainer_source.read_bytes()),
+            "trainer_py_sha256": _sha(current_trainer),
         },
         "method": {
             "float_weights": "Each stored binary64 parameter is converted to its exact Fraction value; all envelope propagation is rational arithmetic.",
             "network": "For each tanh layer use |tanh'|<=1 and |tanh''|<=1; propagate absolute first- and second-derivative envelopes through the three hidden affine maps and final linear map, then multiply by endpoint t=1/20.",
-            "reference": "For beta=4, each third derivative of exp(beta*(cos(y)-1)) is bounded by beta+3*beta^2+beta^3=116; cross product with a=(1,2,3) gives a velocity-Hessian component bound of 580.",
-            "cover": "A uniform N^3 periodic grid gives sup gradient-error <= grid-sample max + 9*pi*B/N for component Hessian bound B. The reported optimistic N assumes the grid-sample error is zero, uses pi<22/7, exact reference peak >19, and an illustrative 5% comparator only.",
+            "reference": "u_pred=u0+t*MLP and u_ref=exp(-t)*u0, so the error Hessian is t*D2MLP+(1-exp(-t))*D2u0. For beta=4, each third derivative of exp(beta*(cos(y)-1)) is bounded by beta+3*beta^2+beta^3=116; cross product with a=(1,2,3) gives a u0-Hessian entry bound of 580. Since 1-exp(-t)<=t=1/20, the reference contribution is bounded by 29.",
+            "cover": "A uniform N^3 periodic grid gives sup gradient-error <= grid-sample max + 9*pi*B/N for component Hessian bound B. The reported optimistic lower bound on N assumes zero grid-sample error, uses pi>3 and exact reference peak <21 to derive a necessary floor for this envelope, and an illustrative 5% comparator only.",
             "limitations": ["The 5% value is not a preregistered PhysicsNeMo threshold and does not change old verdicts.", "This global envelope is intentionally coarse; the large N diagnoses this proof route, not the true error or impossibility of adaptive interval certification.", "An actual certificate still requires evaluating every node and outward-certified arithmetic for sampled values."]
         },
         "expected_cases": 25,
+        "feature_order_regression": {
+            "frozen_input_order": ["sin(x)", "sin(y)", "sin(z)", "cos(x)", "cos(y)", "cos(z)", "t/end"],
+            "synthetic_exact_bound": str(mapping_witness),
+            "superseded_interleaved_bound": "1/5",
+            "scope": "A one-unit witness makes sin(x) and cos(x) share a diagonal Hessian entry; the old axis pairing returned 1/5 while the corrected mapping returns 7/10.",
+        },
         "cases": rows,
         "nodes_per_axis_range": [min(nodes), max(nodes)],
         "optimistic_point_count_range": [min(row["optimistic_uniform_points"] for row in rows), max(row["optimistic_uniform_points"] for row in rows)],

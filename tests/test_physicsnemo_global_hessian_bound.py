@@ -13,14 +13,15 @@ class PhysicsNeMoGlobalHessianBoundTests(unittest.TestCase):
         hidden = [[[0] * 7], [[0]], [[0]]]
         output = [[0], [0], [0]]
         self.assertEqual(network_hessian_entry_bound(hidden, output), 0)
-        self.assertEqual(total_error_hessian_entry_bound(Fraction(0)), 580)
+        self.assertEqual(total_error_hessian_entry_bound(Fraction(0)), 29)
 
     def test_exact_second_derivative_propagation(self):
-        # For the first unit, |D(sin(2x+cos x))| <= 3 and the input
-        # second-derivative envelope is 3. Each tanh adds at most D1^2=9.
-        hidden = [[[2, 1, 0, 0, 0, 0, 0]], [[1]], [[1]]]
+        # Frozen input order is sin(x), sin(y), sin(z), cos(x), cos(y),
+        # cos(z), t/end. The sin(x)+cos(x) pair shares the x derivative:
+        # D1<=2, input D2<=2, then each later tanh adds at most D1^2=4.
+        hidden = [[[1, 0, 0, 1, 0, 0, 0]], [[1]], [[1]]]
         output = [[1], [0], [0]]
-        self.assertEqual(network_hessian_entry_bound(hidden, output), Fraction(3, 2))
+        self.assertEqual(network_hessian_entry_bound(hidden, output), Fraction(7, 10))
 
     def test_cover_cost_is_integer_and_grows_with_bound(self):
         small = best_case_uniform_grid_nodes(Fraction(580))
@@ -28,6 +29,14 @@ class PhysicsNeMoGlobalHessianBoundTests(unittest.TestCase):
         self.assertIsInstance(small, int)
         self.assertGreater(large, small)
         self.assertGreater(large**3, 10**12)
+
+    def test_optimistic_floor_uses_strict_inequality_rounding(self):
+        # At this value the rational comparison quotient is exactly one, but
+        # pi>3 and peak<21 imply the true required node count is strictly >1.
+        self.assertEqual(
+            best_case_uniform_grid_nodes(Fraction(21, 540)),
+            2,
+        )
 
     def test_rejects_wrong_hidden_depth_and_input_width(self):
         with self.assertRaises(ValueError):

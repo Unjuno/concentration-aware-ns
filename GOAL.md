@@ -1015,7 +1015,7 @@ not solver reruns, continuous-field certificates, or physical validation. The
 full scoped results are in `reports/solver-matrix-coverage-2026-09-30.md`.
 The project goal remains active.
 
-## Revision 62 — exact-rational global derivative-cover bound
+## Revision 62 — exact-rational global derivative-cover bound (superseded)
 
 To address the PhysicsNeMo continuous-gradient-peak gap, added an exact-rational
 second-derivative envelope for all 25 frozen PINN checkpoints. It combines the
@@ -1028,7 +1028,9 @@ sanity checks remained below each envelope; the largest observed/envelope
 ratio was about 0.0123%. This shows the global bound is too coarse for practical
 certification, not that the fields are inaccurate or that local interval
 methods cannot work. Five percent remains unregistered for PhysicsNeMo, and
-no prior verdict changes. The derivation, machine record, checker and tests are
+no prior verdict changes. This first calculation used an incorrect assignment
+of the sine/cosine input features and its numerical bounds are withdrawn by
+Revision 64. The derivation, machine record, checker and tests are
 in `reports/physicsnemo-pointwise-gradient-audit-2026-09-30.md`,
 `evidence/tests/physicsnemo-global-hessian-coverage.json`, and
 `tools/physicsnemo_global_hessian_bound.py`. The full 97-test suite passes.
@@ -1055,3 +1057,37 @@ goal remains active.
 The OpenAI source repository currently has Issues and Discussions disabled;
 do not claim an upstream report was filed. Continue building evidence locally
 and identify a project-provided feedback route only if one is documented.
+
+## Revision 64 — corrected PhysicsNeMo feature-order bound (floor updated in 65)
+
+Reviewing the frozen training call revealed that the seven inputs are ordered
+as three sine coordinates, then three cosine coordinates, then `t/end`. The
+first global Hessian-bound implementation grouped sine/cosine features by
+axis, so its derivative allocation and all derived grid costs were not
+justified. Corrected the axis mapping, added a regression case that catches
+the diagonal mixed-derivative underbound, and made the audit reject a changed
+training feature expression and verify that the script matches the frozen run
+harness commit. Also used the exact endpoint identity
+`u_pred-u_ref=t*MLP+(1-exp(-t))*u0` with `1-exp(-t)<t=1/20`, reducing the
+reference-Hessian contribution from 580 to 29. The initial corrected
+uniform-grid calculation used a lower bound for the exact peak, giving a
+conservative count for a stricter threshold rather than an optimistic lower
+floor. Revision 65 fixes that direction. The prior Revision 62 feature-mapping
+values are withdrawn; no PhysicsNeMo quality verdict changes. The benchmark
+goal remains active.
+
+## Revision 65 — optimistic floor uses a peak upper bound
+
+For a 5% illustrative comparator, using the exact gradient peak's lower bound
+would reduce the error budget and overstate the minimum required grid size.
+The corrected floor instead uses `4*sqrt(28)*exp(-1/20)<424/21<21`, so the
+most generous possible 5% budget is `21/20`, and `pi>3` to lower-bound the
+variation term; it also assumes zero sampled-grid error. Across 25 frozen
+models this gives at least 9,465–13,743 nodes per axis (8.48e11–2.60e12 total
+points) for this Hessian envelope. It is a lower bound for this proof route,
+not an end-to-end certificate. The sampled
+network-Hessian-to-bound ratio remains at most 0.0168% on eight deterministic
+points and is only a sanity check. No threshold is preregistered and no quality
+verdict changes. This correction was found by reviewing the inequality
+direction independently of the feature-order bug. The benchmark goal remains
+active.
