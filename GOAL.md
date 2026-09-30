@@ -797,3 +797,32 @@ algebra checker passes; repository tests pass (`98 passed, 5 subtests`). A
 whole-repository pytest invocation also traverses preserved checkouts under
 `work/` and encounters duplicate-module collection errors, so the validated
 scope is explicitly `pytest tests`.
+
+## Revision 49 — re-audit of the alignment hypothesis and run chronology
+
+Replayed the symbolic directional-probability, Jeffery-bridge and packet-bound
+checks against the new packet analysis. The selected continuum deformation has
+singular values `Q^(C/2), Q^(C/2), Q^(-C)` and determinant one. Under an imposed
+isotropic distribution of *infinitesimal separation directions*, the
+probability of lying within any fixed nonzero angle of the axis tends to one.
+The separate Gaussian position comparison keeps peak density and volume
+unchanged, while probability in a fixed finite cylinder tends to zero. This
+supports only continuum tangent-direction alignment, not molecular positions,
+finite-particle alignment or a viscosity transition. The Jeffery calculation
+is a separate ideal director model with its own uniform-strain and
+zero-inertia assumptions.
+
+Also cross-checked the apparent OpenFOAM temporal-run contradiction: the
+previously stalled `n64, dt=0.0005` attempt is retained as an incomplete
+historical attempt, while a later validated replay completed 100/100 steps;
+the `dt=0.00025` case completed 200/200. The current cross-run manifest has
+six complete uniform cases, zero incomplete rows, and blind-spot verdict
+`NOT_OBSERVED`; the archived time-sequence audit passes. The earlier stall note
+remains valid historical evidence and is superseded for current matrix status.
+
+Refreshed the upstream identity check: OpenAI's target is a Lean 4
+formalization repository at `openai/NavierStokesAndEuler`, pinned work uses
+Lean 4.34.0-rc2, and its repository license is Apache-2.0. GitHub Issues are
+disabled there; moreover this work establishes no implementation defect to
+report. Current benchmark PR #2 now carries the endpoint Hessian transfer and
+its Python CI passes. PR #3 remains a separate pytest-discovery follow-up.
