@@ -18,8 +18,12 @@ def main():
     axial_pressure_gradient = -4*gamma**2*z
     radial_acceleration = radial*sp.diff(radial, r) - swirl**2/r
     axial_acceleration = axial*sp.diff(axial, z)
+    radial_vector_laplacian = (sp.diff(radial, r, 2) +
+                               sp.diff(radial, r)/r - radial/r**2 +
+                               sp.diff(radial, z, 2))
     azimuthal_advection = radial*(sp.diff(swirl, r) + swirl/r)
     azimuthal_laplacian = sp.diff(swirl, r, 2) + sp.diff(swirl, r)/r - swirl/r**2
+    axial_laplacian = sp.diff(axial, r, 2) + sp.diff(axial, r)/r + sp.diff(axial, z, 2)
 
     residuals = {
         'divergence': sp.simplify(sp.diff(r*radial, r)/r + sp.diff(axial, z)),
@@ -27,6 +31,16 @@ def main():
             radial_acceleration + radial_pressure_gradient),
         'axial_pressure_balance': sp.simplify(
             axial_acceleration + axial_pressure_gradient),
+        'radial_vector_laplacian': sp.simplify(radial_vector_laplacian),
+        'axial_laplacian': sp.simplify(axial_laplacian),
+        'pressure_gradient_compatibility': sp.simplify(
+            sp.diff(radial_pressure_gradient, z) -
+            sp.diff(axial_pressure_gradient, r)),
+        'radial_navier_stokes': sp.simplify(
+            radial_acceleration + radial_pressure_gradient -
+            nu*radial_vector_laplacian),
+        'axial_navier_stokes': sp.simplify(
+            axial_acceleration + axial_pressure_gradient - nu*axial_laplacian),
         'azimuthal_advection_minus_diffusion': sp.simplify(
             azimuthal_advection - nu*azimuthal_laplacian),
         'azimuthal_advection': sp.simplify(azimuthal_advection),
@@ -55,6 +69,17 @@ def main():
     radial_to_azimuthal_shear = sp.simplify(
         r0*theta_initial_radius_derivative)
     shear_limit = sp.simplify(sp.limit(radial_to_azimuthal_shear, t, sp.oo))
+    expected_shear_limit = sp.simplify(
+        circulation*(1 - sp.exp(-gamma*r0**2/(2*nu))) /
+        (2*sp.pi*gamma*r0**2) - circulation/(4*sp.pi*nu))
+    delta_r0, delta_theta0, delta_z0 = sp.symbols(
+        'delta_r0 delta_theta0 delta_z0', real=True)
+    transverse_to_axial_ratio_squared = sp.simplify(
+        sp.exp(-6*gamma*t) *
+        (delta_r0**2 + (radial_to_azimuthal_shear*delta_r0 +
+                        delta_theta0)**2) / delta_z0**2)
+    off_axis_alignment_limit = sp.simplify(sp.limit(
+        transverse_to_axial_ratio_squared, t, sp.oo))
     off_axis_deformation = sp.Matrix([
         [sp.exp(-gamma*t), 0, 0],
         [sp.exp(-gamma*t)*radial_to_azimuthal_shear,
@@ -67,10 +92,17 @@ def main():
         'incompressible': residuals['divergence'] == 0,
         'radial_balance': residuals['radial_pressure_balance'] == 0,
         'axial_balance': residuals['axial_pressure_balance'] == 0,
+        'radial_viscous_component_zero': residuals['radial_vector_laplacian'] == 0,
+        'axial_viscous_component_zero': residuals['axial_laplacian'] == 0,
+        'pressure_gradient_compatible': residuals['pressure_gradient_compatibility'] == 0,
+        'radial_equation': residuals['radial_navier_stokes'] == 0,
+        'axial_equation': residuals['axial_navier_stokes'] == 0,
         'azimuthal_viscous_advection_balance':
             residuals['azimuthal_advection_minus_diffusion'] == 0,
         'azimuthal_viscous_term_nonzero_for_positive_r':
             residuals['azimuthal_advection'] != 0,
+        'viscous_advection_balance_is_derived':
+            residuals['azimuthal_advection_minus_diffusion'] == 0,
         'axis_swirling_rate': sp.simplify(
             axis_swirl_rate - circulation*gamma/(4*sp.pi*nu)) == 0,
         'axis_deformation_volume_preserved': determinant == 1,
@@ -78,7 +110,10 @@ def main():
         'off_axis_flow_map_volume_preserved': off_axis_determinant == 1,
         'off_axis_shear_has_finite_limit': not shear_limit.has(
             sp.oo, -sp.oo, sp.zoo, sp.nan),
-        'off_axis_axial_alignment_factor': alignment_factor == sp.exp(-3*gamma*t),
+        'off_axis_shear_limit_matches_closed_form': sp.simplify(
+            shear_limit - expected_shear_limit) == 0,
+        'off_axis_transverse_to_axial_ratio_tends_to_zero':
+            off_axis_alignment_limit == 0,
     }
     negative_controls = {
         'wrong_strain_sign_rejected': sp.simplify(
@@ -89,7 +124,7 @@ def main():
     source = Path(__file__)
     output = {
         'scope': 'Symbolic cylindrical-coordinate verification of the classical '
-                 'Burgers vortex and its axis linearization; unbounded-domain '
+                 'Burgers vortex and on/off-axis deformation; unbounded-domain '
                  'exact solution, not a model of the pinned OpenAI field or molecules.',
         'sympy': sp.__version__,
         'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
@@ -107,9 +142,12 @@ def main():
         'off_axis_deformation_matrix_in_cylindrical_orthonormal_bases':
             str(off_axis_deformation),
         'off_axis_shear_limit': str(shear_limit),
-        'off_axis_transverse_to_axial_factor': str(alignment_factor),
+        'off_axis_expected_shear_limit': str(expected_shear_limit),
+        'off_axis_transverse_to_axial_ratio_squared_limit':
+            str(off_axis_alignment_limit),
         'viscosity_coefficient': str(nu),
-        'azimuthal_advection_equals_viscous_diffusion': True,
+        'azimuthal_advection_equals_viscous_diffusion':
+            residuals['azimuthal_advection_minus_diffusion'] == 0,
         'negative_controls': negative_controls,
         'success': all(identities.values()) and all(negative_controls.values()),
     }

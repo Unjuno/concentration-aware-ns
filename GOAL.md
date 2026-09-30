@@ -610,3 +610,14 @@ symbolic artifact are in `docs/burgers-vortex-alignment-viscous-balance.md` and
 demonstrating deformation only on-axis and term balance only off-axis, within
 this exact idealized solution; transfer to the selected OpenAI profile remains
 unproved.
+
+## Revision 36 — adversarial regression coverage for the analytic check
+
+The Burgers-vortex verifier now checks radial and axial vector Laplacians,
+pressure-gradient compatibility, and all three steady momentum components. Its
+off-axis alignment claim is tested by the symbolic limit of the squared
+transverse-to-axial displacement ratio, rather than by a copied expected
+factor. A unit-test subprocess runs the verifier in a temporary directory and
+asserts its equations, nonzero viscous term, closed-form shear limit, alignment
+limit, and deliberate sign-error controls. This is regression protection for
+the stated analytical scope, not independent formal verification.
