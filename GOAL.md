@@ -541,7 +541,11 @@ active. See the temporal addendum report and comparison artifact.
 
 The three frozen high-gradient AMR budgets completed. The 4096 budget did not
 refine; 5000 produced 16,640 cells and 100000 produced 101,760. Exact
-budget-blocked candidate counts were not retained. Fixed-final-mesh runs
+budget-blocked candidate counts were not retained. Event logs show the
+cap100000 case selected 12,416 candidates at 16,640 cells, transiently reached
+103,552, then corrected 256 split points and ended at 101,760. This makes
+source-level replay of the consistency correction and intended cap semantics
+the next concrete audit step; it is not yet a defect finding. Fixed-final-mesh runs
 initialized from the analytic field reduced velocity error from 37.0% to 1.88%
 and from 40.1% to 0.483% on the 5000/100000 meshes. This supports an
 adaptation-history/remapping contribution, while leaving individual sensor,

@@ -65,12 +65,19 @@ All three frozen high-gradient AMR budgets completed in
 `work/of13-high-gradient-amr-v2-20260930/`. Compact tracked summaries are
 `evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json` and
 `evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json`;
+event-level selections and associated input hashes are summarized in
+`evidence/of13-high-gradient-amr-event-audit-2026-09-30.json`;
 complete raw solver trees remain under ignored `work/` paths. cap4096 stayed at
 4096 level-0 cells because the budget disallowed refinement. cap5000 produced
 16,640 cells (2,304 level 0 and 14,336 level 1); cap100000 produced 101,760
 cells (2,176 level 0, 3,328 level 1, 96,256 level 2). The 5000 and 100000
 budgets therefore overshot by factors 3.328 and 1.0176. Exact blocked-candidate
-counts were not recorded and remain UNOBSERVED.
+counts were not recorded and remain UNOBSERVED. The cap100000 log specifically
+records 12,416 selected candidates from 16,640 cells, a transient 103,552-cell
+mesh, and then 256 selected split points before the final count of 101,760.
+This records where an overshoot occurred, but does not prove why: the exact
+source-level consistency expansion and intended cap contract still need to be
+checked against this event sequence.
 
 On those exact final meshes, fixed-mesh runs initialized from the analytic
 high-gradient field reduced the volume-weighted velocity error from 37.01% to
