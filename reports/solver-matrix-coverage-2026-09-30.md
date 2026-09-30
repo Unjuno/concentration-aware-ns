@@ -68,3 +68,9 @@ work/reference-check-env/bin/python -m tools.audit_physicsnemo_local_fields
 These commands replay records and postprocessing; they do not rerun all three
 solver/training matrices. The per-target raw inputs, environments, gates and
 runtime limitations remain in their linked protocol and evidence directories.
+The current OpenFOAM cross-run manifest also binds the recorded arm64 image ID,
+Foundation DEB, Dockerfile, build log, and installed-package inventory by hash.
+The base image and DEB are pinned, but Ubuntu apt dependencies were not
+snapshot-pinned and source-to-binary equivalence was not established. See the
+[runtime reproduction guide](../runtime/openfoam13/README.md); replaying the
+published archives does not require a solver rebuild.

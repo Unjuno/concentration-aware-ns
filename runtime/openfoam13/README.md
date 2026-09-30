@@ -1,92 +1,103 @@
-# OpenFOAM Foundation 13 runtime
+# OpenFOAM Foundation 13 runtime and reproduction
 
-Build on a Docker linux/arm64 host:
+This is the benchmark's Docker packaging recipe for the official
+OpenFOAM Foundation Debian package. It is not an official OpenFOAM image.
+The solver is Foundation 13 (`openfoam13` package `20260624`, arm64); source
+headers/package identify GPL-3.0-or-later. This audit did not establish
+source-to-binary equivalence between the installed Debian package and the
+separately inspected upstream Git tree.
+
+## Recorded runtime provenance
+
+The completed v2 matrix used Linux/arm64 image
+`sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b`.
+The recipe pins the Ubuntu 24.04 base image by digest and the Foundation DEB
+URL and SHA256. Its build log, installed package-version inventory and package
+index are retained at:
+
+- `evidence/environment/openfoam-build.log`
+- `evidence/environment/runtime-packages.txt`
+- `evidence/environment/openfoam-packages-arm64.txt`
+
+The runtime package inventory SHA256 is
+`5d49d34475cb8a55d605f78892160d512534881b32f79dfbd8580a945ccb9d23`; the
+Foundation DEB SHA256 is
+`6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360`.
+The Ubuntu apt indexes used during image construction were not snapshot-pinned.
+Rebuilding later can therefore produce a different dependency set and image
+ID. Compare the resulting package inventory and image ID before treating a new
+run as an exact runtime reproduction. Per-run harness commit, image ID,
+Docker CLI and protocol hashes are in the corresponding run manifests.
+
+## Reproduce the uniform matrix
+
+Run on a Linux/arm64 Docker host. Install Python verification dependencies
+using `requirements-verification-locked.txt`, build the runtime image, then
+check its image ID and package inventory against the values above:
 
 ```sh
+python3 -m pip install -r requirements-verification-locked.txt
 docker build --platform linux/arm64 -t concentration-aware-ns:of13 runtime/openfoam13
-docker run --rm concentration-aware-ns:of13 foamRun -help
+docker image inspect concentration-aware-ns:of13 --format '{{.Id}} {{.Os}}/{{.Architecture}}'
+docker run --rm --entrypoint cat concentration-aware-ns:of13 /opt/package-versions.txt
 ```
 
-The Ubuntu base digest and Foundation DEB SHA256 are pinned. The package index
-observed at setup is in `evidence/environment/`. Transitive Ubuntu dependency
-versions are resolved at build time and recorded inside `/opt/package-versions.txt`;
-this Dockerfile does not claim bit-for-bit rebuild reproducibility. Preserve the
-built image ID and package list with actual runs. Source-to-binary equivalence
-with the audited Git commit still needs verification.
-
-This is our packaging recipe around an official Foundation package, not an
-official OpenFOAM Docker image. No host system packages are installed.
-
-From the repository root, `runtime/openfoam13/run-pilot.sh` generates a fresh
-8^3-cell case and launches blockMesh followed by foamRun. NumPy is required for
-generation. Run only when `work/of13-pilot` is absent; the generator refuses to
-overwrite existing evidence. Coded forcing compiles as a non-root user matching
-the host UID. This pilot's completion has not yet been verified; see progress.
-
-The localized high-gradient manufactured profile can be generated without
-changing the existing Gaussian case:
+The completed run used harness commit
+`0e0288f98209f856931352ebfa5dad0f1aad0014`, frozen protocol
+`protocols/high-gradient-of13-v2.json`, and six rows: n=16, 32, 64, 128 at
+`dt=0.001`, plus n=64 at `dt=0.0005` and `0.00025`. To run a fresh full
+matrix from that clean source revision, check out that commit in this same
+repository, confirm the working tree is clean, and run:
 
 ```sh
-python3 -m tools.openfoam_case work/of13-high-gradient-pilot \
-  --n 16 --profile high-gradient --frequency 4
+python3 -m tools.run_high_gradient_openfoam
 ```
 
-The original unrun matrix is preserved as `protocols/high-gradient-of13-v1.json`.
-The active successor matrix and quality thresholds are in
-`protocols/high-gradient-of13-v2.json`; a reference-only FD2 floor audit added
-n=128 so both n=64 and n=128 meet the 5% derivative thresholds even on exact
-sampled data. See `evidence/tests/high-gradient-fd2-resolution-floor.json`.
-Before solver execution, compile and
-compare the `codedFvModel` forcing with the independent symbolic/NumPy
-reference using `python3 -m tools.check_high_gradient_openfoam_force`. That
-checker requires the pinned local OpenFOAM image and Docker; it tests a mock
-mesh/equation, not a PDE run or the live solver's source sign convention.
+The runner refuses to overwrite its output directory. Set
+`CANS_OF13_RUN_ROOT` to a new path for another run. It records input hashes,
+commands, container logs, completion status and diagnostics. The already
+published results and cross-run status are in
+`evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; the older
+`manifest.json` is intentionally retained as a historical snapshot and marks
+the later temporal rows incomplete.
 
-Run the frozen six-case uniform matrix with
-`python3 -m tools.run_high_gradient_openfoam`. It creates a new
-`work/of13-high-gradient-v2` tree only after verifying the local image and
-records the immutable image ID, source commit, protocol hash, inputs, commands,
-logs and diagnostic outputs. It requires a clean committed source tree before
-preflight so the recorded revision names the source actually used. Each case
-will report standard run acceptance separately from velocity, energy, gradient,
-vorticity and shell-spectrum quality. A blind spot is classified as reproduced
-only if standard acceptance passes and local quality fails at both n=64 and
-n=128, after the exact-reference FD2 floor audit confirms those levels clear
-the derivative thresholds. Execution is in progress: the four spatial rows and the `dt=0.0005` temporal addendum are complete;
-`dt=0.00025` remains unstarted. The original snapshot remains at
-`evidence/of13-high-gradient-v2/manifest.json`, while the additive current
-status is `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`;
-no matrix-level verdict is available.
+## Reproduce the AMR and fixed-final-mesh controls
 
-If a long temporal case is interrupted after spatial cases have completed, do
-not overwrite the original tree. A single-row successor can be run from a clean
-committed tree with
-`python3 -m tools.run_high_gradient_temporal_case --dt 0.0005 --run-root work/of13-high-gradient-v2-temporal-20260930-dt0005`
-(or `--dt 0.00025` and a distinct root). This freezes the same v2 protocol and
-image, records the parent-matrix manifest hash, requires all expected time
-steps, converged outer loops, `End`, and endpoint fields, and verifies its
-archive. A completed addendum is still only one temporal case; it does not
-change the six-row matrix to COMPLETE until the other row is also validated
-and the other matrix rows are independently checked. The current validated
-`dt=0.0005` addendum is under
-`evidence/of13-high-gradient-v2-temporal-addendum/`; its run summary explicitly
-keeps the overall matrix incomplete.
+The three AMR runs used harness commit
+`265611cd160a7e139b6950c918e6dc1d90056d97` and the same v2 protocol/image.
+From a clean checkout of that revision and a new work root:
 
-Generate and run the frozen AMR budget sweep with
-`python3 -m tools.run_high_gradient_amr`. It creates a new
-`work/of13-high-gradient-amr-v2` tree only after verifying a clean committed
-source tree and the local image. The analytic sensor is the prescribed
-`chi(y,z)` envelope; the report records observed levels/budgets and explicitly
-leaves blocked refinement candidates `UNOBSERVED` if OpenFOAM does not expose
-them.
+```sh
+CANS_OF13_AMR_RUN_ROOT=work/of13-high-gradient-amr-v2-20260930 python3 -m tools.run_high_gradient_amr
+```
 
-The AMR generator requires `refine_interval >= 2`. In the inspected Foundation
-13 startup path, the mesh refiner can query its sensor before the first
-`fvModels.correct()` call has registered the coded sensor field. The default
-interval leaves one update step to initialize that field before refinement;
-this is a source-order safeguard, not an observed solver defect or a completed
-runtime validation. The pinned refiner implementation looks up the configured
-field by name in
-[`refiner_fvMeshTopoChanger.C`](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C).
-Runtime startup and AMR behavior still require execution against the pinned
-image.
+Then run the two fixed-final-mesh controls, which require the AMR outputs above:
+
+```sh
+CANS_REMAP_PROTOCOL=protocols/high-gradient-of13-remap-control-v2.json CANS_OF13_REMAP_RUN_ROOT=work/of13-high-gradient-remap-control-v2-20260930e python3 -m tools.run_remap_control
+```
+
+Both runners refuse to overwrite existing work roots. The raw adaptive and
+fixed-mesh cases are published as verified tarballs under
+`evidence/of13-high-gradient-amr-v2-2026-09-30/` and
+`evidence/of13-high-gradient-remap-control-v2-2026-09-30/`. Replay their
+archive/tree integrity checks without a solver using:
+
+```sh
+python3 -m tools.verify_openfoam_amr_archives
+```
+
+The AMR pilot found that final cell counts can exceed nominal `maxCells` at
+adaptation synchronization points. The run did not expose blocked candidate
+counts, and nonuniform-grid spectra lack a validated reconstruction; AMR
+quality remains `UNCERTAIN`. See
+`reports/solver-matrix-coverage-2026-09-30.md` for results and limitations.
+
+## What rebuild and replay do not prove
+
+The recorded archives let a third party replay all published diagnostics
+without rerunning OpenFOAM. A new run on a rebuilt image is a fresh reproduction
+unless the image ID and package inventory match the recorded environment.
+Neither the archived results nor a repeated run proves a general solver defect,
+mathematical blow-up, molecular alignment, constitutive-viscosity change or
+physical hazard.

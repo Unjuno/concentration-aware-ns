@@ -730,3 +730,15 @@ candidate counts and nonuniform spectra remain unavailable. Fixed-mesh
 controls narrow the discrepancy toward adaptive history without isolating
 which remap/flux/sensor component is responsible. No new upstream issue is
 warranted by this evidence.
+
+## Revision 45 — OpenFOAM runtime provenance and fresh reproduction guide
+
+Replaced the stale OpenFOAM runtime instructions that still described the
+uniform matrix as in progress. The guide now separates archive replay from a
+fresh solver run and provides commands for the uniform matrix, AMR cases, and
+fixed-final-mesh controls. Added the exact image ID, platform, Foundation DEB
+hash, Dockerfile/build-log/package-inventory hashes to the current cross-run
+manifest. The Ubuntu apt index was not snapshot-pinned, and source-to-binary
+equivalence is not established; these remain explicit reproduction limits.
+Verified all five published AMR/remap archives and trees, valid JSON, clean
+diff formatting, and 91 tests (plus 5 subtests).

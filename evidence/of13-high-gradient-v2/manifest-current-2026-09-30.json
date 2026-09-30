@@ -1,5 +1,5 @@
 {
-  "captured_at_utc": "2026-09-30T10:56:00Z",
+  "captured_at_utc": "2026-09-30T11:03:16Z",
   "status": "COMPLETE",
   "protocol": "protocols/high-gradient-of13-v2.json",
   "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
@@ -100,5 +100,27 @@
     "raw_archives_verified": "evidence/tests/openfoam-amr-archive-integrity-2026-09-30.json",
     "scope": "Separate n=16 AMR/remap pilot; not part of six uniform-grid matrix and not a validated local-quality comparison."
   },
-  "scope": "Cross-run index. It retains the original base manifest unchanged, joins two validated temporal addenda by protocol hash, source commit, image ID and archive hash, and points to a separately verified AMR/remap pilot with archive integrity records."
+  "scope": "Cross-run index. It retains the original base manifest unchanged, joins two validated temporal addenda by protocol hash, source commit, image ID and archive hash, records runtime build provenance and points to a separately verified AMR/remap pilot with archive integrity records.",
+  "runtime_provenance": {
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "ubuntu_base_image": "ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517",
+    "openfoam_foundation_package": "openfoam13 20260624 arm64",
+    "openfoam_deb_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+    "dockerfile": {
+      "path": "runtime/openfoam13/Dockerfile",
+      "sha256": "838341d15826c96f64a66f30666b412f21672ed5b7d9fa8112f963d34cfdc3d1"
+    },
+    "build_log": {
+      "path": "evidence/environment/openfoam-build.log",
+      "sha256": "c2c367ad7934607239e8fe15e3dc6682b0b506f6573a48eff9859fb53f0685a1"
+    },
+    "installed_package_inventory": {
+      "path": "evidence/environment/runtime-packages.txt",
+      "sha256": "5d49d34475cb8a55d605f78892160d512534881b32f79dfbd8580a945ccb9d23"
+    },
+    "apt_snapshot_pinned": false,
+    "source_to_binary_equivalence": "NOT_ESTABLISHED",
+    "interpretation": "Exact historical runtime is identified by image ID and package inventory. Rebuilding may resolve different Ubuntu dependencies; a matching OpenFOAM package version alone does not prove a matching image."
+  }
 }
