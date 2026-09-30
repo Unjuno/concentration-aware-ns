@@ -29,6 +29,28 @@
       "rate_fraction_of_slender_limit": 0.9998000199980002
     }
   },
+  "source_reported_fiber_scale_estimate": {
+    "density_kg_m3": 1059.0,
+    "dynamic_viscosity_pa_s": 0.00179,
+    "kinematic_viscosity_m2_s": 1.6902738432483473e-06,
+    "strain_rate_range_s_inverse": [
+      115,
+      150
+    ],
+    "fiber_length_range_m": [
+      4e-05,
+      0.0005
+    ],
+    "burgers_core_radius_range_m": [
+      0.00015012323130230256,
+      0.00017145281228111043
+    ],
+    "fiber_length_to_core_radius_range": [
+      0.23330034350452558,
+      3.330597107873011
+    ],
+    "interpretation": "approximate scale ratio from reported ranges; not a universal Jeffery-breakdown threshold"
+  },
   "assumptions_and_missing_bridge": [
     "rigid prolate Jeffery particle with aspect-ratio shape factor kappa",
     "velocity gradient is spatially uniform across the particle",

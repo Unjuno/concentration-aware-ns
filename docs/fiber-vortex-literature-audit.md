@@ -39,13 +39,22 @@ buoyant fibers in a stationary Burgers-like cross-slot vortex. The reported
 fibers have aspect ratios 10–100, diameters about 2–4 micrometres and lengths
 40–500 micrometres. Their experiments use a 25 wt% glycerol-water mixture and
 base-flow Reynolds numbers 40–80 (the paper's particle-Reynolds estimate spans
-0.05–12); the fitted strain rates are about 100 s^-1 in the experiment and
-120 s^-1 in the simulations. The authors report simultaneous
-precession from vorticity and orientation alignment from strain. They also
-report weaker radial migration for longer fibers and caution that local Jeffery
-description fails when the fiber samples materially varying gradients. The
-Aulnette et al. study is an arXiv v2 preprint (15 July / revised 3 August
-2026), not an experiment on the OpenAI field or on molecules.
+0.05–12); the measured strain rate varies about 150 to 115 s^-1 along a half
+channel width, and fitted averages are about 100 s^-1 in the experiment and
+120 s^-1 in the simulations. The authors report simultaneous precession from
+vorticity and orientation alignment from strain. Over their tested range,
+Jeffery's theory describes orientation well, with small length-dependent
+corrections: longer fibers rotate slightly slower and align slightly faster
+than the local Jeffery prediction. Larger fibers also show weaker radial decay
+even in simulations without particle inertia. Their bead-model simulations
+assume `Re_p << 1`, whereas the experimental estimate spans 0.05–12; the
+authors report viscous effects dominate orientation in their tested cases.
+That is bounded evidence for those conditions, not proof that inertia is
+absent or generally irrelevant. The paper warns that sufficiently long fibers
+may sample varying gradients and violate the locally uniform-flow assumption;
+it does not identify a universal critical length. The Aulnette et
+al. study is an arXiv v2 preprint (15 July / revised 3 August 2026), not an
+experiment on the OpenAI field or on molecules.
 
 ## Conditional analytical bridge to the continuum tangent map
 
@@ -81,6 +90,16 @@ rotation, flexibility and hydrodynamic interaction. The cited experiment and
 model address micron-scale fibers, not molecular degrees of freedom or a
 stress-derived change in fluid viscosity.
 
+The measured fiber lengths `L=40–500 micrometres` are not uniformly small
+relative to the fitted Burgers-vortex core length. Using the paper's mixture
+values `rho=1059 kg/m^3`, `eta=1.79 mPa s` and local strain rates
+`gamma=115–150 s^-1` in `r_gamma=sqrt(2 nu/gamma)`, `nu=eta/rho`, gives the
+approximate range `r_gamma=150–171 micrometres` and `L/r_gamma=0.23–3.33`.
+This ratio is a useful finite-size descriptor, not a predicted transition
+threshold. It helps explain why measured orientation can remain close to the
+Jeffery law while migration and small orientation-rate corrections depend on
+fiber length.
+
 The missing bridge is decisive: Jeffery's equation uses the velocity gradient
 across a finite object's neighborhood (and idealizes it as locally uniform),
 whereas the OpenAI proof establishes the flow derivative along a trajectory.
@@ -98,4 +117,4 @@ acceptance follows from either fiber paper.
 - DOI: `10.1017/jfm.2026.11342`
 - Published 30 March 2026; open access under CC BY.
 - Rigid-fiber comparison: [Aulnette et al., arXiv:2607.14298v2](https://arxiv.org/abs/2607.14298v2), *Orientation Dynamics of Rigid Fibers in a Microfluidic Burgers-like Vortex*; submitted 15 July and revised 3 August 2026.
-- Exact Jeffery/tangent-map comparison is reproduced by `python -m tools.check_jeffery_axisymmetric_bridge`; generated assumptions and values are archived in `evidence/tests/jeffery-axisymmetric-bridge.json`.
+- Exact Jeffery/tangent-map comparison and the derived `L/r_gamma` range are reproduced by `python -m tools.check_jeffery_axisymmetric_bridge`; assumptions and values are archived in `evidence/tests/jeffery-axisymmetric-bridge.json`.

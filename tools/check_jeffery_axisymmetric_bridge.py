@@ -5,6 +5,7 @@ It does not establish that a finite particle follows the OpenAI PDE flow.
 """
 import json
 from fractions import Fraction
+import math
 from pathlib import Path
 
 import sympy as sp
@@ -55,6 +56,17 @@ def derive():
             "kappa_decimal": float(value),
             "rate_fraction_of_slender_limit": float(value),
         }
+    density_kg_m3 = 1059.0
+    dynamic_viscosity_pa_s = 1.79e-3
+    kinematic_viscosity_m2_s = dynamic_viscosity_pa_s / density_kg_m3
+    strain_rates_s = [115.0, 150.0]
+    core_radii_m = [math.sqrt(2 * kinematic_viscosity_m2_s / gamma) for gamma in strain_rates_s]
+    core_radius_min_m, core_radius_max_m = min(core_radii_m), max(core_radii_m)
+    fiber_length_min_m, fiber_length_max_m = 40e-6, 500e-6
+    length_to_core_range = [
+        fiber_length_min_m / core_radius_max_m,
+        fiber_length_max_m / core_radius_min_m,
+    ]
     return {
         "status": "ALGEBRA_IDENTITIES_PASS",
         "scope": "Jeffery director in prescribed spatially uniform axisymmetric extensional strain; no finite-particle transfer theorem",
@@ -69,6 +81,16 @@ def derive():
         "isotropic_initial_director_probability": "1 - a/sqrt(a^2 + tan(theta_star)^2), a=Q^(3*kappa*C/2), for isotropic unoriented initial directions and kappa>0",
         "probability_scope": "orientation event of an ideal Jeffery director only; no absolute-position distribution",
         "shape_factors": shape_factors,
+        "source_reported_fiber_scale_estimate": {
+            "density_kg_m3": density_kg_m3,
+            "dynamic_viscosity_pa_s": dynamic_viscosity_pa_s,
+            "kinematic_viscosity_m2_s": kinematic_viscosity_m2_s,
+            "strain_rate_range_s_inverse": [115, 150],
+            "fiber_length_range_m": [fiber_length_min_m, fiber_length_max_m],
+            "burgers_core_radius_range_m": [core_radius_min_m, core_radius_max_m],
+            "fiber_length_to_core_radius_range": length_to_core_range,
+            "interpretation": "approximate scale ratio from reported ranges; not a universal Jeffery-breakdown threshold",
+        },
         "assumptions_and_missing_bridge": [
             "rigid prolate Jeffery particle with aspect-ratio shape factor kappa",
             "velocity gradient is spatially uniform across the particle",

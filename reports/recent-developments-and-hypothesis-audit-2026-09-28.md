@@ -228,14 +228,22 @@ adds a direct, but sharply bounded, result to the particle-orientation question.
 It combines microfluidic measurements, Jeffery theory and bead-model simulations
 for rigid neutrally buoyant fibers in a stationary Burgers-like cross-slot
 vortex. The paper reports aspect ratios 10–100, lengths 40–500 micrometres,
-base-flow `Re=40–80` and estimated particle `Re_p=0.05–12`, with strain rates
-around 100–120 s^-1. It observes
-simultaneous azimuthal precession from vorticity and polar alignment from
-extensional strain. The authors also report that longer fibers deviate more in
-radial migration and that a local Jeffery description eventually fails when a
-fiber samples a nonuniform velocity gradient. This is actual finite-fiber
-orientation evidence in a laboratory vortex; it is not molecular evidence or
-an experiment on the OpenAI field. Sources: [arXiv:2607.14298v2](https://arxiv.org/abs/2607.14298v2), [published flexible-fiber study, JFM 1032 A7](https://doi.org/10.1017/jfm.2026.11342).
+base-flow `Re=40–80` and estimated particle `Re_p=0.05–12`, with local strain
+rates around 115–150 s^-1. It observes simultaneous azimuthal precession from
+vorticity and polar alignment from extensional strain. Using its reported
+mixture density and viscosity gives a Burgers core radius of about 150–171
+micrometres, so the measured fiber lengths span approximately `L/r_gamma=0.23–3.33`.
+Within the tested range, orientation remains well described by Jeffery theory,
+with longer fibers rotating slightly slower and aligning slightly faster than
+its local prediction; migration shows clearer finite-size effects. The authors
+report that viscous effects dominate orientation in their tested cases, but
+their bead simulations assume `Re_p << 1` while the experimental estimate spans
+0.05–12; this does not establish general irrelevance of inertia.
+The authors warn that a sufficiently long fiber may sample nonuniform gradients
+and violate the local-flow assumption, but do not identify a universal
+threshold. This is
+finite-fiber orientation evidence in a laboratory vortex, not molecular
+evidence or an experiment on the OpenAI field. Sources: [arXiv:2607.14298v2](https://arxiv.org/abs/2607.14298v2), [published flexible-fiber study, JFM 1032 A7](https://doi.org/10.1017/jfm.2026.11342).
 
 The idealized connection can be derived exactly. For `E=diag(2 gamma,-gamma,-gamma)`,
 Jeffery's equation gives
