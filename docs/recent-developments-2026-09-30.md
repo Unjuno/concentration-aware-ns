@@ -18,6 +18,8 @@ The same paper does not say that viscosity simply switches off. For fixed positi
 
 These are statements about a designed, externally forced continuum solution. They do not establish molecular alignment, predict a real fluid's molecular positions, or imply that blow-up solutions arise in ordinary physical conditions. Incompressibility means `div u = 0`; while the smooth flow map exists before blow-up, its Jacobian determinant is one. The anisotropic vortex shape therefore cannot by itself be read as material volume collapse or molecular ordering. A separate Lagrangian analysis would need to track the ODE `dX/dt = u(X,t)` and specify which particles/trajectories and which limiting observable are meant.
 
+There is a sharper implication for the proposed “particle alignment” reading: the paper defines its shrinking core by **fixed similarity-coordinate bounds** at each time, so this is an Eulerian region, not a fixed set of material parcels. Its volume scales like `tau^(3/2-h)` and tends to zero. Since the velocity is divergence-free, the flow map preserves the volume of each transported material set for every `t<1`; therefore the shrinking core cannot itself be interpreted as the same material particles being compressed into a line. Particles can enter and leave this changing core, and the stated axial outflow explicitly carries incoming fluid away. Alignment of selected trajectories could still be studied, but requires a separate Lagrangian theorem and a precise definition of alignment.
+
 Source: [OpenAI paper, §2 “Physical description of the blowup”](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf).
 
 ## Audit implications
