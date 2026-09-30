@@ -756,3 +756,18 @@ stays under ignored `work/`, not in Git. This strengthens confidence in the
 conditional analytic theorem but does not prove its local pressure condition
 for the upstream `actualProfile` choice. No molecular or constitutive-viscosity
 claim is added.
+
+## Revision 47 — conditional uniform terminal cusp-ball transfer
+
+Formalized center decay at `tau=0`, combined it with the fixed-time spatial
+ball/chart estimates, the selected construction's physical exterior, cutoff
+plateaus, and the actual field-germ theorem. The pinned Lean run proves that
+for every fixed axis coordinate in `(-1,1)`, an admissible positive ball-radius
+coefficient and eta margin exist, and then an existential `tau0>0` works for
+every time `0<tau<tau0` and every point in the shrinking `c*sqrt(tau)` ball.
+Evidence is `evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/`; details and
+limits are in `docs/support-hole-tube-geometry.md` and
+`reports/openai-support-hole-assembly-audit.md`. This is a conditional
+continuum local-germ equality, not a finite-size material packet, molecular
+alignment, phase transition, or viscosity theorem. It adds no solver defect
+finding; solver acceptance claims remain separately gated by the benchmark.

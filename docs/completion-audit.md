@@ -135,7 +135,7 @@ in `evidence/tests/support-hole-tube-geometry.json`; derivation and explicit
 smallness conditions are in `docs/support-hole-tube-geometry.md`. The
 conditional existential cusp-ball interval and actual selected-field local-
 germ equality now pass the pinned Lean check and axiom audit in
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/`. It remains a shrinking-
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/`. It remains a shrinking-
 ball continuum result with conditional parameters; it is not a finite-size
 packet theorem or numerical packet certificate.
 
@@ -610,13 +610,14 @@ mathematical lemma rather than a reproducible upstream implementation defect.
 
 The later extension check supersedes the earlier statement above that the
 whole-ball inclusion remained unformalized. The fresh pinned run
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/manifest.json` compiles and
-audits seven declarations, including `selected_axis_center_small_eventually`
-and `selected_velocity_germ_on_cusp_tube`, with only
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/manifest.json` compiles and
+audits eight declarations, including `selected_axis_center_small_eventually`,
+`selected_velocity_germ_on_cusp_tube`, and `exists_admissible_cusp_radius`, with only
 `[propext, Classical.choice, Quot.sound]`. Under fixed strict eta-margin and
 active-annulus interior assumptions, it proves existence of `tau0>0` and
 local-germ equality throughout every Euclidean ball of radius `c*sqrt(tau)`
-for all `0<tau<tau0`. The interval is existential and parameter-dependent;
+for all `0<tau<tau0`; an admissible positive radius and margin exist for every
+fixed `eta∈(-1,1)`. The interval is existential and parameter-dependent;
 this is not a finite-size packet result, a molecular inference, or a solver
 validation. The refreshed audit and derivation are in
 `reports/openai-support-hole-assembly-audit.md` and

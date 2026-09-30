@@ -32,6 +32,7 @@ docker run --rm --name cans-supporthole-assembly-check \
     printf "#print axioms ConcentrationAware.selected_velocity_germ_of_cusp_ball_point\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     printf "#print axioms ConcentrationAware.selected_axis_center_small_eventually\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     printf "#print axioms ConcentrationAware.selected_velocity_germ_on_cusp_tube\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
+    printf "#print axioms ConcentrationAware.exists_admissible_cusp_radius\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     lake env lean /tmp/SupportHoleAssemblyWithAudit.lean > /out/lean.log 2>&1
     cat /out/lean.log'
 
@@ -63,6 +64,7 @@ declarations = (
     "ConcentrationAware.selected_velocity_germ_of_cusp_ball_point",
     "ConcentrationAware.selected_axis_center_small_eventually",
     "ConcentrationAware.selected_velocity_germ_on_cusp_tube",
+    "ConcentrationAware.exists_admissible_cusp_radius",
 )
 normalized = re.sub(r"\s+", " ", text)
 expected_axioms = "depends on axioms: [propext, Classical.choice, Quot.sound]"
@@ -76,7 +78,7 @@ if (
     raise SystemExit("Lean compile or axiom audit did not pass")
 result = {
     "status": "PASS",
-    "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, fixed-time cusp-ball exterior inclusion, and an existential terminal-time interval with local germ equality throughout each shrinking cusp ball.",
+    "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, non-vacuous margin/radius choice, and an existential terminal-time interval with local germ equality throughout each shrinking cusp ball.",
     "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
     "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
     "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
@@ -87,7 +89,7 @@ result = {
     "declarations": list(declarations),
     "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
     "limitations": [
-        "The tube theorem assumes a fixed axial parameter, radius coefficient, eta margin, and a strict interior annulus bound; its terminal-time interval is existential and parameter-dependent.",
+        "For every fixed eta in (-1,1), an admissible positive radius and eta margin exist; the terminal-time interval remains existential and parameter-dependent.",
         "The result is a continuum local-germ equality, not a finite-size packet estimate or a theorem at the singular endpoint.",
         "The result does not imply particle alignment, a phase transition, molecular determinism, or reduced viscosity.",
         "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."

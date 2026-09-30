@@ -833,4 +833,54 @@ theorem selected_velocity_germ_on_cusp_tube
     (le_of_lt htausmall) heta hc.le hbeta hbeta1 hmargin hwt hball hcactive
     hhorizon hcutScale htime hcenter haxialRadius hradialScale
 
+/-- The eta-margin and annulus-interior assumptions of the cusp-tube theorem
+are simultaneously satisfiable for every fixed normalized axis coordinate
+strictly between -1 and 1. -/
+theorem exists_admissible_cusp_radius {eta : ℝ}
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    ∃ c beta : ℝ, 0 < c ∧ 0 ≤ beta ∧ beta < 1 ∧
+      |eta| + c / (1 - 2 * outgoing.data.h) ≤ beta ∧
+      c ^ 2 < NominalConeAssembly.activeLeft nominal := by
+  let beta : ℝ := (|eta| + 1) / 2
+  let kappa : ℝ := 1 - 2 * outgoing.data.h
+  let margin : ℝ := beta - |eta|
+  let c : ℝ := min (kappa * margin / 2)
+    (Real.sqrt (NominalConeAssembly.activeLeft nominal) / 2)
+  have hetaAbs : |eta| < 1 := abs_lt.mpr heta
+  have hbeta0 : 0 ≤ beta := by
+    dsimp [beta]
+    positivity
+  have hbeta1 : beta < 1 := by
+    dsimp [beta]
+    linarith
+  have hmargin : 0 < margin := by
+    dsimp [margin, beta]
+    linarith
+  have hkappa : 0 < kappa := by
+    dsimp [kappa]
+    linarith [outgoing.data.h_lt_half]
+  have hactive : 0 < NominalConeAssembly.activeLeft nominal :=
+    NominalConeAssembly.activeLeft_pos nominal
+  have hc : 0 < c := by
+    dsimp [c]
+    positivity
+  have hcMargin : c ≤ kappa * margin / 2 := by
+    dsimp [c]
+    exact min_le_left _ _
+  have hactualMargin : |eta| + c / kappa ≤ beta := by
+    dsimp [margin] at hcMargin ⊢
+    have hdiv : c / kappa ≤ margin := by
+      apply (div_le_iff₀ hkappa).2
+      nlinarith
+    linarith
+  have hcActive : c ^ 2 < NominalConeAssembly.activeLeft nominal := by
+    have hcBound : c ≤ Real.sqrt (NominalConeAssembly.activeLeft nominal) / 2 := by
+      dsimp [c]
+      exact min_le_right _ _
+    have hsqrt : Real.sqrt (NominalConeAssembly.activeLeft nominal) ^ 2 =
+        NominalConeAssembly.activeLeft nominal :=
+      Real.sq_sqrt hactive.le
+    nlinarith
+  exact ⟨c, beta, hc, hbeta0, hbeta1, hactualMargin, hcActive⟩
+
 end ConcentrationAware

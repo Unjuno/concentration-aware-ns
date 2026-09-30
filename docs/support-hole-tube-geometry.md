@@ -150,8 +150,9 @@ includes the full ball in the actual physical exterior, supplies the cutoff
 and localization plateaus, and obtains eventual local-germ equality
 throughout the ball for every time in an existential positive terminal
 interval. The required center-continuity estimate is also formalized. The
-interval is not numerically bounded, and the strict geometric margin and
-coefficient conditions remain explicit.
+strict geometric margin and coefficient conditions are satisfiable for every
+fixed `eta∈(-1,1)`, as shown by `exists_admissible_cusp_radius`. The terminal
+interval is still existential and not numerically bounded.
 
 The extension now also contains
 `selected_inner_exterior_velocity_germ_of_radial_hole`: given a point in the

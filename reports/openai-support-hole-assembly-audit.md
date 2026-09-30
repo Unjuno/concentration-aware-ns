@@ -97,8 +97,10 @@ for every `0<tau<tau0` and every point in the Euclidean ball of radius
 `c*sqrt(tau)` around the selected axis center, the actual activated field has
 the selected smooth-base velocity germ. The proof derives the center bound by
 continuity at `tau=0` and combines the finitely many geometric, cutoff, and
-localization thresholds. The pinned Lean run and axiom audit are recorded in
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/manifest.json`.
+localization thresholds. A separate checked lemma proves that admissible
+positive `c` and `beta` exist for every fixed `eta∈(-1,1)`. The pinned Lean run
+and axiom audit are recorded in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/manifest.json`.
 
 This is a continuum local-germ equality on a shrinking ball, under stated
 conditional parameters. It is not an endpoint value, a finite-size packet
@@ -113,7 +115,7 @@ the output is `evidence/tests/support-hole-tube-geometry.json`. The mean-value,
 ball inclusion, all-plateau, and assembled-field implications are now covered
 by the pinned Lean extension. The symbolic checker remains an independent
 algebraic cross-check only. Full pinned proof and source-archive details are in
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/` and `GOAL.md`.
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/` and `GOAL.md`.
 
 No implication is drawn here about molecular ordering, absolute-position
 certainty, finite-size packets at the singular endpoint, a phase transition,
