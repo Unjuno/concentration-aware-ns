@@ -826,3 +826,21 @@ Lean 4.34.0-rc2, and its repository license is Apache-2.0. GitHub Issues are
 disabled there; moreover this work establishes no implementation defect to
 report. Current benchmark PR #2 now carries the endpoint Hessian transfer and
 its Python CI passes. PR #3 remains a separate pytest-discovery follow-up.
+
+## Revision 50 — current upstream issue-scope refresh
+
+Re-read the live issue/PR inventories and default-branch heads for OpenFOAM
+Foundation 13, SU2, PhysicsNeMo, and the OpenAI Lean repository. The detailed
+snapshot and relevance decisions are in
+`reports/upstream-status-2026-10-01.md` and
+`evidence/upstream-refresh/live-status-2026-10-01.json`. No new report is
+warranted: OpenFOAM's open items do not match the exercised paths; SU2's
+time-contract observations overlap its existing discussion/issue; and
+PhysicsNeMo's relevant odd-width spectrum and non-periodic derivative behavior
+already have open tracking items, while the tested workload is even-width,
+periodic, and uses autograd. A pinned MLP import smoke did not hit the separate
+open PhysicsNeMo Warp custom-op issue; that smoke is not a reproduction of its
+deforming-plate entry point. OpenAI's source repo is Apache-2.0 Lean source with
+GitHub Issues disabled, not a CFD solver repository. The full three-solver
+benchmark goal remains active; no broad completion is inferred from this
+inventory refresh.

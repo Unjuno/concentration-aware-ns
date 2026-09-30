@@ -4,7 +4,7 @@ The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
 
-The table is current as of September 30; dated entries below retain historical
+The table was refreshed on October 1; dated entries below retain historical
 run scopes. The [impact-scope report](../reports/impact-scope.md) now maps each
 finding to a supported improvement and the evidence required to extend it.
 
@@ -22,7 +22,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Evidence-linked acceptance gate | v2 checker; evidence/tests/gate-artifact-audit.json; internal timestamp-sequence audit | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. The run-level parser's duplicate/skipped-time false-pass was found synthetically and corrected; all four complete high-gradient v2 archives pass the new fixed-step sequence check. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
-| OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md; conditional Jeffery bridge in docs/fiber-vortex-literature-audit.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The new Jeffery calculation matches the infinitesimal angle exponent only under prescribed spatially uniform axisymmetric strain; it does not supply the missing finite-size transfer. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
+| OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md; conditional Jeffery bridge in docs/fiber-vortex-literature-audit.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. The cusp-ball theorem now supplies a field-equality radius proportional to `sqrt(1-t)` and transfers the base endpoint Hessian exponent `kappa=40` to the full spacetime jet on that ball. The spatial restriction of the local jet and classical nonlinear packet estimate are not jointly Lean-formalized; `Cstretch+39` remains a conditional, non-effective shrinking-packet allowance, not a fixed-packet certificate. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem. The Jeffery model matches the infinitesimal angle exponent only under prescribed spatially uniform axisymmetric strain. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Current tracked-only clean export at `0bf73f2` passes 26 replay steps and all six check commands in a fresh locked venv; all 125 report/test-evidence files remain byte-identical. The prior `5b8e305` baseline and historical supported-range drift failure remain preserved. Solver rebuild/reproduction remains separate. |
 
@@ -655,3 +655,22 @@ is `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; the
 current cross-solver scope and remaining limitations are in
 `reports/solver-matrix-coverage-2026-09-30.md`. The original partial attempt
 and this earlier status record are preserved as historical evidence.
+
+## 2026-10-01 current analytic and upstream-scope addendum
+
+The pinned Lean extension now proves a selected-field equality ball of radius
+`c*sqrt(1-t)` and transfers the actual-base full-spacetime Hessian rate
+`C2*q^(-40)` throughout that ball on an existential terminal interval. The
+local spatial-jet restriction and classical nonlinear packet estimate remain
+separate, so `Cstretch+39` is an analysis-level conditional shrinking-packet
+allowance with non-effective constants, not a fixed-size packet theorem. The
+latest Lean log and ten-declaration axiom audit are in
+`evidence/openai-lean-2026-09-30-cusp-hessian-v6/`.
+
+The October 1 GitHub issue/PR inventory is recorded in
+`reports/upstream-status-2026-10-01.md`. PhysicsNeMo issue #2001 already covers
+periodic-only grid-gradient behavior on non-periodic domains; this benchmark
+uses a periodic domain and autograd. Issue #2007's odd-width spectral behavior
+does not touch its even-width outputs. A successful MLP import smoke on the
+pinned environment does not replace the separate #1990 reproducer. No new
+upstream report is warranted by the present evidence.
