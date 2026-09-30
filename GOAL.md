@@ -964,3 +964,13 @@ local processes are gone, but Docker/OrbStack's container inventory was not
 recovered from its previously unresponsive daemon, so container removal remains
 unverified. The partial attempt remains preserved and is not restarted on this
 analytical turn.
+
+## Revision 58 — completion audit includes the feedback hypothesis
+
+Added a separate row to `docs/completion-audit.md` for the user-proposed
+Burgers feedback and particle interpretation. It keeps the imposed strain
+history, the additional closure, the known singular Burgers-vortex parameter
+match, and the OpenAI pointwise-versus-global-peak gap distinct. The row links
+the report and its arithmetic-only checker and explicitly records that no
+molecular or probability consequence is established. Full benchmark and
+three-project completion gates remain active.
