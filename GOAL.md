@@ -696,3 +696,15 @@ interpretation in `evidence/tests/high-gradient-of13-v2-temporal-comparison-2026
 and `reports/openfoam-v2-temporal-comparison-2026-09-30.md`. No asymptotic
 time-convergence or general defect claim follows; the local acceptance
 blind-spot remains NOT_OBSERVED.
+
+## Revision 43 — PhysicsNeMo pointwise derivative audit
+
+Added a hash-linked checker that reopens all five fixed-budget PhysicsNeMo
+archives and validates each derivative report against its checkpoint and
+evaluation array. On 262,144 samples per case, sampled peak-magnitude errors
+are 0.91–0.97%, while maximum pointwise derivative-field differences,
+normalized by the exact sampled peak, are 1.20–1.26%. This shows why peak
+level and pointwise field metrics should be reported together. Added the
+reproducible JSON and a report clarifying that these are finite-sample
+observations, not continuous bounds; all PhysicsNeMo acceptance verdicts
+remain UNCERTAIN. See `reports/physicsnemo-pointwise-gradient-audit-2026-09-30.md`.
