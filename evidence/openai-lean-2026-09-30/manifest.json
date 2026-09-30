@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-30",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "full_build": {"status": "PASS", "jobs": 11424, "log": "full-build.log", "sha256": "782475b1c6c0d917c56ed38cbb04620c7ecfaf3e252d70c34e9bd8fafb25f3b8"},
+  "extension": {"file": "../../verification/SupportHoleAssembly.lean", "sha256": "8164f2345e80844c13ba986e22cfedc0a397b6839f4abc8fd5b245393b9e21e4", "check_log": "extension-check.log", "status": "PASS"},
+  "axiom_audit": {"log": "axiom-audit.log", "status": "PASS", "for_all_three_new_lemmas": ["propext", "Classical.choice", "Quot.sound"], "sorryAx": false},
+  "geometry_checker": {"command": "uv run --with-requirements requirements-verification.txt -- python -m tools.check_support_hole_tube_geometry", "sympy": "1.14.0", "log": "geometry-check.log", "scope": "exact symbolic identities only"},
+  "upstream_warnings": [
+    "ComparatorChallenges/Euler.lean contains two declarations using sorry",
+    "ComparatorChallenges/NavierStokes.lean contains two declarations using sorry"
+  ],
+  "scope": "Lean elaboration and dependency build only; not independent peer review, numerical simulation, a molecular model, or an end-to-end cusp-tube proof.",
+  "unproved_geometric_obligations": ["3D tube axial-radius bound", "time-varying center displacement", "transverse q/radius sublevel", "all cutoff and localization plateaus"]
+}

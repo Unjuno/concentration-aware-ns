@@ -10,8 +10,9 @@ import NavierStokes.TimeLocalization
 This extension composes the pinned source's exterior-stage identities with
 local finiteness, the zeroth cutoff plateau, curl, and the two outer
 localizations. It proves a local base-field equality on the actual open
-exterior. This file formalizes the pointwise similarity-chart identity and its eta-margin
-upper bound, but does not prove the uniform eta margin over a moving cusp tube.
+exterior. This file formalizes the pointwise chart identity, its eta-margin
+upper bound, and a fixed-time spatial Lipschitz estimate. It does not prove a
+uniform margin over the full moving cusp tube.
 -/
 
 noncomputable section
@@ -55,6 +56,184 @@ theorem physicalQ_le_of_eta_margin {w : ProblemStatement.SpaceTime}
       (beta ^ 2 - SimilarityCoordinates.coordinateEta (2 * outgoing.data.h) (1 - w.1, w.2 2) ^ 2) :=
     mul_nonneg hq.le (sub_nonneg.mpr hetaSq)
   nlinarith
+
+/-- On a fixed positive-time slice, normalized axial position is Lipschitz in
+the physical axial coordinate. The scale loss is exactly the chart power. -/
+theorem coordinateEta_lipschitz_z {a tau z z' : ℝ}
+    (ha : 0 < a) (ha1 : a < 1) (htau : 0 < tau) :
+    |SimilarityCoordinates.coordinateEta a (tau, z) -
+      SimilarityCoordinates.coordinateEta a (tau, z')| ≤
+      |z - z'| / ((1 - a) * tau ^ ((1 - a) / 2)) := by
+  let f : ℝ → ℝ := fun x => SimilarityCoordinates.coordinateEta a (tau, x)
+  let f' : ℝ → ℝ := fun x =>
+    (1 - SimilarityCoordinates.coordinateEta a (tau, x) ^ 2) /
+      (SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+        SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)))
+  have hD : 0 < (1 - a) / 2 := by linarith
+  have hL : 0 < (1 - a) * tau ^ ((1 - a) / 2) := by positivity
+  have hderiv : ∀ x ∈ Set.Icc (min z z') (max z z'), HasDerivWithinAt f (f' x)
+      (Set.Icc (min z z') (max z z')) x := by
+    intro x _
+    exact (SimilarityCoordinates.coordinateEta_hasDerivAt_z ha ha1 htau).hasDerivWithinAt
+  have hbound : ∀ x ∈ Set.Icc (min z z') (max z z'), ‖f' x‖ ≤ 1 / ((1 - a) * tau ^ ((1 - a) / 2)) := by
+    intro x _
+    have hq := SimilarityCoordinates.coordinateQ_spec ha ha1 (p := (tau, x)) htau
+    have hetaSq := SimilarityCoordinates.coordinateEta_sq_lt_one ha ha1 (p := (tau, x)) htau
+    have hid := SimilarityCoordinates.tau_coordinate_identity ha ha1 (p := (tau, x)) htau
+    have hqge : tau ≤ SimilarityCoordinates.coordinateQ a (tau, x) := by
+      dsimp [SimilarityCoordinates.forwardScalar] at hid
+      nlinarith [sq_nonneg (SimilarityCoordinates.coordinateEta a (tau, x))]
+    have hpow : tau ^ ((1 - a) / 2) ≤
+        SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) :=
+      Real.rpow_le_rpow htau.le hqge hD.le
+    have hslope := SimilarityCoordinates.scalarSlope_eq_L ha ha1 (p := (tau, x)) htau
+    have hslopeBound : 1 - a ≤
+        SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)) := by
+      rw [hslope]
+      nlinarith
+    have hden : (1 - a) * tau ^ ((1 - a) / 2) ≤
+        SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+          SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)) := by
+      calc
+        (1 - a) * tau ^ ((1 - a) / 2) ≤ (1 - a) * SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) :=
+          mul_le_mul_of_nonneg_left hpow (by linarith)
+        _ ≤ SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+          SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)) :=
+          by simpa only [mul_comm] using
+            (mul_le_mul_of_nonneg_left hslopeBound (Real.rpow_nonneg hq.1.le _))
+    have hdenpos : 0 < SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+        SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)) :=
+      mul_pos (Real.rpow_pos_of_pos hq.1 _) (by linarith [hslopeBound])
+    have hnum0 : 0 ≤ 1 - SimilarityCoordinates.coordinateEta a (tau, x) ^ 2 :=
+      by nlinarith
+    have hnum1 : 1 - SimilarityCoordinates.coordinateEta a (tau, x) ^ 2 ≤ 1 := by nlinarith
+    have hcross : (1 - SimilarityCoordinates.coordinateEta a (tau, x) ^ 2) *
+        ((1 - a) * tau ^ ((1 - a) / 2)) ≤
+        SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+          SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)) := by
+      have hprod := mul_nonneg (sub_nonneg.mpr hnum1) hL.le
+      nlinarith
+    change ‖(1 - SimilarityCoordinates.coordinateEta a (tau, x) ^ 2) /
+      (SimilarityCoordinates.coordinateQ a (tau, x) ^ ((1 - a) / 2) *
+        SimilarityCoordinates.scalarSlope a x (SimilarityCoordinates.coordinateQ a (tau, x)))‖ ≤ _
+    rw [Real.norm_eq_abs, abs_of_nonneg (div_nonneg hnum0 hdenpos.le)]
+    exact (div_le_div_iff₀ hdenpos hL).2 (by simpa only [one_mul] using hcross)
+  let lo := min z z'
+  let hi := max z z'
+  have hz : z ∈ Set.Icc lo hi := ⟨min_le_left _ _, le_max_left _ _⟩
+  have hz' : z' ∈ Set.Icc lo hi := ⟨min_le_right _ _, le_max_right _ _⟩
+  have hmean := norm_image_sub_le_of_norm_deriv_le_segment' hderiv
+    (fun x hx => by
+      simpa only [Real.norm_eq_abs] using hbound x ⟨hx.1, hx.2.le⟩)
+  have hzmean := hmean z hz
+  have hz'mean := hmean z' hz'
+  have htriangle : ‖f z - f z'‖ ≤ ‖f z - f lo‖ + ‖f z' - f lo‖ := by
+    calc
+      ‖f z - f z'‖ = ‖(f z - f lo) - (f z' - f lo)‖ := by congr 1; ring
+      _ ≤ _ := norm_sub_le _ _
+  have hsum : (z - lo) + (z' - lo) = hi - lo := by
+    dsimp [lo, hi]
+    by_cases h : z ≤ z'
+    · rw [min_eq_left h, max_eq_right h]
+      ring
+    · have h' : z' ≤ z := le_of_not_ge h
+      rw [min_eq_right h', max_eq_left h']
+      ring
+  have hdist : hi - lo = |z - z'| := by
+    dsimp [lo, hi]
+    by_cases h : z ≤ z'
+    · rw [min_eq_left h, max_eq_right h, abs_of_nonpos (sub_nonpos.mpr h)]
+      ring
+    · have h' : z' ≤ z := le_of_not_ge h
+      rw [min_eq_right h', max_eq_left h', abs_of_nonneg (sub_nonneg.mpr h')]
+  have hnorm : ‖f z - f z'‖ = |f z - f z'| := Real.norm_eq_abs _
+  change ‖f z - f z'‖ ≤ _
+  calc
+    |f z - f z'| = ‖f z - f z'‖ := by rw [Real.norm_eq_abs]
+    _ ≤ ‖f z - f lo‖ + ‖f z' - f lo‖ := htriangle
+    _ ≤ (1 / ((1 - a) * tau ^ ((1 - a) / 2))) * ((z - lo) + (z' - lo)) := by
+      rw [Real.norm_eq_abs] at hzmean hz'mean
+      have hzabs : ‖f z - f lo‖ = |f z - f lo| := Real.norm_eq_abs _
+      have hz'abs : ‖f z' - f lo‖ = |f z' - f lo| := Real.norm_eq_abs _
+      calc
+        ‖f z - f lo‖ + ‖f z' - f lo‖ ≤
+            (1 / ((1 - a) * tau ^ ((1 - a) / 2))) * (z - lo) +
+              (1 / ((1 - a) * tau ^ ((1 - a) / 2))) * (z' - lo) := by
+                rw [hzabs, hz'abs]
+                exact add_le_add hzmean hz'mean
+        _ = _ := by ring
+    _ = |z - z'| / ((1 - a) * tau ^ ((1 - a) / 2)) := by rw [hsum, hdist]; ring
+
+/-- The source-normalized similarity coordinate equals a prescribed value at
+its analytic axis center. -/
+theorem coordinateEta_axis_center {h tau eta : ℝ}
+    (hh : 0 < h) (hh1 : h < 1 / 2) (htau : 0 < tau)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    SimilarityCoordinates.coordinateEta (2*h)
+      (tau, eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)) = eta := by
+  have hd : 0 < 1 - eta^2 := by nlinarith [heta.1, heta.2]
+  let q := tau / (1 - eta^2)
+  have hq : 0 < q := div_pos htau hd
+  have hpowers : (q ^ (CoordinateAlgebra.D h)) ^ 2 * q ^ (2*h) = q := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul hq.le, ← Real.rpow_add hq]
+    have he : CoordinateAlgebra.D h * (2 : ℝ) + 2*h = 1 := by
+      unfold CoordinateAlgebra.D
+      ring
+    norm_num only [Nat.cast_ofNat]
+    rw [he, Real.rpow_one]
+  have hforward : SimilarityCoordinates.forwardScalar (2*h)
+      (eta*q^(CoordinateAlgebra.D h)) q = q*(1-eta^2) := by
+    unfold SimilarityCoordinates.forwardScalar
+    rw [mul_pow]
+    nlinarith [hpowers]
+  have hQ : SimilarityCoordinates.coordinateQ (2*h) (tau, eta*q^(CoordinateAlgebra.D h)) = q := by
+    apply (SimilarityCoordinates.eq_coordinateQ (by positivity) (by linarith)
+      htau hq ?_).symm
+    rw [hforward]
+    dsimp [q]
+    field_simp [q]
+  rw [show eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h) =
+      eta * q ^ (CoordinateAlgebra.D h) by rfl]
+  unfold SimilarityCoordinates.coordinateEta
+  rw [hQ]
+  have hexp : CoordinateAlgebra.D h = (1 - 2*h) / 2 := by
+    unfold CoordinateAlgebra.D
+    ring
+  rw [hexp]
+  field_simp [Real.rpow_pos_of_pos hq _]
+
+/-- A pointwise axial-radius condition transfers an axis eta margin to the
+whole fixed-time axial interval. This isolates the remaining geometric step:
+derive the displayed radius inequality uniformly for the desired tube. -/
+theorem coordinateEta_margin_of_axial_radius {h tau eta z δ : ℝ}
+    (hh : 0 < h) (hh1 : h < 1 / 2) (htau : 0 < tau)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hradius : |z - eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)| /
+        ((1 - 2*h) * tau ^ ((1 - 2*h) / 2)) ≤ δ) :
+    |SimilarityCoordinates.coordinateEta (2*h) (tau,z)| ≤ |eta| + δ := by
+  have ha : 0 < 2*h := by linarith
+  have ha1 : 2*h < 1 := by linarith
+  have hcenter := coordinateEta_axis_center hh hh1 htau heta
+  have hdiff := coordinateEta_lipschitz_z ha ha1 htau
+    (z := z) (z' := eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h))
+  have hden : (1 - 2*h) / 2 = (1 - (2*h)) / 2 := by ring
+  have hscale : (1 - 2*h) * tau ^ ((1 - 2*h) / 2) =
+      (1 - 2*h) * tau ^ ((1 - (2*h)) / 2) := by rw [hden]
+  rw [hcenter] at hdiff
+  have hstep : |SimilarityCoordinates.coordinateEta (2*h) (tau,z) - eta| ≤ δ := by
+    calc
+      |SimilarityCoordinates.coordinateEta (2*h) (tau,z) - eta| ≤
+          |z - eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)| /
+            ((1 - 2*h) * tau ^ ((1 - 2*h) / 2)) := by
+        rw [hscale]
+        exact hdiff
+      _ ≤ δ := hradius
+  calc
+    |SimilarityCoordinates.coordinateEta (2*h) (tau,z)| =
+        |(SimilarityCoordinates.coordinateEta (2*h) (tau,z) - eta) + eta| := by congr 1; ring
+    _ ≤ |SimilarityCoordinates.coordinateEta (2*h) (tau,z) - eta| + |eta| := abs_add_le _ _
+    _ ≤ δ + |eta| := add_le_add hstep (le_refl _)
+    _ = |eta| + δ := by ring
 
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ

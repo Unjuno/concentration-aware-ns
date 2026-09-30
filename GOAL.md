@@ -449,3 +449,32 @@ available. The remaining geometric proof is to derive that margin for every
 point in each shrinking spatial ball using the derivative lower bound for the
 normalized axial map, then combine radial and localization bounds. No solver or
 physical conclusion follows from this analytic lemma.
+
+## Revision 26 — axial-coordinate margin formally connected
+
+Pinned-source calculus now gives a compiled fixed-time spatial Lipschitz bound
+for the normalized axial similarity coordinate:
+
+    |eta(tau,z)-eta(tau,z')| <= |z-z'| / ((1-a)*tau^((1-a)/2)).
+
+The axis normalization was separately derived from the forward similarity
+equation, yielding `coordinateEta_axis_center`. These combine in
+`coordinateEta_margin_of_axial_radius`: if an axial point lies within
+`delta*(1-2h)*tau^((1-2h)/2)` of the prescribed axis center, then its eta is
+bounded by `|eta0|+delta`. This is a rigorous conditional bridge and removes the
+need for a hand-waved continuity radius. It does not yet establish that a full
+three-dimensional moving ball satisfies that axial hypothesis, or the radial
+sublevel and all cutoff/localization plateau inequalities, so no whole-tube
+instantiation or packet transfer is claimed.
+
+The pinned upstream `lake build` completed successfully (11,424 jobs) against
+the retained OpenAI/NavierStokesAndEuler snapshot. The published Comparator
+challenge modules emit explicit `sorry` warnings, while `ComparatorSolution`
+reports only `[propext, Classical.choice, Quot.sound]` for the two exposed
+Navier--Stokes breakdown theorem declarations. The three new local chart
+lemmas also report only these standard Lean axioms; logs are in
+`evidence/openai-lean-2026-09-30/`. These outputs are scope-limited and are not
+independent peer review. The September 28 OpenFOAM
+manifest still shows four of six high-gradient cases complete; the half-step
+case remains archived=false at 36 records/35 converged steps and the quarter
+step is unstarted. The container/process state is not reasserted here.

@@ -544,3 +544,29 @@ commit `03ce175fcf26d17869de330720f2dfe8a49c4481` now passes: 26 replay steps,
 Python postprocessing/replay evidence only, not a solver, training or Lean
 reproduction. Sanitized logs and hashes are preserved at
 `evidence/clean-export-2026-09-28-cusp-tube/`.
+
+### Analytic axis-margin continuation, 2026-09-30
+
+`verification/SupportHoleAssembly.lean` now has three additional chart results:
+`coordinateEta_lipschitz_z`, `coordinateEta_axis_center`, and
+`coordinateEta_margin_of_axial_radius`. They compiled in the pinned upstream
+Lean environment. The last theorem is conditional on an explicit scaled axial
+radius bound and controls eta by `|eta0|+delta`; it does not prove that the
+bound holds on the requested full space-time tube. The tube-to-sublevel,
+transverse geometry, time-varying center and all-plateau obligations remain.
+No new solver experiment or upstream finding is claimed. The pinned upstream
+full `lake build` completed successfully with 11,424 jobs. Its replay log,
+extension compile output, and `#print axioms` output for the three new lemmas
+are preserved under `evidence/openai-lean-2026-09-30/`. The added lemmas depend
+only on `[propext, Classical.choice, Quot.sound]`. The full build separately
+warns that two Euler and two Navier--Stokes ComparatorChallenges declarations
+use `sorry`; the exposed Navier--Stokes theorem declarations report only those
+three standard Lean axioms. This does not imply independent review of the
+source argument. The symbolic tube-geometry checker also passes under the
+locked verification requirements with SymPy 1.14.0; its output explicitly
+limits itself to exact identities and does not prove the full tube inclusion.
+
+The OpenFOAM v2 manifest remains the authoritative matrix status: four of six
+cases complete, `n64-dt0.0005` partial and unarchived, `n64-dt0.00025` not
+started, overall INCOMPLETE/UNCERTAIN. Previous host PID observations are stale
+for the September 30 snapshot and are not treated as current container state.

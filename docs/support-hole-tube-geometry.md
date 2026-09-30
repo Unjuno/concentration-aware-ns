@@ -211,3 +211,21 @@ The selected axis trajectory identity used here is in
 and its Lean extension `verification/AxisForceSign.lean`; that material-flow
 argument is separately classified as a hand-derived consequence, not an
 upstream theorem.
+
+## 2026-09-30: axial eta-margin lemma
+
+The extension now proves `coordinateEta_lipschitz_z` from the source's exact
+`coordinateEta_hasDerivAt_z` formula and the lower bound
+`scalarSlope = 1-a*eta^2 >= 1-a`. At fixed positive `tau`, this yields
+
+    |eta(tau,z)-eta(tau,z')| <= |z-z'| / ((1-a)*tau^((1-a)/2)).
+
+`coordinateEta_axis_center` derives the exact normalized center directly from
+the source forward map, and `coordinateEta_margin_of_axial_radius` combines the
+two results. Its hypothesis is an axial distance bound scaled by
+`(1-2h)*tau^((1-2h)/2)`; its conclusion is the requested `|eta| <= |eta0|+delta`.
+This is only a one-dimensional, fixed-time lemma. It remains to prove the
+radius bound for every point in the full Cartesian cusp ball, include any
+time-dependent center displacement, establish the transverse q/radius
+sublevel, and place the entire ball in each cutoff and localization plateau.
+Consequently the all-tube assembled-field transfer remains conditional.
