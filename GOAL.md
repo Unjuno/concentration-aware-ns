@@ -1157,3 +1157,20 @@ These selected point checks and one tiny local box do not constitute a
 domain-wide proof. The PhysicsNeMo verdict remains `UNCERTAIN`; continue with
 complete-domain adaptive coverage and independent proof-kernel assurance. The
 overall goal remains active.
+
+## Revision 69 — adaptive Arb cover cost around one candidate
+
+Added a deterministic worst-upper-first axis-bisection helper with serialized
+terminal cells, finite-upper validation, explicit target/budget/stagnation
+status, and tests for complete parent-box coverage. On the frozen PhysicsNeMo
+candidate, the exploratory (not preregistered) `0.26` Frobenius comparator is
+met for half-width `0.01` using 77 evaluations / 39 leaves and for `0.025`
+using 1,085 / 543. At half-width `0.05`, the 2,049-evaluation budget ends with
+1,025 leaves and maximum upper `0.27613`, above the comparator. Terminal-cell
+center autograd checks were within the computed intervals at `1e-8` floating
+tolerance. The exact boxes and bounds are preserved in
+`evidence/tests/physicsnemo-arb-centered-interval-probe-2026-10-01.json`; method
+and limits are in the matching report. This covers only three local boxes about
+one sampled candidate, does not validate Arb with an independent proof kernel,
+and does not establish a domain-wide maximum. PhysicsNeMo quality remains
+`UNCERTAIN`; the overall benchmark goal remains active.

@@ -18,6 +18,7 @@ from tools.physicsnemo_arb_interval_probe import (
     centered_gradient_error_enclosure,
     gradient_error_enclosure,
 )
+from tools.arb_local_branch_cover import adaptive_axis_bisect_cover
 from tools.reference import fields
 
 
@@ -195,6 +196,55 @@ def audit(archive=ARCHIVE):
             "cell_centers_within_1e-8_float_tolerance": bool(max_excess <= 1e-8),
         })
 
+    adaptive_rows = []
+    target_upper = 0.26  # exploratory comparator, not a preregistered gate
+    evaluation_budget = 2049
+    for half_width in (0.01, 0.025, 0.05):
+        parent = [
+            (float(value - half_width), float(value + half_width))
+            for value in candidate
+        ]
+
+        def cell_upper(bounds):
+            enclosure = centered_gradient_error_enclosure(
+                hidden, output, bounds, time=params["end"],
+                endpoint=params["end"], sigma=params["sigma"], dps=40,
+            )
+            return _frob_upper(enclosure)
+
+        cover = adaptive_axis_bisect_cover(
+            parent, cell_upper, target=target_upper,
+            max_evaluations=evaluation_budget,
+        )
+        centers = [
+            [(lo + hi) / 2 for lo, hi in leaf["box"]]
+            for leaf in cover["leaves"]
+        ]
+        center_errors = autograd_error_jacobian(centers)
+        max_center_excess = 0.0
+        for leaf, error in zip(cover["leaves"], center_errors):
+            bounds = leaf["box"]
+            enclosure = centered_gradient_error_enclosure(
+                hidden, output, bounds, time=params["end"],
+                endpoint=params["end"], sigma=params["sigma"], dps=40,
+            )
+            for i in range(3):
+                for j in range(3):
+                    max_center_excess = max(
+                        max_center_excess,
+                        float(enclosure[i][j].lower()) - error[i, j],
+                        error[i, j] - float(enclosure[i][j].upper()), 0.0,
+                    )
+        cover.update({
+            "parent_half_width": half_width,
+            "autograd_leaf_center_count": len(centers),
+            "max_autograd_excess_at_leaf_centers": max_center_excess,
+            "leaf_centers_within_1e-8_float_tolerance": bool(
+                max_center_excess <= 1e-8
+            ),
+        })
+        adaptive_rows.append(cover)
+
     return {
         "scope": "Exploratory local Arb mean-value enclosures for one frozen PhysicsNeMo checkpoint; no full periodic-domain cover or global-extremum certificate.",
         "case": archive.name.removesuffix(".tar.gz"),
@@ -210,6 +260,12 @@ def audit(archive=ARCHIVE):
         "point_centered_max_component_radius": _max_radius(point_centered),
         "neighborhood_sweep": neighborhood_rows,
         "local_equal_subdivision_sweep": subdivision_rows,
+        "adaptive_local_cover_sweep": {
+            "target_frobenius_upper": target_upper,
+            "target_status": "exploratory, not preregistered acceptance gate",
+            "max_evaluations_per_parent": evaluation_budget,
+            "cases": adaptive_rows,
+        },
         "environment": {
             "python": platform.python_version(),
             "python_flint": flint_version,

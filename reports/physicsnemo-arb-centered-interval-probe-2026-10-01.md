@@ -88,3 +88,24 @@ PYTHONPATH=.:work/physicsnemo-source \
 - [python-flint 0.9.0 overview](https://python-flint.readthedocs.io/en/latest/) describes Arb ball arithmetic and rigorous error tracking.
 - [python-flint `arb` reference](https://python-flint.readthedocs.io/en/stable/arb.html) documents midpoint-radius representation, precision, trig/exponential/hyperbolic functions, and outward absolute bounds.
 - [python-flint on PyPI](https://pypi.org/project/python-flint/) records the 0.9.0 release, Python requirement, wheel availability, and license metadata.
+
+## Adaptive local cover cost
+
+A deterministic worst-upper-first axis-bisection routine now records every
+terminal cell, its coordinate box, and its centered Arb Frobenius upper bound.
+For an explicitly exploratory target of `0.26` (not preregistered and not an
+acceptance threshold), the half-width `0.01` parent reaches the target with 77
+interval evaluations and 39 leaves; half-width `0.025` takes 1,085 evaluations
+and 543 leaves. Half-width `0.05` stops at the 2,049-evaluation budget with
+1,025 leaves and maximum terminal upper `0.27613`. Autograd checks at every
+terminal leaf center were within the enclosures at the stated `1e-8` floating
+comparison tolerance. The exact partition and bounds are serialized in the
+JSON evidence file, so the candidate-local cover is reproducible. These runs
+cover only the listed local parent boxes around one sampled point. In
+particular, the `0.26` comparator is not a quality gate, and neither successful
+local cover establishes a full-domain maximum or changes the `UNCERTAIN`
+quality status.
+
+The adaptive algorithm's unit tests verify complete volume preservation under
+bisection and explicit evaluation-budget stopping. Run them with
+`python -m unittest tests.test_arb_local_branch_cover -v`.
