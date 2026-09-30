@@ -570,3 +570,16 @@ continuity metrics. Momentum/field remapping and transient local effects remain
 unresolved; this diagnostic neither proves the solver correct nor establishes
 an upstream defect. The hash-linked post-processing output is
 `evidence/of13-high-gradient-amr-flux-balance-2026-09-30.json`.
+
+## Revision 33 — analytic counterexample for alignment-to-viscosity inference
+
+An exact affine incompressible Navier–Stokes solution on R^3 now separates
+material-line alignment from constitutive viscosity: separations align toward
+the axial direction while the viscosity coefficient remains arbitrary and
+constant, and the viscous force is identically zero. This falsifies the
+standalone inference from alignment to reduced viscosity, but does not test a
+specific constructed profile or finite-energy flow. The derivation and
+symbolic negative controls are in
+`docs/affine-alignment-viscosity-counterexample.md` and
+`evidence/tests/affine-alignment-counterexample.json`. This result does not
+reduce any solver, three-project, or upstream-audit requirements.

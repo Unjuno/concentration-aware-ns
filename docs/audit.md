@@ -47,6 +47,15 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 | REF-01 | derivative/sampling artifacts mimic solver error | reproduced FD2 versus analytic/autograd differences | continuous-extremum uncertainty |
 | REF-02 | forcing formula error | symbolic/C++/autograd checks passed in stated scopes | preserve per-solver time/assembly distinctions |
 
+### Alignment and viscosity hypothesis
+
+An exact affine incompressible solution shows that directional material-line
+alignment does not logically entail a change in the constitutive viscosity:
+the solution aligns directions while keeping arbitrary constant `nu`, with
+zero viscous force. It is an unbounded-domain counterexample to that inference,
+not evidence about the selected OpenAI field or molecular scales. See
+[`docs/affine-alignment-viscosity-counterexample.md`](affine-alignment-viscosity-counterexample.md).
+
 ### OpenFOAM temporal addendum update (2026-09-30)
 
 The single n64/dt=.0005 rerun passed standard acceptance and all sampled local

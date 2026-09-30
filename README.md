@@ -22,6 +22,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
+- [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
@@ -48,6 +49,13 @@ run a solver or determine whether an evidence review is true. See
 vorticity and forcing. Its tests check periodicity, divergence and second-order
 convergence of a separate finite-difference reconstruction of the PDE forcing.
 These checks validate formula consistency; they do not constitute solver runs.
+
+The affine counterexample uses an exact unbounded-domain Navier–Stokes solution
+to test the logical inference from material-line alignment to reduced viscosity.
+Its SymPy checker and negative controls are reproducible with
+`python -m tools.check_affine_alignment_counterexample`; this does not infer
+molecular behavior or replace component-wise term analysis of the selected
+construction.
 
 ## Continuous integration
 
