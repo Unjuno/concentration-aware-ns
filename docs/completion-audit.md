@@ -604,15 +604,15 @@ September 30 cross-run status index below supersedes its completion count;
 previous host PID observations are stale and are not treated as current
 container state.
 
-## 2026-09-30 temporal addendum update
+## 2026-09-30 initial temporal addendum snapshot — superseded
 
 The original September 28 v2 manifest remains unchanged as a source-run
 snapshot. The separate `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`
-joins the four original complete cases with a fifth, independently archived
-`n=64, dt=0.0005` case. That row has 100/100 steps and convergence records,
-standard acceptance PASS, and local quality PASS. The quarter-step row remains
-unstarted; the full matrix remains INCOMPLETE/UNCERTAIN. The first validator
-attempt miscounted `ExecutionTime` substrings after successful solver exit; the
-saved output was rechecked with a line-anchored gate and the regression is now
-covered. AMR cases remain unexecuted. See
-`reports/high-gradient-of13-temporal-addendum-2026-09-30.md`.
+joined the four original complete cases with the independently archived
+`n=64, dt=0.0005` case. At that snapshot, the quarter-step row and AMR cases
+were still unrun. A later same-day addendum completed the `dt=0.00025` row and
+the separate three-budget AMR/remap controls. The authoritative current index
+is `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; the
+current cross-solver scope and remaining limitations are in
+`reports/solver-matrix-coverage-2026-09-30.md`. The original partial attempt
+and this earlier status record are preserved as historical evidence.
