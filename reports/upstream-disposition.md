@@ -105,6 +105,19 @@ These checks update status and reporting decisions only. A fully reproducible
 release bundle and the remaining analytic and solver-specific uncertainty work
 are still open.
 
+### Live status recheck, 2026-09-30 11:48 UTC
+
+The read-only inventory was refreshed after the benchmark matrix replay.
+OpenFOAM's four open issues still do not concern the exercised refinement path;
+its only open pull request changes `README.org`. SU2 discussion #2890 remains
+unanswered in GitHub's metadata despite the maintainer's diagnosis, and issue
+#2353 remains open with our scoped restart/MAX_TIME observations already
+recorded. PhysicsNeMo issue #2007 and PR #2008 remain open; the PR is mergeable
+but behind its recorded base, and its latest review metadata is from the
+Copilot reviewer bot. The exact heads, timestamps, and disposition are in
+`evidence/upstream-refresh/live-status-2026-09-30T1148Z.json`. No new upstream
+report is justified by this status-only refresh.
+
 The live read-only status check was repeated at 2026-09-30 10:31:46 UTC and is
 preserved in
 `evidence/upstream-refresh/live-status-2026-09-30.json`. The audited OpenFOAM
