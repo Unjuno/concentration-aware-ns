@@ -684,3 +684,15 @@ continues. This supports a material-specific alignment/rheology connection
 but does not bridge the OpenAI continuum profile to molecules. See
 `docs/recent-developments-2026-09-30.md` and
 `reports/impact-scope.md`.
+
+## Revision 42 — exact-reference temporal comparison
+
+Replayed the archived n64 v2 OpenFOAM temporal triplet against the exact MMS
+endpoint. All three rows pass both acceptance gates, with velocity errors
+0.00478066, 0.00478409, and 0.00479049 as dt is quartered. The exact-error
+trend is effectively flat/slightly increasing; endpoint field-difference
+order is about 0.499. Recorded hashes, input/grid correspondence, and full
+interpretation in `evidence/tests/high-gradient-of13-v2-temporal-comparison-2026-09-30.json`
+and `reports/openfoam-v2-temporal-comparison-2026-09-30.md`. No asymptotic
+time-convergence or general defect claim follows; the local acceptance
+blind-spot remains NOT_OBSERVED.
