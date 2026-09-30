@@ -177,3 +177,36 @@ comparator. Candidate-local adaptive boxes meet it at half-width `0.01` with
 stops at the budget with upper `0.27174`. These results supersede the interval
 sweep numbers above and in Revision 71; they remain exploratory and do not
 change the `UNCERTAIN` quality status.
+
+## Quadratic Taylor enclosure with a third-derivative remainder
+
+For each Jacobian-error component `G_ij`, the added local enclosure uses
+
+```text
+G_ij(c+d) = G_ij(c) + sum_k D_k G_ij(c) d_k
+           + 1/2 sum_{k,l} D_l D_k G_ij(B) d_k d_l.
+```
+
+It bounds the linear term with the point Hessian at the box center and the
+remainder with Arb third-derivative intervals over the whole box. The MLP third
+jet follows the third-order chain rule for tanh layers; the manufactured-field
+term uses fourth derivatives of its scalar potential. Autograd checks all
+spatial third derivatives of a synthetic frozen-shape MLP, and independent
+finite differences check selected manufactured-field third derivatives. A
+27-point direct-Arb sample grid is contained by the Taylor enclosure in the
+synthetic small-box test.
+
+On the frozen candidate, Taylor lowers the Frobenius upper from `0.3240` to
+`0.2618` at half-width `0.01`, and from `0.7580` to `0.3684` at `0.025`.
+At half-width `0.05` it lowers `2.3397` to `1.4313`. But on equal full-domain
+tiles the Taylor upper is much worse: at 8 cells per axis it is `4,173`, versus
+`235.3` for centered mean-value; the 2- and 4-per-axis Taylor bounds are
+roughly 135x and 50x larger than the corresponding centered bounds. A hybrid
+full-domain adaptive cover choosing the smaller of both estimates reaches
+`469.90` after 513 box evaluations / 257 leaves, exactly the same terminal
+maximum as the standard centered method with the same box count; the standard
+run took about 10.6 seconds and the hybrid computes both enclosures per box.
+Thus Taylor is useful for small local boxes, not broad global cells; it did not
+improve this budget-matched global partition. All comparisons are on one
+frozen model, exploratory, and do not set a quality threshold or change
+`UNCERTAIN`.

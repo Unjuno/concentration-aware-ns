@@ -17,6 +17,7 @@ from physicsnemo.models.mlp.fully_connected import FullyConnected
 from tools.physicsnemo_arb_interval_probe import (
     centered_gradient_error_enclosure,
     gradient_error_enclosure,
+    quadratic_taylor_gradient_error_enclosure,
 )
 from tools.arb_local_branch_cover import adaptive_axis_bisect_cover
 from tools.reference import fields
@@ -128,10 +129,15 @@ def audit(archive=ARCHIVE):
             hidden, output, box, time=params["end"], endpoint=params["end"],
             sigma=params["sigma"], dps=60,
         )
+        quadratic_taylor = quadratic_taylor_gradient_error_enclosure(
+            hidden, output, box, time=params["end"], endpoint=params["end"],
+            sigma=params["sigma"], dps=60,
+        )
         sample_points = [candidate + radius * np.asarray(signs)
                          for signs in itertools.product((-1, 0, 1), repeat=3)]
         sample_errors = autograd_error_jacobian(sample_points)
         max_sample_excess = 0.0
+        max_taylor_sample_excess = 0.0
         for sample_error in sample_errors:
             for i in range(3):
                 for j in range(3):
@@ -141,14 +147,24 @@ def audit(archive=ARCHIVE):
                         max_sample_excess,
                         lower - sample_error[i, j], sample_error[i, j] - upper, 0.0,
                     )
+                    taylor_lower = float(quadratic_taylor[i][j].lower())
+                    taylor_upper = float(quadratic_taylor[i][j].upper())
+                    max_taylor_sample_excess = max(
+                        max_taylor_sample_excess,
+                        taylor_lower - sample_error[i, j],
+                        sample_error[i, j] - taylor_upper, 0.0,
+                    )
         neighborhood_rows.append({
             "half_width": radius,
             "direct_frobenius_error_upper": _frob_upper(direct),
             "centered_frobenius_error_upper": _frob_upper(centered),
+            "quadratic_taylor_frobenius_error_upper": _frob_upper(quadratic_taylor),
             "centered_max_component_radius": _max_radius(centered),
             "autograd_sample_count": len(sample_points),
             "max_autograd_excess_outside_centered_bound": max_sample_excess,
             "samples_within_1e-8_float_tolerance": bool(max_sample_excess <= 1e-8),
+            "max_autograd_sample_excess_outside_taylor_box": max_taylor_sample_excess,
+            "taylor_samples_within_1e-8_float_tolerance": bool(max_taylor_sample_excess <= 1e-8),
         })
 
     subdivision_rows = []
@@ -252,6 +268,7 @@ def audit(archive=ARCHIVE):
     for divisions in (2, 4, 8):
         step = 2 * domain_endpoint / divisions
         boxes = []
+        taylor_boxes = []
         centers = []
         max_upper = 0.0
         for index in itertools.product(range(divisions), repeat=3):
@@ -265,15 +282,28 @@ def audit(archive=ARCHIVE):
                 endpoint=params["end"], sigma=params["sigma"], dps=40,
             )
             boxes.append((bounds, enclosure))
+            taylor_boxes.append(quadratic_taylor_gradient_error_enclosure(
+                hidden, output, bounds, time=params["end"],
+                endpoint=params["end"], sigma=params["sigma"], dps=40,
+            ))
             centers.append([(lo + hi) / 2 for lo, hi in bounds])
             max_upper = max(max_upper, _frob_upper(enclosure))
         center_errors = autograd_error_jacobian(centers)
         max_excess = 0.0
+        max_taylor_excess = 0.0
         for (_, enclosure), error in zip(boxes, center_errors):
             for i in range(3):
                 for j in range(3):
                     max_excess = max(
                         max_excess,
+                        float(enclosure[i][j].lower()) - error[i, j],
+                        error[i, j] - float(enclosure[i][j].upper()), 0.0,
+                    )
+        for enclosure, error in zip(taylor_boxes, center_errors):
+            for i in range(3):
+                for j in range(3):
+                    max_taylor_excess = max(
+                        max_taylor_excess,
                         float(enclosure[i][j].lower()) - error[i, j],
                         error[i, j] - float(enclosure[i][j].upper()), 0.0,
                     )
@@ -283,11 +313,19 @@ def audit(archive=ARCHIVE):
             "cell_count": divisions**3,
             "domain_endpoint_float": domain_endpoint,
             "max_centered_cell_frobenius_upper": max_upper,
+            "max_quadratic_taylor_cell_frobenius_upper": max(
+                _frob_upper(enclosure) for enclosure in taylor_boxes
+            ),
+            "taylor_to_centered_upper_ratio": max(
+                _frob_upper(enclosure) for enclosure in taylor_boxes
+            ) / max_upper,
             "max_autograd_cell_center_frobenius_sample": center_peak,
             "interval_to_sample_ratio": max_upper / center_peak,
             "autograd_cell_center_count": len(centers),
             "max_autograd_excess_outside_centered_bound": max_excess,
             "cell_centers_within_1e-8_float_tolerance": bool(max_excess <= 1e-8),
+            "max_autograd_excess_outside_taylor_bound": max_taylor_excess,
+            "taylor_cell_centers_within_1e-8_float_tolerance": bool(max_taylor_excess <= 1e-8),
         })
 
     domain_parent = [(-domain_endpoint, domain_endpoint)] * 3
@@ -308,8 +346,30 @@ def audit(archive=ARCHIVE):
         "target is exploratory, not a preregistered acceptance gate."
     )
 
+    def hybrid_domain_cell_upper(bounds):
+        # Each method bounds the same cell's Frobenius supremum; their minimum
+        # is therefore still an upper bound while choosing the tighter form.
+        mean_value = centered_gradient_error_enclosure(
+            hidden, output, bounds, time=params["end"],
+            endpoint=params["end"], sigma=params["sigma"], dps=40,
+        )
+        taylor = quadratic_taylor_gradient_error_enclosure(
+            hidden, output, bounds, time=params["end"],
+            endpoint=params["end"], sigma=params["sigma"], dps=40,
+        )
+        return min(_frob_upper(mean_value), _frob_upper(taylor))
+
+    hybrid_domain_cover = adaptive_axis_bisect_cover(
+        domain_parent, hybrid_domain_cell_upper, target=target_upper,
+        max_evaluations=513,
+    )
+    hybrid_domain_cover["scope"] = (
+        "Adaptive full-periodic-domain partition choosing the smaller of two "
+        "cell upper bounds; exploratory target only, not a quality gate."
+    )
+
     return {
-        "scope": "Exploratory local Arb mean-value enclosures for one frozen PhysicsNeMo checkpoint; no full periodic-domain cover or global-extremum certificate.",
+        "scope": "Exploratory Arb local and full-periodic-domain enclosures for one frozen PhysicsNeMo checkpoint; no useful global-extremum certificate or preregistered PhysicsNeMo threshold.",
         "case": archive.name.removesuffix(".tar.gz"),
         "archive_sha256": _sha(archive_bytes),
         "checkpoint_sha256": _sha(weights_bytes),
@@ -336,6 +396,7 @@ def audit(archive=ARCHIVE):
             "interpretation": "global enclosure exists at each tested partition, but upper bounds are exploratory and may be too coarse for a useful quality certificate",
         },
         "periodic_domain_adaptive_cover": global_adaptive_cover,
+        "periodic_domain_hybrid_cover": hybrid_domain_cover,
         "environment": {
             "python": platform.python_version(),
             "python_flint": flint_version,

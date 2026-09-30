@@ -1232,3 +1232,23 @@ The regenerated values and full terminal partition are in the Arb evidence
 JSON; details are in its report. The global enclosure remains too coarse for a
 useful continuous peak certificate, and no quality verdict changes. The
 project goal remains active.
+
+## Revision 73 — local quadratic Taylor enclosure and global comparison
+
+Added a second-order Taylor enclosure of the gradient-error field, with the
+point Hessian at the box center and an Arb interval third-derivative remainder
+over the full box. The MLP third jet is checked componentwise against PyTorch
+autograd; selected manufactured-field third derivatives are checked against
+independent finite differences; a synthetic 27-point direct-Arb check is
+contained. On the frozen sampled candidate, half-width `0.01` tightens the
+Frobenius upper from 0.3240 to 0.2618, and half-width `0.025` from 0.7580 to
+0.3684. However, on full-domain uniform covers Taylor is worse: at 8 divisions
+per axis, 4,173 versus 235.3 for centered mean-value, with similarly large
+penalties at 2 and 4 divisions. A budget-matched hybrid adaptive cover (513
+box evaluations, 257 leaves) has maximum 469.90, identical to standard
+centered adaptive bisection at the same cap; the centered run takes about 10.6
+seconds while hybrid computes both forms. This route is retained only for
+small local boxes, not adopted as the global method. All thresholds here are
+exploratory; PhysicsNeMo quality remains `UNCERTAIN` and the full benchmark
+goal remains active. Reproduction data and bounds are in the Arb audit JSON
+and report.
