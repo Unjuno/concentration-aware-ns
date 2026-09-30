@@ -1034,3 +1034,20 @@ in `reports/physicsnemo-pointwise-gradient-audit-2026-09-30.md`,
 `tools/physicsnemo_global_hessian_bound.py`. The full 97-test suite passes.
 The next continuous-peak step is local interval subdivision, not treating
 sampled maxima as certificates; the benchmark goal remains active.
+
+## Revision 63 — external method update
+
+Reviewed a newly submitted arXiv preprint claiming computer-assisted global
+regularity for explicitly bounded families of periodic data. Its finite-path
+plus uniform a-posteriori enclosure and independent exact-arithmetic checks
+are a useful method lead for our still-open continuous peak audit. The scope
+does not transfer directly: this benchmark asks for derivative-error
+enclosures, and the preprint's claimed theorem is restricted to its stated
+unforced data families. Its reproducibility package/DOI is described as
+forthcoming, so the result remains unverified here. The new development and
+its limits are recorded in
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md`.
+Continue by testing adaptive local enclosures and looking for the preprint's
+independently auditable artifacts; keep all material/particle interpretations
+as open hypotheses unless supported by a kinetic model and data. The overall
+goal remains active.

@@ -730,3 +730,17 @@ continuous-error certificate. Eight-point autograd checks sanity-check the
 network envelope but do not certify it; the analytic inequalities provide the
 bound. The illustrative threshold is not PhysicsNeMo-preregistered and no
 acceptance status changes. Local interval subdivision remains untested.
+
+## External verification-method update
+
+An arXiv preprint submitted 2026-09-14 claims all-time smoothness for named
+families of periodic initial data using finite Fourier comparison paths and
+exact-arithmetic a-posteriori enclosures. It is a bounded-family result, not
+global regularity for all data and not a direct counterexample to the distinct
+forced blowup claim. The preprint says a reproducibility archive will be
+created before journal submission; no such package is linked from its current
+arXiv record, so we have not independently checked its proof or code. The
+proof architecture may inform local/adaptive whole-domain coverage for our
+continuous-peak question, but the theorem itself does not transfer to our
+manufactured case. See
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md`.
