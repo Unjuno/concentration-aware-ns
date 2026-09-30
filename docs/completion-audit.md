@@ -54,11 +54,15 @@ typechecker errors); its hash manifest and rerun script are in
 `runtime/lean-verification/check_axis_force_nanoda.sh`. The separate
 `SupportHoleAssembly.lean` cusp-ball and Hessian-transfer extensions have
 pinned Lean elaboration and axiom-audit records, including the ten-declaration
-v6 run cited below, but have not passed an independent nanoda check. Their
-conditional parameter assumptions remain, and the spatial restriction of the
-local jet is not jointly formalized with the classical nonlinear packet
-estimate. Do not conflate the independent AxisForceSign check with these
-separate extensions.
+v6 run cited below, and have now passed an independent nanoda check of 85,487
+declarations with zero typechecker errors. Nanoda reported one pretty-printer
+error (`Unable to print axioms`); the separate Lean audit printed the allowed
+axioms for all ten target declarations. The run manifest and rerun script are
+`evidence/lean-verification/support-hole-nanoda-2026-10-01.json` and
+`runtime/lean-verification/check_support_hole_nanoda.sh`. Conditional
+parameter assumptions remain, and the spatial restriction of the local jet is
+not jointly formalized with the classical nonlinear packet estimate. The
+AxisForceSign and SupportHoleAssembly checks are distinct proof closures.
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive

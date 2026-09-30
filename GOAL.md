@@ -850,3 +850,20 @@ deforming-plate entry point. OpenAI's source repo is Apache-2.0 Lean source with
 GitHub Issues disabled, not a CFD solver repository. The full three-solver
 benchmark goal remains active; no broad completion is inferred from this
 inventory refresh.
+
+## Revision 51 — independent check of cusp-Hessian transfer
+
+The exact v6 `SupportHoleAssembly.lean` source was exported and independently
+checked by nanoda in the pinned offline checker container. Nanoda checked
+85,487 declarations with zero typechecker errors and reported one pretty-printer
+error (`Unable to print axioms`); Lean separately printed and matched the
+permitted axiom set for all ten selected declarations. Run provenance and
+artifact hashes are in
+`evidence/lean-verification/support-hole-nanoda-2026-10-01.json`, with the
+reproduction script at `runtime/lean-verification/check_support_hole_nanoda.sh`.
+The raw 906 MiB export remains local under `work/`, identified by SHA256. This
+independent proof-term check strengthens confidence in the formalized
+conditional cusp-ball/Hessian result; it does not validate the pinned upstream
+construction, formalize the classical packet comparison, or establish a
+particle, molecular, phase-transition, or viscosity consequence. The benchmark
+completion goal remains active.

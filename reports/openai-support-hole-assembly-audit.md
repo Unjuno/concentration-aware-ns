@@ -126,6 +126,23 @@ by the pinned Lean extension. The symbolic checker remains an independent
 algebraic cross-check only. Full pinned proof and source-archive details are in
 `evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/` and `GOAL.md`.
 
+## Independent proof-term check — 2026-10-01
+
+The v6 cusp-ball/Hessian extension was exported with the pinned lean4export
+tool and checked by nanoda in the digest-pinned checker image, with networking
+disabled and the unprivileged user. Nanoda checked 85,487 declarations with
+zero typechecker errors. It reported one pretty-printer error,
+`Unable to print axioms`; separately, the Lean run printed and checked the
+permitted axiom list for each of the ten selected declarations. The exact
+source/image hashes, declaration list, output hashes, logs, and reproduction
+script are indexed in
+`evidence/lean-verification/support-hole-nanoda-2026-10-01.json` and
+`runtime/lean-verification/check_support_hole_nanoda.sh`. The 906 MiB exported
+NDJSON is retained locally under `work/` and identified by hash rather than
+committed. This adds independent proof-term checking, not independent
+validation of OpenAI's mathematical construction or a finite-packet,
+molecular, or constitutive conclusion.
+
 No implication is drawn here about molecular ordering, absolute-position
 certainty, finite-size packets at the singular endpoint, a phase transition,
 or reduced viscosity. The audited continuum deformation remains

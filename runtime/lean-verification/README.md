@@ -4,11 +4,19 @@ The pinned upstream project builds successfully with Lean 4.34.0-rc2; the
 recorded full build completed 11,424 jobs. The selected-field force-ratio
 extension also passed an independent nanoda check over 85,455 declarations.
 These results are separate: the full ComparatorChallenges challenge has not
-passed an independent Comparator run, and the SupportHoleAssembly/cusp-Hessian
-extensions have Lean elaboration and axiom-audit evidence but no independent
-nanoda check. The applicable run records and hashes are linked below. A clean
-rebuild additionally requires the pinned source and dependencies; local
-preparation/output trees under `work/` are not committed build evidence.
+passed an independent Comparator run. The SupportHoleAssembly cusp-Hessian
+extension also passed an independent nanoda check over 85,487 declarations;
+nanoda reported zero typechecker errors and one pretty-printer error
+(`Unable to print axioms`), while the separate Lean audit printed and checked
+the permitted axioms for all ten selected declarations. Run hashes and the
+reproduction command are in
+`evidence/lean-verification/support-hole-nanoda-2026-10-01.json` and
+`check_support_hole_nanoda.sh`. The 906 MiB exported dependency closure is
+retained locally under `work/`, identified by SHA256, rather than committed.
+A fresh run uses `sh runtime/lean-verification/check_support_hole_nanoda.sh
+work/support-hole-nanoda-<unique-run-id>`; it refuses to overwrite an existing
+output path. A clean rebuild additionally requires the pinned source and
+dependencies.
 
 Source: openai/NavierStokesAndEuler at 8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538.
 Source tar SHA256: e44f67a2bc3c133c14856d73b697f77344b030e3fae2f798254b64dcefbbb772.

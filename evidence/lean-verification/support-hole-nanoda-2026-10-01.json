@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "scope": "Independent nanoda typecheck of the selected cusp-ball and full-spacetime Hessian-transfer theorem closure, with the pinned Lean axiom audit.",
+  "source_sha256": "a31432420d0783c94e4be3bd65fec7b0b3a516a422cec64dce4bd97f407618f7",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "lean": "4.34.0-rc2",
+  "lean4export": "3.1.0",
+  "nanoda": "0.4.16",
+  "nanoda_commit": "05055695879dfebb6628a67da88ceca6cd6b0421",
+  "checked_declarations": 85487,
+  "typechecker_errors": 0,
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "selected_declarations_present": [
+    "coordinateEta_margin_of_euclidean_ball",
+    "transverse_radius_le_of_euclidean_ball",
+    "axial_deviation_le_of_euclidean_ball",
+    "cusp_ball_point_in_physical_exterior",
+    "selected_velocity_germ_of_cusp_ball_point",
+    "selected_axis_center_small_eventually",
+    "selected_velocity_germ_on_cusp_tube",
+    "exists_admissible_cusp_radius",
+    "cusp_ball_eventually_in_endpoint_neighborhood",
+    "selected_cusp_ball_actual_hessian_rate"
+  ],
+  "artifacts": [
+    {
+      "path": "SupportHoleAssembly.olean",
+      "bytes": 1649504,
+      "sha256": "fe333a446d74c16888a1cc2cab19838891b5f1cdc8c87bdf8d8002b35716662d"
+    },
+    {
+      "path": "support-hole.ndjson",
+      "bytes": 950078072,
+      "sha256": "869848eec7686933afe4319e803ba8223a8b9e47d05fee12b094159f0c019ff5"
+    },
+    {
+      "path": "nanoda-config.json",
+      "bytes": 233,
+      "sha256": "701988350ed3090df8828b78aaf8370646f9d090c5b227ca3418ad2e0f903d12"
+    },
+    {
+      "path": "lean.log",
+      "bytes": 1187,
+      "sha256": "ed84a6aada2358f3b369cc15e0aeaf2498cf276938c3877dce593d0bdf3d6656"
+    },
+    {
+      "path": "export.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "nanoda.log",
+      "bytes": 114,
+      "sha256": "750155853eeaf6ddffe2326288189ff217cbe443984ef1143a20b15c0f9e7713"
+    }
+  ],
+  "limitations": [
+    "This independently checks the exported Lean proof terms; it does not validate the mathematical truth of the pinned upstream source construction.",
+    "The theorem has existential, parameter-dependent terminal intervals and shrinking radii; it is not a fixed-size packet theorem or a singular-endpoint result.",
+    "The spatial restriction of the local jet and the classical nonlinear packet estimate are not jointly formalized.",
+    "It does not establish particle alignment, molecular determinism, phase transition, or a constitutive-viscosity change."
+  ],
+  "pretty_printer_errors": [
+    "Unable to print axioms"
+  ],
+  "captured_at_utc": "2026-09-30T16:03:16.823953+00:00",
+  "run_output_directory": "work/support-hole-nanoda-20261001/",
+  "reproduction_command": "sh runtime/lean-verification/check_support_hole_nanoda.sh work/support-hole-nanoda-20261001",
+  "process_exit_code": 0,
+  "raw_export_committed": false,
+  "raw_export_note": "The 950078072-byte support-hole.ndjson is retained under work/ and identified by SHA256; it is excluded from Git due to size.",
+  "published_logs": {
+    "lean.log": {
+      "path": "evidence/lean-verification/support-hole-lean.log",
+      "bytes": 1187,
+      "sha256": "ed84a6aada2358f3b369cc15e0aeaf2498cf276938c3877dce593d0bdf3d6656"
+    },
+    "nanoda.log": {
+      "path": "evidence/lean-verification/support-hole-nanoda.log",
+      "bytes": 114,
+      "sha256": "750155853eeaf6ddffe2326288189ff217cbe443984ef1143a20b15c0f9e7713"
+    }
+  },
+  "reproduction_script": {
+    "path": "runtime/lean-verification/check_support_hole_nanoda.sh",
+    "sha256": "e57d3be9d02531f304d68c3c8c6ee95be554e1b989dd572abe0859b1795a20c7"
+  },
+  "execution": {
+    "command": "sh runtime/lean-verification/check_support_hole_nanoda.sh work/support-hole-nanoda-20261001",
+    "container_user": "501:20",
+    "network": "disabled",
+    "cpu_limit": 2,
+    "memory_limit": "8g",
+    "socket_control_launcher": "/verify/checker-bin/no_unix",
+    "process_exit_code": 0,
+    "container_removed_after_exit": true,
+    "run_output_directory": "work/support-hole-nanoda-20261001/"
+  }
+}
