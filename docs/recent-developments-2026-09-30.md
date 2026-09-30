@@ -22,6 +22,16 @@ There is a sharper implication for the proposed “particle alignment” reading
 
 Source: [OpenAI paper, §2 “Physical description of the blowup”](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf).
 
+## Flexible-fiber literature cross-check
+
+A 2026 JFM paper reports alignment and other shape dynamics for finite
+flexible fibers in a prescribed zero-Re Stokes-flow “spiralet,” a Burgers-like
+analogue rather than the exact Burgers vortex. This gives a relevant
+finite-object research lead, while leaving molecular alignment, changing
+viscosity, experiments, and transfer to the OpenAI profile unsupported. The
+model distinction and implications are recorded in
+[`fiber-vortex-literature-audit.md`](fiber-vortex-literature-audit.md).
+
 ## Audit implications
 
 1. Treat the slender-core and componentwise Reynolds-number scalings as analytical targets for independent derivation and numerical postprocessing, not as molecular-scale conclusions.

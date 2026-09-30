@@ -658,3 +658,15 @@ structured status snapshot is
 `evidence/upstream-refresh/live-status-2026-09-30.json`; these statuses are
 time-bounded and do not replace full framework testing or cover every external
 issue tracker.
+
+## Revision 40 — finite-fiber literature boundary added
+
+Added a source audit of the 2026 JFM numerical study of finite flexible fibers
+in a prescribed Stokes-flow Burgers-like analogue. Its centered-fiber
+alignment result is relevant to finite-object orientation, while its model is
+not the exact Burgers/Navier–Stokes field and supplies no molecular,
+constitutive-viscosity, phase-transition, experimental, or OpenAI-profile
+conclusion. Added the bounded result to the impact-scope matrix and the
+2026-09-30 development note; see `docs/fiber-vortex-literature-audit.md`.
+This updates the literature boundary only and leaves numerical solver verdicts
+unchanged.
