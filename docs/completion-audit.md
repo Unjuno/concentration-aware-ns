@@ -744,3 +744,5 @@ proof architecture may inform local/adaptive whole-domain coverage for our
 continuous-peak question, but the theorem itself does not transfer to our
 manufactured case. See
 `reports/recent-navier-stokes-verification-developments-2026-10-01.md`.
+The OpenAI source repository also has both Issues and Discussions disabled,
+so the planned upstream issue round has no GitHub issue/discussion route there.

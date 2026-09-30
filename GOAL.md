@@ -1051,3 +1051,7 @@ Continue by testing adaptive local enclosures and looking for the preprint's
 independently auditable artifacts; keep all material/particle interpretations
 as open hypotheses unless supported by a kinetic model and data. The overall
 goal remains active.
+
+The OpenAI source repository currently has Issues and Discussions disabled;
+do not claim an upstream report was filed. Continue building evidence locally
+and identify a project-provided feedback route only if one is documented.

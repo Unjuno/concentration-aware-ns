@@ -48,3 +48,10 @@ PDE results.
 - Preprint record: <https://arxiv.org/abs/2609.16157>
 - Full preprint: <https://arxiv.org/html/2609.16157v1>
 
+## Upstream feedback route
+
+GitHub repository metadata was checked on 2026-10-01: the OpenAI repository
+has GitHub Issues disabled and Discussions disabled, and GitHub reports no
+open issues. There is therefore no issue/discussion channel in that repository
+for a reproducible finding. This benchmark's own pull request remains on its
+separate repository; no message was sent to OpenAI maintainers.
