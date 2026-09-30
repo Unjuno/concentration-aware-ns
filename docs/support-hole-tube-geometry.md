@@ -235,3 +235,21 @@ for `0<tau<=1`, an axial distance at most `c*sqrt(tau)` gives the margin
 `|eta| <= |eta0| + c/(1-2h)`. The scaling follows from
 `D=(1-2h)/2`, `D+h=1/2`, and `tau^h<=1`. It does not establish that a full
 three-dimensional Euclidean ball meets the axial-distance premise.
+
+### 2026-09-30: Euclidean-ball to eta-margin theorem
+
+`coordinateEta_margin_of_euclidean_ball` now derives the axial-distance
+hypothesis from a genuine Euclidean norm bound around the source trajectory's
+axis center, using the coordinate projection bound in `EuclideanSpace`. Thus,
+for every fixed `0<tau<=1`, every point in the full spatial ball of radius
+`c*sqrt(tau)` has `|eta| <= |eta0| + c/(1-2h)`. This closes the ball-to-axial
+step without a simulation or a continuum linearization assumption.
+
+The theorem compiles against the pinned OpenAI source and Lean cache; its
+axioms are only `propext`, `Classical.choice`, and `Quot.sound`. Reproducible
+command and source/log hashes are recorded in
+`evidence/openai-lean-2026-09-30-spatial-ball-clean/manifest.json`. It does not
+yet establish transverse-radius, exterior-sublevel, cutoff, localization, or
+time-window conditions for the assembled-field theorem. Therefore it is not
+the promised whole cusp-tube field-equality result, and it adds no particle or
+molecular conclusion.

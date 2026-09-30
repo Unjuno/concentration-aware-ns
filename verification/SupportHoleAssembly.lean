@@ -279,6 +279,31 @@ theorem coordinateEta_margin_of_sqrt_axial_radius {h tau eta z c : ℝ}
       _ = c / (1 - 2*h) := by ring
   exact coordinateEta_margin_of_axial_radius hh hh1 htau heta hscaledRadius
 
+/-- A Euclidean ball around the axis trajectory controls its axial coordinate,
+so the fixed-time eta-margin estimate applies to every point in that ball. -/
+theorem coordinateEta_margin_of_euclidean_ball {h tau eta c : ℝ}
+    (hh : 0 < h) (hh1 : h < 1 / 2) (htau : 0 < tau) (htau1 : tau ≤ 1)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hc : 0 ≤ c)
+    {x : ProblemStatement.Space}
+    (hball : ‖x - (eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)) •
+      ProblemStatement.coordinateVector 2‖ ≤ c * Real.sqrt tau) :
+    |SimilarityCoordinates.coordinateEta (2*h) (tau, x 2)| ≤
+      |eta| + c / (1 - 2*h) := by
+  let z0 := eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)
+  have hcoord : (x - z0 • ProblemStatement.coordinateVector 2).ofLp 2 =
+      x.ofLp 2 - z0 := by
+    simp [z0, ProblemStatement.coordinateVector]
+  have hcomponent : |x 2 - z0| ≤
+      ‖x - z0 • ProblemStatement.coordinateVector 2‖ := by
+    have hnorm := PiLp.norm_apply_le
+      (x - z0 • ProblemStatement.coordinateVector 2) 2
+    rw [hcoord] at hnorm
+    simpa only [Real.norm_eq_abs] using hnorm
+  have haxial : |x 2 - eta * (tau / (1 - eta^2)) ^ (CoordinateAlgebra.D h)| ≤
+      c * Real.sqrt tau := by
+    simpa [z0] using hcomponent.trans hball
+  exact coordinateEta_margin_of_sqrt_axial_radius hh hh1 htau htau1 heta hc haxial
+
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ
 whenever the first potential cutoff is on its unit plateau. -/

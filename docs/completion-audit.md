@@ -603,6 +603,18 @@ contribution to the benchmark repository; no defect issue was submitted to
 OpenAI or a solver project because this work establishes a conditional
 mathematical lemma rather than a reproducible upstream implementation defect.
 
+### Full spatial-ball eta margin, 2026-09-30
+
+`coordinateEta_margin_of_euclidean_ball` in
+`verification/SupportHoleAssembly.lean` now derives the one-dimensional axial
+distance premise from a Euclidean norm bound centered on the actual axis-center
+formula. It proves the similarity-coordinate margin for every point in a fixed
+time slice of the full spatial ball. The pinned Lean compile and axiom audit
+passed; see `evidence/openai-lean-2026-09-30-spatial-ball-clean/manifest.json`.
+This discharges only the ball-to-eta step. Transverse radius, exterior-domain,
+cutoff and localization conditions and the full moving-tube transfer remain
+open. No particle-position or molecular conclusion follows.
+
 At the September 28 source-run snapshot, four of six cases were complete and
 `n64-dt0.0005` was partial. That attempt is retained in place. The newer
 September 30 cross-run status index below supersedes its completion count;

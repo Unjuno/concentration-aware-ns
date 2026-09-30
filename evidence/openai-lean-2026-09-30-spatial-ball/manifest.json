@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "Pinned Lean elaboration of the support-hole extension and an audit of the new Euclidean-ball eta-margin theorem.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "source_sha256": "a43f77f0b52095d094a7e40495cc81409b200ed870c1a06f588c0dad52762c9f",
+  "lean_log_sha256": "3c55820fefb85b3c2f82650b660c771f13aa2fc2df208eee53a17c26a02cd615",
+  "declaration": "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "This proves a fixed-time geometric implication from a Euclidean spatial-ball bound to a similarity-coordinate margin.",
+    "It does not prove the ball remains in the support-hole exterior, all cutoff/localization plateaus, or an endpoint-wide tube.",
+    "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
+  ]
+}
