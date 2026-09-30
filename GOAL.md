@@ -630,3 +630,17 @@ ratio for arbitrary initial displacement with nonzero axial component. The
 automated test asserts both axis and off-axis limits are derived as zero. This
 closes a verification-quality gap in the analytic counterexample artifact; the
 result remains confined to the classical idealized Burgers vortex.
+
+## Revision 38 — exact position probabilities for a tracer ensemble
+
+The exact Burgers-vortex material flow map now transports an imposed isotropic
+Gaussian tracer ensemble. Its physical Jacobian is one; transverse variance
+contracts while axial variance expands, preserving covariance determinant,
+peak density and differential entropy. Probability in a fixed-radius infinite
+axis tube tends to one, but probability in a fixed finite cylinder decays like
+`sqrt(2/pi)*(L/sigma)*exp(-2*gamma*t)`. Symbolic identities and the regression
+check are in `docs/burgers-vortex-position-probability.md`,
+`tools/check_burgers_vortex_tracer_probability.py`, and
+`evidence/tests/burgers-vortex-tracer-probability.json`. This sharpens the
+observation-geometry distinction for passive tracers only; it is not a
+molecular, stochastic, finite-energy, or OpenAI-profile result.
