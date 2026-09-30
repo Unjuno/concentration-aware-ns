@@ -1091,3 +1091,24 @@ points and is only a sanity check. No threshold is preregistered and no quality
 verdict changes. This correction was found by reviewing the inequality
 direction independently of the feature-order bug. The benchmark goal remains
 active.
+
+## Revision 66 — exploratory local interval point check
+
+Implemented a local interval enclosure for the spatial Jacobian of the frozen
+PhysicsNeMo prediction error and checked its reference-field Jacobian formula
+against the repository's manufactured-solution implementation. Unit tests
+cover a small analytic tanh network, multiple reference points, box refinement,
+and validation-state restoration. On the frozen `n64-nt17` archive, the audit
+selected the largest sampled gradient-error point from 262,144 saved points,
+then re-evaluated that exact point independently with PyTorch autograd. The
+largest componentwise midpoint difference was `2.17e-15`; the maximum
+degenerate point-interval width was `1.97e-59` at 60 decimal digits. This is
+only a point-level implementation cross-check: it supplies no neighbourhood
+bound, full-domain cover, continuous-extremum certificate, or new quality
+verdict. The checkpoint's sampled gradient error and overall PhysicsNeMo
+quality remain as previously recorded (`UNCERTAIN`). Reproduce using
+`PYTHONPATH=.:work/physicsnemo-source work/physicsnemo-env/bin/python
+tools/audit_physicsnemo_interval_probe.py`; details and hashes are in
+`reports/physicsnemo-local-interval-probe-2026-10-01.md` and
+`evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json`. The full
+102-test suite passed.
