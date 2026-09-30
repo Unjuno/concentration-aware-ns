@@ -258,3 +258,21 @@ Hessian variation, with per-coordinate variation Frobenius bounds `16.69`,
 bottleneck to broad-box second-derivative enclosure and confirms that the
 higher-order remainder is unsuitable at this cell scale. The decomposition is
 included as `worst_cell_decomposition` in the n16 JSON.
+
+## Refinement cost for the worst global-cover cell
+
+The worst cell from the 16^3 uniform cover was refined independently with the
+same centered Arb evaluator and deterministic worst-upper-first bisection.
+The reproducible script and hash-linked output are
+`tools/audit_physicsnemo_hotcell_refinement.py` and
+`evidence/tests/physicsnemo-hotcell-refinement-2026-10-01.json`. At budgets
+129, 513, and 2,049 evaluations, the maximum terminal uppers are 2.0987,
+0.93861, and 0.36148. An exploratory target of 0.26 is reached at 3,923
+evaluations and 1,962 leaves, with maximum upper 0.259992. The leaf volumes
+sum exactly to the parent cell volume in the recorded binary-float check.
+
+This is a cost measurement for one cell only. It does not refine the other
+4,095 cells, establish the full-domain maximum, or make 0.26 a preregistered
+quality threshold. It shows that subdivision reduces the large cell bound at
+a substantial local evaluation cost; the global budget needed cannot be
+inferred by multiplying this single-cell result.

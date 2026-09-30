@@ -890,6 +890,18 @@ molecular ordering, phase transition, particle-position certainty, or
 viscosity law. The three-solver benchmark and upstream audit objectives remain
 active.
 
+## Revision 77 — adaptive refinement cost for one worst cell
+
+Added `tools/audit_physicsnemo_hotcell_refinement.py` and its full terminal
+partition JSON. On the worst cell from the 16^3 cover, the maximum terminal
+upper drops from 52.134 to 2.0987, 0.93861, and 0.36148 at budgets of 129,
+513, and 2,049 evaluations. The exploratory 0.26 comparator is first reached
+at 3,923 evaluations / 1,962 leaves (upper 0.259992); leaf volume sum matches
+the parent volume exactly in the recorded float calculation. This measures
+only one cell and cannot be extrapolated to the remaining 4,095 cells or a
+whole-domain result. The comparator remains unregistered; no PhysicsNeMo
+quality verdict changes, and the overall goal remains active.
+
 ## Revision 53 — selected-field spatial Hessian transfer
 
 Added `verification/SpatialHessianTransfer.lean`. It combines the local
