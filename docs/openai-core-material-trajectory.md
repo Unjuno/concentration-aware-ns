@@ -110,7 +110,14 @@ constant. Thus directional alignment does not itself imply improved full-positio
 certainty. Finite neighborhoods may leave the core; the linearization is not a
 uniform approximation for a fixed-size packet up to t=1.
 
-## Transfer to the actual assembled field remains open
+## Earlier field-transfer gap (superseded by the current Lean result)
+
+The following notes record intermediate work and are not the current status.
+The open-gap conclusion in this section was superseded by the
+`selected_velocity_germ_on_cusp_tube` result summarized above: the actual
+activated periodic field is now Lean-checked to have the selected
+`FinalSlowBase.velocity` germ throughout the shrinking ball under the stated
+conditions.
 
 GermCandidateAssembly.potentialSum_eq_base_germ establishes neighborhood equality
 of the potential sum to a base potential on the cutoff plateau, under the stated
@@ -130,7 +137,7 @@ GermCandidateAssembly.potentialSum_eq_base_germ and origin_eventually_base,
 MixedAxisPreservation.mixedDiagonal_eq_cutBase_germ,
 FinalSlowBase.velocity and leading_origin. All refer to the existing fixed pin.
 
-## Transfer advanced to FinalSlowBase (source-derived, not new Lean verification)
+## Axis-profile and deformation derivation (not fully Lean-verified)
 
 A further read of the actual coefficient assembly supplies more than the origin
 value: EntranceAlignedBase.modulated_leading_axis states axial_0(0,eta)=4eta+j
@@ -153,11 +160,11 @@ differ; do not transfer the natural-core formula for Omega without checking the
 swirl coefficients. Rotation does not alter the singular values in this axis
 Jacobian structure.
 
-This is a deductive extension of the inspected definitions and theorem statements,
-not a newly compiled Lean proof. It does not yet complete transfer through every
-actual mixed correction, cutoff, activation, periodicization, and chosen witness.
-In particular, the neighborhood and cutoff conditions along the moving trajectory
-must be checked in the actual assembled candidate, not just at the fixed origin.
+The axis-profile identity and the resulting ODE/Jacobian calculations remain a
+deductive extension of inspected definitions, not a compiled Lean deformation
+proof. The field-transfer portion has since been formalized for a whole shrinking
+ball, but the axis-center ODE and the deformation-matrix solution have not been
+machine-checked. The result still gives no finite-size packet or molecular claim.
 
 ## Terminal cutoff conditions along the moving trajectory
 
@@ -197,17 +204,14 @@ value. Together with the preceding time/cutoff bounds, this supplies a nonempty
 terminal interval for all these geometric conditions.
 
 ActualCandidateAssembly.Witness identifies its candidate velocity explicitly as
-activatedVelocity(periodicVelocity(ASum,BSum)). Its witness theorem invokes
-GermCandidateAssembly with initialPotential_axisZeroOn and
-positivePotential_axisZeroOn. Consequently the remaining bookkeeping is the
-initialized potential/direct sum's neighborhood equality to the FinalSlowBase
-along this axis curve and its selected-schedule hypotheses. The outer
-periodicization and time activation are now accounted for by named neighborhood
-equalities and explicit trajectory bounds. This source audit has not compiled a
-new theorem joining those facts into the final trajectory/deformation result.
+activatedVelocity(periodicVelocity(ASum,BSum)). The outer periodicization and
+time activation, selected sums, exterior hole, and shrinking-ball localization
+are now joined in the Lean theorem cited above. The remaining material-
+trajectory limitation is the unformalized axis-center derivative/ODE and its
+deformation-matrix solution, not the local field equality around that center.
 
 
-## Completed source-level neighborhood chain for the selected periodic witness
+## Earlier source-level account of the periodic-witness neighborhood chain
 
 The remaining initialized/direct-sum identities can be instantiated as follows.
 Here a is any SelectedSchedule in ActualCandidateAssembly.Witness for the fixed
@@ -237,13 +241,11 @@ above:
    preserves it for t>3/4. These are precisely the outer velocity operations
    in ActualCandidateAssembly.Witness.
 
-Thus, as a source-derived mathematical consequence, the selected witness's
-periodic candidate velocity agrees with FinalSlowBase on a spacetime neighborhood
-of each sufficiently late point of the curve. All finite local derivatives
-agree there. The trajectory is a material trajectory of that candidate on this
-terminal interval, and its infinitesimal deformation has the singular values
-derived above. The transverse rotation is that of FinalSlowBase, not assumed
-equal to the original natural core's rotation.
+The source-level account above motivated the later Lean composition and is
+superseded for the field-equality claim by the uniform cusp-ball theorem. The
+material-trajectory and deformation conclusions in this older account remain
+hand-derived until their ODE and variational equations are formalized; do not
+upgrade them to kernel-checked theorems based on the field-germ proof alone.
 
 An explicit sufficient upper bound on tau is the minimum of
 
