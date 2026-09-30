@@ -1,4 +1,4 @@
-# Upstream reporting decisions — updated 2026-09-26
+# Upstream reporting decisions — updated 2026-09-30
 
 These decisions concern the pinned implementations and reproduced experiments.
 They do not claim to identify every industrial consequence of a mathematical
@@ -104,3 +104,10 @@ The live state was reread after completing the high-gradient AMR controls:
 These checks update status and reporting decisions only. A fully reproducible
 release bundle and the remaining analytic and solver-specific uncertainty work
 are still open.
+
+The live read-only status check was repeated at 2026-09-30 10:31:46 UTC and is
+preserved in
+`evidence/upstream-refresh/live-status-2026-09-30.json`. The audited OpenFOAM
+master and SU2 master still match their source pins; SU2's existing discussion
+contains both the maintainer diagnosis and our BDF2 follow-up. PhysicsNeMo
+main/issue/PR states and its divergence from PR #2008 are recorded there.

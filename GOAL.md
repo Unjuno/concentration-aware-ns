@@ -644,3 +644,17 @@ check are in `docs/burgers-vortex-position-probability.md`,
 `evidence/tests/burgers-vortex-tracer-probability.json`. This sharpens the
 observation-geometry distinction for passive tracers only; it is not a
 molecular, stochastic, finite-energy, or OpenAI-profile result.
+
+
+## Revision 39 — live upstream disposition rechecked
+
+The three upstream targets were rechecked read-only against GitHub at
+2026-09-30 10:31:46 UTC. OpenFOAM Foundation 13 and SU2 master still match the
+audited commits; SU2 discussion #2890's maintainer response and BDF2 follow-up
+are both verified by GraphQL node lookup. PhysicsNeMo issue #2007 remains open;
+PR #2008 is open, behind, review-required, and diverged from current main by
+9 main-ahead / 2 PR-ahead commits. No duplicate reports were warranted. The
+structured status snapshot is
+`evidence/upstream-refresh/live-status-2026-09-30.json`; these statuses are
+time-bounded and do not replace full framework testing or cover every external
+issue tracker.

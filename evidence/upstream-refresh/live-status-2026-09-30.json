@@ -1,0 +1,37 @@
+{
+  "observed_at_utc": "2026-09-30T10:31:46Z",
+  "scope": "Read-only live GitHub recheck of the three audited upstream targets; statuses can change after this timestamp.",
+  "openfoam": {
+    "repository": "OpenFOAM/OpenFOAM-13",
+    "audited_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "master_head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "open_github_issues": [
+      {"number": 5, "title": "Documentation does not reflect the source code", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/5"},
+      {"number": 4, "title": "Installation on Almalinux", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/4"},
+      {"number": 3, "title": "Migration to organization", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/3"},
+      {"number": 2, "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2"}
+    ],
+    "disposition": "No listed GitHub issue matches the measured AMR field-transfer behavior; no issue filed. The repository README points bug reports to bugs.openfoam.org, so the GitHub list is not claimed to be the complete Foundation issue tracker."
+  },
+  "su2": {
+    "repository": "su2code/SU2",
+    "master_head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "discussion": {
+      "number": 2890,
+      "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "updated_at": "2026-09-26T14:00:52Z",
+      "maintainer_comment": {"author": "sbryngelson", "created_at": "2026-09-13T03:31:50Z", "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18418174"},
+      "BDF2_followup": {"author": "Unjuno", "created_at": "2026-09-26T14:00:52Z", "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462", "node_id": "DC_kwDOAKhmnM4BHATW"}
+    },
+    "disposition": "Existing discussion and scoped time-contract evidence remain the reporting path; no duplicate issue filed."
+  },
+  "physicsnemo": {
+    "repository": "NVIDIA/physicsnemo",
+    "main_head": "eb8f95897eed9887295cb8110ba1017d2d670b58",
+    "issue_2007": {"state": "OPEN", "title": "power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width", "url": "https://github.com/NVIDIA/physicsnemo/issues/2007", "updated_at": "2026-09-28T00:41:11Z"},
+    "pr_2008": {"state": "OPEN", "head": "7407608723062dc11ba5332e9ff3774f42bb02d9", "base": "ff5d19d08123de47ca446caed1d70a225d540184", "merge_state": "BEHIND", "review_decision": "REVIEW_REQUIRED", "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"},
+    "comparison_pr_head_to_main": {"status": "diverged", "main_ahead_by": 9, "pr_head_ahead_by": 2},
+    "disposition": "The existing issue and PR already cover the exact focused reproducer and proposed fix; no duplicate issue filed. The current-main reproduction is pinned in reports/physicsnemo-refresh-2026-09-30.md; full framework validation and maintainer acceptance are not claimed."
+  }
+}
