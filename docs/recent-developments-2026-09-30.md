@@ -10,6 +10,31 @@ Sources: [OpenAI announcement](https://openai.com/index/navier-stokes-solution/)
 
 On 2026-09-28, Zhen Lei and Xiao Ren posted [arXiv:2609.35406](https://arxiv.org/abs/2609.35406), a readable treatment of the profile-construction part of OpenAI's manuscript. Its abstract describes smooth axisymmetric profiles, a divergence-form residual plus a remainder flat to infinite order on fixed similarity sectors, an admissible stress cone, and a new linear model. It explicitly says that the oscillatory-pulse residual-cancellation argument is deferred to a companion Part II. This is a useful explanatory development, not an independent completion or peer review of the whole argument.
 
+## Independent analyses and programmatic-search criteria
+
+Two further September preprints are relevant to how far the blow-up claim can
+be interpreted. Cao and Chi's [arXiv:2609.10262](https://arxiv.org/abs/2609.10262)
+study smooth forces that generate classical breakdown from rest for a fixed
+viscosity and time horizon. They characterize density of such forces in an
+inherited time-integrated spatial `H^s` topology, with threshold `s < 1/2` on
+the three-dimensional torus. This is a statement about a set of forcing data
+for the already constructed forced problem; it is not a probability law on
+physical fluids, evidence of generic unforced blow-up, or a model of molecular
+alignment.
+
+The [Positive Defect Problem](https://arxiv.org/abs/2609.23868) sets out
+necessary conditions and admissibility criteria for a *programmatic search*
+for unforced Navier–Stokes blow-up. It links a positive defect target to a
+time-averaged lower bound on Littlewood–Paley energy flux and explains why no
+finite computation alone certifies the needed Galerkin-uniform statement.
+This is a research framework, not a reported unforced blow-up construction.
+It gives us a useful negative control for benchmark conclusions: finite-grid
+solver behavior, even with a striking local peak, cannot certify continuum
+breakdown or identify a physical singularity.
+
+These papers are independent mathematical follow-ups, not peer review of
+OpenAI's Lean development and not validation of the CFD runs in this repository.
+
 ## What the physical description does and does not support
 
 OpenAI's paper describes the constructed **continuum velocity field** as an axisymmetric vortex: near the core, flow spirals inward and moves axially outward on either side of a dividing layer. The radial scale is `ell_r ~ tau^(1/2)` while the axial scale is `ell_z ~ tau^(1/2-h)`, so `ell_r/ell_z ~ tau^h -> 0`; the core becomes a slender column as the singular time is approached. This gives a real, mathematically specified analogue of axial stretching and increasingly concentrated structure.
