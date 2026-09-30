@@ -621,3 +621,12 @@ factor. A unit-test subprocess runs the verifier in a temporary directory and
 asserts its equations, nonzero viscous term, closed-form shear limit, alignment
 limit, and deliberate sign-error controls. This is regression protection for
 the stated analytical scope, not independent formal verification.
+
+## Revision 37 — verify variational equation and axis alignment limit
+
+The final tautological axis-rate check was replaced by a direct symbolic
+residual of `F' - (grad u)F` and the limit of the squared transverse-to-axial
+ratio for arbitrary initial displacement with nonzero axial component. The
+automated test asserts both axis and off-axis limits are derived as zero. This
+closes a verification-quality gap in the analytic counterexample artifact; the
+result remains confined to the classical idealized Burgers vortex.

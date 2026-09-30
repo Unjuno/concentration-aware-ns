@@ -55,9 +55,20 @@ def main():
         [transverse_scale*sp.sin(angle), transverse_scale*sp.cos(angle), 0],
         [0, 0, sp.exp(2*gamma*t)],
     ])
-    # The xy block is exp(-gamma*t) times a rotation; the full determinant is 1.
-    determinant = sp.simplify(sp.exp(-2*gamma*t)*sp.exp(2*gamma*t))
+    axis_gradient = sp.Matrix([
+        [-gamma, -axis_swirl_rate, 0],
+        [axis_swirl_rate, -gamma, 0],
+        [0, 0, 2*gamma],
+    ])
+    axis_variational_residual = sp.simplify(
+        axis_deformation.diff(t) - axis_gradient*axis_deformation)
+    determinant = sp.simplify(axis_deformation.det())
     alignment_factor = sp.exp(-3*gamma*t)
+    delta_x0, delta_y0, delta_z_axis0 = sp.symbols(
+        'delta_x0 delta_y0 delta_z_axis0', real=True)
+    axis_ratio_squared = sp.simplify(
+        sp.exp(-6*gamma*t)*(delta_x0**2 + delta_y0**2)/delta_z_axis0**2)
+    axis_alignment_limit = sp.simplify(sp.limit(axis_ratio_squared, t, sp.oo))
 
     # Exact material flow map in cylindrical coordinates for an off-axis
     # particle, then differentiate it with respect to its initial radius.
@@ -101,12 +112,11 @@ def main():
             residuals['azimuthal_advection_minus_diffusion'] == 0,
         'azimuthal_viscous_term_nonzero_for_positive_r':
             residuals['azimuthal_advection'] != 0,
-        'viscous_advection_balance_is_derived':
-            residuals['azimuthal_advection_minus_diffusion'] == 0,
         'axis_swirling_rate': sp.simplify(
             axis_swirl_rate - circulation*gamma/(4*sp.pi*nu)) == 0,
         'axis_deformation_volume_preserved': determinant == 1,
-        'axis_directional_alignment_rate': alignment_factor == sp.exp(-3*gamma*t),
+        'axis_variational_equation': axis_variational_residual == sp.zeros(3, 3),
+        'axis_transverse_to_axial_ratio_tends_to_zero': axis_alignment_limit == 0,
         'off_axis_flow_map_volume_preserved': off_axis_determinant == 1,
         'off_axis_shear_has_finite_limit': not shear_limit.has(
             sp.oo, -sp.oo, sp.zoo, sp.nan),
@@ -135,7 +145,10 @@ def main():
         'identities': identities,
         'residuals': {name: str(value) for name, value in residuals.items()},
         'axis_deformation_matrix': str(axis_deformation),
+        'axis_velocity_gradient': str(axis_gradient),
+        'axis_variational_residual': str(axis_variational_residual),
         'axis_transverse_to_axial_factor': str(alignment_factor),
+        'axis_transverse_to_axial_ratio_squared_limit': str(axis_alignment_limit),
         'off_axis_radius_trajectory': str(radius_t),
         'off_axis_radial_derivative_of_rotation': str(
             theta_initial_radius_derivative),
