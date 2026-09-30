@@ -224,3 +224,27 @@ crossover scale. This explains why the tested global hybrid did not improve
 the budget-matched result. The sweep is preserved under
 `local_method_crossover_sweep` in the JSON and must not be generalized to other
 points or treated as a threshold.
+
+## Uniform 16-per-axis full-domain cover
+
+Added a standalone reproduction script for a 16-by-16-by-16 cover of the
+outward-rounded periodic cube. For the same frozen `n64-nt17` checkpoint used
+above, all 4,096 cells receive centered Arb enclosures at 30 decimal digits.
+The maximum cell Frobenius upper falls from `235.32` at 8 divisions per axis
+to `52.13` at 16 divisions, with 67.2 seconds wall time on this recorded
+machine. The maximum autograd error sample over the 4,096 cell centers is
+`0.22006`; every center sample fell inside its component enclosure within the
+`1e-8` float comparison tolerance. The upper is still about 237 times the
+center-sample peak and does not certify a useful peak to the benchmark's
+unregistered PhysicsNeMo threshold. The output is
+[`../evidence/tests/physicsnemo-centered-domain-cover-n16.json`](../evidence/tests/physicsnemo-centered-domain-cover-n16.json); rerun with:
+
+```sh
+PYTHONPATH=.:work/physicsnemo-source \
+  work/physicsnemo-env/bin/python tools/audit_physicsnemo_centered_domain_cover.py \
+  --divisions 16 --dps 30
+```
+
+The saved checkpoint/archive hashes match the earlier Arb audit. This cover is
+finite and whole-domain under the Arb contract, but neither its center checks
+nor this implementation independently prove the interval library's guarantees.

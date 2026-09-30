@@ -1266,3 +1266,20 @@ Taylor form. Exact values are stored in
 `evidence/tests/physicsnemo-arb-centered-interval-probe-2026-10-01.json` and
 discussed in the associated report. No accuracy threshold or physical
 interpretation is inferred. The benchmark goal remains active.
+
+## Revision 75 — 16-per-axis full-domain centered cover
+
+Added `tools/audit_physicsnemo_centered_domain_cover.py` and a hash-linked
+record for a uniform 16^3 cover of the entire outward-rounded periodic cube
+for the frozen `n64-nt17` checkpoint. At 30 decimal digits, the maximum cell
+Frobenius upper is 52.134 across 4,096 cells, down from 235.317 at 8^3; the
+recorded run took 67.2 seconds. The maximum error-Jacobian norm at the 4,096
+cell centers is 0.22006, and all point samples fell inside their component
+intervals within `1e-8` floating tolerance. This is a complete tiled interval
+upper under Arb's arithmetic contract, but remains about 237 times the center
+sample maximum and is not a useful certified peak relative to any registered
+PhysicsNeMo criterion (none exists). Center checks do not prove the interval
+method or library. Full result, hashes, environment, and limitations are in
+`evidence/tests/physicsnemo-centered-domain-cover-n16.json`; reproduction
+command is in the associated report. Quality remains `UNCERTAIN`; the overall
+goal remains active.
