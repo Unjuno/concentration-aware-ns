@@ -1,0 +1,126 @@
+{
+  "captured_at_utc": "2026-09-30T11:03:16Z",
+  "status": "COMPLETE",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "base_run_manifest": "evidence/of13-high-gradient-v2/manifest.json",
+  "base_run_manifest_sha256": "9dc26bad1e249669fa18a3a430712edf8df83445238c1cb846fb4b262debb89c",
+  "expected_cases": [
+    "n16-dt0.001",
+    "n32-dt0.001",
+    "n64-dt0.001",
+    "n128-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "completed_cases": [
+    {
+      "case": "n16-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "archive": "n16-dt0.001.tar.gz",
+      "archive_sha256": "a500dd1d3946f7e468d33257d3b866550af55db678749c6b4f7cb6f8be35ee62"
+    },
+    {
+      "case": "n32-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "archive": "n32-dt0.001.tar.gz",
+      "archive_sha256": "94e684e5d698862021be002eaef8c9bdef4387f9b582831e8edc931a4146c70d"
+    },
+    {
+      "case": "n64-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "archive": "n64-dt0.001.tar.gz",
+      "archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e"
+    },
+    {
+      "case": "n128-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "archive": "n128-dt0.001.tar.gz (reconstructed from zstd package)",
+      "archive_sha256": "595d27fe2e0ca061e727624444406419870bff8d06d11a38f911fdcebd19e0f0"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "source_run": "2026-09-30 temporal addendum",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 100,
+      "converged_steps": 100,
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+      "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+      "source_commit": "721b7cda5c58dd095d16792a459d69ef1aebce6c",
+      "log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "source_run": "2026-09-30 temporal addendum",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 200,
+      "converged_steps": 200,
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.00025.tar.gz",
+      "archive_sha256": "705be3ab67347eedeb4dad548d4caa3a796b13ea7cd8cca1a70125f7452825c6",
+      "source_commit": "b04e003a71e9d09a99310ecabc0da6005d3f5764",
+      "log_sha256": "2776137a1b38d01ac854fc7153426131374268cf770d750be844c2fcc525f4f7"
+    }
+  ],
+  "incomplete_cases": [],
+  "historical_partial_attempts": [
+    {
+      "case": "n64-dt0.0005",
+      "observed_steps": 36,
+      "observed_converged_steps": 35,
+      "superseded_by": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+      "original_partial_preserved": true
+    }
+  ],
+  "matrix_reproduction": {
+    "status": "NOT_OBSERVED",
+    "adequately_resolved_grid_counts": [
+      64,
+      128
+    ],
+    "rule": "REPRODUCED only if both listed fine-grid cases pass standard acceptance and fail local quality; NOT_OBSERVED only if both pass both gates.",
+    "scope": "A persistent discrepancy under this frozen MMS matrix; not proof of a general solver defect or physical singularity."
+  },
+  "amr_execution": {
+    "status": "COMPLETED_SEPARATE_PILOT",
+    "manifest": "evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json",
+    "remap_control_manifest": "evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json",
+    "amr_cases": 3,
+    "fixed_final_mesh_controls": 2,
+    "quality": "UNCERTAIN",
+    "raw_archives_verified": "evidence/tests/openfoam-amr-archive-integrity-2026-09-30.json",
+    "scope": "Separate n=16 AMR/remap pilot; not part of six uniform-grid matrix and not a validated local-quality comparison."
+  },
+  "scope": "Cross-run index. It retains the original base manifest unchanged, joins two validated temporal addenda by protocol hash, source commit, image ID and archive hash, records runtime build provenance and points to a separately verified AMR/remap pilot with archive integrity records.",
+  "runtime_provenance": {
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "ubuntu_base_image": "ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517",
+    "openfoam_foundation_package": "openfoam13 20260624 arm64",
+    "openfoam_deb_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+    "dockerfile": {
+      "path": "runtime/openfoam13/Dockerfile",
+      "sha256": "838341d15826c96f64a66f30666b412f21672ed5b7d9fa8112f963d34cfdc3d1"
+    },
+    "build_log": {
+      "path": "evidence/environment/openfoam-build.log",
+      "sha256": "c2c367ad7934607239e8fe15e3dc6682b0b506f6573a48eff9859fb53f0685a1"
+    },
+    "installed_package_inventory": {
+      "path": "evidence/environment/runtime-packages.txt",
+      "sha256": "5d49d34475cb8a55d605f78892160d512534881b32f79dfbd8580a945ccb9d23"
+    },
+    "apt_snapshot_pinned": false,
+    "source_to_binary_equivalence": "NOT_ESTABLISHED",
+    "interpretation": "Exact historical runtime is identified by image ID and package inventory. Rebuilding may resolve different Ubuntu dependencies; a matching OpenFOAM package version alone does not prove a matching image."
+  }
+}

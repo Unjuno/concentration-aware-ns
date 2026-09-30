@@ -1,0 +1,83 @@
+{
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "run_environment": {
+    "source_commit": "265611cd160a7e139b6950c918e6dc1d90056d97",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "docker_cli": "/Users/taka/.orbstack/bin/docker",
+    "docker_cli_resolved": "/Applications/OrbStack.app/Contents/MacOS/xbin/docker-tools",
+    "docker_cli_sha256": "70d5a06adf388bd09b652f47ddc9ca31663a3e5353d24188bdb0054b3014ab3e",
+    "docker_cli_version": "Docker version 29.4.0, build 9d7ad9f",
+    "docker_context": "orbstack",
+    "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+    "scope": "OpenFOAM Foundation 13 high-gradient AMR budget sweep"
+  },
+  "source_pin": "OpenFOAM Foundation 13; source-budget interpretation at commit 18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "cases": [
+    {
+      "case": "cap4096",
+      "amr_events": [
+        "SHA256 constant/dynamicMeshDict 5c997aec1db326cfaea92ae1b95ded585c7b01e0ae6745fe6dff2a92f0f78381",
+        "SHA256 constant/fvModels 906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+        "SHA256 command.json 3d4f079e7d3b1f4d258a51a084e219bd29eaf904bb13816cfa4732aea11487b8",
+        "SHA256 input-hashes.json 23e0ff443b53ec5b637b6faed88d754ddde6813e1e94ebcaa86a723ec35498a8"
+      ],
+      "note": "No cellLevel history is written per time; final levels do not identify transitions or candidates rejected by maxCells.",
+      "refinement_events": [],
+      "interpretation": "All 24 adaptation checks had zero candidates available; the maxCells budget equaled the initial mesh size."
+    },
+    {
+      "case": "cap5000",
+      "amr_events": [
+        "SHA256 constant/dynamicMeshDict 642db33b9e8ba8e88b825fe5ee3716e583d193916703817176cbc59174a33fc1",
+        "SHA256 constant/fvModels 906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+        "SHA256 command.json ddeef2dd847d332e02f30f3e1d3b6b6e8243214ce2e64fa34090f61f188e4f33",
+        "SHA256 input-hashes.json adf617b9ab4d697755437b4fdfa938e3e3da768f40b4e5dc19e877b92cf30684"
+      ],
+      "note": "No cellLevel history is written per time; final levels do not identify transitions or candidates rejected by maxCells.",
+      "refinement_events": [
+        {
+          "selected_candidates": 1792,
+          "available_cells": 4096,
+          "mesh_change": "Refined from 4096 to 16640 cells."
+        }
+      ],
+      "interpretation": "The first check selected 1792/4096 and created 16640 cells. Subsequent checks repeatedly reported zero split points; budget truncation was not observed."
+    },
+    {
+      "case": "cap100000",
+      "amr_events": [
+        "SHA256 constant/dynamicMeshDict 1c355c2320b5225dfcc9662030767bc1ad61789f2742514596ed82a65dccea96",
+        "SHA256 constant/fvModels 906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+        "SHA256 command.json aef927730d303044eb001399a50c6bf9c69d2ba0eaa21680d2ce4294b893b6e3",
+        "SHA256 input-hashes.json 6440bacce5f8a795ac754349c08e8ac69b21d0345bf113dffbb9c2e2b3bf3bc8"
+      ],
+      "note": "No cellLevel history is written per time; final levels do not identify transitions or candidates rejected by maxCells.",
+      "refinement_events": [
+        {
+          "selected_candidates": 1792,
+          "available_cells": 4096,
+          "mesh_change": "Refined from 4096 to 16640 cells."
+        },
+        {
+          "selected_candidates": 12416,
+          "available_cells": 16640,
+          "mesh_change": "Refined from 16640 to 103552 cells."
+        }
+      ],
+      "refinement_budget_arithmetic": {
+        "cap": 100000,
+        "current_cells_before_second_refinement": 16640,
+        "nominal_candidate_allowance_floor((cap-current)/7)": 11908,
+        "selected_level_group_candidates": 12416,
+        "excess_candidates_over_allowance": 508,
+        "transient_cells_after_refinement": 103552,
+        "unrefinement_split_points_selected": 256,
+        "final_cells_after_unrefinement": 101760
+      },
+      "interpretation": "At the second adaptation check, 12416/16640 candidates were selected, versus a nominal allowance of 11908. Source selection appends candidates by complete refinement-level groups and checks the allowance only after each group, so the log count is consistent with whole-level overshoot. The consistency-refinement output count equals the candidate count, giving no evidence that 2:1 consistency added cells in this event. The subsequent 256 split points are selected for unrefinement; the mesh falls to 101760. This is approximate maxCells behavior, not a reproduced defect."
+    }
+  ],
+  "source_audit": "reports/openfoam-amr-source-budget-audit-2026-09-28.md",
+  "conclusion": "Per-check selected counts are recorded. The cap100000 event exceeds the nominal candidate allowance because selection is truncated only after each full refinement-level group; 2:1 consistency does not increase the logged candidate count in this event. The subsequent 256 points are unrefined and final count is 101760. This is consistent with the documented approximate maxCells behavior; no defect issue is supported. cap5000 did not exercise a second refinement under its cap."
+}

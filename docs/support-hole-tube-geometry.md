@@ -143,13 +143,16 @@ existing periodic spatial and late-time local-agreement lemmas preserve it.
 This makes the source-level transfer plausible without a uniform
 stage-dependent germ radius.
 
-The aggregate field-equality step is now formalized and compiled in
-`verification/SupportHoleAssembly.lean` against the pinned source. Its theorem
-works on the actual open exterior and keeps the zeroth-cutoff plateau and
-outer-localization assumptions explicit. The moving-tube inequalities have
-not yet been encoded and connected to those hypotheses. Thus the field
-transfer is checked conditionally, while the proposed complete cusp tube
-remains a hand-derived geometric consequence rather than a Lean theorem.
+The aggregate field-equality step is formalized in
+`verification/SupportHoleAssembly.lean` against the pinned source. The theorem
+`selected_velocity_germ_on_cusp_tube` derives the moving-ball inequalities,
+includes the full ball in the actual physical exterior, supplies the cutoff
+and localization plateaus, and obtains eventual local-germ equality
+throughout the ball for every time in an existential positive terminal
+interval. The required center-continuity estimate is also formalized. The
+strict geometric margin and coefficient conditions are satisfiable for every
+fixed `eta∈(-1,1)`, as shown by `exists_admissible_cusp_radius`. The terminal
+interval is still existential and not numerically bounded.
 
 The extension now also contains
 `selected_inner_exterior_velocity_germ_of_radial_hole`: given a point in the
@@ -211,3 +214,58 @@ The selected axis trajectory identity used here is in
 and its Lean extension `verification/AxisForceSign.lean`; that material-flow
 argument is separately classified as a hand-derived consequence, not an
 upstream theorem.
+
+## 2026-09-30: axial eta-margin lemma
+
+The extension now proves `coordinateEta_lipschitz_z` from the source's exact
+`coordinateEta_hasDerivAt_z` formula and the lower bound
+`scalarSlope = 1-a*eta^2 >= 1-a`. At fixed positive `tau`, this yields
+
+    |eta(tau,z)-eta(tau,z')| <= |z-z'| / ((1-a)*tau^((1-a)/2)).
+
+`coordinateEta_axis_center` derives the exact normalized center directly from
+the source forward map, and `coordinateEta_margin_of_axial_radius` combines the
+two results. Its hypothesis is an axial distance bound scaled by
+`(1-2h)*tau^((1-2h)/2)`; its conclusion is the requested `|eta| <= |eta0|+delta`.
+This is only a one-dimensional, fixed-time lemma. It remains to prove the
+radius bound for every point in the full Cartesian cusp ball, include any
+time-dependent center displacement, establish the transverse q/radius
+sublevel, and place the entire ball in each cutoff and localization plateau.
+Consequently the all-tube assembled-field transfer remains conditional.
+
+The follow-up lemma `coordinateEta_margin_of_sqrt_axial_radius` proves that,
+for `0<tau<=1`, an axial distance at most `c*sqrt(tau)` gives the margin
+`|eta| <= |eta0| + c/(1-2h)`. The scaling follows from
+`D=(1-2h)/2`, `D+h=1/2`, and `tau^h<=1`. It does not establish that a full
+three-dimensional Euclidean ball meets the axial-distance premise.
+
+### 2026-09-30: Euclidean-ball to eta-margin theorem
+
+`coordinateEta_margin_of_euclidean_ball` now derives the axial-distance
+hypothesis from a genuine Euclidean norm bound around the source trajectory's
+axis center, using the coordinate projection bound in `EuclideanSpace`. Thus,
+for every fixed `0<tau<=1`, every point in the full spatial ball of radius
+`c*sqrt(tau)` has `|eta| <= |eta0| + c/(1-2h)`. This closes the ball-to-axial
+step without a simulation or a continuum linearization assumption.
+
+The companion `transverse_radius_le_of_euclidean_ball` proves that the physical
+transverse radius at every point in that ball is at most
+`sqrt(2)*c*sqrt(tau)`. The factor `sqrt(2)` is a conservative consequence of
+bounding the two projected coordinates separately; it can be absorbed by
+choosing the tube coefficient smaller. This supplies the transverse scale
+needed to compare with the active annulus, but the complete active-annulus and
+exterior inequalities had not yet been composed at this snapshot. The later
+`SupportHoleAssembly.lean` extension composes them into the conditional
+selected-field cusp-ball germ and full-spacetime Hessian transfer; the October
+1 `SpatialHessianTransfer.lean` further restricts that Hessian to fixed-time
+spatial directions. Their current scope and proof records are summarized in
+[`packet-constant-dependencies.md`](packet-constant-dependencies.md).
+
+The theorem compiles against the pinned OpenAI source and Lean cache; its
+axioms are only `propext`, `Classical.choice`, and `Quot.sound`. Reproducible
+command and source/log hashes are recorded in
+`evidence/openai-lean-2026-09-30-spatial-ball-transverse/manifest.json`. It does not
+yet establish exterior-sublevel, cutoff, localization, or time-window
+conditions for the assembled-field theorem. Therefore it is not
+the promised whole cusp-tube field-equality result, and it adds no particle or
+molecular conclusion.

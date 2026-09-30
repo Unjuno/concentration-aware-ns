@@ -1,8 +1,22 @@
-# Independent proof-check environment — preparation in progress
+# Lean proof-build and independent-check environment
 
-The pinned project's ComparatorChallenges/README.md calls for mathlib cache,
-Comparator, landrun, lean4export and nanoda_bin. No successful proof build or
-independent check is claimed yet. Preparation is isolated under work/lean-verification.
+The pinned upstream project builds successfully with Lean 4.34.0-rc2; the
+recorded full build completed 11,424 jobs. The selected-field force-ratio
+extension also passed an independent nanoda check over 85,455 declarations.
+These results are separate: the full ComparatorChallenges challenge has not
+passed an independent Comparator run. The SupportHoleAssembly cusp-Hessian
+extension also passed an independent nanoda check over 85,487 declarations;
+nanoda reported zero typechecker errors and one pretty-printer error
+(`Unable to print axioms`), while the separate Lean audit printed and checked
+the permitted axioms for all ten selected declarations. Run hashes and the
+reproduction command are in
+`evidence/lean-verification/support-hole-nanoda-2026-10-01.json` and
+`check_support_hole_nanoda.sh`. The 906 MiB exported dependency closure is
+retained locally under `work/`, identified by SHA256, rather than committed.
+A fresh run uses `sh runtime/lean-verification/check_support_hole_nanoda.sh
+work/support-hole-nanoda-<unique-run-id>`; it refuses to overwrite an existing
+output path. A clean rebuild additionally requires the pinned source and
+dependencies.
 
 Source: openai/NavierStokesAndEuler at 8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538.
 Source tar SHA256: e44f67a2bc3c133c14856d73b697f77344b030e3fae2f798254b64dcefbbb772.
@@ -51,16 +65,18 @@ Upstream Cache/Requests.lean runs the downstream manifest comparison only outsid
 the mathlib root; Cache/IO.lean identifies that root by its Mathlib directory.
 This invocation requires no changes to the cache implementation or Lean sources.
 Retrieval and decompression of all 8,747 files completed with exit code zero;
-cache-result.json records the log hash. Project type checking and independent
-Comparator/kernel checking remain separate outstanding steps. An origin warning is expected for
-source archives; the tool reports its official mathlib4 fallback explicitly.
+cache-result.json records the log hash. This cache run alone does not type-check
+the project or independently check its proofs. An origin warning is expected
+for source archives; the tool reports its official mathlib4 fallback explicitly.
 
 The first project proof build targets `+NavierStokes.ComparatorSolution`, which
 imports both R3 and periodic theorem adapters and prints their axioms. It runs
 under the same Docker invocation above with `--cpus=2 --memory=10g`, container
 name `cans-lean-ns-build`, and final command
 `lake build +NavierStokes.ComparatorSolution`. Its log is retained separately
-as navier-stokes-build.log. A started build is not a successful check.
+as `evidence/lean-verification/navier-stokes-build.log`; the recorded full
+build completed successfully with 11,424 jobs. This is Lean elaboration, not an
+independent Comparator check.
 
 ## Independent checker preparation
 
@@ -87,6 +103,22 @@ the development fake-landrun wrapper to claim sandboxed validation.
 The nanoda release binary built successfully using `cargo build --release
 --locked -j 2` in the digest-pinned Rust image recorded in nanoda-build.json.
 This is tool compilation only, not a proof check.
+
+### Independent check of the analytic force-ratio extension
+
+`sh runtime/lean-verification/check_axis_force_nanoda.sh` recompiles the
+current `verification/AxisForceSign.lean` in the pinned Lean environment,
+exports the transitive proof closure for the actual-field ratio and local
+pressure-moment threshold, and checks it with nanoda. The runner pins both the
+extension source hash and checker image ID, disables networking, runs as the
+unprivileged UID, and applies the tested socket-control launcher. It writes
+the generated NDJSON, checker logs and a hash manifest into a fresh `work/`
+directory (about 1 GB for the current proof closure); it refuses to overwrite
+an existing result. The independent check validates proof terms, but it does
+not establish `Z>0` for the arbitrary `FinalSlowBase.actualProfile` choice or
+any molecular or material-viscosity conclusion. The captured run and exact
+artifact hashes are indexed at
+`evidence/lean-verification/axis-force-nanoda-2026-09-30.json`.
 
 The first real landrun filesystem control failed before executing either test:
 this pinned landrun requests Landlock ABI v9, but the current kernel provides

@@ -51,3 +51,30 @@ saved archives do not include `log.foamRun`, so they cannot fill this gap.
 
 This source behavior is already summarized in `docs/audit.md` as an approximate
 `maxCells` limit. No upstream issue is warranted from this source audit alone.
+
+## High-gradient v2 event replay, 2026-09-30
+
+The completed cap=100000 run now preserves per-event logs in
+`evidence/of13-high-gradient-amr-event-audit-2026-09-30.json`. At its second
+refinement check, current cells were 16,640, so the source allowance was
+`floor((100000 - 16640)/7) = 11,908` candidate cells. The log says 12,416
+cells were selected and the mesh grew to 103,552. In the pinned source, the
+budget-limited branch appends candidates one complete refinement level at a
+time and tests the allowance after appending that level
+([selection loop, pinned source lines 900–940](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C#L900-L940)).
+The selected excess is 508 cells, consistent with the whole-level grouping.
+The subsequent `consistentRefinement` output count is the same 12,416 shown by
+the log, so this event provides no evidence of a 2:1 cascade adding more
+candidates.
+
+The later `Selected 256 split points` message refers to points selected for
+**unrefinement**, not additional refinement. Source selects split points whose
+adjacent cells are no longer marked, then calls consistent unrefinement
+([lines 944–994](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C#L944-L994)).
+The next log line confirms the reduction from 103,552 to 101,760 cells. The
+final count remains 1,760 above the configured value, while the transient
+overshoot is explained by the level-group selection granularity in this
+observed case. This is consistent with the pinned approximate-cap behavior;
+it does not support an upstream defect claim. Exact sensor-eligible candidates
+not selected by the level-group branch remain unobserved because the code does
+not log their identities/count separately.

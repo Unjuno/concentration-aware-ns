@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball eta-margin and transverse-radius bounds for the support-hole geometry.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "source_sha256": "cfe046b00dd382034d76a6939c034a8b2607a9ae28b9f7977ede78b695b3a145",
+  "lean_log_sha256": "c1feed7b42da8df13e63a8aca1779127739448251fdc2d78589c834c2bd2eaf5",
+  "declarations": [
+    "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "ConcentrationAware.transverse_radius_le_of_euclidean_ball"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "This proves fixed-time geometric implications from a Euclidean spatial-ball bound to a similarity-coordinate margin and a transverse-radius bound.",
+    "It does not prove the ball remains in the support-hole exterior, all cutoff/localization plateaus, or an endpoint-wide tube.",
+    "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "captured_at_utc": "2026-09-30T19:52:04Z",
+  "scope": "Read-only official GitHub API refresh of release heads, open tracking items, and overlap with this benchmark's pinned implementations.",
+  "targets": {
+    "openfoam_foundation_13": {
+      "repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+      "head_commit": {
+        "sha": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "committed_at": "2026-06-23T20:54:34Z",
+        "subject": "PVReaders: Update system ParaView configuration for Ubuntu 26.04"
+      },
+      "open_issue_count": 4,
+      "relevant_open_items_reviewed": [
+        {
+          "number": 2,
+          "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases",
+          "updated_at": "2025-08-29T19:28:04Z",
+          "relevance": "Two-phase/version comparison; not the single-phase periodic MMS or AMR path exercised here."
+        },
+        {
+          "number": 5,
+          "title": "Documentation does not reflect the source code",
+          "updated_at": "2026-01-12T10:13:56Z",
+          "relevance": "Documentation-specific; does not match the reproduced benchmark observations."
+        }
+      ],
+      "other_open_items": [
+        {"number": 3, "title": "Migration to organization"},
+        {"number": 4, "title": "Installation on Almalinux"}
+      ],
+      "other_open_pull_request": {"number": 7, "title": "cambiando README"},
+      "api_license_metadata": "NOASSERTION",
+      "audited_package_source_license": "GPL-3.0-or-later headers, per pinned package/source audit",
+      "disposition": "No matching new implementation finding; no upstream report."
+    },
+    "su2": {
+      "repository": "https://github.com/su2code/SU2",
+      "latest_release": {"tag": "v8.5.0", "published_at": "2026-04-27T20:33:19Z"},
+      "release_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+      "benchmark_pinned_commit_matches_release": true,
+      "master_commit": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "existing_issue": {
+        "number": 2353,
+        "state": "open",
+        "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+        "updated_at": "2026-09-30T17:05:37Z",
+        "url": "https://github.com/su2code/SU2/issues/2353"
+      },
+      "existing_discussion": "https://github.com/su2code/SU2/discussions/2890",
+      "disposition": "The time-source/restart observations remain attached to existing upstream tracking; no duplicate report."
+    },
+    "physicsnemo": {
+      "repository": "https://github.com/NVIDIA/physicsnemo",
+      "benchmark_pinned_commit": "1b961314e42a0625502ba1592d25f706f1e02a24",
+      "latest_release": {
+        "tag": "v2.2.2",
+        "published_at": "2026-09-11T17:33:49Z",
+        "commit": "072465a1a56817f180f64dee8a4069a1612b2d9e"
+      },
+      "release_delta_from_benchmark_pin": {
+        "ahead_by": 1,
+        "changed_files": [
+          "physicsnemo/__init__.py",
+          "physicsnemo/core/version_check.py",
+          "test/core/test_version_check.py"
+        ],
+        "scope": "Package version and installation-hint name/tests; no CFD model, PDE residual, or metric implementation change."
+      },
+      "current_main": {
+        "commit": "536553acf5b03b68ec7283975ba7276d60056a36",
+        "committed_at": "2026-09-30T14:15:08Z",
+        "power_spectrum_git_blob_sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "pinned_power_spectrum_git_blob_sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "source_unchanged_at_current_main": true
+      },
+      "existing_issue": {
+        "number": 2007,
+        "state": "open",
+        "title": "power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+        "updated_at": "2026-09-28T00:41:11Z",
+        "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+      },
+      "existing_fix_pr": {
+        "number": 2008,
+        "state": "open",
+        "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+        "ahead_of_current_main_by": 2,
+        "behind_current_main_by": 10,
+        "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+      },
+      "disposition": "The known odd-width spectrum finding still reproduces at current main and is already tracked with an existing focused fix PR. The benchmark's even grids are unaffected; no duplicate issue."
+    }
+  },
+  "limitations": [
+    "This is release and issue-status inventory, not a new solver execution or source-wide audit.",
+    "OpenFOAM repository API license metadata is NOASSERTION; the package/source header audit is recorded separately.",
+    "PhysicsNeMo v2.2.2's installation-hint correction does not resolve sampled-peak, optimizer-convergence, or acceptance-threshold limitations in this benchmark."
+  ],
+  "reproduction_queries": [
+    "gh api 'repos/OpenFOAM/OpenFOAM-13/commits?per_page=1'",
+    "gh api 'repos/OpenFOAM/OpenFOAM-13/issues?state=open&per_page=20'",
+    "gh api repos/su2code/SU2/releases/latest",
+    "gh api repos/su2code/SU2/issues/2353",
+    "gh api repos/NVIDIA/physicsnemo/releases/latest",
+    "gh api repos/NVIDIA/physicsnemo/commits/main",
+    "gh api repos/NVIDIA/physicsnemo/contents/physicsnemo/metrics/general/power_spectrum.py?ref=main",
+    "gh api repos/NVIDIA/physicsnemo/issues/2007",
+    "gh api repos/NVIDIA/physicsnemo/pulls/2008"
+  ]
+}

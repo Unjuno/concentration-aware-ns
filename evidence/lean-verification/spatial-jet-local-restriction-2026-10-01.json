@@ -1,0 +1,27 @@
+{
+  "status": "LEAN_ELABORATION_PASS",
+  "captured_at_utc": "2026-09-30T16:53:54.410040+00:00",
+  "scope": "A generic local C^m theorem: at any spacetime point where u is ContDiffAt, the norm of the fixed-time spatial iterated Frechet derivative is bounded by the full spacetime iterated derivative norm. The proof uses the norm-one spatial embedding and local ContDiffOn reduction.",
+  "source": "verification/SpatialJetRestriction.lean",
+  "source_sha256": "efa1febe8ac491129ff8bc300ff28e2b65ac3d67d7a80a5274547ee0e643c57a",
+  "declaration": "ConcentrationAware.spatial_jet_norm_le_spacetime_jet_norm_at",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "process_exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "command_scope": {
+    "execution": "lake env lean /extension/SpatialJetRestriction.lean",
+    "container_user": "501:20",
+    "network": "disabled",
+    "cpu_limit": 2,
+    "memory_limit": "6g",
+    "dependency_volume": "cans-lean-verification (read-only)",
+    "container_image": "concentration-aware-ns:checker"
+  },
+  "limitations": [
+    "No #print axioms audit was run for this new helper in this invocation.",
+    "This generic local-smoothness inequality has not yet been composed in a compiled theorem with the selected cusp-ball Hessian transfer.",
+    "It does not formalize the classical nonlinear packet comparison or imply any fixed-size, molecular, phase-transition, or viscosity consequence."
+  ]
+}

@@ -2,16 +2,28 @@
 
 Current result: the Lean extension checks the actual assembled field's axial
 viscous-force/material-acceleration limit. Strict negativity is conditional on
-the stated root interval/equation and PressureData. The pressure condition has
-not been discharged for FinalSlowBase.actualProfile; see the final pressure
-retention audit. Consequently this document does not establish an unconditional
-negative-limit theorem for the pinned selected profile.
+the stated root interval/equation and local pressure-moment condition `Z>0`.
+The older theorem `actual_ratio_has_strictly_negative_limit` states the
+sufficient global `PressureData` hypothesis; the sharper
+`actual_ratio_negative_of_local_Z` theorem uses only the local sign. The exact
+moment threshold equivalent to `Z>0` is formalized, but neither condition has
+been discharged for `FinalSlowBase.actualProfile`. See the final pressure
+retention audit. Thus the candidate-field implication is checked, while an
+unconditional negative-limit claim for the pinned selected profile is not.
 
 The infinitesimal material-separation alignment calculation below remains a
 hand-derived extension with symbolic checks, not a fully formalized deformation
 theorem. It establishes neither molecular orientation nor a phase transition.
 Earlier sections record intermediate results and outstanding work at that time;
-the current summary and final audits supersede their status descriptions.
+the current summary and final audits supersede their status descriptions. In
+particular, the later Lean chain now combines the full physical axial Laplacian,
+the actual candidate material acceleration, and the selected slow-sum radial
+derivative limit. Conditional on `Z>0` at the root, the resulting axial ratio
+has a strictly negative, nonzero limit. This is evidence against the proposed
+inference that directional alignment alone makes viscous force negligible
+relative to material acceleration along this trajectory. It is not a claim
+about a constitutive viscosity change, pressure/forcing balance, or molecular
+alignment.
 
 Reproduce the symbolic algebra with SymPy 1.14.0 using
 `python -m tools.check_axis_force`; output is
@@ -22,6 +34,23 @@ the extension has not undergone the independent nanoda check used for the
 original upstream targets. No numerical integration is used here.
 
 Source pin and core assumptions are those of openai-core-deformation.md.
+
+## Current field-transfer status, 2026-09-30
+
+The moving-ball geometry and transfer through the actual activated periodic
+candidate are now formalized in
+`verification/SupportHoleAssembly.lean`. Under explicit admissible radius and
+eta-margin conditions (which are satisfiable for every fixed `eta∈(-1,1)`),
+the whole `c*sqrt(tau)` ball around the axis center has the
+`FinalSlowBase.velocity` local germ for every `tau` in an existential terminal
+interval. The pinned run is
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/manifest.json`.
+
+This closes the previous field-transfer gap for shrinking continuum balls. It
+does not machine-check the axis-center ODE or the deformation-matrix solution
+described below, does not give a finite-size packet bound, and says nothing
+about molecular orientation or constitutive-viscosity change. The conditional
+negative viscous-force/material-acceleration ratio remains a separate result.
 
 Let A=1/2+h, D=1/2-h, U(eta)=4eta+j, d=1-eta² and L=1-2h eta².
 NaturalAxisData.exists_unique_root gives a root eta_* in (-j/4,-j/5) of
@@ -81,7 +110,14 @@ constant. Thus directional alignment does not itself imply improved full-positio
 certainty. Finite neighborhoods may leave the core; the linearization is not a
 uniform approximation for a fixed-size packet up to t=1.
 
-## Transfer to the actual assembled field remains open
+## Earlier field-transfer gap (superseded by the current Lean result)
+
+The following notes record intermediate work and are not the current status.
+The open-gap conclusion in this section was superseded by the
+`selected_velocity_germ_on_cusp_tube` result summarized above: the actual
+activated periodic field is now Lean-checked to have the selected
+`FinalSlowBase.velocity` germ throughout the shrinking ball under the stated
+conditions.
 
 GermCandidateAssembly.potentialSum_eq_base_germ establishes neighborhood equality
 of the potential sum to a base potential on the cutoff plateau, under the stated
@@ -101,7 +137,7 @@ GermCandidateAssembly.potentialSum_eq_base_germ and origin_eventually_base,
 MixedAxisPreservation.mixedDiagonal_eq_cutBase_germ,
 FinalSlowBase.velocity and leading_origin. All refer to the existing fixed pin.
 
-## Transfer advanced to FinalSlowBase (source-derived, not new Lean verification)
+## Axis-profile and deformation derivation (not fully Lean-verified)
 
 A further read of the actual coefficient assembly supplies more than the origin
 value: EntranceAlignedBase.modulated_leading_axis states axial_0(0,eta)=4eta+j
@@ -124,11 +160,11 @@ differ; do not transfer the natural-core formula for Omega without checking the
 swirl coefficients. Rotation does not alter the singular values in this axis
 Jacobian structure.
 
-This is a deductive extension of the inspected definitions and theorem statements,
-not a newly compiled Lean proof. It does not yet complete transfer through every
-actual mixed correction, cutoff, activation, periodicization, and chosen witness.
-In particular, the neighborhood and cutoff conditions along the moving trajectory
-must be checked in the actual assembled candidate, not just at the fixed origin.
+The axis-profile identity and the resulting ODE/Jacobian calculations remain a
+deductive extension of inspected definitions, not a compiled Lean deformation
+proof. The field-transfer portion has since been formalized for a whole shrinking
+ball, but the axis-center ODE and the deformation-matrix solution have not been
+machine-checked. The result still gives no finite-size packet or molecular claim.
 
 ## Terminal cutoff conditions along the moving trajectory
 
@@ -168,17 +204,14 @@ value. Together with the preceding time/cutoff bounds, this supplies a nonempty
 terminal interval for all these geometric conditions.
 
 ActualCandidateAssembly.Witness identifies its candidate velocity explicitly as
-activatedVelocity(periodicVelocity(ASum,BSum)). Its witness theorem invokes
-GermCandidateAssembly with initialPotential_axisZeroOn and
-positivePotential_axisZeroOn. Consequently the remaining bookkeeping is the
-initialized potential/direct sum's neighborhood equality to the FinalSlowBase
-along this axis curve and its selected-schedule hypotheses. The outer
-periodicization and time activation are now accounted for by named neighborhood
-equalities and explicit trajectory bounds. This source audit has not compiled a
-new theorem joining those facts into the final trajectory/deformation result.
+activatedVelocity(periodicVelocity(ASum,BSum)). The outer periodicization and
+time activation, selected sums, exterior hole, and shrinking-ball localization
+are now joined in the Lean theorem cited above. The remaining material-
+trajectory limitation is the unformalized axis-center derivative/ODE and its
+deformation-matrix solution, not the local field equality around that center.
 
 
-## Completed source-level neighborhood chain for the selected periodic witness
+## Earlier source-level account of the periodic-witness neighborhood chain
 
 The remaining initialized/direct-sum identities can be instantiated as follows.
 Here a is any SelectedSchedule in ActualCandidateAssembly.Witness for the fixed
@@ -208,13 +241,11 @@ above:
    preserves it for t>3/4. These are precisely the outer velocity operations
    in ActualCandidateAssembly.Witness.
 
-Thus, as a source-derived mathematical consequence, the selected witness's
-periodic candidate velocity agrees with FinalSlowBase on a spacetime neighborhood
-of each sufficiently late point of the curve. All finite local derivatives
-agree there. The trajectory is a material trajectory of that candidate on this
-terminal interval, and its infinitesimal deformation has the singular values
-derived above. The transverse rotation is that of FinalSlowBase, not assumed
-equal to the original natural core's rotation.
+The source-level account above motivated the later Lean composition and is
+superseded for the field-equality claim by the uniform cusp-ball theorem. The
+material-trajectory and deformation conclusions in this older account remain
+hand-derived until their ODE and variational equations are formalized; do not
+upgrade them to kernel-checked theorems based on the field-germ proof alone.
 
 An explicit sufficient upper bound on tau is the minimum of
 

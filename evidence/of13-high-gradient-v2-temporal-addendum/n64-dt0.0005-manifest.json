@@ -1,0 +1,22 @@
+{
+  "captured_at_utc": "2026-09-30T08:53:17.029903+00:00",
+  "matrix_status": "SINGLE_CASE_COMPLETE_NOT_FULL_MATRIX",
+  "case": "n64-dt0.0005",
+  "complete": true,
+  "time_steps": 100,
+  "converged_steps": 100,
+  "end_marker": true,
+  "endpoint_fields": [
+    "U",
+    "p",
+    "C",
+    "phi"
+  ],
+  "standard_acceptance": "PASS",
+  "local_quality": "PASS",
+  "archive": "n64-dt0.0005.tar.gz",
+  "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+  "source_log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce",
+  "run_environment": "run-environment.json",
+  "scope": "One frozen temporal row only; does not complete or independently validate the six-case matrix."
+}

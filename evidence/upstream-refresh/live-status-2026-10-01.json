@@ -1,0 +1,81 @@
+{
+  "captured_date": "2026-10-01",
+  "scope": "Read-only GitHub inventory refresh of the three benchmark solver targets and the OpenAI Lean source repository; issue relevance was assessed against the actual periodic MMS/autograd workload.",
+  "repositories": {
+    "OpenFOAM/OpenFOAM-13": {
+      "observed_default_branch": "master",
+      "observed_head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "open_issues_reviewed": [2, 3, 4, 5],
+      "open_pull_requests_reviewed": [7],
+      "benchmark_relevant_open_report": null,
+      "disposition": "No duplicate or new report: open issues and PR are unrelated to the exercised single-phase MMS and audited approximate AMR cap behavior."
+    },
+    "su2code/SU2": {
+      "observed_default_branch": "master",
+      "observed_head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "existing_benchmark_related_records": [
+        {
+          "kind": "discussion",
+          "number": 2890,
+          "url": "https://github.com/su2code/SU2/discussions/2890",
+          "scope": "First-order dual-time MMS callback time contract"
+        },
+        {
+          "kind": "issue",
+          "number": 2353,
+          "state": "OPEN",
+          "url": "https://github.com/su2code/SU2/issues/2353",
+          "scope": "End-of-step evaluation of time-varying boundary conditions and motion"
+        }
+      ],
+      "nearby_open_items_reviewed": [2937, 2939, 2932],
+      "disposition": "No duplicate report: existing records capture the scoped temporal observations; nearby issues concern different solver modes or request a residual-location feature."
+    },
+    "NVIDIA/physicsnemo": {
+      "observed_default_branch": "main",
+      "observed_head": "536553acf5b03b68ec7283975ba7276d60056a36",
+      "existing_records": [
+        {
+          "issue": 2007,
+          "state": "OPEN",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+          "related_pull_request": 2008,
+          "pull_request_state": "OPEN",
+          "pull_request_merge_state": "BEHIND",
+          "scope": "Odd-width power spectrum index; benchmark spectra use even widths"
+        },
+        {
+          "issue": 2001,
+          "state": "OPEN",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+          "related_existing_work": [1852, 1853],
+          "scope": "Periodic-only grid-gradient APIs used on non-periodic boundaries"
+        },
+        {
+          "issue": 1990,
+          "state": "OPEN",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/1990",
+          "scope": "Warp mesh Green-Gauss custom-op import with stringified annotations"
+        }
+      ],
+      "benchmark_path_checks": {
+        "domain": "Periodic cube",
+        "neural_derivatives": "PyTorch autograd at analytic evaluation samples",
+        "grid_gradient_issue_2001_used": false,
+        "odd_width_spectrum_issue_2007_exercised": false,
+        "issue_1990_mlp_import_smoke": "PASS",
+        "issue_1990_smoke_environment": "Pinned PhysicsNeMo v2.2.1 source, CPU environment, Torch 2.11.0; imports the benchmark MLP module only and does not run the issue's deforming-plate reproducer"
+      },
+      "disposition": "No duplicate report: identified issues are already tracked or do not affect the pinned periodic/autograd/even-width benchmark path."
+    },
+    "openai/NavierStokesAndEuler": {
+      "observed_default_branch": "main",
+      "observed_head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "license": "Apache-2.0",
+      "has_issues": false,
+      "repository_role": "Lean formalizations, not a CFD solver",
+      "disposition": "No issue channel is enabled and no software defect was reproduced."
+    }
+  },
+  "overall_disposition": "No new upstream issue or PR is warranted by this refresh."
+}

@@ -25,7 +25,11 @@ def test_archiver_keeps_only_complete_cases(tmp_path):
     (complete / "exit.json").write_text('{"exit_code":0}')
     (complete / "parameters.json").write_text("{}")
     (complete / "log.foamRun").write_text(
-        "".join(f"Time = {i / 1000:g}s\nPIMPLE: Converged in 2 iterations\n" for i in range(1, 51))
+        "".join(
+            f"Time = {i / 1000:g}s\nPIMPLE: Converged in 2 iterations\n"
+            "ExecutionTime = 1 s ClockTime = 1 s\n"
+            for i in range(1, 51)
+        )
         + "End\n"
     )
     diagnostics = {

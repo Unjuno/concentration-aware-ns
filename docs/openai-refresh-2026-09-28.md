@@ -141,25 +141,26 @@ OpenAI construction and notes that finite pseudospectral computations cannot
 certify its Galerkin-uniform condition. This is a research direction, not an
 independent resolution or evidence about the present solver benchmark.
 
-The source derivative rate supplies a base-field Hessian exponent
-`kappa=40`, but a hostile scope check found that the assembled-field equality
-tube has only a positive radius on each fixed compact interval; no lower
-envelope as `T` approaches 1 has been established. Therefore the proposed
-`r=D` and `Q^(Cstretch+39)` transfer to the assembled field is withdrawn. The
-generic packet algebra remains conditional on an available tube-radius
-envelope. Details and the exact logical gap are in
+At the time of this refresh, the source derivative rate supplied a base-field
+Hessian exponent `kappa=40`, but no lower envelope for the assembled-field
+equality tube had been established. The then-proposed `r=D` transfer was
+withdrawn, and the generic packet algebra remained conditional. A later
+September 30 Lean extension closes the tube-radius gap for its specific
+shrinking cusp ball; see the current audit in
 [`packet-constant-dependencies.md`](packet-constant-dependencies.md).
 
 ## Local verification added in this refresh
 
-`spatial_jet_norm_le_spacetime_jet_norm` now proves in Lean that restriction of
-a smooth spacetime jet to fixed-time spatial directions does not increase its
-norm, using the norm-one embedding `v ↦ (0,v)`. The pinned checker passed with
-only `propext`, `Classical.choice`, and `Quot.sound`, without `sorryAx`. This
-connects the existing existential compact spacetime derivative bound to a
-spatial Hessian bound on the same compact set, conditional on the existing
-local-germ equality premise. It remains non-effective: no numerical Hessian
-constant, tube radius, or finite packet certificate was extracted.
+`spatial_jet_norm_le_spacetime_jet_norm` proves in Lean that restriction of a
+globally smooth spacetime jet to fixed-time spatial directions does not
+increase its norm, using the norm-one embedding `v ↦ (0,v)`. The September 30
+local cusp-ball Hessian transfer is separately proved for the actual selected
+field, with existential constants, and yields a full-spacetime jet bound. The
+local `ContDiffAt` restriction connecting these two results, and the classical
+nonlinear packet comparison, are not combined in Lean. Thus `r=1/2`,
+`kappa=40` and the resulting `Cstretch+39` exponent are a conditional
+classical analysis inference, not a certified packet-size or fixed-size
+alignment result.
 
 ## Additional independent numerical study, 2026-09-28
 

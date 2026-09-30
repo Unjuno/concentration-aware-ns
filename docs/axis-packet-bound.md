@@ -145,12 +145,35 @@ symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 `evidence/tests/packet-radius-scaling.json`.
 
 The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
-now supplies the Hessian exponent `kappa=40` for the smooth base field. The
-assembled field is known to equal that base locally along the trajectory, but
-the radius of the full equality tube has no established lower envelope as
-`T` approaches 1. Therefore the generic formula above is not yet instantiated
-with a selected-construction tube exponent `r`; in particular, the earlier
-candidate `Q^(Cstretch+39)` order is not established for the assembled field.
+now Lean-checks a shrinking equality ball with radius proportional to
+`sqrt(1-t)` and transfers the base's full-spacetime Hessian rate `kappa=40`
+onto that ball. The new composition in
+`verification/SpatialHessianTransfer.lean` transfers the same bound to the
+fixed-time spatial Hessian. Combining that result with the classical nonlinear
+comparison gives candidate exponents `r=1/2` and
+`Cstretch+39`, enclosed in `[42.9999995,43)`. A simpler conservative power
+follows by using the source enclosure `Cstretch<4`: for
+`rho(Q)=rho0*Q^(1/2)` and `k(Q)<=k0*Q^(-40)`, we have
+`a(T)<=Q^(-4)` and `I(T)<=(tau0/3)*Q^(-3)`. The tube criterion then allows
+`delta < rho0/(1+B)*Q^43`, where `B=k0*rho0*tau0/3`. For any fixed initial
+angle below pi/2 and positive target angle, the angle-error criterion also
+allows a constant times `Q^43` once its linear margin is positive. With
+`E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))`, choose
+
+```
+K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0)).
+```
+
+Then the combined sufficient law is `delta<=K*Q^43` for sufficiently small
+Q. The exact exponent specialization is checked in
+`evidence/tests/packet-radius-scaling.json`.
+
+This remains a conditional shrinking-packet allowance: the Lean spatial
+Hessian transfer is recorded in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`, while
+the nonlinear comparison is classical and K is non-effective. It is neither a
+numeric packet certificate nor evidence that fixed-size packets lose
+alignment.
 
 ## Verification and remaining inputs
 

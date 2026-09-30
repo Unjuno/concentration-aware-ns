@@ -17,11 +17,15 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Progress](docs/progress.md)
 - [Requirement-by-requirement completion audit](docs/completion-audit.md)
 - [Three-target comparative audit](reports/comparative-audit.md)
+- [Cross-solver matrix coverage, AMR upper-state and upstream disposition](reports/solver-matrix-coverage-2026-09-30.md)
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
+- [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
+- [Burgers vortex: alignment with nonzero viscous balance](docs/burgers-vortex-alignment-viscous-balance.md)
+- [Burgers vortex tracer-position probabilities](docs/burgers-vortex-position-probability.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
@@ -48,6 +52,22 @@ run a solver or determine whether an evidence review is true. See
 vorticity and forcing. Its tests check periodicity, divergence and second-order
 convergence of a separate finite-difference reconstruction of the PDE forcing.
 These checks validate formula consistency; they do not constitute solver runs.
+
+The affine counterexample uses an exact unbounded-domain Navier–Stokes solution
+to test the logical inference from material-line alignment to reduced viscosity.
+Its SymPy checker and negative controls are reproducible with
+`python -m tools.check_affine_alignment_counterexample`; this does not infer
+molecular behavior or replace component-wise term analysis of the selected
+construction.
+
+The Burgers-vortex calculation is a stronger analytical countercheck: its
+nonzero azimuthal viscous diffusion exactly balances azimuthal advection even
+while the axis deformation aligns infinitesimal directions. Reproduce it with
+`python -m tools.check_burgers_vortex_balance`.
+
+The exact passive-tracer probability check further distinguishes localization
+relative to an infinite axis from probability inside a fixed bounded volume;
+reproduce it with `python -m tools.check_burgers_vortex_tracer_probability`.
 
 ## Continuous integration
 
