@@ -245,11 +245,19 @@ for every fixed `0<tau<=1`, every point in the full spatial ball of radius
 `c*sqrt(tau)` has `|eta| <= |eta0| + c/(1-2h)`. This closes the ball-to-axial
 step without a simulation or a continuum linearization assumption.
 
+The companion `transverse_radius_le_of_euclidean_ball` proves that the physical
+transverse radius at every point in that ball is at most
+`sqrt(2)*c*sqrt(tau)`. The factor `sqrt(2)` is a conservative consequence of
+bounding the two projected coordinates separately; it can be absorbed by
+choosing the tube coefficient smaller. This supplies the transverse scale
+needed to compare with the active annulus, but the complete active-annulus and
+exterior inequalities have not yet been composed into a theorem.
+
 The theorem compiles against the pinned OpenAI source and Lean cache; its
 axioms are only `propext`, `Classical.choice`, and `Quot.sound`. Reproducible
 command and source/log hashes are recorded in
-`evidence/openai-lean-2026-09-30-spatial-ball-clean/manifest.json`. It does not
-yet establish transverse-radius, exterior-sublevel, cutoff, localization, or
-time-window conditions for the assembled-field theorem. Therefore it is not
+`evidence/openai-lean-2026-09-30-spatial-ball-transverse/manifest.json`. It does not
+yet establish exterior-sublevel, cutoff, localization, or time-window
+conditions for the assembled-field theorem. Therefore it is not
 the promised whole cusp-tube field-equality result, and it adds no particle or
 molecular conclusion.

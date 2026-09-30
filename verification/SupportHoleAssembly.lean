@@ -304,6 +304,54 @@ theorem coordinateEta_margin_of_euclidean_ball {h tau eta c : ℝ}
     simpa [z0] using hcomponent.trans hball
   exact coordinateEta_margin_of_sqrt_axial_radius hh hh1 htau htau1 heta hc haxial
 
+/-- An axial-centered Euclidean ball also bounds the physical transverse
+radius. The bound is deliberately stated with `sqrt 2`, obtained from the two
+coordinate projections; no material-volume contraction is asserted. -/
+theorem transverse_radius_le_of_euclidean_ball {tau eta c : ℝ}
+    {x : ProblemStatement.Space}
+    (hball : ‖x - eta • ProblemStatement.coordinateVector 2‖ ≤
+      c * Real.sqrt tau) :
+    DirectAngularDiagonal.radius (1 - tau, x) ≤ Real.sqrt 2 * c * Real.sqrt tau := by
+  let v := x - eta • ProblemStatement.coordinateVector 2
+  have hcoord0 : v.ofLp 0 = x.ofLp 0 := by
+    simp [v, ProblemStatement.coordinateVector]
+  have hcoord1 : v.ofLp 1 = x.ofLp 1 := by
+    simp [v, ProblemStatement.coordinateVector]
+  have hn0 := PiLp.norm_apply_le v 0
+  have hn1 := PiLp.norm_apply_le v 1
+  rw [hcoord0] at hn0
+  rw [hcoord1] at hn1
+  have hx0 : |x 0| ≤ ‖v‖ := by simpa only [Real.norm_eq_abs] using hn0
+  have hx1 : |x 1| ≤ ‖v‖ := by simpa only [Real.norm_eq_abs] using hn1
+  have hr0 := Real.sq_sqrt (show 0 ≤ (x 0)^2 + (x 1)^2 by positivity)
+  have hradius : DirectAngularDiagonal.radius (1 - tau, x) ^ 2 =
+      (x 0)^2 + (x 1)^2 := by
+    unfold DirectAngularDiagonal.radius PolarCharts.radius
+    rw [Real.sq_sqrt (by positivity)]
+    simp [PhysicalGraphBounds.radialProjection_apply]
+  have hrnonneg := DirectAngularDiagonal.radius_nonneg (1 - tau, x)
+  have hnormnonneg : 0 ≤ ‖v‖ := norm_nonneg _
+  have hx0sq : (x.ofLp 0)^2 ≤ ‖v‖^2 := by
+    have h := (sq_le_sq₀ (abs_nonneg (x.ofLp 0)) hnormnonneg).2 hx0
+    simpa [sq_abs] using h
+  have hx1sq : (x.ofLp 1)^2 ≤ ‖v‖^2 := by
+    have h := (sq_le_sq₀ (abs_nonneg (x.ofLp 1)) hnormnonneg).2 hx1
+    simpa [sq_abs] using h
+  have hbound : DirectAngularDiagonal.radius (1 - tau, x) ^ 2 ≤ 2 * ‖v‖^2 := by
+    rw [hradius]
+    nlinarith
+  have hroot : DirectAngularDiagonal.radius (1 - tau, x) ≤ Real.sqrt 2 * ‖v‖ := by
+    have hsqrt2 : 0 ≤ Real.sqrt 2 := Real.sqrt_nonneg _
+    have hsquare : (Real.sqrt 2 * ‖v‖)^2 = 2 * ‖v‖^2 := by
+      rw [mul_pow, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2)]
+    exact (sq_le_sq₀ hrnonneg (mul_nonneg hsqrt2 hnormnonneg)).mp
+      (hbound.trans_eq hsquare.symm)
+  calc
+    DirectAngularDiagonal.radius (1 - tau, x) ≤ Real.sqrt 2 * ‖v‖ := hroot
+    _ ≤ Real.sqrt 2 * (c * Real.sqrt tau) :=
+      mul_le_mul_of_nonneg_left hball (Real.sqrt_nonneg _)
+    _ = Real.sqrt 2 * c * Real.sqrt tau := by ring
+
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ
 whenever the first potential cutoff is on its unit plateau. -/

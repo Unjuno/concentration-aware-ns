@@ -26,6 +26,7 @@ docker run --rm --name cans-supporthole-assembly-check \
     export LEAN_NUM_THREADS=2
     cat /extension/SupportHoleAssembly.lean > /tmp/SupportHoleAssemblyWithAudit.lean
     printf "\n#print axioms ConcentrationAware.coordinateEta_margin_of_euclidean_ball\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
+    printf "#print axioms ConcentrationAware.transverse_radius_le_of_euclidean_ball\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     lake env lean /tmp/SupportHoleAssemblyWithAudit.lean > /out/lean.log 2>&1
     cat /out/lean.log'
 
@@ -48,12 +49,15 @@ image = subprocess.check_output(
     text=True,
 ).strip()
 text = log.read_text()
-required = "propext, Classical.choice, Quot.sound"
-if "error:" in text or required not in text:
+declarations = (
+    "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "ConcentrationAware.transverse_radius_le_of_euclidean_ball",
+)
+if "error:" in text or text.count("depends on axioms: [propext, Classical.choice, Quot.sound]") != len(declarations):
     raise SystemExit("Lean compile or axiom audit did not pass")
 result = {
     "status": "PASS",
-    "scope": "Pinned Lean elaboration of the support-hole extension and an audit of the new Euclidean-ball eta-margin theorem.",
+    "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball eta-margin and transverse-radius bounds for the support-hole geometry.",
     "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
     "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
     "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
@@ -61,7 +65,7 @@ result = {
     "checker_image_id": image,
     "source_sha256": sha(source),
     "lean_log_sha256": sha(log),
-    "declaration": "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "declarations": list(declarations),
     "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
     "limitations": [
         "This proves a fixed-time geometric implication from a Euclidean spatial-ball bound to a similarity-coordinate margin.",
