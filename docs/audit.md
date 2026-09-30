@@ -55,6 +55,10 @@ the solution aligns directions while keeping arbitrary constant `nu`, with
 zero viscous force. It is an unbounded-domain counterexample to that inference,
 not evidence about the selected OpenAI field or molecular scales. See
 [`docs/affine-alignment-viscosity-counterexample.md`](affine-alignment-viscosity-counterexample.md).
+The stronger classical Burgers-vortex check has nonzero azimuthal viscous
+diffusion balanced exactly by advection during axis-direction alignment; it
+still makes no claim about the selected OpenAI field. See
+[`docs/burgers-vortex-alignment-viscous-balance.md`](burgers-vortex-alignment-viscous-balance.md).
 
 ### OpenFOAM temporal addendum update (2026-09-30)
 

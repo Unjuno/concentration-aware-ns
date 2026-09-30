@@ -23,6 +23,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
 - [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
+- [Burgers vortex: alignment with nonzero viscous balance](docs/burgers-vortex-alignment-viscous-balance.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
@@ -56,6 +57,11 @@ Its SymPy checker and negative controls are reproducible with
 `python -m tools.check_affine_alignment_counterexample`; this does not infer
 molecular behavior or replace component-wise term analysis of the selected
 construction.
+
+The Burgers-vortex calculation is a stronger analytical countercheck: its
+nonzero azimuthal viscous diffusion exactly balances azimuthal advection even
+while the axis deformation aligns infinitesimal directions. Reproduce it with
+`python -m tools.check_burgers_vortex_balance`.
 
 ## Continuous integration
 

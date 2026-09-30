@@ -583,3 +583,16 @@ symbolic negative controls are in
 `docs/affine-alignment-viscosity-counterexample.md` and
 `evidence/tests/affine-alignment-counterexample.json`. This result does not
 reduce any solver, three-project, or upstream-audit requirements.
+
+## Revision 34 — nonzero viscous balance during axis alignment
+
+The analytic hypothesis check now includes the classical Burgers vortex. Its
+axis deformation aligns infinitesimal directions exponentially, while away
+from the axis its nonzero azimuthal viscous diffusion exactly balances
+azimuthal advection; the constitutive viscosity remains constant. The symbolic
+cylindrical-equation and deformation checks are recorded in
+`docs/burgers-vortex-alignment-viscous-balance.md` and
+`evidence/tests/burgers-vortex-balance.json`. This is a stronger counterexample
+to inferring reduced relative viscosity from alignment alone, but its
+unbounded-domain idealization does not establish behavior of the selected
+OpenAI construction or molecular matter.
