@@ -596,3 +596,17 @@ cylindrical-equation and deformation checks are recorded in
 to inferring reduced relative viscosity from alignment alone, but its
 unbounded-domain idealization does not establish behavior of the selected
 OpenAI construction or molecular matter.
+
+## Revision 35 — off-axis material deformation in Burgers vortex
+
+The Burgers-vortex calculation now follows an off-axis material trajectory,
+not only the axis linearization. Its exact cylindrical flow map has a radial
+to-azimuthal shear coefficient with a finite long-time limit; thus infinitesimal
+separations with nonzero axial component still align as `O(exp(-3 gamma t))`.
+Along that same trajectory the nonzero azimuthal viscous term continues to equal
+the azimuthal advection term at every finite time. The extended derivation and
+symbolic artifact are in `docs/burgers-vortex-alignment-viscous-balance.md` and
+`evidence/tests/burgers-vortex-balance.json`. This closes the earlier gap of
+demonstrating deformation only on-axis and term balance only off-axis, within
+this exact idealized solution; transfer to the selected OpenAI profile remains
+unproved.

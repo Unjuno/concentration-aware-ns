@@ -7,8 +7,8 @@ import sympy as sp
 
 
 def main():
-    r, z, gamma, nu, circulation, t = sp.symbols(
-        'r z gamma nu circulation t', positive=True, finite=True)
+    r, r0, z, gamma, nu, circulation, t = sp.symbols(
+        'r r0 z gamma nu circulation t', positive=True, finite=True)
     E = sp.exp(-gamma*r**2/(2*nu))
     swirl = circulation/(2*sp.pi*r)*(1-E)
     radial = -gamma*r
@@ -45,6 +45,24 @@ def main():
     determinant = sp.simplify(sp.exp(-2*gamma*t)*sp.exp(2*gamma*t))
     alignment_factor = sp.exp(-3*gamma*t)
 
+    # Exact material flow map in cylindrical coordinates for an off-axis
+    # particle, then differentiate it with respect to its initial radius.
+    radius_t = r0*sp.exp(-gamma*t)
+    omega_r0 = (swirl/r).subs(r, r0)
+    omega_rt = (swirl/r).subs(r, radius_t)
+    theta_initial_radius_derivative = sp.simplify(
+        (omega_r0/r0 - sp.exp(-gamma*t)*omega_rt/radius_t)/gamma)
+    radial_to_azimuthal_shear = sp.simplify(
+        r0*theta_initial_radius_derivative)
+    shear_limit = sp.simplify(sp.limit(radial_to_azimuthal_shear, t, sp.oo))
+    off_axis_deformation = sp.Matrix([
+        [sp.exp(-gamma*t), 0, 0],
+        [sp.exp(-gamma*t)*radial_to_azimuthal_shear,
+         sp.exp(-gamma*t), 0],
+        [0, 0, sp.exp(2*gamma*t)],
+    ])
+    off_axis_determinant = sp.simplify(off_axis_deformation.det())
+
     identities = {
         'incompressible': residuals['divergence'] == 0,
         'radial_balance': residuals['radial_pressure_balance'] == 0,
@@ -57,6 +75,10 @@ def main():
             axis_swirl_rate - circulation*gamma/(4*sp.pi*nu)) == 0,
         'axis_deformation_volume_preserved': determinant == 1,
         'axis_directional_alignment_rate': alignment_factor == sp.exp(-3*gamma*t),
+        'off_axis_flow_map_volume_preserved': off_axis_determinant == 1,
+        'off_axis_shear_has_finite_limit': not shear_limit.has(
+            sp.oo, -sp.oo, sp.zoo, sp.nan),
+        'off_axis_axial_alignment_factor': alignment_factor == sp.exp(-3*gamma*t),
     }
     negative_controls = {
         'wrong_strain_sign_rejected': sp.simplify(
@@ -79,6 +101,13 @@ def main():
         'residuals': {name: str(value) for name, value in residuals.items()},
         'axis_deformation_matrix': str(axis_deformation),
         'axis_transverse_to_axial_factor': str(alignment_factor),
+        'off_axis_radius_trajectory': str(radius_t),
+        'off_axis_radial_derivative_of_rotation': str(
+            theta_initial_radius_derivative),
+        'off_axis_deformation_matrix_in_cylindrical_orthonormal_bases':
+            str(off_axis_deformation),
+        'off_axis_shear_limit': str(shear_limit),
+        'off_axis_transverse_to_axial_factor': str(alignment_factor),
         'viscosity_coefficient': str(nu),
         'azimuthal_advection_equals_viscous_diffusion': True,
         'negative_controls': negative_controls,

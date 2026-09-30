@@ -1,7 +1,7 @@
 {
   "scope": "Symbolic cylindrical-coordinate verification of the classical Burgers vortex and its axis linearization; unbounded-domain exact solution, not a model of the pinned OpenAI field or molecules.",
   "sympy": "1.14.0",
-  "source_sha256": "e1cfcc8ff05901b090741d5250483380ef8051d0b66bbb1dae37dcf1e67f90e9",
+  "source_sha256": "68ab190636abdd8ed6342cbe46f6ca7a8f10a965462e2a7d50b9269ea4ed8ddb",
   "assumptions": [
     "r > 0",
     "gamma > 0",
@@ -25,7 +25,10 @@
     "azimuthal_viscous_term_nonzero_for_positive_r": true,
     "axis_swirling_rate": true,
     "axis_deformation_volume_preserved": true,
-    "axis_directional_alignment_rate": true
+    "axis_directional_alignment_rate": true,
+    "off_axis_flow_map_volume_preserved": true,
+    "off_axis_shear_has_finite_limit": true,
+    "off_axis_axial_alignment_factor": true
   },
   "residuals": {
     "divergence": "0",
@@ -37,6 +40,11 @@
   },
   "axis_deformation_matrix": "Matrix([[exp(-gamma*t)*cos(circulation*gamma*t/(4*pi*nu)), -exp(-gamma*t)*sin(circulation*gamma*t/(4*pi*nu)), 0], [exp(-gamma*t)*sin(circulation*gamma*t/(4*pi*nu)), exp(-gamma*t)*cos(circulation*gamma*t/(4*pi*nu)), 0], [0, 0, exp(2*gamma*t)]])",
   "axis_transverse_to_axial_factor": "exp(-3*gamma*t)",
+  "off_axis_radius_trajectory": "r0*exp(-gamma*t)",
+  "off_axis_radial_derivative_of_rotation": "-circulation*exp(2*gamma*t)/(2*pi*gamma*r0**3) + circulation*exp(2*gamma*t - gamma*r0**2*exp(-2*gamma*t)/(2*nu))/(2*pi*gamma*r0**3) + circulation/(2*pi*gamma*r0**3) - circulation*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**3)",
+  "off_axis_deformation_matrix_in_cylindrical_orthonormal_bases": "Matrix([[exp(-gamma*t), 0, 0], [circulation*((-exp(2*gamma*t) + exp(gamma*(4*nu*t*exp(2*gamma*t) - r0**2)*exp(-2*gamma*t)/(2*nu)) + 1)*exp(gamma*r0**2/(2*nu)) - 1)*exp(-gamma*t)*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**2), exp(-gamma*t), 0], [0, 0, exp(2*gamma*t)]])",
+  "off_axis_shear_limit": "-circulation/(4*pi*nu) + circulation/(2*pi*gamma*r0**2) - circulation*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**2)",
+  "off_axis_transverse_to_axial_factor": "exp(-3*gamma*t)",
   "viscosity_coefficient": "nu",
   "azimuthal_advection_equals_viscous_diffusion": true,
   "negative_controls": {

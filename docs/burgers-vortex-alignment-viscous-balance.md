@@ -52,6 +52,41 @@ factor `exp(-3 gamma t)`. Therefore infinitesimal separations with a nonzero
 axial component align with the vortex axis while the nonzero viscous and
 advective terms remain in exact balance off the axis.
 
+The alignment also holds along an off-axis material trajectory, so it need not
+be inferred by juxtaposing different particles. A trajectory starting at
+radius `r0>0` has `r(t)=r0 exp(-gamma t)` and azimuthal angle
+`theta(t)=theta0+Theta(t,r0)`, where
+
+```
+Theta(t,r0) = integral_0^t [u_theta(r0 exp(-gamma s)) /
+                              (r0 exp(-gamma s))] ds.
+```
+
+Differentiating this flow map gives the radial-to-azimuthal shear coefficient
+`S(t)=r0 partial_{r0}Theta`, whose limit is finite:
+
+```
+S(infinity) = Gamma/(2 pi gamma r0^2) [1-exp(-gamma r0^2/(2 nu))]
+              - Gamma/(4 pi nu).
+```
+
+In initial and final orthonormal cylindrical bases, the deformation gradient is
+
+```
+F(t) = [[exp(-gamma t), 0, 0],
+        [exp(-gamma t) S(t), exp(-gamma t), 0],
+        [0, 0, exp(2 gamma t)]].
+```
+
+Because `S(t)` is continuous and has a finite limit, it stays bounded on
+`t>=0`. For any initial infinitesimal separation with a nonzero axial
+component, the ratio of its transverse component to its axial component is
+therefore `O(exp(-3 gamma t))` and tends to zero. On that same off-axis
+trajectory, `r(t)>0` at every finite time, so the azimuthal viscous and
+advective terms are both nonzero and exactly equal throughout the evolution.
+Their absolute magnitudes decrease along the trajectory, but the relative
+balance does not.
+
 This is an idealized unbounded-domain solution with linear strain at infinity
 and infinite total energy. It does not provide a finite-energy periodic test,
 a molecular model, a phase-transition mechanism, or evidence about the selected
