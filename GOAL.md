@@ -486,3 +486,16 @@ independent peer review. The September 28 OpenFOAM
 manifest still shows four of six high-gradient cases complete; the half-step
 case remains archived=false at 36 records/35 converged steps and the quarter
 step is unstarted. The container/process state is not reasserted here.
+
+## Revision 27 — late-September physical interpretation check
+
+A current-source refresh found a new explanatory preprint by Lei and Ren
+(arXiv:2609.35406, posted September 28) on the profile-construction part of
+OpenAI's paper. The refreshed research note distinguishes its axial slender-core
+scaling from molecular alignment and records the paper's componentwise Reynolds
+numbers: angular growth does not remove radial viscous balance. It also tracks
+Clay's September 11 position as “apparently settled” with evaluation and credit
+assignment deliberately unhurried. See
+`docs/recent-developments-2026-09-30.md`. This adds a Lagrangian particle-track
+workstream as a separate, testable question; it does not revise any benchmark
+PASS/FAIL or imply physical blow-up.
