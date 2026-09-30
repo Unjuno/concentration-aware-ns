@@ -706,3 +706,15 @@ those hypotheses or applied the theorem to the OpenAI force. This is an
 important source-audit question, not evidence for particle alignment or a
 viscosity law. Detailed scope notes are in
 `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`.
+
+## 2026-10-01 independent archive replay
+
+The targeted replay suite was rerun from `work/reference-check-env`. OpenFOAM's
+four original time-series archives match the frozen schedules; SU2's five
+diagnostic records replay exactly, with temporal order `0.99916` still
+uncertified due to per-step residual misses; all five AMR/remap archives pass
+hash/tree verification; and PhysicsNeMo's five saved checkpoint/evaluation
+pairs match their run archives. PhysicsNeMo derivative comparisons remain
+sample-only, not continuous-extremum bounds. No solver was rerun. The full
+results and scope limits are recorded in
+`reports/solver-matrix-coverage-2026-09-30.md`.

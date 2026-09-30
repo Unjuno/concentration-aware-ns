@@ -999,3 +999,18 @@ this check. The already documented conditional analytic-forcing result remains
 unapplied to OpenAI's actual force. The recheck and its limits are in
 `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; solver
 reproduction and the broader benchmark goal remain active.
+
+## Revision 61 — fresh cross-solver archive replay
+
+Replayed the six published postprocessing/hash checks from
+`work/reference-check-env` on 2026-10-01. The four base OpenFOAM fixed-step
+archives again matched their frozen 50-step schedules; all five SU2 diagnostic
+replays exactly matched current postprocessing, while inner-residual misses
+still prevent a temporal error certificate; all five AMR/remap archives passed
+their byte/tree checks; and all five PhysicsNeMo checkpoint/evaluation pairs
+matched their archive hashes. PhysicsNeMo sampled peak errors remain
+approximately 0.91–0.97%, with maximum sampled derivative-field differences
+of 1.20–1.26% on the stated normalization. These are artifact/replay checks,
+not solver reruns, continuous-field certificates, or physical validation. The
+full scoped results are in `reports/solver-matrix-coverage-2026-09-30.md`.
+The project goal remains active.

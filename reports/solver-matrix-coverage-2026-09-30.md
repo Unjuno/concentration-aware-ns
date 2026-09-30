@@ -74,3 +74,20 @@ The base image and DEB are pinned, but Ubuntu apt dependencies were not
 snapshot-pinned and source-to-binary equivalence was not established. See the
 [runtime reproduction guide](../runtime/openfoam13/README.md); replaying the
 published archives does not require a solver rebuild.
+
+## Fresh archive/postprocessing replay on 2026-10-01
+
+Using `work/reference-check-env/bin/python`, the four original OpenFOAM
+fixed-step archives again matched their frozen 50-step schedules and manifest
+hashes. The five SU2 diagnostics again matched exactly when recomputed from the
+saved fields and histories; the observed temporal order remained `0.99916`,
+with no temporal error certificate because inner residual checks fail on some
+steps. All five AMR/remap archives again passed byte and per-entry tree-hash
+verification. The five PhysicsNeMo archive/checkpoint/evaluation links matched;
+sampled derivative peak-magnitude errors remained `0.91–0.97%`, while the
+maximum sampled derivative-field differences normalized by an exact sampled
+peak were `1.20–1.26%`. These checks establish artifact and current
+postprocessing consistency only. They do not rerun either solver, establish
+source-to-binary equivalence, certify continuous extrema, or validate a
+physical interpretation. The replay commands are listed above; the detailed
+outputs remain in the existing JSON evidence records.
