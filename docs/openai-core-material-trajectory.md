@@ -35,6 +35,23 @@ original upstream targets. No numerical integration is used here.
 
 Source pin and core assumptions are those of openai-core-deformation.md.
 
+## Current field-transfer status, 2026-09-30
+
+The moving-ball geometry and transfer through the actual activated periodic
+candidate are now formalized in
+`verification/SupportHoleAssembly.lean`. Under explicit admissible radius and
+eta-margin conditions (which are satisfiable for every fixed `eta∈(-1,1)`),
+the whole `c*sqrt(tau)` ball around the axis center has the
+`FinalSlowBase.velocity` local germ for every `tau` in an existential terminal
+interval. The pinned run is
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v5/manifest.json`.
+
+This closes the previous field-transfer gap for shrinking continuum balls. It
+does not machine-check the axis-center ODE or the deformation-matrix solution
+described below, does not give a finite-size packet bound, and says nothing
+about molecular orientation or constitutive-viscosity change. The conditional
+negative viscous-force/material-acceleration ratio remains a separate result.
+
 Let A=1/2+h, D=1/2-h, U(eta)=4eta+j, d=1-eta² and L=1-2h eta².
 NaturalAxisData.exists_unique_root gives a root eta_* in (-j/4,-j/5) of
 
