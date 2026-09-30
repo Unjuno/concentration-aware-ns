@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "Gamma": 62.83185307179586,
+      "W_times_T_minus_t": 1.25,
+      "a_times_T_minus_t": 1.25,
+      "kappa": 1.0,
+      "mu_input": 1.25,
+      "mu_recovered": 1.25,
+      "nu": 1.0,
+      "q_over_T_minus_t": 16.0,
+      "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
+    },
+    {
+      "Gamma": 25.132741228718345,
+      "W_times_T_minus_t": 2.0,
+      "a_times_T_minus_t": 2.0,
+      "kappa": 1.0,
+      "mu_input": 2.0,
+      "mu_recovered": 2.0,
+      "nu": 1.0,
+      "q_over_T_minus_t": 4.0,
+      "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
+    },
+    {
+      "Gamma": 14.660765716752367,
+      "W_times_T_minus_t": 7.000000000000002,
+      "a_times_T_minus_t": 7.000000000000002,
+      "kappa": 1.0,
+      "mu_input": 7.0,
+      "mu_recovered": 7.000000000000002,
+      "nu": 1.0,
+      "q_over_T_minus_t": 0.6666666666666665,
+      "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
+    },
+    {
+      "Gamma": 4.523893421169302,
+      "W_times_T_minus_t": 0.6,
+      "a_times_T_minus_t": 1.5,
+      "kappa": 2.5,
+      "mu_input": 1.5,
+      "mu_recovered": 1.5,
+      "nu": 0.3,
+      "q_over_T_minus_t": 2.4,
+      "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
+    },
+    {
+      "Gamma": 83.7758040957278,
+      "W_times_T_minus_t": 10.000000000000002,
+      "a_times_T_minus_t": 4.000000000000001,
+      "kappa": 0.4,
+      "mu_input": 4.0,
+      "mu_recovered": 4.000000000000001,
+      "nu": 2.0,
+      "q_over_T_minus_t": 2.666666666666666,
+      "threshold_kappa_Gamma_gt_4_pi_nu": 1.0
+    }
+  ],
+  "derived": {
+    "W_peak": "mu/(kappa*(T-t))",
+    "a": "mu/(T-t)",
+    "global_peak_comparison": "not evaluated; axis path is not proved to attain spatial peak",
+    "mu": "kappa*Gamma/(kappa*Gamma-4*pi*nu) > 1",
+    "openai_core_pointwise_a_over_W": "constant* tau**h when f(0,eta_*) != 0",
+    "q": "4*nu*(T-t)/(mu-1)",
+    "threshold": "kappa*Gamma > 4*pi*nu"
+  },
+  "limitations": [
+    "floating-point algebra check, not a formal proof",
+    "does not solve or validate the Navier-Stokes PDE",
+    "does not establish finite-energy blow-up or molecular consequences",
+    "OpenAI pointwise exponent comparison does not identify the global vorticity maximum"
+  ],
+  "model": "q_dot=4*nu-a*q; W=Gamma/(pi*q); a=kappa*W",
+  "status": "PASS_ARITHMETIC_ONLY",
+  "threshold_cases": [
+    {
+      "kappa": 0.8,
+      "kappa_Gamma_over_4_pi_nu": 0.0,
+      "nu": 1.25,
+      "qdot": 5.0
+    },
+    {
+      "kappa": 0.8,
+      "kappa_Gamma_over_4_pi_nu": 0.5,
+      "nu": 1.25,
+      "qdot": 2.5000000000000004
+    },
+    {
+      "kappa": 0.8,
+      "kappa_Gamma_over_4_pi_nu": 1.0,
+      "nu": 1.25,
+      "qdot": 0.0
+    },
+    {
+      "kappa": 0.8,
+      "kappa_Gamma_over_4_pi_nu": 1.1,
+      "nu": 1.25,
+      "qdot": -0.5000000000000009
+    }
+  ]
+}

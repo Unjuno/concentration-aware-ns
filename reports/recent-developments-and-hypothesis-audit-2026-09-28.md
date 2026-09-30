@@ -1,6 +1,6 @@
 # Navier–Stokes developments and hypothesis audit
 
-Research date: 2026-09-28. This note records public-source changes since the OpenAI announcement and relates them to the concentration-aware benchmark. The preprints below are active scholarly work, not settled consensus or a substitute for an independent proof review.
+Initial research date: 2026-09-28; refreshed: 2026-10-01. This note records public-source changes since the OpenAI announcement and relates them to the concentration-aware benchmark. The preprints below are active scholarly work, not settled consensus or a substitute for an independent proof review.
 
 ## What OpenAI published
 
@@ -18,7 +18,7 @@ This related result must not be merged with the forced Navier–Stokes claim: th
 
 - **A numerical/physical follow-up appeared 15 September.** Ramani Duraiswami's preprint recasts the leading-order similarity equations, constructs and verifies a related porous-wall profile solver, and estimates when a real fluid would leave the continuum regime. For its illustrative water scaling it estimates cavitation around a 0.6–1 mm core, far before molecular lengths; in air it estimates compressibility/shock before rarefaction reaches molecular scales. It explicitly says the forced construction does not establish a mechanism reachable in flows normally computed or built, and leaves the unforced engineering equations unchanged. This is a useful physical cutoff analysis, but it is a single preprint with stated approximations: it does not numerically integrate the complete forced Navier–Stokes construction, including the oscillatory stress-realizing annulus and higher-order corrections. The paper marks its inception numbers as order-of-magnitude estimates, dependent on annulus content. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), [HTML, especially §8](https://arxiv.org/html/2609.17642v1).
 - **A conditional regularity theorem appeared 17 September.** Constantin, Ignatova, and Vicol show regularity at the proposed singular point under the construction's stated anisotropic Type-II bounds and an exactly axisymmetric collapsing core, if the force is real analytic in space; they conclude forces for that setup cannot be analytic (or vanish near the singular point under their stated conditions). This narrows a regularity boundary; it does not contradict a merely smooth compactly supported, non-analytic force. Source: [arXiv:2609.20803](https://arxiv.org/abs/2609.20803).
-- **A force-density result appeared 9 September and has a revised public version.** The current arXiv abstract for Cao and Chi says blow-up-producing smooth forces are dense in an inherited time-integrated spatial `H^s` topology for `s < 1/2` on the torus. A separate whole-space preprint states different thresholds for `L^1_t H^s_x` and `L^2_t H^s_x`. Their construction starts from OpenAI's example and uses a localized vector potential/cutoff to avoid nonlinear interaction. This is potentially important to how “small forcing perturbation” is defined: density in those specified topologies does not mean smallness in a norm controlling pointwise derivatives, nor does it show physical reachability. The abstracts do not support the earlier attribution to three authors or a shared torus-and-whole-space theorem; keep the papers distinct. Sources: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262), [arXiv:2609.10269](https://arxiv.org/abs/2609.10269).
+- **A force-density result appeared 9 September and has a revised public version.** The current arXiv v4 for Cao, Chi, and Nie says smooth blow-up-producing forces are dense in the relative time-integrated spatial `H^s` topology for `s < 1/2` on both the torus and whole space, under its stated fixed-viscosity and initial-state assumptions. Their construction starts from OpenAI's example and uses a localized vector potential/cutoff to avoid nonlinear interaction. The earlier separate whole-space record, [arXiv:2609.10269](https://arxiv.org/abs/2609.10269), is marked withdrawn; the authors say it was combined into v3/v4 of [arXiv:2609.10262](https://arxiv.org/abs/2609.10262). Density in a specified topology is not a probability, physical typicality, or smallness in a norm controlling pointwise derivatives. It remains a preprint and is downstream of the OpenAI construction, not an independent physical validation.
 - **A new weak-solution search target appeared 20 September.** Petrillo and Glimm formulate positive energy defect on a finite time window for unforced periodic Leray–Hopf solutions and reduce it to a time-averaged lower bound on fine Littlewood–Paley energy flux. They explicitly state that a finite pseudo-spectral computation cannot establish the required Galerkin-uniform ceiling; their 128³/256³ runs are exploratory and fail the scale requirement at the Kolmogorov wavenumber. This is a distinct unforced problem, not a validation of the forced construction or evidence about molecular positions. Source: [arXiv:2609.23868](https://arxiv.org/abs/2609.23868).
 - **The physical cutoff study itself reports numerical scope limits.** Duraiswami's preprint computes a leading-order profile and a related porous-wall model, but says it does not integrate the full forced evolution, pulse annulus, or higher-order corrections. It also reports non-converged branches/spectra in parts of its parameter sweep. Its order-of-magnitude water/air estimates therefore inform likely continuum cutoffs, rather than independently validating the entire singular construction. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), especially §§5–9.
 - **A 23 September essay addresses proof legibility, not fluid dynamics.** Alexander Gamburd's arXiv essay discusses how the community should interpret and scrutinize a large machine-produced formal proof. It is a perspective piece; it does not independently audit the Lean development or add a theorem about Navier–Stokes. It reinforces why a certificate, source closure, human-readable argument and physical interpretation need separate evidence. Source: [arXiv:2609.28591](https://arxiv.org/abs/2609.28591).
@@ -167,13 +167,15 @@ The OpenAI blog/paper/repository are primary sources for what OpenAI claims and 
 
 ## Refresh since the initial 28 September pass
 
-The source pages were rechecked on 28 September. Force-density claims are
-interpreted from the latest abstracts: the torus and whole-space results are
-separate papers with different stated topologies and thresholds. They
-distinguish force-space density from fixed-force instability and numerical
-error regularity. This strengthens the need to state the topology whenever
-discussing robustness. Sources: [arXiv:2609.10262](https://arxiv.org/abs/2609.10262),
-[arXiv:2609.10269](https://arxiv.org/abs/2609.10269).
+The source pages were rechecked on 1 October. The current [arXiv:2609.10262
+v4](https://arxiv.org/abs/2609.10262) combines earlier torus and whole-space
+work: its abstract states relative `L¹_t Hˢ_x` density for `s<1/2` on both
+domains, and its whole-space Theorem 4.1 gives thresholds `s<2/q-3/2` for
+`q=1,2` (including `s<-1/2` for `q=2`). The prior separate whole-space
+record [arXiv:2609.10269](https://arxiv.org/abs/2609.10269) is marked
+withdrawn. These are force-space density results, distinct from fixed-force
+instability and numerical error regularity; density in a topology is not a
+probability or a physical likelihood.
 
 A separate 20 September neural-forcing preprint proposes computational
 candidate discovery followed by frozen-force replay and a continuum
@@ -273,3 +275,71 @@ molecular orientation, particle-location probability, or viscosity change.
 The algebra check and exact assumptions are archived in
 [`evidence/tests/jeffery-axisymmetric-bridge.json`](../evidence/tests/jeffery-axisymmetric-bridge.json)
 and [`docs/fiber-vortex-literature-audit.md`](../docs/fiber-vortex-literature-audit.md).
+
+## 2026-10-01 singular Burgers-vortex comparison
+
+The shared proposal's reduced model is worth preserving because it has a
+clean analytic audit. Assume `Gamma, kappa, nu > 0`. For an axisymmetric
+Gaussian-vorticity Burgers profile, `W_z=Gamma/(pi q) exp(-r^2/q)`, in the
+prescribed radial strain
+`u_r=-a(t)r/2`, the axisymmetric vorticity equation is
+
+    partial_t W_z + u_r partial_r W_z = a W_z + nu Delta_r W_z.
+
+The derivatives are `partial_t W_z/W_z=-q'/q+q' r^2/q^2`,
+`u_r partial_r W_z/W_z=a r^2/q`, and
+`Delta_r W_z/W_z=-4/q+4r^2/q^2`. Matching the constant and `r^2`
+coefficients gives `q'=4 nu-aq`. This is the width equation under an imposed
+strain history. The additional proposal
+`a=kappa W_peak`, where `W_peak=Gamma/(pi q)`, is a separate closure; it does
+not follow from the vorticity equation or from the OpenAI proof. If imposed,
+substitution gives `q'=4 nu-kappa Gamma/pi`. If
+`kappa Gamma > 4 pi nu`, write
+`mu = kappa Gamma/(kappa Gamma - 4 pi nu) > 1`; then
+`q = 4 nu (T-t)/(mu-1)`, `a=mu/(T-t)`, and
+`W_peak = (mu/kappa)/(T-t)`. This is the published singular Burgers-vortex
+family after matching the Gaussian-width and circulation conventions. In the
+normalization of Maekawa, Miura and Prange, the axial eigenvalue of their
+linear strain is `mu/(T-t)`. For their stated circulation
+`alpha_mu=4 pi mu/(mu-1)`, the paper gives `||curl u||_infinity/2 =
+mu/[2(T-t)]`; thus the peak-vorticity norm equals the axial strain eigenvalue.
+With `kappa=1` and their normalized viscosity convention `nu=1`, the reduced
+ansatz matches that family for the stated circulation. This is a parameter
+identification along an exact solution with prescribed time-dependent strain;
+it is not evidence that the strain is dynamically generated by a local
+vorticity-feedback law. The paper describes the relation as the strain behaving
+"as if" it depends on the vorticity norm. The solution has spatially growing
+linear strain and lies outside the hypotheses
+of the standard finite-energy epsilon-regularity and backward-self-similar
+nonexistence frameworks. It does not establish blow-up from finite-energy data
+or a molecular transition.
+Source: [Maekawa, Miura and Prange, arXiv:1807.10341](https://arxiv.org/abs/1807.10341).
+
+The mapping does not transfer automatically to OpenAI's constructed core. Along
+its selected axis trajectory the symmetric axial strain rate is
+`a_OAI=C/tau`, while the local axial vorticity is
+`W_OAI=2 f(0,eta_*) d_*^(h+1) tau^(-(1+h))`. For the *pointwise* closure
+`a_OAI=kappa W_OAI`, a nonzero profile value gives
+`a_OAI/W_OAI proportional to tau^h`, which cannot be a fixed positive
+constant for `h>0`; a zero value also cannot match the positive strain. This
+rejects that specific local proportionality along this trajectory. It does not
+test a closure using the global `L-infinity` vorticity unless this trajectory is
+shown to attain its spatial peak; no such peak-location result is asserted here.
+Other closures and finite-time comparisons remain open. The OpenAI proof therefore supplies neither the
+Burgers-vortex feedback law nor a discrete-particle interpretation.
+
+The parameter map is also checked by the dependency-free arithmetic regression
+`python tools/check_burgers_feedback_mapping.py`; its output is
+[`evidence/tests/burgers-feedback-mapping.json`](../evidence/tests/burgers-feedback-mapping.json).
+This verifies only the displayed scalar identities at representative parameter
+values. It is not a symbolic proof or a Navier–Stokes computation.
+
+## 2026-10-01 literature and model-scope refresh
+
+Lei and Ren's version 2 (29 September) of [arXiv:2609.35406](https://arxiv.org/abs/2609.35406) is an explicitly expository reconstruction of the leading-profile portion of OpenAI's manuscript. It describes axisymmetric profiles, a divergence-form stress plus an infinitely flat remainder on fixed similarity sectors, and a new linear model for the inner core. It says the oscillatory-pulse cancellation is deferred to a planned Part II and that the exposition will not be submitted to a journal. This is useful for line-by-line analytic auditing, not an independent end-to-end proof or physical particle model.
+
+Niemi's version 2 (25 September) of [arXiv:2609.24490](https://arxiv.org/abs/2609.24490) uses a smooth flow surrogate with the collapsing core's geometry and scaling to drive a two-component Bose–Einstein-condensate Hopf texture. Its reported fold events are an adjacent quantum-gas analogue, not particles transported by the actual OpenAI solution, not a photon-fluid experiment, and not molecular evidence.
+
+The phrase “light as a fluid” has a precise established analogue in nonlinear optics: medium-induced effective photon–photon interactions let a many-photon system behave collectively as a quantum fluid. This supports a separate model-comparison research track, already recorded in `docs/exploratory-directions.md`, but does not make free-space light an incompressible Newtonian fluid or transfer the OpenAI Navier–Stokes theorem to optical propagation. Any bridge must specify the optical platform and compare its nonlinear-wave equation, dispersive/quantum-pressure term, losses, and boundary conditions against the proposed reduced hydrodynamics. Source: [Carusotto and Ciuti, *Quantum fluids of light*, Reviews of Modern Physics](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.85.299).
+
+For the user's hypothesis, retain four separate levels: continuum deformation of infinitesimal material directions; finite parcels, needing a nonzero-neighborhood estimate; molecular positions/statistics and viscosity, needing a kinetic/constitutive model; and optical quantum fluids, needing their own effective-wave model. Current proof work reaches the first level conditionally and supplies only a shrinking-packet allowance with non-effective constants for the second. It gives neither absolute-position certainty nor molecular ordering. The determinant-one deformation contracts transversely while expanding axially, and our separate conditional axial viscous-force/material-acceleration ratio does not tend to zero. No constitutive-viscosity drop follows.

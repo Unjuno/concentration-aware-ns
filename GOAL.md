@@ -929,3 +929,38 @@ This is an algebraic consequence of conditional envelopes, not evidence that
 the actual flow loses alignment at finite size. No numerical prefactors were
 extracted, and no molecular, phase-transition, particle-position, or viscosity
 claim follows. The nonlinear comparison and full benchmark goal remain active.
+
+## Revision 56 — feedback closure compared with singular Burgers vortex
+
+Audited the user-shared model `q'=4 nu-aq`, `W=Gamma/(pi q)`, `a=kappa W`.
+The width ODE follows from the Gaussian-vorticity ansatz under prescribed
+linear strain; the extra feedback closure is imposed. Its threshold and
+self-similar parameterization match the published singular Burgers-vortex
+family of Maekawa–Miura–Prange for a corresponding circulation, where the paper
+says strain behaves "as if" it depends on vorticity. This is not derivation of
+a feedback law from Navier–Stokes. The solution uses spatially growing linear
+strain, so it does not demonstrate a finite-energy blow-up or molecular effect.
+Compared this relation with the pinned OpenAI core along its selected material
+axis: a pointwise fixed proportionality fails because strain scales as
+`tau^-1`, whereas nonzero axial vorticity scales as `tau^-(1+h)` for `h>0`.
+This does not test closure against global peak vorticity without proving that
+this trajectory attains the spatial maximum. Added
+the derivation and source pin in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`. The result
+sharpens the model test but leaves the concentration-aware benchmark goal
+active.
+
+## Revision 57 — reproducible algebra check and stale-run recheck
+
+Added `tools/check_burgers_feedback_mapping.py` and its JSON output under
+`evidence/tests/`. It checks the imposed-closure parameterization and
+strain/vorticity coefficients for five representative cases using
+standard-library floating-point arithmetic; status is explicitly
+`PASS_ARITHMETIC_ONLY`, not a PDE or theorem validation. The repository-root
+command is `python tools/check_burgers_feedback_mapping.py`. Re-ran the live
+process-table check: the earlier host runner, orphan Docker client, solver, and
+Docker stop/inspect clients are no longer present. This establishes that those
+local processes are gone, but Docker/OrbStack's container inventory was not
+recovered from its previously unresponsive daemon, so container removal remains
+unverified. The partial attempt remains preserved and is not restarted on this
+analytical turn.
