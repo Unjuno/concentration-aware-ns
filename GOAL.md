@@ -1321,3 +1321,13 @@ viscosity change as conclusions not implied. A separate `4/99` case remains
 certified inside. The symbolic identities and applicable solver/gate tests
 pass; this does not prove the classical packet comparison or supply constants
 for the OpenAI construction. No physical claim or quality verdict changes.
+
+## Revision 79 — live upstream disposition rechecked
+
+A same-day GraphQL refresh confirms SU2 discussion #2890 (one maintainer reply)
+and issue #2353 remain the current temporal records; PhysicsNeMo issue #2007
+and PR #2008 remain open, with #2008 behind base. Exact node timestamps and
+SHAs are preserved in `evidence/upstream-refresh/live-status-2026-10-01T2345Z.json`.
+No duplicate report was filed because the observed scope remains tracked. This
+refresh does not broaden the tested code paths or close any numerical-quality
+gaps; the overall goal remains active.

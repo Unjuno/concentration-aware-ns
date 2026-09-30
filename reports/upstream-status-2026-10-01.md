@@ -83,3 +83,15 @@ and issue, PhysicsNeMo issue/PR pairs, and OpenFOAM source-path audit are the
 appropriate records for the current evidence. The benchmark's own PR #2, which
 adds the Lean-checked cusp-ball Hessian transfer with conditional packet-scope
 documentation, has Python CI passing; it is not an upstream solver patch.
+
+## Same-day live node refresh (2026-09-30 23:45 UTC)
+
+A direct GitHub GraphQL lookup rechecked the records most likely to change the
+reporting decision. SU2 discussion #2890 still has one maintainer comment (the
+last activity remains September 13); issue #2353 remains open, last updated
+September 30. PhysicsNeMo issue #2007 remains open; linked PR #2008 remains
+open and behind its base, with head `7407608723062dc11ba5332e9ff3774f42bb02d9`
+and base `ff5d19d08123de47ca446caed1d70a225d540184`. These tracked records
+still overlap the observed findings, so no duplicate was posted. Exact node
+metadata are saved in
+`evidence/upstream-refresh/live-status-2026-10-01T2345Z.json`.
