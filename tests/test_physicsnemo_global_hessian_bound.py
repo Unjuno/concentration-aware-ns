@@ -5,10 +5,24 @@ from tools.physicsnemo_global_hessian_bound import (
     best_case_uniform_grid_nodes,
     network_hessian_entry_bound,
     total_error_hessian_entry_bound,
+    network_hessian_vector_norm_bound,
+    spectral_total_error_hessian_entry_bound,
 )
 
 
 class PhysicsNeMoGlobalHessianBoundTests(unittest.TestCase):
+    def test_vector_norm_bound_is_rational_and_zero_for_constant_network(self):
+        hidden = [[[0] * 7], [[0]], [[0]]]
+        output = [[0], [0], [0]]
+        bound = network_hessian_vector_norm_bound(hidden, output)
+        self.assertEqual(bound, Fraction(0))
+        self.assertEqual(spectral_total_error_hessian_entry_bound(bound), Fraction(29))
+
+    def test_vector_norm_bound_ignores_spatially_constant_time_feature(self):
+        hidden = [[[0, 0, 0, 0, 0, 0, 100]], [[1]], [[1]]]
+        output = [[1], [0], [0]]
+        self.assertEqual(network_hessian_vector_norm_bound(hidden, output), Fraction(0))
+
     def test_zero_network_has_zero_spatial_hessian(self):
         hidden = [[[0] * 7], [[0]], [[0]]]
         output = [[0], [0], [0]]

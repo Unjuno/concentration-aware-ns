@@ -1193,3 +1193,25 @@ explained in the associated report. Center sampling is diagnostic only; Arb is
 not independently proof-kernel checked; no acceptance threshold is
 preregistered. The PhysicsNeMo verdict remains `UNCERTAIN` and the overall
 goal remains active.
+
+## Revision 71 — derivative-range tightening and rejected norm recurrence
+
+Added analytic range intersections for `tanh'` and `tanh''` in the Arb spatial
+jet. With this tightening, the maximum centered Frobenius enclosure on the
+512-cell (8-per-axis) periodic-domain cover falls from 12,251 to 275.01; the
+maximum cell-center sample is 0.14597. Whole-domain worst-upper-first adaptive
+bisection uses 2,049 evaluations / 1,025 leaves but remains at maximum upper
+167.31, above the illustrative `0.26` comparator. This is still too loose for
+a useful continuous peak certificate. Local adaptive results and all updated
+intervals were regenerated from the frozen `n64-nt17` archive and are in the
+existing Arb evidence/report files.
+
+Also evaluated an exact-rational vector-Hessian recurrence based on weight
+matrix Frobenius norms across all 25 frozen PhysicsNeMo checkpoints. The
+illustrative uniform-grid floor worsened to 287,269–328,448 nodes per axis,
+about 24–31 times the componentwise route's 9,465–13,743. This candidate is
+rejected for efficiency and does not replace the existing bound. The comparison
+is preserved in `tools/physicsnemo_global_hessian_bound.py`, its auditor and
+`evidence/tests/physicsnemo-global-hessian-coverage.json`. Sampled AD checks do
+not prove the global recurrence. No threshold or quality verdict changes; the
+overall benchmark goal remains active.

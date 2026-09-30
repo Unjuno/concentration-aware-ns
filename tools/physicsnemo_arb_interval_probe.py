@@ -12,11 +12,21 @@ from flint import arb, ctx
 
 _A = (arb(1), arb(2), arb(3))
 _UNIT_INTERVAL = arb(-1).union(1)
+_TANH_FIRST_DERIVATIVE_RANGE = arb(0).union(1)
+_TANH_SECOND_DERIVATIVE_RANGE = arb(-0.8).union(0.8)
 
 
 def _unit_range(value):
     """Intersect a rigorous ball with the analytic range [-1, 1]."""
     return value.intersection(_UNIT_INTERVAL)
+
+
+def _tanh_first_derivative_range(value):
+    return value.intersection(_TANH_FIRST_DERIVATIVE_RANGE)
+
+
+def _tanh_second_derivative_range(value):
+    return value.intersection(_TANH_SECOND_DERIVATIVE_RANGE)
 
 
 def _validate(hidden_layers, output_layer, box, time, sigma, endpoint):
@@ -89,8 +99,8 @@ def _network_jet(hidden_layers, output_layer, box, time, endpoint):
         gradient = []
         hessian = []
         for neuron, activation in enumerate(features):
-            first = 1 - activation * activation
-            second = -2 * activation * first
+            first = _tanh_first_derivative_range(1 - activation * activation)
+            second = _tanh_second_derivative_range(-2 * activation * first)
             gradient.append([first * pre_gradient[neuron][axis] for axis in range(3)])
             hessian.append([
                 [second * pre_gradient[neuron][a] * pre_gradient[neuron][b]

@@ -290,6 +290,24 @@ def audit(archive=ARCHIVE):
             "cell_centers_within_1e-8_float_tolerance": bool(max_excess <= 1e-8),
         })
 
+    domain_parent = [(-domain_endpoint, domain_endpoint)] * 3
+
+    def domain_cell_upper(bounds):
+        enclosure = centered_gradient_error_enclosure(
+            hidden, output, bounds, time=params["end"],
+            endpoint=params["end"], sigma=params["sigma"], dps=40,
+        )
+        return _frob_upper(enclosure)
+
+    global_adaptive_cover = adaptive_axis_bisect_cover(
+        domain_parent, domain_cell_upper, target=target_upper,
+        max_evaluations=evaluation_budget,
+    )
+    global_adaptive_cover["scope"] = (
+        "Adaptive partition of the outward-rounded full periodic cube; "
+        "target is exploratory, not a preregistered acceptance gate."
+    )
+
     return {
         "scope": "Exploratory local Arb mean-value enclosures for one frozen PhysicsNeMo checkpoint; no full periodic-domain cover or global-extremum certificate.",
         "case": archive.name.removesuffix(".tar.gz"),
@@ -317,6 +335,7 @@ def audit(archive=ARCHIVE):
             "cases": domain_rows,
             "interpretation": "global enclosure exists at each tested partition, but upper bounds are exploratory and may be too coarse for a useful quality certificate",
         },
+        "periodic_domain_adaptive_cover": global_adaptive_cover,
         "environment": {
             "python": platform.python_version(),
             "python_flint": flint_version,

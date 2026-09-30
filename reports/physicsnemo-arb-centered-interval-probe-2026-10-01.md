@@ -131,3 +131,29 @@ upper bound is now produced by this explicit tiling, but it is not a practical
 quality certificate, and the sampled center checks are only diagnostics. No
 PhysicsNeMo threshold is preregistered; quality remains `UNCERTAIN`. The
 periodic-domain sweep and exact numerical output are in the JSON evidence.
+
+## Derivative-range intersection and full-domain adaptive cost
+
+The network jet now also intersects `tanh'` with `[0,1]` and `tanh''` with
+`[-0.8,0.8]`, using the analytic global derivative bounds. This further lowers
+the 8-per-axis uniform full-domain maximum from `12,251` to `275.01` (for 512
+cells), with center-sample maximum `0.14597`. A worst-upper-first adaptive
+partition of the whole outward-rounded periodic cube spends 2,049 evaluations
+and leaves 1,025 cells; its maximum upper is `167.31`, still above the
+illustrative `0.26` comparator. On the single sampled-candidate neighborhood,
+the updated local adaptive results are 63 evaluations / 39 leaves at half-width
+`0.01` (max `0.25961`), 1,023 / 511 at `0.025` (max `0.25980`), and a budget
+stop at `0.05` (2,049 / 1,025, max `0.27268`). None is a preregistered quality
+gate. These values replace the earlier interval results in this JSON, which
+was regenerated from the same archived checkpoint.
+
+A second analytic candidate was tested on all 25 frozen checkpoints: a vector
+Hessian operator-norm recurrence using exact rational Frobenius upper bounds
+for weight matrices and `|tanh''|<=4/5`. It is valid but markedly looser than
+the existing componentwise recurrence: the illustrative best-case uniform-grid
+floor increases from 9,465–13,743 to 287,269–328,448 nodes per axis (roughly
+24–31 times as many). The new route is retained as a documented comparison,
+not selected for certification. Eight fixed-point automatic-differentiation
+checks per archive stayed under both network envelopes; these remain sanity
+checks, not global validation. The updated 25-case record is in
+`../evidence/tests/physicsnemo-global-hessian-coverage.json`.

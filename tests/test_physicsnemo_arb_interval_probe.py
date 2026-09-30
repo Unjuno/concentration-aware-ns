@@ -9,11 +9,18 @@ from tools.reference import fields
 class PhysicsNeMoArbIntervalProbeTests(unittest.TestCase):
     def test_trigonometric_and_tanh_analytic_ranges_are_enforced(self):
         from flint import arb
-        from tools.physicsnemo_arb_interval_probe import _unit_range
+        from tools.physicsnemo_arb_interval_probe import (
+            _unit_range,
+            _tanh_first_derivative_range,
+            _tanh_second_derivative_range,
+        )
 
         for interval in (arb(-1).union(1), arb(-4).union(4)):
             self.assertLessEqual(float(_unit_range(interval.tanh()).abs_upper()), 1.0 + 1e-7)
         self.assertLessEqual(float(_unit_range(arb(-4).union(4).sin()).abs_upper()), 1.0 + 1e-7)
+        self.assertGreaterEqual(float(_tanh_first_derivative_range(arb(-2).union(2)).lower()), -1e-7)
+        self.assertLessEqual(float(_tanh_first_derivative_range(arb(-2).union(2)).upper()), 1.0 + 1e-7)
+        self.assertLessEqual(float(_tanh_second_derivative_range(arb(-2).union(2)).abs_upper()), 0.8 + 1e-7)
 
     def test_centered_form_contains_point_interval_evaluations(self):
         from tools.physicsnemo_arb_interval_probe import (

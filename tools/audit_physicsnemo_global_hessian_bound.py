@@ -13,6 +13,8 @@ import torch
 from tools.physicsnemo_global_hessian_bound import (
     best_case_uniform_grid_nodes,
     network_hessian_entry_bound,
+    network_hessian_vector_norm_bound,
+    spectral_total_error_hessian_entry_bound,
     total_error_hessian_entry_bound,
 )
 
@@ -97,10 +99,14 @@ def audit(root=Path(".")):
         state, hidden, output = _weights(weights_data)
         network_bound = network_hessian_entry_bound(hidden, output)
         total_bound = total_error_hessian_entry_bound(network_bound)
+        vector_bound = network_hessian_vector_norm_bound(hidden, output)
+        spectral_total_bound = spectral_total_error_hessian_entry_bound(vector_bound)
         nodes = best_case_uniform_grid_nodes(total_bound)
         sampled_hessian = _sampled_hessian_max(state, sample_points)
         if sampled_hessian > float(network_bound):
-            raise AssertionError(f"sampled Hessian exceeds exact envelope: {archive.name}")
+            raise AssertionError(f"sampled Hessian exceeds exact entrywise envelope: {archive.name}")
+        if sampled_hessian > float(vector_bound) / 20:
+            raise AssertionError(f"sampled Hessian exceeds spectral/vector envelope: {archive.name}")
         rows.append({
             "case": archive.stem.removesuffix(".tar"),
             "archive_sha256": _sha(raw),
@@ -110,12 +116,16 @@ def audit(root=Path(".")):
             "sampled_hessian_entry_max_8_points": sampled_hessian,
             "sampled_to_bound_ratio": sampled_hessian / float(network_bound) if network_bound else 0.0,
             "derivative_error_hessian_entry_bound_exact": str(total_bound),
+            "network_hessian_vector_norm_bound_exact": str(vector_bound),
+            "network_hessian_vector_norm_bound_approx": float(vector_bound),
+            "spectral_derivative_error_hessian_entry_bound_exact": str(spectral_total_bound),
+            "spectral_optimistic_nodes_per_axis": best_case_uniform_grid_nodes(spectral_total_bound),
             "optimistic_nodes_per_axis": nodes,
             "optimistic_uniform_points": nodes ** 3,
         })
     nodes = [row["optimistic_nodes_per_axis"] for row in rows]
     return {
-        "scope": "Exact-rational global Hessian envelope for the frozen 3-layer tanh MLP and analytic reference, used only to assess a uniform-grid Lipschitz cover. No solver is rerun and no quality verdict is assigned.",
+        "scope": "Two exact-rational global Hessian envelopes for the frozen 3-layer tanh MLP and analytic reference, used only to assess a uniform-grid Lipschitz cover. No solver is rerun and no quality verdict is assigned.",
         "source": {
             "repository": "https://github.com/NVIDIA/physicsnemo",
             "commit": source_commit,
@@ -129,6 +139,7 @@ def audit(root=Path(".")):
         "method": {
             "float_weights": "Each stored binary64 parameter is converted to its exact Fraction value; all envelope propagation is rational arithmetic.",
             "network": "For each tanh layer use |tanh'|<=1 and |tanh''|<=1; propagate absolute first- and second-derivative envelopes through the three hidden affine maps and final linear map, then multiply by endpoint t=1/20.",
+            "spectral_network": "Use exact rational upper bounds on Frobenius matrix norms (hence spectral norms), ||D(sin,cos)||<=1, ||D2(sin,cos)||<=1, and |tanh''|<=4/5. Propagate vector Jacobian and bilinear Hessian operator norms, omitting the spatially constant t/end feature column.",
             "reference": "u_pred=u0+t*MLP and u_ref=exp(-t)*u0, so the error Hessian is t*D2MLP+(1-exp(-t))*D2u0. For beta=4, each third derivative of exp(beta*(cos(y)-1)) is bounded by beta+3*beta^2+beta^3=116; cross product with a=(1,2,3) gives a u0-Hessian entry bound of 580. Since 1-exp(-t)<=t=1/20, the reference contribution is bounded by 29.",
             "cover": "A uniform N^3 periodic grid gives sup gradient-error <= grid-sample max + 9*pi*B/N for component Hessian bound B. The reported optimistic lower bound on N assumes zero grid-sample error, uses pi>3 and exact reference peak <21 to derive a necessary floor for this envelope, and an illustrative 5% comparator only.",
             "limitations": ["The 5% value is not a preregistered PhysicsNeMo threshold and does not change old verdicts.", "This global envelope is intentionally coarse; the large N diagnoses this proof route, not the true error or impossibility of adaptive interval certification.", "An actual certificate still requires evaluating every node and outward-certified arithmetic for sampled values."]

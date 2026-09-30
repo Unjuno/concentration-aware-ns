@@ -5,7 +5,7 @@ Lipschitz-cover certificate for continuous derivative peaks is computationally
 plausible. It is not an accuracy verdict or a PhysicsNeMo acceptance gate.
 """
 from fractions import Fraction
-from math import ceil
+from math import ceil, isqrt
 
 
 def _exact_abs(value):
@@ -67,6 +67,62 @@ def network_hessian_entry_bound(hidden_weights, output_weights, *, time_factor=F
 def total_error_hessian_entry_bound(network_bound):
     """Bound the endpoint error Hessian using 1-exp(-t) <= t = 1/20."""
     return Fraction(29) + network_bound
+
+
+def _sqrt_fraction_upper(value, *, scale=10**12):
+    """Exact rational upper bound for sqrt(value), rounded up at fixed scale."""
+    if value < 0:
+        raise ValueError("value must be nonnegative")
+    scaled_numerator = value.numerator * scale * scale
+    denominator = value.denominator
+    root = isqrt(scaled_numerator // denominator)
+    if root * root * denominator < scaled_numerator:
+        root += 1
+    return Fraction(root, scale)
+
+
+def network_hessian_vector_norm_bound(
+    hidden_weights, output_weights, *, tanh_second_derivative_bound=Fraction(4, 5)
+):
+    """Bound ||D2 MLP[v,w]||_2 for unit spatial directions v,w.
+
+    Uses Frobenius upper bounds for matrix spectral norms, the exact operator
+    bounds ||D(sin,cos)||<=1 and ||D2(sin,cos)||<=1, and the analytic bound
+    |tanh''|<=4/5. The constant t/end input has its first-layer column removed
+    from derivative propagation.
+    """
+    if len(hidden_weights) != 3:
+        raise ValueError("the frozen architecture has exactly three hidden layers")
+    if tanh_second_derivative_bound <= 0 or tanh_second_derivative_bound >= 1:
+        raise ValueError("tanh second derivative bound must lie in (0, 1)")
+
+    lipschitz = Fraction(1)
+    hessian = Fraction(1)
+    expected_width = 7
+    for layer_index, matrix in enumerate(hidden_weights):
+        rows = [[_exact_abs(value) for value in row] for row in matrix]
+        if not rows or any(len(row) != expected_width for row in rows):
+            raise ValueError("incompatible hidden-layer matrix dimensions")
+        if layer_index == 0:
+            for row in rows:
+                row[6] = Fraction(0)  # t/end is spatially constant
+        norm_squared = sum((value * value for row in rows for value in row), Fraction(0))
+        matrix_norm = _sqrt_fraction_upper(norm_squared)
+        next_lipschitz = matrix_norm * lipschitz
+        hessian = matrix_norm * hessian + tanh_second_derivative_bound * next_lipschitz**2
+        lipschitz = next_lipschitz
+        expected_width = len(rows)
+
+    output = [[_exact_abs(value) for value in row] for row in output_weights[:3]]
+    if len(output) != 3 or any(len(row) != expected_width for row in output):
+        raise ValueError("output matrix must provide three compatible velocity rows")
+    output_norm_squared = sum((value * value for row in output for value in row), Fraction(0))
+    return _sqrt_fraction_upper(output_norm_squared) * hessian
+
+
+def spectral_total_error_hessian_entry_bound(network_vector_bound):
+    """Convert the vector bilinear MLP bound to an entrywise endpoint bound."""
+    return Fraction(29) + network_vector_bound / 20
 
 
 def best_case_uniform_grid_nodes(error_hessian_bound, *, tolerance=Fraction(1, 20)):
