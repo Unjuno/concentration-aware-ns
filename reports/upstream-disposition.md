@@ -1,4 +1,4 @@
-# Upstream reporting decisions — updated 2026-09-30
+# Upstream reporting decisions — refreshed 2026-10-01
 
 These decisions concern the pinned implementations and reproduced experiments.
 They do not claim to identify every industrial consequence of a mathematical
@@ -124,3 +124,33 @@ preserved in
 master and SU2 master still match their source pins; SU2's existing discussion
 contains both the maintainer diagnosis and our BDF2 follow-up. PhysicsNeMo
 main/issue/PR states and its divergence from PR #2008 are recorded there.
+
+## Three-project release/status refresh, 2026-10-01
+
+A read-only query of the official project APIs confirms that SU2's latest
+release remains v8.5.0, the exact benchmark pin; issue #2353 is still open and
+the existing discussion #2890 remains the correct location for the reported
+time-source observations. OpenFOAM Foundation 13's repository currently lists
+four open issues and one README pull request. The reviewed two-phase-version
+and generated-documentation issues do not describe our single-phase MMS or
+AMR behavior; the other issues concern migration and installation. The GitHub
+API reports `NOASSERTION` for repository license metadata, while the pinned
+package/source audit records GPL-3.0-or-later file headers. No matching defect
+was found.
+
+PhysicsNeMo v2.2.2 is now the latest release, one commit beyond the benchmark's
+v2.2.1 pin. The delta is limited to the package version, corrected PyPI install
+hint text and associated tests; it does not change the CFD model, residual
+formulation, or power-spectrum implementation used in this audit. Current main
+still has the same `power_spectrum.py` Git blob as the benchmark pin. Odd-width
+issue #2007 remains open and its focused fix PR #2008 remains open, two commits
+ahead and ten behind current main. The benchmark uses even-width grids, so this
+known defect does not affect its current spectrum measurements. The existing
+issue and PR remain the appropriate upstream records; no duplicate issue was
+filed.
+
+The exact commit IDs, API status fields, file hashes, queried items, and
+reproduction queries are preserved in
+[`evidence/upstream-refresh/three-project-inventory-2026-10-01.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-01.json).
+This refresh updates versions and tracking state; it is not a new solver run,
+full source audit, or PhysicsNeMo acceptance verdict.

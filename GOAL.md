@@ -974,3 +974,17 @@ match, and the OpenAI pointwise-versus-global-peak gap distinct. The row links
 the report and its arithmetic-only checker and explicitly records that no
 molecular or probability consequence is established. Full benchmark and
 three-project completion gates remain active.
+
+## Revision 59 — current three-project release and issue inventory
+
+Captured a read-only official GitHub API refresh in
+`evidence/upstream-refresh/three-project-inventory-2026-10-01.json` and
+integrated the dispositions into `reports/upstream-disposition.md`. The SU2
+latest release matches the benchmark pin and its time-source reports remain in
+existing tracking. OpenFOAM's currently open items do not match the benchmark
+path. PhysicsNeMo v2.2.2 changes version/install guidance but not the audited
+CFD or spectrum source; the odd-width spectrum defect remains identical on
+current main and is already tracked by open issue #2007 / PR #2008. No duplicate
+upstream issue was filed. This status refresh does not close the separate
+PhysicsNeMo acceptance-threshold/continuous-peak gap or the solver reproduction
+requirements.
