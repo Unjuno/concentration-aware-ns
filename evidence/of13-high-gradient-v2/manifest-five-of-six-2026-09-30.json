@@ -1,0 +1,83 @@
+{
+  "captured_at_utc": "2026-09-30T08:55:00Z",
+  "status": "INCOMPLETE",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "base_run_manifest": "evidence/of13-high-gradient-v2/manifest.json",
+  "base_run_manifest_sha256": "9dc26bad1e249669fa18a3a430712edf8df83445238c1cb846fb4b262debb89c",
+  "expected_cases": [
+    "n16-dt0.001",
+    "n32-dt0.001",
+    "n64-dt0.001",
+    "n128-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "completed_cases": [
+    {
+      "case": "n16-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "archive": "n16-dt0.001.tar.gz",
+      "archive_sha256": "a500dd1d3946f7e468d33257d3b866550af55db678749c6b4f7cb6f8be35ee62"
+    },
+    {
+      "case": "n32-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "FAIL",
+      "archive": "n32-dt0.001.tar.gz",
+      "archive_sha256": "94e684e5d698862021be002eaef8c9bdef4387f9b582831e8edc931a4146c70d"
+    },
+    {
+      "case": "n64-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "archive": "n64-dt0.001.tar.gz",
+      "archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e"
+    },
+    {
+      "case": "n128-dt0.001",
+      "source_run": "2026-09-28 base matrix",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "archive": "n128-dt0.001.tar.gz (reconstructed from zstd package)",
+      "archive_sha256": "595d27fe2e0ca061e727624444406419870bff8d06d11a38f911fdcebd19e0f0"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "source_run": "2026-09-30 temporal addendum",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 100,
+      "converged_steps": 100,
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+      "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+      "source_commit": "721b7cda5c58dd095d16792a459d69ef1aebce6c",
+      "log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce"
+    }
+  ],
+  "incomplete_cases": [
+    {
+      "case": "n64-dt0.00025",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "historical_partial_attempts": [
+    {
+      "case": "n64-dt0.0005",
+      "observed_steps": 36,
+      "observed_converged_steps": 35,
+      "superseded_by": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+      "original_partial_preserved": true
+    }
+  ],
+  "matrix_reproduction": {
+    "status": "UNCERTAIN",
+    "reason": "n64-dt0.00025 remains unstarted; temporal triple and all six cases are not complete"
+  },
+  "amr_execution": "NOT_RUN",
+  "scope": "Cross-run status index only. It retains the original base manifest unchanged and joins one validated temporal addendum by protocol hash, source commit, image ID, and archive hash."
+}

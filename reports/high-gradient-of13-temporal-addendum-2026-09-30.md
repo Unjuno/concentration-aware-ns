@@ -35,6 +35,26 @@ The continuous full-gradient maximum is not certified; the derivative metrics ar
 
 The first run of the new orchestration script returned a false incomplete result after the solver had completed. The script counted the substring `Time = `, which also occurs in `ExecutionTime =` and `ClockTime =`. The raw solver output was retained. An independent validation tool now reuses the repository archiver's line-anchored time-step check, confirms the full completion contract, computes diagnostics, creates the archive and verifies every archived regular file and symbolic link. A unit-test fixture now includes `ExecutionTime`/`ClockTime` lines so this parser error cannot recur. The validator output is preserved in `evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005-manifest.json`.
 
-## Matrix status
+## Quarter-step completion and temporal comparison
 
-The additive cross-run index `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json` combines the original four complete rows with this fifth completed row while retaining the original September 28 manifest unchanged. The `n=64, dt=0.00025` row is still unstarted. The six-case matrix remains INCOMPLETE and its reproduction gate remains UNCERTAIN. AMR runs also remain unexecuted.
+The `n=64, dt=0.00025` rerun completed all 200 of 200 steps with 200 PIMPLE
+convergence records, endpoint U/p/C/phi, `End`, zero runner exit and both
+standard acceptance and local-quality PASS. Its archive hash is
+`705be3ab67347eedeb4dad548d4caa3a796b13ea7cd8cca1a70125f7452825c6` and log
+hash is `2776137a1b38d01ac854fc7153426131374268cf770d750be844c2fcc525f4f7`.
+
+The fixed n=64 three-step comparison is recorded in
+`evidence/tests/high-gradient-of13-v2-temporal-comparison-2026-09-30.json`.
+All three archives and completion records were checked, cell centers match
+exactly, and non-time input hashes match. The normalized adjacent endpoint
+differences are 1.3374e-5 and 9.4658e-6. The descriptive endpoint order is
+0.499; exact-velocity errors are 0.4781%, 0.4784%, and 0.4790%, so their
+two-point observed orders are slightly negative. These finite-resolution
+quantities are not a temporal error certificate.
+
+The additive cross-run index records all six spatial/temporal rows complete.
+The frozen high-gradient matrix's specific standard-PASS/local-FAIL concern is
+NOT_OBSERVED: n=64 and n=128 both pass both gates. This says nothing universal
+about OpenFOAM or about physical blow-up. The prior five-of-six index is
+preserved in `manifest-five-of-six-2026-09-30.json`; the original base manifest
+is unchanged. Dedicated AMR runs remain unexecuted.

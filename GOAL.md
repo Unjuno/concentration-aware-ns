@@ -521,3 +521,18 @@ regression fixture now includes `ExecutionTime`/`ClockTime` lines. A current
 cross-run manifest records five of six rows complete; `dt=0.00025` remains
 unstarted, so the overall matrix remains INCOMPLETE/UNCERTAIN. See
 `reports/high-gradient-of13-temporal-addendum-2026-09-30.md`.
+
+## Revision 30 — uniform matrix complete; discrepancy not observed
+
+The second n=64 temporal row (`dt=0.00025`) completed all 200 steps and passed
+the frozen standard and local-quality gates. The additive current manifest now
+records all six uniform-grid rows complete, while preserving the five-of-six
+snapshot and the immutable original base manifest. A hash-checked three-step
+n=64 comparison found matching cell centers and non-time inputs. The endpoint
+difference trend is descriptive and does not certify a temporal order; the
+exact-velocity error does not decrease monotonically across these three steps.
+The matrix rule is NOT_OBSERVED because n=64 and n=128 both pass standard and
+local-quality gates. This weakens the original specific discrepancy hypothesis
+for this frozen case; it is not a general solver guarantee. Dedicated AMR
+budgets remain required and unrun, so the broader verification goal stays
+active. See the temporal addendum report and comparison artifact.

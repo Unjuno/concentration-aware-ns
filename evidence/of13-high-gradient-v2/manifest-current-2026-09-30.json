@@ -1,6 +1,6 @@
 {
-  "captured_at_utc": "2026-09-30T08:55:00Z",
-  "status": "INCOMPLETE",
+  "captured_at_utc": "2026-09-30T09:30:00Z",
+  "status": "COMPLETE",
   "protocol": "protocols/high-gradient-of13-v2.json",
   "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
   "base_run_manifest": "evidence/of13-high-gradient-v2/manifest.json",
@@ -57,14 +57,21 @@
       "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
       "source_commit": "721b7cda5c58dd095d16792a459d69ef1aebce6c",
       "log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce"
-    }
-  ],
-  "incomplete_cases": [
+    },
     {
       "case": "n64-dt0.00025",
-      "status": "NOT_STARTED"
+      "source_run": "2026-09-30 temporal addendum",
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "time_steps": 200,
+      "converged_steps": 200,
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.00025.tar.gz",
+      "archive_sha256": "705be3ab67347eedeb4dad548d4caa3a796b13ea7cd8cca1a70125f7452825c6",
+      "source_commit": "b04e003a71e9d09a99310ecabc0da6005d3f5764",
+      "log_sha256": "2776137a1b38d01ac854fc7153426131374268cf770d750be844c2fcc525f4f7"
     }
   ],
+  "incomplete_cases": [],
   "historical_partial_attempts": [
     {
       "case": "n64-dt0.0005",
@@ -75,9 +82,11 @@
     }
   ],
   "matrix_reproduction": {
-    "status": "UNCERTAIN",
-    "reason": "n64-dt0.00025 remains unstarted; temporal triple and all six cases are not complete"
+    "status": "NOT_OBSERVED",
+    "adequately_resolved_grid_counts": [64, 128],
+    "rule": "REPRODUCED only if both listed fine-grid cases pass standard acceptance and fail local quality; NOT_OBSERVED only if both pass both gates.",
+    "scope": "A persistent discrepancy under this frozen MMS matrix; not proof of a general solver defect or physical singularity."
   },
   "amr_execution": "NOT_RUN",
-  "scope": "Cross-run status index only. It retains the original base manifest unchanged and joins one validated temporal addendum by protocol hash, source commit, image ID, and archive hash."
+  "scope": "Cross-run status index only. It retains the original base manifest unchanged and joins two validated temporal addenda by protocol hash, source commit, image ID, and archive hash."
 }
