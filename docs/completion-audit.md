@@ -22,7 +22,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Evidence-linked acceptance gate | v2 checker; evidence/tests/gate-artifact-audit.json; internal timestamp-sequence audit | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. The run-level parser's duplicate/skipped-time false-pass was found synthetically and corrected; all four complete high-gradient v2 archives pass the new fixed-step sequence check. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
-| OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md; conditional Jeffery bridge in docs/fiber-vortex-literature-audit.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. The cusp-ball theorem now supplies a field-equality radius proportional to `sqrt(1-t)` and transfers the base endpoint Hessian exponent `kappa=40` to the full spacetime jet on that ball. The spatial restriction of the local jet and classical nonlinear packet estimate are not jointly Lean-formalized; `Cstretch+39` remains a conditional, non-effective shrinking-packet allowance, not a fixed-packet certificate. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem. The Jeffery model matches the infinitesimal angle exponent only under prescribed spatially uniform axisymmetric strain. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
+| OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md; conditional Jeffery bridge in docs/fiber-vortex-literature-audit.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. The cusp-ball theorem supplies a field-equality radius proportional to `sqrt(1-t)` and transfers the base endpoint Hessian exponent `kappa=40` to the full spacetime jet on that ball. `SpatialHessianTransfer.lean` composes the local `ContDiffAt` spatial restriction with the selected-field estimate and is Lean-checked with an axiom audit. The classical nonlinear packet comparison remains outside Lean, so `Cstretch+39` is a conditional, non-effective shrinking-packet allowance, not a fixed-packet certificate. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem. The Jeffery model matches the infinitesimal angle exponent only under prescribed spatially uniform axisymmetric strain. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
 | Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Current tracked-only clean export at `0bf73f2` passes 26 replay steps and all six check commands in a fresh locked venv; all 125 report/test-evidence files remain byte-identical. The prior `5b8e305` baseline and historical supported-range drift failure remain preserved. Solver rebuild/reproduction remains separate. |
 
@@ -60,9 +60,13 @@ error (`Unable to print axioms`); the separate Lean audit printed the allowed
 axioms for all ten target declarations. The run manifest and rerun script are
 `evidence/lean-verification/support-hole-nanoda-2026-10-01.json` and
 `runtime/lean-verification/check_support_hole_nanoda.sh`. Conditional
-parameter assumptions remain, and the spatial restriction of the local jet is
-not jointly formalized with the classical nonlinear packet estimate. The
-AxisForceSign and SupportHoleAssembly checks are distinct proof closures.
+parameter assumptions remain. The local `ContDiffAt` restriction inequality
+and its composition with the selected-field cusp-ball Hessian theorem are now
+compiled and axiom-audited in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`.
+The classical nonlinear packet comparison remains outside Lean. The
+AxisForceSign, SupportHoleAssembly, and spatial-Hessian transfer checks are
+distinct proof closures.
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -669,10 +673,15 @@ and this earlier status record are preserved as historical evidence.
 The pinned Lean extension now proves a selected-field equality ball of radius
 `c*sqrt(1-t)` and transfers the actual-base full-spacetime Hessian rate
 `C2*q^(-40)` throughout that ball on an existential terminal interval. The
-local spatial-jet restriction and classical nonlinear packet estimate remain
-separate, so `Cstretch+39` is an analysis-level conditional shrinking-packet
-allowance with non-effective constants, not a fixed-size packet theorem. The
-latest Lean log and ten-declaration axiom audit are in
+October 1's `verification/SpatialHessianTransfer.lean` now composes that
+full-spacetime estimate with a fixed-time spatial restriction and provides
+`C2*q^(-40)` for the spatial Hessian on the same ball. The helper and composed
+theorem passed Lean elaboration and axiom audit; details are in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`. The
+classical nonlinear packet estimate remains separate, so `Cstretch+39` is
+still an analysis-level conditional shrinking-packet allowance with
+non-effective constants, not a fixed-size packet theorem. The earlier full
+spacetime theorem's ten-declaration axiom audit remains in
 `evidence/openai-lean-2026-09-30-cusp-hessian-v6/`.
 
 The October 1 GitHub issue/PR inventory is recorded in

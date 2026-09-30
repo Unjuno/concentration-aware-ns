@@ -1,0 +1,40 @@
+{
+  "status": "LEAN_AND_AXIOM_AUDIT_PASS",
+  "scope": "Composes the local ContDiffAt spatial-jet restriction with the selected-field cusp-ball full-spacetime Hessian bound, yielding a fixed-time spatial Hessian bound C*q^(-40) throughout the same shrinking ball on an existential terminal interval.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "upstream_source_archive_sha256": "e44f67a2bc3c133c14856d73b697f77344b030e3fae2f798254b64dcefbbb772",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "Lean (version 4.34.0-rc2, arm64-apple-darwin24.6.0, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+  "execution_environment": "Native macOS arm64; Lake project extracted from the pinned upstream source archive and offline dependency archive set. No Docker daemon was used for this successful run.",
+  "build_command": "lake build NavierStokes.ActualCandidateAssembly",
+  "build_result": "PASS; 3678 Lake jobs completed successfully",
+  "audit_command": "lake env lean SpatialHessianTransferAudit.lean",
+  "audit_working_directory": "work/lean-verification/independent-source",
+  "source_sha256": {
+    "SupportHoleAssembly.lean": "a31432420d0783c94e4be3bd65fec7b0b3a516a422cec64dce4bd97f407618f7",
+    "SpatialJetRestriction.lean": "efa1febe8ac491129ff8bc300ff28e2b65ac3d67d7a80a5274547ee0e643c57a",
+    "SpatialHessianTransfer.lean": "c040ee6a7b2e83f57fe048327dc2486fd2791d95c3d4f2e26cc81ca01117a5d8"
+  },
+  "lean_log_sha256": "368da3f1481d7e5151e401bd0a7b73ff29008bef07644bb133186227adb30e89",
+  "reproduction_script": "runtime/lean-verification/check_spatial_hessian_transfer.sh",
+  "reproduction_script_sha256": "f2c9d3eb26cf52de56312fbadf0053d1f4c273514ff29446b22e3cc6ac4b11b5",
+  "declarations": [
+    "ConcentrationAware.selected_cusp_ball_actual_spatial_hessian_rate",
+    "ConcentrationAware.spatial_jet_norm_le_spacetime_jet_norm_at"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_audit_output": "'ConcentrationAware.selected_cusp_ball_actual_spatial_hessian_rate' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ConcentrationAware.spatial_jet_norm_le_spacetime_jet_norm_at' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "limitations": [
+    "The radius coefficient, Hessian constant, and terminal interval remain existential and parameter-dependent.",
+    "The classical nonlinear packet comparison and executable finite-stage extraction are not formalized by this theorem.",
+    "The result does not establish fixed-size packet misalignment, molecular ordering, phase transition, particle-position certainty, or a constitutive-viscosity law.",
+    "The Docker reproduction script is checked syntactically but was not run in this turn because the Docker daemon remained unresponsive; the recorded successful proof and axiom audit used the native Lean toolchain with the pinned source/dependency archive set."
+  ],
+  "checker_image_expected_for_reproduction": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "lake_manifest_sha256": "7a572a19a72fdbdba7f04a8026930df59c161c922a8aaf829d9f5facd1f8d1cd"
+}

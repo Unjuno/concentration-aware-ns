@@ -138,10 +138,11 @@ certified initial packet must be if tube-radius and Hessian bounds obey power
 laws. For `rho(Q)=rho0 Q^r` and `M(Q)/2=O(Q^-kappa)`, it is sufficient to take
 `delta(Q)=O(Q^(C+max(r,kappa-1)))`; this tends to zero for the audited `C>1`.
 The new existence-level ball and Hessian transfer supply candidate powers
-`r=1/2` and `kappa=40`, so the candidate exponent is `Cstretch+39`. This
-remains conditional on the spatial-jet restriction and classical comparison,
-with non-effective constants; it does not imply that a fixed-size packet
-misaligns. Details and the piecewise derivation are in
+`r=1/2` and `kappa=40`, so the candidate exponent is `Cstretch+39`. The spatial
+Hessian transfer is Lean-checked, but the packet estimate remains conditional
+on the classical comparison and uses non-effective constants; it does not
+imply that a fixed-size packet misaligns. Details and the piecewise derivation
+are in
 [`axis-packet-bound.md`](axis-packet-bound.md) and
 [`packet-constant-dependencies.md`](packet-constant-dependencies.md).
 

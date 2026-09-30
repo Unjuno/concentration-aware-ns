@@ -254,7 +254,12 @@ transverse radius at every point in that ball is at most
 bounding the two projected coordinates separately; it can be absorbed by
 choosing the tube coefficient smaller. This supplies the transverse scale
 needed to compare with the active annulus, but the complete active-annulus and
-exterior inequalities have not yet been composed into a theorem.
+exterior inequalities had not yet been composed at this snapshot. The later
+`SupportHoleAssembly.lean` extension composes them into the conditional
+selected-field cusp-ball germ and full-spacetime Hessian transfer; the October
+1 `SpatialHessianTransfer.lean` further restricts that Hessian to fixed-time
+spatial directions. Their current scope and proof records are summarized in
+[`packet-constant-dependencies.md`](packet-constant-dependencies.md).
 
 The theorem compiles against the pinned OpenAI source and Lean cache; its
 axioms are only `propext`, `Classical.choice`, and `Quot.sound`. Reproducible

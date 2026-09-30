@@ -35,12 +35,14 @@ the axis alone would not supply a bound on a tube. The classical open-union
 and compact-tube construction in the flow note supplies such a K existentially.
 
 At m=2, the new cusp-ball result below controls the full spacetime second
-Fréchet derivative. Restriction to fixed-time spatial directions is
-mathematically immediate from the norm-one inclusion v -> (0,v), but a local
-`ContDiffAt` restriction lemma is not included in the Lean extension yet.
-Accordingly, the formalized result is stated as a spacetime Hessian bound; its
-use as the spatial Hessian in the classical packet comparison remains an
-analytic step to verify.
+Fréchet derivative. `verification/SpatialHessianTransfer.lean` applies the
+generic local `ContDiffAt` restriction lemma in
+`verification/SpatialJetRestriction.lean` to the selected candidate using its
+local equality with the smooth base. It proves that the fixed-time spatial
+Hessian inherits the same `C*q^(-40)` bound throughout the moving ball. Both
+declarations have a Lean axiom audit in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`. The
+classical packet comparison remains an analytic step.
 
 The refreshed upstream source also contains `ActualBaseVelocityBounds` and
 `ActualBasePressureBounds`. These give polynomial-in-similarity-radius bounds
@@ -73,9 +75,13 @@ The exact Lean declarations and axiom audit are archived in
 previous gap about whether the *local equality ball itself* has a power-law
 radius: its radius is `c*sqrt(tau_s)*Q^(1/2)`, so `r=1/2` at the field level.
 The constants and terminal interval remain existential and depend on the
-fixed construction parameters. The Lean theorem bounds a spacetime jet; a
-local restriction to the spatial Hessian and the classical nonlinear packet
-comparison are not formalized in this extension.
+fixed construction parameters. The Lean theorem in
+`verification/SpatialHessianTransfer.lean` composes the generic local
+`ContDiffAt` restriction with the selected-field cusp-ball transfer and gives
+the fixed-time spatial Hessian bound `C*q^(-40)` on that ball. The local helper
+and composed theorem both have axiom audits in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`. The
+classical nonlinear packet comparison remains separate.
 
 This is a genuine quantifier issue: an open neighborhood of every point on a
 nonclosed terminal graph need not have any power-law thickness near its limit.
@@ -88,9 +94,9 @@ shows why openness and compactness alone cannot prove the missing power lower
 bound.
 
 The generic algebra in `tools.check_packet_radius_scaling` remains valid under
-its explicit assumptions. If the formalized spacetime Hessian bound is
-restricted to spatial directions and the classical packet comparison is
-applied, the candidate exponents are `r=1/2`, `kappa=40`, hence
+its explicit assumptions. If the formalized spatial Hessian bound is combined
+with the classical packet comparison, the candidate exponents are `r=1/2`,
+`kappa=40`, hence
 `Cstretch+max(r,kappa-1)=Cstretch+39`, in `[42.9999995,43)`. This is a
 conditional *analysis-level shrinking initial-packet allowance*, not a Lean
 theorem or a numeric certificate. It does not prove that a fixed-size packet
@@ -174,8 +180,8 @@ velocity throughout the shrinking ball and transfers the full-spacetime
 `q^-40` Hessian rate there. The support-hole derivation remains a useful
 independent route, but its conditional uniform-coefficient argument is not
 needed to state the current field-level result. Exact tube/Hessian constants
-remain non-effective, and the local spatial restriction plus nonlinear packet
-comparison remain conditional; the current scope is stated above.
+remain non-effective, and the nonlinear packet comparison remains conditional;
+the current scope is stated above.
 
 ## Finite-stage cutoff with a known chart lower bound
 

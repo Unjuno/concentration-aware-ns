@@ -147,14 +147,17 @@ symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
 now Lean-checks a shrinking equality ball with radius proportional to
 `sqrt(1-t)` and transfers the base's full-spacetime Hessian rate `kappa=40`
-onto that ball. Restricting this bound to the spatial Hessian and applying the
-classical nonlinear comparison would give `r=1/2` and candidate exponent
+onto that ball. The new composition in
+`verification/SpatialHessianTransfer.lean` transfers the same bound to the
+fixed-time spatial Hessian. Combining that result with the classical nonlinear
+comparison gives candidate exponents `r=1/2` and
 `Cstretch+39`, enclosed in `[42.9999995,43)`. This remains an
-analysis-level conditional shrinking-packet allowance: the local spatial-jet
-restriction and nonlinear comparison are not Lean-formalized together with
-the field-transfer theorem, and the constants/terminal interval are
-existential. It is neither a numeric packet certificate nor evidence that
-fixed-size packets lose alignment.
+analysis-level conditional shrinking-packet allowance. The spatial Hessian
+transfer has a Lean axiom audit recorded in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`; the
+nonlinear comparison remains classical, and constants and the terminal interval
+are existential. This is neither a numeric packet certificate nor evidence
+that fixed-size packets lose alignment.
 
 ## Verification and remaining inputs
 

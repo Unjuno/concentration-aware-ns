@@ -867,3 +867,46 @@ conditional cusp-ball/Hessian result; it does not validate the pinned upstream
 construction, formalize the classical packet comparison, or establish a
 particle, molecular, phase-transition, or viscosity consequence. The benchmark
 completion goal remains active.
+
+## Revision 52 — local spatial-jet restriction lemma
+
+Added `verification/SpatialJetRestriction.lean`, proving that at a locally
+`C^m` spacetime point the fixed-time spatial iterated derivative norm is at
+most the full spacetime derivative norm. The proof reduces local smoothness to
+a neighborhood and uses the norm-one embedding `v -> (0,v)`. The pinned Lean
+4.34.0-rc2 elaboration exited 0 in the digest-pinned offline checker; its source
+hash and invocation are recorded in
+`evidence/lean-verification/spatial-jet-local-restriction-2026-10-01.json`.
+
+This is a standalone generic lemma. No `#print axioms` audit was captured, and
+the attempted composition with the selected-field cusp-ball Hessian theorem
+did not produce a checked module: the initial attempt had a Lean module/import
+setup failure, and the local Docker/OrbStack service then stopped responding
+to bounded read-only status queries. No mathematical counterexample was
+observed, but the composition is unverified. The `Cstretch+39` estimate
+therefore remains conditional on this composition and the classical nonlinear
+packet argument. It only concerns a shrinking initial packet and implies no
+molecular ordering, phase transition, particle-position certainty, or
+viscosity law. The three-solver benchmark and upstream audit objectives remain
+active.
+
+## Revision 53 — selected-field spatial Hessian transfer
+
+Added `verification/SpatialHessianTransfer.lean`. It combines the local
+spatial-jet restriction with the already checked cusp-ball germ and
+full-spacetime Hessian result: on the same shrinking ball, the selected
+candidate's fixed-time spatial Hessian is bounded by `C*q^(-40)` on an
+existential terminal interval. Local `ContDiffAt` for the candidate is
+derived from its eventual equality with the smooth selected base. Both the
+generic helper and composed theorem print only `propext`, `Classical.choice`,
+and `Quot.sound` in the Lean 4.34.0-rc2 environment. Run/source details are
+recorded in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`.
+
+This closes the formal spatial-restriction step; the classical nonlinear
+packet comparison, existential constants and terminal interval, finite-stage
+extraction, and full benchmark matrix remain unfinished. The resulting
+`Cstretch+39` statement is still a conditional shrinking-initial-packet
+allowance. It proves no fixed-size misalignment or molecular, phase-transition,
+particle-position, or viscosity consequence. The overall benchmark goal stays
+active.
