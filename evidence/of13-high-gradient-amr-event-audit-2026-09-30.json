@@ -65,9 +65,19 @@
           "mesh_change": "Refined from 16640 to 103552 cells."
         }
       ],
-      "interpretation": "At the second adaptation check, 12416/16640 were selected and mesh grew to 103552, exceeding cap=100000 before a later correction split 256 points; final 101760. This directly records non-strict cap behavior but does not establish whether 2:1 consistency, parallel/global semantics, or another source detail caused the exceedance."
+      "refinement_budget_arithmetic": {
+        "cap": 100000,
+        "current_cells_before_second_refinement": 16640,
+        "nominal_candidate_allowance_floor((cap-current)/7)": 11908,
+        "selected_level_group_candidates": 12416,
+        "excess_candidates_over_allowance": 508,
+        "transient_cells_after_refinement": 103552,
+        "unrefinement_split_points_selected": 256,
+        "final_cells_after_unrefinement": 101760
+      },
+      "interpretation": "At the second adaptation check, 12416/16640 candidates were selected, versus a nominal allowance of 11908. Source selection appends candidates by complete refinement-level groups and checks the allowance only after each group, so the log count is consistent with whole-level overshoot. The consistency-refinement output count equals the candidate count, giving no evidence that 2:1 consistency added cells in this event. The subsequent 256 split points are selected for unrefinement; the mesh falls to 101760. This is approximate maxCells behavior, not a reproduced defect."
     }
   ],
   "source_audit": "reports/openfoam-amr-source-budget-audit-2026-09-28.md",
-  "conclusion": "Per-check candidate counts are partially observed. cap100000 demonstrably crossed its configured maxCells during a logged refinement event, then reduced to 101760. Source audit predicts consistency expansion can exceed nominal cap, but this log does not attribute the overshoot. cap5000 did not exercise a second refinement under its cap. No solver accuracy/AMR implementation defect is established; investigate source-level consistency expansion and intended maxCells contract before any upstream report."
+  "conclusion": "Per-check selected counts are recorded. The cap100000 event exceeds the nominal candidate allowance because selection is truncated only after each full refinement-level group; 2:1 consistency does not increase the logged candidate count in this event. The subsequent 256 points are unrefined and final count is 101760. This is consistent with the documented approximate maxCells behavior; no defect issue is supported. cap5000 did not exercise a second refinement under its cap."
 }
