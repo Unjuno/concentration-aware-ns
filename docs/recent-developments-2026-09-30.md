@@ -88,3 +88,17 @@ asymptotic time order or a general solver verdict; see
 2. Test particle trajectories separately from Eulerian norms: seed the Lagrangian ODE at fixed similarity coordinates, report the selected particle families and finite-time trajectory statistics, and check numerical trajectory error independently of the PDE discretization error.
 3. Keep solver acceptance and continuum-singularity claims distinct. No computed blow-up or physical hazard follows from large finite-resolution gradients.
 4. Keep the profile paper's stated scope distinct from the complete forcing/residual-cancellation construction; track the companion Part II before describing it as an independent end-to-end proof review.
+
+## 2026-10-01: conditional regularity result for analytic forcing
+
+Constantin, Ignatova and Vicol's 2026-09-17 preprint
+[arXiv:2609.20803](https://arxiv.org/abs/2609.20803) proves regularity near a
+candidate singular point assuming the anisotropic Type-II bounds and exact
+axisymmetry in a collapsing core identified in OpenAI's construction, when the
+forcing is spatially real analytic. This constrains any construction satisfying
+those hypotheses: its force cannot be analytic locally uniformly in time (or
+vanish identically near the point) if it remains bounded in `C^2` to the
+singular time. It does not contradict a merely `C∞` force, and we have not
+verified the hypotheses against OpenAI's actual force. Treat this as a
+conditional mathematical check, not a molecular interpretation. Full caveats
+are in the [hypothesis audit](../reports/recent-developments-and-hypothesis-audit-2026-09-28.md).

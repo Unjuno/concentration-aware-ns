@@ -334,6 +334,18 @@ The parameter map is also checked by the dependency-free arithmetic regression
 This verifies only the displayed scalar identities at representative parameter
 values. It is not a symbolic proof or a Navier–Stokes computation.
 
+## 2026-10-01 live-source recheck
+
+The OpenAI public repository's `main` was checked directly with `git ls-remote`
+and remained at `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, the snapshot already
+audited above. The arXiv API reports v2 (updated 29 September) as the current
+version of Lei and Ren's Part I. An exact-title API query for their announced
+Part II returned only Part I; no Part II record was found as of this check.
+This bounds the follow-up-status search, not private work or external review.
+The analytic-forcing result and its conditional scope were already recorded
+above; no independent application of that theorem to OpenAI's actual force was
+performed here.
+
 ## 2026-10-01 literature and model-scope refresh
 
 Lei and Ren's version 2 (29 September) of [arXiv:2609.35406](https://arxiv.org/abs/2609.35406) is an explicitly expository reconstruction of the leading-profile portion of OpenAI's manuscript. It describes axisymmetric profiles, a divergence-form stress plus an infinitely flat remainder on fixed similarity sectors, and a new linear model for the inner core. It says the oscillatory-pulse cancellation is deferred to a planned Part II and that the exposition will not be submitted to a journal. This is useful for line-by-line analytic auditing, not an independent end-to-end proof or physical particle model.

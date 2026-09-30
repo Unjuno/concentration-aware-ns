@@ -693,3 +693,16 @@ uses a periodic domain and autograd. Issue #2007's odd-width spectral behavior
 does not touch its even-width outputs. A successful MLP import smoke on the
 pinned environment does not replace the separate #1990 reproducer. No new
 upstream report is warranted by the present evidence.
+
+## 2026-10-01 follow-up literature: analytic forcing
+
+Constantin, Ignatova and Vicol's [arXiv:2609.20803](https://arxiv.org/abs/2609.20803)
+proves regularity near the proposed singular point under its stated anisotropic
+Type-II bounds, exact axisymmetry in a collapsing core, and spatially analytic
+forcing assumptions. This does not refute a construction with merely smooth
+forcing; the paper itself states the force would need to be spatially
+nonanalytic under its additional hypotheses. We have not independently checked
+those hypotheses or applied the theorem to the OpenAI force. This is an
+important source-audit question, not evidence for particle alignment or a
+viscosity law. Detailed scope notes are in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`.

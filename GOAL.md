@@ -988,3 +988,14 @@ current main and is already tracked by open issue #2007 / PR #2008. No duplicate
 upstream issue was filed. This status refresh does not close the separate
 PhysicsNeMo acceptance-threshold/continuous-peak gap or the solver reproduction
 requirements.
+
+## Revision 60 — live-source recheck of follow-up literature
+
+Rechecked `openai/NavierStokesAndEuler` main on 2026-10-01; it remains at
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. The arXiv API reports v2 of Lei
+and Ren's Part I current as of 2026-09-29. An exact-title query for the
+announced Part II returned only Part I, so no Part II record was found as of
+this check. The already documented conditional analytic-forcing result remains
+unapplied to OpenAI's actual force. The recheck and its limits are in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; solver
+reproduction and the broader benchmark goal remain active.
