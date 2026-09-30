@@ -132,12 +132,12 @@ sufficiently small tau, the full spatial ball of radius `c*sqrt(tau)` remains
 inside the physical sublevel and spatial/time localization plateaus, and lies
 inside the proposed support hole. The exact algebraic identities are checked
 in `evidence/tests/support-hole-tube-geometry.json`; derivation and explicit
-smallness conditions are in `docs/support-hole-tube-geometry.md`. A fixed-time
-Euclidean-ball implication through actual selected-field local-germ equality
-now passes the pinned Lean check and axiom audit in
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v2/`. The result remains
-conditional at each point and time; it is not a uniform endpoint-tube theorem
-or a numerical packet certificate.
+smallness conditions are in `docs/support-hole-tube-geometry.md`. The
+conditional existential cusp-ball interval and actual selected-field local-
+germ equality now pass the pinned Lean check and axiom audit in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/`. It remains a shrinking-
+ball continuum result with conditional parameters; it is not a finite-size
+packet theorem or numerical packet certificate.
 
 This audit also corrects a source-description error in an earlier note:
 OpenAI's `SublevelShrinkingSupport` is an outer support bound (nonzero values
@@ -605,6 +605,22 @@ there. Its Python verification CI passed (run 36688606215). This is a
 contribution to the benchmark repository; no defect issue was submitted to
 OpenAI or a solver project because this work establishes a conditional
 mathematical lemma rather than a reproducible upstream implementation defect.
+
+### Conditional existential cusp-ball transfer, 2026-09-30
+
+The later extension check supersedes the earlier statement above that the
+whole-ball inclusion remained unformalized. The fresh pinned run
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/manifest.json` compiles and
+audits seven declarations, including `selected_axis_center_small_eventually`
+and `selected_velocity_germ_on_cusp_tube`, with only
+`[propext, Classical.choice, Quot.sound]`. Under fixed strict eta-margin and
+active-annulus interior assumptions, it proves existence of `tau0>0` and
+local-germ equality throughout every Euclidean ball of radius `c*sqrt(tau)`
+for all `0<tau<tau0`. The interval is existential and parameter-dependent;
+this is not a finite-size packet result, a molecular inference, or a solver
+validation. The refreshed audit and derivation are in
+`reports/openai-support-hole-assembly-audit.md` and
+`docs/support-hole-tube-geometry.md`.
 
 ### Full spatial-ball eta margin, 2026-09-30
 

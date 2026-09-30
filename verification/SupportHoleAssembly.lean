@@ -10,9 +10,9 @@ import NavierStokes.TimeLocalization
 This extension composes the pinned source's exterior-stage identities with
 local finiteness, the zeroth cutoff plateau, curl, and the two outer
 localizations. It proves a local base-field equality on the actual open
-exterior. This file formalizes the pointwise chart identity, its eta-margin
-upper bound, and a fixed-time spatial Lipschitz estimate. It does not prove a
-uniform margin over the full moving cusp tube.
+exterior. This file formalizes pointwise chart estimates and a conditional
+existential terminal-time interval on which every point in a shrinking spatial
+cusp ball has the selected smooth-base velocity germ.
 -/
 
 noncomputable section
@@ -690,5 +690,147 @@ theorem selected_velocity_germ_of_cusp_ball_point
     exact ⟨hradPlateau, hz⟩
   exact selected_inner_exterior_velocity_germ_of_radial_hole
     B N0 hN a ha ht hq hr hsmall hplateau htime
+
+/-- The selected axis center tends to zero in the terminal-time variable.
+This supplies an existential small-time bound for the center coordinate; it
+does not by itself give a uniform tube theorem. -/
+theorem selected_axis_center_small_eventually {eta : ℝ}
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+    ∃ eps > 0, ∀ {tau : ℝ}, 0 < tau → tau < eps →
+      |eta * (tau / (1 - eta ^ 2)) ^
+        (CoordinateAlgebra.D outgoing.data.h)| < 1 / 16 := by
+  let d : ℝ := 1 - eta ^ 2
+  let p : ℝ := CoordinateAlgebra.D outgoing.data.h
+  have hd : 0 < d := by
+    dsimp [d]
+    rcases heta with ⟨hlo, hhi⟩
+    nlinarith
+  have hp : 0 < p := by
+    dsimp [p, CoordinateAlgebra.D]
+    linarith [outgoing.data.h_lt_half]
+  let f : ℝ → ℝ := fun tau => eta * (tau / d) ^ p
+  have hpow : ContinuousAt (fun tau : ℝ => (tau / d) ^ p) 0 := by
+    have hdiv : ContinuousAt (fun tau : ℝ => tau / d) (0 : ℝ) :=
+      continuousAt_id.div_const d
+    exact hdiv.rpow_const (Or.inr hp.le)
+  have hf : ContinuousAt f 0 := by
+    exact continuousAt_const.mul hpow
+  have hf0 : f 0 = 0 := by
+    simp [f, Real.zero_rpow (ne_of_gt hp)]
+  have hnear : ∀ᶠ tau in 𝓝 (0 : ℝ), dist (f tau) 0 < 1 / 16 := by
+    have hball : Metric.ball (f 0) (1 / 16) ∈ 𝓝 (f 0) :=
+      Metric.ball_mem_nhds _ (by norm_num)
+    have hev := hf.eventually hball
+    filter_upwards [hev] with tau ht
+    simpa only [Metric.mem_ball, hf0, Real.dist_eq, abs_zero] using ht
+  obtain ⟨eps, heps, hbound⟩ := Metric.eventually_nhds_iff.mp hnear
+  refine ⟨eps, heps, ?_⟩
+  intro tau htau htaueps
+  have hdist : dist tau 0 < eps := by
+    rw [Real.dist_eq, sub_zero, abs_of_pos htau]
+    exact htaueps
+  have hft : dist (f tau) 0 < 1 / 16 := hbound hdist
+  have hfabs : |f tau| < 1 / 16 := by
+    simpa [Real.dist_eq, sub_zero] using hft
+  simpa [f, d, p] using hfabs
+
+/-- A whole `c*sqrt(tau)` ball around the selected axis center has the
+actual selected-field germ throughout some positive terminal-time interval.
+The interval is existential, depends on the fixed center and parameters, and
+does not assert anything about finite-size particles or the singular endpoint.
+-/
+theorem selected_velocity_germ_on_cusp_tube
+    (B N0 : ℕ)
+    (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℕ)
+    (ha : Tendsto (fun j => (a j : ℝ)) atTop atTop)
+    {eta c beta : ℝ} (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hc : 0 < c) (hbeta : 0 ≤ beta) (hbeta1 : beta < 1)
+    (hmargin : |eta| + c / (1 - 2 * outgoing.data.h) ≤ beta)
+    (hcactive : c ^ 2 < NominalConeAssembly.activeLeft nominal) :
+    ∃ tau0 > 0, ∀ {tau : ℝ}, 0 < tau → tau < tau0 →
+      ∀ {w : ProblemStatement.SpaceTime}, w.1 = 1 - tau →
+        ‖w.2 - (eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)) •
+          ProblemStatement.coordinateVector 2‖ ≤ c * Real.sqrt tau →
+        TimeLocalization.activatedVelocity
+          (MixedPeriodicAssembly.periodicVelocity
+            (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ))
+              (PhysicalWaveSum.physicalQ outgoing.data.h)
+              (ActualCandidateAssembly.potentialStages B N0 hN))
+            (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ))
+              (PhysicalWaveSum.physicalQ outgoing.data.h)
+              (ActualCandidateAssembly.directStages B N0 hN))) =ᶠ[𝓝 w]
+          (FinalSlowBase.velocity certificate modulation upper B) := by
+  have hden : 0 < 1 - beta ^ 2 := by nlinarith
+  have hQ : 0 < ChartScales.Q (ActualCandidateConstruction.residualBand B N0) :=
+    ChartScales.Q_pos _
+  have hcutDen : 0 < 2 * max 1 (a 0 : ℝ) := by positivity
+  obtain ⟨epsCenter, hepsCenter, hCenter⟩ :=
+    selected_axis_center_small_eventually heta
+  let qBound := (1 - beta ^ 2) *
+    ChartScales.Q (ActualCandidateConstruction.residualBand B N0)
+  let cutBound := (1 - beta ^ 2) / (2 * max 1 (a 0 : ℝ))
+  let radiusBound := 1 / (256 * c ^ 2)
+  let tau0 := min 1 (min qBound (min cutBound
+    (min (1 / 4) (min epsCenter radiusBound))))
+  have hqBound : 0 < qBound := mul_pos hden hQ
+  have hcutBound : 0 < cutBound := div_pos hden hcutDen
+  have hradiusBound : 0 < radiusBound := by
+    dsimp [radiusBound]
+    positivity
+  have htau0 : 0 < tau0 := by
+    dsimp [tau0]
+    positivity
+  refine ⟨tau0, htau0, ?_⟩
+  intro tau htau htautau0 w hwt hball
+  have htausmall : tau < 1 := by
+    exact lt_of_lt_of_le htautau0 (by dsimp [tau0]; exact min_le_left _ _)
+  have hqThreshold : tau < qBound := by
+    exact lt_of_lt_of_le htautau0 (by
+      dsimp [tau0]
+      exact le_trans (min_le_right _ _) (min_le_left _ _))
+  have hcutThreshold : tau < cutBound := by
+    exact lt_of_lt_of_le htautau0 (by
+      dsimp [tau0]
+      exact le_trans (min_le_right _ _) (le_trans (min_le_right _ _) (min_le_left _ _)))
+  have htime : tau < 1 / 4 := by
+    exact lt_of_lt_of_le htautau0 (by
+      dsimp [tau0]
+      exact le_trans (min_le_right _ _) (le_trans (min_le_right _ _)
+        (le_trans (min_le_right _ _) (min_le_left _ _))))
+  have hcenterThreshold : tau < epsCenter := by
+    exact lt_of_lt_of_le htautau0 (by
+      dsimp [tau0]
+      exact le_trans (min_le_right _ _) (le_trans (min_le_right _ _)
+        (le_trans (min_le_right _ _) (le_trans (min_le_right _ _) (min_le_left _ _)))))
+  have hradiusThreshold : tau < radiusBound := by
+    exact lt_of_lt_of_le htautau0 (by
+      dsimp [tau0]
+      exact le_trans (min_le_right _ _) (le_trans (min_le_right _ _)
+        (le_trans (min_le_right _ _) (le_trans (min_le_right _ _) (min_le_right _ _)))))
+  have hcenter : |eta * (tau / (1 - eta ^ 2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)| < 1 / 16 := by
+    exact hCenter htau hcenterThreshold
+  have hc2tau : c ^ 2 * tau < 1 / 256 := by
+    have hmul : tau * (256 * c ^ 2) < 1 :=
+      (lt_div_iff₀ (by positivity : 0 < 256 * c ^ 2)).mp hradiusThreshold
+    nlinarith
+  have haxialRadius : c * Real.sqrt tau < 1 / 16 := by
+    have hnonneg : 0 ≤ c * Real.sqrt tau := by positivity
+    have hsq : (c * Real.sqrt tau) ^ 2 < (1 / 16 : ℝ) ^ 2 := by
+      rw [mul_pow, Real.sq_sqrt htau.le]
+      nlinarith
+    nlinarith
+  have hradialScale : 2 * c ^ 2 * tau < 1 / 32 := by nlinarith
+  have hcutScale : tau < (1 - beta ^ 2) /
+      (2 * max 1 (a 0 : ℝ)) := by
+    simpa only [cutBound] using hcutThreshold
+  have hhorizon : tau < (1 - beta ^ 2) *
+      ChartScales.Q (ActualCandidateConstruction.residualBand B N0) := by
+    simpa only [qBound] using hqThreshold
+  exact selected_velocity_germ_of_cusp_ball_point B N0 hN a ha htau
+    (le_of_lt htausmall) heta hc.le hbeta hbeta1 hmargin hwt hball hcactive
+    hhorizon hcutScale htime hcenter haxialRadius hradialScale
 
 end ConcentrationAware

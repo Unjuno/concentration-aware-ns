@@ -143,13 +143,15 @@ existing periodic spatial and late-time local-agreement lemmas preserve it.
 This makes the source-level transfer plausible without a uniform
 stage-dependent germ radius.
 
-The aggregate field-equality step is now formalized and compiled in
-`verification/SupportHoleAssembly.lean` against the pinned source. Its theorem
-works on the actual open exterior and keeps the zeroth-cutoff plateau and
-outer-localization assumptions explicit. The moving-tube inequalities have
-not yet been encoded and connected to those hypotheses. Thus the field
-transfer is checked conditionally, while the proposed complete cusp tube
-remains a hand-derived geometric consequence rather than a Lean theorem.
+The aggregate field-equality step is formalized in
+`verification/SupportHoleAssembly.lean` against the pinned source. The theorem
+`selected_velocity_germ_on_cusp_tube` derives the moving-ball inequalities,
+includes the full ball in the actual physical exterior, supplies the cutoff
+and localization plateaus, and obtains eventual local-germ equality
+throughout the ball for every time in an existential positive terminal
+interval. The required center-continuity estimate is also formalized. The
+interval is not numerically bounded, and the strict geometric margin and
+coefficient conditions remain explicit.
 
 The extension now also contains
 `selected_inner_exterior_velocity_germ_of_radial_hole`: given a point in the

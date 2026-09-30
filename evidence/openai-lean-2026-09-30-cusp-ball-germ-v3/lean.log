@@ -1,0 +1,9 @@
+'ConcentrationAware.coordinateEta_margin_of_euclidean_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.transverse_radius_le_of_euclidean_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_deviation_le_of_euclidean_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.cusp_ball_point_in_physical_exterior' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_velocity_germ_of_cusp_ball_point' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_axis_center_small_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_velocity_germ_on_cusp_tube' depends on axioms: [propext, Classical.choice, Quot.sound]

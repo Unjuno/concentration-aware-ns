@@ -15,10 +15,10 @@ potential sum, curl/local derivative transfer, and outer spatial/time
 localization. The aggregate velocity transfer is now checked in a local Lean
 extension: `verification/SupportHoleAssembly.lean` proves eventual equality
 of the final activated periodic candidate and its smooth base on the actual
-open exterior, under explicit exterior, cutoff, localization, and late-time
-hypotheses. The whole moving cusp-tube inclusion and its quantitative `tau0`
-conditions are still not formalized in Lean, so this is not yet an end-to-end
-tube theorem.
+open exterior, then derives an existential terminal interval on which this
+equality holds throughout each shrinking Euclidean cusp ball. Conditions on
+the axis parameter, radius coefficient, eta margin, and annulus interior stay
+explicit; `tau0` is existential, not numerically estimated.
 
 ## Inner-hole to active-annulus exterior
 
@@ -90,27 +90,30 @@ activation. Its theorem gives eventual equality of the final activated
 velocity and the selected smooth-base velocity on that open exterior, under
 explicit hypotheses. It compiled with the pinned Lean and dependency versions.
 
-The extension now connects a fixed-time Euclidean ball to the physical exterior
-and to the actual selected-field germ, provided the explicit margin, horizon,
-cutoff, and localization bounds in
-`selected_velocity_germ_of_cusp_ball_point` hold. The pinned Lean run and axiom
-audit are recorded in
-`evidence/openai-lean-2026-09-30-cusp-ball-germ-v2/manifest.json`.
+The extension now proves `selected_velocity_germ_on_cusp_tube`: for fixed
+`eta`, `c>0`, and `beta<1` satisfying the explicit eta-margin and strict
+active-annulus interior conditions, there is an existential `tau0>0` such that
+for every `0<tau<tau0` and every point in the Euclidean ball of radius
+`c*sqrt(tau)` around the selected axis center, the actual activated field has
+the selected smooth-base velocity germ. The proof derives the center bound by
+continuity at `tau=0` and combines the finitely many geometric, cutoff, and
+localization thresholds. The pinned Lean run and axiom audit are recorded in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/manifest.json`.
 
-This is still a pointwise conditional implication: it does not establish one
-positive `tau0` that works for every time and every point in a moving cusp tube.
-In particular, no formal continuity argument yet supplies a uniform small-time
-bound for the axial center. It proves no particle alignment, molecular
-determinism, phase transition, or viscosity consequence.
+This is a continuum local-germ equality on a shrinking ball, under stated
+conditional parameters. It is not an endpoint value, a finite-size packet
+estimate, or a statement about particle alignment, molecular determinism,
+phase transition, or viscosity.
 
 ## Evidence boundary and next action
 
 The algebraic chart identities were rechecked by
 `work/reference-check-env/bin/python -m tools.check_support_hole_tube_geometry`;
-the output is `evidence/tests/support-hole-tube-geometry.json`. That checker
-does not prove the mean-value inequality or the whole-tube inclusion. Source
-archive and checksum details are recorded in
-`docs/support-hole-tube-geometry.md` and `GOAL.md`.
+the output is `evidence/tests/support-hole-tube-geometry.json`. The mean-value,
+ball inclusion, all-plateau, and assembled-field implications are now covered
+by the pinned Lean extension. The symbolic checker remains an independent
+algebraic cross-check only. Full pinned proof and source-archive details are in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v4/` and `GOAL.md`.
 
 No implication is drawn here about molecular ordering, absolute-position
 certainty, finite-size packets at the singular endpoint, a phase transition,
