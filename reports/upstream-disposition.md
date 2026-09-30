@@ -78,7 +78,9 @@ outputs are in `reports/physicsnemo-refresh-2026-09-30.md` and
 The live state was reread after completing the high-gradient AMR controls:
 
 - **OpenFOAM Foundation 13:** the current Foundation 13 open-issue inventory
-  has four entries; none establishes a duplicate for the measured AMR behavior.
+  has four entries. In particular, issue #5 concerns generated documentation
+  for `src/meshTools/meshSearch`, not the `fvMeshTopoChangers/refiner` logic
+  measured here; the other open issues also do not match this AMR behavior.
   The refinement-level selection and unrefinement event match the approximate
   `maxCells` source semantics (see the source-pinned event replay in
   `openfoam-amr-source-budget-audit-2026-09-28.md`). The large AMR-path velocity
