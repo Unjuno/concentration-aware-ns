@@ -36,10 +36,10 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 incomplete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while n64/n128 at dt=.001 and n64 at dt=.0005 are standard/local PASS | run n64 dt=.00025; retain uncertainty until whole frozen matrix is complete |
+| OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 uniform matrix complete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while n64/n128 at dt=.001 and n64 at dt=.0005/.00025 are standard/local PASS | temporal trend is descriptive; AMR-path attribution remains open |
 | OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
-| OF-04 | high-gradient AMR accuracy under frozen budgets | generator and sensor tests pass; v2 AMR solver runs not yet executed | execute three budgets against the frozen uniform n=64 control |
+| OF-04 | high-gradient AMR accuracy under frozen budgets | Three v2 budgets now complete; fixed-final-mesh controls show substantially smaller errors, but the adaptation-history cause is not isolated | separate sensor updates, conservative remapping, flux correction and projection effects; blocked-candidate counts remain unobserved |
 | SU-01 | conventional convergence with inaccurate local QoI | localized grid/time sweep complete; no standard-PASS/local-FAIL counterexample established, residual gate limits conclusions | investigate nonuniform/AMR and additional solver paths only under a distinct preregistered contract |
 | SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
 | ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |

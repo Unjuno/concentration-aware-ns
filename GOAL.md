@@ -536,3 +536,18 @@ local-quality gates. This weakens the original specific discrepancy hypothesis
 for this frozen case; it is not a general solver guarantee. Dedicated AMR
 budgets remain required and unrun, so the broader verification goal stays
 active. See the temporal addendum report and comparison artifact.
+
+## Revision 31 — high-gradient AMR and fixed-mesh controls completed
+
+The three frozen high-gradient AMR budgets completed. The 4096 budget did not
+refine; 5000 produced 16,640 cells and 100000 produced 101,760. Exact
+budget-blocked candidate counts were not retained. Fixed-final-mesh runs
+initialized from the analytic field reduced velocity error from 37.0% to 1.88%
+and from 40.1% to 0.483% on the 5000/100000 meshes. This supports an
+adaptation-history/remapping contribution, while leaving individual sensor,
+flux-correction, remapping and projection mechanisms unresolved. AMR verdicts
+remain UNCERTAIN; no upstream defect report is warranted yet. Raw case trees
+remain locally under `work/`; tracked compact summaries are the two AMR v2
+manifest artifacts cited in the temporal addendum. The project goal remains
+active pending component-level diagnosis and the remaining cross-solver and
+analytic work.

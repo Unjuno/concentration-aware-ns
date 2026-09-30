@@ -57,4 +57,27 @@ The frozen high-gradient matrix's specific standard-PASS/local-FAIL concern is
 NOT_OBSERVED: n=64 and n=128 both pass both gates. This says nothing universal
 about OpenFOAM or about physical blow-up. The prior five-of-six index is
 preserved in `manifest-five-of-six-2026-09-30.json`; the original base manifest
-is unchanged. Dedicated AMR runs remain unexecuted.
+is unchanged.
+
+## Dedicated AMR and fixed-final-mesh controls
+
+All three frozen high-gradient AMR budgets completed in
+`work/of13-high-gradient-amr-v2-20260930/`. Compact tracked summaries are
+`evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json` and
+`evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json`;
+complete raw solver trees remain under ignored `work/` paths. cap4096 stayed at
+4096 level-0 cells because the budget disallowed refinement. cap5000 produced
+16,640 cells (2,304 level 0 and 14,336 level 1); cap100000 produced 101,760
+cells (2,176 level 0, 3,328 level 1, 96,256 level 2). The 5000 and 100000
+budgets therefore overshot by factors 3.328 and 1.0176. Exact blocked-candidate
+counts were not recorded and remain UNOBSERVED.
+
+On those exact final meshes, fixed-mesh runs initialized from the analytic
+high-gradient field reduced the volume-weighted velocity error from 37.01% to
+1.878% (cap5000 mesh) and from 40.11% to 0.483% (cap100000 mesh). The AMR-path
+errors thus do not follow from the final cell locations alone. Adaptation
+history, field remapping, flux correction, sensor updates and pressure
+projection remain possible contributors; these controls do not isolate them
+all. The per-case quality verdict remains UNCERTAIN, and no OpenFOAM defect
+report is justified without a more specific reproducible component-level
+violation. Raw logs and fields are retained locally for continued audit.

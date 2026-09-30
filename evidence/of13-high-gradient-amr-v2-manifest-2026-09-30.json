@@ -1,0 +1,141 @@
+{
+  "run_environment": {
+    "source_commit": "265611cd160a7e139b6950c918e6dc1d90056d97",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "docker_cli": "/Users/taka/.orbstack/bin/docker",
+    "docker_cli_resolved": "/Applications/OrbStack.app/Contents/MacOS/xbin/docker-tools",
+    "docker_cli_sha256": "70d5a06adf388bd09b652f47ddc9ca31663a3e5353d24188bdb0054b3014ab3e",
+    "docker_cli_version": "Docker version 29.4.0, build 9d7ad9f",
+    "docker_context": "orbstack",
+    "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+    "scope": "OpenFOAM Foundation 13 high-gradient AMR budget sweep"
+  },
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "cases": [
+    {
+      "case": "cap4096",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 4096,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 4096,
+        "level_counts": {
+          "0": 4096
+        },
+        "level_source": "initial blockMesh count and no refinement events; budget disallows refinement",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": false,
+        "blocked_candidate_count": "UNOBSERVED",
+        "velocity_relative_volume_l2": 0.08875833380125644,
+        "max_gradient_gauss": 0.4004007090650746,
+        "reference_max_gradient_cell_samples": 0.6358050129577074,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+    },
+    {
+      "case": "cap5000",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 5000,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 16640,
+        "level_counts": {
+          "0": 2304,
+          "1": 14336
+        },
+        "level_source": "written cellLevel field",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": false,
+        "blocked_candidate_count": "UNOBSERVED",
+        "velocity_relative_volume_l2": 0.37011818403189645,
+        "max_gradient_gauss": 0.7783912930684762,
+        "reference_max_gradient_cell_samples": 0.8690546889027176,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+    },
+    {
+      "case": "cap100000",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 100000,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 101760,
+        "level_counts": {
+          "0": 2176,
+          "1": 3328,
+          "2": 96256
+        },
+        "level_source": "written cellLevel field",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": true,
+        "blocked_candidate_count": "UNOBSERVED",
+        "velocity_relative_volume_l2": 0.4011173084930783,
+        "max_gradient_gauss": 1.5010369506995067,
+        "reference_max_gradient_cell_samples": 0.9356642035612587,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+    }
+  ],
+  "interpretation": "AMR integration/accuracy pilot. Cell budgets are approximate at synchronization points, and blocked candidate counts are unobserved. All local-quality verdicts remain UNCERTAIN."
+}
