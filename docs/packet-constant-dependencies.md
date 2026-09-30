@@ -165,13 +165,17 @@ annulus-to-physical-radius scale identity. This proves a generic primitive
 copy-family implication, not that every actual stage satisfies one uniform
 parameter tuple.
 
-The conditional transfer through the actual selected potential/direct sums,
-curl, periodic localization and time activation is now checked on the actual
-open exterior in `verification/SupportHoleAssembly.lean`. The remaining gap is
-to formalize the common-hole chart and whole-tube inequalities and connect them
-to this theorem; the exact numeric value of `leftRadius` and `patch.a` is also
-non-effective. Therefore keep the published packet exponent withdrawn until
-the tube inclusion and its domain conditions are formalized and checked.
+At the September 28 snapshot, the remaining gap was to formalize the
+common-hole chart and whole-tube inequalities and connect them to this
+primitive support-hole route; that historical status led to withdrawing the
+candidate packet exponent. A later direct cusp-ball proof supersedes that gap:
+the September 30 v6 extension now proves equality on the actual selected
+velocity throughout the shrinking ball and transfers the full-spacetime
+`q^-40` Hessian rate there. The support-hole derivation remains a useful
+independent route, but its conditional uniform-coefficient argument is not
+needed to state the current field-level result. Exact tube/Hessian constants
+remain non-effective, and the local spatial restriction plus nonlinear packet
+comparison remain conditional; the current scope is stated above.
 
 ## Finite-stage cutoff with a known chart lower bound
 

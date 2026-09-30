@@ -73,6 +73,9 @@ three-project and identified-construction scope.
 
 ## Revision 5 — September 2026 research refresh and hostile tube audit
 
+Historical status at that stage; its withdrawn-transfer conclusion is
+superseded by Revision 48 below.
+
 The OpenAI source's actual-base second-derivative rate gives a base-field
 Hessian exponent, but hostile review found no quantitative lower envelope for
 the neighborhood where the assembled field equals that base. The previously
@@ -103,6 +106,9 @@ falsifiable follow-up are recorded in
 full project goal and current solver gates.
 
 ## Revision 7 — source-supported tube-radius route under audit
+
+Historical status at that stage; the direct assembled cusp-ball result and
+endpoint Hessian transfer were later completed in Revisions 47–48.
 
 The refreshed OpenAI source exposes positive, scale-explicit inner support
 radii for the actual initial copy waves, particular/signed annular terms, and
