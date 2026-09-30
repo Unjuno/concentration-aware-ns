@@ -245,6 +245,51 @@ def audit(archive=ARCHIVE):
         })
         adaptive_rows.append(cover)
 
+    domain_rows = []
+    # This float endpoint lies strictly outside mathematical pi, so the tiled
+    # parent contains the complete periodic cube [-pi, pi]^3.
+    domain_endpoint = 3.141592653589794
+    for divisions in (2, 4, 8):
+        step = 2 * domain_endpoint / divisions
+        boxes = []
+        centers = []
+        max_upper = 0.0
+        for index in itertools.product(range(divisions), repeat=3):
+            bounds = [
+                (-domain_endpoint + index[axis] * step,
+                 -domain_endpoint + (index[axis] + 1) * step)
+                for axis in range(3)
+            ]
+            enclosure = centered_gradient_error_enclosure(
+                hidden, output, bounds, time=params["end"],
+                endpoint=params["end"], sigma=params["sigma"], dps=40,
+            )
+            boxes.append((bounds, enclosure))
+            centers.append([(lo + hi) / 2 for lo, hi in bounds])
+            max_upper = max(max_upper, _frob_upper(enclosure))
+        center_errors = autograd_error_jacobian(centers)
+        max_excess = 0.0
+        for (_, enclosure), error in zip(boxes, center_errors):
+            for i in range(3):
+                for j in range(3):
+                    max_excess = max(
+                        max_excess,
+                        float(enclosure[i][j].lower()) - error[i, j],
+                        error[i, j] - float(enclosure[i][j].upper()), 0.0,
+                    )
+        center_peak = float(np.linalg.norm(center_errors, axis=(1, 2)).max())
+        domain_rows.append({
+            "cells_per_axis": divisions,
+            "cell_count": divisions**3,
+            "domain_endpoint_float": domain_endpoint,
+            "max_centered_cell_frobenius_upper": max_upper,
+            "max_autograd_cell_center_frobenius_sample": center_peak,
+            "interval_to_sample_ratio": max_upper / center_peak,
+            "autograd_cell_center_count": len(centers),
+            "max_autograd_excess_outside_centered_bound": max_excess,
+            "cell_centers_within_1e-8_float_tolerance": bool(max_excess <= 1e-8),
+        })
+
     return {
         "scope": "Exploratory local Arb mean-value enclosures for one frozen PhysicsNeMo checkpoint; no full periodic-domain cover or global-extremum certificate.",
         "case": archive.name.removesuffix(".tar.gz"),
@@ -265,6 +310,12 @@ def audit(archive=ARCHIVE):
             "target_status": "exploratory, not preregistered acceptance gate",
             "max_evaluations_per_parent": evaluation_budget,
             "cases": adaptive_rows,
+        },
+        "periodic_domain_uniform_cover_sweep": {
+            "domain": "[-pi, pi]^3, enclosed by outward float endpoint",
+            "method": "equal-axis boxes; shared endpoints tile the full parent without gaps",
+            "cases": domain_rows,
+            "interpretation": "global enclosure exists at each tested partition, but upper bounds are exploratory and may be too coarse for a useful quality certificate",
         },
         "environment": {
             "python": platform.python_version(),

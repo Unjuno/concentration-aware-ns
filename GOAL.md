@@ -1174,3 +1174,22 @@ and limits are in the matching report. This covers only three local boxes about
 one sampled candidate, does not validate Arb with an independent proof kernel,
 and does not establish a domain-wide maximum. PhysicsNeMo quality remains
 `UNCERTAIN`; the overall benchmark goal remains active.
+
+## Revision 70 — whole-periodic-domain Arb enclosure probe
+
+Tightened each Arb `sin`, `cos`, and `tanh` ball by intersecting with the
+analytic range `[-1,1]`, with a regression test; this corrects severe
+range-wrapping from broad balls without changing the represented functions.
+The frozen-model audit now uniformly tiles an outward-rounded superset of
+`[-pi,pi]^3` at 2, 4, and 8 cells per axis. Every cell-center autograd check
+(584 total) fell within its component enclosures at `1e-8` floating tolerance.
+The maximum centered Frobenius upper bounds were still approximately 242,057,
+70,089, and 12,251, versus maximum cell-center samples 0.0148, 0.0553, and
+0.146. Thus a complete tiled upper enclosure is computationally constructible,
+but this method remains much too loose to certify a useful continuous peak at
+these resolutions. The exact rerun is recorded in
+`evidence/tests/physicsnemo-arb-centered-interval-probe-2026-10-01.json` and
+explained in the associated report. Center sampling is diagnostic only; Arb is
+not independently proof-kernel checked; no acceptance threshold is
+preregistered. The PhysicsNeMo verdict remains `UNCERTAIN` and the overall
+goal remains active.

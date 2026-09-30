@@ -7,6 +7,14 @@ from tools.reference import fields
 
 
 class PhysicsNeMoArbIntervalProbeTests(unittest.TestCase):
+    def test_trigonometric_and_tanh_analytic_ranges_are_enforced(self):
+        from flint import arb
+        from tools.physicsnemo_arb_interval_probe import _unit_range
+
+        for interval in (arb(-1).union(1), arb(-4).union(4)):
+            self.assertLessEqual(float(_unit_range(interval.tanh()).abs_upper()), 1.0 + 1e-7)
+        self.assertLessEqual(float(_unit_range(arb(-4).union(4).sin()).abs_upper()), 1.0 + 1e-7)
+
     def test_centered_form_contains_point_interval_evaluations(self):
         from tools.physicsnemo_arb_interval_probe import (
             centered_gradient_error_enclosure,

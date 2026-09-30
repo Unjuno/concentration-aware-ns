@@ -109,3 +109,25 @@ quality status.
 The adaptive algorithm's unit tests verify complete volume preservation under
 bisection and explicit evaluation-budget stopping. Run them with
 `python -m unittest tests.test_arb_local_branch_cover -v`.
+
+## Full-periodic-domain enclosure probe
+
+Wide input balls exposed an interval-wrapping weakness in the elementary range
+calls: on a ball spanning `[-1, 1]`, the library's direct `tanh` ball can be
+wider than the mathematical range. The evaluator now intersects Arb's `sin`,
+`cos`, and `tanh` balls with their analytic range `[-1, 1]`; this is a valid
+range tightening and has a regression test. The rerun preserves all hashes and
+recomputes the earlier local sweeps with the tightened evaluator.
+
+The audit additionally tiles an outward-rounded superset of `[-pi, pi]^3`
+using 2, 4, and 8 cells on each axis. Shared binary-float faces produce a
+complete partition; the outer endpoint `3.141592653589794` exceeds mathematical
+pi. All 584 cell-center autograd checks were within their respective component
+intervals to `1e-8`. However, the maximum cell Frobenius upper bounds are
+`242,057`, `70,089`, and `12,251`, while maximum center samples are only
+`0.0148`, `0.0553`, and `0.146`. The box enclosures remain far too wide to
+certify a useful continuous peak at these resolutions. A finite whole-domain
+upper bound is now produced by this explicit tiling, but it is not a practical
+quality certificate, and the sampled center checks are only diagnostics. No
+PhysicsNeMo threshold is preregistered; quality remains `UNCERTAIN`. The
+periodic-domain sweep and exact numerical output are in the JSON evidence.

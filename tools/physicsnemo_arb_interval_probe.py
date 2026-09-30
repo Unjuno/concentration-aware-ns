@@ -11,6 +11,12 @@ from flint import arb, ctx
 
 
 _A = (arb(1), arb(2), arb(3))
+_UNIT_INTERVAL = arb(-1).union(1)
+
+
+def _unit_range(value):
+    """Intersect a rigorous ball with the analytic range [-1, 1]."""
+    return value.intersection(_UNIT_INTERVAL)
 
 
 def _validate(hidden_layers, output_layer, box, time, sigma, endpoint):
@@ -53,7 +59,8 @@ def _affine(weights, features, biases):
 
 def _network_jet(hidden_layers, output_layer, box, time, endpoint):
     """Return value, gradient, Hessian enclosures of three network outputs."""
-    sine_cosine = [coordinate.sin_cos() for coordinate in box]
+    sine_cosine = [tuple(_unit_range(value) for value in coordinate.sin_cos())
+                   for coordinate in box]
     sine = [pair[0] for pair in sine_cosine]
     cosine = [pair[1] for pair in sine_cosine]
     features = sine + cosine + [arb(time) / arb(endpoint)]
@@ -78,7 +85,7 @@ def _network_jet(hidden_layers, output_layer, box, time, endpoint):
               for b in range(3)] for a in range(3)]
             for row in weights
         ]
-        features = [value.tanh() for value in preactivation]
+        features = [_unit_range(value.tanh()) for value in preactivation]
         gradient = []
         hessian = []
         for neuron, activation in enumerate(features):
