@@ -52,7 +52,23 @@ will report standard run acceptance separately from velocity, energy, gradient,
 vorticity and shell-spectrum quality. A blind spot is classified as reproduced
 only if standard acceptance passes and local quality fails at both n=64 and
 n=128, after the exact-reference FD2 floor audit confirms those levels clear
-the derivative thresholds. The run has not occurred; no verdict is available.
+the derivative thresholds. Execution is in progress: the four spatial rows
+are complete, the half-step row is preserved as a partial run, and the
+quarter-step row is unstarted. The authoritative current state is
+`evidence/of13-high-gradient-v2/manifest.json`; no matrix-level verdict is
+available.
+
+If a long temporal case is interrupted after spatial cases have completed, do
+not overwrite the original tree. A single-row successor can be run from a clean
+committed tree with
+`python3 -m tools.run_high_gradient_temporal_case --dt 0.0005 --run-root work/of13-high-gradient-v2-temporal-20260930-dt0005`
+(or `--dt 0.00025` and a distinct root). This freezes the same v2 protocol and
+image, records the parent-matrix manifest hash, requires all expected time
+steps, converged outer loops, `End`, and endpoint fields, and verifies its
+archive. A completed addendum is still only one temporal case; it does not
+change the six-row matrix to COMPLETE until the other row is also validated
+and the original spatial artifacts are independently joined by a checked
+aggregator.
 
 Generate and run the frozen AMR budget sweep with
 `python3 -m tools.run_high_gradient_amr`. It creates a new
