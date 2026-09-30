@@ -53098,5 +53098,53 @@
     ],
     "elapsed_seconds": 10.56763224999304,
     "scope": "Standard second-order centered enclosure on the full outward-rounded periodic cube; same box-evaluation cap as hybrid run."
+  },
+  "local_method_crossover_sweep": {
+    "scope": "Exploratory method crossover on the single saved candidate box; no threshold or domain-wide inference.",
+    "precision_dps": 30,
+    "cases": [
+      {
+        "half_width": 0.05,
+        "centered_upper": 2.339736189258406,
+        "quadratic_taylor_upper": 1.4312842075552223,
+        "taylor_to_centered_ratio": 0.6117288838486004
+      },
+      {
+        "half_width": 0.075,
+        "centered_upper": 5.206717024577306,
+        "quadratic_taylor_upper": 5.367629542552055,
+        "taylor_to_centered_ratio": 1.0309047941755223
+      },
+      {
+        "half_width": 0.1,
+        "centered_upper": 9.558298359281372,
+        "quadratic_taylor_upper": 15.490909853808683,
+        "taylor_to_centered_ratio": 1.620676533785596
+      },
+      {
+        "half_width": 0.15,
+        "centered_upper": 23.276989672312116,
+        "quadratic_taylor_upper": 73.90637464877535,
+        "taylor_to_centered_ratio": 3.1750830192912223
+      },
+      {
+        "half_width": 0.2,
+        "centered_upper": 43.675325981225015,
+        "quadratic_taylor_upper": 222.71362797798562,
+        "taylor_to_centered_ratio": 5.0993008746797885
+      },
+      {
+        "half_width": 0.3,
+        "centered_upper": 106.65039104281357,
+        "quadratic_taylor_upper": 1056.3375169334267,
+        "taylor_to_centered_ratio": 9.904675515998552
+      },
+      {
+        "half_width": 0.4,
+        "centered_upper": 200.73433558685616,
+        "quadratic_taylor_upper": 3167.4059159387316,
+        "taylor_to_centered_ratio": 15.779093829058557
+      }
+    ]
   }
 }

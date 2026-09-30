@@ -1252,3 +1252,17 @@ small local boxes, not adopted as the global method. All thresholds here are
 exploratory; PhysicsNeMo quality remains `UNCERTAIN` and the full benchmark
 goal remains active. Reproduction data and bounds are in the Arb audit JSON
 and report.
+
+## Revision 74 — local/global cell-scale crossover
+
+Measured centered and quadratic-Taylor bounds on seven expanding cubes around
+the same frozen sampled candidate. Taylor is tighter at half-width 0.05 (ratio
+0.612), approximately tied at 0.075 (1.031), and looser from 0.1 onward (1.62
+at 0.1). This crossover is local to that candidate and geometry. The prior
+2,049-evaluation whole-periodic-domain adaptive cover ends in boxes of width
+0.785 per axis (half-width about 0.393), far above the measured local crossover
+scale; thus the current global partition cannot benefit from switching to the
+Taylor form. Exact values are stored in
+`evidence/tests/physicsnemo-arb-centered-interval-probe-2026-10-01.json` and
+discussed in the associated report. No accuracy threshold or physical
+interpretation is inferred. The benchmark goal remains active.

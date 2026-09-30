@@ -210,3 +210,17 @@ Thus Taylor is useful for small local boxes, not broad global cells; it did not
 improve this budget-matched global partition. All comparisons are on one
 frozen model, exploratory, and do not set a quality threshold or change
 `UNCERTAIN`.
+
+## Local method crossover versus global cell scale
+
+A radius sweep around the same saved candidate locates the method crossover
+between half-width `0.05` and `0.075`: at `0.05`, the quadratic Taylor upper is
+0.612 times the centered mean-value upper; at `0.075` it is 1.031 times as
+large, and at `0.1` it is 1.62 times as large. This crossover is specific to
+this candidate and cube geometry. The current 2,049-evaluation whole-domain
+adaptive cover has terminal widths `0.785` on every axis (half-width about
+`0.393`), so none of those global terminal cells reaches the observed local
+crossover scale. This explains why the tested global hybrid did not improve
+the budget-matched result. The sweep is preserved under
+`local_method_crossover_sweep` in the JSON and must not be generalized to other
+points or treated as a threshold.
