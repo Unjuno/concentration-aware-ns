@@ -157,3 +157,23 @@ not selected for certification. Eight fixed-point automatic-differentiation
 checks per archive stayed under both network envelopes; these remain sanity
 checks, not global validation. The updated 25-case record is in
 `../evidence/tests/physicsnemo-global-hessian-coverage.json`.
+
+## Monotone endpoint range for tanh
+
+For a real input interval, monotonicity gives `tanh([a,b]) =
+[tanh(a),tanh(b)]`. The network evaluator now encloses the ball's lower and
+upper endpoints separately and takes their Arb hull, intersected with
+`[-1,1]`. A regression test checks the broad `[-1,1]` interval against several
+point evaluations and confirms the result is narrower than `0.77` in absolute
+value. This avoids the direct broad-ball Taylor enclosure (about `[-5.63,5.63]`
+for input `[-1,1]`).
+
+The frozen audit was rerun after this change. On 512 uniform whole-domain
+cells, the maximum centered Frobenius upper is `235.32` (cell-center sample
+maximum `0.14597`). Whole-domain adaptive bisection reaches `151.40` after
+2,049 evaluations / 1,025 leaves and does not meet the exploratory `0.26`
+comparator. Candidate-local adaptive boxes meet it at half-width `0.01` with
+63 evaluations / 32 leaves and at `0.025` with 1,021 / 511; half-width `0.05`
+stops at the budget with upper `0.27174`. These results supersede the interval
+sweep numbers above and in Revision 71; they remain exploratory and do not
+change the `UNCERTAIN` quality status.

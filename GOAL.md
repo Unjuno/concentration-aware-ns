@@ -1215,3 +1215,20 @@ is preserved in `tools/physicsnemo_global_hessian_bound.py`, its auditor and
 `evidence/tests/physicsnemo-global-hessian-coverage.json`. Sampled AD checks do
 not prove the global recurrence. No threshold or quality verdict changes; the
 overall benchmark goal remains active.
+
+## Revision 72 — monotone Arb tanh endpoint enclosure
+
+Replaced broad-ball Taylor evaluation of tanh activations with endpoint
+interval evaluation, justified by monotonicity of tanh, then intersected the
+hull with its analytic range `[-1,1]`. A regression check confirms a strict
+narrowing on `[-1,1]` and containment of selected point evaluations. On the
+frozen `n64-nt17` model, 512 uniform boxes covering an outward-rounded
+`[-pi,pi]^3` now have maximum centered Frobenius upper 235.32. A full-domain
+adaptive partition with 2,049 evaluations / 1,025 leaves reaches 151.40, still
+far above the exploratory `0.26` comparator. At the sampled candidate's local
+boxes the same target is met with 63 / 32 leaves for half-width `0.01` and
+1,021 / 511 for `0.025`; half-width `0.05` remains budget-limited at 0.27174.
+The regenerated values and full terminal partition are in the Arb evidence
+JSON; details are in its report. The global enclosure remains too coarse for a
+useful continuous peak certificate, and no quality verdict changes. The
+project goal remains active.

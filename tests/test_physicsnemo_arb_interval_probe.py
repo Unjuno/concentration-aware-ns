@@ -13,10 +13,16 @@ class PhysicsNeMoArbIntervalProbeTests(unittest.TestCase):
             _unit_range,
             _tanh_first_derivative_range,
             _tanh_second_derivative_range,
+            _monotone_tanh_range,
         )
 
         for interval in (arb(-1).union(1), arb(-4).union(4)):
             self.assertLessEqual(float(_unit_range(interval.tanh()).abs_upper()), 1.0 + 1e-7)
+        broad = arb(-1).union(1)
+        tight = _monotone_tanh_range(broad)
+        self.assertLess(float(tight.abs_upper()), 0.77)
+        for sample in (-1.0, -0.5, 0.0, 0.5, 1.0):
+            self.assertTrue(tight.contains(arb(sample).tanh()))
         self.assertLessEqual(float(_unit_range(arb(-4).union(4).sin()).abs_upper()), 1.0 + 1e-7)
         self.assertGreaterEqual(float(_tanh_first_derivative_range(arb(-2).union(2)).lower()), -1e-7)
         self.assertLessEqual(float(_tanh_first_derivative_range(arb(-2).union(2)).upper()), 1.0 + 1e-7)

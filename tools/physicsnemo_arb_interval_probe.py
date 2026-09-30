@@ -29,6 +29,12 @@ def _tanh_second_derivative_range(value):
     return value.intersection(_TANH_SECOND_DERIVATIVE_RANGE)
 
 
+def _monotone_tanh_range(value):
+    """Enclose tanh over a real ball by evaluating its monotone endpoints."""
+    endpoint_hull = value.lower().tanh().union(value.upper().tanh())
+    return _unit_range(endpoint_hull)
+
+
 def _validate(hidden_layers, output_layer, box, time, sigma, endpoint):
     if len(hidden_layers) != 3:
         raise ValueError("the frozen model must have three hidden layers")
@@ -95,7 +101,7 @@ def _network_jet(hidden_layers, output_layer, box, time, endpoint):
               for b in range(3)] for a in range(3)]
             for row in weights
         ]
-        features = [_unit_range(value.tanh()) for value in preactivation]
+        features = [_monotone_tanh_range(value) for value in preactivation]
         gradient = []
         hessian = []
         for neuron, activation in enumerate(features):
