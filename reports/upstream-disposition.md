@@ -6,9 +6,9 @@ construction. Numerical observations do not establish blow-up or physical danger
 
 | Target | Evidence and classification | Reporting decision |
 |---|---|---|
-| OpenFOAM Foundation 13 | The n32 uniform case has approximately 1.87% velocity L2 error but a sampled FD2 gradient peak at least 13.1% below an analytic continuum lower bound. Temporal convergence and derivative/sampling uncertainty prevent a full acceptance claim. AMR versus static-refined-mesh controls show an accuracy difference but do not isolate its implementation cause. | No defect report. Residual stopping does not promise discretization accuracy, and maxCells is approximate by source semantics. Report to the Foundation tracker only if a separate contract violation is isolated. |
+| OpenFOAM Foundation 13 | The n32 uniform case's FD2 deficit exceeds the reference-only stencil floor; all six high-gradient v2 uniform cases are complete, with n64/n128 passing standard and local gates. Three AMR runs have high errors, while same-mesh analytic-initialized controls reduce error to 1.88%/0.483%. The cap100000 event is explained by whole-level candidate grouping and subsequent unrefinement in pinned source. | No defect report. AMR quality remains UNCERTAIN and the exact field-transfer/remapping component is not isolated. The observed maxCells overshoot matches source behavior. Keep investigating without claiming a violated contract. |
 | SU2 v8.5.0 | The uniform analytic time control distinguishes source evaluation at the old time from evaluation at the updated solution time. Both tested recurrences remain first-order consistent. This is a time-contract clarification, not proof of an inconsistent solver. | [Q&A 2890](https://github.com/su2code/SU2/discussions/2890) submitted with baseline, intervention and reproduction evidence. Live GraphQL now confirms a September 13 reply agreeing with the time-lag diagnosis and proposing a BDF2 regression. The earlier zero-comment record is historical. The new six-case uniform BDF2 control reproduces first-order lag error and second-order behavior under the diagnostic time shift; all inner residual thresholds pass. Results were [replied to the existing discussion](https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462). This is not maintainer acceptance of a general fix; see reports/su2-bdf2-source-time.md. The localized grid/time study now has all five runs archived; direct endpoint temporal differences have observed order 0.99916, with unconverged inner steps still recorded. This does not establish a new contract violation. |
-| PhysicsNeMo v2.2.1 | Explicit time derivatives obey the documented PhysicsInformer contract; independent exact-field residual checks pass. Five trained networks have finite-sample errors, unresolved continuous peak bounds and fixed-budget/seed limitations. The experiment protocol did not explicitly preregister acceptance thresholds. | No framework defect report. These results support an additional validation example, but do not establish a new framework failure or a failure of the historical Taylor–Green example. Publishing the standalone benchmark is presently the supported improvement. |
+| NVIDIA PhysicsNeMo | Explicit time derivatives obey the documented PhysicsInformer contract; independent exact-field residual checks pass. The odd-width spectrum defect reproduces on current main and is already tracked by issue #2007. Existing PR #2008 fixes the focused reproducer, but remains OPEN, BEHIND main and review-required; only focused controls, not the full framework suite, were run. | No duplicate issue. Focused evidence was added to the existing PR conversation. Do not treat focused CI or a deterministic reproducer as full framework validation or maintainer acceptance. |
 
 OpenFOAM's README directs reports to bugs.openfoam.org; it is not interchangeable
 with the OpenCFD project. PhysicsNeMo's pinned contribution policy and the prior
@@ -72,3 +72,33 @@ still open and behind main. We added a fresh data point to that PR discussion;
 no duplicate report is appropriate. Details, commands, source hashes and raw
 outputs are in `reports/physicsnemo-refresh-2026-09-30.md` and
 `evidence/upstream-refresh/current-project-inventory-2026-09-30.json`.
+
+## Three-project status refresh, 2026-09-30
+
+The live state was reread after completing the high-gradient AMR controls:
+
+- **OpenFOAM Foundation 13:** the current Foundation 13 open-issue inventory
+  has four entries; none establishes a duplicate for the measured AMR behavior.
+  The refinement-level selection and unrefinement event match the approximate
+  `maxCells` source semantics (see the source-pinned event replay in
+  `openfoam-amr-source-budget-audit-2026-09-28.md`). The large AMR-path velocity
+  errors remain a benchmark finding with UNCERTAIN quality attribution, not a
+  demonstrated upstream contract violation. No new issue was filed.
+- **SU2:** `master` still resolves to
+  `bc15466602a687d6fb796d5df7a12ce3fde0949a`. Q&A #2890 remains the existing
+  report and contains the September 13 maintainer agreement with the source-time
+  diagnosis; existing issue #2353 contains later BDF2 and MAX_TIME/restart-clock
+  follow-ups. No duplicate issue was filed. These are scoped time-contract and
+  output-clock findings, not proof of a general solver defect.
+- **PhysicsNeMo:** issue #2007 remains OPEN. PR #2008 remains OPEN with head
+  `7407608723062dc11ba5332e9ff3774f42bb02d9`, targets an older main base, and
+  is marked BEHIND and review-required. The September 30 current-main CPU
+  reproducer and PR-head comparison are in
+  `physicsnemo-refresh-2026-09-30.md`; focused PR checks passed, while a full
+  framework suite and a rerun against a later main commit are not claimed. The
+  existing PR is the appropriate reporting destination; no duplicate issue was
+  filed.
+
+These checks update status and reporting decisions only. A fully reproducible
+release bundle and the remaining analytic and solver-specific uncertainty work
+are still open.
