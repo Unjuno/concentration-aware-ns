@@ -15,6 +15,83 @@
   "max_point_interval_width": 1.968028581623586e-59,
   "interval_decimal_precision": 60,
   "comparison_tolerance": 1e-08,
+  "neighborhood_sweep": [
+    {
+      "half_width": 0.0001,
+      "max_component_interval_width": 0.004928548334042724,
+      "frobenius_error_upper_from_component_intervals": 0.25513188616815063,
+      "sparse_autograd_sample_count": 9,
+      "sparse_samples_inside_with_1e-7_float_tolerance": true,
+      "sparse_sample_max_frobenius_error": 0.2509393391270093
+    },
+    {
+      "half_width": 0.001,
+      "max_component_interval_width": 0.04926755002066155,
+      "frobenius_error_upper_from_component_intervals": 0.29472067223752474,
+      "sparse_autograd_sample_count": 9,
+      "sparse_samples_inside_with_1e-7_float_tolerance": true,
+      "sparse_sample_max_frobenius_error": 0.2510406462575332
+    },
+    {
+      "half_width": 0.01,
+      "max_component_interval_width": 0.475383532918454,
+      "frobenius_error_upper_from_component_intervals": 0.7467557836763565,
+      "sparse_autograd_sample_count": 9,
+      "sparse_samples_inside_with_1e-7_float_tolerance": true,
+      "sparse_sample_max_frobenius_error": 0.25179439344497384
+    },
+    {
+      "half_width": 0.025,
+      "max_component_interval_width": 1.2900826885368482,
+      "frobenius_error_upper_from_component_intervals": 1.5653260031362808,
+      "sparse_autograd_sample_count": 9,
+      "sparse_samples_inside_with_1e-7_float_tolerance": true,
+      "sparse_sample_max_frobenius_error": 0.25210973302147954
+    },
+    {
+      "half_width": 0.05,
+      "max_component_interval_width": 2.999465423786072,
+      "frobenius_error_upper_from_component_intervals": 3.58150948594583,
+      "sparse_autograd_sample_count": 9,
+      "sparse_samples_inside_with_1e-7_float_tolerance": true,
+      "sparse_sample_max_frobenius_error": 0.2509277804721862
+    }
+  ],
+  "local_equal_subdivision_sweep": [
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 1,
+      "cell_count": 1,
+      "max_cell_frobenius_error_upper_from_component_intervals": 0.7467557836763679,
+      "max_cell_component_interval_width": 0.47538353291846414,
+      "interval_decimal_precision": 30
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 2,
+      "cell_count": 8,
+      "max_cell_frobenius_error_upper_from_component_intervals": 0.4916858069751508,
+      "max_cell_component_interval_width": 0.2443466788139629,
+      "interval_decimal_precision": 30
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 4,
+      "cell_count": 64,
+      "max_cell_frobenius_error_upper_from_component_intervals": 0.36685681468856596,
+      "max_cell_component_interval_width": 0.12336066237560361,
+      "interval_decimal_precision": 30
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 8,
+      "cell_count": 512,
+      "max_cell_frobenius_error_upper_from_component_intervals": 0.3073200255212648,
+      "max_cell_component_interval_width": 0.06186296328494527,
+      "interval_decimal_precision": 30
+    }
+  ],
+  "neighborhood_warning": "Sparse autograd checks are diagnostic only; mpmath interval arithmetic is not an independently verified proof kernel.",
   "verdict": "EXPLORATORY_POINT_CHECK_PASS",
   "quality": "UNCERTAIN"
 }

@@ -18,6 +18,24 @@ difference between the interval midpoint and the autograd error Jacobian was
 `2.1649348980190553e-15`. The widest degenerate point interval was
 `1.968028581623586e-59` at 60 decimal digits.
 
+The audit also evaluated symmetric nonzero-width boxes around this candidate.
+At half-width `1e-4`, the largest component interval width was `0.00493` and
+the Frobenius upper bound assembled from component intervals was `0.25513`,
+compared with a sparse-sample maximum of `0.25094`. At half-width `0.01`,
+those values grew to `0.47538` and `0.74676`, while the sparse-sample maximum
+was `0.25179`. Thus the direct interval extension becomes loose as the box
+widens.
+
+For the half-width `0.01` parent box, equal subdivision reduced the maximum
+cellwise Frobenius upper bound from `0.74676` (one cell) to `0.49169` (8
+cells), `0.36686` (64 cells), and `0.30732` (512 cells). The maximum component
+interval width fell from `0.47538` to `0.06186`. Nine autograd samples per
+neighborhood scale were checked and all fell inside their computed component
+intervals with a `1e-7` floating comparison tolerance. Those sampled checks
+are diagnostic, not a proof that the intervals enclose all points or that the
+domain is covered. At 512 boxes the local upper bound is still about 22% above
+the sparse-sample maximum, before paying for any broader domain cover.
+
 The reproducible machine record is
 [`../evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json`](../evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json),
 with archive, checkpoint, and evaluation hashes. Run it from the repository
@@ -35,11 +53,11 @@ the three tanh layers, and the analytic reference Jacobian.
 
 ## Limits
 
-This validates a point evaluation and the implementation's basic local
-behavior. A degenerate interval has no useful width for bounding nearby
-coordinates. No nonzero neighbourhood was certified for the trained model, no
-branch-and-bound cover was built over the periodic domain, and the global
-continuous gradient/vorticity extrema remain unknown. The mpmath interval
-backend has not been independently validated as a formal proof kernel. No
+This validates selected point evaluations and explores finite boxes around one
+sampled candidate. It does not create a complete branch-and-bound proof: the
+local boxes cover only a small neighborhood, sparse autograd points cannot
+validate an interval extension, and the mpmath interval backend has not been
+independently validated as a formal proof kernel. No domain-wide cover was
+built and the global continuous gradient/vorticity extrema remain unknown. No
 acceptance threshold was preregistered for PhysicsNeMo, so the quality verdict
-remains `UNCERTAIN`; this point probe does not alter any solver finding.
+remains `UNCERTAIN`; this probe does not alter any solver finding.

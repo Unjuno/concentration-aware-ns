@@ -5,7 +5,9 @@ does not cover the periodic domain and is not a continuous-extremum certificate.
 """
 import hashlib
 import io
+import itertools
 import json
+import math
 import tarfile
 from pathlib import Path
 
@@ -77,6 +79,21 @@ def audit(archive=ARCHIVE):
         for i in range(3)
     ])
 
+    def autograd_error_jacobian(point):
+        point_tensor = torch.tensor(np.asarray(point)[None, :], requires_grad=True)
+        time_tensor = torch.full((1, 1), params["end"])
+        ref_psi = torch.exp(((torch.cos(point_tensor - torch.pi) - 1) / params["sigma"]**2).sum(dim=1, keepdim=True))
+        ref_grad = -ref_psi * torch.sin(point_tensor - torch.pi) / params["sigma"]**2
+        ref_u = torch.linalg.cross(ref_grad, torch.tensor([1.0, 2.0, 3.0]).expand_as(ref_grad))
+        raw = net(torch.cat((torch.sin(point_tensor), torch.cos(point_tensor),
+                             time_tensor / params["end"]), dim=1))
+        prediction = ref_u + time_tensor * raw[:, :3]
+        prediction_jac = np.stack([
+            torch.autograd.grad(prediction[:, i].sum(), point_tensor, retain_graph=True)[0][0].detach().numpy()
+            for i in range(3)
+        ])
+        return prediction_jac - fields(point, params["end"], params["sigma"])["grad_u"]
+
     hidden = [
         (state[f"layers.{i}.linear.weight"].numpy().tolist(),
          state[f"layers.{i}.linear.bias"].numpy().tolist())
@@ -102,6 +119,75 @@ def audit(archive=ARCHIVE):
     max_discrepancy = max(discrepancies)
     if max_discrepancy > 1e-8:
         raise AssertionError(f"interval midpoint disagrees with independent AD by {max_discrepancy}")
+    neighborhood_rows = []
+    for radius in (1e-4, 1e-3, 1e-2, 0.025, 0.05):
+        box = [(float(v - radius), float(v + radius)) for v in best_point]
+        box_enclosure = gradient_error_enclosure(
+            hidden, output_layer, box, time=params["end"], endpoint=params["end"],
+            sigma=params["sigma"], dps=40,
+        )
+        component_bounds = [
+            max(abs(float(box_enclosure[i][j].a)), abs(float(box_enclosure[i][j].b)))
+            for i in range(3) for j in range(3)
+        ]
+        sample_points = [best_point + radius * np.asarray(signs)
+                         for signs in itertools.product((-1, 1), repeat=3)]
+        sample_points.append(best_point)
+        sample_errors = [autograd_error_jacobian(point) for point in sample_points]
+        samples_inside = all(
+            float(box_enclosure[i][j].a) - 1e-7 <= sample_error[i, j]
+            <= float(box_enclosure[i][j].b) + 1e-7
+            for sample_error in sample_errors for i in range(3) for j in range(3)
+        )
+        neighborhood_rows.append({
+            "half_width": radius,
+            "max_component_interval_width": max(
+                float(box_enclosure[i][j].delta) for i in range(3) for j in range(3)
+            ),
+            "frobenius_error_upper_from_component_intervals": math.sqrt(sum(x*x for x in component_bounds)),
+            "sparse_autograd_sample_count": len(sample_points),
+            "sparse_samples_inside_with_1e-7_float_tolerance": samples_inside,
+            "sparse_sample_max_frobenius_error": max(
+                float(np.linalg.norm(sample_error)) for sample_error in sample_errors
+            ),
+        })
+
+    subdivision_rows = []
+    local_half_width = 0.01
+    for divisions in (1, 2, 4, 8):
+        step = 2 * local_half_width / divisions
+        max_cell_frobenius_upper = 0.0
+        max_cell_component_width = 0.0
+        for cell in itertools.product(range(divisions), repeat=3):
+            cell_box = [
+                (float(best_point[axis] - local_half_width + cell[axis] * step),
+                 float(best_point[axis] - local_half_width + (cell[axis] + 1) * step))
+                for axis in range(3)
+            ]
+            cell_enclosure = gradient_error_enclosure(
+                hidden, output_layer, cell_box, time=params["end"], endpoint=params["end"],
+                sigma=params["sigma"], dps=30,
+            )
+            component_bounds = [
+                max(abs(float(cell_enclosure[i][j].a)), abs(float(cell_enclosure[i][j].b)))
+                for i in range(3) for j in range(3)
+            ]
+            max_cell_frobenius_upper = max(
+                max_cell_frobenius_upper, math.sqrt(sum(value * value for value in component_bounds))
+            )
+            max_cell_component_width = max(
+                max_cell_component_width,
+                max(float(cell_enclosure[i][j].delta) for i in range(3) for j in range(3)),
+            )
+        subdivision_rows.append({
+            "parent_half_width": local_half_width,
+            "equal_subdivisions_per_axis": divisions,
+            "cell_count": divisions**3,
+            "max_cell_frobenius_error_upper_from_component_intervals": max_cell_frobenius_upper,
+            "max_cell_component_interval_width": max_cell_component_width,
+            "interval_decimal_precision": 30,
+        })
+
     return {
         "scope": "One sampled point from a frozen PhysicsNeMo checkpoint; local exploratory cross-check only, no full-domain cover or continuous-extremum certificate.",
         "case": archive.name.removesuffix(".tar.gz"),
@@ -115,6 +201,9 @@ def audit(archive=ARCHIVE):
         "max_point_interval_width": max(widths),
         "interval_decimal_precision": 60,
         "comparison_tolerance": 1e-8,
+        "neighborhood_sweep": neighborhood_rows,
+        "local_equal_subdivision_sweep": subdivision_rows,
+        "neighborhood_warning": "Sparse autograd checks are diagnostic only; mpmath interval arithmetic is not an independently verified proof kernel.",
         "verdict": "EXPLORATORY_POINT_CHECK_PASS",
         "quality": "UNCERTAIN",
     }

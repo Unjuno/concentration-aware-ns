@@ -1112,3 +1112,20 @@ tools/audit_physicsnemo_interval_probe.py`; details and hashes are in
 `reports/physicsnemo-local-interval-probe-2026-10-01.md` and
 `evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json`. The full
 102-test suite passed.
+
+## Revision 67 — local interval wrapping and subdivision probe
+
+Extended the frozen `n64-nt17` local probe to nonzero-width boxes around the
+largest saved sampled gradient-error point. Direct interval evaluation's
+Frobenius upper bound grows from `0.255` at half-width `1e-4` to `0.747` at
+half-width `0.01`; nine corner/center autograd checks at each tested scale fell
+inside the computed enclosures with a `1e-7` floating tolerance. Equal
+subdivision of the half-width `0.01` box lowers the maximum cell upper bound
+from `0.747` for one cell to `0.492`, `0.367`, and `0.307` for 8, 64, and 512
+cells. This shows local subdivision reduces wrapping but remains costly and
+loose; the 512-cell bound is still about 22% above the sparse sampled maximum.
+The record and limitations are in
+`evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json` and
+`reports/physicsnemo-local-interval-probe-2026-10-01.md`. This is not a
+full-domain cover or proof-kernel validation. No PhysicsNeMo quality verdict
+changes; the project goal remains active.
