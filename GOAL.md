@@ -1283,3 +1283,18 @@ method or library. Full result, hashes, environment, and limitations are in
 `evidence/tests/physicsnemo-centered-domain-cover-n16.json`; reproduction
 command is in the associated report. Quality remains `UNCERTAIN`; the overall
 goal remains active.
+
+## Revision 76 — decomposition of the worst 16^3 cover cell
+
+Extended the reproducible 16^3 whole-domain audit to save the maximum-upper
+cell and separate its center Jacobian from coordinatewise Hessian-variation
+bounds. The worst cell is `[2.3562,2.7489]^3`, centered at `(2.5525,2.5525,
+2.5525)`. Its center Jacobian Frobenius upper is 0.0508, while the centered
+cell upper is 52.134; Hessian-variation Frobenius bounds by coordinate are
+16.69, 18.16, and 17.38. The second-order Taylor upper on the same box is
+293.83, so its remainder is much worse at this cell scale. The decomposition
+is saved in `evidence/tests/physicsnemo-centered-domain-cover-n16.json` and
+explained in the interval report. It indicates interval Hessian dependency
+inflation as the current bottleneck; it does not validate the Arb library
+independently or change the `UNCERTAIN` quality status. The full goal remains
+active.

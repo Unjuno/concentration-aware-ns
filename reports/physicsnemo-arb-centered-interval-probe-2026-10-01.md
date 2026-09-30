@@ -248,3 +248,13 @@ PYTHONPATH=.:work/physicsnemo-source \
 The saved checkpoint/archive hashes match the earlier Arb audit. This cover is
 finite and whole-domain under the Arb contract, but neither its center checks
 nor this implementation independently prove the interval library's guarantees.
+
+The 16^3 audit now also decomposes the worst cell. It is the diagonal box
+`[2.3562, 2.7489]^3`, centered at `(2.5525, 2.5525, 2.5525)`. The center
+Jacobian Frobenius upper is only `0.0508`; the centered upper is dominated by
+Hessian variation, with per-coordinate variation Frobenius bounds `16.69`,
+`18.16`, and `17.38`. The quadratic Taylor upper on this same coarse box is
+`293.83`, versus `52.13` for the centered form. This localizes the current
+bottleneck to broad-box second-derivative enclosure and confirms that the
+higher-order remainder is unsuitable at this cell scale. The decomposition is
+included as `worst_cell_decomposition` in the n16 JSON.

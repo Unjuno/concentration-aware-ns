@@ -13,10 +13,12 @@ from pathlib import Path
 import numpy as np
 import torch
 from flint import __version__ as flint_version
-from flint import ctx
+from flint import arb, ctx
 
 from tools.audit_physicsnemo_arb_interval_probe import _frob_upper
 from tools.physicsnemo_arb_interval_probe import centered_gradient_error_enclosure
+from tools.physicsnemo_arb_interval_probe import _error_jet
+from tools.physicsnemo_arb_interval_probe import quadratic_taylor_gradient_error_enclosure
 from tools.reference import fields
 
 
@@ -72,6 +74,45 @@ def _autograd_error_jacobian(points, state, params):
     return jacobian - reference
 
 
+def _decompose_centered_cell(hidden, output, box, params):
+    intervals = [arb(lo).union(hi) for lo, hi in box]
+    centers = [(lo + hi) / 2 for lo, hi in box]
+    center_points = [arb(value) for value in centers]
+    center_gradient, _ = _error_jet(
+        hidden, output, center_points, time=params["end"],
+        sigma=params["sigma"], endpoint=params["end"],
+    )
+    _, box_hessian = _error_jet(
+        hidden, output, intervals, time=params["end"],
+        sigma=params["sigma"], endpoint=params["end"],
+    )
+    deltas = [(interval - center).abs_upper()
+              for interval, center in zip(intervals, center_points)]
+    center_abs = [[float(center_gradient[i][j].abs_upper())
+                   for j in range(3)] for i in range(3)]
+    axis_terms = [[[float(box_hessian[i][j][axis].abs_upper() * deltas[axis])
+                    for j in range(3)] for i in range(3)] for axis in range(3)]
+    component_upper = [[center_abs[i][j] + sum(axis_terms[a][i][j] for a in range(3))
+                        for j in range(3)] for i in range(3)]
+    frobenius = lambda matrix: math.sqrt(sum(value * value
+                                              for row in matrix for value in row))
+    return {
+        "box": [[float(lo), float(hi)] for lo, hi in box],
+        "center": [float(value) for value in centers],
+        "center_jacobian_frobenius_upper": frobenius(center_abs),
+        "axiswise_hessian_variation_frobenius_bounds": [
+            frobenius(axis_terms[axis]) for axis in range(3)
+        ],
+        "componentwise_combined_frobenius_upper": frobenius(component_upper),
+        "quadratic_taylor_frobenius_upper": _frob_upper(
+            quadratic_taylor_gradient_error_enclosure(
+                hidden, output, box, time=params["end"],
+                endpoint=params["end"], sigma=params["sigma"], dps=ctx.dps,
+            )
+        ),
+    }
+
+
 def audit(archive=DEFAULT_ARCHIVE, divisions=(16,), dps=30, batch_size=128):
     if not divisions or any(not isinstance(n, int) or n < 1 for n in divisions):
         raise ValueError("divisions must contain positive integers")
@@ -88,6 +129,7 @@ def audit(archive=DEFAULT_ARCHIVE, divisions=(16,), dps=30, batch_size=128):
             boxes = []
             centers = []
             max_upper = 0.0
+            worst_box = None
             for index in np.ndindex((n, n, n)):
                 box = [
                     (-DOMAIN_ENDPOINT + axis * step,
@@ -100,7 +142,10 @@ def audit(archive=DEFAULT_ARCHIVE, divisions=(16,), dps=30, batch_size=128):
                 )
                 boxes.append(enclosure)
                 centers.append([(lo + hi) / 2 for lo, hi in box])
-                max_upper = max(max_upper, _frob_upper(enclosure))
+                cell_upper = _frob_upper(enclosure)
+                if cell_upper > max_upper:
+                    max_upper = cell_upper
+                    worst_box = box
 
             max_center_sample = 0.0
             max_component_excess = 0.0
@@ -130,6 +175,9 @@ def audit(archive=DEFAULT_ARCHIVE, divisions=(16,), dps=30, batch_size=128):
                 "max_autograd_sample_excess_outside_component_interval": max_component_excess,
                 "all_cell_center_samples_within_1e-8_tolerance": bool(
                     max_component_excess <= 1e-8
+                ),
+                "worst_cell_decomposition": _decompose_centered_cell(
+                    hidden, output, worst_box, params
                 ),
             })
     finally:
