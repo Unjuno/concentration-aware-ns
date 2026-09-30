@@ -352,6 +352,102 @@ theorem transverse_radius_le_of_euclidean_ball {tau eta c : ℝ}
       mul_le_mul_of_nonneg_left hball (Real.sqrt_nonneg _)
     _ = Real.sqrt 2 * c * Real.sqrt tau := by ring
 
+/-- The same Euclidean ball bounds displacement in its axial coordinate. -/
+theorem axial_deviation_le_of_euclidean_ball {tau eta c : ℝ}
+    {x : ProblemStatement.Space}
+    (hball : ‖x - eta • ProblemStatement.coordinateVector 2‖ ≤
+      c * Real.sqrt tau) :
+    |x 2 - eta| ≤ c * Real.sqrt tau := by
+  have hcoord : (x - eta • ProblemStatement.coordinateVector 2).ofLp 2 =
+      x.ofLp 2 - eta := by
+    simp [ProblemStatement.coordinateVector]
+  have hnorm := PiLp.norm_apply_le
+    (x - eta • ProblemStatement.coordinateVector 2) 2
+  rw [hcoord] at hnorm
+  exact hnorm.trans hball
+
+/-- The two spatial-ball bounds put every point strictly below the selected
+active annulus and bound its physical similarity scale. This is a pointwise
+geometry result; the cutoff and outer-localization conditions are separate. -/
+theorem cusp_ball_point_in_physical_exterior
+    {tau eta c beta : ℝ} (htau : 0 < tau) (htau1 : tau ≤ 1)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hc : 0 ≤ c)
+    (hbeta : 0 ≤ beta) (hbeta1 : beta < 1)
+    (hmargin : |eta| + c / (1 - 2 * outgoing.data.h) ≤ beta)
+    {w : ProblemStatement.SpaceTime} (hwt : w.1 = 1 - tau)
+    (hball : ‖w.2 - (eta * (tau / (1 - eta^2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)) • ProblemStatement.coordinateVector 2‖ ≤
+        c * Real.sqrt tau)
+    (hcactive : c ^ 2 < NominalConeAssembly.activeLeft nominal)
+    (horizon : tau < (1 - beta ^ 2) *
+      ChartScales.Q (ActualCandidateConstruction.residualBand B N0)) :
+    w ∈ PhysicalWaveSum.preterminal ∧
+      PhysicalWaveSum.physicalQ outgoing.data.h w <
+        ChartScales.Q (ActualCandidateConstruction.residualBand B N0) ∧
+      PhysicalWaveSum.physicalQ outgoing.data.h w ≤ tau / (1 - beta ^ 2) ∧
+      PhysicalWaveSum.physicalPosition w 0 ^ 2 /
+        (2 * PhysicalWaveSum.physicalQ outgoing.data.h w) <
+          NominalConeAssembly.activeLeft nominal := by
+  have ht : w ∈ PhysicalWaveSum.preterminal := by
+    change w.1 < 1
+    rw [hwt]
+    linarith
+  have hEta := coordinateEta_margin_of_euclidean_ball
+    outgoing.data.h_pos outgoing.data.h_lt_half htau htau1 heta hc hball
+  have hetaBound : |SimilarityCoordinates.coordinateEta (2 * outgoing.data.h)
+      (1 - w.1, w.2 2)| ≤ beta := by
+    simpa [hwt] using hEta.trans hmargin
+  have hqle := physicalQ_le_of_eta_margin ht hbeta hbeta1 hetaBound
+  have hqleTau : PhysicalWaveSum.physicalQ outgoing.data.h w ≤
+      tau / (1 - beta ^ 2) := by
+    simpa [hwt] using hqle
+  have hqpos := PhysicalWaveSum.physicalQ_pos
+    outgoing.data.h_pos outgoing.data.h_lt_half ht
+  have hden : 0 < 1 - beta ^ 2 := by nlinarith
+  have hqsmall : PhysicalWaveSum.physicalQ outgoing.data.h w <
+      ChartScales.Q (ActualCandidateConstruction.residualBand B N0) := by
+    calc
+      PhysicalWaveSum.physicalQ outgoing.data.h w ≤ tau / (1 - beta ^ 2) := hqleTau
+      _ < ChartScales.Q (ActualCandidateConstruction.residualBand B N0) :=
+        (div_lt_iff₀ hden).2 (by nlinarith [horizon])
+  have hchart := physicalQ_time_identity ht
+  have hha : 0 < 2 * outgoing.data.h := mul_pos (by norm_num) outgoing.data.h_pos
+  have hha1 : 2 * outgoing.data.h < 1 := by linarith [outgoing.data.h_lt_half]
+  have hetaSq := SimilarityCoordinates.coordinateEta_sq_lt_one
+    (a := 2 * outgoing.data.h) hha hha1 (p := (1 - w.1, w.2 2))
+      (sub_pos.mpr ht)
+  have hchartTau : tau = PhysicalWaveSum.physicalQ outgoing.data.h w *
+      (1 - SimilarityCoordinates.coordinateEta (2 * outgoing.data.h)
+        (1 - w.1, w.2 2) ^ 2) := by
+    calc
+      tau = 1 - w.1 := by rw [hwt]; ring
+      _ = _ := hchart
+  have hqge : tau ≤ PhysicalWaveSum.physicalQ outgoing.data.h w := by
+    rw [hchartTau]
+    nlinarith [mul_nonneg hqpos.le (sq_nonneg (SimilarityCoordinates.coordinateEta
+      (2 * outgoing.data.h) (1 - w.1, w.2 2)))]
+  have hrad := transverse_radius_le_of_euclidean_ball
+    (tau := tau) (eta := eta * (tau / (1 - eta ^ 2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)) (c := c) hball
+  have hradNonneg := DirectAngularDiagonal.radius_nonneg w
+  have hboundNonneg : 0 ≤ Real.sqrt 2 * c * Real.sqrt tau := by positivity
+  have hradSq := (sq_le_sq₀ hradNonneg hboundNonneg).mpr hrad
+  have hradSqBound : DirectAngularDiagonal.radius w ^ 2 ≤ 2 * c ^ 2 * tau := by
+    calc
+      DirectAngularDiagonal.radius w ^ 2 ≤ (Real.sqrt 2 * c * Real.sqrt tau) ^ 2 := hradSq
+      _ = 2 * c ^ 2 * tau := by
+        rw [mul_pow, mul_pow, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2),
+          Real.sq_sqrt htau.le]
+  have hratio : PhysicalWaveSum.physicalPosition w 0 ^ 2 /
+      (2 * PhysicalWaveSum.physicalQ outgoing.data.h w) ≤ c ^ 2 := by
+    have hposition : PhysicalWaveSum.physicalPosition w 0 = DirectAngularDiagonal.radius w := by
+      rfl
+    rw [hposition]
+    apply (div_le_iff₀ (by positivity :
+      0 < 2 * PhysicalWaveSum.physicalQ outgoing.data.h w)).2
+    nlinarith [sq_nonneg c]
+  exact ⟨ht, hqsmall, hqleTau, hratio.trans_lt hcactive⟩
+
 /-- On the actual selected construction's open physical exterior, the
 cutoff-summed, periodic, activated candidate has the selected smooth-base germ
 whenever the first potential cutoff is on its unit plateau. -/
@@ -474,5 +570,125 @@ theorem selected_inner_exterior_velocity_germ_of_radial_hole
       (ActualCandidateConstruction.residualBand B N0) :=
     ActualExteriorPrefix.mem_exteriorDomain.mpr ⟨ht, hq, hnotActive⟩
   exact selected_inner_exterior_velocity_germ B N0 hN a ha hdomain hsmall hplateau htime
+
+/-- Compose the finite-ball estimates with the selected-field exterior germ.
+The cutoff plateau, spatial plateau, and late-time conditions are derived from
+explicit shrinking-scale bounds; the smallness hypotheses remain explicit. -/
+theorem selected_velocity_germ_of_cusp_ball_point
+    (B N0 : ℕ)
+    (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℕ)
+    (ha : Tendsto (fun j => (a j : ℝ)) atTop atTop)
+    {tau eta c beta : ℝ} (htau : 0 < tau) (htau1 : tau ≤ 1)
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hc : 0 ≤ c)
+    (hbeta : 0 ≤ beta) (hbeta1 : beta < 1)
+    (hmargin : |eta| + c / (1 - 2 * outgoing.data.h) ≤ beta)
+    {w : ProblemStatement.SpaceTime} (hwt : w.1 = 1 - tau)
+    (hball : ‖w.2 - (eta * (tau / (1 - eta^2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)) • ProblemStatement.coordinateVector 2‖ ≤
+        c * Real.sqrt tau)
+    (hcactive : c ^ 2 < NominalConeAssembly.activeLeft nominal)
+    (horizon : tau < (1 - beta ^ 2) *
+      ChartScales.Q (ActualCandidateConstruction.residualBand B N0))
+    (hcutScale : tau < (1 - beta ^ 2) /
+      (2 * max 1 (a 0 : ℝ)))
+    (htimeScale : tau < 1 / 4)
+    (hcenter : |eta * (tau / (1 - eta ^ 2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)| < 1 / 16)
+    (haxialRadius : c * Real.sqrt tau < 1 / 16)
+    (hradialScale : 2 * c ^ 2 * tau < 1 / 32) :
+    TimeLocalization.activatedVelocity
+      (MixedPeriodicAssembly.periodicVelocity
+        (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ))
+          (PhysicalWaveSum.physicalQ outgoing.data.h)
+          (ActualCandidateAssembly.potentialStages B N0 hN))
+        (SolenoidalDiagonal.potentialSum (fun j => (a j : ℝ))
+          (PhysicalWaveSum.physicalQ outgoing.data.h)
+          (ActualCandidateAssembly.directStages B N0 hN))) =ᶠ[𝓝 w]
+      (FinalSlowBase.velocity certificate modulation upper B) := by
+  obtain ⟨ht, hq, _, hr⟩ := cusp_ball_point_in_physical_exterior
+    htau htau1 heta hc hbeta hbeta1 hmargin hwt hball hcactive horizon
+  have hs : 0 < 1 - beta ^ 2 := by nlinarith
+  have hM : 0 < 2 * max 1 (a 0 : ℝ) := by positivity
+  have hcutCross : tau * (2 * max 1 (a 0 : ℝ)) < 1 - beta ^ 2 :=
+    (lt_div_iff₀ hM).mp hcutScale
+  have hqUpper : PhysicalWaveSum.physicalQ outgoing.data.h w ≤
+      tau / (1 - beta ^ 2) := by
+    exact (cusp_ball_point_in_physical_exterior htau htau1 heta hc hbeta hbeta1
+      hmargin hwt hball hcactive horizon).2.2.1
+  let A : ℝ := a 0
+  have hA : 0 ≤ A := by positivity
+  have hAmax : A ≤ max 1 A := le_max_right _ _
+  have hmaxRatio : max 1 A * (tau / (1 - beta ^ 2)) < 1 / 2 := by
+    rw [show max 1 A * (tau / (1 - beta ^ 2)) =
+      (max 1 A * tau) / (1 - beta ^ 2) by ring]
+    exact (div_lt_iff₀ hs).2 (by nlinarith [hcutCross])
+  have hcutValue : 0 ≤ A * PhysicalWaveSum.physicalQ outgoing.data.h w :=
+    mul_nonneg hA (le_of_lt (PhysicalWaveSum.physicalQ_pos
+      outgoing.data.h_pos outgoing.data.h_lt_half ht))
+  have hsmallValue : A * PhysicalWaveSum.physicalQ outgoing.data.h w < 1 / 2 := by
+    calc
+      A * PhysicalWaveSum.physicalQ outgoing.data.h w ≤
+          A * (tau / (1 - beta ^ 2)) :=
+        mul_le_mul_of_nonneg_left hqUpper hA
+      _ ≤ max 1 A * (tau / (1 - beta ^ 2)) :=
+        mul_le_mul_of_nonneg_right hAmax (div_nonneg htau.le hs.le)
+      _ < 1 / 2 := hmaxRatio
+  have hsmall : |(a 0 : ℝ) * PhysicalWaveSum.physicalQ outgoing.data.h w| < 1 / 2 := by
+    simpa only [A, abs_of_nonneg hcutValue] using hsmallValue
+  have htime : 3 / 4 < w.1 := by rw [hwt]; linarith
+  have hrad := transverse_radius_le_of_euclidean_ball
+    (tau := tau) (eta := eta * (tau / (1 - eta ^ 2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)) (c := c) hball
+  have hrad' : DirectAngularDiagonal.radius w ≤ Real.sqrt 2 * c * Real.sqrt tau := by
+    have hpair : w = (1 - tau, w.2) := by exact Prod.ext hwt rfl
+    rw [hpair]
+    exact hrad
+  have hradNonneg := DirectAngularDiagonal.radius_nonneg w
+  have hradBoundNonneg : 0 ≤ Real.sqrt 2 * c * Real.sqrt tau := by positivity
+  have hradSq := (sq_le_sq₀ hradNonneg hradBoundNonneg).mpr hrad'
+  have hradialSq : DirectAngularDiagonal.radius w ^ 2 ≤ 2 * c ^ 2 * tau := by
+    calc
+      DirectAngularDiagonal.radius w ^ 2 ≤ (Real.sqrt 2 * c * Real.sqrt tau) ^ 2 := hradSq
+      _ = 2 * c ^ 2 * tau := by
+        rw [mul_pow, mul_pow, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 2),
+          Real.sq_sqrt htau.le]
+  have hradEq : SpatialLocalization.radialSquare w.2 =
+      DirectAngularDiagonal.radius w ^ 2 := by
+    calc
+      SpatialLocalization.radialSquare w.2 = w.2 0 ^ 2 + w.2 1 ^ 2 := rfl
+      _ = PolarCharts.radius (PhysicalGraphBounds.radialProjection w) ^ 2 :=
+        by simpa [PhysicalGraphBounds.radialProjection_apply] using
+          (PolarCharts.radius_sq (PhysicalGraphBounds.radialProjection w)).symm
+      _ = DirectAngularDiagonal.radius w ^ 2 := rfl
+  have hradPlateau : SpatialLocalization.radialSquare w.2 < 1 / 32 := by
+    rw [hradEq]
+    exact hradialSq.trans_lt hradialScale
+  have haxialDev := axial_deviation_le_of_euclidean_ball
+    (tau := tau) (eta := eta * (tau / (1 - eta ^ 2)) ^
+      (CoordinateAlgebra.D outgoing.data.h)) (c := c) hball
+  have hz : |w.2 2| < 1 / 8 := by
+    have htriangle : |w.2 2| ≤
+        |w.2 2 - eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)| +
+        |eta * (tau / (1 - eta ^ 2)) ^ (CoordinateAlgebra.D outgoing.data.h)| := by
+      calc
+        |w.2 2| = |(w.2 2 - eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)) +
+          eta * (tau / (1 - eta ^ 2)) ^ (CoordinateAlgebra.D outgoing.data.h)| := by congr 1; ring
+        _ ≤ _ := abs_add_le _ _
+    apply lt_of_le_of_lt htriangle
+    calc
+      |w.2 2 - eta * (tau / (1 - eta ^ 2)) ^ (CoordinateAlgebra.D outgoing.data.h)| +
+          |eta * (tau / (1 - eta ^ 2)) ^ (CoordinateAlgebra.D outgoing.data.h)| ≤
+        c * Real.sqrt tau + |eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)| := by nlinarith [haxialDev]
+      _ < 1 / 16 + 1 / 16 := add_lt_add haxialRadius hcenter
+      _ = 1 / 8 := by norm_num
+  have hplateau : w.2 ∈ SpatialLocalization.plateau := by
+    change SpatialLocalization.radialSquare w.2 < 1 / 32 ∧ |w.2 2| < 1 / 8
+    exact ⟨hradPlateau, hz⟩
+  exact selected_inner_exterior_velocity_germ_of_radial_hole
+    B N0 hN a ha ht hq hr hsmall hplateau htime
 
 end ConcentrationAware

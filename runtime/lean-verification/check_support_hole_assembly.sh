@@ -27,6 +27,9 @@ docker run --rm --name cans-supporthole-assembly-check \
     cat /extension/SupportHoleAssembly.lean > /tmp/SupportHoleAssemblyWithAudit.lean
     printf "\n#print axioms ConcentrationAware.coordinateEta_margin_of_euclidean_ball\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     printf "#print axioms ConcentrationAware.transverse_radius_le_of_euclidean_ball\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
+    printf "#print axioms ConcentrationAware.axial_deviation_le_of_euclidean_ball\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
+    printf "#print axioms ConcentrationAware.cusp_ball_point_in_physical_exterior\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
+    printf "#print axioms ConcentrationAware.selected_velocity_germ_of_cusp_ball_point\n" >> /tmp/SupportHoleAssemblyWithAudit.lean
     lake env lean /tmp/SupportHoleAssemblyWithAudit.lean > /out/lean.log 2>&1
     cat /out/lean.log'
 
@@ -34,6 +37,7 @@ python3 - "$project_root" "$out" <<'PY'
 import hashlib
 import json
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -52,12 +56,23 @@ text = log.read_text()
 declarations = (
     "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
     "ConcentrationAware.transverse_radius_le_of_euclidean_ball",
+    "ConcentrationAware.axial_deviation_le_of_euclidean_ball",
+    "ConcentrationAware.cusp_ball_point_in_physical_exterior",
+    "ConcentrationAware.selected_velocity_germ_of_cusp_ball_point",
 )
-if "error:" in text or text.count("depends on axioms: [propext, Classical.choice, Quot.sound]") != len(declarations):
+normalized = re.sub(r"\s+", " ", text)
+expected_axioms = "depends on axioms: [propext, Classical.choice, Quot.sound]"
+printed = re.findall(r"'([^']+)' depends on axioms:", normalized)
+if (
+    "error:" in text
+    or "sorryAx" in text
+    or tuple(printed) != declarations
+    or normalized.count(expected_axioms) != len(declarations)
+):
     raise SystemExit("Lean compile or axiom audit did not pass")
 result = {
     "status": "PASS",
-    "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball eta-margin and transverse-radius bounds for the support-hole geometry.",
+    "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, fixed-time cusp-ball exterior inclusion, and conditional local germ equality for the actual selected velocity field.",
     "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
     "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
     "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
@@ -68,8 +83,9 @@ result = {
     "declarations": list(declarations),
     "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
     "limitations": [
-        "This proves a fixed-time geometric implication from a Euclidean spatial-ball bound to a similarity-coordinate margin.",
-        "It does not prove the ball remains in the support-hole exterior, all cutoff/localization plateaus, or an endpoint-wide tube.",
+        "The exterior and field-germ conclusions hold at a fixed point and time under the theorem's explicit margin, horizon, cutoff, and localization hypotheses.",
+        "No uniform positive endpoint interval for the axial center and no endpoint-wide tube theorem is proved.",
+        "The result does not imply particle alignment, a phase transition, molecular determinism, or reduced viscosity.",
         "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
     ],
 }

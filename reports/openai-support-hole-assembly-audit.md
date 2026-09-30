@@ -90,10 +90,18 @@ activation. Its theorem gives eventual equality of the final activated
 velocity and the selected smooth-base velocity on that open exterior, under
 explicit hypotheses. It compiled with the pinned Lean and dependency versions.
 
-The theorem does not yet show that a whole `c*sqrt(1-t)` tube satisfies those
-exterior and plateau hypotheses. In particular, the uniform eta-margin bound
-on the ball is still hand-derived; it needs formalization and connection to
-the actual exterior domain before claiming a cusp-tube equality.
+The extension now connects a fixed-time Euclidean ball to the physical exterior
+and to the actual selected-field germ, provided the explicit margin, horizon,
+cutoff, and localization bounds in
+`selected_velocity_germ_of_cusp_ball_point` hold. The pinned Lean run and axiom
+audit are recorded in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v2/manifest.json`.
+
+This is still a pointwise conditional implication: it does not establish one
+positive `tau0` that works for every time and every point in a moving cusp tube.
+In particular, no formal continuity argument yet supplies a uniform small-time
+bound for the axial center. It proves no particle alignment, molecular
+determinism, phase transition, or viscosity consequence.
 
 ## Evidence boundary and next action
 

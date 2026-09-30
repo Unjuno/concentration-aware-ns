@@ -132,9 +132,12 @@ sufficiently small tau, the full spatial ball of radius `c*sqrt(tau)` remains
 inside the physical sublevel and spatial/time localization plateaus, and lies
 inside the proposed support hole. The exact algebraic identities are checked
 in `evidence/tests/support-hole-tube-geometry.json`; derivation and explicit
-smallness conditions are in `docs/support-hole-tube-geometry.md`. This is a
-classical conditional chart estimate, not a Lean-checked assembly theorem or a
-numerical packet certificate.
+smallness conditions are in `docs/support-hole-tube-geometry.md`. A fixed-time
+Euclidean-ball implication through actual selected-field local-germ equality
+now passes the pinned Lean check and axiom audit in
+`evidence/openai-lean-2026-09-30-cusp-ball-germ-v2/`. The result remains
+conditional at each point and time; it is not a uniform endpoint-tube theorem
+or a numerical packet certificate.
 
 This audit also corrects a source-description error in an earlier note:
 OpenAI's `SublevelShrinkingSupport` is an outer support bound (nonzero values
