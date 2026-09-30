@@ -1,0 +1,86 @@
+import unittest
+import itertools
+
+import numpy as np
+
+from tools.reference import fields
+
+
+class PhysicsNeMoArbIntervalProbeTests(unittest.TestCase):
+    def test_centered_form_contains_point_interval_evaluations(self):
+        from tools.physicsnemo_arb_interval_probe import (
+            centered_gradient_error_enclosure,
+            gradient_error_enclosure,
+        )
+
+        hidden = [
+            ([[0.1, -0.2, 0.3, 0.4, -0.1, 0.2, 0.0]], [0.05]),
+            ([[0.7]], [-0.1]),
+            ([[-0.6]], [0.02]),
+        ]
+        output = ([[0.8], [-0.4], [0.2]], [0.0, 0.0, 0.0])
+        box = [(0.7, 0.71), (1.1, 1.11), (2.0, 2.01)]
+        centered = centered_gradient_error_enclosure(
+            hidden, output, box, time=0.05, sigma=0.5, dps=80
+        )
+        for point in itertools.product(*[(lo, (lo+hi)/2, hi) for lo, hi in box]):
+            direct_point = gradient_error_enclosure(
+                hidden, output, [(x, x) for x in point], time=0.05, sigma=0.5, dps=80
+            )
+            for i in range(3):
+                for j in range(3):
+                    self.assertTrue(centered[i][j].contains(direct_point[i][j]))
+
+    def test_centered_form_tightens_over_direct_form_for_small_box(self):
+        from tools.physicsnemo_arb_interval_probe import (
+            centered_gradient_error_enclosure,
+            gradient_error_enclosure,
+        )
+
+        hidden = [
+            ([[0.1, -0.2, 0.3, 0.4, -0.1, 0.2, 0.0]], [0.05]),
+            ([[0.7]], [-0.1]),
+            ([[-0.6]], [0.02]),
+        ]
+        output = ([[0.8], [-0.4], [0.2]], [0.0, 0.0, 0.0])
+        box = [(0.7, 0.71), (1.1, 1.11), (2.0, 2.01)]
+        direct = gradient_error_enclosure(hidden, output, box, time=0.05, sigma=0.5)
+        centered = centered_gradient_error_enclosure(
+            hidden, output, box, time=0.05, sigma=0.5, dps=80
+        )
+        direct_radius = max(float(direct[i][j].rad().upper()) for i in range(3) for j in range(3))
+        centered_radius = max(float(centered[i][j].rad().upper()) for i in range(3) for j in range(3))
+        self.assertLess(centered_radius, direct_radius)
+
+    def test_invalid_box_is_rejected(self):
+        from tools.physicsnemo_arb_interval_probe import gradient_error_enclosure
+
+        hidden = [([[0.0] * 7], [0.0]), ([[0.0]], [0.0]), ([[0.0]], [0.0])]
+        output = ([[0.0], [0.0], [0.0]], [0.0, 0.0, 0.0])
+        with self.assertRaises(ValueError):
+            gradient_error_enclosure(hidden, output, [(1.0, 0.0), (0.0, 0.0), (0.0, 0.0)],
+                                     time=0.05, sigma=0.5)
+
+    def test_reference_hessian_matches_independent_finite_difference(self):
+        from flint import arb
+        from tools.physicsnemo_arb_interval_probe import _reference_jet
+
+        point = np.array([0.83, 1.27, 2.08])
+        _, hessian = _reference_jet([arb(float(x)) for x in point], 0.5)
+        step = 2e-4
+        for derivative_axis in range(3):
+            offset = np.zeros(3)
+            offset[derivative_axis] = step
+            plus = fields(point + offset, time=0.0, sigma=0.5)["grad_u"]
+            minus = fields(point - offset, time=0.0, sigma=0.5)["grad_u"]
+            finite_difference = (plus - minus) / (2 * step)
+            for component in range(3):
+                for jacobian_axis in range(3):
+                    analytic = float(hessian[component][jacobian_axis][derivative_axis])
+                    self.assertAlmostEqual(
+                        analytic, finite_difference[component, jacobian_axis], delta=2e-7
+                    )
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1129,3 +1129,31 @@ The record and limitations are in
 `reports/physicsnemo-local-interval-probe-2026-10-01.md`. This is not a
 full-domain cover or proof-kernel validation. No PhysicsNeMo quality verdict
 changes; the project goal remains active.
+
+## Revision 68 — Arb centered local Hessian enclosure
+
+The previous mpmath interval dependency was material: mpmath 1.3.0 explicitly
+labels its interval support experimental. Added a pinned
+`python-flint==0.9.0` verification dependency and an Arb midpoint-radius
+implementation of the frozen network's first and second spatial jets. A
+centered mean-value enclosure combines the Jacobian ball at the box center
+with an Arb Hessian enclosure over the box. An independent finite-difference
+test checks the analytic reference Hessian; point evaluations check the
+centered enclosure at 27 points in each neighborhood box and at subdivision
+cell centers.
+
+On the `n64-nt17` candidate, the half-width `0.01` Frobenius error upper bound
+falls from `0.943` under direct interval propagation to `0.357` with the
+centered form. Splitting that same parent box into 8, 64, and 512 equal cells
+lowers the maximum cell bound to `0.273`, `0.257`, and `0.253`. The method
+degrades on larger boxes: at half-width `0.05`, the centered bound grows to
+about `4.13e5`, versus `5.90e3` for the direct form. See
+`tools/physicsnemo_arb_interval_probe.py`,
+`tools/audit_physicsnemo_arb_interval_probe.py`, and
+`reports/physicsnemo-arb-centered-interval-probe-2026-10-01.md`, with hashes
+and numerical data in
+`evidence/tests/physicsnemo-arb-centered-interval-probe-2026-10-01.json`.
+These selected point checks and one tiny local box do not constitute a
+domain-wide proof. The PhysicsNeMo verdict remains `UNCERTAIN`; continue with
+complete-domain adaptive coverage and independent proof-kernel assurance. The
+overall goal remains active.

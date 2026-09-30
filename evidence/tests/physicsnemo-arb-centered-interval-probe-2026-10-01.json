@@ -1,0 +1,130 @@
+{
+  "scope": "Exploratory local Arb mean-value enclosures for one frozen PhysicsNeMo checkpoint; no full periodic-domain cover or global-extremum certificate.",
+  "case": "n64-nt17",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "evaluation_sha256": "93d664ccf21d52df3472f1377c20a9c4b4886e6099bb09e73e28ba52f2b65682",
+  "sample_count": 262144,
+  "candidate_point_from_saved_grid": [
+    3.079742548222244,
+    2.9815677777975633,
+    3.276092089071606
+  ],
+  "largest_sampled_gradient_error_frobenius": 0.2509277804721862,
+  "max_point_centered_interval_midpoint_vs_autograd": 2.1649348980190553e-15,
+  "point_direct_frobenius_error_upper": 0.2509277804721838,
+  "point_centered_frobenius_error_upper": 0.2509277804721838,
+  "point_centered_max_component_radius": 1.695863108130997e-59,
+  "neighborhood_sweep": [
+    {
+      "half_width": 0.0,
+      "direct_frobenius_error_upper": 0.2509277804721838,
+      "centered_frobenius_error_upper": 0.2509277804721838,
+      "centered_max_component_radius": 1.695863108130997e-59,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 2.1371793224034263e-15,
+      "samples_within_1e-8_float_tolerance": true
+    },
+    {
+      "half_width": 0.0001,
+      "direct_frobenius_error_upper": 0.25515389783331976,
+      "centered_frobenius_error_upper": 0.2509814019779672,
+      "centered_max_component_radius": 3.638528994542867e-05,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "samples_within_1e-8_float_tolerance": true
+    },
+    {
+      "half_width": 0.001,
+      "direct_frobenius_error_upper": 0.2972462581832552,
+      "centered_frobenius_error_upper": 0.2520102002621358,
+      "centered_max_component_radius": 0.0006453289361161296,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "samples_within_1e-8_float_tolerance": true
+    },
+    {
+      "half_width": 0.01,
+      "direct_frobenius_error_upper": 0.942687940958121,
+      "centered_frobenius_error_upper": 0.3574416337674234,
+      "centered_max_component_radius": 0.055158384318929166,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "samples_within_1e-8_float_tolerance": true
+    },
+    {
+      "half_width": 0.025,
+      "direct_frobenius_error_upper": 11.017343118458989,
+      "centered_frobenius_error_upper": 11.180453549955143,
+      "centered_max_component_radius": 5.22794946283102,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "samples_within_1e-8_float_tolerance": true
+    },
+    {
+      "half_width": 0.05,
+      "direct_frobenius_error_upper": 5899.528939639661,
+      "centered_frobenius_error_upper": 412816.2029668401,
+      "centered_max_component_radius": 217424.65625,
+      "autograd_sample_count": 27,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "samples_within_1e-8_float_tolerance": true
+    }
+  ],
+  "local_equal_subdivision_sweep": [
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 1,
+      "cell_count": 1,
+      "max_centered_cell_frobenius_error_upper": 0.3574416337721556,
+      "max_centered_cell_component_radius": 0.05515838443534449,
+      "autograd_cell_center_count": 1,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "cell_centers_within_1e-8_float_tolerance": true
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 2,
+      "cell_count": 8,
+      "max_centered_cell_frobenius_error_upper": 0.2725362780593119,
+      "max_centered_cell_component_radius": 0.011798282284871675,
+      "autograd_cell_center_count": 8,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "cell_centers_within_1e-8_float_tolerance": true
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 4,
+      "cell_count": 64,
+      "max_centered_cell_frobenius_error_upper": 0.2568169082235006,
+      "max_centered_cell_component_radius": 0.003050441257073544,
+      "autograd_cell_center_count": 64,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "cell_centers_within_1e-8_float_tolerance": true
+    },
+    {
+      "parent_half_width": 0.01,
+      "equal_subdivisions_per_axis": 8,
+      "cell_count": 512,
+      "max_centered_cell_frobenius_error_upper": 0.25328525311929534,
+      "max_centered_cell_component_radius": 0.0009573529796398361,
+      "autograd_cell_center_count": 512,
+      "max_autograd_excess_outside_centered_bound": 0.0,
+      "cell_centers_within_1e-8_float_tolerance": true
+    }
+  ],
+  "environment": {
+    "python": "3.14.5",
+    "python_flint": "0.9.0",
+    "torch": "2.11.0",
+    "interval_decimal_precision_neighborhood": 60,
+    "interval_decimal_precision_subdivision": 40
+  },
+  "limitations": [
+    "Autograd sample checks are diagnostic, not proofs of the enclosure.",
+    "No cover outside the single local parent box is built.",
+    "Arb/FLINT library assurance is taken from upstream contracts and is not independently proved here.",
+    "No PhysicsNeMo quality acceptance threshold is preregistered; quality remains UNCERTAIN."
+  ],
+  "quality": "UNCERTAIN"
+}

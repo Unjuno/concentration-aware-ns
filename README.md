@@ -105,6 +105,11 @@ speculative findings.
 
 Original files use MIT; upstream software retains its own licenses. Do not copy
 upstream source into this repository without preserving its applicable terms.
+The optional verification dependency `python-flint==0.9.0` is used for the
+experimental Arb interval audit. The package metadata reports MIT and
+LGPL-3.0-or-later components; its maintainers describe Python-FLINT as MIT and
+bundled FLINT/Arb as LGPL-2.1-or-later. This repository imports the package for
+verification and does not redistribute its binary wheel.
 
 The pinned OpenAI Navier–Stokes challenge passed the recorded independent check;
 see [verification result and scope](reports/openai-ns-independent-verification.md).
