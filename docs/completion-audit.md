@@ -52,9 +52,13 @@ has now passed an independent nanoda check (85,455 declarations, zero
 typechecker errors); its hash manifest and rerun script are in
 `evidence/lean-verification/axis-force-nanoda-2026-09-30.json` and
 `runtime/lean-verification/check_axis_force_nanoda.sh`. The separate
-`SupportHoleAssembly.lean` whole-tube transfer has only been checked by Lean's
-standard elaborator; an independent check and the complete tube instantiation
-remain outstanding.
+`SupportHoleAssembly.lean` cusp-ball and Hessian-transfer extensions have
+pinned Lean elaboration and axiom-audit records, including the ten-declaration
+v6 run cited below, but have not passed an independent nanoda check. Their
+conditional parameter assumptions remain, and the spatial restriction of the
+local jet is not jointly formalized with the classical nonlinear packet
+estimate. Do not conflate the independent AxisForceSign check with these
+separate extensions.
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
