@@ -718,3 +718,15 @@ pairs match their run archives. PhysicsNeMo derivative comparisons remain
 sample-only, not continuous-extremum bounds. No solver was rerun. The full
 results and scope limits are recorded in
 `reports/solver-matrix-coverage-2026-09-30.md`.
+
+## PhysicsNeMo continuous-peak certificate feasibility
+
+The new exact-rational global Hessian cover audit processes all 25 frozen
+checkpoints and saves per-case weight/archive hashes and bounds in
+`evidence/tests/physicsnemo-global-hessian-coverage.json`. Under a hypothetical
+5% comparator, even a perfect-sample uniform-grid Lipschitz cover would need
+30,821–37,878 nodes per axis, so this global envelope is not a practical
+continuous-error certificate. Eight-point autograd checks sanity-check the
+network envelope but do not certify it; the analytic inequalities provide the
+bound. The illustrative threshold is not PhysicsNeMo-preregistered and no
+acceptance status changes. Local interval subdivision remains untested.

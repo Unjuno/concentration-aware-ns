@@ -1014,3 +1014,23 @@ of 1.20–1.26% on the stated normalization. These are artifact/replay checks,
 not solver reruns, continuous-field certificates, or physical validation. The
 full scoped results are in `reports/solver-matrix-coverage-2026-09-30.md`.
 The project goal remains active.
+
+## Revision 62 — exact-rational global derivative-cover bound
+
+To address the PhysicsNeMo continuous-gradient-peak gap, added an exact-rational
+second-derivative envelope for all 25 frozen PINN checkpoints. It combines the
+stored binary64 weights as exact fractions, a tanh-chain Hessian bound, and an
+analytic `580` entry bound for the manufactured reference velocity Hessian.
+Under an illustrative 5% comparison only, a best-case uniform Lipschitz cover
+would still require 30,821–37,878 nodes per axis (about 2.93e13–5.43e13 total
+points), even assuming zero error at every grid node. Eight-point autograd
+sanity checks remained below each envelope; the largest observed/envelope
+ratio was about 0.0123%. This shows the global bound is too coarse for practical
+certification, not that the fields are inaccurate or that local interval
+methods cannot work. Five percent remains unregistered for PhysicsNeMo, and
+no prior verdict changes. The derivation, machine record, checker and tests are
+in `reports/physicsnemo-pointwise-gradient-audit-2026-09-30.md`,
+`evidence/tests/physicsnemo-global-hessian-coverage.json`, and
+`tools/physicsnemo_global_hessian_bound.py`. The full 97-test suite passes.
+The next continuous-peak step is local interval subdivision, not treating
+sampled maxima as certificates; the benchmark goal remains active.
