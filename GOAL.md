@@ -771,3 +771,29 @@ limits are in `docs/support-hole-tube-geometry.md` and
 continuum local-germ equality, not a finite-size material packet, molecular
 alignment, phase transition, or viscosity theorem. It adds no solver defect
 finding; solver acceptance claims remain separately gated by the benchmark.
+
+## Revision 48 — endpoint Hessian rate transferred onto the cusp ball
+
+Extended the pinned Lean proof to show that the entire moving cusp ball
+eventually lies in any prescribed endpoint neighborhood, then transferred the
+upstream actual-base second-jet rate to the actual selected field throughout
+that ball. The result is an existential full-spacetime bound `C*q^(-40)` on a
+parameter-dependent terminal interval; all ten audited declarations use only
+`propext`, `Classical.choice`, and `Quot.sound`. The repeatable source, log,
+image and declaration audit are in
+`evidence/openai-lean-2026-09-30-cusp-hessian-v6/manifest.json`.
+
+This supplies a field-equality-ball radius proportional to `sqrt(1-t)`. If its
+Hessian bound is restricted to spatial directions and the classical packet
+comparison is applied, the conditional shrinking-initial-packet exponent is
+`Cstretch+39`, in `[42.9999995,43)`. Neither spatial restriction of the local
+jet nor nonlinear packet comparison is jointly formalized in this extension;
+the estimate remains non-effective and does not show fixed-size packet
+misalignment, particle alignment, molecular determinism, phase transition or
+reduced viscosity. No new upstream solver defect is established.
+
+Validation: the pinned Lean checker and axiom audit pass; the symbolic packet
+algebra checker passes; repository tests pass (`98 passed, 5 subtests`). A
+whole-repository pytest invocation also traverses preserved checkouts under
+`work/` and encounters duplicate-module collection errors, so the validated
+scope is explicitly `pytest tests`.

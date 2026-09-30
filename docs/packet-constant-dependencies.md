@@ -34,10 +34,13 @@ points. Its hypothesis is neighborhood equality throughout K. Equality on
 the axis alone would not supply a bound on a tube. The classical open-union
 and compact-tube construction in the flow note supplies such a K existentially.
 
-At m=2 the new lemma `spatial_jet_norm_le_spacetime_jet_norm` formalizes the
-restriction to fixed-time spatial directions via the norm-one linear map
-v -> (0,v). Thus the same existential bound controls the spatial Hessian on
-K, provided the stated neighborhood-equality hypothesis holds.
+At m=2, the new cusp-ball result below controls the full spacetime second
+Fréchet derivative. Restriction to fixed-time spatial directions is
+mathematically immediate from the norm-one inclusion v -> (0,v), but a local
+`ContDiffAt` restriction lemma is not included in the Lean extension yet.
+Accordingly, the formalized result is stated as a spacetime Hessian bound; its
+use as the spatial Hessian in the classical packet comparison remains an
+analytic step to verify.
 
 The refreshed upstream source also contains `ActualBaseVelocityBounds` and
 `ActualBasePressureBounds`. These give polynomial-in-similarity-radius bounds
@@ -49,28 +52,30 @@ numerically enclosed or made executable by those estimates. They do not
 establish `PressureData` for `actualProfile`, nor produce a spacetime tube
 radius or chart lower bound.
 
-### Endpoint Hessian rate and the missing tube-radius transfer
+### Endpoint Hessian rate transferred to the Lean-checked cusp tube
 
 At derivative order two, `ActualBaseVelocityBounds.velocity_rate` uses
 `heatLoss(2)=(4*2+2)*(2+2)=40`. It supplies an existential endpoint bound
 `||D^2 u_base(w)|| <= C2*q(w)^(-40)` on an unspecified neighborhood for the
-selected smooth base velocity. The locally checked
-`spatial_jet_norm_le_spacetime_jet_norm` transfers this to the spatial Hessian.
-On the similarity chart, `tau=q*(1-eta^2)` and `|eta|<1`, so `q>=tau`.
-Consequently, wherever the assembled field is known to equal that base, the
-half-Hessian factor on `[t0,T]` is at most
-`(C2/2)*tau0^(-40)*Q^(-40)`, with `tau0=1-t0` and `Q=(1-T)/tau0`.
+selected smooth base velocity. The Lean extension now proves that for each
+fixed admissible cusp center and `c>0`, some terminal interval has local-germ
+equality throughout the entire ball of radius `c*sqrt(tau)` about the selected
+axis center. It separately proves that this whole moving ball eventually lies
+inside any specified endpoint neighborhood. Combining these with the upstream
+rate theorem transfers an existential full-spacetime Hessian bound
+`||D^2 u_actual(w)|| <= C*q(w)^(-40)` to every point of that ball on a
+possibly shorter terminal interval. Since `q>=tau` on the chart, over
+`tau=tau_s*Q` the bound is at most
+`C*tau_s^(-40)*Q^(-40)`.
 
-This does **not** establish the earlier claimed tube radius
-`rho(Q)=rho0*Q^D` or the resulting `Q^(Cstretch+39)` packet-radius order for
-the assembled field. `actual_candidate_terminal_base_germ` gives neighborhood
-equality at each point of the selected trajectory. For every fixed compact
-terminal interval, compactness and openness yield some positive tube radius;
-they give no lower bound on how that radius depends on `T` as `T` approaches
-1. The tube's geometric closeness to the endpoint only places it inside the
-base's endpoint-rate neighborhood; it does not place it inside the separate
-open union where the assembled field equals the base. These two neighborhoods
-cannot be conflated.
+The exact Lean declarations and axiom audit are archived in
+`evidence/openai-lean-2026-09-30-cusp-hessian-v6/manifest.json`. This closes the
+previous gap about whether the *local equality ball itself* has a power-law
+radius: its radius is `c*sqrt(tau_s)*Q^(1/2)`, so `r=1/2` at the field level.
+The constants and terminal interval remain existential and depend on the
+fixed construction parameters. The Lean theorem bounds a spacetime jet; a
+local restriction to the spatial Hessian and the classical nonlinear packet
+comparison are not formalized in this extension.
 
 This is a genuine quantifier issue: an open neighborhood of every point on a
 nonclosed terminal graph need not have any power-law thickness near its limit.
@@ -83,12 +88,13 @@ shows why openness and compactness alone cannot prove the missing power lower
 bound.
 
 The generic algebra in `tools.check_packet_radius_scaling` remains valid under
-its explicit assumptions. To instantiate it for this construction, one still
-needs a quantitative lower envelope for the assembled-field base-equality
-tube radius (or another direct Hessian estimate for the assembled field) as
-well as the classical nonlinear-flow argument. Until then the packet exponent
-is conditional on such an envelope, not an established result for the selected
-construction. No fixed-size packet or molecular conclusion follows.
+its explicit assumptions. If the formalized spacetime Hessian bound is
+restricted to spatial directions and the classical packet comparison is
+applied, the candidate exponents are `r=1/2`, `kappa=40`, hence
+`Cstretch+max(r,kappa-1)=Cstretch+39`, in `[42.9999995,43)`. This is a
+conditional *analysis-level shrinking initial-packet allowance*, not a Lean
+theorem or a numeric certificate. It does not prove that a fixed-size packet
+misaligns, and it has no molecular or viscosity implication.
 
 The finite-stage cutoff lemmas do not close this gap by themselves. If a whole
 tube has `q_chart>=qmin`, choosing `J=floor(1/qmin)+1` makes every stage

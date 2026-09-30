@@ -5,6 +5,7 @@ import NavierStokes.DirectAngularDiagonal
 import NavierStokes.MixedPeriodicAssembly
 import NavierStokes.SpatialLocalization
 import NavierStokes.TimeLocalization
+import NavierStokes.ActualBaseVelocityBounds
 
 /-!
 This extension composes the pinned source's exterior-stage identities with
@@ -694,11 +695,11 @@ theorem selected_velocity_germ_of_cusp_ball_point
 /-- The selected axis center tends to zero in the terminal-time variable.
 This supplies an existential small-time bound for the center coordinate; it
 does not by itself give a uniform tube theorem. -/
-theorem selected_axis_center_small_eventually {eta : ℝ}
-    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) :
+theorem selected_axis_center_small_eventually {eta epsilon : ℝ}
+    (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hepsilon : 0 < epsilon) :
     ∃ eps > 0, ∀ {tau : ℝ}, 0 < tau → tau < eps →
       |eta * (tau / (1 - eta ^ 2)) ^
-        (CoordinateAlgebra.D outgoing.data.h)| < 1 / 16 := by
+        (CoordinateAlgebra.D outgoing.data.h)| < epsilon := by
   let d : ℝ := 1 - eta ^ 2
   let p : ℝ := CoordinateAlgebra.D outgoing.data.h
   have hd : 0 < d := by
@@ -717,9 +718,9 @@ theorem selected_axis_center_small_eventually {eta : ℝ}
     exact continuousAt_const.mul hpow
   have hf0 : f 0 = 0 := by
     simp [f, Real.zero_rpow (ne_of_gt hp)]
-  have hnear : ∀ᶠ tau in 𝓝 (0 : ℝ), dist (f tau) 0 < 1 / 16 := by
-    have hball : Metric.ball (f 0) (1 / 16) ∈ 𝓝 (f 0) :=
-      Metric.ball_mem_nhds _ (by norm_num)
+  have hnear : ∀ᶠ tau in 𝓝 (0 : ℝ), dist (f tau) 0 < epsilon := by
+    have hball : Metric.ball (f 0) epsilon ∈ 𝓝 (f 0) :=
+      Metric.ball_mem_nhds _ hepsilon
     have hev := hf.eventually hball
     filter_upwards [hev] with tau ht
     simpa only [Metric.mem_ball, hf0, Real.dist_eq, abs_zero] using ht
@@ -729,10 +730,96 @@ theorem selected_axis_center_small_eventually {eta : ℝ}
   have hdist : dist tau 0 < eps := by
     rw [Real.dist_eq, sub_zero, abs_of_pos htau]
     exact htaueps
-  have hft : dist (f tau) 0 < 1 / 16 := hbound hdist
-  have hfabs : |f tau| < 1 / 16 := by
+  have hft : dist (f tau) 0 < epsilon := hbound hdist
+  have hfabs : |f tau| < epsilon := by
     simpa [Real.dist_eq, sub_zero] using hft
   simpa [f, d, p] using hfabs
+
+/-- The complete moving cusp ball converges uniformly to the space-time
+endpoint as `tau` tends to zero. This is the topological bridge needed to
+intersect the ball with any endpoint-neighborhood estimate. -/
+theorem cusp_ball_eventually_in_endpoint_neighborhood
+    {eta c : ℝ} (heta : eta ∈ Set.Ioo (-1 : ℝ) 1) (hc : 0 < c)
+    {U : Set ProblemStatement.SpaceTime}
+    (hU : U ∈ 𝓝 (1, (0 : ProblemStatement.Space))) :
+    ∃ tauU > 0, ∀ {tau : ℝ}, 0 < tau → tau < tauU →
+      ∀ {w : ProblemStatement.SpaceTime}, w.1 = 1 - tau →
+        ‖w.2 - (eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)) •
+          ProblemStatement.coordinateVector 2‖ ≤ c * Real.sqrt tau → w ∈ U := by
+  obtain ⟨radius, hradius, hballSubset⟩ := Metric.mem_nhds_iff.mp hU
+  have htol : 0 < radius / 3 := by positivity
+  obtain ⟨tauCenter, hCenterPos, hCenter⟩ :=
+    selected_axis_center_small_eventually heta htol
+  let tauRoot := (radius / (3 * c)) ^ 2
+  let tauU := min (radius / 3) (min tauRoot tauCenter)
+  have hrootPos : 0 < tauRoot := by
+    dsimp [tauRoot]
+    positivity
+  have htauU : 0 < tauU := by
+    dsimp [tauU]
+    positivity
+  refine ⟨tauU, htauU, ?_⟩
+  intro tau htau htautU w hwt hball
+  have htime : tau < radius / 3 :=
+    lt_of_lt_of_le htautU (by dsimp [tauU]; exact min_le_left _ _)
+  have hroot : tau < tauRoot :=
+    lt_of_lt_of_le htautU (by
+      dsimp [tauU]
+      exact le_trans (min_le_right _ _) (min_le_left _ _))
+  have hcenterTime : tau < tauCenter :=
+    lt_of_lt_of_le htautU (by
+      dsimp [tauU]
+      exact le_trans (min_le_right _ _) (min_le_right _ _))
+  let center : ℝ := eta * (tau / (1 - eta ^ 2)) ^
+    (CoordinateAlgebra.D outgoing.data.h)
+  let centerPoint : ProblemStatement.SpaceTime :=
+    (1 - tau, center • ProblemStatement.coordinateVector 2)
+  have hcenterSmall : |center| < radius / 3 := by
+    exact hCenter htau hcenterTime
+  have hrootProduct : c ^ 2 * tau < (radius / 3) ^ 2 := by
+    have hmul := mul_lt_mul_of_pos_left hroot (sq_pos_of_pos hc)
+    dsimp [tauRoot] at hmul
+    calc
+      c ^ 2 * tau < c ^ 2 * (radius / (3 * c)) ^ 2 := hmul
+      _ = (radius / 3) ^ 2 := by field_simp
+  have hradiusSmall : c * Real.sqrt tau < radius / 3 := by
+    have hsq : (c * Real.sqrt tau) ^ 2 < (radius / 3) ^ 2 := by
+      rw [mul_pow, Real.sq_sqrt htau.le]
+      nlinarith
+    nlinarith [sq_nonneg (c * Real.sqrt tau)]
+  have hcenterVector : ‖center • ProblemStatement.coordinateVector 2‖ = |center| := by
+    rw [norm_smul]
+    simp [ProblemStatement.coordinateVector, PiLp.norm_single]
+  have hdistBall : dist w centerPoint ≤ c * Real.sqrt tau := by
+    rw [dist_eq_norm]
+    have hdiff : w - centerPoint =
+        (0, w.2 - center • ProblemStatement.coordinateVector 2) := by
+      apply Prod.ext
+      · simp [centerPoint, hwt]
+      · rfl
+    rw [hdiff, Prod.norm_def]
+    simp only [norm_zero, max_eq_right (norm_nonneg _)]
+    exact hball
+  have hdistCenter : dist centerPoint (1, (0 : ProblemStatement.Space)) ≤
+      tau + |center| := by
+    have hsub : centerPoint - (1, (0 : ProblemStatement.Space)) =
+        (-tau, center • ProblemStatement.coordinateVector 2) := by
+      apply Prod.ext
+      · simp [centerPoint]
+      · simp [centerPoint]
+    rw [dist_eq_norm, hsub, Prod.norm_def]
+    simp only [norm_neg, Real.norm_eq_abs, abs_of_pos htau, hcenterVector]
+    exact max_le (le_add_of_nonneg_right (abs_nonneg center))
+      (le_add_of_nonneg_left htau.le)
+  have hdist : dist w (1, (0 : ProblemStatement.Space)) < radius := by
+    calc
+      dist w (1, (0 : ProblemStatement.Space)) ≤
+          dist w centerPoint + dist centerPoint (1, (0 : ProblemStatement.Space)) :=
+        dist_triangle _ _ _
+      _ ≤ c * Real.sqrt tau + (tau + |center|) := add_le_add hdistBall hdistCenter
+      _ < radius := by linarith
+  exact hballSubset (Metric.mem_ball.mpr hdist)
 
 /-- A whole `c*sqrt(tau)` ball around the selected axis center has the
 actual selected-field germ throughout some positive terminal-time interval.
@@ -767,7 +854,7 @@ theorem selected_velocity_germ_on_cusp_tube
     ChartScales.Q_pos _
   have hcutDen : 0 < 2 * max 1 (a 0 : ℝ) := by positivity
   obtain ⟨epsCenter, hepsCenter, hCenter⟩ :=
-    selected_axis_center_small_eventually heta
+    selected_axis_center_small_eventually heta (epsilon := 1 / 16) (by norm_num)
   let qBound := (1 - beta ^ 2) *
     ChartScales.Q (ActualCandidateConstruction.residualBand B N0)
   let cutBound := (1 - beta ^ 2) / (2 * max 1 (a 0 : ℝ))
@@ -882,5 +969,77 @@ theorem exists_admissible_cusp_radius {eta : ℝ}
       Real.sq_sqrt hactive.le
     nlinarith
   exact ⟨c, beta, hc, hbeta0, hbeta1, hactualMargin, hcActive⟩
+
+noncomputable def selectedCandidateVelocity
+    (B N0 : ℕ) (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℝ) : ProblemStatement.VelocityField :=
+  TimeLocalization.activatedVelocity
+    (MixedPeriodicAssembly.periodicVelocity
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ outgoing.data.h)
+        (ActualCandidateAssembly.potentialStages B N0 hN))
+      (SolenoidalDiagonal.potentialSum a (PhysicalWaveSum.physicalQ outgoing.data.h)
+        (ActualCandidateAssembly.directStages B N0 hN)))
+
+/-- Transfer the selected base's endpoint Hessian rate to the actual assembled
+field throughout a sufficiently small moving cusp ball. The constant is
+existential, as in the upstream `JetRate` statement. -/
+theorem selected_cusp_ball_actual_hessian_rate
+    (B N0 : ℕ)
+    (hN : ActualCarrierGeometry.geometricThreshold ≤ N0)
+    (a : ℕ → ℕ)
+    (ha : Tendsto (fun j => (a j : ℝ)) atTop atTop)
+    {eta c beta : ℝ} (heta : eta ∈ Set.Ioo (-1 : ℝ) 1)
+    (hc : 0 < c) (hbeta : 0 ≤ beta) (hbeta1 : beta < 1)
+    (hmargin : |eta| + c / (1 - 2 * outgoing.data.h) ≤ beta)
+    (hcactive : c ^ 2 < NominalConeAssembly.activeLeft nominal) :
+    ∃ tau0 > 0, ∃ C ≥ 0, ∀ {tau : ℝ}, 0 < tau → tau < tau0 →
+      ∀ {w : ProblemStatement.SpaceTime}, w.1 = 1 - tau →
+        ‖w.2 - (eta * (tau / (1 - eta ^ 2)) ^
+          (CoordinateAlgebra.D outgoing.data.h)) •
+          ProblemStatement.coordinateVector 2‖ ≤ c * Real.sqrt tau →
+        ‖iteratedFDeriv ℝ 2 (selectedCandidateVelocity B N0 hN (fun j => (a j : ℝ))) w‖ ≤
+          C * (PhysicalWaveSum.physicalQ outgoing.data.h w) ^ (-40 : ℝ) := by
+  obtain ⟨tauTube, htubePos, htube⟩ := selected_velocity_germ_on_cusp_tube
+    B N0 hN a ha heta hc hbeta hbeta1 hmargin hcactive
+  obtain ⟨C, hC, hBaseRate⟩ :=
+    ActualBaseVelocityBounds.velocity_rate certificate modulation upper B 2
+  have hLoss : -(ActualBaseVelocityBounds.heatLoss 2) = (-40 : ℝ) := by
+    norm_num [ActualBaseVelocityBounds.heatLoss, ActualBaseVelocityBounds.powerLoss]
+  have hBaseRate' : ∀ᶠ w in ActualBaseVelocityBounds.endpoint,
+      ‖iteratedFDeriv ℝ 2 (FinalSlowBase.velocity certificate modulation upper B) w‖ ≤
+        C * (PhysicalWaveSum.physicalQ outgoing.data.h w) ^ (-40 : ℝ) := by
+    simpa only [hLoss] using hBaseRate
+  have hRateSet : {w : ProblemStatement.SpaceTime |
+      ‖iteratedFDeriv ℝ 2 (FinalSlowBase.velocity certificate modulation upper B) w‖ ≤
+        C * (PhysicalWaveSum.physicalQ outgoing.data.h w) ^ (-40 : ℝ)} ∈
+      ActualBaseVelocityBounds.endpoint := hBaseRate'
+  obtain ⟨V, hV, hVsub⟩ :=
+    mem_nhdsWithin_iff_exists_mem_nhds_inter.mp hRateSet
+  obtain ⟨tauV, htauVpos, hVtube⟩ :=
+    cusp_ball_eventually_in_endpoint_neighborhood heta hc hV
+  let tau0 := min tauTube tauV
+  have htau0 : 0 < tau0 := by dsimp [tau0]; positivity
+  refine ⟨tau0, htau0, C, hC, ?_⟩
+  intro tau htau htautau0 w hwt hball
+  have htubeTau : tau < tauTube :=
+    lt_of_lt_of_le htautau0 (by dsimp [tau0]; exact min_le_left _ _)
+  have hVTau : tau < tauV :=
+    lt_of_lt_of_le htautau0 (by dsimp [tau0]; exact min_le_right _ _)
+  have heq := htube htau htubeTau hwt hball
+  have hwV : w ∈ V := hVtube htau hVTau hwt hball
+  have hwPast : w ∈ SpacetimeEndpoint.openPast 1 := by
+    change w.1 ∈ Set.Iio 1 ∧ w.2 ∈ Set.univ
+    exact ⟨by simpa only [Set.mem_Iio, hwt] using sub_lt_self 1 htau, Set.mem_univ _⟩
+  have hbase : ‖iteratedFDeriv ℝ 2
+      (FinalSlowBase.velocity certificate modulation upper B) w‖ ≤
+        C * (PhysicalWaveSum.physicalQ outgoing.data.h w) ^ (-40 : ℝ) :=
+    hVsub ⟨hwV, hwPast⟩
+  have hjet : iteratedFDeriv ℝ 2
+      (selectedCandidateVelocity B N0 hN (fun j => (a j : ℝ))) w =
+        iteratedFDeriv ℝ 2 (FinalSlowBase.velocity certificate modulation upper B) w := by
+    simpa [selectedCandidateVelocity] using
+      (SolenoidalDiagonal.iteratedFDeriv_eventuallyEq heq 2).self_of_nhds
+  rw [hjet]
+  exact hbase
 
 end ConcentrationAware

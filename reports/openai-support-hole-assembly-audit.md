@@ -107,6 +107,15 @@ conditional parameters. It is not an endpoint value, a finite-size packet
 estimate, or a statement about particle alignment, molecular determinism,
 phase transition, or viscosity.
 
+The follow-on Lean audit proves that the entire moving ball eventually enters
+any prescribed endpoint neighborhood, then transfers the upstream actual-base
+rate to obtain an existential full-spacetime second-jet bound
+`C*q^(-40)` throughout that ball. The new v6 manifest records this exact scope
+and the permitted axiom set. Because spatial restriction of the local jet and
+the nonlinear packet comparison are not jointly formalized here, the resulting
+`Cstretch+39` shrinking-packet exponent remains a conditional classical
+inference, not a Lean packet theorem or numerical certificate.
+
 ## Evidence boundary and next action
 
 The algebraic chart identities were rechecked by

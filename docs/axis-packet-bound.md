@@ -145,12 +145,16 @@ symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 `evidence/tests/packet-radius-scaling.json`.
 
 The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
-now supplies the Hessian exponent `kappa=40` for the smooth base field. The
-assembled field is known to equal that base locally along the trajectory, but
-the radius of the full equality tube has no established lower envelope as
-`T` approaches 1. Therefore the generic formula above is not yet instantiated
-with a selected-construction tube exponent `r`; in particular, the earlier
-candidate `Q^(Cstretch+39)` order is not established for the assembled field.
+now Lean-checks a shrinking equality ball with radius proportional to
+`sqrt(1-t)` and transfers the base's full-spacetime Hessian rate `kappa=40`
+onto that ball. Restricting this bound to the spatial Hessian and applying the
+classical nonlinear comparison would give `r=1/2` and candidate exponent
+`Cstretch+39`, enclosed in `[42.9999995,43)`. This remains an
+analysis-level conditional shrinking-packet allowance: the local spatial-jet
+restriction and nonlinear comparison are not Lean-formalized together with
+the field-transfer theorem, and the constants/terminal interval are
+existential. It is neither a numeric packet certificate nor evidence that
+fixed-size packets lose alignment.
 
 ## Verification and remaining inputs
 
