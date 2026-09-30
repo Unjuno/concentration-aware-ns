@@ -1,5 +1,5 @@
 {
-  "captured_at_utc": "2026-09-30T09:30:00Z",
+  "captured_at_utc": "2026-09-30T10:56:00Z",
   "status": "COMPLETE",
   "protocol": "protocols/high-gradient-of13-v2.json",
   "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
@@ -83,10 +83,22 @@
   ],
   "matrix_reproduction": {
     "status": "NOT_OBSERVED",
-    "adequately_resolved_grid_counts": [64, 128],
+    "adequately_resolved_grid_counts": [
+      64,
+      128
+    ],
     "rule": "REPRODUCED only if both listed fine-grid cases pass standard acceptance and fail local quality; NOT_OBSERVED only if both pass both gates.",
     "scope": "A persistent discrepancy under this frozen MMS matrix; not proof of a general solver defect or physical singularity."
   },
-  "amr_execution": "NOT_RUN",
-  "scope": "Cross-run status index only. It retains the original base manifest unchanged and joins two validated temporal addenda by protocol hash, source commit, image ID, and archive hash."
+  "amr_execution": {
+    "status": "COMPLETED_SEPARATE_PILOT",
+    "manifest": "evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json",
+    "remap_control_manifest": "evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json",
+    "amr_cases": 3,
+    "fixed_final_mesh_controls": 2,
+    "quality": "UNCERTAIN",
+    "raw_archives_verified": "evidence/tests/openfoam-amr-archive-integrity-2026-09-30.json",
+    "scope": "Separate n=16 AMR/remap pilot; not part of six uniform-grid matrix and not a validated local-quality comparison."
+  },
+  "scope": "Cross-run index. It retains the original base manifest unchanged, joins two validated temporal addenda by protocol hash, source commit, image ID and archive hash, and points to a separately verified AMR/remap pilot with archive integrity records."
 }

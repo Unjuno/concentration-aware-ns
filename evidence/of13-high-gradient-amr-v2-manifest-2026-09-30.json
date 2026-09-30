@@ -51,7 +51,11 @@
         "quality": "UNCERTAIN",
         "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
       },
-      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap4096.tar.gz",
+      "raw_archive_sha256": "3c1056a859dad0224ec6ba5e3d713dcc8e54c42d222f03a0ebbd166c561e35d4",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "227a52324547a22d26cccc7f822b6e7946e20611f7e01ad78a75e093236b2327"
     },
     {
       "case": "cap5000",
@@ -92,7 +96,11 @@
         "quality": "UNCERTAIN",
         "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
       },
-      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap5000.tar.gz",
+      "raw_archive_sha256": "6c9c209eb876416cab01fe569ed8aaebe3c60a9a88f1d7ce417bb57e6db85d75",
+      "raw_archive_file_count": 61,
+      "source_tree_sha256": "6f00615e6a518771a01a05ed458b07ca4e98a3bdd9b31b7627afd059e95c4b75"
     },
     {
       "case": "cap100000",
@@ -134,7 +142,11 @@
         "quality": "UNCERTAIN",
         "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
       },
-      "archive_policy": "raw work tree retained locally; compact tracked audit manifest only"
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap100000.tar.gz",
+      "raw_archive_sha256": "9beb7672a5d93b19ef2bf1d1a54e2c03d4d4fdbda258f448ef002b866859b446",
+      "raw_archive_file_count": 61,
+      "source_tree_sha256": "374446d0feb1a37efbe2e6e400576439b05995e378019a6df8edb7de193b73dd"
     }
   ],
   "interpretation": "AMR integration/accuracy pilot. Cell budgets are approximate at synchronization points, and blocked candidate counts are unobserved. All local-quality verdicts remain UNCERTAIN."

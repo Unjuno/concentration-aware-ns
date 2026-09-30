@@ -708,3 +708,25 @@ level and pointwise field metrics should be reported together. Added the
 reproducible JSON and a report clarifying that these are finite-sample
 observations, not continuous bounds; all PhysicsNeMo acceptance verdicts
 remain UNCERTAIN. See `reports/physicsnemo-pointwise-gradient-audit-2026-09-30.md`.
+
+## Revision 44 — cross-solver matrix and AMR evidence audit
+
+Replayed OpenFOAM archive chronology, all five SU2 diagnostic archives, SU2's
+n64 time triplet and aggregate standard review. The three solver coverage
+states are now summarized together in
+`reports/solver-matrix-coverage-2026-09-30.md`: OpenFOAM's 4-grid/3-dt uniform
+matrix is complete with fine-grid blind-spot `NOT_OBSERVED`; SU2's 3-grid/3-dt
+matrix is complete but no run satisfies all aggregate/residual checks; and
+PhysicsNeMo's three spatial densities plus 5/9/17 collocation-node experiment
+is not a time-step study and remains UNCERTAIN.
+
+The AMR pilot and two fixed-final-mesh controls previously existed only as
+ignored work trees and summary manifests. Added five raw archives (~49 MiB),
+archive/tree hashes, a verifier and a current cross-run manifest pointer.
+Verified every archive entry against its source work tree, all archive hashes,
+and case counts. Kept the AMR verdict UNCERTAIN: batch adaptation exceeded the
+nominal 5,000-cell setting to 16,640 cells and the 100,000 setting to 101,760;
+candidate counts and nonuniform spectra remain unavailable. Fixed-mesh
+controls narrow the discrepancy toward adaptive history without isolating
+which remap/flux/sensor component is responsible. No new upstream issue is
+warranted by this evidence.

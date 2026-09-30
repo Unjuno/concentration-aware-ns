@@ -36,7 +36,12 @@
           "adaptation": false
         }
       },
-      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap5000"
+      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap5000",
+      "raw_archive": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap5000.tar.gz",
+      "raw_archive_sha256": "edf395ef8737ce9f89ed570ce19a606a89dbbef4a448b4051398abccc17c921d",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "fc0cc083d2227f7f958419903485fc6ef2d210508761776cca329d2550cdfd02",
+      "archive_policy": "Raw fixed-final-mesh case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256."
     },
     {
       "case": "cap100000",
@@ -63,7 +68,12 @@
           "adaptation": false
         }
       },
-      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap100000"
+      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap100000",
+      "raw_archive": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap100000.tar.gz",
+      "raw_archive_sha256": "2134292eac657f80b8cdddcd28679778ba25b89d8c648472b019c876bab23b27",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "bb1300e3196a10b2c338386dad563b6d947c38126d9f3aa4a7d686064d88d763",
+      "archive_policy": "Raw fixed-final-mesh case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256."
     }
   ],
   "scope": "Fixed final-mesh analytic initialization isolates much of inherited AMR error; it does not isolate every flux correction, projection, sensor update, or ALE contribution."
