@@ -220,3 +220,48 @@ would need a verified energy/work balance (including external-force work),
 resolution controls, and a statement that finite-resolution flux is not a
 continuum singularity certificate. It does not change any current solver
 verdict or justify an upstream defect report.
+
+## 30 September analytical bridge: finite rigid fibers
+
+Aulnette et al.'s arXiv v2 preprint (submitted 15 July, revised 3 August 2026)
+adds a direct, but sharply bounded, result to the particle-orientation question.
+It combines microfluidic measurements, Jeffery theory and bead-model simulations
+for rigid neutrally buoyant fibers in a stationary Burgers-like cross-slot
+vortex. The paper reports aspect ratios 10–100, lengths 40–500 micrometres,
+base-flow `Re=40–80` and estimated particle `Re_p=0.05–12`, with strain rates
+around 100–120 s^-1. It observes
+simultaneous azimuthal precession from vorticity and polar alignment from
+extensional strain. The authors also report that longer fibers deviate more in
+radial migration and that a local Jeffery description eventually fails when a
+fiber samples a nonuniform velocity gradient. This is actual finite-fiber
+orientation evidence in a laboratory vortex; it is not molecular evidence or
+an experiment on the OpenAI field. Sources: [arXiv:2607.14298v2](https://arxiv.org/abs/2607.14298v2), [published flexible-fiber study, JFM 1032 A7](https://doi.org/10.1017/jfm.2026.11342).
+
+The idealized connection can be derived exactly. For `E=diag(2 gamma,-gamma,-gamma)`,
+Jeffery's equation gives
+`d beta/dt=-3 kappa gamma sin(beta)cos(beta)`, so
+`tan(beta(t))/tan(beta(t0))=exp(-3 kappa integral(gamma ds))`, with
+`kappa=(AR^2-1)/(AR^2+1)`. If one imposes the additional strain history
+`gamma(t)=C/(2(1-t))`, this becomes `Q^(3 kappa C/2)`, matching the audited
+continuum tangent-map ratio `Q^(3C/2)` in the slender limit `kappa -> 1`.
+With an additional isotropic initial-director model, the probability of being
+within angle `beta_star` is `1-a/sqrt(a^2+tan(beta_star)^2)`,
+`a=Q^(3 kappa C/2)`, and tends to one for `kappa>0` in that ideal strain
+history.
+For aspect ratios 10 and 100, the cited rigid-fiber paper's shape factor is
+`99/101` and `9999/10001`: within about 2% of the slender limit. In this range,
+aspect ratio alone weakly changes the ideal local alignment rate; fiber length
+can still matter through finite-size sampling, inertia, flexibility and
+interactions.
+
+This is a conditional mathematical bridge, not a transfer theorem. A finite
+fiber must experience approximately uniform, axisymmetric strain over its
+length and obey the Jeffery regime. Our OpenAI-flow result supplies a local
+derivative along a trajectory, while fixed-size endpoint tube/Hessian control
+remains unestablished. A defensible next research step would be a finite-aspect
+director calculation on an explicitly specified pre-endpoint velocity field,
+with gradient-variation and particle-scale checks. It would still not predict
+molecular orientation, particle-location probability, or viscosity change.
+The algebra check and exact assumptions are archived in
+[`evidence/tests/jeffery-axisymmetric-bridge.json`](../evidence/tests/jeffery-axisymmetric-bridge.json)
+and [`docs/fiber-vortex-literature-audit.md`](../docs/fiber-vortex-literature-audit.md).

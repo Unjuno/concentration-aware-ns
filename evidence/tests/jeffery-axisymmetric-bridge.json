@@ -1,0 +1,39 @@
+{
+  "status": "ALGEBRA_IDENTITIES_PASS",
+  "scope": "Jeffery director in prescribed spatially uniform axisymmetric extensional strain; no finite-particle transfer theorem",
+  "velocity_strain_tensor": [
+    "2*gamma",
+    "-gamma",
+    "-gamma"
+  ],
+  "jeffery_equation": "dp/dt = Omega*p + kappa*(E*p - (p.E.p)*p)",
+  "polar_angle_ode": "d beta/dt = -3*kappa*gamma*sin(beta)*cos(beta)",
+  "angle_ratio_general": "tan(beta(t))/tan(beta(t0)) = exp(-3*kappa*integral(gamma ds))",
+  "assumed_strain_history": "gamma(t) = C/(2*(1-t))",
+  "resulting_angle_ratio": "Q^(3*kappa*C/2), Q=(1-t)/(1-t0)",
+  "continuum_tangent_map_ratio": "Q^(3*C/2)",
+  "slender_limit_match": "kappa -> 1",
+  "isotropic_initial_director_probability": "1 - a/sqrt(a^2 + tan(theta_star)^2), a=Q^(3*kappa*C/2), for isotropic unoriented initial directions and kappa>0",
+  "probability_scope": "orientation event of an ideal Jeffery director only; no absolute-position distribution",
+  "shape_factors": {
+    "10": {
+      "aspect_ratio": 10,
+      "kappa_exact": "99/101",
+      "kappa_decimal": 0.9801980198019802,
+      "rate_fraction_of_slender_limit": 0.9801980198019802
+    },
+    "100": {
+      "aspect_ratio": 100,
+      "kappa_exact": "9999/10001",
+      "kappa_decimal": 0.9998000199980002,
+      "rate_fraction_of_slender_limit": 0.9998000199980002
+    }
+  },
+  "assumptions_and_missing_bridge": [
+    "rigid prolate Jeffery particle with aspect-ratio shape factor kappa",
+    "velocity gradient is spatially uniform across the particle",
+    "axisymmetric strain eigendirections persist along the particle path",
+    "particle inertia, Brownian rotation, flexibility, and particle-flow feedback are neglected",
+    "the OpenAI construction only supplies a local continuum flow derivative; no fixed-size endpoint tube is established"
+  ]
+}
