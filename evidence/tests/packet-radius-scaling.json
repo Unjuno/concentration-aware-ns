@@ -1,7 +1,7 @@
 {
   "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
   "sympy": "1.14.0",
-  "source_sha256": "29ed155960be6698ed1621e5349c891bb6ce34ca6dd61b4de48a8d169acae59f",
+  "source_sha256": "9deb902d5eac3b1545940d01c0254f5127f2462a25d9a8fe5f7fda4983751e05",
   "assumptions": {
     "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
     "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
@@ -27,7 +27,34 @@
   "controls": {
     "representative_kappa_ge_r_plus_1_case": true,
     "representative_kappa_le_r_plus_1_case": true,
-    "fixed_tube_bounded_hessian_special_case_is_Q_to_C": true
+    "fixed_tube_bounded_hessian_special_case_is_Q_to_C": true,
+    "selected_envelope_has_conservative_Q_to_43_radius": true
+  },
+  "selected_conservative_specialization": {
+    "input_envelopes": {
+      "Cstretch": "[7999999/2000000, 4)",
+      "tube_radius": "rho0*Q^(1/2)",
+      "half_hessian": "k0*Q^(-40)"
+    },
+    "validation_scope": "Checks the exponent equalities under these envelopes. It does not establish the flow envelopes, the existence of a particular packet, or the classical ODE comparison theorem.",
+    "C_upper": "4",
+    "tube_power_exponent": "43",
+    "angle_error_power_exponent": "43",
+    "hessian_term_denominator_exponent": "85/2",
+    "Hessian_denominator_exponent_gap": "77/2",
+    "tube_prefactor": "rho0/(1+B), B=k0*rho0*tau0/3",
+    "angle_prefactor": "3*E0/(2*(1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))",
+    "common_prefactor": "K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0))",
+    "common_sufficient_power": "Q^43 for sufficiently small Q",
+    "residuals": {
+      "tube_power_is_43": "0",
+      "angle_power_is_43": "0",
+      "tube_denominator_dominant_term": "0"
+    },
+    "controls": {
+      "Hessian_denominator_term_dominates_linear_amplification": true
+    },
+    "success": true
   },
   "success": true
 }

@@ -100,7 +100,12 @@ with the classical packet comparison, the candidate exponents are `r=1/2`,
 `Cstretch+max(r,kappa-1)=Cstretch+39`, in `[42.9999995,43)`. This is a
 conditional *analysis-level shrinking initial-packet allowance*, not a Lean
 theorem or a numeric certificate. It does not prove that a fixed-size packet
-misaligns, and it has no molecular or viscosity implication.
+misaligns. Using the proved upper bound `Cstretch<4` directly gives a simpler
+conservative sufficient law `delta<=K*Q^43` for sufficiently small `Q`; the
+symbolic specialization records its prefactors and assumptions in
+`evidence/tests/packet-radius-scaling.json`. `K` still depends on existential
+tube/Hessian constants and the chosen angles, so this is not a numeric packet
+certificate and has no molecular or viscosity implication.
 
 The finite-stage cutoff lemmas do not close this gap by themselves. If a whole
 tube has `q_chart>=qmin`, choosing `J=floor(1/qmin)+1` makes every stage

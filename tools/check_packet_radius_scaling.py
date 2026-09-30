@@ -42,6 +42,50 @@ def main():
         'fixed_tube_bounded_hessian_special_case_is_Q_to_C':
             s.simplify(tube_power.subs({r: 0, kappa: 0})-C) == 0,
     }
+    # Specialize the general envelope to the selected construction's proved
+    # Cstretch<4 and the Lean-checked candidate exponents r=1/2, kappa=40.
+    actual_c_upper = s.Integer(4)
+    actual_r = s.Rational(1, 2)
+    actual_kappa = s.Integer(40)
+    actual_tube_exp = actual_c_upper + max(actual_r, actual_kappa-1)
+    actual_angle_exp = actual_c_upper + actual_kappa-1
+    denominator_hessian_exp = actual_c_upper + actual_kappa-actual_r-1
+    actual_specialization_residuals = {
+        'tube_power_is_43': s.simplify(actual_tube_exp-43),
+        'angle_power_is_43': s.simplify(actual_angle_exp-43),
+        'tube_denominator_dominant_term': s.simplify(
+            actual_r+denominator_hessian_exp-43),
+    }
+    actual_specialization_controls = {
+        'Hessian_denominator_term_dominates_linear_amplification':
+            bool(denominator_hessian_exp >= actual_c_upper),
+    }
+    actual_specialization = {
+        'input_envelopes': {
+            'Cstretch': '[7999999/2000000, 4)',
+            'tube_radius': 'rho0*Q^(1/2)',
+            'half_hessian': 'k0*Q^(-40)',
+        },
+        'validation_scope': 'Checks the exponent equalities under these envelopes. It does not establish the flow envelopes, the existence of a particular packet, or the classical ODE comparison theorem.',
+        'C_upper': str(actual_c_upper),
+        'tube_power_exponent': str(actual_tube_exp),
+        'angle_error_power_exponent': str(actual_angle_exp),
+        'hessian_term_denominator_exponent': str(denominator_hessian_exp),
+        'Hessian_denominator_exponent_gap': str(
+            denominator_hessian_exp-actual_c_upper),
+        'tube_prefactor': 'rho0/(1+B), B=k0*rho0*tau0/3',
+        'angle_prefactor': '3*E0/(2*(1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))',
+        'common_prefactor': 'K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0))',
+        'common_sufficient_power': 'Q^43 for sufficiently small Q',
+        'residuals': {name: str(value) for name, value in
+                      actual_specialization_residuals.items()},
+        'controls': actual_specialization_controls,
+    }
+    actual_specialization['success'] = all(
+        value == 0 for value in actual_specialization_residuals.values()) and all(
+            actual_specialization_controls.values())
+    controls['selected_envelope_has_conservative_Q_to_43_radius'] = (
+        actual_specialization['success'])
     out = {
         'scope': 'Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.',
         'sympy': s.__version__,
@@ -61,6 +105,7 @@ def main():
         },
         'residuals': {name: str(value) for name, value in residuals.items()},
         'controls': controls,
+        'selected_conservative_specialization': actual_specialization,
         'success': all(v == 0 for v in residuals.values()) and all(controls.values()),
     }
     Path('evidence/tests/packet-radius-scaling.json').write_text(

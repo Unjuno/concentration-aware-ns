@@ -910,3 +910,22 @@ extraction, and full benchmark matrix remain unfinished. The resulting
 allowance. It proves no fixed-size misalignment or molecular, phase-transition,
 particle-position, or viscosity consequence. The overall benchmark goal stays
 active.
+
+## Revision 54 — conservative packet-radius specialization
+
+Rechecked the piecewise sufficient-radius derivation against the source
+stretch enclosure and the newly Lean-checked spatial Hessian transfer. Under
+the conditional envelopes `rho=rho0*Q^(1/2)` and `k<=k0*Q^(-40)`, the existing
+`Cstretch+39` power is in `[42.9999995,43)`. Using the independently
+Lean-checked `Cstretch<4` bound gives `a<=Q^(-4)` and
+`I<=(tau0/3)*Q^(-3)`. Both the tube-exit criterion and fixed-angle error
+criterion then permit a conservative `delta<=K*Q^43` for sufficiently small
+Q, with K depending on non-effective tube/Hessian and angle constants. The
+exact exponent specialization and prefactor forms are recorded in
+`evidence/tests/packet-radius-scaling.json` and reproduced by
+`tools/check_packet_radius_scaling.py`.
+
+This is an algebraic consequence of conditional envelopes, not evidence that
+the actual flow loses alignment at finite size. No numerical prefactors were
+extracted, and no molecular, phase-transition, particle-position, or viscosity
+claim follows. The nonlinear comparison and full benchmark goal remain active.

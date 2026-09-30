@@ -125,6 +125,16 @@ be the stricter one. This is only a conditional scaling comparison: no such
 uniform `rho` has been proved, and these asymptotics must not be treated as an
 actual packet certificate.
 
+For the selected construction's current existential bounds, the spatial tube
+has `rho=rho0*Q^(1/2)` and the half-Hessian satisfies `k<=k0*Q^(-40)`.
+Combining these with `Cstretch<4` gives a conservative common sufficient power
+`delta<=K*Q^43` for each fixed initial direction with nonzero axial component
+and fixed positive target angle, once the linear angle margin is positive. The
+new specialization and prefactor forms are checked in
+`evidence/tests/packet-radius-scaling.json`. The prefactors remain
+non-effective, so this does not extend a fixed-size packet to the endpoint or
+show that one loses alignment.
+
 ## Scientific boundary and next evidence
 
 This strengthens the continuum statement from an infinitesimal direction
