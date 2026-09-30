@@ -55,3 +55,5 @@ has GitHub Issues disabled and Discussions disabled, and GitHub reports no
 open issues. There is therefore no issue/discussion channel in that repository
 for a reproducible finding. This benchmark's own pull request remains on its
 separate repository; no message was sent to OpenAI maintainers.
+The raw metadata and decision are preserved in
+`evidence/upstream-refresh/openai-navierstokes-feedback-surface-2026-10-01.json`.
