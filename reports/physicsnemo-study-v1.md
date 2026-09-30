@@ -24,3 +24,9 @@ threshold in these reports is borrowed from the OpenFOAM protocol for comparison
 not retroactively described as preregistered for this experiment. The error
 interval [0, unknown] represents missing continuous peak bounds; the approximately
 1% sampled errors are retained separately and are not used as certified bounds.
+
+The subsequent preregistered five-seed control is reported separately in
+[`physicsnemo-seed-control-v1.md`](physicsnemo-seed-control-v1.md). It reuses
+these seed-709 runs and adds 20 runs across four seeds. This finds material
+seed sensitivity for the fixed-budget training configuration; it does not
+retroactively alter the original matrix or its acceptance verdicts.
