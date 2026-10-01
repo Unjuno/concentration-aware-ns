@@ -1382,3 +1382,14 @@ models, and constitutive viscosity. It supplies a direct countercheck to
 interpreting local directional alignment as generic positional certainty or
 viscosity loss. The result is conditional on smooth flow and does not assert a
 continuation through a singular time.
+
+## Revision 84 — PhysicsNeMo full-domain interval cover remains too coarse
+
+An adaptive Arb interval cover was evaluated over a full periodic domain for
+the frozen PhysicsNeMo n64-nt17 checkpoint. At 8,192 boxes it gives a
+pointwise lower bound near 0.25093 and a continuous-domain upper bound near
+7.27396; the 10% gap target is not met. The cover is useful as an explicit
+continuous upper enclosure but is too loose for a peak-quality verdict. The
+quality gate remains UNCERTAIN; the work does not establish a software defect
+or a continuous maximum. Hashes, limits, and reproduction instructions are in
+the report and machine record.
