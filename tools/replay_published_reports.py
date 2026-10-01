@@ -14,6 +14,7 @@ steps = [
     ('peak_decomposition', [sys.executable, '-m', 'tools.decompose_peak_diagnostic']),
     ('spectral_derivatives', [sys.executable, '-m', 'tools.compare_openfoam_spectral']),
     ('openfoam_uniform_archive_schedules', [sys.executable, '-m', 'tools.audit_high_gradient_time_sequence']),
+    ('openfoam_fd2_synthetic_controls', [sys.executable, '-m', 'tools.check_openfoam_fd2_synthetic_controls']),
     ('openfoam_temporal_triplet', [sys.executable, '-m', 'tools.compare_high_gradient_temporal']),
     ('openfoam_amr_archive_integrity', [sys.executable, '-m', 'tools.verify_openfoam_amr_archives']),
     ('su2_archive_review', [sys.executable, '-m', 'tools.review_su2_archives']),

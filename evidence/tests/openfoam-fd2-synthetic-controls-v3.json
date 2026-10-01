@@ -1,0 +1,21 @@
+{
+  "operator": "periodic centered second-order finite difference (roll stencil)",
+  "boundary_treatment": "periodic wrap on all three axes",
+  "sample_convention": "uniform cell centers on [0,2*pi)^3",
+  "n": 32,
+  "frequency": 4,
+  "injected_perturbation_amplitude": 0.01,
+  "exact_sample_control": {
+    "computed_vs_stencil_matched_reference_gradient_relative_l2": 0.0,
+    "stencil_matched_reference_vs_analytic_gradient_relative_l2": 0.09968368384289213
+  },
+  "injected_perturbation_control": {
+    "computed_vs_stencil_matched_reference_gradient_relative_l2": 0.005411961001461966,
+    "injected_field_error_expected_relative_l2": 0.005411961001461971
+  },
+  "continuous_gradient_error_certified": false,
+  "scope": "Synthetic diagnostic controls only; no solver run, acceptance threshold, or continuous-field error certificate.",
+  "protocol": "protocols/openfoam-derivative-diagnostics-v3.json",
+  "protocol_sha256": "1e98a8b2ad63b64df45e839e5349821f51db1c60ae24e1f6743f82c9f71cfe63",
+  "analysis_source_sha256": "4c1a272ea886d924923394e561076a2f0ea31712044a0a2f25e717e4139b9670"
+}

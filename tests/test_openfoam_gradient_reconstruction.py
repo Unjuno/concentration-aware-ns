@@ -1,6 +1,7 @@
 import numpy as np
 
 from tools.high_gradient_reference import fields
+from tools import audit_openfoam_gradient_reconstruction as reconstruction_audit
 from tools.audit_openfoam_gradient_reconstruction import fd2_symbol_gain
 from tools.spectral_derivative import gradient
 
@@ -38,3 +39,18 @@ def test_centered_fd2_fourier_symbol_matches_exact_single_mode_attenuation():
         np.testing.assert_allclose(fd2, gain * exact_derivative, rtol=2e-14, atol=2e-14)
     assert fd2_symbol_gain(wavenumber, 128, length) > fd2_symbol_gain(wavenumber, 64, length)
     assert fd2_symbol_gain(wavenumber, 64, length) > fd2_symbol_gain(wavenumber, 32, length)
+
+
+def test_synthetic_controls_separate_fd2_floor_from_injected_field_error():
+    assert hasattr(reconstruction_audit, "synthetic_controls")
+    result = reconstruction_audit.synthetic_controls()
+    exact = result["exact_sample_control"]
+    injected = result["injected_perturbation_control"]
+    assert exact["computed_vs_stencil_matched_reference_gradient_relative_l2"] == 0
+    assert exact["stencil_matched_reference_vs_analytic_gradient_relative_l2"] > 0
+    assert injected["computed_vs_stencil_matched_reference_gradient_relative_l2"] > 0
+    np.testing.assert_allclose(
+        injected["computed_vs_stencil_matched_reference_gradient_relative_l2"],
+        injected["injected_field_error_expected_relative_l2"], rtol=2e-14, atol=0,
+    )
+    assert result["continuous_gradient_error_certified"] is False

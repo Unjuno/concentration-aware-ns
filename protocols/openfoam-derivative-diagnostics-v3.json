@@ -1,0 +1,32 @@
+{
+  "version": "3-diagnostic-pilot",
+  "status": "postprocessing and synthetic controls only; no solver rerun or verdict change",
+  "target": "OpenFOAM Foundation 13 frozen high-gradient MMS archives",
+  "inherits_solver_inputs_from": "protocols/high-gradient-of13-v2.json",
+  "frozen_v2_verdicts_mutable": false,
+  "derivative_diagnostic": {
+    "operator": "periodic centered second-order finite difference (three-point roll stencil)",
+    "boundary_treatment": "periodic wrap on all axes",
+    "sample_locations": "uniform cell centers on [0,2*pi)^3",
+    "reference_counterpart": "evaluate exact manufactured velocity on the identical archived cell centers, then apply the identical discrete derivative operator",
+    "reported_separately": [
+      "analytic-reference sampled peak discrepancy (total diagnostic, includes reconstruction error)",
+      "reference-only stencil floor against analytic derivatives",
+      "computed-versus-stencil-matched-reference discrete gradient and vorticity differences",
+      "continuous-field or inter-sample error certificate (must remain false absent a validated bound)"
+    ],
+    "continuous_extremum_claim_allowed": false
+  },
+  "synthetic_controls": {
+    "grid_cells_per_axis": 32,
+    "domain": "[0,2*pi)^3",
+    "sampling": "cell centers",
+    "reference_velocity": "u=(sin(4*x),0,0)",
+    "injected_field_perturbation": "delta_u=(0.01*sin(2*y),0,0)",
+    "expected_relative_discrete_gradient_difference": "0.01*sin(2*h)/sin(4*h), h=2*pi/32",
+    "acceptance": "exact-sample control has zero computed-versus-matched-reference difference and nonzero stencil floor; injected control recovers the analytic discrete difference to floating-point tolerance",
+    "quality_verdict": "not assigned"
+  },
+  "thresholds": null,
+  "rationale": "This artifact validates diagnostic decomposition only. Any future quality thresholds require a separate preregistration before new solver runs."
+}

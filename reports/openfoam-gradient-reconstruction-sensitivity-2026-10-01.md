@@ -24,3 +24,24 @@ This is reconstruction sensitivity, not proof that either derivative is the uniq
 Machine-readable values, run archive hashes and limitations are in `evidence/tests/openfoam-gradient-reconstruction-sensitivity-2026-10-01.json`. Reproduce with `python -m tools.audit_openfoam_gradient_reconstruction` after installing the repository verification requirements.
 
 The benchmark's next-gate design follow-up is tracked in [issue #5](https://github.com/Unjuno/concentration-aware-ns/issues/5). It preserves the frozen v2 verdicts and proposes reporting the analytic-reference diagnostic separately from a stencil-matched discrete reference; it does not classify this observation as an OpenFOAM defect.
+
+## Successor diagnostic synthetic controls
+
+The issue #5 acceptance criteria also call for a synthetic control separating
+stencil bias from an injected field error. The additive diagnostic-only
+protocol `protocols/openfoam-derivative-diagnostics-v3.json` specifies periodic
+centered FD2 on uniform cell centers, its exact-sample counterpart, and the
+continuous-field limitation. It leaves thresholds unset and does not change
+the frozen v2 verdicts or request another solver run.
+
+On `u=(sin(4x),0,0)` sampled at 32 cell centers per axis, the identical FD2
+operator gives exactly zero computed-versus-stencil-matched-reference
+difference while the reference-only analytic-gradient floor is 9.9684%.
+Adding the known perturbation `delta_u=(0.01 sin(2y),0,0)` yields a
+0.5411961% discrete gradient difference, matching the closed form
+`0.01 sin(2h)/sin(4h)` within floating-point tolerance. This confirms the
+diagnostic decomposition on these periodic synthetic modes; it does not
+validate reconstruction of the actual finite-volume field or certify
+continuous extrema. Reproduce with
+`python3 -m tools.check_openfoam_fd2_synthetic_controls`; output and source
+hashes are in `evidence/tests/openfoam-fd2-synthetic-controls-v3.json`.

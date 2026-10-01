@@ -75,6 +75,56 @@ def _fd2_gradient(velocity_grid):
     ], axis=-1)
 
 
+def synthetic_controls(n=32, frequency=4, perturbation_amplitude=0.01):
+    """Separate periodic-FD2 truncation from a known injected field error.
+
+    The synthetic periodic field is u_x=sin(frequency*x), sampled at uniform
+    cell centers. The perturbed case adds epsilon*sin(2*y). These are operator
+    controls, not a Navier--Stokes solve or a certification of a continuous
+    solver field.
+    """
+    if n < 2 * frequency + 1 or frequency < 1 or perturbation_amplitude <= 0:
+        raise ValueError("require n >= 2*frequency+1, positive frequency and perturbation")
+    spacing = 2 * np.pi / n
+    axis = (np.arange(n) + 0.5) * spacing
+    z, y, x = np.meshgrid(axis, axis, axis, indexing="ij")
+    reference = np.zeros((n, n, n, 3), dtype=float)
+    reference[..., 0] = np.sin(frequency * x)
+    analytic_gradient = np.zeros((n, n, n, 3, 3), dtype=float)
+    analytic_gradient[..., 0, 2] = frequency * np.cos(frequency * x)
+
+    reference_fd2 = _fd2_gradient(reference)
+    denominator = float(np.linalg.norm(reference_fd2.ravel()))
+    floor = float(np.linalg.norm((reference_fd2 - analytic_gradient).ravel())
+                  / np.linalg.norm(analytic_gradient.ravel()))
+    exact_sample = {
+        "computed_vs_stencil_matched_reference_gradient_relative_l2": 0.0,
+        "stencil_matched_reference_vs_analytic_gradient_relative_l2": floor,
+    }
+
+    computed = reference.copy()
+    computed[..., 0] += perturbation_amplitude * np.sin(2 * y)
+    computed_fd2 = _fd2_gradient(computed)
+    observed = float(np.linalg.norm((computed_fd2 - reference_fd2).ravel()) / denominator)
+    expected = float(perturbation_amplitude * np.sin(2 * spacing)
+                    / np.sin(frequency * spacing))
+    return {
+        "operator": "periodic centered second-order finite difference (roll stencil)",
+        "boundary_treatment": "periodic wrap on all three axes",
+        "sample_convention": "uniform cell centers on [0,2*pi)^3",
+        "n": n,
+        "frequency": frequency,
+        "injected_perturbation_amplitude": perturbation_amplitude,
+        "exact_sample_control": exact_sample,
+        "injected_perturbation_control": {
+            "computed_vs_stencil_matched_reference_gradient_relative_l2": observed,
+            "injected_field_error_expected_relative_l2": expected,
+        },
+        "continuous_gradient_error_certified": False,
+        "scope": "Synthetic diagnostic controls only; no solver run, acceptance threshold, or continuous-field error certificate.",
+    }
+
+
 def _peak_location(norm, axis):
     index = tuple(map(int, np.unravel_index(int(norm.argmax()), norm.shape)))
     return {"index_xyz": list(index), "coordinate_xyz": [float(axis[i]) for i in index]}
