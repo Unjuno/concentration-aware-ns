@@ -194,6 +194,29 @@ verdict. This is why the AMR quality finding remains `UNCERTAIN`; the original
 centre-sample contrast alone is insufficient. The per-case and transfer
 counterfactual cell-average values are recorded in the same JSON audit.
 
+### What the archived OpenFOAM `U` values represent
+
+The benchmark's initial condition has a narrower, directly verified meaning:
+`tools/openfoam_case.py` builds the Cartesian cell-centre coordinates from
+`(i+1/2) 2π/n`, evaluates the analytic MMS at those points, and writes that
+array as a `volVectorField` (`tools/openfoam_case.py`, lines 54–62). The
+runtime forcing also reads `mesh().C()` for per-cell coordinates (same file,
+around lines 70–73). Thus the initial `U` values are cell-centre samples by
+construction, not analytic cell averages. This conclusion concerns the
+benchmark input generator and is independently checkable against `0/U` and
+the mesh centres.
+
+OpenFOAM Foundation's v13 field documentation describes `GeometricField` and
+its cell-volume specialisation, while the v13 user guide identifies
+`writeCellCentres` as producing the cell-centres field. Those sources establish
+the field's cell association/location. They do not define every evolved
+`volVectorField` value as an exact mathematical volume average. In particular,
+the benchmark's exact-average vectors remain a useful alternate FV-DOF
+diagnostic, but neither the initialisation path nor the inspected solver source
+proves that time-evolved `U` is exactly that projection. We therefore retain
+both center-sample and exact-cell-average comparisons as separately labelled
+diagnostics and do not promote either interpretation to a new gate.
+
 This correction is scoped to the cross-topology n=16 AMR velocity-error
 contrast. It does not rewrite the six uniform-grid run-completion or configured
 PIMPLE gates. Those per-case local metrics compare computed and analytic fields
