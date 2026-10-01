@@ -1078,3 +1078,13 @@ contains no fix record. The OpenAI Lean repository still has no issue or
 discussion channel. The bounded live inventory is preserved in
 `evidence/upstream-refresh/live-status-2026-10-01T1424Z.json`; no duplicate
 upstream report is warranted by the new status alone.
+
+The 2026-10-02 actual-profile provenance change at `e24c2b6` was exported
+from tracked Git data into a fresh locked environment. All 36 report-replay
+steps and six additional checks passed, with 176 tracked report/evidence files
+unchanged; the full suite reported 199 passed, one skipped, and five subtests
+passed. Sanitized logs and post-sanitization hashes are preserved in
+[`clean-export-2026-10-02-actual-profile-audit/`](../evidence/clean-export-2026-10-02-actual-profile-audit/README.md).
+This is Python postprocessing and evidence replay only. It does not execute
+Lean or solver runs and does not discharge the actual-profile pressure premise
+or change any scientific verdict.
