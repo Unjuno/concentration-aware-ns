@@ -1,0 +1,88 @@
+{
+  "method": "Tensor-product Gauss-Legendre integration of cellwise-constant U and cellwise gradient-linear U + grad(U) dot (x-C) reconstructions over validated axis-aligned cubes.",
+  "interpretation": "The original center-sample norm uses a different quadrature rule on each mesh. Refinement adds sample points and can reveal intra-cell MMS variation even when mapped parent values are unchanged. The mapped field is a counterfactual transfer reconstruction, not a saved instantaneous solver state.",
+  "cases": {
+    "amr-cap5000-t002": {
+      "cell_count": 4096,
+      "cell_center_weighted_relative_l2": 0.05874917171587735,
+      "piecewise_constant_volume_l2_by_gauss_order": {
+        "2": 0.4797290673588283,
+        "4": 0.4768373415831283,
+        "8": 0.4768372992344884
+      },
+      "gradient_linear_reconstruction_volume_l2_by_gauss_order": {
+        "2": 0.5826061181150647,
+        "4": 0.5800454384847065,
+        "8": 0.5800453976581423
+      }
+    },
+    "uniform-n16-t002": {
+      "cell_count": 4096,
+      "cell_center_weighted_relative_l2": 0.05874917171587735,
+      "piecewise_constant_volume_l2_by_gauss_order": {
+        "2": 0.4797290673588283,
+        "4": 0.4768373415831283,
+        "8": 0.4768372992344884
+      },
+      "gradient_linear_reconstruction_volume_l2_by_gauss_order": {
+        "2": 0.5826061181150647,
+        "4": 0.5800454384847065,
+        "8": 0.5800453976581423
+      }
+    },
+    "amr-cap5000-t003": {
+      "cell_count": 16640,
+      "cell_center_weighted_relative_l2": 0.39947692129702933,
+      "piecewise_constant_volume_l2_by_gauss_order": {
+        "2": 0.46093984881574773,
+        "4": 0.4607632006888508,
+        "8": 0.460763200560464
+      },
+      "gradient_linear_reconstruction_volume_l2_by_gauss_order": {
+        "2": 0.5099088635020331,
+        "4": 0.5097461908609419,
+        "8": 0.5097461907417989
+      }
+    },
+    "uniform-n16-t003": {
+      "cell_count": 4096,
+      "cell_center_weighted_relative_l2": 0.061613842825752614,
+      "piecewise_constant_volume_l2_by_gauss_order": {
+        "2": 0.48002850546456655,
+        "4": 0.4771393151878574,
+        "8": 0.4771392728765557
+      },
+      "gradient_linear_reconstruction_volume_l2_by_gauss_order": {
+        "2": 0.582910805107914,
+        "4": 0.5803503803685252,
+        "8": 0.5803503395225894
+      }
+    }
+  },
+  "parent_value_mapping_counterfactual": {
+    "mapped_parent_count": 4096,
+    "child_cell_count": 16640,
+    "parent_multiplicity_counts": {
+      "1": 2304,
+      "8": 1792
+    },
+    "cell_center_weighted_relative_l2_against_exact_t002": 0.417955311146042,
+    "cell_center_weighted_relative_l2_against_exact_t003": 0.4181561218056027,
+    "integrated_relative_l2_against_exact_t002_by_gauss_order": {
+      "2": 0.4770079090314882,
+      "4": 0.47683729935901575,
+      "8": 0.476837299234489
+    },
+    "integrated_relative_l2_against_exact_t003_by_gauss_order": {
+      "2": 0.4772392686208154,
+      "4": 0.47706857076603065,
+      "8": 0.47706857064140157
+    },
+    "mapped_to_solved_relative_l2_change": 0.04657947975378655
+  },
+  "limits": [
+    "Not a cell-average reconstruction or a continuous pointwise bound.",
+    "Does not isolate pressure/flux correction or post-remap timestep effects.",
+    "Source inspection is against public Foundation commit 18870c24d21c6b982e2cdec27b2f59738cca5f90; equivalence to the packaged binary is not established."
+  ]
+}

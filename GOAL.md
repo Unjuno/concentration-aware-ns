@@ -1460,3 +1460,22 @@ viscosity transition. The full record is in
 `reports/solver-matrix-coverage-2026-09-30.md` and
 `evidence/of13-amr-first-refinement-v1/`. The three-project research goal
 remains active and UNCERTAIN.
+
+## Revision 90 — AMR error rise traced to mesh-dependent norm sampling
+
+An independent retrospective quadrature audit materially revised Revision 89's
+interpretation. The frozen probe's cell-centre-weighted relative L2 norm is
+5.875% on n=16 before refinement and 39.948% on the AMR mesh afterward, but a
+counterfactual that only assigns unchanged parent-cell values to their child
+cells already gives 41.816% under the new centre-sampling rule. Integrating
+piecewise-constant and cellwise gradient-linear reconstructions within cells
+with converged Gauss quadrature reverses the apparent AMR degradation contrast
+(-1.638 and -7.060 percentage points, respectively). Thus the positive
+centre-sample contrast is confounded by changed quadrature and is not evidence
+that AMR worsened the represented field. Public Foundation 13 source inspection
+is consistent with parent-cell value mapping followed by flux correction and a
+solved step; package-binary equivalence remains unverified. A next analytical
+priority is to check whether published cross-resolution local metrics have
+similar sampling limitations, while retaining the original fixed-grid gates
+and all solver/physical claims as separate questions. See the new audit in the
+cross-solver coverage report and its machine-readable JSON.

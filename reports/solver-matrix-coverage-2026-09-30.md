@@ -124,8 +124,10 @@ difference-in-differences is +0.33786. The sampled maximum-gradient relative
 error decreased after refinement, from 36.62% to 9.17%; this cell-center
 maximum is not a continuous bound.
 
-This is a large, reproducible early-time error change associated with the
-first adaptation interval and merits a more discriminating follow-up. The
+The cell-centre diagnostic difference is large and reproducible, but by itself
+does not show that the represented velocity field worsened. A subsequent
+quadrature audit below finds that the norm changes substantially with the mesh.
+The
 t=0.003 state already includes one solved post-remap step, so the experiment
 does not identify whether interpolation, flux correction, pressure projection,
 sensor updates, or subsequent evolution produced the change. It is not an
@@ -137,3 +139,64 @@ and analysis are under `protocols/high-gradient-of13-amr-first-refinement-v1.jso
 `evidence/of13-amr-first-refinement-v1/`. Both tarball SHA-256 values were
 recomputed and all members read successfully. Initial preflight failures with
 no solver launch were retained under the `*-preflight-failure-*` paths.
+
+### Analytical audit of the AMR error contrast
+
+The first-refinement result above initially looked like a sharp error increase,
+but the original metric evaluates the exact field only at cell centres and
+weights those samples by cell volume. Its quadrature changes when the mesh
+refines. On the identical n=16 velocity field at t=0.002, the reported norm is
+5.875%; integrating either a piecewise-constant or a cellwise gradient-linear
+reconstruction over each cube gives 47.684% or 58.005%, respectively. Orders
+4 and 8 tensor-product Gauss-Legendre rules agree to better than 5e-8 for these
+reconstructions.
+
+As a transfer counterfactual, each of the 4,096 old cell values was assigned
+to the new child cells by Cartesian containment. This produces exactly the
+observed topology (2,304 unchanged parents and 1,792 parents represented by
+eight children each). The integrated piecewise-constant error against the
+t=0.002 exact field is 47.684% on both the old and subdivided partitions,
+showing that mere subdivision does not change that volume integral. Yet
+evaluating those unchanged parent values at the newly added fine-cell centres
+against the exact field at t=0.003 yields 41.816%, versus 5.875% for the
+old-grid centre samples. This metric change alone exceeds the apparent +33.786
+percentage-point difference-in-differences, before accounting for the actual
+post-refinement solver step, and arises from resolution-dependent sampling of
+intra-cell variation.
+
+Under the integrated piecewise-constant reconstruction, the t=0.002 to 0.003
+difference-in-differences is -1.638 percentage points; under the integrated
+gradient-linear reconstruction `U + grad(U)·(x-C)`, it is -7.060 points. Both
+contrast signs reverse relative to the original centre-sample value. The
+actual post-step AMR field has integrated errors 46.076% (piecewise constant)
+and 50.975% (gradient-linear); these are interpretation-dependent reconstructed
+norms, not a unique FV “true error”. The retrospective audit therefore
+invalidates the original positive contrast as evidence of AMR-induced
+degradation. It neither validates AMR accuracy nor isolates the post-remap
+solver step; it identifies a mesh-dependent metric as a leading confounder.
+
+This correction is scoped to the cross-topology n=16 AMR velocity-error
+contrast. It does not rewrite the six uniform-grid run-completion or configured
+PIMPLE gates. Those per-case local metrics compare computed and analytic fields
+on the same cell-centre stencil, but any interpretation as a continuous-domain
+norm or peak remains limited by that grid's sampling. In particular, the
+matrix's fine-grid `NOT_OBSERVED` rule is a frozen discrete benchmark result,
+not a proof about continuous extrema.
+
+The public Foundation 13 source at tag `20260624` resolves to commit
+[`18870c24d21c6b982e2cdec27b2f59738cca5f90`](https://github.com/OpenFOAM/OpenFOAM-13/tree/18870c24d21c6b982e2cdec27b2f59738cca5f90).
+Its `fvMesh::topoChange` maps volume fields through `fvMeshMapper`; the
+`cellMapper` uses parent-cell addressing and normalized old-volume weights for
+cells created from cells. The incompressible solver then rebuilds face flux
+from mapped `Uf` and runs `correctPhi` when topology changed, before the
+ordinary pressure-velocity step. Thus the counterfactual parent-value mapping
+matches the source-level refinement mapping for a child with one parent, while
+the saved t=0.003 field additionally includes flux correction and one solved
+step. Source-to-binary equivalence with the packaged DEB remains unestablished.
+Relevant pinned source: [`fvMesh::mapFields`](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fvMesh/fvMesh.C#L1156-L1197),
+[`cellMapper`](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/meshes/polyMesh/polyTopoChangeMap/cellMapper/cellMapper.C#L77-L148),
+and [`motionCorrector`](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/applications/modules/incompressibleFluid/moveMesh.C#L42-L72).
+Reproduce the retrospective calculation with
+`work/reference-check-env/bin/python -m tools.audit_amr_cell_center_quadrature`;
+its method, checkpoint metrics, counterfactual mapping counts and scope limits
+are saved in `evidence/of13-amr-first-refinement-v1/cell-center-quadrature-audit.json`.
