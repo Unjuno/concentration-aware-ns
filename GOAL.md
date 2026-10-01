@@ -2060,3 +2060,19 @@ finite-packet `O(Q)` sufficient bound additionally pays for a nonlinear
 remainder and may be conservative. Derivation and evidence are in
 `docs/axis-packet-bound.md` and
 `evidence/tests/packet-radius-scaling.json`.
+
+## Revision 123 — instrumented AMR stage-capture protocol prepared
+
+The earlier AMR first-refinement contrast conflated topology mapping, flux
+correction, momentum prediction and pressure correction. Pinned Foundation-13
+source ordering shows functionObject execution occurs before `preSolve()` and
+its `mesh_.update()`, so functionObjects cannot capture the mapped state. Added
+a frozen stage-snapshot protocol plus a source-hash-guarded transformer for the
+pinned incompressible solver module. The diagnostic records `U/p` and
+`phi/Uf` immediately after mapping, after `correctPhi`, before/after pressure
+correction, and after PIMPLE; it does not alter equation assembly. The
+instrumented module compiled successfully against the recorded arm64 image.
+A solver run and final-state noninterference comparison are still required
+before attributing any AMR error change. See the protocol and reproduction
+instructions in `protocols/high-gradient-of13-amr-stage-snapshot-v1.json` and
+`runtime/openfoam13/README.md`.

@@ -101,3 +101,25 @@ unless the image ID and package inventory match the recorded environment.
 Neither the archived results nor a repeated run proves a general solver defect,
 mathematical blow-up, molecular alignment, constitutive-viscosity change or
 physical hazard.
+
+## Reproduce the first-refinement stage snapshots
+
+`protocols/high-gradient-of13-amr-stage-snapshot-v1.json` defines a diagnostic
+that captures cell `U/p` and face `phi/Uf` immediately after topology mapping,
+after `correctPhi`, before and after pressure correction, and after the full
+PIMPLE step. The instrumented module is generated from the pinned source tree
+without modifying that tree, then built against the recorded arm64 runtime
+image. The instrumentation only writes snapshots; it does not change equation
+assembly. The runner records loader evidence that the instrumented module was
+used and preserves a fresh case archive under
+`evidence/of13-amr-stage-snapshot-v1/`.
+
+With a clean checkout, the pinned Foundation source clone available at
+`work/openfoam13-source-20260624`, and the recorded Docker image installed, run
+`python3 -m tools.run_amr_stage_snapshot`. The runner refuses to overwrite its
+work or evidence paths. Stage attribution is accepted only if the final fields
+are later verified against the frozen uninstrumented first-refinement control;
+the runner's stage-capture status alone does not assert noninterference. The
+packaged Foundation binary and inspected source are still not proven
+equivalent, and this single n=16 mechanism probe is not an AMR convergence or
+defect verdict.
