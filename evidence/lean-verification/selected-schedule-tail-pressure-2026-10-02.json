@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "captured_at_local_date": "2026-10-02",
+  "command": "sh runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
+  "upstream_repository": "openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "source_sha256": {
+    "NavierStokes/SchedulePressure.lean": "d4146daa477827b6f69c752510699becf1c97973f96e50f8636991958fa1e159",
+    "NavierStokes/PressureDatum.lean": "a1ad3e25e569532b0dc21c71f5f8e0092bb8abd2096f03c3469639d2435a2513",
+    "NavierStokes/OutgoingTail.lean": "450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5"
+  },
+  "extension": "verification/SelectedScheduleTailPressure.lean",
+  "extension_sha256": "40b5d07e618d8fd550394a4dfd71ead22d5c4d44e089705dcc6577c21fc818e5",
+  "runner": "runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
+  "runner_sha256": "fd8a5ed2e03af1db399da58dfdb98f62b9cd848432a5e6485c06cec62ef8bc1b",
+  "log": "evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.log",
+  "log_sha256": "84866465cb25a4395a5ae0058ff4f0ce290a979bd1e9bf78e5c74f48015e78f5",
+  "declarations": [
+    "ConcentrationAwareSelectedScheduleTail.tail_integrand_constant",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta"
+  ],
+  "axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "sorryAx": false,
+  "scope": "Proves that the selected schedule pressure contribution on Ici flattenEnd is eta-independent. It does not bound the tail mass relative to core.P^2, prove the actualProfile pressure premise, or establish a molecular or constitutive consequence.",
+  "environment": {
+    "container_image": "concentration-aware-ns:checker",
+    "dependency_volume": "cans-lean-verification",
+    "network": "disabled",
+    "resource_limits": "2 CPUs, 4 GiB memory",
+    "lean_toolchain": "Pinned prepared environment; see runtime/lean-verification/README.md"
+  }
+}

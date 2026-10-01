@@ -170,3 +170,32 @@ The exact symbolic replay is `tools/check_pressure_data_amplitude_countermodel.p
 with its SymPy 1.14.0 result in
 `evidence/tests/pressure-data-amplitude-countermodel-2026-10-02.json`; the
 check is also included in `tools/replay_published_reports.py`.
+
+## Connection to the pinned schedule's zero-exponent tail
+
+The generic countermodel uses a tail term independent of `eta`. The pinned
+constructed schedule has the same *form* of contribution after flattening:
+`SchedulePressure.shapeExponent_after` gives exponent zero for
+`y >= flattenEnd`, and `SchedulePressure.angular_square_factorization`
+rewrites the pressure integrand as `clockWeight * kernel(shapeExponent, eta)`.
+Since `kernel 0 eta = 1`, the region `Ici flattenEnd` contributes the constant
+`-(1/2) * integral clockWeight` independently of `eta`. This makes the
+pressure-data-only obstruction directly relevant to the schedule's analytic
+structure. It does not show that this contribution is freely adjustable:
+`clockWeight` is built from the same `TailData` and outgoing profile. The
+remaining analytical target is to bound this tail contribution quantitatively
+relative to `core.P^2` under the retained schedule constraints, or otherwise
+derive the needed root-pressure inequality without recovering `core.P >= 2`.
+The identity is Lean-checked against the pinned sources in
+`verification/SelectedScheduleTailPressure.lean`; its replay and axiom audit
+are `runtime/lean-verification/check_selected_schedule_tail_pressure.sh` and
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
+
+Pinned-source hashes for the identities used here:
+
+| Source | SHA-256 |
+|---|---|
+| `SchedulePressure.lean` | `d4146daa477827b6f69c752510699becf1c97973f96e50f8636991958fa1e159` |
+| `PressureDatum.lean` | `a1ad3e25e569532b0dc21c71f5f8e0092bb8abd2096f03c3469639d2435a2513` |
+| `TailEnergyBounds.lean` | `cc2771933c88bef01f7957b4903e28c84ec8ed588c9ae757c17b519e458abd1d` |
+| `OutgoingTail.lean` | `450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5` |

@@ -19,6 +19,23 @@ additional constraints or witness retention. GitHub Actions remains queued
 at prior PR #4 head `f51dc335`; the new checker is local pending the final
 head's run. The full benchmark goal remains active.
 
+## Revision 162 — selected schedule tail identified as the pressure bridge
+
+Checked the pinned source identities behind the prior countermodel. The actual
+`SchedulePressure` exponent reaches zero after `flattenEnd`, so that region's
+pressure integral is an eta-independent negative constant. This matches the
+generic countermodel's mechanism structurally, but the actual tail weight is
+coupled to `TailData` and is not freely selectable. The next analytical target
+Lean now checks that the selected schedule's tail pressure contribution on
+`Ici flattenEnd` is exactly independent of eta; both declarations use only
+`propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`. The replay,
+input hashes, and scope are recorded in
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
+The next target is a quantitative upper bound for this tail mass relative to
+`core.P^2`, or an exact root-pressure estimate using retained schedule
+constraints. This does not establish the pressure premise for `actualProfile`
+or a molecular/viscosity consequence. Goal remains active.
+
 ## Revision 160 — prospective PhysicsNeMo held-out gate evaluated
 
 To address the old PhysicsNeMo verdict's missing preregistered threshold, froze

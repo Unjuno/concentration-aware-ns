@@ -915,6 +915,15 @@ The exact SymPy replay and isolated regression test are
 `tools/replay_published_reports.py`. Interpretation limits are in the dated
 provenance report.
 
+The pinned selected schedule also has a zero-exponent tail after
+`flattenEnd`; its pressure-integral contribution is independent of `eta`.
+The tail weight remains coupled to `TailData`, so this does not instantiate
+the abstract countermodel. It identifies a focused next proof target: bound
+the tail mass relative to `core.P^2`, or establish the root-pressure condition
+directly from the retained schedule. The eta-independence identity is
+Lean-checked with an explicit axiom audit; source hashes, replay command, and
+scope are in `evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
+
 ### 2026-10-02 source-schema follow-up
 
 Rehashed `PreparedOutgoing.lean`, `NominalConeAssembly.lean` and

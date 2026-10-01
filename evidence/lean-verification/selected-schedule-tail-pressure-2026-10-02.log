@@ -1,0 +1,6 @@
+'ConcentrationAwareSelectedScheduleTail.tail_integrand_constant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
