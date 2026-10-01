@@ -21,6 +21,24 @@ zero `M1` but contributes positively to `M0` (equivalently, negatively to the
 signed pressure). Therefore the `-P^2/100` tail-pressure bound does not close
 the sign condition, and must not be read as a pressure-sign result.
 
+The extension also proves the equivalent nonnegative-mass statement for the
+existential rate-capped full `ProfileData`:
+
+`integral_{flattenEnd}^∞ clockWeight(y) dy ≤ P^2/50`.
+
+This upper bound uses the constructed witness's exact wait identity and lambda
+cap. Independent nanoda checked 64,192 declarations with zero typechecker
+errors, found the six selected declarations, and reported one pretty-printer
+limitation (`Unable to print axioms`). The permitted source-side axioms remain
+`propext`, `Classical.choice`, and `Quot.sound`. Run hashes and checker details
+are in `evidence/lean-verification/selected-schedule-tail-mass-nanoda-2026-10-02.json`;
+the raw 612 MiB export remains local under `work/` and is SHA-256 indexed.
+
+The capped witness is existential and is not identified with
+`FinalSlowBase.actualProfile`. The mass bound neither asserts concentration in
+the tail nor supplies a lower bound on the pressure moment needed for the root
+sign. It does not resolve the actual-profile provenance gap.
+
 The fixed OpenFOAM archive verifier again passes integrity and gate replay for
 all six frozen cases. Standard acceptance passes all six; sampled local
 quality fails at n16 and n32 and passes for n64/n128 and both finer n64 time

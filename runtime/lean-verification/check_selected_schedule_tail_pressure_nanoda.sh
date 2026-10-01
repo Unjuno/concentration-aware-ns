@@ -3,7 +3,7 @@ set -eu
 
 project_root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 source_file="$project_root/verification/SelectedScheduleTailPressure.lean"
-expected_source_sha=40cf2df9d0c1b8e82c5aebc6d6d9be53fcfcd475b24bfb0ac7a4929804856e51
+expected_source_sha=d047cb638d428c72f8b68ee32d2f821842f7246efb0ecf388203574a4aa05910
 expected_image=sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de
 actual_source_sha=$(shasum -a 256 "$source_file" | awk '{print $1}')
 actual_image=$(docker image inspect concentration-aware-ns:checker --format '{{.Id}}')
@@ -47,6 +47,7 @@ docker run --rm --name cans-selected-tail-nanoda --user 501:20 --network none \
          ConcentrationAwareSelectedScheduleTail.exists_rate_capped_prepared_profile \
          ConcentrationAwareSelectedScheduleTail.exists_rate_capped_profile_data \
          ConcentrationAwareSelectedScheduleTail.rate_capped_profile_data_tail_pressure_small \
+         ConcentrationAwareSelectedScheduleTail.rate_capped_profile_data_tail_mass_upper_bound \
       > /out/selected-tail.ndjson 2> /out/export.log
     python3 -c '\''import json; json.dump({
       "export_file_path":"/out/selected-tail.ndjson",
@@ -78,6 +79,7 @@ required = (
     b"exists_rate_capped_prepared_profile",
     b"exists_rate_capped_profile_data",
     b"rate_capped_profile_data_tail_pressure_small",
+    b"rate_capped_profile_data_tail_mass_upper_bound",
 )
 with export_path.open("rb") as stream:
     with mmap.mmap(stream.fileno(), 0, access=mmap.ACCESS_READ) as data:

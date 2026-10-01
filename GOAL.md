@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 180 — rate-capped tail clock-mass upper bound independently checked
+
+Added and compiled a Lean corollary converting the conditional signed
+tail-pressure bound into an upper bound on the nonnegative post-flattening
+clock-weight mass:
+`integral_{flattenEnd}^∞ clockWeight ≤ P²/50`. Independent nanoda checked
+64,192 declarations with zero typechecker errors and found all six selected
+theorems; the existing single pretty-printer limitation remains. This bound is
+for an existential rate-capped full `ProfileData` assembled from the pinned
+source, not a concentration lower bound and not a property of
+`FinalSlowBase.actualProfile`. It therefore does not establish the root
+pressure sign or any particle/physical consequence. Summary and hashes are in
+`evidence/lean-verification/selected-schedule-tail-mass-nanoda-2026-10-02.json`.
+Goal remains active.
+
 ## Revision 179 — pressure-threshold algebra and benchmark replay refreshed
 
 Re-ran the exact SymPy pressure-moment check in the locked environment

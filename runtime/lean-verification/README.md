@@ -120,6 +120,15 @@ any molecular or material-viscosity conclusion. The captured run and exact
 artifact hashes are indexed at
 `evidence/lean-verification/axis-force-nanoda-2026-09-30.json`.
 
+`check_selected_schedule_tail_pressure_nanoda.sh` independently checks the
+selected-schedule tail-pressure extension and its existential rate-capped
+profile results. The current source also proves that the nonnegative
+clock-weight mass after `flattenEnd` is at most `P^2/50` for that existential
+rate-capped full `ProfileData`. The check processes about 612 MiB of exported
+proof terms. It does not transfer the cap or mass estimate to
+`FinalSlowBase.actualProfile`; summary, logs, and hashes are in
+`evidence/lean-verification/selected-schedule-tail-mass-nanoda-2026-10-02.json`.
+
 The first real landrun filesystem control failed before executing either test:
 this pinned landrun requests Landlock ABI v9, but the current kernel provides
 ABI v8. Both allowed and denied reads exited at sandbox setup, so this is **not**

@@ -424,6 +424,22 @@ theorem rate_capped_profile_data_tail_pressure_small
   rw [d.outgoing_eq]
   exact rate_capped_prepared_tail_pressure_small d.capped
 
+/-- The same conditional tail estimate bounds the positive clock-weight mass
+    after flattening by P^2/50. This remains a statement about the existential
+    rate-capped profile, not the independently selected actualProfile. -/
+theorem rate_capped_profile_data_tail_mass_upper_bound
+    (d : RateCappedProfileData) :
+    (∫ y in Ici d.data.outgoing.data.flattenEnd,
+      SchedulePressure.clockWeight d.data.outgoing.data y) ≤
+      d.data.outgoing.data.core.P ^ 2 / 50 := by
+  have hpressure := rate_capped_profile_data_tail_pressure_small d
+  have hmass : 0 ≤ ∫ y in Ici d.data.outgoing.data.flattenEnd,
+      SchedulePressure.clockWeight d.data.outgoing.data y :=
+    setIntegral_nonneg measurableSet_Ici (fun y _ =>
+      (SchedulePressure.clockWeight_pos d.data.outgoing.data y).le)
+  unfold tailPressureContribution at hpressure
+  nlinarith
+
 #print axioms tail_integrand_constant
 #print axioms tail_pressure_independent_of_eta
 #print axioms tail_pressure_lower_bound
@@ -438,5 +454,6 @@ theorem rate_capped_profile_data_tail_pressure_small
 #print axioms exists_rate_capped_prepared_profile
 #print axioms exists_rate_capped_profile_data
 #print axioms rate_capped_profile_data_tail_pressure_small
+#print axioms rate_capped_profile_data_tail_mass_upper_bound
 
 end ConcentrationAwareSelectedScheduleTail
