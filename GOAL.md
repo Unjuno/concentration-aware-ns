@@ -13,6 +13,8 @@ source, not a concentration lower bound and not a property of
 `FinalSlowBase.actualProfile`. It therefore does not establish the root
 pressure sign or any particle/physical consequence. Summary and hashes are in
 `evidence/lean-verification/selected-schedule-tail-mass-nanoda-2026-10-02.json`.
+Here `P` is the positive outgoing core amplitude `d.core.P`, not the signed
+pressure function.
 Goal remains active.
 
 ## Revision 179 — pressure-threshold algebra and benchmark replay refreshed

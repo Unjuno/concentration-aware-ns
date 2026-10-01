@@ -26,6 +26,11 @@ existential rate-capped full `ProfileData`:
 
 `integral_{flattenEnd}^∞ clockWeight(y) dy ≤ P^2/50`.
 
+Here `P` in the Lean statement is `d.core.P`, the positive outgoing core
+amplitude. It is not the signed pressure function `p(eta)`; the latter is
+negative under the construction's pressure convention. The mass bound is
+therefore relative to the squared core amplitude.
+
 This upper bound uses the constructed witness's exact wait identity and lambda
 cap. Independent nanoda checked 64,192 declarations with zero typechecker
 errors, found the six selected declarations, and reported one pretty-printer
@@ -46,8 +51,12 @@ steps. The preregistered blind-spot conjunction remains `NOT_OBSERVED`. This
 is postprocessing replay, not an independent solver-source proof or physical
 validation.
 
-Current external state: PR #4 is open and mergeable at `7b5eda976733b6d34ed5061fda1b498ab8864e5a`; GitHub Actions run
-`36935724453` is still queued. No upstream report is warranted by this
-follow-up: it establishes neither a defect in the source construction nor a
-counterexample for its selected profile. The `actualProfile` pressure/moment
-bound remains an open analytic obligation.
+At the first report checkpoint, PR #4 was open and mergeable at
+`7b5eda976733b6d34ed5061fda1b498ab8864e5a`, and run `36935724453` was queued.
+The later tail-mass result is committed at `85b2a8456b5fe4934319a33c3c320c3dc8c50c23`;
+the PR remains open/mergeable and Actions run `36936557714` was queued at the
+latest check. A fresh GitHub API read on 2026-10-02 still reports upstream
+`openai/NavierStokesAndEuler` at `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`,
+Apache-2.0, with Issues and Discussions disabled and zero issue records, so
+there is no suitable upstream issue channel for this non-defect analytic
+extension. The `actualProfile` pressure/moment bound remains open.
