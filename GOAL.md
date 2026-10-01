@@ -1331,3 +1331,14 @@ SHAs are preserved in `evidence/upstream-refresh/live-status-2026-10-01T2345Z.js
 No duplicate report was filed because the observed scope remains tracked. This
 refresh does not broaden the tested code paths or close any numerical-quality
 gaps; the overall goal remains active.
+
+## Revision 80 — diagonal limit-exchange counterexample
+
+Added a generic smooth counterexample to the inference from decay of each
+fixed finite stage prefix to decay of a growing cutoff sum. With diverging
+schedule `a(j)=j` and terms `q*chi(j*q)`, every fixed term tends to zero, while
+on `q=1/n` the full finite sum stays between 1 and 2. The lower bound is exact;
+the executable check records the smooth-cutoff values and verifies the bounds.
+This is not a counterexample to the pinned OpenAI construction. It identifies
+the missing construction-specific uniform tail estimate needed for finite
+stage extraction and does not change any solver or physical verdict.

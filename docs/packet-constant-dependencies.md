@@ -224,6 +224,15 @@ This reduction avoids estimating an infinite tail on a compact interval away
 from t=1. It does not make the remaining coefficient functions or cutoff
 scales numerically available by itself.
 
+There is a separate limit-exchange obligation as the tube approaches the
+endpoint: fixed-prefix vanishing alone does not control a prefix whose active
+length grows like `1/q`. The smooth schematic counterexample and its exact
+diagonal lower bound are recorded in
+[`diagonal-finite-prefix-limit-audit.md`](diagonal-finite-prefix-limit-audit.md).
+It is not a counterexample to the selected construction. It shows why a
+construction-specific uniform tail/summability estimate is required before
+using the fixed-prefix limit to infer decay of the full stage sum.
+
 ## Why this is not yet a numerical packet certificate
 
 | Input | Inspected source evidence | Missing numerical content |

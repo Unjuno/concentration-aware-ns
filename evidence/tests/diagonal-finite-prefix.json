@@ -1,0 +1,112 @@
+{
+  "scope": "Generic smooth counterexample to inferring a full growing-cutoff-sum limit from decay of each fixed finite prefix. It is not a model or counterexample to the pinned OpenAI field.",
+  "schedule": "a(j)=j, diverging",
+  "stage_term": "q * chi(j*q)",
+  "cutoff": "C-infinity chi=1 on (-infinity,1], transitions on (1,2), and 0 on [2,infinity)",
+  "fixed_prefix_limit": "for each fixed j, q*chi(j*q)=q -> 0 as q -> 0",
+  "growing_sum": "S(q)=sum_{j>=1} q*chi(j*q); support makes it finite for each q>0",
+  "diagonal_subsequence": "q=1/n: the first n terms equal 1/n, hence S(1/n)>=1; at most 2n terms are nonzero, hence S(1/n)<=2",
+  "rows": [
+    {
+      "n": 8,
+      "q": 0.125,
+      "active_stage_count_bound": 16,
+      "diagonal_sum": 1.4375,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 16,
+      "q": 0.0625,
+      "active_stage_count_bound": 32,
+      "diagonal_sum": 1.46875,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 32,
+      "q": 0.03125,
+      "active_stage_count_bound": 64,
+      "diagonal_sum": 1.484375,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 64,
+      "q": 0.015625,
+      "active_stage_count_bound": 128,
+      "diagonal_sum": 1.4921875,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 128,
+      "q": 0.0078125,
+      "active_stage_count_bound": 256,
+      "diagonal_sum": 1.49609375,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 256,
+      "q": 0.00390625,
+      "active_stage_count_bound": 512,
+      "diagonal_sum": 1.498046875,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    },
+    {
+      "n": 512,
+      "q": 0.001953125,
+      "active_stage_count_bound": 1024,
+      "diagonal_sum": 1.4990234375,
+      "exact_lower_bound": 1.0,
+      "exact_upper_bound": 2.0
+    }
+  ],
+  "fixed_prefix_samples": [
+    {
+      "stage": 1,
+      "values": [
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+      ]
+    },
+    {
+      "stage": 2,
+      "values": [
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+      ]
+    },
+    {
+      "stage": 8,
+      "values": [
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+      ]
+    },
+    {
+      "stage": 32,
+      "values": [
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+      ]
+    }
+  ],
+  "checks": {
+    "each_diagonal_sum_respects_exact_bounds": true,
+    "fixed_stage_samples_decay": true,
+    "growing_sum_does_not_tend_to_zero_on_subsequence": true
+  },
+  "interpretation": "Pointwise decay of every fixed stage plus a diverging cutoff schedule does not by itself justify exchanging the limit with the growing sum. A construction-specific uniform summability or tail estimate is needed.",
+  "success": true
+}

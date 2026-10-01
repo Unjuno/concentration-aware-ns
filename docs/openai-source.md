@@ -61,6 +61,11 @@ ActualCandidateAssembly uses noncomputable definitions and calls a selected
 candidate construction. This is not a flaw in a mathematical existence proof;
 it means an executable floating-point case needs an additional extraction and
 truncation argument. Reading these modules does not verify their proof closure.
+The later scalar finite-prefix Lean identities do not alone close that
+extraction: a generic smooth diagonal counterexample shows fixed-prefix decay
+need not imply decay of a cutoff sum with a growing active prefix. See
+[`diagonal-finite-prefix-limit-audit.md`](diagonal-finite-prefix-limit-audit.md);
+the construction-specific uniform tail estimate remains open.
 
 Sources:
 - https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorDefinitions.lean
