@@ -55,6 +55,19 @@ sanitized run record is in
 This validates same-host postprocessing of tracked evidence, not solver
 rebuilds or runs, PhysicsNeMo training, Lean execution, or scientific verdicts.
 
+### Current tracked-only export — commit `2fb0681`, 2026-10-02
+
+The latest branch head `2fb068172a25d980f9eb52b5a519e8666e35fe79` was
+exported from tracked Git data into a fresh directory and locked Python 3.14.5
+environment. The 37-step report replay and six additional checks passed; all
+188 report/test-evidence files were byte-identical. The full suite then ran
+from the exported source: 201 passed, one skipped, and five subtests passed.
+Sanitized results and logs are in
+[`evidence/clean-export-2026-10-02-current-head-2fb0681/`](../evidence/clean-export-2026-10-02-current-head-2fb0681/README.md).
+This verifies tracked postprocessing and archived-data replay only; it does
+not rebuild or rerun solvers, retrain PhysicsNeMo, execute Lean, or upgrade any
+scientific verdict.
+
 The project remains **incomplete**. Higher-resolution AMR quality,
 continuous-field derivative certification, the unresolved actual-profile
 pressure premise, end-to-end executable extraction, and live OpenFOAM tracker

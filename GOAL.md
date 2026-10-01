@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 185 — latest-head tracked-only export and full-suite replay
+
+Exported committed head `2fb068172a25d980f9eb52b5a519e8666e35fe79` from Git's
+tracked tree into a fresh directory and locked Python 3.14.5 environment. All
+37 published-report replay steps and six added checks passed; 188 report/test-
+evidence files were unchanged. The full suite from the exported source reported
+201 passed, 1 skipped, and 5 subtests passed. Sanitized logs, archive/runner
+hashes, package versions, and commands are in
+`evidence/clean-export-2026-10-02-current-head-2fb0681/`. This is a current-head
+postprocessing/export verification, not a solver rebuild/run or scientific
+verdict upgrade. Goal remains active.
+
 ## Revision 184 — Lagrangian volume constraint on particle-alignment inference
 
 Derived the pre-singular flow-map invariant for the cited smooth incompressible
