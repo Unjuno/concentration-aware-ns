@@ -1444,3 +1444,19 @@ this is no asymptotic temporal-error certificate. The matrix's persistent
 local-quality-blind-spot criterion remains NOT_OBSERVED. Details and replay
 scope are recorded in `reports/solver-matrix-coverage-2026-09-30.md`; no new
 solver run or upstream report was needed.
+## Revision 89 — short AMR first-refinement probe
+
+A frozen n=16 three-step OpenFOAM Foundation 13 diagnostic compared AMR with a
+same-grid uniform control around the first refinement interval. Both runs
+completed and their raw archives passed checksum and member-read checks. AMR
+refined from 4,096 to 16,640 cells before t=0.003. The relative
+volume-weighted velocity error rose from 5.875% to 39.948% across that interval;
+the control rose from 5.875% to 6.161%, giving the preregistered descriptive
+contrast +0.33786. The first post-refinement sample already includes one solved
+step, so remapping, flux correction, projection, sensor updates and later
+evolution are not separated. This merits a direct pre/post transfer audit but
+does not establish a solver defect, singularity, molecular alignment, or
+viscosity transition. The full record is in
+`reports/solver-matrix-coverage-2026-09-30.md` and
+`evidence/of13-amr-first-refinement-v1/`. The three-project research goal
+remains active and UNCERTAIN.

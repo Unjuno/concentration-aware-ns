@@ -110,3 +110,30 @@ row passes the configured standard and local gates, but the three-point trend
 still gives no asymptotic temporal error certificate. This is a fresh replay of
 archived evidence, not a solver rerun or a change to the matrix's
 `NOT_OBSERVED` defect criterion.
+
+### Short first-refinement AMR probe on 2026-10-01
+
+A preregistered n=16, three-step probe compared the adaptive case
+(`maxRefinement=2`, `maxCells=5000`, `refineInterval=2`) with an otherwise
+matching uniform control. Both completed all three steps with converged PIMPLE
+records. The AMR case stayed at 4,096 cells through t=0.002, then refined 1,792
+cells to 16,640 before solving the t=0.003 step. The relative
+volume-weighted velocity L2 errors at t=0.002 and 0.003 were 5.875% and 39.948%
+for AMR, versus 5.875% and 6.161% for the uniform control. The frozen
+difference-in-differences is +0.33786. The sampled maximum-gradient relative
+error decreased after refinement, from 36.62% to 9.17%; this cell-center
+maximum is not a continuous bound.
+
+This is a large, reproducible early-time error change associated with the
+first adaptation interval and merits a more discriminating follow-up. The
+t=0.003 state already includes one solved post-remap step, so the experiment
+does not identify whether interpolation, flux correction, pressure projection,
+sensor updates, or subsequent evolution produced the change. It is not an
+instantaneous remap measurement, a quality-threshold verdict, evidence of a
+general OpenFOAM defect, or a physical singularity/particle claim. The frozen
+protocol, inputs, solver and postprocessing logs, checkpoints, two raw tarballs,
+and analysis are under `protocols/high-gradient-of13-amr-first-refinement-v1.json`,
+`work/of13-amr-first-refinement-v1/`, and
+`evidence/of13-amr-first-refinement-v1/`. Both tarball SHA-256 values were
+recomputed and all members read successfully. Initial preflight failures with
+no solver launch were retained under the `*-preflight-failure-*` paths.
