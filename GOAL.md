@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 140 — finite-volume continuous-field ambiguity bounded analytically
+
+Audited the pinned Foundation 13 `volVectorField` typedef and formalized the
+interpretation limit for archived finite-volume DOFs. Even under the stronger
+assumption that each stored value is an exact cell average, a nonzero smooth
+divergence-free curl supported strictly inside one cell has zero cell average
+and vanishes near all faces. Arbitrary amplitude therefore preserves every
+average and face value while making the continuous gradient arbitrarily
+large. This is an information-theoretic non-uniqueness result, not evidence
+that OpenFOAM produced such a field, that the perturbed field satisfies the
+same forced PDE, or that molecules align. Added
+`reports/openfoam-fv-continuous-derivative-identifiability.md` and linked it
+from the completion audit; no duplicate OpenFOAM issue was filed. Commit
+`98e8dcc` is pushed to PR #4. The exact-head local suite passes (187 passed,
+1 skipped, 5 subtests), but the matching GitHub Actions job remains QUEUED
+without runner assignment. The overall benchmark and upstream audit remain
+active.
+
 ## Revision 139 — fixed-head clean export passes from public artifacts
 
 Re-ran `tools.check_clean_export --locked` on fixed commit
