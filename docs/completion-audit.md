@@ -108,6 +108,9 @@ The latest fixed-revision clean-export summary and command logs are public in
 This strengthens reproduction of tracked Python evidence only; it does not
 reproduce a solver, training run or Lean build.
 
+The 2026-10-02 focused three-project inventory has its own tracked-only replay
+at [`evidence/clean-export-2026-10-02-upstream-refresh/`](../evidence/clean-export-2026-10-02-upstream-refresh/README.md): 36 report-replay steps and six additional checks passed, 171 tracked report/evidence files remained byte-identical, and the full tests from the fresh exported source reported 187 passed, 1 skipped, and 5 subtests passed. This verifies the published postprocessing/evidence path on the recorded host, not solver rebuilds or runs.
+
 The 2026-10-02 JST focused upstream refresh is recorded in
 [`three-project-inventory-2026-10-02.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-02.json)
 and [`upstream-disposition.md`](../reports/upstream-disposition.md). It found

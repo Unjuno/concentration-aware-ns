@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 145 — current focused upstream audit passes tracked-only replay
+
+Ran `tools.check_clean_export --locked` against fixed commit
+`039ace23a542e82bfc81632d14673d05abea3cec` in a fresh tracked-only export and
+virtual environment. All 36 published report replay steps and six additional
+checks exited zero; 171 tracked report/evidence files were byte-identical
+after replay. Ran the full test suite from that extracted source as a separate
+step: 187 passed, 1 skipped, and 5 subtests passed. The complete redacted
+manifest, per-step logs, pytest log, hashes, environment, and reproduction
+commands are in
+`evidence/clean-export-2026-10-02-upstream-refresh/`. This validates public
+Python/evidence replay only, not solver execution or new scientific claims.
+The overall goal remains active.
+
 ## Revision 144 — three-project focused upstream refresh recorded
 
 Refreshed default-branch heads, releases and existing records through the
