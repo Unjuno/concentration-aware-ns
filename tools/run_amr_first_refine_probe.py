@@ -82,14 +82,14 @@ def _case_manifest(case, adaptation):
 
 
 def main():
-    if WORK.exists() or EVIDENCE.exists():
-        raise FileExistsError("refusing to overwrite a prior probe work or evidence directory")
     dirty = subprocess.run(
         ["git", "status", "--porcelain", "--untracked-files=all"],
         capture_output=True, text=True, check=True,
     ).stdout.strip()
     if dirty:
         raise RuntimeError("commit the frozen probe sources before execution")
+    if WORK.exists() or EVIDENCE.exists():
+        raise FileExistsError("refusing to overwrite a prior probe work or evidence directory")
     source_commit = subprocess.run(
         ["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True
     ).stdout.strip()
@@ -127,7 +127,13 @@ def main():
                   end=params["end_time"], nu=params["viscosity"],
                   profile="high-gradient", frequency=params["frequency"])
     amr_case = WORK / "amr-cap5000"
-    generate_amr(amr_case, max_cells=5000, max_level=2, refine_interval=2, **common)
+    amr_params = {key: value for key, value in common.items() if key != "nu"}
+    amr_params["frequency"] = common["frequency"]
+    # generate_amr does not expose viscosity; this short probe uses the
+    # generator's default nu=0.01, which is fixed in the protocol.
+    if common["nu"] != 0.01:
+        raise RuntimeError("protocol viscosity differs from generate_amr default")
+    generate_amr(amr_case, max_cells=5000, max_level=2, refine_interval=2, **amr_params)
     uniform_case = WORK / "uniform-n16"
     generate(uniform_case, **common)
     for case in (amr_case, uniform_case):
