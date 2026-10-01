@@ -5,21 +5,20 @@
     {
       "step": "tests",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
-        "unittest",
-        "discover",
-        "-s",
+        "pytest",
+        "-q",
         "tests"
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "846039a4b16dd94a28a3a0b2dddfe3d28e7f69328712d6b5cdbae3e434a93f5b"
+      "log_sha256": "f564508f334907b49e2e109666c06fdb0af3798e92162c0d0d03883b14b4a799"
     },
     {
       "step": "global_peaks",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_global_peaks"
       ],
@@ -30,7 +29,7 @@
     {
       "step": "peak_decomposition",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.decompose_peak_diagnostic"
       ],
@@ -41,7 +40,7 @@
     {
       "step": "spectral_derivatives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_openfoam_spectral"
       ],
@@ -52,7 +51,7 @@
     {
       "step": "su2_archive_review",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.review_su2_archives"
       ],
@@ -63,7 +62,7 @@
     {
       "step": "su2_diagnostic_replay",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.replay_su2_diagnostics"
       ],
@@ -74,7 +73,7 @@
     {
       "step": "su2_spectral_derivatives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_su2_spectral"
       ],
@@ -85,7 +84,7 @@
     {
       "step": "su2_time_comparison",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.compare_su2_time"
       ],
@@ -96,7 +95,7 @@
     {
       "step": "su2_bdf2_control",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_su2_bdf2_control"
       ],
@@ -107,7 +106,7 @@
     {
       "step": "su2_boundary_time_pilot",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_su2_boundary_time_pilot"
       ],
@@ -118,7 +117,7 @@
     {
       "step": "su2_restart_findings",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.replay_su2_restart_findings"
       ],
@@ -129,7 +128,7 @@
     {
       "step": "openfoam_gate",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_openfoam_report"
       ],
@@ -140,7 +139,7 @@
     {
       "step": "physicsnemo_gates",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_physicsnemo_report"
       ],
@@ -151,7 +150,7 @@
     {
       "step": "su2_gates",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.build_su2_report"
       ],
@@ -162,7 +161,7 @@
     {
       "step": "root_pressure_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_root_pressure_threshold"
       ],
@@ -173,7 +172,7 @@
     {
       "step": "pressure_moment_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_pressure_moment_threshold"
       ],
@@ -184,7 +183,7 @@
     {
       "step": "cone_sign_symmetry",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_cone_sign_symmetry"
       ],
@@ -195,7 +194,7 @@
     {
       "step": "su2_output_clock_control",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_su2_output_clock_control"
       ],
@@ -206,7 +205,7 @@
     {
       "step": "uniform_prefix_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_uniform_prefix_threshold"
       ],
@@ -217,7 +216,7 @@
     {
       "step": "high_gradient_mms",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_high_gradient_mms"
       ],
@@ -228,7 +227,7 @@
     {
       "step": "high_gradient_reference",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_high_gradient_reference"
       ],
@@ -239,7 +238,7 @@
     {
       "step": "support_hole_tube_geometry",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_support_hole_tube_geometry"
       ],
@@ -250,7 +249,7 @@
     {
       "step": "openfoam_iteration_archives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.replay_openfoam_iteration_archives"
       ],
@@ -261,7 +260,7 @@
     {
       "step": "openfoam_pressure_pilot",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.replay_openfoam_pressure_pilot"
       ],
@@ -272,7 +271,7 @@
     {
       "step": "openfoam_solenoidal_startup",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.check_openfoam_solenoidal_control"
       ],
@@ -283,7 +282,7 @@
     {
       "step": "artifact_links",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-28-amr-audit/venv/bin/python",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
         "-m",
         "tools.audit_gate_artifacts"
       ],
