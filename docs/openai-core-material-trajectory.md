@@ -133,8 +133,15 @@ P(|displacement| <= R)
 
 Thus directional alignment and increased probability of being near the
 center are different claims; in this linearized model, alignment improves while
-the probability of lying in any fixed bounded ball tends to zero. The exact
-covariance and bound are reproduced by
+the probability of lying in any fixed bounded ball tends to zero. The scale
+volume identity is now Lean-checked: `terminalScale_volume_factor` proves the
+two transverse scales times the axial scale equal one, and
+`isotropic_covariance_determinant_preserved` proves the covariance eigenvalue
+product stays `sigma^6`. The declarations and full checker log are recorded in
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json`. The exact
+probability bound below remains a separate symbolic/analytic calculation; this
+does not extend the Gaussian result to nonlinear finite packets or molecules.
+The exact covariance and bound are reproduced by
 `work/reference-check-env/bin/python -m tools.check_alignment_uncertainty` and
 archived in `evidence/tests/alignment-uncertainty.json`. This remains an exact
 Gaussian calculation for the linearized flow, not a finite-size theorem for

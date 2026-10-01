@@ -1921,3 +1921,12 @@ exposition not intended for journal submission. We checked only metadata and
 abstract. Treat it as a useful explanatory route, not independent verification
 of the full OpenAI construction. See the dated literature report and metadata
 evidence under `evidence/upstream-refresh/`.
+
+## Revision 18 — linearized-flow volume and covariance (2026-10-01)
+
+The axis deformation's diagonal scale-volume factor and preservation of the
+isotropic Gaussian covariance eigenvalue product are now Lean-checked. This
+supports the existing conclusion that directional alignment in the linearized
+model need not increase certainty near the center. The probability tail bound
+remains analytic/SymPy-checked; nonlinear finite-packet and molecular transfer
+remain open. See `reports/linearized-flow-volume-audit-2026-10-01.md`.

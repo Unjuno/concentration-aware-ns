@@ -2795,6 +2795,38 @@ theorem axisDeformation_directional_ratio_sq
 
 #print axioms axisDeformation_directional_ratio_sq
 
+/-- The two transverse scales and the axial scale of the variational map have
+unit volume factor. This is an infinitesimal-flow statement. -/
+theorem terminalScale_volume_factor
+    (t0 t C : ℝ) (ht0 : t0 < 1) (ht : t < 1) :
+    terminalScale t0 (C/2) t ^ 2 * terminalScale t0 (-C) t = 1 := by
+  let Q : ℝ := (1-t)/(1-t0)
+  have hQ : 0 < Q := div_pos (by linarith) (by linarith)
+  have hr : terminalScale t0 (C/2) t ^ 2 = Q^C := by
+    rw [terminalScale]
+    change (Q^(C/2))^2 = Q^C
+    rw [← Real.rpow_natCast (Q^(C/2)) 2, ← Real.rpow_mul hQ.le]
+    congr 1
+    ring
+  have hs : terminalScale t0 (-C) t = Q^(-C) := by
+    rw [terminalScale]
+  calc
+    _ = Q^C * Q^(-C) := by rw [hr, hs]
+    _ = Q^(C + -C) := (Real.rpow_add hQ C (-C)).symm
+    _ = 1 := by simp
+
+/-- An isotropic Gaussian covariance transported by the linearized map keeps
+its determinant because the transverse/axial volume factor is one. -/
+theorem isotropic_covariance_determinant_preserved
+    (sigma r s : ℝ) (hvolume : r^2*s = 1) :
+    (sigma^2*r^2)*(sigma^2*r^2)*(sigma^2*s^2) = sigma^6 := by
+  calc
+    _ = sigma^6*(r^2*s)^2 := by ring
+    _ = sigma^6 := by rw [hvolume]; ring
+
+#print axioms terminalScale_volume_factor
+#print axioms isotropic_covariance_determinant_preserved
+
 theorem powerLawDeformation_hasDerivAt
     (t0 C t omega : ℝ) (theta : ℝ → ℝ) (dx : ProblemStatement.Space)
     (ht0 : t0 < 1) (ht : t < 1) (hθ : HasDerivAt theta omega t) :

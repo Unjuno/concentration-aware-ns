@@ -810,3 +810,14 @@ new explanatory source, not independent verification of the entire construction
 or peer review. No benchmark or physical-hypothesis verdict changes. See
 `reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
 `evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.
+
+## 2026-10-01 linearized-flow volume check
+
+The Lean extension now proves the scale-volume factor of the selected
+rotation/stretch variational map is one and separately checks preservation of
+the isotropic Gaussian covariance eigenvalue product. Both new declarations use
+only the three permitted standard axioms. This formalizes the linearized
+volume-preservation step behind the existing Gaussian argument; it does not
+formalize its probability tail bound or extend it to nonlinear finite packets or
+molecules. Evidence is in `evidence/lean-verification/axis-volume-covariance-2026-10-01.json`
+and interpretation limits in `reports/linearized-flow-volume-audit-2026-10-01.md`.
