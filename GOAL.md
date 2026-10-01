@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 163 — selected-schedule tail mass bounded by endpoint clock weight
+
+Extended the isolated Lean audit from eta-independence to a quantitative
+one-sided estimate for the actual constructed schedule:
+`-(5/8) exp(6/5) clockWeight(flattenEnd) <= tailPressureContribution <= 0`.
+Both inequalities compile against the pinned OpenAI/NavierStokesAndEuler
+source and use only `[propext, Classical.choice, Quot.sound]`, with no
+`sorryAx`. This identifies an explicit endpoint quantity controlling the
+zero-exponent pressure tail. It is not yet normalized by `core.P^2`, so the
+actual-profile root-pressure premise remains unproved; the remaining bridge
+must use the pulse-amplitude and parameter-threshold constraints. The updated
+log/hash/scope record is
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`,
+and interpretation is appended to
+`reports/actual-profile-pressure-provenance-2026-10-01.md`. The broader
+benchmark and research goal remains active.
+
 ## Revision 161 — pressure-data-only amplitude converse ruled out
 
 Analytically constructed and symbolically replayed a countermodel for the

@@ -11,18 +11,24 @@
     "NavierStokes/OutgoingTail.lean": "450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5"
   },
   "extension": "verification/SelectedScheduleTailPressure.lean",
-  "extension_sha256": "40b5d07e618d8fd550394a4dfd71ead22d5c4d44e089705dcc6577c21fc818e5",
+  "extension_sha256": "1c6e4cfdece039cfa7db28113102560bdede244f9d92559f5a13d3088c375757",
   "runner": "runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
   "runner_sha256": "fd8a5ed2e03af1db399da58dfdb98f62b9cd848432a5e6485c06cec62ef8bc1b",
   "log": "evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.log",
-  "log_sha256": "84866465cb25a4395a5ae0058ff4f0ce290a979bd1e9bf78e5c74f48015e78f5",
+  "log_sha256": "6ca44af7d74fb6ed9fa9510f250ff0de74b6f4c4a6df3e8ee2d10b405f7a2bc4",
   "declarations": [
     "ConcentrationAwareSelectedScheduleTail.tail_integrand_constant",
-    "ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta"
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_nonpos"
   ],
-  "axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
   "sorryAx": false,
-  "scope": "Proves that the selected schedule pressure contribution on Ici flattenEnd is eta-independent. It does not bound the tail mass relative to core.P^2, prove the actualProfile pressure premise, or establish a molecular or constitutive consequence.",
+  "scope": "Proves that the selected schedule pressure contribution on Ici flattenEnd is eta-independent, nonpositive, and bounded below by -(5/8)*exp(6/5)*clockWeight(flattenEnd), using the actual schedule future-clock envelope. It does not bound the tail mass relative to core.P^2, prove the actualProfile pressure premise, or establish a molecular or constitutive consequence.",
   "environment": {
     "container_image": "concentration-aware-ns:checker",
     "dependency_volume": "cans-lean-verification",

@@ -4,3 +4,7 @@
 'ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_pressure_nonpos' depends on axioms: [propext, Classical.choice, Quot.sound]

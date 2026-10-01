@@ -191,6 +191,18 @@ The identity is Lean-checked against the pinned sources in
 are `runtime/lean-verification/check_selected_schedule_tail_pressure.sh` and
 `evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
 
+The follow-up replay adds a quantitative one-sided bound using the actual
+schedule's uniform future-clock estimate:
+
+`-(5/8) * exp(6/5) * clockWeight(flattenEnd) <= tailPressureContribution <= 0`.
+
+Both endpoints are Lean-checked against the same pinned source. This is a
+parameter-uniform envelope in terms of the endpoint clock weight, not yet a
+bound relative to `core.P^2`: the normalized estimate still depends on the
+selected schedule's pulse amplitude and parameter thresholds. The bound
+narrows the next proof obligation but does not establish the actual-profile
+root-pressure sign.
+
 Pinned-source hashes for the identities used here:
 
 | Source | SHA-256 |
