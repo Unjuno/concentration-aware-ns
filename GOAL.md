@@ -2218,3 +2218,18 @@ claim; AMR quality remains UNCERTAIN and no upstream issue is warranted from
 this single mechanism probe. The raw provenance JSON's stale checkpoint
 description and its correction are transparently recorded in
 `evidence/of13-amr-stage-snapshot-v3/provenance-correction.json`.
+
+## Revision 127 — reusable analytic cell-average evaluator
+
+Extracted the high-gradient MMS's exact cubical velocity-average formula into
+`tools/high_gradient_cell_average.py`, so AMR analysis no longer imports a
+grid-audit script that reads fixed n=16 archive data at import time. The
+evaluator accepts scalar or per-cell widths, validates geometry and supports
+explicit frequency. Added an independent 12-point tensor Gauss test on
+nonuniform widths and centers near periodic boundaries, plus invalid-input
+checks. The targeted tests pass (6 tests including AMR archive replay), the
+existing independent archive probe remains `1.8041e-16` max absolute
+difference, and the archived AMR values replay unchanged. This improves the
+analytic evidence path; it is not a new solver run, higher-resolution AMR
+result, or solver-quality verdict. Commit `696c0b9` is pushed to PR #4;
+GitHub Actions run `36867525667` was queued at the latest check.

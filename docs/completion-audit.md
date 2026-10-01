@@ -39,6 +39,14 @@ This is a DOF-level alternate comparison; it does not prove the stored evolved
 norm. AMR quality and convergence remain UNCERTAIN pending higher-resolution
 cases.
 
+The cell-average evaluator is now isolated at
+`tools/high_gradient_cell_average.py`; it no longer imports the archive-bound
+uniform-grid audit module. Independent tensor Gauss checks on multiple widths,
+including centers near periodic boundaries, pass, and replay of the published
+AMR archive preserves its prior values. See `tests/test_high_gradient_cell_average.py`
+and commit `696c0b9`. This reduces analytical-audit coupling but does not close
+the missing higher-resolution AMR comparison.
+
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
