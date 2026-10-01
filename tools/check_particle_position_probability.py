@@ -82,7 +82,7 @@ def main():
             'finite_cylinder_asymptotic': 'sqrt(2/pi)*L*Q^C as Q tends to 0',
             'angular_probability': 'P(theta_t <= theta_target)=1-a/sqrt(a^2+tan(theta_target)^2), a=Q^(3C/2)',
             'alignment_limit': '1 as Q tends to 0 for every fixed positive target angle',
-            'fixed_direction_law_limit': '1 - nu(E), E = exactly transverse directions; for a Q-independent Borel probability law by bounded convergence',
+            'fixed_direction_law_limit': '1 - lambda(E), E = exactly transverse directions; for a Q-independent Borel probability law by bounded convergence',
         },
         'identity_checks': {
             'covariance': [str(x) for x in covariance.diagonal()],

@@ -1645,8 +1645,8 @@ hash-pinned output is `evidence/of13-amr-first-refinement-v1/sensor-mapping-audi
 ## Revision 101 — Directional alignment limit generalized beyond isotropy
 
 For the audited infinitesimal flow derivative, the finite-time spherical-cap
-probability uses isotropy, but a fixed Borel law `nu` on unoriented initial
-directions has the more general limit `1 - nu(E)`, where `E` is the exactly
+probability uses isotropy, but a fixed Borel law `lambda` on unoriented initial
+directions has the more general limit `1 - lambda(E)`, where `E` is the exactly
 transverse great circle. Every direction off E enters every fixed positive-
 angle axis cone as `Q -> 0`; directions on E stay transverse. Bounded
 convergence yields the probability limit. Thus no-mass-on-E suffices for

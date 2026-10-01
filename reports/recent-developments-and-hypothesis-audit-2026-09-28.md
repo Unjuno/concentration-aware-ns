@@ -360,9 +360,9 @@ For the user's hypothesis, retain four separate levels: continuum deformation of
 
 The exact finite-time spherical-cap formula above assumes isotropic initial
 infinitesimal directions. The qualitative limit can be sharpened: for any
-fixed Borel probability law `nu` on the unoriented direction sphere, the
+fixed Borel probability law `lambda` on the unoriented direction sphere, the
 probability of entering a fixed positive-angle cone about the selected axis
-tends to `1 - nu(E)`, where `E` is the exactly transverse great circle. For
+tends to `1 - lambda(E)`, where `E` is the exactly transverse great circle. For
 each direction off `E`, the axial component is nonzero and its angle contracts
 by the factor `Q^(3C/2)`; on `E` the axis angle remains pi/2. Bounded
 convergence proves the probability limit. Hence isotropy is not required for

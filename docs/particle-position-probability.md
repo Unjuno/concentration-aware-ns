@@ -98,7 +98,7 @@ unmodeled.
 ### Qualitative limit for non-isotropic direction laws
 
 The closed-form probability above uses isotropy, but its limiting conclusion
-does not. Fix any Borel probability law `nu` on unoriented initial directions
+does not. Fix any Borel probability law `lambda` on unoriented initial directions
 at `t0`, independent of the later observation time. Let `E` be the set of
 directions exactly perpendicular to the axis. For each initial direction
 outside `E`, its axial component is nonzero and
@@ -109,7 +109,7 @@ so that indicator remains zero for every cone narrower than a half-space.
 Bounded convergence applied to these indicators gives
 
 ```
-lim P_nu(theta_t <= theta_star) = 1 - nu(E),
+lim P_lambda(theta_t <= theta_star) = 1 - lambda(E),
 0 < theta_star < pi/2.
 ```
 

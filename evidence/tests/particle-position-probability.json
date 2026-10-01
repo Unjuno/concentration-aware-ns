@@ -1,7 +1,7 @@
 {
   "scope": "Exact algebra for the selected local flow derivative and for a separate global affine tangent-map toy ensemble. The actual nonlinear flow theorem does not establish that the unbounded Gaussian lies within a linearization neighborhood; no molecular or finite-packet result is claimed.",
   "sympy": "1.14.0",
-  "source_sha256": "b58fc3f294693ab3612716f32fd87483d5cac2b3e7b7cf9a0801928b25e34ab4",
+  "source_sha256": "b6c4b03f10a607ae05a3e7a9853b4e29b984cc323a900343904a7b6f44190341",
   "conditions": [
     "0 < Q <= 1",
     "C > 0",
@@ -29,7 +29,7 @@
     "finite_cylinder_asymptotic": "sqrt(2/pi)*L*Q^C as Q tends to 0",
     "angular_probability": "P(theta_t <= theta_target)=1-a/sqrt(a^2+tan(theta_target)^2), a=Q^(3C/2)",
     "alignment_limit": "1 as Q tends to 0 for every fixed positive target angle",
-    "fixed_direction_law_limit": "1 - nu(E), E = exactly transverse directions; for a Q-independent Borel probability law by bounded convergence"
+    "fixed_direction_law_limit": "1 - lambda(E), E = exactly transverse directions; for a Q-independent Borel probability law by bounded convergence"
   },
   "identity_checks": {
     "covariance": [
