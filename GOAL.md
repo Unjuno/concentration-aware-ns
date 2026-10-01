@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 182 — follow-up literature scan
+
+Scanned OpenAI’s public Lean repository and post-announcement papers through
+2026-10-02. The strongest relevant new result is conditional regularity under
+spatially analytic forcing plus structural hypotheses attributed to the
+construction; its stated consequence constrains the blow-up force but does not
+contradict a merely smooth, nonanalytic force. New profile and numerical
+preprints suggest concrete forcing-regularity and similarity-profile audits,
+while a separate neural-forcing proof claim remains unaudited. No molecular
+alignment, particle trajectory, viscosity-change, practical reachability, or
+solver-defect inference follows. Detailed scope, limitations, and source links
+are in `reports/navier-stokes-followup-literature-2026-10-02.md`. Goal remains
+active.
+
 ## Revision 181 — third AMR map resolution and common-support audit
 
 Pre-registered and ran the Foundation 13 n64 same-run first-map capture from
