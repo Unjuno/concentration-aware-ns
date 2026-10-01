@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 143 — PR-scoped concurrency now observed cancelling obsolete runs
+
+Read the authoritative Actions run records after pushing follow-up commits.
+The post-change runs for `c94aa4b` and `a5f939e` each ended `cancelled` when a
+newer run in the PR-scoped concurrency group arrived, confirming that the
+workflow prevents those post-change superseded heads from accumulating. One
+pre-change queued run (`c9479c4`) did not join that group and was separately
+sent a cancellation request. The latest exact-head check for `8997b75` remains
+QUEUED without a runner assignment; concurrency solves stale-check churn, not
+the underlying GitHub Actions service/account queue condition. No solver or
+mathematical verdict changed. Overall goal remains active.
+
 ## Revision 142 — CI concurrency mitigation awaits hosted-runner evidence
 
 After adding the PR-scoped concurrency group, the PR head advanced to
