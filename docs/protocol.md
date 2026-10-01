@@ -87,7 +87,18 @@ Record volume-weighted velocity L2 error, energy, max Frobenius norm of grad(u),
 max magnitude of curl(u), periodic peak location/set distance, shell energy
 spectrum and local-region error. Treat equivalent multiple peaks as a set.
 Evaluate analytic values both at solver sample sites and against independently
-resolved continuous extrema to separate sampling and derivative error.
+resolved continuous extrema to separate sampling and derivative error. Label
+the object whose continuous extremum is reported: analytic reference, named
+reconstruction, or underlying solver field. A bound for a trigonometric or
+finite-volume reconstruction certifies only that declared reconstruction.
+Finite-volume DOFs alone do not bound continuous derivatives of an
+unspecified within-cell field, even if cell averages are exact and velocity
+observations converge uniformly: a smooth divergence-free cell-local null
+sequence preserves the averages while its gradient grows (see
+`reports/openfoam-fv-continuous-derivative-identifiability.md`). For the underlying
+solver field, require explicit regularity or unresolved-mode assumptions and
+include them in the certificate; absent those premises, mark its continuous
+extremum UNCERTAIN rather than inheriting a reconstruction's bound.
 AMR/nonuniform samples require a documented spectral reconstruction; otherwise
 mark the spectrum unavailable rather than applying a uniform-grid FFT directly.
 

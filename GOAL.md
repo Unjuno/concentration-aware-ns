@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 149 — continuous-extremum target made explicit in protocol
+
+Updated the shared benchmark protocol so every continuous-extremum claim names
+its object (analytic reference, declared reconstruction, or underlying solver
+field). It now states that finite-volume DOFs, even under exact-cell-average
+and uniform-velocity-convergence assumptions, cannot by themselves certify
+the underlying field's continuous derivative. Actual-field certification
+requires explicit regularity/unresolved-mode premises; otherwise its verdict
+stays UNCERTAIN, and a trig-interpolant certificate does not transfer. Added
+the same requirement to the acceptance criteria of internal issue #5 and
+read it back from GitHub. No solver or frozen v2 verdict changed. Goal remains
+active.
+
 ## Revision 148 — nullspace limit added to the gate successor issue
 
 Read back the new comment on the existing benchmark issue #5:
