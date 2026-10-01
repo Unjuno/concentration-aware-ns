@@ -108,6 +108,15 @@ The latest fixed-revision clean-export summary and command logs are public in
 This strengthens reproduction of tracked Python evidence only; it does not
 reproduce a solver, training run or Lean build.
 
+The archived Foundation 13 `volVectorField U` values are discrete DOFs; they do
+not define a unique within-cell continuous field. Even if one assumes exact
+cell averages, smooth zero-average perturbations supported inside cells can
+leave all DOFs unchanged while making the continuous gradient arbitrarily
+large. See [finite-volume derivative identifiability](../reports/openfoam-fv-continuous-derivative-identifiability.md).
+This information limit is not evidence of an OpenFOAM defect or molecular
+alignment. Issue #5 remains open for any claim about the actual finite-volume
+field.
+
 ### Analytic result refreshed 2026-09-30
 
 The OpenAI extension was re-run in the pinned Lean checker environment from the
