@@ -22,3 +22,5 @@ At n=32, the gradient-field relative L2 error on the sample nodes is 9.533% for 
 This is reconstruction sensitivity, not proof that either derivative is the uniquely correct continuous solver field. Both peak comparisons are finite-node maxima; the exact reference is evaluated at the same cell centers, and no continuous intersample supremum is bounded. The audit does not establish a code defect or physical instability.
 
 Machine-readable values, run archive hashes and limitations are in `evidence/tests/openfoam-gradient-reconstruction-sensitivity-2026-10-01.json`. Reproduce with `python -m tools.audit_openfoam_gradient_reconstruction` after installing the repository verification requirements.
+
+The benchmark's next-gate design follow-up is tracked in [issue #5](https://github.com/Unjuno/concentration-aware-ns/issues/5). It preserves the frozen v2 verdicts and proposes reporting the analytic-reference diagnostic separately from a stencil-matched discrete reference; it does not classify this observation as an OpenFOAM defect.
