@@ -59,11 +59,18 @@ The pinned OpenAI source declares smoothness and zero spatial divergence of
 `work/openai-f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/FinalSlowBase.lean`
 (`velocity_smooth` and `divergence_zero`, source commit
 `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`). However,
-`NavierStokes/ProblemStatement.lean` marks `candidateStatement` **OPEN** and
-does not prove existence of a field satisfying all `CandidateProperties`.
-Accordingly, this result is a kinematic consequence for any smooth
-divergence-free field whose classical flow map exists; it is not evidence that
-the proposed OpenAI construction is an established Navier–Stokes solution.
+`NavierStokes/ProblemStatement.lean` defines `candidateStatement` and notes
+that it is not proved in that declaration module. This is not the status of the
+whole pinned repository: `NavierStokes/ActualCandidateAssembly.lean` proves
+`selected_candidate : ProblemStatement.candidateStatement`, and
+`NavierStokes/R3/Theorem.lean` proves the whole-space breakdown statement.
+Both targets build from a clean checkout at commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`; see
+[`openai-public-proof-audit-2026-10-02.json`](../evidence/lean-verification/openai-public-proof-audit-2026-10-02.json).
+This correction establishes the repository's formal claim as Lean code, not
+independent mathematical validity of every analytic argument or a molecular
+model. The measure result below remains a kinematic consequence for any smooth
+divergence-free field whose classical flow map exists.
 Applying the measure bound to that candidate field additionally presumes its
 flow map exists as a smooth diffeomorphism on the interval under consideration.
 No endpoint flow map at `t=1` is asserted. The result does not cover a

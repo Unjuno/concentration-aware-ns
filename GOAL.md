@@ -1,5 +1,27 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 135 — correct the OpenAI Lean proof-status audit
+
+The prior report treated the `OPEN` comment in `NavierStokes/ProblemStatement.lean`
+as the status of the entire OpenAI repository. That was a false negative: the
+file defines the proposition without proving it locally, while
+`NavierStokes/ActualCandidateAssembly.lean` proves
+`selected_candidate : ProblemStatement.candidateStatement` and
+`NavierStokes/R3/Theorem.lean` proves `theorem_1_1` and the breakdown statement.
+On a clean clone at upstream commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`,
+`lake build NavierStokes.ActualCandidateAssembly NavierStokes.R3.Theorem`
+completed successfully (9,350 jobs). `#print axioms` for the candidate theorem,
+whole-space theorem, and initial-rest theorem reported only `propext`,
+`Classical.choice`, and `Quot.sound`. Evidence, source hashes, and scope limits
+are recorded in
+`evidence/lean-verification/openai-public-proof-audit-2026-10-02.json`;
+historical artifacts are retained. This verifies that the pinned repository
+formally checks these declarations, not that this project has independently
+validated the construction's mathematics or its implications for molecular
+ordering, particle certainty, light, phase transitions, or viscosity. The
+three-project benchmark goal remains active.
+
 ## Revision 134 — latest upstream records and completion metadata hardened
 
 Replayed the independent six-case matrix verifier after tightening it to check
