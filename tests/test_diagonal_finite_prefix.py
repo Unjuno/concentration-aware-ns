@@ -13,7 +13,12 @@ class DiagonalFinitePrefixTests(unittest.TestCase):
             self.assertLessEqual(diagonal_sum(1 / n), 2)
 
     def test_audit_record_passes(self):
-        self.assertTrue(audit()["success"])
+        result = audit()
+        self.assertTrue(result["success"])
+        self.assertEqual(result["pinned_source_comparison"]["effective_numeric_schedule_or_constants"],
+                         "NOT_EXTRACTED")
+        self.assertEqual(result["pinned_source_comparison"]["selected_observable_limit"],
+                         "axial_derivative_tail_tends_zero")
 
 
 if __name__ == "__main__":

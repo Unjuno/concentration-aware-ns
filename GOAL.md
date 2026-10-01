@@ -1342,3 +1342,18 @@ the executable check records the smooth-cutoff values and verifies the bounds.
 This is not a counterexample to the pinned OpenAI construction. It identifies
 the missing construction-specific uniform tail estimate needed for finite
 stage extraction and does not change any solver or physical verdict.
+
+## Revision 81 — correction: source-specific analytic tail is present
+
+Reinspection of the pinned `SlowBorelBase.lean` found that the generic
+counterexample does not identify a missing tail theorem for the selected
+observable. `AdmissibleScales.ordinary` supplies stagewise jet bounds;
+`ordinary_tail_bound` sums them into a uniform tail bound, and the existing
+Lean extension proves `axial_derivative_tail_tends_zero` with only the audited
+standard axioms. Revision 80's wording that a construction-specific uniform
+tail estimate remains missing was too strong and is superseded. The remaining
+gap is effective numerical extraction: the selected schedule, compact
+derivative constants, and coefficients are still existential/noncomputable.
+The generic smooth counterexample remains valid only as a warning that
+fixed-prefix identities alone would be insufficient. No physical or solver
+verdict changes.

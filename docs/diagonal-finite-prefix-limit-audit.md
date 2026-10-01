@@ -1,4 +1,4 @@
-# Why fixed-prefix limits do not control the growing stage sum
+# Fixed-prefix limits and the need for uniform tails
 
 The pinned source and our Lean extension establish several useful facts about
 every fixed finite prefix: each retained cutoff stage can vanish at the axis as
@@ -6,7 +6,8 @@ the chart variable tends to zero, and sufficiently late stages are exactly zero
 on a compact set where a positive chart lower bound is known. Neither fact by
 itself gives a uniform limit for a sum whose active stage count grows while the
 chart lower bound shrinks. This note gives a smooth counterexample to that
-inference pattern. It is not a model or counterexample to the OpenAI field.
+inference pattern, then compares it with the stronger bounds actually present
+in the pinned source. It is not a model or counterexample to the OpenAI field.
 
 ## A smooth diagonal counterexample
 
@@ -48,6 +49,42 @@ uniform-in-stage argument is needed. A cutoff index bound alone only says the
 sum is finite at each positive `q`; it does not control the magnitude of the
 growing prefix.
 
+## What the pinned construction supplies
+
+The pinned OpenAI source does provide a stronger analytic estimate. Its
+`AdmissibleScales` record stores, for each stage `j`, derivative order `m`,
+and `0<q<=1`, the ordinary bound
+
+```text
+||D^m slowStage_j(q,w)|| <= 2^(-j) q^(h*j-m)
+```
+
+on the compact inner-coordinate set. `ordinary_tail_bound` sums these stage
+bounds and proves for `m<=J+3`
+
+```text
+||D^m(slowSum-cutPrefix_J)(q,w)||
+    <= 2^(-J) q^(h*(J+1)-m).
+```
+
+`exists_ordinary_uncut_tail` further chooses a fixed prefix and a positive
+terminal neighborhood for any finite list of requested jet orders. The local
+Lean extension uses this chain in `axial_derivative_tail_tends_zero`, whose
+axiom report is included in
+`evidence/lean-verification/axis-force-sign.json`. Thus the generic example
+above does **not** expose a missing analytic tail theorem for that proved
+observable. The source already has a non-effective construction-specific
+uniform bound, and the radial-derivative limit has been formally checked under
+its hypotheses.
+
+What remains unavailable is an effective numerical extraction: the compact
+derivative constants used to choose `AdmissibleScales`, the selected integer
+schedule, and the resulting prefix/threshold are existential and are not
+turned into computable coefficient enclosures or a reproducible finite
+approximation of the selected field. The generic counterexample explains why
+the existence-level uniform-tail theorem matters; it must not be used to
+claim that the theorem is absent.
+
 ## Reproduction and scope
 
 `tools/check_diagonal_finite_prefix.py` evaluates the smooth cutoff example at
@@ -60,8 +97,8 @@ python -m unittest tests.test_diagonal_finite_prefix -v
 ```
 
 This is a generic counterexample to a proof pattern, not a counterexample to
-the OpenAI construction and not evidence of a solver defect. It clarifies why
-the existing finite-prefix identities do not yet extract an executable
-finite-stage approximation or a numerical tail bound for the selected
-candidate. The benchmark and the source-specific extraction obligation remain
-open.
+the OpenAI construction and not evidence of a solver defect. The exact
+construction-specific analytic tail estimate is already present as described
+above. The still-open task is to make its existential constants, scales and
+coefficients effective enough for an executable finite-stage approximation
+and numerical error certificate. The benchmark remains open.

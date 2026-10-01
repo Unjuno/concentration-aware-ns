@@ -1,4 +1,4 @@
-"""Counterexample to exchanging a fixed-prefix limit with a growing cutoff sum.
+"""Counterexample to exchanging a fixed-prefix limit without uniform tails.
 
 This is a generic logic audit, not a model of the OpenAI construction.
 """
@@ -41,7 +41,7 @@ def audit(ns=(8, 16, 32, 64, 128, 256, 512)):
         fixed_prefix.append({"stage": j,
                              "values": [stage(j, 1 / n) for n in (64, 128, 256, 512)]})
     result = {
-        "scope": "Generic smooth counterexample to inferring a full growing-cutoff-sum limit from decay of each fixed finite prefix. It is not a model or counterexample to the pinned OpenAI field.",
+        "scope": "Generic smooth counterexample to inferring a full growing-cutoff-sum limit from decay of each fixed finite prefix when no uniform tail estimate is available. It is not a model or counterexample to the pinned OpenAI field.",
         "schedule": "a(j)=j, diverging",
         "stage_term": "q * chi(j*q)",
         "cutoff": "C-infinity chi=1 on (-infinity,1], transitions on (1,2), and 0 on [2,infinity)",
@@ -59,7 +59,19 @@ def audit(ns=(8, 16, 32, 64, 128, 256, 512)):
             "growing_sum_does_not_tend_to_zero_on_subsequence": all(
                 row["diagonal_sum"] >= 1 for row in rows),
         },
-        "interpretation": "Pointwise decay of every fixed stage plus a diverging cutoff schedule does not by itself justify exchanging the limit with the growing sum. A construction-specific uniform summability or tail estimate is needed.",
+        "interpretation": "Pointwise decay of every fixed stage plus a diverging cutoff schedule does not by itself justify exchanging the limit with the growing sum. The pinned OpenAI source does supply an abstract construction-specific uniform derivative-tail bound via AdmissibleScales. That analytic bound is used by the Lean extension; its coefficients, scales, and thresholds remain non-effective and do not provide an executable numerical truncation certificate.",
+        "pinned_source_comparison": {
+            "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+            "source_file": "NavierStokes/SlowBorelBase.lean",
+            "source_file_sha256": "10f39b7931e942874396afcdfdd88a806d36a785cd6ef55faed710014757a550",
+            "local_extension_file": "verification/AxisForceSign.lean",
+            "local_extension_sha256": "fe989c3a279d7515b2584e82ada2632930a80299f98f502f68720ff45e2fb793",
+            "uniform_bound_declarations": ["AdmissibleScales.ordinary", "ordinary_tail_bound", "exists_ordinary_uncut_tail"],
+            "selected_observable_limit": "axial_derivative_tail_tends_zero",
+            "axiom_audit": "evidence/lean-verification/axis-force-sign.json",
+            "axiom_audit_status": "PASS",
+            "effective_numeric_schedule_or_constants": "NOT_EXTRACTED"
+        },
     }
     result["success"] = all(result["checks"].values())
     Path("evidence/tests/diagonal-finite-prefix.json").write_text(

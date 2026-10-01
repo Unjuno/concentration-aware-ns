@@ -224,14 +224,16 @@ This reduction avoids estimating an infinite tail on a compact interval away
 from t=1. It does not make the remaining coefficient functions or cutoff
 scales numerically available by itself.
 
-There is a separate limit-exchange obligation as the tube approaches the
-endpoint: fixed-prefix vanishing alone does not control a prefix whose active
-length grows like `1/q`. The smooth schematic counterexample and its exact
-diagonal lower bound are recorded in
+There is a separate limit-exchange issue as the tube approaches the endpoint:
+fixed-prefix vanishing alone does not control a prefix whose active length
+grows like `1/q`. The smooth schematic counterexample and its exact diagonal
+lower bound are recorded in
 [`diagonal-finite-prefix-limit-audit.md`](diagonal-finite-prefix-limit-audit.md).
-It is not a counterexample to the selected construction. It shows why a
-construction-specific uniform tail/summability estimate is required before
-using the fixed-prefix limit to infer decay of the full stage sum.
+It is not a counterexample to the selected construction. In fact, the pinned
+source supplies `AdmissibleScales.ordinary` and the Lean-checked
+`ordinary_tail_bound`, which yield the selected radial-derivative limit under
+their hypotheses. The remaining gap is effective numerical extraction of
+their existential constants and schedule, not the analytic tail theorem.
 
 ## Why this is not yet a numerical packet certificate
 
