@@ -1,5 +1,34 @@
 # Completion audit — interim, 2026-09-27
 
+### OpenFOAM AMR addendum — 2026-10-01
+
+The archived AMR stage audit's parent-value comparison is now reproducible
+from frozen tarballs and synthetic geometry tests. It matches the mapped
+field to weighted relative L2 `1.79e-16`, but uses a prior-run parent state;
+the single common-input difference is the output write interval, so direct
+same-run mapping attribution remains open. A separately built library from
+the pinned Foundation 13 commit reproduces `maxCells=5000` overshoot in the
+n=16 case (4,096 to 16,640 cells; 1,792 selected), with the override library
+load path confirmed and clean solver exit. This confirms the already recorded
+approximate-cap, whole-level selection behavior; it is not a new defect report
+or solution-quality verdict. The earlier live inventory disposition remains
+authoritative: no duplicate OpenFOAM issue is warranted. See
+`reports/openfoam-amr-stage-snapshot-v3-2026-10-01.md` and the primary source
+audit `reports/openfoam-amr-source-budget-audit-2026-09-28.md`.
+
+The v4 same-run map capture closes the cross-run parent-field limitation for
+this n=16 event. Cell-centered mapped `U` exactly equals independent injection
+from the captured pre-map parent field, with `6.53e-15` maximum relative
+parent-volume closure error. The corresponding exact-MMS child-center error is
+41.7955%; this remains a point-sample metric rather than a finite-volume
+cell-average certificate. The solver completed normally and the archive is
+hash-checked; its manifest was recovered after a post-run runner metadata
+exception and that recovery is recorded. No upstream issue follows from this
+expected mapping behavior. Replay with
+`python3 -m tools.analyze_amr_same_run_map`; evidence and protocol are in
+`evidence/of13-amr-same-run-map-v4-run3/` and
+`protocols/high-gradient-of13-amr-same-run-map-v4.json`.
+
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.
@@ -895,11 +924,14 @@ or solver defect. See
 docs/linearized-axis-tube-concentration.md and
 evidence/tests/alignment-uncertainty.json.
 
-### 2026-10-01 analytical replay refresh
+### 2026-10-01 analytical and AMR mapping replay refresh
 
-Added the axis-tube probability checker to the published-evidence replay. The
-current one-command replay completed 35/35 steps; its full test step reports
-168 passed, 1 skipped, and 5 subtests passed. The checker records the exact
-finite-cylinder formula and its Q^C asymptotic coefficient. The result is a
-conditional analytical model check, not a new solver run or upstream software
-finding; no issue or PR was submitted to a solver project.
+The one-command published-evidence replay now includes the axis-tube
+probability checker and the archived same-run AMR parent-injection analysis.
+The current replay completed 36/36 steps; its full test step reports 171
+passed, 1 skipped, and 5 subtests passed. The axis-tube checker records the
+exact finite-cylinder formula and its Q^C asymptotic coefficient. The AMR
+checker verifies the v4 archive hash and same-run preMap/mapped comparison.
+These are an analytical model check and a single-event mapping-mechanism
+diagnostic, not a new broad solver-quality verdict or an upstream defect
+finding. No new issue or PR was submitted for either result.

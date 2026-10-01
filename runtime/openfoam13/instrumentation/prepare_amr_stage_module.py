@@ -44,6 +44,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("source_tree", type=Path)
     parser.add_argument("output_module", type=Path)
+    parser.add_argument("--include-pre-map", action="store_true")
     args = parser.parse_args()
     source = args.source_tree.resolve()
     output = args.output_module.resolve()
@@ -90,7 +91,8 @@ def main():
     // Frozen checkpoint for the first-refinement instrumentation protocol.
     // The mapped callback is only placed after mesh_.update(); topoChanged()
     // is reset during update and cannot be used as the stage trigger here.
-    const scalar expectedTime = stage == "mapped" ? 0.002 : 0.003;
+    const scalar expectedTime =
+        (stage == "preMap" || stage == "mapped") ? 0.002 : 0.003;
     if (mag(runTime.value() - expectedTime) > 1e-12)
     {
         return;
@@ -152,7 +154,8 @@ def main():
     replace_once(
         source_c,
         "    mesh_.update();\n}\n\n\nvoid Foam::solvers::incompressibleFluid::prePredictor()",
-        "    mesh_.update();\n    writeAmrSnapshot(\"mapped\");\n}\n\n\n"
+        ("    writeAmrSnapshot(\"preMap\");\n" if args.include_pre_map else "")
+        + "    mesh_.update();\n    writeAmrSnapshot(\"mapped\");\n}\n\n\n"
         "void Foam::solvers::incompressibleFluid::prePredictor()",
     )
     replace_once(
@@ -196,9 +199,10 @@ def main():
             for name in ("incompressibleFluid.H", "incompressibleFluid.C", "moveMesh.C")
         },
         "instrumentation": [
+            *( ["preMap"] if args.include_pre_map else [] ),
             "mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve"
         ],
-        "checkpoint": "mapped at t=0.002 immediately after mesh_.update(); later PIMPLE stages at t=0.003",
+        "checkpoint": "preMap immediately before mesh_.update() and mapped immediately after at t=0.002; later PIMPLE stages at t=0.003",
         "changes_equation_assembly": False,
         "output": "postProcessing/amrStages/<time>/{stage}_cells.csv and {stage}_faces.csv",
     }

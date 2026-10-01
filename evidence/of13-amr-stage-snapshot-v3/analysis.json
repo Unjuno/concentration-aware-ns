@@ -23,6 +23,44 @@
     "postPressure": 0.399476921297029,
     "postSolve": 0.399476921297029
   },
+  "independent_parent_value_mapping_audit": {
+    "parent_grid_cells_per_axis": 16,
+    "mapped_cells": 16640,
+    "parent_group_size_counts": {
+      "1": 2304,
+      "8": 1792
+    },
+    "parent_volume_closure_relative_max": 6.531086649958597e-15,
+    "mapped_vs_parent_injection_relative_l2": 1.787206503911881e-16,
+    "mapped_vs_parent_injection_max_abs": 5.551115123125783e-17,
+    "source_parent_archive_sha256": "fd75da715a0a85b58188baa88486bc90d3d124c3eab812ba8e388fa0a3ff87a4",
+    "source_stage_archive_sha256": "1f10fc45d73a9b80ec587e134850df9a836ee5e12d1e0520bb4c6882909606f8",
+    "mapped_vs_exact_child_cell_center_relative_l2": 0.41795531114604173,
+    "independent_parent_injection_vs_exact_child_cell_center_relative_l2": 0.41795531114604173,
+    "point_sample_error_decomposition": {
+      "inherited_parent_solution_error_squared_relative": 0.0034514737082288163,
+      "exact_parent_to_child_center_change_squared_relative": 0.17224822217151312,
+      "twice_normalized_cross_term": -0.0010130537645573667,
+      "total_mapped_error_squared_relative": 0.17468664211518453,
+      "squared_error_identity_residual": -3.664603343001005e-17,
+      "interpretation": "Algebraic decomposition at cell centers: parent numerical error plus exact-reference change from parent center to mapped child center. Not a canonical finite-volume interpolation error bound."
+    },
+    "by_cell_level": {
+      "0": {
+        "cells": 2304,
+        "volume_fraction": 0.5625000000000001,
+        "mapped_vs_exact_cell_center_relative_l2": 3.3834182319908424,
+        "parent_injection_vs_exact_cell_center_relative_l2": 3.383418231990843
+      },
+      "1": {
+        "cells": 14336,
+        "volume_fraction": 0.43749999999999994,
+        "mapped_vs_exact_cell_center_relative_l2": 0.4179222139301903,
+        "parent_injection_vs_exact_cell_center_relative_l2": 0.4179222139301903
+      }
+    },
+    "scope": "Archived t=0.002 parent field is injected to geometrically containing uniform-grid parents. This post-hoc point-sample diagnostic is not an OpenFOAM defect verdict or a finite-volume cell-average accuracy claim."
+  },
   "change_in_exact_mms_velocity_error_percentage_points": {
     "mapped_to_afterCorrectPhi": 0.020081065956062405,
     "afterCorrectPhi_to_prePressure": -0.0258452660006514,

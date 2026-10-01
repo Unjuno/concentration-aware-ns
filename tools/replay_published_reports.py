@@ -18,6 +18,7 @@ steps = [
     ('openfoam_trig_supremum_arb', [sys.executable, '-m', 'tools.audit_openfoam_trig_supremum']),
     ('openfoam_temporal_triplet', [sys.executable, '-m', 'tools.compare_high_gradient_temporal']),
     ('openfoam_amr_archive_integrity', [sys.executable, '-m', 'tools.verify_openfoam_amr_archives']),
+    ('openfoam_same_run_amr_mapping', [sys.executable, '-m', 'tools.analyze_amr_same_run_map']),
     ('su2_archive_review', [sys.executable, '-m', 'tools.review_su2_archives']),
     ('su2_standard_review', [sys.executable, '-m', 'tools.review_su2_standard']),
     ('su2_diagnostic_replay', [sys.executable, '-m', 'tools.replay_su2_diagnostics']),

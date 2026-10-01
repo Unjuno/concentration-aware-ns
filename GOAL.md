@@ -1,5 +1,46 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 130 — same-run AMR mapping mechanism isolated
+
+Added a v4 capture immediately before and after `mesh_.update()` at the same
+`t=0.002` in one OpenFOAM Foundation 13 run. The saved run has 4,096 pre-map
+cells and 16,640 mapped cells. Independent containing-parent injection from
+that same run matches every mapped cell-centered velocity value (relative L2
+and max absolute difference both zero); parent/child volume closure is
+`6.53e-15`. The velocity volume integral changes by `2.91e-16` absolute, with
+net change `8.10e-17` scaled by integrated speed. Exact-MMS point-sample error
+on mapped child centers is 41.7955%, which is not a finite-volume cell-average
+error. Solver exit is zero, `End` is present, the six stage events are logged,
+and the override module load is confirmed. The first runner failed only after
+archiving because a protocol metadata key was missing; this is explicitly
+recorded and the manifest was recovered from preserved artifacts without a
+solver rerun. Protocol, archive, manifest, analyzer, and tests are in
+`protocols/high-gradient-of13-amr-same-run-map-v4.json`,
+`evidence/of13-amr-same-run-map-v4-run3/`,
+`tools/analyze_amr_same_run_map.py`, and
+`tests/test_amr_same_run_map.py`. This identifies this event's mapping as
+piecewise-constant parent injection, not a general defect, quality result, or
+physical claim.
+
+## Revision 129 — archived AMR parent-value audit and source-built cap check
+
+The archived AMR stage snapshot was reanalyzed from frozen tarballs rather
+than ignored working fields. Independent piecewise-constant transfer from the
+earlier archived parent field agrees with the mapped stage to weighted relative
+L2 `1.79e-16`, and both give 41.7955% point-sample error against exact MMS at
+child centers. This is cross-run evidence: the v1 parent and v3 stage cases
+match 10/11 common inputs, with `system/controlDict` write interval the one
+difference. A same-run pre-map capture remains necessary for direct
+attribution. The pinned Foundation 13 `refiner` library was also rebuilt and
+loaded in the same runtime image; the n=16 `maxCells=5000` case again grew
+from 4,096 to 16,640 cells. This is consistent with the already documented
+approximate-cap, whole-level selection semantics. It is not a new defect
+finding, quality verdict, or physical result; no duplicate upstream issue is
+warranted. The reproduction remains supplemental evidence under
+`work/of13-maxcells-probe-v1/`, while the authoritative source interpretation
+is in `reports/openfoam-amr-source-budget-audit-2026-09-28.md` and
+`docs/audit.md`.
+
 ## Revision 128 — axis-set concentration separated from position certainty
 
 Extended the exact linearized Gaussian calculation along the candidate axis
