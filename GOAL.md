@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 138 — remove tracked-only temporal replay dependency on ignored data
+
+A tracked-only clean export at `46691344f203f504f18f04829531e9be1dfc7646`
+failed report replay at step 8, `openfoam_temporal_triplet`, because the
+comparison script read `work/of13-high-gradient-v2/...`, which is ignored and
+absent from a public `git archive`, even though all three frozen case tarballs
+were tracked. Reworked the comparer to safely extract each hashed public
+archive into a fresh temporary directory, verify the archived solver-log hash
+and completion/acceptance state, and reproduce the matrix status from the
+cross-run and base manifests. Added path-traversal and unexpected-case tests.
+The focused archive tests pass (4), the temporal comparison reproduces the
+prior values (order `0.4985896`, both input/center checks true, time-error
+certificate false), and the full suite passes (187 passed, 1 skipped, 5
+subtests). This is a benchmark reproducibility defect, not a solver defect.
+The fixed-commit clean-export rerun remains in progress; goal stays active.
+
 ## Revision 137 — full local verification of current PR head
 
 Inspected the live GitHub PR set and upstream feedback state. PRs #1–#3 have
