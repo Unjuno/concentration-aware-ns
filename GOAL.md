@@ -1740,6 +1740,26 @@ assumptions, and limits are recorded in
 `evidence/openai-analytic-forcing-v2-audit.json`; no simulation or upstream
 post was warranted.
 
+## Revision 108 — clean-export failure repaired and latest artifacts replayed
+
+A fresh fixed-commit export exposed two reproducibility gaps: pytest was
+installed separately by CI but omitted from the locked verification set, and
+the published report replay used unittest discovery, which did not execute
+pytest-style functions. The replay now installs pinned pytest 9.1.1 and uses
+the same complete `pytest -q tests` command as CI. Replaying the reports also
+found ten stale generated gate JSONs: five PhysicsNeMo reports had an outdated
+source hash; five SU2 reports lacked analytic finite-grid energy quadrature
+values. Their standard/local gate verdicts did not change. After refreshing
+those canonical outputs, 93 evidence links matched and report replay passed.
+A fresh archive of commit `33c460715ad6cc3f9f61303d94b85efc5be06f2b` then
+passed all 26 replay steps and six additional checks, with zero byte changes
+across 152 reports/test-evidence files; full pytest reported 146 passed, one
+skipped, and five subtests passed. Logs and exact reproduction instructions are
+in `evidence/clean-export-2026-10-01-current/`. This verifies tracked Python
+postprocessing only and does not rerun solvers, PhysicsNeMo training, or Lean.
+The overall benchmark, remaining analytic obligations and per-target audit
+completion remain active.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as
