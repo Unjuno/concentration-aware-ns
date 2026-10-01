@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 183 — live upstream status and PhysicsNeMo reproduction refresh
+
+Refreshed the public project heads and existing report records. OpenFOAM
+Foundation 13 and SU2 remain at their audited source heads; no new matching
+OpenFOAM issue or duplicate SU2 report is warranted. PhysicsNeMo main advanced
+to `83d6a337`, but its odd-width spectrum implementation has the same source
+hash and the 33-wide asymmetry reproduces again. The existing PR #2008's exact
+head passes the focused regression controls; it remains open and review-required
+on an older base. Current-main and fix-control source hashes/results, plus all
+project dispositions, are recorded in `evidence/upstream-refresh/live-status-2026-10-02.json`
+and `reports/upstream-disposition.md`. No duplicate upstream post was made.
+The latest benchmark PR's hosted CI remains queued; the complete local suite
+passed on Python 3.12. Goal remains active.
+
 ## Revision 182 — follow-up literature scan
 
 Scanned OpenAI’s public Lean repository and post-announcement papers through

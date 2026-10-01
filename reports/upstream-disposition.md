@@ -230,3 +230,27 @@ was filed. Current release, source, issue/API and tracker-login observations
 are in [`openfoam-foundation-current-2026-10-02.json`](../evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json);
 the full scope decision is in
 [`openfoam-foundation-current-upstream-audit-2026-10-02.md`](openfoam-foundation-current-upstream-audit-2026-10-02.md).
+
+
+## Live upstream refresh, 2026-10-02 23:36 UTC
+
+The targeted live inventory is saved in
+`evidence/upstream-refresh/live-status-2026-10-02.json`. OpenFOAM Foundation
+13 and SU2 default branches remain at their audited heads. The four visible
+OpenFOAM issues do not concern the measured AMR path. SU2's existing
+Discussion #2890 and Issue #2353 remain the right records; no duplicate is
+warranted.
+
+PhysicsNeMo main advanced to `83d6a337eecfc70e215ed1978af8dba9a38580fb` on
+October 1. The current `power_spectrum.py` still has SHA-256
+`13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`; a fresh
+CPU replay reproduces the 33-wide axis asymmetry while the 32-wide control
+passes. The existing Issue #2007 tracks it. PR #2008's fixed source
+(`7407608723062dc11ba5332e9ff3774f42bb02d9`) passes the same focused control,
+but remains open, review-required, and based on an older main commit. This is
+not a full PhysicsNeMo test-suite result; no duplicate issue or PR was opened.
+
+The two fresh PhysicsNeMo JSON replays bind the source hashes and exact outputs.
+OpenAI's public formalization repository still reports only its original two
+commits in this check. These are status and focused-reproduction updates, not an
+exhaustive upstream review or a new defect claim.
