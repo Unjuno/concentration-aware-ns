@@ -341,3 +341,30 @@ would require a quantitative anti-concentration condition on the direction
 law, for example `lambda{c<epsilon} <= L*epsilon^beta` for specified `L,beta>0`.
 The construction and exact tail are recorded in
 `evidence/tests/packet-angle-law-rate.json`.
+
+There is also a sharper conditional rate when the direction law has a known
+anti-concentration modulus. For the existing `Q^44` packet and envelopes
+`k<=k0*Q^(-40)`, `I<=tau0/(C-1)*Q^(1-C)`, consider the good directions
+`c>=Q^s`. The linear transverse-to-axial ratio is at most
+`tan(theta0)*Q^(3C/2-s)`, while the nonlinear remainder ratio satisfies
+
+```
+Z/A <= D*delta0*Q^(5-C-s)/(1-D*delta0*Q^(5-C)),
+D = k0*tau0/(C-1).
+```
+
+Both ratios vanish whenever `s < min(3C/2, 5-C)`. Since the audited exponent
+has `C<4`, the choice `s=1` satisfies both strict inequalities: the linear
+ratio decays at least as `Q^(3C/2-1)`, and the nonlinear ratio as
+`Q^(4-C)`. Thus for sufficiently small Q, all directions with `c>=Q` end in
+any fixed positive cone about the axis. If in addition the fixed law obeys
+`lambda{c<epsilon}<=L*epsilon^beta`, the probability outside that endpoint
+cone is at most `L*Q^beta` for sufficiently small Q. Uniform surface measure
+on unoriented directions has `c=|omega_3|` uniform on `[0,1]`, so it gives the
+example `L=beta=1`. The threshold for “sufficiently small” still depends on
+the non-effective packet constants, and the bound remains conditional on the
+classical comparison and tube/Hessian assumptions. Full exponent arithmetic is
+reproducible with `uv run --with-requirements requirements-verification.txt
+python -m tools.check_packet_radius_scaling`; the exact symbolic controls are
+recorded in `evidence/tests/packet-radius-scaling.json`, with the probability
+law examples and assumptions in `evidence/tests/packet-angle-law-rate.json`.

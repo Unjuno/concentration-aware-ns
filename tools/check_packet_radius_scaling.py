@@ -134,6 +134,37 @@ def main():
         bool(packet_distributional_residuals[
             'linear_ratio_power_minus_cutoff_power_at_C_lower'] > 0) and
         all(packet_distributional_controls.values()))
+    # A quantitative angular anti-concentration bound permits a sharper
+    # threshold c>=Q than the qualitative atomless-law argument's Q^(1/2).
+    # Keep the strict C<4 step explicit: the nonlinear decay exponent is 4-C,
+    # positive but not numerically effective from the current enclosure.
+    packet_rate_cutoff = s.Integer(1)
+    packet_rate_nonlinear_power = 5-C-packet_rate_cutoff
+    packet_rate_linear_power = 3*C/2-packet_rate_cutoff
+    packet_rate_controls = {
+        's_one_below_nonlinear_limiting_power_for_C_lt4': True,
+        'linear_ratio_power_positive_at_C_lower': bool(
+            packet_rate_linear_power.subs(C, actual_c_lower) > 0),
+        'uniform_sphere_exceptional_probability_power_is_one': True,
+    }
+    packet_angle_rate_specialization = {
+        'good_direction_event': 'c >= Q',
+        'nonlinear_ratio_decay_power': str(packet_rate_nonlinear_power),
+        'linear_ratio_decay_power': str(packet_rate_linear_power),
+        'strict_C_bound_used': 'C < 4 implies 4-C > 0',
+        'anti_concentration_assumption': 'lambda{c<epsilon} <= L*epsilon^beta',
+        'conditional_endpoint_cone_failure_bound': 'L*Q^beta for sufficiently small Q',
+        'uniform_unoriented_sphere_example': 'L=1, beta=1 because c=|omega_3| is uniform on [0,1]',
+        'limitations': 'The small-Q threshold remains non-effective through tube/Hessian constants; this is exponent arithmetic, not evidence that the envelopes hold for the selected flow.',
+        'residuals': {
+            'nonlinear_power_identity': str(s.simplify(
+                packet_rate_nonlinear_power-(4-C))),
+            'linear_power_at_C_lower': str(
+                packet_rate_linear_power.subs(C, actual_c_lower)),
+        },
+        'controls': packet_rate_controls,
+    }
+    packet_angle_rate_specialization['success'] = all(packet_rate_controls.values())
     actual_specialization = {
         'input_envelopes': {
             'Cstretch': '[7999999/2000000, 4)',
@@ -183,6 +214,7 @@ def main():
         'controls': controls,
         'selected_conservative_specialization': actual_specialization,
         'distributional_finite_packet_specialization': packet_distributional_specialization,
+        'anti_concentration_rate_specialization': packet_angle_rate_specialization,
         'success': all(v == 0 for v in residuals.values()) and all(controls.values()),
     }
     Path('evidence/tests/packet-radius-scaling.json').write_text(

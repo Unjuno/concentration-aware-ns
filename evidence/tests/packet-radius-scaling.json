@@ -1,7 +1,7 @@
 {
   "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
   "sympy": "1.14.0",
-  "source_sha256": "4637998bad4702012fbf4bd4a32cf1a997d7b6181e571dc4db7d3da5a460ad6a",
+  "source_sha256": "310deca218bdf2caab2266ae4d63d4f5564a4703a938a5facc1f466135230328",
   "assumptions": {
     "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
     "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
@@ -92,6 +92,26 @@
       "absolute_endpoint_radius_vanishes": true,
       "relative_displacement_lower_bound_diverges": true,
       "good_direction_endpoint_lower_power_is_positive": true
+    },
+    "success": true
+  },
+  "anti_concentration_rate_specialization": {
+    "good_direction_event": "c >= Q",
+    "nonlinear_ratio_decay_power": "4 - C",
+    "linear_ratio_decay_power": "3*C/2 - 1",
+    "strict_C_bound_used": "C < 4 implies 4-C > 0",
+    "anti_concentration_assumption": "lambda{c<epsilon} <= L*epsilon^beta",
+    "conditional_endpoint_cone_failure_bound": "L*Q^beta for sufficiently small Q",
+    "uniform_unoriented_sphere_example": "L=1, beta=1 because c=|omega_3| is uniform on [0,1]",
+    "limitations": "The small-Q threshold remains non-effective through tube/Hessian constants; this is exponent arithmetic, not evidence that the envelopes hold for the selected flow.",
+    "residuals": {
+      "nonlinear_power_identity": "0",
+      "linear_power_at_C_lower": "19999997/4000000"
+    },
+    "controls": {
+      "s_one_below_nonlinear_limiting_power_for_C_lt4": true,
+      "linear_ratio_power_positive_at_C_lower": true,
+      "uniform_sphere_exceptional_probability_power_is_one": true
     },
     "success": true
   },

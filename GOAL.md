@@ -2033,3 +2033,16 @@ positive power of Q. This does not refute the probability-one limit; it bounds
 what can be claimed from the present assumption. The derivation and limitations
 are recorded in `docs/axis-packet-bound.md` and
 `evidence/tests/packet-angle-law-rate.json`.
+
+## Revision 121 — conditional algebraic rate with anti-concentration
+
+Generalized the angular cutoff to `c>=Q^s`. Under the current `Q^44` packet
+and `k=O(Q^-40)` envelope, both transverse and nonlinear-to-axial ratios vanish
+for `s<min(3C/2,5-C)`. Since the source-derived exponent has `C<4`, `s=1` is
+admissible. If the fixed direction law additionally obeys
+`lambda{c<epsilon}<=L*epsilon^beta`, the conditional endpoint-cone failure
+probability is bounded by `L*Q^beta` for sufficiently small Q; uniform
+unoriented spherical measure gives `L=beta=1`. This rate needs the extra
+distribution assumption and retains a non-effective small-Q threshold. The
+derivation is in `docs/axis-packet-bound.md` and
+`evidence/tests/packet-angle-law-rate.json`.
