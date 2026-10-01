@@ -198,7 +198,7 @@ def main():
         "instrumentation": [
             "mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve"
         ],
-        "checkpoint": "stage-specific call sites at t=0.003; mapped callback follows mesh_.update()",
+        "checkpoint": "mapped at t=0.002 immediately after mesh_.update(); later PIMPLE stages at t=0.003",
         "changes_equation_assembly": False,
         "output": "postProcessing/amrStages/<time>/{stage}_cells.csv and {stage}_faces.csv",
     }

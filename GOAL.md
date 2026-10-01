@@ -2102,3 +2102,25 @@ the time gate matched to each call site and separate per-stage output paths.
 This is measurement-protocol bookkeeping, not a numerical result. The v3
 solver run and final-state noninterference comparison remain pending; see
 `protocols/high-gradient-of13-amr-stage-snapshot-v3.json`.
+
+## Revision 126 — first-refinement stage attribution measured
+
+The v3 instrumented n=16 run captured all five stages on one 16,640-cell,
+48,816-face topology and completed normally. The final `U`, `p`, `phi`, and
+`Uf` files are byte-identical to the frozen uninstrumented control. The
+volume-weighted velocity error against exact MMS was 41.7955% after mapping,
+41.8156% after `correctPhi`, 41.7898% before pressure correction, and 39.9477%
+after pressure/PIMPLE. `correctPhi` changed face flux by 97.35% relative L2
+while cell `U` was unchanged; reconstructed volume-weighted RMS `div(phi)`
+dropped 89.85%. Pressure correction reduced the velocity error by 1.842
+percentage points in this run. Full inputs, raw stage CSVs, hashes, and the
+reproducible analyzer are recorded in `evidence/of13-amr-stage-snapshot-v3/`,
+`tools/analyze_amr_stage_snapshots.py`, and
+`reports/openfoam-amr-stage-snapshot-v3-2026-10-01.md`. This localizes the
+observed discrepancy to a state already present immediately after mapping,
+but does not distinguish interpolation, gradient reconstruction, timestep,
+or model/source effects. It does not establish a solver defect or physical
+claim; AMR quality remains UNCERTAIN and no upstream issue is warranted from
+this single mechanism probe. The raw provenance JSON's stale checkpoint
+description and its correction are transparently recorded in
+`evidence/of13-amr-stage-snapshot-v3/provenance-correction.json`.

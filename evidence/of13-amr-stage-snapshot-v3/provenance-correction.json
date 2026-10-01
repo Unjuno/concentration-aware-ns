@@ -1,0 +1,20 @@
+{
+  "status": "METADATA_CORRECTION; raw provenance file preserved unchanged",
+  "raw_provenance_sha256": "ef1c575f3538b61e348790daf9e5ec069783387de9b5405b85230856b60cda39",
+  "raw_checkpoint_text": "stage-specific call sites at t=0.003; mapped callback follows mesh_.update()",
+  "corrected_stage_times_from_protocol_and_solver_log": {
+    "mapped": "0.002",
+    "afterCorrectPhi": "0.003",
+    "prePressure": "0.003",
+    "postPressure": "0.003",
+    "postSolve": "0.003"
+  },
+  "supporting_snapshot_events": [
+    "AMR_STAGE_SNAPSHOT stage=mapped time=0.002 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=afterCorrectPhi time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=prePressure time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=postPressure time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=postSolve time=0.003 cells=16640 internalFaces=48816"
+  ],
+  "reason": "The checkpoint description string was not updated when v3 introduced a distinct mapped-stage time. Generated source hashes, v3 protocol, and solver events agree on mapped t=0.002 and later stages t=0.003."
+}
