@@ -26,6 +26,28 @@ class SameRunMappingTests(unittest.TestCase):
             0.41795531114604173,
             places=12,
         )
+        average = result["exact_cell_average_reference"]
+        self.assertAlmostEqual(
+            average["preMap_velocity_relative_l2_vs_exact_cell_averages"],
+            0.13783397972555342,
+            places=12,
+        )
+        self.assertAlmostEqual(
+            average["mapped_velocity_relative_l2_vs_exact_cell_averages"],
+            0.42483868569575145,
+            places=12,
+        )
+        self.assertLess(
+            average["independent_formula_validation"][
+                "closed_form_vs_tensor_gauss_max_abs_difference"
+            ], 2e-16,
+        )
+        self.assertLess(
+            abs(average["same_run_cell_average_error_decomposition"][
+                "identity_residual"
+            ]),
+            1e-14,
+        )
 
 
 if __name__ == "__main__":

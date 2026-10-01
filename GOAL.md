@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 131 — same-run finite-volume-average DOF audit
+
+Applied the analytic cell-average formula for the separable high-gradient MMS
+to the v4 preMap and mapped cell sets from the same run. The closed-form
+Fourier/sinc integration has an existing independent tensor-Gauss cross-check
+with maximum absolute discrepancy `1.80e-16`. Stored preMap values differ from
+coarse exact cell averages by 13.7834% relative L2; mapped values on refined
+child DOFs differ from exact child averages by 42.4839%, while the child-center
+point-sample error is 41.7955%. The normalized squared child-average error is
+`0.015871` inherited parent DOF error plus `0.164617` exact parent-to-child
+average variation, with cross term and identity residual at roundoff scale.
+This is a DOF-average diagnostic and does not assert OpenFOAM stores exact
+cell averages, continuous reconstruction error, or a quality/defect result.
+Evidence and replay are in `evidence/of13-amr-same-run-map-v4-run3/` and
+`tools/analyze_amr_same_run_map.py`.
+
 ## Revision 130 — same-run AMR mapping mechanism isolated
 
 Added a v4 capture immediately before and after `mesh_.update()` at the same

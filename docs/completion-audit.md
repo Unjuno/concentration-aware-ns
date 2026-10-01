@@ -29,6 +29,16 @@ expected mapping behavior. Replay with
 `evidence/of13-amr-same-run-map-v4-run3/` and
 `protocols/high-gradient-of13-amr-same-run-map-v4.json`.
 
+Applying the independently Gauss-checked analytic MMS cell-average formula to
+the same-run pair gives 13.7834% relative L2 for the coarse preMap DOFs and
+42.4839% for the mapped child DOFs. Their normalized squared-error identity
+separates inherited coarse DOF error (`0.015871`) from newly resolved exact
+parent-to-child average variation (`0.164617`), with cross term near zero.
+This is a DOF-level alternate comparison; it does not prove the stored evolved
+`U` is defined as an exact cell average and is not a continuous reconstruction
+norm. AMR quality and convergence remain UNCERTAIN pending higher-resolution
+cases.
+
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.

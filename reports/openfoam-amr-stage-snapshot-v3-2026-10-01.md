@@ -84,6 +84,29 @@ records the current protocol hash separately and does not claim it is the
 at-run hash. The solver input hashes, exact source-file hashes, binary hash,
 log hash, and archive hash are preserved.
 
+## Same-run exact finite-volume-average DOF comparison
+
+The v4 `preMap` and `mapped` arrays were also compared with the analytic volume
+average of the MMS over each respective cubic cell. The closed form integrates
+the separable Fourier modes using sinc factors; its existing independent
+tensor-Gauss check has maximum absolute difference `1.80e-16`. The preMap
+coarse-cell stored values have relative L2 difference `13.7834%` from the
+coarse-cell exact averages. After the same values are injected into refined
+cells, the child-DOF difference from exact child averages is `42.4839%`, while
+the point-sample metric at child centers is `41.7955%`.
+
+For the child-average metric, the normalized squared error decomposes as
+`0.015871` inherited parent DOF error plus `0.164617` exact parent-average to
+child-average variation, with cross term about zero (`2.0e-17`) and identity
+residual below `2.0e-17`. Thus this case's increase under the fine-cell DOF
+average comparison is dominated by subcell variation revealed by refinement,
+not by a change in the stored mapped velocity values. This is an alternate
+finite-volume DOF comparison: OpenFOAM's `volVectorField` is cell-associated,
+and this result does not establish that every evolved stored value is defined
+as an exact cell average. It is not a continuous piecewise-constant error
+norm, quality pass/fail, or defect verdict. Results and the formula-check hash
+are in `evidence/of13-amr-same-run-map-v4-run3/analysis.json`.
+
 ## Separate `maxCells` behavior reproduction
 
 The archived case's `dynamicMeshDict` sets `maxCells 5000`, starts from 4,096

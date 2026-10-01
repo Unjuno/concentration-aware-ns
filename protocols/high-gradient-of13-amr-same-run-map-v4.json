@@ -35,6 +35,7 @@
     "analysis": [
       "Compare mapped cell values against piecewise-constant injection from this run's preMap field using geometrically containing uniform-grid parents.",
       "Check parent-child volume closure, cell counts, levels, domain integral and weighted relative L2/max absolute differences.",
+      "Compare stored parent and mapped child DOFs with the analytic finite-volume average of the smooth MMS using the independently quadrature-checked closed form; label this a DOF diagnostic, not an assumed OpenFOAM storage definition or a continuous reconstruction norm.",
       "Decompose point-sample error algebraically into inherited parent-center error, exact-reference center shift, and cross term; do not label this finite-volume truncation error.",
       "Compare mapped and exact-MMS cell-center samples only as point-sample diagnostics; keep finite-volume cell-average accuracy claims separate.",
       "Compare preMap and mapped face flux/divergence only after matching geometric face relationships; no assumption that face indices persist across remapping."

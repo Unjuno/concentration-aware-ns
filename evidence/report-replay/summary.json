@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "abcbfd867be2f64fb36fb9ec19adb635f0cf54df58e39764b988fec4606f7dbd"
+      "log_sha256": "3739f085969f6657b967bdad535c0fbd6ea89c7d2720d7041ae81a1b75312851"
     },
     {
       "step": "global_peaks",
@@ -164,7 +164,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_same_run_amr_mapping.log",
-      "log_sha256": "e502f0b11668f5edb1259f67fc3719723cc21e171f9038a900781a57fc4ff0a3"
+      "log_sha256": "45f666968c20311a418a60b196c256144b7166a59c84e0800ee564f024910045"
     },
     {
       "step": "su2_archive_review",

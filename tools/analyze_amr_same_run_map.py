@@ -13,9 +13,11 @@ from tools.analyze_amr_stage_snapshots import (
     _parent_indices_for_children,
     parent_value_injection_audit,
 )
+from tools.audit_uniform_cell_center_quadrature import exact_cell_average_velocity
 
 
 EVIDENCE = Path(os.environ.get("CANS_AMR_STAGE_EVIDENCE", "evidence/of13-amr-same-run-map-v4-run3"))
+CELL_AVERAGE_AUDIT = Path("evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json")
 ARCHIVE = EVIDENCE / "amr-stage-snapshot.tar.gz"
 MANIFEST = EVIDENCE / "manifest.json"
 
@@ -64,6 +66,12 @@ def analyze():
     from tools.high_gradient_reference import fields
     exact_u = fields(exact, N=4, nu=0.01, time=0.002)["u"]
     exact_pre_u = fields(pre_centers, N=4, nu=0.01, time=0.002)["u"]
+    pre_exact_average = exact_cell_average_velocity(
+        pre_centers, np.cbrt(pre["V"]), 0.002
+    )
+    mapped_exact_average = exact_cell_average_velocity(
+        mapped_centers, np.cbrt(mapped["V"]), 0.002
+    )
     parent_for_child = _parent_indices_for_children(pre_centers, mapped_centers)
     inherited_error = pre_u[parent_for_child]-exact_pre_u[parent_for_child]
     exact_center_shift = exact_pre_u[parent_for_child]-exact_u
@@ -75,9 +83,32 @@ def analyze():
         mapped["V"][:, None]*inherited_error*exact_center_shift
     )/denominator)
     total_sq = float(np.sum(mapped["V"][:, None]*mapped_error**2)/denominator)
+    inherited_average_error = pre_u[parent_for_child]-pre_exact_average[parent_for_child]
+    exact_average_refinement_delta = pre_exact_average[parent_for_child]-mapped_exact_average
+    average_denominator = float(np.sum(mapped["V"][:, None]*mapped_exact_average**2))
+    inherited_average_sq = float(np.sum(
+        mapped["V"][:, None]*inherited_average_error**2
+    )/average_denominator)
+    average_refinement_sq = float(np.sum(
+        mapped["V"][:, None]*exact_average_refinement_delta**2
+    )/average_denominator)
+    average_cross_term = float(2*np.sum(
+        mapped["V"][:, None]*inherited_average_error*exact_average_refinement_delta
+    )/average_denominator)
+    average_total_sq = float(np.sum(
+        mapped["V"][:, None]*(mapped_u-mapped_exact_average)**2
+    )/average_denominator)
     exact_error = float(np.sqrt(
         np.sum(mapped["V"][:, None]*(mapped_u-exact_u)**2)
         / max(np.sum(mapped["V"][:, None]*exact_u**2), 1e-300)
+    ))
+    pre_cell_average_error = float(np.sqrt(
+        np.sum(pre["V"][:, None]*(pre_u-pre_exact_average)**2)
+        / max(np.sum(pre["V"][:, None]*pre_exact_average**2), 1e-300)
+    ))
+    mapped_cell_average_error = float(np.sqrt(
+        np.sum(mapped["V"][:, None]*(mapped_u-mapped_exact_average)**2)
+        / max(np.sum(mapped["V"][:, None]*mapped_exact_average**2), 1e-300)
     ))
     result = {
         "status": "SAME_RUN_PARENT_INJECTION_MATCH" if audit["mapped_vs_parent_injection_relative_l2"] < 1e-12 else "SAME_RUN_PARENT_INJECTION_MISMATCH",
@@ -95,6 +126,31 @@ def analyze():
             np.linalg.norm(mapped_integral-pre_integral)/integrated_speed_scale
         ),
         "mapped_velocity_point_sample_error_vs_exact_mms": exact_error,
+        "exact_cell_average_reference": {
+            "method": "Closed-form tensor factorization of the separable Fourier-polynomial MMS; each one-dimensional Fourier mode is integrated over its cell with a sinc factor. The formula is independently checked against tensor Gauss quadrature in tools.audit_uniform_cell_center_quadrature.",
+            "preMap_velocity_relative_l2_vs_exact_cell_averages": pre_cell_average_error,
+            "mapped_velocity_relative_l2_vs_exact_cell_averages": mapped_cell_average_error,
+            "independent_formula_validation": {
+                "crosscheck_artifact": CELL_AVERAGE_AUDIT.as_posix(),
+                "crosscheck_artifact_sha256": sha(CELL_AVERAGE_AUDIT),
+                "closed_form_vs_tensor_gauss_max_abs_difference": json.loads(CELL_AVERAGE_AUDIT.read_text())["cell_average_formula_crosscheck_max_abs_difference"]
+            },
+            "same_run_cell_average_error_decomposition": {
+                "inherited_parent_solution_error_squared_relative": inherited_average_sq,
+                "exact_child_average_refinement_change_squared_relative": average_refinement_sq,
+                "twice_normalized_cross_term": average_cross_term,
+                "total_mapped_cell_average_error_squared_relative": average_total_sq,
+                "identity_residual": float(average_total_sq-inherited_average_sq-average_refinement_sq-average_cross_term),
+                "basis": "Exact averages use the closed form on preMap parent cubes and mapped child cubes. This DOF-level identity separates inherited coarse average error from exact-reference variation revealed by refinement; it is not a continuous P0 reconstruction norm."
+            },
+            "cubic_cell_width_range": {
+                "preMap_min": float(np.min(np.cbrt(pre["V"]))),
+                "preMap_max": float(np.max(np.cbrt(pre["V"]))),
+                "mapped_min": float(np.min(np.cbrt(mapped["V"]))),
+                "mapped_max": float(np.max(np.cbrt(mapped["V"]))),
+            },
+            "interpretation": "This is a comparison of stored cell degrees of freedom to analytic volume averages. OpenFOAM volVectorField storage is cell-associated; this diagnostic does not assume the evolved stored U is itself defined as an exact cell average."
+        },
         "point_sample_error_decomposition": {
             "inherited_parent_solution_error_squared_relative": inherited_sq,
             "exact_parent_to_child_center_change_squared_relative": center_shift_sq,
