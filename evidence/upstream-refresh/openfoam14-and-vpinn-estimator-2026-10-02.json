@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-02",
+  "scope": "Focused read-only literature and release refresh; no source checkout, solver build, or numerical run was performed.",
+  "openfoam_foundation": {
+    "version": 14,
+    "release_date": "2026-07-14",
+    "patch_announcement_date": "2026-07-25",
+    "release_url": "https://openfoam.org/version/14/",
+    "history_url": "https://openfoam.org/download/history/",
+    "reported_relevant_changes": [
+      "improved isothermalFluid and isothermalFilm modular solvers",
+      "improved flux calculations",
+      "mesh handling changes"
+    ],
+    "current_benchmark_version": "Foundation 13",
+    "disposition": "New version-coverage opportunity only. Existing v13 evidence is unchanged; no v14 defect or cross-version behavior is inferred."
+  },
+  "adaptive_estimator_paper": {
+    "title": "An adaptive error estimator for stationary Navier-Stokes equations using variational physics informed neural networks",
+    "doi_url": "https://doi.org/10.1016/j.cma.2026.118876",
+    "published": "2026-06-15",
+    "reported_scope": "Stationary Navier-Stokes equations in a VPINN framework; estimator includes component-wise PDE approximation, data oscillation, loss minimization, and PDE residual terms, with reliability and local efficiency stated for its energy-norm error framework.",
+    "limitation": "Method is not this unsteady finite-volume solver or its pointwise derivative metric. The abstract identifies training convergence and approximation-rate validation as future work.",
+    "disposition": "Methodological comparison candidate; no transferred error bound or solver verdict."
+  },
+  "repository_effect": "Record a separate Foundation v14 compatibility/comparison run as future work; no verdict upgrade or upstream issue filing."
+}

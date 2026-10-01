@@ -171,3 +171,39 @@ still contains the maintainer's time-level analysis and the BDF2 follow-up; no
 code change or general fix is recorded there. SU2 `master` remains at the
 previously checked source commit. The thread status therefore changes the
 follow-up channel, not the technical conclusion.
+
+## 2026-10-02 refresh: newer OpenFOAM target and adaptive-estimator literature
+
+The OpenFOAM Foundation released v14 on 14 July 2026, with a patch-release
+announcement on 25 July. The official summary lists changes to modular
+isothermal solvers, flux calculations, mesh handling, field initialization,
+and units. This is a real coverage update because our archived high-gradient
+uniform-grid matrix and AMR stage probes target Foundation v13. It is not
+evidence that v13's result is wrong or that v14 has a defect. A useful next
+comparison is a separately pinned v14 runtime on the unchanged manufactured
+case, first checking case compatibility and then replaying the same numerical
+gates; only a controlled source/config/runtime comparison could attribute a
+difference to the version.
+
+A 2026 paper, *An adaptive error estimator for stationary Navier-Stokes
+equations using variational physics informed neural networks*, reports a
+reliable and locally efficient estimator for its stated energy-norm error
+framework, with PDE approximation, data oscillation, loss-minimization, and
+residual terms. It is methodologically adjacent to our question about local
+high-gradient error visibility, but uses a stationary VPINN framework rather
+than this unsteady finite-volume solver. It therefore suggests a separate
+estimator-comparison avenue; it does not certify our solver field, transfer a
+bound to our metric, or justify a physical/molecular interpretation. The
+available publication abstract itself lists training convergence and
+validation of approximation rates as further work.
+
+This focused refresh changes the planned version-coverage matrix, not any
+existing solver verdict or upstream defect disposition. Official release
+details and the paper DOI/abstract were checked on 2026-10-02; no full
+independent reproduction of the paper was performed.
+
+Sources: [OpenFOAM Foundation v14 release notes](https://openfoam.org/version/14/),
+[release history](https://openfoam.org/download/history/), and the
+[adaptive-estimator paper](https://doi.org/10.1016/j.cma.2026.118876).
+The focused check metadata and scope limits are archived in
+`evidence/upstream-refresh/openfoam14-and-vpinn-estimator-2026-10-02.json`.

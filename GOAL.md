@@ -1,5 +1,33 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 152 — regenerated verdict snapshots retain declared scope
+
+The tracked-only replay of fixed commit `3b394646e9fd5c3cfac1c8cfeacb89d2df5a611a`
+completed all 36 steps, but its clean comparison found seven derived verdict
+JSON files that predated the new scope field. Replaying with the recorded
+Python 3.14.5 runtime isolated the diffs to additive `scope` values; all
+`standard_acceptance`, `local_quality`, and `hypothesis` values stayed
+`UNCERTAIN`. Updated those seven snapshots so the published outputs match the
+gate's current schema. A separate fixed-export Python 3.12.13 test run passed
+190 tests, skipped one, and passed five subtests in 121.21 seconds. Exact
+clean-export validation of the updated snapshots remains pending. Goal remains
+active.
+
+## Revision 151 — current-release and estimator literature refresh
+
+Checked the OpenFOAM Foundation's v14 release notes and identified a new
+coverage gap: the existing uniform-grid and AMR evidence is pinned to v13, so
+v14 should be evaluated separately with the unchanged manufactured case and
+runtime provenance before making any cross-version claim. Also found a 2026
+VPINN paper reporting a local adaptive error estimator for stationary
+Navier–Stokes energy-norm error. It motivates a method comparison only; its
+stationary neural formulation does not validate this unsteady finite-volume
+field or establish physical consequences. No existing verdict or upstream
+defect disposition changed. Details and source links are in
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
+`evidence/upstream-refresh/openfoam14-and-vpinn-estimator-2026-10-02.json`.
+Goal remains active.
+
 ## Revision 150 — gate verdicts now preserve their declared scope
 
 The v2 report triage gate previously emitted `REPRODUCED`/`FAIL` without

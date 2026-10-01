@@ -1,5 +1,6 @@
 {
   "standard_acceptance": "UNCERTAIN",
   "local_quality": "UNCERTAIN",
-  "hypothesis": "UNCERTAIN"
+  "hypothesis": "UNCERTAIN",
+  "scope": "No certified continuum peak-error interval. [0, unbounded] records missing bounds, not zero measured error. Gate flags preserve unresolved review requirements."
 }

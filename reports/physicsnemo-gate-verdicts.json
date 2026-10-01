@@ -5,7 +5,8 @@
     "verdict": {
       "standard_acceptance": "UNCERTAIN",
       "local_quality": "UNCERTAIN",
-      "hypothesis": "UNCERTAIN"
+      "hypothesis": "UNCERTAIN",
+      "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only."
     }
   },
   {
@@ -14,7 +15,8 @@
     "verdict": {
       "standard_acceptance": "UNCERTAIN",
       "local_quality": "UNCERTAIN",
-      "hypothesis": "UNCERTAIN"
+      "hypothesis": "UNCERTAIN",
+      "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only."
     }
   },
   {
@@ -23,7 +25,8 @@
     "verdict": {
       "standard_acceptance": "UNCERTAIN",
       "local_quality": "UNCERTAIN",
-      "hypothesis": "UNCERTAIN"
+      "hypothesis": "UNCERTAIN",
+      "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only."
     }
   },
   {
@@ -32,7 +35,8 @@
     "verdict": {
       "standard_acceptance": "UNCERTAIN",
       "local_quality": "UNCERTAIN",
-      "hypothesis": "UNCERTAIN"
+      "hypothesis": "UNCERTAIN",
+      "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only."
     }
   },
   {
@@ -41,7 +45,8 @@
     "verdict": {
       "standard_acceptance": "UNCERTAIN",
       "local_quality": "UNCERTAIN",
-      "hypothesis": "UNCERTAIN"
+      "hypothesis": "UNCERTAIN",
+      "scope": "Continuous peak relative error has no certified nontrivial bound. Sample errors are observations only."
     }
   }
 ]
