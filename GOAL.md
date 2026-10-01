@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 142 — CI concurrency mitigation awaits hosted-runner evidence
+
+After adding the PR-scoped concurrency group, the PR head advanced to
+`a5f939e8cf93ce53fa3af0eebc0f7f9667e171d9`. The authoritative check-runs API
+shows its `tests` check queued since 2026-10-01 16:54:45 UTC; the preceding
+`c94aa4b` and older checks also remained queued at the latest read. Therefore
+the workflow change's effect on already-pending work is not demonstrated, and
+the root runner-assignment delay remains unresolved. Do not describe the new
+setting as verified queue mitigation until a subsequent PR update is observed
+starting/cancelling runs as intended. Latest source and local scientific
+changes remain covered by the immediately prior full local suite (187 passed,
+1 skipped, 5 subtests); only workflow/log documentation changed after it. The
+benchmark goal remains active.
+
 ## Revision 141 — superseded pull-request verification runs are cancellable
 
 The PR's repeated commits had accumulated queued checks for obsolete heads.
