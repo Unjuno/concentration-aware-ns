@@ -23,9 +23,11 @@ PROTOCOL = Path(os.environ.get(
 CELL_AVERAGE_AUDIT = Path("evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json")
 MANIFEST = EVIDENCE / "manifest.json"
 _DEFAULT_CASE_SPEC = json.loads(PROTOCOL.read_text())["case"]
-ARCHIVE = EVIDENCE / _DEFAULT_CASE_SPEC.get(
-    "archive_name", "amr-stage-snapshot.tar.gz"
-)
+ARCHIVE_OVERRIDE = os.environ.get("CANS_AMR_STAGE_RAW_ARCHIVE")
+ARCHIVE = (Path(ARCHIVE_OVERRIDE) if ARCHIVE_OVERRIDE else
+           EVIDENCE / _DEFAULT_CASE_SPEC.get(
+               "archive_name", "amr-stage-snapshot.tar.gz"
+           ))
 
 
 def sha(path):
@@ -47,7 +49,8 @@ def analyze():
     manifest = json.loads(MANIFEST.read_text())
     spec = json.loads(PROTOCOL.read_text())
     case_spec = spec["case"]
-    archive = EVIDENCE / case_spec.get("archive_name", "amr-stage-snapshot.tar.gz")
+    archive = (Path(ARCHIVE_OVERRIDE) if ARCHIVE_OVERRIDE else
+               EVIDENCE / case_spec.get("archive_name", "amr-stage-snapshot.tar.gz"))
     case_directory = manifest.get("case_directory", case_spec.get("case_directory", "amr-cap5000"))
     pre_map_time = case_spec.get("pre_map_time", 0.002)
     pre_map_label = f"{pre_map_time:g}"

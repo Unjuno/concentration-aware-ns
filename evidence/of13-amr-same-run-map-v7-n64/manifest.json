@@ -1,0 +1,107 @@
+{
+  "status": "RUN_COMPLETE_SAME_RUN_MAP_CAPTURED",
+  "source_commit": "ffc81a2cfe119204e7bf240310699ea739991656",
+  "harness_worktree_porcelain": "",
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v7-n64.json",
+  "protocol_sha256": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "docker_cli": "/run/current-system/sw/bin/docker",
+  "docker_cli_resolved": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_context": "orbstack",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "instrumented_module_sha256": "414d68c299a466b3c06757192c4e3d0f89df24d78dae94da1a0286387bdbc4a7",
+  "instrumented_source_files": {
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "incompressibleFluid.C": "eff1f5bbe9eaecb395bafecad5dad562eaf6648eb0bdfa0cb3bd8782cbf23df4",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011"
+  },
+  "case_input_sha256": {
+    "0/U": "0ecc2359c8ee6fd8e9f92fd0255c4abeb63a846d3ca6ffb00288a3cf4dab86ac",
+    "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+    "constant/dynamicMeshDict": "70cc7ff0b24353de8a26b55ba7f8596e6280c5b395e8afa2bbb23aeb2b3a8010",
+    "constant/fvModels": "906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+    "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+    "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382",
+    "parameters.json": "eaf5f7756119e36bca050def0ddfeed551c50298cd610f70a6f2c5c55e38a808",
+    "system/blockMeshDict": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5",
+    "system/controlDict": "3f4f4b2ab57f41118c7d8cab316efe2794fc6f976787f8ad31fceec47470e8ce",
+    "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+    "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+  },
+  "exit_code": 0,
+  "end_marker": true,
+  "instrumented_library_load_confirmed": true,
+  "snapshot_events": [
+    "AMR_STAGE_SNAPSHOT stage=preMap time=0.002 cells=262144 internalFaces=774144",
+    "AMR_STAGE_SNAPSHOT stage=mapped time=0.002 cells=901888 internalFaces=2689092",
+    "AMR_STAGE_SNAPSHOT stage=afterCorrectPhi time=0.003 cells=901888 internalFaces=2689092",
+    "AMR_STAGE_SNAPSHOT stage=prePressure time=0.003 cells=901888 internalFaces=2689092",
+    "AMR_STAGE_SNAPSHOT stage=postPressure time=0.003 cells=901888 internalFaces=2689092",
+    "AMR_STAGE_SNAPSHOT stage=postSolve time=0.003 cells=901888 internalFaces=2689092"
+  ],
+  "case_directory": "amr-n64-cap920000",
+  "stage_times": {
+    "preMap": "0.002",
+    "mapped": "0.002",
+    "afterCorrectPhi": "0.003",
+    "prePressure": "0.003",
+    "postPressure": "0.003",
+    "postSolve": "0.003"
+  },
+  "snapshot_sha256": {
+    "postProcessing/amrStages/0.002/preMap_cells.csv": "0e8eecbd8afecc1288e5a63f88f466ff5d93ee5817ddecf184cce01843b1c9f2",
+    "postProcessing/amrStages/0.002/preMap_faces.csv": "5dd6945b5fdc6140a90ecd2c583d7190e3405465541cce133cac42a1f01377be",
+    "postProcessing/amrStages/0.002/mapped_cells.csv": "ef2c78f01ff316a2e9071ec5ec2cca075e04d15c459c24dd89fdad99f7511c7f",
+    "postProcessing/amrStages/0.002/mapped_faces.csv": "2471d672da8d8206fdbe728f8fe7987296dab4c1c449141e2a56b5fe3da9d3e9",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_cells.csv": "ef2c78f01ff316a2e9071ec5ec2cca075e04d15c459c24dd89fdad99f7511c7f",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_faces.csv": "fd68be8527c13e7cda4a7acd591c994da410e6f4d313dea3dea889c7d6c747dd",
+    "postProcessing/amrStages/0.003/prePressure_cells.csv": "86fddfc75b80d987ee1b8bf13fda09c1e2f4d9caccd064a4c40ea1c79e695b1b",
+    "postProcessing/amrStages/0.003/prePressure_faces.csv": "fd68be8527c13e7cda4a7acd591c994da410e6f4d313dea3dea889c7d6c747dd",
+    "postProcessing/amrStages/0.003/postPressure_cells.csv": "80328ff38adb9cf7b0b0154a5bee7584d32c31baa37d56bf75afd13dfbd37286",
+    "postProcessing/amrStages/0.003/postPressure_faces.csv": "b3bcba9a3040c346692302ee53935bb18de062d1d528f660a69f763196c73134",
+    "postProcessing/amrStages/0.003/postSolve_cells.csv": "80328ff38adb9cf7b0b0154a5bee7584d32c31baa37d56bf75afd13dfbd37286",
+    "postProcessing/amrStages/0.003/postSolve_faces.csv": "b3bcba9a3040c346692302ee53935bb18de062d1d528f660a69f763196c73134"
+  },
+  "archive": "amr-stage-snapshot-n64-review.tar.gz",
+  "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+  "archive_packaging": {
+    "archive": "amr-stage-snapshot-n64-review.tar.gz",
+    "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+    "excluded_patterns": [
+      "postProcessing/amrStages/0.003/*",
+      "postProcessing/amrStages/0.002/preMap_faces.csv",
+      "dynamicCode"
+    ],
+    "included_cell_snapshots": [
+      "preMap_cells.csv at t=0.002",
+      "mapped_cells.csv at t=0.002"
+    ],
+    "included_face_snapshots": [
+      "mapped_faces.csv at t=0.002"
+    ],
+    "status": "COMPACT_REVIEW_ARCHIVE_SPLIT_AS_GITHUB_COMPATIBLE_ZSTD_PARTS",
+    "parts_manifest": "amr-stage-snapshot-n64-review.tar.gz.zst.parts.json",
+    "parts_manifest_sha256": "836e9fe1d1efe4bb51e3aaf24a649e0f02cb6d939def4536178b7740b66b99e6",
+    "post_run_packaging_only": true,
+    "claim_limit": "The compact public archive includes only same-run mapping cells and mapped internal faces used by the map/gradient audits. Later PIMPLE stage CSVs remain in ignored work/; as-run event and hashes remain in manifest-as-run.json.",
+    "package_addendum": "package-a1.json",
+    "package_addendum_sha256": "5179d3f5063f774d8358b4b5241d71874f50f84fe0727523e6ab3c3a9f6737ee"
+  },
+  "solver_log_sha256": "abf4c802cb3008425beca473c9cba2ded6e2e3dd2247d4d08a3901d3454c8637",
+  "limitations": [
+    "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
+    "The n=64 event adds a third resolution to the n=16/n=32 mapping diagnostics but does not by itself establish AMR convergence or a general quality guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time matches the prior n=16 first-refinement diagnostic and is therefore exploratory, not blinded or preregistered before all prior observations.",
+    "The predicted 901888-cell mapped mesh is a planning estimate; resource exhaustion or a different Foundation selection must be reported as incomplete/uncertain, not a solver-quality failure."
+  ],
+  "archive_bytes": 278621920,
+  "full_raw_archive_preserved": {
+    "path": "work/of13-amr-same-run-map-v7-n64/archive-recovery/amr-stage-snapshot-n64-full.tar.gz",
+    "bytes": 996285706,
+    "sha256": "7f9cba57e985007c73d8b6e1baf217f18e5f0d33dec168fe59ed999959c5dbdf",
+    "tracked": false
+  }
+}

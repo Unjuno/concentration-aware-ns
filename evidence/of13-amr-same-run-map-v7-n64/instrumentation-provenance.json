@@ -1,0 +1,26 @@
+{
+  "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "source_file_sha256": {
+    "applications/modules/incompressibleFluid/incompressibleFluid.H": "8781de41392ad7dc30d65c80d6cc4564744d16c672eaeede6fcdbce5571173b7",
+    "applications/modules/incompressibleFluid/incompressibleFluid.C": "07435202057db9850178690b61b4bc99cf46202cac9b0e78163a5f6ff52ae9d5",
+    "applications/modules/incompressibleFluid/moveMesh.C": "f6543b7b004e67221d0a977d926198f0b0f6d56dd63d1d8647c887a457c9612e"
+  },
+  "instrumented_file_sha256": {
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "incompressibleFluid.C": "eff1f5bbe9eaecb395bafecad5dad562eaf6648eb0bdfa0cb3bd8782cbf23df4",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011"
+  },
+  "instrumentation": [
+    "preMap",
+    "mapped",
+    "afterCorrectPhi",
+    "prePressure",
+    "postPressure",
+    "postSolve"
+  ],
+  "checkpoint": "preMap immediately before mesh_.update() and mapped immediately after at t=0.002; later PIMPLE stages at t=0.0030000000000000001",
+  "pre_map_time": 0.002,
+  "solver_stage_time": 0.003,
+  "changes_equation_assembly": false,
+  "output": "postProcessing/amrStages/<time>/{stage}_cells.csv and {stage}_faces.csv"
+}

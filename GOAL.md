@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 181 — third AMR map resolution and common-support audit
+
+Pre-registered and ran the Foundation 13 n64 same-run first-map capture from
+commit `ffc81a2`. The independent predictor's 91,392 buffered cells and
+901,888 predicted post-map cells matched the solver log exactly. The solver
+exited zero with `End`; the 996 MB archive hash was recomputed and all 59 tar
+members were fully read. Mapped cell values exactly match parent injection
+(relative L2 0; parent-volume closure error `1.98e-14`). Recomputed the n16,
+n32, and n64 Gauss-gradient/vorticity comparisons on one shared physical
+interior, correcting the earlier cross-resolution mask mismatch. Gradient
+error's descriptive pairwise slopes are ~1.883/~1.964 before map and
+~0.993/~1.001 after map; this is consistent with piecewise-constant transfer and is not a
+defect verdict, asymptotic proof, or continuous-field certificate. AMR quality
+remains UNCERTAIN because no quality threshold was preregistered. Full scope,
+reproduction commands, and limitations are in
+`reports/openfoam-amr-common-support-resolution-2026-10-02.md` and
+`evidence/of13-amr-resolution-comparison-2026-10-02.json`. The full 996 MB
+as-run archive is preserved locally; a compact review archive is published as
+verified split Zstandard parts to stay within GitHub file limits. Goal remains
+active.
+
 ## Revision 180 — rate-capped tail clock-mass upper bound independently checked
 
 Added and compiled a Lean corollary converting the conditional signed

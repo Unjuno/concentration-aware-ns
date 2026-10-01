@@ -162,15 +162,18 @@ def periodic_uniform_gauss_gradient(centers, velocity, length=2*np.pi):
     return derivative[indices[:, 0], indices[:, 1], indices[:, 2]]
 
 
-def _stage(archive, case_dir, stage, time_label, frequency, boundary_margin):
+def _stage(archive, case_dir, stage, time_label, frequency, boundary_margin,
+           force_uniform_centered_pre_map=False):
     cell = _read_csv(archive,
                      f"{case_dir}/postProcessing/amrStages/{time_label}/{stage}_cells.csv")
     centers = _vector(cell, ("cx", "cy", "cz"))
     volumes = cell["V"]
     face_member = f"{case_dir}/postProcessing/amrStages/{time_label}/{stage}_faces.csv"
     try:
+        if force_uniform_centered_pre_map and stage == "preMap":
+            raise FileNotFoundError("uniform preMap operator explicitly selected")
         face = _read_csv(archive, face_member)
-    except (KeyError, ValueError):
+    except (KeyError, ValueError, FileNotFoundError):
         if stage != "preMap":
             raise
         grad = periodic_uniform_gauss_gradient(
