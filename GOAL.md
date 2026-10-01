@@ -1700,3 +1700,22 @@ current benchmark uses even widths, so its recorded spectra are unaffected.
 Reproducer outputs, source hashes, and live API state are in
 `evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T0337Z.json` and
 `evidence/upstream-refresh/physicsnemo-2026-10-01T0335Z/`.
+
+## Revision 105 — OpenFOAM cap4096 AMR candidates recovered from archive
+
+Corrected the event-audit interpretation that described the cap4096 case as
+having zero candidates: its log establishes zero refinement events, while the
+unrefinement “split points” lines do not measure refinement candidates. A new
+reproducible audit checks the raw archive hash, reconstructs the 16^3 periodic
+mesh from archived centers, verifies the prescribed sensor to 9.99e-16, and
+applies the pinned Foundation 13 strict thresholds and one-layer face-neighbor
+buffer. It recovers 1,280 raw sensor-eligible cells and 1,792 buffered
+candidates before the maxCells guard. Since the unchanged 4,096-cell mesh is
+already at maxCells=4,096, the source guard skips selection. The cap5000 log
+independently selects 1,792 cells and its mesh grows by 7*1,792, confirming the
+reconstruction. The eligible-check count is still unknown, and this expected
+guard behavior does not establish a defect. Updated the source-budget report,
+event audit, and v2 manifest without changing the generic log-only
+`blocked_candidate_count` field. Reproduce with
+`work/reference-check-env/bin/python tools/audit_openfoam_amr_candidate_budget.py`;
+the evidence is `evidence/tests/openfoam-amr-candidate-budget-audit.json`.

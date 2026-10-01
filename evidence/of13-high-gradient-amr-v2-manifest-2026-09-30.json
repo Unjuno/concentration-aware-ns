@@ -44,6 +44,12 @@
         "cell_budget_reached_or_exceeded": true,
         "max_level_reached": false,
         "blocked_candidate_count": "UNOBSERVED",
+        "retrospective_candidate_budget_audit": {
+          "record": "evidence/tests/openfoam-amr-candidate-budget-audit.json",
+          "pre_maxCells_guard_candidates_per_eligible_check": 1792,
+          "eligible_check_count": "UNOBSERVED",
+          "interpretation": "Reconstructed from archived sensor and periodic mesh using pinned Foundation 13 buffer semantics; selection guard is skipped when currentGlobalCells equals maxCells. This supplements, but does not rewrite, the generic event-log diagnostic above."
+        },
         "velocity_relative_volume_l2": 0.08875833380125644,
         "max_gradient_gauss": 0.4004007090650746,
         "reference_max_gradient_cell_samples": 0.6358050129577074,
@@ -149,5 +155,5 @@
       "source_tree_sha256": "374446d0feb1a37efbe2e6e400576439b05995e378019a6df8edb7de193b73dd"
     }
   ],
-  "interpretation": "AMR integration/accuracy pilot. Cell budgets are approximate at synchronization points, and blocked candidate counts are unobserved. All local-quality verdicts remain UNCERTAIN."
+  "interpretation": "AMR integration/accuracy pilot. Cell budgets are approximate at synchronization points. A retrospective source-and-archive audit recovers 1792 pre-guard candidates per eligible check for cap4096, but not the number of checks; other blocked candidate counts remain unobserved. All local-quality verdicts remain UNCERTAIN."
 }
