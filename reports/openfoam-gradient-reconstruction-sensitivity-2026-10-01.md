@@ -25,6 +25,13 @@ Machine-readable values, run archive hashes and limitations are in `evidence/tes
 
 The benchmark's next-gate design follow-up is tracked in [issue #5](https://github.com/Unjuno/concentration-aware-ns/issues/5). It preserves the frozen v2 verdicts and proposes reporting the analytic-reference diagnostic separately from a stencil-matched discrete reference; it does not classify this observation as an OpenFOAM defect.
 
+The next step now also includes a 128-bit Arb coefficient-sum bound for the
+continuous derivative error of one named trigonometric interpolant through the
+archived values. It bounds gradient and vorticity inter-sample errors for
+n=16/32/64, while explicitly leaving the finite-volume field uncertified. See
+[`openfoam-trigonometric-supremum-bound-v3.md`](openfoam-trigonometric-supremum-bound-v3.md)
+and `evidence/tests/openfoam-trig-supremum-arb-v3.json`.
+
 ## Successor diagnostic synthetic controls
 
 The issue #5 acceptance criteria also call for a synthetic control separating

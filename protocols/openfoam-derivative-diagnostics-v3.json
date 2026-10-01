@@ -13,9 +13,21 @@
       "analytic-reference sampled peak discrepancy (total diagnostic, includes reconstruction error)",
       "reference-only stencil floor against analytic derivatives",
       "computed-versus-stencil-matched-reference discrete gradient and vorticity differences",
-      "continuous-field or inter-sample error certificate (must remain false absent a validated bound)"
+      "continuous/inter-sample error bound for the named trigonometric reconstruction; only report a bound validated for that reconstruction",
+      "finite-volume-field continuous error certificate (remains false unless separately justified)"
     ],
-    "continuous_extremum_claim_allowed": false
+    "named_trigonometric_reconstruction_bound_allowed": true,
+    "finite_volume_field_continuous_extremum_claim_allowed": false
+  },
+  "continuous_bound_method": {
+    "tool": "tools.audit_openfoam_trig_supremum",
+    "precision_bits": 128,
+    "spatial_resolution_cases": [16, 32, 64],
+    "coefficient_bound": "sup ||grad e||_F <= sum_k |k| ||e_hat_k||_2",
+    "vorticity_bound": "sup ||curl e||_2 <= sqrt(2) * sup ||grad e||_F",
+    "denominator": "rigorous lower bound for the analytic continuum peak from a sampled analytic component",
+    "arithmetic": "Arb/Acb interval balls, including the DFT",
+    "scope": "continuous error of the real cell-centered trigonometric interpolant through archived decimal samples only"
   },
   "synthetic_controls": {
     "grid_cells_per_axis": 32,
