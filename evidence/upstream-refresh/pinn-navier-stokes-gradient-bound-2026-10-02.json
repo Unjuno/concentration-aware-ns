@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-10-01T21:38:27Z",
+  "scope": "Read-only primary-paper audit; no solver, model, or proof checker run.",
+  "paper": {
+    "title": "Error estimates for physics-informed neural networks approximating the Navier-Stokes equations",
+    "authors": ["Tim De Ryck", "Ameya D. Jagtap", "Siddhartha Mishra"],
+    "journal": "IMA Journal of Numerical Analysis",
+    "volume_issue_pages": "44(1), 83-119",
+    "published_online": "2023-01-18",
+    "journal_issue": "2024-01",
+    "doi": "10.1093/imanum/drac085",
+    "journal_url": "https://academic.oup.com/imajna/article/44/1/83/6989836",
+    "author_manuscript": "https://arxiv.org/abs/2203.09346",
+    "primary_claim_checked": {
+      "location": "Theorem 3.4, equation (3.26), Remark 3.5; Theorem 3.10",
+      "finding": "The L2 stability/error estimate includes a Gronwall factor exponential in T times (2 d^2 times the L-infinity norm of the exact velocity gradient plus 1). Remark 3.5 says strong-vorticity/large-gradient classical solutions can make the bound indicate large generalization error.",
+      "scope_limit": "Conditional classical-solution estimate with residual, boundary/interface, regularity, and network-related terms; not a claim that all high-gradient cases fail or that the current benchmark violates the theorem."
+    }
+  },
+  "benchmark_relation": {
+    "physicsnemo_observation": "Existing finite-budget study reports sampled gradient errors near 1%; held-out residuals are separate, exact incompressibility is not enforced, and continuous peak errors are uncertified.",
+    "threshold_status": "The 5% comparator was borrowed from the OpenFOAM protocol and was not preregistered for PhysicsNeMo.",
+    "disposition": "Supports local derivative metrics as complementary validation targets; no upstream defect, theorem violation, blow-up, or molecular/viscosity conclusion."
+  }
+}

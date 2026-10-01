@@ -1,5 +1,39 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 172 — primary PINN gradient-bound claim checked
+
+Inspected the author manuscript and journal record for De Ryck, Jagtap and
+Mishra's Navier–Stokes PINN error analysis. Theorem 3.4's L2 stability estimate
+contains a Grönwall factor exponential in the exact solution's
+`||∇u||_{L∞}`; Remark 3.5 says strong-vorticity/large-gradient classical
+solutions can make the bound indicate large generalization error. This is
+conditional theory and motivates complementary local derivative checks; it
+does not assert failure for every high-gradient case or show that our current
+PhysicsNeMo run violates the theorem. Existing PhysicsNeMo metrics remain
+finite-sample descriptive, with uncertified continuous peaks and a 5%
+comparator not preregistered for that solver. No upstream report is warranted
+from this literature audit alone. Detailed scope and structured source record:
+`reports/pinn-navier-stokes-gradient-bound-scope-2026-10-02.md` and
+`evidence/upstream-refresh/pinn-navier-stokes-gradient-bound-2026-10-02.json`.
+Overall benchmark goal remains active.
+
+## Revision 171 — six-case concentration-gate claim replayed from current archives
+
+Re-ran `python -m tools.verify_openfoam_high_gradient_matrix` against the
+current six-case index. The verifier passed archive, manifest, protocol and
+endpoint checks; all six cases pass the configured standard-acceptance gate.
+The frozen local-quality gate fails at n=16 and n=32 and passes at n=64, n=128,
+and both finer n=64 time steps. The preregistered persistent-blind-spot verdict
+is `NOT_OBSERVED`. This demonstrates a finite-resolution mismatch between the
+configured standard gate and the separate local-quality gate in two cases; it
+does not establish a general defect in residual-based stopping, an OpenFOAM
+bug, or a physical singularity. Archive-level replay JSON is
+`evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-02-followup.json`.
+The high-gradient AMR quality attribution remains `UNCERTAIN`; its fixed-final-
+mesh comparison narrows but does not isolate coarse-history/interpolation/flux
+effects. This evidence sharpens the benchmark claim and does not upgrade its
+solver-defect verdict. Overall benchmark goal remains active.
+
 ## Revision 170 — pre-publication source head passes tracked-only replay
 
 Exported tracked commit `84a3cc6e4bffad458466441201e3b45bcdd77fc6` into a
