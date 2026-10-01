@@ -699,13 +699,22 @@ upstream report is warranted by the present evidence.
 Constantin, Ignatova and Vicol's [arXiv:2609.20803](https://arxiv.org/abs/2609.20803)
 proves regularity near the proposed singular point under its stated anisotropic
 Type-II bounds, exact axisymmetry in a collapsing core, and spatially analytic
-forcing assumptions. This does not refute a construction with merely smooth
-forcing; the paper itself states the force would need to be spatially
-nonanalytic under its additional hypotheses. We have not independently checked
-those hypotheses or applied the theorem to the OpenAI force. This is an
-important source-audit question, not evidence for particle alignment or a
-viscosity law. Detailed scope notes are in
-`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`.
+forcing assumptions. Version 2's Appendix A crosswalks the Type-II, core,
+force-regularity and pure-swirl/axis-value properties to the OpenAI manuscript
+and explicitly disclaims verification of the construction's correctness. Our
+separate note checks the implication chain and identity-theorem deduction
+against both primary texts. Conditional on the cited properties and claimed
+singularity, analytic forcing is excluded and the force is not identically
+zero on neighborhood cylinders; the independent pure-swirl route excludes
+common spatial analyticity on specified slabs without the blow-up hypothesis.
+Neither route bounds force amplitude or establishes physical actuation,
+particle alignment, viscosity change, or a solver defect. See
+`reports/openai-analytic-forcing-bridge-2026-10-01.md` and
+`evidence/openai-analytic-forcing-v2-audit.json`. OpenAI Lemma 10.2's zero
+endpoint jets plus its smooth extension make the force flat at the point;
+combined with conditional nonvanishing on every surrounding cylinder, this is
+a flat-at-the-point but locally active force. It still supplies no positive
+amplitude lower bound.
 
 ## 2026-10-01 independent archive replay
 

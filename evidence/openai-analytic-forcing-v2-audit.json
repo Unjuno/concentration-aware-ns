@@ -1,0 +1,59 @@
+{
+  "audit_date": "2026-10-01",
+  "status": "SOURCE_CROSSWALK_AND_CONDITIONAL_ANALYTIC_DEDUCTION",
+  "scope": "Compare the current analytic-forcing regularity preprint with its cited OpenAI construction data; not an independent proof verification or physical conclusion.",
+  "sources": {
+    "regularity_preprint": {
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "authors": ["Peter Constantin", "Mihaela Ignatova", "Vlad Vicol"],
+      "arxiv_id": "2609.20803",
+      "version": "v2",
+      "version_date": "2026-09-29",
+      "url": "https://arxiv.org/html/2609.20803v2",
+      "locations": ["Theorem 1.1", "Corollary 2.3", "Remark 2.6", "Appendix A.2-A.6"]
+    },
+    "openai_manuscript": {
+      "title": "Finite Time Blowup for Navier-Stokes",
+      "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+      "locations": ["Theorem 1.1", "Theorem 3.1", "Section 10, especially Proposition 10.1 and Lemmas 10.2-10.3", "Appendix B.1"]
+    }
+  },
+  "crosswalk": {
+    "openai_force_class": "C-infinity compactly supported in space-time, stated in OpenAI Lemma 10.3; implies bounded spatial C2 norm through the endpoint.",
+    "force_endpoint_jets": "OpenAI Lemma 10.2 states that every mixed derivative has an endpoint limit partial_x^alpha F_j(x) with partial_x^alpha F_j(0)=0 for every alpha,j. The Lemma 10.3 smooth extension therefore has zero full space-time Taylor jet at (0,1).",
+    "angular_mean_anisotropic_bounds": "Preprint Appendix A.2 derives the bounds it uses from cited OpenAI source statements.",
+    "collapsing_exact_axisymmetric_core": "Preprint Appendix A.3 derives a nonempty axisymmetric core at each preterminal time from cited OpenAI support geometry.",
+    "pure_swirl_open_set": "Preprint Appendix A.3 derives an off-axis open space-time set E on which u_r=u_z=0.",
+    "axis_value": "OpenAI Appendix B.1 sets U*(eta)=4 eta+j0, 0<j0<=0.05; the preprint derives u_z(0,-tau)=j0 tau^(-A) and partial_z u_z(0,-tau)=4/tau for small tau>0."
+  },
+  "conditional_results": [
+    {
+      "id": "typeII_axisymmetry_analyticity_obstruction",
+      "premises": ["suitable weak solution", "uniform spatial C2 bound on force through endpoint", "local-uniform spatial real analyticity of force on interior time cylinders", "anisotropic Type-II estimates on angular mean through order two", "nonempty exactly axisymmetric core at each preterminal time"],
+      "theorem": "Regularity at the candidate point",
+      "contrapositive_for_openai_claim": "If the cited source crosswalk holds and the OpenAI construction is singular, its force violates the local-uniform spatial analyticity condition.",
+      "additional_corollary": "Under the same crosswalk and singularity assumption, the force is not identically zero on any space-time cylinder B(R') x (-delta',0) around the point."
+    },
+    {
+      "id": "pure_swirl_analytic_continuation_obstruction",
+      "premises": ["u_r=u_z=0 on nonempty open E off axis over a time interval", "u_z on axis is nonzero at the interval endpoint", "solution is smooth before endpoint", "candidate force has a common spatial real-analyticity bound on a ball intersecting E over the interval"],
+      "deduction": "Interior analyticity makes u_z spatially analytic; vanishing on E and the identity theorem force u_z to vanish on the connected ball, contradicting continuity and the nonzero axis value.",
+      "consequence": "No such common spatial analyticity bound exists; force cannot vanish identically on that ball-time slab because zero is analytic.",
+      "does_not_require": ["blow-up claim", "anisotropic Type-II estimates", "shrinking-core regularity theorem"]
+    },
+    {
+      "id": "flat_but_active_force_near_point",
+      "premises": ["OpenAI endpoint-jet statement in Lemma 10.2", "smooth extension in Lemma 10.3", "conditional nonvanishing on every neighborhood cylinder from preprint Corollary 2.3 and Appendix A crosswalk"],
+      "deduction": "All space-time derivatives of the extended force vanish at the singular point, while under the stated singularity/crosswalk assumptions the force is not identically zero in any surrounding space-time cylinder.",
+      "flatness_bound": "For every finite m, f(x,t)=o((|x|+|t-1|)^m); hence its supremum on B(r) x (1-r^2,1) is o(r^m).",
+      "does_not_imply": ["positive lower bound on force amplitude", "specified nonzero point or duration", "actuator feasibility", "numerical under-resolution"]
+    }
+  ],
+  "limitations": [
+    "The preprint authors explicitly state they do not claim to verify the correctness of the OpenAI construction; this audit records and checks the cited implication chain, not the complete source proof.",
+    "Non-identically-zero in every neighborhood cylinder gives no positive lower bound on amplitude, duration, location, or actuation cost; flatness is only an upper-order statement.",
+    "No molecular, constitutive-viscosity, numerical-solver, or engineering-safety implication follows.",
+    "No simulation was run and no upstream software defect is identified."
+  ],
+  "report": "reports/openai-analytic-forcing-bridge-2026-10-01.md"
+}

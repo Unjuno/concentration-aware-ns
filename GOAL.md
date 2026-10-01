@@ -1719,3 +1719,23 @@ event audit, and v2 manifest without changing the generic log-only
 `blocked_candidate_count` field. Reproduce with
 `work/reference-check-env/bin/python tools/audit_openfoam_amr_candidate_budget.py`;
 the evidence is `evidence/tests/openfoam-amr-candidate-budget-audit.json`.
+
+## Revision 106 — flat-but-active forcing boundary cross-checked against both papers
+
+Refreshed Constantin–Ignatova–Vicol arXiv:2609.20803 to v2 (29 September) and
+read its Theorem 1.1, Corollary 2.3, Remark 2.6 and Appendix A against the
+official OpenAI Navier–Stokes manuscript. Conditional on the construction's
+claimed singularity and the authors' cited source crosswalk, analytic forcing
+is excluded and the force cannot vanish on any neighborhood cylinder. A
+separate identity-theorem argument uses the paper's pure-swirl open set and
+nonzero axial velocity to exclude a common spatial-analyticity bound on the
+relevant ball-time slabs without assuming blow-up or the Type-II theorem.
+OpenAI Lemma 10.2 also gives zero mixed space-time force jets at the terminal
+point, while Lemma 10.3 extends the force smoothly; combined with conditional
+nonvanishing, this is a flat-but-active forcing boundary. The force remains
+smooth and C2-bounded; the result supplies no amplitude lower bound, actuator
+claim, molecular inference, or solver defect. The derivation, source locations,
+assumptions, and limits are recorded in
+`reports/openai-analytic-forcing-bridge-2026-10-01.md` and
+`evidence/openai-analytic-forcing-v2-audit.json`; no simulation or upstream
+post was warranted.

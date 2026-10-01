@@ -91,14 +91,24 @@ asymptotic time order or a general solver verdict; see
 
 ## 2026-10-01: conditional regularity result for analytic forcing
 
-Constantin, Ignatova and Vicol's 2026-09-17 preprint
-[arXiv:2609.20803](https://arxiv.org/abs/2609.20803) proves regularity near a
-candidate singular point assuming the anisotropic Type-II bounds and exact
-axisymmetry in a collapsing core identified in OpenAI's construction, when the
-forcing is spatially real analytic. This constrains any construction satisfying
-those hypotheses: its force cannot be analytic locally uniformly in time (or
-vanish identically near the point) if it remains bounded in `C^2` to the
-singular time. It does not contradict a merely `C∞` force, and we have not
-verified the hypotheses against OpenAI's actual force. Treat this as a
-conditional mathematical check, not a molecular interpretation. Full caveats
-are in the [hypothesis audit](../reports/recent-developments-and-hypothesis-audit-2026-09-28.md).
+Constantin, Ignatova and Vicol's preprint [arXiv:2609.20803
+v2](https://arxiv.org/html/2609.20803v2), revised 2026-09-29, proves
+regularity near a candidate singular point under spatially analytic forcing,
+anisotropic Type-II bounds for the angular mean, and exact axisymmetry on a
+collapsing core. Its Appendix A crosswalks those profile properties and the
+`C^2`-bounded smooth force to cited OpenAI statements; the authors explicitly
+do not claim to verify the OpenAI construction. Conditional on that crosswalk
+and the claimed singularity, Corollary 2.3 implies the force is not locally
+uniformly spatially analytic and is not identically zero in any neighborhood
+cylinder. Independently, Remark 2.6 uses the cited pure-swirl open set and
+nonzero axial velocity to rule out a common spatial-analyticity bound on
+time-slabs intersecting that set, without invoking blow-up or Type-II bounds.
+These restrictions do not imply a lower bound on force amplitude or physical
+actuation feasibility. The full assumption map and elementary continuation
+argument are in
+[`openai-analytic-forcing-bridge-2026-10-01.md`](../reports/openai-analytic-forcing-bridge-2026-10-01.md).
+OpenAI Lemmas 10.2-10.3 also imply that all mixed space-time jets of the
+extended force vanish at the singular point. Together with conditional
+nonvanishing in each neighborhood cylinder, this yields the sharper
+"flat-at-the-point but locally active" description, with no force-amplitude
+lower bound.
