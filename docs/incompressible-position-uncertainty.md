@@ -70,9 +70,9 @@ Both targets build from a clean checkout at commit
 This correction establishes the repository's formal claim as Lean code, not
 independent mathematical validity of every analytic argument or a molecular
 model. The measure result below remains a kinematic consequence for any smooth
-divergence-free field whose classical flow map exists.
-Applying the measure bound to that candidate field additionally presumes its
-flow map exists as a smooth diffeomorphism on the interval under consideration.
+divergence-free field whose classical flow map exists. The application-specific
+flow-map existence argument is supplied in the section below, using periodicity
+and compactness for each fixed preterminal interval.
 No endpoint flow map at `t=1` is asserted. The result does not cover a
 point-mass initial law, an unbounded initial density, stochastic molecular
 motion, finite-particle collisions, or a constitutive-viscosity response.
@@ -81,5 +81,43 @@ Reproduce the abstract measure inequality with
 `sh runtime/lean-verification/check_volume_preserving_position_bound.sh` in the
 prepared pinned Lean environment. The extension reports only `propext`,
 `Classical.choice`, and `Quot.sound`. The classical Jacobian/change-of-variables
-step and the application-specific global flow-map hypotheses remain separate
-from that formalized measure lemma.
+argument is not part of that formalized measure lemma; its candidate-specific
+preterminal use is given classically above.
+
+## Application to the pinned periodic candidate before its endpoint
+
+The flow-map condition is available on every compact subinterval strictly
+before `t=1`, conditional on the pinned candidate theorem. Its
+`CandidateProperties` supplies a smooth velocity on `Ico 0 1 × Space`, unit
+spatial periodicity, and zero divergence at every interior time. Fix
+`0 < t0 < T < 1`. Periodicity lets the velocity descend to a smooth
+time-dependent vector field on the compact flat torus `T^3`; smoothness on
+`[t0,T] × T^3` gives bounded spatial derivative. Standard ODE existence and
+uniqueness on a compact manifold therefore gives a flow of diffeomorphisms
+throughout `[t0,T]`. Its derivative `J` obeys
+
+```
+J' = (D u)(t, X(t)) J,
+(det J)' = (div u)(t, X(t)) det J = 0,
+det J(t0) = 1.
+```
+
+Thus the flow preserves torus volume on every such interval. The source theorem
+is a Lean-checked repository claim at the pinned commit, but this classical
+ODE/change-of-variables bridge is not itself formalized in Lean here. The
+deduction is conditional on the mathematical validity of that candidate
+construction; it does not independently validate its proof.
+
+Consequently, at any fixed `T<1`, an ensemble of passive tracers whose law at
+`t0` has density at most `K` relative to torus volume satisfies
+`P(X(T) ∈ B_T) ≤ K vol(B_T)` for every measurable, even moving, target set.
+For a geodesic ball of radius `R<1/2` in the unit flat torus,
+`vol(B_T)=4πR^3/3`, so if `K 4πR^3/3 < 1`, the ensemble cannot have probability
+one inside that ball at that time. This is a finite-time, continuum passive-
+tracer statement. It gives no bound uniform in the singular limit if the
+initial density bound `K` or target radius changes with time; it says nothing
+about a point-mass tracer, Brownian/molecular dynamics, or particle orientation.
+
+This sharpens the application scope of the abstract measure lemma; it still
+does not turn directional alignment of infinitesimal material vectors into
+position certainty or a constitutive law.

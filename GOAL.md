@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 169 — tracer-position bound applied to the pinned candidate
+
+Connected the Lean-checked transported-mass inequality to the pinned OpenAI
+periodic candidate on every fixed preterminal interval `[t0,T]` with
+`0<t0<T<1`. Its claimed smoothness, unit periodicity, and divergence-free
+property descend to a smooth field on compact `T^3`; standard ODE existence
+and Liouville's determinant formula then give a volume-preserving flow on that
+interval. For any tracer ensemble with density bounded by `K` at `t0`, the
+probability of any measurable moving target at `T` is at most `K` times its
+volume. For unit-torus balls of radius `R<1/2`, this is `K*4πR^3/3`.
+The measure inequality's Lean replay exits 0 with only the standard
+`propext`, `Classical.choice`, and `Quot.sound` axioms; the classical ODE bridge
+is documented but not Lean-formalized. This does not describe point-mass,
+Brownian, molecular, or orientation dynamics, nor establish a bound uniform at
+the singular endpoint. See `docs/incompressible-position-uncertainty.md`.
+Overall goal remains active.
+
 ## Revision 168 — current OpenFOAM matrix independently rechecked
 
 Re-ran `PYTHONPATH=. python3 tools/verify_openfoam_high_gradient_matrix.py`
