@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 160 — prospective PhysicsNeMo held-out gate evaluated
+
+To address the old PhysicsNeMo verdict's missing preregistered threshold, froze
+`protocols/physicsnemo-heldout-validation-v2.json` at commit `d2e71d71` before
+the full evaluation. It applies the shared benchmark tolerances (2% velocity
+L2/energy, 5% sampled gradient/vorticity peaks, spectrum L1, and normalized
+divergence) to the five fixed cases across five archived seeds. All 25 frozen
+models completed on a new 64^3 shifted spatial grid from the pinned v2.2.1
+source. Nineteen passed all sampled metrics; six failed only velocity L2,
+including all five cases for seed 8191. Every sampled local metric passed, so
+the preregistered sampled global-pass/local-fail conjunction was
+`NOT_OBSERVED` wherever global metrics passed. This does not certify continuous
+extrema, optimizer convergence, or population behavior; continuous local
+quality remains `UNCERTAIN`. Full results and limitations are in
+`reports/physicsnemo-heldout-validation-v2-2026-10-02.md` and
+`evidence/physicsnemo-heldout-validation-v2/results.json`. The new protocol,
+evaluator and tests are on PR #4; the full Python test suite and current CI
+still need verification. Overall goal remains active.
+
 ## Revision 159 — six-case matrix status reconciled against the archives
 
 Rechecked the apparent conflict between the immutable base manifest and the

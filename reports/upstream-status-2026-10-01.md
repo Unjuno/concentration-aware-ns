@@ -175,3 +175,16 @@ was filed. OpenFOAM Foundation 13 and OpenAI `NavierStokesAndEuler` heads remain
 unchanged from the prior snapshot; the OpenAI repository has issues and
 discussions disabled. Exact current states are in
 `evidence/upstream-refresh/live-status-2026-10-01T1424Z.json`.
+
+## PhysicsNeMo acceptance follow-up, 2026-10-02
+
+The earlier statement that no numerical threshold was preregistered applies
+only to the frozen v1 study and its original verdicts. A successor policy was
+committed before a new evaluation at `d2e71d71`: it applies the benchmark's
+shared 2% global and 5% local/spectral tolerances to all 25 archived models on
+a shifted 64^3 endpoint grid. Nineteen pass all sampled metrics; six miss only
+the 2% velocity L2 limit, including all five cases for seed 8191. All sampled
+local metrics pass. Continuous extrema and optimizer convergence remain
+uncertified, and no upstream issue is warranted. Reproduce and inspect the
+scope in `reports/physicsnemo-heldout-validation-v2-2026-10-02.md` and
+`evidence/physicsnemo-heldout-validation-v2/results.json`.
