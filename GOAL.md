@@ -1557,3 +1557,18 @@ frozen threshold comparisons and UNCERTAIN gates are unchanged; this does not
 certify continuous numerical-field energy. See
 reports/su2-study-v1-interim.md and
 evidence/tests/su2-standard-review.json.
+
+## Revision 96 — SU2 sampled shell-spectrum contrast separated
+
+Added a reproducible three-way comparison of the archived solver FFT shell
+energy, analytic-reference FFT on the same vertices, and continuum Fourier
+shell energies. The reference's grid sampling/aliasing/shell-assignment
+contrast is 0.00718% at n=16 and below 1e-12% at n=32/64 when normalized by
+continuum kinetic energy; solver-sample versus analytic-sample contrasts are
+12.0738%, 2.4667%, and about 0.3552% at n=16/32/64. Both FFT shell totals
+match their respective sampled kinetic energies within 2.8e-17. The comparison
+does not certify a continuous numerical spectrum, and continuum coefficients
+retain the mode-cube cutoff-32 non-interval tail limitation. Frozen gates are
+unchanged. Reproduction and hashes are in
+reports/su2-study-v1-interim.md and
+evidence/tests/su2-spectral-aliasing-audit.json.

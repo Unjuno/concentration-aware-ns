@@ -169,9 +169,9 @@ Evidence: evidence/tests/su2-standard-review.json, with archive SHA256 values.
 
 ## Analytic vertex-grid energy reference
 
-The manufactured field has (u=\nabla\psi\times(1,2,3)), with
+The manufactured field is (u = grad(psi) cross (1,2,3)), with
 \(\psi=e^{-t}\exp[\beta\sum_j(\cos d_j-1)]\),
-\(d_j=x_j-\pi\), and \(\beta=\sigma^{-2}\). For the frozen even-(n)
+\(d_j=x_j-\pi\), and \(\beta=\sigma^{-2}\). For the frozen even-n
 grid \(x_j=2\pi j/n\), separability and symmetry give its exact discrete
 mean kinetic energy from two one-dimensional finite sums:
 
@@ -193,3 +193,30 @@ observed energy discrepancies; the frozen threshold outcomes are unchanged.
 This compares sampled kinetic energy only and is not a continuous-field error
 certificate. The case-by-case values and archive hashes are in
 `evidence/tests/su2-standard-review.json`.
+
+## Three-way sampled-spectrum audit
+
+The same distinction was applied to the radial shell spectrum using each
+archive's solver FFT, its analytic-reference FFT at the identical unique
+vertices, and the continuum Fourier shell energies. All three comparisons use
+zero-padded shell vectors and normalize L1 differences by continuum reference
+energy. Results are percentages:
+
+| Case | Solver samples vs analytic samples | Analytic samples vs continuum | Solver samples vs continuum |
+|---|---:|---:|---:|
+| n16 dt=.001 | 12.0738% | 0.00718% | 12.0772% |
+| n32 dt=.001 | 2.4667% | <1e-12% | 2.4667% |
+| n64 dt=.001 | 0.35519% | <1e-12% | 0.35519% |
+| n64 dt=.0005 | 0.35531% | <1e-12% | 0.35531% |
+| n64 dt=.00025 | 0.35536% | <1e-12% | 0.35536% |
+
+For the coarsest grid, the sampled-reference/continuum contrast is again
+negligible compared with the solver-sample contrast. This separates the
+reference's grid-sampling, aliasing and shell-assignment contribution from
+the difference between the two sampled fields; it does not certify a
+continuous numerical spectrum. Parseval energy residuals for both FFT arrays
+are at most 2.8e-17. The continuum spectrum uses the existing mode-cube
+cutoff-32 floating-point coefficients, whose omitted tail is not an interval
+bound. Reproduce with `python -m tools.audit_su2_spectral_aliasing`; archive
+hashes and raw contrasts are recorded in
+`evidence/tests/su2-spectral-aliasing-audit.json`.
