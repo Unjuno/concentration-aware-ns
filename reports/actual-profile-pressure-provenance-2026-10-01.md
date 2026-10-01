@@ -82,3 +82,42 @@ already checked alternate `ConcentrationAwareQualifiedProfile.profileData`
 only proves the second route for a separate selection and is not evidence
 about `FinalSlowBase.actualProfile`. No counterexample, full periodic-flow
 pressure conclusion, or molecular/constitutive consequence is established.
+
+## 2026-10-02 retained-preparation route audit
+
+A deeper source pass checked whether the stored nominal axis stage could
+recover the lost lower bound. `NominalProfile.Witness.axis` is an
+`AxisStage`; its `preparation` stores `AnalyticInputs`, a scale bound, and an
+`entrances` field asserting nonempty `NaturalEntrance.EntranceProfile` values
+for every sufficiently large normalization and admissible coefficient bound.
+Those entrance profiles retain the `source_lower`, `slope_positive`, and
+`cone_margin` inequalities. This is substantially more information than the
+bare positive-amplitude theorem, so it remains a plausible route to a derived
+lower bound.
+
+The type boundary is nevertheless unchanged: `prepare_axis` consumes
+`hP : 2 ≤ F.data.core.P` to build the preparation, but `AxisPreparation`,
+`AxisStage`, `Witness`, and `FinalSlowBase.ProfileData` do not store that proof
+or a `PreparedOutgoing.PreparedProfile`. `AnalyticInputs` stores coefficient
+families indexed by the actual pressure function, but has no numeric lower
+bound field. `ideal_prefix_entranceProfile` itself is a construction theorem
+whose input includes `hB : 2 ≤ B`; it does not establish that an arbitrary
+retained entrance record implies the same inequality. I found no named theorem
+in the pinned source deriving `2 ≤ core.P` from these retained fields. That
+search is not a proof that no derivation exists.
+
+The exact pinned source SHA-256 values rechecked for this path are:
+
+| Source | SHA-256 |
+|---|---|
+| `NaturalAxisCoefficients.lean` | `cf762100d7de681f34aba5dcfeecac4b81e6b5d2cda8ec781236e4b3fdd3d9fd` |
+| `NaturalEntrance.lean` | `05d4871c68cbf59486ba5a34fe42c3c3963218e2ba7be2408363d5f8a8f26af3` |
+| `NominalProfile.lean` | `59f2977035db50e680ee38cf4503c47497e50a58a6043d083fdd8755dac06c88` |
+| `NominalConeAssembly.lean` | `ad0f8947723416c950c1e3cbb82bac8c83b03ef25fa5aba495a3e29508b14cb5` |
+| `FinalSlowBase.lean` | `d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314` |
+
+The actual-profile pressure sign therefore remains conditional. The next
+proof attempt should either establish the required moment threshold directly
+from the universally retained entrance inequalities, or carry a prepared
+profile witness into the final choice. Until one succeeds, do not apply the
+separate existential-profile pressure theorem to `actualProfile`.

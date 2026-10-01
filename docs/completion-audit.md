@@ -878,6 +878,20 @@ The source-backed dataflow and limits are described in
 the evidence identifies a missing transfer theorem/data field in our extension,
 not a defect or false claim in their repository.
 
+### 2026-10-02 retained-preparation inequality follow-up
+
+A further audit traced the retained `AxisPreparation.entrances` field. It
+contains universally quantified `NaturalEntrance.EntranceProfile` records,
+including `source_lower`, `slope_positive`, and `cone_margin` inequalities.
+These are a concrete possible route to derive the missing lower bound, but the
+final selected records still carry neither the consumed `2 <= core.P` proof
+nor a `PreparedProfile`; no theorem deriving that bound from the retained
+entrance inequalities was found. This is a bounded source search, not a proof
+that such a derivation is impossible. Thus the pressure premise remains
+conditional, and no upstream defect or physical consequence is established.
+Exact pinned hashes and field-level analysis are in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`.
+
 ### 2026-10-02 source-schema follow-up
 
 Rehashed `PreparedOutgoing.lean`, `NominalConeAssembly.lean` and
