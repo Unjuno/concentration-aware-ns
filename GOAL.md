@@ -1612,6 +1612,19 @@ a defect. Details and reproduction are in
 reports/solver-matrix-coverage-2026-09-30.md and
 evidence/tests/amr-p0-projection-decomposition.json.
 
+## Revision 100 — AMR prescribed-sensor mapping checked against archive
+
+Parsed the archived t=.003 `refineSensor`, centers, volumes, and `cellLevel`
+after checking the frozen protocol and archive hashes. The stored sensor
+matches `g(y)g(z)`, the explicitly prescribed analytic envelope, with maximum
+absolute residual 3.33e-15 over 16,640 cells. Level 1 occupies 43.75% of the
+domain volume and contains all cells with sensor >=.01; 72.32% of its volume
+is above that threshold, consistent with threshold-edge and buffer effects.
+This verifies implementation of the known sensor and its mesh footprint, not
+blind detection, particle alignment, or a physical transition. Reproduce with
+`work/reference-check-env/bin/python -m tools.audit_amr_sensor_mapping`; the
+hash-pinned output is `evidence/of13-amr-first-refinement-v1/sensor-mapping-audit.json`.
+
 ## Revision 99 — AMR level-wise MMS energy and gradient localization
 
 Extended the exact Fourier cell-integral audit to the squared Frobenius norm

@@ -334,3 +334,26 @@ It reads the four archived extracted final fields, checks mesh ordering and
 solver completion, records each field/input/log hash, and performs no solver
 execution. The n=128 source archive integrity remains covered by the fixed-time
 matrix replay described above.
+
+### AMR sensor-to-level audit
+
+The archived `refineSensor` at t=0.003 was independently evaluated against the
+frozen prescribed formula `g(y)g(z)`, where
+`g(q)=(1+cos(q))^4/16`. Across all 16,640 cells, the maximum absolute sensor
+residual is 3.33e-15 (RMS 3.14e-16), confirming that the stored sensor is the
+analytic envelope sampled at the archived cell centers. Level 1 covers 43.75%
+of domain volume; it contains every cell with sensor >=0.01, while 72.32% of its
+volume lies above that threshold. The rest is consistent with threshold-edge
+and buffer-layer effects; the frozen refiner uses a buffer layer, so exact
+sensor-threshold equivalence is not expected. At thresholds 0.1 and 0.5, all
+selected volume is level 1, but those thresholds cover 38.39% and 11.61% of
+level-1 volume respectively. Level 0 has sensor <=0.000893 in this checkpoint.
+
+This is a consistency check of an intentionally informed AMR setup: the
+source hook writes the same known manufactured envelope used by the reference.
+The level/sensor correlation is therefore built into the experiment. It does
+not show that the solver discovered a hidden concentration, that physical
+particles aligned, or that a phase transition occurred. The complete field
+parsing, protocol/archive hash checks and threshold table are reproducible via
+`work/reference-check-env/bin/python -m tools.audit_amr_sensor_mapping`; output
+is saved in `evidence/of13-amr-first-refinement-v1/sensor-mapping-audit.json`.
