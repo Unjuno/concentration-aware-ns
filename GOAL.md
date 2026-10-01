@@ -1739,3 +1739,17 @@ assumptions, and limits are recorded in
 `reports/openai-analytic-forcing-bridge-2026-10-01.md` and
 `evidence/openai-analytic-forcing-v2-audit.json`; no simulation or upstream
 post was warranted.
+
+## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
+
+The general `docs/protocol.md` still described the independent reference as
+TODO, all solver studies as unrun, and tolerances as unfrozen, despite later
+frozen protocols and evidence. It now explicitly serves as a methodology/index
+and points to the solver-specific protocols, manifests, and coverage report.
+The PR #4 branch also records the source-backed distinction that benchmark
+initial OpenFOAM `U` is generated from cell-centre samples, while the exact
+cell-average interpretation of time-evolved values remains unproved. The
+locked reference environment ran 138 tests (one skipped), and GitHub CI passed
+for the documentation update. This repairs evidence navigation and terminology;
+it does not close the three-project audit, analytic limitations, or publication
+deliverables, so the overall goal remains active.
