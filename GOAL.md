@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 173 — PhysicsNeMo boundary-gradient issue triaged against benchmark path
+
+Rechecked the live NVIDIA/physicsnemo repository at main
+`83d6a337eecfc70e215ed1978af8dba9a38580fb` (Apache-2.0), the benchmark's
+historical v2.2.1 pin `1b961314e42a0625502ba1592d25f706f1e02a24`, current issue
+#2001, existing feature issue #1852, draft PR #1853, and the contribution guide.
+The reported periodic-wrap limitation concerns grid finite-difference/spectral
+derivatives on non-periodic domains. Our frozen periodic benchmark uses
+`PhysicsInformer(grad_method='autodiff')` and PyTorch autograd, so that issue
+does not apply to the measured path. Existing reports cover the concern and
+the guide asks contributors to check for work already underway; no duplicate
+was filed. This is not a defect reproduction and does not upgrade the
+PhysicsNeMo quality verdict, which remains UNCERTAIN. Evidence is in
+`reports/physicsnemo-upstream-derivative-audit-2026-10-02.md` and
+`evidence/upstream-refresh/physicsnemo-derivative-boundary-audit-2026-10-02.json`.
+Overall benchmark goal remains active.
+
 ## Revision 172 — primary PINN gradient-bound claim checked
 
 Inspected the author manuscript and journal record for De Ryck, Jagtap and
