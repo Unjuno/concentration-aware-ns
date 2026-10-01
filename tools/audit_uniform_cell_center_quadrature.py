@@ -67,8 +67,9 @@ def exact_cell_average_velocity(centers, width, time):
     """Closed-form cell averages using the MMS Fourier polynomial factors."""
     modes = np.array((1.0, 2.0, 3.0, 4.0))
     amplitudes = np.array((56.0, 28.0, 8.0, 1.0))
-    sinc = np.sinc(modes * width / (2 * np.pi))
     x, y, z = centers.T
+    widths = np.broadcast_to(np.asarray(width, dtype=float), x.shape)
+    sinc = np.sinc(widths[:, None] * modes[None, :] / (2 * np.pi))
     average_g_y = (35.0 + np.sum(
         amplitudes * np.cos(y[:, None] * modes) * sinc, axis=1
     )) / 128.0
@@ -79,10 +80,10 @@ def exact_cell_average_velocity(centers, width, time):
         amplitudes * modes * np.sin(y[:, None] * modes) * sinc, axis=1
     ) / 128.0
     average_sin = np.sin(FREQUENCY * x) * np.sinc(
-        FREQUENCY * width / (2 * np.pi)
+        FREQUENCY * widths / (2 * np.pi)
     )
     average_cos = np.cos(FREQUENCY * x) * np.sinc(
-        FREQUENCY * width / (2 * np.pi)
+        FREQUENCY * widths / (2 * np.pi)
     )
     decay = np.exp(-time)
     return np.stack((

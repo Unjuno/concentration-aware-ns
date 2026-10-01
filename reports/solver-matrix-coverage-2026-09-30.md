@@ -170,10 +170,29 @@ gradient-linear reconstruction `U + grad(U)·(x-C)`, it is -7.060 points. Both
 contrast signs reverse relative to the original centre-sample value. The
 actual post-step AMR field has integrated errors 46.076% (piecewise constant)
 and 50.975% (gradient-linear); these are interpretation-dependent reconstructed
-norms, not a unique FV “true error”. The retrospective audit therefore
-invalidates the original positive contrast as evidence of AMR-induced
-degradation. It neither validates AMR accuracy nor isolates the post-remap
-solver step; it identifies a mesh-dependent metric as a leading confounder.
+norms, not a unique FV “true error”. These results show that the original
+positive centre-sample contrast is not by itself evidence of AMR-induced
+degradation: it is strongly confounded by mesh-dependent sampling. They do not
+validate AMR accuracy or isolate the post-remap solver step.
+
+The analytical exact cell-average reference adds a different, DOF-level view.
+Under that measure, relative errors for AMR are 13.783% at t=0.002 and 40.559%
+at t=0.003; the uniform control is 13.783% and 13.915%. The frozen
+difference-in-differences becomes +26.643 percentage points. The parent-value
+transfer counterfactual on the refined mesh is already 42.484% against exact
+t=0.002 cell averages, and 42.511% against t=0.003 averages; the actual solved
+t=0.003 AMR state is somewhat closer at 40.559%. This metric resolves
+fine-cell-average variation that the coarse-grid DOFs do not represent. It is
+consistent with the source-level parent-to-child field map, which preserves
+the mapped cell value/integral while not reconstructing new subcell variation.
+This is not a contradiction of the P0 integrated continuous-field result: the
+two quantities answer different questions. Since the installed field's exact
+average-versus-point-value semantics are not established and the checkpoint
+includes flux correction plus one solve step, the DOF-level increase is a
+diagnostic of prolongation/resolution mismatch, not an implementation-defect
+verdict. This is why the AMR quality finding remains `UNCERTAIN`; the original
+centre-sample contrast alone is insufficient. The per-case and transfer
+counterfactual cell-average values are recorded in the same JSON audit.
 
 This correction is scoped to the cross-topology n=16 AMR velocity-error
 contrast. It does not rewrite the six uniform-grid run-completion or configured

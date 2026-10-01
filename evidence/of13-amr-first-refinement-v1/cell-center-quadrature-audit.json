@@ -1,10 +1,11 @@
 {
   "method": "Tensor-product Gauss-Legendre integration of cellwise-constant U and cellwise gradient-linear U + grad(U) dot (x-C) reconstructions over validated axis-aligned cubes.",
-  "interpretation": "The original center-sample norm uses a different quadrature rule on each mesh. Refinement adds sample points and can reveal intra-cell MMS variation even when mapped parent values are unchanged. The mapped field is a counterfactual transfer reconstruction, not a saved instantaneous solver state.",
+  "interpretation": "The original center-sample norm uses a different quadrature rule on each mesh. Refinement adds sample points and can reveal intra-cell MMS variation even when mapped parent values are unchanged. The mapped field is a counterfactual transfer reconstruction, not a saved instantaneous solver state. Exact cell-average DOF errors are also reported; they rise when coarse parent values are copied to children because the finer exact cell averages resolve subcell variation.",
   "cases": {
     "amr-cap5000-t002": {
       "cell_count": 4096,
       "cell_center_weighted_relative_l2": 0.05874917171587735,
+      "relative_l2_to_exact_cell_averages": 0.13783397972555342,
       "piecewise_constant_volume_l2_by_gauss_order": {
         "2": 0.4797290673588283,
         "4": 0.4768373415831283,
@@ -19,6 +20,7 @@
     "uniform-n16-t002": {
       "cell_count": 4096,
       "cell_center_weighted_relative_l2": 0.05874917171587735,
+      "relative_l2_to_exact_cell_averages": 0.13783397972555342,
       "piecewise_constant_volume_l2_by_gauss_order": {
         "2": 0.4797290673588283,
         "4": 0.4768373415831283,
@@ -33,6 +35,7 @@
     "amr-cap5000-t003": {
       "cell_count": 16640,
       "cell_center_weighted_relative_l2": 0.39947692129702933,
+      "relative_l2_to_exact_cell_averages": 0.4055887759490015,
       "piecewise_constant_volume_l2_by_gauss_order": {
         "2": 0.46093984881574773,
         "4": 0.4607632006888508,
@@ -47,6 +50,7 @@
     "uniform-n16-t003": {
       "cell_count": 4096,
       "cell_center_weighted_relative_l2": 0.061613842825752614,
+      "relative_l2_to_exact_cell_averages": 0.1391545010359243,
       "piecewise_constant_volume_l2_by_gauss_order": {
         "2": 0.48002850546456655,
         "4": 0.4771393151878574,
@@ -68,6 +72,8 @@
     },
     "cell_center_weighted_relative_l2_against_exact_t002": 0.417955311146042,
     "cell_center_weighted_relative_l2_against_exact_t003": 0.4181561218056027,
+    "relative_l2_to_exact_cell_averages_at_t002": 0.4248386856957517,
+    "relative_l2_to_exact_cell_averages_at_t003": 0.425113993584773,
     "integrated_relative_l2_against_exact_t002_by_gauss_order": {
       "2": 0.4770079090314882,
       "4": 0.47683729935901575,
@@ -81,7 +87,8 @@
     "mapped_to_solved_relative_l2_change": 0.04657947975378655
   },
   "limits": [
-    "Not a cell-average reconstruction or a continuous pointwise bound.",
+    "P0 and gradient-linear integrated norms are reconstruction-dependent and are not continuous pointwise bounds.",
+    "The exact cell-average DOF comparison does not prove that the packaged solver's stored U is an exact volume average.",
     "Does not isolate pressure/flux correction or post-remap timestep effects.",
     "Source inspection is against public Foundation commit 18870c24d21c6b982e2cdec27b2f59738cca5f90; equivalence to the packaged binary is not established."
   ]

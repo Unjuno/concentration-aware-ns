@@ -16,6 +16,7 @@ from numpy.polynomial.legendre import leggauss
 from tools.analyze_amr import values
 from tools.analyze_openfoam import vectors
 from tools.high_gradient_reference import fields
+from tools.audit_uniform_cell_center_quadrature import exact_cell_average_velocity
 
 
 ROOT = Path("work/of13-amr-first-refinement-v1")
@@ -102,12 +103,18 @@ def audit():
         grad = values(ROOT / case / time / "grad(U)", len(centers), 9).reshape(
             -1, 3, 3
         )
+        exact_average = exact_cell_average_velocity(centers, widths, exact_time)
+        cell_average_error = float(np.sqrt(
+            np.sum(volume * np.sum((velocity - exact_average) ** 2, axis=1))
+            / np.sum(volume * np.sum(exact_average ** 2, axis=1))
+        ))
         loaded[name] = (centers, velocity, volume, widths, grad)
         metrics[name] = {
             "cell_count": len(centers),
             "cell_center_weighted_relative_l2": _center_sample_error(
                 centers, velocity, volume, exact_time
             ),
+            "relative_l2_to_exact_cell_averages": cell_average_error,
             "piecewise_constant_volume_l2_by_gauss_order": {
                 str(order): _integrated_error(
                     centers, velocity, volume, widths, exact_time, order
@@ -127,6 +134,16 @@ def audit():
     fine_c, _, fine_v, fine_h, _ = loaded["amr-cap5000-t003"]
     parent = _parent_indices(fine_c)
     mapped_u = coarse_u[parent]
+    exact_average_t002 = exact_cell_average_velocity(fine_c, fine_h, 0.002)
+    exact_average_t003 = exact_cell_average_velocity(fine_c, fine_h, 0.003)
+    mapped_cell_average_error_t002 = float(np.sqrt(
+        np.sum(fine_v * np.sum((mapped_u - exact_average_t002) ** 2, axis=1))
+        / np.sum(fine_v * np.sum(exact_average_t002 ** 2, axis=1))
+    ))
+    mapped_cell_average_error_t003 = float(np.sqrt(
+        np.sum(fine_v * np.sum((mapped_u - exact_average_t003) ** 2, axis=1))
+        / np.sum(fine_v * np.sum(exact_average_t003 ** 2, axis=1))
+    ))
     map_metric = {
         "mapped_parent_count": int(len(np.unique(parent))),
         "child_cell_count": int(len(parent)),
@@ -139,6 +156,8 @@ def audit():
             _center_sample_error(fine_c, mapped_u, fine_v, 0.002),
         "cell_center_weighted_relative_l2_against_exact_t003":
             _center_sample_error(fine_c, mapped_u, fine_v, 0.003),
+        "relative_l2_to_exact_cell_averages_at_t002": mapped_cell_average_error_t002,
+        "relative_l2_to_exact_cell_averages_at_t003": mapped_cell_average_error_t003,
         "integrated_relative_l2_against_exact_t002_by_gauss_order": {
             str(order): _integrated_error(
                 fine_c, mapped_u, fine_v, fine_h, 0.002, order
@@ -157,11 +176,12 @@ def audit():
     }
     result = {
         "method": "Tensor-product Gauss-Legendre integration of cellwise-constant U and cellwise gradient-linear U + grad(U) dot (x-C) reconstructions over validated axis-aligned cubes.",
-        "interpretation": "The original center-sample norm uses a different quadrature rule on each mesh. Refinement adds sample points and can reveal intra-cell MMS variation even when mapped parent values are unchanged. The mapped field is a counterfactual transfer reconstruction, not a saved instantaneous solver state.",
+        "interpretation": "The original center-sample norm uses a different quadrature rule on each mesh. Refinement adds sample points and can reveal intra-cell MMS variation even when mapped parent values are unchanged. The mapped field is a counterfactual transfer reconstruction, not a saved instantaneous solver state. Exact cell-average DOF errors are also reported; they rise when coarse parent values are copied to children because the finer exact cell averages resolve subcell variation.",
         "cases": metrics,
         "parent_value_mapping_counterfactual": map_metric,
         "limits": [
-            "Not a cell-average reconstruction or a continuous pointwise bound.",
+            "P0 and gradient-linear integrated norms are reconstruction-dependent and are not continuous pointwise bounds.",
+            "The exact cell-average DOF comparison does not prove that the packaged solver's stored U is an exact volume average.",
             "Does not isolate pressure/flux correction or post-remap timestep effects.",
             "Source inspection is against public Foundation commit 18870c24d21c6b982e2cdec27b2f59738cca5f90; equivalence to the packaged binary is not established.",
         ],

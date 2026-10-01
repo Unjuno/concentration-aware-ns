@@ -1506,3 +1506,19 @@ FV DOFs should be compared with exact volume means; the installed solver's
 field semantics were not independently established. It is supplementary and
 does not rewrite the frozen gate or establish continuous extrema. Results and
 hashes are included in the same machine-readable audit.
+
+## Revision 93 — AMR quadrature finding split by error meaning
+
+Applied the exact analytic cell-average reference to the first-refinement AMR
+checkpoints. The AMR DOF-level errors are 13.783% at t=0.002 and 40.559% at
+t=0.003; the uniform control is 13.783% and 13.915%, giving a cell-average
+difference-in-differences of +26.643 percentage points. Assigning unchanged
+coarse parent values to refined children already gives 42.484% against exact
+t=0.002 child-cell averages. Thus the positive frozen cell-centre contrast is
+sampling-confounded, while the finer cell-average DOF metric independently
+shows a large coarse-to-fine prolongation/resolution mismatch. The P0
+continuous-field integral is partition-invariant for the mapped field, so
+these statements concern different error definitions. The installed U-field
+semantics and post-remap solver-step effects remain unresolved; no upstream
+defect verdict follows. Keep AMR quality `UNCERTAIN` and make the norm meaning
+explicit. The AMR audit JSON and coverage report contain all comparisons.
