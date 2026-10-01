@@ -1,0 +1,271 @@
+{
+  "scope": "Local multi-start refinement of the strongest Sobol candidate, followed by an Arb point lower bound and Arb local-box upper bounds. It is not a global maximum proof.",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "sobol_evidence_sha256": "d1e803b26cc033513812c45e0f73051f281fce73ae452a8c0e0ccf474d61b128",
+  "sobol_sampled_maximum": 0.2523457378401675,
+  "optimizer_start_count": 16,
+  "optimizer_bounds": [
+    [
+      2.4,
+      3.7
+    ],
+    [
+      2.4,
+      3.7
+    ],
+    [
+      2.8,
+      3.8
+    ]
+  ],
+  "highest_refined_candidate": {
+    "point": [
+      3.027973887483007,
+      3.0013446094963365,
+      3.259521137998328
+    ],
+    "frobenius_error": 0.2534082916967482,
+    "optimizer_success": true,
+    "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+    "gradient_norm": 8.417789217918358e-08,
+    "iterations": 11
+  },
+  "all_refined_starts": [
+    {
+      "point": [
+        3.027973887483007,
+        3.0013446094963365,
+        3.259521137998328
+      ],
+      "frobenius_error": 0.2534082916967482,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 8.417789217918358e-08,
+      "iterations": 11
+    },
+    {
+      "point": [
+        3.027973920980011,
+        3.00134458286155,
+        3.2595211683082144
+      ],
+      "frobenius_error": 0.25340829169674195,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 7.113205227765582e-08,
+      "iterations": 12
+    },
+    {
+      "point": [
+        3.027973868931445,
+        3.00134464929874,
+        3.2595211883683035
+      ],
+      "frobenius_error": 0.2534082916967436,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 6.40610449834923e-08,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.0279738807440157,
+        3.001344651443986,
+        3.2595212108920872
+      ],
+      "frobenius_error": 0.2534082916967436,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 9.181484743466365e-08,
+      "iterations": 15
+    },
+    {
+      "point": [
+        3.0279739047399445,
+        3.001344638009434,
+        3.25952121779591
+      ],
+      "frobenius_error": 0.2534082916967447,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 9.973165295234064e-08,
+      "iterations": 12
+    },
+    {
+      "point": [
+        3.0279738764017505,
+        3.00134463143419,
+        3.259521183056511
+      ],
+      "frobenius_error": 0.2534082916967448,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 3.4133687419399585e-08,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.027973879877917,
+        3.00134465534312,
+        3.2595212156504196
+      ],
+      "frobenius_error": 0.25340829169674606,
+      "optimizer_success": false,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 1.0406947141580083e-07,
+      "iterations": 12
+    },
+    {
+      "point": [
+        3.0279739261713416,
+        3.0013446024111685,
+        3.259521159911919
+      ],
+      "frobenius_error": 0.25340829169673995,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 8.701427766449839e-08,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.0279738865026875,
+        3.001344575034633,
+        3.2595211591462245
+      ],
+      "frobenius_error": 0.25340829169674006,
+      "optimizer_success": false,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 1.5097497293072472e-07,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.027973847549902,
+        3.001344634715249,
+        3.259521145648894
+      ],
+      "frobenius_error": 0.2534082916967423,
+      "optimizer_success": false,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 1.0052550247101713e-07,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.0279738834778356,
+        3.001344634789776,
+        3.259521161214952
+      ],
+      "frobenius_error": 0.2534082916967448,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 6.154420125834751e-08,
+      "iterations": 14
+    },
+    {
+      "point": [
+        3.027973880224975,
+        3.0013446303577513,
+        3.259521177959919
+      ],
+      "frobenius_error": 0.25340829169674506,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 2.6090791052333925e-08,
+      "iterations": 14
+    },
+    {
+      "point": [
+        3.0279738888913457,
+        3.001344619142527,
+        3.2595211571937415
+      ],
+      "frobenius_error": 0.2534082916967442,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 4.5915725144038774e-08,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.0279739047823533,
+        3.001344603645074,
+        3.259521173392545
+      ],
+      "frobenius_error": 0.25340829169674545,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 2.932214523643835e-08,
+      "iterations": 13
+    },
+    {
+      "point": [
+        3.0279738175679505,
+        3.0013447044279036,
+        3.259521177051801
+      ],
+      "frobenius_error": 0.25340829169673756,
+      "optimizer_success": false,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 1.7444212119062372e-07,
+      "iterations": 11
+    },
+    {
+      "point": [
+        3.027973879595864,
+        3.001344627301438,
+        3.2595211714254044
+      ],
+      "frobenius_error": 0.25340829169674634,
+      "optimizer_success": true,
+      "optimizer_message": "PyTorch LBFGS completed; success means only the final gradient met the recorded tolerance.",
+      "gradient_norm": 2.74439962424267e-08,
+      "iterations": 13
+    }
+  ],
+  "arb_pointwise_lower_bound_at_candidate": 0.253408291696744,
+  "local_neighborhood_enclosures": [
+    {
+      "half_width": 0.0001,
+      "direct_interval_frobenius_upper": 0.2577355383553053,
+      "quadratic_taylor_frobenius_upper": 0.2534442971225792
+    },
+    {
+      "half_width": 0.0005,
+      "direct_interval_frobenius_upper": 0.2756530996555361,
+      "quadratic_taylor_frobenius_upper": 0.2535903697792574
+    },
+    {
+      "half_width": 0.001,
+      "direct_interval_frobenius_upper": 0.2993353031024641,
+      "quadratic_taylor_frobenius_upper": 0.2537794251507634
+    },
+    {
+      "half_width": 0.002,
+      "direct_interval_frobenius_upper": 0.3505718035468799,
+      "quadratic_taylor_frobenius_upper": 0.2541920595130274
+    },
+    {
+      "half_width": 0.005,
+      "direct_interval_frobenius_upper": 0.5260312985444264,
+      "quadratic_taylor_frobenius_upper": 0.25599219065925327
+    },
+    {
+      "half_width": 0.01,
+      "direct_interval_frobenius_upper": 0.857573777757557,
+      "quadratic_taylor_frobenius_upper": 0.2630717945085208
+    }
+  ],
+  "interval_decimal_precision": 50,
+  "elapsed_seconds": 0.5977708749996964,
+  "limitations": [
+    "L-BFGS-B outcomes are candidate searches, not proofs of stationarity or local maximality.",
+    "The box upper bounds cover only small neighborhoods around the selected candidate.",
+    "No global quality threshold was preregistered; the verdict remains UNCERTAIN."
+  ],
+  "tool_sha256": "c143527c19075b496c7bb5a3e9a4ff3067a45eddbaa7e7d48d4bba5617842d84",
+  "repository_commit_at_execution": "c4cd47741c5459d7cf822178b0b0332da550eb8b",
+  "execution_source_status": "untracked working-tree script at the recorded repository commit"
+}

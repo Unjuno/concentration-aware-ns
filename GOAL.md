@@ -1405,3 +1405,16 @@ grid, not a continuous-maximum certificate or solver defect. The global
 interval upper remains coarse and the PhysicsNeMo quality gate remains
 UNCERTAIN. Inputs, hashes, and reproduction steps are preserved in the new
 report and evidence JSON.
+
+## Revision 86 — local PhysicsNeMo peak candidate refined
+
+A bounded multi-start PyTorch L-BFGS search from the top 16 points in the
+independent Sobol scan found a candidate with gradient-error Frobenius value
+`0.25340829` and final gradient norm `8.42e-8`, about 0.42% above the previous
+sampled maximum. Arb point and local-box enclosures support the candidate value;
+a quadratic Taylor upper bound is `0.25344430` on the box of half-width `1e-4`.
+This is strictly local evidence: it is not a continuous/global maximum proof,
+not a defect report, and not evidence for particle alignment or viscosity
+change. The full-domain cover remains coarse, so the PhysicsNeMo verdict and
+overall goal remain UNCERTAIN and active. See the report and hashed machine
+record for limits and reproduction.
