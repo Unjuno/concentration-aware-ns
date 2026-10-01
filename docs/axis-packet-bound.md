@@ -368,3 +368,27 @@ reproducible with `uv run --with-requirements requirements-verification.txt
 python -m tools.check_packet_radius_scaling`; the exact symbolic controls are
 recorded in `evidence/tests/packet-radius-scaling.json`, with the probability
 law examples and assumptions in `evidence/tests/packet-angle-law-rate.json`.
+
+#### Exact angular concentration of the tangent map
+
+The ideal linearized map gives a sharper, separate result. Its singular values
+are `Q^(C/2), Q^(C/2), Q^(-C)` and its determinant is one. For a uniform
+unoriented spherical initial direction, `c=|omega_3|` is uniform on `[0,1]`.
+Writing `m=tan(theta_star)>0`, the image lies in the fixed axial cone exactly
+when
+
+```
+Q^(3C/2)*sqrt(1-c^2)/c <= m,
+```
+
+or equivalently `c >= c_star`, where
+`c_star=Q^(3C/2)/sqrt(m^2+Q^(3C))`. Hence the linearized failure probability
+is exactly `c_star` and is asymptotic to `Q^(3C/2)/m`. With the audited
+`C in [7999999/2000000,4)`, the exponent `3C/2` lies in
+`[5.99999925,6)`. This is an orientation law for infinitesimal material
+separations under the tangent map; it does not describe particle centers or
+molecules. Its much faster rate than the finite-packet `O(Q)` conditional
+bound reflects that the latter must also control a nonlinear remainder. The
+finite-packet estimate does not prove that the gap is attained by an actual
+trajectory: it may be conservative. The exact cutoff identity is checked in
+`evidence/tests/packet-radius-scaling.json`.

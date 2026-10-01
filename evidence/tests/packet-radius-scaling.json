@@ -1,7 +1,7 @@
 {
   "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
   "sympy": "1.14.0",
-  "source_sha256": "310deca218bdf2caab2266ae4d63d4f5564a4703a938a5facc1f466135230328",
+  "source_sha256": "6f313b8d3e7903298ddc74e2b83ee49693681bdaaa850521d6522d6373674da7",
   "assumptions": {
     "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
     "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
@@ -113,6 +113,18 @@
       "linear_ratio_power_positive_at_C_lower": true,
       "uniform_sphere_exceptional_probability_power_is_one": true
     },
+    "success": true
+  },
+  "linear_tangent_orientation_uniform_law": {
+    "singular_values": "transverse Q^(C/2) (twice), axial Q^(-C)",
+    "determinant": "Q^(C/2)*Q^(C/2)*Q^(-C)=1",
+    "initial_law": "uniform unoriented sphere; c=|omega_3| uniform on [0,1]",
+    "fixed_cone_parameter": "m=tan(theta_star)>0",
+    "cone_cutoff": "c_star=Q^(3C/2)/sqrt(m^2+Q^(3C))",
+    "exact_linear_failure_probability": "c_star",
+    "asymptotic_failure_probability": "Q^(3C/2)/tan(theta_star)",
+    "symbolic_cutoff_residual": "0",
+    "limitations": "This is the tangent (linearized) flow-map orientation law only; it says nothing by itself about finite-size particles, centers, molecular alignment, or the nonlinear packet remainder.",
     "success": true
   },
   "success": true

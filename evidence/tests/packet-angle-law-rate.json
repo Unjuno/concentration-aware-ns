@@ -3,6 +3,7 @@
   "purpose": "Show that the fixed atomless direction-law assumption yields qualitative but not universal algebraic convergence of the shrinking exceptional-band probability.",
   "reproduction": "uv run --with-requirements requirements-verification.txt python -m tools.check_packet_radius_scaling",
   "symbolic_exponent_evidence": "evidence/tests/packet-radius-scaling.json#/anti_concentration_rate_specialization",
+  "linear_tangent_orientation_evidence": "evidence/tests/packet-radius-scaling.json#/linear_tangent_orientation_uniform_law",
   "observable": "c = |omega_3| in (0,1] for an unoriented unit direction",
   "density_with_respect_to_dc": "f(c) = 1 / (c * (log(e/c))^2)",
   "normalization": "With u=log(e/c), integral_0^1 f(c) dc = integral_1^infinity u^(-2) du = 1.",

@@ -165,6 +165,26 @@ def main():
         'controls': packet_rate_controls,
     }
     packet_angle_rate_specialization['success'] = all(packet_rate_controls.values())
+    # Exact orientation law for the linear variational map under uniform
+    # unoriented spherical directions. Here m=tan(theta*) and qfac is the
+    # transverse-to-axial singular-value ratio Q^(3C/2).
+    m, qfac = s.symbols('m qfac', positive=True)
+    tangent_cone_cutoff = qfac/s.sqrt(m**2+qfac**2)
+    tangent_cone_residual = s.simplify(
+        qfac**2*(1-tangent_cone_cutoff**2)
+        - m**2*tangent_cone_cutoff**2)
+    tangent_orientation_specialization = {
+        'singular_values': 'transverse Q^(C/2) (twice), axial Q^(-C)',
+        'determinant': 'Q^(C/2)*Q^(C/2)*Q^(-C)=1',
+        'initial_law': 'uniform unoriented sphere; c=|omega_3| uniform on [0,1]',
+        'fixed_cone_parameter': 'm=tan(theta_star)>0',
+        'cone_cutoff': 'c_star=Q^(3C/2)/sqrt(m^2+Q^(3C))',
+        'exact_linear_failure_probability': 'c_star',
+        'asymptotic_failure_probability': 'Q^(3C/2)/tan(theta_star)',
+        'symbolic_cutoff_residual': str(tangent_cone_residual),
+        'limitations': 'This is the tangent (linearized) flow-map orientation law only; it says nothing by itself about finite-size particles, centers, molecular alignment, or the nonlinear packet remainder.',
+        'success': tangent_cone_residual == 0,
+    }
     actual_specialization = {
         'input_envelopes': {
             'Cstretch': '[7999999/2000000, 4)',
@@ -215,6 +235,7 @@ def main():
         'selected_conservative_specialization': actual_specialization,
         'distributional_finite_packet_specialization': packet_distributional_specialization,
         'anti_concentration_rate_specialization': packet_angle_rate_specialization,
+        'linear_tangent_orientation_uniform_law': tangent_orientation_specialization,
         'success': all(v == 0 for v in residuals.values()) and all(controls.values()),
     }
     Path('evidence/tests/packet-radius-scaling.json').write_text(

@@ -2046,3 +2046,17 @@ unoriented spherical measure gives `L=beta=1`. This rate needs the extra
 distribution assumption and retains a non-effective small-Q threshold. The
 derivation is in `docs/axis-packet-bound.md` and
 `evidence/tests/packet-angle-law-rate.json`.
+
+## Revision 122 — exact uniform-sphere tangent orientation law
+
+For the linearized flow map, the transverse and axial singular values give
+unit determinant and an exact cone cutoff for uniform spherical initial
+orientations: `c_star=Q^(3C/2)/sqrt(tan(theta_star)^2+Q^(3C))`. Thus the
+linearized cone-failure probability is exactly `c_star`, asymptotic to
+`Q^(3C/2)/tan(theta_star)`. The symbolic cutoff identity has residual zero.
+This is the orientation distribution of infinitesimal material separations;
+it says nothing by itself about finite particles, centers, or molecules. The
+finite-packet `O(Q)` sufficient bound additionally pays for a nonlinear
+remainder and may be conservative. Derivation and evidence are in
+`docs/axis-packet-bound.md` and
+`evidence/tests/packet-radius-scaling.json`.
