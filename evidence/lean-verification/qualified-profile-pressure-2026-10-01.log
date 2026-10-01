@@ -4,8 +4,23 @@ Result: exit code 0; no errors, no sorryAx.
 'ConcentrationAwareQualifiedProfile.exists_root_with_positive_pressure_sign' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAwareQualifiedProfile.slow_base_viscous_acceleration_ratio_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareQualifiedProfile.exists_qualified_slow_base_negative_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareQualifiedProfile.exists_qualified_slow_base_ratio_magnitude_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 Scope: a new noncomputable profile-data selection assembled from PreparedOutgoing.exists_prepared, NominalConeAssembly.exists_certificate, and ModulatedProfileAssembly.exists_of_certificate. It is not identified with FinalSlowBase.actualProfile.
 Source SHA-256:
 verification/AxisForceSign.lean a61600fcc260fb75c00323bb53c94d96effa24b2c4e82c66355c352fe7eb0dce
-verification/QualifiedProfilePressure.lean 1069425b61a7436f4be7c8a63517b39a4deadc0d83e4bf45ce94962804d3b125
+verification/QualifiedProfilePressure.lean b11e15c08f72dba19e8f6d3e8d42b7b7b0bdebd9a902627966f843c6cba27d42
 runtime/lean-verification/check_qualified_profile_pressure.sh 54c8e789b796781f26dd00814124a364f301f740bbe73a00cdecc17708c9afc5
+
+The three added theorems formalize the finite limit of the spatial Laplacian
+divided by material acceleration for this selected slow-base velocity, its
+negative sign at a pressure-qualified root, and a strictly positive limit for
+the magnitude of the same ratio. They do not cover the source's fixed
+`FinalSlowBase.actualProfile` or a periodic/corrected field.

@@ -1558,6 +1558,27 @@ Source files were rehashed at the pinned `f9e8bc5b38b6e212696e8a30e3e91517af887b
 revision during this audit; local hashes are listed in the current turn's
 evidence rather than treated as source-level theorem proof.
 
+### Viscous Laplacian divided by material acceleration for the selected slow base
+
+The separate `ConcentrationAwareQualifiedProfile` extension now carries this
+same prepared amplitude-bound selection through its natural material curve. It
+proves that `nu * Δu / (∂t u + u·∇u)` has a finite axiswise limit for the selected
+`FinalSlowBase.velocity`, and combines the pressure-qualified root with the
+natural derivative sign to make that limit strictly negative for `nu > 0`.
+It also proves that the magnitude of this ratio tends to a strictly positive
+constant, so the ratio itself does not tend to zero on this selected field. The
+checker reports only `propext`, `Classical.choice` and `Quot.sound`, without
+`sorryAx`.
+
+This is the signed ratio of two field terms for an alternate slow-base velocity.
+Its nonzero limiting magnitude rules out vanishing of this particular ratio;
+it does not say that viscosity itself decreases or changes law. The proof does
+not identify its selection with `FinalSlowBase.actualProfile`, transfer it
+through the periodic/correction assembly, or connect it to molecular
+orientations, particle-position probabilities, or phase transitions. Replay
+evidence and exact source hashes are in
+`evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+
 
 ## Pressure and negative slow-sum derivative share one witness
 

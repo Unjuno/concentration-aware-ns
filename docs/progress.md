@@ -416,3 +416,16 @@ gradient guarantee. Algebra identities and assumptions are in
 `tools/check_jeffery_axisymmetric_bridge.py` and
 `evidence/tests/jeffery-axisymmetric-bridge.json`; literature boundary is in
 `docs/fiber-vortex-literature-audit.md`.
+
+## Qualified slow-base force ratio and a nonvanishing-magnitude check — 2026-10-01
+
+The selected pressure-qualified slow-base field now has a Lean-checked finite
+limit for `nu * Δu / (∂t u + u·∇u)` along its material curve. At the selected
+root, the signed limit is negative; a follow-up theorem proves the magnitude
+tends to a strictly positive constant. Thus this particular ratio does not
+vanish on this alternate base field. This is not a material-viscosity law and
+does not transfer to the upstream fixed `actualProfile` or periodic/corrected
+field. The pinned isolated checker exits 0 with no `sorryAx`; exact outputs and
+hashes are in `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+The full scope and non-implications are recorded in
+`reports/qualified-profile-pressure-selection-2026-10-01.md` and `GOAL.md`.

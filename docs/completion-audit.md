@@ -836,6 +836,19 @@ No upstream report is justified. Details and replay evidence are in
 `reports/qualified-profile-pressure-selection-2026-10-01.md` and
 `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
 
+The same extension now also proves a finite limit for `nu * spatialLaplacian /
+materialAcceleration` along the selected slow-base material curve and a strictly
+negative value at its pressure-qualified root (`slow_base_viscous_acceleration_ratio_limit`,
+`exists_qualified_slow_base_negative_ratio`). A third theorem,
+`exists_qualified_slow_base_ratio_magnitude_limit`, proves that the magnitude of the
+magnitude of this ratio tends to a strictly positive constant. The isolated
+replay exits 0 and these declarations have no `sorryAx`. Thus this ratio does
+not tend to zero for the selected field. The result is still only about the
+alternate slow-base selection: it is not transferred to
+`FinalSlowBase.actualProfile` or the completed periodic field and does not imply
+molecular ordering, a phase transition, constitutive viscosity loss, blow-up,
+or an upstream solver defect. No upstream report is warranted.
+
 ## 2026-10-01 integrated published-evidence replay
 
 `tools/replay_published_reports.py` now directly rechecks the OpenFOAM uniform

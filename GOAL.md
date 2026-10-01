@@ -47,6 +47,20 @@ from claims about OpenAI's fixed choice. This is a new analytic workstream, not
 a waiver of the manufactured-solution benchmark, three-project audit, justified
 upstream reporting, or reproducible-publication requirements in revisions 1–18.
 
+## Revision 20 — selected slow-base viscous/material-acceleration ratio (2026-10-01)
+
+The qualified alternate selection now has a Lean-proved finite limit for the
+ratio of viscosity times spatial Laplacian to material acceleration along its
+natural material curve; at the pressure-qualified root this signed ratio has a
+strictly negative limit while its magnitude tends to a strictly positive
+constant. Keep this result scoped to the alternate
+`FinalSlowBase.velocity` field. It is not yet transferred to the original fixed
+`FinalSlowBase.actualProfile` or the assembled periodic field, and it does not
+establish molecular alignment, particle-position certainty, a phase transition,
+a viscosity law, singularity, or a solver defect. No upstream report follows
+from this lemma alone. Continue the analytic transfer audit and full benchmark
+goal without treating the negative signed ratio as reduced viscous effectiveness.
+
 ## Expanded scope authorized 2026-09-09
 
 The user explicitly authorized starting work, upstream GitHub issues and related
