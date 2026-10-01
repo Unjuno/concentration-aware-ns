@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 156 — full local suite at the published PR head
+
+At PR head `88698e033c4d1999aaa4358d3cdcc6a25cf8cce6`, the first direct
+locked-environment `pytest` invocation failed during collection because this
+repository requires its root on `PYTHONPATH`. Re-running with
+`PYTHONPATH=.` and the locked verification requirements passed: 190 tests,
+one skipped, and five subtests in 103.96 seconds. The skip remains a skip, not
+a pass. This validates the current full local suite; the GitHub Actions check
+for the PR was still queued at the time of this run. Goal remains active.
+
 ## Revision 155 — bounded-position probability in the affine comparison model
 
 Replayed the exact SymPy checks for the tangent-map/Gaussian calculation,
