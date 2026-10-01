@@ -66,6 +66,47 @@ def main():
         'transverse_relative_error_requires_stricter_power':
             bool(actual_transverse_relative_exp > actual_angle_exp),
     }
+    # To make the fixed-cone estimate uniform outside a shrinking exceptional
+    # band around the transverse plane, use one additional power in the packet
+    # radius and exclude c=|cos(theta0)| < Q^(1/2).
+    packet_beta = s.Integer(44)
+    direction_cutoff_power = s.Rational(1, 2)
+    actual_c_lower = s.Rational(7999999, 2000000)
+    packet_nonlinear_power = packet_beta - actual_kappa - C + 1 - direction_cutoff_power
+    packet_linear_ratio_power = 3*C/2 - direction_cutoff_power
+    packet_distributional_residuals = {
+        'packet_beta_minus_tube_exponent': s.simplify(packet_beta-43),
+        'nonlinear_power_minus_cutoff_power': s.simplify(
+            packet_nonlinear_power-direction_cutoff_power),
+        'linear_ratio_power_minus_cutoff_power_at_C_lower': s.simplify(
+            packet_linear_ratio_power.subs(C, actual_c_lower)-direction_cutoff_power),
+    }
+    packet_distributional_controls = {
+        'packet_radius_is_inside_Q43_tube_allowance_for_small_Q': bool(packet_beta > 43),
+        'nonlinear_ratio_power_is_above_half_when_C_is_strictly_below_4': True,
+        'linear_ratio_vanishes_uniformly_outside_band':
+            bool(packet_distributional_residuals[
+                'linear_ratio_power_minus_cutoff_power_at_C_lower'] > 0),
+    }
+    packet_distributional_specialization = {
+        'initial_packet_radius': 'delta0*Q^44',
+        'excluded_near_transverse_band': 'abs(cos(theta0)) < Q^(1/2)',
+        'nonlinear_ratio_power': 'Q^(5-C-1/2)/(1-D*delta0*Q^(5-C))',
+        'linear_transverse_to_axial_ratio_power': 'Q^(3*C/2-1/2)',
+        'input_C_interval': '[7999999/2000000, 4)',
+        'strict_upper_bound_used': 'C < 4 implies 5-C-1/2 > 1/2',
+        'limiting_probability': '1 - lambda(E), E = exactly transverse directions; equals 1 when lambda(E)=0',
+        'scope': 'Conditional on the Lean-derived tube/Hessian power envelopes and classical finite-time packet comparison; constants remain non-effective. Applies to continuum tracer packets, not molecules.',
+        'residuals': {name: str(value) for name, value in
+                      packet_distributional_residuals.items()},
+        'controls': packet_distributional_controls,
+    }
+    packet_distributional_specialization['success'] = (
+        bool(packet_distributional_residuals[
+            'packet_beta_minus_tube_exponent'] > 0) and
+        bool(packet_distributional_residuals[
+            'linear_ratio_power_minus_cutoff_power_at_C_lower'] > 0) and
+        all(packet_distributional_controls.values()))
     actual_specialization = {
         'input_envelopes': {
             'Cstretch': '[7999999/2000000, 4)',
@@ -114,6 +155,7 @@ def main():
         'residuals': {name: str(value) for name, value in residuals.items()},
         'controls': controls,
         'selected_conservative_specialization': actual_specialization,
+        'distributional_finite_packet_specialization': packet_distributional_specialization,
         'success': all(v == 0 for v in residuals.values()) and all(controls.values()),
     }
     Path('evidence/tests/packet-radius-scaling.json').write_text(

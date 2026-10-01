@@ -1667,3 +1667,19 @@ duplicate-module collection errors unrelated to the canonical suite. Added
 `pytest.ini` with `testpaths = tests`, so the simple root command exercises the
 maintained suite only. Explicit verification remains `python -m pytest -q
 tests`; rerun both forms after this configuration change.
+
+## Revision 103 — Distributional finite-packet bound under a faster shrinking scale
+
+The existing fixed-direction packet allowance has an angle-dependent
+prefactor and is not uniform near the transverse plane. Under the
+source-derived, non-effective tube/Hessian envelopes `rho~Q^(1/2)`,
+`k<=k0*Q^(-40)`, and `7999999/2000000 <= C < 4`, taking initial continuum
+tracer radius `delta0*Q^44` and excluding only directions with
+`|cos(theta0)|<Q^(1/2)` makes both transverse/axial and nonlinear-remainder/
+axial ratios vanish uniformly. For a fixed direction law with no mass on the
+transverse plane, the excluded probability tends to zero. Thus the endpoint
+cone probability tends to one conditionally on the classical packet bound;
+the constants remain non-effective, the packet shrinks to zero, and this is
+not a molecular or fixed-size-particle result. Algebraic exponents and
+assumption limits are recorded in `docs/axis-packet-bound.md` and
+`evidence/tests/packet-radius-scaling.json`.

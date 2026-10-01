@@ -371,3 +371,15 @@ the law remains an added ensemble choice and the result remains about
 infinitesimal continuum directions. It does not infer molecule trajectories,
 absolute-position concentration, or finite-size alignment. The cone-boundary
 identity is included in `evidence/tests/particle-position-probability.json`.
+
+The finite-packet estimate can be made distributional only by shrinking the
+initial radius faster. Under the source-derived but non-effective envelopes
+`rho~Q^(1/2)`, `k<=k0*Q^(-40)`, and `C<4`, an initial continuum tracer offset
+of `delta0*Q^44` makes both the linear transverse/axial ratio and nonlinear
+remainder/axial ratio vanish uniformly outside the band
+`|cos(theta0)|<Q^(1/2)`. A fixed initial direction law with zero mass on the
+transverse plane assigns vanishing probability to that shrinking band, so the
+endpoint directions enter every fixed positive-angle cone in probability.
+This is conditional on the classical packet comparison and unknown constants,
+and says nothing about fixed-size particles or molecules. Symbolic exponent
+checks are in `evidence/tests/packet-radius-scaling.json`.

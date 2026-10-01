@@ -207,6 +207,44 @@ the nonlinear comparison is classical and K is non-effective. It is neither a
 numeric packet certificate nor evidence that fixed-size packets lose
 alignment.
 
+### A conditional finite-packet probability limit
+
+The fixed-direction `Q^43` allowance is not uniform over directions close to
+the transverse plane: its angular prefactor contains
+`cos(theta0)`. A distributional statement can still be obtained by shrinking
+the initial packet one extra power. Assume the source-derived envelopes
+`rho(Q)=rho0*Q^(1/2)`, `k(Q)<=k0*Q^(-40)`, and
+`7999999/2000000 <= C < 4`. Fix a Borel probability law `lambda` on initial
+unoriented directions, independent of Q, with zero mass on the exactly
+transverse set `E`. For each terminal time T, initialize a continuum tracer at
+`X(t0)+delta0*Q^44*omega`, where `omega` has law `lambda` and `delta0>0` is
+small enough for the tube prefactor. Let `c=|cos(theta0)|`. On the event
+`c>=Q^(1/2)`, the linear transverse-to-axial ratio is bounded by
+`Q^(3C/2-1/2)`. The nonlinear remainder ratio obeys
+
+```
+Z/A <= D*delta0*Q^(5-C-1/2)/(1-D*delta0*Q^(5-C)),
+D = k0*tau0/(C-1),
+```
+
+and `5-C-1/2 > 1/2` because `C<4`. Both terms therefore vanish uniformly
+on this event, so every fixed cone of positive half-angle contains the packet
+center's endpoint for all sufficiently small Q. Meanwhile the excluded
+direction probability `lambda{c<Q^(1/2)}` tends to `lambda(E)=0` by
+continuity from above. Consequently, under these tube/Hessian envelopes and
+the classical packet comparison, the endpoint cone probability tends to one
+for this shrinking `Q^44` initial radius. A transverse atom of mass p would
+leave at least that mass outside the cone.
+
+This is a conditional existence-level result with non-effective `rho0`,
+`k0`, and hence no usable physical radius or onset time. It is weaker than a
+fixed-size-particle claim in scale and only concerns nearby continuum
+trajectories of the selected constructed field. The source's Lean Hessian
+transfer supplies the power-law envelope but not its numerical constants;
+the comparison step remains classical. No molecular interaction, particle
+orientation dynamics, or viscosity law is included. The exponent checks are
+recorded in `evidence/tests/packet-radius-scaling.json`.
+
 ## Verification and remaining inputs
 
 `python -m tools.check_axis_packet_bound` in the pinned verification environment
