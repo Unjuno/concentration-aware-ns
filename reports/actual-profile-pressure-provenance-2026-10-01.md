@@ -253,6 +253,17 @@ by `FinalSlowBase.actualProfile`: that definition still applies
 No equality between that choice and the new capped witness, nor a universal
 bound for all `ProfileData`, has been proved.
 
+## Current upstream reporting check — 2026-10-02
+
+The live GitHub API still reports `openai/NavierStokesAndEuler` at the same
+`main` SHA `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, with Apache-2.0
+metadata and `has_issues=false`; the all-state issue query returns no issues.
+No issue was filed. The newly identified choice-provenance gap is a limitation
+of transferring this auxiliary estimate to the repository's separately
+chosen `actualProfile`; it is not, by itself, a reproduced defect in the
+source's stated theorem. The live snapshot is
+`evidence/upstream-refresh/openai-navierstokes-2026-10-02.json`.
+
 Pinned-source hashes for the identities used here:
 
 | Source | SHA-256 |
