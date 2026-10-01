@@ -57,6 +57,27 @@ relative to the axis becomes localized while 3D location, peak density, and
 volume do not concentrate. The event depends on the chosen observation window;
 it is not an intrinsic increase in certainty for every position question.
 
+The same model gives a sharper bound for any fixed-radius ball, including one
+whose center moves with time. Write the transformed axial coordinate as
+`Z ~ N(0, sigma^2 Q^(-2C))`. A ball of radius `R` centered at any point has
+axial projection contained in an interval of length `2R`. The axial density is
+bounded above by `Q^C/(sqrt(2*pi)*sigma)`, so
+
+```
+P(X_t is in any ball of radius R)
+  <= P(Z is in the ball's axial projection)
+  <= sqrt(2/pi) * R * Q^C / sigma  -> 0.
+```
+
+The bound is uniform over the ball center. It makes “position becomes
+predictable” false for this particular global affine Gaussian model if
+predictability means entering a fixed bounded 3D observation region: the
+transverse tube probability tends to one, but every fixed ball probability
+tends to zero. This is an exact consequence of the imposed Gaussian and affine
+map, not a prediction for the nonlinear selected PDE or for molecules. The
+symbolic bound is checked by `tools.check_alignment_uncertainty` and
+`tools.check_particle_position_probability`.
+
 There is nevertheless a precise directional-probability consequence under an
 explicit extra model. Sample an initial *infinitesimal separation direction*
 uniformly from the sphere. For the angle `theta0` to the unoriented axis, set

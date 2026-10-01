@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 155 — bounded-position probability in the affine comparison model
+
+Replayed the exact SymPy checks for the tangent-map/Gaussian calculation,
+finite-packet exponent conditions, and Jeffery-director comparison in the
+locked verification environment. Clarified a useful geometric distinction:
+under the imposed global affine map, a fixed-radius infinite axial tube has
+probability tending to one, while the probability of every fixed-radius 3D
+ball tends to zero, uniformly over a moving ball center, with upper bound
+`sqrt(2/pi) * R * Q^C / sigma`. Thus “alignment” does not mean bounded
+position certainty even within this idealized comparison model. This bound
+does not transfer to the nonlinear selected flow: its finite-packet estimate
+still requires non-effective tube/Hessian constants and a shrinking initial
+packet. No molecular or viscosity claim follows. Details are in
+`docs/particle-position-probability.md`; goal remains active.
+
 ## Revision 154 — Foundation 14 single-case compatibility probe
 
 Ran the unchanged high-gradient protocol at `n=64`, `dt=0.001`, and
