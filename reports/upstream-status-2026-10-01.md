@@ -95,3 +95,29 @@ and base `ff5d19d08123de47ca446caed1d70a225d540184`. These tracked records
 still overlap the observed findings, so no duplicate was posted. Exact node
 metadata are saved in
 `evidence/upstream-refresh/live-status-2026-10-01T2345Z.json`.
+
+## PhysicsNeMo odd-width fix recheck (2026-10-01 03:37 UTC)
+
+The issue and fix PR remain open. Current `main` is now
+`b08dd3f61ac44c784f7c03b0cc93947226365cad`; PR #2008 still targets base
+`ff5d19d08123de47ca446caed1d70a225d540184`, has head
+`7407608723062dc11ba5332e9ff3774f42bb02d9`, and is `BEHIND` with review
+required. Comparing the PR head to current `main` reports divergence: 11
+current-main commits are absent from the PR head, while two PR-head commits
+are absent from current main.
+
+I downloaded the exact `power_spectrum.py` files at both immutable SHAs and
+reran `tools/reproduce_physicsnemo_issue_2007.py` with CPU Torch 2.11.0. On
+current main, the 32x32 control passes but the 33x33 height/width cosine spectra
+differ: the height peak is 10.0833, while the width case splits across 6.1875
+and 5.0417; the seeded transpose-control maximum difference is 0.10945. The
+existing PR head passes the same odd-size axis and transpose controls (maximum
+difference 3.58e-7). This is a focused reproducer, not the full framework
+suite. The benchmark's frozen spectral runs are even-width, so its results are
+unchanged.
+
+No new issue or duplicate comment was posted: #2007 and #2008 already cover
+this defect and proposed fix, and the prior benchmark comment contains the
+reproducer. The live metadata, immutable source hashes, and both outputs are
+in `evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T0337Z.json`
+and `evidence/upstream-refresh/physicsnemo-2026-10-01T0335Z/{main,pr-2008}.json`.

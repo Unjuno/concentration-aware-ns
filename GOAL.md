@@ -1683,3 +1683,20 @@ the constants remain non-effective, the packet shrinks to zero, and this is
 not a molecular or fixed-size-particle result. Algebraic exponents and
 assumption limits are recorded in `docs/axis-packet-bound.md` and
 `evidence/tests/packet-radius-scaling.json`.
+
+## Revision 104 — PhysicsNeMo tracked odd-width fix refreshed at current main
+
+Rechecked NVIDIA PhysicsNeMo at current main
+`b08dd3f61ac44c784f7c03b0cc93947226365cad` and reran the focused odd-width
+spectral reproducer against both that immutable source and PR #2008 head
+`7407608723062dc11ba5332e9ff3774f42bb02d9`. The defect remains on main: the
+33x33 height-cosine peak is 10.0833, while its width-axis counterpart splits
+across 6.1875/5.0417, and a transpose control differs by 0.10945. PR #2008
+suppresses these controls to 3.58e-7, but remains open, review-required, and
+behind current main (the compared histories have 11 main-only and 2 PR-only
+commits). No duplicate post was made because issue #2007 and the existing PR
+already track the finding; the prior comment contains the reproduction. The
+current benchmark uses even widths, so its recorded spectra are unaffected.
+Reproducer outputs, source hashes, and live API state are in
+`evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T0337Z.json` and
+`evidence/upstream-refresh/physicsnemo-2026-10-01T0335Z/`.
