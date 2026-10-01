@@ -980,3 +980,19 @@ no newly resolved subcell slope. This diagnoses a representation limitation
 for these events, not an implementation defect; the reconstructed gradient is
 not asserted to be the solver's stored `grad(U)`. The n=32 archives include
 only mapped face data required for replay; later face stages stay excluded.
+
+### 2026-10-01 independent six-case OpenFOAM matrix archive replay
+
+Added `tools/verify_openfoam_high_gradient_matrix.py` to verify the current
+cross-run index against the protocol, original manifest, six archive hashes,
+archived logs/configuration/endpoint fields/diagnostics, and recomputed gates.
+It reconstructs the n=128 archive from its published chunks and checks both
+the chunked Zstandard stream and reconstructed gzip hash. All six rows replay;
+all pass standard acceptance, local quality fails at n=16/32 and passes at
+n=64/128 and the two smaller n=64 time steps. The preregistered fine-grid
+blind-spot verdict recomputes to `NOT_OBSERVED`. The audit and test are in
+`reports/openfoam-six-case-matrix-independent-replay-2026-10-01.md`,
+`evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-01.json`, and
+`tests/test_openfoam_high_gradient_matrix_replay.py`. This verifies stored
+evidence and the gate logic, not source/binary equivalence or continuous field
+accuracy; separate AMR quality remains uncertain.

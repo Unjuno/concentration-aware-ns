@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 133 — independent replay of the completed OpenFOAM matrix
+
+Rechecked the authoritative cross-run status after the last update: the
+six-case high-gradient uniform matrix is complete, and the historical
+`n64, dt=0.0005` partial run is explicitly superseded by a separate validated
+100/100-step archive. Added an independent replay tool that verifies the
+protocol and base-manifest hashes, all six archive hashes, reconstructs and
+checks both the split n=128 Zstandard package and original gzip tar, parses
+archived timestep/convergence logs and `fvSolution`, confirms endpoint fields,
+recomputes local-quality gates, and re-evaluates the preregistered matrix rule.
+It passes: all six rows pass standard acceptance; local quality is FAIL at
+n=16/32 and PASS at n=64/128 and both smaller n=64 time steps; the persistent
+fine-grid blind spot is `NOT_OBSERVED`. The integration test passes. This
+closes a stale-status ambiguity and strengthens artifact reproducibility, but
+does not establish source/binary equivalence or a continuous finite-volume
+derivative certificate. AMR local-quality and broader solver audits remain
+open. See `reports/openfoam-six-case-matrix-independent-replay-2026-10-01.md`.
+
 ## Revision 132 — AMR derivative replay and post-announcement analytic refresh
 
 Repacked the preserved v5/v6 n=32 same-run AMR archives as package-a4 and
