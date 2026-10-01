@@ -1,0 +1,11 @@
+FoamFile { format ascii; class dictionary; object fvSolution; }
+solvers {
+p { solver GAMG; tolerance 1e-10; relTol 0; smoother GaussSeidel; }
+pFinal { $p; }
+U { solver smoothSolver; smoother symGaussSeidel; tolerance 1e-10; relTol 0; }
+UFinal { $U; }
+}
+PIMPLE {
+ nOuterCorrectors 12; nCorrectors 2; nNonOrthogonalCorrectors 0; pRefCell 0; pRefValue 0;
+ outerCorrectorResidualControl { p { tolerance 1e-8; relTol 0; } U { tolerance 1e-8; relTol 0; } }
+}

@@ -2,6 +2,14 @@
 
 ### Completion audit refresh — 2026-10-02
 
+The separate Foundation 13 `n=64`, `dt=0.0005` rerun has 36 converged steps
+through `t=0.018`; a later `t=0.0185` time label has no completed convergence
+record. It has no `exit.json` or endpoint archive. Current Docker inspection
+finds no container object, and no host solver process is present. Its sanitized
+inputs, original input hashes and raw logs are preserved in
+[`incomplete-rerun-2026-10-02/`](../evidence/of13-high-gradient-v2/incomplete-rerun-2026-10-02/README.md).
+This attempt remains excluded from the completed matrix and all verdicts.
+
 The OpenFOAM Foundation's current release is v14, with a September 30 source
 update; the benchmark's complete six-case matrix remains pinned to v13. The one
 v14 compatibility case matches v13 at n=64/dt=.001 after version-banner

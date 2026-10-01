@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 177 — incomplete OpenFOAM rerun container status resolved
+
+Rechecked the preserved Foundation 13 n64/dt=.0005 attempt against its raw
+solver log: 36 of 100 steps converged through `t=.018`; the following `.0185`
+time label has no convergence record. The run has no `exit.json` or endpoint
+archive. Current Docker inspection finds no container object, and no host
+`foamRun` process is present. Published the sanitized inputs, input hashes,
+invocation, logs and current liveness observation at
+`evidence/of13-high-gradient-v2/incomplete-rerun-2026-10-02/`. It remains
+excluded from the completed six-case matrix and all scientific verdicts. Goal
+remains active.
+
 ## Revision 176 — Foundation v14 current-release and tracker audit
 
 Refreshed the OpenFOAM Foundation upstream inventory against the current
