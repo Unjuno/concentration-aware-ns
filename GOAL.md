@@ -1740,6 +1740,21 @@ assumptions, and limits are recorded in
 `evidence/openai-analytic-forcing-v2-audit.json`; no simulation or upstream
 post was warranted.
 
+## Revision 109 — exact repeat of one OpenFOAM temporal row
+
+Using the frozen Foundation 13 linux/arm64 image and protocol, reran the
+`n=64, dt=0.0005` case at source commit `0dc1e99b06ef1632e9199891c8382a21ee2a267b`
+in a new work root. The solver completed 100/100 time steps and PIMPLE
+convergence records. A new archive comparator verifies all four endpoint
+fields (`U`, `p`, `C`, `phi`) byte-identical to the earlier archive, all five
+diagnostic errors exactly equal, and every other raw difference confined to
+the case mount path and runtime log metadata/hash. The repeated archive,
+manifest, environment, comparator and limitations are published under
+`evidence/of13-high-gradient-repeat-2026-10-01/`; interpretation is added to
+the temporal addendum and completion audit. This is one-case execution
+reproducibility, not evidence of solver-wide reliability or a physical result.
+The broader three-project goal remains active.
+
 ## Revision 108 — clean-export failure repaired and latest artifacts replayed
 
 A fresh fixed-commit export exposed two reproducibility gaps: pytest was
