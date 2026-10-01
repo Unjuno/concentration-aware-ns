@@ -65,25 +65,38 @@
     "postProcessing/amrStages/0.0025/postSolve_faces.csv": "b669cb84702b8a9762599209dcd6ef7382c1c77de89f3de6a4807b0df4088e39"
   },
   "archive": "amr-stage-snapshot-n32-dt0005.tar.gz",
-  "archive_sha256": "9991dd5248b0286309a26484785fb4030b46154f526970a120ea7b9f03a36542",
+  "archive_sha256": "94b3f3691f3c8a30fe47357547cb66d6995f76219bf011c6f2d61274b1a6c3fb",
   "archive_packaging": {
     "archive": "amr-stage-snapshot-n32-dt0005.tar.gz",
-    "archive_sha256": "9991dd5248b0286309a26484785fb4030b46154f526970a120ea7b9f03a36542",
+    "archive_sha256": "94b3f3691f3c8a30fe47357547cb66d6995f76219bf011c6f2d61274b1a6c3fb",
     "excluded_patterns": [
-      "postProcessing/amrStages/*/*_faces.csv",
+      "postProcessing/amrStages/0.002/preMap_faces.csv",
+      "postProcessing/amrStages/0.0025/*_faces.csv",
       "dynamicCode"
     ],
     "excluded_patterns_observed": [
       "dynamicCode",
-      "postProcessing/amrStages/*/*_faces.csv"
+      "postProcessing/amrStages/0.002/preMap_faces.csv",
+      "postProcessing/amrStages/0.0025/*_faces.csv"
     ],
     "status": "PACKAGED_WITH_PROTOCOL_DECLARED_EXCLUSIONS",
+    "included_face_snapshots": [
+      "mapped_faces.csv at t=0.002"
+    ],
+    "preMap_gradient_reconstruction": "Uniform periodic centered differences from captured preMap cell U; mathematically equivalent to the arithmetic-midpoint Gauss face sum on this uniform orthogonal grid.",
+    "excluded_preMap_face": "0.002/preMap_faces.csv; no data lost for published preMap gradient metric.",
+    "excluded_later_face_snapshots": "0.0025/*_faces.csv",
+    "excluded_generated": "dynamicCode",
     "raw_case": "work/of13-amr-same-run-map-v6-n32-dt0005/amr-n32-dt0005-cap120000",
-    "full_archive_preserved": "work/of13-amr-same-run-map-v6-n32-dt0005/archive-recovery/amr-stage-snapshot-n32-dt0005-full.tar.gz",
-    "original_full_archive_sha256": "991a34eb29d12d4047564e0d2566d777242986f16d62fe6fbc02955631346662",
-    "excluded_reason": "Cell-stage mapping evidence is sufficient for this protocol; no face-flux/divergence claim is made.",
-    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005-package-a1.json",
-    "packaging_addendum_sha256": "2e6c80c4264a75993eaec1548a9fb5e0ca25fd3f7d0088f398a66c6448ee632c"
+    "previous_face_package": "work/of13-amr-same-run-map-v6-n32-dt0005/archive-recovery/amr-stage-snapshot-n32-dt0005-cell-and-mapface-a2.tar.gz",
+    "previous_face_package_sha256": "a9a0a301dc22fdd3709495def0e86ad1efeea4ccaa7cb4483f6c20e332fd454b",
+    "full_raw_archive_preserved": "work/of13-amr-same-run-map-v6-n32-dt0005/archive-recovery/amr-stage-snapshot-n32-dt0005-full.tar.gz",
+    "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
+    "run_protocol_sha256": "edd3b0ad238623978bdf9affbf4599056aafad97572c1dc9c69281d5599b0c46",
+    "post_run_packaging_only": true,
+    "claim_limit": "Only mapped-stage Gauss gradient uses captured mapped Uf; preMap uses equivalent uniform-grid face averaging reconstructed from cell U. No later-stage face flux/divergence claim.",
+    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005-package-a3.json",
+    "packaging_addendum_sha256": "69ef3fd142c2410016edba11b09bf4e05cc89c6a151f90c9cc0186b3fb6c85af"
   },
   "solver_log_sha256": "86715b6da5ba29e8925cbf2aa8e99ec06b3e9c905aa2b28cf4d44deb7c8113f0",
   "limitations": [

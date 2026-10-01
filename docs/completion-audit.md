@@ -51,10 +51,11 @@ The n=32 same-run first-refinement replication now confirms the independent
 selection predictor (12,288 candidates), exact parent-value injection, and a
 reduction in both coarse and mapped child DOF discrepancies relative to n=16.
 This remains exploratory two-resolution evidence; the AMR quality status stays
-UNCERTAIN. The solver run completed normally, but its full face snapshots are
-retained only in the ignored local raw case; the published 40.8 MB archive
-contains six cell snapshots and supporting inputs/logs. A runner source-overlay
-hash was not captured at launch and remains a reproducibility limitation. See
+UNCERTAIN. The solver run completed normally; the initial compact 40.8 MB
+cell-only archive has since been superseded by a 53.9 MB archive with the
+mapped face snapshot for the gradient audit. Full later-stage face snapshots
+remain only in ignored local raw case data. A runner source-overlay hash was
+not captured at launch and remains a reproducibility limitation. See
 [`n=32 AMR report`](../reports/openfoam-amr-resolution-replication-2026-10-01.md).
 
 The project is **not complete**. This audit preserves the original three-target
@@ -970,3 +971,12 @@ match the n=32 `dt=.001` case; the DOF metrics change only slightly. This is a
 fixed-first-map-time exploratory control with a changed pre-map step count and
 adaptation interval, not a temporal order study. AMR quality remains
 UNCERTAIN; see the dated AMR-resolution report.
+
+The v4/v5/v6 same-run AMR snapshots now have an interior Gauss-gradient/curl
+replay. With a shared physical boundary mask, gradient and vorticity pointwise
+errors increase immediately after mapping at both n=16 and n=32. Same-parent
+child faces carry exactly the injected constant parent `Uf`, consistent with
+no newly resolved subcell slope. This diagnoses a representation limitation
+for these events, not an implementation defect; the reconstructed gradient is
+not asserted to be the solver's stored `grad(U)`. The n=32 archives include
+only mapped face data required for replay; later face stages stay excluded.

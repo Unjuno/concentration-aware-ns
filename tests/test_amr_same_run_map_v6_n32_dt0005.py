@@ -39,7 +39,8 @@ class SameRunMapV6N32Dt0005Tests(unittest.TestCase):
         self.assertIn("Selected 12288 cells for refinement out of 32768", log)
         self.assertIn("Refined from 32768 to 118784 cells", log)
         self.assertEqual(sum(name.endswith("_cells.csv") for name in names), 6)
-        self.assertFalse(any(name.endswith("_faces.csv") for name in names))
+        self.assertEqual(sum(name.endswith("_faces.csv") for name in names), 1)
+        self.assertTrue(any(name.endswith("/mapped_faces.csv") for name in names))
 
         env = os.environ.copy()
         env["CANS_AMR_STAGE_PROTOCOL"] = str(PROTOCOL.relative_to(ROOT))
@@ -54,6 +55,27 @@ class SameRunMapV6N32Dt0005Tests(unittest.TestCase):
         self.assertEqual(
             result["parent_value_injection"]["mapped_vs_parent_injection_relative_l2"],
             0.0,
+        )
+        subprocess.run(
+            [sys.executable, "-m", "tools.analyze_amr_gauss_gradient"],
+            cwd=ROOT, env=env, check=True, capture_output=True, text=True,
+        )
+        gradient = json.loads((EVIDENCE / "gauss-gradient-audit.json").read_text())
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.08719723446052442, places=12,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][1]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.2208557558808142, places=12,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity"],
+            0.09055738308351031, places=12,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][1]["interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity"],
+            0.2155709070680602, places=12,
         )
 
 

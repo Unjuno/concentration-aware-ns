@@ -31,6 +31,29 @@ class PackageAmrStageEvidenceTests(unittest.TestCase):
             self.assertFalse(any(name.endswith("_faces.csv") for name in names))
             self.assertFalse(any("dynamicCode" in name for name in names))
 
+    def test_keep_map_faces_while_excluding_later_stage_faces(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)/"case"
+            for time in ("0.002", "0.003"):
+                stage = root/"postProcessing/amrStages"/time
+                stage.mkdir(parents=True)
+                (stage/"mapped_faces.csv").write_text("face,phi\n0,1\n")
+            archive_path = Path(tmp)/"case.tar.gz"
+            record = package_case(root, archive_path, [
+                "postProcessing/amrStages/0.003/*_faces.csv"
+            ])
+            self.assertEqual(record["excluded_patterns_observed"], [
+                "postProcessing/amrStages/0.003/*_faces.csv"
+            ])
+            with tarfile.open(archive_path, "r:gz") as archive:
+                names = archive.getnames()
+            self.assertIn(
+                "case/postProcessing/amrStages/0.002/mapped_faces.csv", names
+            )
+            self.assertNotIn(
+                "case/postProcessing/amrStages/0.003/mapped_faces.csv", names
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

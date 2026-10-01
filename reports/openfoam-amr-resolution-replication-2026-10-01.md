@@ -40,6 +40,47 @@ the same map time, so this is not a formal temporal order study or an isolated
 one-variable intervention. It adds no temporal accuracy gate and does not
 change the AMR quality verdict.
 
+## Interior Gauss-gradient and vorticity diagnostic
+
+The retained preMap and mapped face data were used to calculate a discrete
+Gauss gradient. At the uniform preMap stage, centered periodic differences
+from the captured cell `U` are equivalent to arithmetic-midpoint face
+interpolation on the orthogonal grid. At the mapped stage, the calculation
+uses captured internal-face `Uf` and oriented `S`, adding opposite
+owner/neighbour contributions and dividing by cell volume. Vorticity is the
+curl of this reconstructed gradient. Both are compared with the analytic MMS
+point gradient/curl at cell centers.
+
+For a fair within-run comparison, both stages use the same physical interior
+mask: cell centers must be more than two initial-grid widths from every
+periodic boundary. This yields the same retained volume fraction at preMap and
+mapped for each resolution; cyclic boundary faces are absent from the captured
+face table. The metrics therefore cover 42.1875% of the n=16 domain and
+66.9922% of the n=32 domain, and they are volume weighted only on those
+subdomains.
+
+| Initial grid / `dt` | Gauss-gradient relative L2: preMap → mapped | Vorticity relative L2: preMap → mapped |
+|---|---:|---:|
+| n=16 / 0.001 | 26.3494% → 48.3516% | 31.0782% → 54.3949% |
+| n=32 / 0.001 | 8.7188% → 22.0848% | 9.0557% → 21.5574% |
+| n=32 / 0.0005 | 8.7197% → 22.0856% | 9.0557% → 21.5571% |
+
+At n=32, 147,456 of 352,128 captured mapped internal faces (41.8757%) join
+children of the same parent cell. On those faces, `Uf` equals the injected
+parent value exactly (max absolute difference 0). The mapping therefore
+creates no velocity variation across those subcell interfaces. The rise in
+this Gauss-gradient diagnostic after mapping is consistent with refining a
+piecewise-constant parent field without adding subcell slope information; it
+does not identify a defect. The two time-step controls give nearly identical
+gradient/curl errors at the fixed map time.
+
+This is a specified finite-volume reconstruction diagnostic, not necessarily
+the solver's configured/stored `grad(U)`, not a cell-integrated derivative
+norm, and not a general AMR accuracy result. It says nothing about singularity,
+particle ordering, phase transition, or a material viscosity law. The
+reproducible analyzer is `tools/analyze_amr_gauss_gradient.py`; its bounded
+outputs are `gauss-gradient-audit.json` in each n=16/n=32 evidence directory.
+
 The n=32 squared child-average DOF error decomposes into `0.001168` inherited
 coarse-solution error plus `0.043264` exact parent-average-to-child-average
 variation; the normalized cross term is `5.11e-18` and the identity residual
@@ -56,7 +97,7 @@ defined as an exact volume average, and it is not a continuous P0 error norm.
 - Fixed-map-time time-step control: `protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json`,
   `evidence/of13-amr-same-run-map-v6-n32-dt0005/`
 - Predictor and analyzer: `tools/predict_amr_grid_candidates.py`,
-  `tools/analyze_amr_same_run_map.py`
+  `tools/analyze_amr_same_run_map.py`, `tools/analyze_amr_gauss_gradient.py`
 - Tests: `tests/test_predict_amr_grid_candidates.py`,
   `tests/test_amr_same_run_map_v5_n32.py`
 
@@ -67,14 +108,17 @@ source commit `18870c24d21c6b982e2cdec27b2f59738cca5f90`, the arm64 runtime imag
 and all generated case inputs. The solver exited zero and logged `End`; the
 instrumented library load was confirmed.
 
-The first packaging attempt used the v4 case-root name and created a 129 MiB
-archive. That archive is retained under the ignored `work/` tree. The published
-archive was rebuilt from the preserved run without rerunning the solver; it is
-40.8 MB, contains all six cell-stage snapshots, inputs and logs, and omits the
-large face CSVs and generated `dynamicCode`. Their full raw files and captured
-hashes remain in the ignored run tree; this n=32 report makes no face-flux,
-divergence, or spectrum claim. The post-run packaging change is separated into
-the package addendum and does not alter the run protocol or scientific gate.
+The first packaging attempt used an incorrect case-root name and exceeded the
+hosting size limit; those archives are retained under the ignored `work/`
+tree. The final published archives were rebuilt from the preserved runs
+without rerunning either solver. They are 53.9 MB (dt=.001) and 52.8 MB
+(dt=.0005), contain all six cell-stage snapshots, inputs, logs, and the mapped
+internal-face snapshot needed for the Gauss-gradient audit. The uniform preMap
+gradient is reconstructed from cell `U`; preMap face CSVs, later-stage face
+CSV files, and generated `dynamicCode` remain excluded. Full raw files and
+captured hashes remain under ignored `work/`. No face-flux, divergence, or
+spectrum claim is made. Packaging addenda `package-a3` are separate from the
+as-run protocols and do not change solver inputs or acceptance.
 
 ## Interpretation limits
 

@@ -1,6 +1,7 @@
 """Create a reviewable OpenFOAM AMR archive with protocol-selected members."""
 
 import hashlib
+import fnmatch
 import tarfile
 from pathlib import Path
 
@@ -21,12 +22,9 @@ def package_case(case, archive, excluded_relative_paths=()):
             if pattern == "dynamicCode" and (rel == pattern or rel.startswith(pattern + "/")):
                 excluded_seen.add(pattern)
                 return None
-            if pattern == "postProcessing/amrStages/*/*_faces.csv":
-                parts = rel.split("/")
-                if (len(parts) == 4 and parts[0:2] == ["postProcessing", "amrStages"]
-                        and parts[3].endswith("_faces.csv")):
-                    excluded_seen.add(pattern)
-                    return None
+            if fnmatch.fnmatchcase(rel, pattern):
+                excluded_seen.add(pattern)
+                return None
         return info
 
     archive.parent.mkdir(parents=True, exist_ok=True)

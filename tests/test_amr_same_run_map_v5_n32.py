@@ -35,7 +35,8 @@ class SameRunMapV5N32Tests(unittest.TestCase):
         self.assertIn("Selected 12288 cells for refinement out of 32768", log)
         self.assertIn("Refined from 32768 to 118784 cells", log)
         self.assertEqual(sum(name.endswith("_cells.csv") for name in names), 6)
-        self.assertFalse(any(name.endswith("_faces.csv") for name in names))
+        self.assertEqual(sum(name.endswith("_faces.csv") for name in names), 1)
+        self.assertTrue(any(name.endswith("/mapped_faces.csv") for name in names))
         self.assertTrue(any(name.endswith("/log.foamRun") for name in names))
 
         env = os.environ.copy()
@@ -55,6 +56,31 @@ class SameRunMapV5N32Tests(unittest.TestCase):
         self.assertLess(
             result["parent_value_injection"]["parent_volume_closure_relative_max"],
             2e-14,
+        )
+        subprocess.run(
+            [sys.executable, "-m", "tools.analyze_amr_gauss_gradient"],
+            cwd=ROOT, env=env, check=True, capture_output=True, text=True,
+        )
+        gradient = json.loads((EVIDENCE / "gauss-gradient-audit.json").read_text())
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_volume_fraction"],
+            gradient["stages"][1]["interior_volume_fraction"], places=14,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.0871878180342279, places=12,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][1]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.22084781212152987, places=12,
+        )
+        self.assertEqual(
+            gradient["same_parent_face_audit"]["same_parent_internal_faces"], 147456
+        )
+        self.assertEqual(
+            gradient["same_parent_face_audit"][
+                "same_parent_Uf_max_abs_difference_from_injected_parent_value"
+            ], 0.0,
         )
 
 

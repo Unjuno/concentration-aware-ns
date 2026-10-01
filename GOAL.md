@@ -2256,6 +2256,25 @@ all cell snapshots, inputs and logs, with face data excluded and no
 flux/divergence claims. See the updated AMR-resolution report and
 `evidence/of13-amr-same-run-map-v6-n32-dt0005/`.
 
+## Revision 130 — interior Gauss-gradient and vorticity under AMR mapping
+
+Added a bounded finite-volume gradient/curl replay from cell and face snapshots.
+Both stages use a shared physical interior mask aligned two base-cell widths
+from periodic boundaries. Relative pointwise-reference gradient error rises
+from 26.3494% to 48.3516% at n=16, and 8.7188% to 22.0848% at n=32; vorticity
+error rises from 31.0782% to 54.3949% and 9.0557% to 21.5574%, respectively.
+At n=32, halving dt changes these mapped metrics only in the last few decimal
+places. Of 352,128 mapped internal faces, 147,456 (41.8757%) connect children
+of the same parent; their captured Uf equals the injected parent value exactly,
+so they add no subcell slope. This is consistent with refining a
+piecewise-constant field, not evidence of a solver defect. The gradient is a
+specified Gauss reconstruction compared with analytic point derivatives, not
+necessarily OpenFOAM's stored grad(U), a cell-integrated norm, or a physical
+claim. The n=32 compact archives now retain mapped faces; uniform preMap
+gradients replay from periodic centered differences, and later face stages
+remain excluded. Analyzer and limits are in
+`tools/analyze_amr_gauss_gradient.py` and the updated dated report.
+
 ## Revision 127 — reusable analytic cell-average evaluator
 
 Extracted the high-gradient MMS's exact cubical velocity-average formula into

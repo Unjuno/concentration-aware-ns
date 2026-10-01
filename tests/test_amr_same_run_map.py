@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.analyze_amr_same_run_map import ARCHIVE, EVIDENCE, analyze
+from tools.analyze_amr_gauss_gradient import analyze as analyze_gradient
 
 
 class SameRunMappingTests(unittest.TestCase):
@@ -47,6 +48,19 @@ class SameRunMappingTests(unittest.TestCase):
                 "identity_residual"
             ]),
             1e-14,
+        )
+        gradient = analyze_gradient()
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_volume_fraction"],
+            gradient["stages"][1]["interior_volume_fraction"], places=14,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][0]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.2634940085544251, places=12,
+        )
+        self.assertAlmostEqual(
+            gradient["stages"][1]["interior_gauss_gradient_relative_l2_vs_exact_point_gradient"],
+            0.4835155796212415, places=12,
         )
 
 

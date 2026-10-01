@@ -65,7 +65,7 @@
     "postProcessing/amrStages/0.003/postSolve_faces.csv": "26c871ac183babf67625ed43a877d453e87dd4dac935ba717cc9e15fecbdf7c0"
   },
   "archive": "amr-stage-snapshot-n32.tar.gz",
-  "archive_sha256": "8efbd66b3c79f211a7e6eeba7b244785e3f658e78c1540e91b8af5531d32ccdb",
+  "archive_sha256": "e1d40ec6ad60885ee6e2bdd31e025822e70fffdf5b1c82819e188048fb0f3a94",
   "solver_log_sha256": "817f824ce35088a5fd1b6fc779d7ce2f8cabe40ff805c95bcd432ecf4a9d659d",
   "limitations": [
     "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
@@ -77,22 +77,34 @@
   "protocol_content_reconstructed_from_generator_and_hash_verified": true,
   "archive_packaging": {
     "archive": "amr-stage-snapshot-n32.tar.gz",
-    "archive_sha256": "8efbd66b3c79f211a7e6eeba7b244785e3f658e78c1540e91b8af5531d32ccdb",
+    "archive_sha256": "e1d40ec6ad60885ee6e2bdd31e025822e70fffdf5b1c82819e188048fb0f3a94",
     "excluded_patterns": [
-      "postProcessing/amrStages/*/*_faces.csv",
+      "postProcessing/amrStages/0.002/preMap_faces.csv",
+      "postProcessing/amrStages/0.003/*_faces.csv",
       "dynamicCode"
     ],
     "excluded_patterns_observed": [
       "dynamicCode",
-      "postProcessing/amrStages/*/*_faces.csv"
+      "postProcessing/amrStages/0.002/preMap_faces.csv",
+      "postProcessing/amrStages/0.003/*_faces.csv"
     ],
     "status": "PACKAGED_WITH_PROTOCOL_DECLARED_EXCLUSIONS",
-    "raw_complete_case_path": "work/of13-amr-same-run-map-v5-n32/amr-n32-cap120000",
-    "full_raw_archives_preserved_under": "work/of13-amr-same-run-map-v5-n32/archive-recovery",
-    "explanation": "The first runner archive used a fixed v4 root and included all six face CSVs, yielding 129 MiB. The original package is preserved in ignored work/. The published archive was rebuilt without rerunning the solver, using the actual case root and excluding face CSVs and generated dynamicCode; all six cell snapshots, inputs and solver/build logs remain included. The original as-run protocol JSON and its hash are verified.",
-    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v5-n32-package-a1.json",
-    "packaging_addendum_sha256": "6520a0e4f6f0c561d6a6b0b8db6b05af524471bd0125b32a320020ec0b2567e5",
-    "original_runner_archive_sha256": "1f44c0c4421e290a12e601e39fb1d6755917666827ce0f45b099967038790e4f",
-    "original_runner_archive_issue": "tar member root incorrectly used amr-cap5000 instead of amr-n32-cap120000"
+    "included_face_snapshots": [
+      "mapped_faces.csv at t=0.002"
+    ],
+    "preMap_gradient_reconstruction": "Uniform periodic centered differences from captured preMap cell U; mathematically equivalent to the arithmetic-midpoint Gauss face sum on this uniform orthogonal grid.",
+    "excluded_preMap_face": "0.002/preMap_faces.csv; no data lost for published preMap gradient metric.",
+    "excluded_later_face_snapshots": "0.003/*_faces.csv",
+    "excluded_generated": "dynamicCode",
+    "raw_case": "work/of13-amr-same-run-map-v5-n32/amr-n32-cap120000",
+    "previous_face_package": "work/of13-amr-same-run-map-v5-n32/archive-recovery/amr-stage-snapshot-n32-cell-and-mapface-a2.tar.gz",
+    "previous_face_package_sha256": "623f66e9b8a1e4e9a3c302628cfdc4ef9e80dd7211af38b360e8e5cff73b93c0",
+    "full_raw_archive_preserved": null,
+    "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+    "run_protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+    "post_run_packaging_only": true,
+    "claim_limit": "Only mapped-stage Gauss gradient uses captured mapped Uf; preMap uses equivalent uniform-grid face averaging reconstructed from cell U. No later-stage face flux/divergence claim.",
+    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v5-n32-package-a3.json",
+    "packaging_addendum_sha256": "666395a84866e3dfdeee360d995f2cce34a20f223232a3d8166ca4240175d064"
   }
 }
