@@ -58,13 +58,30 @@ it as a candidate for a separate mathematical audit, not as corroboration
 until hypotheses, theorem dependencies, code/data, and independent checking
 are examined.
 
-The OpenAI announcement itself explicitly describes Navier–Stokes as a
-continuum model and says that if the continuum model breaks down, a different
+The OpenAI paper gives a precise continuum scaling that is worth separating
+from the molecular interpretation. With remaining time `tau = 1-t`, its
+leading vortex core has radial width `ell_r ~ tau^(1/2)`, axial height
+`ell_z ~ tau^(1/2-h)` for `0<h<0.01`, and hence `ell_r/ell_z ~ tau^h -> 0`:
+it becomes a thinner axial column. The leading azimuthal and axial velocities
+scale as `tau^(-1/2-h)`, radial velocity as `O(tau^(-1/2))`, while the core
+kinetic energy scales as `tau^(1/2-3h) -> 0`. With fixed positive viscosity,
+the paper derives an azimuthal Reynolds number growing like `tau^(-h)` while
+the radial Reynolds number remains `O(1)`; radial diffusion and radial/axial
+transport stay in the leading balance, while axial diffusion becomes smaller
+relative to radial diffusion. This is an anisotropic continuum concentration
+and changing scale balance. It is not a molecular alignment result and does
+not say the constitutive viscosity coefficient drops. The paper also says
+fluid parcels spiral inward and flow axially in opposite directions near the
+central dividing layer; that is a continuum velocity pattern, not a lattice
+of molecules.
+
+The OpenAI announcement explicitly describes Navier–Stokes as a continuum
+model and says that if the continuum model breaks down, a different
 microscopic model would be needed to continue. That statement does not imply
 molecular alignment, a particle-position distribution, or a drop in
 constitutive viscosity. The PDE blow-up claim supplies no molecule-resolved
 trajectory or constitutive law. Any such bridge would require a specified
-kinetic/molecular model, a scale map, and independent evidence.
+kinetic/molecular model, dimensional scales, and independent evidence.
 
 ## Consequence for the repository's next experiments
 
