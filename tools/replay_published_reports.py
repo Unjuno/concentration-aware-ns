@@ -21,6 +21,7 @@ steps = [
     ('su2_diagnostic_replay', [sys.executable, '-m', 'tools.replay_su2_diagnostics']),
     ('su2_spectral_derivatives', [sys.executable, '-m', 'tools.compare_su2_spectral']),
     ('su2_time_comparison', [sys.executable, '-m', 'tools.compare_su2_time']),
+    ('su2_localized_source_lag', [sys.executable, '-m', 'tools.audit_su2_localized_source_lag']),
     ('su2_bdf2_control', [sys.executable, '-m', 'tools.check_su2_bdf2_control']),
     ('su2_boundary_time_pilot', [sys.executable, '-m', 'tools.check_su2_boundary_time_pilot']),
     ('su2_restart_findings', [sys.executable, '-m', 'tools.replay_su2_restart_findings']),

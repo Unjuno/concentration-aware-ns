@@ -98,6 +98,19 @@ Reproduce with `python3 -m tools.compare_su2_time`. The JSON evidence includes
 archive hashes, convergence counts and both differences in
 `evidence/tests/su2-time-comparison.json`.
 
+The separate analytic source-lag audit evaluates the exact manufactured force
+at callback time `T-dt` and target endpoint `T` on 4,096 fixed-seed points for
+these three verified archives. Since `u`, its derivatives and the viscous and
+time-derivative force terms scale as `exp(-t)`, while `grad(u)u` scales as
+`exp(-2t)`, the force has the form `f(t)=exp(-t)L+exp(-2t)Q`. The computed RMS
+force differences halve with orders 1.00036 and 1.00018. This is consistent
+with an O(dt) input-time mismatch and the observed near-first-order endpoint
+field differences, but it does not attribute the solution error to that
+mismatch: nonlinear response, spatial error, discrete operator details and
+unconverged inner solves remain mixed in. Reproduce with
+`python3 -m tools.audit_su2_localized_source_lag`; results and archive hashes
+are in `evidence/tests/su2-localized-source-lag.json`.
+
 ## Interpretation check: SU2 sample and reconstruction semantics
 
 The frozen velocity relative-L2 metric is a discrete norm over the unique
