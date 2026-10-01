@@ -1978,3 +1978,15 @@ the unit-viscosity equation; in the latter, acceleration balances viscosity,
 pressure, and force together. Do not infer a constitutive-viscosity effect from
 that ratio. Evidence and exact scope are in the dated pressure-provenance and
 qualified-profile reports.
+
+## Revision 117 — refreshed three-project upstream inventory (2026-10-01)
+
+Re-read current GitHub metadata, issue/discussion records, and pinned license
+files for OpenFOAM Foundation 13, SU2, and NVIDIA PhysicsNeMo. The audited code
+heads remain unchanged; existing issue/PR coverage remains sufficient for
+PhysicsNeMo and SU2, while OpenFOAM's four listed GitHub issues do not match the
+AMR observation and its separate Foundation bug tracker was not exhaustively
+searched. No new upstream post is justified. The inventory is archived with
+license-file blob IDs and explicitly bounded search scope. The benchmark's
+remaining numerical/analytic uncertainty and full completion conditions stay
+active.

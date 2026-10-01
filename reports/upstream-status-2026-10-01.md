@@ -121,3 +121,13 @@ this defect and proposed fix, and the prior benchmark comment contains the
 reproducer. The live metadata, immutable source hashes, and both outputs are
 in `evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T0337Z.json`
 and `evidence/upstream-refresh/physicsnemo-2026-10-01T0335Z/{main,pr-2008}.json`.
+
+## Three-project API and license recheck (2026-10-01 08:28 UTC)
+
+The current code heads and focused issue/discussion status were reread. The
+OpenFOAM and SU2 API license fields say `NOASSERTION`; their pinned `COPYING`
+files identify GPL-3.0-or-later and LGPL-2.1, respectively. PhysicsNeMo's
+pinned `LICENSE.txt` identifies Apache-2.0. No new matching record or
+reproducible defect was found, so no new upstream post is justified. This
+focused snapshot and its bounded search scope are recorded in
+`evidence/upstream-refresh/current-project-inventory-2026-10-01T0828Z.json`.

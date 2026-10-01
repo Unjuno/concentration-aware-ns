@@ -154,3 +154,26 @@ reproduction queries are preserved in
 [`evidence/upstream-refresh/three-project-inventory-2026-10-01.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-01.json).
 This refresh updates versions and tracking state; it is not a new solver run,
 full source audit, or PhysicsNeMo acceptance verdict.
+
+## Three-project live refresh, 2026-10-01 08:28 UTC
+
+The focused GitHub inventory was reread after the prior disposition. The audited
+source heads are unchanged: OpenFOAM Foundation 13 remains at
+`18870c24d21c6b982e2cdec27b2f59738cca5f90`, SU2 master at
+`bc15466602a687d6fb796d5df7a12ce3fde0949a`, and PhysicsNeMo main at
+`b08dd3f61ac44c784f7c03b0cc93947226365cad`. The repository API reports
+`NOASSERTION` for the first two license identifiers, so their pinned `COPYING`
+files were read directly: OpenFOAM declares GPL-3.0-or-later and SU2 declares
+LGPL-2.1. PhysicsNeMo's pinned `LICENSE.txt` declares Apache-2.0.
+
+The four listed OpenFOAM GitHub issues still do not match the AMR observation;
+its README directs bug reports to the separate bugs.openfoam.org tracker, so
+this is explicitly not an exhaustive search of that system. SU2 Discussion
+#2890's `updatedAt` is September 30, but its thread still contains the known
+September 13 maintainer diagnosis and September 26 BDF2 author reply, with no
+later comment or accepted fix observed. PhysicsNeMo issue #2007 and PR #2008
+remain open, and the PR remains behind its base; no duplicate finding was
+posted. Full metadata, pinned license-file blob IDs and scope notes are in
+`evidence/upstream-refresh/current-project-inventory-2026-10-01T0828Z.json`.
+
+This refresh changes no scientific verdict and justifies no new upstream post.
