@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 150 — gate verdicts now preserve their declared scope
+
+The v2 report triage gate previously emitted `REPRODUCED`/`FAIL` without
+carrying the report's top-level scope into CLI output, and it would still
+classify a synthetic or real report with no scope. Added a test-first
+regression: omission leaves all decisions UNCERTAIN, and a valid decision
+echoes its declared scope. The failing tests reproduced both behaviors before
+the minimal checker change; focused tests now pass (14). Existing v2 report
+files were inventoried and each contains a non-empty scope. Documentation now
+states scope is required but is itself not proof, and distinguishes actual
+solver-field claims from discrete/named-reconstruction metrics. Full suite and
+all report replays remain to be checked. Goal remains active.
+
 ## Revision 149 — continuous-extremum target made explicit in protocol
 
 Updated the shared benchmark protocol so every continuous-extremum claim names

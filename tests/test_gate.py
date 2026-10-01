@@ -12,6 +12,7 @@ class GateTests(unittest.TestCase):
         ref={'path':'review.txt','sha256':hashlib.sha256((self.root/'review.txt').read_bytes()).hexdigest()}
         self.report={'schema_version':2,'standard_acceptance':'PASS','evidence':dict.fromkeys(REQUIRED,True),
                      'artifacts':{k:dict(ref) for k in REQUIRED},
+                     'scope':'Sampled FD2 peaks versus analytic continuum reference; not an actual-field certificate.',
                      'metrics':[{'name':n,'error_lower':.02,'error_upper':.03,'tolerance':.01} for n in ('max_gradient','max_vorticity')]}
     def evaluate(self):return evaluate(self.report,self.root)
     def test_missing_evidence_never_reproduces(self):
@@ -19,6 +20,11 @@ class GateTests(unittest.TestCase):
             r=copy.deepcopy(self.report);del r['evidence'][key]
             self.assertEqual(evaluate(r,self.root)['hypothesis'],'UNCERTAIN')
     def test_valid_discrepancy(self):self.assertEqual(self.evaluate()['hypothesis'],'REPRODUCED')
+    def test_scope_is_carried_with_gate_verdict(self):
+        self.assertEqual(self.evaluate()['scope'],self.report['scope'])
+    def test_missing_scope_keeps_verdicts_uncertain(self):
+        del self.report['scope']
+        self.assertEqual(self.evaluate(),dict(standard_acceptance='UNCERTAIN',local_quality='UNCERTAIN',hypothesis='UNCERTAIN'))
     def test_standard_failure_is_not_missed_acceptance(self):
         self.report['standard_acceptance']='FAIL';self.assertEqual(self.evaluate()['hypothesis'],'UNCERTAIN')
     def test_invalid_bounds(self):

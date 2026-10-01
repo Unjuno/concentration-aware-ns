@@ -12,6 +12,14 @@ leave the result uncertain. A review file may cover multiple requirements, but
 must actually substantiate each one; identical references do not create evidence.
 The standard acceptance decision also needs a reviewed artifact.
 
+Every v2 report must also provide a non-empty top-level `scope`. The CLI echoes
+this scope beside its verdicts, and missing/blank scope keeps all verdicts
+uncertain. The scope is a declared interpretation boundary, not independent
+proof that the metric or its claimed field object was computed correctly.
+Distinguish sampled/discrete quantities, named reconstructions and the
+underlying solver field; a reconstruction's continuous bound does not transfer
+to an unspecified finite-volume field.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.
