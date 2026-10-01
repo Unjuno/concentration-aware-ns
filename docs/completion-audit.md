@@ -799,3 +799,14 @@ This is existential. The selected `actualProfile` amplitude premise remains
 open, so the actual-profile local sign and strict negative-ratio conclusions
 remain conditional. No molecular or constitutive claim follows. Details are in
 `reports/pressure-threshold-lean-audit-2026-10-01.md`.
+
+## 2026-10-01 literature-source update
+
+The arXiv metadata for Lei–Ren Part I (arXiv:2609.35406, v2) describes an
+exposition of the OpenAI profile construction and explicitly defers oscillatory
+pulse residual correction to a companion Part II; its comments say it will not
+be submitted to a journal. We checked only metadata/abstract. It is a helpful
+new explanatory source, not independent verification of the entire construction
+or peer review. No benchmark or physical-hypothesis verdict changes. See
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
+`evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.

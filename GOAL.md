@@ -1911,3 +1911,13 @@ existential only. It does not transfer the amplitude premise to the separate
 force-ratio claims remain conditional. No molecular/viscosity inference follows.
 The result, hashes, and proof boundary are in
 `reports/pressure-threshold-lean-audit-2026-10-01.md`.
+
+## Revision 17 — newly posted explanatory source (2026-10-01)
+
+The literature refresh found Lei–Ren Part I, arXiv:2609.35406 v2. It explains
+the profile-construction stage, while stating that oscillatory-pulse residual
+correction is deferred to a companion Part II; the authors describe it as an
+exposition not intended for journal submission. We checked only metadata and
+abstract. Treat it as a useful explanatory route, not independent verification
+of the full OpenAI construction. See the dated literature report and metadata
+evidence under `evidence/upstream-refresh/`.
