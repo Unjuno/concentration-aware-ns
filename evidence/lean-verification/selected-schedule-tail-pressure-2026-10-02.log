@@ -8,3 +8,9 @@
  Classical.choice,
  Quot.sound]
 'ConcentrationAwareSelectedScheduleTail.tail_pressure_nonpos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.clockWeight_flattenEnd_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_from_pulse_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

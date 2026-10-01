@@ -203,6 +203,20 @@ selected schedule's pulse amplitude and parameter thresholds. The bound
 narrows the next proof obligation but does not establish the actual-profile
 root-pressure sign.
 
+The endpoint weight identity now closes one part of that normalization. If
+the source's exact wait condition `wait = 60 * log(1/lam)` holds, the pinned
+`pulseAmplitude_small` estimate yields the Lean-checked bound
+
+`tailPressureContribution >= -(5/32) * exp(6/5) * (P * exp(exp(m)+12) * lam^30)^2 * exp(-(1+2*lam)*(13/lam + flattenLength))`.
+
+Equivalently, the coefficient multiplying `P^2` is
+`(5/32) * lam^60 * exp(2*exp(m) - 4/5 - 13/lam - (1+2*lam)*flattenLength)`.
+This is an explicit conditional `P^2`-relative bound, but it is not yet shown
+to be uniformly small under the final selected-profile hypotheses: the
+`m`- and `lam`-dependent factor remains, and the wait identity is an explicit
+hypothesis of this lemma. It therefore does not close the pressure-sign or
+actual-profile witness-transfer gap.
+
 Pinned-source hashes for the identities used here:
 
 | Source | SHA-256 |
@@ -211,3 +225,6 @@ Pinned-source hashes for the identities used here:
 | `PressureDatum.lean` | `a1ad3e25e569532b0dc21c71f5f8e0092bb8abd2096f03c3469639d2435a2513` |
 | `TailEnergyBounds.lean` | `cc2771933c88bef01f7957b4903e28c84ec8ed588c9ae757c17b519e458abd1d` |
 | `OutgoingTail.lean` | `450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5` |
+| `OutgoingSchedule.lean` | `680379d41f5ecb928f53278860c807e3344e9bcaefbcd6c4bbcc493f812bc552` |
+| `FuturePressureBounds.lean` | `e55060a6239e37b56308ab631949c20174d4231c6f209eaa005ce182c32d5c86` |
+| `OutgoingPulseBounds.lean` | `c7a25e38f34f1c6d7f3a3f0de830cee9979155956c80896014558b61e27de478` |

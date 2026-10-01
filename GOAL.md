@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 164 — conditional tail bound normalized by core amplitude squared
+
+Proved the exact `clockWeight(flattenEnd)` formula from the pinned outgoing
+schedule's pulse amplitude and decay. Combining it with the source theorem
+`pulseAmplitude_small` proves a `P^2`-relative lower bound for the tail
+pressure, conditional on the exact wait identity
+`wait = 60 * log (1 / lam)`. Its coefficient is
+`(5/32) * lam^60 * exp(2*exp(m) - 4/5 - 13/lam - (1+2*lam)*flattenLength)`.
+Lean reports only `[propext, Classical.choice, Quot.sound]` for the new
+declarations, with no `sorryAx`. The coefficient still depends on `m` and
+`lam`, and this lemma alone does not show that it is small for the final
+selected profile or prove the needed root-pressure sign. Source log, hashes,
+and scope are updated in
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`;
+the analytical limitation is in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`. Overall goal
+remains active.
+
 ## Revision 163 — selected-schedule tail mass bounded by endpoint clock weight
 
 Extended the isolated Lean audit from eta-independence to a quantitative

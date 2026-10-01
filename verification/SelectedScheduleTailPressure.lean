@@ -1,12 +1,13 @@
 import NavierStokes.SchedulePressure
 import NavierStokes.FuturePressureBounds
+import NavierStokes.OutgoingPulseBounds
 
 /-!
 # The zero-exponent tail of the selected schedule
 
 After the flattening endpoint, the pressure kernel is identically one. This
-isolated source-bound lemma records the eta-independent tail contribution; it
-does not bound its magnitude relative to the core amplitude.
+isolated source-bound lemma records eta-independence, an endpoint-weight
+envelope, and a conditional pulse-amplitude bound for the tail contribution.
 -/
 
 namespace ConcentrationAwareSelectedScheduleTail
@@ -61,9 +62,84 @@ theorem tail_pressure_nonpos (d : OutgoingTail.TailData) :
   rw [tailPressureContribution, integral_Ici_eq_integral_Ioi]
   nlinarith
 
+/-- At the flattening endpoint, the clock weight is the decayed pulse amplitude
+    squared, with the factor 1/4 from the axial normalization. -/
+theorem clockWeight_flattenEnd_eq (d : OutgoingTail.TailData) :
+    SchedulePressure.clockWeight d d.flattenEnd =
+      (OutgoingSchedule.pulseAmplitude d.core ^ 2 / 4) *
+        Real.exp (-(1 + 2 * d.core.lam) *
+          (d.core.pulseLength + OutgoingTail.flattenLength)) := by
+  have hstart : d.core.pulseStart ≤ d.flattenEnd := by
+    dsimp [OutgoingTail.TailData.flattenEnd, OutgoingSchedule.Parameters.endpoint]
+    linarith [d.core.pulseLength_pos, OutgoingTail.flattenLength_pos]
+  have hrad := OutgoingSchedule.radialAmplitude_hold
+    d.core.dropLength_pos.le d.core.pulseStart_ge_hold hstart
+    (P := d.core.P) (lam := d.core.lam)
+  have hdiff : d.flattenEnd - d.core.pulseStart =
+      d.core.pulseLength + OutgoingTail.flattenLength := by
+    dsimp [OutgoingTail.TailData.flattenEnd, OutgoingSchedule.Parameters.endpoint]
+    ring
+  rw [SchedulePressure.clockWeight,
+    OutgoingTail.finalAngular_uniform_wait d 0 le_rfl
+      (le_of_lt (OutgoingTail.releaseStart_gt_flattenEnd d)), hrad,
+    OutgoingSchedule.pulseAmplitude, hdiff]
+  have hexp : Real.exp (-(1 / 2 + d.core.lam) *
+      (d.core.pulseLength + OutgoingTail.flattenLength)) ^ 2 =
+      Real.exp (-(1 + 2 * d.core.lam) *
+        (d.core.pulseLength + OutgoingTail.flattenLength)) := by
+    rw [pow_two, ← Real.exp_add]
+    congr 1; ring
+  calc
+    _ = OutgoingSchedule.radialAmplitude d.core.P d.core.dropLength d.core.lam
+          d.core.pulseStart ^ 2 *
+        Real.exp (-(1 / 2 + d.core.lam) *
+          (d.core.pulseLength + OutgoingTail.flattenLength)) ^ 2 / 4 := by ring
+    _ = _ := by rw [hexp]; ring
+
+/-- With the source's exact logarithmic wait, the endpoint tail bound can be
+    written as a multiple of the core amplitude squared. -/
+theorem tail_pressure_lower_bound_from_pulse_decay (d : OutgoingTail.TailData)
+    (hwait : d.core.wait = 60 * Real.log (1 / d.core.lam)) :
+    -((5 / 32 : ℝ) * Real.exp (6 / 5) *
+        (d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30) ^ 2 *
+        Real.exp (-(1 + 2 * d.core.lam) *
+          (d.core.pulseLength + OutgoingTail.flattenLength))) ≤
+      tailPressureContribution d := by
+  have hamp := OutgoingPulseBounds.pulseAmplitude_small d.core hwait
+  have hapos := OutgoingSchedule.pulseAmplitude_pos d.core
+  have hbpos : 0 < d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30 := by
+    exact mul_pos (mul_pos d.core.P_pos (Real.exp_pos _))
+      (pow_pos d.core.lam_pos _)
+  have hs1 := mul_le_mul_of_nonneg_left hamp hapos.le
+  have hs2 := mul_le_mul_of_nonneg_right hamp hbpos.le
+  have hsquare : OutgoingSchedule.pulseAmplitude d.core ^ 2 ≤
+      (d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30) ^ 2 := by
+    nlinarith
+  have hdiv : OutgoingSchedule.pulseAmplitude d.core ^ 2 / 4 ≤
+      (d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30) ^ 2 / 4 :=
+    div_le_div_of_nonneg_right hsquare (by norm_num)
+  have hclock : SchedulePressure.clockWeight d d.flattenEnd ≤
+      ((d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30) ^ 2 / 4) *
+        Real.exp (-(1 + 2 * d.core.lam) *
+          (d.core.pulseLength + OutgoingTail.flattenLength)) := by
+    rw [clockWeight_flattenEnd_eq]
+    exact mul_le_mul_of_nonneg_right hdiv (Real.exp_pos _).le
+  have hcoef : 0 ≤ (5 / 8 : ℝ) * Real.exp (6 / 5) := by positivity
+  have hneg := neg_le_neg (mul_le_mul_of_nonneg_left hclock hcoef)
+  calc
+    _ = -(((5 / 8 : ℝ) * Real.exp (6 / 5)) *
+        (((d.core.P * Real.exp (Real.exp d.core.m + 12) * d.core.lam ^ 30) ^ 2 / 4) *
+          Real.exp (-(1 + 2 * d.core.lam) *
+            (d.core.pulseLength + OutgoingTail.flattenLength)))) := by ring
+    _ ≤ -(((5 / 8 : ℝ) * Real.exp (6 / 5)) *
+        SchedulePressure.clockWeight d d.flattenEnd) := hneg
+    _ ≤ tailPressureContribution d := tail_pressure_lower_bound d
+
 #print axioms tail_integrand_constant
 #print axioms tail_pressure_independent_of_eta
 #print axioms tail_pressure_lower_bound
 #print axioms tail_pressure_nonpos
+#print axioms clockWeight_flattenEnd_eq
+#print axioms tail_pressure_lower_bound_from_pulse_decay
 
 end ConcentrationAwareSelectedScheduleTail
