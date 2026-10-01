@@ -7,6 +7,8 @@ defined continuous OpenFOAM finite-volume field.
 import hashlib
 import io
 import json
+import platform
+import sys
 import tarfile
 from pathlib import Path
 
@@ -65,6 +67,19 @@ def _grid(values, n):
     return values.reshape(n, n, n, 3).transpose(2, 1, 0, 3)
 
 
+def _fd2_gradient(velocity_grid):
+    return np.stack([
+        (np.roll(velocity_grid, -1, axis=axis) - np.roll(velocity_grid, 1, axis=axis))
+        / (4 * np.pi / velocity_grid.shape[axis])
+        for axis in range(3)
+    ], axis=-1)
+
+
+def _peak_location(norm, axis):
+    index = tuple(map(int, np.unravel_index(int(norm.argmax()), norm.shape)))
+    return {"index_xyz": list(index), "coordinate_xyz": [float(axis[i]) for i in index]}
+
+
 def _expected_archive_hashes(root=ROOT):
     current = json.loads((root / "evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json").read_text())
     expected = {row["case"]: row["archive_sha256"] for row in current["completed_cases"]}
@@ -97,7 +112,8 @@ def audit(root=ROOT):
                            nu=parameters["nu"], time=end)
         velocity_grid, reference_grid = _grid(velocity, n), _grid(reference["u"], n)
         computed_fd2 = diagnostics(velocity_grid)
-        exact_fd2 = diagnostics(reference_grid)
+        fd2_gradient = _fd2_gradient(velocity_grid)
+        fd2_vorticity = _curl(fd2_gradient)
         computed_gradient = spectral_gradient(velocity_grid)
         reference_gradient = spectral_gradient(reference_grid)
         computed_vorticity = _curl(computed_gradient)
@@ -113,6 +129,13 @@ def audit(root=ROOT):
         vorticity_peak_spectral = float(np.linalg.norm(computed_vorticity, axis=-1).max())
         gradient_peak_reference_spectral = float(np.linalg.norm(reference_gradient, axis=(-2, -1)).max())
         vorticity_peak_reference_spectral = float(np.linalg.norm(reference_vorticity, axis=-1).max())
+        gradient_fd2_norm = np.linalg.norm(fd2_gradient, axis=(-2, -1))
+        vorticity_fd2_norm = np.linalg.norm(fd2_vorticity, axis=-1)
+        np.testing.assert_allclose(gradient_fd2_norm.max(), computed_fd2["max_gradient_fd2"], rtol=1e-14, atol=1e-14)
+        np.testing.assert_allclose(vorticity_fd2_norm.max(), computed_fd2["max_vorticity_fd2"], rtol=1e-14, atol=1e-14)
+        gradient_spectral_norm = np.linalg.norm(computed_gradient, axis=(-2, -1))
+        vorticity_spectral_norm = np.linalg.norm(computed_vorticity, axis=-1)
+        axis = (np.arange(n) + 0.5) * 2 * np.pi / n
         fd2_gradient_error = abs(gradient_peak_fd2 - gradient_peak_reference) / gradient_peak_reference
         fd2_vorticity_error = abs(vorticity_peak_fd2 - vorticity_peak_reference) / vorticity_peak_reference
         spectral_gradient_error = abs(gradient_peak_spectral - gradient_peak_reference_spectral) / gradient_peak_reference_spectral
@@ -146,6 +169,18 @@ def audit(root=ROOT):
                 "vorticity_peak_trigonometric_relative_error": spectral_vorticity_error,
                 "gradient_field_relative_l2_at_centers": float(np.linalg.norm(computed_gradient - exact_gradient) / np.linalg.norm(exact_gradient)),
                 "vorticity_field_relative_l2_at_centers": float(np.linalg.norm(computed_vorticity - exact_vorticity) / np.linalg.norm(exact_vorticity)),
+                "gradient_fd2_field_relative_l2_at_centers": float(np.linalg.norm(fd2_gradient - exact_gradient) / np.linalg.norm(exact_gradient)),
+                "vorticity_fd2_field_relative_l2_at_centers": float(np.linalg.norm(fd2_vorticity - exact_vorticity) / np.linalg.norm(exact_vorticity)),
+                "gradient_peak_locations": {
+                    "fd2": _peak_location(gradient_fd2_norm, axis),
+                    "trigonometric": _peak_location(gradient_spectral_norm, axis),
+                    "analytic_reference_at_centers": _peak_location(np.linalg.norm(exact_gradient, axis=(-2, -1)), axis),
+                },
+                "vorticity_peak_locations": {
+                    "fd2": _peak_location(vorticity_fd2_norm, axis),
+                    "trigonometric": _peak_location(vorticity_spectral_norm, axis),
+                    "analytic_reference_at_centers": _peak_location(np.linalg.norm(exact_vorticity, axis=-1), axis),
+                },
                 "reference_spectral_gradient_reconstruction_defect": abs(gradient_peak_reference_spectral - gradient_peak_reference) / gradient_peak_reference,
                 "reference_spectral_vorticity_reconstruction_defect": abs(vorticity_peak_reference_spectral - vorticity_peak_reference) / vorticity_peak_reference,
             },
@@ -156,6 +191,18 @@ def audit(root=ROOT):
         "study_id": "openfoam-gradient-reconstruction-sensitivity-v1",
         "quality": "DESCRIPTIVE_ONLY",
         "protocol": "protocols/high-gradient-of13-v2.json",
+        "protocol_sha256": hashlib.sha256((root / "protocols/high-gradient-of13-v2.json").read_bytes()).hexdigest(),
+        "environment": {"python": sys.version.split()[0], "implementation": platform.python_implementation(), "numpy": np.__version__},
+        "analysis_source_sha256": {
+            path: hashlib.sha256((root / path).read_bytes()).hexdigest()
+            for path in (
+                "tools/audit_openfoam_gradient_reconstruction.py",
+                "tools/high_gradient_reference.py",
+                "tools/metrics.py",
+                "tools/spectral_derivative.py",
+                "tools/high_gradient_acceptance.py",
+            )
+        },
         "cases": rows,
         "conclusion": "Derivative peak accuracy and local-quality status are reconstruction-sensitive at the n=32 row. The frozen acceptance rule uses centered FD2; the spectral results are a counterfactual sensitivity check and do not replace frozen verdicts.",
         "limitations": [
@@ -197,9 +244,15 @@ def render_markdown(result):
             f"{m['gradient_peak_trigonometric_relative_error']:.4%} / {m['vorticity_peak_trigonometric_relative_error']:.4%} | "
             f"{row['counterfactual_spectral_derivative_local_quality']['status']} |"
         )
+    n32 = next(row for row in result["cases"] if row["case"] == "n32-dt0.001")
+    m32 = n32["metrics"]
+    gp = m32["gradient_peak_locations"]
+    wp = m32["vorticity_peak_locations"]
     lines += [
         "",
         "The n=32 row changes from frozen local-quality FAIL to counterfactual PASS because velocity, energy and shell-spectrum metrics already pass while both derivative-peak errors fall below 5% under the trigonometric reconstruction. The adequate n=64 and n=128 spatial rows remain PASS under both calculations, so the frozen matrix-level classification is unaffected.",
+        "",
+        f"At n=32, the gradient-field relative L2 error on the sample nodes is {m32['gradient_fd2_field_relative_l2_at_centers']:.3%} for FD2 and {m32['gradient_field_relative_l2_at_centers']:.3%} for the trigonometric derivative; the corresponding vorticity-field errors are {m32['vorticity_fd2_field_relative_l2_at_centers']:.3%} and {m32['vorticity_field_relative_l2_at_centers']:.3%}. The sampled gradient-peak index changes FD2 {gp['fd2']['index_xyz']} → trigonometric {gp['trigonometric']['index_xyz']}, while the analytic-reference sampled maximum is at {gp['analytic_reference_at_centers']['index_xyz']}; vorticity indices are FD2 {wp['fd2']['index_xyz']}, trigonometric {wp['trigonometric']['index_xyz']}, reference {wp['analytic_reference_at_centers']['index_xyz']}. These are discrete argmax locations (possibly among ties), not certified locations of continuous extrema.",
         "",
         "This is reconstruction sensitivity, not proof that either derivative is the uniquely correct continuous solver field. Both peak comparisons are finite-node maxima; the exact reference is evaluated at the same cell centers, and no continuous intersample supremum is bounded. The audit does not establish a code defect or physical instability.",
         "",

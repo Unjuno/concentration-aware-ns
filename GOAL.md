@@ -1849,10 +1849,13 @@ while the alternative interpolant's node-peak errors are 0.465% and 0.045%;
 holding velocity, energy, and spectrum gates fixed changes only this row's
 counterfactual local-quality status from FAIL to PASS. The adequately resolved
 n=64/n=128 spatial cases remain PASS, so the frozen matrix-level blind-spot
-classification does not change. This demonstrates reconstruction sensitivity
-of the n=32 derivative gate, not which reconstruction is the canonical
-continuous OpenFOAM field: no inter-node supremum or continuous solver field is
-certified. Evidence and reproduction are in
+classification does not change. At n=32, the pointwise sampled gradient L2
+error is 9.53% under FD2 and 1.92% under the trigonometric reconstruction;
+vorticity values are 9.14% and 0.168%. Sampled argmax indices also change,
+though tied/near-tied discrete maxima are possible. This demonstrates
+reconstruction sensitivity of the n=32 derivative gate, not which
+reconstruction is the canonical continuous OpenFOAM field: no inter-node
+supremum or continuous solver field is certified. Evidence and reproduction are in
 `reports/openfoam-gradient-reconstruction-sensitivity-2026-10-01.md` and
 `evidence/tests/openfoam-gradient-reconstruction-sensitivity-2026-10-01.json`;
 the solver was not rerun and no upstream defect is claimed. The multi-target

@@ -370,6 +370,14 @@ derivative metrics also fall below 5%, but the velocity error still fails the
 2% gate. Both n=64 and n=128 pass with either derivative method, so the frozen
 adequate-grid matrix result remains `NOT_OBSERVED`.
 
+At n=32, derivative-field relative L2 errors measured at the sample nodes are
+9.533% (FD2) versus 1.924% (trigonometric) for the gradient, and 9.140% versus
+0.168% for vorticity. Sampled peak argmax indices also move: the gradient
+indices are `[1,31,0]` (FD2), `[2,0,0]` (trigonometric), and `[25,0,31]`
+(analytic reference); vorticity is `[2,0,0]`, `[2,0,0]`, and `[25,0,31]`.
+Periodic symmetry and ties/near-ties can affect argmax indices, so these are
+diagnostic locations only, not evidence of a unique continuous extremum.
+
 This is a postprocessing sensitivity result, not evidence that the interpolant
 is the canonical OpenFOAM field. The peak norms are evaluated only at grid
 nodes, and no continuous inter-node bound is supplied. The frozen v2 gate and
