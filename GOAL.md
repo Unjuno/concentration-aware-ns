@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 137 — full local verification of current PR head
+
+Inspected the live GitHub PR set and upstream feedback state. PRs #1–#3 have
+successful checks; PR #4 is open at the current branch HEAD
+`2ccc60e98205b0f954346925d895b2f4c1b87d09`, and its matching GitHub Actions
+run remains `QUEUED` since 2026-10-01 16:11 UTC. Independently ran the same
+workflow command, `python -m pytest -q tests`, in the existing pinned
+`work/reference-check-env` (Python 3.14.5, pytest 9.1.1, SciPy 1.16.2,
+python-flint 0.9.0): 183 passed, 1 skipped, 5 subtests passed in 102.81 s.
+The system Python lacked pytest and the older PhysicsNeMo environment lacked
+SciPy; neither failure was attributed to repository code. Live upstream
+recheck confirms PhysicsNeMo issue #2007 and PR #2008 are still open, and SU2
+Discussion #2890 remains closed/unanswered. These existing reports make a
+duplicate upstream post unwarranted. OpenAI still has Issues and Discussions
+disabled. The goal remains active; a matching hosted check is still pending.
+
 ## Revision 136 — physical-scaling follow-up rechecked
 
 Reread Duraiswami's arXiv:2609.17642 through the reduced similarity-profile
