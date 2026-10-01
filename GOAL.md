@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 184 — Lagrangian volume constraint on particle-alignment inference
+
+Derived the pre-singular flow-map invariant for the cited smooth incompressible
+field: `F=D_aX` satisfies `d(det F)/dt=(div u)det F=0`, hence `det F=1` and
+positive-volume material parcels remain positive-volume for every subcritical
+time. The OpenAI construction's shrinking, increasingly slender vortex core is
+an Eulerian region with axial through-flow, not proof that a fixed set of
+molecules aligns into a line. Its `L∞` velocity divergence also does not imply
+all particles have unbounded speed or a change in the fixed constitutive
+viscosity. Assumptions, derivation, and limits are in
+`reports/lagrangian-volume-preservation-and-core-geometry-2026-10-02.md`. This
+kinematic distinction does not alter CFD acceptance results. Goal remains
+active.
+
 ## Revision 183 — live upstream status and PhysicsNeMo reproduction refresh
 
 Refreshed the public project heads and existing report records. OpenFOAM
