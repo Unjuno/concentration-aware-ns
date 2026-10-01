@@ -29,6 +29,25 @@ def test_nyquist_real_sine_alias_keeps_the_same_l1_derivative_bound():
     assert split < arb("8.000001") and split > arb("7.999999")
 
 
+def test_mode_number_maps_odd_and_even_fft_bins_without_aliasing():
+    module = importlib.import_module("tools.audit_openfoam_trig_supremum")
+    assert [module._mode_number(i, 5) for i in range(5)] == [0, 1, 2, -2, -1]
+    assert [module._mode_number(i, 6) for i in range(6)] == [0, 1, 2, -3, -2, -1]
+
+
+def test_reference_mode_validation_rejects_nyquist_and_aliased_modes():
+    module = importlib.import_module("tools.audit_openfoam_trig_supremum")
+    module._validate_reference_mode(2, 5)
+    module._validate_reference_mode(2, 6)
+    for frequency, n in ((3, 5), (3, 6), (4, 6)):
+        try:
+            module._validate_reference_mode(frequency, n)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"frequency {frequency} should be rejected for n={n}")
+
+
 def test_archived_reconstruction_bounds_are_interval_enclosed_and_scoped():
     spec = importlib.util.find_spec("tools.audit_openfoam_trig_supremum")
     assert spec is not None, "continuous trigonometric reconstruction bound is not implemented"

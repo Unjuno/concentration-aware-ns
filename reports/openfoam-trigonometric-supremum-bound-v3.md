@@ -31,6 +31,11 @@ bounds from sampled analytic gradient/vorticity components; a sampled
 component cannot exceed the continuum peak. Even-grid Nyquist samples use real
 sine representatives; splitting a Nyquist coefficient across its aliased
 positive and negative modes leaves the weighted coefficient sum unchanged.
+An adversarial helper check also covers odd grid sizes, where the highest
+positive FFT bin is not a Nyquist singleton. The audited archives remain
+even-sized. Reference modes at or above Nyquist are now rejected explicitly,
+since sampled values alone cannot establish an unaliased continuum reference
+there.
 
 | Cells per axis | Gradient relative supremum upper bound | Vorticity relative supremum upper bound | Compared with frozen 5% derivative threshold |
 |---:|---:|---:|---|

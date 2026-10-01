@@ -81,6 +81,7 @@ def _envelope_d2(q):
 
 
 def _reference_samples(n, frequency, end):
+    _validate_reference_mode(frequency, n)
     pi = arb.pi()
     coordinates = [pi * arb(2*j + 1) / n for j in range(n)]
     env = [_envelope(q) for q in coordinates]
@@ -146,7 +147,19 @@ def _fourier_coefficients(error_samples):
 
 
 def _mode_number(index, n):
-    return index if index < n//2 else index-n
+    # Odd grids have no Nyquist singleton: floor(n/2) is a positive mode.
+    # Keep the existing negative representative for the even-grid singleton.
+    return index if index < (n+1)//2 else index-n
+
+
+def _validate_reference_mode(frequency, n):
+    """Require a positive mode strictly below Nyquist for exact sampling."""
+    if not isinstance(frequency, int) or not isinstance(n, int) or n < 2:
+        raise ValueError("frequency and grid size must be integers, with n >= 2")
+    if frequency <= 0 or 2*frequency >= n:
+        raise ValueError(
+            f"reference mode {frequency} is not strictly below Nyquist for n={n}"
+        )
 
 
 def _coefficient_rows(coefficients):
@@ -192,6 +205,7 @@ def _load_case(root, n, relative_path, expected_hash):
         centers = _parse_vectors_exact(tar.extractfile(c_members[0]).read(), n**3)
     if parameters["n"] != n or parameters["frequency"] != 4:
         raise ValueError(f"case parameters do not match protocol for n={n}")
+    _validate_reference_mode(parameters["frequency"], n)
     return digest, parameters, solver, centers
 
 

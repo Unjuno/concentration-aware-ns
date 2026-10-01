@@ -867,3 +867,15 @@ are in `evidence/report-replay/summary.json`. These checks do not rerun the
 solvers or train PhysicsNeMo. The Arb step bounds only the named trigonometric
 reconstruction, not the OpenFOAM finite-volume field; no solver-quality verdict
 was promoted.
+
+### 2026-10-01 odd-grid and alias-boundary adversarial checks
+
+The interpolation helper's FFT-bin map previously assigned the highest
+positive mode on odd grids to an out-of-range negative frequency. The archived
+audit cases are all even-sized, so this did not change their coefficient
+bounds; odd/even bin tests now cover the mapping. The analytic reference mode
+is also checked to be strictly below Nyquist before interpreting sampled
+values as an unaliased reference. Five focused Arb tests and the full suite
+pass (167 passed, 1 skipped, 5 subtests passed); the n=16/32/64 archived bound
+values are unchanged. This expands helper robustness, not the solver-field
+certificate or physical interpretation.

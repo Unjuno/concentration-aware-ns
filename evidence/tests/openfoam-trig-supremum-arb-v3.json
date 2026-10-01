@@ -68,7 +68,7 @@
     }
   ],
   "analysis_source_sha256": {
-    "tools/audit_openfoam_trig_supremum.py": "4cb6ec4bec0efe6205be7c7cfae2f0e56d736003d901dddcc99ce3b0333ce941",
+    "tools/audit_openfoam_trig_supremum.py": "c2d5adcd43d667a8ed2d0305a1681f9d21cb584145409dccd952c9ba872f5645",
     "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3",
     "protocols/high-gradient-of13-v2.json": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d"
   },
