@@ -15,13 +15,13 @@ does not assume that `U` stores exact cell averages.
 
 There is a stronger limit than finite point sampling. Suppose, solely for this
 argument, that every archived value were an exact cell average on a finite
-mesh. Let `w` be a nonzero smooth vector field compactly supported strictly
-inside one cell, with zero integral over that cell. Such fields exist: take
-the derivative of a smooth compactly supported scalar bump in one coordinate
-and use it as one velocity component. Then `w` has zero average in every cell
-and is zero in a neighborhood of every face. Consequently adding `A*w` for
-any real amplitude `A` preserves every cell average and all face values, while
-its continuous gradient maximum grows like `|A|`.
+mesh. Choose a smooth vector potential compactly supported in a ball strictly
+inside one cell, and let `w` be its curl. Choose the potential so that the
+curl is nonzero. Then `w` is smooth, divergence-free, zero near every cell
+face, and has zero integral over every cell (each component is a derivative
+of a compactly supported function). Consequently adding `A*w` for any real
+amplitude `A` preserves every cell average and all face values, while its
+continuous gradient maximum grows like `|A|`.
 
 Thus even exact finite-volume averages, without additional regularity or a
 specified within-cell reconstruction, do not give a finite universal upper
