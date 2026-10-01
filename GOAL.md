@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 159 — six-case matrix status reconciled against the archives
+
+Rechecked the apparent conflict between the immutable base manifest and the
+later matrix index. The base `manifest.json` remains a historical 4/6 run
+record; it must not be read as the current matrix status. The dated
+`manifest-current-2026-09-30.json` joins the two separately archived temporal
+rows, and `tools.verify_openfoam_high_gradient_matrix` independently replays
+all six archives and gates from their hashes. The replay reports 6/6 complete,
+all standard gates passing, local-quality failures only at n=16 and n=32, and
+the preregistered n=64/n=128 persistent-blind-spot result `NOT_OBSERVED`.
+This reconciles document state; it adds no solver run and no physical evidence.
+The temporal triplet still does not certify asymptotic time convergence, and
+AMR attribution remains UNCERTAIN. CI for PR #4 is still QUEUED at head
+`bca222f921f338ca62bb245ed9a1df4a0d8f22d7`; overall goal remains active.
+
 ## Revision 158 — full suite after AMR post-processing audit
 
 The new OpenFOAM tensor-convention regression tests pass (4). The complete

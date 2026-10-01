@@ -31,3 +31,17 @@ and gates; it is not an independent source-to-binary audit, a continuous
 derivative certificate for the finite-volume field, an asymptotic temporal
 convergence result, or a physical claim. The separate AMR quality question
 remains `UNCERTAIN`.
+
+## Status note (2026-10-02)
+
+The immutable original `evidence/of13-high-gradient-v2/manifest.json` is a
+historical base-run record and still shows only four completed rows. Do not use
+that file alone as the current matrix status. The dated cross-run index
+`evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json` joins the two
+later temporal addendum rows; each has a complete archive, endpoint fields,
+100/100 or 200/200 converged steps, and a separately recorded archive hash.
+The six-case replay output above verifies those exact hashes and recomputes all
+gates. Thus the frozen six-case matrix is complete and its persistent-blind-
+spot verdict is `NOT_OBSERVED`. This status reconciliation does not upgrade the
+temporal triplet to an asymptotic convergence certificate and does not change
+the separate AMR attribution verdict from `UNCERTAIN`.
