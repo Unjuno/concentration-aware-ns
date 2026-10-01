@@ -34,3 +34,15 @@ This verifies tracked Python postprocessing and archived-data audits on the
 recorded host. It does not rebuild or rerun OpenFOAM/SU2, retrain
 PhysicsNeMo, execute Lean, certify the unknown continuous finite-volume field,
 or change any scientific acceptance verdict.
+
+## Follow-up: published evidence commit `0d1d164`
+
+After publishing this evidence bundle, the resulting commit
+`0d1d1648cad91d99f79e62abfe5193ebe3af619b` was independently exported and
+replayed. The follow-up record is in [`current-head-0d1d164/`](current-head-0d1d164/).
+Again, all 36 replay steps passed and 171 tracked report/evidence files were
+unchanged. The diff from the full-pytest commit `039ace2` to `0d1d164` contains
+only goal/completion documentation and this evidence bundle; no Python source
+or test files changed. The 187-pass full-suite log above therefore applies to
+the same source and tests, while the follow-up specifically rechecks the
+published evidence replay at `0d1d164`.

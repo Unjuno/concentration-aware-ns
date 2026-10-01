@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 146 — evidence-bundle commit also replays from tracked export
+
+Ran a second tracked-only clean export on the evidence-bundle commit
+`0d1d1648cad91d99f79e62abfe5193ebe3af619b`. Its fixed-commit manifest reports
+36/36 replay steps, six additional checks successful, 171 compared tracked
+report/evidence files, and `changed_files=[]`. The sanitized follow-up result
+and per-step logs are saved in
+`evidence/clean-export-2026-10-02-upstream-refresh/current-head-0d1d164/`.
+Compared with the commit whose exported source ran the full 187-test suite,
+this commit changes only goal/completion documentation and the evidence
+bundle, not Python source or tests; that exact source/test suite is therefore
+unchanged. No solver was rebuilt or rerun. Goal remains active.
+
 ## Revision 145 — current focused upstream audit passes tracked-only replay
 
 Ran `tools.check_clean_export --locked` against fixed commit
