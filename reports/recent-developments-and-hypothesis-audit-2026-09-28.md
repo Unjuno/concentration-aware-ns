@@ -383,3 +383,32 @@ endpoint directions enter every fixed positive-angle cone in probability.
 This is conditional on the classical packet comparison and unknown constants,
 and says nothing about fixed-size particles or molecules. Symbolic exponent
 checks are in `evidence/tests/packet-radius-scaling.json`.
+
+## 2026-10-01 rotational-diffusion extension
+
+The recent primary study [Recktenwald et al., Soft Matter 22 (2026),
+1389–1401](https://doi.org/10.1039/D5SM01122A) experimentally measures
+cellulose-nanocrystal rod orientation under planar extensional flow and
+compares it with orientation-distribution simulations using measured
+rotational diffusion. In steady flow, birefringence saturates as the rods
+become highly aligned at `Pe` above roughly 10, while the measured steady
+velocity field remains Newtonian-like over the tested strain-rate interval.
+This is a direct example of orientation order and bulk-flow response being
+separate observables, but it is a dilute colloid experiment in a specified
+microfluidic setup, not a molecular test or the OpenAI field.
+
+To test whether rotational Brownian motion would reverse the ideal Jeffery
+alignment law under a `1/(1-t)` strain history, we solved the small-angle
+tangent-plane stochastic director ODE. With `D_r~(1-t)^(-delta)`, its variance
+tends to zero for `delta<1`, tends to a finite positive value at `delta=1`,
+and diverges in the linearized chart for `delta>1`; equivalently, the
+instantaneous flow-to-diffusion Péclet number scales as `(1-t)^(delta-1)`.
+For constant diffusion and the audited large stretching exponent, the angular
+RMS narrows as `(1-t)^(1/2)`, slower than the deterministic `Jeffery`
+power-law. This is an exact calculation for a reduced OU model, verified at
+`evidence/tests/rotational-diffusion-alignment.json`, not a stochastic
+simulation, full-sphere Fokker–Planck solution, or physical prediction. It
+identifies the missing input for a molecular bridge: a measured or derived
+rotational-diffusion law and physical endpoint cutoff, coupled consistently
+to the constitutive stress. Details and limits are in
+`docs/rotational-diffusion-alignment-cutoff.md`.

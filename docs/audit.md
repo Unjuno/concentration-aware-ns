@@ -60,6 +60,17 @@ diffusion balanced exactly by advection during axis-direction alignment; it
 still makes no claim about the selected OpenAI field. See
 [`docs/burgers-vortex-alignment-viscous-balance.md`](burgers-vortex-alignment-viscous-balance.md).
 
+A new reduced stochastic calculation adds rotational Brownian diffusion to a
+small-angle Jeffery director in an imposed `gamma ~ (1-t)^(-1)` extensional
+strain. It predicts variance `~(1-t)` for constant diffusion and gives a
+threshold when the diffusion coefficient itself grows as `(1-t)^(-delta)`:
+the tangent-plane variance tends to zero for `delta<1`, stays finite for
+`delta=1`, and leaves the small-angle regime for `delta>1`. This is a model
+calculation, not an OpenAI-flow or molecule result. It makes the missing
+dimensionless comparison explicit: flow rate versus measured rotational
+diffusion at the physical cutoff. See
+[`docs/rotational-diffusion-alignment-cutoff.md`](rotational-diffusion-alignment-cutoff.md).
+
 ### OpenFOAM temporal addendum update (2026-09-30)
 
 The single n64/dt=.0005 rerun passed standard acceptance and all sampled local

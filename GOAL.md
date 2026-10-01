@@ -37,6 +37,26 @@ do not quietly reduce the three-project scope or redefine completion.
 This file versions the operational goal. The desktop goal text is separately
 managed by the app; editing this file does not change the app's saved goal.
 
+## Revision 127 — rotational-diffusion challenge to particle alignment
+
+Added a checked tangent-plane stochastic director model for a prolate Jeffery
+particle in an imposed `gamma~(1-t)^(-1)` extension. Constant rotational
+diffusion changes the strong-strain angular scale to a Brownian-limited
+`(1-t)^(1/2)` while still allowing variance to vanish in the ideal endpoint
+limit. If `D_r~(1-t)^(-delta)`, the reduced-model boundary is `delta=1`:
+subcritical diffusion growth permits asymptotic alignment, comparable growth
+leaves a finite angular variance, and supercritical growth exits the
+small-angle regime. The exact ODE branches are SymPy-checked in
+`evidence/tests/rotational-diffusion-alignment.json`; assumptions and source
+comparisons are in `docs/rotational-diffusion-alignment-cutoff.md`. This
+strengthens a narrow kinematic bridge to anisotropic colloid directors but
+does not establish molecular ordering, particle-center certainty, a viscosity
+law, or transfer to the OpenAI field. Actual rotational diffusion, spatial
+finite-size effects, full-sphere orientation statistics, and a physical cutoff
+remain unmeasured. The original three-solver benchmark and completion audit
+remain active. The three added unit tests pass, and the full verification
+suite at this revision passed 159 tests with one skip and five subtests.
+
 ## Revision 19 — pressure-qualified alternative profile selection (2026-10-01)
 
 Continue to audit the original `FinalSlowBase.actualProfile` without silently
