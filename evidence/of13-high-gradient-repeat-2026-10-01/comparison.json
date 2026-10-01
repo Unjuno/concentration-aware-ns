@@ -1,5 +1,6 @@
 {
   "archive_files_total": 40,
+  "archived_input_hashes_independently_verified": true,
   "baseline_archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
   "baseline_log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce",
   "byte_identical_files": [
@@ -104,6 +105,7 @@
     "log.centres": true,
     "log.foamRun": true
   },
+  "manifest_and_diagnostic_provenance_cross_checked": true,
   "raw_different_files": [
     "command.json",
     "diagnostics.json",
@@ -111,8 +113,16 @@
     "log.centres",
     "log.foamRun"
   ],
+  "raw_log_steps_end_and_convergence_independently_verified": true,
   "repeat_archive_sha256": "47aeec885a46083c9310772e119f0842335b1c723b6eb55d2287b4230d47d599",
   "repeat_log_sha256": "716732140fe51b6a240f81f487f9d8e3d5bcec3c175b5926e676ddeff4cdd246",
+  "runtime_metadata_difference_allowlist": [
+    "command.json",
+    "diagnostics.json",
+    "log.blockMesh",
+    "log.centres",
+    "log.foamRun"
+  ],
   "same_case_parameters_and_input_hashes": true,
   "scope": "One repeated OpenFOAM Foundation 13 n=64, dt=0.0005 case; numerical reproducibility only, not physical validation.",
   "standard_acceptance_each": [
@@ -123,5 +133,6 @@
   "time_steps_each": [
     100,
     100
-  ]
+  ],
+  "unexpected_raw_differences": []
 }

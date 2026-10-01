@@ -14,6 +14,16 @@ runtime metadata and log hashes; see `comparison.json` for the exact member
 comparison. This is one-case numerical reproducibility evidence. It does not
 establish a general solver property or any physical interpretation.
 
+The comparator also checks the evidence chain before comparing results: it
+rehashes every archived input, independently parses the 100 raw time labels and
+PIMPLE convergence records, requires zero runner exit and terminal `End`, and
+cross-checks the raw log and endpoint hashes against diagnostics and manifests.
+It rejects any raw archive difference outside the five runtime-metadata/log
+members listed in `comparison.json`. Four adversarial fixtures cover a coherently
+rewritten time label, an unexpected archive difference, and a tampered manifest
+verdict, in addition to the clean repeat. These are checks of this comparator's
+acceptance logic, not further solver runs.
+
 The comparison can be replayed from the repository root with the locked
 verification environment:
 

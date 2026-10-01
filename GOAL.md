@@ -1775,6 +1775,21 @@ postprocessing only and does not rerun solvers, PhysicsNeMo training, or Lean.
 The overall benchmark, remaining analytic obligations and per-target audit
 completion remain active.
 
+## Revision 110 — hostile verification of repeat-comparison provenance
+
+Adversarial review found that the one-case OpenFOAM repeat comparator initially
+trusted archived manifests for completion and did not constrain unrelated raw
+archive differences. It now independently verifies every archived input hash,
+raw 100-step time sequence, 100 PIMPLE convergence records, zero exit and
+terminal `End`; binds solver logs, parameters, endpoint U/C hashes, diagnostics,
+and manifest verdicts; and rejects raw differences outside five declared
+runtime/log files. Four hostile tests pass, including a coherently rewritten
+time label and an unexpected archive-member difference. The full verification
+suite reports 150 passed, one skipped, and five subtests passed. This raises
+confidence in the evidence comparison for one repeated case only. It does not
+validate the physical interpretation, establish solver-wide reproducibility,
+or close the broader OpenFOAM/SU2/PhysicsNeMo and analytic research goal.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as

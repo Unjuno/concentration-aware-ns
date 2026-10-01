@@ -5,6 +5,7 @@ import json
 import re
 import tarfile
 from pathlib import Path
+import math
 
 
 def sha(data):
@@ -49,6 +50,50 @@ def strip_log_hash(value):
     return value
 
 
+def validate_case(files, manifest, label):
+    parameters = json_bytes(files, "parameters.json")
+    expected_parameters = {"n": 64, "dt": 0.0005, "end": 0.05,
+                           "profile": "high-gradient", "frequency": 4}
+    if any(parameters.get(key) != value for key, value in expected_parameters.items()):
+        raise ValueError(f"{label} parameters do not match the frozen repeat case")
+    input_hashes = json_bytes(files, "input-hashes.json")
+    for name, digest in input_hashes.items():
+        if name not in files or sha(files[name]) != digest:
+            raise ValueError(f"{label} input hash mismatch for {name}")
+    if json_bytes(files, "exit.json").get("exit_code") != 0:
+        raise ValueError(f"{label} runner did not exit zero")
+
+    log = files["log.foamRun"].decode(errors="replace")
+    times = re.findall(r"^Time = ([0-9.eE+-]+)s?$", log, re.MULTILINE)
+    if len(times) != 100 or not log.rstrip().endswith("End"):
+        raise ValueError(f"{label} raw log does not contain 100 steps and End")
+    observed = [float(value) for value in times]
+    if any(not math.isclose(value, (i + 1) * parameters["dt"], rel_tol=0, abs_tol=1e-12)
+           for i, value in enumerate(observed)):
+        raise ValueError(f"{label} raw log has a non-frozen time sequence")
+    converged = len(re.findall(r"^PIMPLE: Converged in \d+ iterations$", log, re.MULTILINE))
+    if converged != 100:
+        raise ValueError(f"{label} raw log has {converged} convergence records")
+
+    diagnostics = json_bytes(files, "diagnostics.json")
+    if diagnostics.get("sha256", {}).get("log.foamRun") != sha(files["log.foamRun"]):
+        raise ValueError(f"{label} diagnostics do not bind the archived solver log")
+    if sha(files["parameters.json"]) != diagnostics.get("sha256", {}).get("parameters.json"):
+        raise ValueError(f"{label} diagnostics do not bind the archived parameters")
+    if diagnostics.get("standard_acceptance", {}).get("status") != manifest.get("standard_acceptance"):
+        raise ValueError(f"{label} manifest standard verdict disagrees with diagnostics")
+    if diagnostics.get("local_quality", {}).get("status") != manifest.get("local_quality"):
+        raise ValueError(f"{label} manifest local verdict disagrees with diagnostics")
+    if manifest.get("source_log_sha256") != sha(files["log.foamRun"]):
+        raise ValueError(f"{label} manifest does not bind the archived solver log")
+    if manifest.get("endpoint_fields") != ["U", "p", "C", "phi"]:
+        raise ValueError(f"{label} manifest endpoint field list is unexpected")
+    for field in ("U", "C"):
+        relative = f"0.05/{field}"
+        if diagnostics.get("sha256", {}).get(relative) != sha(files[relative]):
+            raise ValueError(f"{label} diagnostics do not bind endpoint {field}")
+
+
 def compare(args):
     base_manifest = json.loads(args.baseline_manifest.read_text())
     repeat_manifest = json.loads(args.repeat_manifest.read_text())
@@ -67,8 +112,16 @@ def compare(args):
     base, repeat = members(args.baseline_archive, case), members(args.repeat_archive, case)
     if base.keys() != repeat.keys():
         raise ValueError("archive member sets differ")
+    validate_case(base, base_manifest, "baseline")
+    validate_case(repeat, repeat_manifest, "repeat")
     byte_equal = sorted(name for name in base if base[name] == repeat[name])
     raw_differences = sorted(name for name in base if base[name] != repeat[name])
+    allowed_differences = sorted({"command.json", "diagnostics.json", "log.blockMesh",
+                                  "log.centres", "log.foamRun"})
+    unexpected_differences = sorted(set(raw_differences) - set(allowed_differences))
+    if unexpected_differences:
+        raise ValueError("raw archive differences exceed the declared runtime-metadata allowlist: "
+                         + ", ".join(unexpected_differences))
 
     if json_bytes(base, "parameters.json") != json_bytes(repeat, "parameters.json"):
         raise ValueError("frozen case parameters differ")
@@ -125,6 +178,11 @@ def compare(args):
         "raw_different_files": raw_differences,
         "endpoint_field_hashes": field_hashes,
         "diagnostics_identical_except_source_log_hash": True,
+        "raw_log_steps_end_and_convergence_independently_verified": True,
+        "archived_input_hashes_independently_verified": True,
+        "manifest_and_diagnostic_provenance_cross_checked": True,
+        "runtime_metadata_difference_allowlist": allowed_differences,
+        "unexpected_raw_differences": unexpected_differences,
         "logs_identical_after_runtime_metadata_normalization": normalized_logs,
         "diagnostic_metrics_identical": metrics,
         "interpretation": "All four endpoint fields and listed diagnostics reproduce exactly for this one run. Raw archive/log hashes differ because run-root, timestamp/host, timing metadata and the log-hash reference differ. No solver-wide guarantee or analytic/physical conclusion follows.",

@@ -76,6 +76,14 @@ comparison is reproducible with `tools.compare_openfoam_repeat`; its success is
 evidence for one fixed case on one image, not a guarantee for all OpenFOAM
 executions, a physical validation, or a mathematical conclusion.
 
+The comparator's evidence chain was then hardened and tested against hostile
+fixtures. It now checks every archived input hash, parses the raw 100-step time
+sequence and convergence records, requires `End` and zero exit, cross-checks
+diagnostic/manifest provenance, and allows only the five declared runtime/log
+members to differ. Four tests include coherent time-label tampering and an
+unexpected raw archive change; all are rejected. This tests the checker, not
+the solver, and does not strengthen the one-case scope.
+
 The additive cross-run index records all six spatial/temporal rows complete.
 The frozen high-gradient matrix's specific standard-PASS/local-FAIL concern is
 NOT_OBSERVED: n=64 and n=128 both pass both gates. This says nothing universal
