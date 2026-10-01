@@ -1805,6 +1805,24 @@ means greater absolute-position certainty in the linearized Gaussian model. It
 does not extend to finite packets of the nonlinear PDE, molecular dynamics, or
 a viscosity law; those remain separate obligations.
 
+## Revision 112 — interval proof of one PhysicsNeMo local maximum
+
+The strongest refined candidate on the frozen `n64-nt17` PhysicsNeMo model was
+previously only a numerical proposal. A new Arb Krawczyk check on a radius
+`1e-4` box proves the objective gradient has exactly one zero there: the
+Krawczyk image is strictly interior, its infinity-norm contraction bound is
+`0.40051`, and the preconditioner determinant is bounded away from zero.
+Interval Hessian bounds give strict negative diagonal dominance throughout the
+box, proving the zero is its unique strict local maximum. Its gradient-error
+norm lies in `[0.253408291696744, 0.253444297122580]`; independent PyTorch
+autograd sanity checks agree with interval point derivatives within `5.6e-15`.
+The hashed evidence and reproduction command are in
+`evidence/tests/physicsnemo-local-stationary-certificate-2026-10-01.json` and
+`reports/physicsnemo-local-peak-refinement-2026-10-01.md`. This does not certify
+the global maximum, validate the Arb library with a proof kernel, set a
+preregistered PhysicsNeMo threshold, or justify an upstream defect report. The
+quality verdict remains UNCERTAIN and the full goal remains active.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as
