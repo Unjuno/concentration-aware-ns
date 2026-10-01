@@ -1790,6 +1790,21 @@ confidence in the evidence comparison for one repeated case only. It does not
 validate the physical interpretation, establish solver-wide reproducibility,
 or close the broader OpenFOAM/SU2/PhysicsNeMo and analytic research goal.
 
+## Revision 111 — exact separation of orientation from positional certainty
+
+Extended the selected-axis deformation calculation with an exact Gaussian
+pushforward result. For covariance `sigma^2 I`, the variational map has
+eigenvalues `sigma^2 Q^C`, `sigma^2 Q^C`, and `sigma^2 Q^(-2C)`, so covariance
+volume, differential entropy, and peak density remain constant. Directional
+transverse-to-axial ratio shrinks as `Q^(3C/2)`, while for any fixed radius `R`
+the probability of lying within that ball around the center is bounded above by
+`sqrt(2/pi)*(R/sigma)*Q^C`, tending to zero. A SymPy reproducer with negative
+controls is archived at `evidence/tests/alignment-uncertainty.json` and covered
+by pytest. This precisely rejects the inference that directional alignment
+means greater absolute-position certainty in the linearized Gaussian model. It
+does not extend to finite packets of the nonlinear PDE, molecular dynamics, or
+a viscosity law; those remain separate obligations.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as

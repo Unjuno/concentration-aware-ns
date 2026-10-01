@@ -110,6 +110,38 @@ constant. Thus directional alignment does not itself imply improved full-positio
 certainty. Finite neighborhoods may leave the core; the linearization is not a
 uniform approximation for a fixed-size packet up to t=1.
 
+### Exact positional-probability check in the linearized Gaussian model
+
+This implication can be made quantitative without simulating particles. Put
+`Q=(1-t)/(1-t0)` and draw an initial displacement from the isotropic Gaussian
+`N(0, sigma^2 I)`. Under the exact variational map, its covariance eigenvalues
+are `sigma^2 Q^C`, `sigma^2 Q^C`, and `sigma^2 Q^(-2C)`. Their product is
+`sigma^6`; consequently the Gaussian differential entropy and peak density are
+constant. The transverse-to-axial directional factor is `Q^(3C/2)`, so almost
+every initial direction approaches the axis as `Q→0` (the exceptional set with
+zero axial component has Gaussian probability zero).
+
+At the same time, for any fixed radius `R`, membership in the radius-`R` ball
+around the packet center implies that the axial displacement is at most `R`.
+The axial Gaussian marginal therefore gives the exact upper bound
+
+```
+P(|displacement| <= R)
+  <= P(|axial displacement| <= R)
+  <= sqrt(2/pi) * (R/sigma) * Q^C  -> 0.
+```
+
+Thus directional alignment and increased probability of being near the
+center are different claims; in this linearized model, alignment improves while
+the probability of lying in any fixed bounded ball tends to zero. The exact
+covariance and bound are reproduced by
+`work/reference-check-env/bin/python -m tools.check_alignment_uncertainty` and
+archived in `evidence/tests/alignment-uncertainty.json`. This remains an exact
+Gaussian calculation for the linearized flow, not a finite-size theorem for
+the nonlinear assembled PDE or a molecular model. The nonlinear comparison
+currently certifies only sufficiently fast shrinking initial packets under
+non-effective constants; see [the packet bound](axis-packet-bound.md).
+
 ## Earlier field-transfer gap (superseded by the current Lean result)
 
 The following notes record intermediate work and are not the current status.
