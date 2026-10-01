@@ -95,6 +95,34 @@ certify any fixed-size packet through the endpoint. Interparticle forces,
 molecular alignment, phase change and constitutive viscosity remain
 unmodeled.
 
+### Qualitative limit for non-isotropic direction laws
+
+The closed-form probability above uses isotropy, but its limiting conclusion
+does not. Fix any Borel probability law `nu` on unoriented initial directions
+at `t0`, independent of the later observation time. Let `E` be the set of
+directions exactly perpendicular to the axis. For each initial direction
+outside `E`, its axial component is nonzero and
+`tan(theta_t)=Q^(3C/2)tan(theta0) -> 0`; its indicator of lying in any fixed
+positive-angle axis cone therefore tends to one. For each direction in `E`,
+the axial component remains zero under the transverse-plane rotation/stretch,
+so that indicator remains zero for every cone narrower than a half-space.
+Bounded convergence applied to these indicators gives
+
+```
+lim P_nu(theta_t <= theta_star) = 1 - nu(E),
+0 < theta_star < pi/2.
+```
+
+Thus every fixed initial direction law assigning zero mass to the exactly
+transverse plane has directional alignment in probability; isotropy is
+sufficient, but not necessary. If a law places mass `p` on that plane, the
+limiting aligned fraction is exactly `1-p`. The finite-time probability still
+depends on the full initial law, and a family of laws that changes with `Q` is
+outside this bounded-convergence argument. This extends only the
+infinitesimal-direction statement derived from the selected local flow
+derivative. It supplies no law for actual molecules, no absolute-position
+concentration, and no uniform finite-packet estimate near the endpoint.
+
 ## Conditional finite-aspect Jeffery director model
 
 There is a related, separate orientation calculation for an ideal rigid

@@ -355,3 +355,19 @@ Niemi's version 2 (25 September) of [arXiv:2609.24490](https://arxiv.org/abs/260
 The phrase “light as a fluid” has a precise established analogue in nonlinear optics: medium-induced effective photon–photon interactions let a many-photon system behave collectively as a quantum fluid. This supports a separate model-comparison research track, already recorded in `docs/exploratory-directions.md`, but does not make free-space light an incompressible Newtonian fluid or transfer the OpenAI Navier–Stokes theorem to optical propagation. Any bridge must specify the optical platform and compare its nonlinear-wave equation, dispersive/quantum-pressure term, losses, and boundary conditions against the proposed reduced hydrodynamics. Source: [Carusotto and Ciuti, *Quantum fluids of light*, Reviews of Modern Physics](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.85.299).
 
 For the user's hypothesis, retain four separate levels: continuum deformation of infinitesimal material directions; finite parcels, needing a nonzero-neighborhood estimate; molecular positions/statistics and viscosity, needing a kinetic/constitutive model; and optical quantum fluids, needing their own effective-wave model. Current proof work reaches the first level conditionally and supplies only a shrinking-packet allowance with non-effective constants for the second. It gives neither absolute-position certainty nor molecular ordering. The determinant-one deformation contracts transversely while expanding axially, and our separate conditional axial viscous-force/material-acceleration ratio does not tend to zero. No constitutive-viscosity drop follows.
+
+### Distribution-independent directional limit
+
+The exact finite-time spherical-cap formula above assumes isotropic initial
+infinitesimal directions. The qualitative limit can be sharpened: for any
+fixed Borel probability law `nu` on the unoriented direction sphere, the
+probability of entering a fixed positive-angle cone about the selected axis
+tends to `1 - nu(E)`, where `E` is the exactly transverse great circle. For
+each direction off `E`, the axial component is nonzero and its angle contracts
+by the factor `Q^(3C/2)`; on `E` the axis angle remains pi/2. Bounded
+convergence proves the probability limit. Hence isotropy is not required for
+the qualitative conclusion when the initial law gives zero mass to `E`, but
+the law remains an added ensemble choice and the result remains about
+infinitesimal continuum directions. It does not infer molecule trajectories,
+absolute-position concentration, or finite-size alignment. The cone-boundary
+identity is included in `evidence/tests/particle-position-probability.json`.

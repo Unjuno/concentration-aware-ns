@@ -1612,19 +1612,6 @@ a defect. Details and reproduction are in
 reports/solver-matrix-coverage-2026-09-30.md and
 evidence/tests/amr-p0-projection-decomposition.json.
 
-## Revision 100 — AMR prescribed-sensor mapping checked against archive
-
-Parsed the archived t=.003 `refineSensor`, centers, volumes, and `cellLevel`
-after checking the frozen protocol and archive hashes. The stored sensor
-matches `g(y)g(z)`, the explicitly prescribed analytic envelope, with maximum
-absolute residual 3.33e-15 over 16,640 cells. Level 1 occupies 43.75% of the
-domain volume and contains all cells with sensor >=.01; 72.32% of its volume
-is above that threshold, consistent with threshold-edge and buffer effects.
-This verifies implementation of the known sensor and its mesh footprint, not
-blind detection, particle alignment, or a physical transition. Reproduce with
-`work/reference-check-env/bin/python -m tools.audit_amr_sensor_mapping`; the
-hash-pinned output is `evidence/of13-amr-first-refinement-v1/sensor-mapping-audit.json`.
-
 ## Revision 99 — AMR level-wise MMS energy and gradient localization
 
 Extended the exact Fourier cell-integral audit to the squared Frobenius norm
@@ -1641,3 +1628,42 @@ this mesh with this manufactured field, not blind concentration detection or
 a physical transition/solver defect. Hashes and reproduction details are in
 reports/solver-matrix-coverage-2026-09-30.md and
 evidence/tests/amr-p0-projection-decomposition.json.
+
+## Revision 100 — AMR prescribed-sensor mapping checked against archive
+
+Parsed the archived t=.003 `refineSensor`, centers, volumes, and `cellLevel`
+after checking the frozen protocol and archive hashes. The stored sensor
+matches `g(y)g(z)`, the explicitly prescribed analytic envelope, with maximum
+absolute residual 3.33e-15 over 16,640 cells. Level 1 occupies 43.75% of the
+domain volume and contains all cells with sensor >=.01; 72.32% of its volume
+is above that threshold, consistent with threshold-edge and buffer effects.
+This verifies implementation of the known sensor and its mesh footprint, not
+blind detection, particle alignment, or a physical transition. Reproduce with
+`work/reference-check-env/bin/python -m tools.audit_amr_sensor_mapping`; the
+hash-pinned output is `evidence/of13-amr-first-refinement-v1/sensor-mapping-audit.json`.
+
+## Revision 101 — Directional alignment limit generalized beyond isotropy
+
+For the audited infinitesimal flow derivative, the finite-time spherical-cap
+probability uses isotropy, but a fixed Borel law `nu` on unoriented initial
+directions has the more general limit `1 - nu(E)`, where `E` is the exactly
+transverse great circle. Every direction off E enters every fixed positive-
+angle axis cone as `Q -> 0`; directions on E stay transverse. Bounded
+convergence yields the probability limit. Thus no-mass-on-E suffices for
+qualitative directional alignment, while a transverse atom of mass p leaves
+limiting aligned mass 1-p. This is only a distributional statement about
+infinitesimal continuum separations, conditional on the selected local flow
+derivative; it does not concern finite particles, absolute position, molecules,
+or viscosity. The cone-boundary algebra check and scope are recorded in
+`docs/particle-position-probability.md`,
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`, and
+`evidence/tests/particle-position-probability.json`.
+
+## Revision 102 — Default pytest discovery bounded to canonical tests
+
+An unscoped `pytest -q` from the repository root tried to collect historical
+checkouts, source snapshots, and dependency repositories under `work/`, causing
+duplicate-module collection errors unrelated to the canonical suite. Added
+`pytest.ini` with `testpaths = tests`, so the simple root command exercises the
+maintained suite only. Explicit verification remains `python -m pytest -q
+tests`; rerun both forms after this configuration change.
