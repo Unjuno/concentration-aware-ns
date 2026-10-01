@@ -1431,3 +1431,16 @@ transverse component, which yields `Q^(kappa+5C/2-1)` (`Q^49` at conservative
 `C=4`, `kappa=40`). The derivation and distinction are now in the report and
 symbolic records, with two focused tests passing. This validates algebra only;
 all packet and physical conclusions remain conditional or unsupported.
+
+## Revision 88 — OpenFOAM six-case matrix replay reconciled
+
+A current-state audit corrected reliance on the older historical partial
+attempt: the cross-run manifest has all six spatial/time cases complete. Fresh
+archive, hash, time-sequence, standard-gate and temporal-comparator replays
+confirm the two temporal addendum cases completed at 100/100 and 200/200 steps;
+the old 35/36 case remains preserved and superseded. The n=64 temporal
+three-point order is about 0.499 and exact-velocity error is nearly flat, so
+this is no asymptotic temporal-error certificate. The matrix's persistent
+local-quality-blind-spot criterion remains NOT_OBSERVED. Details and replay
+scope are recorded in `reports/solver-matrix-coverage-2026-09-30.md`; no new
+solver run or upstream report was needed.

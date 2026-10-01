@@ -91,3 +91,22 @@ postprocessing consistency only. They do not rerun either solver, establish
 source-to-binary equivalence, certify continuous extrema, or validate a
 physical interpretation. The replay commands are listed above; the detailed
 outputs remain in the existing JSON evidence records.
+
+### OpenFOAM fixed-time-step matrix replay on 2026-10-01
+
+The current cross-run manifest was re-read after an earlier status note relied
+on the historical partial attempt. Its six completed cases were rechecked by
+combining `tools.audit_high_gradient_time_sequence` (the four spatial rows,
+including reconstruction and hash validation of the split n=128 archive) and
+`tools.compare_high_gradient_temporal` (the n=64 temporal triplet, including
+archive-to-source tree checks, exit records, complete PIMPLE counts, endpoint
+fields, matching cell centers, and frozen non-time input hashes). All six
+archives match their manifest digests. The two temporal addendum cases are
+complete at 100/100 and 200/200 converged steps; the earlier 35/36 partial
+attempt is preserved as a historical artifact and is not the source of those
+rows. Their exact-velocity errors are 0.00478066, 0.00478409, and 0.00479049,
+and the observed adjacent-field-difference order is about 0.499. Every temporal
+row passes the configured standard and local gates, but the three-point trend
+still gives no asymptotic temporal error certificate. This is a fresh replay of
+archived evidence, not a solver rerun or a change to the matrix's
+`NOT_OBSERVED` defect criterion.
