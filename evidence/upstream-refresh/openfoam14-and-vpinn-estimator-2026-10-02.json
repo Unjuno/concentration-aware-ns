@@ -50,8 +50,15 @@
       "improved flux calculations",
       "mesh handling changes"
     ],
+    "benchmark_solver_check": {
+      "case_controlDict_solver": "incompressibleFluid",
+      "release_note_limit": "The advertised isothermalFluid improvements are not the solver selected by this benchmark case.",
+      "single_case_probe": "evidence/of14-high-gradient-v1/",
+      "result": "Foundation 14 n=64, dt=0.001 completed and matched all published Foundation 13 diagnostic values exactly; endpoint ASCII fields matched byte-for-byte after normalizing only the version banner.",
+      "scope": "One mesh/time-step compatibility observation only; no version-wide equivalence claim."
+    },
     "current_benchmark_version": "Foundation 13",
-    "disposition": "New version-coverage opportunity only. Package 20260724 and source tag commit are pinned separately from current master. Existing v13 evidence is unchanged; no v14 defect or cross-version behavior is inferred."
+    "disposition": "New version-coverage opportunity. Package 20260724 and source tag commit are pinned separately from current master. A one-case v14 run now provides limited compatibility evidence; the Foundation 13 full-matrix result and verdict remain unchanged. No v14 defect or version-wide equivalence is inferred."
   },
   "adaptive_estimator_paper": {
     "title": "An adaptive error estimator for stationary Navier-Stokes equations using variational physics informed neural networks",

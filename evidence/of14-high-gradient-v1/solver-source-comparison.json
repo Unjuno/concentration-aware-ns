@@ -1,0 +1,29 @@
+{
+  "scope": "Text comparison of the incompressibleFluid module files only; not a full solver audit or semantic proof.",
+  "foundation13": {
+    "source_repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+    "commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90"
+  },
+  "foundation14": {
+    "source_repository": "https://github.com/OpenFOAM/OpenFOAM-14",
+    "tag": "20260724",
+    "commit": "7b05503f98a85be88af930df48623b4d152bfc35"
+  },
+  "files_checked": {
+    "incompressibleFluid.C": "changed: fluidSolver base calls become basicFluidSolver; explicit pressure and velocity dimensions added",
+    "incompressibleFluid.H": "changed: basicFluidSolver and MRFZones replace fluidSolver and IOMRFZoneList",
+    "moveMesh.C": "changed: explicit MRF.update() removed; topology check uses mesh.poly().topoChanged()",
+    "correctPressure.C": "identical",
+    "momentumPredictor.C": "identical",
+    "setRDeltaT.C": "identical",
+    "Make/files": "changed",
+    "Make/options": "changed"
+  },
+  "benchmark_case": {
+    "selected_solver": "incompressibleFluid",
+    "mesh_changes": false,
+    "mrf_configured": false,
+    "implication": "The changed MRF and moving-mesh paths are not exercised by this static, no-MRF probe."
+  },
+  "interpretation": "The Foundation 14 n=64, dt=0.001 endpoint fields match Foundation 13 after normalizing only the version banner. This observation covers only the tested execution path and case."
+}

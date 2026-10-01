@@ -1,0 +1,34 @@
+{
+  "source_commit": "02d8482c81d7c3182f85a4b653ebab47493e512e",
+  "protocol_path": "protocols/high-gradient-of13-v2.json",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "derived_math_protocol": "OpenFOAM Foundation 13 v2 localized high-gradient MMS; equations, forcing, time, and thresholds reused unchanged",
+  "binary_package": "OpenFOAM Foundation 14 package 20260724 arm64",
+  "binary_package_sha256": "d20102ae6b39377ab3f5e654302ea0d58de166156fe681670f147ac555299a69",
+  "container_image": "concentration-aware-ns:of14-20260724",
+  "container_image_id": "sha256:13a8802edab29a093c62ab90f063b823536e18985d52c91ab58212a4ac31447d",
+  "container_platform": "linux/arm64",
+  "docker_cli": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "docker_context": "orbstack",
+  "scope": "Foundation 14 one-case compatibility/comparison probe; not a complete version matrix or defect verdict",
+  "case": {
+    "cells_per_axis": 64,
+    "delta_t": 0.001,
+    "end_time": 0.05
+  },
+  "runtime_details": {
+    "base_image": "ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517",
+    "openfoam_deb_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam14_20260724_arm64.deb",
+    "openfoam_deb_sha256": "d20102ae6b39377ab3f5e654302ea0d58de166156fe681670f147ac555299a69",
+    "source_repository": "https://github.com/OpenFOAM/OpenFOAM-14",
+    "source_tag": "20260724",
+    "source_tag_commit": "7b05503f98a85be88af930df48623b4d152bfc35",
+    "dockerfile_sha256": "66a52daa0ce00e9224394ce6fb8f8e5ab84e6ce93d17669b3d758f7cfb9600ca",
+    "package_inventory_sha256": "f0ece999ee0cda6f47d73a73fb72fc36bb6f266de53cb2cfaac21cf866ea4442",
+    "build_log_sha256": "e71e25946f87df7a7ecd2fbc8191e95a0012af2ee46aa85ff1a72cc9da5db739",
+    "apt_snapshot_pinned": false,
+    "source_binary_equivalence": "Not independently established; official package/source tag are pinned together."
+  }
+}

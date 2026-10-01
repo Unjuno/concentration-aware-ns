@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 154 — Foundation 14 single-case compatibility probe
+
+Ran the unchanged high-gradient protocol at `n=64`, `dt=0.001`, and
+`endTime=0.05` using the official OpenFOAM Foundation 14 package `20260724`
+in a locally built, pinned-base Linux/arm64 image. All 50 steps converged and
+the configured standard and sampled local-quality gates passed. The endpoint
+fields `U`, `p`, `phi`, `C`, `Ccx`, `Ccy`, and `Ccz` match the published v13
+case byte-for-byte after normalizing only the version banner; the five
+recorded sampled diagnostics also match exactly. Corrected the earlier source
+focus: this case selects `incompressibleFluid`, not `isothermalFluid`. The v14
+MRF and moving-mesh refactors are outside this static, no-MRF case. Therefore
+this is one-case compatibility evidence only, not full v14 equivalence,
+continuous-extremum certification, a solver-defect finding, or support for
+the molecular/physical hypothesis. The v14 matrix remains open. Details and
+replay artifacts are in `reports/openfoam-foundation14-compatibility-probe-2026-10-02.md`
+and `evidence/of14-high-gradient-v1/`. Goal remains active.
+
 ## Revision 153 — scope-gate outputs replay cleanly at a fixed commit
 
 For commit `a3d07c19b66c497a9047df2a3650582157399004`, a tracked-only export

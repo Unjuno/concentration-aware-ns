@@ -1,0 +1,208 @@
+{
+  "scope": "One Foundation 14 case compared with the corresponding already-published Foundation 13 case; sampled uniform-grid diagnostics only.",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "foundation13_archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e",
+  "foundation14_archive_sha256": "de85e8e655804d45a22490b57c855360db28b4e984ce10e347b6b5516030df71",
+  "foundation13_diagnostics": {
+    "standard_acceptance": {
+      "status": "PASS",
+      "complete_end_time": true,
+      "observed_time_steps": 50,
+      "expected_time_steps": 50,
+      "pimple_convergence_records": 50,
+      "failed_or_missing_convergence_steps_zero_based": [],
+      "maximum_observed_outer_correctors": 5,
+      "maximum_allowed_outer_correctors": 12,
+      "configured_outer_correctors": 12,
+      "configured_residual_tolerance": 1e-08,
+      "outer_residual_control_configuration_matches_protocol": true,
+      "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+    },
+    "local_quality": {
+      "status": "PASS",
+      "metrics": {
+        "velocity_l2": {
+          "value": 0.004780664208810287,
+          "threshold": 0.02,
+          "status": "PASS"
+        },
+        "energy": {
+          "value": 0.00024193409391482564,
+          "threshold": 0.02,
+          "status": "PASS"
+        },
+        "max_gradient": {
+          "value": 0.026403708759847735,
+          "threshold": 0.05,
+          "status": "PASS"
+        },
+        "max_vorticity": {
+          "value": 0.02348757012426952,
+          "threshold": 0.05,
+          "status": "PASS"
+        },
+        "shell_spectrum": {
+          "value": 0.00024193414832342997,
+          "threshold": 0.05,
+          "status": "PASS"
+        }
+      }
+    },
+    "velocity_relative_l2": 0.004780664208810287,
+    "energy_relative_error_cell_samples": 0.00024193409391482564,
+    "shell_spectrum_relative_l1_error": 0.00024193414832342997,
+    "gradient_peak_relative_error_cell_samples": 0.026403708759847735,
+    "vorticity_peak_relative_error_cell_samples": 0.02348757012426952
+  },
+  "foundation14_diagnostics": {
+    "standard_acceptance": {
+      "status": "PASS",
+      "complete_end_time": true,
+      "observed_time_steps": 50,
+      "expected_time_steps": 50,
+      "time_sequence_matches_fixed_delta_t": true,
+      "time_sequence_mismatches_zero_based": [],
+      "pimple_convergence_records": 50,
+      "failed_or_missing_convergence_steps_zero_based": [],
+      "maximum_observed_outer_correctors": 5,
+      "maximum_allowed_outer_correctors": 12,
+      "configured_outer_correctors": 12,
+      "configured_residual_tolerance": 1e-08,
+      "outer_residual_control_configuration_matches_protocol": true,
+      "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+    },
+    "local_quality": {
+      "status": "PASS",
+      "metrics": {
+        "velocity_l2": {
+          "value": 0.004780664208810287,
+          "threshold": 0.02,
+          "status": "PASS"
+        },
+        "energy": {
+          "value": 0.00024193409391482564,
+          "threshold": 0.02,
+          "status": "PASS"
+        },
+        "max_gradient": {
+          "value": 0.026403708759847735,
+          "threshold": 0.05,
+          "status": "PASS"
+        },
+        "max_vorticity": {
+          "value": 0.02348757012426952,
+          "threshold": 0.05,
+          "status": "PASS"
+        },
+        "shell_spectrum": {
+          "value": 0.00024193414832342997,
+          "threshold": 0.05,
+          "status": "PASS"
+        }
+      }
+    },
+    "velocity_relative_l2": 0.004780664208810287,
+    "energy_relative_error_cell_samples": 0.00024193409391482564,
+    "shell_spectrum_relative_l1_error": 0.00024193414832342997,
+    "gradient_peak_relative_error_cell_samples": 0.026403708759847735,
+    "vorticity_peak_relative_error_cell_samples": 0.02348757012426952
+  },
+  "metric_comparison": {
+    "velocity_relative_l2": {
+      "v13": 0.004780664208810287,
+      "v14": 0.004780664208810287,
+      "exact_equal": true
+    },
+    "energy_relative_error_cell_samples": {
+      "v13": 0.00024193409391482564,
+      "v14": 0.00024193409391482564,
+      "exact_equal": true
+    },
+    "shell_spectrum_relative_l1_error": {
+      "v13": 0.00024193414832342997,
+      "v14": 0.00024193414832342997,
+      "exact_equal": true
+    },
+    "gradient_peak_relative_error_cell_samples": {
+      "v13": 0.026403708759847735,
+      "v14": 0.026403708759847735,
+      "exact_equal": true
+    },
+    "vorticity_peak_relative_error_cell_samples": {
+      "v13": 0.02348757012426952,
+      "v14": 0.02348757012426952,
+      "exact_equal": true
+    }
+  },
+  "endpoint_field_comparison": [
+    {
+      "path": "n64-dt0.001/0.05/U",
+      "v13_bytes": 17880202,
+      "v14_bytes": 17880202,
+      "v13_sha256": "8226679a728c1fdc87b5a88635ad1ed2caeb3201dfc0105d659ca91d1e01ca72",
+      "v14_sha256": "85cc40152ae8c6069a33d89a1070ac49cb04e4c71ddff60ab350159d9f20aa92",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/p",
+      "v13_bytes": 5998615,
+      "v14_bytes": 5998615,
+      "v13_sha256": "a271dcef92348c76aac1772e4e3a910dd61cb2fa239f9c1408af689e7dc3b28d",
+      "v14_sha256": "006f9964cd203b9359616d8df41ac1ec179fe3585304bef6b66a0eb52e805e2d",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/phi",
+      "v13_bytes": 17876437,
+      "v14_bytes": 17876437,
+      "v13_sha256": "636b8b31f2379099beb0264aa027f9f497f4183f254e5f19103fb74f8ee7f556",
+      "v14_sha256": "21c018c00d9377c69dd07f1a7763f36c5c409a30574a1756f1492bd16488f75f",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/C",
+      "v13_bytes": 14732198,
+      "v14_bytes": 14732198,
+      "v13_sha256": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c",
+      "v14_sha256": "37497ea46fa31dbc7223c06cbb368a43c8f1ed62ef6a0485cb66b13f8347ca5b",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/Ccx",
+      "v13_bytes": 4736479,
+      "v14_bytes": 4736479,
+      "v13_sha256": "e79b0e46aa2b601a5e9fd82893750ccec498298f1865410aa20d08c6d7121da1",
+      "v14_sha256": "a00f6bca6b323b5560082a6ff69438909904b64dee3e6ed96615b4225a88a29c",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/Ccy",
+      "v13_bytes": 4736748,
+      "v14_bytes": 4736748,
+      "v13_sha256": "c3f421960b5a45f8da3bb57ccda4ec4f7062ebb9271539976253b5048ad06673",
+      "v14_sha256": "f1be842a8caf42b52ca4c8a1c11ca6b46cad6f62c0cbb96ea3d7d9610c13879f",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    },
+    {
+      "path": "n64-dt0.001/0.05/Ccz",
+      "v13_bytes": 4736847,
+      "v14_bytes": 4736847,
+      "v13_sha256": "e802d93081f53da77fd7000248dc4864f0b053f1e4d8c9cedcabeb654af172fb",
+      "v14_sha256": "282acead951462a9ec84687ccb7a89ff373ad45f14b538bacb0d84259efdd15b",
+      "equal_after_version_header_normalization": true,
+      "normalization": "replace only OpenFOAM banner Version: 13/14 token with XX; all remaining bytes must compare identical"
+    }
+  ],
+  "all_endpoint_fields_identical_after_banner_normalization": true,
+  "interpretation_limits": [
+    "This is one resolution and time step, not a version-wide equivalence result.",
+    "The diagnostic peak errors are sampled on cell centers; continuous extrema are not certified.",
+    "No software defect, physical singularity, molecular ordering, or constitutive change is inferred."
+  ]
+}
