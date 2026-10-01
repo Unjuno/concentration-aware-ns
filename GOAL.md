@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 167 — full local suite passes at current PR head
+
+Because GitHub Actions run `36926321769` remained queued with no runner, ran
+the exact test suite locally on current checkout `fdc9d82290dbd9d76964071540652a338b07aa50`:
+`work/reference-check-env/bin/python -m pytest -q tests`. Python 3.14.5 and
+pytest 9.1.1 reported `200 passed, 1 skipped, 5 subtests passed` in 105.29 s,
+exit 0. The skip is not counted as a pass. Machine-readable execution metadata
+and the locked-requirements hash are in
+`evidence/tests/full-pytest-2026-10-02.json`. This local run does not change
+the hosted check's queued status and does not rerun the CFD or PhysicsNeMo
+solvers. Overall goal remains active.
+
 ## Revision 166 — official claim and prize statuses separated
 
 Rechecked the live primary pages. OpenAI continues to claim that its forced
