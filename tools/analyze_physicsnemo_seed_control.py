@@ -150,9 +150,21 @@ def render_markdown(result):
         c = result["paired_contrasts"][key]
         signs = c["velocity_delta_signs"]
         lines.append(f"| {label} | {c['paired_seed_count']} | {c['velocity_delta_mean']:+.6f} | {c['velocity_delta_sample_sd']:.6f} | {signs['lower']} / {signs['equal']} / {signs['higher']} |")
+    time_gradient = result["paired_contrasts"]["time_nodes_9_to_17"]["deltas"]
+    gradient_deltas = [x["gradient_peak_relative_error_samples_delta"] for x in time_gradient]
+    vorticity_deltas = [x["vorticity_peak_relative_error_samples_delta"] for x in time_gradient]
+    velocity_deltas = [x["velocity_relative_l2_delta"] for x in time_gradient]
+    spatial_gradient = result["paired_contrasts"]["spatial_n16_to_n32"]["deltas"]
+    spatial_gradient_deltas = [x["gradient_peak_relative_error_samples_delta"] for x in spatial_gradient]
+    spatial_vorticity_deltas = [x["vorticity_peak_relative_error_samples_delta"] for x in spatial_gradient]
+    lines += ["", "The paired derivative-peak metrics do not follow the velocity metric uniformly. From nt=9 to nt=17, sampled velocity relative L2 decreases for "
+              f"{sum(x < 0 for x in velocity_deltas)} of {len(velocity_deltas)} seeds (mean delta {statistics.mean(velocity_deltas):+.6f}), while sampled gradient-peak error changes are higher for "
+              f"{sum(x > 0 for x in gradient_deltas)} and lower for {sum(x < 0 for x in gradient_deltas)} seeds (mean {statistics.mean(gradient_deltas):+.6f}); sampled vorticity-peak error is higher for "
+              f"{sum(x > 0 for x in vorticity_deltas)} and lower for {sum(x < 0 for x in vorticity_deltas)} (mean {statistics.mean(vorticity_deltas):+.6f}). From n=16 to n=32, sampled gradient- and vorticity-peak errors increase for "
+              f"{sum(x > 0 for x in spatial_gradient_deltas)} of five seeds and decrease for {sum(x < 0 for x in spatial_gradient_deltas)}. These are paired comparisons on a shared fixed validation design, not evidence of a continuous extremum or a causal effect of node count; magnitudes are small and no acceptance threshold was preregistered.", ""]
     lines += ["", "Seed 8191 produced a visibly higher velocity error in all five conditions than the first three new seeds; this demonstrates material seed sensitivity in this small sample. The paired contrasts remain descriptive and share the same fixed validation design. Training loss and runtime are retained per-run in the JSON artifact.", "",
               "All quality/gate conclusions remain `UNCERTAIN`. The sampled gradient/vorticity metrics are finite-point checks, not certified maxima. No molecular interpretation, phase transition, or physical instability follows from these PINN errors.", "",
-              "Machine-readable means, medians, sample standard deviations, ranges, exact paired deltas, run records, and limitations are in `evidence/physicsnemo-seed-control-v1/analysis.json`. Run archive hashes are verified before regeneration.", ""]
+              "Machine-readable means, medians, sample standard deviations, ranges, exact paired deltas for velocity/gradient/vorticity, run records, and limitations are in `evidence/physicsnemo-seed-control-v1/analysis.json`. The frozen report is regenerated from the archived run manifest; all 20 added archive hashes are verified before regeneration.", ""]
     return "\n".join(lines)
 
 

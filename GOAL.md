@@ -1823,6 +1823,19 @@ the global maximum, validate the Arb library with a proof kernel, set a
 preregistered PhysicsNeMo threshold, or justify an upstream defect report. The
 quality verdict remains UNCERTAIN and the full goal remains active.
 
+## Revision 113 — separate PhysicsNeMo velocity and derivative trends
+
+Replayed the frozen five-seed analysis from its archived run manifest; all 20
+added archive SHA-256 checks passed and the machine-readable results were
+unchanged. The paired contrasts show that n=16→32 raises sampled gradient- and
+vorticity-peak error for four of five seeds, while n=64, nt=9→17 lowers sampled
+velocity relative L2 for all five seeds but raises both sampled derivative-peak
+errors for three seeds. The latter mean derivative-error increase is about
+0.000022. The seed-control report now records this metric disagreement and its
+shared-validation and finite-sampling limits. No continuous peak, node-count
+causality, or PhysicsNeMo acceptance threshold is established; its verdict
+remains UNCERTAIN and the overall goal remains active.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as

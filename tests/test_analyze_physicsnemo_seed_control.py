@@ -52,6 +52,8 @@ def test_analyzer_summarizes_five_seeds_and_paired_changes(tmp_path):
     report = render_markdown(result)
     assert "UNCERTAIN" in report
     assert "not certified maxima" in report
+    assert "derivative-peak metrics do not follow the velocity metric uniformly" in report
+    assert "not evidence of a continuous extremum" in report
 
 
 def test_analyzer_rejects_changed_archive(tmp_path):
