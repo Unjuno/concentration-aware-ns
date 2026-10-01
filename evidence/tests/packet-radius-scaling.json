@@ -1,7 +1,7 @@
 {
   "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
   "sympy": "1.14.0",
-  "source_sha256": "9deb902d5eac3b1545940d01c0254f5127f2462a25d9a8fe5f7fda4983751e05",
+  "source_sha256": "396bcf0fc5b8a9d2dd203b709ef575ed316ca38577bb149be174f969b09342b1",
   "assumptions": {
     "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
     "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
@@ -11,7 +11,8 @@
   "formulas": {
     "I_upper": "I(Q)<=tau0/(C-1)*Q^(1-C)",
     "tube_radius_sufficient_power": "Q^(C+max(r,kappa-1))",
-    "angle_error_sufficient_power": "Q^(C+kappa-1)",
+    "fixed_cone_angle_sufficient_power": "Q^(C+kappa-1)",
+    "transverse_component_relative_error_power": "Q^(kappa+5C/2-1)",
     "combined_sufficient_initial_radius_power": "Q^(C+max(r,kappa-1))",
     "fixed_rho_bounded_k_case": "Q^C"
   },
@@ -19,8 +20,8 @@
     "integral_upper_difference": "0",
     "tube_power_case_kappa_ge_r_plus_1": "0",
     "tube_power_case_kappa_le_r_plus_1": "0",
-    "angle_power_case_kappa_ge_r_plus_1": "0",
-    "angle_power_case_kappa_le_r_plus_1": "0",
+    "fixed_cone_angle_power_identity": "0",
+    "transverse_relative_error_power_identity": "0",
     "second_denominator_case_kappa_ge_r_plus_1": "0",
     "second_denominator_case_kappa_le_r_plus_1": "0"
   },
@@ -40,6 +41,7 @@
     "C_upper": "4",
     "tube_power_exponent": "43",
     "angle_error_power_exponent": "43",
+    "transverse_relative_error_power_exponent": "49",
     "hessian_term_denominator_exponent": "85/2",
     "Hessian_denominator_exponent_gap": "77/2",
     "tube_prefactor": "rho0/(1+B), B=k0*rho0*tau0/3",
@@ -52,7 +54,8 @@
       "tube_denominator_dominant_term": "0"
     },
     "controls": {
-      "Hessian_denominator_term_dominates_linear_amplification": true
+      "Hessian_denominator_term_dominates_linear_amplification": true,
+      "transverse_relative_error_requires_stricter_power": true
     },
     "success": true
   },

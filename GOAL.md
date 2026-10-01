@@ -1418,3 +1418,16 @@ not a defect report, and not evidence for particle alignment or viscosity
 change. The full-domain cover remains coarse, so the PhysicsNeMo verdict and
 overall goal remain UNCERTAIN and active. See the report and hashed machine
 record for limits and reproduction.
+
+## Revision 87 — fixed-cone packet exponent independently derived
+
+An independent componentwise derivation confirms the conditional `Q^43`
+packet-radius law for remaining inside a fixed axis cone under the stated tube
+and Hessian envelopes. The linear axial/transverse ratio is
+`Q^(3C/2)*tan(theta0)`; comparing the nonlinear remainder with the axial
+component yields angle allowance `Q^(C+kappa-1)`. This is a different and
+weaker requirement than controlling error relative to the contracting
+transverse component, which yields `Q^(kappa+5C/2-1)` (`Q^49` at conservative
+`C=4`, `kappa=40`). The derivation and distinction are now in the report and
+symbolic records, with two focused tests passing. This validates algebra only;
+all packet and physical conclusions remain conditional or unsupported.

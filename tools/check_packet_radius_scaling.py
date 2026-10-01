@@ -13,6 +13,8 @@ def main():
     integral = tau0 * (q**(1-C) - 1) / beta
     integral_upper = tau0 * q**(1-C) / beta
     tube_power = C + s.Max(r, kappa-1)
+    cone_angle_power = C + kappa - 1
+    transverse_relative_power = kappa + s.Rational(5, 2)*C - 1
 
     # Assume rho=rho0*Q^r and k<=k0*Q^-kappa. The denominator in the tube
     # condition is bounded by two powers with these exponents.
@@ -25,10 +27,10 @@ def main():
             r+C+(kappa-r-1) - (C+kappa-1)),
         'tube_power_case_kappa_le_r_plus_1': s.simplify(
             r+C - (C+r)),
-        'angle_power_case_kappa_ge_r_plus_1': s.simplify(
-            (C+kappa-1) - (C+kappa-1)),
-        'angle_power_case_kappa_le_r_plus_1': s.simplify(
-            (C+r) - (C+kappa-1) - (r-kappa+1)),
+        'fixed_cone_angle_power_identity': s.simplify(
+            cone_angle_power-(C+kappa-1)),
+        'transverse_relative_error_power_identity': s.simplify(
+            transverse_relative_power-(kappa+s.Rational(5, 2)*C-1)),
         'second_denominator_case_kappa_ge_r_plus_1': s.simplify(
             (r-kappa+1-C) - (-C-(kappa-r-1))),
         'second_denominator_case_kappa_le_r_plus_1': s.simplify(
@@ -49,6 +51,8 @@ def main():
     actual_kappa = s.Integer(40)
     actual_tube_exp = actual_c_upper + max(actual_r, actual_kappa-1)
     actual_angle_exp = actual_c_upper + actual_kappa-1
+    actual_transverse_relative_exp = transverse_relative_power.subs(
+        {C: actual_c_upper, kappa: actual_kappa})
     denominator_hessian_exp = actual_c_upper + actual_kappa-actual_r-1
     actual_specialization_residuals = {
         'tube_power_is_43': s.simplify(actual_tube_exp-43),
@@ -59,6 +63,8 @@ def main():
     actual_specialization_controls = {
         'Hessian_denominator_term_dominates_linear_amplification':
             bool(denominator_hessian_exp >= actual_c_upper),
+        'transverse_relative_error_requires_stricter_power':
+            bool(actual_transverse_relative_exp > actual_angle_exp),
     }
     actual_specialization = {
         'input_envelopes': {
@@ -70,6 +76,7 @@ def main():
         'C_upper': str(actual_c_upper),
         'tube_power_exponent': str(actual_tube_exp),
         'angle_error_power_exponent': str(actual_angle_exp),
+        'transverse_relative_error_power_exponent': str(actual_transverse_relative_exp),
         'hessian_term_denominator_exponent': str(denominator_hessian_exp),
         'Hessian_denominator_exponent_gap': str(
             denominator_hessian_exp-actual_c_upper),
@@ -99,7 +106,8 @@ def main():
         'formulas': {
             'I_upper': 'I(Q)<=tau0/(C-1)*Q^(1-C)',
             'tube_radius_sufficient_power': 'Q^(C+max(r,kappa-1))',
-            'angle_error_sufficient_power': 'Q^(C+kappa-1)',
+            'fixed_cone_angle_sufficient_power': 'Q^(C+kappa-1)',
+            'transverse_component_relative_error_power': 'Q^(kappa+5C/2-1)',
             'combined_sufficient_initial_radius_power': 'Q^(C+max(r,kappa-1))',
             'fixed_rho_bounded_k_case': 'Q^C',
         },

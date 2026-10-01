@@ -120,6 +120,38 @@ a sufficient power is therefore
 delta(Q) = O(Q^(C + max(r,kappa-1))).
 ```
 
+Here the angle condition means remaining inside a **fixed cone about the axis**;
+it does not mean that the nonlinear error is small relative to the shrinking
+transverse linear component. The distinction matters. Write
+`m=tan(theta_target)`, `c=cos(theta0)>0`, and
+`s=sin(theta0)`. For an initial displacement of length `delta`, the linear
+image has axial magnitude `A=Q^(-C)*delta*c` and transverse magnitude
+`B=Q^(C/2)*delta*s`. If the nonlinear remainder has norm at most `Z`, then
+the perturbed direction is in the target cone whenever
+
+```
+(B+Z)/(A-Z) <= m,       with Z < A.
+```
+
+The classical remainder estimate gives
+`Z <= Q^(-C)*k*delta^2*I/(1-k*delta*I)`. Thus
+
+```
+Z/A <= k*delta*I / (c*(1-k*delta*I)),
+B/A = Q^(3C/2)*tan(theta0).
+```
+
+It suffices that the first ratio is at most
+`eta(Q)=(m-Q^(3C/2)*tan(theta0))/(1+m)`, which is positive for sufficiently
+small `Q`. Equivalently, with
+`E(Q)=c*eta(Q)`, it suffices that
+`delta <= E(Q)/((1+E(Q))*k*I)`. Since `E(Q)` tends to
+`E0=m*c/(1+m)>0`, eventually `E(Q)>=E0/2`; using the stated upper bounds for
+`k` and `I` yields the angle radius prefactor in the next paragraph. By
+contrast, requiring `Z` to be at most a fixed fraction of the *transverse*
+linear magnitude is a stronger, different criterion and has a different power
+of `Q`. The checker records both quantities so they are not conflated.
+
 For explicit constants, put
 `B=k0*rho0*tau0/(C-1)` and
 `p=C+max(r,kappa-1)`. Since each denominator term is at most its dominant

@@ -16,6 +16,14 @@ def main():
     x, y, z, g, omega = s.symbols('x y z g omega', real=True)
     v = s.Matrix([x, y, z])
     G = s.Matrix([[-g/2, -omega, 0], [omega, -g/2, 0], [0, 0, g]])
+    theta0, m = s.symbols('theta0 m', positive=True)
+    cosine, sine = s.cos(theta0), s.sin(theta0)
+    axial = q**(-C)*delta*cosine
+    transverse = q**(C/2)*delta*sine
+    remainder = q**(-C)*k*delta**2*I/(1-k*delta*I)
+    eta = (m-q**(3*C/2)*s.tan(theta0))/(1+m)
+    E = cosine*eta
+    delta_cone = E/((1+E)*k*I)
     residuals = {
         'primitive_derivative_C_ne_one': s.simplify(-s.diff(integral, q)/tau0-a),
         'primitive_derivative_C_one': s.simplify(-s.diff(critical_integral, q)/tau0-1/q),
@@ -26,6 +34,13 @@ def main():
         'tube_threshold_equality': s.simplify((A*b).subs(delta, rho/(A+k*rho*I))-rho),
         'rotation_cancellation': s.expand((v.T*G*v)[0]-g*(z*z-(x*x+y*y)/2)),
         'growth_bound_slack': s.expand(g*(v.dot(v))-(v.T*G*v)[0]-3*g*(x*x+y*y)/2),
+        'linear_transverse_to_axial_ratio': s.simplify(transverse/axial-q**(3*C/2)*s.tan(theta0)),
+        'cone_boundary_from_component_inequality': s.simplify(
+            (transverse+eta*axial)-m*(axial-eta*axial)),
+        'remainder_over_axial_amplification': s.simplify(
+            remainder.subs(delta, delta_cone)/axial.subs(delta, delta_cone)-eta),
+        'cone_radius_threshold_saturates_comparison': s.simplify(
+            (k*delta_cone*I)/(cosine*(1-k*delta_cone*I))-eta),
     }
     # Exact rational examples test the sufficient radius, not an actual flow.
     small = (A*b).subs({A: 4, k: 1, I: 1, delta: s.Rational(1, 100)})
@@ -45,6 +60,14 @@ def main():
         'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'conditions': ['0 < q <= 1', 'tau0 > 0', 'C > 0', 'k = M/2 >= 0',
                        'delta >= 0', 'k*delta*I < 1', 'A*delta/(1-k*delta*I) < rho'],
+        'fixed_cone_alignment': {
+            'linear_transverse_over_axial': 'Q^(3C/2)*tan(theta0)',
+            'cone_remainder_allowance_ratio': 'eta(Q)=(tan(theta_target)-Q^(3C/2)*tan(theta0))/(1+tan(theta_target))',
+            'normalized_remainder_over_axial': 'k*delta*I/(cos(theta0)*(1-k*delta*I))',
+            'sufficient_packet_threshold': 'delta<=E(Q)/((1+E(Q))*k*I), E(Q)=cos(theta0)*eta(Q)',
+            'asymptotic_power_under_k_and_I_envelopes': 'Q^(C+kappa-1)',
+            'scope': 'Keeps a fixed non-transverse initial direction inside a fixed axis cone; it is distinct from relative error against the contracting transverse component.',
+        },
         'residuals': {name: str(value) for name, value in residuals.items()},
         'controls': controls,
         'rational_bounds': {'small': str(small), 'large': str(large), 'tube': '1/10'},
