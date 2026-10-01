@@ -4,6 +4,17 @@
 
 ### Current tracked-only export — 2026-10-02
 
+The current PR head `84a3cc6e` was exported from tracked Git data into a fresh
+directory and locked virtual environment. All 37 report-replay steps and six
+additional checks passed, with 178 tracked report/test-evidence files unchanged.
+The full suite from that exported tree reported 200 passed, one skipped, and
+five subtests passed. Sanitized logs, hashes, package versions, and reproduction
+commands are in
+[`evidence/clean-export-2026-10-02-tracer-head/`](../evidence/clean-export-2026-10-02-tracer-head/README.md).
+This checks same-host postprocessing and stored evidence only; it does not
+rebuild or rerun solvers, retrain PhysicsNeMo, execute Lean, or change scientific
+verdicts.
+
 The first clean export at commit `46691344` exposed a real harness defect:
 `openfoam_temporal_triplet` depended on ignored `work/` data despite its public
 case archives being tracked. The temporal comparer now extracts those frozen

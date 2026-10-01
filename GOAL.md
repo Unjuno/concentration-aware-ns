@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 170 — current head passes tracked-only public replay
+
+Exported tracked commit `84a3cc6e4bffad458466441201e3b45bcdd77fc6` into a
+fresh directory and locked virtual environment. The clean-export check passed
+all 37 report-replay steps and six additional checks; 178 tracked
+report/test-evidence files remained byte-identical. The complete suite in that
+export passed `200 passed, 1 skipped, 5 subtests passed` in 103.23 seconds.
+Sanitized commands, package versions, logs and hashes are published in
+`evidence/clean-export-2026-10-02-tracer-head/`. This is same-host
+postprocessing/evidence replay, not solver rebuilds or runs, model retraining,
+Lean execution, or a scientific-verdict upgrade. The clean-export tool and
+working tree remain separate; overall benchmark goal remains active.
+
 ## Revision 169 — tracer-position bound applied to the pinned candidate
 
 Connected the Lean-checked transported-mass inequality to the pinned OpenAI
