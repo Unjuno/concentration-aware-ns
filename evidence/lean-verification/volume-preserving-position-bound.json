@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "theorem": "VolumePreservingPosition.transported_mass_bound",
+  "scope": "If an initial measure is dominated by K times a reference measure and a measurable map preserves the reference measure on preimages of measurable sets, the transported mass of any measurable target set is at most K times that set's reference measure.",
+  "source": "verification/VolumePreservingPositionBound.lean",
+  "source_sha256": "33bc5374e59c016da5559fcffe835ed155c53fefd2d907e41d7c5ac0a1b3a647",
+  "checker": "runtime/lean-verification/check_volume_preserving_position_bound.sh",
+  "checker_sha256": "e649dd1aeac8603d929d99f10694013ffde47a1e40c60f78b636b06a2856ea3e",
+  "log": "evidence/lean-verification/volume-preserving-position-bound.log",
+  "log_sha256": "e630cfa7a6b21265c0500127920b8177915a2d4cb8dc8b9b60b305495260bb54",
+  "lean": "4.34.0-rc2",
+  "environment": "Prepared pinned Lean project at work/lean-verification/independent-source; native macOS arm64 Lean executable.",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "upstream_source": {
+    "repository": "openai/NavierStokesAndEuler",
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "file": "NavierStokes/FinalSlowBase.lean",
+    "file_sha256": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "relevant_declarations": [
+      "FinalSlowBase.velocity_smooth",
+      "FinalSlowBase.divergence_zero"
+    ]
+  },
+  "limitations": [
+    "The Lean theorem assumes measure domination and measure preservation; it does not derive the flow map or its Jacobian equation.",
+    "Applying it to a constructed velocity additionally requires a smooth global flow diffeomorphism on each preterminal interval.",
+    "The three-dimensional ball ratio (R/a)^3 is the classical Euclidean volume scaling; the theorem itself leaves the target-set volume abstract.",
+    "No endpoint flow at t=1, molecular dynamics, collisions, or constitutive-viscosity law is covered."
+  ]
+}
