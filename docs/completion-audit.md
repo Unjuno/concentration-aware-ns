@@ -892,6 +892,14 @@ conditional, and no upstream defect or physical consequence is established.
 Exact pinned hashes and field-level analysis are in
 `reports/actual-profile-pressure-provenance-2026-10-01.md`.
 
+The analytic form of the retained cone test is `q + n^2/q > 9/4` in regular
+source-integral coordinates, while `PressureData` states smoothness, a
+negative pressure bound, and a derivative sign without naming the ideal-prefix
+amplitude. The fields are still coupled through the scaled-solution and
+pressure-integral identities, so this is not an impossibility result; it
+identifies the missing quantitative bridge. The proof agenda and exact scope
+are in the dated provenance report.
+
 ### 2026-10-02 source-schema follow-up
 
 Rehashed `PreparedOutgoing.lean`, `NominalConeAssembly.lean` and

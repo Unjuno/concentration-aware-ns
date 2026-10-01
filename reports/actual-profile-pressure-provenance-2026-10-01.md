@@ -121,3 +121,27 @@ proof attempt should either establish the required moment threshold directly
 from the universally retained entrance inequalities, or carry a prepared
 profile witness into the final choice. Until one succeeds, do not apply the
 separate existential-profile pressure theorem to `actualProfile`.
+
+## Analytic content of the retained entrance margin
+
+The retained `cone_margin` is not itself a scalar amplitude condition. In the
+pinned source, `NaturalEntrance.coneSize` is `p1 + p2^2 / p1`; after rewriting
+through the regular source-integral stocks, the entrance theorem gives
+`9/4 < q + n^2/q`. This constrains derivatives and values of the constructed
+profile fields at the entrance section. The fields depend on the pressure
+datum through `CoefficientProfile.scaled`, so the condition is not independent
+of the pressure construction; however, no direct algebraic step from this
+cone inequality to the outgoing core amplitude is currently identified.
+
+Likewise, `NaturalAxisData.PressureData` consists of pressure smoothness,
+`P(eta) <= -1`, and the sign condition `0 <= eta * deriv P(eta)`. It has no
+amplitude parameter. The ideal-prefix theorem constructs this record from
+`B >= 2`, but its stated direction is sufficient construction, not a converse.
+This type-level observation alone does not rule out a converse using the
+integral representation of the pressure and the retained scaled-solution
+identities. The concrete remaining proof bridge is therefore one of:
+(1) use those identities to derive a quantitative lower bound on the ideal
+prefix mass/core amplitude from the selected entrance fields; or (2) make the
+selection retain the prepared amplitude witness and transfer it through the
+final profile record. Until that bridge is proved, the pressure sign remains
+conditional.
