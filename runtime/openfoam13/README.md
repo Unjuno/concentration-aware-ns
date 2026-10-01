@@ -104,7 +104,7 @@ physical hazard.
 
 ## Reproduce the first-refinement stage snapshots
 
-`protocols/high-gradient-of13-amr-stage-snapshot-v1.json` defines a diagnostic
+`protocols/high-gradient-of13-amr-stage-snapshot-v2.json` defines a diagnostic
 that captures cell `U/p` and face `phi/Uf` immediately after topology mapping,
 after `correctPhi`, before and after pressure correction, and after the full
 PIMPLE step. The instrumented module is generated from the pinned source tree
@@ -112,7 +112,12 @@ without modifying that tree, then built against the recorded arm64 runtime
 image. The instrumentation only writes snapshots; it does not change equation
 assembly. The runner records loader evidence that the instrumented module was
 used and preserves a fresh case archive under
-`evidence/of13-amr-stage-snapshot-v1/`.
+`evidence/of13-amr-stage-snapshot-v2/`. The first v1 attempt completed the
+solver but failed the capture-count gate: `topoChanged()` had already reset at
+the mapped callback, and unrestricted pressure hooks wrote once per PIMPLE
+iteration. Its raw case and logs remain preserved under
+`work/of13-amr-stage-snapshot-v1/`; v2 removes the reset-sensitive gate and
+captures the first and final outer iterations explicitly.
 
 With a clean checkout, the pinned Foundation source clone available at
 `work/openfoam13-source-20260624`, and the recorded Docker image installed, run

@@ -88,7 +88,9 @@ def main():
 ) const
 {
     // Frozen checkpoint for the first-refinement instrumentation protocol.
-    if (!mesh.topoChanged() || mag(runTime.value() - 0.003) > 1e-12)
+    // The mapped callback is only placed after mesh_.update(); topoChanged()
+    // is reset during update and cannot be used as the stage trigger here.
+    if (mag(runTime.value() - 0.003) > 1e-12)
     {
         return;
     }
@@ -164,9 +166,9 @@ def main():
         "    while (pimple.correct())\n    {\n        correctPressure();\n    }\n\n"
         "    tUEqn.clear();\n}",
         "void Foam::solvers::incompressibleFluid::pressureCorrector()\n{\n"
-        "    writeAmrSnapshot(\"prePressure\");\n"
+        "    if (pimple.firstIter())\n    {\n        writeAmrSnapshot(\"prePressure\");\n    }\n"
         "    while (pimple.correct())\n    {\n        correctPressure();\n    }\n"
-        "    writeAmrSnapshot(\"postPressure\");\n\n"
+        "    if (pimple.finalIter())\n    {\n        writeAmrSnapshot(\"postPressure\");\n    }\n\n"
         "    tUEqn.clear();\n}",
     )
 
@@ -195,7 +197,7 @@ def main():
         "instrumentation": [
             "mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve"
         ],
-        "checkpoint": "mesh.topoChanged() at t=0.003",
+        "checkpoint": "stage-specific call sites at t=0.003; mapped callback follows mesh_.update()",
         "changes_equation_assembly": False,
         "output": "postProcessing/amrStages/<time>/{stage}_cells.csv and {stage}_faces.csv",
     }

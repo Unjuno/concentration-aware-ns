@@ -2076,3 +2076,17 @@ A solver run and final-state noninterference comparison are still required
 before attributing any AMR error change. See the protocol and reproduction
 instructions in `protocols/high-gradient-of13-amr-stage-snapshot-v1.json` and
 `runtime/openfoam13/README.md`.
+
+## Revision 124 — preserve failed capture attempt and correct stage gates
+
+The first instrumented run completed at `t=0.003` and exited zero, but the
+capture gate correctly rejected it: only four named stages appeared, with
+repeated PIMPLE callbacks yielding 12 events total. Inspection of the exact
+Foundation source showed `mesh_.update()` resets `topoChanged()` before the
+mapped callback, and pressure hooks execute once per outer iteration. The raw
+v1 case and logs are retained under `work/of13-amr-stage-snapshot-v1/`. Added
+v2 with a time-only condition at the call sites (the mapped call itself is
+immediately after mesh update) and first/final PIMPLE-iteration guards for
+pressure snapshots. This is a protocol correction, not evidence about solver
+accuracy. The v2 run and final-state comparison remain pending; see
+`protocols/high-gradient-of13-amr-stage-snapshot-v2.json`.

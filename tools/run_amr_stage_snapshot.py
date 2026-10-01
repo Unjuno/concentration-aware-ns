@@ -13,10 +13,10 @@ from tools.run_high_gradient_openfoam import resolve_docker_cli, resolve_docker_
 
 
 ROOT = Path.cwd()
-PROTOCOL = Path("protocols/high-gradient-of13-amr-stage-snapshot-v1.json")
+PROTOCOL = Path("protocols/high-gradient-of13-amr-stage-snapshot-v2.json")
 SOURCE = Path(os.environ.get("CANS_OF13_SOURCE_TREE", "work/openfoam13-source-20260624"))
-RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-stage-snapshot-v1"))
-EVIDENCE = Path("evidence/of13-amr-stage-snapshot-v1")
+RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-stage-snapshot-v2"))
+EVIDENCE = Path("evidence/of13-amr-stage-snapshot-v2")
 IMAGE = "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b"
 SOURCE_COMMIT = "18870c24d21c6b982e2cdec27b2f59738cca5f90"
 STAGES = ("mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve")
