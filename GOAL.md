@@ -1479,3 +1479,17 @@ priority is to check whether published cross-resolution local metrics have
 similar sampling limitations, while retaining the original fixed-grid gates
 and all solver/physical claims as separate questions. See the new audit in the
 cross-solver coverage report and its machine-readable JSON.
+
+## Revision 91 — uniform-grid velocity norm depends on reconstruction
+
+The velocity-L2 quadrature audit was extended to the archived OpenFOAM
+n=16/32/64/128 spatial series at t=0.05. Cell-centre relative errors are
+8.876%, 1.876%, 0.478%, and 0.121%; integrating the cellwise Gauss-gradient
+linear reconstruction gives 22.637%, 4.970%, 1.193%, and 0.296%. Thus the
+velocity-only 2% threshold for n=32 changes with reconstruction, while n=64
+and n=128 remain below it under both measures. The combined local gates and
+the discrete fine-grid `NOT_OBSERVED` classification were not recomputed and
+remain as frozen; this does not certify continuous-domain extrema. Full
+Quadrature convergence checks, source-field hashes, and rerun instructions
+are recorded in `reports/solver-matrix-coverage-2026-09-30.md` and
+`evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json`.

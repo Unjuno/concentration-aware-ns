@@ -200,3 +200,37 @@ Reproduce the retrospective calculation with
 `work/reference-check-env/bin/python -m tools.audit_amr_cell_center_quadrature`;
 its method, checkpoint metrics, counterfactual mapping counts and scope limits
 are saved in `evidence/of13-amr-first-refinement-v1/cell-center-quadrature-audit.json`.
+
+### Uniform-grid velocity L2 reconstruction audit
+
+The same question was checked on all four completed OpenFOAM spatial cases at
+`dt=0.001`, `t=0.05`. Cell-centre relative L2 errors for n=16/32/64/128 are
+8.876%, 1.876%, 0.478%, and 0.121%. Integrating the piecewise-constant stored
+cell values gives 48.112%, 24.170%, 12.105%, and 6.054%. A cellwise linear
+reconstruction `U + grad_h(U)·(x-C)`, using the periodic Gauss gradient, gives
+22.637%, 4.970%, 1.193%, and 0.296%. Tensor-product Gauss orders were compared
+per resolution; the linear reconstruction values agree within 6e-12 absolute
+at n=16/32, 7.5e-7 at n=64, and 4.9e-8 at n=128. At n=16, the reconstructed gradient agrees with
+the saved OpenFOAM `grad(U)` field to 3.1e-15 after tensor-index normalization.
+Raw field hashes and the complete table are in
+`evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json`.
+
+This changes the velocity-only 2% threshold result for n=32: the frozen
+cell-centre norm passes narrowly, while the cellwise linear reconstruction
+fails. The n=16 velocity metric fails either way; n=64 and n=128 remain below
+2% under both cell-centre and linear-reconstruction norms. The complete
+per-case local gate is still FAIL at n=16/32 and PASS at n=64/128 in the frozen
+manifest, but this audit does not recompute gradient, vorticity, or spectrum
+criteria using a reconstructed field. Therefore it neither changes the
+matrix's discrete fine-grid `NOT_OBSERVED` classification nor establishes a
+continuous-domain quality certification. The P0/P1 spread is itself evidence
+that the reconstruction convention must be named when interpreting an FV
+velocity error; these are reconstructed-field diagnostics, not replacements
+for the preregistered cell-centre result.
+
+Reproduce with
+`work/reference-check-env/bin/python -m tools.audit_uniform_cell_center_quadrature`.
+It reads the four archived extracted final fields, checks mesh ordering and
+solver completion, records each field/input/log hash, and performs no solver
+execution. The n=128 source archive integrity remains covered by the fixed-time
+matrix replay described above.
