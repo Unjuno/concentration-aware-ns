@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 176 — Foundation v14 current-release and tracker audit
+
+Refreshed the OpenFOAM Foundation upstream inventory against the current
+release and source. Foundation v14 is the current release, and
+`OpenFOAM/OpenFOAM-14` advanced to `162fa7a2e51e9c9a86c3000efdd885907f7d1acc`
+on September 30. The repo's only open issue concerns a tutorial crash, while
+two open PRs concern ParaView/VTK; none matches this benchmark. Its `COPYING`
+declares GPL-3.0-or-later; the GitHub API license field is `NOASSERTION`.
+Foundation guidance points effective development to `OpenFOAM-dev` and
+requires its Contributor Agreement for significant fixes/new development.
+
+The official Mantis all-issues page redirects to login in this environment;
+prior targeted searches therefore remain non-exhaustive. Foundation 14 has
+only a single n64/dt=.001 compatibility probe: normalized endpoint fields and
+sampled metrics match Foundation 13, but this does not establish a full v14
+matrix or AMR behavior. No new defect is reproduced and no upstream issue is
+warranted. Evidence is in
+`reports/openfoam-foundation-current-upstream-audit-2026-10-02.md` and
+`evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json`.
+Overall benchmark goal remains active.
+
 ## Revision 175 — completion audit and fixed-head clean export
 
 Reconciled the completion audit with the October 2 OpenFOAM, SU2, and

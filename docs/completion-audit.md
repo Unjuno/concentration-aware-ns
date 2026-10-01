@@ -2,6 +2,15 @@
 
 ### Completion audit refresh — 2026-10-02
 
+The OpenFOAM Foundation's current release is v14, with a September 30 source
+update; the benchmark's complete six-case matrix remains pinned to v13. The one
+v14 compatibility case matches v13 at n=64/dt=.001 after version-banner
+normalization, but no v14 matrix or AMR run was performed. Foundation's current
+GitHub issue/PR inventory contains no matching report; its separate Mantis
+all-issues page redirects to login, so tracker-wide duplicate clearance is
+still incomplete. See the
+[current Foundation audit](../reports/openfoam-foundation-current-upstream-audit-2026-10-02.md).
+
 The frozen OpenFOAM v2 six-case replay passes archive, protocol, endpoint,
 standard-acceptance, and sampled-local-quality checks. Standard acceptance
 passes all six cases; sampled local quality fails n=16 and n=32 and passes

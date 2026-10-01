@@ -189,12 +189,15 @@ unchanged. Existing records remain current: SU2 Discussion #2890 and Issue
 #2353, and PhysicsNeMo Issue #2007 and PR #2008. No duplicate post is
 justified.
 
-For OpenFOAM, a direct fetch of `bugs.openfoam.org` returned HTTP 403. Focused
-searches found older or differently-scoped AMR reports (including the resolved
-1.7.x mapping report and a multiple-cellZone `maxRefinement` question), but no
-matching report for the present v13 observations. This is useful duplicate
-screening, not an exhaustive tracker audit; no new report was filed. No
-scientific verdict changed.
+For OpenFOAM, the research browser's direct fetch of `bugs.openfoam.org`
+returned HTTP 403. A later direct HTTP check of its all-issues page redirected
+to the tracker login form (302 then 200), confirming that an exhaustive current
+Mantis listing is not available in this environment. Focused searches found
+older or differently-scoped AMR reports (including the resolved 1.7.x mapping
+report and a multiple-cellZone `maxRefinement` question), but no matching
+report for the present v13 observations. This is useful duplicate screening,
+not an exhaustive tracker audit; no new report was filed. No scientific
+verdict changed.
 
 ## OpenFOAM AMR derivative controls, 2026-10-02
 
@@ -208,3 +211,22 @@ demonstrating an upstream contract violation. AMR quality remains UNCERTAIN;
 no new Foundation bug report was filed. See
 `reports/openfoam-amr-remap-derivative-controls-2026-10-02.md` and its replay
 evidence.
+
+## OpenFOAM Foundation current-version and tracker-policy refresh, 2026-10-02
+
+The Foundation's current release is v14; its GitHub source repository advanced
+to `162fa7a2e51e9c9a86c3000efdd885907f7d1acc` on September 30. The v14 repo
+has one unrelated open issue and two open pull requests; its `COPYING` file
+declares GPL-3.0-or-later even though GitHub's license API says
+`NOASSERTION`. The official contribution guide directs effective development
+to `OpenFOAM-dev`, asks for reproducible test cases and tests, and requires a
+Contributor Agreement for significant fixes or new developments.
+
+The benchmark has one v14 `n=64`, `dt=0.001` compatibility probe. Its
+version-banner-normalized endpoint fields and five sampled diagnostics match
+Foundation 13 exactly. There is no v14 space/time matrix or v14 AMR audit, and
+continuous extrema remain uncertified. No defect was reproduced and no report
+was filed. Current release, source, issue/API and tracker-login observations
+are in [`openfoam-foundation-current-2026-10-02.json`](../evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json);
+the full scope decision is in
+[`openfoam-foundation-current-upstream-audit-2026-10-02.md`](openfoam-foundation-current-upstream-audit-2026-10-02.md).
