@@ -2005,3 +2005,19 @@ fixed-size packet. The exponent controls and assumptions are recorded in
 The classical comparison theorem and all non-effective constants remain open
 limitations; the original three-solver benchmark and audit requirements remain
 unchanged.
+
+## Revision 119 — formal finite-measure exceptional-band limit
+
+Added `verification/FinitePacketProbability.lean`, which proves for a finite
+measure and a measurable nonnegative observable `c` that the mass of shrinking
+strict sublevel sets converges to the mass of `{c=0}`. The pinned Lean
+4.34.0-rc2 elaboration and axiom audit pass; the exact source hash, assumptions,
+scope, and reproduction command are recorded in
+`evidence/lean-verification/finite-packet-probability-2026-10-01.json`. This
+formalizes only the measure-continuity step in the conditional shrinking-band
+argument. It does not establish measurability for a chosen sphere direction
+law, validate the packet comparison or Navier–Stokes hypotheses, or support
+molecular alignment, deterministic particle positions, phase transition, or
+viscosity-change claims. The nonlinear comparison and non-effective tube and
+Hessian constants remain open, as do the full solver benchmark and upstream
+issue review conditions.

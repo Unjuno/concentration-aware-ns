@@ -302,3 +302,14 @@ condition J*qmin>1. Neither result supplies numerical rho or M yet.
 explicit conservative replacements a<=Q^(-4) and
 I<=(1-t0)*(Q^(-3)-1)/3 in the packet-radius and remainder formulas. This
 removes the need to evaluate C; numerical rho and M are still missing.
+
+The measure-theoretic step in the conditional probability limit has a separate
+Lean formalization in `verification/FinitePacketProbability.lean`. For a finite
+measure and measurable nonnegative observable `c`, it proves that the strict
+sublevel mass tends to the mass of `{c = 0}` as the reciprocal cutoff shrinks.
+For the direction-law application, this covers the implication from zero mass
+on exactly transverse directions to vanishing mass in the shrinking transverse
+band, once `c=|cos(theta0)|` and its measurability are supplied. It does not
+formalize a sphere/projective-sphere model or verify the pushforward direction
+law in the packet argument. The exact Lean output and source hash are recorded
+in `evidence/lean-verification/finite-packet-probability-2026-10-01.json`.
