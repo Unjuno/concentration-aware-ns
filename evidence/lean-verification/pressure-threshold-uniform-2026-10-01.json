@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-01",
+  "upstream_repository": "openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "checker": "concentration-aware-ns:checker; cans-lean-verification read-only; network none",
+  "source_hashes": {
+    "verification/AxisForceSign.lean": "33be1b89d8f622c9b741ba849062dc816874831d5e3f7959844d5aa2eed26189",
+    "evidence/lean-verification/axis-force-sign-pressure-uniform-2026-10-01.log": "381d3aff57ebcc34bb63c2718969fb13ffff4521d2e2d339ba56ea32681236e7",
+    "reports/pressure-threshold-lean-audit-2026-10-01.md": "0db51aa0282ca1ceaa40547a6d5ee54df3dc4fe10997f3db61399d91ba949ca4"
+  },
+  "declarations": {
+    "ConcentrationAware.uniform_amplitude_sufficient": "uniform local threshold follows from h<=1/1000, eta^2<=1/4000000, b>=9/40",
+    "ConcentrationAware.outgoing_root_Z_positive_of_uniform_amplitude": "actual outgoing integral yields Z>0 at root under prescribed small-parameter interval and amplitude bound",
+    "ConcentrationAware.exists_profile_data_with_positive_root_pressure": "there exists complete ProfileData/root pair with Z>0"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "not_proved": [
+    "selected FinalSlowBase.actualProfile amplitude >=9/40",
+    "selected-profile local Z>0",
+    "molecular alignment or viscosity transition"
+  ],
+  "scope": "Lean extension, not upstream claim verification, CFD run, or nanoda replay"
+}

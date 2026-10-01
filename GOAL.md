@@ -1898,3 +1898,16 @@ was submitted: the evidence is an extension proof-provenance gap and the upstrea
 repository has issues/discussions disabled. The completed OpenFOAM matrix remains
 unchanged; the old n64 partial attempt is superseded by a verified completed
 rerun. See `reports/actual-profile-pressure-provenance-2026-10-01.md`.
+
+## Revision 16 — formal uniform pressure threshold (2026-10-01)
+
+The small-parameter rational inequality behind the local pressure threshold is
+now proved in the pinned Lean extension. It proves that any outgoing profile
+with core amplitude `b >= 9/40` has `Z > 0` at the prescribed root; combining
+this with the prepared `b >= 2` witness and the nominal/modulation assemblies
+proves that at least one complete `ProfileData`/root pair has `Z > 0`. This is
+existential only. It does not transfer the amplitude premise to the separate
+`FinalSlowBase.actualProfile` classical choice, so the selected-profile sign and
+force-ratio claims remain conditional. No molecular/viscosity inference follows.
+The result, hashes, and proof boundary are in
+`reports/pressure-threshold-lean-audit-2026-10-01.md`.

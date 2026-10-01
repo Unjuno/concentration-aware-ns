@@ -785,3 +785,17 @@ The concurrent OpenFOAM run-status correction was checked against
 uniform-grid matrix is complete. Its historical n64/dt=0.0005 partial attempt
 was superseded by the separately archived 100/100-step run. It is not evidence
 against or in favor of the completed matrix result.
+
+## 2026-10-01 uniform pressure-threshold Lean closure
+
+`AxisForceSign.lean` now machine-checks the rational small-parameter estimate
+`b >= 9/40` sufficient for the outgoing root's `Z > 0` condition. It connects
+that estimate to the constructed outgoing pressure integrals and proves that at
+least one complete `FinalSlowBase.ProfileData` and its natural-axis root have
+`Z > 0`. The three added theorem axiom reports contain only `propext`,
+`Classical.choice`, and `Quot.sound`; the full output and source hashes are in
+`evidence/lean-verification/pressure-threshold-uniform-2026-10-01.json`.
+This is existential. The selected `actualProfile` amplitude premise remains
+open, so the actual-profile local sign and strict negative-ratio conclusions
+remain conditional. No molecular or constitutive claim follows. Details are in
+`reports/pressure-threshold-lean-audit-2026-10-01.md`.
