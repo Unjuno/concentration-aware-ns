@@ -34,6 +34,9 @@ by replacing a parent with two children sharing the same binary-float midpoint.
 The run used Python 3.14, python-flint 0.9.0 and PyTorch 2.11.0. Archive,
 checkpoint, candidate metadata and tool hashes are recorded in
 `evidence/tests/physicsnemo-gradient-global-cover-2026-10-01.json`.
+The recorded execution hash identifies the exact untracked script used for
+the run; a later lazy-import-only edit made the helper tests usable without
+PyTorch in generic CI, and both hashes plus the base commit are preserved.
 
 Reproduce from the repository root:
 

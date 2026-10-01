@@ -46,14 +46,17 @@
     "No PhysicsNeMo acceptance threshold was preregistered, so this does not change the quality verdict."
   ],
   "tool_path": "tools/physicsnemo_gradient_global_cover.py",
-  "tool_sha256": "4c8e7c633ab2fbe4a177d009c969a6eccae3ad43e9627805610e1b50958c9e79",
+  "tool_sha256": "b233b6498ef28f218b2b3435287cf416fb2e37094891f56aa5c86804d7096508",
   "candidate_metadata_sha256": "3866024cdea29e03e4992b5572119c81c35111172ddd4c352669abf7965f8d49",
-  "repository_commit": "9802c0078cbf9c273e5c6d3fa3d79b1fa0b6e164",
   "environment": {
     "python_flint": "0.9.0",
     "purpose": "Arb interval evaluation",
     "source_commit": "OpenAI repository not involved; frozen PhysicsNeMo model archive as hashed above",
     "python": "3.14.5",
     "pytorch": "2.11.0"
-  }
+  },
+  "execution_tool_sha256": "b233b6498ef28f218b2b3435287cf416fb2e37094891f56aa5c86804d7096508",
+  "current_tool_sha256": "4c8e7c633ab2fbe4a177d009c969a6eccae3ad43e9627805610e1b50958c9e79",
+  "repository_commit_at_execution": "9802c0078cbf9c273e5c6d3fa3d79b1fa0b6e164",
+  "execution_source_note": "The script was first run as an untracked working-tree file at the base commit above. The post-run version lazily imports PyTorch for lightweight CI tests; both exact source hashes are recorded."
 }
