@@ -34,6 +34,7 @@ steps = [
     ('su2_gates', [sys.executable, '-m', 'tools.build_su2_report']),
     ('root_pressure_threshold', [sys.executable, '-m', 'tools.check_root_pressure_threshold']),
     ('pressure_moment_threshold', [sys.executable, '-m', 'tools.check_pressure_moment_threshold']),
+    ('pressure_data_amplitude_countermodel', [sys.executable, '-m', 'tools.check_pressure_data_amplitude_countermodel']),
     ('cone_sign_symmetry', [sys.executable, '-m', 'tools.check_cone_sign_symmetry']),
     ('su2_output_clock_control', [sys.executable, '-m', 'tools.check_su2_output_clock_control']),
     ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),

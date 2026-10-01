@@ -145,3 +145,28 @@ prefix mass/core amplitude from the selected entrance fields; or (2) make the
 selection retain the prepared amplitude witness and transfer it through the
 final profile record. Until that bridge is proved, the pressure sign remains
 conditional.
+
+## A countermodel to the pressure-data-only converse
+
+The weaker route through `PressureData` alone can be ruled out. Fix any
+`0 < B < 2`, put `g(y) = B^2 exp(y/5)` on `y <= 0`, add a nonnegative tail of
+mass `2` on `[1,2]`, and set the exponent to `1` on the prefix and `0` on the
+tail (zero elsewhere). This is an admissible nonnegative integrable schedule
+with exponents in `[0,1]`. Since `kernel 0 eta = 1` and
+`kernel 1 eta = (1+eta^2)^(-2)`, its pressure is exactly
+
+`P(eta) = -1 - (5/2) B^2 (1+eta^2)^(-2)`.
+
+It is smooth, satisfies `P(eta) <= -1`, and
+`eta * P'(eta) = 10 B^2 eta^2 (1+eta^2)^(-3) >= 0`, despite `B < 2`.
+Thus the three fields of `NaturalAxisData.PressureData`, even combined with
+the ideal-prefix identity and generic `PressureDatum.Admissible`, do not imply
+the prefix amplitude threshold. This countermodel does **not** satisfy the
+full selected `SchedulePressure` / `CoefficientProfile` / `EntranceProfile`
+construction and is not a counterexample to `actualProfile`; it rules out
+only the pressure-data-only converse. Any remaining derivation must use the
+additional schedule-shape, scaled-solution, or entrance-field constraints.
+The exact symbolic replay is `tools/check_pressure_data_amplitude_countermodel.py`,
+with its SymPy 1.14.0 result in
+`evidence/tests/pressure-data-amplitude-countermodel-2026-10-02.json`; the
+check is also included in `tools/replay_published_reports.py`.

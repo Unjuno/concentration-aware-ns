@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 161 — pressure-data-only amplitude converse ruled out
+
+Analytically constructed and symbolically replayed a countermodel for the
+weaker implication from generic pressure hypotheses to the ideal-prefix
+amplitude threshold. For any
+`0<B<2`, the prescribed prefix `B^2 exp(y/5)` plus exponent-zero tail mass `2`
+on `[1,2]` yields `P(eta)=-1-(5/2)B^2(1+eta^2)^(-2)`, so pressure remains at
+most `-1` and `eta P'(eta)>=0` while the prefix amplitude is below 2. This is
+not a counterexample to the selected OpenAI-derived profile: the added tail
+need not satisfy its schedule-shape and entrance-profile constraints. The
+SymPy 1.14 checker and focused regression test pass, and the check is included
+in the published-evidence replay. The full suite on the resulting worktree
+passed 200 tests, skipped one, and passed five subtests in 103.18 seconds
+under Python 3.14.5. It rules out recovering the amplitude from `PressureData`
+and generic admissibility alone, narrowing the remaining proof to those
+additional constraints or witness retention. GitHub Actions remains queued
+at prior PR #4 head `f51dc335`; the new checker is local pending the final
+head's run. The full benchmark goal remains active.
+
 ## Revision 160 — prospective PhysicsNeMo held-out gate evaluated
 
 To address the old PhysicsNeMo verdict's missing preregistered threshold, froze

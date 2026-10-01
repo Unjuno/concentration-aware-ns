@@ -900,6 +900,21 @@ pressure-integral identities, so this is not an impossibility result; it
 identifies the missing quantitative bridge. The proof agenda and exact scope
 are in the dated provenance report.
 
+A concrete analytic countermodel closes the narrower converse from generic
+pressure hypotheses: for any `0 < B < 2`, retain the ideal prefix
+`g(y)=B^2 exp(y/5)` on `y<=0`, add nonnegative exponent-zero schedule mass `2`
+on `[1,2]`, and use exponent one on the prefix. The resulting pressure is
+`-1-(5/2)B^2(1+eta^2)^(-2)`, meeting both `PressureData` sign conditions despite
+`B<2`. This proves only that generic admissibility plus `PressureData` cannot
+recover the prefix threshold; the construction does not satisfy the selected
+schedule/entrance fields and is not a counterexample to `actualProfile`.
+The exact SymPy replay and isolated regression test are
+`tools/check_pressure_data_amplitude_countermodel.py`,
+`evidence/tests/pressure-data-amplitude-countermodel-2026-10-02.json`, and
+`tests/test_pressure_data_amplitude_countermodel.py`; the check is included in
+`tools/replay_published_reports.py`. Interpretation limits are in the dated
+provenance report.
+
 ### 2026-10-02 source-schema follow-up
 
 Rehashed `PreparedOutgoing.lean`, `NominalConeAssembly.lean` and
