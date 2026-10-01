@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "scope": "Specific archived restart mismatch reproduced; time continuity remains FAIL. No new solver run or accuracy certification.",
+  "records": [
+    {
+      "protocol": "protocols/su2-restart-time-pilot-v1.json",
+      "checker_exit_code": 1,
+      "finding_reproduced": true,
+      "scientific_time_continuity_pass": false,
+      "field_comparison_pass": true,
+      "result_sha256": "6d9e333f7975a4ba72240fb81fba325deda6e71488a6b3cd0a87761fe41fb289"
+    },
+    {
+      "protocol": "protocols/su2-restart-time-pilot-r3.json",
+      "checker_exit_code": 1,
+      "finding_reproduced": true,
+      "scientific_time_continuity_pass": false,
+      "field_comparison_pass": true,
+      "result_sha256": "29e4f146b77c4d5e28c3193a6a9cff5291dc483dc0f3f06bb64c97922d3ad34d"
+    }
+  ]
+}

@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 139 — fixed-head clean export passes from public artifacts
+
+Re-ran `tools.check_clean_export --locked` on fixed commit
+`e5f4aab6c6411266c6300abe6c79023a77e4411e` in a fresh tracked-only archive and
+venv after removing the temporal replay's ignored-`work/` dependency. All 36
+published replay steps and six extra verifier checks exited zero; 170 tracked
+report and `evidence/tests` files were byte-identical after replay. The locked
+environment ran the full test suite: 187 passed, 1 skipped, 5 subtests passed.
+Pre-fix failure evidence from commit `46691344` is retained beside the passing
+result. The export is same-host Python/evidence replay, not a solver rebuild,
+solver rerun, training run, Lean replay, or scientific-verdict upgrade. The
+reproduction package is `evidence/clean-export-2026-10-02-archive-replay/`.
+Absolute workstation and temporary roots are replaced with placeholders in
+the public log copies, and their published-copy hashes are recomputed.
+The overall goal remains active.
+
 ## Revision 138 — remove tracked-only temporal replay dependency on ignored data
 
 A tracked-only clean export at `46691344f203f504f18f04829531e9be1dfc7646`
@@ -15,6 +31,7 @@ prior values (order `0.4985896`, both input/center checks true, time-error
 certificate false), and the full suite passes (187 passed, 1 skipped, 5
 subtests). This is a benchmark reproducibility defect, not a solver defect.
 The fixed-commit clean-export rerun remains in progress; goal stays active.
+Revision 139 records its successful completion.
 
 ## Revision 137 — full local verification of current PR head
 

@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "scope": "Archived two-step boundary-time observations only; no temporal-order, restart or general-fix claim.",
+  "checks": [
+    {
+      "variant": "original",
+      "step": 1,
+      "boundary_count": 98,
+      "errors": {
+        "old": 0.0,
+        "target": 0.010000000000000009
+      },
+      "reported_time": 0.0,
+      "residuals": {
+        "rms[P]": -15.70201478,
+        "rms[U]": -15.47534132,
+        "rms[V]": -16.12677375,
+        "rms[W]": -16.66573119
+      }
+    },
+    {
+      "variant": "original",
+      "step": 2,
+      "boundary_count": 98,
+      "errors": {
+        "old": 0.0,
+        "target": 0.030000000000000027
+      },
+      "reported_time": 0.1,
+      "residuals": {
+        "rms[P]": -10.07776526,
+        "rms[U]": -10.00075304,
+        "rms[V]": -10.80852123,
+        "rms[W]": -10.8085217
+      }
+    },
+    {
+      "variant": "shifted",
+      "step": 1,
+      "boundary_count": 98,
+      "errors": {
+        "old": 0.010000000000000009,
+        "target": 0.0
+      },
+      "reported_time": 0.0,
+      "residuals": {
+        "rms[P]": -10.07776514,
+        "rms[U]": -10.00075313,
+        "rms[V]": -10.80852119,
+        "rms[W]": -10.8085216
+      }
+    },
+    {
+      "variant": "shifted",
+      "step": 2,
+      "boundary_count": 98,
+      "errors": {
+        "old": 0.030000000000000027,
+        "target": 0.0
+      },
+      "reported_time": 0.1,
+      "residuals": {
+        "rms[P]": -10.1320745,
+        "rms[U]": -10.04195645,
+        "rms[V]": -10.84408269,
+        "rms[W]": -10.84408256
+      }
+    }
+  ]
+}

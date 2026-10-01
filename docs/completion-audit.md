@@ -2,6 +2,22 @@
 
 ### OpenFOAM AMR addendum — 2026-10-01
 
+### Current tracked-only export — 2026-10-02
+
+The first clean export at commit `46691344` exposed a real harness defect:
+`openfoam_temporal_triplet` depended on ignored `work/` data despite its public
+case archives being tracked. The temporal comparer now extracts those frozen
+archives safely, checks their digests and source-log hashes, and reconstructs
+the verdict from public manifests. At commit `e5f4aab6`, the fixed-head
+tracked-only replay passed all 36 steps and six added checks, with 170 tracked
+report/test-evidence files unchanged; pytest reported 187 passed, one skipped,
+and five subtests passed. The pre-fix failure and post-fix replay logs are
+preserved in `evidence/clean-export-2026-10-02-archive-replay/`. This closes a
+reproducibility gap in the audit harness only; it does not change any solver or
+physical verdict. Absolute local workspace and temporary paths in the published
+log bundle are replaced with placeholders, with hashes recomputed over the
+published copies.
+
 The archived AMR stage audit's parent-value comparison is now reproducible
 from frozen tarballs and synthetic geometry tests. It matches the mapped
 field to weighted relative L2 `1.79e-16`, but uses a prior-run parent state;

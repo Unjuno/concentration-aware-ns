@@ -1,0 +1,50 @@
+{
+  "commit": "46691344f203f504f18f04829531e9be1dfc7646",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "babbc80755fa90c6eaee9e4289c8ee3b12ac663f11f427ce96652dc184edbf99",
+  "archive_sha256": "106695ebf075efd0548e785a601fd4a4d0758e16abf82b35aa585f45375730a3",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "<REPO>/work/reference-check-env/bin/python",
+        "-m",
+        "venv",
+        "<REPO>/work/clean-export-2026-10-02-head/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "f8703d903d03e9760d7603104c166102ae57bfde656cdf55aad6de3d4e8582d6"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 1,
+      "log": "report-replay.log",
+      "log_sha256": "d2fe5cc91302072c36a8873b4a939d81061f419f2f5afaff13e9e154a1ea316e"
+    }
+  ],
+  "success": false,
+  "presentation_sanitization": "Absolute workstation, temporary, and export paths were replaced in the published copy; per-log hashes are recomputed over the sanitized published logs."
+}
