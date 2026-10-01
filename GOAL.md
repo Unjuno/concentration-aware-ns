@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 174 — SU2 residual/local-QoI and upstream triage rechecked
+
+On the current SU2 public state (latest release v8.5.0; master
+`bc15466602a687d6fb796d5df7a12ce3fde0949a`), re-ran the frozen five-archive
+aggregate/residual review in the locked Python environment. Hashes and metrics
+match the tracked review. No case satisfies both the aggregate velocity/energy
+thresholds and every-step residual threshold: n16 passes residuals but fails
+accuracy, n32 fails both, and all three n64 time cases pass aggregate accuracy
+but have 2/3/7 residual-miss steps. Thus the proposed standard-PASS/local-FAIL
+blind spot is not reproduced by this SU2 matrix; continuous derivative maxima
+remain uncertified. Live issue #2353 covers implicit boundary/motion time
+semantics, Discussion #2890 is closed without an accepted answer and already
+contains the benchmark's source-time report, and issue #2932 already requests
+MAX_RES_LOC output for residual hotspot locations. No duplicate was filed.
+Source/issue/license/policy snapshot and exact dispositions are in
+`reports/su2-localized-residual-upstream-audit-2026-10-02.md` and
+`evidence/upstream-refresh/su2-localized-residual-upstream-audit-2026-10-02.json`.
+Overall benchmark goal remains active.
+
 ## Revision 173 — PhysicsNeMo boundary-gradient issue triaged against benchmark path
 
 Rechecked the live NVIDIA/physicsnemo repository at main
