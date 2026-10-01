@@ -9,12 +9,12 @@ from pathlib import Path
 
 RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-same-run-map-v4-run3"))
 EVIDENCE = Path(os.environ.get("CANS_AMR_STAGE_EVIDENCE", "evidence/of13-amr-same-run-map-v4-run3"))
-PROTOCOL = Path("protocols/high-gradient-of13-amr-same-run-map-v4.json")
+PROTOCOL = Path(os.environ.get(
+    "CANS_AMR_STAGE_PROTOCOL", "protocols/high-gradient-of13-amr-same-run-map-v4.json"
+))
 SOURCE_COMMIT = "18870c24d21c6b982e2cdec27b2f59738cca5f90"
 IMAGE = "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b"
 STAGES = ("preMap", "mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve")
-TIMES = {"preMap": "0.002", "mapped": "0.002", "afterCorrectPhi": "0.003",
-         "prePressure": "0.003", "postPressure": "0.003", "postSolve": "0.003"}
 
 
 def sha(path):
@@ -22,9 +22,11 @@ def sha(path):
 
 
 def main():
-    case = RUN_ROOT / "amr-cap5000"
+    spec = json.loads(PROTOCOL.read_text())
+    case_spec = spec["case"]
+    case = RUN_ROOT / case_spec.get("case_directory", "amr-cap5000")
     log_path = case / "log.foamRun"
-    archive = EVIDENCE / "amr-stage-snapshot.tar.gz"
+    archive = EVIDENCE / case_spec.get("archive_name", "amr-stage-snapshot.tar.gz")
     log = log_path.read_text(errors="replace")
     events = [line.strip() for line in log.splitlines() if "AMR_STAGE_SNAPSHOT" in line]
     if len(events) != len(STAGES) or "End" not in log:
@@ -43,13 +45,23 @@ def main():
         events_by_name[match[1]] = (match[2], int(match[3]))
     if set(events_by_name) != set(STAGES):
         raise ValueError("snapshot stage names differ from protocol")
-    if events_by_name["preMap"] != ("0.002", 4096) or events_by_name["mapped"] != ("0.002", 16640):
+    pre_map_time = f"{case_spec.get('pre_map_time', 0.002):g}"
+    if events_by_name["preMap"] != (pre_map_time, case_spec["initial_cells"]):
+        raise ValueError("same-time preMap cell-count gate failed")
+    if events_by_name["mapped"] != (
+        pre_map_time, case_spec.get("expected_mapped_cells", 16640)
+    ):
         raise ValueError("same-time preMap/mapped cell-count gate failed")
 
     snapshot_hashes = {}
+    stage_times = {
+        "preMap": pre_map_time, "mapped": pre_map_time,
+        **{stage: f"{case_spec.get('solver_stage_time', 0.003):g}"
+           for stage in STAGES if stage not in ("preMap", "mapped")},
+    }
     for stage in STAGES:
         for kind in ("cells", "faces"):
-            rel = Path("postProcessing/amrStages") / TIMES[stage] / f"{stage}_{kind}.csv"
+            rel = Path("postProcessing/amrStages") / stage_times[stage] / f"{stage}_{kind}.csv"
             if not (case / rel).is_file():
                 raise ValueError(f"missing snapshot file: {rel}")
             snapshot_hashes[rel.as_posix()] = sha(case / rel)
@@ -81,6 +93,8 @@ def main():
         "end_marker": True,
         "instrumented_library_load_confirmed": True,
         "snapshot_events": events,
+        "case_directory": case.name,
+        "stage_times": stage_times,
         "snapshot_sha256": snapshot_hashes,
         "archive": archive.name,
         "archive_sha256": sha(archive),

@@ -2219,6 +2219,28 @@ this single mechanism probe. The raw provenance JSON's stale checkpoint
 description and its correction are transparently recorded in
 `evidence/of13-amr-stage-snapshot-v3/provenance-correction.json`.
 
+## Revision 128 — n=32 same-run AMR mapping replication
+
+Added an independent structured-grid predictor for the frozen periodic sensor
+and one-layer neighbor buffer. It predicts 12,288 selected cells at n=32;
+Foundation 13 logs the same count and refines 32,768 to 118,784 cells. The
+same-run mapped velocity equals parent piecewise-constant injection exactly,
+with relative parent-volume closure `9.17e-15`. Coarse exact-cell-average DOF
+error is 3.4942%, versus 13.7834% at n=16; mapped child DOF error is 21.0789%,
+versus 42.4839%, and child-center point-sample error is 20.9906%, versus
+41.7955%. The exact-average squared-error decomposition again attributes most
+of the child DOF metric to subcell reference-average variation, not a change in
+mapped values. This is a two-resolution exploratory mapping replication, not
+an AMR quality verdict or physical claim. The compact replay archive preserves
+all cell snapshots, inputs and logs; full face data and dynamicCode remain in
+the local ignored raw run and are excluded from n=32 conclusions. A packaging
+root error was repaired without rerunning, and original malformed tarballs
+were preserved under `work/`. See
+`reports/openfoam-amr-resolution-replication-2026-10-01.md` and the evidence
+directory. Targeted tests: 7 passed. Harness provenance remains limited because
+the runner source overlay was dirty at execution and its exact patch hash was
+not captured before launch.
+
 ## Revision 127 — reusable analytic cell-average evaluator
 
 Extracted the high-gradient MMS's exact cubical velocity-average formula into

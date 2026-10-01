@@ -47,6 +47,16 @@ AMR archive preserves its prior values. See `tests/test_high_gradient_cell_avera
 and commit `696c0b9`. This reduces analytical-audit coupling but does not close
 the missing higher-resolution AMR comparison.
 
+The n=32 same-run first-refinement replication now confirms the independent
+selection predictor (12,288 candidates), exact parent-value injection, and a
+reduction in both coarse and mapped child DOF discrepancies relative to n=16.
+This remains exploratory two-resolution evidence; the AMR quality status stays
+UNCERTAIN. The solver run completed normally, but its full face snapshots are
+retained only in the ignored local raw case; the published 40.8 MB archive
+contains six cell snapshots and supporting inputs/logs. A runner source-overlay
+hash was not captured at launch and remains a reproducibility limitation. See
+[`n=32 AMR report`](../reports/openfoam-amr-resolution-replication-2026-10-01.md).
+
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and
 measured behavior take precedence over prior progress summaries.

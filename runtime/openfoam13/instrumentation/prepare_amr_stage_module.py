@@ -1,7 +1,8 @@
 """Create an isolated Foundation-13 incompressible module with AMR snapshots.
 
 The instrumented copy writes cell U/p and face phi/Uf at five solver stages
-when topology changes at t=0.003. It does not modify the equation assembly.
+at caller-specified preMap and solver-stage times. It does not modify the
+equation assembly.
 The caller must provide the exact pinned source checkout and a fresh output
 directory; the canonical source tree is never modified.
 """
@@ -45,6 +46,8 @@ def main():
     parser.add_argument("source_tree", type=Path)
     parser.add_argument("output_module", type=Path)
     parser.add_argument("--include-pre-map", action="store_true")
+    parser.add_argument("--pre-map-time", type=float, default=0.002)
+    parser.add_argument("--solver-stage-time", type=float, default=0.003)
     args = parser.parse_args()
     source = args.source_tree.resolve()
     output = args.output_module.resolve()
@@ -83,6 +86,8 @@ def main():
         '#include "OFstream.H"\n'
         '#include "OSspecific.H"\n',
     )
+    if (not (args.pre_map_time >= 0 and args.solver_stage_time > args.pre_map_time)):
+        raise ValueError("solver-stage time must be greater than a nonnegative preMap time")
     snapshot_method = r'''void Foam::solvers::incompressibleFluid::writeAmrSnapshot
 (
     const word& stage
@@ -92,7 +97,7 @@ def main():
     // The mapped callback is only placed after mesh_.update(); topoChanged()
     // is reset during update and cannot be used as the stage trigger here.
     const scalar expectedTime =
-        (stage == "preMap" || stage == "mapped") ? 0.002 : 0.003;
+        (stage == "preMap" || stage == "mapped") ? PRE_MAP_TIME : SOLVER_STAGE_TIME;
     if (mag(runTime.value() - expectedTime) > 1e-12)
     {
         return;
@@ -149,7 +154,9 @@ def main():
         "void Foam::solvers::incompressibleFluid::continuityErrors()\n"
         "{\n    fluidSolver::continuityErrors(phi);\n}\n\n\n",
         "void Foam::solvers::incompressibleFluid::continuityErrors()\n"
-        "{\n    fluidSolver::continuityErrors(phi);\n}\n\n\n" + snapshot_method,
+        "{\n    fluidSolver::continuityErrors(phi);\n}\n\n\n"
+        + snapshot_method.replace("PRE_MAP_TIME", f"{args.pre_map_time:.17g}")
+                          .replace("SOLVER_STAGE_TIME", f"{args.solver_stage_time:.17g}"),
     )
     replace_once(
         source_c,
@@ -202,7 +209,9 @@ def main():
             *( ["preMap"] if args.include_pre_map else [] ),
             "mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve"
         ],
-        "checkpoint": "preMap immediately before mesh_.update() and mapped immediately after at t=0.002; later PIMPLE stages at t=0.003",
+        "checkpoint": f"preMap immediately before mesh_.update() and mapped immediately after at t={args.pre_map_time:.17g}; later PIMPLE stages at t={args.solver_stage_time:.17g}",
+        "pre_map_time": args.pre_map_time,
+        "solver_stage_time": args.solver_stage_time,
         "changes_equation_assembly": False,
         "output": "postProcessing/amrStages/<time>/{stage}_cells.csv and {stage}_faces.csv",
     }

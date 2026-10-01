@@ -6,15 +6,17 @@ import re
 import shlex
 import shutil
 import subprocess
-import tarfile
 from pathlib import Path
 
 from tools.openfoam_amr_case import generate_amr
+from tools.package_amr_stage_evidence import package_case
 from tools.run_high_gradient_openfoam import resolve_docker_cli, resolve_docker_context
 
 
 ROOT = Path.cwd()
-PROTOCOL = Path("protocols/high-gradient-of13-amr-same-run-map-v4.json")
+PROTOCOL = Path(os.environ.get(
+    "CANS_AMR_STAGE_PROTOCOL", "protocols/high-gradient-of13-amr-same-run-map-v4.json"
+))
 SOURCE = Path(os.environ.get("CANS_OF13_SOURCE_TREE", "work/openfoam13-source-20260624"))
 RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-same-run-map-v4"))
 EVIDENCE = Path(os.environ.get("CANS_AMR_STAGE_EVIDENCE", "evidence/of13-amr-same-run-map-v4"))
@@ -66,11 +68,16 @@ def main():
     RUN_ROOT.mkdir(parents=True, exist_ok=False)
     module = RUN_ROOT / "instrumented-module"
     build = RUN_ROOT / "build"
-    case = RUN_ROOT / "amr-cap5000"
+    case_spec = spec["case"]
+    case = RUN_ROOT / case_spec.get("case_directory", "amr-cap5000")
     build.mkdir()
     EVIDENCE.mkdir(parents=True, exist_ok=False)
     transformer = Path("runtime/openfoam13/instrumentation/prepare_amr_stage_module.py")
-    subprocess.run(["python3", str(transformer), str(SOURCE), str(module), "--include-pre-map"], check=True)
+    subprocess.run([
+        "python3", str(transformer), str(SOURCE), str(module), "--include-pre-map",
+        "--pre-map-time", str(case_spec.get("pre_map_time", 0.002)),
+        "--solver-stage-time", str(case_spec.get("solver_stage_time", 0.003)),
+    ], check=True)
 
     docker_build = [
         "run", "--rm", "--network", "none", "--name", "cans-amr-stage-build",
@@ -93,7 +100,6 @@ def main():
     if not library.is_file():
         raise FileNotFoundError("wmake exited zero without the expected module")
 
-    case_spec = spec["case"]
     generate_amr(
         case, max_cells=case_spec["max_cells"], max_level=case_spec["max_refinement"],
         refine_interval=case_spec["refine_interval"], end=case_spec["end_time"],
@@ -107,7 +113,7 @@ def main():
     (case / "input-hashes.json").write_text(json.dumps(input_hashes, indent=2) + "\n")
 
     uid = os.getuid()
-    name = "cans-amr-same-run-map-v4"
+    name = case_spec.get("container_name", "cans-amr-same-run-map-v4")
     inner_script = """source /opt/openfoam13/etc/bashrc
 export LD_LIBRARY_PATH=/instrumented:$LD_LIBRARY_PATH
 cd /case
@@ -148,20 +154,28 @@ exit $exit_code
         parsed_events[match[1]] = (match[2], int(match[3]))
     if set(parsed_events) != set(STAGES):
         raise RuntimeError("snapshot stage names differ from the frozen protocol")
-    if parsed_events["preMap"] != ("0.002", 4096) or parsed_events["mapped"] != ("0.002", 16640):
+    pre_map_time = f"{case_spec.get('pre_map_time', 0.002):g}"
+    solver_stage_time = f"{case_spec.get('solver_stage_time', 0.003):g}"
+    if parsed_events["preMap"] != (pre_map_time, case_spec["initial_cells"]):
+        raise RuntimeError("same-time preMap cell-count gate failed")
+    if parsed_events["mapped"] != (
+        pre_map_time, case_spec.get("expected_mapped_cells", 16640)
+    ):
         raise RuntimeError("same-time preMap/mapped count gate failed")
-    stage_times = {"preMap": "0.002", "mapped": "0.002", "afterCorrectPhi": "0.003",
-                   "prePressure": "0.003", "postPressure": "0.003",
-                   "postSolve": "0.003"}
+    stage_times = {"preMap": pre_map_time, "mapped": pre_map_time,
+                   "afterCorrectPhi": solver_stage_time,
+                   "prePressure": solver_stage_time,
+                   "postPressure": solver_stage_time, "postSolve": solver_stage_time}
     stage_files = [case / "postProcessing" / "amrStages" / stage_times[stage] /
                    f"{stage}_{kind}.csv" for stage in STAGES for kind in ("cells", "faces")]
     missing = [str(path) for path in stage_files if not path.is_file()]
     if missing:
         raise RuntimeError(f"missing stage snapshots: {missing}")
 
-    archive = EVIDENCE / "amr-stage-snapshot.tar.gz"
-    with tarfile.open(archive, "w:gz", compresslevel=6) as tf:
-        tf.add(case, arcname="amr-cap5000")
+    archive = EVIDENCE / case_spec.get("archive_name", "amr-stage-snapshot.tar.gz")
+    archive_record = package_case(
+        case, archive, spec.get("published_archive_excluded_paths", [])
+    )
     shutil.copy2(build / "build.log", EVIDENCE / "module-build.log")
     shutil.copy2(library, EVIDENCE / "libincompressibleFluid.so")
     shutil.copy2(module / "instrumentation-provenance.json", EVIDENCE / "instrumentation-provenance.json")
@@ -192,9 +206,12 @@ exit $exit_code
         "end_marker": "End" in log_text,
         "instrumented_library_load_confirmed": library_loaded,
         "snapshot_events": snapshot_events,
+        "case_directory": case.name,
+        "stage_times": stage_times,
         "snapshot_sha256": {str(path.relative_to(case)): sha(path) for path in stage_files},
         "archive": archive.name,
-        "archive_sha256": sha(archive),
+        "archive_sha256": archive_record["archive_sha256"],
+        "archive_packaging": archive_record,
         "solver_log_sha256": sha(case / "log.foamRun"),
         "limitations": spec["limitations"],
     }

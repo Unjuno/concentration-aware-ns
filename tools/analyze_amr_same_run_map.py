@@ -17,9 +17,15 @@ from tools.high_gradient_cell_average import exact_cell_average_velocity
 
 
 EVIDENCE = Path(os.environ.get("CANS_AMR_STAGE_EVIDENCE", "evidence/of13-amr-same-run-map-v4-run3"))
+PROTOCOL = Path(os.environ.get(
+    "CANS_AMR_STAGE_PROTOCOL", "protocols/high-gradient-of13-amr-same-run-map-v4.json"
+))
 CELL_AVERAGE_AUDIT = Path("evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json")
-ARCHIVE = EVIDENCE / "amr-stage-snapshot.tar.gz"
 MANIFEST = EVIDENCE / "manifest.json"
+_DEFAULT_CASE_SPEC = json.loads(PROTOCOL.read_text())["case"]
+ARCHIVE = EVIDENCE / _DEFAULT_CASE_SPEC.get(
+    "archive_name", "amr-stage-snapshot.tar.gz"
+)
 
 
 def sha(path):
@@ -39,21 +45,36 @@ def read_csv(archive, member):
 
 def analyze():
     manifest = json.loads(MANIFEST.read_text())
+    spec = json.loads(PROTOCOL.read_text())
+    case_spec = spec["case"]
+    archive = EVIDENCE / case_spec.get("archive_name", "amr-stage-snapshot.tar.gz")
+    case_directory = manifest.get("case_directory", case_spec.get("case_directory", "amr-cap5000"))
+    pre_map_time = case_spec.get("pre_map_time", 0.002)
+    pre_map_label = f"{pre_map_time:g}"
+    if not archive.is_file():
+        raise FileNotFoundError(archive)
     if manifest["status"] != "RUN_COMPLETE_SAME_RUN_MAP_CAPTURED":
         raise ValueError("same-run mapping gate is not complete")
-    if sha(ARCHIVE) != manifest["archive_sha256"]:
+    if sha(archive) != manifest["archive_sha256"]:
         raise ValueError("archive hash differs from manifest")
     if manifest["exit_code"] != 0 or not manifest["end_marker"]:
         raise ValueError("solver did not complete normally")
     if not manifest["instrumented_library_load_confirmed"]:
         raise ValueError("instrumented library load is not confirmed")
+    if manifest.get("protocol") != PROTOCOL.as_posix():
+        raise ValueError("manifest protocol path differs from selected protocol")
 
-    pre = read_csv(ARCHIVE, "amr-cap5000/postProcessing/amrStages/0.002/preMap_cells.csv")
-    mapped = read_csv(ARCHIVE, "amr-cap5000/postProcessing/amrStages/0.002/mapped_cells.csv")
+    pre = read_csv(archive, f"{case_directory}/postProcessing/amrStages/{pre_map_label}/preMap_cells.csv")
+    mapped = read_csv(archive, f"{case_directory}/postProcessing/amrStages/{pre_map_label}/mapped_cells.csv")
     pre_centers = np.column_stack([pre[k] for k in ("cx", "cy", "cz")])
     mapped_centers = np.column_stack([mapped[k] for k in ("cx", "cy", "cz")])
     pre_u = np.column_stack([pre[k] for k in ("Ux", "Uy", "Uz")])
     mapped_u = np.column_stack([mapped[k] for k in ("Ux", "Uy", "Uz")])
+    if len(pre_u) != case_spec["initial_cells"]:
+        raise ValueError("captured preMap cell count differs from protocol")
+    expected_mapped = case_spec.get("expected_mapped_cells")
+    if expected_mapped is not None and len(mapped_u) != expected_mapped:
+        raise ValueError("captured mapped cell count differs from protocol")
     audit = parent_value_injection_audit(
         pre_centers, pre_u, pre["V"], mapped_centers, mapped_u, mapped["V"]
     )
@@ -64,13 +85,13 @@ def analyze():
     )
     exact = mapped_centers
     from tools.high_gradient_reference import fields
-    exact_u = fields(exact, N=4, nu=0.01, time=0.002)["u"]
-    exact_pre_u = fields(pre_centers, N=4, nu=0.01, time=0.002)["u"]
+    exact_u = fields(exact, N=case_spec["frequency"], nu=0.01, time=pre_map_time)["u"]
+    exact_pre_u = fields(pre_centers, N=case_spec["frequency"], nu=0.01, time=pre_map_time)["u"]
     pre_exact_average = exact_cell_average_velocity(
-        pre_centers, np.cbrt(pre["V"]), 0.002
+        pre_centers, np.cbrt(pre["V"]), pre_map_time, frequency=case_spec["frequency"]
     )
     mapped_exact_average = exact_cell_average_velocity(
-        mapped_centers, np.cbrt(mapped["V"]), 0.002
+        mapped_centers, np.cbrt(mapped["V"]), pre_map_time, frequency=case_spec["frequency"]
     )
     parent_for_child = _parent_indices_for_children(pre_centers, mapped_centers)
     inherited_error = pre_u[parent_for_child]-exact_pre_u[parent_for_child]
@@ -114,8 +135,8 @@ def analyze():
         "status": "SAME_RUN_PARENT_INJECTION_MATCH" if audit["mapped_vs_parent_injection_relative_l2"] < 1e-12 else "SAME_RUN_PARENT_INJECTION_MISMATCH",
         "protocol": manifest["protocol"],
         "archive_sha256": manifest["archive_sha256"],
-        "preMap_time": "0.002",
-        "mapped_time": "0.002",
+        "preMap_time": pre_map_label,
+        "mapped_time": pre_map_label,
         "preMap_cells": int(len(pre_u)),
         "mapped_cells": int(len(mapped_u)),
         "parent_value_injection": audit,
@@ -162,7 +183,7 @@ def analyze():
         "interpretation_limits": [
             "This same-run comparison directly tests whether mapped cell-centered velocity equals containing-parent piecewise-constant injection for this single event.",
             "It is a point-value mapping audit, not a finite-volume cell-average accuracy certificate.",
-            "A single n=16 diagnostic does not establish convergence, a general solver defect, or physical behavior."
+            f"A single n={case_spec['initial_grid_cells_per_axis']} diagnostic does not establish convergence, a general solver defect, or physical behavior."
         ]
     }
     out = EVIDENCE / "analysis.json"
