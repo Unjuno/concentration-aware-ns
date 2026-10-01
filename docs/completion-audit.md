@@ -762,3 +762,26 @@ manufactured case. See
 `reports/recent-navier-stokes-verification-developments-2026-10-01.md`.
 The OpenAI source repository also has both Issues and Discussions disabled,
 so the planned upstream issue round has no GitHub issue/discussion route there.
+
+## 2026-10-01 actual-profile pressure provenance
+
+The new isolated Lean extension `verification/ActualProfilePressureProvenance.lean`
+proves both (a) existence of a complete `ProfileData` arising from the prepared
+outgoing construction with core amplitude `P >= 2`, and (b) only `P > 0` for
+the separately selected `FinalSlowBase.actualProfile`. Both proofs use only
+`propext`, `Classical.choice`, and `Quot.sound`; the pinned checker log is
+`evidence/lean-verification/actual-profile-pressure-provenance-2026-10-01.log`.
+This is not a counterexample: it does not show that the selected amplitude is
+small, only that the existential construction bound is not currently carried
+through the record used by the classical selection. Consequently the
+`b >= 9/40` local pressure-sign premise remains unproved for `actualProfile`.
+The source-backed dataflow and limits are described in
+`docs/pressure-moment-threshold.md`. No OpenAI upstream report is warranted:
+the evidence identifies a missing transfer theorem/data field in our extension,
+not a defect or false claim in their repository.
+
+The concurrent OpenFOAM run-status correction was checked against
+`evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`: the six-case
+uniform-grid matrix is complete. Its historical n64/dt=0.0005 partial attempt
+was superseded by the separately archived 100/100-step run. It is not evidence
+against or in favor of the completed matrix result.

@@ -1882,3 +1882,19 @@ locked reference environment ran 138 tests (one skipped), and GitHub CI passed
 for the documentation update. This repairs evidence navigation and terminology;
 it does not close the three-project audit, analytic limitations, or publication
 deliverables, so the overall goal remains active.
+
+
+## Revision 15 — selected-profile pressure-premise provenance (2026-10-01)
+
+The user's pressure-sign hypothesis is now checked with a source-bound Lean
+extension. A complete prepared-profile data witness with core amplitude at least
+2 exists, but the selected `FinalSlowBase.actualProfile` is only proved to have
+positive amplitude; the construction bound is not carried through the current
+`ProfileData` choice. This is not a counterexample and does not establish that
+the selected amplitude falls below the weaker `9/40` local threshold. Keep the
+actual-profile pressure-sign premise open until a quantitative bound is derived
+or its witness is retained through the final selection. No OpenAI upstream issue
+was submitted: the evidence is an extension proof-provenance gap and the upstream
+repository has issues/discussions disabled. The completed OpenFOAM matrix remains
+unchanged; the old n64 partial attempt is superseded by a verified completed
+rerun. See `reports/actual-profile-pressure-provenance-2026-10-01.md`.
