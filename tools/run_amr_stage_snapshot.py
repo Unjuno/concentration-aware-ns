@@ -13,10 +13,10 @@ from tools.run_high_gradient_openfoam import resolve_docker_cli, resolve_docker_
 
 
 ROOT = Path.cwd()
-PROTOCOL = Path("protocols/high-gradient-of13-amr-stage-snapshot-v2.json")
+PROTOCOL = Path("protocols/high-gradient-of13-amr-stage-snapshot-v3.json")
 SOURCE = Path(os.environ.get("CANS_OF13_SOURCE_TREE", "work/openfoam13-source-20260624"))
-RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-stage-snapshot-v2"))
-EVIDENCE = Path("evidence/of13-amr-stage-snapshot-v2")
+RUN_ROOT = Path(os.environ.get("CANS_AMR_STAGE_RUN_ROOT", "work/of13-amr-stage-snapshot-v3"))
+EVIDENCE = Path("evidence/of13-amr-stage-snapshot-v3")
 IMAGE = "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b"
 SOURCE_COMMIT = "18870c24d21c6b982e2cdec27b2f59738cca5f90"
 STAGES = ("mapped", "afterCorrectPhi", "prePressure", "postPressure", "postSolve")
@@ -139,7 +139,10 @@ exit $exit_code
         raise RuntimeError("LD_DEBUG did not confirm loading the instrumented solver module")
     if len(snapshot_events) != len(STAGES):
         raise RuntimeError(f"expected {len(STAGES)} stage events, observed {len(snapshot_events)}")
-    stage_files = [case / "postProcessing" / "amrStages" / "0.003" /
+    stage_times = {"mapped": "0.002", "afterCorrectPhi": "0.003",
+                   "prePressure": "0.003", "postPressure": "0.003",
+                   "postSolve": "0.003"}
+    stage_files = [case / "postProcessing" / "amrStages" / stage_times[stage] /
                    f"{stage}_{kind}.csv" for stage in STAGES for kind in ("cells", "faces")]
     missing = [str(path) for path in stage_files if not path.is_file()]
     if missing:

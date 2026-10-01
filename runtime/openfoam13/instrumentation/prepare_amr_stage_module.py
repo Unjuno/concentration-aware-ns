@@ -90,7 +90,8 @@ def main():
     // Frozen checkpoint for the first-refinement instrumentation protocol.
     // The mapped callback is only placed after mesh_.update(); topoChanged()
     // is reset during update and cannot be used as the stage trigger here.
-    if (mag(runTime.value() - 0.003) > 1e-12)
+    const scalar expectedTime = stage == "mapped" ? 0.002 : 0.003;
+    if (mag(runTime.value() - expectedTime) > 1e-12)
     {
         return;
     }

@@ -2090,3 +2090,15 @@ immediately after mesh update) and first/final PIMPLE-iteration guards for
 pressure snapshots. This is a protocol correction, not evidence about solver
 accuracy. The v2 run and final-state comparison remain pending; see
 `protocols/high-gradient-of13-amr-stage-snapshot-v2.json`.
+
+## Revision 125 — separate mapping and post-advance stage times
+
+The v2 attempt completed but omitted `mapped`: source inspection shows
+`foamRun` calls `preSolve()` and `mesh_.update()` before incrementing
+`runTime`, then enters PIMPLE at `t=0.003`. Thus the mapped state is recorded
+at `t=0.002`, while `correctPhi` and later stages are at `t=0.003`. The v2
+raw case and logs remain in `work/of13-amr-stage-snapshot-v2/`. Added v3 with
+the time gate matched to each call site and separate per-stage output paths.
+This is measurement-protocol bookkeeping, not a numerical result. The v3
+solver run and final-state noninterference comparison remain pending; see
+`protocols/high-gradient-of13-amr-stage-snapshot-v3.json`.
