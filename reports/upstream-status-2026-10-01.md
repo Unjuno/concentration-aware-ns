@@ -131,3 +131,27 @@ pinned `LICENSE.txt` identifies Apache-2.0. No new matching record or
 reproducible defect was found, so no new upstream post is justified. This
 focused snapshot and its bounded search scope are recorded in
 `evidence/upstream-refresh/current-project-inventory-2026-10-01T0828Z.json`.
+
+## PhysicsNeMo latest-main recheck (2026-10-01 10:59 UTC)
+
+The live default branch advanced to `b08dd3f61ac44c784f7c03b0cc93947226365cad`.
+I fetched `physicsnemo/metrics/general/power_spectrum.py` from that immutable
+commit; its SHA256 remains
+`13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`. The
+deterministic CPU reproducer on Torch 2.11.0 again passes the 32x32 axis and
+transpose controls and fails the 33x33 controls: the width-axis peak splits
+across bins, and odd-array transpose asymmetry is 0.1094484. Thus issue #2007
+still reproduces on the latest observed main.
+
+Issue #2007 remains open. PR #2008 remains open with the same head
+`7407608723062dc11ba5332e9ff3774f42bb02d9`, base
+`ff5d19d08123de47ca446caed1d70a225d540184`, and GitHub reports it behind the
+base. The exact PR-head reproducer archived on September 30 still passes odd
+and even axis/transpose controls; no full PhysicsNeMo suite was run. The
+benchmark itself uses even grid widths, so this known issue does not alter its
+current archived spectral results. No duplicate issue or comment is warranted.
+
+Live API state and hashes are in
+`evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T1059Z.json`; the
+latest-main focused output is
+`evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-10-01-b08dd3f.json`.
