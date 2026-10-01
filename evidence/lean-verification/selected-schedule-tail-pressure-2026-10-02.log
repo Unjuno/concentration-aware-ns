@@ -14,3 +14,21 @@
 'ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_from_pulse_decay' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_relative_coefficient_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.exists_ordered_profile_cone_rate_capped' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.pulse_decay_coefficient_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.rate_capped_prepared_tail_pressure_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.exists_rate_capped_prepared_profile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

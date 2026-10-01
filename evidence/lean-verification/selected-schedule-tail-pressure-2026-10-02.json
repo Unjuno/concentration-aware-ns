@@ -11,21 +11,30 @@
     "NavierStokes/OutgoingTail.lean": "450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5",
     "NavierStokes/OutgoingSchedule.lean": "680379d41f5ecb928f53278860c807e3344e9bcaefbcd6c4bbcc493f812bc552",
     "NavierStokes/FuturePressureBounds.lean": "e55060a6239e37b56308ab631949c20174d4231c6f209eaa005ce182c32d5c86",
-    "NavierStokes/OutgoingPulseBounds.lean": "c7a25e38f34f1c6d7f3a3f0de830cee9979155956c80896014558b61e27de478"
+    "NavierStokes/OutgoingPulseBounds.lean": "c7a25e38f34f1c6d7f3a3f0de830cee9979155956c80896014558b61e27de478",
+    "NavierStokes/OutgoingCone.lean": "615b435a0983f522137f82501ea105773c38d43287433fa33c5de951692c4ce3",
+    "NavierStokes/PreparedOutgoing.lean": "b17ae08fd3e31ae75821d47fe801901a226d7ebe8f2fff8f442fc8751ad1a069",
+    "NavierStokes/ScheduledProfileChoice.lean": "8601fa30190269937efd5afeb72587ed0834d28631603b9996477061709a3485"
   },
   "extension": "verification/SelectedScheduleTailPressure.lean",
-  "extension_sha256": "f77ee20862332b412aa67f564f96f9569fbc1434224318f0ce26f92fbb353a14",
+  "extension_sha256": "ca4b5f1fe2cf8335cc0af32417f25723b1e0c7b51b0fb1fd31e2c30108cccd53",
   "runner": "runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
   "runner_sha256": "fd8a5ed2e03af1db399da58dfdb98f62b9cd848432a5e6485c06cec62ef8bc1b",
   "log": "evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.log",
-  "log_sha256": "a5da6189c0127784e2d6e452263204cd83b3a398849c3c6f3831117f3b9f8418",
+  "log_sha256": "9179a62ff282f777a1a297b38b39518e7ab691e798fcded929cc9e54b3bd576a",
   "declarations": [
     "ConcentrationAwareSelectedScheduleTail.tail_integrand_constant",
     "ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta",
     "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound",
     "ConcentrationAwareSelectedScheduleTail.tail_pressure_nonpos",
     "ConcentrationAwareSelectedScheduleTail.clockWeight_flattenEnd_eq",
-    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_from_pulse_decay"
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_from_pulse_decay",
+    "ConcentrationAwareSelectedScheduleTail.tail_relative_coefficient_small",
+    "ConcentrationAwareSelectedScheduleTail.exists_ordered_profile_cone_rate_capped",
+    "ConcentrationAwareSelectedScheduleTail.pulse_decay_coefficient_eq",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_small",
+    "ConcentrationAwareSelectedScheduleTail.rate_capped_prepared_tail_pressure_small",
+    "ConcentrationAwareSelectedScheduleTail.exists_rate_capped_prepared_profile"
   ],
   "axioms": [
     "propext",
@@ -33,7 +42,7 @@
     "Quot.sound"
   ],
   "sorryAx": false,
-  "scope": "Proves eta-independence and nonpositivity of the selected schedule pressure tail, bounds it using clockWeight(flattenEnd), proves the exact endpoint clock-weight formula, and derives a P^2-relative lower bound conditional on wait = 60*log(1/lam) using the pinned pulse-amplitude estimate. The resulting factor still depends on m and lam and is not shown uniformly small for the final actualProfile. No molecular or constitutive consequence is established.",
+  "scope": "Proves eta-independence and nonpositivity of the selected schedule pressure tail, bounds it using clockWeight(flattenEnd), proves the exact endpoint clock-weight formula, and derives a P^2-relative tail lower bound conditional on the exact wait identity. The explicit coefficient is at most 1/100 under the incoming lambda cap exp(-(exp(m)+12+3/5))/4. A rerun of the existing scheduled-family selector produces an existential source-derived rate-capped prepared profile with tail pressure at least -P^2/100. The pinned FinalSlowBase.actualProfile does not retain the prepared witness, amplitude proof, wait identity, or cap, so this result is not transferred to actualProfile and does not establish its root-pressure premise. No solver-validity or molecular/constitutive consequence is established.",
   "environment": {
     "container_image": "concentration-aware-ns:checker",
     "dependency_volume": "cans-lean-verification",

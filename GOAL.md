@@ -1,5 +1,29 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 165 — capped prepared selector gives a uniformly small tail
+
+Formalized that the explicit coefficient multiplying `P^2` in the selected
+schedule tail bound is at most `1/100` whenever
+`lam ≤ exp(-(exp(m)+12+3/5))/4`. This is the incoming lambda cap used inside
+the pinned source's tail-threshold construction. The source's public profile
+selector does not preserve that cap in its result, so the audit reduces its
+valid threshold by taking a minimum with the cap, then reruns the existing
+scheduled-family and prepared-profile construction while retaining both the
+exact wait identity and cap. Lean proves existence of such a prepared profile
+with tail pressure at least `-P^2/100`; the declarations use only
+`[propext, Classical.choice, Quot.sound]`, with no `sorryAx`.
+
+This is an alternative source-derived selection and does not establish the
+same bound for `FinalSlowBase.actualProfile`, which is still chosen through a
+record that drops the prepared witness, amplitude proof, wait identity, and
+lambda cap. It also does not establish the remaining root-pressure premise,
+solver correctness, or any molecular/viscosity interpretation. Exact source
+hashes, replay output, and scope are recorded in
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`;
+the provenance limitation is in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`. Overall goal
+remains active.
+
 ## Revision 164 — conditional tail bound normalized by core amplitude squared
 
 Proved the exact `clockWeight(flattenEnd)` formula from the pinned outgoing

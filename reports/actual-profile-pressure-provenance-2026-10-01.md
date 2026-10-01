@@ -217,6 +217,30 @@ to be uniformly small under the final selected-profile hypotheses: the
 hypothesis of this lemma. It therefore does not close the pressure-sign or
 actual-profile witness-transfer gap.
 
+## Rate-capped prepared selector follow-up — 2026-10-02
+
+The pinned source's `TailCone.exists_tail_smallness_threshold` constructs an
+incoming threshold using
+`exp(-(exp(m)+12+3/5))/4`, but the public ordered-profile and prepared-profile
+results do not retain that numerical cap. A Lean extension therefore takes
+the minimum of the source's valid ordered profile-cone threshold and this
+incoming cap, then reruns the existing scheduled-family selection. The
+resulting `RateCappedPreparedProfile` retains the same prepared-profile
+fields plus proofs of the exact wait identity and lambda cap.
+
+Under that cap, Lean proves the explicit coefficient multiplying `P^2` is
+at most `1/100`, and proves existence of a source-derived prepared profile
+whose zero-exponent tail contribution is at least `-P^2/100`. The new
+declarations use only `[propext, Classical.choice, Quot.sound]` and contain no
+`sorryAx`. This establishes an existential capped selection, not a property
+of the pinned `FinalSlowBase.actualProfile`: its classical-choice path still
+uses the ordinary profile-data record, and the prepared witness, amplitude
+lower bound, wait identity, and cap are not transferred into that record.
+Accordingly the actual-profile root-pressure premise remains open, as do any
+solver-validity or physical/molecular conclusions. The exact replay and
+source hashes are in
+`evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
+
 Pinned-source hashes for the identities used here:
 
 | Source | SHA-256 |
