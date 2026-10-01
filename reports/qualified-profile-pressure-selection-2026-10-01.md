@@ -16,3 +16,18 @@ The ratio is for the selected `FinalSlowBase.velocity` base field and its natura
 This does not prove the pressure sign for OpenAI's existing `FinalSlowBase.actualProfile`, which is defined by a different `Classical.choice profileData_nonempty`. It supplies an alternative, pressure-qualified choice that could be used if the upstream construction intended the final selection to retain its prepared witness. Changing that choice would change the identified object, so no theorem about the original fixed profile may be inferred from this extension. The negative sign is for the signed ratio `nu * Δu / (∂t u + u·∇u)`; it is not a viscosity law, a claim that viscous effectiveness collapses, or an instability result.
 
 The result remains inside the formal profile construction. A nonzero limiting magnitude for this ratio is not itself a theorem about constitutive viscosity or all possible meanings of “viscous effectiveness”; it only rules out interpreting this particular ratio as tending to zero. It does not imply molecular alignment, particle-position certainty, phase transition, a constitutive viscosity change, a CFD defect, or blow-up. No upstream report is warranted: we found a useful alternate witness selection, not an upstream false theorem or code defect.
+
+## Equation-level interpretation boundary
+
+The upstream `ProblemStatement.navierStokesResidual` is
+`temporalDerivative + advection - spatialLaplacian + pressureGradient`; its
+candidate property equates this residual to the force, at unit viscosity. Thus
+for an actual candidate, material acceleration satisfies
+`a = Δu - ∇p + f`. The ratio `Δu/a` compares two terms; it is not by itself a
+fraction of the complete momentum balance, which also contains pressure and
+forcing. In the theorem above the field is the separately selected
+`FinalSlowBase.velocity`, and no `CandidateProperties.navier_stokes` premise is
+asserted for it. The parameter `nu` simply multiplies its Laplacian in the
+reported ratio; the velocity and pressure fields are not rebuilt for that
+viscosity. Consequently neither the sign nor the nonzero limiting magnitude
+establishes a constitutive viscosity change or diminished physical dissipation.

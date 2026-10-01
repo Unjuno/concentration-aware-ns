@@ -1964,3 +1964,17 @@ argv, a portable `python3` replay command and a hash-verified log. The 31-step
 replay passed. This improves archived-evidence auditability; it is not a fresh
 solver/training run or a continuous-field certificate, and it does not close
 the full benchmark goal.
+
+## Revision 116 — source-current and viscous-ratio interpretation audit (2026-10-01)
+
+A live GitHub API recheck confirms OpenAI `main` remains at the pinned
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`; metadata still reports Apache-2.0
+and disables Issues/Discussions. The selected-profile amplitude premise remains
+unproved: `PreparedProfile` carries `P >= 2`, but the `ProfileData` choice does
+not carry that proof. This is a provenance gap, not evidence that the chosen
+profile has small amplitude. Also, the new negative `nu*Δu/materialAcceleration`
+limit concerns an alternate slow-base field, not a full candidate satisfying
+the unit-viscosity equation; in the latter, acceleration balances viscosity,
+pressure, and force together. Do not infer a constitutive-viscosity effect from
+that ratio. Evidence and exact scope are in the dated pressure-provenance and
+qualified-profile reports.

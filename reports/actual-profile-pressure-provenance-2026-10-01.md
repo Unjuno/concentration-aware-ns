@@ -27,6 +27,24 @@ This result concerns a proof obligation in the benchmark's analysis extension. I
 
 The OpenAI repository has Issues and Discussions disabled in the October 1 inventory. No upstream report was submitted. Even if a channel existed, the current result concerns how our extension carries a witness, not a demonstrated error in upstream source or theorem.
 
+## Live source and retained-field recheck
+
+A fresh GitHub API read at 2026-10-01 08:08 UTC confirmed that `main` is still
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, matching the source used by the
+isolated Lean checker. The repository still declares Apache-2.0 and has both
+Issues and Discussions disabled. The response fields and time are archived in
+`evidence/upstream-refresh/openai-live-recheck-2026-10-01T0808Z.json`.
+
+The source dataflow remains: `PreparedProfile` stores `amplitude_lower`, while
+`FinalSlowBase.ProfileData` stores the outgoing, nominal, certificate, loop,
+modulation and full-cone fields but no amplitude proof. Its `actualProfile` is
+chosen from `Nonempty ProfileData`. The nominal witness also retains its
+construction fields, so absence of a dedicated amplitude field is not a proof
+that no downstream implication exists. It does mean the prepared witness's
+bound cannot simply be projected from the selected record; a theorem deriving
+the required local moment/amplitude threshold from retained properties is still
+needed. This distinction does not show that the chosen amplitude is small.
+
 ## Related run-state correction
 
 The current OpenFOAM six-case matrix remains complete according to `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`. The historic n64, `dt=0.0005` partial attempt is superseded by its archived 100/100-step completed rerun. No matrix verdict changes.

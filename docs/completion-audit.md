@@ -848,6 +848,11 @@ alternate slow-base selection: it is not transferred to
 `FinalSlowBase.actualProfile` or the completed periodic field and does not imply
 molecular ordering, a phase transition, constitutive viscosity loss, blow-up,
 or an upstream solver defect. No upstream report is warranted.
+The source equation also includes pressure and forcing in the momentum balance;
+the slow-base ratio is not a viscosity-share measure and the arbitrary `nu`
+multiplier does not rebuild a solution at another viscosity. A live upstream
+metadata recheck still matches the pinned source and is recorded in
+`evidence/upstream-refresh/openai-live-recheck-2026-10-01T0808Z.json`.
 
 ## 2026-10-01 integrated published-evidence replay
 

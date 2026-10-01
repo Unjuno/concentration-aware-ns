@@ -1579,6 +1579,13 @@ orientations, particle-position probabilities, or phase transitions. Replay
 evidence and exact source hashes are in
 `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
 
+The upstream unit-viscosity candidate equation is `a = Δu - ∇p + f`, from
+`ProblemStatement.navierStokesResidual = a - Δu + ∇p`. The ratio `Δu/a` is only
+between two terms and does not isolate the viscous share of this balance. The
+slow-base theorem does not assert the candidate PDE for its selected field;
+its arbitrary positive `nu` is only a multiplier on the Laplacian, with no
+corresponding viscosity-rescaled velocity/pressure/force construction.
+
 
 ## Pressure and negative slow-sum derivative share one witness
 
