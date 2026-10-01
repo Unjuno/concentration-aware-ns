@@ -351,6 +351,35 @@ that the reconstruction convention must be named when interpreting an FV
 velocity error; these are reconstructed-field diagnostics, not replacements
 for the preregistered cell-centre result.
 
+### Derivative-peak sensitivity to an explicit trigonometric reconstruction
+
+On October 1, the six archived Foundation 13 v2 cases were reopened and their
+archive hashes matched against the current uniform and temporal manifests.
+The frozen periodic centered-FD2 gradient/vorticity peaks were replayed, then
+compared with derivatives of the real trigonometric interpolant through the
+same cell-centre velocities. The analytic reference's Fourier support is
+resolved on every tested grid: spectral derivative peaks of the reference
+samples agree with analytic derivatives evaluated at the same centers to
+roundoff (largest peak defect below `4e-14`).
+
+At n=32, the frozen FD2 peak errors are 10.28% and 9.18%, while the
+trigonometric-interpolant node-peak errors are 0.465% and 0.045%. Keeping the
+velocity, energy, and spectrum metrics unchanged therefore changes this row's
+counterfactual local-quality status from FAIL to PASS. At n=16 the alternative
+derivative metrics also fall below 5%, but the velocity error still fails the
+2% gate. Both n=64 and n=128 pass with either derivative method, so the frozen
+adequate-grid matrix result remains `NOT_OBSERVED`.
+
+This is a postprocessing sensitivity result, not evidence that the interpolant
+is the canonical OpenFOAM field. The peak norms are evaluated only at grid
+nodes, and no continuous inter-node bound is supplied. The frozen v2 gate and
+all original verdicts remain unchanged. Reproduce with
+`python -m tools.audit_openfoam_gradient_reconstruction` in an environment
+with `requirements-verification.txt`. Exact per-case values, hashes,
+counterfactual gates, and limitations are in
+`evidence/tests/openfoam-gradient-reconstruction-sensitivity-2026-10-01.json`
+and `reports/openfoam-gradient-reconstruction-sensitivity-2026-10-01.md`.
+
 Reproduce with
 `work/reference-check-env/bin/python -m tools.audit_uniform_cell_center_quadrature`.
 It reads the four archived extracted final fields, checks mesh ordering and

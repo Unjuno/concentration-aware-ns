@@ -1,0 +1,362 @@
+{
+  "study_id": "openfoam-gradient-reconstruction-sensitivity-v1",
+  "quality": "DESCRIPTIVE_ONLY",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive": "evidence/of13-high-gradient-v2/n16-dt0.001.tar.gz",
+      "archive_sha256": "a500dd1d3946f7e468d33257d3b866550af55db678749c6b4f7cb6f8be35ee62",
+      "n": 16,
+      "dt": 0.001,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "FAIL",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.6358050129577074,
+        "vorticity_peak_reference_at_cell_centers": 0.6978987068490984,
+        "gradient_peak_fd2": 0.4004007090650762,
+        "vorticity_peak_fd2": 0.46386353348061227,
+        "gradient_peak_fd2_relative_error": 0.370246064587556,
+        "vorticity_peak_fd2_relative_error": 0.3353426092808191,
+        "gradient_peak_trigonometric_interpolant": 0.6183969639623849,
+        "vorticity_peak_trigonometric_interpolant": 0.6925957938730806,
+        "gradient_peak_reference_trigonometric_interpolant": 0.6358050129577059,
+        "vorticity_peak_reference_trigonometric_interpolant": 0.6978987068490962,
+        "gradient_peak_trigonometric_relative_error": 0.027379540331618928,
+        "vorticity_peak_trigonometric_relative_error": 0.007598399200304325,
+        "gradient_field_relative_l2_at_centers": 0.09036169108538605,
+        "vorticity_field_relative_l2_at_centers": 0.012538180518816429,
+        "reference_spectral_gradient_reconstruction_defect": 2.4446366461388833e-15,
+        "reference_spectral_vorticity_reconstruction_defect": 3.1816165117646854e-15
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "FAIL",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.08875833380125632,
+            "threshold": 0.02,
+            "status": "FAIL"
+          },
+          "energy": {
+            "value": 0.0061944630007065345,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.027379540331618928,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 0.007598399200304325,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.006201791505800425,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive": "evidence/of13-high-gradient-v2/n32-dt0.001.tar.gz",
+      "archive_sha256": "94e684e5d698862021be002eaef8c9bdef4387f9b582831e8edc931a4146c70d",
+      "n": 32,
+      "dt": 0.001,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "FAIL",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.8690546889027182,
+        "vorticity_peak_reference_at_cell_centers": 0.9681315738921278,
+        "gradient_peak_fd2": 0.7797098485326966,
+        "vorticity_peak_fd2": 0.8792584937553768,
+        "gradient_peak_fd2_relative_error": 0.10280692516926607,
+        "vorticity_peak_fd2_relative_error": 0.09179855562344619,
+        "gradient_peak_trigonometric_interpolant": 0.8650129275772909,
+        "vorticity_peak_trigonometric_interpolant": 0.9685643543222063,
+        "gradient_peak_reference_trigonometric_interpolant": 0.8690546889027246,
+        "vorticity_peak_reference_trigonometric_interpolant": 0.9681315738921351,
+        "gradient_peak_trigonometric_relative_error": 0.004650756019206257,
+        "vorticity_peak_trigonometric_relative_error": 0.0004470264597727507,
+        "gradient_field_relative_l2_at_centers": 0.019239755728689904,
+        "vorticity_field_relative_l2_at_centers": 0.0016772809219306143,
+        "reference_spectral_gradient_reconstruction_defect": 7.409537771387275e-15,
+        "reference_spectral_vorticity_reconstruction_defect": 7.568673680445921e-15
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.018760163452901053,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "energy": {
+            "value": 0.0004842064845149198,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.004650756019206257,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 0.0004470264597727507,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.0004842064845153289,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive": "evidence/of13-high-gradient-v2/n64-dt0.001.tar.gz",
+      "archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e",
+      "n": 64,
+      "dt": 0.001,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "PASS",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.9356642035612581,
+        "vorticity_peak_reference_at_cell_centers": 1.0440448346583975,
+        "gradient_peak_fd2": 0.9109591984334118,
+        "vorticity_peak_fd2": 1.019522758391477,
+        "gradient_peak_fd2_relative_error": 0.026403708759847735,
+        "vorticity_peak_fd2_relative_error": 0.02348757012426952,
+        "gradient_peak_trigonometric_interpolant": 0.9345486406258476,
+        "vorticity_peak_trigonometric_interpolant": 1.0441942900734749,
+        "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
+        "vorticity_peak_reference_trigonometric_interpolant": 1.0440448346584146,
+        "gradient_peak_trigonometric_relative_error": 0.0011922684774971458,
+        "vorticity_peak_trigonometric_relative_error": 0.0001431503802316905,
+        "gradient_field_relative_l2_at_centers": 0.004910385414932576,
+        "vorticity_field_relative_l2_at_centers": 0.00045459065273596825,
+        "reference_spectral_gradient_reconstruction_defect": 1.934095077327094e-14,
+        "reference_spectral_vorticity_reconstruction_defect": 1.637614977025536e-14
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.004780664208810287,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "energy": {
+            "value": 0.00024193409391482564,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.0011922684774971458,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 0.0001431503802316905,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.00024193414832342997,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    },
+    {
+      "case": "n128-dt0.001",
+      "archive": "work/n128-publish/n128-dt0.001.tar.gz",
+      "archive_sha256": "595d27fe2e0ca061e727624444406419870bff8d06d11a38f911fdcebd19e0f0",
+      "n": 128,
+      "dt": 0.001,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "PASS",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.9528539220242994,
+        "vorticity_peak_reference_at_cell_centers": 1.063573804874208,
+        "gradient_peak_fd2": 0.9465359479641685,
+        "vorticity_peak_fd2": 1.0573094198662918,
+        "gradient_peak_fd2_relative_error": 0.006630579896977939,
+        "vorticity_peak_fd2_relative_error": 0.005889939164736357,
+        "gradient_peak_trigonometric_interpolant": 0.9525829348933746,
+        "vorticity_peak_trigonometric_interpolant": 1.0636319902117541,
+        "gradient_peak_reference_trigonometric_interpolant": 0.9528539220243357,
+        "vorticity_peak_reference_trigonometric_interpolant": 1.0635738048742458,
+        "gradient_peak_trigonometric_relative_error": 0.00028439525167232784,
+        "vorticity_peak_trigonometric_relative_error": 5.470738113489234e-05,
+        "gradient_field_relative_l2_at_centers": 0.0012425190943338592,
+        "vorticity_field_relative_l2_at_centers": 0.0001235360025919121,
+        "reference_spectral_gradient_reconstruction_defect": 3.810058610885037e-14,
+        "reference_spectral_vorticity_reconstruction_defect": 3.549126789721926e-14
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.0012095963662192104,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "energy": {
+            "value": 0.00010345679925848383,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.00028439525167232784,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 5.470738113489234e-05,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.00010345681276119903,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+      "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+      "n": 64,
+      "dt": 0.0005,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "PASS",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.9356642035612581,
+        "vorticity_peak_reference_at_cell_centers": 1.0440448346583975,
+        "gradient_peak_fd2": 0.9109469257596952,
+        "vorticity_peak_fd2": 1.0195098153911433,
+        "gradient_peak_fd2_relative_error": 0.026416825296389272,
+        "vorticity_peak_fd2_relative_error": 0.023499967101778593,
+        "gradient_peak_trigonometric_interpolant": 0.9345360531300196,
+        "vorticity_peak_trigonometric_interpolant": 1.0441810097067796,
+        "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
+        "vorticity_peak_reference_trigonometric_interpolant": 1.0440448346584146,
+        "gradient_peak_trigonometric_relative_error": 0.0012057214831588867,
+        "vorticity_peak_trigonometric_relative_error": 0.00013043026874377806,
+        "gradient_field_relative_l2_at_centers": 0.00491376751577938,
+        "vorticity_field_relative_l2_at_centers": 0.00045197495186613133,
+        "reference_spectral_gradient_reconstruction_defect": 1.934095077327094e-14,
+        "reference_spectral_vorticity_reconstruction_defect": 1.637614977025536e-14
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.004784089312365507,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "energy": {
+            "value": 0.00021648373536992314,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.0012057214831588867,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 0.00013043026874377806,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.00021648379100562383,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.00025.tar.gz",
+      "archive_sha256": "705be3ab67347eedeb4dad548d4caa3a796b13ea7cd8cca1a70125f7452825c6",
+      "n": 64,
+      "dt": 0.00025,
+      "standard_acceptance": "PASS",
+      "frozen_fd2_local_quality": "PASS",
+      "metrics": {
+        "gradient_peak_reference_at_cell_centers": 0.9356642035612581,
+        "vorticity_peak_reference_at_cell_centers": 1.0440448346583975,
+        "gradient_peak_fd2": 0.9109399514624699,
+        "vorticity_peak_fd2": 1.0195033407706446,
+        "gradient_peak_fd2_relative_error": 0.026424279142757176,
+        "vorticity_peak_fd2_relative_error": 0.023506168579228312,
+        "gradient_peak_trigonometric_interpolant": 0.9345289094788011,
+        "vorticity_peak_trigonometric_interpolant": 1.0441743413162219,
+        "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
+        "vorticity_peak_reference_trigonometric_interpolant": 1.0440448346584146,
+        "gradient_peak_trigonometric_relative_error": 0.0012133563282148122,
+        "vorticity_peak_trigonometric_relative_error": 0.0001240431957595781,
+        "gradient_field_relative_l2_at_centers": 0.004920083259738489,
+        "vorticity_field_relative_l2_at_centers": 0.00045078705622378276,
+        "reference_spectral_gradient_reconstruction_defect": 1.934095077327094e-14,
+        "reference_spectral_vorticity_reconstruction_defect": 1.637614977025536e-14
+      },
+      "counterfactual_spectral_derivative_local_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_l2": {
+            "value": 0.0047904920726123765,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "energy": {
+            "value": 0.0002037548577071881,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "max_gradient": {
+            "value": 0.0012133563282148122,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "max_vorticity": {
+            "value": 0.0001240431957595781,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "shell_spectrum": {
+            "value": 0.00020375491398692938,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "scope": "Finite-point peaks of the periodic trigonometric interpolant through cell-center samples. This is an alternative explicit reconstruction; it does not define or certify the continuous OpenFOAM finite-volume field or intersample extrema."
+    }
+  ],
+  "conclusion": "Derivative peak accuracy and local-quality status are reconstruction-sensitive at the n=32 row. The frozen acceptance rule uses centered FD2; the spectral results are a counterfactual sensitivity check and do not replace frozen verdicts.",
+  "limitations": [
+    "The trigonometric interpolant is one possible reconstruction from cell-center data, not the canonical OpenFOAM finite-volume field.",
+    "Reported peak norms are maxima at the sample nodes of the derivative of that interpolant; no between-node supremum is certified.",
+    "The exact comparison is the analytic reference derivative evaluated at the same cell centers; it is not a proven continuous global maximum for this high-gradient MMS.",
+    "No solver run, frozen gate, defect classification, physical conclusion, or upstream report is changed by this postprocessing audit."
+  ]
+}

@@ -1836,6 +1836,28 @@ shared-validation and finite-sampling limits. No continuous peak, node-count
 causality, or PhysicsNeMo acceptance threshold is established; its verdict
 remains UNCERTAIN and the overall goal remains active.
 
+## Revision 114 — OpenFOAM local-quality sensitivity to derivative reconstruction
+
+Reopened all six frozen Foundation 13 high-gradient archives and verified each
+archive SHA-256 against the current matrix or temporal manifest. Recomputed
+centered-FD2 and real trigonometric-interpolant derivatives from the same cell-
+center velocities. A separate band-limited reference test confirms that the
+spectral derivative reproduces the analytic reference gradient and vorticity at
+all n=16/32/64/128 centers to roundoff (worst peak reconstruction defect below
+4e-14). At n=32 the frozen FD2 derivative peak errors are 10.28% and 9.18%,
+while the alternative interpolant's node-peak errors are 0.465% and 0.045%;
+holding velocity, energy, and spectrum gates fixed changes only this row's
+counterfactual local-quality status from FAIL to PASS. The adequately resolved
+n=64/n=128 spatial cases remain PASS, so the frozen matrix-level blind-spot
+classification does not change. This demonstrates reconstruction sensitivity
+of the n=32 derivative gate, not which reconstruction is the canonical
+continuous OpenFOAM field: no inter-node supremum or continuous solver field is
+certified. Evidence and reproduction are in
+`reports/openfoam-gradient-reconstruction-sensitivity-2026-10-01.md` and
+`evidence/tests/openfoam-gradient-reconstruction-sensitivity-2026-10-01.json`;
+the solver was not rerun and no upstream defect is claimed. The multi-target
+goal remains active.
+
 ## Revision 107 — protocol-status consistency and OpenFOAM field interpretation
 
 The general `docs/protocol.md` still described the independent reference as
