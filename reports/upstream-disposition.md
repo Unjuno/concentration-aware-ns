@@ -195,3 +195,16 @@ searches found older or differently-scoped AMR reports (including the resolved
 matching report for the present v13 observations. This is useful duplicate
 screening, not an exhaustive tracker audit; no new report was filed. No
 scientific verdict changed.
+
+## OpenFOAM AMR derivative controls, 2026-10-02
+
+Replayed Foundation 13 `grad(U)`/`vorticity` on the two dynamic-AMR endpoint
+archives and their fixed-final-mesh analytic-initialization controls. Each pair
+has byte-identical final mesh geometry and cell centers/volumes. Dynamic cases
+show larger sampled derivative errors than their static controls, but the
+control does not isolate remapping from coarse-history error and subsequent
+evolution. The evidence narrows the benchmark-path attribution without
+demonstrating an upstream contract violation. AMR quality remains UNCERTAIN;
+no new Foundation bug report was filed. See
+`reports/openfoam-amr-remap-derivative-controls-2026-10-02.md` and its replay
+evidence.

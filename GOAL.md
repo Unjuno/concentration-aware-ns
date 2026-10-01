@@ -1,5 +1,37 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 158 — full suite after AMR post-processing audit
+
+The new OpenFOAM tensor-convention regression tests pass (4). The complete
+locked-dependency suite at the current worktree passes 194 tests, skips one,
+and passes five subtests in 104.19 seconds. The skip is not counted as a pass.
+The post-processing replay itself also completed on four archived cases and
+validated exact meshes, source archive hashes, OpenFOAM gradient/vorticity
+consistency, and the dynamic archived-gradient byte comparison. These checks
+do not change the AMR quality status from UNCERTAIN. Goal remains active.
+
+## Revision 157 — same-mesh AMR derivative controls replayed
+
+Applied Foundation 13 `foamPostProcess` `grad(U)` and `vorticity` to the two
+archived dynamic-AMR cases and their analytic-initialized fixed-final-mesh
+controls. For each cell budget, points, faces, owner/neighbour, boundary,
+centers, and volumes match exactly. Source inspection caught and corrected the
+OpenFOAM gradient tensor's derivative-index-first storage before comparing to
+the analytic derivative. The separate vorticity field agrees with the curl of
+the converted gradient within `2.62e-16` relative L2, and regenerated dynamic
+`grad(U)` fields match the archived solver fields byte-for-byte.
+
+On the shared interior mask, dynamic/control gradient relative L2 errors are
+48.72%/7.35% at cap5000 and 89.79%/1.98% at cap100000; vorticity errors are
+54.65%/8.63% and 110.42%/2.34%, respectively. This shows much higher error
+after the dynamic coarse-to-fine history than on the same endpoint mesh when
+initialized analytically, but the control does not isolate mapping from
+coarse-history error and later evolution. AMR quality remains UNCERTAIN and no
+upstream defect is established. The replay tool, exact metrics, logs, and
+limits are in `tools/replay_amr_remap_gradient_controls.py`,
+`reports/openfoam-amr-remap-derivative-controls-2026-10-02.md`, and
+`evidence/of13-amr-remap-gradient-controls-2026-10-02/`. Goal remains active.
+
 ## Revision 156 — full local suite at the published PR head
 
 At PR head `88698e033c4d1999aaa4358d3cdcc6a25cf8cce6`, the first direct
