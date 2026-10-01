@@ -60,3 +60,27 @@ def test_shrinking_packet_absolute_localization_coexists_with_relative_stretch()
     assert sp.simplify(good_direction_lower_endpoint_power.subs(C, 4)) == sp.Rational(81, 2)
     assert sp.simplify(relative_displacement_power.subs(C, C_lower)) < 0
     assert sp.simplify(good_direction_nonlinear_ratio_power.subs(C, 4)) == sp.Rational(1, 2)
+
+
+def test_uniform_sphere_tangent_map_cone_failure_probability():
+    q, C, m = sp.symbols("q C m", positive=True)
+    transverse_to_axial = q ** (sp.Rational(3, 2) * C)
+    cutoff = transverse_to_axial / sp.sqrt(m**2 + transverse_to_axial**2)
+
+    # For uniform spherical directions z=omega_3 has constant density 1/2
+    # on [-1,1], so c=|z| is uniform on [0,1]. The cone condition is exactly
+    # c >= cutoff; its failure probability is therefore the cutoff itself.
+    z = sp.symbols("z", real=True)
+    x = sp.symbols("x", nonnegative=True)
+    band_probability = sp.integrate(sp.Rational(1, 2), (z, -x, x))
+    cone_identity = sp.simplify(
+        transverse_to_axial**2 * (1 - cutoff**2) - m**2 * cutoff**2
+    )
+    asymptotic_coefficient = sp.limit(cutoff / transverse_to_axial, q, 0)
+
+    assert sp.simplify(band_probability - x) == 0
+    assert cone_identity == 0
+    assert asymptotic_coefficient == 1 / m
+    assert sp.simplify(
+        sp.Rational(3, 2) * sp.Rational(7999999, 2000000) - 1
+    ) > 0
