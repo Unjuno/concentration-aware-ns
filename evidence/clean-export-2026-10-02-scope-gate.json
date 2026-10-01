@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-02",
+  "source_commit": "a3d07c19b66c497a9047df2a3650582157399004",
+  "command": "python3.14 -m tools.check_clean_export --revision a3d07c19 --locked",
+  "environment": {
+    "python": "3.14.5",
+    "platform": "macOS 26.6.2 arm64",
+    "dependencies": "requirements-verification-locked.txt"
+  },
+  "clean_export": {
+    "tracked_only": true,
+    "fresh_venv": true,
+    "success": true,
+    "replay_steps": "36/36",
+    "files_compared": 172,
+    "changed_files": [],
+    "archive_sha256": "322da4d0118756b9109bd82256a389b27857b4c6d7f8c76b334c5585e4b6e097"
+  },
+  "full_test_suite": {
+    "tested_source_commit": "3b394646e9fd5c3cfac1c8cfeacb89d2df5a611a",
+    "python": "3.12.13 locked clean-export venv",
+    "result": "190 passed, 1 skipped, 5 subtests passed",
+    "elapsed_seconds": 121.21,
+    "scope_note": "The subsequently published a3d07c1 commit changes reports, GOAL.md, literature notes, and evidence only; Python source and tests are unchanged."
+  },
+  "github_pr": {
+    "url": "https://github.com/Unjuno/concentration-aware-ns/pull/4",
+    "head": "a3d07c19b66c497a9047df2a3650582157399004",
+    "check": "tests",
+    "observed_status": "QUEUED",
+    "run_id": "36901676989",
+    "interpretation": "Hosted runner allocation wait; no test conclusion returned. Local suite and clean-export evidence are separate."
+  },
+  "non_goals": [
+    "No OpenFOAM, SU2, or PhysicsNeMo solver was rebuilt or executed in this clean-export check.",
+    "No scientific verdict was upgraded."
+  ]
+}

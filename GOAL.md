@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 153 — scope-gate outputs replay cleanly at a fixed commit
+
+For commit `a3d07c19b66c497a9047df2a3650582157399004`, a tracked-only export
+with a fresh Python 3.14.5 environment completed all 36 report/evidence replay
+steps and six additional checks. All 172 compared tracked evidence/report
+files remained byte-identical (`changed_files=[]`). The locked-environment
+full suite separately passed 190 tests, skipped one, and passed five subtests;
+the tested Python source and tests match the a3d07c1 tree, whose later commit
+changes only reports, documentation, and evidence. GitHub PR #4's check is
+still QUEUED for hosted-runner allocation, with no failure conclusion. The
+replay record is in `evidence/clean-export-2026-10-02-scope-gate.json`. Goal
+remains active; Foundation v14 is a separate follow-up comparison, not covered
+by these checks.
+
 ## Revision 152 — regenerated verdict snapshots retain declared scope
 
 The tracked-only replay of fixed commit `3b394646e9fd5c3cfac1c8cfeacb89d2df5a611a`
@@ -9,9 +23,9 @@ Python 3.14.5 runtime isolated the diffs to additive `scope` values; all
 `standard_acceptance`, `local_quality`, and `hypothesis` values stayed
 `UNCERTAIN`. Updated those seven snapshots so the published outputs match the
 gate's current schema. A separate fixed-export Python 3.12.13 test run passed
-190 tests, skipped one, and passed five subtests in 121.21 seconds. Exact
-clean-export validation of the updated snapshots remains pending. Goal remains
-active.
+190 tests, skipped one, and passed five subtests in 121.21 seconds. The
+follow-up clean export confirmed byte-identical replay after the seven snapshot
+updates. Goal remains active.
 
 ## Revision 151 — current-release and estimator literature refresh
 
