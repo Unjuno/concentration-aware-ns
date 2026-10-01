@@ -835,3 +835,15 @@ molecular, phase-transition, viscosity-law, blow-up, or solver-defect result.
 No upstream report is justified. Details and replay evidence are in
 `reports/qualified-profile-pressure-selection-2026-10-01.md` and
 `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+
+## 2026-10-01 integrated published-evidence replay
+
+`tools/replay_published_reports.py` now directly rechecks the OpenFOAM uniform
+fixed-step schedules, its n=64 three-dt comparison, all five AMR/remap archive
+trees, the SU2 standard review, and the PhysicsNeMo sampled-derivative links.
+The full one-command replay completed 31/31 steps. Its initial test step reports
+154 passed, 1 skipped and 5 subtests passed. The generated summary keeps exact
+local argv plus a portable `python3` replay command for every step; output and
+hashes are in `evidence/report-replay/summary.json`. These are archive and
+postprocessing checks; they do not rerun the solvers, train PhysicsNeMo, prove
+continuous error bounds, or promote any scientific verdict.

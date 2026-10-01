@@ -11,14 +11,26 @@
         "-q",
         "tests"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "f564508f334907b49e2e109666c06fdb0af3798e92162c0d0d03883b14b4a799"
+      "log_sha256": "971aac740ae56c6ed07f9ef7c539b846a9b912f90ce63af40fc62ca5b302cf99"
     },
     {
       "step": "global_peaks",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_global_peaks"
       ],
@@ -33,6 +45,11 @@
         "-m",
         "tools.decompose_peak_diagnostic"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/peak_decomposition.log",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -44,9 +61,62 @@
         "-m",
         "tools.compare_openfoam_spectral"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/spectral_derivatives.log",
       "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
+    },
+    {
+      "step": "openfoam_uniform_archive_schedules",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_uniform_archive_schedules.log",
+      "log_sha256": "0a708d06956e72cd86842ae9ff145fc06efba0967cd6e7283140af757dce24b4"
+    },
+    {
+      "step": "openfoam_temporal_triplet",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_temporal_triplet.log",
+      "log_sha256": "608a7505d18549466f8b8947cbdf1e070f971468fc9e2035355a963a91f9343a"
+    },
+    {
+      "step": "openfoam_amr_archive_integrity",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.verify_openfoam_amr_archives"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.verify_openfoam_amr_archives"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_amr_archive_integrity.log",
+      "log_sha256": "16efea231377cece1f4f42e8d8e9cb499a3b4e5a844fc7a29703ee3d677d2432"
     },
     {
       "step": "su2_archive_review",
@@ -55,14 +125,40 @@
         "-m",
         "tools.review_su2_archives"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.review_su2_archives"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/su2_archive_review.log",
       "log_sha256": "f5d2d2af0f4aee6a11e4ac8e070062119e41298c1a9710cf045b3dc5d8427bcd"
     },
     {
+      "step": "su2_standard_review",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_standard_review.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
       "step": "su2_diagnostic_replay",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.replay_su2_diagnostics"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_su2_diagnostics"
       ],
@@ -77,6 +173,11 @@
         "-m",
         "tools.compare_su2_spectral"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_su2_spectral"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/su2_spectral_derivatives.log",
       "log_sha256": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3"
@@ -85,6 +186,11 @@
       "step": "su2_time_comparison",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.compare_su2_time"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_su2_time"
       ],
@@ -99,6 +205,11 @@
         "-m",
         "tools.check_su2_bdf2_control"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_su2_bdf2_control"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/su2_bdf2_control.log",
       "log_sha256": "542db82a10ce6251f02ad690e3c08baa988674a67f52a695b1f61afe7aa7c08e"
@@ -107,6 +218,11 @@
       "step": "su2_boundary_time_pilot",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_su2_boundary_time_pilot"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_su2_boundary_time_pilot"
       ],
@@ -121,6 +237,11 @@
         "-m",
         "tools.replay_su2_restart_findings"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.replay_su2_restart_findings"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/su2_restart_findings.log",
       "log_sha256": "d06d19561ee31fa69972274cca0dc8e308cfbf32a1c7a6dcf54acceb1f5d81fb"
@@ -129,6 +250,11 @@
       "step": "openfoam_gate",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.build_openfoam_report"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.build_openfoam_report"
       ],
@@ -143,14 +269,40 @@
         "-m",
         "tools.build_physicsnemo_report"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.build_physicsnemo_report"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/physicsnemo_gates.log",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "step": "physicsnemo_sampled_derivative_replay",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.audit_physicsnemo_local_fields"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_physicsnemo_local_fields"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/physicsnemo_sampled_derivative_replay.log",
+      "log_sha256": "f490b510c11bdd8e6df27fb79f642dd6122edd52cab6221c009418cc933f805c"
+    },
+    {
       "step": "su2_gates",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.build_su2_report"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.build_su2_report"
       ],
@@ -165,6 +317,11 @@
         "-m",
         "tools.check_root_pressure_threshold"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_root_pressure_threshold"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/root_pressure_threshold.log",
       "log_sha256": "ccc567315bdbb012e080a477900961ef90233159b042385f3d978c3b56cc4da6"
@@ -173,6 +330,11 @@
       "step": "pressure_moment_threshold",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_pressure_moment_threshold"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_pressure_moment_threshold"
       ],
@@ -187,6 +349,11 @@
         "-m",
         "tools.check_cone_sign_symmetry"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_cone_sign_symmetry"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/cone_sign_symmetry.log",
       "log_sha256": "f542f1288d1a10d0159adeb7087ef1abe08e6242c672da0a3a30aef7e8d6032f"
@@ -195,6 +362,11 @@
       "step": "su2_output_clock_control",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_su2_output_clock_control"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_su2_output_clock_control"
       ],
@@ -209,6 +381,11 @@
         "-m",
         "tools.check_uniform_prefix_threshold"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_uniform_prefix_threshold"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/uniform_prefix_threshold.log",
       "log_sha256": "97691d66980e87e0d96fbe03be3411365216ec2e03b5134aa24fdb4f49dda207"
@@ -217,6 +394,11 @@
       "step": "high_gradient_mms",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_high_gradient_mms"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_high_gradient_mms"
       ],
@@ -231,6 +413,11 @@
         "-m",
         "tools.check_high_gradient_reference"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_high_gradient_reference"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/high_gradient_reference.log",
       "log_sha256": "c7cbb24bcd2245b59653d2d523bbf5ab5a750ec45fb90b5b2c7639cd0e6b6c04"
@@ -239,6 +426,11 @@
       "step": "support_hole_tube_geometry",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_support_hole_tube_geometry"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_support_hole_tube_geometry"
       ],
@@ -253,6 +445,11 @@
         "-m",
         "tools.replay_openfoam_iteration_archives"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.replay_openfoam_iteration_archives"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_iteration_archives.log",
       "log_sha256": "1456179ffb6cc9431ef0d14de97ba4938a5522307af27b8f4aecdd58a2b4df51"
@@ -261,6 +458,11 @@
       "step": "openfoam_pressure_pilot",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.replay_openfoam_pressure_pilot"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_openfoam_pressure_pilot"
       ],
@@ -275,6 +477,11 @@
         "-m",
         "tools.check_openfoam_solenoidal_control"
       ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_openfoam_solenoidal_control"
+      ],
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_solenoidal_startup.log",
       "log_sha256": "462f494d23f6109eabb9f7bfcf9b4a00ea02e0a406f605f7f005741a6e8b564a"
@@ -283,6 +490,11 @@
       "step": "artifact_links",
       "command": [
         "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.audit_gate_artifacts"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.audit_gate_artifacts"
       ],

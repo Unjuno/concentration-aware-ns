@@ -1940,3 +1940,13 @@ supports the existing conclusion that directional alignment in the linearized
 model need not increase certainty near the center. The probability tail bound
 remains analytic/SymPy-checked; nonlinear finite-packet and molecular transfer
 remain open. See `reports/linearized-flow-volume-audit-2026-10-01.md`.
+
+## Revision 115 — integrated artifact replay (2026-10-01)
+
+The one-command published-evidence replay now directly checks the OpenFOAM
+uniform/time-step archives and AMR trees, the SU2 standard acceptance review,
+and PhysicsNeMo checkpoint-to-derivative links. Each step records exact local
+argv, a portable `python3` replay command and a hash-verified log. The 31-step
+replay passed. This improves archived-evidence auditability; it is not a fresh
+solver/training run or a continuous-field certificate, and it does not close
+the full benchmark goal.

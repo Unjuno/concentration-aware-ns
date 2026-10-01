@@ -89,11 +89,14 @@ python3 -m tools.replay_published_reports
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics and the
 Dirichlet boundary-time pilot, reproduces the specific restart-history mismatch,
-rebuilds the
-OpenFOAM, SU2 and PhysicsNeMo gates, checks the root-pressure and pressure-moment
-identities and cone sign symmetry, and checks every gate artifact hash. Logs and
+checks OpenFOAM's six-case fixed/time-step archives and AMR archive tree hashes,
+rechecks all five SU2 cases and the five PhysicsNeMo sampled-derivative
+checkpoint/evaluation pairs, rebuilds all three acceptance reports, and checks
+the analytic identities and every gate artifact hash. Each step records both
+the exact interpreter argv and a portable `python3` replay command. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
-train networks or validate the OpenAI proof. The current replay covers all five required SU2 cases.
+train networks or validate the OpenAI proof. Scientific `UNCERTAIN` results
+remain so.
 Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication

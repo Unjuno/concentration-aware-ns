@@ -1,4 +1,4 @@
-"""Replay report generation and exact algebra checks from published inputs.
+"""Replay published evidence, reports, and exact algebra checks.
 
 Does not rerun PDE solvers, train networks, or verify the OpenAI proof.
 """
@@ -13,7 +13,11 @@ steps = [
     ('global_peaks', [sys.executable, '-m', 'tools.compare_global_peaks']),
     ('peak_decomposition', [sys.executable, '-m', 'tools.decompose_peak_diagnostic']),
     ('spectral_derivatives', [sys.executable, '-m', 'tools.compare_openfoam_spectral']),
+    ('openfoam_uniform_archive_schedules', [sys.executable, '-m', 'tools.audit_high_gradient_time_sequence']),
+    ('openfoam_temporal_triplet', [sys.executable, '-m', 'tools.compare_high_gradient_temporal']),
+    ('openfoam_amr_archive_integrity', [sys.executable, '-m', 'tools.verify_openfoam_amr_archives']),
     ('su2_archive_review', [sys.executable, '-m', 'tools.review_su2_archives']),
+    ('su2_standard_review', [sys.executable, '-m', 'tools.review_su2_standard']),
     ('su2_diagnostic_replay', [sys.executable, '-m', 'tools.replay_su2_diagnostics']),
     ('su2_spectral_derivatives', [sys.executable, '-m', 'tools.compare_su2_spectral']),
     ('su2_time_comparison', [sys.executable, '-m', 'tools.compare_su2_time']),
@@ -22,6 +26,7 @@ steps = [
     ('su2_restart_findings', [sys.executable, '-m', 'tools.replay_su2_restart_findings']),
     ('openfoam_gate', [sys.executable, '-m', 'tools.build_openfoam_report']),
     ('physicsnemo_gates', [sys.executable, '-m', 'tools.build_physicsnemo_report']),
+    ('physicsnemo_sampled_derivative_replay', [sys.executable, '-m', 'tools.audit_physicsnemo_local_fields']),
     ('su2_gates', [sys.executable, '-m', 'tools.build_su2_report']),
     ('root_pressure_threshold', [sys.executable, '-m', 'tools.check_root_pressure_threshold']),
     ('pressure_moment_threshold', [sys.executable, '-m', 'tools.check_pressure_moment_threshold']),
@@ -41,7 +46,9 @@ records = []
 for name, command in steps:
     run = subprocess.run(command, capture_output=True, text=True)
     log = output/(name+'.log');log.write_text(run.stdout+run.stderr)
-    records.append({'step':name,'command':command,'exit_code':run.returncode,
+    records.append({'step':name,'command':command,
+                    'replay_command':['python3', *command[1:]],
+                    'exit_code':run.returncode,
                     'log':str(log),'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest()})
     if run.returncode:
         break
