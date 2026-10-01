@@ -1853,6 +1853,14 @@ classification does not change. At n=32, the pointwise sampled gradient L2
 error is 9.53% under FD2 and 1.92% under the trigonometric reconstruction;
 vorticity values are 9.14% and 0.168%. Sampled argmax indices also change,
 though tied/near-tied discrete maxima are possible. This demonstrates
+the FD2 bias has a matching analytic scale: for the MMS streamwise mode k=4,
+the centered-difference derivative gain is sin(kh)/(kh), predicting 9.968%
+attenuation at n=32 versus observed full-vector peak discrepancies of 10.28%
+and 9.18%. More directly, the exact reference sampled field passed through the
+same FD2 stencil has peak floors of 9.862%/9.251%; computed-FD2 versus
+reference-FD2 peak differences are only 0.464%/0.078%. Thus most of the coarse
+FD2 failure is stencil truncation, with a small nonzero solver-field residual.
+This does not exactly predict the vector maxima. This demonstrates
 reconstruction sensitivity of the n=32 derivative gate, not which
 reconstruction is the canonical continuous OpenFOAM field: no inter-node
 supremum or continuous solver field is certified. Evidence and reproduction are in

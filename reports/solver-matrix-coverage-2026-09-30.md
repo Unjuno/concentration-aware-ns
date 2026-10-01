@@ -378,6 +378,28 @@ indices are `[1,31,0]` (FD2), `[2,0,0]` (trigonometric), and `[25,0,31]`
 Periodic symmetry and ties/near-ties can affect argmax indices, so these are
 diagnostic locations only, not evidence of a unique continuous extremum.
 
+The FD2 trend has an analytic resolution scale independent of the solver
+output. On a single Fourier mode `exp(i k x)`, periodic centered differencing
+has derivative gain `sin(k h)/(k h)`, where `h=2π/n`. For this MMS's streamwise
+mode k=4, the predicted attenuation is 36.338%, 9.968%, 2.550%, and 0.641% at
+n=16/32/64/128. The observed full-vector gradient peak discrepancies are
+37.025%, 10.281%, 2.640%, and 0.663%; vorticity discrepancies are 33.534%,
+9.180%, 2.349%, and 0.589%. Their similar scale supports ordinary FD2
+truncation as the dominant diagnostic limitation here, while the formula does
+not exactly predict vector-norm maxima because they combine multiple
+components and spatial locations. The four-resolution symbol calculation has
+a periodic-sine regression test in `tests/test_openfoam_gradient_reconstruction.py`.
+
+A direct reference-only FD2 control quantifies the stencil floor separately:
+at n=32 the exact MMS sampled field already yields 9.862%/9.251% peak errors
+under FD2, while computed-FD2 peaks differ from reference-FD2 peaks by
+0.464%/0.078%. Pointwise FD2 derivative-field differences from the reference
+FD2 fields are 1.928%/0.128%. This supports the interpretation that most of
+the coarse-grid peak-gate failure is the known centered-difference truncation
+floor, while retaining the measured nonzero solver-field residual. The
+comparison remains discrete postprocessing evidence, not a continuous-field
+certificate.
+
 This is a postprocessing sensitivity result, not evidence that the interpolant
 is the canonical OpenFOAM field. The peak norms are evaluated only at grid
 nodes, and no continuous inter-node bound is supplied. The frozen v2 gate and

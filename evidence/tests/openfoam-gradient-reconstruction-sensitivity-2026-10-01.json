@@ -2,6 +2,7 @@
   "study_id": "openfoam-gradient-reconstruction-sensitivity-v1",
   "quality": "DESCRIPTIVE_ONLY",
   "protocol": "protocols/high-gradient-of13-v2.json",
+  "frequency_N": 4,
   "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
   "environment": {
     "python": "3.14.5",
@@ -9,7 +10,7 @@
     "numpy": "2.5.2"
   },
   "analysis_source_sha256": {
-    "tools/audit_openfoam_gradient_reconstruction.py": "c9a0e4112c9b58ff38846c515708f727e6ccbe2da102e71d195ad356bcfec696",
+    "tools/audit_openfoam_gradient_reconstruction.py": "56a306bf6ba21b6c6227bb338e149513f6de4a0f1b000640d75825877dc2c7f8",
     "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3",
     "tools/metrics.py": "624f998773b9e5a6c4cd9a3c5ddb89284267484b945433d3cc145add57cf1427",
     "tools/spectral_derivative.py": "d9fbdde1238833cab2ca310b83586e17b5e47de63db11ef3eb7e0ab6c5457602",
@@ -31,6 +32,12 @@
         "vorticity_peak_fd2": 0.46386353348061227,
         "gradient_peak_fd2_relative_error": 0.370246064587556,
         "vorticity_peak_fd2_relative_error": 0.3353426092808191,
+        "gradient_peak_reference_only_fd2_floor": 0.35460386159092244,
+        "vorticity_peak_reference_only_fd2_floor": 0.336649545588625,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.024236592172974736,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 0.001970204888101845,
+        "streamwise_fd2_mode_symbol_gain": 0.6366197723675814,
+        "streamwise_fd2_mode_attenuation_fraction": 0.3633802276324186,
         "gradient_peak_trigonometric_interpolant": 0.6183969639623849,
         "vorticity_peak_trigonometric_interpolant": 0.6925957938730806,
         "gradient_peak_reference_trigonometric_interpolant": 0.6358050129577059,
@@ -41,6 +48,8 @@
         "vorticity_field_relative_l2_at_centers": 0.012538180518816429,
         "gradient_fd2_field_relative_l2_at_centers": 0.35189047838327453,
         "vorticity_fd2_field_relative_l2_at_centers": 0.3339677622905527,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.09178333780935469,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.0019262251803150766,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [
@@ -167,6 +176,12 @@
         "vorticity_peak_fd2": 0.8792584937553768,
         "gradient_peak_fd2_relative_error": 0.10280692516926607,
         "vorticity_peak_fd2_relative_error": 0.09179855562344619,
+        "gradient_peak_reference_only_fd2_floor": 0.09862212918812042,
+        "vorticity_peak_reference_only_fd2_floor": 0.09250772968386281,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.004642665542006651,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 0.000781465675922034,
+        "streamwise_fd2_mode_symbol_gain": 0.9003163161571061,
+        "streamwise_fd2_mode_attenuation_fraction": 0.09968368384289394,
         "gradient_peak_trigonometric_interpolant": 0.8650129275772909,
         "vorticity_peak_trigonometric_interpolant": 0.9685643543222063,
         "gradient_peak_reference_trigonometric_interpolant": 0.8690546889027246,
@@ -177,6 +192,8 @@
         "vorticity_field_relative_l2_at_centers": 0.0016772809219306143,
         "gradient_fd2_field_relative_l2_at_centers": 0.09533151305114948,
         "vorticity_fd2_field_relative_l2_at_centers": 0.09140314220656003,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.01927567474298116,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.0012760762076641002,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [
@@ -303,6 +320,12 @@
         "vorticity_peak_fd2": 1.019522758391477,
         "gradient_peak_fd2_relative_error": 0.026403708759847735,
         "vorticity_peak_fd2_relative_error": 0.02348757012426952,
+        "gradient_peak_reference_only_fd2_floor": 0.025246370156319715,
+        "vorticity_peak_reference_only_fd2_floor": 0.023651837196907683,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.0011873139715454283,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 0.00016824640932037248,
+        "streamwise_fd2_mode_symbol_gain": 0.9744953584044327,
+        "streamwise_fd2_mode_attenuation_fraction": 0.025504641595567312,
         "gradient_peak_trigonometric_interpolant": 0.9345486406258476,
         "vorticity_peak_trigonometric_interpolant": 1.0441942900734749,
         "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
@@ -313,6 +336,8 @@
         "vorticity_field_relative_l2_at_centers": 0.00045459065273596825,
         "gradient_fd2_field_relative_l2_at_centers": 0.024359976697995802,
         "vorticity_fd2_field_relative_l2_at_centers": 0.023356167086485014,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.0049118778743559004,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.0004314418149796532,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [
@@ -439,6 +464,12 @@
         "vorticity_peak_fd2": 1.0573094198662918,
         "gradient_peak_fd2_relative_error": 0.006630579896977939,
         "vorticity_peak_fd2_relative_error": 0.005889939164736357,
+        "gradient_peak_reference_only_fd2_floor": 0.00634839034491653,
+        "vorticity_peak_reference_only_fd2_floor": 0.0059459713175142774,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.00028399244696978107,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 5.636731119352222e-05,
+        "streamwise_fd2_mode_symbol_gain": 0.9935868511442058,
+        "streamwise_fd2_mode_attenuation_fraction": 0.006413148855794248,
         "gradient_peak_trigonometric_interpolant": 0.9525829348933746,
         "vorticity_peak_trigonometric_interpolant": 1.0636319902117541,
         "gradient_peak_reference_trigonometric_interpolant": 0.9528539220243357,
@@ -449,6 +480,8 @@
         "vorticity_field_relative_l2_at_centers": 0.0001235360025919121,
         "gradient_fd2_field_relative_l2_at_centers": 0.006108315513594565,
         "vorticity_fd2_field_relative_l2_at_centers": 0.005853565693394372,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.0012425993862765332,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.00012240362252030824,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [
@@ -575,6 +608,12 @@
         "vorticity_peak_fd2": 1.0195098153911433,
         "gradient_peak_fd2_relative_error": 0.026416825296389272,
         "vorticity_peak_fd2_relative_error": 0.023499967101778593,
+        "gradient_peak_reference_only_fd2_floor": 0.025246370156319715,
+        "vorticity_peak_reference_only_fd2_floor": 0.023651837196907683,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.0012007702297628395,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 0.00015554911753310879,
+        "streamwise_fd2_mode_symbol_gain": 0.9744953584044327,
+        "streamwise_fd2_mode_attenuation_fraction": 0.025504641595567312,
         "gradient_peak_trigonometric_interpolant": 0.9345360531300196,
         "vorticity_peak_trigonometric_interpolant": 1.0441810097067796,
         "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
@@ -585,6 +624,8 @@
         "vorticity_field_relative_l2_at_centers": 0.00045197495186613133,
         "gradient_fd2_field_relative_l2_at_centers": 0.0243723477318188,
         "vorticity_fd2_field_relative_l2_at_centers": 0.023368325162793562,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.004915258015726373,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.0004279275838091064,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [
@@ -711,6 +752,12 @@
         "vorticity_peak_fd2": 1.0195033407706446,
         "gradient_peak_fd2_relative_error": 0.026424279142757176,
         "vorticity_peak_fd2_relative_error": 0.023506168579228312,
+        "gradient_peak_reference_only_fd2_floor": 0.025246370156319715,
+        "vorticity_peak_reference_only_fd2_floor": 0.023651837196907683,
+        "gradient_peak_computed_fd2_vs_reference_fd2_relative_error": 0.0012084171326721411,
+        "vorticity_peak_computed_fd2_vs_reference_fd2_relative_error": 0.0001491974105437538,
+        "streamwise_fd2_mode_symbol_gain": 0.9744953584044327,
+        "streamwise_fd2_mode_attenuation_fraction": 0.025504641595567312,
         "gradient_peak_trigonometric_interpolant": 0.9345289094788011,
         "vorticity_peak_trigonometric_interpolant": 1.0441743413162219,
         "gradient_peak_reference_trigonometric_interpolant": 0.9356642035612762,
@@ -721,6 +768,8 @@
         "vorticity_field_relative_l2_at_centers": 0.00045078705622378276,
         "gradient_fd2_field_relative_l2_at_centers": 0.02437944462378423,
         "vorticity_fd2_field_relative_l2_at_centers": 0.023374405661998256,
+        "gradient_fd2_field_relative_l2_vs_reference_fd2": 0.004921575196633312,
+        "vorticity_fd2_field_relative_l2_vs_reference_fd2": 0.0004263016283255601,
         "gradient_peak_locations": {
           "fd2": {
             "index_xyz": [

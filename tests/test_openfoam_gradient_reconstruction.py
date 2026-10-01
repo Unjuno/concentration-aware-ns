@@ -1,6 +1,7 @@
 import numpy as np
 
 from tools.high_gradient_reference import fields
+from tools.audit_openfoam_gradient_reconstruction import fd2_symbol_gain
 from tools.spectral_derivative import gradient
 
 
@@ -23,3 +24,17 @@ def test_spectral_derivatives_reconstruct_resolved_high_gradient_mms():
     reconstructed_gradient = gradient(velocity)
     np.testing.assert_allclose(reconstructed_gradient, exact_gradient, rtol=0, atol=2e-13)
     np.testing.assert_allclose(_curl(reconstructed_gradient), exact_vorticity, rtol=0, atol=2e-13)
+
+
+def test_centered_fd2_fourier_symbol_matches_exact_single_mode_attenuation():
+    wavenumber, length = 4, 2 * np.pi
+    for n in (16, 32, 64, 128):
+        spacing = length / n
+        x = (np.arange(n) + 0.5) * spacing
+        velocity = np.sin(wavenumber * x)
+        fd2 = (np.roll(velocity, -1) - np.roll(velocity, 1)) / (2 * spacing)
+        exact_derivative = wavenumber * np.cos(wavenumber * x)
+        gain = fd2_symbol_gain(wavenumber, n, length)
+        np.testing.assert_allclose(fd2, gain * exact_derivative, rtol=2e-14, atol=2e-14)
+    assert fd2_symbol_gain(wavenumber, 128, length) > fd2_symbol_gain(wavenumber, 64, length)
+    assert fd2_symbol_gain(wavenumber, 64, length) > fd2_symbol_gain(wavenumber, 32, length)
