@@ -1,9 +1,10 @@
 {
   "method": "L2 orthogonal projection identity for the explicitly chosen P0 piecewise-constant reconstruction: ||U-u||^2 = ||U-P_hu||^2 + ||P_hu-u||^2. Exact cell means use the closed-form Fourier factors; the continuum mean-square norm uses Parseval coefficients.",
+  "levelwise_method": "Exact cell averages of |u|^2 and |grad u|_F^2 are evaluated from finite Fourier-coefficient convolutions and grouped by archived cellLevel. These are integrals of the known reference, not samples of solver gradients.",
   "scope": "Retrospective interpretation audit, not solver-native field semantics. It separates discrete cell-mean mismatch from unresolved within-cell reference variation; it does not identify transfer/flux-correction causality or establish an AMR defect.",
   "source_sha256": {
-    "tools/audit_amr_projection_decomposition.py": "20dc453b3015833590402c8b527bdb8b858ee346d9585c003b1d2a6891544822",
-    "tools/amr_projection_decomposition.py": "be3176033da22d904911119fbf4cf9969da415f95716aa0ee48af1e2af3ad770",
+    "tools/audit_amr_projection_decomposition.py": "cb1213fadebbb00adbf0024d835092104e4b3bb8cc9544d34dcc43b3678f7582",
+    "tools/amr_projection_decomposition.py": "ad047e3ff7e61cd0d66eb0e6abdb1d5e2ac96931283ce9e359c345e4d245348f",
     "tools/audit_uniform_cell_center_quadrature.py": "a37789115997b6a82db37e9e18c28780683256552fe42baa1d76e53769ebec03",
     "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3"
   },
@@ -12,13 +13,27 @@
     {
       "case": "amr-cap5000-t002",
       "cell_count": 4096,
+      "cell_level_source": "unrefined baseline inferred from the frozen checkpoints",
+      "cell_levels": [
+        {
+          "level": 0,
+          "cell_count": 4096,
+          "volume_fraction": 0.9999999999999999,
+          "exact_kinetic_energy_fraction": 0.9999999999999991,
+          "exact_gradient_energy_fraction": 0.9999999999999993,
+          "projection_floor_fraction": 0.9999999999999959,
+          "dof_mismatch_fraction": 1.0
+        }
+      ],
       "archive_sha256": "fd75da715a0a85b58188baa88486bc90d3d124c3eab812ba8e388fa0a3ff87a4",
       "input_sha256": {
         "C": "b61d4cbf19a5e16b965fac06a875cd0027286070db6b92ce139b13580bb77699",
         "U": "3de40780f7f8f97215160d9e73fbf9e808684ccb2ca891c26402c00e96b93f5b",
-        "Vc": "e0dab99fb2398bde6d406be673f14d49c897a39e8c0103a7cb02190a1fca82c9"
+        "Vc": "e0dab99fb2398bde6d406be673f14d49c897a39e8c0103a7cb02190a1fca82c9",
+        "cellLevel": null
       },
       "exact_mean_square_velocity": 0.0012803797589162659,
+      "exact_mean_square_gradient": 0.023378421187801868,
       "cell_average_projection_mean_square": 0.0010084129723075025,
       "mean_dof_mismatch_mean_square": 1.9158037347676738e-05,
       "mean_dof_mismatch_relative_l2": 0.12232243220895626,
@@ -34,13 +49,27 @@
     {
       "case": "uniform-n16-t002",
       "cell_count": 4096,
+      "cell_level_source": "unrefined baseline inferred from the frozen checkpoints",
+      "cell_levels": [
+        {
+          "level": 0,
+          "cell_count": 4096,
+          "volume_fraction": 0.9999999999999999,
+          "exact_kinetic_energy_fraction": 0.9999999999999991,
+          "exact_gradient_energy_fraction": 0.9999999999999993,
+          "projection_floor_fraction": 0.9999999999999959,
+          "dof_mismatch_fraction": 1.0
+        }
+      ],
       "archive_sha256": "047343d022d3714dc953c6f5b6a6f7e1decfb3ec82a03335d5776c4043ab7aea",
       "input_sha256": {
         "C": "b61d4cbf19a5e16b965fac06a875cd0027286070db6b92ce139b13580bb77699",
         "U": "233f71faaf3a59d5314c33a7b6501cc5e61820ed6dff00b65407d45bf6e3942e",
-        "Vc": "e0dab99fb2398bde6d406be673f14d49c897a39e8c0103a7cb02190a1fca82c9"
+        "Vc": "e0dab99fb2398bde6d406be673f14d49c897a39e8c0103a7cb02190a1fca82c9",
+        "cellLevel": null
       },
       "exact_mean_square_velocity": 0.0012803797589162659,
+      "exact_mean_square_gradient": 0.023378421187801868,
       "cell_average_projection_mean_square": 0.0010084129723075025,
       "mean_dof_mismatch_mean_square": 1.915803734767674e-05,
       "mean_dof_mismatch_relative_l2": 0.12232243220895628,
@@ -56,13 +85,36 @@
     {
       "case": "amr-cap5000-t003",
       "cell_count": 16640,
+      "cell_level_source": "archived OpenFOAM cellLevel field",
+      "cell_levels": [
+        {
+          "level": 0,
+          "cell_count": 2304,
+          "volume_fraction": 0.5624999999999999,
+          "exact_kinetic_energy_fraction": 6.20828290496876e-06,
+          "exact_gradient_energy_fraction": 1.9296646843350153e-05,
+          "projection_floor_fraction": 5.303227010422009e-05,
+          "dof_mismatch_fraction": 9.229071719146239e-05
+        },
+        {
+          "level": 1,
+          "cell_count": 14336,
+          "volume_fraction": 0.4374999999999998,
+          "exact_kinetic_energy_fraction": 0.9999937917170929,
+          "exact_gradient_energy_fraction": 0.9999807033531555,
+          "projection_floor_fraction": 0.9999469677298596,
+          "dof_mismatch_fraction": 0.9999077092828085
+        }
+      ],
       "archive_sha256": "fd75da715a0a85b58188baa88486bc90d3d124c3eab812ba8e388fa0a3ff87a4",
       "input_sha256": {
         "C": "7bc76c14809f73845b6acbf9e165dd817e633c00a21d8c821443063d2c5ef23f",
         "U": "9af689b21808ffb3b95a313b558e9d90851495670cbf7ed509b6d99f840109f7",
-        "Vc": "1879964f94df8add1229395fd1d2214e3e247d4e59ad18033cd179a551edc423"
+        "Vc": "1879964f94df8add1229395fd1d2214e3e247d4e59ad18033cd179a551edc423",
+        "cellLevel": "6df026edfb7615a8fc2867a8bb2cda03cbecfb7a15de6d0e63963c4fc023d1ee"
       },
       "exact_mean_square_velocity": 0.0012778215584516315,
+      "exact_mean_square_gradient": 0.023331711071112992,
       "cell_average_projection_mean_square": 0.0012047148699325498,
       "mean_dof_mismatch_mean_square": 0.00019817831294773625,
       "mean_dof_mismatch_relative_l2": 0.393815638474228,
@@ -78,13 +130,27 @@
     {
       "case": "uniform-n16-t003",
       "cell_count": 4096,
+      "cell_level_source": "unrefined baseline inferred from the frozen checkpoints",
+      "cell_levels": [
+        {
+          "level": 0,
+          "cell_count": 4096,
+          "volume_fraction": 0.9999999999999999,
+          "exact_kinetic_energy_fraction": 0.999999999999999,
+          "exact_gradient_energy_fraction": 0.9999999999999993,
+          "projection_floor_fraction": 0.9999999999999978,
+          "dof_mismatch_fraction": 1.0
+        }
+      ],
       "archive_sha256": "047343d022d3714dc953c6f5b6a6f7e1decfb3ec82a03335d5776c4043ab7aea",
       "input_sha256": {
         "C": "40070c86979e2f3cbcdf00e235cb14f99f6582f9841b938e8c78ed31c32bfcda",
         "U": "7255faacfbf826b451e3eca68a9d7e4a898f6ee560a3e0ef8ee74aace17e6269",
-        "Vc": "29081a75b70b7d15c3288ef9b3584dc7d1bf86589b6acb2daa1f6e5502df4fd3"
+        "Vc": "29081a75b70b7d15c3288ef9b3584dc7d1bf86589b6acb2daa1f6e5502df4fd3",
+        "cellLevel": null
       },
       "exact_mean_square_velocity": 0.0012778215584516315,
+      "exact_mean_square_gradient": 0.023331711071112992,
       "cell_average_projection_mean_square": 0.001006398161844954,
       "mean_dof_mismatch_mean_square": 1.9487869005583176e-05,
       "mean_dof_mismatch_relative_l2": 0.12349434481562957,

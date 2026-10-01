@@ -241,6 +241,30 @@ tracked AMR and uniform raw archives directly, checks mesh geometry and
 archive/member hashes, and does not depend on extracted work directories or
 run a solver.
 
+### Where the AMR projection error and MMS gradient energy lie
+
+The same analytic Fourier construction gives the exact cell mean of the
+squared Frobenius norm of the velocity gradient, not just mean velocity energy.
+Grouping exact cell
+integrals by the archived `cellLevel` at t=0.003 shows:
+
+| AMR level | Volume fraction | Exact kinetic-energy fraction | Exact gradient-energy fraction | Projection-floor fraction | DOF-mismatch fraction |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 56.25% | 0.000621% | 0.001930% | 0.005303% | 0.009229% |
+| 1 | 43.75% | 99.999379% | 99.998070% | 99.994697% | 99.990771% |
+
+Thus almost all of this manufactured field's kinetic energy and squared
+gradient lie in the refined cells, which occupy 43.75% of the domain. The
+remaining projection floor and cell-DOF mismatch are also located almost
+entirely there. This is consistent with the mesh being spatially matched to
+the localized envelope, but the frozen sensor itself uses that known analytic
+envelope; it is not a blind test of whether AMR can discover an unknown
+concentration. It identifies where the explicit P0 representation error
+occurs, not a physical phase transition, a singularity, or an implementation
+defect. Exact cell integrals close to the global Parseval norms within the
+recorded floating-point checks. The cellLevel hash and per-level contributions
+are included in the same JSON evidence.
+
 The public Foundation 13 source at tag `20260624` resolves to commit
 [`18870c24d21c6b982e2cdec27b2f59738cca5f90`](https://github.com/OpenFOAM/OpenFOAM-13/tree/18870c24d21c6b982e2cdec27b2f59738cca5f90).
 Its `fvMesh::topoChange` maps volume fields through `fvMeshMapper`; the

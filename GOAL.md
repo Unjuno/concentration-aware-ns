@@ -1611,3 +1611,20 @@ P0 reconstruction and does not prove the solver field semantics or diagnose
 a defect. Details and reproduction are in
 reports/solver-matrix-coverage-2026-09-30.md and
 evidence/tests/amr-p0-projection-decomposition.json.
+
+## Revision 99 — AMR level-wise MMS energy and gradient localization
+
+Extended the exact Fourier cell-integral audit to the squared Frobenius norm
+of the analytic velocity gradient and grouped velocity energy, gradient
+energy, projection floor, and DOF mismatch by archived cellLevel. At t=.003,
+level-1 cells occupy 43.75% of the domain but contain 99.999379% of exact
+kinetic energy, 99.998070% of exact gradient energy, 99.994697% of the P0
+projection floor, and 99.990771% of the cell-DOF mismatch. Level 0 occupies
+56.25% and carries the small complements. Exact per-cell energy integrals
+reconcile with global Parseval totals; independent 32-point domain and
+16-point cell Gauss tests validate the gradient formulas. The AMR sensor was
+defined from the known analytic envelope, so this demonstrates alignment of
+this mesh with this manufactured field, not blind concentration detection or
+a physical transition/solver defect. Hashes and reproduction details are in
+reports/solver-matrix-coverage-2026-09-30.md and
+evidence/tests/amr-p0-projection-decomposition.json.

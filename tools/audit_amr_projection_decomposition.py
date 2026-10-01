@@ -10,6 +10,9 @@ import numpy as np
 from tools.audit_uniform_cell_center_quadrature import exact_cell_average_velocity
 from tools.amr_projection_decomposition import (
     decompose_p0_error,
+    exact_cell_mean_square_velocity,
+    exact_cell_mean_square_gradient,
+    exact_mms_mean_square_gradient,
     exact_mms_mean_square_velocity,
 )
 
@@ -57,10 +60,30 @@ def _parse_volumes(raw, count):
     if values.size != count or not np.isfinite(values).all() or np.any(values <= 0):
         raise ValueError("invalid cell volumes")
     return values
+
+
+def _parse_levels(raw, count):
+    text = raw.decode("ascii")
+    match = re.search(
+        r"internalField\s+nonuniform\s+List<scalar>\s+(\d+)\s*\((.*?)\)\s*;",
+        text, re.S)
+    if not match or int(match[1]) != count:
+        raise ValueError("cell-level field count mismatch")
+    levels = np.fromstring(match[2], sep=" ")
+    if levels.size != count or not np.isfinite(levels).all():
+        raise ValueError("invalid cell levels")
+    rounded = np.rint(levels).astype(int)
+    if not np.array_equal(levels, rounded) or np.any(rounded < 0):
+        raise ValueError("cell levels must be nonnegative integers")
+    return rounded
 def main():
+    evidence_dir = Path("evidence/of13-amr-first-refinement-v1")
     quadrature = json.loads(Path(
         "evidence/of13-amr-first-refinement-v1/cell-center-quadrature-audit.json"
     ).read_text())
+    manifest = json.loads((evidence_dir/"manifest.json").read_text())
+    expected_archives = {item["case"]: item["archive_sha256"]
+                         for item in manifest["cases"]}
     cases = (
         ("amr-cap5000-t002", "amr-cap5000", "0.002", .002),
         ("uniform-n16-t002", "uniform-n16", "0.002", .002),
@@ -69,12 +92,22 @@ def main():
     )
     rows = []
     for name, run, time_name, time in cases:
-        archive_path = Path("evidence/of13-amr-first-refinement-v1")/f"{run}.tar.gz"
+        archive_path = evidence_dir/f"{run}.tar.gz"
         archive_digest = _sha256(archive_path)
+        if archive_digest != expected_archives.get(run):
+            raise ValueError(f"archive hash differs from manifest: {run}")
         with tarfile.open(archive_path) as archive:
             c_raw = _field_bytes(archive, run, time_name, "C")
             u_raw = _field_bytes(archive, run, time_name, "U")
             v_raw = _field_bytes(archive, run, time_name, "Vc")
+            try:
+                level_stream = archive.extractfile(f"{run}/{time_name}/cellLevel")
+            except KeyError:
+                level_stream = None
+            if level_stream is None:
+                level_raw = None
+            else:
+                level_raw = level_stream.read()
         centers = _parse_vectors(c_raw)
         velocity = _parse_vectors(u_raw)
         if len(centers) != len(velocity):
@@ -89,28 +122,73 @@ def main():
         center_index = centers/widths[:, None]-.5
         if not np.allclose(center_index, np.rint(center_index), rtol=0, atol=2e-9):
             raise ValueError(f"cell centers do not match archived AMR hierarchy in {name}")
+        if level_raw is None:
+            levels = np.zeros(len(centers), dtype=int)
+            level_source = "unrefined baseline inferred from the frozen checkpoints"
+        else:
+            levels = _parse_levels(level_raw, len(centers))
+            level_source = "archived OpenFOAM cellLevel field"
         if not np.isclose(volume.sum(), DOMAIN_VOLUME, rtol=2e-12, atol=2e-12):
             raise ValueError(f"domain volume mismatch for {name}")
         average = exact_cell_average_velocity(centers, widths, time)
         exact_sq = exact_mms_mean_square_velocity(time, FREQUENCY)
         projected_sq = float(np.sum(volume*np.sum(average**2, axis=1))/DOMAIN_VOLUME)
         dof_sq = float(np.sum(volume*np.sum((velocity-average)**2, axis=1))/DOMAIN_VOLUME)
+        exact_cell_sq = exact_cell_mean_square_velocity(
+            centers, widths, time, FREQUENCY)
+        exact_gradient_sq = exact_cell_mean_square_gradient(
+            centers, widths, time, FREQUENCY)
+        exact_gradient_global_sq = exact_mms_mean_square_gradient(time, FREQUENCY)
+        if abs(float(np.sum(volume*exact_gradient_sq)/DOMAIN_VOLUME)
+               - exact_gradient_global_sq) > 3e-12*exact_gradient_global_sq:
+            raise ValueError(f"cell gradient-energy integrals fail Parseval check in {name}")
+        variance_cells = exact_cell_sq-np.sum(average**2, axis=1)
+        roundoff_tolerance = 2e-12*np.maximum(exact_cell_sq, exact_sq)
+        if np.any(variance_cells < -roundoff_tolerance):
+            raise ValueError(f"negative within-cell projection variance in {name}")
+        variance_cells = np.maximum(variance_cells, 0)
+        if abs(float(np.sum(volume*exact_cell_sq)/DOMAIN_VOLUME)-exact_sq) > 2e-12*exact_sq:
+            raise ValueError(f"cell energy integrals fail Parseval check in {name}")
         split = decompose_p0_error(exact_sq, projected_sq, dof_sq)
         gauss8 = quadrature["cases"][name][
             "piecewise_constant_volume_l2_by_gauss_order"]["8"]
         agreement = abs(split["p0_total_relative_l2"]-gauss8)
         if agreement > 2e-7:
             raise ValueError(f"orthogonal split disagrees with independent Gauss P0 norm: {name}")
+        level_rows = []
+        for level in np.unique(levels):
+            mask = levels == level
+            level_rows.append({
+                "level": int(level),
+                "cell_count": int(mask.sum()),
+                "volume_fraction": float(volume[mask].sum()/DOMAIN_VOLUME),
+                "exact_kinetic_energy_fraction": float(
+                    np.sum(volume[mask]*exact_cell_sq[mask])/(DOMAIN_VOLUME*exact_sq)),
+                "exact_gradient_energy_fraction": float(
+                    np.sum(volume[mask]*exact_gradient_sq[mask])
+                    /(DOMAIN_VOLUME*exact_gradient_global_sq)),
+                "projection_floor_fraction": float(
+                    np.sum(volume[mask]*variance_cells[mask])
+                    /max(DOMAIN_VOLUME*(exact_sq-projected_sq), 1e-300)),
+                "dof_mismatch_fraction": float(
+                    np.sum(volume[mask]*np.sum((velocity[mask]-average[mask])**2, axis=1))
+                    /max(DOMAIN_VOLUME*dof_sq, 1e-300)),
+            })
         rows.append({
             "case": name,
             "cell_count": int(len(centers)),
+            "cell_level_source": level_source,
+            "cell_levels": level_rows,
             "archive_sha256": archive_digest,
             "input_sha256": {
                 "C": hashlib.sha256(c_raw).hexdigest(),
                 "U": hashlib.sha256(u_raw).hexdigest(),
                 "Vc": hashlib.sha256(v_raw).hexdigest(),
+                "cellLevel": (hashlib.sha256(level_raw).hexdigest()
+                              if level_raw is not None else None),
             },
             "exact_mean_square_velocity": exact_sq,
+            "exact_mean_square_gradient": exact_gradient_global_sq,
             "cell_average_projection_mean_square": projected_sq,
             "mean_dof_mismatch_mean_square": dof_sq,
             **split,
@@ -126,6 +204,12 @@ def main():
             "piecewise-constant reconstruction: ||U-u||^2 = ||U-P_hu||^2 + "
             "||P_hu-u||^2. Exact cell means use the closed-form Fourier factors; "
             "the continuum mean-square norm uses Parseval coefficients."
+        ),
+        "levelwise_method": (
+            "Exact cell averages of |u|^2 and |grad u|_F^2 are evaluated from "
+            "finite Fourier-coefficient convolutions and grouped by archived "
+            "cellLevel. These are integrals of the known reference, not samples "
+            "of solver gradients."
         ),
         "scope": (
             "Retrospective interpretation audit, not solver-native field semantics. "
