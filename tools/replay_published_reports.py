@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 steps = [
-    ('tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests']),
+    ('tests', [sys.executable, '-m', 'pytest', '-q', 'tests']),
     ('global_peaks', [sys.executable, '-m', 'tools.compare_global_peaks']),
     ('peak_decomposition', [sys.executable, '-m', 'tools.decompose_peak_diagnostic']),
     ('spectral_derivatives', [sys.executable, '-m', 'tools.compare_openfoam_spectral']),

@@ -21,6 +21,6 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-verification.txt
       - name: Install verification dependencies
-        run: python -m pip install -r requirements-verification.txt pytest
+        run: python -m pip install -r requirements-verification.txt
       - name: Run Python test suite
         run: python -m pytest -q tests
