@@ -1,5 +1,27 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 178 — independent nanoda check of selected schedule pressure tail
+
+Independently exported and checked the selected-schedule tail-pressure Lean
+extension with the pinned nanoda checker. It checked 64,191 declarations with
+zero typechecker errors; the selected tail-coefficient, pressure-bound, and
+existential rate-capped profile declarations are present. The log also reports
+one pretty-printer limitation (`Unable to print axioms`); Lean's source-side
+axiom audit lists only `propext`, `Classical.choice`, and `Quot.sound` for the
+extension's declarations. The approximately 612 MiB export is retained locally
+with its SHA-256 rather than committed; the checked source, checker image ID,
+logs, hashes, and replay script are tracked in
+`evidence/lean-verification/selected-schedule-tail-nanoda-2026-10-02.json` and
+`runtime/lean-verification/check_selected_schedule_tail_pressure_nanoda.sh`.
+
+This verifies terms under the recorded checker setup; it does not validate the
+upstream mathematical construction's assumptions or physical relevance. The
+rate-capped profile remains existential and is not identified with
+`FinalSlowBase.actualProfile`; the root-pressure premise for that actual choice
+remains unresolved. No full pressure-sign, fluid simulation, particle
+alignment, phase-transition, or molecular-scale conclusion follows. Overall
+goal remains active.
+
 ## Revision 177 — incomplete OpenFOAM rerun container status resolved
 
 Rechecked the preserved Foundation 13 n64/dt=.0005 attempt against its raw
