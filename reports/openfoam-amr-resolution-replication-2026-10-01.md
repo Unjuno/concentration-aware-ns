@@ -23,6 +23,23 @@ specific first-refinement events.
 | n=16 | 4,096 → 16,640 | 0 | 13.7834% | 42.4839% | 41.7955% |
 | n=32 | 32,768 → 118,784 | 0 | 3.4942% | 21.0789% | 20.9906% |
 
+A fixed-first-map-time temporal-step control at `n=32`, `dt=0.0005` was also
+completed. `refineInterval=4` kept the first map at `t=0.002`; the solver-stage
+snapshots are at `t=0.0025`. The solver again selected 12,288 cells and reached
+118,784 cells. Parent injection remains exact and the maximum relative
+parent-volume closure is `9.17e-15`.
+
+| `dt` | Coarse DOF vs exact cell averages | Mapped DOF vs exact cell averages | Mapped point-sample error |
+|---:|---:|---:|---:|
+| 0.001 | 3.494218% | 21.078943% | 20.990564% |
+| 0.0005 | 3.496856% | 21.079361% | 20.990984% |
+
+These small differences compare discrete pre-map histories only. Halving `dt`
+doubles the number of pre-map steps and `refineInterval` is changed to preserve
+the same map time, so this is not a formal temporal order study or an isolated
+one-variable intervention. It adds no temporal accuracy gate and does not
+change the AMR quality verdict.
+
 The n=32 squared child-average DOF error decomposes into `0.001168` inherited
 coarse-solution error plus `0.043264` exact parent-average-to-child-average
 variation; the normalized cross term is `5.11e-18` and the identity residual
@@ -36,6 +53,8 @@ defined as an exact volume average, and it is not a continuous P0 error norm.
 - Run protocol: `protocols/high-gradient-of13-amr-same-run-map-v5-n32.json`
 - Packaging addendum: `protocols/high-gradient-of13-amr-same-run-map-v5-n32-package-a1.json`
 - Evidence: `evidence/of13-amr-same-run-map-v5-n32/`
+- Fixed-map-time time-step control: `protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json`,
+  `evidence/of13-amr-same-run-map-v6-n32-dt0005/`
 - Predictor and analyzer: `tools/predict_amr_grid_candidates.py`,
   `tools/analyze_amr_same_run_map.py`
 - Tests: `tests/test_predict_amr_grid_candidates.py`,

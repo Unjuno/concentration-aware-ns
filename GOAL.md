@@ -2241,6 +2241,21 @@ directory. Targeted tests: 7 passed. Harness provenance remains limited because
 the runner source overlay was dirty at execution and its exact patch hash was
 not captured before launch.
 
+## Revision 129 — n=32 fixed-map-time time-step control
+
+Repeated the n=32 first-refinement capture with `dt=0.0005` and
+`refineInterval=4`, holding the first map at `t=0.002`; later solver snapshots
+are at `t=0.0025`. Foundation 13 again selected the predicted 12,288 cells and
+mapped 32,768 to 118,784. Parent injection remains exact and volume closure is
+`9.17e-15`. At dt=.0005, coarse and mapped exact-cell-average DOF errors are
+3.496856% and 21.079361%, versus 3.494218% and 21.078943% at dt=.001; mapped
+point-sample errors are 20.990984% and 20.990564%. These small differences
+compare discrete histories with a changed step count/refineInterval and do not
+constitute temporal order or accuracy verification. Compact archives retain
+all cell snapshots, inputs and logs, with face data excluded and no
+flux/divergence claims. See the updated AMR-resolution report and
+`evidence/of13-amr-same-run-map-v6-n32-dt0005/`.
+
 ## Revision 127 — reusable analytic cell-average evaluator
 
 Extracted the high-gradient MMS's exact cubical velocity-average formula into

@@ -1,0 +1,98 @@
+{
+  "status": "RUN_COMPLETE_SAME_RUN_MAP_CAPTURED",
+  "source_commit": "ee669788b524164c3a1fc4818ba99caeac9cbd3b",
+  "harness_worktree_porcelain": "?? protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
+  "protocol_sha256": "edd3b0ad238623978bdf9affbf4599056aafad97572c1dc9c69281d5599b0c46",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "docker_cli": "/run/current-system/sw/bin/docker",
+  "docker_cli_resolved": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_context": "orbstack",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "instrumented_module_sha256": "fe9101f9a717efcfec9e627e7296f516f506e7e610a73dd060ef70b480132c60",
+  "instrumented_source_files": {
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "incompressibleFluid.C": "1b33cf0275836bdf8b76dbc585683e0c1d3e067bdfd53e48aa5897ee9f10c149",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011"
+  },
+  "case_input_sha256": {
+    "0/U": "e5b116b465de1249e2f03926b4da720026c326035abfb0be41f9a33239ba9b25",
+    "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+    "constant/dynamicMeshDict": "9e6d12097628609265cf2a5550af07d4bfd14789f4296acf1507d69dca65f17a",
+    "constant/fvModels": "906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+    "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+    "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382",
+    "parameters.json": "12dca5485206896e59945d0ff5f1582b19e8ab7f83ed416ca1f815070c4882a0",
+    "system/blockMeshDict": "76896db1c97f57de841c5ec02cd03bcc1942d749a1e5e5e09cfdecfc1847ab15",
+    "system/controlDict": "d19536b0b4bc058c2b92080f860c3fd52a31a3d5d312a32b70e8cebe23dcf5ca",
+    "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+    "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+  },
+  "exit_code": 0,
+  "end_marker": true,
+  "instrumented_library_load_confirmed": true,
+  "snapshot_events": [
+    "AMR_STAGE_SNAPSHOT stage=preMap time=0.002 cells=32768 internalFaces=95232",
+    "AMR_STAGE_SNAPSHOT stage=mapped time=0.002 cells=118784 internalFaces=352128",
+    "AMR_STAGE_SNAPSHOT stage=afterCorrectPhi time=0.0025 cells=118784 internalFaces=352128",
+    "AMR_STAGE_SNAPSHOT stage=prePressure time=0.0025 cells=118784 internalFaces=352128",
+    "AMR_STAGE_SNAPSHOT stage=postPressure time=0.0025 cells=118784 internalFaces=352128",
+    "AMR_STAGE_SNAPSHOT stage=postSolve time=0.0025 cells=118784 internalFaces=352128"
+  ],
+  "case_directory": "amr-n32-dt0005-cap120000",
+  "stage_times": {
+    "preMap": "0.002",
+    "mapped": "0.002",
+    "afterCorrectPhi": "0.0025",
+    "prePressure": "0.0025",
+    "postPressure": "0.0025",
+    "postSolve": "0.0025"
+  },
+  "snapshot_sha256": {
+    "postProcessing/amrStages/0.002/preMap_cells.csv": "4a6a2d000b3129642b65385057707cb77c89540729185cff07a606d7e6ff85bb",
+    "postProcessing/amrStages/0.002/preMap_faces.csv": "e13df8f738d0264e786b0ecff2f25a3033fda3ec3479aa23f3069422975c22e5",
+    "postProcessing/amrStages/0.002/mapped_cells.csv": "9ac4fcbb75557e2b1fa8c1a73967af655dffe2567e308ed55e5d191393ca9b46",
+    "postProcessing/amrStages/0.002/mapped_faces.csv": "50c33416d256e9f97b3d749942f856b691fb16edfe87b74f6aeb8764fda0f6e2",
+    "postProcessing/amrStages/0.0025/afterCorrectPhi_cells.csv": "9ac4fcbb75557e2b1fa8c1a73967af655dffe2567e308ed55e5d191393ca9b46",
+    "postProcessing/amrStages/0.0025/afterCorrectPhi_faces.csv": "5120b51cddc3e7a05208e1600a887a7aaae9fa1e5bc800950f809dffe0fa900d",
+    "postProcessing/amrStages/0.0025/prePressure_cells.csv": "cf094e887b3352d2fe7dbf59ec9fb3a7b6c8c5cfc4a397f697a7f8f996478f45",
+    "postProcessing/amrStages/0.0025/prePressure_faces.csv": "5120b51cddc3e7a05208e1600a887a7aaae9fa1e5bc800950f809dffe0fa900d",
+    "postProcessing/amrStages/0.0025/postPressure_cells.csv": "9420ba0d5f611c3bed056f1a4eefe1af9fae831ac287558f14bb9b531a44caae",
+    "postProcessing/amrStages/0.0025/postPressure_faces.csv": "b669cb84702b8a9762599209dcd6ef7382c1c77de89f3de6a4807b0df4088e39",
+    "postProcessing/amrStages/0.0025/postSolve_cells.csv": "9420ba0d5f611c3bed056f1a4eefe1af9fae831ac287558f14bb9b531a44caae",
+    "postProcessing/amrStages/0.0025/postSolve_faces.csv": "b669cb84702b8a9762599209dcd6ef7382c1c77de89f3de6a4807b0df4088e39"
+  },
+  "archive": "amr-stage-snapshot-n32-dt0005.tar.gz",
+  "archive_sha256": "9991dd5248b0286309a26484785fb4030b46154f526970a120ea7b9f03a36542",
+  "archive_packaging": {
+    "archive": "amr-stage-snapshot-n32-dt0005.tar.gz",
+    "archive_sha256": "9991dd5248b0286309a26484785fb4030b46154f526970a120ea7b9f03a36542",
+    "excluded_patterns": [
+      "postProcessing/amrStages/*/*_faces.csv",
+      "dynamicCode"
+    ],
+    "excluded_patterns_observed": [
+      "dynamicCode",
+      "postProcessing/amrStages/*/*_faces.csv"
+    ],
+    "status": "PACKAGED_WITH_PROTOCOL_DECLARED_EXCLUSIONS",
+    "raw_case": "work/of13-amr-same-run-map-v6-n32-dt0005/amr-n32-dt0005-cap120000",
+    "full_archive_preserved": "work/of13-amr-same-run-map-v6-n32-dt0005/archive-recovery/amr-stage-snapshot-n32-dt0005-full.tar.gz",
+    "original_full_archive_sha256": "991a34eb29d12d4047564e0d2566d777242986f16d62fe6fbc02955631346662",
+    "excluded_reason": "Cell-stage mapping evidence is sufficient for this protocol; no face-flux/divergence claim is made.",
+    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005-package-a1.json",
+    "packaging_addendum_sha256": "2e6c80c4264a75993eaec1548a9fb5e0ca25fd3f7d0088f398a66c6448ee632c"
+  },
+  "solver_log_sha256": "86715b6da5ba29e8925cbf2aa8e99ec06b3e9c905aa2b28cf4d44deb7c8113f0",
+  "limitations": [
+    "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
+    "A single n=32 event supplements but does not establish an AMR convergence study or general guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time matches the prior n=16 first-refinement diagnostic and is therefore exploratory, not blinded or preregistered before all prior observations.",
+    "This is a fixed-first-map-time temporal-step control, not a formal temporal convergence order study; halving delta_t doubles the pre-map steps and refineInterval is adjusted to preserve the adaptation time."
+  ],
+  "protocol_content_reconstructed_from_generator_and_hash_verified": true,
+  "protocol_copy_in_evidence": "evidence/of13-amr-same-run-map-v6-n32-dt0005/protocol-as-run.json"
+}

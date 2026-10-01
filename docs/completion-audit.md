@@ -963,3 +963,10 @@ checker verifies the v4 archive hash and same-run preMap/mapped comparison.
 These are an analytical model check and a single-event mapping-mechanism
 diagnostic, not a new broad solver-quality verdict or an upstream defect
 finding. No new issue or PR was submitted for either result.
+
+The n=32 AMR same-run experiment was replicated at `dt=0.0005`, preserving the
+first-map time with `refineInterval=4`. The selected count and mapped topology
+match the n=32 `dt=.001` case; the DOF metrics change only slightly. This is a
+fixed-first-map-time exploratory control with a changed pre-map step count and
+adaptation interval, not a temporal order study. AMR quality remains
+UNCERTAIN; see the dated AMR-resolution report.
