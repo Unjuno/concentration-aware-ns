@@ -1522,3 +1522,19 @@ these statements concern different error definitions. The installed U-field
 semantics and post-remap solver-step effects remain unresolved; no upstream
 defect verdict follows. Keep AMR quality `UNCERTAIN` and make the norm meaning
 explicit. The AMR audit JSON and coverage report contain all comparisons.
+
+## Revision 94 — SU2 sampled-field semantics pinned to solver source
+
+Checked the frozen SU2 v8.5.0 cases against their archived configs and the
+matching local source checkout (`7478e9d684537fbb123a5e170eb7956d51b54ca6`).
+The reported velocity L2 is explicitly a discrete norm on unique periodic
+vertices; finite-difference/spectral derivative metrics are grid diagnostics.
+The cases use FDS with MUSCL edge reconstruction, no slope limiter, and
+Green–Gauss gradients. Source inspection shows separate reconstruction
+gradients for convective edge states and primitive gradients supplied to the
+viscous residual, so the nodal output does not define a unique canonical
+continuous postprocessing field. An FV cell-average interpretation would be
+unsupported. Existing measured results and UNCERTAIN gates are unchanged; no
+solver defect or continuous-extremum claim follows. Details are recorded in
+`reports/su2-study-v1-interim.md`. The multi-solver research goal remains
+active and UNCERTAIN.

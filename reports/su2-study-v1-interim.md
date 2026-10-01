@@ -98,6 +98,36 @@ Reproduce with `python3 -m tools.compare_su2_time`. The JSON evidence includes
 archive hashes, convergence counts and both differences in
 `evidence/tests/su2-time-comparison.json`.
 
+## Interpretation check: SU2 sample and reconstruction semantics
+
+The frozen velocity relative-L2 metric is a discrete norm over the unique
+periodic vertices of the archived SU2 restart field. `tools/analyze_su2.py`
+checks the Cartesian vertex coordinates, removes duplicate periodic endpoints,
+and compares those saved nodal values directly with the manufactured reference
+at the same coordinates. It is not a cell-average error norm. The finite
+difference and spectral derivative metrics are likewise grid diagnostics; they
+do not bound extrema between vertices.
+
+For the pinned SU2 source checkout `7478e9d684537fbb123a5e170eb7956d51b54ca6`
+(v8.5.0), the archived cases use `INC_NAVIER_STOKES`, `CONV_NUM_METHOD_FLOW=FDS`,
+`MUSCL_FLOW=YES`, `SLOPE_LIMITER_FLOW=NONE`, and `NUM_METHOD_GRAD=GREEN_GAUSS`.
+The source constructs MUSCL edge states from nodal primitive values plus
+reconstruction gradients for the convective residual. The incompressible
+Navier–Stokes preprocessing separately computes primitive gradients used by the
+viscous residual. Thus these settings do not define one canonical continuous
+velocity reconstruction for postprocessing, and treating the archived values
+as OpenFOAM-style finite-volume cell averages would be unjustified. No new
+continuous-field metric or defect finding is assigned here; existing sampled
+results and UNCERTAIN gates are unchanged.
+
+Source locations inspected: `SU2_CFD/src/solvers/CIncEulerSolver.cpp`
+(`Preprocessing` and MUSCL edge reconstruction),
+`SU2_CFD/src/solvers/CIncNSSolver.cpp` (primitive-gradient preprocessing), and
+`SU2_CFD/include/solvers/CFVMFlowSolverBase.inl` (Green–Gauss primitive
+gradient and viscous residual inputs). Source commit identity is recorded with
+the local checkout; archived per-case configs and vertex outputs remain the
+run-specific evidence.
+
 ## Evidence-linked gates for every frozen case
 
 `python3 -m tools.build_su2_report` writes all five schema-2 gate/verdict pairs.
