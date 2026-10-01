@@ -48,3 +48,37 @@ needed. This distinction does not show that the chosen amplitude is small.
 ## Related run-state correction
 
 The current OpenFOAM six-case matrix remains complete according to `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`. The historic n64, `dt=0.0005` partial attempt is superseded by its archived 100/100-step completed rerun. No matrix verdict changes.
+
+## 2026-10-02 pinned-field audit
+
+The three upstream files used to trace the selection were re-hashed in the
+isolated checker source. Their SHA-256 values exactly match the archived
+2026-09-28 source inventory:
+
+| Source | SHA-256 |
+|---|---|
+| `PreparedOutgoing.lean` | `b17ae08fd3e31ae75821d47fe801901a226d7ebe8f2fff8f442fc8751ad1a069` |
+| `NominalConeAssembly.lean` | `ad0f8947723416c950c1e3cbb82bac8c83b03ef25fa5aba495a3e29508b14cb5` |
+| `FinalSlowBase.lean` | `d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314` |
+
+The schema distinction is concrete. `PreparedOutgoing.PreparedProfile` stores
+`amplitude_lower : 2 ≤ profile.data.core.P`. `FinalSlowBase.ProfileData`
+instead stores an `OutgoingProfile.Profile`, nominal witness, cone
+certificate, modulation loop, modulation witness and full-cone proof. The
+nominal witness retains an `AxisStage`, whose preparation includes analytic
+coefficient inputs and a large-scale entrance-existence condition, but it does
+not retain the prepared-profile object or its amplitude proof. The certificate
+is a proposition about cone regions. The current fixed `actualProfile` is
+chosen from `Nonempty ProfileData`.
+
+This shows why the existing existential proof cannot simply be projected onto
+`actualProfile`; it does not establish that the threshold is mathematically
+false or impossible to recover. Two legitimate proof routes remain: derive
+`P ≥ 9/40` (or the exact pressure-moment condition) from the retained
+`ProfileData` fields, including the all-large-scale entrance property; or
+change the local construction path to carry `PreparedProfile` through final
+selection and then recheck every theorem depending on that selection. The
+already checked alternate `ConcentrationAwareQualifiedProfile.profileData`
+only proves the second route for a separate selection and is not evidence
+about `FinalSlowBase.actualProfile`. No counterexample, full periodic-flow
+pressure conclusion, or molecular/constitutive consequence is established.

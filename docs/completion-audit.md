@@ -878,6 +878,21 @@ The source-backed dataflow and limits are described in
 the evidence identifies a missing transfer theorem/data field in our extension,
 not a defect or false claim in their repository.
 
+### 2026-10-02 source-schema follow-up
+
+Rehashed `PreparedOutgoing.lean`, `NominalConeAssembly.lean` and
+`FinalSlowBase.lean` in the isolated pinned source; all three match the
+2026-09-28 dataflow inventory exactly. The constructor path confirms that
+`PreparedProfile.amplitude_lower` is projected away before
+`FinalSlowBase.ProfileData` is formed. Its retained `AxisPreparation` includes
+analytic inputs and an all-sufficiently-large-scale entrance-existence
+property, so deriving the amplitude/moment threshold from every retained field
+remains a possible but unproved route. The alternate pressure-qualified
+selection still does not identify with `actualProfile`. No counterexample or
+new conclusion about the fixed candidate was obtained, and no upstream defect
+or physical consequence is inferred. Details and hashes are in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`.
+
 The concurrent OpenFOAM run-status correction was checked against
 `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`: the six-case
 uniform-grid matrix is complete. Its historical n64/dt=0.0005 partial attempt
