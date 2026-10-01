@@ -1369,3 +1369,16 @@ positive exponent lower bound must be certified externally; neither has been
 numerically extracted for the selected OpenAI coefficients. This makes no new
 solver, blow-up, particle, or viscosity claim and does not change the overall
 research goal or its three-project gates.
+
+## Revision 83 — general incompressible tracer-density invariant
+
+Added an analytic scope note deriving volume preservation from the flow-map
+variational equation and Liouville's determinant identity. For smooth
+incompressible passive-tracer transport, density values, all defined Lp norms,
+and differential entropy are preserved, even while covariance and
+geometry-selected event probabilities may change. The note distinguishes
+infinitesimal orientation, absolute position distributions, finite-particle
+models, and constitutive viscosity. It supplies a direct countercheck to
+interpreting local directional alignment as generic positional certainty or
+viscosity loss. The result is conditional on smooth flow and does not assert a
+continuation through a singular time.

@@ -1,0 +1,23 @@
+{
+  "scope": "Symbolic algebra for Liouville's determinant identity and a diagonal affine Gaussian example; smooth-flow and change-of-variables theorems are analytic assumptions, not established by this script.",
+  "sympy": "1.14.0",
+  "source_sha256": "e7b7bc249d49b20eaa09d3cdd934115aed142dd295cec1c4840c12f8286e4a13",
+  "identities": {
+    "flow_gradient_equation": "dF/dt = (D_x u)(t,X) F",
+    "determinant_evolution": "d(det F)/dt = tr(D_x u)(t,X) det F",
+    "density_transport": "rho_t(x)=rho_0(X_t^{-1}(x)) when div u=0 and X_t is a diffeomorphism",
+    "affine_gaussian_covariance": [
+      "sigma^2*lambda_1^2",
+      "sigma^2*lambda_2^2",
+      "sigma^2*lambda_3^2"
+    ],
+    "condition_for_volume_preserving_diagonal_map": "lambda_1*lambda_2*lambda_3=1"
+  },
+  "liouville_residual": "0",
+  "controls": {
+    "generic_liouville_identity": true,
+    "unit_determinant_peak_density_invariant": true,
+    "unit_determinant_covariance_volume_invariant": true
+  },
+  "success": true
+}
