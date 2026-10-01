@@ -32,3 +32,9 @@
 'ConcentrationAwareSelectedScheduleTail.exists_rate_capped_prepared_profile' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.exists_rate_capped_profile_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAwareSelectedScheduleTail.rate_capped_profile_data_tail_pressure_small' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

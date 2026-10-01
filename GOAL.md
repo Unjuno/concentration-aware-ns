@@ -24,6 +24,14 @@ the provenance limitation is in
 `reports/actual-profile-pressure-provenance-2026-10-01.md`. Overall goal
 remains active.
 
+Follow-up: the rate-capped prepared profile now also passes through the
+pinned `NominalConeAssembly.exists_certificate` and
+`ModulatedProfileAssembly.exists_of_certificate` constructors. Lean proves
+existence of a full `FinalSlowBase.ProfileData` record whose `outgoing` field
+is exactly that capped prepared profile, so the tail estimate survives the
+later nominal/modulation stages. This remains existential and does not
+identify `FinalSlowBase.actualProfile`, whose classical choice is separate.
+
 ## Revision 164 — conditional tail bound normalized by core amplitude squared
 
 Proved the exact `clockWeight(flattenEnd)` formula from the pinned outgoing

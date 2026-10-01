@@ -3,6 +3,7 @@ import NavierStokes.FuturePressureBounds
 import NavierStokes.OutgoingPulseBounds
 import NavierStokes.OutgoingCone
 import NavierStokes.PreparedOutgoing
+import NavierStokes.FinalSlowBase
 
 /-!
 # The zero-exponent tail of the selected schedule
@@ -389,6 +390,40 @@ theorem rate_capped_prepared_tail_pressure_small
   tail_pressure_lower_bound_small d.prepared.profile.data
     d.wait_identity d.lambda_cap
 
+/-- A rate-capped prepared profile can be carried through the pinned nominal
+    cone and finite-modulation constructions into the full source ProfileData
+    record, while retaining an equality back to the prepared outgoing profile. -/
+structure RateCappedProfileData where
+  capped : RateCappedPreparedProfile
+  data : FinalSlowBase.ProfileData
+  outgoing_eq : data.outgoing = capped.prepared.profile
+
+/-- The capped selector is compatible with all later pinned constructions;
+    the resulting existential record still does not identify
+    `FinalSlowBase.actualProfile`, which is selected independently below. -/
+theorem exists_rate_capped_profile_data : Nonempty RateCappedProfileData := by
+  classical
+  obtain ⟨capped⟩ := exists_rate_capped_prepared_profile
+  obtain ⟨nominal, hnominal⟩ :=
+    NominalConeAssembly.exists_certificate capped.prepared
+  obtain ⟨loop, modulation, hcone⟩ :=
+    ModulatedProfileAssembly.exists_of_certificate nominal hnominal
+  let data : FinalSlowBase.ProfileData := {
+    outgoing := capped.prepared.profile
+    nominal := nominal
+    certificate := hnominal
+    loop := loop
+    modulation := modulation
+    fullTrueCone := hcone }
+  exact ⟨⟨capped, data, rfl⟩⟩
+
+theorem rate_capped_profile_data_tail_pressure_small
+    (d : RateCappedProfileData) :
+    -(d.data.outgoing.data.core.P ^ 2 / 100) ≤
+      tailPressureContribution d.data.outgoing.data := by
+  rw [d.outgoing_eq]
+  exact rate_capped_prepared_tail_pressure_small d.capped
+
 #print axioms tail_integrand_constant
 #print axioms tail_pressure_independent_of_eta
 #print axioms tail_pressure_lower_bound
@@ -401,5 +436,7 @@ theorem rate_capped_prepared_tail_pressure_small
 #print axioms tail_pressure_lower_bound_small
 #print axioms rate_capped_prepared_tail_pressure_small
 #print axioms exists_rate_capped_prepared_profile
+#print axioms exists_rate_capped_profile_data
+#print axioms rate_capped_profile_data_tail_pressure_small
 
 end ConcentrationAwareSelectedScheduleTail

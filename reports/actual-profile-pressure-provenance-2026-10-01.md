@@ -241,6 +241,18 @@ solver-validity or physical/molecular conclusions. The exact replay and
 source hashes are in
 `evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.json`.
 
+The capped prepared profile has also been carried through the pinned
+`NominalConeAssembly.exists_certificate` and
+`ModulatedProfileAssembly.exists_of_certificate` results. The added
+`RateCappedProfileData` existential record retains an exact equality between
+its `outgoing` field and the capped prepared profile, and Lean derives the
+same `-P^2/100` tail bound for that full record. This verifies compatibility
+with those later constructions, but does not change which record is selected
+by `FinalSlowBase.actualProfile`: that definition still applies
+`Classical.choice` to the source's ordinary `profileData_nonempty` theorem.
+No equality between that choice and the new capped witness, nor a universal
+bound for all `ProfileData`, has been proved.
+
 Pinned-source hashes for the identities used here:
 
 | Source | SHA-256 |
