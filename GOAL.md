@@ -2021,3 +2021,15 @@ molecular alignment, deterministic particle positions, phase transition, or
 viscosity-change claims. The nonlinear comparison and non-effective tube and
 Hessian constants remain open, as do the full solver benchmark and upstream
 issue review conditions.
+
+## Revision 120 — no uniform rate from atomless direction laws
+
+The finite-packet exceptional-band argument gives qualitative convergence for a
+fixed direction law with no exactly transverse atom, but no quantitative rate
+without further anti-concentration assumptions. An explicit atomless law with
+density `1/[c*(log(e/c))^2]` has tail
+`lambda{c<Q^(1/2)}=1/[1+(1/2)log(1/Q)]`, which vanishes more slowly than every
+positive power of Q. This does not refute the probability-one limit; it bounds
+what can be claimed from the present assumption. The derivation and limitations
+are recorded in `docs/axis-packet-bound.md` and
+`evidence/tests/packet-angle-law-rate.json`.

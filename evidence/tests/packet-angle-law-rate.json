@@ -1,0 +1,19 @@
+{
+  "status": "ANALYTIC",
+  "purpose": "Show that the fixed atomless direction-law assumption yields qualitative but not universal algebraic convergence of the shrinking exceptional-band probability.",
+  "observable": "c = |omega_3| in (0,1] for an unoriented unit direction",
+  "density_with_respect_to_dc": "f(c) = 1 / (c * (log(e/c))^2)",
+  "normalization": "With u=log(e/c), integral_0^1 f(c) dc = integral_1^infinity u^(-2) du = 1.",
+  "transverse_atom": 0,
+  "exceptional_band_tail": "lambda{c < epsilon} = 1 / log(e/epsilon), for 0 < epsilon <= 1",
+  "packet_threshold": "epsilon = Q^(1/2)",
+  "exceptional_probability": "1 / (1 + (1/2)*log(1/Q))",
+  "asymptotic": "~ 2/log(1/Q) as Q -> 0",
+  "no_power_rate": "For every eta>0, [1/(1+(1/2)log(1/Q))]/Q^eta -> infinity as Q -> 0.",
+  "interpretation": "Under only a fixed direction law with zero mass on exactly transverse directions, the packet argument can give exceptional probability tending to zero, but no universal O(Q^eta) rate. A quantitative rate needs an explicit anti-concentration bound on the law.",
+  "limitations": [
+    "This is a constructed mathematical direction law, not a measured physical ensemble.",
+    "It does not invalidate qualitative convergence to probability one under the packet hypotheses.",
+    "It does not validate the Navier-Stokes tube/Hessian bounds or the classical nonlinear packet comparison."
+  ]
+}

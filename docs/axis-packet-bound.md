@@ -313,3 +313,31 @@ band, once `c=|cos(theta0)|` and its measurability are supplied. It does not
 formalize a sphere/projective-sphere model or verify the pushforward direction
 law in the packet argument. The exact Lean output and source hash are recorded
 in `evidence/lean-verification/finite-packet-probability-2026-10-01.json`.
+
+#### The no-transverse-atom assumption gives no rate
+
+The conclusion above is qualitative for an arbitrary fixed direction law. It
+does not give a power-law rate for the endpoint-cone probability. To see why,
+choose an unoriented direction law by drawing its axial magnitude `c` on
+`(0,1]` with density
+
+```
+f(c) = 1 / (c * (log(e/c))^2),
+```
+
+and then choosing the azimuth uniformly. This is a probability density because
+`integral_0^1 f(c) dc = 1`; its exactly transverse set has zero mass, but its
+mass in the excluded band is
+
+```
+lambda{c < Q^(1/2)} = 1 / (1 + (1/2)*log(1/Q)).
+```
+
+This tends to zero only logarithmically. For every fixed `eta>0`, its ratio to
+`Q^eta` diverges as `Q -> 0`. Thus the current assumptions prove that the
+endpoint-cone probability tends to one, conditional on the same packet bounds,
+but they cannot support any universal algebraic convergence rate. Such a rate
+would require a quantitative anti-concentration condition on the direction
+law, for example `lambda{c<epsilon} <= L*epsilon^beta` for specified `L,beta>0`.
+The construction and exact tail are recorded in
+`evidence/tests/packet-angle-law-rate.json`.
