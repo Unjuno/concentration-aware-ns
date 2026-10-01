@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 168 — current OpenFOAM matrix independently rechecked
+
+Re-ran `PYTHONPATH=. python3 tools/verify_openfoam_high_gradient_matrix.py`
+and `PYTHONPATH=. python3 tools/compare_high_gradient_temporal.py` against the
+current archives. The six-case matrix integrity check passes; all declared
+steps, converged-step counts, endpoint fields, and hashes match. The n=64
+fixed-grid temporal endpoint-difference order is 0.4985896, while exact
+velocity-error orders are -0.00103 and -0.00193; this descriptive trend is
+not a temporal error certificate. The frozen concern remains `NOT_OBSERVED`,
+AMR quality remains `UNCERTAIN`, and no solver defect or physical singularity
+is inferred. The archived 36-step attempt is superseded by the complete
+100-step case and remains separately preserved. PR #4 local tests and hosted
+CI statuses are recorded in revision 167; hosted CI is checked independently.
+Overall goal remains active.
+
 ## Revision 167 — full local suite passes at current PR head
 
 Because GitHub Actions run `36926321769` remained queued with no runner, ran
