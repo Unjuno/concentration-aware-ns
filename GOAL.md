@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 148 — nullspace limit added to the gate successor issue
+
+Read back the new comment on the existing benchmark issue #5:
+https://github.com/Unjuno/concentration-aware-ns/issues/5#issuecomment-5936795793
+It records the divergence-free smooth cell-local sequence, the exact-average
+and face-trace invariances, the small-uniform-velocity/large-gradient scaling,
+and the restriction that this is neither the archived solver field nor a
+same-forcing solution. The recommendation is to require regularity/unresolved
+mode assumptions for any actual-field continuous bound, or scope certificates
+to named reconstructions. This extends internal acceptance planning; it does
+not report an OpenFOAM defect or alter frozen verdicts. Goal remains active.
+
 ## Revision 147 — derivative observation limit strengthened and replayable
 
 Replaced the arbitrary-amplitude smooth null perturbation with an explicit
