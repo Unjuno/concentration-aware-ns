@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "063497f86d80bbda63d710a927ebb6129c2133743d71602cf0d5e3ceb9b47f9b"
+      "log_sha256": "3996526fcd0395ed545459f8ebc4504b69420db44c5cfe856c9eeb80719845e1"
     },
     {
       "step": "global_peaks",
@@ -485,6 +485,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/support_hole_tube_geometry.log",
       "log_sha256": "3c5867d0747b5aa624579e312623f89a162f5de8c192d33c59eb0da2f36a1eb9"
+    },
+    {
+      "step": "linearized_axis_tube_concentration",
+      "command": [
+        "/private/tmp/cans-verify-20261001/bin/python",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/linearized_axis_tube_concentration.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
     },
     {
       "step": "openfoam_iteration_archives",

@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 128 — axis-set concentration separated from position certainty
+
+Extended the exact linearized Gaussian calculation along the candidate axis
+trajectory. Under the volume-preserving singular values
+(Q^(C/2), Q^(C/2), Q^(-C)), the probability within any fixed-radius tube
+around the *infinite* axis tends to one, while probability in a finite cylinder
+of fixed radius and axial length is asymptotic to
+sqrt(2/pi)*(L/sigma)*Q^C and tends to zero. This refines the earlier
+fixed-ball result: transverse set concentration can be real in the linearized
+model even while bounded 3D position certainty decreases. Exact formulas and
+scope limits are in docs/linearized-axis-tube-concentration.md; SymPy
+identities, assumptions, and source hash are in
+evidence/tests/alignment-uncertainty.json. It remains a Gaussian pushforward
+through the variational map, not a nonlinear finite-packet, molecular,
+phase-transition, or viscosity result. No solver verdict or upstream report
+changes.
+
 Build a reproducible Concentration-Aware Navier–Stokes Verification Benchmark.
 Treat the supplied proposal as hypotheses. Verify primary sources, repository
 revisions, licenses and execution environments before interpreting experiments.

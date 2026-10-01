@@ -23,6 +23,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 - [Flat-but-active analytic-forcing bridge to the OpenAI construction](reports/openai-analytic-forcing-bridge-2026-10-01.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
+- [Axis-tube concentration versus bounded-position probability](docs/linearized-axis-tube-concentration.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
 - [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
 - [Burgers vortex: alignment with nonzero viscous balance](docs/burgers-vortex-alignment-viscous-balance.md)

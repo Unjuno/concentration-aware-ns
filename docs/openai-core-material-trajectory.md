@@ -145,7 +145,13 @@ The exact covariance and bound are reproduced by
 `work/reference-check-env/bin/python -m tools.check_alignment_uncertainty` and
 archived in `evidence/tests/alignment-uncertainty.json`. This remains an exact
 Gaussian calculation for the linearized flow, not a finite-size theorem for
-the nonlinear assembled PDE or a molecular model. The nonlinear comparison
+the nonlinear assembled PDE or a molecular model. In this model the Gaussian
+mass within a fixed-radius tube around the infinite axis tends to one, while
+the mass in every fixed finite cylinder tends to zero like Q^C. Transverse
+set concentration and bounded three-dimensional position certainty are
+different claims. See
+[linearized-axis-tube-concentration.md](linearized-axis-tube-concentration.md)
+and its symbolic replay. The nonlinear comparison
 currently certifies only sufficiently fast shrinking initial packets under
 non-effective constants; see [the packet bound](axis-packet-bound.md).
 

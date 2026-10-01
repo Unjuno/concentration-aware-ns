@@ -879,3 +879,27 @@ values as an unaliased reference. Five focused Arb tests and the full suite
 pass (167 passed, 1 skipped, 5 subtests passed); the n=16/32/64 archived bound
 values are unchanged. This expands helper robustness, not the solver-field
 certificate or physical interpretation.
+
+### 2026-10-01 linearized axis-tube probability refinement
+
+The exact Gaussian pushforward under the selected axis variational map now
+also distinguishes set-relative concentration from bounded-position certainty.
+For transverse variance sigma^2 Q^C, mass within any fixed-radius tube around
+the infinite axis tends to one. The axial standard deviation grows as
+sigma Q^-C; for a fixed finite cylinder of radius R and half-length L, the
+probability is asymptotic to sqrt(2/pi)(L/sigma)Q^C and tends to zero. SymPy
+1.14.0 verifies the closed forms and limits. The statement remains conditional
+on the linearized Gaussian model and does not establish a nonlinear
+finite-packet flow, molecule arrangement, phase transition, viscosity change,
+or solver defect. See
+docs/linearized-axis-tube-concentration.md and
+evidence/tests/alignment-uncertainty.json.
+
+### 2026-10-01 analytical replay refresh
+
+Added the axis-tube probability checker to the published-evidence replay. The
+current one-command replay completed 35/35 steps; its full test step reports
+168 passed, 1 skipped, and 5 subtests passed. The checker records the exact
+finite-cylinder formula and its Q^C asymptotic coefficient. The result is a
+conditional analytical model check, not a new solver run or upstream software
+finding; no issue or PR was submitted to a solver project.

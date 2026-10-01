@@ -39,6 +39,7 @@ steps = [
     ('high_gradient_mms', [sys.executable, '-m', 'tools.check_high_gradient_mms']),
     ('high_gradient_reference', [sys.executable, '-m', 'tools.check_high_gradient_reference']),
     ('support_hole_tube_geometry', [sys.executable, '-m', 'tools.check_support_hole_tube_geometry']),
+    ('linearized_axis_tube_concentration', [sys.executable, '-m', 'tools.check_alignment_uncertainty']),
     ('openfoam_iteration_archives', [sys.executable, '-m', 'tools.replay_openfoam_iteration_archives']),
     ('openfoam_pressure_pilot', [sys.executable, '-m', 'tools.replay_openfoam_pressure_pilot']),
     ('openfoam_solenoidal_startup', [sys.executable, '-m', 'tools.check_openfoam_solenoidal_control']),
