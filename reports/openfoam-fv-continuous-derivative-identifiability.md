@@ -15,20 +15,35 @@ does not assume that `U` stores exact cell averages.
 
 There is a stronger limit than finite point sampling. Suppose, solely for this
 argument, that every archived value were an exact cell average on a finite
-mesh. Choose a smooth vector potential compactly supported in a ball strictly
-inside one cell, and let `w` be its curl. Choose the potential so that the
-curl is nonzero. Then `w` is smooth, divergence-free, zero near every cell
-face, and has zero integral over every cell (each component is a derivative
-of a compactly supported function). Consequently adding `A*w` for any real
-amplitude `A` preserves every cell average and all face values, while its
-continuous gradient maximum grows like `|A|`.
+mesh. Choose a smooth cutoff `chi` supported in a ball strictly inside one
+cell and not identically zero. For positive integer `k`, use the vector
+potential
+
+    A_k = (0, 0, k^(-3/2) chi(x,y,z) sin(k*y))
+
+and define `w_k = curl(A_k)`. Every `w_k` is smooth, divergence-free, zero
+near every cell face, and has zero integral in every cell (each component is
+a derivative of a compactly supported function). Its components are
+
+    w_k = (k^(-3/2) chi_y sin(k*y) + k^(-1/2) chi cos(k*y),
+           -k^(-3/2) chi_x sin(k*y), 0).
+
+The mixed derivatives cancel in `div(w_k)=0`. Direct bounds give
+`||w_k||_infinity = O(k^(-1/2))`, while `d_y(w_k)_x` contains the leading
+term `-k^(1/2) chi sin(k*y)`, so `||grad(w_k)||_infinity` grows as
+`Theta(k^(1/2))`. Thus the velocity perturbation tends uniformly to zero even
+as its continuous gradient becomes unbounded. Adding any `w_k` preserves
+every exact cell average and every face value; adding `A*w_k` for fixed `k`
+also permits arbitrary gradient size by increasing `A`.
 
 Thus even exact finite-volume averages, without additional regularity or a
 specified within-cell reconstruction, do not give a finite universal upper
-bound on the continuous gradient maximum. This is an information limit; it is
-not evidence that the solver produced the hidden field, that the field solves
-the benchmark PDE with the same forcing, or that a physical fluid contains
-aligned particles. The existing periodic nullspace example in
+bound on the continuous gradient maximum. The sequence also shows that this
+derivative functional is not continuous with respect to even uniform velocity
+error on the finite-volume observation class. This is an information limit;
+it is not evidence that the solver produced the hidden field, that the field
+solves the benchmark PDE with the same forcing, or that a physical fluid
+contains aligned particles. The existing periodic nullspace example in
 `reports/sampling-observation-limit.md` separately demonstrates the same
 sampling issue for nodal, cell-center, and cell-average observations on a
 specified family of uniform grids.
@@ -54,3 +69,8 @@ The current trigonometric certificate remains valid for its explicitly named
 interpolant. It does not certify the unknown within-cell OpenFOAM field. Frozen
 solver verdicts are unchanged, and the continuous finite-volume-field question
 remains open under issue #5.
+
+The explicit curl, divergence and leading-gradient identities are checked by
+SymPy with `python -m tools.check_fv_derivative_nullspace`; the machine-readable
+scope and output are in `evidence/tests/fv-derivative-nullspace.json`, with a
+regression test in `tests/test_fv_derivative_nullspace.py`.

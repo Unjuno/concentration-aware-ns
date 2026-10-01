@@ -119,12 +119,18 @@ directly accessible, so its coverage remains explicitly incomplete.
 
 The archived Foundation 13 `volVectorField U` values are discrete DOFs; they do
 not define a unique within-cell continuous field. Even if one assumes exact
-cell averages, smooth zero-average perturbations supported inside cells can
-leave all DOFs unchanged while making the continuous gradient arbitrarily
-large. See [finite-volume derivative identifiability](../reports/openfoam-fv-continuous-derivative-identifiability.md).
+cell averages, smooth divergence-free perturbations supported inside cells
+can leave all DOFs unchanged; an explicit sequence even tends to zero in
+uniform velocity norm while its continuous gradient grows without bound. See
+[finite-volume derivative identifiability](../reports/openfoam-fv-continuous-derivative-identifiability.md).
 This information limit is not evidence of an OpenFOAM defect or molecular
 alignment. Issue #5 remains open for any claim about the actual finite-volume
 field.
+The curl/divergence identity and high-frequency gradient term now have a
+SymPy replay and regression test (`tools/check_fv_derivative_nullspace.py`,
+`tests/test_fv_derivative_nullspace.py`); the sequence makes its velocity
+perturbation vanish uniformly while its continuous gradient grows. This is
+conditional analysis of the observation class, not a same-forcing solution.
 
 ### Analytic result refreshed 2026-09-30
 

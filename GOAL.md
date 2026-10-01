@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 147 — derivative observation limit strengthened and replayable
+
+Replaced the arbitrary-amplitude smooth null perturbation with an explicit
+high-frequency divergence-free sequence supported inside one finite-volume
+cell. With `A_k=(0,0,k^(-3/2) chi sin(k*y))` and `w_k=curl(A_k)`, each perturbation
+has zero cell average and zero face trace; `||w_k||_infinity=O(k^(-1/2))` while
+`||grad(w_k)||_infinity=Theta(k^(1/2))` under the stated nonzero smooth cutoff
+assumption. Thus the derivative is not continuous in even uniform velocity
+error over the observation class. This still does not show an OpenFOAM output
+contains the perturbation or that it obeys the same forced PDE. Added symbolic
+replay `tools/check_fv_derivative_nullspace.py`, JSON output, and a regression
+test. SymPy identities and the focused test pass; the full suite reports 188
+passed, 1 skipped, 5 subtests. Existing frozen solver verdicts and upstream
+disposition are unchanged. Goal remains active.
+
 ## Revision 146 — evidence-bundle commit also replays from tracked export
 
 Ran a second tracked-only clean export on the evidence-bundle commit
