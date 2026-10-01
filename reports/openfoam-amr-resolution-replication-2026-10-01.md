@@ -111,14 +111,18 @@ instrumented library load was confirmed.
 The first packaging attempt used an incorrect case-root name and exceeded the
 hosting size limit; those archives are retained under the ignored `work/`
 tree. The final published archives were rebuilt from the preserved runs
-without rerunning either solver. They are 53.9 MB (dt=.001) and 52.8 MB
-(dt=.0005), contain all six cell-stage snapshots, inputs, logs, and the mapped
-internal-face snapshot needed for the Gauss-gradient audit. The uniform preMap
-gradient is reconstructed from cell `U`; preMap face CSVs, later-stage face
-CSV files, and generated `dynamicCode` remain excluded. Full raw files and
-captured hashes remain under ignored `work/`. No face-flux, divergence, or
-spectrum claim is made. Packaging addenda `package-a3` are separate from the
-as-run protocols and do not change solver inputs or acceptance.
+without rerunning either solver. They are 36.5 MB (dt=.001) and 36.0 MB
+(dt=.0005), and contain the same-run preMap/mapped cell pair, mapped internal
+faces needed for the Gauss-gradient audit, inputs, and logs. The uniform preMap
+gradient is reconstructed from cell `U`; preMap face CSVs, later-stage
+diagnostic cell/face CSV snapshots, and generated `dynamicCode` are excluded
+from these n=32 archives. Native OpenFOAM checkpoint directories remain in
+the case tarballs and are not the captured stage CSVs. Complete raw files and hashes remain under ignored `work/` and
+the raw manifest/log. Published numerical claims use only the included
+same-run mapping pair and mapped internal faces; no later PIMPLE-stage
+field/flux, divergence, or spectrum claim is made. Package addenda `package-a4`
+are separate from the as-run protocols and do not change solver inputs or
+acceptance.
 
 ## Interpretation limits
 

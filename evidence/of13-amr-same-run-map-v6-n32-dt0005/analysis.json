@@ -1,7 +1,7 @@
 {
   "status": "SAME_RUN_PARENT_INJECTION_MATCH",
   "protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
-  "archive_sha256": "94b3f3691f3c8a30fe47357547cb66d6995f76219bf011c6f2d61274b1a6c3fb",
+  "archive_sha256": "24a33ad914728eaf73cffbc5ad454b07deafd82844af6662c17f0512343838a0",
   "preMap_time": "0.002",
   "mapped_time": "0.002",
   "preMap_cells": 32768,

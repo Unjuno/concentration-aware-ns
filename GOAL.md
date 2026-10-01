@@ -1,5 +1,34 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 132 — AMR derivative replay and post-announcement analytic refresh
+
+Repacked the preserved v5/v6 n=32 same-run AMR archives as package-a4 and
+corrected archive tests to distinguish later OpenFOAM checkpoint files from
+the excluded later-stage diagnostic CSV snapshots. Replayed both parent-value
+and Gauss-gradient analyses from the public tarballs; the uniform preMap
+gradient uses centered periodic differences, while the mapped gradient uses
+captured oriented face fluxes. Mapped gradient/vorticity errors increase for
+these piecewise-constant parent injections, which identifies a mapping
+mechanism in these cases and does not establish an AMR defect. Full suite:
+`182 passed, 1 skipped, 5 subtests passed`.
+
+Refreshed post-announcement mathematics and the live SU2 #2890 discussion.
+The 29 September Constantin–Ignatova–Vicol v2 regularity theorem, under its
+joint axisymmetric-core, Type-II, and analytic-forcing assumptions, constrains
+the claimed smooth-forced construction but does not contradict a merely
+`C∞` nonanalytic force; Cao–Chi–Nie's density result takes the compact
+blow-up construction as an input and is not an independent construction.
+The OpenAI continuum-to-particle statement motivates a separate microscopic
+modeling question, but no reviewed source establishes molecule ordering,
+particle-position determinism, optical-fluid behavior, or viscosity collapse.
+SU2 #2890's second-order temporal MMS follow-up strengthens the source-time
+reproducer while maintaining its stated limits: no general fix is asserted,
+and the maintainer recommends explicit stored-time/target-time semantics.
+Details and source links are in
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
+`reports/openfoam-amr-resolution-replication-2026-10-01.md`. The overall
+multi-solver verification goal remains active.
+
 ## Revision 131 — same-run finite-volume-average DOF audit
 
 Applied the analytic cell-average formula for the separable high-gradient MMS

@@ -77,3 +77,59 @@ the arXiv metadata and abstract in this refresh, not the body derivations. No
 benchmark theorem, solver verdict, or molecule/viscosity hypothesis changes.
 Metadata notes are saved in
 `evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.
+
+## Post-announcement analytical developments (checked 2026-10-01)
+
+Two newer analysis preprints sharpen the mathematical picture, but neither is
+an independent verification of the complete OpenAI construction. Cao, Chi,
+and Nie's [*Density of Forces Producing Navier--Stokes Blowup*]
+(https://arxiv.org/abs/2609.10262), v4 (22 September), takes the compact,
+smoothly forced blow-up solution as an input and proves a density result for
+forces in a specified relative `L^1_t H^s_x` topology when `s < 1/2`.
+This is a consequence conditional on that starting construction; it is not a
+second derivation of the construction itself.
+
+Constantin, Ignatova, and Vicol's [*Regularity of asymptotically axisymmetric
+solutions to the 3D Navier--Stokes equations with analytic forcing*]
+(https://arxiv.org/abs/2609.20803), v2 (29 September), proves regularity at a
+putative singular point under joint assumptions including real-analytic
+forcing, anisotropic Type-II bounds for the angular mean, and an exactly
+axisymmetric shrinking core. Their source comparison says the OpenAI
+construction has the latter geometric properties and a smooth, bounded-`C²`
+force. Conditional on the comparison and the claimed singular construction,
+the force cannot be real-analytic in the stated local-uniform sense. This is
+not a contradiction: smoothness does not imply analyticity, and the OpenAI
+manuscript claims a `C∞` force. The paper also derives nonvanishing-on-every-
+neighborhood consequences from stated profile geometry; these give no
+quantitative lower bound on forcing amplitude.
+
+The OpenAI announcement itself describes Navier--Stokes as a continuum model
+and says that a singularity would mark breakdown of that model, after which
+individual-particle tracking would be needed to continue modeling. This
+motivates a precise open modeling question—what kinetic or particle system,
+limit, and observables could continue a given continuum solution—but supplies
+no such bridge. In particular, the shrinking vortex core and fine oscillatory
+pulses in the continuum construction do not establish molecular ordering,
+deterministic molecular positions, optical-fluid behavior, a phase transition,
+or a speed-triggered viscosity collapse. Those remain separate hypotheses
+requiring a defined microscopic model and independently testable predictions.
+
+The scope above was checked against the arXiv version records/abstracts and
+relevant stated theorem assumptions, plus the OpenAI announcement and paper.
+It is a literature and assumption audit, not a line-by-line independent proof
+review. These results motivate no new CFD solver defect report or simulation
+run by themselves.
+
+## SU2 Discussion #2890 follow-up (checked 2026-10-01)
+
+The discussion now includes a second-order dual-time control. The pinned
+v8.5.0 run reports observed endpoint orders `0.87905, 0.94267` for the
+original old-time source evaluation and `1.99408, 1.99998` for a diagnostic
+time-shift intervention, with all configured residual thresholds passing.
+The post explicitly limits this to a causal reproducer, not a general fix or
+a fresh current-master executable. The maintainer reply cautions that the
+physical-time variable also feeds verification errors and time-dependent
+boundary states, and recommends separating stored-state and target/solution
+time semantics before changing it globally. This is a concrete temporal
+verification/documentation candidate; multizone, restart, moving-grid, and
+broader time-scheme behavior remain open.

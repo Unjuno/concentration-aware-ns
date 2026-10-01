@@ -34,9 +34,15 @@ class SameRunMapV5N32Tests(unittest.TestCase):
             log = log_member.read().decode(errors="replace")
         self.assertIn("Selected 12288 cells for refinement out of 32768", log)
         self.assertIn("Refined from 32768 to 118784 cells", log)
-        self.assertEqual(sum(name.endswith("_cells.csv") for name in names), 6)
+        self.assertEqual(sum(name.endswith("_cells.csv") for name in names), 2)
         self.assertEqual(sum(name.endswith("_faces.csv") for name in names), 1)
         self.assertTrue(any(name.endswith("/mapped_faces.csv") for name in names))
+        self.assertTrue(any(name.endswith("/preMap_cells.csv") for name in names))
+        self.assertTrue(any(name.endswith("/mapped_cells.csv") for name in names))
+        self.assertFalse(
+            any("/postProcessing/amrStages/0.003/" in name and name.endswith(".csv")
+                for name in names)
+        )
         self.assertTrue(any(name.endswith("/log.foamRun") for name in names))
 
         env = os.environ.copy()

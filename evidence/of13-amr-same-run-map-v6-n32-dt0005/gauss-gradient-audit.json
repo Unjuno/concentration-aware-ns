@@ -1,7 +1,7 @@
 {
   "status": "INTERIOR_GAUSS_GRADIENT_AND_CURL_RECONSTRUCTED",
   "protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
-  "archive_sha256": "94b3f3691f3c8a30fe47357547cb66d6995f76219bf011c6f2d61274b1a6c3fb",
+  "archive_sha256": "24a33ad914728eaf73cffbc5ad454b07deafd82844af6662c17f0512343838a0",
   "method": "Finite-volume Gauss gradient. Mapped stage uses captured face-interpolated Uf and oriented area vectors; uniform preMap stage can be replayed without face CSVs using centered periodic differences, equivalent to arithmetic-midpoint Gauss interpolation on a uniform orthogonal mesh.",
   "reference": "Analytic MMS point gradient and vorticity evaluated at cell centers.",
   "boundary_treatment": "A shared physical interior mask excludes centers within two base-grid widths (0.39269908169872414) of any periodic boundary, aligning the retained coarse-cell and refined-cell faces for both preMap and mapped stages; paired cyclic boundary faces are absent from the snapshot. Metrics are volume weighted over this same physical subdomain.",

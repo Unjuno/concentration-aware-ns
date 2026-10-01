@@ -1,0 +1,25 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v6-n32-dt0005-package-a4",
+  "scope": "Post-run evidence packaging for mapping, Gauss-gradient and vorticity replay. No solver inputs or acceptance gates changed.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
+  "run_protocol_sha256": "edd3b0ad238623978bdf9affbf4599056aafad97572c1dc9c69281d5599b0c46",
+  "archive": "evidence/of13-amr-same-run-map-v6-n32-dt0005/amr-stage-snapshot-n32-dt0005.tar.gz",
+  "included_cells": [
+    "preMap_cells.csv at t=0.002",
+    "mapped_cells.csv at t=0.002"
+  ],
+  "included_faces": [
+    "mapped_faces.csv at t=0.002"
+  ],
+  "preMap_gradient": "Reconstructed from uniform periodic cell U using centered differences, equivalent to arithmetic-midpoint Gauss interpolation.",
+  "excluded": [
+    "postProcessing/amrStages/0.0025/*",
+    "postProcessing/amrStages/0.002/preMap_faces.csv",
+    "dynamicCode"
+  ],
+  "raw_case": "work/of13-amr-same-run-map-v6-n32-dt0005/amr-n32-dt0005-cap120000",
+  "limits": [
+    "No later PIMPLE-stage cell/face numerical conclusions are published from these n=32 runs.",
+    "Complete stage CSVs and their hashes remain in ignored work/ raw evidence."
+  ]
+}

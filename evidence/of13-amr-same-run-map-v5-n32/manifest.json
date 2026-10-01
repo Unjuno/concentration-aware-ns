@@ -65,7 +65,7 @@
     "postProcessing/amrStages/0.003/postSolve_faces.csv": "26c871ac183babf67625ed43a877d453e87dd4dac935ba717cc9e15fecbdf7c0"
   },
   "archive": "amr-stage-snapshot-n32.tar.gz",
-  "archive_sha256": "e1d40ec6ad60885ee6e2bdd31e025822e70fffdf5b1c82819e188048fb0f3a94",
+  "archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1",
   "solver_log_sha256": "817f824ce35088a5fd1b6fc779d7ce2f8cabe40ff805c95bcd432ecf4a9d659d",
   "limitations": [
     "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
@@ -77,34 +77,38 @@
   "protocol_content_reconstructed_from_generator_and_hash_verified": true,
   "archive_packaging": {
     "archive": "amr-stage-snapshot-n32.tar.gz",
-    "archive_sha256": "e1d40ec6ad60885ee6e2bdd31e025822e70fffdf5b1c82819e188048fb0f3a94",
+    "archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1",
     "excluded_patterns": [
       "postProcessing/amrStages/0.002/preMap_faces.csv",
-      "postProcessing/amrStages/0.003/*_faces.csv",
+      "postProcessing/amrStages/0.003/*",
       "dynamicCode"
     ],
     "excluded_patterns_observed": [
       "dynamicCode",
       "postProcessing/amrStages/0.002/preMap_faces.csv",
-      "postProcessing/amrStages/0.003/*_faces.csv"
+      "postProcessing/amrStages/0.003/*"
     ],
     "status": "PACKAGED_WITH_PROTOCOL_DECLARED_EXCLUSIONS",
+    "included_cell_snapshots": [
+      "preMap_cells.csv at t=0.002",
+      "mapped_cells.csv at t=0.002"
+    ],
     "included_face_snapshots": [
       "mapped_faces.csv at t=0.002"
     ],
-    "preMap_gradient_reconstruction": "Uniform periodic centered differences from captured preMap cell U; mathematically equivalent to the arithmetic-midpoint Gauss face sum on this uniform orthogonal grid.",
-    "excluded_preMap_face": "0.002/preMap_faces.csv; no data lost for published preMap gradient metric.",
-    "excluded_later_face_snapshots": "0.003/*_faces.csv",
+    "preMap_gradient_reconstruction": "Uniform periodic centered differences from captured preMap cell U; equivalent to arithmetic-midpoint Gauss interpolation on this uniform orthogonal grid.",
+    "excluded_preMap_face": "0.002/preMap_faces.csv",
+    "excluded_later_stage_snapshots": "0.003/*",
     "excluded_generated": "dynamicCode",
     "raw_case": "work/of13-amr-same-run-map-v5-n32/amr-n32-cap120000",
-    "previous_face_package": "work/of13-amr-same-run-map-v5-n32/archive-recovery/amr-stage-snapshot-n32-cell-and-mapface-a2.tar.gz",
-    "previous_face_package_sha256": "623f66e9b8a1e4e9a3c302628cfdc4ef9e80dd7211af38b360e8e5cff73b93c0",
+    "previous_gradient_archive": "work/of13-amr-same-run-map-v5-n32/archive-recovery/amr-stage-snapshot-n32-gradient-a3.tar.gz",
+    "previous_gradient_archive_sha256": "e1d40ec6ad60885ee6e2bdd31e025822e70fffdf5b1c82819e188048fb0f3a94",
     "full_raw_archive_preserved": null,
     "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
     "run_protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
     "post_run_packaging_only": true,
-    "claim_limit": "Only mapped-stage Gauss gradient uses captured mapped Uf; preMap uses equivalent uniform-grid face averaging reconstructed from cell U. No later-stage face flux/divergence claim.",
-    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v5-n32-package-a3.json",
-    "packaging_addendum_sha256": "666395a84866e3dfdeee360d995f2cce34a20f223232a3d8166ca4240175d064"
+    "claim_limit": "The compact archive contains only the same-run mapping cell pair and mapped internal faces required for gradient/vorticity analysis. Later solver-stage fields are evidenced by snapshot hashes and stage events in the raw manifest/log but are not used for numerical claims.",
+    "packaging_addendum": "protocols/high-gradient-of13-amr-same-run-map-v5-n32-package-a4.json",
+    "packaging_addendum_sha256": "7cbaddfea3508da8576587a61187ed86343537dd40adf406b912aa5eb3b4c413"
   }
 }

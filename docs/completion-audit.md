@@ -51,10 +51,10 @@ The n=32 same-run first-refinement replication now confirms the independent
 selection predictor (12,288 candidates), exact parent-value injection, and a
 reduction in both coarse and mapped child DOF discrepancies relative to n=16.
 This remains exploratory two-resolution evidence; the AMR quality status stays
-UNCERTAIN. The solver run completed normally; the initial compact 40.8 MB
-cell-only archive has since been superseded by a 53.9 MB archive with the
-mapped face snapshot for the gradient audit. Full later-stage face snapshots
-remain only in ignored local raw case data. A runner source-overlay hash was
+UNCERTAIN. The solver run completed normally; the current 36.5 MB archive
+contains the same-run cell pair and mapped face snapshot for the gradient
+audit. Later-stage fields and faces remain in ignored local raw data and the
+manifest/log. A runner source-overlay hash was
 not captured at launch and remains a reproducibility limitation. See
 [`n=32 AMR report`](../reports/openfoam-amr-resolution-replication-2026-10-01.md).
 
