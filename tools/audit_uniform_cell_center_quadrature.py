@@ -9,6 +9,7 @@ from numpy.polynomial.legendre import leggauss
 from tools.analyze_amr import values
 from tools.analyze_openfoam import vectors
 from tools.high_gradient_reference import fields
+from tools.high_gradient_cell_average import exact_cell_average_velocity
 
 
 ROOT = Path("work/of13-high-gradient-v2")
@@ -61,36 +62,6 @@ def periodic_gauss_gradient(velocity, n, width):
         for axis in range(3)
     ], axis=-1)
     return gradient.transpose(2, 1, 0, 3, 4).reshape(-1, 3, 3)
-
-
-def exact_cell_average_velocity(centers, width, time):
-    """Closed-form cell averages using the MMS Fourier polynomial factors."""
-    modes = np.array((1.0, 2.0, 3.0, 4.0))
-    amplitudes = np.array((56.0, 28.0, 8.0, 1.0))
-    x, y, z = centers.T
-    widths = np.broadcast_to(np.asarray(width, dtype=float), x.shape)
-    sinc = np.sinc(widths[:, None] * modes[None, :] / (2 * np.pi))
-    average_g_y = (35.0 + np.sum(
-        amplitudes * np.cos(y[:, None] * modes) * sinc, axis=1
-    )) / 128.0
-    average_g_z = (35.0 + np.sum(
-        amplitudes * np.cos(z[:, None] * modes) * sinc, axis=1
-    )) / 128.0
-    average_g_prime_y = -np.sum(
-        amplitudes * modes * np.sin(y[:, None] * modes) * sinc, axis=1
-    ) / 128.0
-    average_sin = np.sin(FREQUENCY * x) * np.sinc(
-        FREQUENCY * widths / (2 * np.pi)
-    )
-    average_cos = np.cos(FREQUENCY * x) * np.sinc(
-        FREQUENCY * widths / (2 * np.pi)
-    )
-    decay = np.exp(-time)
-    return np.stack((
-        decay * average_g_prime_y * average_g_z * average_sin / FREQUENCY**2,
-        -decay * average_g_y * average_g_z * average_cos / FREQUENCY,
-        np.zeros_like(x),
-    ), axis=1)
 
 
 def verify_cell_average_formula():

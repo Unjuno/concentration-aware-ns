@@ -13,7 +13,7 @@ from tools.analyze_amr_stage_snapshots import (
     _parent_indices_for_children,
     parent_value_injection_audit,
 )
-from tools.audit_uniform_cell_center_quadrature import exact_cell_average_velocity
+from tools.high_gradient_cell_average import exact_cell_average_velocity
 
 
 EVIDENCE = Path(os.environ.get("CANS_AMR_STAGE_EVIDENCE", "evidence/of13-amr-same-run-map-v4-run3"))
