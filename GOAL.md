@@ -1393,3 +1393,15 @@ continuous upper enclosure but is too loose for a peak-quality verdict. The
 quality gate remains UNCERTAIN; the work does not establish a software defect
 or a continuous maximum. Hashes, limits, and reproduction instructions are in
 the report and machine record.
+
+## Revision 85 — independent dense sample slightly raises PhysicsNeMo peak
+
+An independent 1,048,576-point scrambled-Sobol evaluation with PyTorch
+autograd found a sampled gradient-error Frobenius value `0.25234574`, about
+0.56% above the earlier 262,144-point lattice maximum. An Arb point enclosure
+supports a pointwise lower bound at that candidate. The new point is in the
+same local region; this indicates slight underestimation by the old sampling
+grid, not a continuous-maximum certificate or solver defect. The global
+interval upper remains coarse and the PhysicsNeMo quality gate remains
+UNCERTAIN. Inputs, hashes, and reproduction steps are preserved in the new
+report and evidence JSON.

@@ -1,0 +1,290 @@
+{
+  "scope": "Independent scrambled-Sobol sample search with PyTorch autograd; it is empirical and does not cover the continuum. Arb separately encloses the strongest sampled point to produce a pointwise lower bound.",
+  "archive": "evidence/physicsnemo-study-v1/n64-nt17.tar.gz",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "prior_lattice_evidence": "evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json",
+  "prior_lattice_evidence_sha256": "3866024cdea29e03e4992b5572119c81c35111172ddd4c352669abf7965f8d49",
+  "sample_count": 1048576,
+  "batch_size": 512,
+  "sobol_scramble_seed": 20261001,
+  "torch_version": "2.11.0",
+  "python_version": "3.14.5",
+  "numpy_version": "2.4.6",
+  "python_flint_version": "0.9.0",
+  "pointwise_max_sampled_frobenius_error": 0.2523457378401675,
+  "maximum_sampled_point": [
+    3.0490564258730486,
+    2.993409257476551,
+    3.23764079755766
+  ],
+  "arb_pointwise_lower_bound": 0.25234573784017766,
+  "top_sampled_points": [
+    {
+      "frobenius_error": 0.2523457378401675,
+      "point": [
+        3.0490564258730486,
+        2.993409257476551,
+        3.23764079755766
+      ]
+    },
+    {
+      "frobenius_error": 0.251772314023642,
+      "point": [
+        3.027147717904565,
+        3.005860510201205,
+        3.298537565558196
+      ]
+    },
+    {
+      "frobenius_error": 0.2515547435520209,
+      "point": [
+        3.011548201104932,
+        2.9827975598681795,
+        3.274049101035354
+      ]
+    },
+    {
+      "frobenius_error": 0.25102216788362103,
+      "point": [
+        3.0643471733311984,
+        3.01334690569677,
+        3.2579619819365573
+      ]
+    },
+    {
+      "frobenius_error": 0.24964773566492038,
+      "point": [
+        2.974764957575195,
+        3.037014421555233,
+        3.228677030352205
+      ]
+    },
+    {
+      "frobenius_error": 0.24907639117666333,
+      "point": [
+        3.002296004970969,
+        3.011926347873406,
+        3.1954277053615026
+      ]
+    },
+    {
+      "frobenius_error": 0.24666416036525268,
+      "point": [
+        3.1016524796583758,
+        2.9501396692502353,
+        3.2889977129164696
+      ]
+    },
+    {
+      "frobenius_error": 0.24625711954894047,
+      "point": [
+        2.9900579520755146,
+        2.9587645661118094,
+        3.260502204592741
+      ]
+    },
+    {
+      "frobenius_error": 0.24587048730175123,
+      "point": [
+        3.0740560924895095,
+        2.9753171564850676,
+        3.3314865242088634
+      ]
+    },
+    {
+      "frobenius_error": 0.2453939351324532,
+      "point": [
+        3.093273669024424,
+        2.930001086305993,
+        3.2140378666065605
+      ]
+    },
+    {
+      "frobenius_error": 0.24530377921975408,
+      "point": [
+        2.9719906212129494,
+        3.067349935574013,
+        3.3041939909767333
+      ]
+    },
+    {
+      "frobenius_error": 0.245279488197929,
+      "point": [
+        3.036398416010415,
+        2.97673695359103,
+        3.1708257652090883
+      ]
+    },
+    {
+      "frobenius_error": 0.24517326368679696,
+      "point": [
+        3.029934061898405,
+        3.0738010239448808,
+        3.2266635284246252
+      ]
+    },
+    {
+      "frobenius_error": 0.244599284413616,
+      "point": [
+        2.9471254026196454,
+        3.0486272583736422,
+        3.2100966892292746
+      ]
+    },
+    {
+      "frobenius_error": 0.2445541571286928,
+      "point": [
+        3.0144436670841412,
+        3.0527064884042323,
+        3.3387165345335283
+      ]
+    },
+    {
+      "frobenius_error": 0.24322710327079797,
+      "point": [
+        3.078026112759646,
+        2.9064833908138636,
+        3.222746132243636
+      ]
+    },
+    {
+      "frobenius_error": 0.24236408228030804,
+      "point": [
+        2.9334547140491654,
+        3.021289304460987,
+        3.2449728142341563
+      ]
+    },
+    {
+      "frobenius_error": 0.24185334489210497,
+      "point": [
+        3.118330284115874,
+        2.93745869742543,
+        3.3048515843567086
+      ]
+    },
+    {
+      "frobenius_error": 0.2415100446531233,
+      "point": [
+        3.033048836852713,
+        3.0937356409988395,
+        3.2431490118197512
+      ]
+    },
+    {
+      "frobenius_error": 0.24124985308238114,
+      "point": [
+        3.1501014064592177,
+        2.955690103328094,
+        3.2817661460469685
+      ]
+    },
+    {
+      "frobenius_error": 0.24123230005217647,
+      "point": [
+        3.1256979023667477,
+        2.969484777131628,
+        3.198735737645754
+      ]
+    },
+    {
+      "frobenius_error": 0.24092443644595718,
+      "point": [
+        3.0056455841286716,
+        3.0912721922834554,
+        3.3166739285990854
+      ]
+    },
+    {
+      "frobenius_error": 0.2402291940477141,
+      "point": [
+        3.0825694096633414,
+        2.9615829538632577,
+        3.3523773337777927
+      ]
+    },
+    {
+      "frobenius_error": 0.23982592298189884,
+      "point": [
+        3.0420304165487013,
+        3.0414533772898427,
+        3.3700378037158245
+      ]
+    },
+    {
+      "frobenius_error": 0.23944084449018407,
+      "point": [
+        3.1073640980502075,
+        3.05027466212605,
+        3.2465528476831773
+      ]
+    },
+    {
+      "frobenius_error": 0.23933371546956192,
+      "point": [
+        3.0893483379757725,
+        2.9952480518754325,
+        3.163906156842482
+      ]
+    },
+    {
+      "frobenius_error": 0.23929012564879393,
+      "point": [
+        3.0162845563817124,
+        2.9166377743789833,
+        3.1806425833532534
+      ]
+    },
+    {
+      "frobenius_error": 0.23902811468837837,
+      "point": [
+        2.9504869894089425,
+        3.0298991215629996,
+        3.334218471056844
+      ]
+    },
+    {
+      "frobenius_error": 0.23876703760767864,
+      "point": [
+        2.9360493338512086,
+        3.0523924642610094,
+        3.169770451216739
+      ]
+    },
+    {
+      "frobenius_error": 0.23846109911648056,
+      "point": [
+        2.968552822243395,
+        3.1176635153137062,
+        3.279514176769123
+      ]
+    },
+    {
+      "frobenius_error": 0.2384312945073494,
+      "point": [
+        3.05598953404769,
+        2.9773068304029726,
+        3.138862649497022
+      ]
+    },
+    {
+      "frobenius_error": 0.23834250570180696,
+      "point": [
+        3.1349493494866545,
+        3.0385180263121208,
+        3.2643175242018314
+      ]
+    }
+  ],
+  "prior_lattice_sample_count": 262144,
+  "prior_lattice_maximum": 0.2509277804721862,
+  "difference_from_prior_lattice_maximum": 0.0014179573679812818,
+  "elapsed_seconds": 3.439467083022464,
+  "interpretation": "A larger Sobol value would show the prior lattice missed a stronger sampled point, not establish a continuous maximum. A matching value is only independent sampling evidence; the previous global interval upper remains too coarse.",
+  "continuous_quality_verdict": "UNCERTAIN",
+  "tool_sha256": "7ec6d9c09535b39b7dad1fbd152780adf3cad74a16a2e36fc79219c0966712ea",
+  "reference_source_sha256": "8e8bba852e66a212d45d340628c3162dabc27c580e1a498f6e059fea2db2858c",
+  "repository_commit_at_execution": "2630ff2eb01c5849b54db465603a265ef5735cf7",
+  "execution_source_status": "untracked working-tree script at the recorded repository commit"
+}
