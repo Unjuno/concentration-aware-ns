@@ -202,6 +202,45 @@ norm or peak remains limited by that grid's sampling. In particular, the
 matrix's fine-grid `NOT_OBSERVED` rule is a frozen discrete benchmark result,
 not a proof about continuous extrema.
 
+### Orthogonal decomposition of the AMR P0 error
+
+For the explicitly selected piecewise-constant reconstruction, let `P_h u`
+be the exact cell-average projection of the MMS and `U_h` the stored value
+held constant within each cell. L2 orthogonality gives
+`||U_h-u||^2 = ||U_h-P_hu||^2 + ||P_hu-u||^2`. The first term is a
+cell-DOF mismatch; the second is the unresolved within-cell variation of the
+analytic field. The exact continuum mean-square norm was independently
+evaluated by Parseval from the reference Fourier coefficients, while exact
+cell averages use the closed-form sinc formula already crosschecked against
+10-point tensor Gauss integration. The resulting total agrees with the
+independent order-8 cellwise Gauss integral within 1.6e-15.
+
+At t=0.003, the AMR P0 total relative L2 error is 46.0763%, split into a
+39.3816% cell-DOF mismatch and a 23.9190% projection floor; these are
+orthogonal components, not quantities to add linearly. The DOF term accounts
+for 73.05% of squared total error. The uniform n=16 control has a 47.7139%
+total, 12.3494% DOF mismatch and 46.0881% projection floor; its DOF term is
+only 6.70% of squared total error. AMR captures 94.28% of exact kinetic energy
+in its cell-average projection versus 78.76% for uniform n=16, substantially
+lowering the unresolved floor, while the solved AMR cell values are farther
+from their exact local averages. The net P0 error improves by only 1.638
+percentage points. At t=0.002, AMR has not refined and exactly matches the
+uniform control in all three components.
+
+This decomposition explains why the large 40.559% AMR error normalized by the
+fine-grid cell-average vector can coexist with a slightly lower P0 integrated
+error: refinement lowers the projection floor but the post-step values have a
+larger mismatch to the exact means. It is conditional on the named P0
+reconstruction and does not prove OpenFOAM's stored U is a cell average,
+identify which AMR operation caused the mismatch, or establish an
+implementation defect. Reproduce with
+`python -m tools.audit_amr_projection_decomposition`; exact values and the
+orthogonality check are in
+`evidence/tests/amr-p0-projection-decomposition.json`. The script reads the
+tracked AMR and uniform raw archives directly, checks mesh geometry and
+archive/member hashes, and does not depend on extracted work directories or
+run a solver.
+
 The public Foundation 13 source at tag `20260624` resolves to commit
 [`18870c24d21c6b982e2cdec27b2f59738cca5f90`](https://github.com/OpenFOAM/OpenFOAM-13/tree/18870c24d21c6b982e2cdec27b2f59738cca5f90).
 Its `fvMesh::topoChange` maps volume fields through `fvMeshMapper`; the

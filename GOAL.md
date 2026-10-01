@@ -1592,3 +1592,22 @@ singularity, or a solver defect. Frozen verdicts remain unchanged; complete
 case results and replay checks are in
 reports/su2-study-v1-interim.md and
 evidence/tests/su2-local-derivative-audit.json.
+
+## Revision 98 — AMR piecewise-constant error orthogonally decomposed
+
+Derived and evaluated the exact L2 identity
+||U_h-u||^2 = ||U_h-P_hu||^2 + ||P_hu-u||^2 for the explicit P0 reconstruction,
+where P_hu is the exact cell-average MMS projection. Parseval provides the
+continuum norm; exact sinc cell averages provide the projection and DOF term.
+The split total agrees with independent order-8 Gauss integration within
+1.6e-15. At t=.003, AMR total relative error is 46.0763%, from orthogonal
+components 39.3816% DOF mismatch and 23.9190% unresolved projection floor;
+uniform n=16 is 47.7139%, 12.3494%, and 46.0881%. Refinement raises projected
+energy capture from 78.76% to 94.28%, lowering the projection floor, while
+the solved AMR values have larger mismatch to exact cell means; the net P0
+error improves by only 1.638 points. The cell-average-normalized 40.559%
+AMR error therefore measures a different quantity. This is conditional on
+P0 reconstruction and does not prove the solver field semantics or diagnose
+a defect. Details and reproduction are in
+reports/solver-matrix-coverage-2026-09-30.md and
+evidence/tests/amr-p0-projection-decomposition.json.
