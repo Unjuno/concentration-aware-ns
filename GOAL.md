@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 141 — superseded pull-request verification runs are cancellable
+
+The PR's repeated commits had accumulated queued checks for obsolete heads.
+Added a workflow concurrency group keyed by pull-request number (or ref for
+non-PR events), with cancellation of superseded runs, following the current
+GitHub Actions workflow-concurrency contract. Older unstarted checks were
+cancelled where possible. This reduces stale queue buildup but does not fix the
+underlying GitHub-hosted runner assignment problem: the latest check on
+`c94aa4b` is still QUEUED, while the exact-head local suite on the preceding
+science/documentation changes passed. Repository actions are enabled and
+workflow permissions are read-only; the billing endpoint was unavailable to
+the current token. No current GitHub Status incident explains the delay.
+`reports/openfoam-fv-continuous-derivative-identifiability.md` remains a
+mathematical scope result, not an upstream defect report. Overall goal remains
+active.
+
 ## Revision 140 — finite-volume continuous-field ambiguity bounded analytically
 
 Audited the pinned Foundation 13 `volVectorField` typedef and formalized the
