@@ -177,3 +177,21 @@ posted. Full metadata, pinned license-file blob IDs and scope notes are in
 `evidence/upstream-refresh/current-project-inventory-2026-10-01T0828Z.json`.
 
 This refresh changes no scientific verdict and justifies no new upstream post.
+
+## Three-project focused refresh, 2026-10-02 JST
+
+The read-only refresh in
+[`evidence/upstream-refresh/three-project-inventory-2026-10-02.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-02.json)
+confirms OpenFOAM Foundation 13 and SU2 still point to their audited default-
+branch commits. PhysicsNeMo main advanced one commit; its only changed paths
+are three example READMEs, and the audited `power_spectrum.py` blob is
+unchanged. Existing records remain current: SU2 Discussion #2890 and Issue
+#2353, and PhysicsNeMo Issue #2007 and PR #2008. No duplicate post is
+justified.
+
+For OpenFOAM, a direct fetch of `bugs.openfoam.org` returned HTTP 403. Focused
+searches found older or differently-scoped AMR reports (including the resolved
+1.7.x mapping report and a multiple-cellZone `maxRefinement` question), but no
+matching report for the present v13 observations. This is useful duplicate
+screening, not an exhaustive tracker audit; no new report was filed. No
+scientific verdict changed.

@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 144 — three-project focused upstream refresh recorded
+
+Refreshed default-branch heads, releases and existing records through the
+official GitHub APIs. OpenFOAM Foundation 13 remains at the benchmark source
+commit; its four GitHub issues do not match the AMR finding. The separate
+Foundation tracker returned HTTP 403 to direct access; focused searches found
+only older/differently scoped AMR items, so absence of a match is not claimed
+as exhaustive. SU2 master remains at the audited source pin; Discussion #2890
+and Issue #2353 remain the appropriate time-level records. PhysicsNeMo main
+advanced one commit, changing only three example README paths; the audited
+`power_spectrum.py` blob is identical. Issue #2007 and PR #2008 remain open,
+with the PR behind main. No duplicate issue is justified. The exact live
+metadata and source-blob comparison are in
+`evidence/upstream-refresh/three-project-inventory-2026-10-02.json`. Overall
+goal remains active; latest PR Actions test remains queued.
+
 ## Revision 143 — PR-scoped concurrency now observed cancelling obsolete runs
 
 Read the authoritative Actions run records after pushing follow-up commits.

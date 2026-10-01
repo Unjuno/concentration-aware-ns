@@ -108,6 +108,12 @@ The latest fixed-revision clean-export summary and command logs are public in
 This strengthens reproduction of tracked Python evidence only; it does not
 reproduce a solver, training run or Lean build.
 
+The 2026-10-02 JST focused upstream refresh is recorded in
+[`three-project-inventory-2026-10-02.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-02.json)
+and [`upstream-disposition.md`](../reports/upstream-disposition.md). It found
+no new reportable issue; OpenFOAM's separate tracker was only searchable, not
+directly accessible, so its coverage remains explicitly incomplete.
+
 The archived Foundation 13 `volVectorField U` values are discrete DOFs; they do
 not define a unique within-cell continuous field. Even if one assumes exact
 cell averages, smooth zero-average perturbations supported inside cells can
