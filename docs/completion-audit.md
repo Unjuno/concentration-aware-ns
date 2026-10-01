@@ -1,5 +1,49 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-02
+
+The frozen OpenFOAM v2 six-case replay passes archive, protocol, endpoint,
+standard-acceptance, and sampled-local-quality checks. Standard acceptance
+passes all six cases; sampled local quality fails n=16 and n=32 and passes
+n=64/n=128 and both n=64 temporal cases. The preregistered standard-PASS /
+local-FAIL matrix concern remains `NOT_OBSERVED`. This is a replay of stored
+archives and logs, not a new solver run or a continuous-field certificate.
+The separate live n=64, dt=0.0005 comparison reached 36/100 steps before its
+runner stopped producing output; preserve it as incomplete and do not use it
+to alter the matrix verdict.
+
+The SU2 v8.5.0 five-archive review likewise found no standard-PASS/local-FAIL
+case: n=16 passes the all-step residual gate but fails accuracy; n=64 time
+cases pass aggregate accuracy but miss 2, 3, and 7 residual steps. Related
+time-boundary behavior is already tracked in issue #2353, and residual
+location visibility in issue #2932. Discussion #2890 is closed without an
+accepted answer, and the benchmark report is already posted there. No
+duplicate upstream report was filed. See the
+[current SU2 audit](../reports/su2-localized-residual-upstream-audit-2026-10-02.md).
+
+The PhysicsNeMo path uses autodiff on a periodic domain, so the current
+nonperiodic derivative-boundary issue/PR is not applicable to this benchmark.
+The five-seed and local-peak evidence remains descriptive: sampled maxima do
+not certify the full-domain continuous maximum, seed sensitivity remains, and
+no preregistered acceptance threshold exists. No duplicate issue was filed.
+See the
+[current PhysicsNeMo audit](../reports/physicsnemo-upstream-derivative-audit-2026-10-02.md).
+
+The current public head `28d417e` was exported from tracked Git data into a
+fresh locked environment. All 37 replay steps and six additional checks
+passed; all 182 compared report/test-evidence files remained unchanged, and
+the suite reported 200 passed, one skipped, and five subtests passed. The
+sanitized run record is in
+[`evidence/clean-export-2026-10-02-current-head-28d417e/`](../evidence/clean-export-2026-10-02-current-head-28d417e/README.md).
+This validates same-host postprocessing of tracked evidence, not solver
+rebuilds or runs, PhysicsNeMo training, Lean execution, or scientific verdicts.
+
+The project remains **incomplete**. Higher-resolution AMR quality,
+continuous-field derivative certification, the unresolved actual-profile
+pressure premise, end-to-end executable extraction, and live OpenFOAM tracker
+coverage remain open. The user's molecular-alignment, phase-transition, and
+constitutive-viscosity interpretations are not established by these results.
+
 ### OpenFOAM AMR addendum — 2026-10-01
 
 ### Current tracked-only export — 2026-10-02
@@ -102,11 +146,11 @@ finding to a supported improvement and the evidence required to extend it.
 | Analytic reference and force | reference.py, symbolic, C++, autograd and energy/Fourier checks | Verified in stated scopes; no physical blow-up inference |
 | Alignment versus positional certainty | [Exact linearized Gaussian calculation](../docs/openai-core-material-trajectory.md#exact-positional-probability-check-in-the-linearized-gaussian-model); [volume-preserving measure bound](../docs/incompressible-position-uncertainty.md); Lean artifact `evidence/lean-verification/volume-preserving-position-bound.json` | Directional alignment can coexist with no concentration of an absolutely continuous passive-tracer law into a smaller fixed ball: under a smooth volume-preserving flow, probability is at most the initial density bound times target volume. For a uniform 3D ball of radius `a`, a target ball of radius `R<a` has probability at most `(R/a)^3` at every preterminal time. The measure inequality is Lean-checked; a global classical flow map is an explicit hypothesis. The pinned OpenAI repository formally proves its candidate statement and whole-space theorem in separate modules (clean build and axiom audit: `evidence/lean-verification/openai-public-proof-audit-2026-10-02.json`). This does not independently validate the construction's mathematics or create a molecular/stochastic-particle result. |
 | OpenFOAM 3-space/multiple-time comparison | Five archives in evidence/of13-study-v1 | Runs complete; three tighter-iteration controls add 350 converged steps without changing endpoints materially or the observed order 0.493. Asymptotic temporal convergence remains unproved. |
-| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; base manifest and temporal addendum; [derivative reconstruction sensitivity](../reports/openfoam-gradient-reconstruction-sensitivity-2026-10-01.md); [Arb trigonometric supremum bound](../reports/openfoam-trigonometric-supremum-bound-v3.md) | All six cases complete. n64 dt=.0005/.00025 both pass standard/local gates; the fixed three-step comparison is descriptive only. The matrix concern (standard PASS/local FAIL at both n64/n128) is NOT_OBSERVED. An Arb coefficient-sum bound certifies the continuous derivative error of the explicitly named trig interpolant: n=32/64 gradient and vorticity bounds are below 5%, while n=16 bounds exceed it. This applies to serialized samples assigned to the ideal lattice, not the OpenFOAM finite-volume field or unrounded solver state. Frozen v2 gates/verdicts stay unchanged. |
+| High-gradient OpenFOAM v2 space/time matrix | `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`; `evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-02-followup.json`; [derivative reconstruction sensitivity](../reports/openfoam-gradient-reconstruction-sensitivity-2026-10-01.md); [Arb trigonometric supremum bound](../reports/openfoam-trigonometric-supremum-bound-v3.md) | All six archived cases replay successfully. Standard acceptance passes all six; sampled local quality fails n16/n32 and passes n64/n128 and both n64 temporal cases. The preregistered standard-PASS/local-FAIL concern remains NOT_OBSERVED. An Arb coefficient-sum bound certifies only the named trigonometric interpolant, not the OpenFOAM finite-volume field or unrounded solver state. A separate live n64 temporal attempt is incomplete and excluded from the matrix. |
 | OpenFOAM solver rerun reproducibility | [Single-case repeat archive, provenance and comparator](../evidence/of13-high-gradient-repeat-2026-10-01/README.md) | A fresh n=64, dt=.0005 run on the recorded image completed 100/100 steps. All four endpoint fields and five diagnostics reproduce byte-for-byte/exactly against the earlier archive. Comparator provenance checks and four hostile fixtures pass; only five declared raw archive members may differ. This is one-case reproducibility, not a general guarantee or physical validation. |
 | AMR constraints and controls | AMR, event, fixed-mesh, and `div(phi)` manifests | Three budgets and two fixed-mesh controls complete. Whole-level selection explains the observed approximate-cap overshoot. Fixed-mesh errors fall to 1.88%/0.483% from AMR-path 37.0%/40.1%. Discrete endpoint and logged time-step continuity residuals remain tiny in all cases; this does not identify the momentum/transfer error source. Quality remains UNCERTAIN. |
-| SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
-| PhysicsNeMo 3-space/multiple-time sampling | Original five archives plus 20 preregistered added-seed archives; [paired-seed analysis](../reports/physicsnemo-seed-control-v1.md); [local interval-maximum audit](../reports/physicsnemo-local-peak-refinement-2026-10-01.md) | Five seeds per case complete. Spatial paired contrasts have mixed signs. From nt=9→17, sampled velocity error falls for all five seeds while sampled gradient/vorticity-peak errors rise for three; these finite-point metrics disagree and changes are descriptive on a shared validation design. An interval Krawczyk/Hessian check proves one unique strict local maximum near the refined gradient-error candidate, but the full-domain continuous maximum remains uncertified. Material seed sensitivity remains; no preregistered PhysicsNeMo threshold exists, so acceptance stays UNCERTAIN. |
+| SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json; [Oct 2 upstream and localized-residual audit](../reports/su2-localized-residual-upstream-audit-2026-10-02.md) | Matrix and standard replay complete. No standard-PASS/local-FAIL conjunction: n16 passes residual but fails accuracy; n64 time cases pass aggregate accuracy but miss 2/3/7 residual steps. Continuous derivative extrema remain uncertified. Related upstream records #2353 and #2932 already cover adjacent issues; no duplicate report filed. |
+| PhysicsNeMo 3-space/multiple-time sampling | Original five archives plus 20 preregistered added-seed archives; [paired-seed analysis](../reports/physicsnemo-seed-control-v1.md); [local interval-maximum audit](../reports/physicsnemo-local-peak-refinement-2026-10-01.md); [Oct 2 upstream derivative audit](../reports/physicsnemo-upstream-derivative-audit-2026-10-02.md) | Five seeds per case complete. Spatial paired contrasts have mixed signs. Sampled velocity and gradient/vorticity metrics disagree; the full-domain continuous maximum remains uncertified. Material seed sensitivity remains and no preregistered acceptance threshold exists, so acceptance stays UNCERTAIN. Current derivative-boundary issue/PR concerns nonperiodic paths; this benchmark uses autodiff on a periodic domain, so no duplicate issue was filed. |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
 | Evidence-linked acceptance gate | v2 checker; evidence/tests/gate-artifact-audit.json; internal timestamp-sequence audit; `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json` | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. The run-level parser's duplicate/skipped-time false-pass was found synthetically and corrected. The current six-case OpenFOAM uniform matrix is complete; its four original fixed-step archives pass the sequence check, and the two later temporal addenda independently validate 100/100 and 200/200 completed steps. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |

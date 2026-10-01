@@ -1,5 +1,30 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 175 — completion audit and fixed-head clean export
+
+Reconciled the completion audit with the October 2 OpenFOAM, SU2, and
+PhysicsNeMo evidence. The frozen six-case OpenFOAM replay passes standard
+acceptance for all cases; sampled local quality fails n16/n32 and passes
+n64/n128 plus both n64 temporal cases, so the preregistered blind spot remains
+NOT_OBSERVED. A separate live n64 dt=.0005 attempt stopped at 36/100 steps and
+is preserved as incomplete, without changing that result. SU2's five archives
+also reproduce no standard-PASS/local-FAIL conjunction; related residual
+location and time-boundary discussions are already recorded upstream.
+PhysicsNeMo's nonperiodic derivative issue does not apply to this benchmark's
+periodic autodiff path, and its continuous maximum remains uncertified.
+
+Exported commit `28d417e0ef4e9fccf2876cb0d2cc3c087045c1bf` from tracked Git data
+into a fresh locked environment. All 37 replay steps and six additional checks
+passed; 182 report/test-evidence files remained byte-identical and tests
+reported 200 passed, one skipped, and five subtests passed. The sanitized
+record is `evidence/clean-export-2026-10-02-current-head-28d417e/`. This is
+postprocessing replay, not a solver rebuild/run, PhysicsNeMo training, Lean
+execution, or a scientific verdict upgrade. The original goal remains active:
+AMR quality, continuous-field derivatives, the actual-profile pressure
+premise, executable extraction, and complete OpenFOAM tracker coverage are
+still unresolved. No molecular alignment, phase transition, or
+constitutive-viscosity conclusion follows.
+
 ## Revision 174 — SU2 residual/local-QoI and upstream triage rechecked
 
 On the current SU2 public state (latest release v8.5.0; master
