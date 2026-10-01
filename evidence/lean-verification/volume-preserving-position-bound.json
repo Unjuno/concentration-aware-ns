@@ -25,6 +25,13 @@
       "FinalSlowBase.divergence_zero"
     ]
   },
+  "candidate_theorem_status": {
+    "file": "work/openai-f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ProblemStatement.lean",
+    "file_sha256": "d2f5cdf24a060acd41011b50492e89058991965e18d2cb797c58d915f95af633",
+    "declaration": "ProblemStatement.candidateStatement",
+    "status": "OPEN",
+    "interpretation": "The measure bound is a kinematic consequence conditional on a smooth volume-preserving flow map; it does not verify that the candidate field satisfies all Navier-Stokes CandidateProperties."
+  },
   "limitations": [
     "The Lean theorem assumes measure domination and measure preservation; it does not derive the flow map or its Jacobian equation.",
     "Applying it to a constructed velocity additionally requires a smooth global flow diffeomorphism on each preterminal interval.",

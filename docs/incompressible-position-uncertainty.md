@@ -58,12 +58,17 @@ The pinned OpenAI source declares smoothness and zero spatial divergence of
 `FinalSlowBase.velocity` for each `t<1` in
 `work/openai-f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/FinalSlowBase.lean`
 (`velocity_smooth` and `divergence_zero`, source commit
-`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`). Applying the volume argument to
-that field additionally presumes its classical flow map exists as a smooth
-diffeomorphism on the interval under consideration. No endpoint flow map at
-`t=1` is asserted. The result does not cover a point-mass initial law, an
-unbounded initial density, stochastic molecular motion, finite-particle
-collisions, or a constitutive-viscosity response.
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`). However,
+`NavierStokes/ProblemStatement.lean` marks `candidateStatement` **OPEN** and
+does not prove existence of a field satisfying all `CandidateProperties`.
+Accordingly, this result is a kinematic consequence for any smooth
+divergence-free field whose classical flow map exists; it is not evidence that
+the proposed OpenAI construction is an established Navier–Stokes solution.
+Applying the measure bound to that candidate field additionally presumes its
+flow map exists as a smooth diffeomorphism on the interval under consideration.
+No endpoint flow map at `t=1` is asserted. The result does not cover a
+point-mass initial law, an unbounded initial density, stochastic molecular
+motion, finite-particle collisions, or a constitutive-viscosity response.
 
 Reproduce the abstract measure inequality with
 `sh runtime/lean-verification/check_volume_preserving_position_bound.sh` in the
