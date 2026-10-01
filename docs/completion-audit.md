@@ -4,8 +4,10 @@
 
 ### Current tracked-only export — 2026-10-02
 
-The current PR head `84a3cc6e` was exported from tracked Git data into a fresh
-directory and locked virtual environment. All 37 report-replay steps and six
+Source commit `84a3cc6e4bffad458466441201e3b45bcdd77fc6`, immediately before
+publication of its evidence bundle, was exported from tracked Git data into a
+fresh directory and locked virtual environment. The publication commit adds
+documentation and the sanitized run record only. All 37 report-replay steps and six
 additional checks passed, with 178 tracked report/test-evidence files unchanged.
 The full suite from that exported tree reported 200 passed, one skipped, and
 five subtests passed. Sanitized logs, hashes, package versions, and reproduction

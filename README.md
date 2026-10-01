@@ -147,8 +147,8 @@ Lean-checked component lemmas from the classical nonlinear-flow argument.
 The [comparative audit](reports/comparative-audit.md) includes the separate SU2
 BDF2 reproducer; the eleven localized acceptance verdicts remain UNCERTAIN.
 
-The current PR head's tracked-only export and complete test replay are recorded
-in [the 2026-10-02 clean-export bundle](evidence/clean-export-2026-10-02-tracer-head/README.md):
+The pre-publication source head's tracked-only export and complete test replay
+are recorded in [the 2026-10-02 clean-export bundle](evidence/clean-export-2026-10-02-tracer-head/README.md):
 37 replay steps and six added checks pass, 178 tracked report/evidence files are
 unchanged, and the exported tree's full test suite reports 200 passed, one
 skipped, and five subtests passed. This is stored-evidence/postprocessing
