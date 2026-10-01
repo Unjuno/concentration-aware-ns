@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 134 — latest upstream records and completion metadata hardened
+
+Replayed the independent six-case matrix verifier after tightening it to check
+index timestep/convergence counts and embedded local-quality verdicts against
+the archived logs and recomputed metrics. Refreshed current upstream state:
+PhysicsNeMo main advanced only through dependency maintenance while its audited
+`power_spectrum.py` blob stayed unchanged; issue #2007 and PR #2008 remain the
+existing odd-width report/fix; SU2 discussion #2890 is closed but still marked
+unanswered and contains no code-fix record; OpenAI's repository still has no
+issue/discussion channel. The status capture and technical disposition are in
+`evidence/upstream-refresh/live-status-2026-10-01T1424Z.json`,
+`reports/upstream-status-2026-10-01.md`, and
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md`. No
+duplicate upstream issue is warranted. The multi-solver and analytic audit
+goal remains active.
+
 ## Revision 133 — independent replay of the completed OpenFOAM matrix
 
 Rechecked the authoritative cross-run status after the last update: the

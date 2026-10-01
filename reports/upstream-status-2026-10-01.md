@@ -155,3 +155,23 @@ Live API state and hashes are in
 `evidence/upstream-refresh/physicsnemo-live-recheck-2026-10-01T1059Z.json`; the
 latest-main focused output is
 `evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-10-01-b08dd3f.json`.
+
+## Current-head and discussion-state follow-up (2026-10-01 14:24 UTC)
+
+PhysicsNeMo `main` remains at `b08dd3f61ac44c784f7c03b0cc93947226365cad`;
+the `power_spectrum.py` Git blob is still
+`fb3e8cda3bc7916b8e56833dda240cb74463fabb`, matching the prior audited head.
+Issue #2007 remains open. PR #2008 remains open at the same head, two commits
+ahead and eleven behind current `main`; the dependency refresh did not change
+the implementation implicated in the odd-width reproducer. Issue #2001 and
+draft PR #1853 remain open, with the benchmark's periodic/autograd path outside
+their boundary-condition scope.
+
+SU2 Discussion #2890 was closed on 30 September but GraphQL still reports
+`isAnswered=false`; its maintainer explanation and the author's BDF2 follow-up
+remain visible. It is not evidence that SU2 adopted a fix. Because the source-
+time concern and reproducer already have a public record, no duplicate issue
+was filed. OpenFOAM Foundation 13 and OpenAI `NavierStokesAndEuler` heads remain
+unchanged from the prior snapshot; the OpenAI repository has issues and
+discussions disabled. Exact current states are in
+`evidence/upstream-refresh/live-status-2026-10-01T1424Z.json`.

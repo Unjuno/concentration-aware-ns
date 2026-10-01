@@ -136,12 +136,20 @@ def verify_matrix():
                     "shell_spectrum": diagnostics["shell_spectrum_relative_l1_error"],
                 }
                 quality = local_quality(metrics, protocol["local_quality_relative_error_thresholds"])
+                if (entry.get("time_steps", acceptance["observed_time_steps"])
+                        != acceptance["observed_time_steps"]):
+                    raise ValueError(f"index timestep count mismatch for {entry['case']}")
+                if (entry.get("converged_steps", acceptance["pimple_convergence_records"])
+                        != acceptance["pimple_convergence_records"]):
+                    raise ValueError(f"index convergence count mismatch for {entry['case']}")
                 if acceptance["status"] != entry["standard_acceptance"]:
                     raise ValueError(f"standard gate mismatch for {entry['case']}")
                 if quality["status"] != entry["local_quality"]:
                     raise ValueError(f"local-quality gate mismatch for {entry['case']}")
                 if diagnostics.get("standard_acceptance", {}).get("status") != acceptance["status"]:
                     raise ValueError(f"embedded diagnostic gate mismatch for {entry['case']}")
+                if diagnostics.get("quality") != quality["status"]:
+                    raise ValueError(f"embedded local-quality mismatch for {entry['case']}")
                 reproduced.append({
                     "case": entry["case"],
                     "archive_sha256": entry["archive_sha256"],

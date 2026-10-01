@@ -996,3 +996,14 @@ blind-spot verdict recomputes to `NOT_OBSERVED`. The audit and test are in
 `tests/test_openfoam_high_gradient_matrix_replay.py`. This verifies stored
 evidence and the gate logic, not source/binary equivalence or continuous field
 accuracy; separate AMR quality remains uncertain.
+
+### 2026-10-01 live upstream status delta
+
+The latest PhysicsNeMo `main` maintenance commit leaves the audited
+`power_spectrum.py` Git blob unchanged; the odd-width behavior remains tracked
+in issue #2007/PR #2008 and does not affect the benchmark's even-width cases.
+SU2 Discussion #2890 has been closed but remains formally unanswered and
+contains no fix record. The OpenAI Lean repository still has no issue or
+discussion channel. The bounded live inventory is preserved in
+`evidence/upstream-refresh/live-status-2026-10-01T1424Z.json`; no duplicate
+upstream report is warranted by the new status alone.

@@ -133,3 +133,10 @@ boundary states, and recommends separating stored-state and target/solution
 time semantics before changing it globally. This is a concrete temporal
 verification/documentation candidate; multizone, restart, moving-grid, and
 broader time-scheme behavior remain open.
+
+The live GitHub GraphQL record checked at 2026-10-01 14:24 UTC now shows the
+discussion closed on 30 September but `isAnswered=false`. Its visible content
+still contains the maintainer's time-level analysis and the BDF2 follow-up; no
+code change or general fix is recorded there. SU2 `master` remains at the
+previously checked source commit. The thread status therefore changes the
+follow-up channel, not the technical conclusion.
