@@ -1,5 +1,5 @@
 {
-  "scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. The conjunction is an audit convention, not a newly preregistered gate. It does not certify continuous numerical-field energy or peak errors.",
+  "scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. An additional exact finite-grid reference separates analytic-solution quadrature bias from solver-field energy discrepancy; it does not certify continuous numerical-field energy or peak errors. The conjunction remains an audit convention, not a newly preregistered gate.",
   "cases": [
     {
       "case": "n16-dt0.001",
@@ -7,6 +7,9 @@
       "velocity_relative_l2": 0.10164793244804474,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.1202787774156409,
+      "analytic_vertex_reference_energy": 0.06991245955582895,
+      "sample_energy_relative_error_vs_vertex_reference": 0.12021564888800232,
+      "vertex_quadrature_bias_relative_to_continuum": -7.175454707599063e-05,
       "observed_checks": {
         "velocity": false,
         "energy": false,
@@ -20,6 +23,9 @@
       "velocity_relative_l2": 0.022771503203074223,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.024642320463917587,
+      "analytic_vertex_reference_energy": 0.06991747645268438,
+      "sample_energy_relative_error_vs_vertex_reference": 0.024642320463915842,
+      "vertex_quadrature_bias_relative_to_continuum": -1.786392996532908e-15,
       "observed_checks": {
         "velocity": false,
         "energy": false,
@@ -33,6 +39,9 @@
       "velocity_relative_l2": 0.003625047685324406,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.0035513863579329764,
+      "analytic_vertex_reference_energy": 0.06991747645268442,
+      "sample_energy_relative_error_vs_vertex_reference": 0.0035513863579317894,
+      "vertex_quadrature_bias_relative_to_continuum": -1.190928664355272e-15,
       "observed_checks": {
         "velocity": true,
         "energy": true,
@@ -46,6 +55,9 @@
       "velocity_relative_l2": 0.00364683093911086,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.00355258891627159,
+      "analytic_vertex_reference_energy": 0.06991747645268442,
+      "sample_energy_relative_error_vs_vertex_reference": 0.0035525889162704035,
+      "vertex_quadrature_bias_relative_to_continuum": -1.190928664355272e-15,
       "observed_checks": {
         "velocity": true,
         "energy": true,
@@ -59,6 +71,9 @@
       "velocity_relative_l2": 0.003659666959336511,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.0035530437003643326,
+      "analytic_vertex_reference_energy": 0.06991747645268442,
+      "sample_energy_relative_error_vs_vertex_reference": 0.003553043700363146,
+      "vertex_quadrature_bias_relative_to_continuum": -1.190928664355272e-15,
       "observed_checks": {
         "velocity": true,
         "energy": true,

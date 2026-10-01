@@ -166,3 +166,30 @@ benchmark evidence and do not by themselves establish a solver defect.
 Energy quadrature and solution error are combined; continuous numerical-field
 energy is not certified. Schema-2 conservative verdicts remain unchanged.
 Evidence: evidence/tests/su2-standard-review.json, with archive SHA256 values.
+
+## Analytic vertex-grid energy reference
+
+The manufactured field has (u=\nabla\psi\times(1,2,3)), with
+\(\psi=e^{-t}\exp[\beta\sum_j(\cos d_j-1)]\),
+\(d_j=x_j-\pi\), and \(\beta=\sigma^{-2}\). For the frozen even-(n)
+grid \(x_j=2\pi j/n\), separability and symmetry give its exact discrete
+mean kinetic energy from two one-dimensional finite sums:
+
+\[
+E_n=14\beta^2e^{-2t-6\beta}
+\left(\frac1n\sum_j e^{2\beta\cos d_j}\sin^2d_j\right)
+\left(\frac1n\sum_j e^{2\beta\cos d_j}\right)^2.
+\]
+
+This matches direct evaluation of the reference field on n=8 and n=16 grids.
+At the benchmark parameters and endpoint, the n=16 reference-grid energy is
+0.06991245955582895 versus continuum energy 0.06991747645268451 (relative
+quadrature bias -0.0071755%); n=32 and n=64 agree with the continuum value to
+floating-point precision. Recomputing the archived sampled-energy comparison
+against this exact finite-grid reference changes the n=16 error from 12.0279%
+to 12.0216%, and leaves the other four errors unchanged to displayed
+precision. Thus reference sampling quadrature is far too small to explain the
+observed energy discrepancies; the frozen threshold outcomes are unchanged.
+This compares sampled kinetic energy only and is not a continuous-field error
+certificate. The case-by-case values and archive hashes are in
+`evidence/tests/su2-standard-review.json`.

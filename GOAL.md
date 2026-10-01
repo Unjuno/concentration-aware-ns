@@ -1538,3 +1538,22 @@ unsupported. Existing measured results and UNCERTAIN gates are unchanged; no
 solver defect or continuous-extremum claim follows. Details are recorded in
 `reports/su2-study-v1-interim.md`. The multi-solver research goal remains
 active and UNCERTAIN.
+
+## Revision 95 — SU2 reference energy quadrature isolated analytically
+
+Derived the exact mean kinetic energy of the manufactured solution on the
+frozen periodic SU2 vertex grids from separability and reflection symmetry.
+The finite-grid result is
+14 beta^2 exp(-2t-6 beta) B_n A_n^2, where A_n and B_n are the discrete
+means of exp(2 beta cos d) and exp(2 beta cos d) sin^2(d). It agrees with
+direct analytic-field sampling on n=8 and n=16 test grids. At benchmark
+parameters, reference quadrature bias is -0.0071755% for n=16 and at
+floating-point precision for n=32/64. Replacing the continuum denominator in
+the diagnostic-only energy comparison with this exact vertex-grid reference
+changes the n=16 observed discrepancy from 12.0279% to 12.0216%; all other
+cases are unchanged to displayed precision. Thus reference-grid quadrature is
+not a material explanation for the measured energy errors. The original
+frozen threshold comparisons and UNCERTAIN gates are unchanged; this does not
+certify continuous numerical-field energy. See
+reports/su2-study-v1-interim.md and
+evidence/tests/su2-standard-review.json.
