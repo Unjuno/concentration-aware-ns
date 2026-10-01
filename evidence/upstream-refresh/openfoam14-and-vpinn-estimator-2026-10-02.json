@@ -1,19 +1,57 @@
 {
-  "checked_at": "2026-10-02",
-  "scope": "Focused read-only literature and release refresh; no source checkout, solver build, or numerical run was performed.",
+  "checked_at_utc": "2026-10-01T17:52:57Z",
+  "scope": "Focused read-only release, package, source, issue, and paper refresh; no v14 checkout, solver build, or numerical run was performed.",
   "openfoam_foundation": {
     "version": 14,
     "release_date": "2026-07-14",
     "patch_announcement_date": "2026-07-25",
     "release_url": "https://openfoam.org/version/14/",
     "history_url": "https://openfoam.org/download/history/",
+    "repository": "https://github.com/OpenFOAM/OpenFOAM-14",
+    "repository_head": "162fa7a2e51e9c9a86c3000efdd885907f7d1acc",
+    "repository_head_date": "2026-09-30T14:42:37Z",
+    "head_change_scope": "src/OpenFOAM/meshes/primitiveShapes/plane/plane.C; fixes backwards-compatible plane dictionary handling and cites tracker report 4415. This input parsing change is not implicated by the periodic blockMesh benchmark case.",
+    "binary_package": {
+      "distribution": "Ubuntu 24.04 Noble arm64",
+      "package": "openfoam14",
+      "version": "20260724",
+      "source_tag": "20260724",
+      "source_tag_commit": "7b05503f98a85be88af930df48623b4d152bfc35",
+      "deb_size_bytes": 121598294,
+      "deb_sha256": "d20102ae6b39377ab3f5e654302ea0d58de166156fe681670f147ac555299a69"
+    },
+    "license": "GPL-3.0-or-later from COPYING; GitHub license API returns NOASSERTION.",
+    "open_records": {
+      "issues": [
+        {
+          "number": 3,
+          "title": "Core dumped in tutorial circuitBoardCooling",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-14/issues/3",
+          "disposition": "The report says it occurs while running that tutorial Allrun script; it is not the periodic incompressible benchmark case."
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 1,
+          "title": "paraview: Quote library directory comparison",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-14/pull/1",
+          "disposition": "Shell comparison when using system ParaView; unrelated to benchmark solver path."
+        },
+        {
+          "number": 2,
+          "title": "VTK: support unversioned include directories",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-14/pull/2",
+          "disposition": "ParaView VTK header discovery; unrelated to benchmark solver path."
+        }
+      ]
+    },
     "reported_relevant_changes": [
       "improved isothermalFluid and isothermalFilm modular solvers",
       "improved flux calculations",
       "mesh handling changes"
     ],
     "current_benchmark_version": "Foundation 13",
-    "disposition": "New version-coverage opportunity only. Existing v13 evidence is unchanged; no v14 defect or cross-version behavior is inferred."
+    "disposition": "New version-coverage opportunity only. Package 20260724 and source tag commit are pinned separately from current master. Existing v13 evidence is unchanged; no v14 defect or cross-version behavior is inferred."
   },
   "adaptive_estimator_paper": {
     "title": "An adaptive error estimator for stationary Navier-Stokes equations using variational physics informed neural networks",
