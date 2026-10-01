@@ -10,6 +10,7 @@
     "max_abs_difference": 3.0531133177191805e-15,
     "saved_field_sha256": "2b5ddada4e46f1c07a1ea91155ebe2353ed5814432418610c80f1207b88bbc08"
   },
+  "cell_average_formula_crosscheck_max_abs_difference": 1.8041124150158794e-16,
   "not_claimed": [
     "This is not the solver's unique reconstructed field or a continuous pointwise bound.",
     "It does not recompute gradient, vorticity or spectrum gates.",
@@ -22,6 +23,7 @@
       "end_time": 0.05,
       "cell_count": 4096,
       "center_sample_relative_l2": 0.08875833380125643,
+      "exact_cell_average_relative_l2": 0.15557713759516686,
       "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
         "8": 0.481117479865935,
         "10": 0.4811174798659343
@@ -47,6 +49,7 @@
       "end_time": 0.05,
       "cell_count": 32768,
       "center_sample_relative_l2": 0.018760163452901026,
+      "exact_cell_average_relative_l2": 0.035814291081609745,
       "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
         "5": 0.2417007123870892,
         "6": 0.24170071238723462
@@ -72,6 +75,7 @@
       "end_time": 0.05,
       "cell_count": 262144,
       "center_sample_relative_l2": 0.004780664208810196,
+      "exact_cell_average_relative_l2": 0.008936473409921788,
       "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
         "3": 0.12104703105868478,
         "4": 0.12104704619711054
@@ -97,6 +101,7 @@
       "end_time": 0.05,
       "cell_count": 2097152,
       "center_sample_relative_l2": 0.0012095963662190174,
+      "exact_cell_average_relative_l2": 0.002252264234734789,
       "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
         "3": 0.06054471685564148,
         "4": 0.06054471732921928

@@ -63,6 +63,53 @@ def periodic_gauss_gradient(velocity, n, width):
     return gradient.transpose(2, 1, 0, 3, 4).reshape(-1, 3, 3)
 
 
+def exact_cell_average_velocity(centers, width, time):
+    """Closed-form cell averages using the MMS Fourier polynomial factors."""
+    modes = np.array((1.0, 2.0, 3.0, 4.0))
+    amplitudes = np.array((56.0, 28.0, 8.0, 1.0))
+    sinc = np.sinc(modes * width / (2 * np.pi))
+    x, y, z = centers.T
+    average_g_y = (35.0 + np.sum(
+        amplitudes * np.cos(y[:, None] * modes) * sinc, axis=1
+    )) / 128.0
+    average_g_z = (35.0 + np.sum(
+        amplitudes * np.cos(z[:, None] * modes) * sinc, axis=1
+    )) / 128.0
+    average_g_prime_y = -np.sum(
+        amplitudes * modes * np.sin(y[:, None] * modes) * sinc, axis=1
+    ) / 128.0
+    average_sin = np.sin(FREQUENCY * x) * np.sinc(
+        FREQUENCY * width / (2 * np.pi)
+    )
+    average_cos = np.cos(FREQUENCY * x) * np.sinc(
+        FREQUENCY * width / (2 * np.pi)
+    )
+    decay = np.exp(-time)
+    return np.stack((
+        decay * average_g_prime_y * average_g_z * average_sin / FREQUENCY**2,
+        -decay * average_g_y * average_g_z * average_cos / FREQUENCY,
+        np.zeros_like(x),
+    ), axis=1)
+
+
+def verify_cell_average_formula():
+    """Compare the closed form with independent tensor Gauss quadrature."""
+    case, centers, _, width = _read_case(16)
+    del case
+    centers = centers[[0, 17, 511, 2048, -1]]
+    exact_average = exact_cell_average_velocity(centers, width, 0.05)
+    nodes, weights = leggauss(10)
+    numerical_average = np.zeros_like(exact_average)
+    for ix, wx in zip(nodes, weights):
+        for iy, wy in zip(nodes, weights):
+            for iz, wz in zip(nodes, weights):
+                offset = np.array((ix, iy, iz)) * (width / 2)
+                numerical_average += (wx * wy * wz / 8) * fields(
+                    centers + offset, N=FREQUENCY, nu=NU, time=0.05
+                )["u"]
+    return float(np.max(np.abs(exact_average - numerical_average)))
+
+
 def integrated_error(centers, velocity, width, time, order, gradient=None,
                      chunk_size=50000):
     """Integrate P0 or linear-gradient U against exact MMS over each cube."""
@@ -123,6 +170,7 @@ def audit():
         p1 = {str(order): integrated_error(
             centers, velocity, width, 0.05, order, gradient=gradient
         ) for order in orders[n]}
+        exact_average = exact_cell_average_velocity(centers, width, 0.05)
         rows.append({
             "n": n,
             "case": case.name,
@@ -131,6 +179,9 @@ def audit():
             "center_sample_relative_l2": center_sample_error(
                 centers, velocity, n, 0.05
             ),
+            "exact_cell_average_relative_l2": float(np.linalg.norm(
+                velocity - exact_average
+            ) / np.linalg.norm(exact_average)),
             "piecewise_constant_cell_volume_relative_l2_by_gauss_order": p0,
             "cellwise_gauss_linear_cell_volume_relative_l2_by_gauss_order": p1,
             "quadrature_abs_difference": {
@@ -152,6 +203,8 @@ def audit():
         ],
         "gradient_method": "Periodic central difference, cross-checked against the saved OpenFOAM grad(U) postprocessing field from the AMR probe with the tensor index order normalized.",
         "gradient_crosscheck": crosscheck,
+        "cell_average_formula_crosscheck_max_abs_difference":
+            verify_cell_average_formula(),
         "not_claimed": [
             "This is not the solver's unique reconstructed field or a continuous pointwise bound.",
             "It does not recompute gradient, vorticity or spectrum gates.",

@@ -215,6 +215,24 @@ the saved OpenFOAM `grad(U)` field to 3.1e-15 after tensor-index normalization.
 Raw field hashes and the complete table are in
 `evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json`.
 
+An additional reconstruction-independent comparison uses the exact volume
+average of the analytic velocity in each cell as the reference DOF. These
+closed-form averages follow from separability. For
+`g(q)=(1+cos q)^4/16`,
+`g(q)=[35+56 cos(q)+28 cos(2q)+8 cos(3q)+cos(4q)]/128`; each Fourier mode's
+cell average is multiplied by `sinc(m h/2)`. Thus the exact averages of
+`u_x=e^-t g'(y)g(z) sin(Nx)/N^2` and
+`u_y=-e^-t g(y)g(z) cos(Nx)/N` factor into three analytic one-dimensional
+averages. Relative discrete errors against these exact cell-average vectors
+are **15.558%, 3.581%, 0.894%, 0.225%** for n=16/32/64/128. The formula agrees
+with independent 10-point tensor Gauss integration at five n=16 cells to
+`1.8e-16` maximum absolute difference. This is a natural comparison if the
+finite-volume unknown is interpreted as a cell average, but this audit does
+not establish that the packaged solver's field is an exact average rather
+than a cell-centred representative. It is an additional DOF-level diagnostic,
+not a new preregistered gate. It places n=64/128 below the 2% velocity
+threshold, while n=32 exceeds it; the full combined gate is not recomputed.
+
 This changes the velocity-only 2% threshold result for n=32: the frozen
 cell-centre norm passes narrowly, while the cellwise linear reconstruction
 fails. The n=16 velocity metric fails either way; n=64 and n=128 remain below

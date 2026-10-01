@@ -1493,3 +1493,16 @@ remain as frozen; this does not certify continuous-domain extrema. Full
 Quadrature convergence checks, source-field hashes, and rerun instructions
 are recorded in `reports/solver-matrix-coverage-2026-09-30.md` and
 `evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json`.
+
+## Revision 92 — exact cell-average reference added
+
+Derived a closed-form exact cell average for the localized high-gradient MMS
+from its separable Fourier factors, using normalized sinc weights for each
+mode. Compared with the archived OpenFOAM cell values at n=16/32/64/128, this
+DOF-level relative L2 is 15.558%, 3.581%, 0.894%, and 0.225%. Independent
+10-point tensor Gauss integration over five n=16 cells agrees with the closed
+form to 1.8e-16. This avoids selecting P0/P1 reconstructions, but assumes the
+FV DOFs should be compared with exact volume means; the installed solver's
+field semantics were not independently established. It is supplementary and
+does not rewrite the frozen gate or establish continuous extrema. Results and
+hashes are included in the same machine-readable audit.
