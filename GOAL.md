@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 136 — physical-scaling follow-up rechecked
+
+Reread Duraiswami's arXiv:2609.17642 through the reduced similarity-profile
+computation, admissibility-cone analysis, and section 8 physical estimates.
+The paper's smooth reduced-profile cone failure is explicitly scoped away from
+the full OpenAI piecewise pulse construction, which it does not compute. Its
+water cavitation and air compressibility estimates occur before molecular
+scales under the stated illustrative conditions; tracer paths turn only a
+fraction of a revolution per collapse-time decade in its computed profile.
+These are model-dependent order-of-magnitude estimates, not experimental
+validation. They sharpen the cutoff and material-motion distinctions while
+leaving the selected-field infinitesimal alignment result separate and finite
+packets conditional. Evidence and scope are preserved in
+`evidence/upstream-refresh/duraiswami-physical-followup-2026-10-02.json` and
+the dated literature report. The overall repository goal remains active.
+
 ## Revision 135 — correct the OpenAI Lean proof-status audit
 
 The prior report treated the `OPEN` comment in `NavierStokes/ProblemStatement.lean`

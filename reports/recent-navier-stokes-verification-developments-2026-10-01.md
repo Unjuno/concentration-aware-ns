@@ -78,6 +78,37 @@ benchmark theorem, solver verdict, or molecule/viscosity hypothesis changes.
 Metadata notes are saved in
 `evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.
 
+## Physical and numerical follow-up, reread (checked 2026-10-02)
+
+Duraiswami's [arXiv:2609.17642](https://arxiv.org/abs/2609.17642) is a
+single-author computational follow-up. It recasts the leading-order
+similarity system, compares it with an exact porous-cylinder swirl solution,
+and reports a verified collocation solver for a related reduced profile
+problem. Its central limitation is explicit: it does not compute the
+oscillatory-pulse annulus or higher-order terms in the complete forced
+Navier–Stokes construction. For its smooth matched profiles the admissibility
+cone fails; the author explains that the construction's piecewise profile
+and very large similarity radii are essential, beyond what this computation
+reaches. That is a limit of the tested reduced representations, not a
+counterexample to the full construction.
+
+Under one chosen water-vortex scaling, its physical section estimates
+cavitation around a 0.6–1 mm core, before the illustrative molecular scale; for
+air, compressibility intervenes before molecular rarefaction. It also
+distinguishes collapse of the profile from material-line winding: at the
+computed amplitude, a tracer turns only a fraction of a revolution per decade
+in time-to-singularity. These are order-of-magnitude estimates from
+similarity scalings and a reduced profile, not measured outcomes or a
+simulation of the complete forced flow. They strengthen the physical-cutoff
+objection to reading molecular order or a viscosity law directly from the
+continuum theorem. They do not rule out the narrower infinitesimal
+tangent-direction alignment derived for the selected axis trajectory in this
+repository; those are different observables, and the finite-packet extension
+remains conditional. The fuller comparison is in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; checked
+claims and limits are captured in
+`evidence/upstream-refresh/duraiswami-physical-followup-2026-10-02.json`.
+
 ## Post-announcement analytical developments (checked 2026-10-01)
 
 Two newer analysis preprints sharpen the mathematical picture, but neither is

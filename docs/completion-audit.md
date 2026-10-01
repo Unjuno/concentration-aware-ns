@@ -869,6 +869,22 @@ or peer review. No benchmark or physical-hypothesis verdict changes. See
 `reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
 `evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.
 
+## 2026-10-02 physical follow-up reread
+
+Duraiswami's arXiv:2609.17642 was reread through its reduced profile method,
+admissibility-cone discussion, and physical-cutoff estimates. It reports that
+the tested smooth reduced profiles fail the cone, while explicitly leaving out
+the full construction's pulse annulus and higher-order terms; this is not a
+counterexample to that full mechanism. Its illustrative water and air estimates
+place cavitation/compressibility before molecular scales, and its tracer-motion
+discussion distinguishes profile collapse from material-line winding. These are
+model-dependent order-of-magnitude estimates, not measurements or a complete
+forced-flow simulation. They do not negate the separate infinitesimal
+tangent-direction alignment calculation and do not establish molecular order
+or a viscosity transition. See
+`reports/recent-navier-stokes-verification-developments-2026-10-01.md` and
+`evidence/upstream-refresh/duraiswami-physical-followup-2026-10-02.json`.
+
 ## 2026-10-01 linearized-flow volume check
 
 The Lean extension now proves the scale-volume factor of the selected
