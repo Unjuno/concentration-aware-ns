@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 179 — pressure-threshold algebra and benchmark replay refreshed
+
+Re-ran the exact SymPy pressure-moment check in the locked environment
+(SymPy 1.14.0). It reproduces the root identity and sufficient amplitude
+threshold; low- and high-moment algebraic controls have opposite signs. These
+controls are not complete constructed profiles, and no quantitative bound for
+the pinned `actualProfile` follows. Replayed the frozen Foundation 13 archive
+matrix: six archives pass standard acceptance; local quality fails only at
+n16/n32, so the preregistered blind-spot conjunction remains `NOT_OBSERVED`.
+This is archive/diagnostic replay, not a new solver run or physical validation.
+The latest PR #4 head `7b5eda9` remains open and mergeable; its Python
+verification workflow is still queued. Details and the distinction between
+pressure-tail bounds and the unresolved actual-profile moment are in
+`reports/analytic-pressure-followup-2026-10-02.md`. Overall goal remains active.
+
 ## Revision 178 — independent nanoda check of selected schedule pressure tail
 
 Independently exported and checked the selected-schedule tail-pressure Lean
