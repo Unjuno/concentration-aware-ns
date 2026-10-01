@@ -37,6 +37,16 @@ do not quietly reduce the three-project scope or redefine completion.
 This file versions the operational goal. The desktop goal text is separately
 managed by the app; editing this file does not change the app's saved goal.
 
+## Revision 19 — pressure-qualified alternative profile selection (2026-10-01)
+
+Continue to audit the original `FinalSlowBase.actualProfile` without silently
+replacing it. A separate Lean extension now selects a complete profile through
+the prepared amplitude-bounded witness and proves the root pressure sign for
+that alternate selection. Keep claims about this alternate object distinct
+from claims about OpenAI's fixed choice. This is a new analytic workstream, not
+a waiver of the manufactured-solution benchmark, three-project audit, justified
+upstream reporting, or reproducible-publication requirements in revisions 1–18.
+
 ## Expanded scope authorized 2026-09-09
 
 The user explicitly authorized starting work, upstream GitHub issues and related

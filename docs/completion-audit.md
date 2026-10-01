@@ -821,3 +821,17 @@ volume-preservation step behind the existing Gaussian argument; it does not
 formalize its probability tail bound or extend it to nonlinear finite packets or
 molecules. Evidence is in `evidence/lean-verification/axis-volume-covariance-2026-10-01.json`
 and interpretation limits in `reports/linearized-flow-volume-audit-2026-10-01.md`.
+
+## 2026-10-01 pressure-qualified alternative profile selection
+
+`verification/QualifiedProfilePressure.lean` constructs a new complete
+`FinalSlowBase.ProfileData` selection through the prepared outgoing amplitude
+bound, nominal cone certificate and modulation witness. It proves `P >= 2`
+for that selected record and `Z > 0` at its natural-axis root. The isolated
+checker exits 0; the new declarations use only `propext`, `Classical.choice`,
+and `Quot.sound`. This is an alternate selection and does not prove the sign
+for the upstream fixed `FinalSlowBase.actualProfile`; it also yields no
+molecular, phase-transition, viscosity-law, blow-up, or solver-defect result.
+No upstream report is justified. Details and replay evidence are in
+`reports/qualified-profile-pressure-selection-2026-10-01.md` and
+`evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
