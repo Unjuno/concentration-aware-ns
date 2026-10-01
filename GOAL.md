@@ -1572,3 +1572,23 @@ retain the mode-cube cutoff-32 non-interval tail limitation. Frozen gates are
 unchanged. Reproduction and hashes are in
 reports/su2-study-v1-interim.md and
 evidence/tests/su2-spectral-aliasing-audit.json.
+
+## Revision 97 — SU2 derivative error localized by reference strength
+
+Reloaded all five SU2 restart archives and independently replayed the periodic
+centered-FD2 gradient/curl. Separated solver-sample FD2 versus exact analytic
+derivatives, analytic-sample FD2 truncation, and solver-sample FD2 versus
+analytic-sample FD2. For n=16/32/64 (dt=.001), gradient RMS terms (total,
+reference-stencil, sample-field difference) are (0.3806, 0.2832, 0.1185),
+(0.1119, 0.07839, 0.03997), and (0.02589, 0.02014, 0.007503); vorticity
+terms are (0.3770, 0.2774, 0.1151), (0.1108, 0.07672, 0.03965), and
+(0.02550, 0.01971, 0.007289). Reference-only truncation scales near second
+order. The top decile of exact-reference gradient magnitude contains
+99.65/99.87/99.68% of squared sample-field gradient error; for vorticity
+strength it contains 99.82/99.94/99.96% of squared sample-field vorticity
+error. These are discrete descriptive spatial associations with the smooth
+manufactured profile, not physical concentration, inter-vertex bounds, a
+singularity, or a solver defect. Frozen verdicts remain unchanged; complete
+case results and replay checks are in
+reports/su2-study-v1-interim.md and
+evidence/tests/su2-local-derivative-audit.json.

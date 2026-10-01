@@ -220,3 +220,36 @@ cutoff-32 floating-point coefficients, whose omitted tail is not an interval
 bound. Reproduce with `python -m tools.audit_su2_spectral_aliasing`; archive
 hashes and raw contrasts are recorded in
 `evidence/tests/su2-spectral-aliasing-audit.json`.
+
+## Spatial concentration of sampled derivative error
+
+To see whether the remaining derivative discrepancies are located in the
+manufactured high-gradient region, the archived restart fields were reloaded
+and the same periodic centered-FD2 stencil was applied to solver and analytic
+vertex samples. This separates (a) solver-FD2 versus exact analytic derivatives,
+(b) analytic-sample FD2 versus exact derivatives (stencil truncation), and
+(c) solver-sample FD2 versus analytic-sample FD2 (the solver sample difference
+passed through the same stencil). Values below are absolute global RMS norms,
+not relative errors:
+
+| n | Gradient (a) | Gradient (b) | Gradient (c) | Vorticity (a) | Vorticity (b) | Vorticity (c) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 16 | 0.3806 | 0.2832 | 0.1185 | 0.3770 | 0.2774 | 0.1151 |
+| 32 | 0.1119 | 0.07839 | 0.03997 | 0.1108 | 0.07672 | 0.03965 |
+| 64, dt=.001 | 0.02589 | 0.02014 | 0.007503 | 0.02550 | 0.01971 | 0.007289 |
+
+The reference-only centered-difference truncation RMS falls by factors 3.61
+and 3.89 for gradient as n doubles, and 3.61 and 3.89 for vorticity, consistent
+with the expected second-order stencil behavior on this smooth reference.
+For the solver-sample-vs-reference-sample term (c), the top 10% of vertices
+ranked by exact analytic gradient magnitude contain 99.65%, 99.87%, and 99.68%
+of its squared gradient error for n=16/32/64. Ranked by exact vorticity
+magnitude, they contain 99.82%, 99.94%, and 99.96% of squared vorticity error.
+This is a spatial concentration of the discrete derivative discrepancy around
+the manufactured field's own high-derivative region. It does not distinguish
+physical localization from the smooth reference's steep spatial profile, does
+not bound inter-vertex extrema, and is not a solver defect or singularity
+finding. The temporal n=64 triplet has similar descriptive values; the full
+five-case data, archive hashes and replay guards are in
+`evidence/tests/su2-local-derivative-audit.json`. Reproduce with
+`python -m tools.audit_su2_local_derivatives`.
