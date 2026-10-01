@@ -1990,3 +1990,18 @@ searched. No new upstream post is justified. The inventory is archived with
 license-file blob IDs and explicitly bounded search scope. The benchmark's
 remaining numerical/analytic uncertainty and full completion conditions stay
 active.
+
+## Revision 118 — absolute localization versus relative packet expansion
+
+Under the existing conditional tube/Hessian envelopes and classical packet
+comparison, the `Q^44` initial-radius family has an all-direction endpoint
+upper bound `O(Q^40)`, while for a set of directions whose probability tends
+to one, endpoint displacement divided by initial radius is bounded below by
+`(1/2)Q^(1/2-C)` and diverges. This reconciles absolute endpoint localization
+with relative expansion and shows why the shrinking-initial-packet limit is
+not evidence that the flow contracts positional uncertainty or localizes a
+fixed-size packet. The exponent controls and assumptions are recorded in
+`docs/axis-packet-bound.md` and `evidence/tests/packet-radius-scaling.json`.
+The classical comparison theorem and all non-effective constants remain open
+limitations; the original three-solver benchmark and audit requirements remain
+unchanged.

@@ -236,6 +236,31 @@ the classical packet comparison, the endpoint cone probability tends to one
 for this shrinking `Q^44` initial radius. A transverse atom of mass p would
 leave at least that mass outside the cone.
 
+This limiting statement also has two different positional scales. The scalar
+comparison bounds the endpoint displacement for every direction by
+
+```
+|e(T)| <= delta0*Q^(44-C)/(1-D*delta0*Q^(5-C)) = O(Q^40),
+D = k0*tau0/(C-1),
+```
+
+because `C<4`; hence the entire packet is absolutely close to its center in
+the limit. But this is a family whose *initial radius already tends to zero*
+as `Q^44`. On the high-probability event `c=|cos(theta0)|>=Q^(1/2)`, the
+remainder estimate gives `Z/A -> 0`. Eventually `Z<=A/2`, so
+
+```
+|e(T)|/initial_radius >= (1/2)*Q^(1/2-C) -> infinity.
+```
+
+Thus absolute endpoint localization and relative expansion of the packet are
+compatible: near-one probability of directions aligns while their displacement
+from the center grows without bound *relative to the much smaller initial
+radius*. This does not show that the flow contracts positional uncertainty or
+that a fixed-size packet becomes position-certain. The added exponent controls
+are recorded in `evidence/tests/packet-radius-scaling.json` and checked by
+`tests/test_packet_alignment_scaling.py`.
+
 This is a conditional existence-level result with non-effective `rho0`,
 `k0`, and hence no usable physical radius or onset time. It is weaker than a
 fixed-size-particle claim in scale and only concerns nearby continuum

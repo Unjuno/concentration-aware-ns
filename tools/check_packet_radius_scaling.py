@@ -72,6 +72,10 @@ def main():
     packet_beta = s.Integer(44)
     direction_cutoff_power = s.Rational(1, 2)
     actual_c_lower = s.Rational(7999999, 2000000)
+    absolute_endpoint_power = packet_beta-C
+    good_direction_lower_endpoint_power = packet_beta+direction_cutoff_power-C
+    relative_displacement_power = direction_cutoff_power-C
+    good_direction_remainder_power = 5-C-direction_cutoff_power
     packet_nonlinear_power = packet_beta - actual_kappa - C + 1 - direction_cutoff_power
     packet_linear_ratio_power = 3*C/2 - direction_cutoff_power
     packet_distributional_residuals = {
@@ -87,12 +91,35 @@ def main():
         'linear_ratio_vanishes_uniformly_outside_band':
             bool(packet_distributional_residuals[
                 'linear_ratio_power_minus_cutoff_power_at_C_lower'] > 0),
+        'nonlinear_denominator_correction_vanishes': bool(5-actual_c_lower > 0),
+        'absolute_endpoint_radius_vanishes': bool(packet_beta-4 > 0),
+        'relative_displacement_lower_bound_diverges':
+            bool(direction_cutoff_power-actual_c_lower < 0),
+        'good_direction_endpoint_lower_power_is_positive':
+            bool(packet_beta+direction_cutoff_power-4 > 0),
     }
     packet_distributional_specialization = {
         'initial_packet_radius': 'delta0*Q^44',
         'excluded_near_transverse_band': 'abs(cos(theta0)) < Q^(1/2)',
         'nonlinear_ratio_power': 'Q^(5-C-1/2)/(1-D*delta0*Q^(5-C))',
         'linear_transverse_to_axial_ratio_power': 'Q^(3*C/2-1/2)',
+        'all_direction_absolute_endpoint_upper':
+            'delta0*Q^(44-C)/(1-D*delta0*Q^(5-C)) = O(Q^40)',
+        'good_direction_endpoint_lower':
+            'delta0*Q^(44+1/2-C)/2 when Z/A <= 1/2',
+        'good_direction_endpoint_to_initial_radius_lower':
+            'Q^(1/2-C)/2 -> infinity for lambda-probability tending to one',
+        'interpretation': 'Absolute endpoint localization occurs for an initial packet already shrinking as Q^44; for a probability-one limiting set of directions, the flow still expands displacement relative to that initial radius. This does not show contraction of a fixed-size packet.',
+        'power_checks': {
+            'nonlinear_denominator_decay_exponent': str(5-4),
+            'absolute_endpoint_upper_exponent_at_C4': str((packet_beta-C).subs(C, 4)),
+            'good_direction_endpoint_lower_exponent_at_C4': str(
+                (packet_beta+direction_cutoff_power-C).subs(C, 4)),
+            'relative_displacement_exponent_at_C_lower': str(
+                (direction_cutoff_power-C).subs(C, actual_c_lower)),
+            'good_direction_nonlinear_ratio_exponent_at_C4': str(
+                (5-C-direction_cutoff_power).subs(C, 4)),
+        },
         'input_C_interval': '[7999999/2000000, 4)',
         'strict_upper_bound_used': 'C < 4 implies 5-C-1/2 > 1/2',
         'limiting_probability': '1 - lambda(E), E = exactly transverse directions; equals 1 when lambda(E)=0',

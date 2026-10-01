@@ -38,3 +38,25 @@ def test_fixed_cone_and_transverse_relative_error_have_different_powers():
     assert sp.simplify(transverse_relative_power - fixed_cone_power - sp.Rational(3, 2) * C) == 0
     assert fixed_cone_power.subs({C: 4, kappa: 40}) == 43
     assert transverse_relative_power.subs({C: 4, kappa: 40}) == 49
+
+
+def test_shrinking_packet_absolute_localization_coexists_with_relative_stretch():
+    C = sp.symbols("C", positive=True)
+    initial_power = sp.Integer(44)
+    # With delta=delta0*Q^44, a(Q)<=Q^-4, and k*I=O(Q^-(C+39)),
+    # the nonlinear denominator is 1-O(Q^(5-C)).
+    denominator_decay_power = 5 - C
+    absolute_endpoint_power = initial_power - C
+    good_direction_lower_endpoint_power = initial_power + sp.Rational(1, 2) - C
+    relative_displacement_power = sp.Rational(1, 2) - C
+    good_direction_nonlinear_ratio_power = sp.Rational(9, 2) - C
+
+    # The source enclosure 7999999/2000000 <= C < 4 makes the denominator
+    # correction vanish, the absolute endpoint radius O(Q^40), and the
+    # good-direction displacement/initial-radius lower bound diverge.
+    C_lower = sp.Rational(7999999, 2000000)
+    assert sp.simplify(denominator_decay_power.subs(C, 4)) == 1
+    assert sp.simplify(absolute_endpoint_power.subs(C, 4)) == 40
+    assert sp.simplify(good_direction_lower_endpoint_power.subs(C, 4)) == sp.Rational(81, 2)
+    assert sp.simplify(relative_displacement_power.subs(C, C_lower)) < 0
+    assert sp.simplify(good_direction_nonlinear_ratio_power.subs(C, 4)) == sp.Rational(1, 2)
