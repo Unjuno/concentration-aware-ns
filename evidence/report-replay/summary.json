@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "cb72c7e2e00a6f94e865356d061819a058522d93e96c39ffdeaed8003b0b942b"
+      "log_sha256": "53d1e2cb56628b0a3ca85e6892480c601890b6adf0808c3d7ed00cf70412c968"
     },
     {
       "step": "global_peaks",
@@ -85,6 +85,38 @@
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_uniform_archive_schedules.log",
       "log_sha256": "0a708d06956e72cd86842ae9ff145fc06efba0967cd6e7283140af757dce24b4"
+    },
+    {
+      "step": "openfoam_fd2_synthetic_controls",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_fd2_synthetic_controls.log",
+      "log_sha256": "4c7b438bc500ecf22f4f33d9fcffe49520373c0433aa87aacc7f9db431e07d43"
+    },
+    {
+      "step": "openfoam_trig_supremum_arb",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_trig_supremum_arb.log",
+      "log_sha256": "14031efe068f938407f37469757405ef1d2a858e49258bd33416bb0b4440acd7"
     },
     {
       "step": "openfoam_temporal_triplet",
@@ -197,6 +229,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/su2_time_comparison.log",
       "log_sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
+    },
+    {
+      "step": "su2_localized_source_lag",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "tools.audit_su2_localized_source_lag"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_su2_localized_source_lag"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_localized_source_lag.log",
+      "log_sha256": "4a027efc258be6f4817729453fe01c3aace85754b0423ac1d021e7d1449a34b2"
     },
     {
       "step": "su2_bdf2_control",
