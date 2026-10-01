@@ -117,6 +117,27 @@ uniform neighborhood radius for that growing prefix nor numerical derivative
 enclosures. A quantitative support-width theorem uniform over the relevant
 stages, or direct bounds for the assembled field, is still required.
 
+The exact-arithmetic helper [`extract_finite_cutoff_schedule.py`](../tools/extract_finite_cutoff_schedule.py)
+computes a finite prefix when externally certified rational inputs are
+available. For every stage `j` it requires positive upper bounds `C[j,m]` for
+all `m=0,...,j+2`, and a certified rational `0<h_lower<=h`. It finds the
+least integer `b_j` satisfying
+
+    C[j,m] * (1/b_j)^(h_lower*j) <= 2^(-j)
+
+for each required order, then sets `a_j=max(b_j,2*a_(j-1))`. All checks use
+integer cross multiplication. Given a lower bound `q_min` valid on the whole
+tube, once `q_min*a_N>1`, every stage from `N` onward is zero for `q>=q_min`.
+The synthetic fixture and generated output live at
+[`finite-cutoff-schedule-synthetic.json`](../examples/finite-cutoff-schedule-synthetic.json)
+and [`finite-cutoff-schedule-synthetic.json`](../evidence/tests/finite-cutoff-schedule-synthetic.json).
+
+The tool verifies arithmetic only. Its provenance string does not certify the
+input bounds, and this repository still has no extracted selected-coefficient
+jet bounds or effective lower bound for `h`. The example is explicitly
+synthetic and does not support a claim about the OpenAI construction or any
+physical interpretation.
+
 ## New support-hole route inspected on 2026-09-28
 
 The pinned source has a potentially stronger route than the finite-prefix

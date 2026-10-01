@@ -1357,3 +1357,15 @@ derivative constants, and coefficients are still existential/noncomputable.
 The generic smooth counterexample remains valid only as a warning that
 fixed-prefix identities alone would be insufficient. No physical or solver
 verdict changes.
+
+## Revision 82 — exact finite-window schedule extractor
+
+Added an exact-rational schedule extractor for a finite chart window
+`q>=q_min`. It checks source absorption inequalities by integer arithmetic,
+enforces schedule doubling, and reports the first stage after which every
+later cutoff is zero on that window. Synthetic tests and a clearly labeled
+synthetic example validate the implementation. The input jet bounds and
+positive exponent lower bound must be certified externally; neither has been
+numerically extracted for the selected OpenAI coefficients. This makes no new
+solver, blow-up, particle, or viscosity claim and does not change the overall
+research goal or its three-project gates.
