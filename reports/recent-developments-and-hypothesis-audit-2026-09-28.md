@@ -130,6 +130,18 @@ claim as “apparently” settled and says its prize-evaluation process is
 deliberately unhurried; it is not an independent mathematical endorsement or
 award. [Clay Mathematics Institute, 11 September 2026](https://www.claymath.org/news/navier-stokes-announcement/).
 
+### Official status-page refresh — 2026-10-02
+
+The OpenAI announcement still states its claim that the forced construction
+establishes Clay alternatives C and D, while the Clay news statement describes
+the result as “apparently” settled and says prize evaluation is unhurried. The
+Clay Navier–Stokes problem page is currently labeled **Active**. I read that
+label as current administrative status, not as a mathematical rejection: the
+same Clay site has acknowledged the announcement, and no final prize decision
+is shown on the checked pages. OpenAI's post itself says it does not intend to
+claim the prize. The live source capture and interpretation are in
+`evidence/upstream-refresh/clay-status-2026-10-02.json`.
+
 The live OpenAI Lean repository still points to
 `f9e8bc5b38b6e212696e8a30e3e91517af887bbd` on 28 September; its latest commit
 metadata is dated 10 September. This is a source-version check, not new

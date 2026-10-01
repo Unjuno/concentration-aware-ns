@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 166 — official claim and prize statuses separated
+
+Rechecked the live primary pages. OpenAI continues to claim that its forced
+construction establishes alternatives C and D and says it will not claim the
+prize. Clay's announcement calls the result “apparently” settled and says
+evaluation is unhurried; Clay's Navier–Stokes page is still labeled `Active`.
+This is an administrative-status snapshot, not evidence that Clay rejected
+the proof. Preserve the distinction in future descriptions; the dated capture
+is `evidence/upstream-refresh/clay-status-2026-10-02.json` and the explanation
+is appended to `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`.
+The proof-status audit and the three-solver benchmark remain separate work;
+overall goal remains active.
+
 ## Revision 165 — capped prepared selector gives a uniformly small tail
 
 Formalized that the explicit coefficient multiplying `P^2` in the selected
