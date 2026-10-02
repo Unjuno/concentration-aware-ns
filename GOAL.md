@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 195 — independently replay the public similarity-flow test suite
+
+Pinned the preprint's public GitLab snapshot at
+`10377a74f81ab7f6edff0892a379d4937e17fd9b`, inspected the bounded test entry
+point, and ran `python tests.py` in an isolated `work/` directory. All four
+checks pass: coordinate-operator identity, leading-order NS substitution,
+heat-exterior residual decreasing from 2.98e-2 to 9.77e-4 over four grids, and
+manufactured-solution errors reaching about 1e-11. This independently replays
+the published checks but does not validate their sufficiency, recreate raw
+parameter sweeps, or reproduce the complete OpenAI construction. Evidence and
+hashes are in `evidence/external/swirl-collapse-verification-2026-10-02.json`.
+No particle alignment or material-line winding conclusion is upgraded. Goal
+remains active.
+
 ## Revision 194 — assess the post-announcement similarity-flow study
 
 Added a scoped review of Duraiswami's 2026-09-15 arXiv follow-up, which
