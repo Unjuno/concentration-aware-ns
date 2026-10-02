@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 219 — replay the local nullspace check and stabilize archive logs
+
+Added the existing SymPy cell-local divergence-free null-sequence audit to the
+published report-replay sequence. The full 39-step replay passed on Python
+3.14.5: 213 passed, one skipped, five subtests passed; each recorded step log
+matches its SHA-256. The replay scope explicitly excludes the generalized
+finite-AMR proof adaptation, the cited blowup packet, solver reruns, and any
+scientific verdict upgrade. Stabilized split-AMR archive replay by suppressing
+zstd's successful temporary-path message while preserving its stderr on
+failure; a focused regression test covers that contract. The archived AMR
+volume-integrated numerical result is unchanged. Evidence is in
+`evidence/report-replay/summary.json`, `tests.log`, and
+`openfoam_amr_volume_integrated.log`.
+
 ## Revision 218 — exercise the CI Python version locally
 
 Ran the full benchmark suite on local macOS arm64 with Python 3.12.10, matching

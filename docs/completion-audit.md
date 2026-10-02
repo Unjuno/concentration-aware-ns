@@ -1417,3 +1417,15 @@ requirements digest, command, log and hash are in
 `evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This aligns the
 interpreter minor version with CI but is not evidence that the hosted Ubuntu
 job ran; its latest state must be checked independently.
+
+
+### Nullspace algebra and deterministic archive replay refresh — 2026-10-03
+
+The published replay now includes the symbolic cell-local divergence-free
+null-sequence check and passed all 39 steps under Python 3.14.5. The full
+benchmark test suite reported 213 passed, one skipped, and five subtests
+passed. Every step's stored log digest matches its summary entry. Successful
+zstd output no longer injects random temporary paths into the AMR replay log;
+its numerical output is unchanged. This verifies the local symbolic identity
+and replay machinery only. It does not prove the finite-AMR extension, the
+OpenAI packet, or any solver hypothesis.

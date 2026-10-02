@@ -572,3 +572,15 @@ The frozen command, dependency versions, spec digest, stdout and hash are in
 `evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This is a local
 macOS compatibility check only; the hosted workflow remains separately
 unverified while queued.
+
+
+## Finite-volume nullspace replay and stable AMR archive diagnostics — 2026-10-03
+
+Added `tools.check_fv_derivative_nullspace` to the report replay. Its SymPy
+identity is a conditional smooth compact-support construction, not a solver
+solution or verification of the generalized finite-AMR proof. A second replay
+hygiene fix suppresses successful zstd temporary-path output but preserves
+error diagnostics. Full 39-step replay passed; 213 tests passed, one skipped,
+and five subtests passed. Every log hash matched its summary entry, the AMR
+archive path no longer leaks, and the numerical AMR result did not change.
+See `evidence/report-replay/summary.json` and the adjacent logs.

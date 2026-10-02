@@ -41,6 +41,7 @@ steps = [
     ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),
     ('high_gradient_mms', [sys.executable, '-m', 'tools.check_high_gradient_mms']),
     ('high_gradient_reference', [sys.executable, '-m', 'tools.check_high_gradient_reference']),
+    ('fv_derivative_nullspace', [sys.executable, '-m', 'tools.check_fv_derivative_nullspace']),
     ('support_hole_tube_geometry', [sys.executable, '-m', 'tools.check_support_hole_tube_geometry']),
     ('linearized_axis_tube_concentration', [sys.executable, '-m', 'tools.check_alignment_uncertainty']),
     ('openfoam_iteration_archives', [sys.executable, '-m', 'tools.replay_openfoam_iteration_archives']),
@@ -67,6 +68,6 @@ for name, command in steps:
     if run.returncode:
         break
 success = len(records)==len(steps) and all(r['exit_code']==0 for r in records)
-(output/'summary.json').write_text(json.dumps({'scope':'Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.', 'success':success, 'steps':records},indent=2)+'\n')
+(output/'summary.json').write_text(json.dumps({'scope':'Archived-input report generation and exact algebra replay, including a symbolic cell-local divergence-free null-sequence check. The replay does not verify the generalized finite-AMR proof adaptation, the cited blowup packet, any solver, or a scientific verdict.', 'success':success, 'steps':records},indent=2)+'\n')
 print(json.dumps({'success':success,'completed_steps':len(records)},indent=2))
 raise SystemExit(0 if success else 1)

@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -39,7 +40,24 @@ def reconstruct(parts_manifest, output):
                         total += len(block)
         if total != metadata["archive_bytes"] or whole.hexdigest() != metadata["archive_sha256"]:
             raise ValueError("reassembled Zstandard archive size or SHA-256 mismatch")
-        subprocess.run(["zstd", "-d", str(compressed), "-o", str(output)], check=True)
+        # zstd prints the destination path on success. The destination is a
+        # temporary file in replay use, so suppress that nondeterministic path
+        # while leaving stderr available for actionable failures.
+        command = ["zstd", "-d", str(compressed), "-o", str(output)]
+        try:
+            subprocess.run(
+                command,
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+        except subprocess.CalledProcessError as error:
+            # Keep actionable decompressor diagnostics on failure, without
+            # publishing successful temporary paths into replay logs.
+            if error.stderr:
+                sys.stderr.write(error.stderr)
+            raise
     if output.stat().st_size != metadata["source_tar_gz_bytes"]:
         output.unlink(missing_ok=True)
         raise ValueError("decompressed tarball size mismatch")

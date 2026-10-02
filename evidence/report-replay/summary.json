@@ -1,5 +1,5 @@
 {
-  "scope": "Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.",
+  "scope": "Archived-input report generation and exact algebra replay, including a symbolic cell-local divergence-free null-sequence check. The replay does not verify the generalized finite-AMR proof adaptation, the cited blowup packet, any solver, or a scientific verdict.",
   "success": true,
   "steps": [
     {
@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "87ad15f73e0525503ec8372cc00780720e7cb280a6365b8cb1c348a296581728"
+      "log_sha256": "ccd59e85b1f592fea54da457dc0c48817ba885777600b69f95636e41baf7cd40"
     },
     {
       "step": "global_peaks",
@@ -180,7 +180,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_amr_volume_integrated.log",
-      "log_sha256": "9cc8ef2e454f7130c9e14b31f806ddb5f426754d2476fdd981332defd70f9d5a"
+      "log_sha256": "bc8039f1427d50434c7c533a7771d39d2f4e46b9734e97c89988c3658739fd81"
     },
     {
       "step": "su2_archive_review",
@@ -517,6 +517,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/high_gradient_reference.log",
       "log_sha256": "c7cbb24bcd2245b59653d2d523bbf5ab5a750ec45fb90b5b2c7639cd0e6b6c04"
+    },
+    {
+      "step": "fv_derivative_nullspace",
+      "command": [
+        "python",
+        "-m",
+        "tools.check_fv_derivative_nullspace"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_fv_derivative_nullspace"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/fv_derivative_nullspace.log",
+      "log_sha256": "121e0d0410369884c4daabea199eb4de51626660e2fe3df8274eb91ba4c4aff0"
     },
     {
       "step": "support_hole_tube_geometry",
