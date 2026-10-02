@@ -46,6 +46,11 @@ def derive():
     theta_drift = a*sp.sin(theta)*sp.cos(theta) - D*sp.tan(theta)
     theta_drift_derivative = sp.diff(theta_drift, theta)
     theta_drift_expected_derivative = a*sp.cos(2*theta) - D/sp.cos(theta)**2
+    scalar_drift_theta_chart = ((a-2*D)*sp.sin(theta)-a*sp.sin(theta)**3)/sp.cos(theta)
+    scalar_ito_theta_correction = D*sp.sin(theta)/sp.cos(theta)
+    theta_ito_transform_residual = sp.trigsimp(
+        scalar_drift_theta_chart + scalar_ito_theta_correction - theta_drift
+    )
     pole_drifts = (scalar_ito_drift_decomposed.subs(x, 1), scalar_ito_drift_decomposed.subs(x, -1))
     total_diffusion_from_decay_rate = sp.integrate(
         D0 * tau0 ** (1-delta) * sp.exp(-subcritical_decay*s), (s, 0, sp.oo)
@@ -75,6 +80,7 @@ def derive():
         sp.simplify(scalar_ito_drift - scalar_ito_drift_decomposed) == 0,
         sp.simplify(scalar_noise_variance - 2*D*(1-x**2)) == 0,
         sp.simplify(theta_drift_derivative-theta_drift_expected_derivative) == 0,
+        theta_ito_transform_residual == 0,
         pole_drifts == (-2*D, 2*D),
         sp.limit(cone_probability_erfi, chi, 0, dir="+") == 1-cutoff,
         isotropic_probability == isotropic_cone_probability,
@@ -103,6 +109,7 @@ def derive():
         "scalar_pole_ito_drifts": str(pole_drifts),
         "equatorial_theta_sde": "dtheta=[a*sin(theta)*cos(theta)-d(s)*tan(theta)]ds+sqrt(2*d(s))*dW_s, x=sin(theta), |theta|<pi/2",
         "equatorial_theta_drift_derivative": "a*cos(2*theta)-d(s)/cos(theta)^2",
+        "theta_ito_transform_residual": str(theta_ito_transform_residual),
         "equator_avoidance_argument": "For any r<pi/4, at sufficiently late deterministic S the theta drift derivative is uniformly positive on [-r,r], since d(s)->0. For a fixed future Brownian path, differences of two additive-noise solutions satisfy D'=b_s(theta1)-b_s(theta2); two distinct paths that both converge to zero would eventually be in this band and their difference would grow exponentially, a contradiction. Thus at most one theta_S can converge to zero for each future noise path. At any positive deterministic S, ellipticity of the sphere SDE gives an absolutely continuous state law, hence theta_S has no atoms; independence of future Brownian increments and conditioning/Fubini imply zero probability of equator convergence. This uses the standard pathwise uniqueness/order-preserving flow on the interior; endpoint nonattainment is required.",
         "scalar_linearization_near_equator": "dx=(a-2*d(s))*x ds + sqrt(2*d(s))dW_s after dropping cubic drift and O(x^2) noise corrections; its integrating-factor terminal amplitude has a nondegenerate Gaussian law, but this alone does not prove equator avoidance for the nonlinear SDE",
         "subcritical_stochastic_limit_set": "Finite integrated diffusion makes the sphere-valued SDE an asymptotic pseudotrajectory of the deterministic Jeffery flow. The compact limit set is internally chain transitive; the strict Lyapunov function restricts it to the equator (V=0) or a pole (V=1). The separate additive-noise theta argument recorded here excludes equator convergence almost surely, conditional on the stated interior flow and ellipticity facts; therefore the ideal director converges to a pole almost surely.",

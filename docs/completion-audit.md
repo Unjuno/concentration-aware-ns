@@ -76,7 +76,7 @@ equator convergence has probability zero. Together with the prior APT and
 strict-Lyapunov classification, this conditionally gives a single-pole limit
 for the ideal director. The argument uses standard endpoint nonattainment
 and elliptic-smoothing facts; the symbolic checker verifies only algebra.
-Four focused tests pass and the checker reports 15 exact identities. The
+Four focused tests pass and the checker reports 16 exact identities. The
 machine record is
 [`spherical-orientation-diffusion-equator-avoidance-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json).
 This correction supersedes the preceding absorbing-pole and equator-gap

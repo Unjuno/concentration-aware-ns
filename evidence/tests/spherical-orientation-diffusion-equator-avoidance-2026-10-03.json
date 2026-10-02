@@ -1,6 +1,6 @@
 {
   "checker": "tools/check_spherical_orientation_diffusion.py",
-  "checker_sha256": "c87fba28377435c54a4ad53a12812f630caaa6d113d6d631d15a0123b6457d9a",
+  "checker_sha256": "822db6165bbedbc7b6792de7cbf4f6b70471e18dd9dd363b01b281cb48cc100f",
   "python_version": "3.12.10",
   "python_implementation": "cpython",
   "platform": "macOS-26.6.2-arm64-arm-64bit",
@@ -21,6 +21,7 @@
   "scalar_pole_ito_drifts": "(-2*D, 2*D)",
   "equatorial_theta_sde": "dtheta=[a*sin(theta)*cos(theta)-d(s)*tan(theta)]ds+sqrt(2*d(s))*dW_s, x=sin(theta), |theta|<pi/2",
   "equatorial_theta_drift_derivative": "a*cos(2*theta)-d(s)/cos(theta)^2",
+  "theta_ito_transform_residual": "0",
   "equator_avoidance_argument": "For any r<pi/4, at sufficiently late deterministic S the theta drift derivative is uniformly positive on [-r,r], since d(s)->0. For a fixed future Brownian path, differences of two additive-noise solutions satisfy D'=b_s(theta1)-b_s(theta2); two distinct paths that both converge to zero would eventually be in this band and their difference would grow exponentially, a contradiction. Thus at most one theta_S can converge to zero for each future noise path. At any positive deterministic S, ellipticity of the sphere SDE gives an absolutely continuous state law, hence theta_S has no atoms; independence of future Brownian increments and conditioning/Fubini imply zero probability of equator convergence. This uses the standard pathwise uniqueness/order-preserving flow on the interior; endpoint nonattainment is required.",
   "scalar_linearization_near_equator": "dx=(a-2*d(s))*x ds + sqrt(2*d(s))dW_s after dropping cubic drift and O(x^2) noise corrections; its integrating-factor terminal amplitude has a nondegenerate Gaussian law, but this alone does not prove equator avoidance for the nonlinear SDE",
   "subcritical_stochastic_limit_set": "Finite integrated diffusion makes the sphere-valued SDE an asymptotic pseudotrajectory of the deterministic Jeffery flow. The compact limit set is internally chain transitive; the strict Lyapunov function restricts it to the equator (V=0) or a pole (V=1). The separate additive-noise theta argument recorded here excludes equator convergence almost surely, conditional on the stated interior flow and ellipticity facts; therefore the ideal director converges to a pole almost surely.",
@@ -31,6 +32,7 @@
   "target_cone_probability_isotropic_limit": "1 - cutoff",
   "delta_gt_one_limit": "The transformed diffusivity grows exponentially. The mean-zero density obeys a Poincare energy inequality Y' <= -lambda*D(s)*Y + K/D(s) for sufficiently large D(s), hence rho converges to the uniform surface density in L2(S^2).",
   "identity_checks": [
+    true,
     true,
     true,
     true,
