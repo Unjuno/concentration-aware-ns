@@ -43,6 +43,11 @@ python3 -m unittest discover -s tests -v
 python3 tools/acceptance_gate.py examples/unverified.json
 ```
 
+For the pytest suite, install `requirements-verification.txt` and `pytest`,
+then run `python -m pytest -q`. Pytest discovery is restricted to `tests/`;
+archived checkouts and source trees under the ignored `work/` directory are
+not collected.
+
 The example intentionally returns `UNCERTAIN` (exit 2). The checker consumes
 evidence reports with hashed artifact references and error intervals; it does not
 run a solver or determine whether an evidence review is true. See
