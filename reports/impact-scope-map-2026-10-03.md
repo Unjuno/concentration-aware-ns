@@ -70,3 +70,41 @@ verified. The repository remains the single canonical project location.
 - D. Michel et al., [“Superfluid motion and drag-force cancellation in a fluid of light”](https://www.nature.com/articles/s41467-018-04534-9), *Nature Communications* 9, 2108 (2018): experiment in a bulk nonlinear photorefractive crystal; the paraxial field is modeled by a 2D Gross–Pitaevskii-type equation and its nonlinear optical response mediates effective photon interactions.
 - Q. Glorieux et al., [“Paraxial fluids of light”](https://arxiv.org/abs/2504.06262) (arXiv:2504.06262, first posted 2025): surveys the NLSE-to-2D+1-GPE mapping and optical platforms. This is useful scope context, not a new result of the present benchmark.
 - I. Carusotto and C. Ciuti, [“Quantum fluids of light”](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.85.299), *Reviews of Modern Physics* 85, 299 (2013): review of effective interacting photon-fluid platforms, including nonlinear media and microcavities.
+
+## Analytical comparison: optical fluid versus viscous Navier–Stokes
+
+A standard photon-fluid mapping starts from an envelope equation of
+Gross–Pitaevskii/NLSE type, schematically
+
+$$
+i\hbar\,\partial_t\psi=
+\left[-\frac{\hbar^2}{2m}\nabla^2+V+g|\psi|^2\right]\psi.
+$$
+
+Writing `psi=sqrt(rho) exp(i phi)` and defining
+`v=(hbar/m) grad(phi)` gives, away from zeros of `psi`,
+
+$$
+\partial_t\rho+\nabla\!\cdot(\rho v)=0,
+$$
+
+$$
+\partial_t v+(v\!\cdot\nabla)v
+=-\frac{1}{m}\nabla(V+g\rho)
++\frac{\hbar^2}{2m^2}\nabla\!\left(\frac{\nabla^2\sqrt{\rho}}{\sqrt{\rho}}\right).
+$$
+
+This is a compressible, potential-flow hydrodynamic form with an interaction
+pressure and a quantum-pressure term. It is not the incompressible viscous
+Navier–Stokes equation: there is no Newtonian `nu*Delta(v)` term in this
+conservative model. Absorption or a driven cavity adds model-specific source
+and loss terms, which still need derivation before calling them viscosity.
+For paraxial optics, the propagation coordinate plays the effective evolution
+variable and the transverse plane supplies the spatial coordinates; the
+mapping is not automatically a three-dimensional material flow. Thus the
+published light-fluid field makes the user's analogy scientifically
+interesting, but does not validate the proposed molecular-position or
+viscosity-collapse inference. The NLSE/GPE mapping and hydrodynamic variables
+are described in the [2025 review](https://arxiv.org/abs/2504.06262); an
+experimental nonlinear-crystal platform is reported by Michel et al.
+([2018](https://www.nature.com/articles/s41467-018-04534-9)).

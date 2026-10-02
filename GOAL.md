@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 238 — derive the optical-fluid equation boundary
+
+Added the Madelung form of the effective GPE/NLSE to the impact map:
+continuity plus compressible potential-flow momentum with nonlinear pressure
+and quantum pressure. The conservative equation has no Newtonian viscous
+Laplacian; optical loss or drive must be modeled separately. The paraxial
+propagation coordinate and transverse plane also differ from a 3D material
+flow. This gives a concrete comparison for the user's light-fluid intuition
+while leaving any coupling to the audited Navier–Stokes construction
+unproved. No new optical computation or experiment is claimed. The single
+repository objective remains active.
+
 ## Revision 237 — place the light-fluid idea in its established model family
 
 Checked primary and review literature on the light-fluid suggestion. A real
