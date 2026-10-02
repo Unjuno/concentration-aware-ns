@@ -23,10 +23,18 @@ separate code-quality and style guides.
 
 The Foundation tracker is separate from GitHub and must not be confused with
 the OpenCFD GitLab project. The all-issues URL redirected to its login page
-(HTTP 302, then 200 for the login form) in this environment. Thus the
-GitHub-side current-version inventory is verifiable, while a full live Mantis
-issue search remains unavailable. Indexed historical results are not evidence
-that no relevant tracker report exists.
+(HTTP 302, then 200 for the login form) in this environment. Direct issue
+pages likewise returned HTTP 403 to the browser fetcher. A targeted public-index
+search did surface relevant historical records: #4178 (PIMPLE controls,
+resolved), #3928 (dynamic-refinement history, resolved), #4378 (a June 2026
+parallel zone-generation crash, resolved by a commit), and #4282 (a
+propeller-disk model scope question, closed as a development request). These
+records do not establish a present defect in this benchmark's fixed-mesh,
+single-phase forced-flow path; #4378 concerns a different parallel zone-set
+path, while #4282 explicitly concerned an unsupported model use. Because the
+individual records and full listing could not be fetched directly, this is a
+targeted indexed search, not an exhaustive live tracker review. The exact
+search scope and records are captured in the machine-readable audit below.
 
 ## Benchmark coverage and disposition
 
