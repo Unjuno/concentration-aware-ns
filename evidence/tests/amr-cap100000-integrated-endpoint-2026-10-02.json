@@ -1,0 +1,37 @@
+{
+  "status": "DIAGNOSTIC_ONLY_QUALITY_UNCERTAIN",
+  "scope": "Saved OpenFOAM volTensorField grad(U), treated cellwise constant, integrated against the analytic frequency-4 MMS at t=0.05. Separate endpoint case, not part of the first-map resolution sweep.",
+  "archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap100000.tar.gz",
+  "archive_sha256": "9beb7672a5d93b19ef2bf1d1a54e2c03d4d4fdbda258f448ef002b866859b446",
+  "analyzer_sha256": "5ba061645838b2673e5587abfb1201ced1a1a937e502e0d20a8fa58f83738657",
+  "source_commit": "265611cd160a7e139b6950c918e6dc1d90056d97",
+  "foundation_solver_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "final_time": 0.05,
+  "mesh": {
+    "cells": 101760,
+    "level_counts": {
+      "0": 2176,
+      "1": 3328,
+      "2": 96256
+    },
+    "maximum_refinement_level": 2,
+    "retained_cells": 22560,
+    "retained_volume": 104.64618379601187
+  },
+  "operator": "Archived OpenFOAM grad(U) tensor field; constant within each cell for integration",
+  "gradient_relative_l2": 1.3039842457493536,
+  "curl_relative_l2": 2.0882198358991,
+  "quadrature_order_comparison": {
+    "orders_per_axis": [
+      6,
+      8
+    ],
+    "gradient_absolute_difference": 4.440892098500626e-16,
+    "curl_absolute_difference": 4.440892098500626e-16
+  },
+  "interpretation_limits": [
+    "A cellwise-constant derivative-field reconstruction error, not continuous velocity-field error or proof of solver failure.",
+    "This endpoint used a different adaptation history and budget from the first-map n16/n32/n64 resolution sweep; do not combine the values into a convergence trend.",
+    "No preregistered AMR quality threshold exists; this does not establish a defect or physical singularity."
+  ]
+}

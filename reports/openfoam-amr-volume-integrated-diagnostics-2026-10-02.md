@@ -2,6 +2,25 @@
 
 ## Result
 
+### Separate maximum-refinement endpoint
+
+I also analyzed the independently archived cap100000 run at `t=0.05`. Its
+saved mesh reaches refinement level 2 (2,176 level-0, 3,328 level-1, and
+96,256 level-2 cells). Treating the saved OpenFOAM `grad(U)` tensor as
+cellwise constant and integrating on the same `pi/4`-margin support gives
+130.3984% gradient and 208.8220% curl relative L2 error. Order-6 and order-8
+quadrature ratios differ by only `4.44e-16`.
+
+This is a separate endpoint diagnostic, not another point in the n=16/32/64
+first-map trend: it has a different adaptation history and final time. The
+quadrature only establishes stable integration of the selected stored tensor
+representation. It does not validate the tensor's construction, represent a
+continuous velocity field, or establish a solver defect. There was no
+preregistered AMR quality threshold, so quality remains `UNCERTAIN`. The
+reproducer is `tools/analyze_amr_cap100000_integrated.py`; its input hash,
+mesh counts, method, and result are recorded in
+`evidence/tests/amr-cap100000-integrated-endpoint-2026-10-02.json`.
+
 I recomputed the archived n=16, n=32, and n=64 first-map gradient fields on
 the same physical interior and integrated the squared error of the
 cellwise-constant finite-volume Gauss gradient over each cell. This removes

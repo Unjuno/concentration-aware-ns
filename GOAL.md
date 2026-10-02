@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 199 — assess the archived maximum-refinement endpoint
+
+Analyzed the archived cap100000 endpoint at `t=0.05`, validating its 101,760
+cell fields and level counts (2,176/3,328/96,256 for levels 0/1/2). Integrating
+the saved cellwise-constant OpenFOAM `grad(U)` tensor against the analytic MMS
+on the common interior gives 130.3984% gradient and 208.8220% curl relative
+L2 error; order-6/order-8 quadrature agrees to `4.44e-16`. This distinct run
+history is not appended to the first-map resolution trend. The metric does not
+validate the tensor construction or continuous velocity field, and no
+preregistered quality threshold exists; verdict remains `UNCERTAIN`, with no
+solver-defect or physical-singularity conclusion. Reproducer and raw archive
+hash are recorded in `tools/analyze_amr_cap100000_integrated.py` and
+`evidence/tests/amr-cap100000-integrated-endpoint-2026-10-02.json`.
+
+## Revision 198 — replay the AMR cell-integrated derivative audit
+
 ## Revision 198 — replay the AMR cell-integrated derivative audit
 
 Re-ran `tools.compare_amr_resolution_volume_integrated` from its recorded
