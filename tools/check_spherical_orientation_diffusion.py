@@ -38,6 +38,10 @@ def derive():
     total_diffusion_general = D0 * tau0 ** (1 - delta) / (1 - delta)
     x_drift = a * x * (1 - x**2)
     lyapunov_derivative = sp.factor(2 * x * x_drift)
+    scalar_sphere_laplacian_x = sp.simplify((1-x**2)*sp.diff(x,x,2)-2*x*sp.diff(x,x))
+    scalar_ito_drift = sp.simplify(x_drift + D*scalar_sphere_laplacian_x)
+    scalar_ito_drift_decomposed = (a-2*D)*x - a*x**3
+    scalar_noise_variance = 2*D*(1-x**2)
     total_diffusion_from_decay_rate = sp.integrate(
         D0 * tau0 ** (1-delta) * sp.exp(-subcritical_decay*s), (s, 0, sp.oo)
     )
@@ -73,6 +77,8 @@ def derive():
         "delta_lt_one_total_diffusion_general": "D0*tau0^(1-delta)/(1-delta), finite for delta<1",
         "deterministic_polar_coordinate_ode": "d(p_z)/ds=a*p_z*(1-p_z^2)",
         "strict_lyapunov_quantity": "V(p)=p_z^2; dV/ds=2*a*p_z^2*(1-p_z^2), zero only on the equator and the two poles",
+        "scalar_ito_reduction": "dx=[(a-2*d(s))*x-a*x^3]ds+sqrt(2*d(s)*(1-x^2))dW_s; valid as the p_z marginal away from the absorbing poles x=+/-1",
+        "scalar_linearization_near_equator": "dx=(a-2*d(s))*x ds + sqrt(2*d(s))dW_s after dropping cubic drift and O(x^2) noise corrections; its integrating-factor terminal amplitude has a nondegenerate Gaussian law, but this alone does not prove equator avoidance for the nonlinear SDE",
         "subcritical_stochastic_limit_set": "Finite integrated diffusion makes the sphere-valued SDE an asymptotic pseudotrajectory of the deterministic Jeffery flow. The compact limit set is internally chain transitive; the strict Lyapunov function restricts it to either the equator (V=0) or one pole (V=1). This checker does not rule out convergence to the unstable equator.",
         "delta_eq_one_stationary_density_relative_to_surface_area": "rho_inf(p)=Z^(-1)*exp(chi*p_z^2), chi=a/(2*D0)",
         "stationarity_method": "The drift is (a/2)*grad_S(p_z^2); this density has zero probability current. For D0>0, ellipticity on compact connected S^2 gives the unique invariant density.",
@@ -89,6 +95,9 @@ def derive():
             sp.simplify(total_diffusion_from_decay_rate - D0*tau0**(1-delta)/subcritical_decay) == 0,
             sp.simplify(total_diffusion_from_decay_rate.subs(subcritical_decay, 1-delta)-total_diffusion_general) == 0,
             sp.simplify(lyapunov_derivative - 2*a*x**2*(1-x**2)) == 0,
+            scalar_sphere_laplacian_x == -2*x,
+            sp.simplify(scalar_ito_drift - scalar_ito_drift_decomposed) == 0,
+            sp.simplify(scalar_noise_variance - 2*D*(1-x**2)) == 0,
             sp.limit(cone_probability_erfi, chi, 0, dir="+") == 1-cutoff,
             isotropic_probability == isotropic_cone_probability,
         ],

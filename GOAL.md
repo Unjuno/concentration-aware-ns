@@ -42,6 +42,27 @@ simulation or upstream finding was inferred. PR #4's latest hosted test job
 remains queued; local code tests were already green on the preceding code
 revision. Goal remains active.
 
+## Revision 231 — reduce the equator question to an exact scalar SDE
+
+Projected the Itô sphere equation onto `x=p_z` and checked the exact marginal
+`dx=[(a-2d(s))*x-a*x^3]ds+sqrt(2d(s)*(1-x^2))*dW_s` symbolically. Its linear
+equatorial approximation has an unstable Gaussian integrating-factor
+amplitude and therefore zero probability of equator convergence for that
+linear model. The cubic drift and state-dependent noise prevent transferring
+that result to the original SDE. Added a regression test and made this
+non-implication explicit. Next analytical step is to prove the nonlinear
+terminal-amplitude law has no atom at zero on paths converging to the
+equator, or find a theorem with matching hypotheses. Goal remains active.
+
+## Revision 232 — replay the exact equatorial reduction
+
+The new scalar Itô reduction and its decomposition identities pass in the
+SymPy checker (13 identities total), with 4/4 focused tests. The locked full
+report replay passes 42/42; all recorded log hashes match; the complete suite
+reports 221 passed, one skipped, five subtests. These validate the algebra
+and repository replay only. The nonlinear equator-avoidance question remains
+open, and the wider benchmark goal remains active.
+
 ## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
 
 The earlier rotational-diffusion calculation found divergent variance for

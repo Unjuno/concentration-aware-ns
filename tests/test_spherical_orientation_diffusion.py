@@ -30,3 +30,12 @@ def test_subcritical_integrable_diffusion_leaves_only_equator_or_poles_as_limit_
     assert "does not rule out convergence to the unstable equator" in result[
         "subcritical_stochastic_limit_set"
     ]
+
+
+def test_equatorial_coordinate_reduction_keeps_nonlinear_gap_explicit():
+    result = derive()
+    assert result["scalar_ito_reduction"].startswith(
+        "dx=[(a-2*d(s))*x-a*x^3]ds"
+    )
+    assert "nonlinear SDE" in result["scalar_linearization_near_equator"]
+    assert result["identities_pass"]

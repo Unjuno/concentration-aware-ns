@@ -130,6 +130,26 @@ The ODE/APT framework comes from Benaïm and Hirsch; its limit-set results are
 summarized and extended for stochastic processes by Benaïm. Our
 square-integrable-noise argument is specific to the present sphere SDE.
 
+Projecting the Itô sphere equation onto `x=p_z` gives the exact scalar
+marginal
+
+```
+dx = [(a-2*d(s))*x - a*x^3] ds
+     + sqrt(2*d(s)*(1-x^2)) dW_s,
+```
+
+for non-polar initial data; `x=+/-1` are absorbing. The term `-2*d(s)*x` is
+the sphere's Itô curvature correction, and the noise variance follows from
+`|grad_S x|^2=1-x^2`. Near the equator, dropping `-a*x^3` and replacing
+`sqrt(1-x^2)` by 1 yields a linear unstable SDE. Its integrating-factor
+terminal amplitude is Gaussian with positive variance because `d(s)>0` at
+finite `s`; hence the *linearized model* does not converge to the equator with
+positive probability from deterministic initial data. The nonlinear drift
+and state-dependent noise alter that terminal-amplitude map, however, and
+this linear calculation does not prove the same no-atom statement for the
+original process. The exact marginal and decomposition are replayed by the
+symbolic checker.
+
 ## What this does not establish
 
 The model assumes the gradient is spatially uniform over the entire finite

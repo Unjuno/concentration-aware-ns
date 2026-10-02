@@ -44,6 +44,21 @@ directly establish equator-avoidance for this continuous-time SDE. No molecular 
 particle-position determinism, phase transition, viscosity change, or solver
 acceptance result follows. No upstream report was warranted.
 
+### Completion audit refresh — 2026-10-03 scalar equatorial reduction
+
+Projected the sphere Itô equation onto `x=p_z` to obtain
+`dx=[(a-2d(s))*x-a*x^3]ds+sqrt(2*d(s)*(1-x^2))*dW_s`, with the poles
+absorbing. A SymPy checker verifies the spherical Laplacian drift correction,
+noise variance, and decomposition identities. The linearization around the
+equator has a nondegenerate Gaussian integrating-factor amplitude, but its
+no-atom conclusion is not transferred to the nonlinear state-dependent SDE.
+The exact checker passes 13 identities; focused tests pass 4/4; the complete
+locked replay passes 42/42 and all log hashes match. The suite reports 221
+passed, one skipped, five subtests. This remains an ideal orientation model;
+almost-sure alignment and all molecular/viscosity implications remain open.
+See [`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md)
+and [`spherical-orientation-diffusion-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-2026-10-03.json).
+
 ### Completion audit refresh — 2026-10-03 analytic provenance recheck
 
 Re-fetched `openai/NavierStokesAndEuler` main and confirmed commit

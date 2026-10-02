@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "9275bba8af0233b1f1be1f8fe06925b823fab5c1c6547fbff79258b2b5bad678"
+      "log_sha256": "645d37d00c6da640112328a3b644a3bd8e79ab02291826c5472584a50d66ceb6"
     },
     {
       "step": "global_peaks",
@@ -500,7 +500,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/spherical_orientation_diffusion.log",
-      "log_sha256": "0bbf78e82495313e5378d3dfadfb49a1526ef1a3efe7ec11405153573fe097f4"
+      "log_sha256": "2fcdf7d24aff57e515d7cc4b7caa672c050f442c313d5d702e3e6069b36be031"
     },
     {
       "step": "su2_output_clock_control",

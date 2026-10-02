@@ -615,3 +615,13 @@ cannot be transferred directly to this continuous-time SDE. The equator
 exception therefore remains open. PR #4 CI for the pushed revision is pending.
 The theorem scope is pinned to §9, pp. 49–50 in the source PDF. Goal remains
 active.
+
+## Exact equatorial marginal — 2026-10-03
+
+The `x=p_z` Itô marginal is now checked as
+`dx=[(a-2d(s))*x-a*x^3]ds+sqrt(2*d(s)*(1-x^2))*dW_s`. The linearized
+equatorial model has a nondegenerate Gaussian integrating-factor amplitude;
+this does not resolve the nonlinear no-atom question. All 13 symbolic
+identities pass, focused tests pass 4/4, and the 42-step full report replay
+passes with matching log hashes. Full suite: 221 passed, one skipped, five
+subtests. Goal remains active.
