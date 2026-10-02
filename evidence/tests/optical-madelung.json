@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "scope": "Symbolic Madelung identities for a 2D paraxial NLSE; not Maxwell derivation or Navier-Stokes validation",
+  "equation": "i*d_z psi = -(1/(2*m))*Delta_perp psi + (g*|psi|^2+V)*psi",
+  "variables": {
+    "rho": "|psi|^2",
+    "theta": "phase(psi)",
+    "v": "grad_perp(theta)/m"
+  },
+  "identities": {
+    "continuity": "d_z rho + div_perp(rho*v) = 0",
+    "momentum": "d_z v + (v.grad_perp)v = -(g/m)grad_perp(rho) -(1/m)grad_perp(V) +(1/(2*m^2))*grad_perp(Delta_perp(sqrt(rho))/sqrt(rho))"
+  },
+  "checks": {
+    "real_nlse_residual_is_negative_phase_equation": true,
+    "imaginary_nlse_residual_is_continuity_over_2rho": true,
+    "phase_gradient_is_euler_equation_with_quantum_pressure": true,
+    "space_dimension_is_two_transverse_coordinates": true,
+    "model_has_no_viscosity_parameter_or_laplacian_velocity_term": true
+  },
+  "nlse_residual_decomposition": {
+    "real_part": "- phase equation",
+    "imaginary_part": "continuity residual / (2*rho)"
+  },
+  "euler_residual": [
+    "0",
+    "0"
+  ],
+  "limitations": [
+    "The paraxial NLSE is assumed; its derivation from Maxwell equations is outside this symbolic check.",
+    "Madelung variables require nonzero amplitude and a smooth phase chart; phase singularities need separate treatment.",
+    "The check does not model molecular dynamics, photon shot noise, or constitutive viscosity."
+  ],
+  "success": true
+}

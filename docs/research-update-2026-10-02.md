@@ -55,6 +55,13 @@ would need a specified optical platform, governing equation, mapping of
 parameters and observables, and a test that separates diffraction, nonlinearity,
 loss and any effective dissipation.
 
+The analytic crosswalk derives the Madelung equations and shows that the
+paraxial optical model is compressible, irrotational, two-dimensional in space,
+and includes diffraction/quantum pressure, with propagation distance as its
+evolution coordinate. It also separates infinitesimal axis alignment from
+finite-packet transfer and absolute-position certainty; see
+[`reports/analytic-hypothesis-crosswalk-2026-10-02.md`](../reports/analytic-hypothesis-crosswalk-2026-10-02.md).
+
 Sources: [Carusotto & Ciuti, *Quantum fluids of light*, Rev. Mod. Phys. (2013)](https://doi.org/10.1103/RevModPhys.85.299);
 [Michel et al., *Superfluid light in bulk nonlinear media*, Proc. R. Soc. A (2014)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4123774/);
 [Vocke et al., experimental superfluid motion and drag-force cancellation (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5974130/).
@@ -106,3 +113,10 @@ with a reproducible challenge and measured result.
 - Do not send an upstream defect report based on these adjacent results alone.
 - Review the frozen OpenFOAM v1 peak metrics before interpreting any pilot run
   as a quality verdict.
+
+The symbolic conversion audit is executable as
+`python -m tools.check_optical_madelung`; its equations and scope are recorded in
+`evidence/tests/optical-madelung.json`. It checks the 2D continuity and
+compressible momentum identities from the assumed paraxial NLSE, including the
+quantum-pressure term. It does not derive the paraxial approximation from
+Maxwell equations or test an optical device.

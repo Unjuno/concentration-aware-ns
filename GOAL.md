@@ -1,4 +1,4 @@
-# Goal — revision 2, 2026-09-09
+# Goal — revision 8, updated 2026-10-02
 
 Build a reproducible Concentration-Aware Navier–Stokes Verification Benchmark.
 Treat the supplied proposal as hypotheses. Verify primary sources, repository
@@ -114,3 +114,16 @@ verify the tube stays in every cited band/domain. The derivation and exact
 source boundary are recorded in `docs/packet-constant-dependencies.md`. A
 generic Lean lemma now proves the pointwise hole for any supported copy-family
 sum; the all-stage assembly and tube-domain transfer remain open.
+
+## Revision 8 — separate infinitesimal alignment, finite packets, and optical fluids
+
+The selected OpenAI witness supports a conditional continuum result for
+infinitesimal material-separation alignment, while the finite-packet estimate
+still lacks an effective equality-tube radius and constants. Do not convert it
+into particle-position certainty or molecular ordering. The optical-fluid
+crosswalk now derives the Madelung equations and records their distinct
+compressible, irrotational, paraxial model, including diffraction, rather than
+identifying them with three-dimensional viscous Navier–Stokes. Reported optical
+backscattering suppression is not a constitutive-viscosity measurement. Keep
+these analogies as falsifiable, separate research tracks and preserve the
+original three-solver benchmark and end-to-end analytic obligations.
