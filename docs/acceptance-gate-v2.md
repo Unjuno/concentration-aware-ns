@@ -18,7 +18,22 @@ uncertain. The scope is a declared interpretation boundary, not independent
 proof that the metric or its claimed field object was computed correctly.
 Distinguish sampled/discrete quantities, named reconstructions and the
 underlying solver field; a reconstruction's continuous bound does not transfer
-to an unspecified finite-volume field.
+to an unspecified finite-volume field. A local-quality PASS applies only to
+the frozen manufactured solution, input representation, sampling/reconstruction
+operator, and reported error metric. Finite cell averages, face values, or any
+other finite set of samples cannot by themselves certify a universal continuous
+field peak bound: a smooth divergence-free perturbation can be supported inside
+one cell, preserve its averages and face traces, and have arbitrarily large
+gradients. This is an identifiability limit, not a claim that the solver field
+contains such a perturbation or fails the fixed benchmark. A continuum-bound
+claim needs an explicit reconstruction plus a validated bound, or an
+independent regularity/unresolved-mode estimate.
+
+The conditional finite-mesh extension and its force-variation assumptions are
+spelled out in `reports/finite-mesh-observation-nullspace-2026-10-03.md`; that
+result does not apply to a fixed known manufactured forcing or prove a software
+defect. Keep the hypothesis/reproduction verdict tied to the exact stated
+observable family.
 
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
