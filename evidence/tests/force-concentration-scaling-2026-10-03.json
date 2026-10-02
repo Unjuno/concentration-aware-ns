@@ -1,6 +1,6 @@
 {
   "Lq_homogeneous_Hs_exponent": "2/q-3/2-s",
-  "interpreter": "/Users/taka/.cache/uv/builds-v0/.tmpyZudXD/bin/python",
+  "interpreter": "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
   "pointwise_derivative_exponents": {
     "force_amplitude": "epsilon^-3",

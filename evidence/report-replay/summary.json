@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "ccd59e85b1f592fea54da457dc0c48817ba885777600b69f95636e41baf7cd40"
+      "log_sha256": "ad0850440a69f2264ad817fcaa80f52b49f320f18bd302693abeb601c998aa89"
     },
     {
       "step": "global_peaks",
@@ -180,7 +180,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_amr_volume_integrated.log",
-      "log_sha256": "bc8039f1427d50434c7c533a7771d39d2f4e46b9734e97c89988c3658739fd81"
+      "log_sha256": "40235b90c28a701548c101c00cd333b5bc44dfd6c91b9ffb9bd22f7665ed1366"
     },
     {
       "step": "su2_archive_review",
@@ -453,6 +453,38 @@
       "exit_code": 0,
       "log": "evidence/report-replay/cone_sign_symmetry.log",
       "log_sha256": "f542f1288d1a10d0159adeb7087ef1abe08e6242c672da0a3a30aef7e8d6032f"
+    },
+    {
+      "step": "force_concentration_scaling",
+      "command": [
+        "python",
+        "-m",
+        "tools.check_force_concentration_scaling"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_force_concentration_scaling"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/force_concentration_scaling.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "alignment_integrability_threshold",
+      "command": [
+        "python",
+        "-m",
+        "tools.check_alignment_integrability_threshold"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_alignment_integrability_threshold"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/alignment_integrability_threshold.log",
+      "log_sha256": "00068d7b02f988fa90a419ad076bf0a15d5950d6e2a232d6a4a63dccc7a2a5bc"
     },
     {
       "step": "su2_output_clock_control",

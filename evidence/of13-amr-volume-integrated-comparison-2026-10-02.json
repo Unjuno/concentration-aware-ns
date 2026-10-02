@@ -3,7 +3,7 @@
   "analyzer_sha256": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e",
   "derivative_operators": {
     "path": "tools/analyze_amr_gauss_gradient.py",
-    "sha256": "7e95b6a6cbc7a580d65168beedacba19786932194c5a8c912f7f235bdc6bb615"
+    "sha256": "050dd8f181b72d6997c3261a24a602906e26ea6c36d4b839909351f59b18d7a8"
   },
   "reference": "Analytic manufactured-solution gradient and vorticity integrated inside each retained cell with tensor Gauss-Legendre quadrature.",
   "discrete_field": "Cellwise-constant finite-volume Gauss gradient and one-ring least-squares alternative, with their curls; neither is a reconstructed continuous OpenFOAM velocity field.",

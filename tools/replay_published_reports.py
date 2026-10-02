@@ -38,6 +38,7 @@ steps = [
     ('pressure_data_amplitude_countermodel', [sys.executable, '-m', 'tools.check_pressure_data_amplitude_countermodel']),
     ('cone_sign_symmetry', [sys.executable, '-m', 'tools.check_cone_sign_symmetry']),
     ('force_concentration_scaling', [sys.executable, '-m', 'tools.check_force_concentration_scaling']),
+    ('alignment_integrability_threshold', [sys.executable, '-m', 'tools.check_alignment_integrability_threshold']),
     ('su2_output_clock_control', [sys.executable, '-m', 'tools.check_su2_output_clock_control']),
     ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),
     ('high_gradient_mms', [sys.executable, '-m', 'tools.check_high_gradient_mms']),

@@ -100,6 +100,26 @@ diffusion can change the limit; under the reduced tangent-plane model with
 `docs/rotational-diffusion-alignment-cutoff.md`. These are separate model
 assumptions, not a microscopic derivation.
 
+The alignment law depends on **accumulated strain**
+`I(t)=integral_[t0,t] gamma(s) ds`, not on the instantaneous fact that
+`gamma(t)` becomes unbounded. For the prescribed family
+`gamma(t)=gamma0*(1-t)^(-alpha)`, every `alpha>0` has a pointwise-diverging
+rate, but `I(t)` has a finite endpoint limit when `0<alpha<1`. Then a Jeffery
+director has
+`tan(beta(T-))/tan(beta(t0)) = exp(-3*kappa*gamma0*(1-t0)^(1-alpha)/(1-alpha)) > 0`;
+complete alignment does not follow. An exact dimensionless example uses
+`gamma=(1/10)/sqrt(1-t)`, `kappa=3/4`: the rate diverges, yet the integrated
+strain is only `1/5`, and an initially isotropic director ensemble has only
+3.62% probability of entering a fixed 10-degree cone in the endpoint limit.
+At and above `alpha=1`, the accumulated strain instead diverges; the OpenAI
+construction's idealized `C/[2(1-t)]` rate is exactly the critical case, so it
+does predict limiting director alignment **if** a finite Jeffery object
+actually experiences that spatially uniform strain. The construction's
+pointwise continuum derivative does not establish that finite-size premise.
+Exact integration and the counterexample are replayed by
+`tools.check_alignment_integrability_threshold` and recorded in
+`evidence/tests/alignment-integrability-threshold.json`.
+
 For the aspect ratios 10 and 100 measured in the rigid-fiber study,
 `kappa=99/101` and `9999/10001`; the ideal Jeffery alignment rate is therefore
 within about 2% of the slender-particle limit. In that regime, aspect ratio

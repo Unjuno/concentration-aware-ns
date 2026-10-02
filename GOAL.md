@@ -18,6 +18,25 @@ The hosted Actions run for current PR changes remains queued; local replay is
 not a substitute for hosted CI. No solver defect, continuum singularity, or
 physical claim follows. Goal remains active.
 
+## Revision 224 — distinguish unbounded strain from infinite accumulated strain
+
+Extended the conditional Jeffery analysis with the rate family
+`gamma(t)=gamma0*(1-t)^(-alpha)`. Every `alpha>0` has an unbounded instantaneous
+strain, but for `0<alpha<1` its time integral is finite, so a director retains
+a strictly positive endpoint angle in the ideal model. An exact example
+`gamma=(1/10)/sqrt(1-t)`, `kappa=3/4` gives integrated strain `1/5`; under an
+added isotropic initial-director law, only 3.62% enter a fixed 10-degree cone
+as `t→1`. The OpenAI-style `1/(1-t)` rate is the nonintegrable critical case
+and conditionally aligns an ideal Jeffery director, provided finite-size
+spatially uniform strain actually holds. Added exact symbolic replay, two
+regression tests, and the published-report replay step. The full 41-step
+replay passed with 217 tests, one skipped, and five subtests; see
+`evidence/report-replay/summary.json`. This sharpens rather than removes the
+finite-particle/molecular bridge: no such uniformity or microscopic model is
+established by the continuum pointwise derivative.
+Evidence is in `evidence/tests/alignment-integrability-threshold.json` and
+`docs/fiber-vortex-literature-audit.md`. Goal remains active.
+
 ## Revision 222 — quantify the force-density construction's actuator-scale gap
 
 Re-derived the localized force rescaling in Cao–Chi–Nie arXiv:2609.10262v4.
