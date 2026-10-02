@@ -41,6 +41,44 @@ def expected_cases(spec):
     return [f"n{n}-dt{dt:g}" for n, dt in pairs]
 
 
+def complete_case(case, end_time):
+    required = [case / "exit.json", case / "log.foamRun", case / "diagnostics.json"]
+    if not all(path.is_file() for path in required):
+        return False
+    exit_record = json.loads(required[0].read_text())
+    diagnostics = json.loads(required[2].read_text())
+    dt = diagnostics.get("parameters", {}).get("dt")
+    if not isinstance(dt, (int, float)) or dt <= 0:
+        return False
+    log = required[1].read_text(errors="replace")
+    steps = log.count("Time = ")
+    endpoint = f"{end_time:g}"
+    return (
+        exit_record.get("exit_code") == 0
+        and round(end_time / dt) == steps
+        and log.count("PIMPLE: Converged in") == steps
+        and log.rstrip().endswith("End")
+        and all((case / endpoint / field).is_file() for field in ("U", "p", "C", "phi"))
+    )
+
+
+def existing_archive_record(case_name, evidence_root):
+    archive = evidence_root / f"{case_name}.tar.gz"
+    if archive.is_file():
+        return {"archive": archive.name, "archive_sha256": sha256(archive),
+                "archive_bytes": archive.stat().st_size}
+    parts_path = evidence_root / f"{case_name}.tar.gz.parts.json"
+    if parts_path.is_file():
+        manifest = json.loads(parts_path.read_text())
+        for part in manifest["parts"]:
+            path = evidence_root / part["file"]
+            if not path.is_file() or sha256(path) != part["sha256"]:
+                raise ValueError(f"existing archive part is missing or changed: {path}")
+        return {"archive": parts_path.name, "archive_sha256": manifest["archive_sha256"],
+                "archive_bytes": manifest["archive_bytes"], "parts": manifest["parts"]}
+    raise FileNotFoundError(f"complete run lacks an archived case: {case_name}")
+
+
 def archive_case(case, evidence, name):
     archive_path = evidence / f"{name}.tar.gz"
     temporary = archive_path.with_suffix(".tar.gz.tmp")
@@ -84,13 +122,14 @@ def main():
 
     run_root = Path(os.environ.get("CANS_OF14_RUN_ROOT", "work/of14-high-gradient-v1")).resolve()
     evidence_root = Path(os.environ.get("CANS_OF14_EVIDENCE_ROOT", "evidence/of14-high-gradient-v1-matrix")).resolve()
-    case_timeout = int(os.environ.get("CANS_OF14_CASE_TIMEOUT_SECONDS", "2400"))
+    case_timeout = int(os.environ.get("CANS_OF14_CASE_TIMEOUT_SECONDS", "14400"))
     if case_timeout <= 0:
         raise ValueError("CANS_OF14_CASE_TIMEOUT_SECONDS must be positive")
-    if run_root.exists() or evidence_root.exists():
+    resume = os.environ.get("CANS_OF14_RESUME", "false").lower() == "true"
+    if not resume and (run_root.exists() or evidence_root.exists()):
         raise FileExistsError("refusing to overwrite an existing run or evidence directory")
 
-    dirty = run_checked(["git", "status", "--porcelain", "--untracked-files=all"], timeout=10).stdout.strip()
+    dirty = run_checked(["git", "status", "--porcelain", "--untracked-files=no"], timeout=10).stdout.strip()
     if dirty:
         raise RuntimeError("commit the frozen run sources before executing the solver")
     source_commit = run_checked(["git", "rev-parse", "HEAD"], timeout=10).stdout.strip()
@@ -106,8 +145,17 @@ def main():
     image_id, platform = image_info.split(maxsplit=1)
     if image_id != IMAGE_ID or platform != "linux/arm64":
         raise RuntimeError(f"unexpected runtime image: {image_id} {platform}")
-    run_root.mkdir(parents=True)
-    evidence_root.mkdir(parents=True)
+    if resume:
+        if not run_root.is_dir() or not evidence_root.is_dir():
+            raise FileNotFoundError("resume requires both the prior run and evidence directories")
+        prior_environment = json.loads((run_root / "run-environment.json").read_text())
+        if prior_environment.get("protocol_sha256") != sha256(PROTOCOL):
+            raise ValueError("resume protocol differs from the original run")
+        if (evidence_root / "protocol.json").read_bytes() != PROTOCOL.read_bytes():
+            raise ValueError("resume evidence contains a different protocol")
+    else:
+        run_root.mkdir(parents=True)
+        evidence_root.mkdir(parents=True)
     environment = {
         "source_commit": source_commit,
         "protocol": str(PROTOCOL.relative_to(ROOT)),
@@ -126,9 +174,15 @@ def main():
         "reused_baseline_archive_sha256": sha256(BASELINE),
         "scope": "Foundation 14 five-case successor matrix; not a solver-version defect verdict or continuous-extrema certificate",
     }
-    (run_root / "run-environment.json").write_text(json.dumps(environment, indent=2) + "\n")
-    (evidence_root / "protocol.json").write_bytes(PROTOCOL.read_bytes())
-    (evidence_root / "run-environment.json").write_text(json.dumps(environment, indent=2) + "\n")
+    if resume:
+        environment["resumed_from_source_commit"] = prior_environment["source_commit"]
+        environment["resume_note"] = "Preserved earlier complete cases; reruns only incomplete cases from clean generated inputs."
+        (run_root / "run-environment-resume.json").write_text(json.dumps(environment, indent=2) + "\n")
+        (evidence_root / "run-environment-resume.json").write_text(json.dumps(environment, indent=2) + "\n")
+    else:
+        (run_root / "run-environment.json").write_text(json.dumps(environment, indent=2) + "\n")
+        (evidence_root / "protocol.json").write_bytes(PROTOCOL.read_bytes())
+        (evidence_root / "run-environment.json").write_text(json.dumps(environment, indent=2) + "\n")
 
     names = expected_cases(protocol)
     reused = protocol["comparison"]["reused_case"]["case"]
@@ -139,22 +193,49 @@ def main():
         "archive_sha256": sha256(BASELINE),
         "reused_from_single_case_compatibility_probe": True,
     }]
+    attempts = []
     for name in names:
         if name == reused:
             case_dir = run_root / name
-            case_dir.mkdir()
-            with tarfile.open(BASELINE, "r:gz") as archive:
-                archive.extractall(case_dir.parent, filter="data")
-            extracted = case_dir.parent / "n64-dt0.001"
-            if extracted != case_dir:
-                extracted.replace(case_dir)
+            if not case_dir.exists():
+                with tarfile.open(BASELINE, "r:gz") as archive:
+                    archive.extractall(case_dir.parent, filter="data")
+            if not complete_case(case_dir, protocol["end_time"]):
+                raise ValueError("reused baseline case does not satisfy the frozen completion check")
             diagnostics = json.loads((case_dir / "diagnostics.json").read_text())
             cases.append(diagnostics)
             continue
 
+        case = run_root / name
+        if case.exists() and complete_case(case, protocol["end_time"]):
+            diagnostics = json.loads((case / "diagnostics.json").read_text())
+            archive_info = existing_archive_record(name, evidence_root)
+            cases.append(diagnostics)
+            archived.append({"case": name, **archive_info,
+                             "standard_acceptance": diagnostics["standard_acceptance"]["status"],
+                             "local_quality": diagnostics.get("local_quality", {}).get("status", "UNCERTAIN"),
+                             "reused_from_prior_attempt": True})
+            continue
+        if case.exists():
+            attempt_dir = run_root / "attempts" / f"{name}-attempt-01-incomplete"
+            attempt_dir.parent.mkdir(parents=True, exist_ok=True)
+            if attempt_dir.exists():
+                raise FileExistsError(f"refusing to replace preserved partial attempt: {attempt_dir}")
+            log_path = case / "log.foamRun"
+            partial_log = log_path.read_text(errors="replace") if log_path.is_file() else ""
+            prior_exit = json.loads((case / "exit.json").read_text()) if (case / "exit.json").is_file() else {}
+            attempts.append({
+                "case": name, "status": "INCOMPLETE_PRESERVED_BEFORE_RETRY",
+                "path": str(attempt_dir.relative_to(run_root)), "prior_exit": prior_exit,
+                "observed_steps": partial_log.count("Time = "),
+                "converged_steps": partial_log.count("PIMPLE: Converged in"),
+                "log_ends_with_End": partial_log.rstrip().endswith("End"),
+                "log_sha256": sha256(log_path) if log_path.is_file() else None,
+            })
+            shutil.move(str(case), str(attempt_dir))
+
         n_text, dt_text = name.removeprefix("n").split("-dt", 1)
         n, dt = int(n_text), float(dt_text)
-        case = run_root / name
         generate(case, n=n, dt=dt, end=protocol["end_time"], nu=protocol["viscosity"],
                  profile="high-gradient", frequency=protocol["frequency_N"])
         inputs = {str(path.relative_to(case)): sha256(path)
@@ -213,6 +294,7 @@ def main():
         "completed_cases": archived,
         "matrix_status": "COMPLETE" if len(archived) == len(names) else "INCOMPLETE",
         "case_diagnostics": cases,
+        "attempt_history": attempts,
         "interpretation": protocol["comparison"]["interpretation"],
         "limitations": protocol["interpretation_limits"],
     }

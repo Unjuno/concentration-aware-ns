@@ -40,3 +40,20 @@ def test_archive_case_splits_and_preserves_reassembly_hash(tmp_path, monkeypatch
     assert hashlib.sha256(rebuilt.read_bytes()).hexdigest() == result["archive_sha256"]
     with tarfile.open(rebuilt, "r:gz") as archive:
         assert archive.extractfile("n16-dt0.001/system/controlDict").read() == b"frozen input\n"
+
+
+def test_complete_case_requires_all_steps_end_marker_and_endpoint_fields(tmp_path):
+    case = tmp_path / "n16-dt0.001"
+    endpoint = case / "0.05"
+    endpoint.mkdir(parents=True)
+    for field in ("U", "p", "C", "phi"):
+        (endpoint / field).write_text("field\n")
+    (case / "exit.json").write_text('{"exit_code":0}\n')
+    (case / "diagnostics.json").write_text(json.dumps({"parameters": {"dt": 0.001}}))
+    (case / "log.foamRun").write_text(
+        "".join(f"Time = {index / 1000:g}\nPIMPLE: Converged in 1 iterations\n"
+                for index in range(1, 51)) + "End\n"
+    )
+    assert runner.complete_case(case, 0.05)
+    (case / "log.foamRun").write_text("Time = 0.001\nEnd\n")
+    assert not runner.complete_case(case, 0.05)
