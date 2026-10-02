@@ -62,6 +62,26 @@ almost-sure alignment and all molecular/viscosity implications remain open.
 See [`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md)
 and [`spherical-orientation-diffusion-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-2026-10-03.json).
 
+### Correction — 2026-10-03 pole behavior and subcritical equator argument
+
+The prior paragraph incorrectly called `x=+/-1` absorbing; the exact scalar
+Itô drift is `-2*d(s)` at `+1` and `+2*d(s)` at `-1`, pointing inward when
+`d(s)>0`. Also derived the exact additive-noise coordinate
+`theta=asin(x)`. Its drift derivative is `a*cos(2*theta)-d(s)/cos(theta)^2`,
+which is uniformly positive in a fixed equatorial band at sufficiently late
+deterministic times for `delta<1`. For each fixed future Brownian path, at
+most one state at that time can converge to the equator; finite-time
+ellipticity gives a nonatomic state law independent of future increments, so
+equator convergence has probability zero. Together with the prior APT and
+strict-Lyapunov classification, this conditionally gives a single-pole limit
+for the ideal director. The argument uses standard endpoint nonattainment
+and elliptic-smoothing facts; the symbolic checker verifies only algebra.
+Four focused tests pass and the checker reports 15 exact identities. The
+machine record is
+[`spherical-orientation-diffusion-equator-avoidance-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json).
+This correction supersedes the preceding absorbing-pole and equator-gap
+statements. It establishes no molecular or OpenAI-flow consequence.
+
 ### Completion audit refresh — 2026-10-03 analytic provenance recheck
 
 Re-fetched `openai/NavierStokesAndEuler` main and confirmed commit

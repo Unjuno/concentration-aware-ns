@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 235 — remove the subcritical equator exception conditionally
+
+Corrected the scalar SDE audit: its pole drifts are `(-2d(s),+2d(s))`, so
+the poles are not absorbing for positive rotational diffusivity. In the
+coordinate `theta=asin(p_z)`, the noise is additive and the late-time drift
+has strictly positive derivative on a fixed band around the equator. For any
+fixed future Brownian path, at most one interior state at a deterministic
+positive time can then converge to the equator. Finite-time elliptic smoothing
+gives that state a nonatomic law, and future-increment independence yields
+zero probability of equator convergence. Combined with the existing
+APT/strict-Lyapunov classification, this gives almost-sure convergence to a
+pole for the prescribed ideal-director SDE, subject to standard
+two-dimensional point nonattainment and elliptic-smoothing facts. The SymPy
+checker validates algebra only, not those probability results. Updated the
+derivation, checker and focused regressions; the prior equator-gap entries
+below are historical and superseded by this revision. No molecular ordering,
+particle-position certainty, phase transition, viscosity change, or transfer
+to the OpenAI flow is established. The broader benchmark goal remains active.
+
 ## Revision 234 — explain the nested AMR cell-average error across resolutions
 
 Combined the n=16/32/64/128 same-run first-refinement analyses using the exact

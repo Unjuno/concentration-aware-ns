@@ -19,7 +19,7 @@ def test_full_sphere_diffusion_limit_isotropic_cone_probability_is_bounded():
     assert any("does not imply unbounded physical variance" in item for item in result["limitations"])
 
 
-def test_subcritical_integrable_diffusion_leaves_only_equator_or_poles_as_limit_sets():
+def test_subcritical_integrable_diffusion_excludes_equator_under_documented_sde_argument():
     result = derive()
     assert result["delta_lt_one_total_diffusion_general"] == (
         "D0*tau0^(1-delta)/(1-delta), finite for delta<1"
@@ -27,15 +27,16 @@ def test_subcritical_integrable_diffusion_leaves_only_equator_or_poles_as_limit_
     assert result["strict_lyapunov_quantity"].endswith(
         "zero only on the equator and the two poles"
     )
-    assert "does not rule out convergence to the unstable equator" in result[
-        "subcritical_stochastic_limit_set"
-    ]
+    assert "excludes equator convergence almost surely" in result["subcritical_stochastic_limit_set"]
+    assert "conditioning/Fubini imply zero probability" in result["equator_avoidance_argument"]
 
 
-def test_equatorial_coordinate_reduction_keeps_nonlinear_gap_explicit():
+def test_equatorial_coordinate_reduction_and_poles_are_corrected():
     result = derive()
     assert result["scalar_ito_reduction"].startswith(
         "dx=[(a-2*d(s))*x-a*x^3]ds"
     )
-    assert "nonlinear SDE" in result["scalar_linearization_near_equator"]
+    assert result["scalar_pole_ito_drifts"] == "(-2*D, 2*D)"
+    assert "not absorbing" in result["scalar_ito_reduction"]
+    assert "sqrt(2*d(s))*dW_s" in result["equatorial_theta_sde"]
     assert result["identities_pass"]

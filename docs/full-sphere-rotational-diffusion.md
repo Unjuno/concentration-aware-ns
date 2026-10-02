@@ -115,20 +115,14 @@ deterministic Jeffery ODE.
 For that ODE, `x=p_z` satisfies `x'=a*x*(1-x^2)`. The function `V=x^2` has
 `V'=2*a*x^2*(1-x^2)`, strictly positive except on the equator and the two
 poles. The limit-set theorem for precompact asymptotic pseudotrajectories and
-the strict-Lyapunov result imply that the sample-path limit set is either
-contained in the equator, or is one of the poles. This narrows the unresolved
-case but does not prove almost-sure alignment: the analysis here does not rule
-out convergence to the unstable equator. The equator-avoidance theorem must
-be checked against the exact continuous-time, decaying-noise hypotheses
-before claiming that exception has probability zero. Benaïm's Theorem 9.1
-(1999, §9, pp. 49–50) proves nonconvergence to certain repelling sets for a
-discrete-time Robbins–Monro process under gain, regularity, and
-unstable-direction noise conditions. Those hypotheses are not a theorem for
-this continuous-time, state-dependent sphere SDE, so that result does not
-close the equator gap.
-The ODE/APT framework comes from Benaïm and Hirsch; its limit-set results are
+the strict-Lyapunov result imply that the sample-path limit set is contained
+in the equator or consists of one pole. A direct scalar argument below
+excludes convergence to the equator, conditional on the standard endpoint
+nonattainment and finite-time elliptic-smoothing facts stated there. The
+ODE/APT framework comes from Benaïm and Hirsch; its limit-set results are
 summarized and extended for stochastic processes by Benaïm. Our
-square-integrable-noise argument is specific to the present sphere SDE.
+square-integrable-noise and equator-avoidance arguments are specific to the
+present sphere SDE.
 
 Projecting the Itô sphere equation onto `x=p_z` gives the exact scalar
 marginal
@@ -138,17 +132,47 @@ dx = [(a-2*d(s))*x - a*x^3] ds
      + sqrt(2*d(s)*(1-x^2)) dW_s,
 ```
 
-for non-polar initial data; `x=+/-1` are absorbing. The term `-2*d(s)*x` is
-the sphere's Itô curvature correction, and the noise variance follows from
-`|grad_S x|^2=1-x^2`. Near the equator, dropping `-a*x^3` and replacing
-`sqrt(1-x^2)` by 1 yields a linear unstable SDE. Its integrating-factor
-terminal amplitude is Gaussian with positive variance because `d(s)>0` at
-finite `s`; hence the *linearized model* does not converge to the equator with
-positive probability from deterministic initial data. The nonlinear drift
-and state-dependent noise alter that terminal-amplitude map, however, and
-this linear calculation does not prove the same no-atom statement for the
-original process. The exact marginal and decomposition are replayed by the
-symbolic checker.
+The pole drifts are `b(1)=-2*d(s)` and `b(-1)=+2*d(s)`, so these endpoints
+are not absorbing when `d(s)>0`; the earlier absorbing-poles statement was
+incorrect. The term `-2*d(s)*x` is the sphere's Itô curvature correction,
+and the noise variance follows from `|grad_S x|^2=1-x^2`.
+
+Use the equatorial coordinate `theta=asin(x)` on `(-pi/2,pi/2)`. Itô's
+formula gives additive noise:
+
+```
+dtheta = [a*sin(theta)*cos(theta)-d(s)*tan(theta)] ds
+          + sqrt(2*d(s)) dW_s.
+```
+
+The derivative of the drift in `theta` is
+`a*cos(2*theta)-d(s)/cos(theta)^2`. Fix `r<pi/4`. Since `d(s)->0` for
+`delta<1`, there are deterministic `S` and `c>0` such that this derivative is
+at least `c` for all `s>=S` and `|theta|<=r`. Fix a future Brownian path
+after `S`. Noise cancels in the difference of any two solutions. If two
+distinct initial values at `S` both generated paths converging to zero, both
+paths would eventually stay in `[-r,r]`; their difference would then satisfy
+`D'=q(s)D` with `q(s)>=c`, contradicting convergence of both paths. Thus for
+each future noise path at most one interior value `theta_S` can converge to
+zero. At each deterministic `S>0`, the sphere diffusion has a smooth density
+relative to surface area because its tangent diffusion is uniformly elliptic
+on every finite time interval. Hence the probability of that random
+singleton is zero, by independence of future Brownian increments and
+conditioning (equivalently, Fubini).
+
+The coordinate argument also assumes that a two-dimensional uniformly
+elliptic diffusion does not hit a specified point in finite time, so the path
+does not leave the open equatorial chart through a pole. In the chart, the
+distance `phi` to either pole has leading SDE
+`dphi=(d(s)/phi+O(phi))ds+sqrt(2*d(s))*dB`; on each finite time interval this
+is the dimension-two Bessel repulsion plus a bounded linear drift, which is
+the standard nonattainment case. This boundary classification is an
+analytical input, not checked by the symbolic script. The APT limit-set
+result then leaves a single pole as the almost-sure limit for this ideal
+director model. These probabilistic facts are not
+consequences of the SymPy checker; it validates the scalar and coordinate
+change algebra only. The earlier linearized-equator calculation remains a
+heuristic and is no longer the basis for the nonlinear no-equator conclusion.
 
 ## What this does not establish
 
