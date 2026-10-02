@@ -81,6 +81,25 @@ experienced the spatially uniform axisymmetric strain
 mathematical correspondence between two kinematic laws, not a derivation of a
 Jeffery model for the constructed flow.
 
+For an imposed isotropic distribution of initial unoriented directors and a
+fixed target angle `0 < beta_star < pi/2`, let
+`a=Q^(3*kappa*C/2)`. Since `|cos(beta_0)|` is uniform on `[0,1]`, direct
+integration gives
+
+```
+P(beta(t) <= beta_star) = 1 - a/sqrt(a^2 + tan(beta_star)^2).
+```
+
+For every fixed prolate aspect ratio (`kappa>0`) and `C>0`, this tends to one
+as `Q -> 0`; the sphere has `kappa=0` and no distinguished director. This
+probability comes from the added initial-director law and ideal Jeffery ODE.
+It is not a probability law supplied by Navier–Stokes, and does not describe
+molecular orientation or absolute particle positions. Thermal rotational
+diffusion can change the limit; under the reduced tangent-plane model with
+`D_r ~ (1-t)^(-delta)`, the variance threshold is `delta=1`, as recorded in
+`docs/rotational-diffusion-alignment-cutoff.md`. These are separate model
+assumptions, not a microscopic derivation.
+
 For the aspect ratios 10 and 100 measured in the rigid-fiber study,
 `kappa=99/101` and `9999/10001`; the ideal Jeffery alignment rate is therefore
 within about 2% of the slender-particle limit. In that regime, aspect ratio

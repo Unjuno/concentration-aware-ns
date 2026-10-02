@@ -82,6 +82,38 @@ postprocessing. Its mesh-remap discrepancies cannot establish this Lagrangian
 or molecular claim. The current mathematical and numerical benchmark verdicts
 therefore remain unchanged.
 
+## Particle statements require separate observables
+
+Three different claims should not be conflated:
+
+1. **Tracer position in the shrinking Eulerian core.** For the paper's fixed
+   similarity-coordinate core, its geometric volume is
+   `O((T-t)^(3/2-h))`. If a passive-tracer ensemble has a fixed bounded density
+   and is transported by the preterminal incompressible flow map, its
+   probability of being in that moving core has the same vanishing upper
+   bound. This is an ensemble occupancy statement; it does not say that every
+   tracer leaves, nor does it bound a singular initial law.
+2. **An individual tracer trajectory.** A trajectory seeded on a selected
+   axis or on a time-dependent set is a different question. Volume preservation
+   alone does not forbid such a trajectory from entering or following the
+   core. It must be solved from the Lagrangian ODE with a specified initial
+   condition and verified for trajectory integration error.
+3. **Finite-particle orientation or molecular ordering.** A passive tracer has
+   position but no orientation or internal structure. A rod/fiber model needs
+   size, shape, rotational dynamics, and a stated constitutive law; molecular
+   ordering needs an appropriate statistical-mechanical model and scale map.
+   Neither follows from a tangent vector in the continuum flow.
+
+The shrinking-core occupancy bound therefore constrains one precise reading
+of “particle positions become predictable”: a fixed bounded-density ensemble
+does not accumulate its mass inside this shrinking Eulerian core. It leaves
+open selected trajectories, particles conditioned on entering the core, and
+orientation statistics. The symbolic check of the cylinder enclosure has now
+been replayed in a fresh environment (`PASS`, 1 regression test); the separate
+Lean measure lemma also recompiles with only `propext`, `Classical.choice`, and
+`Quot.sound`. Neither check validates the OpenAI analytic construction or a
+molecular model.
+
 ## Sources
 
 - OpenAI, *Finite Time Blowup for Navier–Stokes*, Sections 1–2, especially the

@@ -1,5 +1,70 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 202 — separate tracer occupancy, trajectories, and orientation
+
+Replayed the shrinking-core enclosure in a fresh pinned-dependency venv and
+passed its regression test (1/1); recompiled the abstract Lean measure lemma,
+which reports only `propext`, `Classical.choice`, and `Quot.sound`. Clarified
+that bounded-density passive-tracer occupancy of the shrinking Eulerian core,
+selected individual trajectories, and finite-particle/molecular orientation
+are three distinct observables requiring different assumptions. These checks
+do not validate the OpenAI construction itself or establish microscopic
+ordering. The repository's tracked goal remains active and incomplete.
+
+## Revision 203 — conditional finite-director probability and diffusion cutoff
+
+Reconciled the user hypothesis with the existing Jeffery-director and reduced
+rotational-diffusion analyses. Under an added isotropic initial director law,
+spatially uniform axisymmetric strain `gamma=C/[2(1-t)]`, and a prolate Jeffery
+particle, the ideal orientation probability inside any fixed positive-angle
+cone tends to one with exponent `3*kappa*C/2`; this is not a probability law
+derived by Navier–Stokes. In the tangent-plane stochastic model, if rotational
+diffusion scales as `D_r~(1-t)^(-delta)`, variance vanishes for `delta<1`, has
+a nonzero limit at `delta=1`, and leaves the small-angle regime for `delta>1`.
+Recorded the initial-law and sphere (`kappa=0`) qualifications in
+`docs/fiber-vortex-literature-audit.md`. No molecular conclusion follows;
+finite-size field uniformity, material-specific diffusion, interactions,
+stress closure, and physical cutoff remain open.
+
+## Revision 204 — replay current tracked head and query Foundation tracker
+
+Exported tracked commit `28aa3c2de78264d243598aaf9064918f7e3a8d1b` to a
+fresh directory and locked venv on the recorded macOS/Python 3.14.5 host.
+All 38 published-report replay steps and seven postprocessing checks exited
+successfully; 196 report/test-evidence files were byte-identical. The result
+was initially in ignored `work/`, then promoted as Revision 206 to tracked
+evidence. This covers tracked Python
+postprocessing, not solver builds/runs, training or Lean execution. A bounded
+search of OpenFOAM's separate Foundation bug tracker found only adjacent
+snappyHexMesh and maxGlobalCells items, not a match for the exploratory AMR
+quality observation; tracker pages partly rejected direct fetches, so this is
+not an exhaustive duplicate audit and no issue was posted. Goal remains active.
+
+## Revision 205 — derive the photon-fluid model boundary
+
+Added the Madelung reduction of the common dimensionless paraxial cubic NLSE
+to the exploratory audit. It yields variable-density continuity plus
+compressible inviscid Euler with a quantum-pressure/dispersive term; the
+velocity is phase-irrotational away from defects. Therefore the established
+photon-fluid analogy is useful for its own optical-drag and wave-concentration
+questions, but does not inherit incompressible Navier–Stokes volume
+preservation, viscosity, or the OpenAI theorem. This analytic model check is
+anchored to the primary Carusotto–Ciuti review and Michel et al. experiment;
+it is a derivation from the stated equation, not a simulation or independent
+optical experiment. A separate optical benchmark remains only a candidate
+until a precise platform/equation/parameter set is selected.
+
+## Revision 206 — publish the current-head replay bundle
+
+Promoted the successful clean export of commit `28aa3c2` from ignored `work/`
+into `evidence/clean-export-2026-10-02-current-head-28aa3c2/`, including
+sanitized logs, package/command/result manifest, hash of the generated
+tracked-tree archive, and reproduction instructions. Updated the completion
+audit to state exactly what this proves: 38 replay steps, seven extra checks,
+196 byte-identical report/evidence files on one recorded host. It does not
+include the archive itself, full pytest, solver execution, training, Lean, or
+scientific quality certification. Goal remains active.
+
 ## Revision 201 — refresh targeted upstream states and odd-width reproduction
 
 Re-read the live records for the four audited projects. PhysicsNeMo `main`

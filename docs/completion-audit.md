@@ -110,6 +110,21 @@ pressure premise, end-to-end executable extraction, and live OpenFOAM tracker
 coverage remain open. The user's molecular-alignment, phase-transition, and
 constitutive-viscosity interpretations are not established by these results.
 
+### Current tracked-only replay — 2026-10-02, commit 28aa3c2
+
+Exported the exact tracked tree at `28aa3c2de78264d243598aaf9064918f7e3a8d1b`
+into a fresh directory and locked Python 3.14.5 environment. All 38 published
+report-replay steps and seven additional postprocessing checks exited zero;
+196 tracked report/test-evidence files remained byte-identical. Sanitized
+commands, package inventory, archive digest, and logs are published in
+[`evidence/clean-export-2026-10-02-current-head-28aa3c2/`](../evidence/clean-export-2026-10-02-current-head-28aa3c2/README.md).
+This validates Python replay of archived evidence on the recorded host. It
+does not run the full pytest suite, rebuild or rerun a solver, retrain
+PhysicsNeMo, execute Lean, certify continuous field errors, or upgrade a
+scientific verdict. The separate Foundation issue-tracker search was bounded
+and partly blocked by HTTP fetch restrictions; it found no matching AMR
+quality report but does not close the live-tracker coverage gap.
+
 ### OpenFOAM AMR addendum — 2026-10-01
 
 ### Current tracked-only export — 2026-10-02
