@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 241 — identify clean-export metadata drift
+
+The clean export at `c1c7870` replayed all 42 report steps and six follow-up
+checks successfully, but seven generated JSON files differed. A field-by-field
+comparison against the exact commit showed no numerical or verdict changes:
+two evidence records differed only in Python/platform provenance, and five
+SU2 report files consequently carried different hashes for those evidence
+records. Regenerated the two environment records with the repository host's
+Python 3.14.5, the runtime used by the existing spectral/OpenFOAM evidence.
+The next fixed-commit clean export must confirm byte-identical artifacts.
+Scientific conclusions remain unchanged and the goal remains active.
+
 ## Revision 240 — separate scientific replay from environment metadata drift
 
 After the PATH fix, a tracked-only replay at `a6e2ce5` completed all 42 report
