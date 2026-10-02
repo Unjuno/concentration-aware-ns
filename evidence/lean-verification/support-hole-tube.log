@@ -1,0 +1,20 @@
+de85505217232fed653c70fb73edf5658c1bf995bb36792cab5a4653d063ca1f  NavierStokes/SimilarityCoordinates.lean
+5713536b5d510c2ab2c2151b4b1aa6c8822535169ae0e73ff60d9f7b69e9ea81  NavierStokes/PhysicalWaveSum.lean
+82ef1138367d9a916ab6a478086a6e308ad24d901e58a62920c6f0095a503cd0  NavierStokes/SimilarityProfile.lean
+41d403ae4cec8887c17a80f621744399522a3247bddbcab64e577cb296b3020d  NavierStokes/AxisymmetricFields.lean
+Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+'ConcentrationAware.scalar_sublinear_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.similarity_coordinate_upper_of_scaled_axial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.sqrt_tau_le_sublinear_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_coordinate_bound_of_tube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.similarity_coordinate_upper_of_tube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physicalQ_forwardScalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physicalQ_ge_elapsed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physicalQ_le_supportHoleScale' depends on axioms: [propext, Classical.choice, Quot.sound]

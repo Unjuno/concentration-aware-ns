@@ -106,10 +106,11 @@ stages, or direct bounds for the assembled field, is still required.
 the quantitative tube-domain estimate are now recorded in
 [`support-hole-tube-audit-2026-10-02.md`](support-hole-tube-audit-2026-10-02.md).
 In particular, the similarity-coordinate equation yields a paper bound
-`q<=S*(1-t)` on a `sqrt(1-t)` tube, so the previous open-neighborhood-width
-objection need not block this route. The common-hole assembly through the
-selected sums/curl and its Lean check are still outstanding; keep the packet
-exponent conditional until those gates pass.
+`q<=S*(1-t)` on a `sqrt(1-t)` tube. Lean now checks the selected initialized
+potential sum, direct angular sum, curl, periodicization, and time activation
+transfer as germs under explicit local domain and plateau hypotheses. Uniformly
+proving those hypotheses on a tube and deriving the selected center bound remain
+outstanding; keep the packet exponent conditional until those gates pass.
 
 The pinned source has a potentially stronger route than the finite-prefix
 germ argument: its actual perturbation ingredients have **positive inner
@@ -168,13 +169,15 @@ annulus-to-physical-radius scale identity. This proves a generic primitive
 copy-family implication, not that every actual stage satisfies one uniform
 parameter tuple.
 
-The full support-hole transfer is **not yet proved**. The source extension
-does not yet prove the common-hole implication through the full
-`ActualCandidateAssembly`/`GermCandidateAssembly` cutoff series on a complete
-spacetime tube, including valid-band/domain coverage and the direct curl field.
-The exact numeric value of `leftRadius` and `patch.a` is also non-effective.
-Therefore keep the published packet exponent withdrawn until that aggregate
-implication and the tube's domain conditions are formalized and checked.
+The full support-hole transfer is checked as a **local germ implication**, not
+yet as a uniformly covered spacetime tube. `SupportHoleAssembly.lean` proves
+the selected initialized sum/curl/localization transfer under explicit
+physical-domain, cutoff-plateau, late-time, and spatial-localization
+hypotheses. Deriving those hypotheses uniformly on the proposed tube and
+instantiating the selected trajectory-center scaling remain open. The exact
+numeric value of `leftRadius` and `patch.a` is also non-effective. Therefore
+keep the published packet exponent conditional until the tube conditions and
+requested concrete constants are checked.
 
 ## Finite-stage cutoff with a known chart lower bound
 

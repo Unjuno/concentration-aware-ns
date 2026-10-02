@@ -135,8 +135,37 @@ The 2026-10-02 re-audit distinguishes the source's outer
 available for initial copy waves, actual mean coefficients, and particular /
 signed annular fields. The similarity-coordinate equation also yields a
 conditional `q<=S*(1-t)` bound on a tube of radius proportional to
-`sqrt(1-t)`, resolving the earlier domain-width concern on paper. The common
-support-hole transfer through the selected infinite sums, curl and local
-cutoffs remains unproved and must be Lean-checked before restoring the
-`Q^(Cstretch+39)` packet exponent as a construction result. Keep all earlier
-solver gates, skeptical physical interpretation, and completion conditions.
+`sqrt(1-t)`, resolving the earlier domain-width concern on paper. Its
+sublinear scalar-envelope step is now Lean-checked against the pinned source
+coordinate file; the geometric premise and actual chart identification are
+not yet formalized. Revision 11 records the Lean-checked local germ transfer
+through the selected sums, curl and local cutoffs under explicit hypotheses;
+uniform tube coverage and the selected center bound remain open before the
+`Q^(Cstretch+39)` packet exponent can be reported as a construction result. Keep all earlier solver gates, skeptical physical
+interpretation, and completion conditions.
+
+## Revision 10 — actual selected-stage support hole and chart bounds checked
+
+The exact selected initial potential, every positive-potential stage, and
+every direct angular stage are now Lean-checked to vanish whenever the actual
+profile radius is below the active annulus left edge, within the construction's
+physical domain. Thus the common support-hole coefficient for these selected
+stages is the positive `leftRadius`, rather than a minimum assembled from
+generic family bounds. The pinned-coordinate equation is Lean-checked to give
+`physicalQ>=1-t` and an explicit conditional upper bound on a shrinking tube;
+the trajectory-center scaling and full assembled-sum/curl/localization transfer
+remain proof obligations. Keep the finite-packet exponent conditional until
+those obligations and any requested concrete constants are verified. No
+molecular, constitutive-viscosity, or solver-defect claim follows from this
+continuum source audit.
+
+## Revision 11 — selected localized candidate germ transfer checked
+
+Lean now checks the selected initialized potential sum, direct angular sum,
+curl, periodicization, and time activation transfer: the complete candidate
+velocity equals the base as a germ inside the actual support hole, under
+physical-domain, zeroth-cutoff plateau, late-time, and spatial-localization
+hypotheses. Uniformly deriving these hypotheses on a quantitative tube and
+instantiating the selected trajectory-center scaling remain proof obligations.
+Keep the finite-packet exponent and all solver/upstream audit conclusions
+conditional until their independent gates pass.

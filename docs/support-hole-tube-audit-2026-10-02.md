@@ -18,25 +18,33 @@ the axis. The relevant inner-hole facts are separate:
   `a*sqrt(physicalQ/2)`.
 - `ActualMeanStageData.coefficient_vanishes` proves each actual native mean
   coefficient is zero below `(patch.a/4)*sqrt(physicalQ)` on its stated slow
-  domain. This covers the angular/stream means represented by those families.
+  domain. More strongly for the selected construction, its exterior assembly
+  lemmas place the stream and angular means outside the active annulus.
 - `ActualValidBandWaves.active_zero_germs` and
   `ActualSignedExterior.cycle_zero_germs` give zero germs outside the actual
   active annulus. The lower edge of that annulus is the positive
   `PrimaryTargetBounds.leftRadius`; `profileRadius` is transverse physical
   radius divided by `sqrt(physicalQ)`.
 
-Consequently the common *candidate* coefficient
+The common coefficient for the exact selected stage fields is therefore
 
 ```
-c = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0
+c = PrimaryTargetBounds.leftRadius > 0
 ```
 
-is consistent with every primitive perturbation family in the selected
-assembly. Pointwise sums preserve this hole. The source also has the needed
-local-sum mechanisms: `GermCandidateAssembly.potentialSum_eq_base_germ`,
-`LocalAngularDiagonal.sum_zero_germ`, and spatial locality of curl. However,
-the actual witness has not yet been instantiated through those lemmas with a
-single c and one common tube. That remains a Lean proof obligation.
+and its stage-level implication is now Lean-checked in
+[`SupportHoleAssembly.lean`](../verification/SupportHoleAssembly.lean): the
+initial potential, every positive-potential stage, and every direct angular
+stage vanish pointwise whenever `profileRadius<leftRadius` within the actual
+physical domain. This is stronger and more specific than combining generic
+primitive lower radii. `SupportHoleAssembly.lean` now Lean-checks the selected
+transfer at the germ level: the initialized potential sum equals the base
+germ, the direct angular sum vanishes, and the complete periodic and time
+activated candidate velocity equals the base germ. These implications require
+the pointwise physical-domain, zeroth-cutoff plateau, late-time, and spatial
+localization conditions stated in the theorem. Pinned source hashes and axiom
+reports are in
+[`support-hole-assembly.json`](../evidence/lean-verification/support-hole-assembly.json).
 
 ## Quantitative chart-domain check
 
@@ -74,34 +82,38 @@ domain. The transverse radius is at most `rho*sqrt(tau)`, while `q>=tau`.
 Taking `rho=c/2` places the tube strictly inside the candidate hole
 `r<c*sqrt(q)`.
 
-This resolves the *geometric scaling calculation on paper*, conditional on the
-common primitive support-hole theorem and the actual selected cutoff plateau.
-It avoids inferring a power thickness from pointwise openness. No machine-checked
-proof of this bound or its source-coordinate identification has yet been added.
+The sublinear envelope, tube axial-power inequality, source-chart identity,
+and actual `physicalQ` lower/conditional upper bounds are now Lean-checked in
+[`SupportHoleTube.lean`](../verification/SupportHoleTube.lean), with the
+source hash and axiom report in
+[`support-hole-tube.json`](../evidence/lean-verification/support-hole-tube.json).
+The remaining tube input is the trajectory-center estimate
+`|z_X(t)|<=B*tau^D` and its combination with the spatial distance bound; the
+generic Lean lemma accepts those as hypotheses but does not yet instantiate
+the actual selected root trajectory.
 
 ## Consequence and remaining gates
 
-If the common-hole assembly lemma is proved, the fields of every perturbation
-stage vanish throughout this tube. Local finiteness then makes the potential
-sum equal to the selected base there, and the direct angular sum vanishes;
-curl preserves equality on the open tube. The base Hessian rate `kappa=40`
-then applies there. The tube has `rho(Q)=(c/2)*sqrt(1-t0)*sqrt(Q)`, so `r=1/2`.
-The existing packet comparison consequently gives the conditional sufficient
-initial radius order `Q^(Cstretch+39)`.
+If those conditions are established uniformly, the Lean-checked germ transfer
+gives equality of the full candidate velocity and base on a tube of radius
+`rho(Q)=(c/2)*sqrt(1-t0)*sqrt(Q)`, so `r=1/2`. The base Hessian rate
+`kappa=40` then applies there. The existing packet comparison gives the
+conditional sufficient initial radius order `Q^(Cstretch+39)`.
 
 Still required before reporting that exponent as an established property of
-the construction:
+the assembled construction:
 
-1. A checked common lower-support constant for every initial, particular,
-   signed, mean, and direct field in the exact selected witness.
-2. A Lean proof of the `q<=S*tau` tube estimate and its identification with
-   the actual `physicalQ` chart.
-3. A Lean assembly transfer through the initialized potential sum, direct
-   angular sum, curl, and local periodic/time cutoffs, including the selected
-   cutoff plateau hypothesis.
-4. Numerical or executable values for the positive constants if a concrete
+1. A Lean derivation of the selected trajectory-center bound and conversion
+   from the spatial tube norm to the transverse `profileRadius` inequality.
+2. Uniform Lean proofs of physical-domain membership and the cutoff/spatial
+   plateau hypotheses on that tube.
+3. Numerical or executable values for the positive constants if a concrete
    finite packet, rather than a conditional asymptotic order, is claimed.
 
 Thus the previous argument from compactness alone remains insufficient, but
 the source support hole appears to offer a real quantitative replacement. The
 current status is **promising conditional route; not yet formally closed**.
+
+## Update — selected localized candidate germ transfer checked (2026-10-02)
+
+Lean now checks the selected initialized potential sum, direct angular sum, curl, periodicization, and time activation transfer: the full candidate velocity equals its base as a germ inside the actual support hole, assuming physical-domain membership, cutoff plateau, late time, and spatial localization. The quantitative tube argument has not yet established these conditions uniformly or instantiated the selected trajectory-center scaling. The finite-packet exponent and all solver/upstream-audit conclusions remain conditional on their independent gates.

@@ -1,0 +1,60 @@
+{
+  "exit_code": 0,
+  "success": true,
+  "source": "verification/SupportHoleTube.lean",
+  "source_sha256": "ef6e72f7a8bc6585558f43016ac8eb85360b3e2f253cef2098a1a08665eb6cd5",
+  "runner_sha256": "86b7a91233ed8968dbbdecf1088311ce6d33b4b3ec91dd93626c671325cf69db",
+  "imported_source_sha256": {
+    "NavierStokes/SimilarityCoordinates.lean": "de85505217232fed653c70fb73edf5658c1bf995bb36792cab5a4653d063ca1f",
+    "NavierStokes/PhysicalWaveSum.lean": "5713536b5d510c2ab2c2151b4b1aa6c8822535169ae0e73ff60d9f7b69e9ea81",
+    "NavierStokes/SimilarityProfile.lean": "82ef1138367d9a916ab6a478086a6e308ad24d901e58a62920c6f0095a503cd0",
+    "NavierStokes/AxisymmetricFields.lean": "41d403ae4cec8887c17a80f621744399522a3247bddbcab64e577cb296b3020d"
+  },
+  "imported_source_hashes_match": true,
+  "axioms": {
+    "scalar_sublinear_envelope": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "similarity_coordinate_upper_of_scaled_axial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sqrt_tau_le_sublinear_power": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axial_coordinate_bound_of_tube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "similarity_coordinate_upper_of_tube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physicalQ_forwardScalar": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physicalQ_ge_elapsed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "physicalQ_le_supportHoleScale": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "only_allowed_axioms": true,
+  "log_sha256": "922a763dda1576589b86c522c60ed803d7a31bba1f7f330a4cb89a9cdb01f024",
+  "contains_sorryAx": false,
+  "scope": "Lean checks the sublinear envelope; tube axial-power inequality; actual physicalQ coordinate equation and lower bound; and the resulting q upper bound conditional on a scaled axial bound. The selected-stage hole and full candidate germ transfer are checked separately in support-hole-assembly.json; uniform tube hypotheses and the selected trajectory-center bound remain open."
+}
