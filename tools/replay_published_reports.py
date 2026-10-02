@@ -40,6 +40,7 @@ steps = [
     ('force_concentration_scaling', [sys.executable, '-m', 'tools.check_force_concentration_scaling']),
     ('alignment_integrability_threshold', [sys.executable, '-m', 'tools.check_alignment_integrability_threshold']),
     ('spherical_orientation_diffusion', [sys.executable, '-m', 'tools.check_spherical_orientation_diffusion']),
+    ('visco_morphoelastic_internal_state', [sys.executable, '-m', 'tools.check_visco_morphoelastic_internal_state']),
     ('su2_output_clock_control', [sys.executable, '-m', 'tools.check_su2_output_clock_control']),
     ('uniform_prefix_threshold', [sys.executable, '-m', 'tools.check_uniform_prefix_threshold']),
     ('high_gradient_mms', [sys.executable, '-m', 'tools.check_high_gradient_mms']),

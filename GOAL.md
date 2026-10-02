@@ -1,5 +1,25 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 243 — recheck the archived matrix and add a new internal-state model
+
+Revalidated the current OpenFOAM Foundation 13 six-case archive index rather
+than treating the stopped October 2 repeat as live work. The archive verifier
+passed all six hashes and recomputed standard/local gate outcomes; the fine
+grid blind-spot criterion remains `NOT_OBSERVED`. The partial 36/100-step
+rerun is explicitly superseded by the archived 100/100-step row.
+
+Reviewed the newly submitted 2026-10-01 visco-morphoelastic preprint
+arXiv:2610.01487 and derived an exact homogeneous-extension solution for its
+internal strain tensor. The tensor follows the imposed strain axes while the
+Kelvin–Voigt viscous coefficient stays fixed; only the projected total stress
+ratio varies through the separate elastic strain stress. This adds a relevant
+continuum internal-state model, but proves nothing about molecules, the OpenAI
+flow, or a physical viscosity transition. The derivation, checker, and source
+limits are recorded in `reports/visco-morphoelastic-internal-state-2026-10-03.md`.
+The full locked suite passed (223 passed, one skipped, five subtests). A fresh
+fixed-commit clean export remains required after this addition. Goal remains
+active.
+
 ## Revision 242 — exact tracked-only clean export passes
 
 Ran the committed `5aeefc37` revision in a fresh locked environment using

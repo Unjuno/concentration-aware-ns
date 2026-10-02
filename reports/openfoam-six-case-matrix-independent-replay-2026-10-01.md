@@ -45,3 +45,16 @@ gates. Thus the frozen six-case matrix is complete and its persistent-blind-
 spot verdict is `NOT_OBSERVED`. This status reconciliation does not upgrade the
 temporal triplet to an asymptotic convergence certificate and does not change
 the separate AMR attribution verdict from `UNCERTAIN`.
+
+## Current-state recheck (2026-10-03)
+
+Replayed the same verifier against the present tracked archives on 2026-10-03.
+It returned `PASS`, verified all six archive hashes and endpoint fields, and
+recomputed the same gate pattern and `NOT_OBSERVED` matrix classification.
+The new dated output is
+`evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-03.json`
+(SHA-256 `4e1158322e59b254adc5981842d02f4c55a074ec5647dd709e179b006318e772`).
+The September 28/October 2 partial n=64, `dt=0.0005` work directory remains a
+historical incomplete rerun; its separately archived 100/100-step matrix row
+is still the accepted evidence. The recheck does not add a new solver run,
+source-to-binary equivalence proof, or physical conclusion.
