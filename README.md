@@ -41,12 +41,14 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 
 ## Acceptance report checker
 
-Python 3.10+. The report checker needs no third-party dependencies; the analytic
-reference and its tests need NumPy.
+Python 3.10+. The acceptance-gate CLI itself uses only the standard library.
+`requirements.txt` supplies NumPy for the analytic reference. The maintained
+test suite also exercises symbolic, interval and numerical audits, so use the
+verification dependencies and pytest command used by CI:
 
 ```sh
-python3 -m pip install -r requirements.txt
-python3 -m unittest discover -s tests -v
+python3 -m pip install -r requirements-verification.txt
+python3 -m pytest -q tests
 python3 tools/acceptance_gate.py examples/unverified.json
 ```
 

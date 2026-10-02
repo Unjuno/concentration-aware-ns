@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 247 — correct the full-suite reproduction instructions
+
+The README's prior test instructions installed only the minimal NumPy
+requirement and invoked unittest discovery, while maintained CI installs
+`requirements-verification.txt` and runs pytest. Replaying the old command in
+the host environment failed because SymPy and python-flint were absent; the
+failure was environmental/setup-related, not a test regression. The README now
+matches the CI install/test commands. At commit `2b647bbcc64106c758497d875a29f7850320b3be`,
+the CI-equivalent pytest command in the isolated Python 3.14.5 verification
+environment passed 223 tests, one skip, and five subtests. The exact result and
+log are in `evidence/tests/python-verification-2026-10-03-head-2b647bb.json`
+and `evidence/tests/python-suite-2026-10-03-head-2b647bb.log`; hosted CI remains
+separately tracked. Goal remains active.
+
 ## Revision 246 — inspect the linked force-density formalization
 
 Read-only audit of `mathzhuonichi/blowup_density` found its README claims 27
