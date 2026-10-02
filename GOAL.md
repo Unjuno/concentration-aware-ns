@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 221 — replay n=128 mapped gradients within bounded memory
+
+Rebuilt the compact n=128 release archive and replayed its Gauss diagnostic.
+The mapped-stage JSON and same-parent face audit match the full-run record
+exactly. The compact package omits `preMap_faces.csv`, so preMap falls back to
+centered periodic differences and differs slightly from the original captured-
+face Gauss value; the method and values are explicit in
+`compact-gauss-replay-verification.json` and the AMR report. Replaced whole-CSV
+decoding and Python row dictionaries with 8,192-row numeric chunks, added a
+multi-batch parser regression test, and reran the full suite: 214 passed, one
+skipped, five subtests passed. The command and log hash are preserved in
+`evidence/tests/gauss-streaming-full-suite-2026-10-03.*`. No solver or physical
+conclusion changes.
+
 ## Revision 220 — sharpen the finite-observation theorem boundary
 
 Re-read Cao–Chi–Nie v4 directly at Theorem 4.7. It explicitly gives the

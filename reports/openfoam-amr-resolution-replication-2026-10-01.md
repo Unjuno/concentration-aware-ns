@@ -104,6 +104,22 @@ particle ordering, phase transition, or a material viscosity law. The
 reproducible analyzer is `tools/analyze_amr_gauss_gradient.py`; its bounded
 outputs are `gauss-gradient-audit.json` in each n=16/n=32 evidence directory.
 
+The n=128 compact GitHub-release archive omits `preMap_faces.csv`. Its replay
+therefore uses the analyzer's documented centered-periodic-difference fallback
+for the preMap stage, while the original full as-run audit used the captured
+preMap face data. A fresh replay from the compact archive exactly reproduces
+the mapped-stage Gauss metrics and same-parent-face audit, but not the original
+preMap gradient metric: relative gradient error is `0.6083642%` in the full
+archive versus `0.6084296%` with the compact fallback; relative vorticity errors
+are `0.5901428%` and `0.5901428%` (small numerical difference). This is a
+declared data-packaging/reconstruction-method limitation, not a solver finding.
+Machine-readable comparison is
+`evidence/of13-amr-same-run-map-v8-n128/compact-gauss-replay-verification.json`;
+reproduce with `python -m tools.verify_amr_v8_n128_gauss_replay`. The CSV reader
+now parses bounded 8,192-row numeric chunks instead of materializing a whole
+multi-gigabyte CSV string and Python row-dictionary list. The focused parser and
+gradient tests pass.
+
 The n=32 squared child-average DOF error decomposes into `0.001168` inherited
 coarse-solution error plus `0.043264` exact parent-average-to-child-average
 variation; the normalized cross term is `5.11e-18` and the identity residual

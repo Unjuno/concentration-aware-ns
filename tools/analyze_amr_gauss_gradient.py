@@ -2,6 +2,7 @@
 
 import csv
 import io
+import itertools
 import json
 import os
 import tarfile
@@ -27,10 +28,31 @@ def _read_csv(archive, member):
         stream = tf.extractfile(member)
         if stream is None:
             raise ValueError(f"missing archived snapshot {member}")
-        rows = list(csv.DictReader(io.StringIO(stream.read().decode())))
-    if not rows:
+        text = io.TextIOWrapper(stream, encoding="utf-8", newline="")
+        reader = csv.reader(text)
+        try:
+            header = next(reader)
+        except StopIteration:
+            raise ValueError(f"empty archived snapshot {member}") from None
+        if not header or len(set(header)) != len(header):
+            raise ValueError(f"invalid CSV header in {member}")
+        chunks = []
+        while batch := list(itertools.islice(reader, 8192)):
+            try:
+                chunk = np.asarray(batch, dtype=np.float64)
+            except (TypeError, ValueError) as error:
+                raise ValueError(
+                    f"non-numeric or malformed CSV row in {member}"
+                ) from error
+            if chunk.ndim != 2 or chunk.shape[1] != len(header):
+                raise ValueError(f"malformed CSV row in {member}")
+            chunks.append(chunk)
+        if not chunks:
+            raise ValueError(f"empty snapshot {member}")
+        matrix = chunks[0] if len(chunks) == 1 else np.concatenate(chunks, axis=0)
+    if matrix.size == 0:
         raise ValueError(f"empty snapshot {member}")
-    return {key: np.asarray([float(row[key]) for row in rows]) for key in rows[0]}
+    return {key: matrix[:, index] for index, key in enumerate(header)}
 
 
 def gauss_gradient_from_internal_faces(volumes, owner, neighbour, face_u, face_area):
