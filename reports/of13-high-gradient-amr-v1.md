@@ -2,9 +2,17 @@
 
 ## Frozen comparison
 
-The AMR settings were recorded before execution in
+The AMR settings are preserved in
 [`protocols/high-gradient-of13-amr-v1.json`](../protocols/high-gradient-of13-amr-v1.json)
-(SHA256 recorded in the matrix manifest). All runs use the pinned Foundation 13
+(SHA256 recorded in the matrix manifest). The parent high-gradient thresholds
+and general AMR budget schedule are tracked in earlier protocol commits. However,
+the exact high-gradient AMR protocol file first appears in the repository after
+the matrix manifest was created. The preserved run inputs establish what was
+executed, but available tracked chronology does not independently establish that
+this exact sensor/settings file was frozen before execution. We therefore treat
+prospective registration of the exact AMR sensor protocol as unverified. This
+provenance limitation does not change the reproduced, archive-bound discrete
+velocity-error calculation below. All runs use the pinned Foundation 13
 image and compare against the uniform `n=64`, `dt=0.001`, `T=0.05` control. The
 three AMR cases begin from an `n=16` mesh and use the corrected analytic sensor
 `(partial_x u_y)^2`, refine interval 2, and maximum level 2. Their archived
@@ -73,9 +81,12 @@ compare a non-refined `n=16` run with the cap-4096 control, inspect field
 conservation across the first refinement event, and repeat the same AMR schedule
 from a better-resolved base mesh before making a software claim.
 
-The velocity metric is a proved local-quality FAIL for these runs; unbounded
+The velocity metric is a proved, scoped local-quality FAIL for these runs; unbounded
 peak-gradient, peak-vorticity and spectrum metrics remain unresolved. The
-frozen AMR protocol itself remains unchanged; this post-run classification is
-recorded separately by the v2 gate. This smooth MMS does not model the OpenAI
+general AMR quality verdict remains UNCERTAIN because the other metric intervals
+are unavailable and prospective registration of the exact high-gradient AMR
+protocol is unverified. The preserved protocol and post-run classification are
+left unchanged; this audit records the provenance limitation separately. This
+smooth MMS does not model the OpenAI
 construction and provides no evidence of blow-up, molecular alignment,
 particle-position certainty, phase transition, or constitutive-viscosity change.
