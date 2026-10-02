@@ -154,9 +154,10 @@ turns(Q) = K (Q^(-h)-1)/(2 pi h),  h>0,
 turns(Q) = K log(1/Q)/(2 pi),    h=0.
 ```
 
-The saved sensitivity table reports turns per unit `K` for several `h` and
-`Q`; any application must supply a coefficient extracted from the actual
-profile and justify continuation of the local profile law over that interval.
+The saved sensitivity table reports turns per unit `K` for the analytic `h=0`
+limit and two values inside the OpenAI range `0<h<0.01`, across several `Q`;
+any application must supply a coefficient extracted from the actual profile
+and justify continuation of the local profile law over that interval.
 For `h>0` and `K>0`, the formal one-turn threshold is
 `Q_1=(1+2 pi h/K)^(-1/h)`; for `h=0`, it is `exp(-2 pi/K)`. Those are
 conditional mathematical thresholds, not physical predictions. No external

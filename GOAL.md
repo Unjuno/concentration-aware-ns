@@ -10,8 +10,9 @@ reports `F_0(0)=0.336`; an earlier retained five-parameter attempt reports
 decade” concerns particle motion and explicitly disclaims material-line
 winding; the tangent-frame phase here is a different observable. Removed the
 imported coefficient/cutoff table and replaced it with turns per unit
-`K=f_* d_*^(1+h) tau_0^(-h)` across `h={0,.01,.1}` and several `Q`, plus
-conditional one-turn thresholds. SymPy identity, sensitivity test, and JSON
+`K=f_* d_*^(1+h) tau_0^(-h)` across the `h=0` limit and values
+`h={.005,.0099}` within the target range, plus conditional one-turn
+thresholds. SymPy identity, sensitivity test, and JSON
 artifact were regenerated. Lean evidence is current-source matched for the
 axis deformation ODE/uniqueness, but does not formalize this antiderivative or
 extract the selected swirl coefficient. No molecular or finite-particle

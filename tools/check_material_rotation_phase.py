@@ -32,7 +32,7 @@ def symbolic_identity():
 def phase_sensitivity():
     rows = []
     unit_scale_thresholds = []
-    for h in (0.0, 0.01, 0.1):
+    for h in (0.0, 0.005, 0.0099):
         q_one_turn = (
             math.exp(-2 * math.pi)
             if h == 0
