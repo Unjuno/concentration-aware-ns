@@ -1361,3 +1361,10 @@ After scaling by `Λ`, any finite limits of `Λq` and `Λp2²` would obey
 `R²≥(9/4)Q`; the current source audit has not derived these limits or linked
 them to `Z`. Thus the reformulation sharpens the proof obligation but does not
 close the actual-profile pressure gate.
+
+The source's `reference_u_derivative` already identifies the reference shear
+with `Z/L`, and `ns_error` provides its `O(1/Λ)` actual-profile error. The
+remaining difficulty is the degenerate `Z=0` case: exact rescaling gives
+`p2²=(2/Λ)ns²/(a²φ²)`, but no rootwise lower bound on amplitude `a` is present.
+The coupled first-order fixed-point and amplitude asymptotics needed for this
+case remain unproved; see the updated provenance report.

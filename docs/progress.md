@@ -468,6 +468,15 @@ pressure moment. The corrected source-level reasoning is in
 `reports/actual-profile-pressure-provenance-2026-10-01.md`; no Lean replay or
 pressure-sign conclusion is claimed for this correction.
 
+The pinned `reference_u_derivative` already identifies the reference axial
+derivative with `-Z/(2L)`, and `ns_error` bounds the actual shear deviation by
+`O(1/Λ)`. At `X=4/Λ`, the cone variables satisfy exactly
+`q=-8 φ_Y/φ` and `p2²=(2/Λ)ns²/(a²φ²)`. If `Z=0`, the known estimates only give
+`ns=O(1/Λ)` and `φ_Y=O(1/Λ)`; the normalization provides no positive lower
+bound on `a` at the root. A coupled first-order fixed-point expansion and
+root amplitude asymptotic are still required. Details are in the actualProfile
+provenance report; no new theorem is claimed.
+
 The cone inequality also has an exact denominator-free form when `q=p1>0`:
 `q²+p2²>(9/4)q`. This avoids manipulating the singular quotient directly but
 degenerates unscaled as `q→0`; the next analytic target is a uniform joint

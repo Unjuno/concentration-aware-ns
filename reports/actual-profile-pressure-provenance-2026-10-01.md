@@ -364,3 +364,31 @@ coefficient perturbations to `Z` is still needed to obtain the pressure
 moment or its sign. This is an exact algebraic reformulation of the retained
 inequality, not a Lean-proved pressure theorem or evidence that the needed
 asymptotics hold.
+
+### Exact scaling of the root cone variables
+
+The pinned source already supplies an exact connection for the reference
+axial profile: `NaturalEntrance.reference_u_derivative` gives its radial
+derivative as `-Z/(2L)`, and `NaturalEntrance.ns_error` bounds the actual
+`ns` departure from `Z/L` by a constant times `1/Λ`. The missing link is
+therefore not the reference derivative identity. It is the first-order
+behavior of the actual coefficient perturbations and the angular amplitude.
+
+Writing `Y=ΛX`, `φ(Y,η)` for the actual coefficient profile, `a` for
+`realAmplitude`, and `n=ns`, the definitions at `X=4/Λ` give the exact
+relations
+
+`q = -8 * ∂Y φ(4,η) / φ(4,η)`,
+`r² = (2/Λ) * n² / (a² * φ(4,η)²)`.
+
+At a root with `chi=0`, the reference profile is `φ=1` with zero radial
+derivative, while `n=Z/L + O(1/Λ)`. When `Z=0`, the source therefore gives
+`n=O(1/Λ)`, and coefficient convergence gives `∂Y φ=O(1/Λ)`; neither estimate
+fixes their leading constants. Also, the entrance normalization gives an
+upper bound on `a`, not a positive lower bound at the root. Consequently
+`Λr²` need not have a finite limit under the currently recorded hypotheses.
+The concrete remaining task is to derive the coupled first-order coefficient
+equations at `chi=0` and a usable lower/upper asymptotic for `a` at the root,
+then substitute them into `q²+r²>(9/4)q`. The source identities and error
+estimate are formalized, but this coupled asymptotic has not been derived or
+Lean-checked here.

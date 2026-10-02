@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 214 — identify the missing root-scale coefficient asymptotics
+
+The pinned source already connects its reference axial derivative exactly to
+the pressure moment `Z` and bounds the actual `ns` error by `O(1/Λ)`. At
+`chi=0`, the remaining root cone variables reduce to
+`q=-8 φ_Y/φ` and `r²=(2/Λ)n²/(a²φ²)`. The current error bounds give only
+`φ_Y=O(1/Λ)` and, if `Z=0`, `n=O(1/Λ)`; the normalization gives no rootwise
+lower bound on amplitude `a`. Thus `Λr²` may not have a finite limit under
+the recorded assumptions. The next analytic task is the coupled first-order
+fixed-point expansion and amplitude asymptotic. No root-pressure conclusion
+is added; source identities and exact relations are recorded in the audit.
+
 ## Revision 213 — make the entrance-cone asymptotic obligation explicit
 
 Rewrote the retained cone margin using `q=p1>0`, `r=p2` as the exact
