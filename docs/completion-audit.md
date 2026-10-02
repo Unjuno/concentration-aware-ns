@@ -1375,3 +1375,10 @@ terms of the scale is exposed, while the angular amplitude divides by `C0`.
 The source trace therefore leaves the scale-uniform root-amplitude comparison
 unverified; it does not establish that the selected threshold is large or
 invalidate the pressure claim.
+
+An isolated Lean theorem now proves there is no positive amplitude floor
+uniformly over all admissible `C` above any fixed finite threshold. This
+validates only the limitation of the existential/all-larger-`C` interface;
+it does not characterize the one `C` selected in `actualProfile`. The exact
+statement, axiom list and replay log are in
+`evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.

@@ -1,0 +1,18 @@
+{
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "theorem": "ConcentrationAwarePressureProvenance.no_uniform_lower_bound_over_normalizations",
+  "statement_scope": "For fixed real h,j,sigma,Lambda,eta and every finite normalization threshold, realAmplitude has no positive lower bound uniform over all C above that threshold.",
+  "proof_method": "Choose C=max(threshold+1, 2*exp(Lambda*realPhase)/m+1) to contradict any proposed positive lower bound m.",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "sorryAx": false,
+  "checker": "runtime/lean-verification/check_actual_profile_pressure_provenance.sh",
+  "checker_exit_code": 0,
+  "log": "evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.log",
+  "extension_sha256": "0e302d57495d5df514bad186ee45c15173a730c0b16e8b6efb23d495aa554f59",
+  "checker_sha256": "72302d6ea7ef8a9149f3e4029f1a1795082b9573f6e0f443aa42689dca100dfe",
+  "limitations": [
+    "This is a nonuniformity result over all admissible large normalizations, not a claim that the selected finite AxisStage amplitude is zero or small.",
+    "It does not establish a counterexample or a negative pressure-moment sign for FinalSlowBase.actualProfile.",
+    "The extension ran in the pinned Lean checker container; this was not an upstream OpenAI source modification."
+  ]
+}

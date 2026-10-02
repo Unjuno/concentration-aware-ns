@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 216 — formally rule out a uniform amplitude floor from the C-quantifier
+
+Added and Lean-checked `no_uniform_lower_bound_over_normalizations`: for any
+fixed phase and finite threshold, `realAmplitude=exp(Λ*phase)/C` has no
+positive lower bound uniform over all larger `C`. The theorem has only
+`[propext, Classical.choice, Quot.sound]` and no `sorryAx`. This confirms the
+all-larger-normalization interface alone cannot supply the root amplitude
+floor needed by the limiting route; it does not describe the single finite C
+stored by `actualProfile` or imply a pressure-sign failure. Evidence is in
+`evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.
+
 ## Revision 215 — trace the selected normalization threshold
 
 Inspected the final witness path through `preparedWitness_exists` and

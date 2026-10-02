@@ -415,3 +415,15 @@ false; it pinpoints an additional quantitative witness-selection obligation.
 A route forward is to replace the `eventually_atTop` thresholds with explicit
 bounds and track their dependence on `Λ`, or avoid this route with a direct
 estimate for the already selected finite witness.
+
+This limitation of the all-larger-`C` interface is now recorded as a Lean
+theorem in `verification/ActualProfilePressureProvenance.lean`:
+`no_uniform_lower_bound_over_normalizations` proves that for any fixed finite
+threshold and phase, no positive lower bound holds uniformly for all larger
+`C`. The proof chooses an explicit larger denominator. The checker reports
+only `[propext, Classical.choice, Quot.sound]` and no `sorryAx`; its log and
+machine-readable record are
+`evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.log`
+and `.json`. This formalizes the absence of a bound from that quantifier. It
+does not apply to one fixed finite selected `C` and proves nothing about the
+sign of `Z` or the actual-profile pressure condition.

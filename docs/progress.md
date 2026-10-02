@@ -490,3 +490,11 @@ an `eventually_atTop` threshold, with only a lower bound and no explicit
 proof fields cannot compare the selected root amplitude with coefficient
 errors as `Λ` grows. This is an interface gap, not a claim that the selected
 normalization grows too fast. See the updated provenance report.
+
+Added `no_uniform_lower_bound_over_normalizations` to the isolated Lean
+extension. It proves constructively that for fixed phase and any finite
+threshold, `exp(Λ*phase)/C` has no positive floor uniformly over all larger
+`C`; the checker reports only `[propext, Classical.choice, Quot.sound]` and
+no `sorryAx`. This formalizes the limitation of the all-larger-`C` interface,
+not a property of the selected single finite normalization. Evidence is in
+`evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.
