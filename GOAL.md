@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 189 — clarify coarse versus persistent OpenFOAM gate disagreement
+
+Reconciled the six-case matrix wording with the frozen v2 protocol and
+`matrix_reproduction` implementation. The data do contain a standard-PASS /
+sampled-local-FAIL disagreement at n=16 and n=32. The preregistered matrix
+hypothesis is narrower: the discrepancy must persist at both adequately
+resolved levels n=64 and n=128. Both fine cases pass the local gate, so that
+persistent criterion is `NOT_OBSERVED`; this does not erase the coarse-grid
+disagreement. Added a regression test that preserves this distinction and
+updated the completion audit. The frozen protocol, matrix manifest, and replay
+evidence remain unchanged. Goal remains active.
+
 ## Revision 188 — PhysicsNeMo periodic-boundary claim narrowed against pinned source
 
 Re-fetched the five PhysicsNeMo derivative/API/test files from current main
