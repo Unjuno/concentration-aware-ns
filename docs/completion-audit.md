@@ -2,6 +2,18 @@
 
 ### Completion audit refresh — 2026-10-02
 
+The current-main PhysicsNeMo boundary-source follow-up confirms the low-level
+finite-difference and spectral docstrings explicitly require periodic data,
+which narrows the wording of existing issue #2001. The consumer-facing
+`GradientsFiniteDifference`/`PhysicsInformer` docs still omit that precondition,
+their tests crop the outer two cells, and no boundary-mode option is exposed.
+An exact source-formula ramp check reproduces the expected periodic-wrap edge
+derivative; PyTorch was unavailable, so no runtime reproduction is claimed.
+Existing #2001/#1852/PR #1853 already cover the matter; no duplicate issue was
+filed. The audited benchmark uses periodic autodiff and is unaffected. See the
+[source-level qualification](../reports/physicsnemo-upstream-derivative-audit-2026-10-02.md#2026-10-02-source-level-qualification)
+and [pinned evidence](../evidence/upstream-refresh/physicsnemo-boundary-source-check-2026-10-02.json).
+
 The latest tracked head before this record, `5cb3d65c2b4c065df1cc21ed4ec68dde3b603d7b`,
 was exported from Git's tracked tree with a fresh locked Python 3.14.5
 environment. All 37 published report-replay steps and six additional checks

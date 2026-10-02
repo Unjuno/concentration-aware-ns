@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 188 — PhysicsNeMo periodic-boundary claim narrowed against pinned source
+
+Re-fetched the five PhysicsNeMo derivative/API/test files from current main
+`83d6a337` and recorded their SHA-256 values. The low-level finite-difference
+and spectral functions explicitly document periodic assumptions, so the
+existing issue's broad implication that the implementation never documents
+periodicity is too strong. The public `GradientsFiniteDifference` and
+`PhysicsInformer` entry points still omit that precondition and expose no
+boundary-mode option; tests crop two boundary cells and therefore do not
+establish nonperiodic boundary accuracy. An exact evaluation of the source's
+periodic central stencil on a nonperiodic linear ramp yields `(2-N)/2` at the
+first node. PyTorch is unavailable here, so this was a source/algebra audit, not
+an execution. Existing issues #2001/#1852 and draft PR #1853 already cover the
+concern; no duplicate report was filed. The benchmark itself uses periodic
+autodiff and is unaffected. Evidence is in
+`reports/physicsnemo-upstream-derivative-audit-2026-10-02.md` and
+`evidence/upstream-refresh/physicsnemo-boundary-source-check-2026-10-02.json`.
+Goal remains active.
+
 ## Revision 187 — exact-head clean export and full-suite evidence
 
 Exported commit `5cb3d65c2b4c065df1cc21ed4ec68dde3b603d7b` from the tracked

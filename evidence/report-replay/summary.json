@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "3739f085969f6657b967bdad535c0fbd6ea89c7d2720d7041ae81a1b75312851"
+      "log_sha256": "b7b932bbac1098b87232f9f4270d93bfd2f0f568a254ab9c2c5a35fe4472faab"
     },
     {
       "step": "global_peaks",
@@ -405,6 +405,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/pressure_moment_threshold.log",
       "log_sha256": "5481a91d11b7e16a1701c3fcbb71671d081e20889a598a41fe1e8697413187a4"
+    },
+    {
+      "step": "pressure_data_amplitude_countermodel",
+      "command": [
+        "/private/tmp/cans-verify-20261001/bin/python",
+        "-m",
+        "tools.check_pressure_data_amplitude_countermodel"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_pressure_data_amplitude_countermodel"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/pressure_data_amplitude_countermodel.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "step": "cone_sign_symmetry",

@@ -1,0 +1,28 @@
+{
+  "checked_at_utc": "2026-10-02",
+  "repository": "NVIDIA/physicsnemo",
+  "commit": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+  "source_files": {
+    "physicsnemo/nn/functional/derivatives/uniform_grid_gradient/_torch_impl.py": "41a9ebf112f6b2ae13dc3ba4eab11c0377ed77929ec07302c26ca95dc5bc8def",
+    "physicsnemo/nn/functional/derivatives/spectral_grid_gradient/_torch_impl.py": "0d0e4dd95122b11e27d923ee4aa35767b746bc7f1aa06f426ee5eacc641512ab",
+    "physicsnemo/sym/eq/gradients.py": "0fa4e618de265ec19d1ed2621da3c42cf39f66d99d31b7aa271089de18e9182d",
+    "physicsnemo/sym/eq/phy_informer.py": "9f090004582da6dd302a1d750259a06678028a53091a057ac4ffb31aebee2250",
+    "test/sym/test_gradients.py": "7e1aac4f760564f8ab2681f5a2a18f5326a1fd2bc5d2b96e55f52fa99065cef2"
+  },
+  "source_observations": {
+    "uniform_grid_gradient": "Low-level docstring says periodic; second- and fourth-order stencils use torch.roll.",
+    "spectral_grid_gradient": "Low-level docstring explicitly says it assumes periodic boundaries.",
+    "GradientsFiniteDifference": "Wrapper class docstring describes uniform-grid derivatives but does not state a periodic-domain precondition or expose boundary mode.",
+    "PhysicsInformer": "Public API lists finite_difference and spectral but does not describe their periodic-domain precondition.",
+    "tests": "Finite-difference and spectral accuracy checks crop two cells from every boundary before comparison."
+  },
+  "exact_formula_check": {
+    "field": "f_i = i*dx, i=0,...,N-1",
+    "stencil": "(f_1 - f_{N-1})/(2*dx)",
+    "first_node_result": "(2-N)/2",
+    "interior_derivative": 1,
+    "interpretation": "Expected periodic-wrap result on a nonperiodic ramp; not a violation of the documented periodic low-level contract."
+  },
+  "execution_limit": "PyTorch is not installed in the current environment; this check audited pinned source and evaluated the exact stencil algebra, without executing the upstream tensor implementation.",
+  "upstream_disposition": "Existing issue #2001, feature issue #1852, and draft PR #1853 cover this concern; no duplicate report filed."
+}

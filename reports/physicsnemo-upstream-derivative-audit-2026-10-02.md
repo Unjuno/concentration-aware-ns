@@ -37,3 +37,31 @@ warranted. The separate PhysicsNeMo quality verdict remains `UNCERTAIN` because
 continuous peak errors are not globally certified and the local threshold was
 not preregistered for this solver. This audit does not imply blow-up or a
 physical/material consequence.
+
+## 2026-10-02 source-level qualification
+
+I fetched the five implicated files from the exact observed live-main commit
+`83d6a337eecfc70e215ed1978af8dba9a38580fb` and rechecked their hashes. Both
+low-level implementations are explicit: `uniform_grid_gradient_torch` calls
+its stencils periodic and uses `torch.roll`, while
+`spectral_grid_gradient_torch` says it assumes periodic boundaries. Therefore
+the issue body's broad implication that the periodic assumption is undocumented
+throughout the implementation is too strong. The narrower public-interface
+concern remains: `GradientsFiniteDifference` and `PhysicsInformer` do not state
+that selecting these backends requires periodic data, and the wrapper offers no
+boundary-mode option. The finite-difference and spectral tests compare only the
+interior after removing two cells at each edge, so those tests do not establish
+boundary correctness for non-periodic fields.
+
+An exact source-formula check makes the limitation concrete without relying on
+a simulation. For samples `f_i=i*dx`, the second-order periodic central
+stencil gives derivative `(f_1-f_{N-1})/(2*dx)=(2-N)/2` at the first point,
+although the interior derivative is `1`. This is expected for a periodic-wrap
+stencil applied to a non-periodic ramp; it does not show that the implementation
+violates its stated periodic contract. PyTorch is unavailable in this
+environment, so this refresh did not execute the upstream tensor implementation.
+Issues #2001 and #1852 and draft PR #1853 remain the appropriate existing
+records; no duplicate report was filed.
+
+The exact fetched-file hashes and formula calculation are recorded in
+`evidence/upstream-refresh/physicsnemo-boundary-source-check-2026-10-02.json`.
