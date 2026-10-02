@@ -20,6 +20,7 @@ REQUIRED_CASES = (
     "n64-dt0.00025",
 )
 EXTRA_CASES = ("n128-dt0.001",)
+AMR_CASES = ("amr-cap4096", "amr-cap5000", "amr-cap100000")
 
 
 def sha256(path):
@@ -116,6 +117,7 @@ def _review_archive_paths(case):
     redundant cell-centre component fields are reproducible from blockMeshDict;
     their raw hashes remain in the manifest/input-hashes file.
     """
+    name = Path(case).name
     fixed = [
         case / "command.json", case / "input-hashes.json", case / "parameters.json",
         case / "log.blockMesh", case / "log.container", case / "log.foamRun",
@@ -127,12 +129,18 @@ def _review_archive_paths(case):
         case / "dynamicCode/mmsForce/codedFvModelTemplate.C",
         case / "dynamicCode/mmsForce/codedFvModelTemplate.H",
     ]
+    if name in AMR_CASES:
+        fixed.append(case / "constant/dynamicMeshDict")
     optional = [case / "diagnostics.json", case / "exit.json", case / "log.centres"]
+    if name in AMR_CASES:
+        optional.extend((case / "log.volumes", case / "log.gradient"))
     params = json.loads((case / "parameters.json").read_text())
     output = next((path for path in case.iterdir()
                    if path.is_dir() and _numeric_name_equals(path.name, params["end"])), None)
     if output is not None:
         optional.extend(output / field for field in ("C", "U", "p"))
+        if name in AMR_CASES:
+            optional.extend(output / field for field in ("Vc", "grad(U)", "cellLevel"))
         time_state = output / "uniform/time"
         optional.append(time_state)
     missing = [path for path in fixed if not path.is_file()]
@@ -242,10 +250,81 @@ def archive_campaign():
     return manifest
 
 
+def append_case_to_manifest(name, replaces=None):
+    """Append one preserved rerun/AMR case without replacing earlier evidence."""
+    manifest_path = EVIDENCE / "matrix-manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    if any(row["case"] == name for row in manifest["cases"]):
+        raise FileExistsError(f"case already recorded in manifest: {name}")
+    row = inspect_case(name)
+    if row["status"] == "NOT_STARTED":
+        raise FileNotFoundError(WORK / name)
+    archive_info = archive_case(name)
+    row.update(
+        archive_sha256=archive_info["sha256"],
+        archive_paths=archive_info["paths"],
+        archive_sanitized_paths=archive_info["sanitized_paths"],
+        archive_scope=(
+            "inputs-logs-diagnostics-and-end-time-U-p-C-Vc-gradU-cellLevel"
+            if name in AMR_CASES else "inputs-logs-diagnostics-and-end-time-U-p-C"
+        ),
+    )
+    if replaces:
+        row["replaces_incomplete_attempt"] = replaces
+    manifest["cases"].append(row)
+    if name not in manifest["additional_cases"]:
+        manifest["additional_cases"].append(name)
+    if name in AMR_CASES:
+        manifest["notes"] = [
+            note for note in manifest.get("notes", [])
+            if "AMR is required by the frozen protocol and has not been run" not in note
+        ]
+    manifest.setdefault("notes", []).append(
+        f"Additional case {name} was appended without replacing earlier evidence."
+    )
+    required_complete = all(
+        any(
+            case["status"] == "COMPLETE"
+            and (case["case"] == required
+                 or case.get("replaces_incomplete_attempt") == required)
+            for case in manifest["cases"]
+        )
+        for required in REQUIRED_CASES
+    )
+    amr_complete = all(
+        any(case["case"] == amr_case and case["status"] == "COMPLETE"
+            for case in manifest["cases"])
+        for amr_case in AMR_CASES
+    )
+    if any(row["case"] in AMR_CASES for row in manifest["cases"]):
+        manifest["amr_status"] = "COMPLETE" if amr_complete else "INCOMPLETE"
+    manifest["campaign_status"] = (
+        "INCOMPLETE" if not required_complete or not amr_complete
+        else "UNASSESSED_QUALITY"
+    )
+    manifest["quality_verdict"] = "UNCERTAIN"
+    manifest["container_liveness"] = {
+        "observed_utc": datetime.now(timezone.utc).isoformat(),
+        "host_solver_process": "NOT_OBSERVED",
+        "container_daemon_state": "RESPONSIVE_NO_NAMED_CASE_CONTAINERS",
+        "method": "docker context orbstack; docker ps -a and inspect for five temporal/AMR names succeeded",
+    }
+    manifest["last_updated_utc"] = datetime.now(timezone.utc).isoformat()
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    return row
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--repack-existing", action="store_true",
                         help="preserve old full-case tarballs locally and repack evidence")
+    parser.add_argument("--append-case",
+                        help="append an additional completed or partial case to an existing manifest")
+    parser.add_argument("--replaces",
+                        help="required-case name whose incomplete attempt this rerun replaces")
     args = parser.parse_args()
-    result = repack_existing_campaign() if args.repack_existing else archive_campaign()
+    if args.append_case:
+        result = append_case_to_manifest(args.append_case, args.replaces)
+    else:
+        result = repack_existing_campaign() if args.repack_existing else archive_campaign()
     print(json.dumps(result, indent=2))

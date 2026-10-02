@@ -90,13 +90,19 @@ with a reproducible challenge and measured result.
   `u_y=-exp(-t)*chi*cos(N*x)/N`, the selected sensor `(partial_x u_y)^2` is
   `exp(-2t)*chi^2*sin(N*x)^2`; the generator used only one decay/envelope
   factor. The source expression and metadata are now corrected, and a regression
-  check compares the expression with the analytic derivative. This was a
-  benchmark-generator defect, not an OpenFOAM finding; no AMR run used that
-  sensor.
+  check compares the expression with the analytic derivative. The earlier
+  Gaussian AMR runs did not use the incorrect high-gradient sensor. This was a
+  benchmark-generator defect, not an OpenFOAM finding. The corrected
+  high-gradient AMR cases and their adverse but unresolved errors are recorded
+  in [`reports/of13-high-gradient-amr-v1.md`](../reports/of13-high-gradient-amr-v1.md).
 - Keep the smooth high-gradient MMS as a solver-verification stress case. It
-  does not reproduce the OpenAI witness or test its singularity claim.
+  does not reproduce the OpenAI witness or test its singularity claim. The
+  OpenFOAM Foundation 13 spatial, temporal and AMR matrices now have completed
+  runs. Source-backed standard acceptance passes the completed cases, while the
+  AMR velocity L2 metric fails its frozen threshold; the discrepancy is scoped
+  to this coarse-base matrix and needs a better-controlled interpolation study.
 - Keep the OpenAI source audit, the conditional material-trajectory calculation,
   and the optical-fluid track separate, with explicit model-transfer steps.
 - Do not send an upstream defect report based on these adjacent results alone.
-- Review the frozen OpenFOAM v1 metrics and AMR sensor implementation before
-  interpreting any pilot run as a quality verdict.
+- Review the frozen OpenFOAM v1 peak metrics before interpreting any pilot run
+  as a quality verdict.

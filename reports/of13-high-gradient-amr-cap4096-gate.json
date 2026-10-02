@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "case": "amr-cap4096",
+  "standard_acceptance": "PASS",
+  "evidence": {
+    "reference_verified": true,
+    "forcing_verified": true,
+    "derivatives_verified": true,
+    "space_time_study_verified": true,
+    "thresholds_preregistered": true,
+    "raw_artifacts_reviewed": true,
+    "evaluation_time_verified": true,
+    "standard_acceptance_verified": true
+  },
+  "artifacts": {
+    "reference_verified": {
+      "path": "evidence/tests/high-gradient-mms.json",
+      "sha256": "a3debd090adc8fc06152b286ff02d4638ca769aafe7b21803ed5f9fd5ba7beb8"
+    },
+    "forcing_verified": {
+      "path": "evidence/tests/high-gradient-openfoam-force.json",
+      "sha256": "6253f294c415ac0e80956d8e221731c0db39c043eeb02ab4b80d134de3a2152a"
+    },
+    "derivatives_verified": {
+      "path": "evidence/tests/high-gradient-reference.json",
+      "sha256": "c7cbb24bcd2245b59653d2d523bbf5ab5a750ec45fb90b5b2c7639cd0e6b6c04"
+    },
+    "space_time_study_verified": {
+      "path": "reports/of13-high-gradient-amr-v1.md",
+      "sha256": "81569e1661a6e854bdb8c1e9aecd65f777a16cb9d9cd139ce3c747405afcaf1b"
+    },
+    "thresholds_preregistered": {
+      "path": "protocols/high-gradient-of13-amr-v1.json",
+      "sha256": "6e47566d489bc3a48894c9077cbcf8f6ff915da6c135b9cec6809eca8ed5116f"
+    },
+    "raw_artifacts_reviewed": {
+      "path": "evidence/of13-high-gradient-v2/matrix-manifest.json",
+      "sha256": "874a0d5033ff3d2119defc7b932501dc50504e1a4ee62036452c3814eb38f56f"
+    },
+    "evaluation_time_verified": {
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "sha256": "fb7532dddd3e33814d269e40598e5fd126f0e5db86e112c835c933db32c25f96"
+    },
+    "standard_acceptance_verified": {
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "sha256": "fb7532dddd3e33814d269e40598e5fd126f0e5db86e112c835c933db32c25f96"
+    }
+  },
+  "metrics": [
+    {
+      "name": "velocity_l2",
+      "error_lower": 0.08875833380025644,
+      "error_upper": 0.08875833380225645,
+      "tolerance": 0.02
+    },
+    {
+      "name": "energy",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.02
+    },
+    {
+      "name": "max_gradient",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    },
+    {
+      "name": "max_vorticity",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    },
+    {
+      "name": "shell_spectrum",
+      "error_lower": 0.0,
+      "error_upper": null,
+      "tolerance": 0.05
+    }
+  ],
+  "scope": "Discrete volume-weighted velocity error against the analytic field at AMR cell centers; other metric intervals remain unavailable. This identifies a tested acceptance/local-error discrepancy, not an upstream software defect.",
+  "protocol_sha256": "6e47566d489bc3a48894c9077cbcf8f6ff915da6c135b9cec6809eca8ed5116f",
+  "case_evidence": {
+    "manifest_status": "COMPLETE",
+    "archive_sha256": "cd2d7637912880f6f493cbfe998d847e40e90b38f6c7951c673e82c6e35f5dc6",
+    "actual_cells": 4096,
+    "requested_cell_cap": 4096,
+    "maximum_refinement_level": 0,
+    "velocity_l2_numeric_roundoff_budget": 1e-12
+  },
+  "unresolved": [
+    "Peak-gradient and peak-vorticity metric definitions do not have validated continuous-domain bounds.",
+    "This AMR matrix starts from n=16; coarse initialization and refinement interpolation remain confounded.",
+    "No upstream defect or general AMR limitation is established.",
+    "Source-to-binary identity for the packaged solver is not proven."
+  ]
+}

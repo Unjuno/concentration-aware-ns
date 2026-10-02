@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "scope": "Frozen OpenFOAM standard acceptance contract: completion, time sequence, and per-step outer residual convergence",
+  "protocol": "protocols/high-gradient-of13-v1.json",
+  "protocol_sha256": "9cc3778736e951c6064a0e6c619649f6f278305d88ab4460b8038f1f75ba36ee",
+  "runtime_image": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "runtime_source_hashes": {
+    "momentumPredictor.C": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+    "fvMatrix.C": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+    "pimpleLoop.C": "eef31c12e39d503413e82e6edb822feaf52b5f130b3fdade6f0fc48086787467",
+    "singleRegionCorrectorConvergenceControl.C": "0f4fe8609836aaf5899f637b12d08db20be6d6fb80adeb4dac92db93be8876ab"
+  },
+  "runtime_semantics_checks": {
+    "momentum_rhs_is_fvModels_source": true,
+    "matrix_equality_subtracts_rhs_matrix": true,
+    "pimple_loop_uses_outer_convergence_predicate": true,
+    "convergence_requires_abs_or_relative_residual_for_all_controlled_fields": true
+  },
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 4,
+        "maximum": 4
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "d05b1b23413d9ecc40598b5fe3ec6f8b5d8546a4a8e1e9e0d89ad1c9ede247f2",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "n32-dt0.001",
+      "parameters": {
+        "n": 32,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 5,
+        "maximum": 5
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "2bad7608ff659186a7a6ea3b59fc40fbb1352fcfcec07c3e7a99854b07884acd",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "n64-dt0.001",
+      "parameters": {
+        "n": 64,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 5,
+        "maximum": 5
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "n128-dt0.001",
+      "parameters": {
+        "n": 128,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 5,
+        "maximum": 5
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "af65c5d3a600d07be3e41e7249d2d70ef33f358b0979431f473f26b16f782ebe",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "n64-dt0.0005-rerun-20261002",
+      "parameters": {
+        "n": 64,
+        "dt": 0.0005,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 100,
+      "observed_time_steps": 100,
+      "converged_outer_iterations": {
+        "count": 100,
+        "minimum": 4,
+        "maximum": 5
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "badca44f17ccd54365bb65f6861f4b187076d68d13782bbfb6869b974484d651",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "c305e76983c7c5813d7863ff0a12101ae69506697bf913f35d12179678ec1c3f",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "n64-dt0.00025-rerun-20261002",
+      "parameters": {
+        "n": 64,
+        "dt": 0.00025,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 200,
+      "observed_time_steps": 200,
+      "converged_outer_iterations": {
+        "count": 200,
+        "minimum": 4,
+        "maximum": 5
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "0683ddaf204c9ce4e5efed6e3379fc59a6f15a5fc06d89a46075563c6f1bb34b",
+        "system/fvSolution": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084",
+        "log.foamRun": "0cee733c884e328aa70ef3eceb8ba3a7b4520f1b6edb67f4b96538a9faa96268",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "amr-cap4096",
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 4,
+        "maximum": 4
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1",
+        "log.foamRun": "1244fea4434d9f5729152df4f6f2cf6b80819a20357c129f9b079704d6d67bef",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "amr-cap5000",
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 4,
+        "maximum": 6
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1",
+        "log.foamRun": "6f9b917aea79b319a2ab42c18cbb42e8579f850d5a6d52c7950b456c7ff2ce1f",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    },
+    {
+      "case": "amr-cap100000",
+      "parameters": {
+        "n": 16,
+        "dt": 0.001,
+        "end": 0.05,
+        "profile": "high-gradient"
+      },
+      "expected_time_steps": 50,
+      "observed_time_steps": 50,
+      "converged_outer_iterations": {
+        "count": 50,
+        "minimum": 4,
+        "maximum": 7
+      },
+      "checks": {
+        "exit_code_zero": true,
+        "terminal_end_marker": true,
+        "exact_physical_time_sequence": true,
+        "every_step_reports_pimple_convergence": true,
+        "outer_iterations_within_frozen_maximum": true,
+        "no_nonconvergence_message": true,
+        "no_fatal_error": true,
+        "endpoint_velocity_present": true,
+        "delta_t_matches_case_parameters": true,
+        "end_time_matches_case_parameters": true,
+        "p_abs_tolerance_matches_protocol": true,
+        "U_abs_tolerance_matches_protocol": true
+      },
+      "standard_acceptance": "PASS",
+      "input_hashes": {
+        "system/controlDict": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030",
+        "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1",
+        "log.foamRun": "39c46f4ea11181eb69f2a1f72458e909a16603cd1dbbe0164cf278d9d02b6c03",
+        "exit.json": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+      }
+    }
+  ],
+  "matrix_standard_acceptance": "PASS",
+  "limitations": [
+    "PIMPLE convergence lines are accepted as the runtime's configured corrector-residual decision; raw debug residual values were not enabled.",
+    "The runtime log reports that floating-point exception trapping is not supported on this platform; exit success does not replace such checks.",
+    "This gate says the requested numerical solve completed and met its configured outer-corrector condition; it does not establish local numerical accuracy.",
+    "The image source files are inspected directly, but source-to-binary identity remains unverified."
+  ]
+}
