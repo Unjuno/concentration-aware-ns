@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 242 — exact tracked-only clean export passes
+
+Ran the committed `5aeefc37` revision in a fresh locked environment using
+Python 3.14.5, matching its recorded evidence environment. All 42 report
+replay steps and six follow-up checks passed; all 219 tracked files were
+byte-identical after replay (`changed_files: []`). This verifies replay
+reproducibility for this host/runtime and fixed revision, not solver correctness
+or a broader platform guarantee. PR #4 CI also passed and the PR is open with
+a clean merge state. The manifest, logs and scope note are preserved under
+`evidence/clean-export-2026-10-03-success-5aeefc3/`. The broader benchmark and
+upstream audits remain active.
+
 ## Revision 241 — identify clean-export metadata drift
 
 The clean export at `c1c7870` replayed all 42 report steps and six follow-up
