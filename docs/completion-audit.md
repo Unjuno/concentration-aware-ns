@@ -1329,3 +1329,15 @@ These are preprint claims we have not independently verified. They sharpen
 scope and reporting limits but establish no defect in OpenFOAM, SU2 or
 PhysicsNeMo, and no physical/molecular interpretation. Full source audit:
 `reports/navier-stokes-followup-literature-2026-10-03.md`.
+
+### 2026-10-03 live upstream status recheck
+
+The GitHub API recheck confirms PhysicsNeMo issue #2007 remains open and the
+related fix PR #2008 remains unmerged; the affected source blob is unchanged
+at the current main SHA. SU2 v8.5.0 still resolves to the audited commit, and
+discussion #2890 remains closed without a marked answer; its BDF2 follow-up is
+already recorded there. OpenAI's Lean repository remains Apache-2.0 with
+issues disabled and no issue entries. No duplicate or unsupported report was
+filed. The response snapshot and exact details are in
+`evidence/upstream-refresh/upstream-status-2026-10-03.json` and
+`reports/upstream-status-2026-10-03.md`.

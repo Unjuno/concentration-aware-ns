@@ -443,3 +443,14 @@ explicitly distinguish this from refinement convergence for one fixed smooth
 problem. This is a benchmark-scope/reporting result, not a solver defect or
 physical validation. Details and limits are in
 `reports/navier-stokes-followup-literature-2026-10-03.md`.
+
+## Live upstream status recheck — 2026-10-03
+
+Requeried PhysicsNeMo issue #2007/PR #2008, SU2 discussion #2890 and release
+v8.5.0, and the OpenAI source repository. The known PhysicsNeMo odd-width
+finding remains tracked with no merged fix; the SU2 discussion remains closed
+without a marked answer; OpenAI's issue tracker remains disabled. The existing
+public issue/discussion is sufficient for these observations, and the
+actualProfile proof gap is not an upstream defect. No new report was filed.
+The API response snapshot is `evidence/upstream-refresh/upstream-status-2026-10-03.json`;
+interpretation is in `reports/upstream-status-2026-10-03.md`.

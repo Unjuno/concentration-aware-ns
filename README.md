@@ -34,6 +34,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
 - [SU2 FD2 and spectral derivative comparison](reports/su2-spectral-gradient.md)
 - [Upstream reporting decisions](reports/upstream-disposition.md)
+- [Live upstream status recheck (2026-10-03)](reports/upstream-status-2026-10-03.md)
 
 ## Acceptance report checker
 

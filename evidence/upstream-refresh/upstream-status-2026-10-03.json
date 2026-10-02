@@ -1,0 +1,97 @@
+{
+  "checked_local_date": "2026-10-03",
+  "physicsnemo": {
+    "repository": {
+      "default_branch": "main",
+      "pushed_at": "2026-10-01T22:16:04Z",
+      "has_issues": true,
+      "license": "Apache-2.0"
+    },
+    "main": {
+      "sha": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+      "committer_date": "2026-10-01T14:06:57Z"
+    },
+    "issue_2007": {
+      "number": 2007,
+      "title": "🐛[BUG]: power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+      "state": "open",
+      "updated_at": "2026-10-02T03:48:30Z",
+      "comments": 2,
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+    },
+    "issue_2007_comments": [
+      {
+        "created_at": "2026-09-28T00:41:11Z",
+        "updated_at": "2026-09-28T00:41:11Z",
+        "login": "Unjuno",
+        "body": "I independently reproduced this against both the released v2.2.2 tag (`072465a1a56817f180f64dee8a4069a1612b2d9e`) and current main HEAD (`426f7552da4b4fa675e404e8a4f437e27681b668`). The `power_spectrum.py` source SHA256 is identical at both revisions: `13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`.\n\nWith CPU Torch, a 33x33 cosine at wavenumber 5 gives height-axis power concentrated at about 10.083 in one bin, while the same width-axis cosine splits to about 6.188 and 5.042; a seeded random field also fails transpose-invariance at `rtol=1e-4, atol=1e-6`. I then ran the power-spectrum implementation from PR #2008 head `7407608723062dc11ba5332e9ff3774f42bb02d9` directly: axis equivalence and transpose-invariance checks passed for 32x32, 33x33, and 32x33.\n\nOur current benchmark uses even uniform grid sizes, so this existing defect does not affect its present spectra. I have not run the full PhysicsNeMo suite. The PR currently targets base `ff5d19d08123de47ca446caed1d70a225d540184`, while main is at `426f7552da4b4fa675e404e8a4f437e27681b668`; GitHub reports the PR as behind, so it may need a rebase before merge.\n"
+      },
+      {
+        "created_at": "2026-10-02T03:42:52Z",
+        "updated_at": "2026-10-02T03:48:30Z",
+        "login": "Unjuno",
+        "body": "Follow-up (2026-10-02): I rechecked current `main` at `83d6a337eecfc70e215ed1978af8dba9a38580fb`. The `power_spectrum.py` blob is still `fb3e8cda3bc7916b8e56833dda240cb74463fabb` (SHA-256 `13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`), and the focused CPU reproducer still passes the 32×32 transpose control but reproduces the 33×33 axis/transpose asymmetry (maximum transpose difference `0.1094484329`). This does not affect our current even-grid benchmark. PR #2008 remains open and behind `main`; I have not run the full PhysicsNeMo suite. The updated machine-readable replay is [here](https://github.com/Unjuno/concentration-aware-ns/blob/28aa3c2dce7edb36607461159388981713568b11/evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-10-02-83d6a33.json)."
+      }
+    ],
+    "pr_2008": {
+      "number": 2008,
+      "title": "Fix zero frequency index along the width in metrics.general.power_spectrum",
+      "state": "open",
+      "merged": false,
+      "updated_at": "2026-09-30T08:39:08Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "head_sha": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "head_ref": "fix-power-spectrum-odd-width-center",
+      "base_sha": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "base_ref": "main",
+      "mergeable": true
+    },
+    "power_spectrum_main_blob": {
+      "path": "physicsnemo/metrics/general/power_spectrum.py",
+      "git_blob_sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+      "size": 4129
+    }
+  },
+  "su2": {
+    "release_v8.5.0": {
+      "sha": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+      "committer_date": "2026-04-27T14:59:05Z"
+    },
+    "discussion_2890": {
+      "number": 2890,
+      "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+      "state": "closed",
+      "answer_html_url": null,
+      "updated_at": "2026-09-30T17:05:38Z",
+      "comments": 2,
+      "html_url": "https://github.com/su2code/SU2/discussions/2890"
+    },
+    "discussion_2890_comments": [
+      {
+        "created_at": "2026-09-13T03:31:50Z",
+        "updated_at": "2026-09-13T03:31:50Z",
+        "login": "sbryngelson",
+        "body": "Yeah, I think your diagnosis is right.\r\n\r\nAt the master commit you linked, the single-zone driver sets `PhysicalTime = TimeIter * dt` during [Preprocess](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/drivers/CSinglezoneDriver.cpp#L106-L122). That same value is then passed to [`GetMMSSourceTerm`](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/solvers/CIncEulerSolver.cpp#L1854-L1880), while the dual-time residual treats the current iterate as `U^{n+1}` and forms either the BDF1 or BDF2 time derivative against the stored previous states ([residual assembly](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/src/solvers/CIncEulerSolver.cpp#L2837-L2902)).\r\n\r\nSo for a nonautonomous MMS source, the current sequence is basically\r\n\r\n`solve for U^{n+1}` using `f(t_n)`,\r\n\r\nwhich gives exactly the old-time recurrence you measured. It is still first-order consistent under `DT_STEPPING_1ST`, so I would not call the integrator inconsistent, but it is not a backward Euler evaluation of the time-dependent forcing.\r\n\r\nThe potentially more important case is `DT_STEPPING_2ND`. The state derivative there is BDF2, but if the forcing is still evaluated at `t_n`, then\r\n\r\n`f(t_{n+1}) - f(t_n) = O(dt)`,\r\n\r\nso the lagged forcing can reduce the temporal convergence to first order for a genuinely time-dependent source. I would include both first- and second-order dual-time cases in the regression.\r\n\r\nI would avoid treating the `(TimeIter + 1) * dt` edit as the complete fix. `PhysicalTime` is used for more than the source term: it is also passed into the [verification-solution error calculation](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl#L535-L575) and [time-dependent verification boundary states](https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/SU2_CFD/include/solvers/CFVMFlowSolverBase.inl#L1518-L1553). Globally advancing it may fix this reproducer while changing output and other semantics elsewhere.\r\n\r\nMy preference would be to define the time levels explicitly. something like stored-state time versus target/solution time—and use the target time for MMS source and boundary evaluation. Then the output and restart paths can keep whichever convention they require.\r\n\r\ntldr; yes, the current source explains your observed recurrence, and the uniform transient MMS case looks like a good regression test. The remaining maintainer question is whether the old-time source evaluation was intentional or is just an ambiguous physical-time convention."
+      },
+      {
+        "created_at": "2026-09-26T14:00:52Z",
+        "updated_at": "2026-09-30T17:05:38Z",
+        "login": "Unjuno",
+        "body": "Thanks for pointing out the second-order case. I ran the same uniform transient MMS with `DUAL_TIME_STEPPING-2ND_ORDER` on the pinned v8.5.0 runtime (`12eb826f049ef7f67df974dfcb44cf36ee07c0f8`). The original driver does show first-order source-lag error in this control.\n\nFor `u_x=1+t^2`, `f_x=2t`, final time 0.5:\n\n| dt | Original endpoint max error | Existing time-shift intervention |\n|---|---:|---:|\n| 0.1 | 0.08506172841 | 0.004979423888 |\n| 0.05 | 0.04625006353 | 0.001249978856 |\n| 0.025 | 0.02406250002 | 0.0003125000269 |\n\nObserved orders: 0.87905, 0.94267 versus 1.99408, 1.99998. Every saved step satisfies all four log10 residual thresholds below -10, and spatial spreads remain below 5.30e-11.\n\nIncluding the repeated startup history `U[-1]=U[0]=1`, the old-time recurrence is\n`3U[k]-4U[k-1]+U[k-2]=4h^2(k-1)`, with exact error\n`e[k]=-2*k*h^2+(3/2)*h^2*(1-3^(-k))`.\nAt fixed `T=k*h`, this is `-2*T*h+O(h^2)`. The target-time intervention has RHS `4h^2*k` and error `(1/2)*h^2*(1-3^(-k))`. All saved numerical states match their respective recurrence within 5.40e-11, including startup.\n\n[Report and reproduction instructions](https://github.com/Unjuno/concentration-aware-ns/blob/a3269f2/reports/su2-bdf2-source-time.md) include the six raw archives, image identities, protocol and a replay checker that reads restart fields and residual histories. This is not a fresh master-binary test or validation of a general fix. I agree that stored-state/target-time semantics should be separated and boundary, restart and other consumers reviewed before changing `PhysicalTime` globally. The BDF2 control now provides a concrete regression case for that review.\n"
+      }
+    ]
+  },
+  "openai": {
+    "repository": {
+      "default_branch": "main",
+      "pushed_at": "2026-09-10T15:14:13Z",
+      "has_issues": false,
+      "license": "Apache-2.0"
+    },
+    "main": {
+      "sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "committer_date": "2026-09-10T13:40:53Z"
+    },
+    "all_state_issue_query_count": 0
+  }
+}

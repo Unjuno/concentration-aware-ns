@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 211 — refresh target-project reporting dispositions
+
+Rechecked live GitHub state for PhysicsNeMo, SU2, and the OpenAI source. The
+PhysicsNeMo odd-width spectrum issue remains open with its fix PR unmerged and
+the affected main blob unchanged; SU2 v8.5.0 remains pinned and its source-time
+discussion is closed without a marked answer; OpenAI's repository remains
+Apache-2.0 with issues disabled. No duplicate or unsupported upstream report
+was warranted. API responses and bounded disposition are in
+`evidence/upstream-refresh/upstream-status-2026-10-03.json` and
+`reports/upstream-status-2026-10-03.md`. This does not close the wider solver
+audit, quality uncertainty, or actualProfile pressure-proof gap.
+
 ## Revision 210 — add current forcing-structure and finite-grid literature
 
 Audited the primary arXiv texts for Constantin–Ignatova–Vicol (2609.20803v2)
