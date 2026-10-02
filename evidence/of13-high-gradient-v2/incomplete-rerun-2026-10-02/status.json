@@ -20,5 +20,14 @@
     "log.container": "9c293bf4e2e0637b30d798a9bc35f28618b50fe42bcd5e445d3c2b8e97128e5a"
   },
   "source_run_dir": "work/of13-high-gradient-v2/n64-dt0.0005",
+  "superseded_by_completed_matrix_row": {
+    "index": "evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json",
+    "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+    "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+    "completed_steps": 100,
+    "standard_acceptance": "PASS",
+    "local_quality": "PASS",
+    "interpretation": "The October 2 attempt is a later incomplete repeat of a matrix row already completed on September 30; it does not invalidate or replace the archived completed row."
+  },
   "interpretation": "This incomplete operational run is excluded from the frozen six-case matrix and all scientific verdicts. It is not evidence of a solver defect, numerical instability, or physical behavior."
 }
