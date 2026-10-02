@@ -1,5 +1,9 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 191 — reconcile the incomplete OpenFOAM repeat with the completed matrix row
+
+Current manifests show that the October 2 n64/dt=.0005 attempt stopped after 36/100 converged steps, while the identical protocol row had already completed 100/100 steps, passed standard and local gates, and entered the six-case matrix on September 30. Corrected the current completion audit so the partial repeat remains preserved/excluded but is not described as a separate missing matrix condition. The matrix verdict does not change. Evidence is `evidence/of13-high-gradient-v2/incomplete-rerun-2026-10-02/status.json`, `evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005-manifest.json`, and `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`. Goal remains active.
+
 ## Revision 190 — trace the retained entrance margin's pressure-cutoff dependency
 
 Re-read the pinned OpenAI source proof of `NaturalEntrance.CoefficientProfile.cone_at_four` and the records selected by `FinalSlowBase.actualProfile`. Its high-`chi` branch gets the cone margin from the retained slope estimate; its low-`chi` branch uses the pressure cutoff `|Z| ≤ delta → 99/100 < chi` to force pressure deviation, then separation and smallness estimates. `prepare_axis_with_cutoff` constructs that cutoff using `core.P ≥ 2` but returns the cutoff separately from `AxisPreparation`; the selected record retains entrance existence, not that proof. The exact root pressure-moment inequality remains disconnected from the selected entrance conditions. This narrows the witness-provenance gap but proves neither that the missing implication is impossible nor that `actualProfile` violates a threshold. No upstream issue or physical inference is justified. Details and pinned-file hashes are in `reports/actual-profile-pressure-provenance-2026-10-01.md` and `evidence/upstream-refresh/entrance-branch-dependency-2026-10-02.json`. Goal remains active.
