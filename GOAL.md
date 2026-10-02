@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 223 — revalidate the archived OpenFOAM matrix and clarify supersession
+
+Replayed the current six-case Foundation 13 matrix from frozen archives. All
+six archive hashes, endpoint fields, step counts, convergence records and
+acceptance outputs match the index: standard acceptance passes all six;
+sampled local quality fails n=16/32 and passes n=64/n=128 plus both temporal
+rows. The preregistered persistent discrepancy remains `NOT_OBSERVED`. Replayed
+the n=64 temporal triplet separately: exact velocity error is nearly constant
+and slightly increases as dt decreases, so temporal convergence is not
+certified. Clarified that the October 2 incomplete half-step repeat is
+superseded by the already complete 100-step archived matrix row; the partial
+run is retained but excluded from verdicts. The update is in the partial-run
+README/status JSON, and the full replay record is
+`evidence/tests/openfoam-six-case-and-temporal-replay-2026-10-03.json`.
+The hosted Actions run for current PR changes remains queued; local replay is
+not a substitute for hosted CI. No solver defect, continuum singularity, or
+physical claim follows. Goal remains active.
+
 ## Revision 222 — quantify the force-density construction's actuator-scale gap
 
 Re-derived the localized force rescaling in Cao–Chi–Nie arXiv:2609.10262v4.
