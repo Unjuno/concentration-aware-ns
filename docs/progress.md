@@ -498,3 +498,22 @@ threshold, `exp(Λ*phase)/C` has no positive floor uniformly over all larger
 no `sorryAx`. This formalizes the limitation of the all-larger-`C` interface,
 not a property of the selected single finite normalization. Evidence is in
 `evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.
+
+
+## n=128 archive replay and current mathematical context — 2026-10-03
+
+Reassembled the compact AMR review archive from its Zstandard parts; its gzip
+SHA-256 and the three analysis snapshot members match their recorded hashes.
+The stored n=128 result is descriptive: specified interior Gauss gradient
+point-error is 0.6084% preMap and 5.2472% after mapping, and same-parent faces
+retain the injected parent value. A separate fresh full numerical replay
+remains resource-intensive and incomplete. Do not treat the stored metric as a
+fresh independent replay or an OpenFOAM defect.
+
+Reviewed OpenAI's official Navier–Stokes statement and the 2026-09-17
+Constantin–Ignatova–Vicol preprint. The preprint's regularity result requires
+analytic forcing plus specified anisotropic and axisymmetric-core conditions;
+the authors explicitly do not certify the OpenAI construction. It is not
+evidence for molecular ordering or viscosity change. PR #4 CI run 37032506247
+passed. No upstream issue is justified; SU2 and PhysicsNeMo audit work remains
+outstanding.

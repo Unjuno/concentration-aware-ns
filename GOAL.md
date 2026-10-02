@@ -3566,3 +3566,31 @@ difference, and the archived AMR values replay unchanged. This improves the
 analytic evidence path; it is not a new solver run, higher-resolution AMR
 result, or solver-quality verdict. Commit `696c0b9` is pushed to PR #4;
 GitHub Actions run `36867525667` was queued at the latest check.
+
+
+## Revision 140 — n=128 compact archive revalidated; follow-up literature context
+
+On 2026-10-03, reconstructed the published n=128 AMR compact archive from
+its 15 Zstandard parts. The reconstructed gzip archive matches the recorded
+SHA-256 `e08e17eaf9789bf5c7cc9d8c368ec48dae2d2104e5d4be457cd39b4d955721bb`;
+the independent member verifier again confirms byte identity for the preMap
+cells, mapped cells, and mapped-face snapshots against the archived manifest.
+The recorded first-map diagnostic has 2,097,152 preMap cells and 6,949,888
+mapped cells; its specified interior Gauss point-gradient relative L2 error
+changes from 0.6084% to 5.2472%, while same-parent mapped faces carry exactly
+the injected parent value. This is a discrete reconstruction/mapping result
+for one exploratory event. It neither isolates an OpenFOAM defect nor says
+anything about molecular alignment, physical phase change, constitutive
+viscosity, or a continuum singularity. A fresh full numerical replay is
+resource-intensive and has not completed; the prior stored metric is not
+claimed as independently recalculated here.
+
+The 2026-09-17 Constantin–Ignatova–Vicol preprint proves conditional
+regularity under anisotropic Type-II and exact-core-axisymmetry assumptions
+when the force is analytic; its authors explicitly state that they have not
+verified the OpenAI construction. The result is conditional and does not
+exclude arbitrary smooth forcing. The 2026-09-08 OpenAI page describes a
+continuum Navier–Stokes singularity, not tracked molecules. These sources
+reinforce keeping continuum, numerical reconstruction, and microscopic
+models separate. No solver-quality threshold or upstream report follows.
+The existing PR #4 CI run 37032506247 completed successfully.
