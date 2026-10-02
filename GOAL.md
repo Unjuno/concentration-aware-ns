@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 222 — quantify the force-density construction's actuator-scale gap
+
+Re-derived the localized force rescaling in Cao–Chi–Nie arXiv:2609.10262v4.
+It agrees with the paper's `L^q_t H^s_x` exponent `2/q-3/2-s`; at the same
+time, pointwise force amplitude scales as `ε^-3`, one spatial derivative as
+`ε^-4`, and one time derivative as `ε^-5`. This makes precise why density in
+the weak Sobolev topologies is not evidence of feasibility under uniform
+actuator amplitude or rate limits. Added an exact SymPy replay and regression
+test, and recorded the conclusion as conditional scaling only: it proves no
+bounded-actuator regularity theorem and does not validate the OpenAI proof.
+The follow-up literature report is updated. Goal remains active.
+
 ## Revision 221 — replay n=128 mapped gradients within bounded memory
 
 Rebuilt the compact n=128 release archive and replayed its Gauss diagnostic.

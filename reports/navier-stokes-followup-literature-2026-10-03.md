@@ -50,6 +50,24 @@ benchmark's observables and exact-solution scope, but it does not invalidate
 our fixed manufactured-solution consistency/convergence studies and does not
 show that any solver has a defect.
 
+### What the force-density scaling does not control
+
+The paper gives the rescaled force
+`Fε(x,t)=ε⁻³ F((x−x₀)/ε,(t−tε)/ε²)`. Direct change of variables yields
+`||Fε||_{Lᵠ_t Ḣˢ_x}=ε^(2/q−3/2−s)||F||_{Lᵠ_t Ḣˢ_x}` when the homogeneous norm
+is finite, matching the exponent stated in the paper. For a fixed smooth,
+nonzero building-block force, the same rescaling gives
+`||Fε||∞=ε⁻³||F||∞`, `||∇Fε||∞=ε⁻⁴||∇F||∞`, and
+`||∂tFε||∞=ε⁻⁵||∂tF||∞`. Thus the `L¹_t L²_x` perturbation can tend to zero
+like `ε^(1/2)` while its pointwise amplitude and derivative scales increase.
+The localized construction therefore does not demonstrate attainability under
+uniform actuator-amplitude, spatial-gradient, or temporal-rate constraints.
+These scaling consequences are not a theorem that all bounded-actuator flows
+stay regular, and they do not independently validate the OpenAI building
+block. Exact symbolic replay is in
+`tools/check_force_concentration_scaling.py` and
+`evidence/tests/force-concentration-scaling-2026-10-03.json`.
+
 ## Consequences for this benchmark
 
 - Keep continuum claims separate from finite-grid acceptance. Report exact

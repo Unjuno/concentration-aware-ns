@@ -1330,6 +1330,15 @@ scope and reporting limits but establish no defect in OpenFOAM, SU2 or
 PhysicsNeMo, and no physical/molecular interpretation. Full source audit:
 `reports/navier-stokes-followup-literature-2026-10-03.md`.
 
+The localized force rescaling has also been differentiated explicitly:
+`L^q_t Ḣ^s_x` scales as `ε^(2/q-3/2-s)`, while its pointwise amplitude,
+spatial-gradient and time-derivative scales grow as `ε^-3`, `ε^-4` and
+`ε^-5`. A new exact SymPy replay covers these exponents. This narrows the
+engineering interpretation of force-space density but does not establish a
+regularity theorem under bounded actuator constraints or independently verify
+the OpenAI building block; see
+`evidence/tests/force-concentration-scaling-2026-10-03.json`.
+
 ### 2026-10-03 live upstream status recheck
 
 The GitHub API recheck confirms PhysicsNeMo issue #2007 remains open and the
