@@ -186,24 +186,31 @@ comparison gives candidate exponents `r=1/2` and
 `Cstretch+39`, enclosed in `[42.9999995,43)`. A simpler conservative power
 follows by using the source enclosure `Cstretch<4`: for
 `rho(Q)=rho0*Q^(1/2)` and `k(Q)<=k0*Q^(-40)`, we have
-`a(T)<=Q^(-4)`. Since the source enclosure also gives `Cstretch-1>2` and
-`Cstretch-1<3`, the exact integral satisfies the deliberately coarse bound
-`I(T)<= (tau0/2)*Q^(-3)` for `0<Q<=1`. The tube criterion then allows
-`delta < rho0/(1+B)*Q^43`, where `B=k0*rho0*tau0/2`. For any fixed initial
+`a(T)<=Q^(-4)`. Write `b=Cstretch-1` and `L=-log(Q)>0`. The exact integral
+obeys
+
+```
+I(T)/tau0 = (exp(b*L)-1)/b = integral_0^L exp(b*s) ds
+          <= integral_0^L exp(3*s) ds = (Q^(-3)-1)/3 < Q^(-3)/3,
+```
+
+because `0<b<3` and `s>=0`; equivalently, `Q<=s<=1` implies
+`s^(-Cstretch)<=s^(-4)` in the original integral. Thus the tube criterion
+allows `delta < rho0/(1+B)*Q^43`, where `B=k0*rho0*tau0/3`. For any fixed initial
 angle below pi/2 and positive target angle, the angle-error criterion also
 allows a constant times `Q^43` once its linear margin is positive. Using
 `E(Q)>=E0/2` and the monotonicity of `E/(1+E)`, a conservative angle
 prefactor is
 
 ```
-E0/((1+E0)*k0*tau0),
+3*E0/(2*(1+E0)*k0*tau0),
 ```
 
 where
 `E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))`, choose
 
 ```
-K < min(rho0/(1+B), E0/((1+E0)*k0*tau0)).
+K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0)).
 ```
 
 Then the combined sufficient law is `delta<=K*Q^43` for sufficiently small

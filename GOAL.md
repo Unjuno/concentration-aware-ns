@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 208 — recover the sharp one-third integral bound
+
+An independent re-derivation corrected Revision 207's over-conservative
+coefficient change. Although `1/(C-1)` alone can exceed `1/3`, the exact
+integral is `I/tau0 = integral_Q^1 s^(-C) ds`; for `C<4` and `Q<=s<=1`, its
+integrand is bounded by `s^(-4)`. Equivalently, with `b=C-1` and
+`L=-log(Q)`, compare `integral_0^L exp(b*s) ds` to its `b=3` case. This
+proves `I <= tau0/3*(Q^(-3)-1)`, so the original Q^43 tube and angle
+prefactors with coefficient `1/3` are valid. Updated the derivation, symbolic
+checker, regression test, and JSON evidence. Targeted tests pass; full-suite
+replay and PR CI remain to be checked. This repairs a coefficient argument;
+the result remains conditional on continuum tube/Hessian envelopes and the
+classical packet comparison, not molecular alignment. Goal remains active.
+
 ## Revision 207 — tighten the finite-packet Q^43 prefactors
 
 Rechecked the selected source interval `C in [7999999/2000000, 4)` and

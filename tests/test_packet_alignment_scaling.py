@@ -40,17 +40,26 @@ def test_fixed_cone_and_transverse_relative_error_have_different_powers():
     assert transverse_relative_power.subs({C: 4, kappa: 40}) == 49
 
 
-def test_selected_q43_prefactors_use_uniform_bounds_from_the_source_interval():
+def test_selected_q43_prefactors_use_integral_ordering_from_the_source_interval():
     C_lower = sp.Rational(7999999, 2000000)
     C_upper = sp.Integer(4)
-    # The selected source enclosure gives 2 < C-1 < 3. For 0<Q<=1,
-    # this implies Q^(1-C)<=Q^-3 and 1/(C-1)<1/2.
-    assert C_lower - 1 > 2
+    # The selected source enclosure gives 0 < b=C-1 < 3. With L=-log(Q),
+    # the exact integral is integral_0^L exp(b*s) ds, bounded by its b=3 case.
+    assert C_lower - 1 > 0
     assert C_upper - 1 == 3
-    assert 1 / (C_lower - 1) < sp.Rational(1, 2)
-    # A direct substitution into the coefficient 1/(C-1) does not justify
-    # replacing it by 1/3; use the conservative 1/2 integral prefactor.
-    assert 1 / (C_lower - 1) > sp.Rational(1, 3)
+    beta, length, s = sp.symbols("beta length s", positive=True)
+    exact_integral = (sp.exp(beta * length) - 1) / beta
+    integral_representation = sp.integrate(sp.exp(beta * s), (s, 0, length))
+    assert sp.simplify(exact_integral - integral_representation) == 0
+    pointwise_difference = sp.simplify(
+        sp.exp(3 * s) - sp.exp(beta * s)
+        - sp.exp(beta * s) * (sp.exp((3 - beta) * s) - 1)
+    )
+    assert pointwise_difference == 0
+    upper_integral = (sp.exp(3 * length) - 1) / 3
+    assert sp.simplify(
+        upper_integral - sp.integrate(sp.exp(3 * s), (s, 0, length))
+    ) == 0
 
     E0 = sp.symbols("E0", positive=True)
     angle_factor = sp.simplify(

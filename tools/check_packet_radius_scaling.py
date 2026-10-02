@@ -61,17 +61,27 @@ def main():
             actual_r+denominator_hessian_exp-43),
     }
     actual_c_lower = s.Rational(7999999, 2000000)
+    beta, length, integration_var = s.symbols(
+        'beta length integration_var', positive=True)
+    integral_exact = (s.exp(beta*length)-1)/beta
+    integral_representation = s.integrate(
+        s.exp(beta*integration_var), (integration_var, 0, length))
+    integral_upper_exact = (s.exp(3*length)-1)/3
+    integral_upper_representation = s.integrate(
+        s.exp(3*integration_var), (integration_var, 0, length))
     actual_specialization_controls = {
         'Hessian_denominator_term_dominates_linear_amplification':
             bool(denominator_hessian_exp >= actual_c_upper),
         'transverse_relative_error_requires_stricter_power':
             bool(actual_transverse_relative_exp > actual_angle_exp),
-        # Since C-1 > 2 and C-1 < 3, the simple envelope
-        # I(Q) <= tau0/(C-1)*Q^(1-C) is bounded by (tau0/2)*Q^-3.
-        # Do not replace 1/(C-1) by 1/3 from C<4 alone.
-        'selected_integral_prefactor_half_is_safe': bool(actual_c_lower - 1 > 2),
-        'one_third_is_not_a_direct_bound_from_the_C_interval': bool(
-            1 / (actual_c_lower - 1) > s.Rational(1, 3)),
+        # For beta=C-1 in (0,3) and L=-log(Q)>0, compare the exact
+        # integral of exp(beta*s) on [0,L] to the beta=3 integral.
+        'exact_integral_matches_exponential_representation':
+            s.simplify(integral_exact-integral_representation) == 0,
+        'upper_integral_matches_exponential_representation':
+            s.simplify(integral_upper_exact-integral_upper_representation) == 0,
+        'one_third_integral_bound_assumptions_hold':
+            bool(actual_c_lower - 1 > 0 and actual_c_upper - 1 == 3),
     }
     E0 = s.symbols('E0', positive=True)
     angle_factor_difference = s.factor(
@@ -209,10 +219,10 @@ def main():
         'hessian_term_denominator_exponent': str(denominator_hessian_exp),
         'Hessian_denominator_exponent_gap': str(
             denominator_hessian_exp-actual_c_upper),
-        'integral_upper': 'I(Q)<=tau0/2*Q^(-3), using C-1>2 and C-1<3',
-        'tube_prefactor': 'rho0/(1+B), B=k0*rho0*tau0/2',
-        'angle_prefactor': 'E0/((1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))',
-        'common_prefactor': 'K < min(rho0/(1+B), E0/((1+E0)*k0*tau0))',
+        'integral_upper': 'I(Q)<=tau0/3*(Q^(-3)-1)<tau0/3*Q^(-3), by integral ordering for C<4',
+        'tube_prefactor': 'rho0/(1+B), B=k0*rho0*tau0/3',
+        'angle_prefactor': '3*E0/(2*(1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))',
+        'common_prefactor': 'K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0))',
         'common_sufficient_power': 'Q^43 for sufficiently small Q',
         'residuals': {name: str(value) for name, value in
                       actual_specialization_residuals.items()},
