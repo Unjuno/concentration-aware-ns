@@ -103,6 +103,14 @@ def test_preserved_incomplete_attempt_archive_excludes_partial_time_fields(tmp_p
     (attempt / "system").mkdir()
     (attempt / "0/U").write_text("initial field\n")
     (attempt / "system/controlDict").write_text("control input\n")
+    (attempt / "constant/transportProperties").parent.mkdir()
+    (attempt / "constant/transportProperties").write_text("transport input\n")
+    (attempt / "input-hashes.json").write_text(json.dumps({
+        "0/U": "input-hash", "system/controlDict": "input-hash",
+        "constant/transportProperties": "input-hash",
+    }))
+    (attempt / "constant/polyMesh").mkdir()
+    (attempt / "constant/polyMesh/points").write_text("generated mesh\n")
     (attempt / "0.01").mkdir()
     (attempt / "0.01/U").write_text("partial output\n")
     (attempt / "log.foamRun").write_text("Time = 0.001\n")
@@ -117,6 +125,8 @@ def test_preserved_incomplete_attempt_archive_excludes_partial_time_fields(tmp_p
         names = {member.name for member in archive.getmembers() if member.isfile()}
     assert any(name.endswith("/0/U") for name in names)
     assert any(name.endswith("/system/controlDict") for name in names)
+    assert any(name.endswith("/constant/transportProperties") for name in names)
+    assert not any("polyMesh" in name for name in names)
     assert any(name.endswith("/log.foamRun") for name in names)
     assert not any("0.01" in name for name in names)
-    assert result["excluded_partial_outputs"] == ["partial time directories and their flow fields"]
+    assert result["excluded_partial_outputs"] == ["generated mesh and partial time directories"]

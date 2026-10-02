@@ -1,0 +1,23 @@
+{
+  "archive": "n128-dt0.001.tar.gz",
+  "archive_sha256": "ae24b5ada040789b794bf5cca04a1645f3c6fabf51260e9048b34180af34a5f7",
+  "archive_bytes": 177265841,
+  "reassemble": "cat n128-dt0.001.tar.gz.part-00 n128-dt0.001.tar.gz.part-01 n128-dt0.001.tar.gz.part-02 > n128-dt0.001.tar.gz",
+  "parts": [
+    {
+      "file": "n128-dt0.001.tar.gz.part-00",
+      "bytes": 80000000,
+      "sha256": "3bdcdae03f651e12e4448f395ecac4f44adc1dd2d1715705fcce9ce58f24c286"
+    },
+    {
+      "file": "n128-dt0.001.tar.gz.part-01",
+      "bytes": 80000000,
+      "sha256": "5cd3ce11b9b28e988d8c940ea99d86c8a81646389cb9663275339ee3cabca246"
+    },
+    {
+      "file": "n128-dt0.001.tar.gz.part-02",
+      "bytes": 17265841,
+      "sha256": "ad0a6535f143a77a73620fe5e5f6b1fb9393049ef7b1a37b1226b0165725cc48"
+    }
+  ]
+}

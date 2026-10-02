@@ -176,10 +176,10 @@ def verify_attempt_archive(item):
         paths = [path for path in source.rglob("*") if path.is_file() or path.is_symlink()]
     else:
         paths = []
-        for folder in ("0", "system", "constant"):
-            base = source / folder
-            if base.is_dir():
-                paths.extend(path for path in base.rglob("*") if path.is_file() or path.is_symlink())
+        input_hash_path = source / "input-hashes.json"
+        if input_hash_path.is_file():
+            input_hashes = json.loads(input_hash_path.read_text())
+            paths.extend(source / relative for relative in input_hashes)
         for filename in ("parameters.json", "input-hashes.json", "command.json", "exit.json",
                          "log.container", "log.blockMesh", "log.foamRun", "log.centres"):
             path = source / filename

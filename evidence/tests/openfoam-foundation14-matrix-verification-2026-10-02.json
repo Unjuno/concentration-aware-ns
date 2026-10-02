@@ -1,0 +1,175 @@
+{
+  "status": "PASS",
+  "protocol_sha256": "4b561ce371d988c043882bac547d7682756c27e635176c4cec9a9a2242d1a5ee",
+  "matrix_manifest_sha256": "905bb8c678c26a24aaa1d895db769f15f017bbd831a9eae03df204b0de6067f7",
+  "case_count": 6,
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "FAIL",
+        "FAIL"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "05f0b494bf1824601213ea745dd9e6823aa52e7c81d59858b0ec0fc6ca553a39",
+        "p": "55cbab1d02e0b0958ab3b2cea573a160c79c49408d4012e2c2711301a5c76c86",
+        "C": "0665da3da0fa3b209b8da0f60b2a0987105ca64e881fed7b718998fce76ae23c",
+        "phi": "12a9ec2ee51214fbe471418689ca8a4bbbdd20154dafd881a7a4b5a8e2629a04"
+      }
+    },
+    {
+      "case": "n32-dt0.001",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "FAIL",
+        "FAIL"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "122abf88c498e80c8f88a1e9214ecf0556ef13b4e8ed46361242db25b3baf879",
+        "p": "fd71cc2fedb1cc759bc243053125b3156cb1788c18f6391951c340abe755a104",
+        "C": "70886113c51efb3d6ddeb3d465140acedae57425320a9112fdc0afc362f8e890",
+        "phi": "7145097e7996e0e1581e1183216cb5a1a68d314ffba24e592499598e24f7dcbc"
+      }
+    },
+    {
+      "case": "n64-dt0.001",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "5f02c644a7116faea4b63c3e552172404a4722ad57bea191aab0ba8024085b8a",
+        "p": "c56c4b02f4f56d0f4d56944da183686e785e0ddde9ae0a7f202784e70f754514",
+        "C": "56a2ab40639b6a1c970bbd3d641704543b2ff6d75c047feab66b02ad7f792ce1",
+        "phi": "5c9bb5c52268a29f7e315014fbe7a4d9240450aae6fad09a44fed37822104222"
+      }
+    },
+    {
+      "case": "n128-dt0.001",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "34c59dcf40695c6ec295ca66feb0bae04721ff66e6fefcf98e2238d9bcf57862",
+        "p": "958eb04b112098b73bbc0a24252b62bf608e1ba2832c4bfbd8c2dd64c63a3d7c",
+        "C": "68611706358801a64ad14d8673c4f24a9eb310f5b9881c4c272db20ee62cffbc",
+        "phi": "41f7389746500b1bf1c4cbe162f178e5bce33955a21946cc034a6326f81bc03c"
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "6df839cf4512c16652c2d7e4abae0964045cefcc46b9a6d658204f83354bb50b",
+        "p": "f182f972424cb21166730bf397d5ccc177c91a1c61447169d6e79f1b41fb42a3",
+        "C": "56a2ab40639b6a1c970bbd3d641704543b2ff6d75c047feab66b02ad7f792ce1",
+        "phi": "26ecb835bc2dfdf38f7a2d63279f872deea8c17fc54a577b43bce029e9d206a2"
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "standard_acceptance_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "local_quality_of13_of14": [
+        "PASS",
+        "PASS"
+      ],
+      "metric_differences_of14_minus_of13": {
+        "velocity_relative_l2": 0.0,
+        "energy_relative_error_cell_samples": 0.0,
+        "gradient_peak_relative_error_cell_samples": 0.0,
+        "vorticity_peak_relative_error_cell_samples": 0.0,
+        "shell_spectrum_relative_l1_error": 0.0
+      },
+      "stored_metrics_exactly_equal": true,
+      "endpoint_field_hashes_equal_after_version_banner_normalization": true,
+      "endpoint_fields_normalized_sha256": {
+        "U": "9b6c51289ef9f1de1af7682a9b4ca375a2c0e6472284de94af5969dbac70c9fb",
+        "p": "8c769b456f5b6de7cf3bf292159c00dab4570da0e936423f72819b657ae5b466",
+        "C": "56a2ab40639b6a1c970bbd3d641704543b2ff6d75c047feab66b02ad7f792ce1",
+        "phi": "63c484bf258143d024bd52782c60d1b31cae3487b27b0b5257ece087c86383e4"
+      }
+    }
+  ],
+  "preserved_complete_replay_count": 2,
+  "preserved_attempt_archives_verified": 3,
+  "initial_n128_interrupted_attempt": {
+    "recorded_step_count": 13,
+    "line_anchored_step_count": 13,
+    "exit": {
+      "exit_code": 143,
+      "timed_out": false
+    }
+  },
+  "scope": "Archive-to-work byte replay, pinned package matrix completion, and comparison of stored diagnostic scalars only; no physical validation, continuum-extrema certificate, or solver-defect verdict."
+}

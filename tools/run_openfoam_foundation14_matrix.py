@@ -150,23 +150,23 @@ def archive_preserved_attempt(attempt, evidence_root, run_root):
     is_complete = attempt["status"] == "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
     destination_dir = Path(evidence_root) / "attempts"
     destination_dir.mkdir(parents=True, exist_ok=True)
-    destination = destination_dir / f"{attempt_path.name}.tar.gz"
-    temporary = Path(str(destination) + ".tmp")
     if is_complete:
         paths = [path for path in attempt_path.rglob("*") if path.is_file() or path.is_symlink()]
         excluded = []
     else:
         paths = []
-        for folder in ("0", "system", "constant"):
-            base = attempt_path / folder
-            if base.is_dir():
-                paths.extend(path for path in base.rglob("*") if path.is_file() or path.is_symlink())
+        input_hash_path = attempt_path / "input-hashes.json"
+        if input_hash_path.is_file():
+            input_hashes = json.loads(input_hash_path.read_text())
+            paths.extend(attempt_path / relative for relative in input_hashes)
         for filename in ("parameters.json", "input-hashes.json", "command.json", "exit.json",
                          "log.container", "log.blockMesh", "log.foamRun", "log.centres"):
             path = attempt_path / filename
             if path.is_file():
                 paths.append(path)
-        excluded = ["partial time directories and their flow fields"]
+        excluded = ["generated mesh and partial time directories"]
+    destination = destination_dir / f"{attempt_path.name}{'-inputs-only' if not is_complete else ''}.tar.gz"
+    temporary = Path(str(destination) + ".tmp")
     if destination.exists():
         expected = {f"{attempt_path.name}/{path.relative_to(attempt_path)}": path
                     for path in set(paths)}
@@ -216,11 +216,12 @@ def main():
     if case_timeout <= 0:
         raise ValueError("CANS_OF14_CASE_TIMEOUT_SECONDS must be positive")
     resume = os.environ.get("CANS_OF14_RESUME", "false").lower() == "true"
+    finalize_only = os.environ.get("CANS_OF14_FINALIZE_ONLY", "false").lower() == "true"
     if not resume and (run_root.exists() or evidence_root.exists()):
         raise FileExistsError("refusing to overwrite an existing run or evidence directory")
 
     dirty = run_checked(["git", "status", "--porcelain", "--untracked-files=no"], timeout=10).stdout.strip()
-    if dirty:
+    if dirty and not finalize_only:
         raise RuntimeError("commit the frozen run sources before executing the solver")
     source_commit = run_checked(["git", "rev-parse", "HEAD"], timeout=10).stdout.strip()
     docker_cli = shutil.which("docker")
@@ -243,6 +244,16 @@ def main():
             raise ValueError("resume protocol differs from the original run")
         if (evidence_root / "protocol.json").read_bytes() != PROTOCOL.read_bytes():
             raise ValueError("resume evidence contains a different protocol")
+        if finalize_only:
+            manifest = json.loads((evidence_root / "manifest.json").read_text())
+            for attempt in manifest.get("attempt_history", []):
+                attempt.update(archive_preserved_attempt(attempt, evidence_root, run_root))
+            (evidence_root / "manifest.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")
+            (run_root / "summary.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")
+            print(json.dumps({"matrix_status": manifest["matrix_status"],
+                              "completed": len(manifest["completed_cases"]),
+                              "evidence": str(evidence_root)}, indent=2), flush=True)
+            return
     else:
         run_root.mkdir(parents=True)
         evidence_root.mkdir(parents=True)
