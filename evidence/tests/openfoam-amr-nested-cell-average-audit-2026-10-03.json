@@ -1,0 +1,99 @@
+{
+  "status": "PASS_SOURCE_ARTIFACT_RECONCILIATION",
+  "identity": "sum_K |K||a_P-u_K|^2 = |P||a_P-u_P|^2 + sum_K |K||u_K-u_P|^2",
+  "identity_scope": "Nested-partition identity for exact child cell averages and a parent value injected piecewise-constantly; it does not assert that OpenFOAM volVectorField values are exact cell averages.",
+  "source_artifact_checks": {
+    "runs": 4,
+    "all_mapped_fields_equal_parent_injection": true,
+    "max_abs_identity_residual": 1.9915008573185093e-17,
+    "quality_verdicts_assigned_by_this_audit": false,
+    "raw_solver_archives_or_diagnostics_recomputed": false
+  },
+  "rows": [
+    {
+      "base_cells_per_axis": 16,
+      "preMap_cells": 4096,
+      "mapped_cells": 16640,
+      "parent_dof_error_relative": 0.12597926720978095,
+      "subcell_average_variation_relative": 0.40573036994656947,
+      "mapped_dof_error_relative": 0.42483868569575145,
+      "source_preMap_average_error_relative": 0.13783397972555342,
+      "source_mapped_average_error_relative": 0.42483868569575145,
+      "map_difference_relative_l2": 0.0,
+      "cross_term_normalized": 1.9915008573185093e-17,
+      "identity_residual": -1.9915008573185093e-17,
+      "analysis_path": "evidence/of13-amr-same-run-map-v4-run3/analysis.json",
+      "analysis_sha256": "45f666968c20311a418a60b196c256144b7166a59c84e0800ee564f024910045",
+      "run_archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed"
+    },
+    {
+      "base_cells_per_axis": 32,
+      "preMap_cells": 32768,
+      "mapped_cells": 118784,
+      "parent_dof_error_relative": 0.034177957299791825,
+      "subcell_average_variation_relative": 0.2080001212107873,
+      "mapped_dof_error_relative": 0.21078942855107463,
+      "source_preMap_average_error_relative": 0.034942184808845436,
+      "source_mapped_average_error_relative": 0.21078942855107463,
+      "map_difference_relative_l2": 0.0,
+      "cross_term_normalized": 5.109765761977167e-18,
+      "identity_residual": -5.109765761977167e-18,
+      "analysis_path": "evidence/of13-amr-same-run-map-v5-n32/analysis.json",
+      "analysis_sha256": "d95e6b39cd2f4951de699f416aa13b6c00398abaae901d3342eba3423736b2d9",
+      "run_archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1"
+    },
+    {
+      "base_cells_per_axis": 64,
+      "preMap_cells": 262144,
+      "mapped_cells": 901888,
+      "parent_dof_error_relative": 0.00875325965702541,
+      "subcell_average_variation_relative": 0.10465016072831368,
+      "mapped_dof_error_relative": 0.1050155973895554,
+      "source_preMap_average_error_relative": 0.008801588325457705,
+      "source_mapped_average_error_relative": 0.1050155973895554,
+      "map_difference_relative_l2": 0.0,
+      "cross_term_normalized": 4.122265753621305e-19,
+      "identity_residual": -4.122265753621305e-19,
+      "analysis_path": "evidence/of13-amr-same-run-map-v7-n64/analysis.json",
+      "analysis_sha256": "37b04517825684997e23cc01e7a00d511ec0d5e1c3871014374a0476531b2d91",
+      "run_archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5"
+    },
+    {
+      "base_cells_per_axis": 128,
+      "preMap_cells": 2097152,
+      "mapped_cells": 6949888,
+      "parent_dof_error_relative": 0.00220251553644406,
+      "subcell_average_variation_relative": 0.052404566766082836,
+      "mapped_dof_error_relative": 0.052450831191022236,
+      "source_preMap_average_error_relative": 0.002205546096466647,
+      "source_mapped_average_error_relative": 0.052450831191022236,
+      "map_difference_relative_l2": 0.0,
+      "cross_term_normalized": 2.2289829993962825e-19,
+      "identity_residual": -2.2289829993962825e-19,
+      "analysis_path": "evidence/of13-amr-same-run-map-v8-n128/analysis.json",
+      "analysis_sha256": "3ed1e77e1cc078430ccd520e11a10d9bba3af997937b75fd8749828cc5a7b0a1",
+      "run_archive_sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100"
+    }
+  ],
+  "successive_refinement_scaling": [
+    {
+      "from_n": 16,
+      "to_n": 32,
+      "variation_ratio": 0.5126560312410894,
+      "observed_order": 0.9639369268782988
+    },
+    {
+      "from_n": 32,
+      "to_n": 64,
+      "variation_ratio": 0.5031254795388375,
+      "observed_order": 0.9910098417109356
+    },
+    {
+      "from_n": 64,
+      "to_n": 128,
+      "variation_ratio": 0.5007595440023485,
+      "observed_order": 0.9978100821870834
+    }
+  ],
+  "interpretation": "Descriptive cross-resolution reconciliation of previously captured same-run analyses; not an AMR convergence certificate or solver validation."
+}

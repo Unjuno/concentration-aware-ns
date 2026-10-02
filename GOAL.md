@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 234 — explain the nested AMR cell-average error across resolutions
+
+Combined the n=16/32/64/128 same-run first-refinement analyses using the exact
+nested-partition identity
+`sum_K |K||a_P-u_K|^2 = |P||a_P-u_P|^2 + sum_K |K||u_K-u_P|^2`. In all four
+captured events, mapped cell values equal same-run piecewise-constant parent
+injection; the exact subcell-average variation term is 40.573%, 20.800%,
+10.465%, and 5.240%, with pairwise observed orders 0.964, 0.991, and 0.998.
+The parent DOF error falls from 12.598% to 0.220%, while the mapped child DOF
+comparison is dominated by the predictable variation revealed by refinement.
+Added a scope-limited analytic report, a replayable cross-run source-artifact
+audit, and updated upstream disposition: this narrows AMR remap attribution
+but leaves AMR quality UNCERTAIN, because stored
+OpenFOAM values are not presumed to be exact cell averages and no quality
+threshold or continuum estimate exists. No upstream issue or physical claim
+is justified. This does not establish AMR convergence. The overall benchmark
+goal remains active.
+
 ## Revision 228 — classify subcritical full-sphere stochastic limit sets
 
 For the prescribed Jeffery director with `delta<1`, the transformed
