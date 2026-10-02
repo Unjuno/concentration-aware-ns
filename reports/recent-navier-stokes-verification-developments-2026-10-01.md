@@ -207,3 +207,34 @@ Sources: [OpenFOAM Foundation v14 release notes](https://openfoam.org/version/14
 [adaptive-estimator paper](https://doi.org/10.1016/j.cma.2026.118876).
 The focused check metadata and scope limits are archived in
 `evidence/upstream-refresh/openfoam14-and-vpinn-estimator-2026-10-02.json`.
+
+## 2026-10-02 refresh: stochastic high-vorticity mechanism
+
+Schorlepp, Rosenhaus, and Falkovich's [*How turbulent flows grow vorticity at
+a point*](https://arxiv.org/abs/2609.13056), submitted 11 September, is a
+separate and newly identified connection to the OpenAI construction. It
+computes a most-probable history (an instanton) for a prescribed, large but
+finite pointwise vorticity in randomly forced, incompressible turbulence. In
+the authors' axisymmetric setup, simple radial squeezing plus axial stretching
+stops being the optimal growth strategy above a threshold; the reported
+higher-vorticity path uses propagating vorticity pulses and their collisions.
+The authors explicitly call the last-stage scaling estimates speculative and
+say larger target vorticities need further study. This is a stochastic,
+finite-target optimization result, not a finite-time singularity proof or a
+reproduction of OpenAI's forced construction.
+
+The mathematical analogy is worth tracking because both accounts involve
+thin vortex filaments, stretching, and pulse/wave dynamics. It does not
+establish that the instanton is the same solution mechanism, nor that
+individual molecules align or become predictably located. The paper evolves a
+continuum velocity/vorticity field and optimizes a probability over force
+histories; it supplies no molecular state model, particle-size law, phase
+transition, or constitutive viscosity measurement. Its setup also assumes
+axisymmetry and a temporally white Gaussian force, with the optimization
+equations solved numerically. I found no code link on the arXiv record, so its
+reported thresholds and high-vorticity branches have not been independently
+reproduced in this benchmark. This is a literature lead, not an upstream
+defect report or validation of the physical hypothesis.
+
+Source and scope metadata are recorded in
+`evidence/upstream-refresh/vorticity-instanton-2026-10-02.json`.
