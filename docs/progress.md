@@ -624,4 +624,7 @@ equatorial model has a nondegenerate Gaussian integrating-factor amplitude;
 this does not resolve the nonlinear no-atom question. All 13 symbolic
 identities pass, focused tests pass 4/4, and the 42-step full report replay
 passes with matching log hashes. Full suite: 221 passed, one skipped, five
-subtests. Goal remains active.
+subtests. Focused checker and tests also pass on Python 3.12.10 (4 tests,
+13 identities); environment and hashes are recorded in
+`evidence/tests/spherical-orientation-diffusion-py312-2026-10-03.json`. This is
+not a full Python 3.12 suite or hosted-CI result. Goal remains active.

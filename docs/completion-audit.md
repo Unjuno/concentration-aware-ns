@@ -54,7 +54,10 @@ equator has a nondegenerate Gaussian integrating-factor amplitude, but its
 no-atom conclusion is not transferred to the nonlinear state-dependent SDE.
 The exact checker passes 13 identities; focused tests pass 4/4; the complete
 locked replay passes 42/42 and all log hashes match. The suite reports 221
-passed, one skipped, five subtests. This remains an ideal orientation model;
+passed, one skipped, five subtests. The same four focused tests and 13 exact
+identities pass under Python 3.12.10; the command and hashes are in
+[`spherical-orientation-diffusion-py312-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-py312-2026-10-03.json).
+This is not a full-suite or hosted-CI result. This remains an ideal orientation model;
 almost-sure alignment and all molecular/viscosity implications remain open.
 See [`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md)
 and [`spherical-orientation-diffusion-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-2026-10-03.json).

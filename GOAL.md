@@ -63,6 +63,15 @@ reports 221 passed, one skipped, five subtests. These validate the algebra
 and repository replay only. The nonlinear equator-avoidance question remains
 open, and the wider benchmark goal remains active.
 
+## Revision 233 — check the new analysis on the workflow Python version
+
+Ran the focused orientation checker/tests with Python 3.12.10, matching the
+workflow's Python minor version: 4 tests passed and all 13 symbolic identities
+passed. Saved the command, environment, lockfile/checker hashes and test-output
+hash in `evidence/tests/spherical-orientation-diffusion-py312-2026-10-03.json`.
+This is a focused compatibility check, not a full Python 3.12 suite or hosted
+CI result. Goal remains active.
+
 ## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
 
 The earlier rotational-diffusion calculation found divergent variance for
