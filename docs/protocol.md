@@ -1,4 +1,11 @@
-# Verification protocol — draft, not yet frozen for execution
+# Verification protocol — general protocol draft
+
+This document is the general/legacy protocol and is not fully frozen. The
+specialized OpenFOAM high-gradient v1 protocol is separately versioned in
+`protocols/high-gradient-of13-v1.json`; its run matrix and numeric thresholds
+were frozen for that campaign. The meaning of peak-gradient and peak-vorticity
+errors still needs an erratum before those thresholds can support a PASS/FAIL
+quality verdict. Do not retroactively reinterpret archived runs.
 
 ## Reference construction
 
@@ -84,9 +91,17 @@ Budget equality alone does not establish saturation or inaccurate results.
 
 ## Decision contract
 
-Before production, freeze absolute/relative tolerances, error normalization,
-near-zero handling, evaluation times, metrics, seeds and required evidence.
-Current code uses supplied per-metric tolerances; **no tolerances are frozen yet**.
+Before a new production protocol, freeze absolute/relative tolerances, error
+normalization, near-zero handling, evaluation times, metrics, seeds and required
+evidence. The specialized v1 threshold values are frozen, but code does not yet
+implement or verify the complete standard-acceptance and local-quality gates.
+In particular, `max_gradient` and `max_vorticity` in v1 compare a computed
+periodic-FD2 peak with an analytic reference peak sampled at cell centers. This
+combines solution and postprocessing differences. Separate FD2 operator-error
+fields compare the computed field with FD2 applied to the sampled analytic
+field; neither quantity alone certifies the continuous-domain maximum. Until a
+versioned protocol clarifies which measure each threshold governs, all quality
+verdicts remain UNCERTAIN.
 
 Report independent fields:
 
