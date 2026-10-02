@@ -9,6 +9,7 @@ from tools.compare_amr_resolution_volume_integrated import (
     _integrated_relative_errors,
     _quadrature_offsets,
 )
+from tools.analyze_amr_gauss_gradient import least_squares_gradient_from_internal_faces
 from tools.high_gradient_reference import fields
 
 
@@ -52,13 +53,47 @@ class AmrVolumeIntegratedTests(unittest.TestCase):
                 exact_center["grad_u"], 4, 0.002, order=order,
             ))
         self.assertLess(abs(
-            values[0]["integrated_piecewise_constant_gauss_gradient_relative_l2"]
-            - values[1]["integrated_piecewise_constant_gauss_gradient_relative_l2"]
+            values[0]["integrated_cellwise_constant_gradient_relative_l2"]
+            - values[1]["integrated_cellwise_constant_gradient_relative_l2"]
         ), 1e-11)
         self.assertLess(abs(
-            values[0]["integrated_piecewise_constant_gauss_vorticity_relative_l2"]
-            - values[1]["integrated_piecewise_constant_gauss_vorticity_relative_l2"]
+            values[0]["integrated_cellwise_constant_curl_relative_l2"]
+            - values[1]["integrated_cellwise_constant_curl_relative_l2"]
         ), 1e-11)
+
+    def test_face_neighbor_least_squares_recovers_affine_vector_gradient(self):
+        centers = np.array([
+            [x + 0.5, y + 0.5, z + 0.5]
+            for x in range(2) for y in range(2) for z in range(2)
+        ])
+        owner, neighbour = [], []
+        for i, point in enumerate(centers):
+            for j in range(i + 1, len(centers)):
+                if np.count_nonzero(np.abs(centers[j] - point) > 0) == 1:
+                    owner.append(i)
+                    neighbour.append(j)
+        exact_gradient = np.array([
+            [1.0, 2.0, -0.5],
+            [-3.0, 0.25, 4.0],
+            [0.0, -2.0, 0.75],
+        ])
+        velocity = centers @ exact_gradient.T
+        gradient, diagnostics = least_squares_gradient_from_internal_faces(
+            centers, velocity, owner, neighbour, periodic_length=10.0
+        )
+        np.testing.assert_allclose(
+            gradient, np.broadcast_to(exact_gradient, gradient.shape),
+            rtol=0, atol=1e-14,
+        )
+        self.assertEqual(diagnostics["cells"], 8)
+
+    def test_face_neighbor_least_squares_rejects_rank_deficiency(self):
+        centers = np.array([[0.5, 0.5, 0.5], [1.5, 0.5, 0.5]])
+        velocity = centers.copy()
+        with self.assertRaises(ValueError):
+            least_squares_gradient_from_internal_faces(
+                centers, velocity, [0], [1], periodic_length=10.0
+            )
 
 
 if __name__ == "__main__":

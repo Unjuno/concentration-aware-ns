@@ -208,6 +208,11 @@ a continuous OpenFOAM reconstruction; AMR quality remains `UNCERTAIN` because
 no threshold was preregistered. See the
 [`cell-integrated AMR report`](../reports/openfoam-amr-volume-integrated-diagnostics-2026-10-02.md)
 and `evidence/of13-amr-volume-integrated-comparison-2026-10-02.json`.
+The mapped result is insensitive to a second one-ring least-squares derivative
+estimate: at n=64 it gives 14.0719% gradient and 15.9026% curl error, compared
+with 14.0147% and 15.8499% for the face-Gauss operator. This is an
+operator-sensitivity check, not an independent solver gradient or an AMR
+quality acceptance result.
 
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and

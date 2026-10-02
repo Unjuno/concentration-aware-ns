@@ -9,11 +9,11 @@ the earlier diagnostic's cell-center sampling of the analytic derivative.
 The archived field is still represented by a piecewise-constant gradient; the
 calculation does not reconstruct a continuous OpenFOAM velocity field.
 
-| n | Stage | Gradient relative L2 | Vorticity relative L2 |
-|---:|---|---:|---:|
-| 16 | preMap → mapped | 56.1359% → 54.2540% | 59.3938% → 59.7202% |
-| 32 | preMap → mapped | 28.0990% → 27.8614% | 29.5427% → 31.2579% |
-| 64 | preMap → mapped | 13.9804% → 14.0147% | 14.6428% → 15.8499% |
+| n | preMap Gauss gradient / curl | mapped Gauss gradient / curl | mapped least-squares gradient / curl |
+|---:|---:|---:|---:|
+| 16 | 56.1359% / 59.3938% | 54.2540% / 59.7202% | 54.3082% / 59.8115% |
+| 32 | 28.0990% / 29.5427% | 27.8614% / 31.2579% | 27.9295% / 31.3311% |
+| 64 | 13.9804% / 14.6428% | 14.0147% / 15.8499% | 14.0719% / 15.9026% |
 
 These volume-integrated values materially change how the earlier center-sample
 comparison should be read. At n=64, center-sampled gradient error was 1.8830%
@@ -24,6 +24,19 @@ Mapping and piecewise-constant parent injection did not create a clear
 additional n=64 gradient penalty in this integrated metric, although the
 vorticity value increases from 14.64% to 15.85%. This is a property of the
 specified reconstruction and data, not a solver-defect finding.
+
+As an operator-sensitivity check, a second derivative estimate was formed by
+an unweighted one-ring least-squares fit of each mapped cell's neighboring
+cell-center velocity differences against periodic minimum-image center
+displacements. Its n=64 integrated gradient/curl errors are 14.0719%/15.9026%,
+only 0.0572/0.0527 percentage points above the finite-volume Gauss result.
+Across all mapped resolutions, the largest corresponding Gauss-versus-LS
+differences are 0.0681 percentage points for gradient and 0.0913 points for
+curl. All normal matrices were full-rank; their maximum condition number was
+5.0. This makes the observed integrated scale insensitive to these two
+cellwise-constant derivative estimators for these archives. Least-squares is
+an independent post-processing alternative, not the solver's declared
+gradient scheme and not a fitted polynomial over each cell interior.
 
 Across n=16, 32, and 64, adjacent-grid descriptive error slopes range from
 0.961 to 1.007 for gradient and 0.934 to 1.013 for vorticity. They are
@@ -41,11 +54,15 @@ against the expected axis-aligned cubic base and half-base refinement levels.
 For every retained cell, tensor-product Gauss-Legendre quadrature integrates
 the analytic MMS gradient and vorticity against the constant discrete
 gradient/curl over the cell. Order 6 and order 8 results agree within
-`1.20e-13` in absolute relative-L2 ratio across all cases and stages. Unit
-tests also check tensor quadrature exactness through degree 11, cell-geometry
-validation, and an order 8 versus 10 local MMS integral.
+`1.20e-13` in absolute relative-L2 ratio across all cases and stages for both
+operators. Unit tests also check tensor quadrature exactness through degree
+11, cell-geometry validation, an order 8 versus 10 local MMS integral, exact
+recovery of an affine vector field by the least-squares operator, and rejection
+of a rank-deficient stencil.
 
-The reproducible analyzer is `tools/compare_amr_resolution_volume_integrated.py`.
+The reproducible analyzer is `tools/compare_amr_resolution_volume_integrated.py`;
+the face-neighbor least-squares operator is in
+`tools/analyze_amr_gauss_gradient.py`.
 It verifies all three archived input hashes and reconstructs the split n=64
 archive before analysis. Machine-readable metrics, protocol and archive hashes,
 and quadrature-sensitivity values are in

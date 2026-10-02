@@ -19,6 +19,7 @@ from tools.analyze_amr_gauss_gradient import (
     _vector,
     gauss_gradient_from_internal_faces,
     interior_periodic_mask,
+    least_squares_gradient_from_internal_faces,
     periodic_uniform_gauss_gradient,
     vorticity_from_gradient,
 )
@@ -112,9 +113,9 @@ def _integrated_relative_errors(centers, widths, volumes, mask, discrete_grad,
         ))
     return {
         "quadrature_order_per_axis": order,
-        "integrated_piecewise_constant_gauss_gradient_relative_l2":
+        "integrated_cellwise_constant_gradient_relative_l2":
             math.sqrt(grad_num / grad_den),
-        "integrated_piecewise_constant_gauss_vorticity_relative_l2":
+        "integrated_cellwise_constant_curl_relative_l2":
             math.sqrt(vort_num / vort_den),
         "integrated_physical_volume": float(np.sum(volumes[mask])),
         "retained_cells": int(np.count_nonzero(mask)),
@@ -137,10 +138,11 @@ def _analyze_stage(archive, case_dir, stage, time_label, n, frequency):
         face = _read_csv(
             archive, f"{case_dir}/postProcessing/amrStages/{time_label}/{stage}_faces.csv"
         )
+        face_velocity = _vector(face, ("Ufx", "Ufy", "Ufz"))
+        face_area = _vector(face, ("Sx", "Sy", "Sz"))
         gradient = gauss_gradient_from_internal_faces(
             volumes, face["owner"], face["neighbour"],
-            _vector(face, ("Ufx", "Ufy", "Ufz")),
-            _vector(face, ("Sx", "Sy", "Sz")),
+            face_velocity, face_area,
         )
         operator = "captured face-Uf finite-volume Gauss sum on mapped mesh"
     mask = interior_periodic_mask(
@@ -158,12 +160,12 @@ def _analyze_stage(archive, case_dir, stage, time_label, n, frequency):
         "comparison_order_per_axis": QUADRATURE_ORDERS[0],
         "fine_order_per_axis": QUADRATURE_ORDERS[1],
         "gradient_relative_l2_absolute_difference": abs(
-            fine["integrated_piecewise_constant_gauss_gradient_relative_l2"]
-            - coarse["integrated_piecewise_constant_gauss_gradient_relative_l2"]
+            fine["integrated_cellwise_constant_gradient_relative_l2"]
+            - coarse["integrated_cellwise_constant_gradient_relative_l2"]
         ),
         "vorticity_relative_l2_absolute_difference": abs(
-            fine["integrated_piecewise_constant_gauss_vorticity_relative_l2"]
-            - coarse["integrated_piecewise_constant_gauss_vorticity_relative_l2"]
+            fine["integrated_cellwise_constant_curl_relative_l2"]
+            - coarse["integrated_cellwise_constant_curl_relative_l2"]
         ),
     }
     result.update({
@@ -173,6 +175,36 @@ def _analyze_stage(archive, case_dir, stage, time_label, n, frequency):
         "interior_volume_fraction": float(volumes[mask].sum() / volumes.sum()),
         "cell_width_levels": [float(LENGTH / n), float(LENGTH / (2 * n))],
     })
+    if stage == "mapped":
+        ls_gradient, ls_diagnostics = least_squares_gradient_from_internal_faces(
+            centers, _vector(cell, ("Ux", "Uy", "Uz")),
+            face["owner"], face["neighbour"], periodic_length=LENGTH,
+        )
+        ls_coarse, ls_fine = (
+            _integrated_relative_errors(
+                centers, widths, volumes, mask, ls_gradient, frequency,
+                float(time_label), order=order,
+            )
+            for order in QUADRATURE_ORDERS
+        )
+        result["alternative_reconstruction"] = {
+            "name": "unweighted one-ring cell-center least-squares gradient",
+            "construction": "Fit each cell's velocity differences to periodic minimum-image center displacements over captured internal-face neighbors; report the resulting cellwise-constant gradient and curl.",
+            "operator_diagnostics": ls_diagnostics,
+            "volume_integrated_error": ls_fine,
+            "quadrature_convergence": {
+                "comparison_order_per_axis": QUADRATURE_ORDERS[0],
+                "fine_order_per_axis": QUADRATURE_ORDERS[1],
+                "gradient_relative_l2_absolute_difference": abs(
+                    ls_fine["integrated_cellwise_constant_gradient_relative_l2"]
+                    - ls_coarse["integrated_cellwise_constant_gradient_relative_l2"]
+                ),
+                "vorticity_relative_l2_absolute_difference": abs(
+                    ls_fine["integrated_cellwise_constant_curl_relative_l2"]
+                    - ls_coarse["integrated_cellwise_constant_curl_relative_l2"]
+                ),
+            },
+        }
     return result
 
 
@@ -228,8 +260,12 @@ def compare():
     return {
         "status": "PASS_VOLUME_INTEGRATED_AMR_RECONSTRUCTION_REPLAY",
         "analyzer_sha256": _sha256(Path(__file__)),
+        "derivative_operators": {
+            "path": "tools/analyze_amr_gauss_gradient.py",
+            "sha256": _sha256(ROOT / "tools/analyze_amr_gauss_gradient.py"),
+        },
         "reference": "Analytic manufactured-solution gradient and vorticity integrated inside each retained cell with tensor Gauss-Legendre quadrature.",
-        "discrete_field": "Cellwise-constant finite-volume Gauss gradient and its curl; not a reconstructed continuous OpenFOAM velocity field.",
+        "discrete_field": "Cellwise-constant finite-volume Gauss gradient and one-ring least-squares alternative, with their curls; neither is a reconstructed continuous OpenFOAM velocity field.",
         "mask": {
             "definition": "cell centers farther than pi/4 from all periodic boundaries; aligned physical support across resolutions",
             "physical_margin": COMMON_MARGIN,
@@ -239,6 +275,7 @@ def compare():
         "cases": [_case(*case) for case in CASES],
         "limitations": [
             "The quadrature integrates exact derivatives over each selected cell, but does not certify the spatial interpolation used by the solver or its continuous velocity field.",
+            "The cell-center least-squares gradient is a post-processing alternative, not the solver's declared gradient operator or a fitted velocity polynomial over cell interiors.",
             "AMR events are exploratory single runs and have no preregistered quality threshold; no AMR PASS/FAIL or upstream defect conclusion is assigned.",
             "Numerical quadrature is a deterministic diagnostic, not an interval-arithmetic error bound.",
         ],

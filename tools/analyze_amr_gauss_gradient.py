@@ -36,8 +36,14 @@ def _read_csv(archive, member):
 def gauss_gradient_from_internal_faces(volumes, owner, neighbour, face_u, face_area):
     """Compute Gauss-linear cell gradients from oriented internal-face Uf/S."""
     volumes = np.asarray(volumes, dtype=float)
-    owner = np.asarray(owner, dtype=int)
-    neighbour = np.asarray(neighbour, dtype=int)
+    owner_raw = np.asarray(owner)
+    neighbour_raw = np.asarray(neighbour)
+    if (not np.isfinite(owner_raw).all() or not np.isfinite(neighbour_raw).all()
+            or np.any(owner_raw != np.floor(owner_raw))
+            or np.any(neighbour_raw != np.floor(neighbour_raw))):
+        raise ValueError("owner/neighbour indices must be finite integers")
+    owner = owner_raw.astype(int)
+    neighbour = neighbour_raw.astype(int)
     face_u = np.asarray(face_u, dtype=float)
     face_area = np.asarray(face_area, dtype=float)
     if volumes.ndim != 1 or np.any(volumes <= 0) or not np.isfinite(volumes).all():
@@ -58,6 +64,67 @@ def gauss_gradient_from_internal_faces(volumes, owner, neighbour, face_u, face_a
     np.add.at(integrated, owner, flux_tensor)
     np.add.at(integrated, neighbour, -flux_tensor)
     return integrated / volumes[:, None, None]
+
+
+def least_squares_gradient_from_internal_faces(
+        centers, velocity, owner, neighbour, periodic_length=2*np.pi):
+    """Fit an unweighted affine velocity gradient to each cell's face neighbors.
+
+    This is a post-processing reconstruction for sensitivity analysis. It is
+    not OpenFOAM's configured gradient scheme and does not fit a polynomial
+    over the cell interior.
+    """
+    centers = np.asarray(centers, dtype=float)
+    velocity = np.asarray(velocity, dtype=float)
+    owner_raw = np.asarray(owner)
+    neighbour_raw = np.asarray(neighbour)
+    if (not np.isfinite(owner_raw).all() or not np.isfinite(neighbour_raw).all()
+            or np.any(owner_raw != np.floor(owner_raw))
+            or np.any(neighbour_raw != np.floor(neighbour_raw))):
+        raise ValueError("owner/neighbour indices must be finite integers")
+    owner = owner_raw.astype(int)
+    neighbour = neighbour_raw.astype(int)
+    if (centers.ndim != 2 or centers.shape[1] != 3
+            or velocity.shape != centers.shape
+            or not np.isfinite(centers).all()
+            or not np.isfinite(velocity).all()):
+        raise ValueError("centers and velocity must be finite arrays of shape (cells, 3)")
+    if (owner.ndim != 1 or neighbour.shape != owner.shape
+            or np.any(owner < 0) or np.any(neighbour < 0)
+            or np.any(owner >= len(centers)) or np.any(neighbour >= len(centers))
+            or np.any(owner == neighbour)):
+        raise ValueError("owner/neighbour face addressing is invalid")
+    if not np.isfinite(periodic_length) or periodic_length <= 0:
+        raise ValueError("periodic_length must be finite and positive")
+
+    displacement = centers[neighbour] - centers[owner]
+    displacement = np.remainder(
+        displacement + periodic_length/2, periodic_length
+    ) - periodic_length/2
+    delta_velocity = velocity[neighbour] - velocity[owner]
+    normal = np.zeros((len(centers), 3, 3), dtype=float)
+    cross = np.zeros_like(normal)
+    outer_x = displacement[:, :, None] * displacement[:, None, :]
+    outer_ux = delta_velocity[:, :, None] * displacement[:, None, :]
+    np.add.at(normal, owner, outer_x)
+    np.add.at(normal, neighbour, outer_x)
+    np.add.at(cross, owner, outer_ux)
+    np.add.at(cross, neighbour, outer_ux)
+
+    eigenvalues = np.linalg.eigvalsh(normal)
+    if np.any(eigenvalues[:, 0] <= 0):
+        raise ValueError("at least one cell has a rank-deficient neighbor stencil")
+    # cross = grad(U) @ normal; solve the transposed normal equations.
+    gradient = np.linalg.solve(normal, cross.transpose(0, 2, 1)).transpose(0, 2, 1)
+    condition = eigenvalues[:, -1] / eigenvalues[:, 0]
+    diagnostics = {
+        "cells": int(len(centers)),
+        "internal_faces": int(len(owner)),
+        "minimum_normal_matrix_eigenvalue": float(eigenvalues[:, 0].min()),
+        "maximum_normal_matrix_condition_number": float(condition.max()),
+        "mean_face_neighbor_count": float(2 * len(owner) / len(centers)),
+    }
+    return gradient, diagnostics
 
 
 def interior_periodic_mask(centers, volumes, domain_length=2*np.pi,

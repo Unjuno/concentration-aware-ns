@@ -1,5 +1,9 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 193 — check AMR derivative sensitivity to the post-processing operator
+
+Added a second, unweighted one-ring least-squares derivative estimate from mapped cell-center velocities and captured face adjacency, then applied the same cell-volume MMS integration. At n=64 it gives 14.0719% gradient and 15.9026% curl error, close to the face-Gauss values 14.0147% and 15.8499%; the maximum mapped difference across n=16/32/64 is under 0.092 percentage points. All cell normal matrices are full-rank with maximum condition number 5.0; exact affine recovery and rank-deficiency rejection tests pass. This is post-processing sensitivity evidence, not OpenFOAM's declared gradient scheme or a continuous-field bound. AMR remains `UNCERTAIN`. Updated `reports/openfoam-amr-volume-integrated-diagnostics-2026-10-02.md` and the machine-readable artifact. Goal remains active.
+
 ## Revision 192 — integrate AMR derivative error over each cell
 
 Added a reproducible volume-integrated diagnostic for the archived n=16/n=32/n=64 first-map Gauss-gradient fields. It compares the cellwise-constant finite-volume gradient/curl to the analytic MMS derivatives integrated throughout each retained cubic cell, on the same physical interior. At n=64, gradient relative L2 is 13.9804% preMap and 14.0147% mapped; earlier cell-center values were 1.8830% and 12.1431%. Order-6/order-8 tensor quadrature agrees within 1.20e-13 in absolute relative-L2 ratio. This captures P0 within-cell variation but is not a continuous OpenFOAM field bound; AMR quality remains `UNCERTAIN` because no threshold was preregistered. Added unit tests and the replay to the published report runner. Evidence is in `reports/openfoam-amr-volume-integrated-diagnostics-2026-10-02.md` and `evidence/of13-amr-volume-integrated-comparison-2026-10-02.json`. Goal remains active.
