@@ -49,6 +49,13 @@ steps = [
     ('artifact_links', [sys.executable, '-m', 'tools.audit_gate_artifacts']),
 ]
 output = Path('evidence/report-replay');output.mkdir(exist_ok=True)
+# Ensure children use the same interpreter as this runner. This preserves
+# temporary dependency environments created by uv as well as normal venvs.
+# sys.executable can resolve to a global interpreter when uv injects packages
+# into a temporary environment. Preserve the active environment through its
+# PATH-selected `python` executable; ordinary venvs work the same way.
+child_python = 'python'
+steps = [(name, [child_python, *command[1:]]) for name, command in steps]
 records = []
 for name, command in steps:
     run = subprocess.run(command, capture_output=True, text=True)
