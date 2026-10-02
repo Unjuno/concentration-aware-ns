@@ -1,4 +1,4 @@
-# Goal — revision 2, 2026-09-09
+# Goal — revision 8, updated 2026-10-02
 
 Build a reproducible Concentration-Aware Navier–Stokes Verification Benchmark.
 Treat the supplied proposal as hypotheses. Verify primary sources, repository
@@ -114,3 +114,58 @@ verify the tube stays in every cited band/domain. The derivation and exact
 source boundary are recorded in `docs/packet-constant-dependencies.md`. A
 generic Lean lemma now proves the pointwise hole for any supported copy-family
 sum; the all-stage assembly and tube-domain transfer remain open.
+
+## Revision 8 — separate infinitesimal alignment, finite packets, and optical fluids
+
+The selected OpenAI witness supports a conditional continuum result for
+infinitesimal material-separation alignment, while the finite-packet estimate
+still lacks an effective equality-tube radius and constants. Do not convert it
+into particle-position certainty or molecular ordering. The optical-fluid
+crosswalk now derives the Madelung equations and records their distinct
+compressible, irrotational, paraxial model, including diffraction, rather than
+identifying them with three-dimensional viscous Navier–Stokes. Reported optical
+backscattering suppression is not a constitutive-viscosity measurement. Keep
+these analogies as falsifiable, separate research tracks and preserve the
+original three-solver benchmark and end-to-end analytic obligations.
+
+## Revision 9 — quantitative support-hole tube re-audit
+
+The 2026-10-02 re-audit distinguishes the source's outer
+`SublevelShrinkingSupport` bound from separate inner-zero results already
+available for initial copy waves, actual mean coefficients, and particular /
+signed annular fields. The similarity-coordinate equation also yields a
+conditional `q<=S*(1-t)` bound on a tube of radius proportional to
+`sqrt(1-t)`, resolving the earlier domain-width concern on paper. Its
+sublinear scalar-envelope step is now Lean-checked against the pinned source
+coordinate file; the geometric premise and actual chart identification are
+not yet formalized. Revision 11 records the Lean-checked local germ transfer
+through the selected sums, curl and local cutoffs under explicit hypotheses;
+uniform tube coverage and the selected center bound remain open before the
+`Q^(Cstretch+39)` packet exponent can be reported as a construction result. Keep all earlier solver gates, skeptical physical
+interpretation, and completion conditions.
+
+## Revision 10 — actual selected-stage support hole and chart bounds checked
+
+The exact selected initial potential, every positive-potential stage, and
+every direct angular stage are now Lean-checked to vanish whenever the actual
+profile radius is below the active annulus left edge, within the construction's
+physical domain. Thus the common support-hole coefficient for these selected
+stages is the positive `leftRadius`, rather than a minimum assembled from
+generic family bounds. The pinned-coordinate equation is Lean-checked to give
+`physicalQ>=1-t` and an explicit conditional upper bound on a shrinking tube;
+the trajectory-center scaling and full assembled-sum/curl/localization transfer
+remain proof obligations. Keep the finite-packet exponent conditional until
+those obligations and any requested concrete constants are verified. No
+molecular, constitutive-viscosity, or solver-defect claim follows from this
+continuum source audit.
+
+## Revision 11 — selected localized candidate germ transfer checked
+
+Lean now checks the selected initialized potential sum, direct angular sum,
+curl, periodicization, and time activation transfer: the complete candidate
+velocity equals the base as a germ inside the actual support hole, under
+physical-domain, zeroth-cutoff plateau, late-time, and spatial-localization
+hypotheses. Uniformly deriving these hypotheses on a quantitative tube and
+instantiating the selected trajectory-center scaling remain proof obligations.
+Keep the finite-packet exponent and all solver/upstream audit conclusions
+conditional until their independent gates pass.

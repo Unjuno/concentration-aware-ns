@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scope": "source-level forcing-sign assembly audit in the exact runtime image",
+  "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "files": {
+    "momentumPredictor.C": {
+      "path": "/opt/openfoam13/applications/modules/incompressibleFluid/momentumPredictor.C",
+      "sha256": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59"
+    },
+    "fvMatrix.C": {
+      "path": "/opt/openfoam13/src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C",
+      "sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e"
+    },
+    "codedFvModel.H": {
+      "path": "/opt/openfoam13/src/fvModels/general/codedFvModel/codedFvModel.H",
+      "sha256": "22adfbad3ca4ce3f2dbae6f5bb7a9731c4aa24745bf48454186eb62e526832fc"
+    }
+  },
+  "generated_model_sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f",
+  "checks": {
+    "momentum_equation_places_fvModels_source_on_rhs": true,
+    "matrix_equality_is_left_minus_right": true,
+    "matrix_subtraction_subtracts_internal_source": true,
+    "coded_example_exposes_eqn_source_as_model_matrix_source": true,
+    "generated_model_subtracts_volume_weighted_forcing_into_model_matrix": true
+  },
+  "derivation": [
+    "The incompressibleFluid momentum equation constructs A == fvModels().source(U).",
+    "fvMatrix operator== returns A - B, and matrix subtraction subtracts B.source from A.source.",
+    "The generated codedFvModel adds -V*f to B.source; subtracting B therefore contributes +V*f to the assembled equation RHS."
+  ],
+  "conclusion": "The coded source uses the positive manufactured forcing in the assembled momentum equation.",
+  "limitations": [
+    "This reads the source files shipped in the pinned image; it does not prove source-to-binary equivalence.",
+    "It is not a solver run or a numerical accuracy certification."
+  ]
+}

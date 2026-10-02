@@ -36,4 +36,7 @@ Its frozen spatial/time matrix and quality thresholds are in
 compare the `codedFvModel` forcing with the independent symbolic/NumPy
 reference using `python3 -m tools.check_high_gradient_openfoam_force`. That
 checker requires the pinned local OpenFOAM image and Docker; it tests a mock
-mesh/equation, not a PDE run or the live solver's source sign convention.
+mesh/equation, not a PDE run. The separate
+`python3 -m tools.check_high_gradient_openfoam_sign` audit reads the momentum
+equation and matrix subtraction code from the exact runtime image to check the
+assembled forcing sign. It does not prove source-to-binary equivalence.

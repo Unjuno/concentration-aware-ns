@@ -1,4 +1,11 @@
-# Verification protocol — draft, not yet frozen for execution
+# Verification protocol — general protocol draft
+
+This document is the general/legacy protocol and is not fully frozen. The
+specialized OpenFOAM high-gradient v1 protocol is separately versioned in
+`protocols/high-gradient-of13-v1.json`; its run matrix and numeric thresholds
+were frozen for that campaign. The meaning of peak-gradient and peak-vorticity
+errors still needs an erratum before those thresholds can support a PASS/FAIL
+quality verdict. Do not retroactively reinterpret archived runs.
 
 ## Reference construction
 
@@ -38,18 +45,28 @@ analytic bound `||u_N||_infinity <= exp(-t)*(1/N + 2/N^2)` tends to zero, while
 gradient accuracy. This is a verification stress case, not a singularity model.
 The symbolic checker derives the exact forcing identity, divergence, vorticity,
 selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
-`tools/check_high_gradient_mms.py`. It has not yet been run through OpenFOAM,
-SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
-claimed. The OpenFOAM spatial/time matrix and thresholds are frozen in
+`tools/check_high_gradient_mms.py`. The OpenFOAM spatial, temporal and AMR
+matrices have now been run; a scoped AMR velocity-error threshold failure is
+recorded, while cause and complete campaign quality remain unresolved. No equivalent
+high-gradient run has yet been completed for SU2 or PhysicsNeMo. The OpenFOAM
+spatial/time matrix and thresholds are frozen in
 `protocols/high-gradient-of13-v1.json`, separately from the existing Gaussian
-concentration case.
+concentration case. A separately frozen AMR protocol is recorded in
+`protocols/high-gradient-of13-amr-v1.json`. Its frozen interpretation says no
+quality PASS is available pending a versioned metric definition and complete
+acceptance evidence; the post-run v2 gate records a scoped velocity L2 FAIL
+based on the separately defined discrete metric and does not call it a software
+defect.
 An independent numerical formula comparison is also provided:
 `tools/high_gradient_reference.py` evaluates derivatives from the finite
 Fourier coefficients, while `tools/check_high_gradient_reference.py` constructs
 the potential and differentiates it directly with SymPy. Their u, gradient,
 vorticity and forcing values agree to below `1e-10` at 65 seeded points for
-each N. This checks the two formula evaluators, not OpenFOAM's equation sign or
-its C++ source assembly.
+each N. This checks the two formula evaluators, not OpenFOAM's binary behavior.
+The separate image-source audit at
+`evidence/tests/high-gradient-openfoam-sign-audit.json` checks the Foundation 13
+momentum equation and matrix sign assembly, but does not prove source-to-binary
+identity.
 
 ## Experimental matrix
 
@@ -84,9 +101,22 @@ Budget equality alone does not establish saturation or inaccurate results.
 
 ## Decision contract
 
-Before production, freeze absolute/relative tolerances, error normalization,
-near-zero handling, evaluation times, metrics, seeds and required evidence.
-Current code uses supplied per-metric tolerances; **no tolerances are frozen yet**.
+Before a new production protocol, freeze absolute/relative tolerances, error
+normalization, near-zero handling, evaluation times, metrics, seeds and required
+evidence. The specialized v1 threshold values are frozen. A source-backed
+checker now verifies configured outer-corrector decisions, run completion and
+frozen iteration limits for completed Foundation 13 cases; a separate v2 gate
+records standard-acceptance and local-quality outcomes.
+In particular, `max_gradient` and `max_vorticity` in v1 compare a computed
+periodic-FD2 peak with an analytic reference peak sampled at cell centers. This
+combines solution and postprocessing differences. Separate FD2 operator-error
+fields compare the computed field with FD2 applied to the sampled analytic
+field; neither quantity alone certifies the continuous-domain maximum. Until a
+versioned protocol clarifies which measure each threshold governs, the v1 peak
+thresholds cannot support a quality PASS. A separately defined and frozen
+metric can still establish a local FAIL when its error interval lies above its
+threshold; the AMR velocity L2 result is such a scoped failure. This does not
+identify its cause or establish a software defect.
 
 Report independent fields:
 

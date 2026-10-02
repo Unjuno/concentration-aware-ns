@@ -1,0 +1,2297 @@
+{
+  "created_utc": "2026-10-02T04:46:03.847446+00:00",
+  "protocol": "protocols/high-gradient-of13-v1.json",
+  "required_cases": [
+    "n16-dt0.001",
+    "n32-dt0.001",
+    "n64-dt0.001",
+    "n64-dt0.0005",
+    "n64-dt0.00025"
+  ],
+  "additional_cases": [
+    "n128-dt0.001",
+    "n64-dt0.0005-rerun-20261002",
+    "n64-dt0.00025-rerun-20261002",
+    "amr-cap4096",
+    "amr-cap5000",
+    "amr-cap100000"
+  ],
+  "amr_required_by_protocol": true,
+  "amr_status": "COMPLETE",
+  "run_environment_sha256": "06ff5d1bff296f4ef53e7e0620acee5e693c9d19188f4275221aef35349a49e9",
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "7b9a2174dd1029f1b7b79918e9755553aac176f25f5372f731519313d2410d6b"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "5c14867ddaab8e4c56868d31ea118a7babcfd79595b59ca96d955b28ced0179e"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "b6d89b1f9e86a82d2a62d5b14fd66870414f4e4c4f86a0f5b9570bd94eab67f5"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "75a7fae36eaa34d841a35f0d343e441a4b32ee3323facd9cb0eea6a02560937a"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "a178ca79d564d87596c7dfeae2301f8d4106229a50759e2ca8325953a62fdcbd"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "56c0aab7aa99fb4ca696fca84f38ddc1be80fb61313b432d2929e25db1968979"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "984bc7eeb356e9f1d6806fe88aa4df21c6767579e67d41fa365f57856a976935"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "8318fa494f07457a41d4290a6794f16c86c8ecac5ba9d37f0224b8d9a4aea3e0"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "05ad1662a53ff732f6e69b78a9454457337621cbf24dc79c373fe977e56cd240"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "e26ba535574ab5d2c93ed635429b8804400278c974a5dc3aae0e36aa1a04ccc4"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "8cca5fc018665cad95f180b6dfe45c7bd24d1f28e7625ad564101763836f6f65"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "e781f516420609483ee0bf5c127db4971c15e3138d066d64176c1d9312e03665"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "cf1d46ca72380ae1aae16df5ca0dadecad948209e330e032443bc75ac199b821"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "d2bfb8f590a73ed6d8a1a5d562e48fb3ad20493e9929dd01f1c0c557308fd03b"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "4433cc0d9c726e7632b6bd34a3ae31bf5383ce8ac0350f14c1f08142fa6e81d7"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "bdf3d1000b620503b61797a1f27e48f67b0479dd4659d94abf56fe7b6433c3f4"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "55d87073fb2bcd5400d0e0e07626c0d37e4f8d045dd72ad49709d55b7e93a735"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "74a34e80305684cfbece31b54c912f104d6615c21ba5a7dd69a0a3170c62b7a6"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "d05b1b23413d9ecc40598b5fe3ec6f8b5d8546a4a8e1e9e0d89ad1c9ede247f2"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "3aaec096dc8520ede8fd698917d8638a0b66ae6e7d78bee88c830286ff2aef4c"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "420e7151d6eea1086cc599cb308dd49be139d1a1000813b974ac880c93e86142"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "298cb154a52353fc3912bf35af61b66dd8ed72c1971c4ae86c9806aac6f61138",
+      "superseded_full_case_archive_sha256": "38e138e15563b7995caf01f351ce296f3b244618f2b0b0447aeda6096fd98b79",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "superseded_review_archive_sha256": "dfa3b2d0a9698a45c85386566470457a1f16ca73955688c7b4c81cbecd1a938f",
+      "archive_sanitized_paths": [
+        "command.json"
+      ]
+    },
+    {
+      "case": "n32-dt0.001",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "e5b116b465de1249e2f03926b4da720026c326035abfb0be41f9a33239ba9b25"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "0dbace39111e8f2e7b9ace3bf80257f13d34c287227cdd5995606a7e6dd7a834"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "b34a033097787150b91b2359ee68caf188cffeb3a878def65dbd326a1bb4c6e5"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "0e56299125db455f287610992fb0f86c49d2696c6cfff66ba763baa156751550"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "3c70ee2cb9f81a9f05f3cea77011ad8e27d4ff979a9248c90eeb1da939827dd6"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "c313ce692165f9cb53667dfee38d48c09933f1eed7dd950e335217109f717563"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "9908482b30b54ce2bdd99776991f53fad6cddda7926ef256493734eba102e895"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "ba57e6d5fff63e894e0aa42f2bd5f2d6e2a1b34a771ce2e5ea25eb3845598771"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "eb44984941bc4d73161519ac4c762d85b0e0805cf2ded56e14752e51a53b04ee"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "d55c40ca09f2567e485c4d16f934298b9240ec91de875978acd12105e930c302"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "deb37a3eec28317a7e728f67511b120a58f1f5c47b97efa69dcd05641e30c6c3"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "46fe4ce5d59cd79d6f91bfd4fe1a228d3b9aca983cbfc7947c7e8a7e5bba2b23"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "f24cb46ce61aa3b485955e0d4ac764648d021bc3d361f3009b40d912ac7662bc"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "e4fdc7c083837d8a1b61fd1a71d8e72fb8ff0cf62651d5c648a2a9b3fbbeb50f"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "7f4e24bf9b3caf2ae3683ca8efd9f8481450983863150376490dd2ef0f9aae12"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "e97b330651733bcb4e9d1bae4efe32f6d9cfa156f5464e82733755fc688b6744"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "7cfae988e95f8a4cd801b0b1289b1f1dcba05f8ff0f302b6afb1f422887e7cc8"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "92505f7e37cc92b70f7095cf48cfd51140a0c9fae68c20f0f4f51f30b88a63ca"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "2bad7608ff659186a7a6ea3b59fc40fbb1352fcfcec07c3e7a99854b07884acd"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "84827a186d0d7c47a85e3e83d10e5ac2e7a9eae57825e64825259822f1c88fa6"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "76896db1c97f57de841c5ec02cd03bcc1942d749a1e5e5e09cfdecfc1847ab15"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "3fa13c615b00a179943d020661f0fff5cc77cc5f99d0ca72dfddc6e5bb2fc318",
+      "superseded_full_case_archive_sha256": "8ef097e04cc002d2f77cafd736b7b6c9196d6cdaf52f40d50fd10a44048b441f",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "superseded_review_archive_sha256": "98b704de7691ea9f72658a6ed31ad55c033f01872103ae0a42e40c944ccc5480",
+      "archive_sanitized_paths": [
+        "command.json"
+      ]
+    },
+    {
+      "case": "n64-dt0.001",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "0ecc2359c8ee6fd8e9f92fd0255c4abeb63a846d3ca6ffb00288a3cf4dab86ac"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "e79b0e46aa2b601a5e9fd82893750ccec498298f1865410aa20d08c6d7121da1"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "c3f421960b5a45f8da3bb57ccda4ec4f7062ebb9271539976253b5048ad06673"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "e802d93081f53da77fd7000248dc4864f0b053f1e4d8c9cedcabeb654af172fb"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "8226679a728c1fdc87b5a88635ad1ed2caeb3201dfc0105d659ca91d1e01ca72"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "a271dcef92348c76aac1772e4e3a910dd61cb2fa239f9c1408af689e7dc3b28d"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "636b8b31f2379099beb0264aa027f9f497f4183f254e5f19103fb74f8ee7f556"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "7ae4876f441c52e0e748111fb1397b47a41efaec46479bd6d60ee41742ce1abc"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "1792505de8346f8bd8f469faf3c3316fffa40abdc5d646f9027785986e913b54"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "37d7aff505297c600f326f34d23b10df28d69c6565a92932db1ccd272bd5f39e"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "6165574819238908519b2e859911a574e682d0925a71c074053b32c0d2ab92fa"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "49bcd25d59dd05983cd9e92383f902a2c4112f71cd0f547cb04d7b7cc264c58e"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "acb4e3b0eb674f8bb06096ffd6b533b4f1fd16a03f8c2184000130d27082ff81"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "89b515608e7450594fe422fb194f193c9bf6db29b0492f234619c367198a8e77"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "26d732245d67286d8d35154be714aa75b0c727bdbc663fae5a89e915d5c0bd3f"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "77cda6a946ed9bbbe4d2a37197b481ddd788c5d47ce595f158b1c7fedf308a55"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "caec1e9f0201e82518978e2d9ccf8b56026d225b333855a37c196ff54d0b8d9f"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "538db3cda4836b66f8f59b9db6b211c8d304f97f1ab1ea287052599bac7b0882"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "8080f3a2c1e767a6e7192bf72883ec45e5d68c6d5322b7854c0b07c5a3db43c6",
+      "superseded_full_case_archive_sha256": "1f41d9d0b750e7853b6e9016eefc24b499505734060c94d4fa178e7448351af4",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "superseded_review_archive_sha256": "5d6786f24a7940b936b74723c3545df9a4ae5c1471d7a87db225c1154a81802e",
+      "archive_sanitized_paths": [
+        "command.json"
+      ]
+    },
+    {
+      "case": "n64-dt0.0005",
+      "status": "INCOMPLETE",
+      "exit_code": null,
+      "log_ends_normally": false,
+      "end_time_output_present": false,
+      "diagnostics_present": false,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "0ecc2359c8ee6fd8e9f92fd0255c4abeb63a846d3ca6ffb00288a3cf4dab86ac"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "command.json",
+          "sha256": "d0f8c1a5aefacd19af87312250a549b23ce91f378cb027e3cd228f5d63edde3e"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "1792505de8346f8bd8f469faf3c3316fffa40abdc5d646f9027785986e913b54"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "37d7aff505297c600f326f34d23b10df28d69c6565a92932db1ccd272bd5f39e"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "6165574819238908519b2e859911a574e682d0925a71c074053b32c0d2ab92fa"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "49bcd25d59dd05983cd9e92383f902a2c4112f71cd0f547cb04d7b7cc264c58e"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "acb4e3b0eb674f8bb06096ffd6b533b4f1fd16a03f8c2184000130d27082ff81"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "0c334ba35de1f1f8950bc9d05c9408e56a4b3d46a461cd83f02cc4f39c2ec2e3"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "154e8595e0dc8eeddfd2e3532c92120350b748b1aa53b144857eed17dd37071a"
+        },
+        {
+          "path": "log.container",
+          "sha256": "9c293bf4e2e0637b30d798a9bc35f28618b50fe42bcd5e445d3c2b8e97128e5a"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "ebeac15e96ad6e9a14eec09ad194db4136bbd9f5b9faa7c68ede144fa9dbca9e"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "eb224204def11ecc6a24f87654fde14a61a23976a5b2140f46f221b075ff95d4"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "badca44f17ccd54365bb65f6861f4b187076d68d13782bbfb6869b974484d651"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "d9ac31eec5e817a50870787a67ea0f379fda0cab4a856eab226aae43f93776e8",
+      "superseded_full_case_archive_sha256": "ce6a17cb2016d376744dd5d4b826b4334fa71a7c871ba46036602169f2b9fc42",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "superseded_review_archive_sha256": "6d6de410870ca0e3e5faa26ab6ba3cdaac0e4266f4b61d2113a92e346f334fc3",
+      "archive_sanitized_paths": [
+        "command.json"
+      ]
+    },
+    {
+      "case": "n64-dt0.00025",
+      "status": "NOT_STARTED",
+      "files": []
+    },
+    {
+      "case": "n128-dt0.001",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "34ae257bc0bce79b89dc19908d423bf7015fc753fd5b6892d5050de2603bc11e"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "48082a4d2a20cde61e0deeed91a6c621e7655e2faa3508fcdf808610667edfcf"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "547d75ee40140a91f6f691fbb8dce702898637f7c8cc1077cf08ca076ccf3655"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "88f3057c9dec6a96dda30e45eea678ebd4b1f810637961cf3105ace7173faeb6"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "b7747da4dd345579f518dcf715008bd5cd5948e858ca96a6129bead7975715d6"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "7428e662a592c6edbe1638b13c1005ae9f212a584b538ffedf90f33f53ec72e5"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "3a6d0d83d6bd6965120936e6061c9a56463da9579e612b26dd6f83c6147d8f98"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "6afeeb19af164343a8fdfab8a4daead331df9b9eebc6ab62cbf92152fe317361"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "995762399810088a44f40f6ded2526f4a9b689d97ddd4b47c4122551a448d815"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "0c6e6e13a147113466351d73b8b75bb49d218089b7f4dd08e7511836811272d8"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "2c69f91391ec17089270c0959bdc207c15aca7d7549d6e01e9fd4663e2fc7e1f"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "d35cb1e13cbc134cce8e7d175edba87cf39181b8ada491c263963ff5e255ac1d"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "83dc5f51ee777fb56de13f63e62ab137d45d51d33949e9bdab1c926e88ef7755"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "a14769a11b765507d54b03c134d95f3c2c76b7137e56a9f301261a246c57d047"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "9aa2963c10f7fd9052c695da7bbbd8e321fd209b98197a20da96afa985bc26ca"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "00695da17b1d281053848ff35df15c9129b8243c96219a0f442f993a8b727a0f"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "3cb97fdd9f9be516d204c7a9824dce4fc3c8fd27b1d49ac128bcfaed7f95de43"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "74716d80bcaadf63534bbef5fb8e12fdd79f512297614367068242fbc869c014"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "af65c5d3a600d07be3e41e7249d2d70ef33f358b0979431f473f26b16f782ebe"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "01e513533f90349fb23ed16a1b310296b62d635e805da2b57b725badcf11a631"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "f1d86e9405b61a518602bb9e6e85680f898e26947437154a295dd39ae6a7a307"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "780f36704fa1ec52841a2abd4e7b94c384301c9d729c1c23c036f90768ff9ff7",
+      "superseded_full_case_archive_sha256": "121ae8ef860a773054c2f0e70f71b11bb58f964080e0e2a3269c5a66405c75ac",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "superseded_review_archive_sha256": "0d22ae9454b518c937f59ad7a44d00b340354e628cd6a7b99f613223457a1557",
+      "archive_sanitized_paths": [
+        "command.json"
+      ]
+    },
+    {
+      "case": "n64-dt0.0005-rerun-20261002",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "0ecc2359c8ee6fd8e9f92fd0255c4abeb63a846d3ca6ffb00288a3cf4dab86ac"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "e79b0e46aa2b601a5e9fd82893750ccec498298f1865410aa20d08c6d7121da1"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "c3f421960b5a45f8da3bb57ccda4ec4f7062ebb9271539976253b5048ad06673"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "e802d93081f53da77fd7000248dc4864f0b053f1e4d8c9cedcabeb654af172fb"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "c5b9399166132790075bcb79ae69824b88a06e0bfba9ead0fa10d645ae4da3a2"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "7bb2843ea99821b5d041a1d8a57890bb1f8ceb51dde46fc985e05d6819a40b87"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "afffadfb0d2de299317ddc40f06363edf62aa258a81e454f03af6d6971e899e7"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "6b3125f89fa42c4863b1be1b23d633f8494a34bed53cab5fd233f2ed600924d3"
+        },
+        {
+          "path": "command.json",
+          "sha256": "685a11688751356509d21cf61d3976766c5b3aab00ec1ce6fedb2256f2ee06e4"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "1792505de8346f8bd8f469faf3c3316fffa40abdc5d646f9027785986e913b54"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "37d7aff505297c600f326f34d23b10df28d69c6565a92932db1ccd272bd5f39e"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "6165574819238908519b2e859911a574e682d0925a71c074053b32c0d2ab92fa"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "49bcd25d59dd05983cd9e92383f902a2c4112f71cd0f547cb04d7b7cc264c58e"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "acb4e3b0eb674f8bb06096ffd6b533b4f1fd16a03f8c2184000130d27082ff81"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "48c8d48f68877cfaf1b6abbdbbab4f8b69b406dba65312c7caa723b67bd10a4e"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "0c334ba35de1f1f8950bc9d05c9408e56a4b3d46a461cd83f02cc4f39c2ec2e3"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "40dc7bb2b4a2b68fcf025cd2b0dc4c79bc63113e8e420db27736ea60479af80b"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "ed6ac32934e6b2248606f9f607fe4949e0a2dab3819d46b43ac019193a95c5ac"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "c305e76983c7c5813d7863ff0a12101ae69506697bf913f35d12179678ec1c3f"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "eb224204def11ecc6a24f87654fde14a61a23976a5b2140f46f221b075ff95d4"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "badca44f17ccd54365bb65f6861f4b187076d68d13782bbfb6869b974484d651"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "2c6ac404ba40bce7143814b8a1530c9f1da6c548f1006876ded176dd6a4b9219",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_sanitized_paths": [
+        "command.json"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "replaces_incomplete_attempt": "n64-dt0.0005"
+    },
+    {
+      "case": "n64-dt0.00025-rerun-20261002",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "0ecc2359c8ee6fd8e9f92fd0255c4abeb63a846d3ca6ffb00288a3cf4dab86ac"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "e79b0e46aa2b601a5e9fd82893750ccec498298f1865410aa20d08c6d7121da1"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "c3f421960b5a45f8da3bb57ccda4ec4f7062ebb9271539976253b5048ad06673"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "e802d93081f53da77fd7000248dc4864f0b053f1e4d8c9cedcabeb654af172fb"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "e1a706d201edd10cc2ab56e709fb5ea6dc32babf9df8e75856a531bb474f7f18"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "dc8870257d6d976178b9283b07231bbbf2c46df91c11704d0937078b66da0cdf"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "cc75209feb756f21fd7e3e38bf82dd44eb13cfe124936b78a480c363d9791fdc"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "a9416335b03ab11427e9e38f822e6db204702c1ba7dc2fc033bc4930db1cb9ae"
+        },
+        {
+          "path": "command.json",
+          "sha256": "f9821628a2b839a0e36f081e0225a32e35e4fb137be99192cb8876db8a076dd1"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "1792505de8346f8bd8f469faf3c3316fffa40abdc5d646f9027785986e913b54"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "37d7aff505297c600f326f34d23b10df28d69c6565a92932db1ccd272bd5f39e"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "6165574819238908519b2e859911a574e682d0925a71c074053b32c0d2ab92fa"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "49bcd25d59dd05983cd9e92383f902a2c4112f71cd0f547cb04d7b7cc264c58e"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "acb4e3b0eb674f8bb06096ffd6b533b4f1fd16a03f8c2184000130d27082ff81"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "5bd594860741ef30598928157dfa4bc5b9806e9c0e3bfddd4c4634fcda40ef8a"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "a141243cd477310abf58a88d3c062c2f61a0e31cd889110a988269ce5f909611"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "d0cac24c3ed13d017ddd9e0c5aca53ca7bc379e7bfdb5a0420071582c967523d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "3270a45ad17729e0203d7c1d91286183b9ffad5f43b5cc5bfb11881aabe2c0ec"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "8775347e5c8adae82a1aa0b3107b3961c3bae1bf1e5280fa26691a73c66d48a5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0cb41475b597449cdc4767dee6fcd64d534c9cdf695c8ef4d2c8317590ffbee5"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "cc5a0c1c90aaf21481c8ec9badd9ed0cbe1b3cf5d7676a896def959bde7513d4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+          "sha256": "8b4badcb1d4ebc06b6fb04a27081eaed330ac070e591a38efdb70e5f6a2c8ed1"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "047a987363188074e1e5d52c68f39dab8709c3058af64baafc7fade5c75f59a9"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "59823b64fc499116e4b9e6bc55495b39343f0a311851bdacc8875ed10b2d167b"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "e5389e6f180e50d20f28771a256405af4c66d610c41e378cae9bc1ae05d16a24"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "0cee733c884e328aa70ef3eceb8ba3a7b4520f1b6edb67f4b96538a9faa96268"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "64050cd62d9c162c15277fd9ca3b72b339ebab99ae2af1f7164547a29e1cd356"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "112f8ec1eaee1bdfb277745994ede286172664328e331ee94b02c5f07e5c28d5"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "0683ddaf204c9ce4e5efed6e3379fc59a6f15a5fc06d89a46075563c6f1bb34b"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "1a0b3d0a97ba695f5379906acc440fc069ab6aba6ae0848ca26eff9161bc2084"
+        }
+      ],
+      "archive_sha256": "5b21ca420697ff936f1d6f5899706d087cc7624be99f4d102f19f623403f6bdf",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/uniform/time"
+      ],
+      "archive_sanitized_paths": [
+        "command.json"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C",
+      "replaces_incomplete_attempt": "n64-dt0.00025"
+    },
+    {
+      "case": "amr-cap4096",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "7b9a2174dd1029f1b7b79918e9755553aac176f25f5372f731519313d2410d6b"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "5c14867ddaab8e4c56868d31ea118a7babcfd79595b59ca96d955b28ced0179e"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "b6d89b1f9e86a82d2a62d5b14fd66870414f4e4c4f86a0f5b9570bd94eab67f5"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "75a7fae36eaa34d841a35f0d343e441a4b32ee3323facd9cb0eea6a02560937a"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "a178ca79d564d87596c7dfeae2301f8d4106229a50759e2ca8325953a62fdcbd"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "b29962a86bfa9c21e1de3f4fb6f8946ea68035d8510bea6935e2a72b0bdd7232"
+        },
+        {
+          "path": "0.05/Uf",
+          "sha256": "2aa5dffdaba11f87889991e47abcabd5e40127f493009b1f9b415533ea72b734"
+        },
+        {
+          "path": "0.05/Vc",
+          "sha256": "50c53d949b063f3172bc2074713ce8ab836142fb479e4ddcf9b697d58e4ac7cf"
+        },
+        {
+          "path": "0.05/grad(U)",
+          "sha256": "ccfa8b086e9a315c625db958863f0faa66c7edbdb945ae40cd6845e9c21eec7a"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "1480978f5d76515e95423bcf9370232d48f6d4975677d38cd6b4294d0be993c8"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "6e9a44cf09309b29af30db9338c66c4827da64f2cd252287cc613be50c739db8"
+        },
+        {
+          "path": "0.05/refineSensor",
+          "sha256": "76c756f3195c4fe421414cfbccd37d01f698af3da8a525a36e69520d0f9be6bb"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "c31d51c8481da98d1562a0d553f7549e3c3a762616bd0b64c4f7f5bdf5ee32e6"
+        },
+        {
+          "path": "constant/dynamicMeshDict",
+          "sha256": "a6bb6d08c524bd371d7d1967ad7a760fb06e684a01c426a3d491c6d52e364b15"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "759d36a7fca6c8d84d9dbc470418a0c1fa662d864c90fafbf769235bd19bc85d"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "e26ba535574ab5d2c93ed635429b8804400278c974a5dc3aae0e36aa1a04ccc4"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "8cca5fc018665cad95f180b6dfe45c7bd24d1f28e7625ad564101763836f6f65"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "e781f516420609483ee0bf5c127db4971c15e3138d066d64176c1d9312e03665"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "cf1d46ca72380ae1aae16df5ca0dadecad948209e330e032443bc75ac199b821"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "d2bfb8f590a73ed6d8a1a5d562e48fb3ad20493e9929dd01f1c0c557308fd03b"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "8e11d17f40bcfb1b61e19f14e7df2cca7356dc648cc06ee63eec276d8157ba3d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "9fcbd65e5b18d9497b861d5a44fae5907ae483c4c0d0a39b7bf4083bd84631ad"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "ae78e3b45696b69b3d6a58d31c6cf796f6c9d6781458e437ea5fa50b56c4faf9"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "2db730f38178fc90f8de22cd11e5168a47ec7fe896b71c69db3bb97c34dfea67"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "ba92c2d30d3b830d53bc1d5961d806f87c0f136968338375a8ce370de8a49b6f"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0f742914393bf8fcc041cd31f0b6c292d5d62270ca52938b75cbf4cb1949b257"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_8583beff53a972fa469c0e507f0174260d67938d.so",
+          "sha256": "99541cbcbb36dc3e2f9ba45e423c8b435eae5ce7f58c623dce868d493d4d168f"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "afe09883a3ef732f81c9cccfa91593b1eed74ce92474c7683ed6a634f5080aff"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "430c99a976f7bda6e853d4c027e36c5f4581bba0bc5882308a9c3dadbd65241c"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "a35ef67595f7d5d0e3ca8b5792e08400d0ae4f9573d7b7ec6094e2277268695d"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "1244fea4434d9f5729152df4f6f2cf6b80819a20357c129f9b079704d6d67bef"
+        },
+        {
+          "path": "log.gradient",
+          "sha256": "6915d9b2c09bf48ab4c450185cdc0f1007d84d3bae0082dfa15b4e2daf6ad17a"
+        },
+        {
+          "path": "log.volumes",
+          "sha256": "069c99b2ab0c4c61ffa74bacdef60f6ffefdd32633732026506ec204a229ce04"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "9e89b85899a63c503c3a9f25290ef84bcc1c7db7e7cd7d96e12bf51efa12b1e4"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "420e7151d6eea1086cc599cb308dd49be139d1a1000813b974ac880c93e86142"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+        }
+      ],
+      "archive_sha256": "cd2d7637912880f6f493cbfe998d847e40e90b38f6c7951c673e82c6e35f5dc6",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "constant/dynamicMeshDict",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "log.volumes",
+        "log.gradient",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/Vc",
+        "0.05/grad(U)",
+        "0.05/uniform/time"
+      ],
+      "archive_sanitized_paths": [
+        "command.json"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C-Vc-gradU-cellLevel"
+    },
+    {
+      "case": "amr-cap5000",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "7b9a2174dd1029f1b7b79918e9755553aac176f25f5372f731519313d2410d6b"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "f732c503ec7e30075c1f2c086084c9cb76ab47bf3b72a21e76a31a9c57aa87f6"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "0445e58a634c8523524f904519608eaa27f12b539f60cbf2db2a3ef10cd8d235"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "0f27addf481ec18e16c0c2e52b0b3e04a6b2b4667d9d618fb47e45f99e6f2016"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "5c263a2306ddf59d4fc75c5a296b4d0754c3a212500ac848b808a3bf891057bb"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "e68b32bb23c5af31cb948bec53ae439ef8531f8c16ee586a09c8b2eab22cee7a"
+        },
+        {
+          "path": "0.05/Uf",
+          "sha256": "edfaf2bdc1cf9b7b298cc5b9d2a7f06cd64cc02c98d282021e593ee84f77a3fd"
+        },
+        {
+          "path": "0.05/Vc",
+          "sha256": "1f7608d7e4903371bdd2175c46c20acd2a72e956c0ec1d7ded1ac98dd98ecde6"
+        },
+        {
+          "path": "0.05/cellLevel",
+          "sha256": "fe0e5c0e2779315bb52927b03b64df249383de4d6acca5299dea70b003a5cf5c"
+        },
+        {
+          "path": "0.05/grad(U)",
+          "sha256": "8950ed51689eeb51ee0dacb2c1d648908fccd4d988a74766b9de57f529ac0be9"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "fc4f16df38ad0427db0a35c1d841d47688f52f2f932b276efce992bd05cc0da7"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "23ddaeb58ce5bf22885dff54163a3ef65f723fd3f9a876be0c35feb322542f23"
+        },
+        {
+          "path": "0.05/polyMesh/boundary",
+          "sha256": "141755ca0e99425b579a57787894727528457889d3a98ce82382a3c2ea69c457"
+        },
+        {
+          "path": "0.05/polyMesh/cellLevel",
+          "sha256": "29f5dcd79a88f861b2942faabe9ba11d614e57d10bf2f6de4b8995cea066d831"
+        },
+        {
+          "path": "0.05/polyMesh/faces",
+          "sha256": "50cd8b856b00517d2e7805fd1f125487f9a6b736cbdd197254b7191f91aa3633"
+        },
+        {
+          "path": "0.05/polyMesh/level0Edge",
+          "sha256": "7cddef1abe1465939f9dee45757b1a9e82d001658f439c2fe11e2a48a1b7cfb2"
+        },
+        {
+          "path": "0.05/polyMesh/neighbour",
+          "sha256": "8dda54ef020aedf0d4f57964bbe7cce32980f5f8dddb76620ac83ee44920348c"
+        },
+        {
+          "path": "0.05/polyMesh/owner",
+          "sha256": "c241e1b7958ba99d1faeeecd5f7df271700714bc42cde767f168d980918a5e4f"
+        },
+        {
+          "path": "0.05/polyMesh/pointLevel",
+          "sha256": "322f9c794d4912e3e4832173ee213f594db1eca28a4f40a9020af07193425d30"
+        },
+        {
+          "path": "0.05/polyMesh/points",
+          "sha256": "a7bb16f5fa1133d7df598f6d0d15e9fdec6b6e18138345f7d199ab50da5df7c1"
+        },
+        {
+          "path": "0.05/polyMesh/refinementHistory",
+          "sha256": "f8de8bfc788696d94586285550ba256dade6ef0fde0737a91ad89a467cac8ffd"
+        },
+        {
+          "path": "0.05/refineSensor",
+          "sha256": "bf05f6e66b3f5a3753e1376e2865e20d0932d7da295eea3f07bc06cf1ce7be2f"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "fa8122a36163663414b1dca1422443298324ba2e0cb30ba661c210045185512e"
+        },
+        {
+          "path": "constant/dynamicMeshDict",
+          "sha256": "8316bafd614e2f083de1d09eb226b6f55ebe150a4b6eb3bff6d734ef8363c054"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "759d36a7fca6c8d84d9dbc470418a0c1fa662d864c90fafbf769235bd19bc85d"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "e26ba535574ab5d2c93ed635429b8804400278c974a5dc3aae0e36aa1a04ccc4"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "8cca5fc018665cad95f180b6dfe45c7bd24d1f28e7625ad564101763836f6f65"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "e781f516420609483ee0bf5c127db4971c15e3138d066d64176c1d9312e03665"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "cf1d46ca72380ae1aae16df5ca0dadecad948209e330e032443bc75ac199b821"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "d2bfb8f590a73ed6d8a1a5d562e48fb3ad20493e9929dd01f1c0c557308fd03b"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "87c3b48b1e266f94f8bc63c1cec96395981a3fc7e81813090850714640787bd4"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "9fcbd65e5b18d9497b861d5a44fae5907ae483c4c0d0a39b7bf4083bd84631ad"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "ae78e3b45696b69b3d6a58d31c6cf796f6c9d6781458e437ea5fa50b56c4faf9"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "2db730f38178fc90f8de22cd11e5168a47ec7fe896b71c69db3bb97c34dfea67"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "ba92c2d30d3b830d53bc1d5961d806f87c0f136968338375a8ce370de8a49b6f"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0f742914393bf8fcc041cd31f0b6c292d5d62270ca52938b75cbf4cb1949b257"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_8583beff53a972fa469c0e507f0174260d67938d.so",
+          "sha256": "99541cbcbb36dc3e2f9ba45e423c8b435eae5ce7f58c623dce868d493d4d168f"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "56f4660690dba271e2449e4409a40dffacb152bfc3deba15905e0b54e02011af"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "a5dcf5b9cdfc041fc457e18bbe64968a72af000fe78fbe4883f0aac966108976"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "9f5fc7a91208b917009fb5f8d17b2bb2c095f561deb03ab25147670066baac01"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "6f9b917aea79b319a2ab42c18cbb42e8579f850d5a6d52c7950b456c7ff2ce1f"
+        },
+        {
+          "path": "log.gradient",
+          "sha256": "b9c584baa650414572820087478099cd628cfc743774751816b7a9d21b392482"
+        },
+        {
+          "path": "log.volumes",
+          "sha256": "17c4b19e219165a309deafedb8a05d9da7db005c45fca3236640f13e65c7a7f8"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "50c3ccee17f7ce856b8db1d44043996a658da98e4f3a8db388b6639d90499332"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "420e7151d6eea1086cc599cb308dd49be139d1a1000813b974ac880c93e86142"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+        }
+      ],
+      "archive_sha256": "7a556120acd006b1bab5e3d97b6130f17f7c25b48c7ba34e2ef908a4d4d3ff94",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "constant/dynamicMeshDict",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "log.volumes",
+        "log.gradient",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/Vc",
+        "0.05/grad(U)",
+        "0.05/cellLevel",
+        "0.05/uniform/time"
+      ],
+      "archive_sanitized_paths": [
+        "command.json"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C-Vc-gradU-cellLevel"
+    },
+    {
+      "case": "amr-cap100000",
+      "status": "COMPLETE",
+      "exit_code": 0,
+      "log_ends_normally": true,
+      "end_time_output_present": true,
+      "diagnostics_present": true,
+      "files": [
+        {
+          "path": "0/U",
+          "sha256": "7b9a2174dd1029f1b7b79918e9755553aac176f25f5372f731519313d2410d6b"
+        },
+        {
+          "path": "0/p",
+          "sha256": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58"
+        },
+        {
+          "path": "0.05/C",
+          "sha256": "a0bb91dce64be4ac5ba9b0de639428e5b4e43ee7e993d121fd0f1c4877c93f19"
+        },
+        {
+          "path": "0.05/Ccx",
+          "sha256": "6086bc3b447619bbc6b25cf288854d9c359bc97a6f0c7d71e5d70e46b22c6cc6"
+        },
+        {
+          "path": "0.05/Ccy",
+          "sha256": "f3c0b44c8557c234970d3f7ed3b1114f916ee5a38111fd978c1bf3fd84ee797d"
+        },
+        {
+          "path": "0.05/Ccz",
+          "sha256": "89b9aeb083a160527dd52812a64eb675d2a0458680efba4c8bab8970961c2fb4"
+        },
+        {
+          "path": "0.05/U",
+          "sha256": "5b86a60501485bdfd8c458eb90efe084fb71f3491cbb786561da72245152f058"
+        },
+        {
+          "path": "0.05/Uf",
+          "sha256": "b69e84ad7c5905dab73d1bd350abb3a1850268dd057d4149cf44bf8d92e647c7"
+        },
+        {
+          "path": "0.05/Vc",
+          "sha256": "23acc74cf45eb7f665842a1b858f19b492fff07770fd054e8ef99109f7d54a32"
+        },
+        {
+          "path": "0.05/cellLevel",
+          "sha256": "40a975c5d07814c4585df7e62035774f0c798678c3acac290cfc4f36497edbc0"
+        },
+        {
+          "path": "0.05/grad(U)",
+          "sha256": "aa8e5686f79f5ad37cd784746727d68277b64d738e81a9c0a1351824e0c4ac4e"
+        },
+        {
+          "path": "0.05/p",
+          "sha256": "959efb9d49ee808d04d9355841904c4596e5cdf109907c59118e7a2dc98bf0e3"
+        },
+        {
+          "path": "0.05/phi",
+          "sha256": "83bfe3801d28d985ebd58b024e27dda1b68c82bd6a9b84f530da90ebd5ca3053"
+        },
+        {
+          "path": "0.05/polyMesh/boundary",
+          "sha256": "c97b67b65ab4059a33beba5531fbd840437ed216692e94c7e7e983da15a04e46"
+        },
+        {
+          "path": "0.05/polyMesh/cellLevel",
+          "sha256": "f1e9042022dc4363a6c4a4939cccc23ad1b0011ab2a19582530ea67eaa71e1d6"
+        },
+        {
+          "path": "0.05/polyMesh/faces",
+          "sha256": "29ccf1fbf66c8cfdb87bab15d1f072892a4e01f14d89718d1ea7055a37347909"
+        },
+        {
+          "path": "0.05/polyMesh/level0Edge",
+          "sha256": "7cddef1abe1465939f9dee45757b1a9e82d001658f439c2fe11e2a48a1b7cfb2"
+        },
+        {
+          "path": "0.05/polyMesh/neighbour",
+          "sha256": "368857d8e16029d9a7680d580bf486af00e5d442e3a4e439ed24ffdc6e528c31"
+        },
+        {
+          "path": "0.05/polyMesh/owner",
+          "sha256": "8d83ff69b584f52dba29ebb530101a27fb4d11bc124caf91c5cfcb1aaf402237"
+        },
+        {
+          "path": "0.05/polyMesh/pointLevel",
+          "sha256": "b3db8f2024410ddcf3c35c704942f5c0c43055d1ff96775fb179a63d708b65e7"
+        },
+        {
+          "path": "0.05/polyMesh/points",
+          "sha256": "864e28173be193cb7c26a23530862ad17a4d0dd1b9f8a51313a0deb8613973e3"
+        },
+        {
+          "path": "0.05/polyMesh/refinementHistory",
+          "sha256": "cf7049b43031ba0bc159b50b848a90c69fefd796420903252735e27a56c2eb0b"
+        },
+        {
+          "path": "0.05/refineSensor",
+          "sha256": "1f493005081c287ace11e0e9a1f004108611958ee96705f13904b95bb84fa478"
+        },
+        {
+          "path": "0.05/uniform/time",
+          "sha256": "37eb8732a38dd4de24fbe03e782897a6c2279e0c74d376815349610c7473e8de"
+        },
+        {
+          "path": "command.json",
+          "sha256": "e8eda189a5f6b99ad8eb27162f93ba304a17de0f19ae83b9b3dc79d1f263abf2"
+        },
+        {
+          "path": "constant/dynamicMeshDict",
+          "sha256": "da9623f0ab58c78e7aae0f886e1682d264e5651abddd522d500bf3c83859f19c"
+        },
+        {
+          "path": "constant/fvModels",
+          "sha256": "759d36a7fca6c8d84d9dbc470418a0c1fa662d864c90fafbf769235bd19bc85d"
+        },
+        {
+          "path": "constant/momentumTransport",
+          "sha256": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793"
+        },
+        {
+          "path": "constant/physicalProperties",
+          "sha256": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382"
+        },
+        {
+          "path": "constant/polyMesh/boundary",
+          "sha256": "e26ba535574ab5d2c93ed635429b8804400278c974a5dc3aae0e36aa1a04ccc4"
+        },
+        {
+          "path": "constant/polyMesh/faces",
+          "sha256": "8cca5fc018665cad95f180b6dfe45c7bd24d1f28e7625ad564101763836f6f65"
+        },
+        {
+          "path": "constant/polyMesh/neighbour",
+          "sha256": "e781f516420609483ee0bf5c127db4971c15e3138d066d64176c1d9312e03665"
+        },
+        {
+          "path": "constant/polyMesh/owner",
+          "sha256": "cf1d46ca72380ae1aae16df5ca0dadecad948209e330e032443bc75ac199b821"
+        },
+        {
+          "path": "constant/polyMesh/points",
+          "sha256": "d2bfb8f590a73ed6d8a1a5d562e48fb3ad20493e9929dd01f1c0c557308fd03b"
+        },
+        {
+          "path": "diagnostics.json",
+          "sha256": "ce4eed37410e187a43e7783cf1cd134d0328226e0ee40939d500bb0c0097b6ce"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/SHA1Digest",
+          "sha256": "9fcbd65e5b18d9497b861d5a44fae5907ae483c4c0d0a39b7bf4083bd84631ad"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/files",
+          "sha256": "ae78e3b45696b69b3d6a58d31c6cf796f6c9d6781458e437ea5fa50b56c4faf9"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+          "sha256": "31027d17b962cc6dda9a7f2cbce88a4447ea37a63fab08206dd4256e3ecdcc99"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+          "sha256": "2db730f38178fc90f8de22cd11e5168a47ec7fe896b71c69db3bb97c34dfea67"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+          "sha256": "ba92c2d30d3b830d53bc1d5961d806f87c0f136968338375a8ce370de8a49b6f"
+        },
+        {
+          "path": "dynamicCode/mmsForce/Make/options",
+          "sha256": "0f742914393bf8fcc041cd31f0b6c292d5d62270ca52938b75cbf4cb1949b257"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.C",
+          "sha256": "be0b87737296db1e1e3f4b7b66cf1a4078cabf28c245b794335ba7cb0f3fdb89"
+        },
+        {
+          "path": "dynamicCode/mmsForce/lnInclude/codedFvModelTemplate.H",
+          "sha256": "2b89f7f501154b08dd5e3ccb26c71b4169593cfa1530a77d2486675d52480a9d"
+        },
+        {
+          "path": "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_8583beff53a972fa469c0e507f0174260d67938d.so",
+          "sha256": "99541cbcbb36dc3e2f9ba45e423c8b435eae5ce7f58c623dce868d493d4d168f"
+        },
+        {
+          "path": "exit.json",
+          "sha256": "e89df0eae5ec7db81135aed16463968955c578bcc4f2ec43172eff351f080c17"
+        },
+        {
+          "path": "input-hashes.json",
+          "sha256": "4d85bdc4848988cd56a03bb35b979b8dfdd109bf2de09316e1245ad723a1166c"
+        },
+        {
+          "path": "log.blockMesh",
+          "sha256": "ab7f9707619a1534c2be390f4bc13e0194ec917ad2939734063d5170f0ac35c5"
+        },
+        {
+          "path": "log.centres",
+          "sha256": "906af20f48c91f6000cfd90a11f86558876312d567275d5264a3f6d820b180ae"
+        },
+        {
+          "path": "log.container",
+          "sha256": "84a07ea56b86d5f1c976ec9008a6d9819e24c9d0b8e3ddba1bb8163de30e0a28"
+        },
+        {
+          "path": "log.foamRun",
+          "sha256": "39c46f4ea11181eb69f2a1f72458e909a16603cd1dbbe0164cf278d9d02b6c03"
+        },
+        {
+          "path": "log.gradient",
+          "sha256": "1adb56ded79440c1101b796146e705fcd9e130bb3f31e144218670911a5eba08"
+        },
+        {
+          "path": "log.volumes",
+          "sha256": "49fcfe29ea58a9f46bf4cffe6df5a015d05c44d236a651c9dad2fd8cb60d595d"
+        },
+        {
+          "path": "parameters.json",
+          "sha256": "51687394d6b66bf897e8433855bf3b915929a818441526650301a2c69f0f9e05"
+        },
+        {
+          "path": "system/blockMeshDict",
+          "sha256": "420e7151d6eea1086cc599cb308dd49be139d1a1000813b974ac880c93e86142"
+        },
+        {
+          "path": "system/controlDict",
+          "sha256": "836468866528e8b7fc36c695919d08408a49f13b9848d791dddd55b7fe087030"
+        },
+        {
+          "path": "system/fvSchemes",
+          "sha256": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+        },
+        {
+          "path": "system/fvSolution",
+          "sha256": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+        }
+      ],
+      "archive_sha256": "c1edad0f0aeaab66a74e9648f68618bc12e389f92fbaef0f0449f2be12095660",
+      "archive_paths": [
+        "command.json",
+        "input-hashes.json",
+        "parameters.json",
+        "log.blockMesh",
+        "log.container",
+        "log.foamRun",
+        "0/U",
+        "0/p",
+        "system/blockMeshDict",
+        "system/controlDict",
+        "system/fvSchemes",
+        "system/fvSolution",
+        "constant/fvModels",
+        "constant/momentumTransport",
+        "constant/physicalProperties",
+        "dynamicCode/mmsForce/codedFvModelTemplate.C",
+        "dynamicCode/mmsForce/codedFvModelTemplate.H",
+        "constant/dynamicMeshDict",
+        "diagnostics.json",
+        "exit.json",
+        "log.centres",
+        "log.volumes",
+        "log.gradient",
+        "0.05/C",
+        "0.05/U",
+        "0.05/p",
+        "0.05/Vc",
+        "0.05/grad(U)",
+        "0.05/cellLevel",
+        "0.05/uniform/time"
+      ],
+      "archive_sanitized_paths": [
+        "command.json"
+      ],
+      "archive_scope": "inputs-logs-diagnostics-and-end-time-U-p-C-Vc-gradU-cellLevel"
+    }
+  ],
+  "campaign_status": "UNASSESSED_QUALITY",
+  "quality_verdict": "UNCERTAIN",
+  "notes": [
+    "Review tarballs preserve original conditions/settings, generated force source, logs, diagnostics when available, and end-time U/p/C when available.",
+    "Per-file hashes describe the full ignored case tree, including omitted derived output and generated mesh.",
+    "Generated mesh and redundant cell-centre component fields are excluded from tarballs; blockMeshDict and input hashes record the reproducible geometry.",
+    "command.json redacts the user-specific host mount path; the original file hash remains in the full case-tree hashes.",
+    "Original full-case tarballs remain in the ignored work tree; their hashes are recorded per case.",
+    "Archives preserve both complete and partial work; an archive is not a PASS.",
+    "A fresh parameter-identical rerun of the interrupted n64-dt0.0005 attempt completed at end time; original partial case and logs are preserved separately.",
+    "Additional case n64-dt0.00025-rerun-20261002 was appended without replacing earlier evidence.",
+    "Fresh parameter-identical reruns completed both required fine-mesh temporal conditions; their original partial/not-started history is retained as separate manifest rows.",
+    "The temporal difference comparison is stored at evidence/tests/of13-high-gradient-time-comparison.json; its observed order is diagnostic only and not an error bound.",
+    "Additional case amr-cap4096 was appended without replacing earlier evidence.",
+    "Additional case amr-cap5000 was appended without replacing earlier evidence.",
+    "Additional case amr-cap100000 was appended without replacing earlier evidence.",
+    "Both fine-mesh temporal cases completed in parameter-identical reruns; original incomplete and not-started attempts remain preserved.",
+    "The corrected high-gradient AMR matrix is in progress/completed as separate cases; see evidence/tests/of13-high-gradient-amr-error-strata.json for independent weighted-error reconstruction.",
+    "The AMR error increase is an unresolved result, not an upstream software-defect finding; coarse-base initialization, adaptation interpolation, and runtime behavior remain confounded."
+  ],
+  "last_repacked_utc": "2026-10-02T04:57:34.517354+00:00",
+  "container_liveness": {
+    "observed_utc": "2026-10-02T05:39:04Z",
+    "docker_context": "orbstack",
+    "host_solver_process": "NOT_OBSERVED",
+    "container_daemon_state": "RESPONSIVE",
+    "named_cans_hg_containers": "ABSENT_FROM_docker_ps_a",
+    "method": "docker ps -a --filter name=cans-hg and docker inspect of all five run names returned no containers after successful runs; daemon returned normally"
+  },
+  "additional_protocols": [
+    {
+      "path": "protocols/high-gradient-of13-amr-v1.json",
+      "sha256": "6e47566d489bc3a48894c9077cbcf8f6ff915da6c135b9cec6809eca8ed5116f"
+    }
+  ],
+  "last_updated_utc": "2026-10-02T05:39:04Z"
+}

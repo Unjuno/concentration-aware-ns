@@ -1,0 +1,7 @@
+{
+  "source_commit": "0e0288f98209f856931352ebfa5dad0f1aad0014",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "container_platform": "linux/arm64",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "scope": "OpenFOAM Foundation 13 high-gradient uniform-grid matrix"
+}

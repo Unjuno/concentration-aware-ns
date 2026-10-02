@@ -1,0 +1,38 @@
+{
+  "cases": [
+    "n64-dt0.001",
+    "n64-dt0.0005-rerun-20261002",
+    "n64-dt0.00025-rerun-20261002"
+  ],
+  "relative_field_differences_normalized_by_finest": [
+    1.3373605957687646e-05,
+    9.465816754317482e-06
+  ],
+  "observed_difference_order": 0.49858961644061656,
+  "velocity_errors": [
+    0.004780664208810287,
+    0.004784089312365507,
+    0.0047904920726123765
+  ],
+  "input_sha256": [
+    {
+      "parameters.json": "538db3cda4836b66f8f59b9db6b211c8d304f97f1ab1ea287052599bac7b0882",
+      "log.foamRun": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292",
+      "0.05/U": "8226679a728c1fdc87b5a88635ad1ed2caeb3201dfc0105d659ca91d1e01ca72",
+      "0.05/C": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+    },
+    {
+      "parameters.json": "eb224204def11ecc6a24f87654fde14a61a23976a5b2140f46f221b075ff95d4",
+      "log.foamRun": "c305e76983c7c5813d7863ff0a12101ae69506697bf913f35d12179678ec1c3f",
+      "0.05/U": "c5b9399166132790075bcb79ae69824b88a06e0bfba9ead0fa10d645ae4da3a2",
+      "0.05/C": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+    },
+    {
+      "parameters.json": "64050cd62d9c162c15277fd9ca3b72b339ebab99ae2af1f7164547a29e1cd356",
+      "log.foamRun": "0cee733c884e328aa70ef3eceb8ba3a7b4520f1b6edb67f4b96538a9faa96268",
+      "0.05/U": "e1a706d201edd10cc2ab56e709fb5ea6dc32babf9df8e75856a531bb474f7f18",
+      "0.05/C": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+    }
+  ],
+  "interpretation": "Small temporal field differences at this spatial grid; not a bound on temporal error or proof of asymptotic convergence."
+}

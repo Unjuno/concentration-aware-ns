@@ -1,4 +1,4 @@
-# Upstream reporting decisions — updated 2026-09-26
+# Upstream reporting decisions — reviewed 2026-10-02
 
 These decisions concern the pinned implementations and reproduced experiments.
 They do not claim to identify every industrial consequence of a mathematical
@@ -21,3 +21,15 @@ contract, or a concrete example change with evidence of its benefit and a fresh
 duplicate check. A small residual, a single inaccurate network, or a sampled
 maximum alone is insufficient. Missing studies remain missing; a decision not to
 post does not complete those studies.
+
+## Live GitHub state checked 2026-10-02
+
+The read-only API reports Discussion 2890 with two comments, including the
+September 26 BDF2 follow-up, and issue 2353 still open with eight comments. Our
+September 27 fixed-dt MAX_TIME control is the latest comment on 2353; no
+maintainer response has appeared there. Pull request #6 for the single
+benchmark repository is open at the reviewed branch head. The snapshot is
+[`github-state-2026-10-02.json`](../evidence/upstream-review/github-state-2026-10-02.json).
+No new defect report is warranted for OpenFOAM or PhysicsNeMo. The SU2 timing
+observations remain bounded to the pinned single-zone controls and do not
+justify a global time shift or general-fix claim.

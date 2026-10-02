@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "scope": "Independent volume-weighted velocity-error recomputation and decomposition by AMR level",
+  "uniform_n16_velocity_relative_l2": 0.08875833380125632,
+  "uniform_n64_velocity_relative_l2": 0.004780664208810287,
+  "amr_cases": [
+    {
+      "case": "amr-cap4096",
+      "status": "COMPLETE",
+      "requested_max_cells": 4096,
+      "actual_cells": 4096,
+      "over_budget_cells": 0,
+      "maximum_refinement_level": 0,
+      "level_source": "initial mesh count and no refinement event",
+      "cell_volume_sum": 248.0502134423985,
+      "global_velocity_relative_volume_l2": 0.08875833380125644,
+      "level_errors": {
+        "0": {
+          "cells": 4096,
+          "volume_fraction": 1.0,
+          "reference_squared_norm_contribution_fraction": 1.0,
+          "weighted_absolute_error_norm_contribution_fraction": 1.0,
+          "relative_l2_within_level": 0.08875833380125644,
+          "max_pointwise_velocity_error": 0.00942454101982433
+        }
+      },
+      "sha256": {
+        "0.05/C": "5c14867ddaab8e4c56868d31ea118a7babcfd79595b59ca96d955b28ced0179e",
+        "0.05/U": "b29962a86bfa9c21e1de3f4fb6f8946ea68035d8510bea6935e2a72b0bdd7232",
+        "0.05/Vc": "50c53d949b063f3172bc2074713ce8ab836142fb479e4ddcf9b697d58e4ac7cf",
+        "diagnostics.json": "8e11d17f40bcfb1b61e19f14e7df2cca7356dc648cc06ee63eec276d8157ba3d"
+      }
+    },
+    {
+      "case": "amr-cap5000",
+      "status": "COMPLETE",
+      "requested_max_cells": 5000,
+      "actual_cells": 5440,
+      "over_budget_cells": 440,
+      "maximum_refinement_level": 1,
+      "level_source": "written cellLevel field",
+      "cell_volume_sum": 248.0502134423985,
+      "global_velocity_relative_volume_l2": 0.32070113204490047,
+      "level_errors": {
+        "0": {
+          "cells": 3904,
+          "volume_fraction": 0.953125,
+          "reference_squared_norm_contribution_fraction": 0.31028418882340764,
+          "weighted_absolute_error_norm_contribution_fraction": 0.07902636955543672,
+          "relative_l2_within_level": 0.1618477572130666,
+          "max_pointwise_velocity_error": 0.012815476758691265
+        },
+        "1": {
+          "cells": 1536,
+          "volume_fraction": 0.04687499999999993,
+          "reference_squared_norm_contribution_fraction": 0.6897158111765924,
+          "weighted_absolute_error_norm_contribution_fraction": 0.9209736304445634,
+          "relative_l2_within_level": 0.3705859925179582,
+          "max_pointwise_velocity_error": 0.06783391064199414
+        }
+      },
+      "sha256": {
+        "0.05/C": "f732c503ec7e30075c1f2c086084c9cb76ab47bf3b72a21e76a31a9c57aa87f6",
+        "0.05/U": "e68b32bb23c5af31cb948bec53ae439ef8531f8c16ee586a09c8b2eab22cee7a",
+        "0.05/Vc": "1f7608d7e4903371bdd2175c46c20acd2a72e956c0ec1d7ded1ac98dd98ecde6",
+        "diagnostics.json": "87c3b48b1e266f94f8bc63c1cec96395981a3fc7e81813090850714640787bd4"
+      }
+    },
+    {
+      "case": "amr-cap100000",
+      "status": "COMPLETE",
+      "requested_max_cells": 100000,
+      "actual_cells": 21120,
+      "over_budget_cells": 0,
+      "maximum_refinement_level": 2,
+      "level_source": "written cellLevel field",
+      "cell_volume_sum": 248.0502134423985,
+      "global_velocity_relative_volume_l2": 0.38571504731328227,
+      "level_errors": {
+        "0": {
+          "cells": 3584,
+          "volume_fraction": 0.8750000000000001,
+          "reference_squared_norm_contribution_fraction": 0.03679980276156614,
+          "weighted_absolute_error_norm_contribution_fraction": 0.026337670821497704,
+          "relative_l2_within_level": 0.3263116046185703,
+          "max_pointwise_velocity_error": 0.009410972517489551
+        },
+        "1": {
+          "cells": 2176,
+          "volume_fraction": 0.06640624999999993,
+          "reference_squared_norm_contribution_fraction": 0.2664904378113152,
+          "weighted_absolute_error_norm_contribution_fraction": 0.19478596845006818,
+          "relative_l2_within_level": 0.32976503157565057,
+          "max_pointwise_velocity_error": 0.040866893722589184
+        },
+        "2": {
+          "cells": 15360,
+          "volume_fraction": 0.05859374999999994,
+          "reference_squared_norm_contribution_fraction": 0.6967097594271185,
+          "weighted_absolute_error_norm_contribution_fraction": 0.7788763607284341,
+          "relative_l2_within_level": 0.4078259871719711,
+          "max_pointwise_velocity_error": 0.09873486337264976
+        }
+      },
+      "sha256": {
+        "0.05/C": "a0bb91dce64be4ac5ba9b0de639428e5b4e43ee7e993d121fd0f1c4877c93f19",
+        "0.05/U": "5b86a60501485bdfd8c458eb90efe084fb71f3491cbb786561da72245152f058",
+        "0.05/Vc": "23acc74cf45eb7f665842a1b858f19b492fff07770fd054e8ef99109f7d54a32",
+        "diagnostics.json": "ce4eed37410e187a43e7783cf1cd134d0328226e0ee40939d500bb0c0097b6ce"
+      }
+    }
+  ],
+  "limitations": [
+    "The recomputation uses the analytic reference evaluator already cross-checked against SymPy, not a second solver.",
+    "A large local error is not a software-defect finding without a validated AMR interpolation/source/runtime audit.",
+    "No nonuniform spectral reconstruction or continuous-extremum certification is available."
+  ]
+}

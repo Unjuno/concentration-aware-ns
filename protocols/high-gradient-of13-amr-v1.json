@@ -1,0 +1,51 @@
+{
+  "status": "frozen before execution",
+  "inherits": "protocols/high-gradient-of13-v1.json",
+  "target": "OpenFOAM Foundation 13",
+  "profile": "localized analytic high-gradient periodic MMS",
+  "frequency_N": 4,
+  "viscosity": 0.01,
+  "end_time": 0.05,
+  "uniform_control": {
+    "cell_count": 64,
+    "delta_t": 0.001,
+    "case": "n64-dt0.001"
+  },
+  "amr_cases": {
+    "base_cell_count": 16,
+    "delta_t": 0.001,
+    "max_refinement_level": 2,
+    "max_cells": [
+      4096,
+      5000,
+      100000
+    ],
+    "refine_interval_steps": 2,
+    "sensor": "(partial_x u_y)^2 = exp(-2*t)*chi(y,z)^2*sin(N*x)^2",
+    "thresholds": {
+      "lower_refine_level": 0.25,
+      "upper_refine_level": 1.1
+    }
+  },
+  "record": [
+    "requested_cell_budget",
+    "actual_cell_count_at_end",
+    "maximum_refinement_level_at_end",
+    "refinement_events",
+    "blocked_candidates_if_reported_by_runtime",
+    "cell_count_cap"
+  ],
+  "metrics": [
+    "volume_weighted_velocity_L2_error",
+    "energy_error",
+    "local_gradient_and_vorticity_diagnostics",
+    "shell_spectrum_unavailable_without_validated_nonuniform_reconstruction"
+  ],
+  "interpretation": [
+    "AMR results compare with the uniform n=64 control at the same physical time.",
+    "Cell-budget equality alone does not prove refinement saturation or poor accuracy.",
+    "No quality PASS is available until a versioned metric definition and complete acceptance evidence exist.",
+    "This smooth manufactured solution is not the OpenAI construction and does not test blow-up."
+  ],
+  "budget_source": "protocols/of13-amr-v1.json; inherits geometry and threshold definitions, but the analytic profile and sensor are high-gradient-specific"
+}

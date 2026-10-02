@@ -1,12 +1,13 @@
 """Compare completed uniform study fields at the same final time and grid."""
+import argparse
 import json
 from pathlib import Path
 import numpy as np
 from tools.analyze_openfoam import vectors
 
 
-def compare(root=Path('work/of13-study-v1')):
-    names=['n64-dt0.001','n64-dt0.0005','n64-dt0.00025']
+def compare(root=Path('work/of13-study-v1'), names=None):
+    names = names or ['n64-dt0.001','n64-dt0.0005','n64-dt0.00025']
     ds=[json.loads((root/name/'diagnostics.json').read_text()) for name in names]
     for name,d in zip(names,ds):
         if d['parameters']['n']!=64 or d['parameters']['end']!=.05:
@@ -26,4 +27,9 @@ def compare(root=Path('work/of13-study-v1')):
 
 
 if __name__=='__main__':
-    print(json.dumps(compare(),indent=2))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root', type=Path, default=Path('work/of13-study-v1'))
+    parser.add_argument('--cases', nargs=3, default=None,
+                        help='three case directory names ordered from largest to smallest dt')
+    args = parser.parse_args()
+    print(json.dumps(compare(args.root, args.cases),indent=2))

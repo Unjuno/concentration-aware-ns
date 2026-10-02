@@ -1,0 +1,19 @@
+bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94  NavierStokes/ActualCandidateAssembly.lean
+c8ac0ed2cac0390ea16ad9e2fa300e23cbc9950220dba0432f61724a3ea8c20f  NavierStokes/ActualCandidateConstruction.lean
+bfe9d89941842402ffd89e18eee0074f0e66e24ddc0bc3c5dd8e984576827bfb  NavierStokes/ActualCurrentWaveSupport.lean
+7195488e5bed2a1261067ff7e997c7b1ce230747b235b9178c53da3a7184b471  NavierStokes/ActualMeanStageData.lean
+f9c1d7e1fd4e659185f580112b45941c72c09c54cc92210a07d23764b9ef77ea  NavierStokes/ActualMeanExterior.lean
+459cd2997fb53946e4bcd273b37cb2981de42ef4c6bf50e759dd824a67d38b16  NavierStokes/ActualSignedExterior.lean
+3e058e7f84b61de977590972218906cdffd387954280a095f830de77164e0991  NavierStokes/ActualValidBandWaves.lean
+'ConcentrationAware.actual_stages_zero_below_active_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.diagonal_sum_zero_of_stage_germs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_stage_zero_germs_below_active_radius' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.actual_potential_sum_eq_base_germ_inside_hole' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.actual_direct_sum_zero_germ_inside_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_velocity_eq_base_germ_inside_hole' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,12 @@
+{
+  "scope": "Generated codedFvModel source assembly against OpenFOAM vector types; not a solver run.",
+  "seed": 8831,
+  "points": 72,
+  "time": 0.037,
+  "N": 4,
+  "fvModels_sha256": "19f319aa29b4667e6466780391cc368bf462b1eea3c25a1e09021a76abad960f",
+  "max_absolute_force_error": 1.3877787807814457e-17,
+  "tolerance": 1e-10,
+  "passed": true,
+  "limitation": "Mock mesh and equation only; does not verify live solver sign or temporal-discretization behavior."
+}

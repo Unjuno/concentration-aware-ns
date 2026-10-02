@@ -1,8 +1,152 @@
 {
   "scope": "Artifact byte identity only; does not validate scientific review flags or conclusions.",
-  "links_checked": 93,
+  "links_checked": 117,
   "all_match": true,
   "links": [
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/high-gradient-mms.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/high-gradient-openfoam-force.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/high-gradient-reference.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "reports/of13-high-gradient-amr-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/high-gradient-of13-amr-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/of13-high-gradient-v2/matrix-manifest.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap100000-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/high-gradient-mms.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/high-gradient-openfoam-force.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/high-gradient-reference.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "reports/of13-high-gradient-amr-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/high-gradient-of13-amr-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/of13-high-gradient-v2/matrix-manifest.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap4096-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "reference_verified",
+      "path": "evidence/tests/high-gradient-mms.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "forcing_verified",
+      "path": "evidence/tests/high-gradient-openfoam-force.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "derivatives_verified",
+      "path": "evidence/tests/high-gradient-reference.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "space_time_study_verified",
+      "path": "reports/of13-high-gradient-amr-v1.md",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "thresholds_preregistered",
+      "path": "protocols/high-gradient-of13-amr-v1.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "raw_artifacts_reviewed",
+      "path": "evidence/of13-high-gradient-v2/matrix-manifest.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "evaluation_time_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
+    {
+      "report": "reports/of13-high-gradient-amr-cap5000-gate.json",
+      "artifact": "standard_acceptance_verified",
+      "path": "evidence/tests/of13-high-gradient-standard-acceptance.json",
+      "status": "MATCH"
+    },
     {
       "report": "reports/openfoam-n32-gate.json",
       "artifact": "reference_verified",

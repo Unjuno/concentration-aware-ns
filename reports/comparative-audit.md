@@ -73,7 +73,7 @@ Read [OpenFOAM](openfoam-study-v1.md), [SU2](su2-study-v1-interim.md),
 [PhysicsNeMo](physicsnemo-study-v1.md), and
 [upstream disposition](upstream-disposition.md) for details. Raw archives and
 input hashes are in the corresponding evidence directories. Run
-`python3 -m tools.replay_published_reports` for the thirteen-step report replay;
+`python3 -m tools.replay_published_reports` for the 25-step report replay;
 this does not rerun solvers or train networks. Run
 `python -m tools.review_su2_standard` with NumPy/SciPy for the additional SU2
 aggregate review, and `python -m tools.check_axis_force` with SymPy 1.14.0 for
