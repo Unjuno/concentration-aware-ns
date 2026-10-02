@@ -3,6 +3,7 @@ import json
 import tarfile
 
 from tools import run_openfoam_foundation14_matrix as runner
+from tools.verify_openfoam_foundation14_matrix import normalized_endpoint_field_hashes
 
 
 def test_of14_protocol_reuses_of13_equations_matrix_and_gates():
@@ -74,3 +75,22 @@ def test_completed_replay_compares_inputs_metrics_and_endpoint_fields(tmp_path):
     result = runner.compare_completed_replay(original, replay)
     assert result["status"] == "PASS"
     assert result["preserved_run_log_sha256"] != result["replay_run_log_sha256"]
+
+
+def test_version_banner_is_the_only_normalized_endpoint_difference(tmp_path):
+    archives = []
+    for version in (13, 14):
+        archive_path = tmp_path / f"of{version}.tar.gz"
+        with tarfile.open(archive_path, "w:gz") as archive:
+            for field in ("U", "p", "C", "phi"):
+                data = (f"OpenFOAM Version:  {version}\n" + field + " field\n").encode()
+                import io
+                import tarfile as tar
+
+                info = tar.TarInfo(f"n64-dt0.001/0.05/{field}")
+                info.size = len(data)
+                archive.addfile(info, io.BytesIO(data))
+        archives.append(archive_path)
+    left = normalized_endpoint_field_hashes(archives[0], "n64-dt0.001", 13)
+    right = normalized_endpoint_field_hashes(archives[1], "n64-dt0.001", 14)
+    assert left == right

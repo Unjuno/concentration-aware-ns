@@ -230,25 +230,36 @@ def main():
     if preserved_attempts.is_dir():
         for attempt_dir in sorted(preserved_attempts.iterdir()):
             suffix = "-attempt-01-incomplete"
-            if not attempt_dir.is_dir() or not attempt_dir.name.endswith(suffix):
+            complete_suffix = "-attempt-01-complete-preserved"
+            if not attempt_dir.is_dir():
                 continue
-            original_name = attempt_dir.name[:-len(suffix)]
-            if complete_case(attempt_dir, protocol["end_time"]):
+            if attempt_dir.name.endswith(complete_suffix):
+                original_name = attempt_dir.name[:-len(complete_suffix)]
+                status = "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
+            elif attempt_dir.name.endswith(suffix):
+                original_name = attempt_dir.name[:-len(suffix)]
+                status = None
+            else:
+                continue
+            if status is None and complete_case(attempt_dir, protocol["end_time"]):
                 reclassified = attempt_dir.with_name(f"{original_name}-attempt-01-complete-preserved")
                 if reclassified.exists():
                     raise FileExistsError(f"refusing to replace reclassified attempt: {reclassified}")
                 shutil.move(str(attempt_dir), str(reclassified))
                 attempt_dir = reclassified
                 status = "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
-            else:
+            elif status is None:
                 status = "INCOMPLETE_PRIOR_ATTEMPT_PRESERVED"
             old_log = attempt_dir / "log.foamRun"
+            old_log_text = old_log.read_text(errors="replace") if old_log.is_file() else ""
+            old_exit = attempt_dir / "exit.json"
             attempts.append({
                 "case": original_name, "status": status,
                 "path": str(attempt_dir.relative_to(run_root)),
-                "observed_steps": len(re.findall(r"^Time = ",
-                                                   old_log.read_text(errors="replace"),
-                                                   re.MULTILINE)) if old_log.is_file() else 0,
+                "prior_exit": json.loads(old_exit.read_text()) if old_exit.is_file() else {},
+                "observed_steps": len(re.findall(r"^Time = ", old_log_text, re.MULTILINE)),
+                "converged_steps": old_log_text.count("PIMPLE: Converged in"),
+                "log_ends_with_End": old_log_text.rstrip().endswith("End"),
                 "log_sha256": sha256(old_log) if old_log.is_file() else None,
                 "diagnostics_sha256": sha256(attempt_dir / "diagnostics.json")
                 if (attempt_dir / "diagnostics.json").is_file() else None,
@@ -288,7 +299,7 @@ def main():
             attempts.append({
                 "case": name, "status": "INCOMPLETE_PRESERVED_BEFORE_RETRY",
                 "path": str(attempt_dir.relative_to(run_root)), "prior_exit": prior_exit,
-                "observed_steps": partial_log.count("Time = "),
+                "observed_steps": len(re.findall(r"^Time = ", partial_log, re.MULTILINE)),
                 "converged_steps": partial_log.count("PIMPLE: Converged in"),
                 "log_ends_with_End": partial_log.rstrip().endswith("End"),
                 "log_sha256": sha256(log_path) if log_path.is_file() else None,

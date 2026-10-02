@@ -43,5 +43,14 @@ therefore replayed the already complete n16 and n32 cases before rejecting the
 reused n64 archive. Those original attempts remain preserved. The checker now
 counts anchored `^Time =` lines and reclassifies preserved runs using the full
 step, convergence, end-marker, exit-code, and endpoint-field checks. Their
-diagnostic and input hashes will be compared against the replay before the
-matrix result is interpreted.
+diagnostic and input hashes are compared against the replay before the matrix
+result is interpreted. The preserved and repeated n16/n32 inputs, stored scalar
+diagnostics, and endpoint `U`, `p`, `C`, and `phi` byte hashes have matched
+exactly. Their raw run-log hashes differ because OpenFOAM records
+runtime-specific host, clock, and execution-time metadata.
+
+That same substring-count mistake had also made the first interrupted n128 log
+look like 37 steps in the manifest. A later verifier recounts anchored time
+headers directly from the preserved log; the actual partial attempt contains
+13 time headers and 12 converged steps. The corrected manifest stores this
+recount and the original exit record.
