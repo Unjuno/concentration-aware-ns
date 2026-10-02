@@ -95,10 +95,12 @@ and actual `physicalQ` lower/conditional upper bounds are now Lean-checked in
 source hash and axiom report in
 [`support-hole-tube.json`](../evidence/lean-verification/support-hole-tube.json).
 The pinned `AxisForceSign.lean` separately proves the actual selected root
-trajectory and eventual base-germ transfer. The remaining bridge is to lift
-the scalar support-hole inequality to the actual 3D transverse radius and show
-that the source `physicalQ` stays sufficiently close to its root-axis value
-throughout the proposed tube.
+trajectory and eventual base-germ transfer. To lift the scalar result to a
+Euclidean spatial tube, use the radial projection norm bound (with its
+explicit constant) and the global lower bound `physicalQ>=tau`; closeness of
+`physicalQ` to its root-axis value is not required for the support-hole
+inequality. The separate upper bound `q<=S*tau` is still needed to stay in the
+construction sublevel.
 
 ## Consequence and remaining gates
 
@@ -113,11 +115,12 @@ about fixed-size molecular alignment.
 Still required before reporting that exponent as an established property of
 the assembled construction:
 
-1. Lift the scalar support-hole inequality to the actual 3D transverse radius
-   and keep source `physicalQ` sufficiently close to its root-axis value on the
-   whole tube to retain a uniform coefficient margin.
-2. Uniformly prove physical-domain membership, `q<qbig`, the zeroth-cutoff
-   plateau, late time, spatial plateau, and required regularity bounds there.
+1. Lift the scalar support-hole inequality to the 3D radial projection using
+   its norm bound, choosing the Euclidean tube coefficient below half the
+   support-hole coefficient.
+2. Uniformly prove physical-domain membership using `q<=S*tau`, then the
+   zeroth-cutoff plateau, late-time condition, spatial plateau, and required
+   regularity bounds on that tube.
 3. Numerical or executable values for the positive constants if a concrete
    finite packet, rather than a conditional asymptotic order, is claimed.
 

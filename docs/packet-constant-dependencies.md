@@ -142,21 +142,19 @@ components is
     c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0.
 
 At any point in their validity regions, every perturbation component vanishes
-when its transverse radius `r < c0*sqrt(physicalQ)`. The chart identity
-`tau = q*(1-eta^2)` gives `physicalQ=q >= tau`; hence a spatial tube around an
-axial center curve with
-
-    rho(Q) = (c0*sqrt(tau0)/2) * sqrt(Q),
-    tau = tau0*Q,
-
-would lie strictly inside this support hole, provided the tube remains in the
-bands/domains where the cited support facts apply. The `sqrt(tau)` tube estimate alone gives no strict coefficient margin, so it
-does not prove this inclusion. On the root axis `q=tau/d` and `d=1-eta^2` lies
-in `(0,1]`; Lean now checks that a narrower transverse radius `rho*tau`,
-`0<rho<leftRadius`, lies strictly below `leftRadius*sqrt(q)`. This yields a
-candidate terminal tube exponent `r=1`, not `r=1/2`. If the full-space support
-and domain hypotheses are transferred uniformly, the base Hessian rate
-`kappa=40` still gives the conditional packet exponent `Cstretch+39`.
+when its transverse radius `r < c0*sqrt(physicalQ)`. The earlier proposed
+`sqrt(tau)`-width spatial tube does not follow: the available bounds leave no
+strict coefficient margin. On the root axis `q=tau/d`, where `d=1-eta^2` lies
+in `(0,1]`, and the source equation gives `physicalQ>=tau` at every
+preterminal point. Lean checks that a transverse radius `rho*tau`, with
+`rho<leftRadius`, lies below `leftRadius*sqrt(q)` on the root chart. For a
+Euclidean spatial tube, the radial projection estimate costs a geometric
+factor, so the tube coefficient must be correspondingly smaller. This
+suggests terminal tube exponent `r=1`; the full 3D transfer and uniform domain
+conditions are still open. The separate upper bound `q<=S*tau` is needed to
+stay in the construction sublevel, not to obtain the support-hole inequality.
+If those conditions hold, `kappa=40` yields the conditional packet exponent
+`Cstretch+39`.
 
 The initial-copy part is now formalized in
 `verification/SupportHole.lean` as
@@ -173,8 +171,9 @@ The full support-hole transfer is checked as a **local germ implication**, not
 yet as a uniformly covered spacetime tube. `SupportHoleAssembly.lean` proves
 the selected initialized sum/curl/localization transfer under explicit
 physical-domain, cutoff-plateau, late-time, and spatial-localization
-hypotheses. Lifting the scalar hole inequality to the full 3D chart and deriving all
-domain/cutoff/plateau hypotheses uniformly on the proposed tube remain open. The exact
+hypotheses. Lifting the scalar hole inequality to the 3D radial projection
+with its norm constant and deriving physical-domain, q-sublevel, cutoff, and
+spatial-plateau hypotheses uniformly on the proposed tube remain open. The exact
 numeric value of `leftRadius` and `patch.a` is also non-effective. Therefore
 keep the published packet exponent conditional until the tube conditions and
 requested concrete constants are checked.
