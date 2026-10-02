@@ -95,9 +95,13 @@ as `Q -> 0`; the sphere has `kappa=0` and no distinguished director. This
 probability comes from the added initial-director law and ideal Jeffery ODE.
 It is not a probability law supplied by Navier–Stokes, and does not describe
 molecular orientation or absolute particle positions. Thermal rotational
-diffusion can change the limit; under the reduced tangent-plane model with
-`D_r ~ (1-t)^(-delta)`, the variance threshold is `delta=1`, as recorded in
-`docs/rotational-diffusion-alignment-cutoff.md`. These are separate model
+diffusion can change the limit. The reduced tangent-plane model with
+`D_r ~ (1-t)^(-delta)` has a formal variance threshold at `delta=1`; for
+`delta>1` its variance divergence marks breakdown of its small-angle
+assumption. A separate full-sphere Smoluchowski analysis shows, within that
+imposed model, a finite-width stationary law at `delta=1` and isotropization
+for `delta>1`, rather than unbounded angular variance. See
+`docs/full-sphere-rotational-diffusion.md`. These are separate model
 assumptions, not a microscopic derivation.
 
 The alignment law depends on **accumulated strain**

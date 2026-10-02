@@ -584,3 +584,17 @@ error diagnostics. Full 39-step replay passed; 213 tests passed, one skipped,
 and five subtests passed. Every log hash matched its summary entry, the AMR
 archive path no longer leaks, and the numerical AMR result did not change.
 See `evidence/report-replay/summary.json` and the adjacent logs.
+# Full-sphere correction to the rotational-diffusion model — 2026-10-03
+
+Extended the ideal Jeffery-plus-rotational-diffusion calculation from the
+tangent plane to the full orientation sphere. The critical `delta=1` law has a
+finite-width stationary density proportional to `exp(chi*p_z^2)`; for
+`delta>1`, the increasing diffusion coefficient and sphere Poincare gap imply
+convergence to isotropy in the prescribed model. Thus the tangent-plane
+variance divergence marks small-angle approximation failure. The full global
+stochastic theorem for `delta<1` remains unproved, and no physical molecular
+diffusivity law or transfer from the OpenAI field is established. The SymPy
+checker passes; Python 3.14.5 full report replay passed 42 steps and 219 tests
+(one skipped, five subtests). See
+`docs/full-sphere-rotational-diffusion.md` and
+`evidence/tests/spherical-orientation-diffusion-2026-10-03.json`.

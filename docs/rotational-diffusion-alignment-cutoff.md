@@ -115,13 +115,28 @@ continuum cutoff. If one additionally assumes a Stokes-Einstein relation
 threshold, but neither that constitutive law nor its coupling to the singular
 flow is established here.
 
+## Full-sphere correction when the tangent-plane variance grows
+
+The `delta>1` branch above only says that the linearized tangent-plane
+approximation leaves its small-angle regime. It does not identify the global
+orientation law. The full-sphere Jeffery--Smoluchowski equation has now been
+checked separately: for this prescribed strain and diffusion law, `delta=1`
+gives a finite-width stationary density, while `delta>1` gives asymptotic
+isotropization rather than divergent angular variance. The exact density,
+two-pole-cone probability, and a spectral-gap energy proof are in
+[`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md).
+This upgrades the `delta>1` model conclusion without supplying a molecular
+diffusivity law or a finite-particle transfer from the OpenAI velocity field.
+
 ## What the result says about alignment and viscosity
 
-The calculation supplies a conditional bridge for *orientation of idealized
-anisotropic particles*: under the singular strain history, a constant or
-subcritical-power rotational diffusion does not by itself destroy limiting
-alignment, although it changes its rate. This is more specific than the
-deterministic Jeffery formula and gives a falsifiable scale comparison.
+The tangent-plane calculation supplies a local small-angle bridge for
+*orientation of idealized anisotropic particles*: under the singular strain
+history, constant or subcritical-power rotational diffusion does not by
+itself destroy the small-angle endpoint prediction. The full-sphere analysis
+now resolves the diffusion-dominated `delta>1` regime and shows loss of
+alignment in that imposed model. Together these provide falsifiable model
+comparisons; neither establishes which diffusion scaling applies physically.
 
 It still says nothing about absolute particle-center locations. It is not a
 molecular theorem, a finite-size result in the spatially varying OpenAI field,

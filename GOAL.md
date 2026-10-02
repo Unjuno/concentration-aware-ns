@@ -1,5 +1,28 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
+
+The earlier rotational-diffusion calculation found divergent variance for
+`D_r ~ (1-t)^(-delta)` when `delta>1`, but that calculation was linearized in
+the tangent plane and explicitly left global isotropization unresolved. Added
+the full `S^2` Jeffery–Smoluchowski equation under the same prescribed,
+spatially uniform extensional strain. At `delta=1`, its zero-current invariant
+density is proportional to `exp(chi*p_z^2)` with finite width and an explicit
+two-pole-cone probability. For `delta>1`, a mean-zero Poincare energy estimate
+gives convergence to the uniform sphere density in `L2`; the local variance
+blowup therefore marks approximation breakdown, not unbounded physical
+orientation variance. The `delta<1` global stochastic convergence theorem
+remains unproved. Added an exact SymPy checker, two regression tests, a
+full-sphere derivation and a correction to the tangent-plane/literature notes.
+The complete Python 3.14.5 report replay passed all 42 steps and the suite
+reported 219 passed, one skipped, five subtests. Evidence is in
+`docs/full-sphere-rotational-diffusion.md`,
+`evidence/tests/spherical-orientation-diffusion-2026-10-03.json`, and
+`evidence/report-replay/summary.json`. This prescribed ideal-particle model
+does not establish a microscopic diffusion law, particle-position certainty,
+phase transition, viscosity change, or a consequence for CFD acceptance. The
+benchmark goal remains active.
+
 ## Revision 226 — independently recheck the actual-profile pressure witness path
 
 Fetched the current OpenAI/NavierStokesAndEuler main metadata and confirmed

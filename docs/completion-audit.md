@@ -1,5 +1,37 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 full-sphere rotational diffusion
+
+Extended the conditional Jeffery director analysis from its local tangent
+plane to a probability density on `S^2`, using the standard rigid-spheroid
+orientation law and rotational Smoluchowski diffusion. This is a prescribed
+finite-director model, not a particle-scale transfer theorem for the OpenAI
+field. In logarithmic time `s=log(tau0/tau)` and strain
+`gamma=C/(2*tau)`, the checker verifies
+`partial_s rho=-div_S(b rho)+D0*tau0^(1-delta)*exp((delta-1)s)*Delta_S rho`,
+`b=(3*kappa*C/2)*(p_z*e_z-p_z^2*p)`, and
+`div_S b=(3*kappa*C/2)*(1-3*p_z^2)`. At `delta=1`, the unique stationary
+density is proportional to `exp(chi*p_z^2)`, with a finite, explicit
+two-pole-cone probability. At `delta>1`, an energy estimate using the
+sphere's mean-zero Poincare gap yields `Y' <= -lambda*d(s)*Y+K/d(s)`, hence
+convergence to isotropy for normalized `L2` initial densities. This corrects
+the interpretation of the earlier tangent-plane variance divergence: it
+signals loss of the local approximation, not unbounded orientation variance.
+The `delta<1` full-sphere stochastic convergence claim remains open. Exact
+symbolic identities passed with SymPy 1.14.0; focused related tests passed 7/7;
+the complete Python 3.14.5 report replay passed 42/42 and the full suite
+reported 219 passed, one skipped, five subtests. See
+[`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md),
+[`spherical-orientation-diffusion-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-2026-10-03.json),
+and [`report-replay/summary.json`](../evidence/report-replay/summary.json).
+Primary framework sources are Jeffery (1922),
+[DOI 10.1098/rspa.1922.0078](https://doi.org/10.1098/rspa.1922.0078), and
+Hinch–Leal (1972), [DOI 10.1017/S002211207200271X](https://doi.org/10.1017/S002211207200271X);
+the singular-time limit and energy estimate here are our own conditional
+derivations, not claims from those sources. No molecular diffusion law,
+particle-position determinism, phase transition, viscosity change, or solver
+acceptance result follows. No upstream report was warranted.
+
 ### Completion audit refresh — 2026-10-03 analytic provenance recheck
 
 Re-fetched `openai/NavierStokesAndEuler` main and confirmed commit

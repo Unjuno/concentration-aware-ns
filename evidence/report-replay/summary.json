@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "ad0850440a69f2264ad817fcaa80f52b49f320f18bd302693abeb601c998aa89"
+      "log_sha256": "fd4fcd62d134464c1e6a7a6a33fa119d00da8836ae57fd30c662bfb907863296"
     },
     {
       "step": "global_peaks",
@@ -485,6 +485,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/alignment_integrability_threshold.log",
       "log_sha256": "00068d7b02f988fa90a419ad076bf0a15d5950d6e2a232d6a4a63dccc7a2a5bc"
+    },
+    {
+      "step": "spherical_orientation_diffusion",
+      "command": [
+        "python",
+        "-m",
+        "tools.check_spherical_orientation_diffusion"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_spherical_orientation_diffusion"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/spherical_orientation_diffusion.log",
+      "log_sha256": "883b2d615f241a49b8f05e5a0672f2632ab1967765c2060adf51a266567c46ba"
     },
     {
       "step": "su2_output_clock_control",
