@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 207 — tighten the finite-packet Q^43 prefactors
+
+Rechecked the selected source interval `C in [7999999/2000000, 4)` and
+replaced the direct-integral coefficient `1/3` with the uniformly justified
+`1/2` bound, since `C-1>2`; updated the tube and angle prefactors while
+preserving the conditional Q^43 exponent. Added symbolic regression controls
+and regenerated the machine-readable artifact. Full Python suite: 212 passed,
+1 skipped, 5 subtests; targeted symbolic checker and evidence-link audit pass.
+Committed as `8b4589d` to PR #4; CI was queued at the last check. The packet
+law remains conditional on the stated tube/Hessian envelopes and continuum
+ODE comparison; it does not imply molecular ordering or fixed-size particle
+alignment. Goal remains active.
+
 ## Revision 202 — separate tracer occupancy, trajectories, and orientation
 
 Replayed the shrinking-core enclosure in a fresh pinned-dependency venv and
