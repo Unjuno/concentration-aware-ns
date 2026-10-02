@@ -1341,3 +1341,17 @@ issues disabled and no issue entries. No duplicate or unsupported report was
 filed. The response snapshot and exact details are in
 `evidence/upstream-refresh/upstream-status-2026-10-03.json` and
 `reports/upstream-status-2026-10-03.md`.
+
+### 2026-10-03 correction to the retained-entrance limit audit
+
+The coefficient witnesses in the all-scale entrance property converge to
+their common reference pair at rate `O(1/Λ)`, so witness incoherence alone
+does not prevent a limit argument. At `chi=0`, the reference radial profile
+has zero derivative at the entrance section, making `p1` tend to zero; the
+stored cone margin uses `p1 + p2²/p1`, singular in this limit, and `p2` also
+depends on a shrinking angular amplitude. The joint asymptotic rate needed to
+recover the pressure moment is not established. The corrected source-level
+analysis is in
+[`reports/actual-profile-pressure-provenance-2026-10-01.md`](../reports/actual-profile-pressure-provenance-2026-10-01.md).
+No selected-profile pressure sign, solver verdict, or physical conclusion is
+changed, and this correction has not been Lean-replayed.

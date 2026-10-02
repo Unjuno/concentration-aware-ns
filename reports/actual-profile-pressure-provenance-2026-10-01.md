@@ -314,3 +314,34 @@ Pinned-source hashes for the identities used here:
 | `OutgoingSchedule.lean` | `680379d41f5ecb928f53278860c807e3344e9bcaefbcd6c4bbcc493f812bc552` |
 | `FuturePressureBounds.lean` | `e55060a6239e37b56308ab631949c20174d4231c6f209eaa005ce182c32d5c86` |
 | `OutgoingPulseBounds.lean` | `c7a25e38f34f1c6d7f3a3f0de830cee9979155956c80896014558b61e27de478` |
+
+## 2026-10-03 all-scale entrance quantifier audit
+
+The remaining `AxisPreparation.entrances` field was checked against the
+coefficient-profile construction in the pinned source. Its quantifier is
+
+`∀ Λ ≥ scaleBound, ∀ C ≥ entranceNormalization(Λ), Nonempty (EntranceProfile inputs Λ C)`.
+
+This is an existence statement separately at each pair `(Λ,C)`, but the
+coefficient estimate is stronger than a bare existence quantifier: every
+selected coefficient pair lies within `profileErrorConstant / (2 * Λ)` of
+the same fixed `referencePair`. Thus any sequence of entrance witnesses with
+`Λ → ∞` has coefficients converging to that reference pair; absence of a
+coherent selection is not, by itself, an obstruction to taking this limit.
+
+The direct limit still does not discharge the pressure condition. At the root
+where `chi = 0`, the reference radial profile is constant, so the limiting
+`p1` is zero. The entrance margin is on
+`coneSize = p1 + p2^2 / p1`, which is singular at `p1 = 0`; moreover `p2`
+contains the angular amplitude in its denominator, and the admissible
+normalization can make that amplitude shrink with `Λ`. Convergence of
+coefficients and their fixed-scale jets therefore does not imply convergence
+of `coneSize` to a finite expression that identifies `Z` or the pressure
+moment. A valid limit proof must resolve the joint rates of `p1`, `p2`, and
+the amplitude (or find a nonsingular equivalent cone inequality), not merely
+select witnesses and invoke continuity.
+
+This is a proof-route limitation, not a counterexample. It corrects the
+initial quantifier-only diagnosis and gives a more precise remaining analytic
+bridge. No amplitude or pressure conclusion for `FinalSlowBase.actualProfile`
+changes.

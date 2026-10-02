@@ -454,3 +454,16 @@ public issue/discussion is sufficient for these observations, and the
 actualProfile proof gap is not an upstream defect. No new report was filed.
 The API response snapshot is `evidence/upstream-refresh/upstream-status-2026-10-03.json`;
 interpretation is in `reports/upstream-status-2026-10-03.md`.
+
+## 2026-10-03 correction to the retained-entrance limit audit
+
+The all-scale entrance witnesses are individually selected, but their
+coefficient pairs all lie within `O(1/Λ)` of one fixed reference pair. Thus
+any selected sequence converges; lack of a coherent selection is not the
+obstruction. At the zero-`chi` root, however, the reference radial derivative
+vanishes and `p1 → 0`, while the retained cone expression `p1 + p2²/p1` is
+singular and `p2` includes a scale-dependent angular-amplitude denominator.
+The joint rate is still unresolved, so the limit does not yet give the root
+pressure moment. The corrected source-level reasoning is in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`; no Lean replay or
+pressure-sign conclusion is claimed for this correction.

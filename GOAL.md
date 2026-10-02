@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 212 — correct the all-scale pressure-limit diagnosis
+
+Corrected the October 3 retained-entrance audit: the coefficient witnesses do
+converge to one fixed reference pair because every error is `O(1/Λ)`, even
+though the existence quantifier selects profiles separately at each scale.
+The direct cone limit remains singular at the zero-`chi` root (`p1` tends to
+zero and `coneSize = p1 + p2^2/p1`), while `p2` also contains a scale-dependent
+angular-amplitude denominator. Thus witness selection alone neither blocks
+nor proves the pressure moment; a joint-rate estimate or nonsingular reformulation
+is needed. This is a proof-route correction, not evidence against `actualProfile`.
+Source details and qualifications are recorded in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`; no amplitude,
+solver-quality, or physical conclusion changes.
+
 ## Revision 211 — refresh target-project reporting dispositions
 
 Rechecked live GitHub state for PhysicsNeMo, SU2, and the OpenAI source. The
