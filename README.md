@@ -22,6 +22,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 - [Flat-but-active analytic-forcing bridge to the OpenAI construction](reports/openai-analytic-forcing-bridge-2026-10-01.md)
+- [Follow-up literature: forcing structure and finite-grid observability](reports/navier-stokes-followup-literature-2026-10-03.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [Axis-tube concentration versus bounded-position probability](docs/linearized-axis-tube-concentration.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)

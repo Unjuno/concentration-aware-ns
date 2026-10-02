@@ -1313,3 +1313,19 @@ its three helper files match commit `e92a77e`; the startup worktree status
 recorded by the runner contains only the untracked protocol. See
 `reports/openfoam-amr-resolution-replication-2026-10-01.md` and
 `evidence/of13-amr-same-run-map-v8-n128/harness-provenance-a1.json`.
+
+### 2026-10-03 follow-up literature: forcing structure and finite-grid observability
+
+Two recent arXiv preprints add useful scope constraints. Constantin, Ignatova
+and Vicol's conditional theorem gives regularity under simultaneous analytic
+forcing, uniform preterminal spatial `C^2`, anisotropic angular-mean bounds and
+exact axisymmetry on a shrinking core; their appendix states the OpenAI
+construction has the latter two properties but a smooth nonanalytic force.
+Cao, Chi and Nie give force-density thresholds in specified Sobolev topologies
+and a whole-space construction with identical velocity/force averages over any
+fixed finite family of uniform grids despite terminal blow-up. They explicitly
+do not claim failure of refinement convergence for one fixed smooth problem.
+These are preprint claims we have not independently verified. They sharpen
+scope and reporting limits but establish no defect in OpenFOAM, SU2 or
+PhysicsNeMo, and no physical/molecular interpretation. Full source audit:
+`reports/navier-stokes-followup-literature-2026-10-03.md`.

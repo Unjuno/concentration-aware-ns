@@ -429,3 +429,17 @@ field. The pinned isolated checker exits 0 with no `sorryAx`; exact outputs and
 hashes are in `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
 The full scope and non-implications are recorded in
 `reports/qualified-profile-pressure-selection-2026-10-01.md` and `GOAL.md`.
+
+## Follow-up Navier–Stokes literature audit — 2026-10-03
+
+Read the primary arXiv texts for Constantin–Ignatova–Vicol, arXiv:2609.20803v2,
+and Cao–Chi–Nie, arXiv:2609.10262v4. The former proves a conditional regularity
+result under analytic forcing plus specific anisotropic and exact-core
+axisymmetry assumptions; it does not exclude blow-up under arbitrary smooth
+forcing. The latter proves topology-dependent density thresholds and a theorem
+showing that finite prescribed whole-space grid averages can be identical for
+a regular comparison and a terminally singular construction. Its authors
+explicitly distinguish this from refinement convergence for one fixed smooth
+problem. This is a benchmark-scope/reporting result, not a solver defect or
+physical validation. Details and limits are in
+`reports/navier-stokes-followup-literature-2026-10-03.md`.
