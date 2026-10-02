@@ -18,7 +18,7 @@ finding to a supported improvement and the evidence required to extend it.
 | SU2 3-space/multiple-time comparison | All five archives; archive-review.json, diagnostic-replay.json, su2-time-comparison.json | Matrix complete and diagnostics replayed. Direct endpoint differences give observed order 0.99916; inner residual failures prevent an error certificate. |
 | PhysicsNeMo 3-space/multiple-time sampling | Five archives and reports/physicsnemo-study-v1.md | Matrix complete; optimizer/seed and continuum-peak uncertainty remain |
 | Local derivatives and spectra | Native/autograd/FD2/spectral comparisons, analytic spectrum | Diagnostics exist; sampled maxima are not certified continuous maxima |
-| Evidence-linked acceptance gate | v2 checker; 57 tests in the current replay; evidence/tests/gate-artifact-audit.json | Eleven reports (OpenFOAM n32, PhysicsNeMo five, SU2 five); all 93 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
+| Evidence-linked acceptance gate | v2 checker; 65 tests in the latest locked clean export; evidence/tests/gate-artifact-audit.json | Fourteen reports (including three high-gradient AMR cases); all 117 artifact links match. Verdicts remain UNCERTAIN with gaps explicit. |
 | Genuine upstream reporting | SU2 Q&A 2890 and issue #2353 with read-back verification | BDF2 order-reduction control and restart-dependent MAX_TIME stopping consequence reported; no general-fix claim |
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
@@ -73,6 +73,18 @@ training runs, upstream messages or theorem changes occurred in this audit.
 
 This remains an interim audit, not a declaration that all goal requirements
 have been completed.
+
+### Latest locked clean-export replay, 2026-10-02
+
+The first fresh export from commit `f2b009078f07660c39e7b24ffa94eb2d700f9f03`
+ran all eight clean-export commands successfully and replayed all 25 report
+steps, but detected that the tracked artifact-link audit was stale: it recorded
+93 links while the current reports contain 117. Regenerated
+`evidence/tests/gate-artifact-audit.json` from all 14 gate reports; all 117
+references match their target bytes. The same fresh export ran 65 tests. A
+second clean export from the commit containing this refreshed audit is required
+to verify byte-for-byte idempotence. Scope remains locked Python postprocessing
+on this host; no solver build, training, or Lean execution is included.
 
 ### Quantitative copy-support hole, 2026-09-28
 
