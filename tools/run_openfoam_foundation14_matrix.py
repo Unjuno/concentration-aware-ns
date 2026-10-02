@@ -145,6 +145,64 @@ def archive_case(case, evidence, name):
             "archive_bytes": sum(part["bytes"] for part in parts), "parts": parts}
 
 
+def archive_preserved_attempt(attempt, evidence_root, run_root):
+    attempt_path = Path(run_root) / attempt["path"]
+    is_complete = attempt["status"] == "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
+    destination_dir = Path(evidence_root) / "attempts"
+    destination_dir.mkdir(parents=True, exist_ok=True)
+    destination = destination_dir / f"{attempt_path.name}.tar.gz"
+    temporary = Path(str(destination) + ".tmp")
+    if is_complete:
+        paths = [path for path in attempt_path.rglob("*") if path.is_file() or path.is_symlink()]
+        excluded = []
+    else:
+        paths = []
+        for folder in ("0", "system", "constant"):
+            base = attempt_path / folder
+            if base.is_dir():
+                paths.extend(path for path in base.rglob("*") if path.is_file() or path.is_symlink())
+        for filename in ("parameters.json", "input-hashes.json", "command.json", "exit.json",
+                         "log.container", "log.blockMesh", "log.foamRun", "log.centres"):
+            path = attempt_path / filename
+            if path.is_file():
+                paths.append(path)
+        excluded = ["partial time directories and their flow fields"]
+    if destination.exists():
+        expected = {f"{attempt_path.name}/{path.relative_to(attempt_path)}": path
+                    for path in set(paths)}
+        with tarfile.open(destination, "r:gz") as archive:
+            members = {member.name: member for member in archive.getmembers()
+                       if member.isfile() or member.issym() or member.islnk()}
+            if set(members) != set(expected):
+                raise ValueError(f"existing preserved-attempt archive member set differs: {destination}")
+            for name, source in expected.items():
+                member = members[name]
+                if source.is_symlink():
+                    if not (member.issym() or member.islnk()) or member.linkname != os.readlink(source):
+                        raise ValueError(f"preserved attempt symlink differs: {destination}:{name}")
+                    continue
+                stream = archive.extractfile(member)
+                if stream is None:
+                    raise ValueError(f"cannot read preserved attempt member: {destination}:{name}")
+                digest = hashlib.sha256()
+                for chunk in iter(lambda: stream.read(1 << 20), b""):
+                    digest.update(chunk)
+                if digest.hexdigest() != sha256(source):
+                    raise ValueError(f"preserved attempt file differs: {destination}:{name}")
+    else:
+        with tarfile.open(temporary, "w:gz") as archive:
+            for path in sorted(set(paths)):
+                archive.add(path, arcname=f"{attempt_path.name}/{path.relative_to(attempt_path)}")
+        temporary.replace(destination)
+    return {
+        "evidence_archive": str(destination.relative_to(Path(evidence_root))),
+        "evidence_archive_sha256": sha256(destination),
+        "evidence_archive_bytes": destination.stat().st_size,
+        "evidence_archive_members": len(paths),
+        "excluded_partial_outputs": excluded,
+    }
+
+
 def main():
     protocol = json.loads(PROTOCOL.read_text())
     if protocol["runtime_image_id"] != IMAGE_ID or protocol["runtime_image"] != IMAGE:
@@ -359,6 +417,7 @@ def main():
     baseline_diag = json.loads((run_root / reused / "diagnostics.json").read_text())
     baseline_diag["parameters"]
     for attempt in attempts:
+        attempt.update(archive_preserved_attempt(attempt, evidence_root, run_root))
         if attempt["status"] != "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION":
             continue
         preserved = run_root / attempt["path"]

@@ -94,3 +94,29 @@ def test_version_banner_is_the_only_normalized_endpoint_difference(tmp_path):
     left = normalized_endpoint_field_hashes(archives[0], "n64-dt0.001", 13)
     right = normalized_endpoint_field_hashes(archives[1], "n64-dt0.001", 14)
     assert left == right
+
+
+def test_preserved_incomplete_attempt_archive_excludes_partial_time_fields(tmp_path):
+    run_root = tmp_path / "work"
+    attempt = run_root / "attempts/n128-dt0.001-attempt-01-incomplete"
+    (attempt / "0").mkdir(parents=True)
+    (attempt / "system").mkdir()
+    (attempt / "0/U").write_text("initial field\n")
+    (attempt / "system/controlDict").write_text("control input\n")
+    (attempt / "0.01").mkdir()
+    (attempt / "0.01/U").write_text("partial output\n")
+    (attempt / "log.foamRun").write_text("Time = 0.001\n")
+    evidence = tmp_path / "evidence"
+
+    result = runner.archive_preserved_attempt({
+        "path": "attempts/n128-dt0.001-attempt-01-incomplete",
+        "status": "INCOMPLETE_PRIOR_ATTEMPT_PRESERVED",
+    }, evidence, run_root)
+    archive_path = evidence / result["evidence_archive"]
+    with tarfile.open(archive_path, "r:gz") as archive:
+        names = {member.name for member in archive.getmembers() if member.isfile()}
+    assert any(name.endswith("/0/U") for name in names)
+    assert any(name.endswith("/system/controlDict") for name in names)
+    assert any(name.endswith("/log.foamRun") for name in names)
+    assert not any("0.01" in name for name in names)
+    assert result["excluded_partial_outputs"] == ["partial time directories and their flow fields"]

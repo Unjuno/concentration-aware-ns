@@ -38,14 +38,18 @@ This repeat remains excluded from the completed matrix and all verdicts; the
 same n=64/dt=.0005 matrix row had separately completed 100/100 steps and
 passed both gates on September 30. The repeat is not a missing matrix row.
 
-The OpenFOAM Foundation's current release is v14, with a September 30 source
-update; the benchmark's complete six-case matrix remains pinned to v13. The one
-v14 compatibility case matches v13 at n=64/dt=.001 after version-banner
-normalization, but no v14 matrix or AMR run was performed. Foundation's current
-GitHub issue/PR inventory contains no matching report; its separate Mantis
-all-issues page redirects to login, so tracker-wide duplicate clearance is
-still incomplete. See the
-[current Foundation audit](../reports/openfoam-foundation-current-upstream-audit-2026-10-02.md).
+The benchmark's original six-case matrix remains pinned to Foundation 13. A
+Foundation 14 successor matrix now covers the same six resolution/time-step
+rows; it reuses the earlier v14 n=64/dt=.001 compatibility probe and runs the
+other five rows. All six standard/local verdicts and five stored diagnostic
+scalars match v13 exactly, and endpoint U/p/C/phi fields match byte-for-byte
+after normalizing only the version banner. This is evidence for the tested
+static `incompressibleFluid` path, not version-wide equivalence. No v14 AMR run
+or defect was established. Foundation's GitHub inventory contains no matching
+report; its separate Mantis all-issues page redirects to login, so tracker-wide
+duplicate clearance remains incomplete. See the
+[Foundation 14 result](../reports/openfoam-foundation14-matrix-results-2026-10-02.md)
+and [current Foundation audit](../reports/openfoam-foundation-current-upstream-audit-2026-10-02.md).
 
 The frozen OpenFOAM v2 six-case replay passes archive, protocol, endpoint,
 standard-acceptance, and sampled-local-quality checks. Standard acceptance

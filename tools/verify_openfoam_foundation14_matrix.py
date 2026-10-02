@@ -119,12 +119,16 @@ def v13_archive_path(case_name, temp_root):
                         size += len(chunk)
         if size != metadata["archive_bytes"] or digest.hexdigest() != metadata["archive_sha256"]:
             raise ValueError("Foundation 13 n128 Zstandard archive failed reassembly check")
-        archive_path = Path(temp_root) / "n128-of13-dt0.001.tar.gz"
-        subprocess.run(["zstd", "-d", str(zstd_path), "-o", str(archive_path)],
-                       check=True, capture_output=True, text=True)
         current = json.loads(V13_INDEX.read_text())
         expected_hash = next(row["archive_sha256"] for row in current["completed_cases"]
                              if row["case"] == case_name)
+        archive_path = Path(temp_root) / "n128-of13-dt0.001.tar.gz"
+        if archive_path.exists():
+            if sha256(archive_path) != expected_hash:
+                raise ValueError("existing temporary Foundation 13 n128 tar has an unexpected hash")
+        else:
+            subprocess.run(["zstd", "-d", str(zstd_path), "-o", str(archive_path)],
+                           check=True, capture_output=True, text=True)
         if sha256(archive_path) != expected_hash:
             raise ValueError("Foundation 13 n128 decompressed tar hash mismatch")
     else:
@@ -160,6 +164,47 @@ def normalized_endpoint_field_hashes(archive_path, case_name, version):
                 digest.update(chunk)
             normalized[field] = digest.hexdigest()
     return normalized
+
+
+def verify_attempt_archive(item):
+    source = RUN_ROOT / item["path"]
+    archive_path = EVIDENCE / item["evidence_archive"]
+    if sha256(archive_path) != item["evidence_archive_sha256"]:
+        raise ValueError(f"preserved attempt archive hash mismatch: {archive_path}")
+    complete = item["status"] == "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
+    if complete:
+        paths = [path for path in source.rglob("*") if path.is_file() or path.is_symlink()]
+    else:
+        paths = []
+        for folder in ("0", "system", "constant"):
+            base = source / folder
+            if base.is_dir():
+                paths.extend(path for path in base.rglob("*") if path.is_file() or path.is_symlink())
+        for filename in ("parameters.json", "input-hashes.json", "command.json", "exit.json",
+                         "log.container", "log.blockMesh", "log.foamRun", "log.centres"):
+            path = source / filename
+            if path.is_file():
+                paths.append(path)
+    expected = {f"{source.name}/{path.relative_to(source)}": path for path in set(paths)}
+    with tarfile.open(archive_path, "r:gz") as archive:
+        members = {member.name: member for member in archive.getmembers()
+                   if member.isfile() or member.issym() or member.islnk()}
+        if set(members) != set(expected):
+            raise ValueError(f"preserved attempt archive member set differs: {archive_path}")
+        for name, path in expected.items():
+            member = members[name]
+            if path.is_symlink():
+                if not (member.issym() or member.islnk()) or member.linkname != os.readlink(path):
+                    raise ValueError(f"preserved attempt symlink differs: {archive_path}:{name}")
+                continue
+            digest = hashlib.sha256()
+            stream = archive.extractfile(member)
+            if stream is None:
+                raise ValueError(f"unreadable preserved attempt member: {archive_path}:{name}")
+            for chunk in iter(lambda: stream.read(1 << 20), b""):
+                digest.update(chunk)
+            if digest.hexdigest() != sha256(path):
+                raise ValueError(f"preserved attempt member differs: {archive_path}:{name}")
 
 
 def verify_matrix():
@@ -210,6 +255,8 @@ def verify_matrix():
             )
             if computed["status"] != "PASS" or computed != item["replay_comparison"]:
                 raise ValueError(f"preserved replay comparison mismatch: {item['case']}")
+        for item in manifest.get("attempt_history", []):
+            verify_attempt_archive(item)
 
         partial = next((item for item in manifest.get("attempt_history", [])
                         if item["case"] == "n128-dt0.001"
@@ -232,6 +279,7 @@ def verify_matrix():
         "case_count": len(case_results),
         "cases": case_results,
         "preserved_complete_replay_count": len(replay_checks),
+        "preserved_attempt_archives_verified": len(manifest.get("attempt_history", [])),
         "initial_n128_interrupted_attempt": {
             "recorded_step_count": partial.get("observed_steps") if partial else None,
             "line_anchored_step_count": partial_actual_steps,

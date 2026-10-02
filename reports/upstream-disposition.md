@@ -222,12 +222,17 @@ declares GPL-3.0-or-later even though GitHub's license API says
 to `OpenFOAM-dev`, asks for reproducible test cases and tests, and requires a
 Contributor Agreement for significant fixes or new developments.
 
-The benchmark has one v14 `n=64`, `dt=0.001` compatibility probe. Its
-version-banner-normalized endpoint fields and five sampled diagnostics match
-Foundation 13 exactly. There is no v14 space/time matrix or v14 AMR audit, and
-continuous extrema remain uncertified. No defect was reproduced and no report
-was filed. Current release, source, issue/API and tracker-login observations
-are in [`openfoam-foundation-current-2026-10-02.json`](../evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json);
+The v14 work now includes the six-row space/time matrix; the earlier `n=64`,
+`dt=0.001` compatibility probe is reused as one row, and the other five cases
+were run. All six stored scalar diagnostics and endpoint U/p/C/phi fields match
+Foundation 13 after normalizing only the version banner. This single pinned
+MMS/static-mesh path establishes compatibility for those rows, not
+version-wide equivalence. No v14 AMR audit or continuous-extrema certificate
+was produced. No defect was reproduced and no upstream report was filed.
+Details are in the
+[`Foundation 14 matrix report`](openfoam-foundation14-matrix-results-2026-10-02.md).
+Current release, source, issue/API and tracker-login observations are in
+[`openfoam-foundation-current-2026-10-02.json`](../evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json);
 the full scope decision is in
 [`openfoam-foundation-current-upstream-audit-2026-10-02.md`](openfoam-foundation-current-upstream-audit-2026-10-02.md).
 
