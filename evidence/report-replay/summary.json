@@ -5,7 +5,7 @@
     {
       "step": "tests",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "pytest",
         "-q",
@@ -20,12 +20,12 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "b7b932bbac1098b87232f9f4270d93bfd2f0f568a254ab9c2c5a35fe4472faab"
+      "log_sha256": "9639587592650f8c9473e360ef1525af105143a753138c90b45a97d13b94bfa6"
     },
     {
       "step": "global_peaks",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.compare_global_peaks"
       ],
@@ -41,7 +41,7 @@
     {
       "step": "peak_decomposition",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.decompose_peak_diagnostic"
       ],
@@ -57,7 +57,7 @@
     {
       "step": "spectral_derivatives",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.compare_openfoam_spectral"
       ],
@@ -73,7 +73,7 @@
     {
       "step": "openfoam_uniform_archive_schedules",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.audit_high_gradient_time_sequence"
       ],
@@ -89,7 +89,7 @@
     {
       "step": "openfoam_fd2_synthetic_controls",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_openfoam_fd2_synthetic_controls"
       ],
@@ -105,7 +105,7 @@
     {
       "step": "openfoam_trig_supremum_arb",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.audit_openfoam_trig_supremum"
       ],
@@ -121,7 +121,7 @@
     {
       "step": "openfoam_temporal_triplet",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.compare_high_gradient_temporal"
       ],
@@ -137,7 +137,7 @@
     {
       "step": "openfoam_amr_archive_integrity",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.verify_openfoam_amr_archives"
       ],
@@ -153,7 +153,7 @@
     {
       "step": "openfoam_same_run_amr_mapping",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.analyze_amr_same_run_map"
       ],
@@ -167,9 +167,25 @@
       "log_sha256": "45f666968c20311a418a60b196c256144b7166a59c84e0800ee564f024910045"
     },
     {
+      "step": "openfoam_amr_volume_integrated",
+      "command": [
+        "python3",
+        "-m",
+        "tools.compare_amr_resolution_volume_integrated"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_amr_resolution_volume_integrated"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_amr_volume_integrated.log",
+      "log_sha256": "f0cf07423c003cf8abb555b8a6754ce3894cdc2f1bd2a6b818614f5eacb75fe5"
+    },
+    {
       "step": "su2_archive_review",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.review_su2_archives"
       ],
@@ -185,7 +201,7 @@
     {
       "step": "su2_standard_review",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.review_su2_standard"
       ],
@@ -201,7 +217,7 @@
     {
       "step": "su2_diagnostic_replay",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.replay_su2_diagnostics"
       ],
@@ -217,7 +233,7 @@
     {
       "step": "su2_spectral_derivatives",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.compare_su2_spectral"
       ],
@@ -233,7 +249,7 @@
     {
       "step": "su2_time_comparison",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.compare_su2_time"
       ],
@@ -249,7 +265,7 @@
     {
       "step": "su2_localized_source_lag",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.audit_su2_localized_source_lag"
       ],
@@ -265,7 +281,7 @@
     {
       "step": "su2_bdf2_control",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_su2_bdf2_control"
       ],
@@ -281,7 +297,7 @@
     {
       "step": "su2_boundary_time_pilot",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_su2_boundary_time_pilot"
       ],
@@ -297,7 +313,7 @@
     {
       "step": "su2_restart_findings",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.replay_su2_restart_findings"
       ],
@@ -313,7 +329,7 @@
     {
       "step": "openfoam_gate",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.build_openfoam_report"
       ],
@@ -329,7 +345,7 @@
     {
       "step": "physicsnemo_gates",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.build_physicsnemo_report"
       ],
@@ -345,7 +361,7 @@
     {
       "step": "physicsnemo_sampled_derivative_replay",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.audit_physicsnemo_local_fields"
       ],
@@ -361,7 +377,7 @@
     {
       "step": "su2_gates",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.build_su2_report"
       ],
@@ -377,7 +393,7 @@
     {
       "step": "root_pressure_threshold",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_root_pressure_threshold"
       ],
@@ -393,7 +409,7 @@
     {
       "step": "pressure_moment_threshold",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_pressure_moment_threshold"
       ],
@@ -409,7 +425,7 @@
     {
       "step": "pressure_data_amplitude_countermodel",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_pressure_data_amplitude_countermodel"
       ],
@@ -425,7 +441,7 @@
     {
       "step": "cone_sign_symmetry",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_cone_sign_symmetry"
       ],
@@ -441,7 +457,7 @@
     {
       "step": "su2_output_clock_control",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_su2_output_clock_control"
       ],
@@ -457,7 +473,7 @@
     {
       "step": "uniform_prefix_threshold",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_uniform_prefix_threshold"
       ],
@@ -473,7 +489,7 @@
     {
       "step": "high_gradient_mms",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_high_gradient_mms"
       ],
@@ -489,7 +505,7 @@
     {
       "step": "high_gradient_reference",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_high_gradient_reference"
       ],
@@ -505,7 +521,7 @@
     {
       "step": "support_hole_tube_geometry",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_support_hole_tube_geometry"
       ],
@@ -521,7 +537,7 @@
     {
       "step": "linearized_axis_tube_concentration",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_alignment_uncertainty"
       ],
@@ -537,7 +553,7 @@
     {
       "step": "openfoam_iteration_archives",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.replay_openfoam_iteration_archives"
       ],
@@ -553,7 +569,7 @@
     {
       "step": "openfoam_pressure_pilot",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.replay_openfoam_pressure_pilot"
       ],
@@ -569,7 +585,7 @@
     {
       "step": "openfoam_solenoidal_startup",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.check_openfoam_solenoidal_control"
       ],
@@ -585,7 +601,7 @@
     {
       "step": "artifact_links",
       "command": [
-        "/private/tmp/cans-verify-20261001/bin/python",
+        "python3",
         "-m",
         "tools.audit_gate_artifacts"
       ],

@@ -7,6 +7,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from tools.replay_sanitizer import portable_command, sanitize_output
 
 steps = [
     ('tests', [sys.executable, '-m', 'pytest', '-q', 'tests']),
@@ -52,9 +53,9 @@ output = Path('evidence/report-replay');output.mkdir(exist_ok=True)
 records = []
 for name, command in steps:
     run = subprocess.run(command, capture_output=True, text=True)
-    log = output/(name+'.log');log.write_text(run.stdout+run.stderr)
-    records.append({'step':name,'command':command,
-                    'replay_command':['python3', *command[1:]],
+    log = output/(name+'.log');log.write_text(sanitize_output(run.stdout+run.stderr))
+    records.append({'step':name,'command':portable_command(command),
+                    'replay_command':portable_command(command),
                     'exit_code':run.returncode,
                     'log':str(log),'log_sha256':hashlib.sha256(log.read_bytes()).hexdigest()})
     if run.returncode:

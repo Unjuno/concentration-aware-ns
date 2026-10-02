@@ -1,5 +1,20 @@
 # Completion audit — interim, 2026-09-27
 
+### Full replay on the Foundation 14 PR branch — 2026-10-02
+
+On the current `foundation14-matrix` branch, the locked Python 3.14.5
+verification environment ran the full test suite: 220 passed, one skipped,
+and five subtests passed. The published archive/algebra replay completed all
+38 configured steps, including a fresh full test run. The Foundation 14
+cross-version matrix verifier also passed for all six rows and three
+preserved-attempt archives. The replay and portable logs are recorded in
+[`evidence/report-replay/summary.json`](../evidence/report-replay/summary.json);
+the replayer now records portable `python3` commands and replaces ephemeral
+temporary-directory paths before hashing published output. This validates
+tracked archived evidence and current Python post-processing; it does not
+rerun a solver, retrain PhysicsNeMo, execute Lean, certify continuous errors,
+or resolve the remaining actual-profile pressure and AMR limitations.
+
 ### Completion audit refresh — 2026-10-02
 
 The current-main PhysicsNeMo boundary-source follow-up confirms the low-level
