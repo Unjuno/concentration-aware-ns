@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 210 — add current forcing-structure and finite-grid literature
+
+Audited the primary arXiv texts for Constantin–Ignatova–Vicol (2609.20803v2)
+and Cao–Chi–Nie (2609.10262v4). The first result is conditional on analytic
+forcing, a uniform preterminal spatial C2 bound, anisotropic angular-mean
+bounds, and exact axisymmetry on a positive-radius core; it does not cover
+arbitrary smooth forcing. The second gives topology-dependent force-density
+thresholds and, for a fixed finite set of whole-space grids, a construction
+that matches velocity and force cell averages despite terminal blow-up. It
+does not assert failure of refinement convergence for one fixed smooth case,
+or indistinguishability of local-gradient/vorticity diagnostics. These
+preprints have not been independently verified and establish no solver defect
+or material-scale implication. Recorded in the dated report and completion
+audit; full Python suite passed (212 passed, 1 skipped, 5 subtests), and PR #4
+CI passed at head `02eefa4`. The actualProfile pressure-threshold gap and other
+completion requirements remain open.
+
 ## Revision 209 — make clean test environments actually runnable
 
 An isolated review of PR #6's exact head exposed a reproducibility gap: a
