@@ -1,5 +1,23 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 clean-export runner diagnosis
+
+The first new tracked-only export at commit
+`2d3983d1a563a2aae368348618a69cca46e2e8b6` failed at report-replay step 1:
+the venv install passed, but a nested test subprocess resolved the host
+`python` and reported `No module named pytest`. The replay runner intentionally
+uses PATH lookup for child commands; `tools/check_clean_export.py` had not put
+its fresh venv on that PATH. This is our clean-export environment-propagation
+defect, not a solver finding or scientific verdict. Preserved the sanitized
+failure record and raw log hashes in
+[`clean-export-2026-10-03-path-failure/`](../evidence/clean-export-2026-10-03-path-failure/README.md).
+Added a regression test that failed before the fix and passed after it; the
+full current-checkout suite passed 222 tests, one skipped, five subtests. The
+exporter now places the venv scripts directory first for all post-install
+subprocesses. A fresh locked tracked-only export from the corrected commit is
+still required; the previous failure must not be represented as a successful
+replay.
+
 ### Completion audit refresh — 2026-10-03 full-sphere rotational diffusion
 
 Extended the conditional Jeffery director analysis from its local tangent

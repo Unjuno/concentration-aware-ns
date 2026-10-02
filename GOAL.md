@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 239 — correct clean-export interpreter resolution
+
+A tracked-only clean export at the then-current `2d3983d` created its locked
+venv and installed dependencies, but report replay failed immediately because
+the replay runner launched nested `python` via inherited host PATH and selected
+a global interpreter without pytest. Preserved the failure, hashes and
+classification as a benchmark-tooling/reproducibility defect; no solver or
+scientific verdict changes. Wrote the PATH-priority regression first, observed
+its expected import failure, fixed the exporter to prepend the fresh venv's
+scripts directory for all nested commands, then saw the regression pass and
+the full suite pass (222 passed, one skipped, five subtests). A fresh
+tracked-only replay using the corrected committed exporter is still required.
+The goal remains active.
+
 ## Revision 238 — derive the optical-fluid equation boundary
 
 Added the Madelung form of the effective GPE/NLSE to the impact map:
