@@ -2,6 +2,20 @@
 
 ### Completion audit refresh — 2026-10-02
 
+The latest tracked head before this record, `5cb3d65c2b4c065df1cc21ed4ec68dde3b603d7b`,
+was exported from Git's tracked tree with a fresh locked Python 3.14.5
+environment. All 37 published report-replay steps and six additional checks
+passed; all 189 compared report/test-evidence files were unchanged. The full
+suite from the clean export reported 201 passed, 1 skipped, and 5 subtests
+passed, with a separate full-suite rerun also passing. The sanitized record,
+raw/published log hashes, archive and runner hashes, commands, and package
+versions are in
+[`evidence/clean-export-2026-10-02-current-head-5cb3d65/`](../evidence/clean-export-2026-10-02-current-head-5cb3d65/README.md).
+A Python 3.12 first attempt produced seven environment-metadata/hash
+differences; matching the recorded Python 3.14.5 environment eliminated all
+of them. This is publication/replay validation, not a solver rerun or a
+scientific verdict upgrade.
+
 The separate Foundation 13 `n=64`, `dt=0.0005` rerun has 36 converged steps
 through `t=0.018`; a later `t=0.0185` time label has no completed convergence
 record. It has no `exit.json` or endpoint archive. Current Docker inspection

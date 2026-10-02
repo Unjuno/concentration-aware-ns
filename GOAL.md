@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 187 — exact-head clean export and full-suite evidence
+
+Exported commit `5cb3d65c2b4c065df1cc21ed4ec68dde3b603d7b` from the tracked
+Git tree using a fresh locked Python 3.14.5 environment. All 37 published
+report-replay steps, six added checks, and a separate full-suite run passed;
+the replay reported 201 passed, 1 skipped, and 5 subtests passed, and all 189
+compared report/test-evidence files remained byte-identical. The first attempt
+used Python 3.12 and changed only recorded interpreter strings plus dependent
+hashes; repeating under the recorded Python 3.14 environment removed all seven
+differences. The sanitized commands, package list, archive/runner hashes, and
+logs are in `evidence/clean-export-2026-10-02-current-head-5cb3d65/`. This
+validates postprocessing and archived evidence, not solver reruns or scientific
+verdicts. Hosted CI at this head remains queued. Goal remains active.
+
 ## Revision 186 — separate audit of neural-forcing blow-up preprint
 
 Read the primary text of Li, arXiv:2609.23934v1. Its reciprocal-vorticity
