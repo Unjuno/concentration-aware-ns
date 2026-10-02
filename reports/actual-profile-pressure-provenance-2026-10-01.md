@@ -122,6 +122,45 @@ from the universally retained entrance inequalities, or carry a prepared
 profile witness into the final choice. Until one succeeds, do not apply the
 separate existential-profile pressure theorem to `actualProfile`.
 
+## 2026-10-02 entrance-branch dependency audit
+
+The retained entrance condition was checked against its exact construction
+lemma, not just its field name. `AxisPreparation.entrances` returns an
+`EntranceProfile` for every sufficiently large scale and normalization;
+that profile stores `source_lower`, `slope_positive`, and `cone_margin`. The
+cone estimate is proved in `NaturalEntrance.CoefficientProfile.cone_at_four`
+by splitting on `99/100 ≤ chi`. In the high-`chi` branch, the stored slope
+estimate makes `p1 > 23/10`, which directly gives the cone margin. In the
+low-`chi` branch, the proof uses the separate cutoff premise
+`|Z| ≤ delta → 99/100 < chi` to infer `delta < |Z|`, then a quantitative
+separation estimate and a smallness estimate for `f` to make `p2²/p1`
+large. Thus the actual forward construction depends on a pressure-cutoff
+property that is not itself a field of `AxisPreparation` or
+`EntranceProfile`.
+
+`prepare_axis_with_cutoff` confirms where that premise enters: it calls
+`NaturalAxisCoefficients.ideal_prefix_analytic_inputs` with `hP : 2 ≤ core.P`,
+and returns the cutoff theorem separately from the `AxisPreparation` record.
+The record retains coefficient inputs parameterized by the actual pressure
+function and all-scale entrance existence, so this audit does not prove the
+cutoff or amplitude bound is undefinable from those fields. It does identify
+the exact missing converse: one would need to derive a pressure cutoff (or
+the root moment inequality directly) from the retained coefficient/entrance
+identities. No such converse was found or formalized here. In particular,
+`cone_margin` alone is only the resulting inequality on entrance-field jets;
+the checked proof uses `hcut` in one branch and gives no reverse implication.
+
+This narrows the earlier proof route without changing its status: the cutoff
+dependency is structurally hidden by the current record boundary, but that is
+not evidence of a false theorem or a low-amplitude actual profile. The exact
+root identity remains the quantitative target: positivity of `Z` is
+equivalent to a strict inequality involving the actual schedule moments
+`M0 = ∫ g·kernel` and `M1 = ∫ g·shapeExponent·kernel`. The source entrance
+conditions have not yet been connected to that inequality. Pinned files and
+signatures were re-read from `work/upstream-refresh/build-source` at the same
+commit; the audit output is
+`evidence/upstream-refresh/entrance-branch-dependency-2026-10-02.json`.
+
 ## Analytic content of the retained entrance margin
 
 The retained `cone_margin` is not itself a scalar amplitude condition. In the

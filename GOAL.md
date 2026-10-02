@@ -1,5 +1,9 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 190 — trace the retained entrance margin's pressure-cutoff dependency
+
+Re-read the pinned OpenAI source proof of `NaturalEntrance.CoefficientProfile.cone_at_four` and the records selected by `FinalSlowBase.actualProfile`. Its high-`chi` branch gets the cone margin from the retained slope estimate; its low-`chi` branch uses the pressure cutoff `|Z| ≤ delta → 99/100 < chi` to force pressure deviation, then separation and smallness estimates. `prepare_axis_with_cutoff` constructs that cutoff using `core.P ≥ 2` but returns the cutoff separately from `AxisPreparation`; the selected record retains entrance existence, not that proof. The exact root pressure-moment inequality remains disconnected from the selected entrance conditions. This narrows the witness-provenance gap but proves neither that the missing implication is impossible nor that `actualProfile` violates a threshold. No upstream issue or physical inference is justified. Details and pinned-file hashes are in `reports/actual-profile-pressure-provenance-2026-10-01.md` and `evidence/upstream-refresh/entrance-branch-dependency-2026-10-02.json`. Goal remains active.
+
 ## Revision 189 — clarify coarse versus persistent OpenFOAM gate disagreement
 
 Reconciled the six-case matrix wording with the frozen v2 protocol and

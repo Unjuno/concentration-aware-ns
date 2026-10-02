@@ -1,0 +1,19 @@
+{
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "scope": "Pinned-source dependency audit; source signatures and hashes only. No converse theorem, low-amplitude witness, or actualProfile counterexample established.",
+  "checked_declarations": {
+    "NaturalAxisCoefficients.lean": "ideal_prefix_analytic_inputs takes hB : 2 ≤ B and returns cutoff plus AnalyticInputs; AnalyticInputs does not retain hB.",
+    "NaturalEntrance.lean": "CoefficientProfile.cone_at_four uses hcut in the low-chi branch; EntranceProfile retains source_lower, slope_positive, cone_margin.",
+    "NominalProfile.lean": "AxisPreparation retains inputs, scaleBound, and all-scale entrance existence; prepare_axis_with_cutoff returns hcut separately after calling ideal_prefix_analytic_inputs with hP.",
+    "FinalSlowBase.lean": "ProfileData stores nominal and outgoing but no explicit PreparedProfile, hP, or hcut field; actualProfile is Classical.choice profileData_nonempty.",
+    "OutgoingProfile.lean": "Specification includes ideal_prefix and same_axis_datum; its generic existence theorem requires only P > 0."
+  },
+  "sha256": {
+    "NaturalAxisCoefficients.lean": "cf762100d7de681f34aba5dcfeecac4b81e6b5d2cda8ec781236e4b3fdd3d9fd",
+    "NaturalEntrance.lean": "05d4871c68cbf59486ba5a34fe42c3c3963218e2ba7be2408363d5f8a8f26af3",
+    "NominalProfile.lean": "59f2977035db50e680ee38cf4503c47497e50a58a6043d083fdd8755dac06c88",
+    "FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "OutgoingProfile.lean": "c62ac452804940732e017daa7ae11545e3db58ee22b5effa395dc3ff9afde520"
+  },
+  "conclusion": "Construction-level cutoff dependency identified. Whether retained fields imply a cutoff remains unresolved; cone_margin does not itself state the pressure cutoff. No upstream defect or physical consequence established."
+}
