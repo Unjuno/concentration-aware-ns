@@ -531,3 +531,14 @@ solution premise remains the OpenAI packet and the localized gluing theorem.
 This limits universal claims from finite observations; it does not invalidate
 the fixed manufactured-solution convergence study. Full proof and caveats are
 in `reports/finite-mesh-observation-nullspace-2026-10-03.md`.
+
+
+## Acceptance-gate scope refinement — 2026-10-03
+
+The v2 gate now says a local PASS is specific to the frozen MMS, its input
+representation, reconstruction operator and reported metrics. Finite cell/face
+or point observations cannot be promoted to a universal continuous-peak
+guarantee; such a claim needs an explicit validated reconstruction or an
+independent regularity/unresolved-mode estimate. This records the finite-mesh
+observation analysis without changing existing case verdicts. Targeted gate
+tests: 14 passed. PR #4 CI for head `793bdc46` is queued.

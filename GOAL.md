@@ -3614,3 +3614,15 @@ does not contradict fixed-MMS refinement convergence, establish a solver bug,
 or imply molecular ordering or viscosity change. Details, proof and limits are
 in `reports/finite-mesh-observation-nullspace-2026-10-03.md`. Goal remains
 active.
+
+
+## Revision 142 — acceptance scope now carries the finite-observation limit
+
+Updated `docs/acceptance-gate-v2.md`: local PASS is explicitly restricted to
+the frozen MMS, input representation, reconstruction and metrics; finite cell,
+face or point observations do not certify a universal continuous peak bound.
+A continuum-bound claim now calls for a validated explicit reconstruction or
+an independent regularity/unresolved-mode estimate. This is a scope rule, not
+a change to any existing numerical verdict. Targeted gate tests pass (14). The
+latest PR #4 head is `793bdc46fa798ad1b7e22ee0237755c72cda7142`; its GitHub CI
+run `37035369482` is queued. Goal remains active.
