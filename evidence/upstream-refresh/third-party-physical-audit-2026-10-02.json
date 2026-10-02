@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-02",
+  "canonical_repository": "https://github.com/Unjuno/concentration-aware-ns",
+  "reviewed_project": {
+    "repository": "https://github.com/xaviercallens/OpenAI-NSE-Epistemic-Audit",
+    "head": "4e7625798da5e4105873c1ef95f8014bb9f53026",
+    "pushed_at": "2026-09-19T05:11:34Z",
+    "license_api_spdx": "NOASSERTION",
+    "issues_enabled": true,
+    "review_scope": "public README, CHANGELOG, GitHub repository metadata, and linked Zenodo record; no source checkout, Lean replay, code execution, or MD reproduction"
+  },
+  "zenodo": {
+    "record_id": 22838708,
+    "doi": "10.5281/zenodo.22838708",
+    "concept_doi": "10.5281/zenodo.22696717",
+    "version": "5.8.0",
+    "publication_date": "2026-09-19",
+    "resource_type": "Preprint",
+    "title": "The OpenAI Navier-Stokes and Euler Blow-Up Proofs: A Physical Reading, Not a Physical Refutation (v5.8.0)",
+    "related_release": "https://github.com/xaviercallens/OpenAI-NSE-Epistemic-Audit/releases/tag/v5.8.0"
+  },
+  "author_reported_change_history": {
+    "withdrawals_and_corrections": [
+      "README says older physical-vacuity/censorship framing was dropped.",
+      "README and CHANGELOG list withdrawn enstrophy, condition-number, kinetic-lock, T-duality, and Leray-alpha interpretations.",
+      "CHANGELOG says a registered v5.7 liquid cavitation prediction failed in a closed box after ambient pressure rose.",
+      "CHANGELOG v5.8 reports two barostatted slab runs; plateau about 2% above the registered value and within one per-window standard error, with stated limitations including lag, upward-biased plateau statistic, one state point, and no fixed-pressure 3D test."
+    ],
+    "independent_reproduction": false
+  },
+  "interpretation": {
+    "supports_molecular_alignment_claim": false,
+    "proves_universal_physical_cutoff": false,
+    "changes_benchmark_gate": false,
+    "upstream_issue_or_message_sent": false,
+    "disposition": "literature lead only; not a reproduced defect in OpenAI, OpenFOAM, SU2, or PhysicsNeMo"
+  },
+  "sources": [
+    "https://zenodo.org/api/records/22838708",
+    "https://github.com/xaviercallens/OpenAI-NSE-Epistemic-Audit/blob/main/README.md",
+    "https://github.com/xaviercallens/OpenAI-NSE-Epistemic-Audit/blob/main/CHANGELOG.md",
+    "https://arxiv.org/abs/2609.17642",
+    "https://www.reddit.com/r/OpenSourceeAI/comments/1wuckyw/openai_formalized_a_navierstokes_singularity_in/"
+  ]
+}

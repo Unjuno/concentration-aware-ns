@@ -1,0 +1,29 @@
+{
+  "scope": "Exact angular moments for a constructed orientation distribution; translational moments are invariant because the angular factor integrates to one. Not a kinetic solution or molecular dynamics result.",
+  "sympy": "1.14.0",
+  "source_sha256": "7567e9846c336ff0a0c493d9d1b06e03abdb2088e62e0825a106b2c2712df44b",
+  "conditions": [
+    "theta in [0, pi)",
+    "abs(alpha) < 1",
+    "orientation-independent translational distribution f(x,v)"
+  ],
+  "orientation_interval": "[0, pi)",
+  "density": "(1 + alpha*cos(2*theta))/pi",
+  "normalization": "1",
+  "nematic_order": "alpha/2",
+  "transverse_order": "0",
+  "positivity_condition": "abs(alpha) < 1",
+  "same_translational_moments": [
+    "mass density",
+    "mean velocity",
+    "translational temperature",
+    "translational kinetic-stress tensor"
+  ],
+  "controls": {
+    "orientation_density_normalizes": true,
+    "nematic_order_is_alpha_over_two": true,
+    "transverse_order_is_zero": true,
+    "isotropic_case_has_zero_order": true
+  },
+  "success": true
+}
