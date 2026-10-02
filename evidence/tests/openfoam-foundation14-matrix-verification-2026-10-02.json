@@ -171,5 +171,5 @@
       "timed_out": false
     }
   },
-  "scope": "Archive-to-work byte replay, pinned package matrix completion, and comparison of stored diagnostic scalars only; no physical validation, continuum-extrema certificate, or solver-defect verdict."
+  "scope": "Tracked-archive self-consistency, frozen input hashes, completion gates, preserved replay archives, pinned package matrix, and comparison of stored diagnostic scalars only; no physical validation, continuum-extrema certificate, or solver-defect verdict."
 }

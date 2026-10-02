@@ -1,7 +1,6 @@
 """Verify Foundation 14 matrix case archives and replay comparisons."""
 import hashlib
 import json
-import os
 import subprocess
 import tarfile
 import tempfile
@@ -17,7 +16,6 @@ from tools.run_openfoam_foundation14_matrix import (
 
 
 PROTOCOL = ROOT / "protocols/high-gradient-of14-v1.json"
-RUN_ROOT = ROOT / "work/of14-high-gradient-v1"
 EVIDENCE = ROOT / "evidence/of14-high-gradient-v1-matrix"
 V13_INDEX = ROOT / "evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json"
 V13_ADDENDUM = ROOT / "evidence/of13-high-gradient-v2-temporal-addendum"
@@ -61,41 +59,45 @@ def materialize_archive(case_name, row, temp_root):
     return EVIDENCE / archive_ref
 
 
-def verify_case_archive(case_name, row, temp_root):
+def _extract_archive(archive_path, destination, expected_root):
+    destination = Path(destination)
+    destination.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(archive_path, "r:gz") as archive:
+        members = [member for member in archive.getmembers()
+                   if (member.isfile() or member.isdir() or member.issym() or member.islnk())
+                   and not Path(member.name).name.startswith("._")]
+        if any(not (member.name == expected_root or member.name.startswith(expected_root + "/"))
+               for member in members):
+            raise ValueError(f"archive contains an unexpected top-level path: {archive_path}")
+        archive.extractall(destination, filter="data")
+    extracted = destination / expected_root
+    if not extracted.is_dir():
+        raise ValueError(f"archive does not contain its expected case root: {archive_path}")
+    return extracted
+
+
+def _verify_input_hashes(case_path):
+    input_manifest = case_path / "input-hashes.json"
+    if not input_manifest.is_file():
+        raise ValueError(f"case archive lacks input-hashes.json: {case_path}")
+    inputs = json.loads(input_manifest.read_text())
+    if not inputs:
+        raise ValueError(f"case archive contains an empty input hash table: {case_path}")
+    for relative, expected in inputs.items():
+        path = case_path / relative
+        if not path.is_file() or sha256(path) != expected:
+            raise ValueError(f"archived input hash mismatch: {case_path.name}/{relative}")
+
+
+def verify_case_archive(case_name, row, temp_root, protocol):
     archive_path = materialize_archive(case_name, row, temp_root)
     if not archive_path.is_file() or sha256(archive_path) != row["archive_sha256"]:
         raise ValueError(f"archive hash mismatch for {case_name}: {archive_path}")
-    case_path = RUN_ROOT / case_name
-    if not complete_case(case_path, json.loads(PROTOCOL.read_text())["end_time"]):
-        raise ValueError(f"work case fails full completion check: {case_name}")
-    source_files = {str(path.relative_to(case_path)): path
-                    for path in case_path.rglob("*") if path.is_file() or path.is_symlink()}
-    archived_root = case_name
-    with tarfile.open(archive_path, "r:gz") as archive:
-        members = {member.name: member for member in archive.getmembers()
-                   if member.isfile() or member.issym() or member.islnk()}
-        archived_files = {name.removeprefix(archived_root + "/"): member
-                          for name, member in members.items()
-                          if name.startswith(archived_root + "/")}
-        if set(archived_files) != set(source_files):
-            raise ValueError(f"archive file set differs from source case: {case_name}")
-        for relative, source in source_files.items():
-            member = archived_files[relative]
-            if source.is_symlink():
-                if not (member.issym() or member.islnk()) or member.linkname != os.readlink(source):
-                    raise ValueError(f"archive symlink differs from work case: {case_name}/{relative}")
-                continue
-            if not member.isfile():
-                raise ValueError(f"archive file type differs from work case: {case_name}/{relative}")
-            stream = archive.extractfile(member)
-            if stream is None:
-                raise ValueError(f"unreadable archive member: {case_name}/{relative}")
-            digest = hashlib.sha256()
-            for chunk in iter(lambda: stream.read(1 << 20), b""):
-                digest.update(chunk)
-            if digest.hexdigest() != sha256(source):
-                raise ValueError(f"archive member differs from work case: {case_name}/{relative}")
-    return json.loads((case_path / "diagnostics.json").read_text()), archive_path
+    case_path = _extract_archive(archive_path, Path(temp_root) / "of14", case_name)
+    if not complete_case(case_path, protocol["end_time"]):
+        raise ValueError(f"archived case fails the frozen completion check: {case_name}")
+    _verify_input_hashes(case_path)
+    return json.loads((case_path / "diagnostics.json").read_text()), archive_path, case_path
 
 
 def v13_archive_path(case_name, temp_root):
@@ -166,45 +168,27 @@ def normalized_endpoint_field_hashes(archive_path, case_name, version):
     return normalized
 
 
-def verify_attempt_archive(item):
-    source = RUN_ROOT / item["path"]
+def verify_attempt_archive(item, temp_root):
     archive_path = EVIDENCE / item["evidence_archive"]
     if sha256(archive_path) != item["evidence_archive_sha256"]:
         raise ValueError(f"preserved attempt archive hash mismatch: {archive_path}")
-    complete = item["status"] == "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
-    if complete:
-        paths = [path for path in source.rglob("*") if path.is_file() or path.is_symlink()]
-    else:
-        paths = []
-        input_hash_path = source / "input-hashes.json"
-        if input_hash_path.is_file():
-            input_hashes = json.loads(input_hash_path.read_text())
-            paths.extend(source / relative for relative in input_hashes)
-        for filename in ("parameters.json", "input-hashes.json", "command.json", "exit.json",
-                         "log.container", "log.blockMesh", "log.foamRun", "log.centres"):
-            path = source / filename
-            if path.is_file():
-                paths.append(path)
-    expected = {f"{source.name}/{path.relative_to(source)}": path for path in set(paths)}
-    with tarfile.open(archive_path, "r:gz") as archive:
-        members = {member.name: member for member in archive.getmembers()
-                   if member.isfile() or member.issym() or member.islnk()}
-        if set(members) != set(expected):
-            raise ValueError(f"preserved attempt archive member set differs: {archive_path}")
-        for name, path in expected.items():
-            member = members[name]
-            if path.is_symlink():
-                if not (member.issym() or member.islnk()) or member.linkname != os.readlink(path):
-                    raise ValueError(f"preserved attempt symlink differs: {archive_path}:{name}")
-                continue
-            digest = hashlib.sha256()
-            stream = archive.extractfile(member)
-            if stream is None:
-                raise ValueError(f"unreadable preserved attempt member: {archive_path}:{name}")
-            for chunk in iter(lambda: stream.read(1 << 20), b""):
-                digest.update(chunk)
-            if digest.hexdigest() != sha256(path):
-                raise ValueError(f"preserved attempt member differs: {archive_path}:{name}")
+    attempt_root = Path(item["path"]).name
+    attempt_path = _extract_archive(
+        archive_path, Path(temp_root) / "attempts", attempt_root
+    )
+    _verify_input_hashes(attempt_path)
+    expected_input_hash = item.get("input_hashes_sha256")
+    if expected_input_hash and sha256(attempt_path / "input-hashes.json") != expected_input_hash:
+        raise ValueError(f"preserved attempt input-hash manifest differs: {archive_path}")
+    log = attempt_path / "log.foamRun"
+    if log.is_file() and item.get("log_sha256") != sha256(log):
+        raise ValueError(f"preserved attempt solver log hash differs: {archive_path}")
+    if item["status"] != "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION":
+        actual_steps = sum(1 for line in log.read_text(errors="replace").splitlines()
+                           if line.startswith("Time = ")) if log.is_file() else 0
+        if actual_steps != item.get("observed_steps"):
+            raise ValueError(f"preserved partial attempt step count differs: {archive_path}")
+    return attempt_path
 
 
 def verify_matrix():
@@ -222,8 +206,24 @@ def verify_matrix():
 
     case_results = []
     with tempfile.TemporaryDirectory(prefix="cans-of14-verify-") as temp_root:
+        case_directories = {}
         for name in manifest["expected_cases"]:
-            of14, of14_archive = verify_case_archive(name, rows[name], temp_root)
+            of14, of14_archive, case_path = verify_case_archive(
+                name, rows[name], temp_root, protocol
+            )
+            case_directories[name] = case_path
+            expected_diagnostics = next(
+                item for item in manifest["case_diagnostics"]
+                if f"n{item['parameters']['n']}-dt{item['parameters']['dt']:g}" == name
+            )
+            if of14 != expected_diagnostics:
+                raise ValueError(f"archived diagnostics differ from matrix manifest: {name}")
+            if (rows[name].get("standard_acceptance", of14["standard_acceptance"]["status"])
+                    != of14["standard_acceptance"]["status"]
+                    or rows[name].get("local_quality",
+                                      of14.get("local_quality", {}).get("status", "UNCERTAIN"))
+                    != of14.get("local_quality", {}).get("status", "UNCERTAIN")):
+                raise ValueError(f"matrix row gates differ from archived diagnostics: {name}")
             of13 = v13_diagnostics(name, temp_root)
             of13_archive = v13_archive_path(name, temp_root)
             differences = {metric: of14[metric] - of13[metric] for metric in METRICS}
@@ -250,13 +250,17 @@ def verify_matrix():
         replay_checks = [item for item in manifest.get("attempt_history", [])
                          if item.get("status") == "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"]
         for item in replay_checks:
+            preserved_path = verify_attempt_archive(item, temp_root)
             computed = compare_completed_replay(
-                RUN_ROOT / item["path"], RUN_ROOT / item["case"]
+                preserved_path, case_directories[item["case"]]
             )
             if computed["status"] != "PASS" or computed != item["replay_comparison"]:
                 raise ValueError(f"preserved replay comparison mismatch: {item['case']}")
-        for item in manifest.get("attempt_history", []):
-            verify_attempt_archive(item)
+        attempt_directories = {
+            item["case"]: verify_attempt_archive(item, temp_root)
+            for item in manifest.get("attempt_history", [])
+            if item not in replay_checks
+        }
 
         partial = next((item for item in manifest.get("attempt_history", [])
                         if item["case"] == "n128-dt0.001"
@@ -266,7 +270,7 @@ def verify_matrix():
                         }), None)
         partial_actual_steps = None
         if partial:
-            log = RUN_ROOT / partial["path"] / "log.foamRun"
+            log = attempt_directories[partial["case"]] / "log.foamRun"
             partial_actual_steps = sum(1 for line in log.read_text(errors="replace").splitlines()
                                        if line.startswith("Time = "))
             if partial.get("observed_steps") != partial_actual_steps:
@@ -285,7 +289,7 @@ def verify_matrix():
             "line_anchored_step_count": partial_actual_steps,
             "exit": partial.get("prior_exit") if partial else None,
         },
-        "scope": "Archive-to-work byte replay, pinned package matrix completion, and comparison of stored diagnostic scalars only; no physical validation, continuum-extrema certificate, or solver-defect verdict.",
+        "scope": "Tracked-archive self-consistency, frozen input hashes, completion gates, preserved replay archives, pinned package matrix, and comparison of stored diagnostic scalars only; no physical validation, continuum-extrema certificate, or solver-defect verdict.",
     }
     output = ROOT / "evidence/tests/openfoam-foundation14-matrix-verification-2026-10-02.json"
     output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")

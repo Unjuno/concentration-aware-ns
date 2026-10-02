@@ -3,7 +3,11 @@ import json
 import tarfile
 
 from tools import run_openfoam_foundation14_matrix as runner
-from tools.verify_openfoam_foundation14_matrix import normalized_endpoint_field_hashes
+from tools.verify_openfoam_foundation14_matrix import (
+    _extract_archive,
+    _verify_input_hashes,
+    normalized_endpoint_field_hashes,
+)
 
 
 def test_of14_protocol_reuses_of13_equations_matrix_and_gates():
@@ -94,6 +98,38 @@ def test_version_banner_is_the_only_normalized_endpoint_difference(tmp_path):
     left = normalized_endpoint_field_hashes(archives[0], "n64-dt0.001", 13)
     right = normalized_endpoint_field_hashes(archives[1], "n64-dt0.001", 14)
     assert left == right
+
+
+def test_archive_verification_uses_preserved_inputs_and_rejects_escape_paths(tmp_path):
+    import io
+
+    case = tmp_path / "n16-dt0.001"
+    case.mkdir()
+    payload = b"frozen input\n"
+    (case / "controlDict").write_bytes(payload)
+    (case / "input-hashes.json").write_text(json.dumps({
+        "controlDict": hashlib.sha256(payload).hexdigest(),
+    }))
+    archive_path = tmp_path / "case.tar.gz"
+    with tarfile.open(archive_path, "w:gz") as archive:
+        for path in case.iterdir():
+            archive.add(path, arcname=f"{case.name}/{path.name}")
+    extracted = _extract_archive(archive_path, tmp_path / "extract", case.name)
+    _verify_input_hashes(extracted)
+    assert (extracted / "controlDict").read_bytes() == payload
+
+    malicious = tmp_path / "malicious.tar.gz"
+    with tarfile.open(malicious, "w:gz") as archive:
+        member = tarfile.TarInfo("../outside")
+        member.size = 1
+        archive.addfile(member, io.BytesIO(b"x"))
+    try:
+        _extract_archive(malicious, tmp_path / "malicious-extract", case.name)
+    except ValueError as error:
+        assert "unexpected top-level path" in str(error)
+    else:
+        raise AssertionError("archive path escape was accepted")
+    assert not (tmp_path / "outside").exists()
 
 
 def test_preserved_incomplete_attempt_archive_excludes_partial_time_fields(tmp_path):
