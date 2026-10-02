@@ -1,5 +1,29 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 analytic provenance recheck
+
+Re-fetched `openai/NavierStokesAndEuler` main and confirmed commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, Apache-2.0 metadata, and disabled
+GitHub issues. Re-read the exact source path from
+`PreparedOutgoing.PreparedProfile.amplitude_lower`, through nominal and
+modulated assembly, to `FinalSlowBase.ProfileData` and its
+`actualProfile := Classical.choice profileData_nonempty`. The strong outgoing
+amplitude bound is retained on the prepared record and used to establish
+downstream existential assemblies, but `ProfileData` does not carry it; the
+actual selection therefore has only the source's ordinary profile-data
+guarantees in this extension. Re-ran
+`runtime/lean-verification/check_actual_profile_pressure_provenance.sh` in its
+pinned checker environment. Its three theorem axiom reports are limited to
+`propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`. The selected
+profile's threshold remains unproved; no counterexample or theorem failure
+was found. This is a verification-provenance gap, not a demonstrated defect
+in the upstream result. No simulation was run and no upstream post was made;
+the issue tracker is disabled and the finding concerns our extension. Exact
+source, script and output hashes are in
+[`evidence/lean-verification/actual-profile-pressure-recheck-2026-10-03.json`](../evidence/lean-verification/actual-profile-pressure-recheck-2026-10-03.json).
+
+At the same observation, PR #4 remained open at `b11c1450fd75474f9f5821b745ae630975164706`; its GitHub Actions `tests` check was still queued. No claim of hosted CI completion follows from the local Lean check.
+
 ### Completion audit refresh — 2026-10-02
 
 The current-main PhysicsNeMo boundary-source follow-up confirms the low-level

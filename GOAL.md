@@ -1,5 +1,25 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 226 — independently recheck the actual-profile pressure witness path
+
+Fetched the current OpenAI/NavierStokesAndEuler main metadata and confirmed
+that it remains at `f9e8bc5b38b6e212696e8a30e3e91517af887bbd` under
+Apache-2.0, with issue tracking disabled. Re-read the pinned source path from
+`PreparedOutgoing.PreparedProfile.amplitude_lower`, through nominal and
+modulated assembly, into `FinalSlowBase.ProfileData`. The prepared amplitude
+bound survives the former path, but is not a field of the latter; the source
+then defines `actualProfile` by classical choice from the ordinary
+`profileData_nonempty`. Re-ran the pinned Lean provenance checker: the
+existential strong-amplitude theorem, selected-profile positivity theorem,
+and normalization nonuniformity theorem all pass with only
+`propext`, `Classical.choice`, and `Quot.sound`, and no `sorryAx`. This
+reconfirms a witness-transfer gap, not a counterexample or proof failure for
+the upstream result. No simulation was run. No upstream report was made
+because this is a gap in our extension and the upstream issue tracker is
+disabled. Reproducibility data is in
+`evidence/lean-verification/actual-profile-pressure-recheck-2026-10-03.json`.
+The benchmark goal remains active.
+
 ## Revision 223 — revalidate the archived OpenFOAM matrix and clarify supersession
 
 Replayed the current six-case Foundation 13 matrix from frozen archives. All
