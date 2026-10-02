@@ -38,7 +38,9 @@ derivations, not claims from those sources. The APT/strict-Lyapunov framework
 follows Benaïm and Hirsch (1996),
 [DOI 10.1007/BF02218617](https://doi.org/10.1007/BF02218617), and Benaïm
 (1999), [paper](https://www.numdam.org/item/SPS_1999__33__1_0.pdf); the
-SDE-specific finite-noise estimate is checked here. No molecular diffusion law,
+SDE-specific finite-noise estimate is checked here. Benaïm's Theorem 9.1 is
+for discrete Robbins–Monro processes and does not directly establish
+equator-avoidance for this continuous-time SDE. No molecular diffusion law,
 particle-position determinism, phase transition, viscosity change, or solver
 acceptance result follows. No upstream report was warranted.
 

@@ -120,10 +120,14 @@ contained in the equator, or is one of the poles. This narrows the unresolved
 case but does not prove almost-sure alignment: the analysis here does not rule
 out convergence to the unstable equator. The equator-avoidance theorem must
 be checked against the exact continuous-time, decaying-noise hypotheses
-before claiming that exception has probability zero. The ODE/APT framework
-comes from Benaïm and Hirsch; its limit-set results are summarized and
-extended for stochastic processes by Benaïm. Our square-integrable-noise
-argument is specific to the present sphere SDE.
+before claiming that exception has probability zero. Benaïm's Theorem 9.1
+does prove nonconvergence to certain repelling sets for a discrete-time
+Robbins–Monro process under gain, regularity, and unstable-direction noise
+conditions. Those hypotheses are not a theorem for this continuous-time,
+state-dependent sphere SDE, so that result does not close the equator gap.
+The ODE/APT framework comes from Benaïm and Hirsch; its limit-set results are
+summarized and extended for stochastic processes by Benaïm. Our
+square-integrable-noise argument is specific to the present sphere SDE.
 
 ## What this does not establish
 

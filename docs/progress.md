@@ -609,4 +609,8 @@ alignment remains unproved. The APT/strict-Lyapunov framework is from
 Benaïm–Hirsch (1996) and Benaïm (1999); the SDE-specific estimate and exact
 identities are recorded in the full-sphere note/checker. Python 3.14.5
 full replay passed 42/42 with all log hashes matching; the suite passed 220
-tests, one skipped, and five subtests. Goal remains active.
+tests, one skipped, and five subtests. Follow-up source check found that
+Benaïm (1999), Theorem 9.1, concerns discrete Robbins–Monro processes and
+cannot be transferred directly to this continuous-time SDE. The equator
+exception therefore remains open. PR #4 CI for the pushed revision is pending.
+Goal remains active.

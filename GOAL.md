@@ -17,6 +17,19 @@ OpenAI field. Next work should verify an applicable equator-avoidance theorem
 or preserve this explicit exception, then continue the wider acceptance
 benchmark. The benchmark goal remains active.
 
+## Revision 229 — preserve the continuous-time equator-avoidance gap
+
+Checked the cited nonconvergence result rather than transferring its
+conclusion by analogy. Benaïm (1999), Theorem 9.1, is stated for a discrete
+Robbins–Monro algorithm with gain/regularity and unstable-direction noise
+conditions; it is not directly a theorem for the present state-dependent
+continuous-time sphere SDE. The subcritical limit set remains “equator or one
+pole,” with almost-sure polar alignment unresolved. Document this applicability
+boundary and keep searching for a continuous-time theorem or a direct proof.
+The full 42-step report replay and 220-test suite passed on the preceding
+revision; PR #4 CI for that code revision is pending. The wider benchmark goal
+remains active.
+
 ## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
 
 The earlier rotational-diffusion calculation found divergent variance for
