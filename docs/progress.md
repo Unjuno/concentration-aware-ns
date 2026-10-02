@@ -554,3 +554,11 @@ was warranted. Current metadata is stored in the dated upstream-refresh JSON.
 The complete local verification suite on the current benchmark checkout passed
 212 tests, skipped one, and passed five subtests. This is not the upstream
 PhysicsNeMo suite.
+
+## Full locked local test suite — 2026-10-03
+
+The full benchmark test suite passed on commit `b6dde6f`: 212 passed, one
+skipped, five subtests passed. Exact command, runtime, dependency-lock digest
+and stdout hash are preserved in `evidence/tests/full-suite-2026-10-03-b6dde6f.json`
+and `.log`. This is repository-level regression evidence, not upstream solver
+validation; PR CI for the same commit is still queued.

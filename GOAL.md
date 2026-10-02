@@ -3639,3 +3639,13 @@ draft PR #1853; #1852 is stale but open. No duplicate was posted. Saved exact
 metadata and disposition in the dated evidence/report. The full local benchmark
 suite on current HEAD completed `212 passed, 1 skipped, 5 subtests passed`;
 this does not stand in for the upstream PhysicsNeMo suite. Goal remains active.
+
+## Revision 144 — full local suite preserved as hashed evidence
+
+Re-ran the complete locked Python verification suite on commit
+`b6dde6fa5b1014f5149a4ed6ca8e8d119df3b2a3`: 212 passed, one skipped, five
+subtests passed. The raw 377-byte log and JSON manifest record the command,
+macOS arm64/Python 3.14.5/uv 0.11.17 environment, lockfile hash and output
+hash under `evidence/tests/full-suite-2026-10-03-b6dde6f.*`. This is local
+benchmark-repository validation, not a full build of the upstream projects.
+GitHub Actions for that commit remains queued. Goal remains active.

@@ -1396,3 +1396,14 @@ open. No duplicate report was filed. Exact live metadata is in
 see `reports/physicsnemo-live-status-2026-10-03.md`. The full local benchmark
 suite passed 212 tests, one skip, and five subtests. This is not PhysicsNeMo's
 own test suite, so target-runtime/full-upstream validation remains separate.
+
+## Full local verification replay, 2026-10-03
+
+Re-ran the complete benchmark-repository test suite on commit
+`b6dde6fa5b1014f5149a4ed6ca8e8d119df3b2a3` with the locked verification
+requirements. Result: 212 passed, one skipped, five subtests passed. The
+exact command, macOS/arm64/Python/uv versions, lockfile digest, raw output and
+log digest are recorded in `evidence/tests/full-suite-2026-10-03-b6dde6f.json`
+and `.log`. This verifies the benchmark repository at that commit only; it is
+not a full test suite for any of the three upstream solver projects. The PR
+workflow for this same commit remains queued at the latest observation.
