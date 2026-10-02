@@ -42,8 +42,9 @@ force differences as `delta u`, `delta p`, and `delta g`. For each `t<T`,
 `delta u` is smooth, divergence-free, and compactly supported in `B`; likewise
 `delta g` is supported in `B`.
 
-For each component `j`, the vector field `x_j delta u` is compactly supported
-inside `B`, and incompressibility gives
+Using the Euclidean coordinates of the chart containing `B`, for each component
+`j` the vector field `x_j delta u` is compactly supported inside `B`, and
+incompressibility gives
 
     div(x_j delta u) = delta u_j + x_j div(delta u) = delta u_j.
 
@@ -96,3 +97,15 @@ arXiv:2609.10262v4](https://arxiv.org/html/2609.10262v4), Theorems 3.6 and 4.7
 and applies on `R^3`; the torus/AMR statement above is our separate adaptation.
 The paper's results are preprint claims conditional on the cited OpenAI packet;
 this note does not certify their proof or premise.
+
+## Related literature update (checked 2026-10-03)
+
+Lei and Ren, [Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I:
+Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder,
+arXiv:2609.35406v2](https://arxiv.org/abs/2609.35406), submitted 2026-09-28
+and revised 2026-09-29, describe their work as an expository reconstruction of
+the profile-construction part of OpenAI's manuscript. Their abstract says the
+residual cancellation by oscillatory pulses is reserved for a companion Part II.
+This is useful additional exposition, not an independent verification of the
+full construction or of its singularity theorem; no claim about the status or
+contents of the planned companion is made here.

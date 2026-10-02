@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 217 — distinguish a new explanatory preprint from proof verification
+
+Checked Lei–Ren, arXiv:2609.35406v2 (submitted Sep 28, revised Sep 29, 2026).
+Its authors describe an expository reconstruction of the OpenAI profile
+construction and state that residual correction by oscillatory pulses is for a
+companion Part II. Recorded it as explanatory literature only: it is not an
+independent verification of the full theorem, and this audit makes no claim
+about the planned companion's status. The finite-mesh report also corrects its
+v4 theorem numbering and records the torus/AMR extension as our conditional
+proof adaptation, not a source theorem. No CFD, microscopic, or constitutive
+conclusion changes.
+
 ## Revision 216 — formally rule out a uniform amplitude floor from the C-quantifier
 
 Added and Lean-checked `no_uniform_lower_bound_over_normalizations`: for any
