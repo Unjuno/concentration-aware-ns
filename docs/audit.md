@@ -1,6 +1,6 @@
 # Primary-source audit
 
-Updated 2026-09-09. Source observations, reproduced behaviors and unresolved
+Updated 2026-10-02. Source observations, reproduced behaviors and unresolved
 quality claims are distinguished below. This remains an interim audit.
 
 ## OpenFOAM Foundation 13
@@ -35,12 +35,12 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
-| OF-01 | residual convergence with inaccurate local gradients | diagnostic discrepancy largely present in exact-field FD2 control; full acceptance hypothesis unverified | establish complete uncertainty budget |
-| OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
+| OF-01 | residual convergence with inaccurate local gradients | high-gradient matrix's configured standard gate passes all nine completed cases; AMR local velocity threshold fails all three; continuous peak and source-to-binary uncertainties remain | resolve diagnostic uncertainty and AMR causal factors before a defect claim |
+| OF-02 | AMR accuracy under finite budgets | three caps completed; cap5000 exceeds requested cap by 440 cells, errors rise from 8.876% to 38.572%; coarse initialization/remap/flux attribution unresolved | isolate initialization/remapping/flux effects with matched controls |
 | OF-03 | strict interpretation of maxCells | source describes approximate limit; no defect claim | report approximate semantics |
-| SU-01 | conventional convergence with inaccurate local QoI | localized sweep running | complete grid/time matrix |
-| SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
-| ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |
+| SU-01 | conventional convergence with inaccurate local QoI | five-case matrix archived; temporal endpoint difference order 0.99916; case gates remain UNCERTAIN where every-step residual/quality criteria are unmet | strengthen converged time-step controls and continuous-peak bounds |
+| SU-02 | MMS old-time forcing | pinned v8.5 behavior and first-order/BDF2 order reduction reproduced; maintainer agrees `t_n` source is not backward-Euler target-time evaluation and recommends explicit time levels | consider a narrow regression/example only after cross-consumer scope review; no global time shift |
+| ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | preregister thresholds in a future run, bound continuous peaks and assess optimization/seed effects |
 | ML-02 | automatic time derivative assumption | x/y/z-only autodiff, explicit t input; documented API behavior | no defect report warranted |
 | REF-01 | derivative/sampling artifacts mimic solver error | reproduced FD2 versus analytic/autograd differences | continuous-extremum uncertainty |
 | REF-02 | forcing formula error | symbolic/C++/autograd checks passed in stated scopes | preserve per-solver time/assembly distinctions |
@@ -81,3 +81,18 @@ Training inaccuracies alone likewise do not show a framework bug. The completed 
 reports/upstream-disposition.md; no demonstrated framework defect was found.
 
 Source: https://github.com/NVIDIA/physicsnemo/blob/1b961314e42a0625502ba1592d25f706f1e02a24/CONTRIBUTING.md
+
+## Live reporting-state verification — 2026-10-02
+
+Read-only GitHub API checks confirm SU2 Discussion 2890 has two comments: the
+September 13 maintainer analysis and our September 26 BDF2 control follow-up.
+The maintainer identifies the lagged source-time behavior and recommends
+separate stored-state and target-time semantics, while warning against treating
+a global clock shift as a complete fix. SU2 issue 2353 remains open with eight
+comments; its latest comment is our September 27 fixed-dt MAX_TIME restart-clock
+control, with no later maintainer reply in that thread. These observations do
+not broaden either finding beyond its pinned controls. OpenFOAM Foundation 13
+and PhysicsNeMo v2.2.1 still have no demonstrated contract violation, so no
+new upstream defect report is justified. Raw status fields and URLs are
+recorded in
+[`github-state-2026-10-02.json`](../evidence/upstream-review/github-state-2026-10-02.json).

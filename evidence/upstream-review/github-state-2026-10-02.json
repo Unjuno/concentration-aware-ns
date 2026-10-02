@@ -1,0 +1,41 @@
+{
+  "observed_at_utc": "2026-10-02T07:28:02Z",
+  "method": "GitHub CLI authenticated REST and GraphQL read-only queries",
+  "pr": {
+    "url": "https://github.com/Unjuno/concentration-aware-ns/pull/6",
+    "state": "OPEN",
+    "head_commit": "097c0481673802df2d436dd2618c726c4e4ac20e",
+    "updated_at": "2026-10-02T07:25:17Z"
+  },
+  "su2_discussion_2890": {
+    "url": "https://github.com/su2code/SU2/discussions/2890",
+    "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+    "updated_at": "2026-09-30T17:05:38Z",
+    "rest_comment_count": 2,
+    "comments": [
+      {
+        "author": "sbryngelson",
+        "created_at": "2026-09-13T03:31:50Z",
+        "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18418174"
+      },
+      {
+        "author": "Unjuno",
+        "created_at": "2026-09-26T14:00:52Z",
+        "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462"
+      }
+    ],
+    "maintainer_response_scope": "Confirms pinned master evaluates the MMS source at t_n while dual-time state is U^(n+1); says this remains first-order consistent for first-order stepping, can reduce BDF2 source accuracy to first order, recommends separate explicit time levels; does not endorse a global time shift as a complete fix."
+  },
+  "su2_issue_2353": {
+    "url": "https://github.com/su2code/SU2/issues/2353",
+    "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+    "state": "open",
+    "updated_at": "2026-09-30T17:05:37Z",
+    "comment_count": 8,
+    "latest_comment_at": "2026-09-27T00:13:01Z",
+    "latest_comment_url": "https://github.com/su2code/SU2/issues/2353#issuecomment-5851174679",
+    "latest_comment_author": "Unjuno",
+    "followup_status": "The latest comment is our fixed-dt MAX_TIME restart-clock control from 2026-09-27; no maintainer reply appears in the current eight-comment thread."
+  },
+  "classification": "SU2 has a reproducible, pinned-version time-source order-reduction behavior acknowledged by a maintainer in the discussion; this is not evidence for a general patch. The restart/output-clock finding remains scoped and issue 2353 is already open. OpenFOAM and PhysicsNeMo remain no-defect-report decisions on the inspected evidence."
+}
