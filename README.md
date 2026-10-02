@@ -16,6 +16,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Source audit and candidate findings](docs/audit.md)
 - [Progress](docs/progress.md)
 - [Requirement-by-requirement completion audit](docs/completion-audit.md)
+- [Impact-scope map, falsification checklist and publication boundary](reports/impact-scope-map-2026-10-03.md)
 - [Three-target comparative audit](reports/comparative-audit.md)
 - [Cross-solver matrix coverage, AMR upper-state and upstream disposition](reports/solver-matrix-coverage-2026-09-30.md)
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)

@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 236 — map demonstrated reach and adversarial falsifiers
+
+Read the original hypothesis note as unverified input and cross-checked its
+claims against the current solver, OpenAI-source, and director-model records.
+Added an impact-scope map separating the observed OpenFOAM standard-PASS /
+sampled-local-FAIL cases from the unresolved SU2 and PhysicsNeMo comparisons,
+the conditional mathematical construction, and the unsupported molecular,
+rheological, industrial-control, and light-as-fluid extrapolations. Added a
+red-team checklist for forcing, derivatives, stopping gates, hidden extrema,
+AMR budgets and stale/incomplete artifacts, plus a publication boundary that
+requires source-pinned evidence and duplicate checks. This is a synthesis and
+work plan, not a new solver result, exhaustive impact survey, upstream defect
+claim, or legal conclusion. The hosted workflow for the current PR head is
+still queued while local verification passed; resolve or document that state.
+The repository remains the single canonical location and the benchmark goal
+remains active.
+
 ## Revision 235 — remove the subcritical equator exception conditionally
 
 Corrected the scalar SDE audit: its pole drifts are `(-2d(s),+2d(s))`, so
