@@ -1,0 +1,35 @@
+{
+  "captured_at_utc": "2026-10-02T19:31:29.327000+00:00",
+  "status": "PASS",
+  "source_commit": "5a2b5e2a2c9a42b68c5416acecbe42611de285c2",
+  "command": "uv run --python 3.12.10 --with-requirements requirements-verification.txt -- python -m pytest -q tests",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "python": "3.12.10",
+    "uv": "uv 0.11.17 (aarch64-apple-darwin)"
+  },
+  "dependencies": {
+    "numpy": "2.5.3",
+    "sympy": "1.14.0",
+    "scipy": "1.16.2",
+    "pytest": "9.1.1",
+    "mpmath": "1.3.0"
+  },
+  "dependency_spec": {
+    "path": "requirements-verification.txt",
+    "sha256": "fc7fc7afb6c8e6a4f188be21b26d9af64a511bb97fcdd10fefa525c20cd2402f"
+  },
+  "result": {
+    "passed": 217,
+    "skipped": 1,
+    "subtests_passed": 5,
+    "duration_seconds": 102.42
+  },
+  "log": {
+    "path": "evidence/tests/full-suite-2026-10-03-py31210-after-alignment.log",
+    "bytes": 377,
+    "sha256": "e38b000954ab2e7cec19dd901b656cc659f26567fa93f96f16c3c02bfca631a0"
+  },
+  "scope_limit": "Local macOS Python 3.12.10 full benchmark suite at the stated source commit; not the queued Ubuntu 24.04 GitHub Actions run and not an upstream solver suite."
+}

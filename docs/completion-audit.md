@@ -1456,3 +1456,11 @@ subtests). Logs and environment records are in
 The local Python 3.12 run is not the hosted Ubuntu job; Actions for PR #4 at
 `d93502c` remained queued at the latest live query. None of these postprocessing
 checks validate OpenFOAM itself or imply a physical effect.
+
+After adding the accumulated-strain Jeffery analysis, the full suite was
+re-run on commit `5a2b5e2a2c9a42b68c5416acecbe42611de285c2` under Python
+3.12.10: 217 passed, one skipped, five subtests passed. The new analysis's
+two focused tests and exact checker also pass on that interpreter. The local
+run record is `evidence/tests/full-suite-2026-10-03-py31210-after-alignment.json`
+and `.log`; GitHub Actions for the same head remained queued at the latest
+check, so the hosted Ubuntu job is unverified.

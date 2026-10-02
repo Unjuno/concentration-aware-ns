@@ -37,6 +37,18 @@ established by the continuum pointwise derivative.
 Evidence is in `evidence/tests/alignment-integrability-threshold.json` and
 `docs/fiber-vortex-literature-audit.md`. Goal remains active.
 
+## Revision 225 — validate the new analysis on the CI Python version
+
+Ran the complete 217-test benchmark suite at commit
+`5a2b5e2a2c9a42b68c5416acecbe42611de285c2` under Python 3.12.10, matching the
+workflow's Python minor version. Result: 217 passed, one skipped, five
+subtests passed. The new accumulated-strain algebra checker and both tests
+also pass independently under Python 3.12.10. Environment, dependency
+versions, requirements digest, full log and hash are preserved in
+`evidence/tests/full-suite-2026-10-03-py31210-after-alignment.json` and `.log`.
+The hosted Ubuntu 24.04 job remains independently queued, so the local result
+does not substitute for Actions. Goal remains active.
+
 ## Revision 222 — quantify the force-density construction's actuator-scale gap
 
 Re-derived the localized force rescaling in Cao–Chi–Nie arXiv:2609.10262v4.
