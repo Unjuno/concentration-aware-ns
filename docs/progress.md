@@ -598,3 +598,15 @@ checker passes; Python 3.14.5 full report replay passed 42 steps and 219 tests
 (one skipped, five subtests). See
 `docs/full-sphere-rotational-diffusion.md` and
 `evidence/tests/spherical-orientation-diffusion-2026-10-03.json`.
+
+## Subcritical stochastic limit-set refinement — 2026-10-03
+
+For `delta<1`, the time-integrated rotational diffusion is finite, giving an
+asymptotic pseudotrajectory of the deterministic Jeffery flow. Its strict
+Lyapunov function narrows the pathwise limit set to the equator or one pole.
+This does not exclude the unstable-equator exception, so almost-sure
+alignment remains unproved. The APT/strict-Lyapunov framework is from
+Benaïm–Hirsch (1996) and Benaïm (1999); the SDE-specific estimate and exact
+identities are recorded in the full-sphere note/checker. Python 3.14.5
+full replay passed 42/42 with all log hashes matching; the suite passed 220
+tests, one skipped, and five subtests. Goal remains active.

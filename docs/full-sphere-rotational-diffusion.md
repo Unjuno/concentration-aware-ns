@@ -98,11 +98,32 @@ The transition at `delta=1` is conditional on the chosen coefficient law; no
 temperature-, particle-size- or solvent-based argument here establishes that
 real molecular rotational diffusivity has any such singular scaling.
 
-For `delta<1`, `d(s)` has finite time integral while the imposed strain clock
-is infinite. Their ratio favors deterministic alignment, as in the tangent-
-plane calculation, but this checker does **not** claim a global stochastic
-convergence theorem for that regime. That would require a separate stochastic
-stability argument near the unstable equator and the stable poles.
+For `delta<1`,
+
+```
+integral_0^infinity d(s) ds = D0*tau0^(1-delta)/(1-delta) < infinity,
+```
+
+while the imposed strain clock is infinite. In the ambient `R^3` representation
+of spherical Brownian motion, the martingale term therefore has finite
+quadratic variation and converges almost surely; the Ito correction
+`-2*d(s)*p` is absolutely integrable. On every bounded future time window,
+the remaining perturbation tends uniformly to zero. Gronwall's inequality
+then shows that the sample path is an asymptotic pseudotrajectory of the
+deterministic Jeffery ODE.
+
+For that ODE, `x=p_z` satisfies `x'=a*x*(1-x^2)`. The function `V=x^2` has
+`V'=2*a*x^2*(1-x^2)`, strictly positive except on the equator and the two
+poles. The limit-set theorem for precompact asymptotic pseudotrajectories and
+the strict-Lyapunov result imply that the sample-path limit set is either
+contained in the equator, or is one of the poles. This narrows the unresolved
+case but does not prove almost-sure alignment: the analysis here does not rule
+out convergence to the unstable equator. The equator-avoidance theorem must
+be checked against the exact continuous-time, decaying-noise hypotheses
+before claiming that exception has probability zero. The ODE/APT framework
+comes from Benaïm and Hirsch; its limit-set results are summarized and
+extended for stochastic processes by Benaïm. Our square-integrable-noise
+argument is specific to the present sphere SDE.
 
 ## What this does not establish
 
@@ -120,3 +141,4 @@ change, or implication for solver acceptance. The exact algebra replay is
 
 - G. B. Jeffery, [“The motion of ellipsoidal particles immersed in a viscous fluid”](https://doi.org/10.1098/rspa.1922.0078), *Proceedings of the Royal Society A* 102 (1922), 161–179.
 - E. J. Hinch and L. G. Leal, [“The effect of Brownian motion on the rheological properties of a suspension of non-spherical particles”](https://doi.org/10.1017/S002211207200271X), *Journal of Fluid Mechanics* 52 (1972), 683–712. Their analysis derives orientation distributions for rigid spheroids with rotary Brownian motion in steady shear; it is precedent for the modeling framework, not for the singular-flow limit derived here.
+- M. Benaïm and M. W. Hirsch, [“Asymptotic pseudotrajectories and chain recurrent flows, with applications”](https://doi.org/10.1007/BF02218617), *Journal of Dynamics and Differential Equations* 8 (1996), 141–176; M. Benaïm, [“Dynamics of stochastic approximation algorithms”](https://www.numdam.org/item/SPS_1999__33__1_0.pdf), *Séminaire de Probabilités XXXIII* (1999), 1–68. These provide the limit-set/strict-Lyapunov framework; applying them to this nonautonomous spherical SDE uses the finite-quadratic-variation estimate above.

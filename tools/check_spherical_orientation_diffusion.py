@@ -31,8 +31,15 @@ def derive():
     diffusion_clock = sp.simplify(D0 * tau ** (1 - delta))
     expected_clock = D0 * tau0 ** (1 - delta) * sp.exp((delta - 1) * s)
     clock_transform_residual = sp.simplify(diffusion_clock - expected_clock)
+    subcritical_decay = sp.symbols("subcritical_decay", positive=True)
     total_diffusion_subcritical = sp.simplify(
         sp.integrate(expected_clock.subs(delta, sp.Rational(1, 2)), (s, 0, sp.oo))
+    )
+    total_diffusion_general = D0 * tau0 ** (1 - delta) / (1 - delta)
+    x_drift = a * x * (1 - x**2)
+    lyapunov_derivative = sp.factor(2 * x * x_drift)
+    total_diffusion_from_decay_rate = sp.integrate(
+        D0 * tau0 ** (1-delta) * sp.exp(-subcritical_decay*s), (s, 0, sp.oo)
     )
 
     # A director is unoriented: the target cone contains both poles, hence |x|>=c.
@@ -63,18 +70,37 @@ def derive():
         "zonal_laplacian_x2": str(lap_x2),
         "surface_divergence_of_drift": str(div_drift),
         "delta_lt_one_total_diffusion_example_delta_half": str(total_diffusion_subcritical),
+        "delta_lt_one_total_diffusion_general": "D0*tau0^(1-delta)/(1-delta), finite for delta<1",
+        "deterministic_polar_coordinate_ode": "d(p_z)/ds=a*p_z*(1-p_z^2)",
+        "strict_lyapunov_quantity": "V(p)=p_z^2; dV/ds=2*a*p_z^2*(1-p_z^2), zero only on the equator and the two poles",
+        "subcritical_stochastic_limit_set": "Finite integrated diffusion makes the sphere-valued SDE an asymptotic pseudotrajectory of the deterministic Jeffery flow. The compact limit set is internally chain transitive; the strict Lyapunov function restricts it to either the equator (V=0) or one pole (V=1). This checker does not rule out convergence to the unstable equator.",
         "delta_eq_one_stationary_density_relative_to_surface_area": "rho_inf(p)=Z^(-1)*exp(chi*p_z^2), chi=a/(2*D0)",
         "stationarity_method": "The drift is (a/2)*grad_S(p_z^2); this density has zero probability current. For D0>0, ellipticity on compact connected S^2 gives the unique invariant density.",
         "unoriented_target_cone_probability": "integral_c^1 exp(chi*x^2) dx / integral_0^1 exp(chi*x^2) dx, c=cos(beta_star)",
         "target_cone_probability_erfi_form": str(cone_probability_erfi),
         "target_cone_probability_isotropic_limit": str(isotropic_cone_probability),
         "delta_gt_one_limit": "The transformed diffusivity grows exponentially. The mean-zero density obeys a Poincare energy inequality Y' <= -lambda*D(s)*Y + K/D(s) for sufficiently large D(s), hence rho converges to the uniform surface density in L2(S^2).",
+        "identity_checks": [
+            lap_x2 == 2 - 6*x**2,
+            div_drift == a*(1 - 3*x**2),
+            zero_flux_residual == 0,
+            clock_transform_residual == 0,
+            total_diffusion_subcritical == 2*D0*sp.sqrt(tau0),
+            sp.simplify(total_diffusion_from_decay_rate - D0*tau0**(1-delta)/subcritical_decay) == 0,
+            sp.simplify(total_diffusion_from_decay_rate.subs(subcritical_decay, 1-delta)-total_diffusion_general) == 0,
+            sp.simplify(lyapunov_derivative - 2*a*x**2*(1-x**2)) == 0,
+            sp.limit(cone_probability_erfi, chi, 0, dir="+") == 1-cutoff,
+            isotropic_probability == isotropic_cone_probability,
+        ],
         "identities_pass": all([
             lap_x2 == 2 - 6*x**2,
             div_drift == a*(1 - 3*x**2),
             zero_flux_residual == 0,
             clock_transform_residual == 0,
             total_diffusion_subcritical == 2*D0*sp.sqrt(tau0),
+            sp.simplify(total_diffusion_from_decay_rate - D0*tau0**(1-delta)/subcritical_decay) == 0,
+            sp.simplify(total_diffusion_from_decay_rate.subs(subcritical_decay, 1-delta)-total_diffusion_general) == 0,
+            sp.simplify(lyapunov_derivative - 2*a*x**2*(1-x**2)) == 0,
             sp.limit(cone_probability_erfi, chi, 0, dir="+") == 1-cutoff,
             isotropic_probability == isotropic_cone_probability,
         ]),
@@ -82,7 +108,7 @@ def derive():
             "No finite-particle strain-uniformity premise is established by the continuum flow proof.",
             "D_r divergence as tau approaches zero is a prescribed mathematical law, not a measured molecular constitutive law.",
             "The delta>1 limit is an asymptotic full-sphere model result; it does not imply unbounded physical variance.",
-            "The delta<1 global stochastic convergence-to-poles theorem is not proved by this symbolic checker.",
+            "The delta<1 limit-set classification is conditional on the documented SDE/APT argument; this symbolic checker does not establish almost-sure convergence to a pole or rule out the unstable equator.",
             "No particle-position determinism, intermolecular ordering, phase transition, or viscosity change is established.",
         ],
     }

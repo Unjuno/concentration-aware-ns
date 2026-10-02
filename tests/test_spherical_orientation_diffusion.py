@@ -17,3 +17,16 @@ def test_full_sphere_diffusion_limit_isotropic_cone_probability_is_bounded():
     assert result["target_cone_probability_isotropic_limit"] == "1 - cutoff"
     assert "uniform surface density in L2(S^2)" in result["delta_gt_one_limit"]
     assert any("does not imply unbounded physical variance" in item for item in result["limitations"])
+
+
+def test_subcritical_integrable_diffusion_leaves_only_equator_or_poles_as_limit_sets():
+    result = derive()
+    assert result["delta_lt_one_total_diffusion_general"] == (
+        "D0*tau0^(1-delta)/(1-delta), finite for delta<1"
+    )
+    assert result["strict_lyapunov_quantity"].endswith(
+        "zero only on the equator and the two poles"
+    )
+    assert "does not rule out convergence to the unstable equator" in result[
+        "subcritical_stochastic_limit_set"
+    ]

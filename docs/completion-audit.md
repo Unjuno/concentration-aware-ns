@@ -17,10 +17,16 @@ sphere's mean-zero Poincare gap yields `Y' <= -lambda*d(s)*Y+K/d(s)`, hence
 convergence to isotropy for normalized `L2` initial densities. This corrects
 the interpretation of the earlier tangent-plane variance divergence: it
 signals loss of the local approximation, not unbounded orientation variance.
-The `delta<1` full-sphere stochastic convergence claim remains open. Exact
-symbolic identities passed with SymPy 1.14.0; focused related tests passed 7/7;
-the complete Python 3.14.5 report replay passed 42/42 and the full suite
-reported 219 passed, one skipped, five subtests. See
+For `delta<1`, finite integrated diffusivity makes the sample path an
+asymptotic pseudotrajectory of the deterministic Jeffery flow. The strict
+Lyapunov function narrows its limit set to the equator or one pole, but does
+not exclude convergence to the unstable equator; almost-sure alignment is
+still unproved. This uses the Benaïm–Hirsch asymptotic-pseudotrajectory and
+strict-Lyapunov framework after checking the finite-quadratic-variation
+condition for this SDE. Exact symbolic identities passed with SymPy 1.14.0;
+the focused rotational-diffusion tests passed 3/3. The complete Python 3.14.5
+report replay passed 42/42 and the full suite reported 220 passed, one skipped,
+five subtests. All replay log hashes match the summary. See
 [`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md),
 [`spherical-orientation-diffusion-2026-10-03.json`](../evidence/tests/spherical-orientation-diffusion-2026-10-03.json),
 and [`report-replay/summary.json`](../evidence/report-replay/summary.json).
@@ -28,7 +34,11 @@ Primary framework sources are Jeffery (1922),
 [DOI 10.1098/rspa.1922.0078](https://doi.org/10.1098/rspa.1922.0078), and
 Hinch–Leal (1972), [DOI 10.1017/S002211207200271X](https://doi.org/10.1017/S002211207200271X);
 the singular-time limit and energy estimate here are our own conditional
-derivations, not claims from those sources. No molecular diffusion law,
+derivations, not claims from those sources. The APT/strict-Lyapunov framework
+follows Benaïm and Hirsch (1996),
+[DOI 10.1007/BF02218617](https://doi.org/10.1007/BF02218617), and Benaïm
+(1999), [paper](https://www.numdam.org/item/SPS_1999__33__1_0.pdf); the
+SDE-specific finite-noise estimate is checked here. No molecular diffusion law,
 particle-position determinism, phase transition, viscosity change, or solver
 acceptance result follows. No upstream report was warranted.
 

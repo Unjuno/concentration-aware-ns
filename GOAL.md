@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 228 — classify subcritical full-sphere stochastic limit sets
+
+For the prescribed Jeffery director with `delta<1`, the transformed
+rotational diffusivity has finite time integral. The ambient sphere SDE then
+has a convergent finite-quadratic-variation martingale perturbation and is an
+asymptotic pseudotrajectory of the deterministic Jeffery flow. Its strict
+Lyapunov function `V=p_z^2` restricts the sample-path limit set to either the
+equator or one pole. This sharpens the previous open result but does not
+establish almost-sure polar alignment: avoidance of the unstable equator under
+the exact decaying continuous-time noise remains unproved. Added the
+framework citations, exact finite-integral/Lyapunov identities and regression
+coverage. This remains a conditional ideal-director model; it establishes no
+molecular ordering, phase transition, viscosity change, or transfer from the
+OpenAI field. Next work should verify an applicable equator-avoidance theorem
+or preserve this explicit exception, then continue the wider acceptance
+benchmark. The benchmark goal remains active.
+
 ## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
 
 The earlier rotational-diffusion calculation found divergent variance for

@@ -102,7 +102,10 @@ assumption. A separate full-sphere Smoluchowski analysis shows, within that
 imposed model, a finite-width stationary law at `delta=1` and isotropization
 for `delta>1`, rather than unbounded angular variance. See
 `docs/full-sphere-rotational-diffusion.md`. These are separate model
-assumptions, not a microscopic derivation.
+assumptions, not a microscopic derivation. For `delta<1`, finite integrated
+diffusion plus the asymptotic-pseudotrajectory/strict-Lyapunov framework
+narrows the pathwise limit set to the equator or a pole; it does not yet
+exclude the unstable-equator case or prove almost-sure alignment.
 
 The alignment law depends on **accumulated strain**
 `I(t)=integral_[t0,t] gamma(s) ds`, not on the instantaneous fact that

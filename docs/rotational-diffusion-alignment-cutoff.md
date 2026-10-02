@@ -122,8 +122,10 @@ approximation leaves its small-angle regime. It does not identify the global
 orientation law. The full-sphere Jeffery--Smoluchowski equation has now been
 checked separately: for this prescribed strain and diffusion law, `delta=1`
 gives a finite-width stationary density, while `delta>1` gives asymptotic
-isotropization rather than divergent angular variance. The exact density,
-two-pole-cone probability, and a spectral-gap energy proof are in
+isotropization rather than divergent angular variance. For `delta<1`, an
+asymptotic-pseudotrajectory argument narrows the sample-path limit set to the
+equator or one extension pole, but the probability of the unstable-equator
+exception remains unresolved. The exact laws and proofs are in
 [`full-sphere-rotational-diffusion.md`](full-sphere-rotational-diffusion.md).
 This upgrades the `delta>1` model conclusion without supplying a molecular
 diffusivity law or a finite-particle transfer from the OpenAI velocity field.
