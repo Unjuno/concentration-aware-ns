@@ -9,3 +9,14 @@ This was a later repeat of `n64-dt0.0005`, a row that had already completed
 completed archive remains the authoritative matrix row; this incomplete repeat
 does not supersede it. Its archive hash and index path are recorded in
 `status.json`.
+
+## Live state recheck (2026-10-03 JST)
+
+At 2026-10-03 08:09 JST, the recorded host runner and Docker client PIDs were
+absent. `docker ps -a --filter name=cans-hg-n64-dt0.0005` returned successfully
+with no rows, and `docker inspect cans-hg-n64-dt0.0005` returned `no such
+object`. This confirms there is no container with that name in the currently
+reachable Docker inventory. It does not establish why the original execution
+stopped or convert its 36/100-step log into a completed run. The preserved log
+hashes still match the original snapshot; no retry was started. A timestamped
+machine-readable observation is in `status-recheck-2026-10-03.json`.

@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 248 — confirm the preserved OpenFOAM rerun is no longer present
+
+A fresh read-only check on 2026-10-03 JST found neither recorded host PID nor
+solver process; Docker responded, returned no matching container from `ps -a`,
+and `inspect` reported no such object. The preserved attempt remains
+36/100 converged steps with unknown exit status and no endpoint archive, so it
+is still excluded from solver verdicts. The same frozen row had already
+completed separately and passed both gates; no retry was launched. The new
+timestamped observation is
+`evidence/of13-high-gradient-v2/incomplete-rerun-2026-10-02/status-recheck-2026-10-03.json`.
+Goal remains active.
+
 ## Revision 247 — correct the full-suite reproduction instructions
 
 The README's prior test instructions installed only the minimal NumPy
