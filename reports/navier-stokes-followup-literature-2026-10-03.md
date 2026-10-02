@@ -43,7 +43,9 @@ has unbounded terminal velocity. The construction's perturbation depends on
 the chosen finite grid family and develops larger amplitudes and derivatives
 as its support shrinks. The authors explicitly limit the conclusion to the
 information in those prescribed averages, not convergence under refinement
-for one fixed smooth problem. It therefore motivates documenting the
+for one fixed smooth problem. The theorem matches velocity and force cell
+averages; it does not claim that local gradient, vorticity, pointwise, or
+spectral diagnostics also match. It therefore motivates documenting the
 benchmark's observables and exact-solution scope, but it does not invalidate
 our fixed manufactured-solution consistency/convergence studies and does not
 show that any solver has a defect.
