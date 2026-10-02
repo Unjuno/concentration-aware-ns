@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 245 — refresh related OpenAI Navier–Stokes literature
+
+Recorded two current arXiv developments: Lei–Ren's explanatory reconstruction
+of the profile and admissible-stress stage (arXiv:2609.35406), and Cao–Chi–Nie's
+force-space density result built from the compact forced solution
+(arXiv:2609.10262). The latter's stated sharp `L¹_t Hˢ_x` threshold concerns
+perturbing the external force, not fixed-force breakdown or molecular
+alignment. Neither paper changes the local solver matrix or closes the
+extension-level `actualProfile` pressure gap. Details and scope limits are in
+`reports/research-refresh-2026-10-03-openai-ns-profile-exposition.md`. Goal
+remains active.
+
 ## Revision 244 — verify the added model audit from a fixed commit
 
 The fresh locked clean export of `d4cbe01243633b7a0499a65dc923b12dd117e4cc`

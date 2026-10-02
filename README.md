@@ -24,6 +24,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
 - [Flat-but-active analytic-forcing bridge to the OpenAI construction](reports/openai-analytic-forcing-bridge-2026-10-01.md)
 - [Follow-up literature: forcing structure and finite-grid observability](reports/navier-stokes-followup-literature-2026-10-03.md)
+- [New OpenAI profile exposition and force-space density result](reports/research-refresh-2026-10-03-openai-ns-profile-exposition.md)
 - [Internal strain alignment versus fixed viscous stress in a visco-morphoelastic model](reports/visco-morphoelastic-internal-state-2026-10-03.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
 - [Axis-tube concentration versus bounded-position probability](docs/linearized-axis-tube-concentration.md)
