@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 194 — assess the post-announcement similarity-flow study
+
+Added a scoped review of Duraiswami's 2026-09-15 arXiv follow-up, which
+computes a related porous-annulus profile and an axis Cauchy problem in the
+OpenAI construction's similarity variables. It is not a reproduction of the
+full force pulses, higher-order corrections, or finite-viscosity evolution.
+The reported particle-turn estimate characterizes the collapse as Eulerian
+profile collapse rather than material-line winding, so the user's particle
+alignment/probability idea remains an open observable and needs trajectory and
+finite-particle tests. The preprint also documents numerical hazards: domain
+truncation can create spurious bifurcations, mapped grids resolve a layer missed
+by plain modes, and some branches/spectra remain unconverged. Those are
+author-reported and not independently replayed here. No OpenAI GitHub issue is
+justified without a demonstrated source defect. Effective extraction of the
+selected OpenAI coefficients remains open. Details and source provenance are
+in `reports/openai-flow-interpretation-followup-2026-10-02.md`. Goal remains
+active.
+
 ## Revision 193 — check AMR derivative sensitivity to the post-processing operator
 
 Added a second, unweighted one-ring least-squares derivative estimate from mapped cell-center velocities and captured face adjacency, then applied the same cell-volume MMS integration. At n=64 it gives 14.0719% gradient and 15.9026% curl error, close to the face-Gauss values 14.0147% and 15.8499%; the maximum mapped difference across n=16/32/64 is under 0.092 percentage points. All cell normal matrices are full-rank with maximum condition number 5.0; exact affine recovery and rank-deficiency rejection tests pass. This is post-processing sensitivity evidence, not OpenFOAM's declared gradient scheme or a continuous-field bound. AMR remains `UNCERTAIN`. Updated `reports/openfoam-amr-volume-integrated-diagnostics-2026-10-02.md` and the machine-readable artifact. Goal remains active.
