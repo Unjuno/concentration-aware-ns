@@ -29,30 +29,36 @@ def symbolic_identity():
     }
 
 
-def illustrative_table():
-    h = 0.01
-    f_star = 0.336
-    d_star = 1.0
-    tau0 = 1.0
+def phase_sensitivity():
     rows = []
-    for q in (1e-2, 3e-3, 1e-5, 1e-15):
-        angle = (f_star * d_star ** (1 + h) * tau0 ** (-h)
-                 * (q ** (-h) - 1) / h)
-        rows.append({
-            "Q_tau_over_tau0": f"{q:.0e}",
-            "angle_radians": angle,
-            "turns": angle / (2 * math.pi),
+    unit_scale_thresholds = []
+    for h in (0.0, 0.01, 0.1):
+        q_one_turn = (
+            math.exp(-2 * math.pi)
+            if h == 0
+            else (1 + 2 * math.pi * h) ** (-1 / h)
+        )
+        unit_scale_thresholds.append({
+            "h": h,
+            "K": 1.0,
+            "Q_for_one_turn": q_one_turn,
         })
-    one_turn_q = (1 + 2 * math.pi * h /
-                  (f_star * d_star ** (1 + h) * tau0 ** (-h))) ** (-1 / h)
+        for q in (1e-2, 1e-5, 1e-15):
+            turns_per_scale = (
+                math.log(1 / q) / (2 * math.pi)
+                if h == 0
+                else (q ** (-h) - 1) / (2 * math.pi * h)
+            )
+            rows.append({
+                "h": h,
+                "Q_tau_over_tau0": f"{q:.0e}",
+                "turns_per_K": turns_per_scale,
+            })
     return {
-        "profile_amplitude_f_star": f_star,
-        "amplitude_provenance": "Illustrative only: the independent preprint reports F_0(0)=0.336 for one matched leading-order profile; this is not extracted for OpenAI's selected profile.",
-        "h": h,
-        "d_star": d_star,
-        "tau0": tau0,
-        "cumulative_tangent_rotation": rows,
-        "one_turn_threshold_Q": one_turn_q,
+        "dimensionless_scale": "K = f_star*d_star^(1+h)*tau0^(-h)",
+        "interpretation": "Each turns_per_K entry is multiplied by K; no profile coefficient is assumed or imported.",
+        "cumulative_tangent_rotation_sensitivity": rows,
+        "unit_scale_one_turn_thresholds": unit_scale_thresholds,
     }
 
 
@@ -61,9 +67,10 @@ def result():
         "schema_version": 1,
         "source_relation": "docs/openai-core-material-trajectory.md gives q=tau/d_star and Omega=q^(-1-h)*f(0,eta_star) along a fixed-eta axis material trajectory.",
         "symbolic": symbolic_identity(),
-        "illustration": illustrative_table(),
-        "scope": "Cumulative rotation of the infinitesimal transverse tangent frame only. It is conditional on a fixed nonzero f_star, the source path remaining in the core, and its local deformation equation. It is not an off-axis tracer trajectory, winding theorem for a finite curve, or molecular-orientation prediction.",
-        "interpretation": "For any fixed h>=0 and nonzero f_star the integrated tangent-frame angle is unbounded as Q tends to zero, although each finite preterminal interval has finite angle. The transverse-to-axial direction ratio still tends to zero because axial stretching dominates; an unbounded transverse phase does not prevent directional alignment. Physical cutoffs in the cited illustrative liquid/gas estimates occur much earlier than the mathematical Q->0 limit.",
+        "sensitivity": phase_sensitivity(),
+        "sensitivity": phase_sensitivity(),
+        "scope": "Cumulative rotation of the infinitesimal transverse tangent frame only. It is conditional on the profile identity, a fixed nonzero f_star, the source path remaining in the core, and its local deformation equation. It is not an off-axis tracer trajectory, winding theorem for a finite curve, or molecular-orientation prediction.",
+        "interpretation": "For any fixed h>=0 and nonzero f_star the integrated tangent-frame angle is unbounded as Q tends to zero, although each finite preterminal interval has finite angle. The transverse-to-axial direction ratio still tends to zero because axial stretching dominates; an unbounded transverse phase does not prevent directional alignment. No externally computed profile coefficient is assumed.",
     }
 
 

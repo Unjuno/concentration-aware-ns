@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 197 — remove imported swirl amplitude and parameterize phase
+
+This revision supersedes Revision 196's illustrative coefficient and cutoff
+numbers. The external preprint's final 32-parameter reduced-profile match
+reports `F_0(0)=0.336`; an earlier retained five-parameter attempt reports
+0.262 with matching residual 0.437. Neither is the coefficient of
+`FinalSlowBase.actualProfile`. The preprint's “fraction of a revolution per
+decade” concerns particle motion and explicitly disclaims material-line
+winding; the tangent-frame phase here is a different observable. Removed the
+imported coefficient/cutoff table and replaced it with turns per unit
+`K=f_* d_*^(1+h) tau_0^(-h)` across `h={0,.01,.1}` and several `Q`, plus
+conditional one-turn thresholds. SymPy identity, sensitivity test, and JSON
+artifact were regenerated. Lean evidence is current-source matched for the
+axis deformation ODE/uniqueness, but does not formalize this antiderivative or
+extract the selected swirl coefficient. No molecular or finite-particle
+conclusion follows; the benchmark goal remains active.
+
 ## Revision 196 — integrate the material tangent-frame rotation
 
 Evaluated the transverse rotation already present in the selected axis

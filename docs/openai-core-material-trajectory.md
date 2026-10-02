@@ -11,9 +11,16 @@ been discharged for `FinalSlowBase.actualProfile`. See the final pressure
 retention audit. Thus the candidate-field implication is checked, while an
 unconditional negative-limit claim for the pinned selected profile is not.
 
-The infinitesimal material-separation alignment calculation below remains a
-hand-derived extension with symbolic checks, not a fully formalized deformation
-theorem. It establishes neither molecular orientation nor a phase transition.
+The current `verification/AxisForceSign.lean` source hash matches the saved
+2026-10-01 Lean run in
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json`. That source
+contains `actual_root_deformation_hasDerivAt` and
+`actual_root_variational_unique`, which derive the deformation ODE and prove
+uniqueness on compact subintervals of an existential terminal interval; their
+axiom reports list only standard Lean axioms. The later closed-form angular
+integration below is an analytic derivation checked with SymPy, not a Lean
+theorem. Neither result establishes molecular orientation or a phase
+transition.
 Earlier sections record intermediate results and outstanding work at that time;
 the current summary and final audits supersede their status descriptions. In
 particular, the later Lean chain now combines the full physical axial Laplacian,
@@ -106,10 +113,14 @@ packing, and does not establish a phase transition.
 
 ## Cumulative transverse phase versus directional alignment
 
-The rotation integral above can be evaluated exactly because `eta_*` and
-`f_* = f(0, eta_*)` are constant on this selected axis trajectory. With
-`q=tau/d_*`, `d_*=1-eta_*^2`, and `Omega=q^(-1-h) f_*`, the tangent-frame angle
-from `tau_0` to `tau=Q tau_0` is
+For the selected construction, the local swirl rate in Lean is defined by
+`selectedAxisOmega` as the negative radial derivative of the swirl potential
+along the candidate axis. The profile construction gives the power-law rate
+`Omega=q^(-1-h) f_*` on a fixed-root trajectory, with `f_*` the corresponding
+axis swirl-profile value. Integrating that rate is not itself a Lean theorem;
+conditional on this profile identity, `eta_*` and `f_*` are constant along
+the path and the calculus gives the tangent-frame angle from `tau_0` to
+`tau=Q tau_0`:
 
 ```text
 DeltaTheta(Q) = f_* d_*^(1+h) tau_0^(-h) (Q^(-h)-1)/h,  h>0.
@@ -124,24 +135,53 @@ shrinking relative to its axial component, so its unit direction still tends
 to the axis. The calculation concerns the infinitesimal variational frame, not
 an off-axis particle's finite trajectory or a finite material filament.
 
-As an explicitly illustrative scale check, [Duraiswami's preprint
-(arXiv:2609.17642)](https://arxiv.org/abs/2609.17642) reports `F_0(0)=0.336`
-for one matched leading-order profile. If that
-amplitude is used only as a proxy for `f_*`, with `h=0.01`, `d_*=1`, and
-`tau_0=1`, the formula gives about 0.32 turns by `Q=0.003`, 0.65 turns by
-`Q=10^-5`, and 2.21 turns by `Q=10^-15`; one complete turn occurs only near
-`Q=3.6e-8`. The preprint's illustrative water/gas continuum cutoffs are around
-`10^-3`–`10^-2` and `10^-5`, respectively, so its physical scenarios terminate
-before one tangent-frame revolution. The `F_0(0)` value belongs to that
-separate computed profile and is not an extraction of `FinalSlowBase.actualProfile`.
+The [external preprint](https://arxiv.org/abs/2609.17642) reports
+`F_0(0)=0.336` for its closed 32-parameter match at exterior amplitude
+`c_inf=0.2`; the same [pinned repository snapshot](https://gitlab.umiacs.umd.edu/ramanid/swirl-collapse/-/blob/10377a74f81ab7f6edff0892a379d4937e17fd9b/results/axis_cone_report.md)
+retains an earlier five-parameter trial with `F_0(0)=0.262` and matching
+residual 0.437.
+These are stage-dependent computed profiles in a reduced leading-order
+problem, not values for `FinalSlowBase.actualProfile`; neither is used below.
+The preprint describes less than one particle revolution per time decade for
+its matched profile and explicitly says this is not winding of material lines.
+That particle-motion statement and the tangent-frame phase calculated here
+are different observables, so they are not a direct contradiction. Define the
+dimensionless scale
+`K=f_* d_*^(1+h) tau_0^(-h)`. The cumulative turns are
 
-This resolves an apparent ambiguity in “fraction of a revolution per decade”:
-each decade can be sub-revolution while a formal continuation through
-infinitely many decades accumulates unbounded phase. It does not imply that
-molecules or finite particles make those turns. The exact algebra and the
-clearly labeled illustrative values are reproducible with
-`python -m tools.check_material_rotation_phase`; the artifact is
-`evidence/tests/material-rotation-phase.json`.
+```text
+turns(Q) = K (Q^(-h)-1)/(2 pi h),  h>0,
+turns(Q) = K log(1/Q)/(2 pi),    h=0.
+```
+
+The saved sensitivity table reports turns per unit `K` for several `h` and
+`Q`; any application must supply a coefficient extracted from the actual
+profile and justify continuation of the local profile law over that interval.
+For `h>0` and `K>0`, the formal one-turn threshold is
+`Q_1=(1+2 pi h/K)^(-1/h)`; for `h=0`, it is `exp(-2 pi/K)`. Those are
+conditional mathematical thresholds, not physical predictions. No external
+profile value or continuum cutoff is imported into this calculation.
+
+This separates “less than one turn per selected finite decade” from
+“unbounded phase over an infinite formal collapse interval.” It does not imply
+that molecules or finite particles make those turns. The symbolic derivative
+check and dimensionless sensitivity table are reproducible with
+`work/reference-check-env/bin/python -m tools.check_material_rotation_phase`;
+the artifact is `evidence/tests/material-rotation-phase.json`.
+
+Verification boundary: the current-source Lean evidence
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json` matches the
+current `AxisForceSign.lean` SHA-256 and covers the selected axis Jacobian,
+continuity of `selectedAxisOmega`, the integrated deformation ODE (under that
+angular rate), and uniqueness of its variational solution on compact
+subintervals below terminal time. The closed-form angular antiderivative and its analytic sensitivity values
+are checked separately by SymPy, which verifies the antiderivative by
+differentiation and evaluates the normalized floating-point table. This does
+not prove that the selected profile's swirl coefficient is nonzero, extract
+its value, or formalize the singular-limit divergence. Thus unbounded phase for
+the pinned selected solution remains conditional on a nonzero fixed-root swirl
+coefficient and the profile's power-law identity all the way to the formal
+terminal limit. No finite-particle or molecular claim follows.
 
 A small initial isotropic covariance, propagated by the linearized map F, has
 two decreasing eigenvalues and one increasing eigenvalue; its determinant stays
