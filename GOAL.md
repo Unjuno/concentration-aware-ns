@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 246 — inspect the linked force-density formalization
+
+Read-only audit of `mathzhuonichi/blowup_density` found its README claims 27
+mapped article results closed in Lean. Its latest observed main commit
+`af963994418ae32ff16e00a942bf532410928b09` has a successful GitHub Actions
+contracts/architecture run; GitHub reports no declared license, Issues enabled
+but no open issues, and Discussions disabled. This supports reproducibility
+within its stated mapped scope, not independent validation of the OpenAI
+building block or any particle-scale physics. No code was reused and no report
+was filed. The evidence snapshot and limits are recorded in
+`reports/research-refresh-2026-10-03-openai-ns-profile-exposition.md` and
+`evidence/upstream-refresh/blowup-density-2026-10-03.json`. Goal remains active.
+
 ## Revision 245 — refresh related OpenAI Navier–Stokes literature
 
 Recorded two current arXiv developments: Lei–Ren's explanatory reconstruction

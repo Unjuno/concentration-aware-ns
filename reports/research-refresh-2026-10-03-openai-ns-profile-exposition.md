@@ -78,3 +78,26 @@ carefully altered external force; observed concentration cannot be attributed
 to spontaneous particle ordering without a separate model and evidence.
 
 Source: <https://arxiv.org/abs/2609.10262>
+
+## Formalization repository checkpoint
+
+The paper links to `mathzhuonichi/blowup_density`. Its README claims 27 mapped
+article entries are closed in Lean and explicitly says claims outside that
+mapped scope are excluded. GitHub Actions run `35692963936` completed
+successfully on commit
+`af963994418ae32ff16e00a942bf532410928b09` on 2026-09-22. The run includes a
+Lean contracts build, an architecture check, compilation of changed modules
+outside the registered build closure, and rejection/refactoring checks. This
+is meaningful reproducibility evidence for that repository's own formalized
+scope; it does not establish that every statement in the paper has been mapped,
+that the underlying OpenAI building block has been independently re-proved, or
+that a particle-scale model follows.
+
+At the 2026-10-03 GitHub API check, the repository's `main` still pointed to
+that commit, Issues were enabled with no open issues, Discussions were
+disabled, and GitHub returned no declared license (`license: null`; the root
+listing has no `LICENSE` file). Accordingly, this benchmark does not reuse or
+vendor its code. No report was sent: there is no demonstrated defect, and this
+auxiliary formalization is outside the three prioritized solver repositories.
+The read-only snapshot is
+`evidence/upstream-refresh/blowup-density-2026-10-03.json`.
