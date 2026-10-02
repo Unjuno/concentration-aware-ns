@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 240 — separate scientific replay from environment metadata drift
+
+After the PATH fix, a tracked-only replay at `a6e2ce5` completed all 42 report
+steps and six follow-up checks, but the final byte comparison found two
+environment-only JSON differences: an absolute interpreter path and a Python
+3.12.10 versus 3.14.5/platform-string mismatch. Preserved this unsuccessful
+comparison separately. Made the force-scaling record portable by recording
+the interpreter implementation instead of a local executable path; retained
+version and platform metadata. The next clean export will use the recorded
+Python 3.12.10 runtime so exact environment evidence can match. No solver
+result or scientific verdict changed. Goal remains active.
+
 ## Revision 239 — correct clean-export interpreter resolution
 
 A tracked-only clean export at the then-current `2d3983d` created its locked

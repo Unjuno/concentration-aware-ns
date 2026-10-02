@@ -1,5 +1,19 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 clean-export metadata comparison
+
+The corrected exporter at `a6e2ce5` completed the 42-step report replay and
+all six follow-up checks. Its final tracked-only comparison still returned
+`success: false` because exactly two generated test-evidence JSON files changed
+only in runtime metadata: a host-specific interpreter path and Python/platform
+metadata from 3.14.5 versus the evidence's 3.12.10. The separate replay steps
+all returned zero; this is not a successful clean-export verification because
+the unchanged-artifact gate is part of that claim. Preserved the run at
+[`clean-export-2026-10-03-metadata-diff/`](../evidence/clean-export-2026-10-03-metadata-diff/README.md).
+Removed the absolute interpreter path from the force-scaling evidence and now
+record only the implementation name. A fresh export under the recorded Python
+3.12.10 is required to establish exact reproducibility.
+
 ### Completion audit refresh — 2026-10-03 clean-export runner diagnosis
 
 The first new tracked-only export at commit

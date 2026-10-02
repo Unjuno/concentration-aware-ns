@@ -28,6 +28,8 @@ class ForceConcentrationScalingTests(unittest.TestCase):
             result = json.loads(output.read_text(encoding="utf-8"))
 
         self.assertEqual(result["status"], "PASS")
+        self.assertNotIn("interpreter", result)
+        self.assertEqual(result["python_implementation"], "cpython")
         self.assertEqual(
             result["source_sha256"], hashlib.sha256(SCRIPT.read_bytes()).hexdigest()
         )
