@@ -1355,3 +1355,9 @@ analysis is in
 [`reports/actual-profile-pressure-provenance-2026-10-01.md`](../reports/actual-profile-pressure-provenance-2026-10-01.md).
 No selected-profile pressure sign, solver verdict, or physical conclusion is
 changed, and this correction has not been Lean-replayed.
+
+The entrance cone has the equivalent form `q²+p2²>(9/4)q` for `q=p1>0`.
+After scaling by `Λ`, any finite limits of `Λq` and `Λp2²` would obey
+`R²≥(9/4)Q`; the current source audit has not derived these limits or linked
+them to `Z`. Thus the reformulation sharpens the proof obligation but does not
+close the actual-profile pressure gate.

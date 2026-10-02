@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 213 — make the entrance-cone asymptotic obligation explicit
+
+Rewrote the retained cone margin using `q=p1>0`, `r=p2` as the exact
+inequality `q^2+r^2>(9/4)q`. At the zero-`chi` root, coefficient convergence
+alone makes `q→0` and the unscaled inequality degenerates. A pressure proof
+now has a sharper target: establish joint first-order bounds for `Λq` and
+`Λr²` over the allowed normalization and connect those limits to `Z`. This
+algebraic reformulation does not assert that such limits exist or imply a
+pressure sign. See the amended actualProfile audit; the full benchmark goal
+remains active.
+
 ## Revision 212 — correct the all-scale pressure-limit diagnosis
 
 Corrected the October 3 retained-entrance audit: the coefficient witnesses do

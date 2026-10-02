@@ -345,3 +345,22 @@ This is a proof-route limitation, not a counterexample. It corrects the
 initial quantifier-only diagnosis and gives a more precise remaining analytic
 bridge. No amplitude or pressure conclusion for `FinalSlowBase.actualProfile`
 changes.
+
+### Exact nonsingular form of the retained cone margin
+
+Write `q = p1` and `r = p2` at the entrance section. Since
+`slope_positive` gives `q > 0`, the stored condition
+`q + r^2 / q > 9/4` is exactly equivalent, by multiplication by `q`, to
+
+`q^2 + r^2 > (9/4) q`.
+
+This removes division by `q` but does not by itself give a nonzero limiting
+bound: both sides can tend to zero at the `chi=0` root. The useful scaled
+obligation is to estimate `Λ q`, `Λ r^2`, and their relation, uniformly for
+the admissible normalization used in the entrance-existence field. If those
+scaled quantities have finite limits `Q` and `R²`, respectively, the cone
+only yields `R² ≥ (9/4)Q`; an additional identity linking the first-order
+coefficient perturbations to `Z` is still needed to obtain the pressure
+moment or its sign. This is an exact algebraic reformulation of the retained
+inequality, not a Lean-proved pressure theorem or evidence that the needed
+asymptotics hold.

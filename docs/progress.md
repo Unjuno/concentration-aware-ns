@@ -467,3 +467,10 @@ The joint rate is still unresolved, so the limit does not yet give the root
 pressure moment. The corrected source-level reasoning is in
 `reports/actual-profile-pressure-provenance-2026-10-01.md`; no Lean replay or
 pressure-sign conclusion is claimed for this correction.
+
+The cone inequality also has an exact denominator-free form when `q=p1>0`:
+`q²+p2²>(9/4)q`. This avoids manipulating the singular quotient directly but
+degenerates unscaled as `q→0`; the next analytic target is a uniform joint
+estimate of `Λq` and `Λp2²`, plus an identity relating their first-order terms
+to the pressure moment `Z`. No such estimate is claimed yet; details are in
+the actualProfile provenance report.
