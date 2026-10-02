@@ -562,3 +562,13 @@ skipped, five subtests passed. Exact command, runtime, dependency-lock digest
 and stdout hash are preserved in `evidence/tests/full-suite-2026-10-03-b6dde6f.json`
 and `.log`. This is repository-level regression evidence, not upstream solver
 validation; PR CI for the same commit is still queued.
+
+
+## CI Python-version compatibility run — 2026-10-03
+
+Ran the full local benchmark suite under Python 3.12.10 (same minor version as
+the Ubuntu 24.04 workflow): 212 passed, one skipped, five subtests passed.
+The frozen command, dependency versions, spec digest, stdout and hash are in
+`evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This is a local
+macOS compatibility check only; the hosted workflow remains separately
+unverified while queued.

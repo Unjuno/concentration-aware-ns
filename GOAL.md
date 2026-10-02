@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 218 — exercise the CI Python version locally
+
+Ran the full benchmark suite on local macOS arm64 with Python 3.12.10, matching
+the Python minor version specified by GitHub Actions. Result: 212 passed, one
+skipped, five subtests passed in 103.82 s. The command, resolved dependency
+versions, requirements digest, raw log and SHA-256 are recorded in
+`evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This increases
+confidence in Python-version compatibility but does not substitute for the
+queued Ubuntu 24.04 workflow run and does not validate upstream solvers.
+
 ## Revision 217 — distinguish a new explanatory preprint from proof verification
 
 Checked Lei–Ren, arXiv:2609.35406v2 (submitted Sep 28, revised Sep 29, 2026).

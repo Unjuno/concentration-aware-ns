@@ -1407,3 +1407,13 @@ log digest are recorded in `evidence/tests/full-suite-2026-10-03-b6dde6f.json`
 and `.log`. This verifies the benchmark repository at that commit only; it is
 not a full test suite for any of the three upstream solver projects. The PR
 workflow for this same commit remains queued at the latest observation.
+
+
+### Python 3.12 CI-version local compatibility check — 2026-10-03
+
+On macOS arm64, the full benchmark suite under Python 3.12.10 passed 212 tests,
+skipped one, and passed five subtests. Environment, dependency versions,
+requirements digest, command, log and hash are in
+`evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This aligns the
+interpreter minor version with CI but is not evidence that the hosted Ubuntu
+job ran; its latest state must be checked independently.
