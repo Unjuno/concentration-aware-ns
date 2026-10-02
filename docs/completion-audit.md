@@ -1304,9 +1304,11 @@ run two-base-cell-width interior Gauss-gradient error changes 0.6084% to 5.2472%
 but its boundary mask differs from the common-physical-mask cross-resolution
 table and is reported separately. AMR quality remains UNCERTAIN; no blow-up,
 particle-ordering, viscosity-change, or solver-defect inference follows. The
-full run archive is preserved locally and a 15-part compact review archive
-is prepared for GitHub Release distribution; after download, it reconstructs
-with its recorded SHA-256. A replay audit confirms the runner and
+full run archive is preserved locally and a 15-part compact review archive is
+published at [GitHub Release `of13-amr-same-run-map-v8-n128`](https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-amr-same-run-map-v8-n128);
+the server-reported sizes and SHA-256 digests match all entries in the parts
+manifest, and the package reconstructs locally with its recorded SHA-256. A
+replay audit confirms the runner and
 its three helper files match commit `e92a77e`; the startup worktree status
 recorded by the runner contains only the untracked protocol. See
 `reports/openfoam-amr-resolution-replication-2026-10-01.md` and
