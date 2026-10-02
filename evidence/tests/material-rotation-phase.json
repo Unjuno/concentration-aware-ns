@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "source_relation": "docs/openai-core-material-trajectory.md gives q=tau/d_star and Omega=q^(-1-h)*f(0,eta_star) along a fixed-eta axis material trajectory.",
+  "symbolic": {
+    "angular_rate": "Omega(t) = f_star * (tau/d_star)^(-1-h)",
+    "integrated_angle": "DeltaTheta(Q) = f_star*d_star^(1+h)*tau0^(-h)*(Q^(-h)-1)/h",
+    "per_decade_angle": "f_star*d_star^(1+h)*tau0^(-h)*Q^(-h)*(10^h-1)/h",
+    "symbolic_derivative_check": "PASS",
+    "h_zero_limit": "DeltaTheta = f_star*d_star*log(1/Q)"
+  },
+  "illustration": {
+    "profile_amplitude_f_star": 0.336,
+    "amplitude_provenance": "Illustrative only: the independent preprint reports F_0(0)=0.336 for one matched leading-order profile; this is not extracted for OpenAI's selected profile.",
+    "h": 0.01,
+    "d_star": 1.0,
+    "tau0": 1.0,
+    "cumulative_tangent_rotation": [
+      {
+        "Q_tau_over_tau0": "1e-02",
+        "angle_radians": 1.5835192145102268,
+        "turns": 0.25202491047029796
+      },
+      {
+        "Q_tau_over_tau0": "3e-03",
+        "angle_radians": 2.0096794965791633,
+        "turns": 0.3198504259110056
+      },
+      {
+        "Q_tau_over_tau0": "1e-05",
+        "angle_radians": 4.099820064545968,
+        "turns": 0.6525066290598243
+      },
+      {
+        "Q_tau_over_tau0": "1e-15",
+        "angle_radians": 13.861261499324549,
+        "turns": 2.2060882851068784
+      }
+    ],
+    "one_turn_threshold_Q": 3.588757422890764e-08
+  },
+  "scope": "Cumulative rotation of the infinitesimal transverse tangent frame only. It is conditional on a fixed nonzero f_star, the source path remaining in the core, and its local deformation equation. It is not an off-axis tracer trajectory, winding theorem for a finite curve, or molecular-orientation prediction.",
+  "interpretation": "For any fixed h>=0 and nonzero f_star the integrated tangent-frame angle is unbounded as Q tends to zero, although each finite preterminal interval has finite angle. The transverse-to-axial direction ratio still tends to zero because axial stretching dominates; an unbounded transverse phase does not prevent directional alignment. Physical cutoffs in the cited illustrative liquid/gas estimates occur much earlier than the mathematical Q->0 limit."
+}

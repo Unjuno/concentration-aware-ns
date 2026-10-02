@@ -104,6 +104,45 @@ to (tau/tau0)^(3C/2). This is directional alignment of infinitesimal material
 separations in this core. It is not molecular orientation or finite-particle
 packing, and does not establish a phase transition.
 
+## Cumulative transverse phase versus directional alignment
+
+The rotation integral above can be evaluated exactly because `eta_*` and
+`f_* = f(0, eta_*)` are constant on this selected axis trajectory. With
+`q=tau/d_*`, `d_*=1-eta_*^2`, and `Omega=q^(-1-h) f_*`, the tangent-frame angle
+from `tau_0` to `tau=Q tau_0` is
+
+```text
+DeltaTheta(Q) = f_* d_*^(1+h) tau_0^(-h) (Q^(-h)-1)/h,  h>0.
+```
+
+For `h=0`, its limit is `f_* d_* log(1/Q)`. Thus a nonzero swirl coefficient
+gives unbounded cumulative phase if the mathematical core is followed all the
+way to `Q=0`; for positive `h`, the angular increment in each successive
+collapse-time decade grows like `Q^(-h)`. This does not prevent directional
+alignment: the transverse component of a material separation rotates while
+shrinking relative to its axial component, so its unit direction still tends
+to the axis. The calculation concerns the infinitesimal variational frame, not
+an off-axis particle's finite trajectory or a finite material filament.
+
+As an explicitly illustrative scale check, [Duraiswami's preprint
+(arXiv:2609.17642)](https://arxiv.org/abs/2609.17642) reports `F_0(0)=0.336`
+for one matched leading-order profile. If that
+amplitude is used only as a proxy for `f_*`, with `h=0.01`, `d_*=1`, and
+`tau_0=1`, the formula gives about 0.32 turns by `Q=0.003`, 0.65 turns by
+`Q=10^-5`, and 2.21 turns by `Q=10^-15`; one complete turn occurs only near
+`Q=3.6e-8`. The preprint's illustrative water/gas continuum cutoffs are around
+`10^-3`–`10^-2` and `10^-5`, respectively, so its physical scenarios terminate
+before one tangent-frame revolution. The `F_0(0)` value belongs to that
+separate computed profile and is not an extraction of `FinalSlowBase.actualProfile`.
+
+This resolves an apparent ambiguity in “fraction of a revolution per decade”:
+each decade can be sub-revolution while a formal continuation through
+infinitely many decades accumulates unbounded phase. It does not imply that
+molecules or finite particles make those turns. The exact algebra and the
+clearly labeled illustrative values are reproducible with
+`python -m tools.check_material_rotation_phase`; the artifact is
+`evidence/tests/material-rotation-phase.json`.
+
 A small initial isotropic covariance, propagated by the linearized map F, has
 two decreasing eigenvalues and one increasing eigenvalue; its determinant stays
 constant. Thus directional alignment does not itself imply improved full-position

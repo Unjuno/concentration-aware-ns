@@ -1,5 +1,22 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 196 — integrate the material tangent-frame rotation
+
+Evaluated the transverse rotation already present in the selected axis
+trajectory's deformation matrix. For fixed axis similarity coordinate,
+`Omega=f_* (tau/d_*)^(-1-h)`, so its accumulated phase is
+`f_* d_*^(1+h) tau_0^(-h) (Q^(-h)-1)/h` for `h>0` and diverges as `Q→0` if
+`f_*≠0`. This does not prevent directional alignment: the transverse
+component rotates while its size relative to the axial component tends to
+zero. An illustrative `f_*=0.336`, taken only from a separate computed profile,
+gives 0.32 turns by the paper's water-cutoff scale `Q=.003`, 0.65 turns by its
+air scale `Q=1e-5`, and 2.21 turns only at `Q=1e-15`. That distinguishes finite
+physical-cutoff estimates from formal continuation to the singular limit and
+does not imply finite-particle or molecular winding. Added a symbolic check,
+regression test, and explanation in `docs/openai-core-material-trajectory.md`;
+artifact: `evidence/tests/material-rotation-phase.json`. The selected-profile
+coefficient remains non-effective, and the benchmark goal remains active.
+
 ## Revision 195 — independently replay the public similarity-flow test suite
 
 Pinned the preprint's public GitLab snapshot at
