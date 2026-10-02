@@ -1382,3 +1382,17 @@ validates only the limitation of the existential/all-larger-`C` interface;
 it does not characterize the one `C` selected in `actualProfile`. The exact
 statement, axiom list and replay log are in
 `evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.
+
+
+## PhysicsNeMo live status refresh, 2026-10-03
+
+GitHub still reports `power_spectrum.py` at blob `fb3e8cda`; Issue #2007 is
+open and fix PR #2008 remains open/review-required. Against current `main`
+`83d6a337`, the PR branch is two commits ahead and twelve behind, so it has
+diverged from its merge base. The periodic-gradient behavior remains covered
+by Issue #2001 and lower-level Issue #1852 / draft PR #1853; #1852 is stale but
+open. No duplicate report was filed. Exact live metadata is in
+`evidence/upstream-refresh/physicsnemo-current-status-2026-10-03T-live.json`;
+see `reports/physicsnemo-live-status-2026-10-03.md`. The full local benchmark
+suite passed 212 tests, one skip, and five subtests. This is not PhysicsNeMo's
+own test suite, so target-runtime/full-upstream validation remains separate.

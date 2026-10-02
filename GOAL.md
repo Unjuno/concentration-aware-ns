@@ -3626,3 +3626,16 @@ an independent regularity/unresolved-mode estimate. This is a scope rule, not
 a change to any existing numerical verdict. Targeted gate tests pass (14). The
 latest PR #4 head is `793bdc46fa798ad1b7e22ee0237755c72cda7142`; its GitHub CI
 run `37035369482` is queued. Goal remains active.
+
+
+## Revision 143 — live PhysicsNeMo records and full benchmark suite
+
+Refreshed NVIDIA/PhysicsNeMo main and existing related issues/PRs. Main is
+`83d6a337`; the odd-width spectrum file remains blob `fb3e8cda`, Issue #2007
+is open, and fix PR #2008 is open/review-required and diverged from current
+main (2 ahead, 12 behind). Periodic derivative behavior and its
+consumer-facing documentation gap are already tracked by #1852/#2001 and
+draft PR #1853; #1852 is stale but open. No duplicate was posted. Saved exact
+metadata and disposition in the dated evidence/report. The full local benchmark
+suite on current HEAD completed `212 passed, 1 skipped, 5 subtests passed`;
+this does not stand in for the upstream PhysicsNeMo suite. Goal remains active.

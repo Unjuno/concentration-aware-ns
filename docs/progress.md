@@ -542,3 +542,15 @@ guarantee; such a claim needs an explicit validated reconstruction or an
 independent regularity/unresolved-mode estimate. This records the finite-mesh
 observation analysis without changing existing case verdicts. Targeted gate
 tests: 14 passed. PR #4 CI for head `793bdc46` is queued.
+
+
+## PhysicsNeMo upstream tracking refresh and local full suite — 2026-10-03
+
+Requeried current main, the odd-width spectrum source blob, and related issue
+and PR records. The fix PR is open/review-required and diverged from current
+main; periodic gradient issue #1852 remains open/stale, with linked draft PR
+#1853, while the consumer-facing issue #2001 remains open. No duplicate post
+was warranted. Current metadata is stored in the dated upstream-refresh JSON.
+The complete local verification suite on the current benchmark checkout passed
+212 tests, skipped one, and passed five subtests. This is not the upstream
+PhysicsNeMo suite.
