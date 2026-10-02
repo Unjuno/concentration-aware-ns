@@ -19,6 +19,8 @@ THEOREMS = [
     "similarity_coordinate_upper_of_scaled_axial",
     "sqrt_tau_le_sublinear_power",
     "axial_coordinate_bound_of_tube",
+    "coordinate_bounds_of_spatial_distance",
+    "transverse_tau_tube_inside_selected_hole",
     "similarity_coordinate_upper_of_tube",
     "physicalQ_forwardScalar",
     "physicalQ_ge_elapsed",
@@ -44,6 +46,8 @@ def verify() -> bool:
         for match in re.finditer(r"^([0-9a-f]{64})  (NavierStokes/\S+\.lean)$", log, re.M)
     }
     imported_hash_ok = imported_hashes == UPSTREAM_SHA256
+    extension_hash = sha256(Path("verification/AxisForceSign.lean"))
+    pinned_axis_hash_ok = extension_hash == "fe989c3a279d7515b2584e82ada2632930a80299f98f502f68720ff45e2fb793"
     allowed_axioms = {"propext", "Classical.choice", "Quot.sound"}
     axiom_reports = {
         name: [value.strip() for value in body.split(",")]
@@ -57,6 +61,7 @@ def verify() -> bool:
     success = (
         result.returncode == 0
         and imported_hash_ok
+        and pinned_axis_hash_ok
         and only_allowed_axioms
         and "sorryAx" not in log
     )
@@ -68,11 +73,13 @@ def verify() -> bool:
         "runner_sha256": runner_hash,
         "imported_source_sha256": imported_hashes,
         "imported_source_hashes_match": imported_hash_ok,
+        "axis_force_sign_sha256": extension_hash,
+        "axis_force_sign_hash_matches": pinned_axis_hash_ok,
         "axioms": axiom_reports,
         "only_allowed_axioms": only_allowed_axioms,
         "log_sha256": sha256(output),
         "contains_sorryAx": "sorryAx" in log,
-        "scope": "Lean checks the sublinear envelope; tube axial-power inequality; actual physicalQ coordinate equation and lower bound; and the resulting q upper bound conditional on a scaled axial bound. The selected-stage hole and full candidate germ transfer are checked separately in support-hole-assembly.json; uniform tube hypotheses and the selected trajectory-center bound remain open.",
+        "scope": "Lean checks the sublinear envelope; tube axial-power inequality; actual physicalQ coordinate equation and lower bound; coordinate bounds from a 3D distance bound; and a tau-width transverse support-hole inequality on the distinguished root chart. The selected-stage hole and candidate germ transfer are checked separately in support-hole-assembly.json and AxisForceSign.lean. Lifting this scalar estimate to the full-space chart and uniform domain/cutoff/plateau hypotheses remain open.",
     }
     record.write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))

@@ -14,6 +14,8 @@ Try this:
  Quot.sound]
 'ConcentrationAware.sqrt_tau_le_sublinear_power' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.axial_coordinate_bound_of_tube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.coordinate_bounds_of_spatial_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.transverse_tau_tube_inside_selected_hole' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.similarity_coordinate_upper_of_tube' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.physicalQ_forwardScalar' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ConcentrationAware.physicalQ_ge_elapsed' depends on axioms: [propext, Classical.choice, Quot.sound]

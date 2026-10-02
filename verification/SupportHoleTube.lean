@@ -117,6 +117,47 @@ theorem axial_coordinate_bound_of_tube {a τ z z0 B ρ : ℝ}
       gcongr
     _ = (B + ρ) * τ ^ ((1 - a) / 2) := by ring
 
+/-- Any spatial displacement bounded in Euclidean norm also bounds the
+transverse radius and axial coordinate separately. -/
+theorem coordinate_bounds_of_spatial_distance
+    {x y : NavierStokes.ProblemStatement.Space} {δ : ℝ}
+    (hxy : ‖x - y‖ ≤ δ) :
+    |x 0 - y 0| ≤ δ ∧ |x 1 - y 1| ≤ δ ∧ |x 2 - y 2| ≤ δ := by
+  have h0 := (PiLp.norm_apply_le (x - y) 0).trans hxy
+  have h1 := (PiLp.norm_apply_le (x - y) 1).trans hxy
+  have h2 := (PiLp.norm_apply_le (x - y) 2).trans hxy
+  simpa only [PiLp.sub_apply, Real.norm_eq_abs] using ⟨h0, h1, h2⟩
+
+/-- On the actual root axis, `physicalQ=q=tau/(1-eta^2)`. Thus a
+`tau`-radius transverse tube sits strictly inside the selected support hole
+with a margin proportional to `sqrt(tau)`. -/
+theorem transverse_tau_tube_inside_selected_hole
+    {c d ρ τ q : ℝ}
+    (hc : 0 < c) (hd : 0 < d) (hd1 : d ≤ 1)
+    (hρc : ρ < c)
+    (hτ : 0 < τ) (hτ1 : τ ≤ 1)
+    (hq : q = τ / d) {r : ℝ}
+    (hr : r ≤ ρ * τ) :
+    r < c * Real.sqrt q := by
+  have hqpos : 0 < q := by rw [hq]; exact div_pos hτ hd
+  have hqge : τ ≤ q := by
+    rw [hq]
+    exact (le_div_iff₀ hd).2 (by nlinarith)
+  have hsqrt : τ ≤ Real.sqrt q := by
+    calc
+      τ ≤ Real.sqrt τ := by
+        have hroot : Real.sqrt τ = τ ^ ((1 : ℝ) / 2) := Real.sqrt_eq_rpow τ
+        rw [hroot]
+        have hexp : (1 : ℝ) / 2 ≤ 1 := by norm_num
+        simpa only [Real.rpow_one] using
+          (Real.rpow_le_rpow_of_exponent_ge hτ hτ1 hexp)
+      _ ≤ Real.sqrt q := Real.sqrt_le_sqrt hqge
+  have hρτ : ρ * τ < c * τ := (mul_lt_mul_of_pos_right hρc hτ)
+  calc
+    r ≤ ρ * τ := hr
+    _ < c * τ := hρτ
+    _ ≤ c * Real.sqrt q := by exact mul_le_mul_of_nonneg_left hsqrt hc.le
+
 /-- The source's scalar similarity equation transfers an axial tube bound
 into the explicit upper envelope for `q`. -/
 theorem similarity_coordinate_upper_of_tube
@@ -180,6 +221,8 @@ end ConcentrationAware
 #print axioms ConcentrationAware.similarity_coordinate_upper_of_scaled_axial
 #print axioms ConcentrationAware.sqrt_tau_le_sublinear_power
 #print axioms ConcentrationAware.axial_coordinate_bound_of_tube
+#print axioms ConcentrationAware.coordinate_bounds_of_spatial_distance
+#print axioms ConcentrationAware.transverse_tau_tube_inside_selected_hole
 #print axioms ConcentrationAware.similarity_coordinate_upper_of_tube
 #print axioms ConcentrationAware.physicalQ_forwardScalar
 #print axioms ConcentrationAware.physicalQ_ge_elapsed

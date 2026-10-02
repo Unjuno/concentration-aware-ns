@@ -150,13 +150,13 @@ axial center curve with
     tau = tau0*Q,
 
 would lie strictly inside this support hole, provided the tube remains in the
-bands/domains where the cited support facts apply. On such a tube, the
-perturbation **fields themselves**, not only their germs at the axis, are zero.
-If all stage and direct-field sums inherit this common pointwise support hole,
-the assembled velocity equals its smooth base there. This would provide the
-previously missing power-law tube envelope with `r=1/2`; combined with the
-base Hessian rate `kappa=40`, the generic packet exponent would again be
-`Cstretch+39`, conditionally on all remaining hypotheses and constants.
+bands/domains where the cited support facts apply. The `sqrt(tau)` tube estimate alone gives no strict coefficient margin, so it
+does not prove this inclusion. On the root axis `q=tau/d` and `d=1-eta^2` lies
+in `(0,1]`; Lean now checks that a narrower transverse radius `rho*tau`,
+`0<rho<leftRadius`, lies strictly below `leftRadius*sqrt(q)`. This yields a
+candidate terminal tube exponent `r=1`, not `r=1/2`. If the full-space support
+and domain hypotheses are transferred uniformly, the base Hessian rate
+`kappa=40` still gives the conditional packet exponent `Cstretch+39`.
 
 The initial-copy part is now formalized in
 `verification/SupportHole.lean` as
@@ -173,8 +173,8 @@ The full support-hole transfer is checked as a **local germ implication**, not
 yet as a uniformly covered spacetime tube. `SupportHoleAssembly.lean` proves
 the selected initialized sum/curl/localization transfer under explicit
 physical-domain, cutoff-plateau, late-time, and spatial-localization
-hypotheses. Deriving those hypotheses uniformly on the proposed tube and
-instantiating the selected trajectory-center scaling remain open. The exact
+hypotheses. Lifting the scalar hole inequality to the full 3D chart and deriving all
+domain/cutoff/plateau hypotheses uniformly on the proposed tube remain open. The exact
 numeric value of `leftRadius` and `patch.a` is also non-effective. Therefore
 keep the published packet exponent conditional until the tube conditions and
 requested concrete constants are checked.

@@ -2,7 +2,7 @@
   "exit_code": 0,
   "success": true,
   "source": "verification/SupportHoleTube.lean",
-  "source_sha256": "ef6e72f7a8bc6585558f43016ac8eb85360b3e2f253cef2098a1a08665eb6cd5",
+  "source_sha256": "4d870caf47597c6466ec8962df627f1619812e98bc040d1e0470f99efeecc893",
   "runner_sha256": "86b7a91233ed8968dbbdecf1088311ce6d33b4b3ec91dd93626c671325cf69db",
   "imported_source_sha256": {
     "NavierStokes/SimilarityCoordinates.lean": "de85505217232fed653c70fb73edf5658c1bf995bb36792cab5a4653d063ca1f",
@@ -11,6 +11,8 @@
     "NavierStokes/AxisymmetricFields.lean": "41d403ae4cec8887c17a80f621744399522a3247bddbcab64e577cb296b3020d"
   },
   "imported_source_hashes_match": true,
+  "axis_force_sign_sha256": "fe989c3a279d7515b2584e82ada2632930a80299f98f502f68720ff45e2fb793",
+  "axis_force_sign_hash_matches": true,
   "axioms": {
     "scalar_sublinear_envelope": [
       "propext",
@@ -28,6 +30,16 @@
       "Quot.sound"
     ],
     "axial_coordinate_bound_of_tube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "coordinate_bounds_of_spatial_distance": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "transverse_tau_tube_inside_selected_hole": [
       "propext",
       "Classical.choice",
       "Quot.sound"
@@ -54,7 +66,7 @@
     ]
   },
   "only_allowed_axioms": true,
-  "log_sha256": "922a763dda1576589b86c522c60ed803d7a31bba1f7f330a4cb89a9cdb01f024",
+  "log_sha256": "a038dcc0c36e0d17c0708fb3e16c578b84b485c6c9e4e76076082f9de7a1b017",
   "contains_sorryAx": false,
-  "scope": "Lean checks the sublinear envelope; tube axial-power inequality; actual physicalQ coordinate equation and lower bound; and the resulting q upper bound conditional on a scaled axial bound. The selected-stage hole and full candidate germ transfer are checked separately in support-hole-assembly.json; uniform tube hypotheses and the selected trajectory-center bound remain open."
+  "scope": "Lean checks the sublinear envelope; tube axial-power inequality; actual physicalQ coordinate equation and lower bound; coordinate bounds from a 3D distance bound; and a tau-width transverse support-hole inequality on the distinguished root chart. The selected-stage hole and candidate germ transfer are checked separately in support-hole-assembly.json and AxisForceSign.lean. Lifting this scalar estimate to the full-space chart and uniform domain/cutoff/plateau hypotheses remain open."
 }
