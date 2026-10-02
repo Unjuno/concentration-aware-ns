@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 244 — verify the added model audit from a fixed commit
+
+The fresh locked clean export of `d4cbe01243633b7a0499a65dc923b12dd117e4cc`
+passed all 43 report replay steps and six follow-up checks. Its exact comparison
+covered 222 tracked files and found no changes. The result manifest and logs
+are preserved in `evidence/clean-export-2026-10-03-success-d4cbe01/`. This
+supports reproducibility for the recorded macOS/Python 3.14.5 environment; it
+does not upgrade solver or molecular claims. The broad benchmark objective
+remains active.
+
 ## Revision 243 — recheck the archived matrix and add a new internal-state model
 
 Revalidated the current OpenFOAM Foundation 13 six-case archive index rather
