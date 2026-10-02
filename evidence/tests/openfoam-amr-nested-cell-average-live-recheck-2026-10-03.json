@@ -1,0 +1,33 @@
+{
+  "status": "PASS_LIVE_ARTIFACT_RECHECK",
+  "observed_at_utc": "2026-10-02T23:30:41Z",
+  "repository_head": "f8bf7aa7768ed5ddb096b70fc5f1ac92e82e3d47",
+  "nested_cell_average_audit": {
+    "method": "Called tools.audit_amr_nested_cell_average_error.audit() read-only and compared its returned object with the saved JSON.",
+    "recomputed_equals_saved_artifact": true,
+    "saved_artifact": "evidence/tests/openfoam-amr-nested-cell-average-audit-2026-10-03.json",
+    "rows": 4,
+    "observed_subcell_variation_orders": [
+      0.9639369268782988,
+      0.9910098417109356,
+      0.9978100821870834
+    ],
+    "n128_subcell_average_variation_relative": 0.052404566766082836
+  },
+  "n128_review_package": {
+    "parts_manifest": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json",
+    "part_count": 15,
+    "all_local_part_sizes_and_sha256_match_manifest": true,
+    "part_bytes_total": 1107717919,
+    "joined_parts_sha256": "68f635f06c1a00bca533e30556deeba472dd25fa91c24b1cc8ab563607a51da9",
+    "assembled_zst_size_and_sha256_match_joined_parts": true,
+    "github_release_tag": "of13-amr-same-run-map-v8-n128",
+    "github_release_asset_count": 15,
+    "github_release_asset_names_sizes_and_digests_match_manifest": true,
+    "instrumented_library_sha256_matches_run_manifest": true,
+    "prior_member_verification_artifact": "evidence/of13-amr-same-run-map-v8-n128/review-archive-members-verification.json",
+    "prior_member_verification_status": "PASS_REVIEW_PACKAGE_MEMBERS_MATCH_AS_RUN_SNAPSHOTS"
+  },
+  "interpretation": "The saved arithmetic audit and public snapshot package are internally consistent with their recorded sources. This does not rerun OpenFOAM, regenerate raw diagnostics, certify finite-volume solution accuracy, or change the AMR quality verdict, which remains UNCERTAIN.",
+  "user_owned_files": "Large local archive and library files were read and hashed only; none were modified, moved, staged, or deleted."
+}

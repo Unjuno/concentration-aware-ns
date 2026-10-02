@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 250 — revalidate the published n=128 AMR review artifact
+
+Recomputed the four-resolution nested-cell-average audit in memory and matched
+the saved result exactly. Independently hashed all 15 local n=128 review
+chunks, the assembled Zstandard file, and the instrumentation library; they
+match the tracked manifests. GitHub's current Release API reports all 15
+published chunk names, sizes, and digests matching the same parts manifest.
+This checks public artifact integrity and postprocessing replay, not the CFD
+solver or field-quality verdict; AMR remains UNCERTAIN. No solver was rerun,
+and the large local untracked files were preserved. Details are in
+`reports/openfoam-amr-nested-cell-average-error-2026-10-03.md` and
+`evidence/tests/openfoam-amr-nested-cell-average-live-recheck-2026-10-03.json`.
+Goal remains active.
+
 ## Revision 249 — add the analytic-forcing regularity boundary to impact scope
 
 Refreshed primary arXiv records and added the 2026-09-29 Constantin, Ignatova,

@@ -96,6 +96,15 @@ tool validates cell counts, exact parent-injection status, decomposition
 residuals and records input hashes before calculating pairwise orders. It
 does not recompute the archived field diagnostics or solver runs.
 
+A live read-only replay on 2026-10-03 returned an object exactly equal to that
+saved audit. The n=128 package recheck also matched all 15 local chunk hashes,
+the assembled Zstandard hash, the recorded instrumentation-library hash, and
+the names/sizes/digests of all 15 assets on the GitHub Release. The prior
+archive-member verification still records the three as-run snapshots matching
+the captured manifest. This strengthens the integrity/replay chain only; it is
+not a new OpenFOAM execution or accuracy certification. Details are in
+`evidence/tests/openfoam-amr-nested-cell-average-live-recheck-2026-10-03.json`.
+
 To reproduce the numerical analyses, acquire each run's complete raw archive
 according to its local manifest and use the run's pinned protocol with
 `tools.analyze_amr_same_run_map`. For the n=128 review package, reconstruct the
