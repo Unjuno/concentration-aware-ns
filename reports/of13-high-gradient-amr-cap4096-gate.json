@@ -27,7 +27,7 @@
     },
     "space_time_study_verified": {
       "path": "reports/of13-high-gradient-amr-v1.md",
-      "sha256": "81569e1661a6e854bdb8c1e9aecd65f777a16cb9d9cd139ce3c747405afcaf1b"
+      "sha256": "ddfb512d46766dcdd0a2263a76c9e008d9969bfb2ddb5d30dc2cc27b2e5ce9e6"
     },
     "thresholds_preregistered": {
       "path": "protocols/high-gradient-of13-amr-v1.json",
