@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-03",
+  "status": "PASS",
+  "base_commit": "d93502ce2be90ff8a8f353f4e1bff094c6ec0cf4",
+  "working_tree_scope": "Tested source exactly matches base_commit d93502ce; this metadata artifact was added afterward.",
+  "workflow_reference": ".github/workflows/python-verification.yml",
+  "command": "uv run --python 3.12.10 --with-requirements requirements-verification.txt -- python -m pytest -q tests",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "python": "3.12.10",
+    "uv": "0.11.17"
+  },
+  "requirements": {
+    "path": "requirements-verification.txt",
+    "sha256": "fc7fc7afb6c8e6a4f188be21b26d9af64a511bb97fcdd10fefa525c20cd2402f"
+  },
+  "result": {
+    "passed": 214,
+    "skipped": 1,
+    "subtests_passed": 5,
+    "duration_seconds": 103.25
+  },
+  "log": {
+    "path": "evidence/tests/gauss-streaming-ci-python-full-suite-2026-10-03.log",
+    "bytes": 377,
+    "sha256": "51e0ae0dc805f07bb452710b18c1fe9e4c3ed69c279fb637ade02f7f24738103"
+  },
+  "scope_limit": "Local macOS Python 3.12 compatibility run; does not replace the queued GitHub Ubuntu 24.04 job. The unpinned NumPy resolution was 2.5.3; a test-generated reference metadata file was restored to its pre-run tracked bytes after validation.",
+  "resolved_dependencies": {
+    "numpy": "2.5.3",
+    "pytest": "9.1.1",
+    "sympy": "1.14.0",
+    "scipy": "1.16.2",
+    "python-flint": "0.9.0"
+  }
+}

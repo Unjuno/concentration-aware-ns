@@ -10,9 +10,12 @@ face Gauss value; the method and values are explicit in
 `compact-gauss-replay-verification.json` and the AMR report. Replaced whole-CSV
 decoding and Python row dictionaries with 8,192-row numeric chunks, added a
 multi-batch parser regression test, and reran the full suite: 214 passed, one
-skipped, five subtests passed. The command and log hash are preserved in
-`evidence/tests/gauss-streaming-full-suite-2026-10-03.*`. No solver or physical
-conclusion changes.
+skipped, five subtests passed on both Python 3.14.5 and the CI-target Python
+3.12.10. Commands, environment, lockfile/requirements digests and logs are in
+`evidence/tests/gauss-streaming-full-suite-2026-10-03.*` and
+`evidence/tests/gauss-streaming-ci-python-full-suite-2026-10-03.*`. The GitHub
+Ubuntu job remains independently queued. No solver or physical conclusion
+changes.
 
 ## Revision 220 — sharpen the finite-observation theorem boundary
 

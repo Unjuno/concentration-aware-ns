@@ -1429,3 +1429,21 @@ zstd output no longer injects random temporary paths into the AMR replay log;
 its numerical output is unchanged. This verifies the local symbolic identity
 and replay machinery only. It does not prove the finite-AMR extension, the
 OpenAI packet, or any solver hypothesis.
+
+### n=128 compact Gauss replay and streaming input — 2026-10-03
+
+Reconstructed the public n=128 review archive and reran the Gauss postprocessor.
+The mapped-stage diagnostics and same-parent-face audit exactly match the
+full-run record. The compact archive omits `preMap_faces.csv`, so the preMap
+replay uses the centered-periodic-difference fallback instead of the full
+archive's captured-face Gauss sum; the small metric difference and exact
+methods are recorded in
+`evidence/of13-amr-same-run-map-v8-n128/compact-gauss-replay-verification.json`.
+The CSV loader now parses bounded 8,192-row chunks, and its regression plus the
+full suite pass under Python 3.14.5 and 3.12.10 (214 passed, one skipped, five
+subtests). Logs and environment records are in
+`evidence/tests/gauss-streaming-full-suite-2026-10-03.json/.log` and
+`evidence/tests/gauss-streaming-ci-python-full-suite-2026-10-03.json/.log`.
+The local Python 3.12 run is not the hosted Ubuntu job; Actions for PR #4 at
+`d93502c` remained queued at the latest live query. None of these postprocessing
+checks validate OpenFOAM itself or imply a physical effect.
