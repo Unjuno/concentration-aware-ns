@@ -60,18 +60,28 @@ def main():
         'tube_denominator_dominant_term': s.simplify(
             actual_r+denominator_hessian_exp-43),
     }
+    actual_c_lower = s.Rational(7999999, 2000000)
     actual_specialization_controls = {
         'Hessian_denominator_term_dominates_linear_amplification':
             bool(denominator_hessian_exp >= actual_c_upper),
         'transverse_relative_error_requires_stricter_power':
             bool(actual_transverse_relative_exp > actual_angle_exp),
+        # Since C-1 > 2 and C-1 < 3, the simple envelope
+        # I(Q) <= tau0/(C-1)*Q^(1-C) is bounded by (tau0/2)*Q^-3.
+        # Do not replace 1/(C-1) by 1/3 from C<4 alone.
+        'selected_integral_prefactor_half_is_safe': bool(actual_c_lower - 1 > 2),
+        'one_third_is_not_a_direct_bound_from_the_C_interval': bool(
+            1 / (actual_c_lower - 1) > s.Rational(1, 3)),
     }
+    E0 = s.symbols('E0', positive=True)
+    angle_factor_difference = s.factor(
+        (E0/2) / (1+E0/2) - E0 / (2*(1+E0)))
+    assert s.simplify(angle_factor_difference) >= 0
     # To make the fixed-cone estimate uniform outside a shrinking exceptional
     # band around the transverse plane, use one additional power in the packet
     # radius and exclude c=|cos(theta0)| < Q^(1/2).
     packet_beta = s.Integer(44)
     direction_cutoff_power = s.Rational(1, 2)
-    actual_c_lower = s.Rational(7999999, 2000000)
     absolute_endpoint_power = packet_beta-C
     good_direction_lower_endpoint_power = packet_beta+direction_cutoff_power-C
     relative_displacement_power = direction_cutoff_power-C
@@ -199,9 +209,10 @@ def main():
         'hessian_term_denominator_exponent': str(denominator_hessian_exp),
         'Hessian_denominator_exponent_gap': str(
             denominator_hessian_exp-actual_c_upper),
-        'tube_prefactor': 'rho0/(1+B), B=k0*rho0*tau0/3',
-        'angle_prefactor': '3*E0/(2*(1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))',
-        'common_prefactor': 'K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0))',
+        'integral_upper': 'I(Q)<=tau0/2*Q^(-3), using C-1>2 and C-1<3',
+        'tube_prefactor': 'rho0/(1+B), B=k0*rho0*tau0/2',
+        'angle_prefactor': 'E0/((1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))',
+        'common_prefactor': 'K < min(rho0/(1+B), E0/((1+E0)*k0*tau0))',
         'common_sufficient_power': 'Q^43 for sufficiently small Q',
         'residuals': {name: str(value) for name, value in
                       actual_specialization_residuals.items()},

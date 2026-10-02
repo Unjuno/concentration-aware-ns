@@ -40,6 +40,27 @@ def test_fixed_cone_and_transverse_relative_error_have_different_powers():
     assert transverse_relative_power.subs({C: 4, kappa: 40}) == 49
 
 
+def test_selected_q43_prefactors_use_uniform_bounds_from_the_source_interval():
+    C_lower = sp.Rational(7999999, 2000000)
+    C_upper = sp.Integer(4)
+    # The selected source enclosure gives 2 < C-1 < 3. For 0<Q<=1,
+    # this implies Q^(1-C)<=Q^-3 and 1/(C-1)<1/2.
+    assert C_lower - 1 > 2
+    assert C_upper - 1 == 3
+    assert 1 / (C_lower - 1) < sp.Rational(1, 2)
+    # A direct substitution into the coefficient 1/(C-1) does not justify
+    # replacing it by 1/3; use the conservative 1/2 integral prefactor.
+    assert 1 / (C_lower - 1) > sp.Rational(1, 3)
+
+    E0 = sp.symbols("E0", positive=True)
+    angle_factor = sp.simplify(
+        (E0 / 2) / (1 + E0 / 2) - E0 / (2 * (1 + E0))
+    )
+    expected = E0**2 / (4 * (1 + E0 / 2) * (1 + E0))
+    assert sp.simplify(angle_factor - expected) == 0
+    assert angle_factor.is_positive
+
+
 def test_shrinking_packet_absolute_localization_coexists_with_relative_stretch():
     C = sp.symbols("C", positive=True)
     initial_power = sp.Integer(44)
