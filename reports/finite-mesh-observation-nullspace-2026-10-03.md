@@ -23,8 +23,10 @@ following remain identical between the reference and inserted solutions:
 a neighborhood of every face);
 - velocity and force values at the fixed finite point-observation locations.
 
-The inserted continuum solution nevertheless has unbounded velocity as
-`t` approaches `T`, as asserted by the assumed packet/gluing theorem. Thus no
+The inserted continuum solution nevertheless has
+`limsup_{t↑T} ||u_ε(t)||_∞ = ∞`, as asserted by the assumed packet/gluing
+theorem; this does not assert that the norm tends monotonically to infinity or
+has a limit. Thus no
 finite observation set of these forms, by itself, identifies the continuum
 solution class. The conclusion is existential and depends on the finite
 observation family chosen in advance.
@@ -64,12 +66,19 @@ zero. Thus the cell integral of `delta g` is zero. Every other
 cell has zero perturbation. The point and face statements follow directly
 from the support choice.
 
-The finite-uniform-grid result is explicit in v4, Section 4.6, Theorem 4.7,
-on `R^3`. The torus finite-AMR and finite point/face-observation statement
-above is a separate proof adaptation from the periodic gluing theorem (v4,
-Theorem 3.6). It is not stated verbatim in the article. The geometric step
-uses only that the finite union of skeletons and probes leaves an open ball;
-the conservation step is the cell integration shown above.
+The paper itself explicitly proves the core finite-observation result in v4,
+Section 4.6, Theorem 4.7, on `R^3`: for any finite family of complete uniform
+Cartesian grids, it preserves velocity and force cell averages in every cell
+for every `0 ≤ t < T`, while the altered solution has maximal lifespan `T`
+and `limsup_{t↑T} ||u_ε(t)||_∞ = ∞`. Its proof uses the same compact pressure
+representative and cell integration identity. The torus finite-AMR and finite
+point/face-observation statement above is our separate proof adaptation from
+the periodic gluing theorem (v4, Theorem 3.6); it is not stated verbatim in
+the article. The geometric step uses only that the finite union of mesh
+skeletons and probes leaves an open ball; the conservation step is the cell
+integration shown above. Accordingly, the underlying whole-space uniform-grid
+non-identifiability result is not new to this repository; only the stated
+extension is an additional argument, conditional on the cited gluing result.
 
 ## What this does and does not imply for this benchmark
 

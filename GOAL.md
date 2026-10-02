@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 220 — sharpen the finite-observation theorem boundary
+
+Re-read Cao–Chi–Nie v4 directly at Theorem 4.7. It explicitly gives the
+whole-space result for a finite family of complete uniform Cartesian grids:
+velocity and force cell averages agree in every cell for all `t<T`, while
+the altered solution has `limsup ||u(t)||_infinity = infinity` at its terminal
+time. Clarified that this is prior published content, and that the torus,
+finite-polyhedral-AMR, and finite point/face probe formulation in our report
+is a separate conditional adaptation. Replaced potentially ambiguous
+"unbounded as t approaches T" wording with the source's limsup statement;
+this does not claim monotone divergence or a limit. No physical or solver
+conclusion changes. Source review confirms no upstream defect to report from
+this analytic result.
+
 ## Revision 219 — replay the local nullspace check and stabilize archive logs
 
 Added the existing SymPy cell-local divergence-free null-sequence audit to the
