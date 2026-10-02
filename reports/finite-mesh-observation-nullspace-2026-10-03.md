@@ -56,10 +56,11 @@ a cell `C`:
       + integral_boundary_C (u⊗u - v⊗v + delta p I - nu grad(delta u)) n.
 
 The first term is zero because the cell integral of `delta u` vanishes for
-every `t<T`. All boundary flux differences vanish because the perturbations
-are supported strictly inside `B`; a spatially constant pressure gauge also
-contributes zero since the integral of the outward normal on a closed cell
-boundary is zero. Thus the cell integral of `delta g` is zero. Every other
+every `t<T`. The velocity and its derivatives, the nonlinear flux, and the
+compact pressure representative `P_epsilon` vanish near the cell boundary.
+Mean-zero pressure normalization adds a spatial constant; its boundary flux is
+zero because the integral of the outward normal on a closed cell boundary is
+zero. Thus the cell integral of `delta g` is zero. Every other
 cell has zero perturbation. The point and face statements follow directly
 from the support choice.
 
