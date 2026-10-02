@@ -517,3 +517,17 @@ the authors explicitly do not certify the OpenAI construction. It is not
 evidence for molecular ordering or viscosity change. PR #4 CI run 37032506247
 passed. No upstream issue is justified; SU2 and PhysicsNeMo audit work remains
 outstanding.
+
+
+## Finite-mesh observability corollary — 2026-10-03
+
+Added a conditional proof adaptation from finite uniform-grid averages to any
+fixed finite family of finite AMR-like mesh partitions on the torus, with an
+additional finite set of point probes. The key geometric step is choosing the
+localized insertion ball away from the finite mesh skeletons and probe sites;
+zero divergence and compact support preserve the cell averages of velocity,
+while the integrated momentum equation preserves force averages. The continuum
+solution premise remains the OpenAI packet and the localized gluing theorem.
+This limits universal claims from finite observations; it does not invalidate
+the fixed manufactured-solution convergence study. Full proof and caveats are
+in `reports/finite-mesh-observation-nullspace-2026-10-03.md`.

@@ -3594,3 +3594,23 @@ continuum Navier–Stokes singularity, not tracked molecules. These sources
 reinforce keeping continuum, numerical reconstruction, and microscopic
 models separate. No solver-quality threshold or upstream report follows.
 The existing PR #4 CI run 37032506247 completed successfully.
+
+
+## Revision 141 — finite-mesh observation nullspace corollary
+
+Derived a conditional extension of the finite-grid observation argument to
+any fixed finite family of finite periodic meshes with closed skeletons that
+leave open cell interiors, including ordinary polyhedral AMR meshes. A small
+ball can avoid all mesh faces and finitely many prescribed sample points while
+lying in one cell of every mesh. Under the torus localized-insertion theorem
+in Cao–Chi–Nie arXiv:2609.10262v4, the inserted and reference solutions then
+have identical velocity and force cell averages for each mesh, identical
+velocity traces/derivatives on mesh faces, and identical velocity/force at the
+selected point samples, although the inserted continuum solution is asserted
+to become unbounded at the prescribed terminal time. This is an adaptation of
+the paper's proof, not a theorem quoted verbatim or independently validated.
+It concerns variation of the force and finite-observation identifiability; it
+does not contradict fixed-MMS refinement convergence, establish a solver bug,
+or imply molecular ordering or viscosity change. Details, proof and limits are
+in `reports/finite-mesh-observation-nullspace-2026-10-03.md`. Goal remains
+active.
