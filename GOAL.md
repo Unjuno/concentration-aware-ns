@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 186 — separate audit of neural-forcing blow-up preprint
+
+Read the primary text of Li, arXiv:2609.23934v1. Its reciprocal-vorticity
+Riccati and positive-probability steps are conditional on a strict continuum
+certificate over a robust open set of frozen forcings. The paper explicitly
+leaves candidate-specific validated error enclosures and a positive corrected
+margin uncomputed for its archived finite-resolution trajectories; existence
+of a loss minimizer is also distinguished from feasibility of a zero
+certificate. No unconditional claim about those examples follows from the
+plots, and no molecular, viscosity, or light-fluid inference is supported.
+This is a mathematical methods audit, not a defect report for the three CFD/ML
+repositories, so no upstream post was warranted. Details and source locations
+are in `reports/neural-forcing-preprint-audit-2026-10-02.md` and
+`evidence/literature/neural-forcing-preprint-2026-10-02.json`. Goal remains
+active.
+
 ## Revision 185 — latest-head tracked-only export and full-suite replay
 
 Exported committed head `2fb068172a25d980f9eb52b5a519e8666e35fe79` from Git's
