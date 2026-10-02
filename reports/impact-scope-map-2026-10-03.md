@@ -16,7 +16,7 @@ claim that the pinned Navier–Stokes construction is a physical flow.
 | Continuum material orientation | A prescribed rigid Jeffery director on the sphere has a conditional subcritical pole-limit argument with decaying rotational diffusion; the algebra is checked, while endpoint nonattainment and elliptic smoothing are analytical inputs. | An ideal orientation variable can align under the specified model. It does not locate molecules or prove finite-particle alignment in the audited flow. | Supply a measured/derived molecular rotational-diffusion law, particle-scale strain-uniformity bounds, translation-orientation coupling, and an observable-level experiment. See `docs/full-sphere-rotational-diffusion.md`. |
 | Viscosity and phase transition | Exact affine and Burgers-vortex counterchecks show that directional alignment alone does not remove viscous terms from the continuum momentum balance. | Alignment by itself does not entail a constitutive-viscosity collapse, phase transition, or loss of viscosity. | Any such claim needs an independently specified constitutive model and validated material measurements; no inference from CFD pointwise gradients is sufficient. See `docs/affine-alignment-viscosity-counterexample.md` and `docs/burgers-vortex-alignment-viscous-balance.md`. |
 | Engineering control / industrial equipment | No named controller or deployed plant is linked to the pinned mathematical construction or these benchmark cases. | There is no evidence here of a reachable operational hazard. | Identify an actual implementation, validated input envelope, actuator bandwidth, sensing resolution, and safety case before assessing applicability. |
-| Light-as-fluid hypothesis | No electromagnetic, kinetic-photon, or radiative-transfer model is present in this repository's Navier–Stokes evidence. | The fluid analogy is currently a separate untested hypothesis. It cannot inherit the director-SDE or incompressible-flow conclusions. | State a precise Maxwell/kinetic constitutive model, observables, boundary conditions, and a falsifiable comparison before adding it to the benchmark scope. |
+| Light-as-fluid hypothesis | A related field already exists: experiments map paraxial propagation in nonlinear optical media to an effective two-dimensional Gross–Pitaevskii/nonlinear-Schrödinger fluid, with interactions mediated by the material response. | This makes “fluid of light” a real, useful neighboring research direction, but not evidence that free-space photons obey this repository's incompressible Navier–Stokes model. The effective optical fluid is governed by a different wave equation, dimensional mapping, interaction mechanism, and observables; it does not transfer the director-SDE result or imply molecular-position certainty. | If pursuing this branch, define the optical medium and its constitutive response, derive the paraxial/envelope equation and hydrodynamic variables, and compare predictions with optical measurements. Keep it as a separate model extension until that bridge is derived. See the primary experiment and review references below. |
 
 ## Adversarial review checklist
 
@@ -61,5 +61,12 @@ verified. The repository remains the single canonical project location.
    immediately before any further post. Do not create a duplicate issue for an
    existing SU2 discussion, PhysicsNeMo issue/PR, or an OpenFOAM observation
    that remains only UNCERTAIN.
-4. Keep the molecular, rheological, industrial-control, and light hypotheses
-   separate until their missing models and evidence exist.
+4. Keep molecular, rheological, and industrial-control claims separate until
+   their missing models and evidence exist; treat optical fluids as a distinct
+   paraxial/NLSE model that needs its own benchmark and coupling derivation.
+
+## Photon-fluid scope references
+
+- D. Michel et al., [“Superfluid motion and drag-force cancellation in a fluid of light”](https://www.nature.com/articles/s41467-018-04534-9), *Nature Communications* 9, 2108 (2018): experiment in a bulk nonlinear photorefractive crystal; the paraxial field is modeled by a 2D Gross–Pitaevskii-type equation and its nonlinear optical response mediates effective photon interactions.
+- Q. Glorieux et al., [“Paraxial fluids of light”](https://arxiv.org/abs/2504.06262) (arXiv:2504.06262, first posted 2025): surveys the NLSE-to-2D+1-GPE mapping and optical platforms. This is useful scope context, not a new result of the present benchmark.
+- I. Carusotto and C. Ciuti, [“Quantum fluids of light”](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.85.299), *Reviews of Modern Physics* 85, 299 (2013): review of effective interacting photon-fluid platforms, including nonlinear media and microcavities.

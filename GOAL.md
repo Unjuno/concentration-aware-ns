@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 237 — place the light-fluid idea in its established model family
+
+Checked primary and review literature on the light-fluid suggestion. A real
+neighboring field maps paraxial propagation in nonlinear optical media to an
+effective 2D Gross–Pitaevskii/nonlinear-Schrödinger fluid, including laboratory
+measurements of drag suppression. This is a useful connection for future
+cross-model work, but the governing equation, dimensional reduction and
+material-mediated photon interactions differ from this benchmark's
+incompressible Navier–Stokes and rigid-director SDE. Added the evidence and
+scope limits to the impact map. No new optical result or transfer theorem is
+claimed; any optical extension needs its own derived model and validation.
+The benchmark and broader goal remain active.
+
 ## Revision 236 — map demonstrated reach and adversarial falsifiers
 
 Read the original hypothesis note as unverified input and cross-checked its
