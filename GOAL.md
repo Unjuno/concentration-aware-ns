@@ -6,8 +6,10 @@ Refreshed primary arXiv records and added the 2026-09-29 Constantin, Ignatova,
 and Vicol conditional regularity result. Under its analytic-forcing, bounded-C2,
 anisotropic-mean, and shrinking-core axisymmetry assumptions, the candidate
 point is regular; applied to the cited OpenAI construction properties, this
-rules out spatially analytic forcing in the stated local-uniform sense, not a
-smooth nonanalytic force and not the claimed construction itself. Also recorded
+rules out spatially analytic forcing in the stated local-uniform sense and says
+the force cannot vanish throughout any backward cylinder ending at the point.
+This gives no pointwise force lower bound and does not contradict smooth
+nonanalytic forcing or the claimed construction itself. Also recorded
 Petrillo–Glimm's distinct unforced positive-defect target and their limit on
 what finite Galerkin computation can certify. No simulations or upstream
 reports were made, and benchmark gates are unchanged. Versioned evidence and

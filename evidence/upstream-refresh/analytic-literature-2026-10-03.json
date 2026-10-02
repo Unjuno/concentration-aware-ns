@@ -25,9 +25,10 @@
         "Anisotropic derivative bounds on the angular mean through order two, and exact axisymmetry of the full velocity on a positive-radius ball at each pre-singular time; the radius has no assumed lower bound.",
         "Under these hypotheses the candidate point is regular; application to the OpenAI construction uses properties stated in that manuscript and does not independently verify it."
       ],
-      "reported_implication": "For a solution with the construction's cited velocity properties and bounded C2 force, the force cannot be spatially analytic in the paper's local-uniform sense near the singular time.",
+      "reported_implication": "For a singular solution with the cited velocity properties and bounded C2 force, the force violates the stated local-uniform spatial analyticity condition and cannot vanish identically on any backward space-time cylinder ending at the candidate point.",
       "limitations": [
         "Not a contradiction to a C-infinity smooth but nonanalytic compactly supported force.",
+        "Nonvanishing on every backward cylinder is not a pointwise lower bound and does not say the force is nonzero at every time or location.",
         "Not a claim about molecular alignment, positional certainty, phase transition, or constitutive viscosity.",
         "The authors explicitly do not independently verify the OpenAI construction."
       ]
