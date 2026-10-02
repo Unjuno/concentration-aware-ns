@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 249 — add the analytic-forcing regularity boundary to impact scope
+
+Refreshed primary arXiv records and added the 2026-09-29 Constantin, Ignatova,
+and Vicol conditional regularity result. Under its analytic-forcing, bounded-C2,
+anisotropic-mean, and shrinking-core axisymmetry assumptions, the candidate
+point is regular; applied to the cited OpenAI construction properties, this
+rules out spatially analytic forcing in the stated local-uniform sense, not a
+smooth nonanalytic force and not the claimed construction itself. Also recorded
+Petrillo–Glimm's distinct unforced positive-defect target and their limit on
+what finite Galerkin computation can certify. No simulations or upstream
+reports were made, and benchmark gates are unchanged. Versioned evidence and
+scope are in `reports/research-refresh-2026-10-03-forcing-regularity-and-defect-target.md`
+and `evidence/upstream-refresh/analytic-literature-2026-10-03.json`. Goal
+remains active.
+
 ## Revision 248 — confirm the preserved OpenFOAM rerun is no longer present
 
 A fresh read-only check on 2026-10-03 JST found neither recorded host PID nor
