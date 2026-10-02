@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 198 — replay the AMR cell-integrated derivative audit
+
+Re-ran `tools.compare_amr_resolution_volume_integrated` from its recorded
+Foundation 13 archives and matched the tracked JSON byte-for-byte, including
+all three spatial levels and both mapped derivative operators. The targeted
+AMR quadrature/geometry tests passed 5/5. Mapped Gauss gradient/curl errors on
+the common physical support are 54.25%/59.72% (n=16), 27.86%/31.26%
+(n=32), and 14.01%/15.85% (n=64). These are errors of the named cellwise-
+constant reconstructions against the analytic MMS, not of a uniquely defined
+continuous solver field. The old runs remain exploratory and cannot be assigned
+a preregistered AMR quality verdict; that status stays UNCERTAIN. The rerun
+hash/environment/test record is
+`evidence/tests/amr-volume-integrated-rerun-2026-10-02.json`. Goal remains
+active.
+
 ## Revision 197 — remove imported swirl amplitude and parameterize phase
 
 This revision supersedes Revision 196's illustrative coefficient and cutoff

@@ -212,7 +212,11 @@ The mapped result is insensitive to a second one-ring least-squares derivative
 estimate: at n=64 it gives 14.0719% gradient and 15.9026% curl error, compared
 with 14.0147% and 15.8499% for the face-Gauss operator. This is an
 operator-sensitivity check, not an independent solver gradient or an AMR
-quality acceptance result.
+quality acceptance result. An independent replay of this full cell-integrated
+analysis matched the tracked JSON byte-for-byte and passed its five targeted
+tests; its interpreter, input evidence hash, analyzer/operator hashes, and
+scope are recorded in
+`evidence/tests/amr-volume-integrated-rerun-2026-10-02.json`.
 
 The project is **not complete**. This audit preserves the original three-target
 scope and the user's analytic-priority requirement. Published artifacts and

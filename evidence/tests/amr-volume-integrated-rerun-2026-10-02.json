@@ -1,0 +1,37 @@
+{
+  "status": "PASS_BYTE_AND_VALUE_IDENTICAL_REPLAY",
+  "scope": "Independent local rerun of the archived OpenFOAM AMR cell-integrated gradient/vorticity analysis; no solver was rerun.",
+  "source_commit": "204dc4d747f30de4b2df827b69f4724d7ecff900",
+  "command": "work/reference-check-env/bin/python -m tools.compare_amr_resolution_volume_integrated",
+  "environment": {
+    "python": "3.14.5",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+  },
+  "analyzer_sha256": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e",
+  "operator_sha256": "7e95b6a6cbc7a580d65168beedacba19786932194c5a8c912f7f235bdc6bb615",
+  "tracked_evidence": "evidence/of13-amr-volume-integrated-comparison-2026-10-02.json",
+  "tracked_evidence_sha256": "bc8039f1427d50434c7c533a7771d39d2f4e46b9734e97c89988c3658739fd81",
+  "rerun_output_sha256": "bc8039f1427d50434c7c533a7771d39d2f4e46b9734e97c89988c3658739fd81",
+  "structured_output_equal": true,
+  "targeted_test_command": "work/reference-check-env/bin/python -m pytest -q tests/test_amr_volume_integrated.py",
+  "targeted_tests": "5 passed",
+  "mapped_common_support_errors": [
+    {
+      "n": 16,
+      "gradient_relative_l2": 0.5425400960319853,
+      "vorticity_relative_l2": 0.5972017220855502
+    },
+    {
+      "n": 32,
+      "gradient_relative_l2": 0.27861400218369875,
+      "vorticity_relative_l2": 0.31257856523630534
+    },
+    {
+      "n": 64,
+      "gradient_relative_l2": 0.14014704773243858,
+      "vorticity_relative_l2": 0.15849900263315844
+    }
+  ],
+  "interpretation": "Reproduces only the specified piecewise-constant derivative reconstructions against analytic MMS on the archived mapped cells. AMR quality remains UNCERTAIN because no prospective AMR quality threshold is defined; no continuous-field or solver-defect claim follows."
+}
