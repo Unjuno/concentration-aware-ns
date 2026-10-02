@@ -127,3 +127,16 @@ identifying them with three-dimensional viscous Navier–Stokes. Reported optica
 backscattering suppression is not a constitutive-viscosity measurement. Keep
 these analogies as falsifiable, separate research tracks and preserve the
 original three-solver benchmark and end-to-end analytic obligations.
+
+## Revision 9 — quantitative support-hole tube re-audit
+
+The 2026-10-02 re-audit distinguishes the source's outer
+`SublevelShrinkingSupport` bound from separate inner-zero results already
+available for initial copy waves, actual mean coefficients, and particular /
+signed annular fields. The similarity-coordinate equation also yields a
+conditional `q<=S*(1-t)` bound on a tube of radius proportional to
+`sqrt(1-t)`, resolving the earlier domain-width concern on paper. The common
+support-hole transfer through the selected infinite sums, curl and local
+cutoffs remains unproved and must be Lean-checked before restoring the
+`Q^(Cstretch+39)` packet exponent as a construction result. Keep all earlier
+solver gates, skeptical physical interpretation, and completion conditions.

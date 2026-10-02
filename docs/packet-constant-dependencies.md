@@ -102,6 +102,15 @@ stages, or direct bounds for the assembled field, is still required.
 
 ## New support-hole route inspected on 2026-09-28
 
+**Re-audit 2026-10-02:** the exact outer-versus-inner support distinction and
+the quantitative tube-domain estimate are now recorded in
+[`support-hole-tube-audit-2026-10-02.md`](support-hole-tube-audit-2026-10-02.md).
+In particular, the similarity-coordinate equation yields a paper bound
+`q<=S*(1-t)` on a `sqrt(1-t)` tube, so the previous open-neighborhood-width
+objection need not block this route. The common-hole assembly through the
+selected sums/curl and its Lean check are still outstanding; keep the packet
+exponent conditional until those gates pass.
+
 The pinned source has a potentially stronger route than the finite-prefix
 germ argument: its actual perturbation ingredients have **positive inner
 support radii**, not merely axis-zero germs. The relevant exact source facts
