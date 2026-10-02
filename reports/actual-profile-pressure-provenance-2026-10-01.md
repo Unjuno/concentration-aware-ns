@@ -392,3 +392,26 @@ equations at `chi=0` and a usable lower/upper asymptotic for `a` at the root,
 then substitute them into `q²+r²>(9/4)q`. The source identities and error
 estimate are formalized, but this coupled asymptotic has not been derived or
 Lean-checked here.
+
+### Normalization selection in the final witness path
+
+The final continuation path was traced through
+`MatchingConeBounds.preparedWitness_exists` and
+`MatchingDebtBounds.exists_ordered_matching_threshold`. For each sufficiently
+large scale `Λ`, the latter defines
+`C0 = max (max 1 (entranceNormalization ...)) Cmin`, where `Cmin` is obtained
+from `eventually_atTop.mp` for the prefix-budget and separation bounds. The
+public result records `C0 ≥ entranceNormalization` and that every `C ≥ C0`
+works, but supplies no quantitative upper bound for `Cmin` or `C0` as a
+function of `Λ`. The nominal `AxisStage` stores only a lower bound on its
+normalization. The amplitude formula is `a(η)=exp(Λ*realPhase(η))/C`.
+
+Thus the construction fixes some finite normalization at its chosen scale,
+but the theorem interface does not expose a scale-uniform upper bound on that
+normalization. In a scale-limit argument, this leaves the root amplitude
+potentially smaller than the coefficient-error scale. This does not prove
+that the selected normalization grows too fast, or that a pressure bound is
+false; it pinpoints an additional quantitative witness-selection obligation.
+A route forward is to replace the `eventually_atTop` thresholds with explicit
+bounds and track their dependence on `Λ`, or avoid this route with a direct
+estimate for the already selected finite witness.

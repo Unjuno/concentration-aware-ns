@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 215 — trace the selected normalization threshold
+
+Inspected the final witness path through `preparedWitness_exists` and
+`exists_ordered_matching_threshold`. Its `C0` is a max of the analytic
+entrance normalization and an `eventually_atTop` threshold for later
+prefix/separation controls. The interface supplies lower bounds and an
+all-larger-`C` guarantee, but no quantitative upper bound for `C0(Λ)`.
+Since amplitude is `exp(Λ*realPhase)/C`, a scale-limit proof cannot presently
+compare the root amplitude to coefficient errors. This is a missing rate in
+the proof interface, not evidence the chosen C is too large or the pressure
+claim false. Recorded in the actualProfile audit.
+
 ## Revision 214 — identify the missing root-scale coefficient asymptotics
 
 The pinned source already connects its reference axial derivative exactly to

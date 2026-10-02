@@ -1368,3 +1368,10 @@ remaining difficulty is the degenerate `Z=0` case: exact rescaling gives
 `p2²=(2/Λ)ns²/(a²φ²)`, but no rootwise lower bound on amplitude `a` is present.
 The coupled first-order fixed-point and amplitude asymptotics needed for this
 case remain unproved; see the updated provenance report.
+
+The selected normalization `C0` comes from an `eventually_atTop` threshold
+for prefix-budget and separation constraints. No explicit upper bound in
+terms of the scale is exposed, while the angular amplitude divides by `C0`.
+The source trace therefore leaves the scale-uniform root-amplitude comparison
+unverified; it does not establish that the selected threshold is large or
+invalidate the pressure claim.

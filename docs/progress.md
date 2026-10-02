@@ -483,3 +483,10 @@ degenerates unscaled as `q→0`; the next analytic target is a uniform joint
 estimate of `Λq` and `Λp2²`, plus an identity relating their first-order terms
 to the pressure moment `Z`. No such estimate is claimed yet; details are in
 the actualProfile provenance report.
+
+The final normalization choice is itself rate-opaque: `C0` is selected via
+an `eventually_atTop` threshold, with only a lower bound and no explicit
+`C0(Λ)` upper estimate. Because `realAmplitude=exp(Λ*realPhase)/C`, current
+proof fields cannot compare the selected root amplitude with coefficient
+errors as `Λ` grows. This is an interface gap, not a claim that the selected
+normalization grows too fast. See the updated provenance report.
