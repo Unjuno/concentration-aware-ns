@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, non-vacuous margin/radius choice, local germ equality throughout a shrinking cusp ball, uniform entry of the entire moving ball into endpoint neighborhoods, and transfer of the upstream full-spacetime Hessian rate onto that ball.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "source_sha256": "a31432420d0783c94e4be3bd65fec7b0b3a516a422cec64dce4bd97f407618f7",
+  "lean_log_sha256": "ed84a6aada2358f3b369cc15e0aeaf2498cf276938c3877dce593d0bdf3d6656",
+  "declarations": [
+    "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "ConcentrationAware.transverse_radius_le_of_euclidean_ball",
+    "ConcentrationAware.axial_deviation_le_of_euclidean_ball",
+    "ConcentrationAware.cusp_ball_point_in_physical_exterior",
+    "ConcentrationAware.selected_velocity_germ_of_cusp_ball_point",
+    "ConcentrationAware.selected_axis_center_small_eventually",
+    "ConcentrationAware.selected_velocity_germ_on_cusp_tube",
+    "ConcentrationAware.exists_admissible_cusp_radius",
+    "ConcentrationAware.cusp_ball_eventually_in_endpoint_neighborhood",
+    "ConcentrationAware.selected_cusp_ball_actual_hessian_rate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "For every fixed eta in (-1,1), an admissible positive radius and eta margin exist; the terminal-time interval remains existential and parameter-dependent.",
+    "The Hessian result is a full-spacetime jet bound with existential constants/terminal interval; it does not establish a finite-size packet comparison or a theorem at the singular endpoint.",
+    "The result does not imply particle alignment, a phase transition, molecular determinism, or reduced viscosity.",
+    "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
+  ]
+}

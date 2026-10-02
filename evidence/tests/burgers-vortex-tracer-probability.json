@@ -1,0 +1,38 @@
+{
+  "scope": "Exact passive-tracer pushforward of an isotropic Gaussian under the classical Burgers-vortex flow map; it is an imposed ensemble, not a molecular model or selected OpenAI-profile result.",
+  "sympy": "1.14.0",
+  "source_sha256": "127577b1cbd3a37970e524b46568f782dd245ad68a14f72224ecab21c2ca5909",
+  "assumptions": [
+    "gamma > 0",
+    "sigma > 0",
+    "radius > 0",
+    "half_length > 0",
+    "t >= 0"
+  ],
+  "flow_map": {
+    "r_t": "r0*exp(-gamma*t)",
+    "z_t": "z0*exp(2*gamma*t)",
+    "theta_t": "theta0 + integral_0^t u_theta(r_s)/r_s ds"
+  },
+  "density": "sqrt(2)*exp((-radial_sq*exp(2*gamma*t) - z**2*exp(-4*gamma*t))/(2*sigma**2))/(4*pi**(3/2)*sigma**3)",
+  "covariance": "Matrix([[sigma**2*exp(-2*gamma*t), 0, 0], [0, sigma**2*exp(-2*gamma*t), 0], [0, 0, sigma**2*exp(4*gamma*t)]])",
+  "covariance_determinant": "sigma**6",
+  "cylindrical_coordinate_jacobian": "exp(gamma*t)",
+  "coordinate_flow_jacobian_matrix": "Matrix([[exp(-gamma*t), 0, 0], [theta_radial_shear, 1, 0], [0, 0, exp(2*gamma*t)]])",
+  "physical_flow_jacobian": "1",
+  "infinite_axis_tube_probability": "1 - exp(-radius**2*exp(2*gamma*t)/(2*sigma**2))",
+  "finite_cylinder_probability": "(1 - exp(-radius**2*exp(2*gamma*t)/(2*sigma**2)))*erf(sqrt(2)*half_length*exp(-2*gamma*t)/(2*sigma))",
+  "finite_cylinder_scaled_limit": "sqrt(2)*half_length/(sqrt(pi)*sigma)",
+  "identities": {
+    "inverse_flow_density_is_anisotropic_gaussian": true,
+    "flow_map_preserves_volume": true,
+    "cylindrical_jacobian_matches_flow": true,
+    "covariance_determinant_preserved": true,
+    "gaussian_differential_entropy_preserved": true,
+    "peak_density_preserved": true,
+    "infinite_axis_tube_probability_tends_to_one": true,
+    "finite_cylinder_probability_tends_to_zero": true,
+    "finite_cylinder_asymptotic_coefficient": true
+  },
+  "success": true
+}

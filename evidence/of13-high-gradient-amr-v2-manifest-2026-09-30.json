@@ -1,0 +1,159 @@
+{
+  "run_environment": {
+    "source_commit": "265611cd160a7e139b6950c918e6dc1d90056d97",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "docker_cli": "/Users/taka/.orbstack/bin/docker",
+    "docker_cli_resolved": "/Applications/OrbStack.app/Contents/MacOS/xbin/docker-tools",
+    "docker_cli_sha256": "70d5a06adf388bd09b652f47ddc9ca31663a3e5353d24188bdb0054b3014ab3e",
+    "docker_cli_version": "Docker version 29.4.0, build 9d7ad9f",
+    "docker_context": "orbstack",
+    "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+    "scope": "OpenFOAM Foundation 13 high-gradient AMR budget sweep"
+  },
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "cases": [
+    {
+      "case": "cap4096",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 4096,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 4096,
+        "level_counts": {
+          "0": 4096
+        },
+        "level_source": "initial blockMesh count and no refinement events; budget disallows refinement",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": false,
+        "blocked_candidate_count": "UNOBSERVED",
+        "retrospective_candidate_budget_audit": {
+          "record": "evidence/tests/openfoam-amr-candidate-budget-audit.json",
+          "pre_maxCells_guard_candidates_per_eligible_check": 1792,
+          "eligible_check_count": "UNOBSERVED",
+          "interpretation": "Reconstructed from archived sensor and periodic mesh using pinned Foundation 13 buffer semantics; selection guard is skipped when currentGlobalCells equals maxCells. This supplements, but does not rewrite, the generic event-log diagnostic above."
+        },
+        "velocity_relative_volume_l2": 0.08875833380125644,
+        "max_gradient_gauss": 0.4004007090650746,
+        "reference_max_gradient_cell_samples": 0.6358050129577074,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap4096.tar.gz",
+      "raw_archive_sha256": "3c1056a859dad0224ec6ba5e3d713dcc8e54c42d222f03a0ebbd166c561e35d4",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "227a52324547a22d26cccc7f822b6e7946e20611f7e01ad78a75e093236b2327"
+    },
+    {
+      "case": "cap5000",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 5000,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 16640,
+        "level_counts": {
+          "0": 2304,
+          "1": 14336
+        },
+        "level_source": "written cellLevel field",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": false,
+        "blocked_candidate_count": "UNOBSERVED",
+        "velocity_relative_volume_l2": 0.37011818403189645,
+        "max_gradient_gauss": 0.7783912930684762,
+        "reference_max_gradient_cell_samples": 0.8690546889027176,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap5000.tar.gz",
+      "raw_archive_sha256": "6c9c209eb876416cab01fe569ed8aaebe3c60a9a88f1d7ce417bb57e6db85d75",
+      "raw_archive_file_count": 61,
+      "source_tree_sha256": "6f00615e6a518771a01a05ed458b07ca4e98a3bdd9b31b7627afd059e95c4b75"
+    },
+    {
+      "case": "cap100000",
+      "exit_code": 0,
+      "time_steps": 50,
+      "converged_steps": 50,
+      "end_marker": true,
+      "diagnostics": {
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "AMR integration pilot, not production",
+          "amr": {
+            "maxCells": 100000,
+            "maxRefinement": 2,
+            "refineInterval": 2,
+            "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+          }
+        },
+        "cells": 101760,
+        "level_counts": {
+          "0": 2176,
+          "1": 3328,
+          "2": 96256
+        },
+        "level_source": "written cellLevel field",
+        "cell_budget_reached_or_exceeded": true,
+        "max_level_reached": true,
+        "blocked_candidate_count": "UNOBSERVED",
+        "velocity_relative_volume_l2": 0.4011173084930783,
+        "max_gradient_gauss": 1.5010369506995067,
+        "reference_max_gradient_cell_samples": 0.9356642035612587,
+        "spectrum": "UNAVAILABLE: nonuniform mesh; no validated reconstruction",
+        "quality": "UNCERTAIN",
+        "note": "AMR pilot; source sensor, interpolation and gradient reconstruction are distinct confounders."
+      },
+      "archive_policy": "Raw case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256.",
+      "raw_archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap100000.tar.gz",
+      "raw_archive_sha256": "9beb7672a5d93b19ef2bf1d1a54e2c03d4d4fdbda258f448ef002b866859b446",
+      "raw_archive_file_count": 61,
+      "source_tree_sha256": "374446d0feb1a37efbe2e6e400576439b05995e378019a6df8edb7de193b73dd"
+    }
+  ],
+  "interpretation": "AMR integration/accuracy pilot. Cell budgets are approximate at synchronization points. A retrospective source-and-archive audit recovers 1792 pre-guard candidates per eligible check for cap4096, but not the number of checks; other blocked candidate counts remain unobserved. All local-quality verdicts remain UNCERTAIN."
+}

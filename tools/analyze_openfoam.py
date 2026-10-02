@@ -6,7 +6,9 @@ import re
 from pathlib import Path
 import numpy as np
 from tools.reference import fields
+from tools.high_gradient_reference import fields as high_gradient_fields
 from tools.metrics import diagnostics
+from tools.high_gradient_acceptance import local_quality, standard_acceptance
 
 
 def vectors(path, count):
@@ -23,7 +25,7 @@ def vectors(path, count):
     return values.reshape(count,3)
 
 
-def analyze(case):
+def analyze(case, protocol=None):
     case=Path(case)
     params=json.loads((case/'parameters.json').read_text())
     n=params['n']; t=params['end']
@@ -38,21 +40,66 @@ def analyze(case):
     if not np.allclose(centers,points,atol=1e-12,rtol=0):
         raise ValueError('unverified mesh ordering/geometry')
     u=vectors(time_dir/'U',n**3)
-    ref=fields(centers,t,sigma=params['sigma'],nu=params['nu'])
+    if params.get('profile','gaussian') == 'high-gradient':
+        ref=high_gradient_fields(centers,N=params['frequency'],nu=params['nu'],time=t)
+    else:
+        ref=fields(centers,t,sigma=params['sigma'],nu=params['nu'])
     def grid(v):
         return v.reshape(n,n,n,3).transpose(2,1,0,3)
     actual=diagnostics(grid(u)); sampled=diagnostics(grid(ref['u']))
     exact_g=float(np.linalg.norm(ref['grad_u'],axis=(-2,-1)).max())
     exact_w=float(np.linalg.norm(ref['vorticity'],axis=-1).max())
+    if params.get('profile','gaussian') == 'high-gradient':
+        grad_fd2=np.stack([(np.roll(grid(u),-1,axis=j)-np.roll(grid(u),1,axis=j))/(4*np.pi/n)
+                           for j in range(3)],axis=-1)
+        selected_peak=float(np.abs(grad_fd2[...,1,0]).max())
+        selected_reference_sample=float(np.abs(ref['grad_u'][:,1,0]).max())
+        selected_reference_continuous=float(np.exp(-t))
+    else:
+        selected_peak=None
+        selected_reference_sample=None
+        selected_reference_continuous=None
+    velocity_error=float(np.linalg.norm(u-ref['u'])/np.linalg.norm(ref['u']))
+    energy_error=abs(actual['mean_kinetic_energy']-sampled['mean_kinetic_energy'])/max(sampled['mean_kinetic_energy'],1e-300)
+    actual_spectrum=np.asarray(actual['shell_energy']); reference_spectrum=np.asarray(sampled['shell_energy'])
+    bins=max(actual_spectrum.size,reference_spectrum.size)
+    actual_spectrum=np.pad(actual_spectrum,(0,bins-actual_spectrum.size))
+    reference_spectrum=np.pad(reference_spectrum,(0,bins-reference_spectrum.size))
+    shell_spectrum_error=float(np.abs(actual_spectrum-reference_spectrum).sum()/max(reference_spectrum.sum(),1e-300))
+    gradient_error=abs(actual['max_gradient_fd2']-exact_g)/exact_g
+    vorticity_error=abs(actual['max_vorticity_fd2']-exact_w)/exact_w
     result={'parameters':params,'quality':'UNCERTAIN','standard_acceptance':'UNCERTAIN',
             'note':'Diagnostics only. Analytic peaks are evaluated at cell centers, not continuous extrema.',
-            'velocity_relative_l2':float(np.linalg.norm(u-ref['u'])/np.linalg.norm(ref['u'])),
-            'gradient_peak_relative_error_cell_samples':abs(actual['max_gradient_fd2']-exact_g)/exact_g,
-            'vorticity_peak_relative_error_cell_samples':abs(actual['max_vorticity_fd2']-exact_w)/exact_w,
+            'velocity_relative_l2':velocity_error,
+            'energy_relative_error_cell_samples':energy_error,
+            'shell_spectrum_relative_l1_error':shell_spectrum_error,
+            'gradient_peak_relative_error_cell_samples':gradient_error,
+            'vorticity_peak_relative_error_cell_samples':vorticity_error,
             'reference_gradient_peak_cell_samples':exact_g,'reference_vorticity_peak_cell_samples':exact_w,
+            'selected_gradient_component_fd2_peak':selected_peak,
+            'selected_gradient_component_reference_sample_peak':selected_reference_sample,
+            'selected_gradient_component_reference_continuous_peak':selected_reference_continuous,
+            'continuous_full_gradient_peak_certified':False if selected_peak is not None else None,
             'computed':actual,'reference_sampled_fd2':sampled,
             'sha256':{str(p.relative_to(case)):hashlib.sha256(p.read_bytes()).hexdigest()
                       for p in [case/'parameters.json',case/'log.foamRun',time_dir/'U',time_dir/'C']}}
+    if protocol is not None:
+        thresholds=protocol['local_quality_relative_error_thresholds']
+        quality=local_quality({
+            'velocity_l2':velocity_error,
+            'energy':energy_error,
+            'max_gradient':gradient_error,
+            'max_vorticity':vorticity_error,
+            'shell_spectrum':shell_spectrum_error,
+        },thresholds)
+        standard=protocol['standard_acceptance']
+        result['local_quality']=quality
+        result['quality']=quality['status']
+        result['standard_acceptance']=standard_acceptance(
+            (case/'log.foamRun').read_text(),t,params['dt'],
+            standard['outer_corrector_residual_absolute'],
+            standard['maximum_outer_correctors'],
+            (case/'system/fvSolution').read_text())
     return result
 
 

@@ -1,0 +1,132 @@
+{
+  "commit": "e5f4aab6c6411266c6300abe6c79023a77e4411e",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "babbc80755fa90c6eaee9e4289c8ee3b12ac663f11f427ce96652dc184edbf99",
+  "archive_sha256": "1bb4678968a69148549e06694596fe9ab56fbea5aa1f479a766a71b15e6fb93e",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "<REPO>/work/reference-check-env/bin/python",
+        "-m",
+        "venv",
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "2ca13799a9ddf7b82c781e6eeb8adf63bf70cdfdebad1ab0bdeb301cc8a0ec73"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "255c62a98cad82ddd2fc4b1e634d8925d209ba4a0864ea984590adc67b3e54e3"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-e5f4aab/venv/bin/python",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "alignment-uncertainty.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "success": true,
+  "packages": [
+    "iniconfig==2.3.0",
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "packaging==26.3",
+    "pluggy==1.6.0",
+    "Pygments==2.21.0",
+    "pytest==9.1.1",
+    "python-flint==0.9.0",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 170,
+  "changed_files": [],
+  "replay_steps": 36,
+  "replay_success": true,
+  "presentation_sanitization": "Absolute workstation, temporary, and export paths were replaced in the published copy; per-log hashes are recomputed over the sanitized published logs."
+}

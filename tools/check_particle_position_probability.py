@@ -55,6 +55,8 @@ def main():
         'q_one_probability_is_unoriented_spherical_cap':
             s.simplify(probability.subs(alpha, 1) - (1 - 1/s.sqrt(1+m**2))) == 0,
         'alignment_probability_limit': s.limit(probability, alpha, 0, dir='+') == 1,
+        'cone_boundary_tends_to_equator': s.limit(
+            alpha/s.sqrt(m**2+alpha**2), alpha, 0, dir='+') == 0,
         'example_probability_exact':
             s.simplify((1-alpha/s.sqrt(1+alpha**2)).subs(alpha, s.Rational(1, 2)) -
                        (1-1/s.sqrt(5))) == 0,
@@ -64,7 +66,8 @@ def main():
         'sympy': s.__version__,
         'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'conditions': ['0 < Q <= 1', 'C > 0', '0 < theta_target < pi/2',
-                       'initial separation directions uniform on the sphere',
+                       'isotropic law is required only for the closed-form finite-Q probability',
+                       'general limit assumes a fixed Borel law on initial directions',
                        'local flow derivative applies to infinitesimal separations'],
         'formulas': {
             'deformation_singular_values': ['Q^(C/2)', 'Q^(C/2)', 'Q^(-C)'],
@@ -79,11 +82,14 @@ def main():
             'finite_cylinder_asymptotic': 'sqrt(2/pi)*L*Q^C as Q tends to 0',
             'angular_probability': 'P(theta_t <= theta_target)=1-a/sqrt(a^2+tan(theta_target)^2), a=Q^(3C/2)',
             'alignment_limit': '1 as Q tends to 0 for every fixed positive target angle',
+            'fixed_direction_law_limit': '1 - lambda(E), E = exactly transverse directions; for a Q-independent Borel probability law by bounded convergence',
         },
         'identity_checks': {
             'covariance': [str(x) for x in covariance.diagonal()],
             'probability_at_Q_1': str(s.simplify(probability.subs(alpha, 1))),
             'probability_as_alpha_tends_to_zero': str(s.limit(probability, alpha, 0, dir='+')),
+            'cone_boundary_as_alpha_tends_to_zero': str(
+                s.limit(alpha/s.sqrt(m**2+alpha**2), alpha, 0, dir='+')),
             'infinite_axis_tube_probability_limit': str(
                 s.limit(transverse_tube_probability, zscale, 0, dir='+')),
             'bounded_axial_window_probability_limit': str(

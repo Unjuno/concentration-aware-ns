@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-02",
+  "primary_source": "https://arxiv.org/abs/2609.17642",
+  "html_source": "https://arxiv.org/html/2609.17642v1",
+  "title": "Self-similar swirl between contracting porous walls: the GD1998 exact Navier-Stokes solution revisited in the similarity variables of the OpenAI 2026 forced blow-up construction",
+  "author": "Ramani Duraiswami",
+  "version": "v1",
+  "submitted": "2026-09-15",
+  "scope_checked": [
+    "abstract and version metadata",
+    "similarity-profile formulation and numerical-verification sections",
+    "admissibility-cone discussion",
+    "physical-cutoff estimates in section 8",
+    "explicit statement of omitted construction stages"
+  ],
+  "reported_results": {
+    "numerical": "A collocation solver is reported for a reduced leading-order similarity/profile problem related to a porous-cylinder swirl model.",
+    "scope_limit": "The paper says it does not compute the oscillatory-pulse annulus, higher-order corrections, or full forced Navier-Stokes evolution. Smooth matched profiles tested in its reduced representation fail the admissibility cone; the author says the full construction uses piecewise profiles and much larger similarity radii.",
+    "water_estimate": "For the stated illustrative scaling, cavitation is estimated around a 0.6-1 mm core, before the illustrative molecular scale.",
+    "air_estimate": "For the stated illustrative scaling, compressibility is estimated before molecular rarefaction becomes relevant.",
+    "material_motion": "At the computed amplitude, a tracer turns only a fraction of a revolution per decade in time-to-singularity; the text distinguishes profile collapse from winding of material lines."
+  },
+  "audit_classification": "single-author preprint and reduced-model computation; physical values are order-of-magnitude estimates, not measured results or a complete simulation",
+  "interpretation_limits": [
+    "Does not independently verify or refute the complete OpenAI construction.",
+    "Failure of the cone for the tested smooth reduced profiles is not failure of the full construction's piecewise pulse mechanism.",
+    "Does not test molecular ordering, molecular-position certainty, a constitutive viscosity transition, or photon-fluid behavior.",
+    "Does not refute the separate infinitesimal tangent-direction result; finite-packet implications remain conditional."
+  ],
+  "repository_effect": "No solver verdict, Lean theorem, or upstream issue status changes; literature/hypothesis audit updated.",
+  "evidence_locations": [
+    "reports/recent-navier-stokes-verification-developments-2026-10-01.md",
+    "reports/recent-developments-and-hypothesis-audit-2026-09-28.md"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "scope": "Symbolic cylindrical-coordinate verification of the classical Burgers vortex and on/off-axis deformation; unbounded-domain exact solution, not a model of the pinned OpenAI field or molecules.",
+  "sympy": "1.14.0",
+  "source_sha256": "723e13b52cedc2619a20fd970f7c8733b41133ba10088771654d7ab2832e57e5",
+  "assumptions": [
+    "r > 0",
+    "gamma > 0",
+    "nu > 0",
+    "circulation > 0"
+  ],
+  "velocity": {
+    "u_r": "-gamma*r",
+    "u_theta": "circulation*(1 - exp(-gamma*r**2/(2*nu)))/(2*pi*r)",
+    "u_z": "2*gamma*z"
+  },
+  "pressure_gradient": {
+    "dp_dr": "circulation**2*(1 - exp(-gamma*r**2/(2*nu)))**2/(4*pi**2*r**3) - gamma**2*r",
+    "dp_dz": "-4*gamma**2*z"
+  },
+  "identities": {
+    "incompressible": true,
+    "radial_balance": true,
+    "axial_balance": true,
+    "radial_viscous_component_zero": true,
+    "axial_viscous_component_zero": true,
+    "pressure_gradient_compatible": true,
+    "radial_equation": true,
+    "axial_equation": true,
+    "azimuthal_viscous_advection_balance": true,
+    "azimuthal_viscous_term_nonzero_for_positive_r": true,
+    "axis_swirling_rate": true,
+    "axis_deformation_volume_preserved": true,
+    "axis_variational_equation": true,
+    "axis_transverse_to_axial_ratio_tends_to_zero": true,
+    "off_axis_flow_map_volume_preserved": true,
+    "off_axis_shear_has_finite_limit": true,
+    "off_axis_shear_limit_matches_closed_form": true,
+    "off_axis_transverse_to_axial_ratio_tends_to_zero": true
+  },
+  "residuals": {
+    "divergence": "0",
+    "radial_pressure_balance": "0",
+    "axial_pressure_balance": "0",
+    "radial_vector_laplacian": "0",
+    "axial_laplacian": "0",
+    "pressure_gradient_compatibility": "0",
+    "radial_navier_stokes": "0",
+    "axial_navier_stokes": "0",
+    "azimuthal_advection_minus_diffusion": "0",
+    "azimuthal_advection": "-circulation*gamma**2*r*exp(-gamma*r**2/(2*nu))/(2*pi*nu)",
+    "kinematic_diffusion": "-circulation*gamma**2*r*exp(-gamma*r**2/(2*nu))/(2*pi*nu**2)"
+  },
+  "axis_deformation_matrix": "Matrix([[exp(-gamma*t)*cos(circulation*gamma*t/(4*pi*nu)), -exp(-gamma*t)*sin(circulation*gamma*t/(4*pi*nu)), 0], [exp(-gamma*t)*sin(circulation*gamma*t/(4*pi*nu)), exp(-gamma*t)*cos(circulation*gamma*t/(4*pi*nu)), 0], [0, 0, exp(2*gamma*t)]])",
+  "axis_velocity_gradient": "Matrix([[-gamma, -circulation*gamma/(4*pi*nu), 0], [circulation*gamma/(4*pi*nu), -gamma, 0], [0, 0, 2*gamma]])",
+  "axis_variational_residual": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+  "axis_transverse_to_axial_factor": "exp(-3*gamma*t)",
+  "axis_transverse_to_axial_ratio_squared_limit": "0",
+  "off_axis_radius_trajectory": "r0*exp(-gamma*t)",
+  "off_axis_radial_derivative_of_rotation": "-circulation*exp(2*gamma*t)/(2*pi*gamma*r0**3) + circulation*exp(2*gamma*t - gamma*r0**2*exp(-2*gamma*t)/(2*nu))/(2*pi*gamma*r0**3) + circulation/(2*pi*gamma*r0**3) - circulation*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**3)",
+  "off_axis_deformation_matrix_in_cylindrical_orthonormal_bases": "Matrix([[exp(-gamma*t), 0, 0], [circulation*((-exp(2*gamma*t) + exp(gamma*(4*nu*t*exp(2*gamma*t) - r0**2)*exp(-2*gamma*t)/(2*nu)) + 1)*exp(gamma*r0**2/(2*nu)) - 1)*exp(-gamma*t)*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**2), exp(-gamma*t), 0], [0, 0, exp(2*gamma*t)]])",
+  "off_axis_shear_limit": "-circulation/(4*pi*nu) + circulation/(2*pi*gamma*r0**2) - circulation*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**2)",
+  "off_axis_expected_shear_limit": "-circulation/(4*pi*nu) + circulation/(2*pi*gamma*r0**2) - circulation*exp(-gamma*r0**2/(2*nu))/(2*pi*gamma*r0**2)",
+  "off_axis_transverse_to_axial_ratio_squared_limit": "0",
+  "viscosity_coefficient": "nu",
+  "azimuthal_advection_equals_viscous_diffusion": true,
+  "negative_controls": {
+    "wrong_strain_sign_rejected": true,
+    "wrong_pressure_radial_sign_rejected": true
+  },
+  "success": true
+}

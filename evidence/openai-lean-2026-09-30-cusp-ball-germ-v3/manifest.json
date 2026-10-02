@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, fixed-time cusp-ball exterior inclusion, and an existential terminal-time interval with local germ equality throughout each shrinking cusp ball.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "source_sha256": "2fc558c31a480cdb0f3cdd01af3ef15d87c8e872267f7a4017a31a287416d9a8",
+  "lean_log_sha256": "65fe223f7494d2d22b333ab165faad6d6e6f9bc3949e9baf3c8c20b4ebd66bea",
+  "declarations": [
+    "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "ConcentrationAware.transverse_radius_le_of_euclidean_ball",
+    "ConcentrationAware.axial_deviation_le_of_euclidean_ball",
+    "ConcentrationAware.cusp_ball_point_in_physical_exterior",
+    "ConcentrationAware.selected_velocity_germ_of_cusp_ball_point",
+    "ConcentrationAware.selected_axis_center_small_eventually",
+    "ConcentrationAware.selected_velocity_germ_on_cusp_tube"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "The tube theorem assumes a fixed axial parameter, radius coefficient, eta margin, and a strict interior annulus bound; its terminal-time interval is existential and parameter-dependent.",
+    "The result is a continuum local-germ equality, not a finite-size packet estimate or a theorem at the singular endpoint.",
+    "The result does not imply particle alignment, a phase transition, molecular determinism, or reduced viscosity.",
+    "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
+  ]
+}

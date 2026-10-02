@@ -395,3 +395,37 @@ reference itself has FD2 gradient-peak error≈0.281. This is a coarse-case accu
 failure, not a reproduced miss of the full conventional criteria: velocity alone
 already fails 2%. The n32 case is active. Interim report and hash-checked raw
 archive are published; no causal attribution to the time-contract question is made.
+
+## Conditional finite-fiber alignment bridge — 2026-09-30
+
+Rechecked the particle-orientation interpretation against primary fiber-flow
+literature. A 2026 microfluidic study of rigid fibers in a Burgers-like
+cross-slot vortex reports orientation alignment under strain, with simultaneous
+precession from vorticity; a separate JFM study models flexible rods in a
+zero-Re spiralet analogue. Neither studies molecules or the OpenAI velocity
+field. From Jeffery's director equation in an ideal uniform extensional strain
+`diag(2 gamma,-gamma,-gamma)`, derived
+`tan(beta(t))/tan(beta(t0))=exp(-3 kappa integral gamma dt)`. Under the
+additional strain history `gamma=C/(2(1-t))`, this gives `Q^(3 kappa C/2)`;
+the slender limit `kappa -> 1` matches the checked continuum tangent-map ratio.
+For isotropic initial director orientations, the corresponding conditional
+fixed-angle probability tends to one for `kappa>0`. This extends orientation
+reasoning only: it says nothing about absolute position or viscosity. The actual
+flow proof still lacks a fixed-size endpoint tube and finite-fiber uniform-
+gradient guarantee. Algebra identities and assumptions are in
+`tools/check_jeffery_axisymmetric_bridge.py` and
+`evidence/tests/jeffery-axisymmetric-bridge.json`; literature boundary is in
+`docs/fiber-vortex-literature-audit.md`.
+
+## Qualified slow-base force ratio and a nonvanishing-magnitude check — 2026-10-01
+
+The selected pressure-qualified slow-base field now has a Lean-checked finite
+limit for `nu * Δu / (∂t u + u·∇u)` along its material curve. At the selected
+root, the signed limit is negative; a follow-up theorem proves the magnitude
+tends to a strictly positive constant. Thus this particular ratio does not
+vanish on this alternate base field. This is not a material-viscosity law and
+does not transfer to the upstream fixed `actualProfile` or periodic/corrected
+field. The pinned isolated checker exits 0 with no `sorryAx`; exact outputs and
+hashes are in `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+The full scope and non-implications are recorded in
+`reports/qualified-profile-pressure-selection-2026-10-01.md` and `GOAL.md`.

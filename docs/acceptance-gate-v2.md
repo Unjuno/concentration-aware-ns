@@ -12,6 +12,14 @@ leave the result uncertain. A review file may cover multiple requirements, but
 must actually substantiate each one; identical references do not create evidence.
 The standard acceptance decision also needs a reviewed artifact.
 
+Every v2 report must also provide a non-empty top-level `scope`. The CLI echoes
+this scope beside its verdicts, and missing/blank scope keeps all verdicts
+uncertain. The scope is a declared interpretation boundary, not independent
+proof that the metric or its claimed field object was computed correctly.
+Distinguish sampled/discrete quantities, named reconstructions and the
+underlying solver field; a reconstruction's continuous bound does not transfer
+to an unspecified finite-volume field.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.
@@ -33,3 +41,10 @@ otherwise exit 2 denotes uncertainty. This fixes the earlier CLI behavior where
 local PASS alone could return success despite uncertain standard acceptance.
 Legacy flag-only reports are now uncertain. No existing solver case has been
 upgraded to full acceptance by this change.
+
+The OpenFOAM run-level checker also verifies that every logged time equals
+`i*delta_t` for `i=1..end_time/delta_t`, within `1e-9*max(1,|end_time|)` in
+the configured time units. A complete-looking log with duplicate or skipped
+time labels is a failed run-level gate, even if its record count and final time
+match. This checks the logged schedule; it does not independently prove that
+the solver advanced its internal physical clock correctly.

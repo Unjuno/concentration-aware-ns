@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "scope": "Independent nanoda typecheck of the selected actual-field viscous-acceleration ratio and local pressure-moment theorems, including their exported dependency closure.",
+  "source_sha256": "fe989c3a279d7515b2584e82ada2632930a80299f98f502f68720ff45e2fb793",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "lean": "4.34.0-rc2",
+  "lean4export": "3.1.0",
+  "nanoda": "0.4.16",
+  "nanoda_commit": "05055695879dfebb6628a67da88ceca6cd6b0421",
+  "checked_declarations": 85455,
+  "typechecker_errors": 0,
+  "pretty_printer_errors": [
+    "Unable to print axioms"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "selected_declarations_present": [
+    "actual_ratio_negative_of_local_Z",
+    "actual_ratio_has_strictly_negative_limit",
+    "outgoing_root_Z_positive_iff_moment_threshold"
+  ],
+  "artifacts": [
+    {
+      "path": "AxisForceSign.olean",
+      "bytes": 6135728,
+      "sha256": "afb901374611399f2d1d78b9c802f86934300457b03e409dc2700efe5fc9a3d0"
+    },
+    {
+      "path": "axis-force.ndjson",
+      "bytes": 949729487,
+      "sha256": "cd668688cd0d4db525c981d69b9371d4c35122357affd1d877029bd60c16f65c"
+    },
+    {
+      "path": "nanoda-config.json",
+      "bytes": 231,
+      "sha256": "87b6550157d48d83ea85c98e6c8821ffe55cbf187396e0b15358236649fb4f3a"
+    },
+    {
+      "path": "lean.log",
+      "bytes": 20998,
+      "sha256": "332437b70d45b55bd5595a8fa069fd5f1eadd137551e569f899acb005d257e5a"
+    },
+    {
+      "path": "export.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "nanoda.log",
+      "bytes": 114,
+      "sha256": "5aee43fd6d828ab4f65831b750d46f300faf97c82e576dcef2cc6b71a75e58c7"
+    },
+    {
+      "path": "evidence/lean-verification/axis-force-nanoda-2026-09-30.log",
+      "bytes": 114,
+      "sha256": "5aee43fd6d828ab4f65831b750d46f300faf97c82e576dcef2cc6b71a75e58c7"
+    }
+  ],
+  "limitations": [
+    "The exported dependency closure is large and is retained locally under work/ rather than committed.",
+    "This checks Lean proof terms independently; it does not discharge the local Z>0 condition for FinalSlowBase.actualProfile.",
+    "It is not a physical model or a proof of molecular or constitutive-viscosity behavior."
+  ],
+  "captured_at_utc": "2026-09-30T11:24:43Z",
+  "run_output_directory": "work/axis-force-independent-check-rerun/",
+  "reproduction_script": "runtime/lean-verification/check_axis_force_nanoda.sh",
+  "execution": {
+    "command": "sh runtime/lean-verification/check_axis_force_nanoda.sh work/axis-force-independent-check-rerun",
+    "container_user": "501:20",
+    "network": "disabled",
+    "cpu_limit": 2,
+    "memory_limit": "8g",
+    "socket_control_launcher": "/verify/checker-bin/no_unix",
+    "container_removed_after_exit": true,
+    "process_exit_code": 0
+  }
+}

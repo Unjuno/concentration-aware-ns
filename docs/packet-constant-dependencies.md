@@ -34,10 +34,15 @@ points. Its hypothesis is neighborhood equality throughout K. Equality on
 the axis alone would not supply a bound on a tube. The classical open-union
 and compact-tube construction in the flow note supplies such a K existentially.
 
-At m=2 the new lemma `spatial_jet_norm_le_spacetime_jet_norm` formalizes the
-restriction to fixed-time spatial directions via the norm-one linear map
-v -> (0,v). Thus the same existential bound controls the spatial Hessian on
-K, provided the stated neighborhood-equality hypothesis holds.
+At m=2, the new cusp-ball result below controls the full spacetime second
+Fréchet derivative. `verification/SpatialHessianTransfer.lean` applies the
+generic local `ContDiffAt` restriction lemma in
+`verification/SpatialJetRestriction.lean` to the selected candidate using its
+local equality with the smooth base. It proves that the fixed-time spatial
+Hessian inherits the same `C*q^(-40)` bound throughout the moving ball. Both
+declarations have a Lean axiom audit in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`. The
+classical packet comparison remains an analytic step.
 
 The refreshed upstream source also contains `ActualBaseVelocityBounds` and
 `ActualBasePressureBounds`. These give polynomial-in-similarity-radius bounds
@@ -49,28 +54,34 @@ numerically enclosed or made executable by those estimates. They do not
 establish `PressureData` for `actualProfile`, nor produce a spacetime tube
 radius or chart lower bound.
 
-### Endpoint Hessian rate and the missing tube-radius transfer
+### Endpoint Hessian rate transferred to the Lean-checked cusp tube
 
 At derivative order two, `ActualBaseVelocityBounds.velocity_rate` uses
 `heatLoss(2)=(4*2+2)*(2+2)=40`. It supplies an existential endpoint bound
 `||D^2 u_base(w)|| <= C2*q(w)^(-40)` on an unspecified neighborhood for the
-selected smooth base velocity. The locally checked
-`spatial_jet_norm_le_spacetime_jet_norm` transfers this to the spatial Hessian.
-On the similarity chart, `tau=q*(1-eta^2)` and `|eta|<1`, so `q>=tau`.
-Consequently, wherever the assembled field is known to equal that base, the
-half-Hessian factor on `[t0,T]` is at most
-`(C2/2)*tau0^(-40)*Q^(-40)`, with `tau0=1-t0` and `Q=(1-T)/tau0`.
+selected smooth base velocity. The Lean extension now proves that for each
+fixed admissible cusp center and `c>0`, some terminal interval has local-germ
+equality throughout the entire ball of radius `c*sqrt(tau)` about the selected
+axis center. It separately proves that this whole moving ball eventually lies
+inside any specified endpoint neighborhood. Combining these with the upstream
+rate theorem transfers an existential full-spacetime Hessian bound
+`||D^2 u_actual(w)|| <= C*q(w)^(-40)` to every point of that ball on a
+possibly shorter terminal interval. Since `q>=tau` on the chart, over
+`tau=tau_s*Q` the bound is at most
+`C*tau_s^(-40)*Q^(-40)`.
 
-This does **not** establish the earlier claimed tube radius
-`rho(Q)=rho0*Q^D` or the resulting `Q^(Cstretch+39)` packet-radius order for
-the assembled field. `actual_candidate_terminal_base_germ` gives neighborhood
-equality at each point of the selected trajectory. For every fixed compact
-terminal interval, compactness and openness yield some positive tube radius;
-they give no lower bound on how that radius depends on `T` as `T` approaches
-1. The tube's geometric closeness to the endpoint only places it inside the
-base's endpoint-rate neighborhood; it does not place it inside the separate
-open union where the assembled field equals the base. These two neighborhoods
-cannot be conflated.
+The exact Lean declarations and axiom audit are archived in
+`evidence/openai-lean-2026-09-30-cusp-hessian-v6/manifest.json`. This closes the
+previous gap about whether the *local equality ball itself* has a power-law
+radius: its radius is `c*sqrt(tau_s)*Q^(1/2)`, so `r=1/2` at the field level.
+The constants and terminal interval remain existential and depend on the
+fixed construction parameters. The Lean theorem in
+`verification/SpatialHessianTransfer.lean` composes the generic local
+`ContDiffAt` restriction with the selected-field cusp-ball transfer and gives
+the fixed-time spatial Hessian bound `C*q^(-40)` on that ball. The local helper
+and composed theorem both have axiom audits in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`. The
+classical nonlinear packet comparison remains separate.
 
 This is a genuine quantifier issue: an open neighborhood of every point on a
 nonclosed terminal graph need not have any power-law thickness near its limit.
@@ -83,12 +94,18 @@ shows why openness and compactness alone cannot prove the missing power lower
 bound.
 
 The generic algebra in `tools.check_packet_radius_scaling` remains valid under
-its explicit assumptions. To instantiate it for this construction, one still
-needs a quantitative lower envelope for the assembled-field base-equality
-tube radius (or another direct Hessian estimate for the assembled field) as
-well as the classical nonlinear-flow argument. Until then the packet exponent
-is conditional on such an envelope, not an established result for the selected
-construction. No fixed-size packet or molecular conclusion follows.
+its explicit assumptions. If the formalized spatial Hessian bound is combined
+with the classical packet comparison, the candidate exponents are `r=1/2`,
+`kappa=40`, hence
+`Cstretch+max(r,kappa-1)=Cstretch+39`, in `[42.9999995,43)`. This is a
+conditional *analysis-level shrinking initial-packet allowance*, not a Lean
+theorem or a numeric certificate. It does not prove that a fixed-size packet
+misaligns. Using the proved upper bound `Cstretch<4` directly gives a simpler
+conservative sufficient law `delta<=K*Q^43` for sufficiently small `Q`; the
+symbolic specialization records its prefactors and assumptions in
+`evidence/tests/packet-radius-scaling.json`. `K` still depends on existential
+tube/Hessian constants and the chosen angles, so this is not a numeric packet
+certificate and has no molecular or viscosity implication.
 
 The finite-stage cutoff lemmas do not close this gap by themselves. If a whole
 tube has `q_chart>=qmin`, choosing `J=floor(1/qmin)+1` makes every stage
@@ -99,6 +116,27 @@ finite-prefix identities preserve equality and jets; they provide neither a
 uniform neighborhood radius for that growing prefix nor numerical derivative
 enclosures. A quantitative support-width theorem uniform over the relevant
 stages, or direct bounds for the assembled field, is still required.
+
+The exact-arithmetic helper [`extract_finite_cutoff_schedule.py`](../tools/extract_finite_cutoff_schedule.py)
+computes a finite prefix when externally certified rational inputs are
+available. For every stage `j` it requires positive upper bounds `C[j,m]` for
+all `m=0,...,j+2`, and a certified rational `0<h_lower<=h`. It finds the
+least integer `b_j` satisfying
+
+    C[j,m] * (1/b_j)^(h_lower*j) <= 2^(-j)
+
+for each required order, then sets `a_j=max(b_j,2*a_(j-1))`. All checks use
+integer cross multiplication. Given a lower bound `q_min` valid on the whole
+tube, once `q_min*a_N>1`, every stage from `N` onward is zero for `q>=q_min`.
+The synthetic fixture and generated output live at
+[`finite-cutoff-schedule-synthetic.json`](../examples/finite-cutoff-schedule-synthetic.json)
+and [`finite-cutoff-schedule-synthetic.json`](../evidence/tests/finite-cutoff-schedule-synthetic.json).
+
+The tool verifies arithmetic only. Its provenance string does not certify the
+input bounds, and this repository still has no extracted selected-coefficient
+jet bounds or effective lower bound for `h`. The example is explicitly
+synthetic and does not support a claim about the OpenAI construction or any
+physical interpretation.
 
 ## New support-hole route inspected on 2026-09-28
 
@@ -159,13 +197,17 @@ annulus-to-physical-radius scale identity. This proves a generic primitive
 copy-family implication, not that every actual stage satisfies one uniform
 parameter tuple.
 
-The full support-hole transfer is **not yet proved**. The source extension
-does not yet prove the common-hole implication through the full
-`ActualCandidateAssembly`/`GermCandidateAssembly` cutoff series on a complete
-spacetime tube, including valid-band/domain coverage and the direct curl field.
-The exact numeric value of `leftRadius` and `patch.a` is also non-effective.
-Therefore keep the published packet exponent withdrawn until that aggregate
-implication and the tube's domain conditions are formalized and checked.
+At the September 28 snapshot, the remaining gap was to formalize the
+common-hole chart and whole-tube inequalities and connect them to this
+primitive support-hole route; that historical status led to withdrawing the
+candidate packet exponent. A later direct cusp-ball proof supersedes that gap:
+the September 30 v6 extension now proves equality on the actual selected
+velocity throughout the shrinking ball and transfers the full-spacetime
+`q^-40` Hessian rate there. The support-hole derivation remains a useful
+independent route, but its conditional uniform-coefficient argument is not
+needed to state the current field-level result. Exact tube/Hessian constants
+remain non-effective, and the nonlinear packet comparison remains conditional;
+the current scope is stated above.
 
 ## Finite-stage cutoff with a known chart lower bound
 
@@ -202,6 +244,17 @@ velocity with every primitive, spatial curl and profile parameter extracted.
 This reduction avoids estimating an infinite tail on a compact interval away
 from t=1. It does not make the remaining coefficient functions or cutoff
 scales numerically available by itself.
+
+There is a separate limit-exchange issue as the tube approaches the endpoint:
+fixed-prefix vanishing alone does not control a prefix whose active length
+grows like `1/q`. The smooth schematic counterexample and its exact diagonal
+lower bound are recorded in
+[`diagonal-finite-prefix-limit-audit.md`](diagonal-finite-prefix-limit-audit.md).
+It is not a counterexample to the selected construction. In fact, the pinned
+source supplies `AdmissibleScales.ordinary` and the Lean-checked
+`ordinary_tail_bound`, which yield the selected radial-derivative limit under
+their hypotheses. The remaining gap is effective numerical extraction of
+their existential constants and schedule, not the analytic tail theorem.
 
 ## Why this is not yet a numerical packet certificate
 
@@ -241,8 +294,10 @@ bounds and common-band inequalities are supplied. More generally,
 `candidate_support_inputs` transfers this to the literal initial field, every
 potential stage, every `rawSeries` direct stage, and the pressure stages through
 explicit `EqOn` representation hypotheses. Its output is precisely
-`SublevelShrinkingSupport`, whose pointwise content is that nonzero values must
-lie at transverse radius at least `C*sqrt(physicalQ)`.
+`SublevelShrinkingSupport`, which is an **outer** support bound: nonzero values
+must have transverse radius at most `C*sqrt(physicalQ)`. It does not prove an
+inner support hole. The inner-hole route instead uses separate annulus lower
+bounds for each primitive family.
 
 The selected assembly already exposes many of the required representation facts:
 `ActualCandidateAssembly.initialPotential_support`,
@@ -255,21 +310,63 @@ for its final cutoff schedule. These are strong structural ingredients, and
 make a blanket claim that “the support hole is not transferred through any
 stages” inaccurate.
 
-The remaining requested theorem is narrower and quantitative: specialize the
-native-family bounds in `actual_coherent_families_support` (or the broader
-`actual_patch_support`) to the selected families; verify its first-band lower
-inequalities for all stages from the exact recurrence; transfer its common
-support conclusion through the actual representations and cutoff schedule to
-the selected full velocity; then show the proposed spatial tube stays inside
-the physical sublevel and all applicable charts. The generic theorem's
-parameters make these obligations visible rather than discharging them by
-openness. No theorem found in the inspected `ActualCandidateAssembly` lines
-already states the final equality of the assembled velocity and base on a
-uniform `sqrt(1-t)` tube. Accordingly the packet exponent remains conditional
-until this specialization and tube lemma are checked.
+The conditional field transfer through the actual representations, selected
+cutoff sums, spatial curl and final localization is now checked on the actual
+open exterior by `verification/SupportHoleAssembly.lean`. The classical chart
+geometry for a whole `c*sqrt(1-t)` cusp tube is derived in
+[`support-hole-tube-geometry.md`](support-hole-tube-geometry.md), conditional on
+the shared coefficient. Its exponent and derivative identities have a
+symbolic check, but the tube argument is not yet formalized in Lean or
+connected to the extension theorem. Accordingly, the packet exponent remains
+conditional until the whole-tube inclusion is checked.
 
-The evidence update corrects the earlier broad claim: per-stage support
-transfer is present in the upstream library; selected-uniform constants,
-cutoff-sum specialization and tube geometry are the exact remaining audit
-items. No numerical packet or material interpretation follows from the
-structural support lemmas alone.
+### Follow-up: stage-uniform inner support coefficient
+
+A closer read of the pinned `ActualCandidateAssembly` and support files
+establishes a common coefficient for the primitive corrections; the older
+claim that this coefficient still had to be extracted stage by stage was too
+broad:
+
+- The initialized copy potential has the exact exterior identity
+  `InitialPhysicalData.potential_zero_exterior`. Its physical-copy annulus
+  gives the lower transverse-radius coefficient
+  `leftRadius/(4*sqrt(2))` relative to `sqrt(physicalQ)`.
+- At every positive stage `j`, the particular potential is built from the
+  same `ActualPrimary.nominal` annulus (`particular_zero_germs`), and the signed
+  potential is zero off that same `ActualPolarCoverage.active` annulus
+  (`signed_zero_germs`). The former is derived for the actual representative
+  by `ActualCurrentWaveSupport.current_field_active_germs`.
+- The temporal/rank mean stream families use the fixed initialization patch;
+  `ActualMeanStageData.innerRadius` is `(patch.a/4)*sqrt(physicalQ)` and
+  `coefficient_vanishes` proves the coefficient is zero below it. The actual
+  stream/direct stage constructors expose the corresponding fields.
+
+Thus a common geometric hole coefficient for these primitives is
+
+    c0 = min(leftRadius/(4*sqrt(2)), patch.a/4) > 0.
+
+This is a source-derived positive existential constant, not a numerical value.
+Each selected stage's correction terms have zero germs whenever the physical
+transverse radius lies strictly below `c0*sqrt(physicalQ)`. The source also
+proves component decompositions such as `positivePotential_curl`. The new
+extension `verification/SupportHoleAssembly.lean` composes actual selected-stage
+exterior identities, local finiteness and cutoff behavior, potential curl,
+the direct-stage sum, periodic spatial localization and time activation into
+a checked conditional field-equality theorem. Its domain is the actual open
+exterior, not a constructed whole cusp tube. The missing step is now the Lean
+formalization of whole-tube chart/domain/plateau inequalities and their
+connection to that theorem. This corrects the prior blanket wording about
+selected-uniform constants and aggregate transfer, but does not yet restore
+the conditional packet exponent.
+
+Pinned source locations: [`InitialPhysicalData.lean`
+(`potential_support`, `potential_zero_exterior`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/InitialPhysicalData.lean),
+[`ActualCandidateAssembly.lean`
+(`particular_zero_germs`, `signed_zero_germs`, `positivePotential_curl`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCandidateAssembly.lean),
+[`ActualCurrentWaveSupport.lean`
+(`current_field_active_germs`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualCurrentWaveSupport.lean),
+and [`ActualMeanStageData.lean`
+(`innerRadius`, `coefficient_vanishes`)](https://github.com/openai/NavierStokesAndEuler/blob/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/NavierStokes/ActualMeanStageData.lean).
+
+No numerical packet or material interpretation follows from these structural
+lemmas alone.

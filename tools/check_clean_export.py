@@ -80,6 +80,7 @@ def main():
         ('axis-dissipation', 'tools.check_axis_dissipation'),
         ('axis-deformation', 'tools.check_axis_deformation'),
         ('axis-packet', 'tools.check_axis_packet_bound'),
+        ('alignment-uncertainty', 'tools.check_alignment_uncertainty'),
     ]]
     for name, command in commands:
         if not run(name, command):

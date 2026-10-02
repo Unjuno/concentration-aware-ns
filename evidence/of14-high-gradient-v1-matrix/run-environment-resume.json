@@ -1,0 +1,20 @@
+{
+  "source_commit": "8e2619c1a9d327af49a15184c675e2933f0d7ccc",
+  "protocol": "protocols/high-gradient-of14-v1.json",
+  "protocol_sha256": "4b561ce371d988c043882bac547d7682756c27e635176c4cec9a9a2242d1a5ee",
+  "mathematical_protocol": "Foundation 13 high-gradient v2 MMS copied without changing equations, forcing, end time, mesh matrix, time steps, or gates",
+  "binary_package": "OpenFOAM Foundation 14 package 20260724 arm64",
+  "binary_package_sha256": "d20102ae6b39377ab3f5e654302ea0d58de166156fe681670f147ac555299a69",
+  "container_image": "concentration-aware-ns:of14-20260724",
+  "container_image_id": "sha256:13a8802edab29a093c62ab90f063b823536e18985d52c91ab58212a4ac31447d",
+  "container_platform": "linux/arm64",
+  "docker_cli": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "docker_context": "orbstack",
+  "per_case_timeout_seconds": 14400,
+  "reused_baseline_archive_sha256": "de85e8e655804d45a22490b57c855360db28b4e984ce10e347b6b5516030df71",
+  "scope": "Foundation 14 five-case successor matrix; not a solver-version defect verdict or continuous-extrema certificate",
+  "resumed_from_source_commit": "24e91762b6f763d7a48e41da95c74c88c8f6227c",
+  "resume_note": "Preserved earlier complete cases; reruns only incomplete cases from clean generated inputs."
+}

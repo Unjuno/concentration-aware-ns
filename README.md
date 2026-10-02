@@ -17,11 +17,17 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Progress](docs/progress.md)
 - [Requirement-by-requirement completion audit](docs/completion-audit.md)
 - [Three-target comparative audit](reports/comparative-audit.md)
+- [Cross-solver matrix coverage, AMR upper-state and upstream disposition](reports/solver-matrix-coverage-2026-09-30.md)
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
+- [Flat-but-active analytic-forcing bridge to the OpenAI construction](reports/openai-analytic-forcing-bridge-2026-10-01.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
+- [Axis-tube concentration versus bounded-position probability](docs/linearized-axis-tube-concentration.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
+- [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
+- [Burgers vortex: alignment with nonzero viscous balance](docs/burgers-vortex-alignment-viscous-balance.md)
+- [Burgers vortex tracer-position probabilities](docs/burgers-vortex-position-probability.md)
 - [Exact global reference peaks](docs/reference-global-peaks.md)
 - [FD2 diagnostic decomposition](reports/peak-diagnostic-decomposition.md)
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
@@ -49,6 +55,30 @@ vorticity and forcing. Its tests check periodicity, divergence and second-order
 convergence of a separate finite-difference reconstruction of the PDE forcing.
 These checks validate formula consistency; they do not constitute solver runs.
 
+The affine counterexample uses an exact unbounded-domain Navier–Stokes solution
+to test the logical inference from material-line alignment to reduced viscosity.
+Its SymPy checker and negative controls are reproducible with
+`python -m tools.check_affine_alignment_counterexample`; this does not infer
+molecular behavior or replace component-wise term analysis of the selected
+construction.
+
+The Burgers-vortex calculation is a stronger analytical countercheck: its
+nonzero azimuthal viscous diffusion exactly balances azimuthal advection even
+while the axis deformation aligns infinitesimal directions. Reproduce it with
+`python -m tools.check_burgers_vortex_balance`.
+
+The exact passive-tracer probability check further distinguishes localization
+relative to an infinite axis from probability inside a fixed bounded volume;
+reproduce it with `python -m tools.check_burgers_vortex_tracer_probability`.
+
+## Continuous integration
+
+Pull requests run the Python verification suite on Python 3.12 through
+`.github/workflows/python-verification.yml`. This covers analytic formulas,
+acceptance gates, archive/reader logic and generated case inputs. It does not
+launch OpenFOAM, SU2 or PhysicsNeMo, and cannot turn an unrun solver matrix into
+a PASS.
+
 ## Replay published report generation
 
 After installing requirements-verification.txt, run from the repository root:
@@ -60,11 +90,14 @@ python3 -m tools.replay_published_reports
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics and the
 Dirichlet boundary-time pilot, reproduces the specific restart-history mismatch,
-rebuilds the
-OpenFOAM, SU2 and PhysicsNeMo gates, checks the root-pressure and pressure-moment
-identities and cone sign symmetry, and checks every gate artifact hash. Logs and
+checks OpenFOAM's six-case fixed/time-step archives and AMR archive tree hashes,
+rechecks all five SU2 cases and the five PhysicsNeMo sampled-derivative
+checkpoint/evaluation pairs, rebuilds all three acceptance reports, and checks
+the analytic identities and every gate artifact hash. Each step records both
+the exact interpreter argv and a portable `python3` replay command. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
-train networks or validate the OpenAI proof. The current replay covers all five required SU2 cases.
+train networks or validate the OpenAI proof. Scientific `UNCERTAIN` results
+remain so.
 Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication
@@ -77,6 +110,11 @@ speculative findings.
 
 Original files use MIT; upstream software retains its own licenses. Do not copy
 upstream source into this repository without preserving its applicable terms.
+The optional verification dependency `python-flint==0.9.0` is used for the
+experimental Arb interval audit. The package metadata reports MIT and
+LGPL-3.0-or-later components; its maintainers describe Python-FLINT as MIT and
+bundled FLINT/Arb as LGPL-2.1-or-later. This repository imports the package for
+verification and does not redistribute its binary wheel.
 
 The pinned OpenAI Navier–Stokes challenge passed the recorded independent check;
 see [verification result and scope](reports/openai-ns-independent-verification.md).
@@ -108,6 +146,13 @@ The current [analytic connection](docs/axis-flow-derivative.md) distinguishes
 Lean-checked component lemmas from the classical nonlinear-flow argument.
 The [comparative audit](reports/comparative-audit.md) includes the separate SU2
 BDF2 reproducer; the eleven localized acceptance verdicts remain UNCERTAIN.
+
+The pre-publication source head's tracked-only export and complete test replay
+are recorded in [the 2026-10-02 clean-export bundle](evidence/clean-export-2026-10-02-tracer-head/README.md):
+37 replay steps and six added checks pass, 178 tracked report/evidence files are
+unchanged, and the exported tree's full test suite reports 200 passed, one
+skipped, and five subtests passed. This is stored-evidence/postprocessing
+reproduction; solver rebuilds and runs remain separate.
 
 The tracked-only export at commit `a9ff4ab` was also checked in a newly
 created virtual environment: dependency installation, the twelve-step replay

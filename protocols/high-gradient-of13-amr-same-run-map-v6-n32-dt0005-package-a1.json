@@ -1,0 +1,13 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v6-n32-dt0005-package-a1",
+  "scope": "Post-run packaging only; does not alter run conditions or scientific gates.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json",
+  "run_protocol_sha256": "edd3b0ad238623978bdf9affbf4599056aafad97572c1dc9c69281d5599b0c46",
+  "archive": "evidence/of13-amr-same-run-map-v6-n32-dt0005/amr-stage-snapshot-n32-dt0005.tar.gz",
+  "excluded": [
+    "postProcessing/amrStages/*/*_faces.csv",
+    "dynamicCode"
+  ],
+  "full_raw_case": "work/of13-amr-same-run-map-v6-n32-dt0005/amr-n32-dt0005-cap120000",
+  "scientific_limit": "No n=32 dt=0.0005 face-flux, divergence, or spectrum claim."
+}

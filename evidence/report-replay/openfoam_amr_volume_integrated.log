@@ -1,0 +1,259 @@
+{
+  "status": "PASS_VOLUME_INTEGRATED_AMR_RECONSTRUCTION_REPLAY",
+  "analyzer_sha256": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e",
+  "derivative_operators": {
+    "path": "tools/analyze_amr_gauss_gradient.py",
+    "sha256": "7e95b6a6cbc7a580d65168beedacba19786932194c5a8c912f7f235bdc6bb615"
+  },
+  "reference": "Analytic manufactured-solution gradient and vorticity integrated inside each retained cell with tensor Gauss-Legendre quadrature.",
+  "discrete_field": "Cellwise-constant finite-volume Gauss gradient and one-ring least-squares alternative, with their curls; neither is a reconstructed continuous OpenFOAM velocity field.",
+  "mask": {
+    "definition": "cell centers farther than pi/4 from all periodic boundaries; aligned physical support across resolutions",
+    "physical_margin": 0.7853981633974483,
+    "expected_volume_fraction": 0.421875
+  },
+  "quadrature_orders_per_axis": [
+    6,
+    8
+  ],
+  "cases": [
+    {
+      "n": 16,
+      "archive": "evidence/of13-amr-same-run-map-v4-run3/amr-stage-snapshot.tar.gz",
+      "archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v4.json",
+      "protocol_sha256": "909a7b9b495cb3938e584b4edf297052c942fa26de1ab5c7f06bc8cfecca878d",
+      "frequency": 4,
+      "time": "0.002",
+      "stages": [
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.5613592289937656,
+          "integrated_cellwise_constant_curl_relative_l2": 0.5939376455862617,
+          "integrated_physical_volume": 104.64618379601187,
+          "retained_cells": 1728,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 3.3306690738754696e-15,
+            "vorticity_relative_l2_absolute_difference": 1.1901590823981678e-13
+          },
+          "stage": "preMap",
+          "operator": "uniform periodic centered difference (midpoint Gauss equivalent)",
+          "cells": 4096,
+          "interior_volume_fraction": 0.421875,
+          "cell_width_levels": [
+            0.39269908169872414,
+            0.19634954084936207
+          ]
+        },
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.5425400960319853,
+          "integrated_cellwise_constant_curl_relative_l2": 0.5972017220855502,
+          "integrated_physical_volume": 104.64618379601185,
+          "retained_cells": 4416,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 7.771561172376096e-15,
+            "vorticity_relative_l2_absolute_difference": 2.6645352591003757e-15
+          },
+          "stage": "mapped",
+          "operator": "captured face-Uf finite-volume Gauss sum on mapped mesh",
+          "cells": 16640,
+          "interior_volume_fraction": 0.42187500000000006,
+          "cell_width_levels": [
+            0.39269908169872414,
+            0.19634954084936207
+          ],
+          "alternative_reconstruction": {
+            "name": "unweighted one-ring cell-center least-squares gradient",
+            "construction": "Fit each cell's velocity differences to periodic minimum-image center displacements over captured internal-face neighbors; report the resulting cellwise-constant gradient and curl.",
+            "operator_diagnostics": {
+              "cells": 16640,
+              "internal_faces": 48816,
+              "minimum_normal_matrix_eigenvalue": 0.03855314219175358,
+              "maximum_normal_matrix_condition_number": 5.000000000000095,
+              "mean_face_neighbor_count": 5.867307692307692
+            },
+            "volume_integrated_error": {
+              "quadrature_order_per_axis": 8,
+              "integrated_cellwise_constant_gradient_relative_l2": 0.5430817063464997,
+              "integrated_cellwise_constant_curl_relative_l2": 0.5981146235434567,
+              "integrated_physical_volume": 104.64618379601185,
+              "retained_cells": 4416
+            },
+            "quadrature_convergence": {
+              "comparison_order_per_axis": 6,
+              "fine_order_per_axis": 8,
+              "gradient_relative_l2_absolute_difference": 7.882583474838611e-15,
+              "vorticity_relative_l2_absolute_difference": 2.6645352591003757e-15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "archive": "evidence/of13-amr-same-run-map-v5-n32/amr-stage-snapshot-n32.tar.gz",
+      "archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+      "protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+      "frequency": 4,
+      "time": "0.002",
+      "stages": [
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.28099028619432354,
+          "integrated_cellwise_constant_curl_relative_l2": 0.2954273372385439,
+          "integrated_physical_volume": 104.64618379601188,
+          "retained_cells": 13824,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 5.551115123125783e-17,
+            "vorticity_relative_l2_absolute_difference": 5.551115123125783e-17
+          },
+          "stage": "preMap",
+          "operator": "uniform periodic centered difference (midpoint Gauss equivalent)",
+          "cells": 32768,
+          "interior_volume_fraction": 0.42187500000000006,
+          "cell_width_levels": [
+            0.19634954084936207,
+            0.09817477042468103
+          ]
+        },
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.27861400218369875,
+          "integrated_cellwise_constant_curl_relative_l2": 0.31257856523630534,
+          "integrated_physical_volume": 104.64618379601187,
+          "retained_cells": 31296,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 1.1102230246251565e-16,
+            "vorticity_relative_l2_absolute_difference": 5.551115123125783e-17
+          },
+          "stage": "mapped",
+          "operator": "captured face-Uf finite-volume Gauss sum on mapped mesh",
+          "cells": 118784,
+          "interior_volume_fraction": 0.421875,
+          "cell_width_levels": [
+            0.19634954084936207,
+            0.09817477042468103
+          ],
+          "alternative_reconstruction": {
+            "name": "unweighted one-ring cell-center least-squares gradient",
+            "construction": "Fit each cell's velocity differences to periodic minimum-image center displacements over captured internal-face neighbors; report the resulting cellwise-constant gradient and curl.",
+            "operator_diagnostics": {
+              "cells": 118784,
+              "internal_faces": 352128,
+              "minimum_normal_matrix_eigenvalue": 0.009638285547937893,
+              "maximum_normal_matrix_condition_number": 5.000000000000351,
+              "mean_face_neighbor_count": 5.928879310344827
+            },
+            "volume_integrated_error": {
+              "quadrature_order_per_axis": 8,
+              "integrated_cellwise_constant_gradient_relative_l2": 0.27929495593334,
+              "integrated_cellwise_constant_curl_relative_l2": 0.3133108432389937,
+              "integrated_physical_volume": 104.64618379601187,
+              "retained_cells": 31296
+            },
+            "quadrature_convergence": {
+              "comparison_order_per_axis": 6,
+              "fine_order_per_axis": 8,
+              "gradient_relative_l2_absolute_difference": 5.551115123125783e-17,
+              "vorticity_relative_l2_absolute_difference": 1.1102230246251565e-16
+            }
+          }
+        }
+      ]
+    },
+    {
+      "n": 64,
+      "archive": "evidence/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz",
+      "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v7-n64.json",
+      "protocol_sha256": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+      "frequency": 4,
+      "time": "0.002",
+      "stages": [
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.1398038299320574,
+          "integrated_cellwise_constant_curl_relative_l2": 0.1464283510024133,
+          "integrated_physical_volume": 104.64618379601188,
+          "retained_cells": 110592,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 1.3877787807814457e-16,
+            "vorticity_relative_l2_absolute_difference": 1.6653345369377348e-16
+          },
+          "stage": "preMap",
+          "operator": "uniform periodic centered difference (midpoint Gauss equivalent)",
+          "cells": 262144,
+          "interior_volume_fraction": 0.42187500000000006,
+          "cell_width_levels": [
+            0.09817477042468103,
+            0.04908738521234052
+          ]
+        },
+        {
+          "quadrature_order_per_axis": 8,
+          "integrated_cellwise_constant_gradient_relative_l2": 0.14014704773243858,
+          "integrated_cellwise_constant_curl_relative_l2": 0.15849900263315844,
+          "integrated_physical_volume": 104.64618379601187,
+          "retained_cells": 235584,
+          "quadrature_convergence": {
+            "comparison_order_per_axis": 6,
+            "fine_order_per_axis": 8,
+            "gradient_relative_l2_absolute_difference": 5.551115123125783e-17,
+            "vorticity_relative_l2_absolute_difference": 2.7755575615628914e-17
+          },
+          "stage": "mapped",
+          "operator": "captured face-Uf finite-volume Gauss sum on mapped mesh",
+          "cells": 901888,
+          "interior_volume_fraction": 0.4218750000000001,
+          "cell_width_levels": [
+            0.09817477042468103,
+            0.04908738521234052
+          ],
+          "alternative_reconstruction": {
+            "name": "unweighted one-ring cell-center least-squares gradient",
+            "construction": "Fit each cell's velocity differences to periodic minimum-image center displacements over captured internal-face neighbors; report the resulting cellwise-constant gradient and curl.",
+            "operator_diagnostics": {
+              "cells": 901888,
+              "internal_faces": 2689092,
+              "minimum_normal_matrix_eigenvalue": 0.002409571386984167,
+              "maximum_normal_matrix_condition_number": 5.000000000000897,
+              "mean_face_neighbor_count": 5.963250425773489
+            },
+            "volume_integrated_error": {
+              "quadrature_order_per_axis": 8,
+              "integrated_cellwise_constant_gradient_relative_l2": 0.14071927125853673,
+              "integrated_cellwise_constant_curl_relative_l2": 0.15902561852759117,
+              "integrated_physical_volume": 104.64618379601187,
+              "retained_cells": 235584
+            },
+            "quadrature_convergence": {
+              "comparison_order_per_axis": 6,
+              "fine_order_per_axis": 8,
+              "gradient_relative_l2_absolute_difference": 5.551115123125783e-17,
+              "vorticity_relative_l2_absolute_difference": 2.7755575615628914e-17
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The quadrature integrates exact derivatives over each selected cell, but does not certify the spatial interpolation used by the solver or its continuous velocity field.",
+    "The cell-center least-squares gradient is a post-processing alternative, not the solver's declared gradient operator or a fitted velocity polynomial over cell interiors.",
+    "AMR events are exploratory single runs and have no preregistered quality threshold; no AMR PASS/FAIL or upstream defect conclusion is assigned.",
+    "Numerical quadrature is a deterministic diagnostic, not an interval-arithmetic error bound."
+  ]
+}
+<TEMP_PATH>: 278621920 bytes

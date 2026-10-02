@@ -1,0 +1,88 @@
+{
+  "scope": "Interval-arithmetic certificate of a unique strict local maximum of the squared gradient-error norm inside one candidate-centered box. It is not a global maximum certificate; Arb is not independently proof-kernel checked.",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "candidate_evidence_sha256": "28973faf5d285c56d91f8aff9434814416b07eed929a9388799214b5906da005",
+  "tool_sha256": "295071cc6b2482aceb47c776d44a75b8d8a04cc7a34626cf874addb933cee6d4",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "python_flint": "0.9.0",
+    "pytorch": "2.11.0",
+    "physicsnemo_release": "2.2.1",
+    "physicsnemo_source_commit": "1b961314e42a0625502ba1592d25f706f1e02a24"
+  },
+  "candidate": [
+    3.027973887483007,
+    3.0013446094963365,
+    3.259521137998328
+  ],
+  "box_radius": 0.0001,
+  "box": [
+    [
+      3.0278738874830067,
+      3.028073887483007
+    ],
+    [
+      3.0012446094963363,
+      3.0014446094963367
+    ],
+    [
+      3.259421137998328,
+      3.2596211379983284
+    ]
+  ],
+  "precision_decimal_digits": 50,
+  "objective": "f(x) = ||D_x(u_pred-u_ref)||_F^2",
+  "krawczyk_image": [
+    [
+      3.027933843063888,
+      3.0280139447749805
+    ],
+    [
+      3.0013079760922787,
+      3.001381259584095
+    ],
+    [
+      3.2594959365648823,
+      3.259546420709705
+    ]
+  ],
+  "krawczyk_strict_inclusion": true,
+  "krawczyk_contraction_infinity_norm_upper": 0.4005085530536186,
+  "preconditioner_determinant_abs_lower": 0.61499923088206,
+  "hessian_diagonal_upper_bounds": [
+    -1.2143153227593972,
+    -1.4280425254572338,
+    -1.0293037932259188
+  ],
+  "hessian_strict_diagonal_dominance_margin_lower": [
+    0.12004779232108008,
+    0.316692782341086,
+    0.4211741002314251
+  ],
+  "objective_hessian_negative_definite_on_box": true,
+  "gradient_error_frobenius_lower_on_box": 0.2491143866150676,
+  "gradient_error_frobenius_upper_on_box": 0.2577355383553053,
+  "gradient_error_frobenius_taylor_upper_on_box": 0.2534442971225792,
+  "candidate_point_frobenius_lower": 0.253408291696744,
+  "candidate_point_frobenius_upper": 0.2534082916967441,
+  "unique_local_maximum_value_enclosure": [
+    0.253408291696744,
+    0.2534442971225792
+  ],
+  "candidate_point_objective_gradient_midpoint": [
+    4.7530463795544895e-09,
+    7.709709181300777e-09,
+    4.169027977352038e-08
+  ],
+  "independent_torch_autograd_sanity_check": {
+    "objective_value": 0.0642157623006623,
+    "max_objective_value_discrepancy": 1.942890293094024e-16,
+    "max_objective_gradient_discrepancy": 3.7814154068255794e-16,
+    "max_objective_hessian_discrepancy": 5.551115123125783e-15,
+    "absolute_tolerance": 1e-06,
+    "passed": true
+  },
+  "certified_statement": "The Krawczyk map is a contraction from the box strictly into itself and its preconditioner is nonsingular, so the squared gradient-error norm has exactly one stationary point in the box. The Hessian is strictly diagonally dominant with negative diagonal throughout, so this point is the unique strict maximum in the box.",
+  "success": true
+}

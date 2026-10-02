@@ -1,0 +1,72 @@
+{
+  "study_id": "physicsnemo-seed-control-v1",
+  "status": "frozen-before-execution",
+  "question": "How much do initialization and collocation-sampling seeds vary the fixed-budget outcomes, and do the spatial-density/time-node contrasts persist across paired seeds?",
+  "source": {
+    "repository": "https://github.com/NVIDIA/physicsnemo",
+    "commit": "1b961314e42a0625502ba1592d25f706f1e02a24",
+    "archive_url": "https://codeload.github.com/NVIDIA/physicsnemo/tar.gz/1b961314e42a0625502ba1592d25f706f1e02a24",
+    "archive_sha256": "f987c380db2d55caf8af494927a84d9a5c19ef67e2c462ea7aaeccedf2688bec",
+    "expected_regular_files": 4127,
+    "allowed_local_extras": "Python __pycache__ directories and *.pyc files only"
+  },
+  "baseline_protocol": {
+    "path": "protocols/physicsnemo-study-v1.json",
+    "sha256": "6573c8cdb854e8948d4aa66286f3e4cbb6266ce814e128e027b210c2a2256e37"
+  },
+  "reference_seed": 709,
+  "seeds": [709, 1729, 2027, 4093, 8191],
+  "cases": [[16, 5], [32, 5], [64, 5], [64, 9], [64, 17]],
+  "training": {
+    "iterations": 5000,
+    "batch": 128,
+    "layers": 3,
+    "width": 32,
+    "learning_rate": 0.001,
+    "dtype": "float64",
+    "threads": 2,
+    "end": 0.05,
+    "sigma": 0.5,
+    "nu": 0.01,
+    "validation_seed": 1481,
+    "evaluation_n": 64,
+    "evaluation_phase": 0.37,
+    "ansatz": "u=u0(x)+t*MLP(sin(x),cos(x),t/end)[:3]; p=MLP[...,3]. Exact initial velocity and periodic inputs. No exact transient velocity labels.",
+    "loss": "Mean squared continuity plus sum of three mean squared momentum residuals, equally weighted, no adaptive weighting."
+  },
+  "new_runs": {
+    "seeds": [1729, 2027, 4093, 8191],
+    "count": 20,
+    "run_order": "seed-major, then cases in listed order",
+    "estimated_runtime_seconds": 1400
+  },
+  "analysis_plan": {
+    "primary_metric": "endpoint velocity relative L2 on the same 64^3 evaluation grid",
+    "secondary_metrics": [
+      "sampled autograd gradient peak relative error",
+      "sampled autograd vorticity peak relative error",
+      "maximum held-out momentum residual",
+      "maximum held-out continuity residual",
+      "final training loss",
+      "elapsed wall time"
+    ],
+    "summary": "Report every seed-case result, then per-case mean, median, sample standard deviation, minimum and maximum. Also show paired within-seed contrasts between n=16/32/64 at five time nodes and between 5/9/17 time nodes at n=64.",
+    "acceptance_thresholds": "None. Descriptive seed-robustness study only; do not retrofit the OpenFOAM 5% threshold or label a PINN accuracy pass.",
+    "limits": "All seeds share the same fixed held-out validation points and time nodes. Five seeds do not establish asymptotic convergence, optimizer convergence, a population-wide guarantee, or continuous-domain extrema."
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.11.0",
+    "device": "cpu",
+    "platform": "macOS arm64",
+    "source_tree_audit": {
+      "archive_regular_files": 4127,
+      "archive_symlinks": 1,
+      "matching_regular_files": 4127,
+      "missing_files": 0,
+      "changed_files": 0,
+      "local_extras": 334,
+      "extra_classification": "*.pyc files beneath __pycache__ directories"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "protocol_sha256": "8344fe82548bed1b37f04023bf531cf5fdbbd5741e82b626fe5ef299ece3584d",
+  "run_manifest_sha256": "ae9545ef46998f4e0f00f085b57bea6486d7343baa2c2b6255c31fc5bcb8a1bd",
+  "cases": {
+    "amr-cap5000": {
+      "0.001": {
+        "cell_count": 4096,
+        "domain_volume": 248.0502134423985,
+        "velocity_relative_volume_l2_error": 0.055320559201150414,
+        "max_gradient_norm_relative_cell_sample_error": 0.36574589685898,
+        "reference_max_gradient_norm_at_cell_centers": 0.6677353637107117,
+        "computed_max_gradient_norm_at_cells": 0.42351389424588026
+      },
+      "0.002": {
+        "cell_count": 4096,
+        "domain_volume": 248.0502134423985,
+        "velocity_relative_volume_l2_error": 0.05874917171587735,
+        "max_gradient_norm_relative_cell_sample_error": 0.36622765171851357,
+        "reference_max_gradient_norm_at_cell_centers": 0.6670679621034215,
+        "computed_max_gradient_norm_at_cells": 0.422769228805631
+      },
+      "0.003": {
+        "cell_count": 16640,
+        "domain_volume": 248.05021344239844,
+        "velocity_relative_volume_l2_error": 0.39947692129702933,
+        "max_gradient_norm_relative_cell_sample_error": 0.0917402975562535,
+        "reference_max_gradient_norm_at_cell_centers": 0.9108753465328115,
+        "computed_max_gradient_norm_at_cells": 0.8273113712052359
+      }
+    },
+    "uniform-n16": {
+      "0.001": {
+        "cell_count": 4096,
+        "domain_volume": 248.0502134423985,
+        "velocity_relative_volume_l2_error": 0.055320559201150414,
+        "max_gradient_norm_relative_cell_sample_error": 0.36574589685898,
+        "reference_max_gradient_norm_at_cell_centers": 0.6677353637107117,
+        "computed_max_gradient_norm_at_cells": 0.42351389424588026
+      },
+      "0.002": {
+        "cell_count": 4096,
+        "domain_volume": 248.0502134423985,
+        "velocity_relative_volume_l2_error": 0.05874917171587735,
+        "max_gradient_norm_relative_cell_sample_error": 0.3662276517185137,
+        "reference_max_gradient_norm_at_cell_centers": 0.6670679621034215,
+        "computed_max_gradient_norm_at_cells": 0.42276922880563095
+      },
+      "0.003": {
+        "cell_count": 4096,
+        "domain_volume": 248.0502134423985,
+        "velocity_relative_volume_l2_error": 0.061613842825752614,
+        "max_gradient_norm_relative_cell_sample_error": 0.36664065903535775,
+        "reference_max_gradient_norm_at_cell_centers": 0.6664012275641489,
+        "computed_max_gradient_norm_at_cells": 0.42207144230805793
+      }
+    }
+  },
+  "predeclared_contrast": {
+    "quantity": "(AMR e003-AMR e002)-(uniform e003-uniform e002)",
+    "value": 0.3378630784712767,
+    "interpretation": "Positive means error increased more across the first-refinement interval in the AMR run than in the same-grid control. The AMR t=.003 field includes one solved post-remap timestep."
+  },
+  "scope": "Exact-MMS comparison at three early checkpoints. Cell-gradient maxima are cell-center samples. This does not isolate remapping from flux correction, projection, sensor changes or post-remap evolution and is not a solver-defect or acceptance verdict."
+}

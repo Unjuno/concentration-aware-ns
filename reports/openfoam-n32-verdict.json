@@ -1,5 +1,6 @@
 {
   "standard_acceptance": "UNCERTAIN",
   "local_quality": "UNCERTAIN",
-  "hypothesis": "UNCERTAIN"
+  "hypothesis": "UNCERTAIN",
+  "scope": "Reported sampled FD2 peak versus continuum maximum. Floating-point evaluation of analytic lower bounds, not interval certification."
 }

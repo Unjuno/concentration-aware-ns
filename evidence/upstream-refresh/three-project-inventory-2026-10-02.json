@@ -1,0 +1,95 @@
+{
+  "observed_at_utc": "2026-10-01T17:00:42Z",
+  "scope": "Read-only focused refresh of the three benchmark target heads, versions, and already identified issue/discussion/PR records. Includes targeted OpenFOAM Foundation tracker searches. Not an exhaustive review of all source code, tracker records, or framework behavior.",
+  "openfoam_foundation_13": {
+    "repository": "OpenFOAM/OpenFOAM-13",
+    "default_branch": "master",
+    "head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "head_commit_date": "2026-06-23T20:54:34Z",
+    "pushed_at": "2026-06-24T08:41:09Z",
+    "license_api_spdx": "NOASSERTION",
+    "pinned_license_file": "COPYING declares GNU GPL version 3 or later; source commit unchanged since prior verified blob 7d136509e0408ed3a9b45ab85a173431d3b24614",
+    "github_open_issue_endpoint": [
+      {"number": 5, "title": "Documentation does not reflect the source code", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/5"},
+      {"number": 4, "title": "Installation on Almalinux", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/4"},
+      {"number": 3, "title": "Migration to organization", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/3"},
+      {"number": 2, "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2"}
+    ],
+    "tracker": {
+      "url": "https://bugs.openfoam.org/",
+      "direct_fetch": "HTTP 403 from research browser; tracker content was not directly audited",
+      "focused_searches": [
+        "dynamicRefineFvMesh maxCells",
+        "dynamicRefineFvMesh unrefinement",
+        "dynamicRefineFvMesh field mapping OpenFOAM 13"
+      ],
+      "search_observations": [
+        {"url": "https://bugs.openfoam.org/view.php?id=75", "summary": "2010 dynamicRefineFvMesh selection/mapping report, fixed in 1.7.x; not the present v13 AMR metric."},
+        {"url": "https://bugs.openfoam.org/view.php?id=4107", "summary": "2024 question about maxRefinement across multiple cellZones; different control semantics."},
+        {"url": "https://bugs.openfoam.org/view.php?id=4260", "summary": "OpenFOAM 13 zoneGenerator/loadBalancer redistribution crash, resolved in OpenFOAM-dev; not the measured single-phase refinement behavior."}
+      ],
+      "disposition": "No matching current report identified. This search is scoped and cannot establish absence of a report in the inaccessible tracker. Existing benchmark conclusion remains UNCERTAIN; no new report filed."
+    }
+  },
+  "su2": {
+    "repository": "su2code/SU2",
+    "default_branch": "master",
+    "head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "head_commit_date": "2026-04-28T06:05:27Z",
+    "pushed_at": "2026-10-01T14:08:20Z",
+    "latest_release": "v8.5.0",
+    "license_api_spdx": "NOASSERTION",
+    "pinned_license_file": "COPYING declares GNU LGPL 2.1; master source commit unchanged since prior verified blob 20fb9c7da21cb5a29e10f614a03661a935181652",
+    "discussion_2890": {
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "updated_at": "2026-09-30T17:05:38Z",
+      "answer_chosen": false,
+      "known_maintainer_comment": "sbryngelson, 2026-09-13T03:31:50Z",
+      "disposition": "Existing thread still contains the time-level diagnosis and BDF2 follow-up; no newer response or accepted fix observed. No duplicate discussion opened."
+    },
+    "issue_2353": {
+      "url": "https://github.com/su2code/SU2/issues/2353",
+      "state": "open",
+      "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+      "updated_at": "2026-09-30T17:05:37Z",
+      "disposition": "Existing record overlaps the time-level/output-clock follow-up; no duplicate issue filed."
+    }
+  },
+  "physicsnemo": {
+    "repository": "NVIDIA/physicsnemo",
+    "default_branch": "main",
+    "head": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+    "head_commit_date": "2026-10-01T14:06:57Z",
+    "pushed_at": "2026-10-01T14:27:14Z",
+    "latest_release": "v2.2.2",
+    "license_api_spdx": "Apache-2.0",
+    "comparison_to_prior_audited_head": {
+      "prior_head": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+      "ahead_by": 1,
+      "changed_paths": [
+        "examples/README.md",
+        "examples/cfd/external_aerodynamics/globe/drivaer/README.md",
+        "examples/cfd/external_aerodynamics/unified_external_aero_recipe/README.md"
+      ],
+      "audited_file": "physicsnemo/metrics/general/power_spectrum.py",
+      "prior_and_current_blob": "fb3e8cda3bc7916b8e56833dda240cb74463fabb"
+    },
+    "issue_2007": {
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+      "state": "open",
+      "updated_at": "2026-09-28T00:41:11Z",
+      "latest_benchmark_comment": "https://github.com/NVIDIA/physicsnemo/issues/2007#issuecomment-5861349072"
+    },
+    "pr_2008": {
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "state": "open",
+      "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "base": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "mergeable": true,
+      "mergeable_state": "behind",
+      "updated_at": "2026-09-30T08:39:08Z"
+    },
+    "disposition": "The audited spectrum file is unchanged on current main; existing issue and focused-fix PR remain the right records. No duplicate report filed. Full framework suite and maintainer acceptance remain unverified."
+  },
+  "overall_disposition": "This focused refresh found no new reproducible upstream defect warranting another issue. Existing records remain the reporting locations; tracker coverage and whole-project source coverage are explicitly incomplete."
+}

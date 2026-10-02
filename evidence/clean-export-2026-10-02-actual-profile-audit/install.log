@@ -1,0 +1,38 @@
+Collecting numpy<3,>=1.26 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements.txt (line 1))
+  Using cached numpy-2.5.3-cp314-cp314-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting sympy==1.14.0 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 2))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting scipy==1.16.2 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 3))
+  Using cached scipy-1.16.2-cp314-cp314-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting python-flint==0.9.0 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 4))
+  Using cached python_flint-0.9.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (23 kB)
+Collecting pytest==9.1.1 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 5))
+  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting numpy<3,>=1.26 (from -r <REPO>/work/clean-export-e24c2b6/source/requirements.txt (line 1))
+  Using cached numpy-2.5.2-cp314-cp314-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting mpmath==1.3.0 (from -r requirements-verification-locked.txt (line 5))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting iniconfig>=1.0.1 (from pytest==9.1.1->-r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 5))
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=22 (from pytest==9.1.1->-r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 5))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==9.1.1->-r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 5))
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==9.1.1->-r <REPO>/work/clean-export-e24c2b6/source/requirements-verification.txt (line 5))
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Using cached numpy-2.5.2-cp314-cp314-macosx_14_0_arm64.whl (5.4 MB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached scipy-1.16.2-cp314-cp314-macosx_14_0_arm64.whl (20.9 MB)
+Using cached python_flint-0.9.0-cp314-cp314-macosx_11_0_arm64.whl (8.0 MB)
+Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Installing collected packages: mpmath, sympy, python-flint, pygments, pluggy, packaging, numpy, iniconfig, scipy, pytest
+
+Successfully installed iniconfig-2.3.0 mpmath-1.3.0 numpy-2.5.2 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pytest-9.1.1 python-flint-0.9.0 scipy-1.16.2 sympy-1.14.0
+
+[notice] A new release of pip is available: 26.1.1 -> 26.2.1
+[notice] To update, run: <REPO>/work/clean-export-e24c2b6/venv/bin/python -m pip install --upgrade pip

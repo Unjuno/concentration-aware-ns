@@ -1,0 +1,51 @@
+{
+  "captured_at_utc": "2026-10-01T03:37:43Z",
+  "target": "NVIDIA/physicsnemo",
+  "current_main": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+  "issue_2007": {
+    "state": "OPEN",
+    "updated_at": "2026-09-28T00:41:11Z",
+    "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+  },
+  "pr_2008": {
+    "state": "OPEN",
+    "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+    "base": "ff5d19d08123de47ca446caed1d70a225d540184",
+    "merge_state": "BEHIND",
+    "review_decision": "REVIEW_REQUIRED",
+    "updated_at": "2026-09-30T08:39:08Z",
+    "comparison_to_current_main": {
+      "status": "diverged",
+      "current_main_commits_not_in_pr_head": 11,
+      "pr_head_commits_not_in_current_main": 2
+    },
+    "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+  },
+  "focused_reproduction": {
+    "script": "tools/reproduce_physicsnemo_issue_2007.py",
+    "environment": {"device": "CPU", "torch": "2.11.0"},
+    "current_main_source": {
+      "commit": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+      "sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552",
+      "32x32_axis_equivalence": true,
+      "33x33_axis_equivalence": false,
+      "33x33_height_cosine_peak": 10.083333015441895,
+      "33x33_width_cosine_adjacent_bins": [6.1875, 5.041666507720947],
+      "33x33_transpose_max_abs_difference": 0.10944843292236328,
+      "defect_reproduced": true
+    },
+    "existing_pr_head_source": {
+      "commit": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "sha256": "f66a9028c0a18804471c260a32aed1e3b0e9b59655df0c821d4bb904cdd8c983",
+      "32x32_axis_equivalence": true,
+      "33x33_axis_equivalence": true,
+      "33x33_transpose_max_abs_difference": 3.5762786865234375e-7,
+      "focused_regression_suppressed": true
+    },
+    "limitations": [
+      "Focused deterministic reproducer only; not the full PhysicsNeMo test suite.",
+      "The benchmark's frozen spectrum runs use even widths, so this finding does not alter those measurements."
+    ]
+  },
+  "reporting_decision": "No new issue or duplicate comment: issue #2007 and PR #2008 already track the reproduced defect and tested fix. Refresh records changed upstream state and the PR's outstanding rebase/review status."
+}

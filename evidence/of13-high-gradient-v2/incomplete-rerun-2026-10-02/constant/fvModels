@@ -1,0 +1,54 @@
+FoamFile { format ascii; class dictionary; object fvModels; }
+mmsForce {
+ type coded;
+ cellZone all;
+ field U;
+ codeAddSup
+ #{
+ const scalar viscosity = 0.01;
+ const scalar frequency = 4.0;
+ const scalar decay = exp(-mesh().time().value());
+ const vectorField& centers = mesh().C();
+ const scalarField& volumes = mesh().V();
+ vectorField& source = eqn.source();
+ auto gDeriv = [](scalar q, label order) {
+   const scalar amplitude[5] = {35,56,28,8,1};
+   scalar value = 0;
+   for (label mode=0; mode<=4; ++mode) {
+     const scalar phase = mode*q + order*constant::mathematical::pi/2;
+     value += amplitude[mode]*pow(scalar(mode),order)*cos(phase)/128;
+   }
+   return value;
+ };
+ forAll(centers, celli) {
+   const scalar x = centers[celli].x();
+   const scalar y = centers[celli].y();
+   const scalar z = centers[celli].z();
+   scalar gy[4], hz[4];
+   for (label order=0; order<4; ++order) {
+     gy[order] = gDeriv(y, order);
+     hz[order] = gDeriv(z, order);
+   }
+   const scalar chi = gy[0]*hz[0];
+   const scalar chiY = gy[1]*hz[0];
+   const scalar chiZ = gy[0]*hz[1];
+   const scalar chiYY = gy[2]*hz[0];
+   const scalar chiZZ = gy[0]*hz[2];
+   const scalar chiYZ = gy[1]*hz[1];
+   const scalar chiYYY = gy[3]*hz[0];
+   const scalar chiYZZ = gy[1]*hz[2];
+   const scalar sx = sin(frequency*x), cx = cos(frequency*x);
+   const vector u(chiY*sx/sqr(frequency), -chi*cx/frequency, 0);
+   const scalar duxDx = chiY*cx/frequency;
+   const scalar duxDy = chiYY*sx/sqr(frequency);
+   const scalar duyDx = chi*sx;
+   const scalar duyDy = -chiY*cx/frequency;
+   const vector conv(u.x()*duxDx + u.y()*duxDy,
+                     u.x()*duyDx + u.y()*duyDy, 0);
+   const vector lapU(sx*(-chiY + (chiYYY+chiYZZ)/sqr(frequency)),
+                     cx*(frequency*chi - (chiYY+chiZZ)/frequency), 0);
+   const vector forcing = -decay*u + sqr(decay)*conv - viscosity*decay*lapU;
+   source[celli] -= volumes[celli]*forcing;
+ }
+ #};
+}

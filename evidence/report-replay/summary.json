@@ -5,21 +5,32 @@
     {
       "step": "tests",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
         "-m",
-        "unittest",
-        "discover",
-        "-s",
+        "pytest",
+        "-q",
+        "tests"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
         "tests"
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "657a8214e91b3c029d78753f27dda54c254a45d048e36adc7aab6a073723f51e"
+      "log_sha256": "9639587592650f8c9473e360ef1525af105143a753138c90b45a97d13b94bfa6"
     },
     {
       "step": "global_peaks",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_global_peaks"
       ],
@@ -30,7 +41,12 @@
     {
       "step": "peak_decomposition",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.decompose_peak_diagnostic"
       ],
@@ -41,7 +57,12 @@
     {
       "step": "spectral_derivatives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_openfoam_spectral"
       ],
@@ -50,9 +71,126 @@
       "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
     },
     {
+      "step": "openfoam_uniform_archive_schedules",
+      "command": [
+        "python3",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_uniform_archive_schedules.log",
+      "log_sha256": "0a708d06956e72cd86842ae9ff145fc06efba0967cd6e7283140af757dce24b4"
+    },
+    {
+      "step": "openfoam_fd2_synthetic_controls",
+      "command": [
+        "python3",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_fd2_synthetic_controls.log",
+      "log_sha256": "4c7b438bc500ecf22f4f33d9fcffe49520373c0433aa87aacc7f9db431e07d43"
+    },
+    {
+      "step": "openfoam_trig_supremum_arb",
+      "command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_trig_supremum_arb.log",
+      "log_sha256": "572892756569ec3f416d340f6c422bd39a8523ded2b69e53d235c00bd65a4511"
+    },
+    {
+      "step": "openfoam_temporal_triplet",
+      "command": [
+        "python3",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_temporal_triplet.log",
+      "log_sha256": "608a7505d18549466f8b8947cbdf1e070f971468fc9e2035355a963a91f9343a"
+    },
+    {
+      "step": "openfoam_amr_archive_integrity",
+      "command": [
+        "python3",
+        "-m",
+        "tools.verify_openfoam_amr_archives"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.verify_openfoam_amr_archives"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_amr_archive_integrity.log",
+      "log_sha256": "16efea231377cece1f4f42e8d8e9cb499a3b4e5a844fc7a29703ee3d677d2432"
+    },
+    {
+      "step": "openfoam_same_run_amr_mapping",
+      "command": [
+        "python3",
+        "-m",
+        "tools.analyze_amr_same_run_map"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.analyze_amr_same_run_map"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_same_run_amr_mapping.log",
+      "log_sha256": "45f666968c20311a418a60b196c256144b7166a59c84e0800ee564f024910045"
+    },
+    {
+      "step": "openfoam_amr_volume_integrated",
+      "command": [
+        "python3",
+        "-m",
+        "tools.compare_amr_resolution_volume_integrated"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_amr_resolution_volume_integrated"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_amr_volume_integrated.log",
+      "log_sha256": "f0cf07423c003cf8abb555b8a6754ce3894cdc2f1bd2a6b818614f5eacb75fe5"
+    },
+    {
       "step": "su2_archive_review",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.review_su2_archives"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.review_su2_archives"
       ],
@@ -61,9 +199,30 @@
       "log_sha256": "f5d2d2af0f4aee6a11e4ac8e070062119e41298c1a9710cf045b3dc5d8427bcd"
     },
     {
+      "step": "su2_standard_review",
+      "command": [
+        "python3",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_standard_review.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
       "step": "su2_diagnostic_replay",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.replay_su2_diagnostics"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_su2_diagnostics"
       ],
@@ -74,7 +233,12 @@
     {
       "step": "su2_spectral_derivatives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.compare_su2_spectral"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_su2_spectral"
       ],
@@ -85,7 +249,12 @@
     {
       "step": "su2_time_comparison",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.compare_su2_time"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.compare_su2_time"
       ],
@@ -94,9 +263,30 @@
       "log_sha256": "35ff7e3fde3c910f8972236df4185e44e49fb17ccc0e83bbbd9b22d618658deb"
     },
     {
+      "step": "su2_localized_source_lag",
+      "command": [
+        "python3",
+        "-m",
+        "tools.audit_su2_localized_source_lag"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_su2_localized_source_lag"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/su2_localized_source_lag.log",
+      "log_sha256": "4a027efc258be6f4817729453fe01c3aace85754b0423ac1d021e7d1449a34b2"
+    },
+    {
       "step": "su2_bdf2_control",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_su2_bdf2_control"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_su2_bdf2_control"
       ],
@@ -107,7 +297,12 @@
     {
       "step": "su2_boundary_time_pilot",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_su2_boundary_time_pilot"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_su2_boundary_time_pilot"
       ],
@@ -118,7 +313,12 @@
     {
       "step": "su2_restart_findings",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.replay_su2_restart_findings"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_su2_restart_findings"
       ],
@@ -129,7 +329,12 @@
     {
       "step": "openfoam_gate",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.build_openfoam_report"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.build_openfoam_report"
       ],
@@ -140,7 +345,12 @@
     {
       "step": "physicsnemo_gates",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.build_physicsnemo_report"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.build_physicsnemo_report"
       ],
@@ -149,9 +359,30 @@
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "step": "physicsnemo_sampled_derivative_replay",
+      "command": [
+        "python3",
+        "-m",
+        "tools.audit_physicsnemo_local_fields"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_physicsnemo_local_fields"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/physicsnemo_sampled_derivative_replay.log",
+      "log_sha256": "f490b510c11bdd8e6df27fb79f642dd6122edd52cab6221c009418cc933f805c"
+    },
+    {
       "step": "su2_gates",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.build_su2_report"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.build_su2_report"
       ],
@@ -162,7 +393,12 @@
     {
       "step": "root_pressure_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_root_pressure_threshold"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_root_pressure_threshold"
       ],
@@ -173,7 +409,12 @@
     {
       "step": "pressure_moment_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_pressure_moment_threshold"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_pressure_moment_threshold"
       ],
@@ -182,9 +423,30 @@
       "log_sha256": "5481a91d11b7e16a1701c3fcbb71671d081e20889a598a41fe1e8697413187a4"
     },
     {
+      "step": "pressure_data_amplitude_countermodel",
+      "command": [
+        "python3",
+        "-m",
+        "tools.check_pressure_data_amplitude_countermodel"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_pressure_data_amplitude_countermodel"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/pressure_data_amplitude_countermodel.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
       "step": "cone_sign_symmetry",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_cone_sign_symmetry"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_cone_sign_symmetry"
       ],
@@ -195,7 +457,12 @@
     {
       "step": "su2_output_clock_control",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_su2_output_clock_control"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_su2_output_clock_control"
       ],
@@ -206,7 +473,12 @@
     {
       "step": "uniform_prefix_threshold",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_uniform_prefix_threshold"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_uniform_prefix_threshold"
       ],
@@ -217,18 +489,28 @@
     {
       "step": "high_gradient_mms",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_high_gradient_mms"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_high_gradient_mms"
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/high_gradient_mms.log",
-      "log_sha256": "a3debd090adc8fc06152b286ff02d4638ca769aafe7b21803ed5f9fd5ba7beb8"
+      "log_sha256": "1e622e91ff6a6deec9f5ab782738091a43e3eff805e347ab2596608a9e17035a"
     },
     {
       "step": "high_gradient_reference",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_high_gradient_reference"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_high_gradient_reference"
       ],
@@ -237,9 +519,46 @@
       "log_sha256": "c7cbb24bcd2245b59653d2d523bbf5ab5a750ec45fb90b5b2c7639cd0e6b6c04"
     },
     {
+      "step": "support_hole_tube_geometry",
+      "command": [
+        "python3",
+        "-m",
+        "tools.check_support_hole_tube_geometry"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_support_hole_tube_geometry"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/support_hole_tube_geometry.log",
+      "log_sha256": "3c5867d0747b5aa624579e312623f89a162f5de8c192d33c59eb0da2f36a1eb9"
+    },
+    {
+      "step": "linearized_axis_tube_concentration",
+      "command": [
+        "python3",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/linearized_axis_tube_concentration.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    },
+    {
       "step": "openfoam_iteration_archives",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.replay_openfoam_iteration_archives"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_openfoam_iteration_archives"
       ],
@@ -250,7 +569,12 @@
     {
       "step": "openfoam_pressure_pilot",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.replay_openfoam_pressure_pilot"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.replay_openfoam_pressure_pilot"
       ],
@@ -261,7 +585,12 @@
     {
       "step": "openfoam_solenoidal_startup",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.check_openfoam_solenoidal_control"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.check_openfoam_solenoidal_control"
       ],
@@ -272,7 +601,12 @@
     {
       "step": "artifact_links",
       "command": [
-        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-09-27-locked/venv/bin/python",
+        "python3",
+        "-m",
+        "tools.audit_gate_artifacts"
+      ],
+      "replay_command": [
+        "python3",
         "-m",
         "tools.audit_gate_artifacts"
       ],

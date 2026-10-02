@@ -1,0 +1,80 @@
+{
+  "run_environment": {
+    "source_commit": "265611cd160a7e139b6950c918e6dc1d90056d97",
+    "protocol_sha256": "31ccae73ef337d47209eaf771940ee36f8eee9267e7a8d4a17aee12bd865b826",
+    "source_study": "work/of13-high-gradient-amr-v2-20260930",
+    "docker_cli": "/Users/taka/.orbstack/bin/docker",
+    "docker_context": "orbstack",
+    "docker_cli_version": "Docker version 29.4.0, build 9d7ad9f",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "scope": "High-gradient fixed-final-mesh remap controls; see per-case input hashes and command records."
+  },
+  "protocol": "protocols/high-gradient-of13-remap-control-v2.json",
+  "cases": [
+    {
+      "case": "cap5000",
+      "exit_code": 0,
+      "source_mesh_sha256": "046eaf946d0f600c5ebc8067683bb83492ee36d2893383598e9d8e2d12310168",
+      "diagnostics": {
+        "case": "cap5000",
+        "cells": 16640,
+        "velocity_relative_volume_l2": 0.01878444718282939,
+        "original_amr_velocity_error": 0.37011818403189645,
+        "centers_match": true,
+        "quality": "UNCERTAIN",
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "separate high-gradient AMR inherited/remapping error from evolution on the final refined mesh",
+          "mesh_cells": 16640,
+          "source_case": "cap5000",
+          "adaptation": false
+        }
+      },
+      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap5000",
+      "raw_archive": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap5000.tar.gz",
+      "raw_archive_sha256": "edf395ef8737ce9f89ed570ce19a606a89dbbef4a448b4051398abccc17c921d",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "fc0cc083d2227f7f958419903485fc6ef2d210508761776cca329d2550cdfd02",
+      "archive_policy": "Raw fixed-final-mesh case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256."
+    },
+    {
+      "case": "cap100000",
+      "exit_code": 0,
+      "source_mesh_sha256": "38110f052da64e0f9e9777f110fa8cb5fa5379546c0713c0208d23cf3a6893b2",
+      "diagnostics": {
+        "case": "cap100000",
+        "cells": 101760,
+        "velocity_relative_volume_l2": 0.0048261130583600416,
+        "original_amr_velocity_error": 0.4011173084930783,
+        "centers_match": true,
+        "quality": "UNCERTAIN",
+        "parameters": {
+          "n": 16,
+          "dt": 0.001,
+          "end": 0.05,
+          "sigma": 0.5,
+          "nu": 0.01,
+          "profile": "high-gradient",
+          "frequency": 4,
+          "purpose": "separate high-gradient AMR inherited/remapping error from evolution on the final refined mesh",
+          "mesh_cells": 101760,
+          "source_case": "cap100000",
+          "adaptation": false
+        }
+      },
+      "raw_case_location": "work/of13-high-gradient-remap-control-v2-20260930e/cap100000",
+      "raw_archive": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap100000.tar.gz",
+      "raw_archive_sha256": "2134292eac657f80b8cdddcd28679778ba25b89d8c648472b019c876bab23b27",
+      "raw_archive_file_count": 49,
+      "source_tree_sha256": "bb1300e3196a10b2c338386dad563b6d947c38126d9f3aa4a7d686064d88d763",
+      "archive_policy": "Raw fixed-final-mesh case tar.gz is tracked at raw_archive; the manifest records byte SHA256 and canonical source-tree SHA256."
+    }
+  ],
+  "scope": "Fixed final-mesh analytic initialization isolates much of inherited AMR error; it does not isolate every flux correction, projection, sensor update, or ALE contribution."
+}

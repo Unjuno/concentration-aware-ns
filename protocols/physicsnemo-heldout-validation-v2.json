@@ -1,0 +1,70 @@
+{
+  "study_id": "physicsnemo-heldout-validation-v2",
+  "status": "frozen-before-independent-evaluation",
+  "source": {
+    "repository": "NVIDIA/physicsnemo",
+    "commit": "1b961314e42a0625502ba1592d25f706f1e02a24",
+    "release": "v2.2.1",
+    "license": "Apache-2.0",
+    "source_root": "work/physicsnemo-source",
+    "source_archive": "work/physicsnemo-v2.2.1-pinned.tar.gz",
+    "source_archive_sha256": "f987c380db2d55caf8af494927a84d9a5c19ef67e2c462ea7aaeccedf2688bec",
+    "expected_regular_files": 4127
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.11.0",
+    "platform": "macOS arm64",
+    "device": "cpu",
+    "threads": 2,
+    "batch_size": 512
+  },
+  "model_artifacts": {
+    "baseline_directory": "evidence/physicsnemo-study-v1",
+    "seed_control_directory": "evidence/physicsnemo-seed-control-v1",
+    "expected_cases": ["n16-nt5", "n32-nt5", "n64-nt5", "n64-nt9", "n64-nt17"],
+    "expected_seeds": [709, 1729, 2027, 4093, 8191],
+    "expected_models": 25,
+    "training_budget_steps": 5000
+  },
+  "independent_evaluation": {
+    "domain": "[0,2*pi)^3",
+    "spatial_nodes_per_axis": 64,
+    "fractional_cell_phase": 0.618034,
+    "time": 0.05,
+    "old_phase_excluded": 0.37,
+    "training_coordinates_excluded": "The frozen training collocation phase is 0.5 on each case-specific grid; this validation phase is distinct.",
+    "derivatives": "PyTorch autograd for the network and analytic derivatives for the MMS, evaluated at the same 64^3 held-out points.",
+    "energy_and_spectrum": "Periodic-grid diagnostics from the same predicted and exact velocity arrays; full FFT shell spectrum, even grid width.",
+    "divergence": "Maximum absolute predicted divergence, normalized by the maximum sampled Frobenius norm of the exact velocity gradient.",
+    "continuous_extrema": "Not certified by this finite validation grid; continuous peak verdict remains UNCERTAIN."
+  },
+  "training_integrity_gate": {
+    "required_exit_code": 0,
+    "required_optimizer_steps": 5000,
+    "all_parameters_and_final_loss_finite": true,
+    "label": "RUN_COMPLETE_ONLY; not an optimizer-convergence certificate"
+  },
+  "sampled_quality_thresholds": {
+    "velocity_relative_l2": 0.02,
+    "energy_relative_error": 0.02,
+    "gradient_peak_relative_error_samples": 0.05,
+    "vorticity_peak_relative_error_samples": 0.05,
+    "shell_spectrum_relative_l1": 0.05,
+    "divergence_peak_normalized": 0.05
+  },
+  "threshold_rationale": "Use the same benchmark policy limits as the frozen OpenFOAM Foundation 13 protocol for cross-target comparability. These are engineering acceptance tolerances, not mathematical error bounds or physical safety limits.",
+  "decision_rules": {
+    "per_model_sampled_quality": "PASS iff every listed sampled metric is at or below its inclusive threshold; otherwise FAIL.",
+    "continuous_local_quality": "UNCERTAIN unless a valid continuous-domain enclosure is independently supplied.",
+    "historical_results": "The existing v1 verdicts remain unchanged. This prospective re-evaluation uses a new shifted grid; it does not retroactively preregister or overwrite v1 decisions.",
+    "hypothesis": "A sampled blind spot is reproduced only when run-integrity passes while at least one global metric passes and a preregistered local metric fails; report metric-specific statuses and do not infer solver defects or physical phenomena."
+  },
+  "scope_limits": [
+    "The endpoint t=0.05 is itself a training collocation time; only spatial evaluation points are newly held out.",
+    "The 64^3 grid yields sampled extrema, not continuous maxima.",
+    "Five initialization/sampling seeds are a small fixed design, not a population guarantee.",
+    "Fixed 5000-step training does not establish optimizer convergence.",
+    "AMR is not applicable to this fixed-architecture PINN study."
+  ]
+}

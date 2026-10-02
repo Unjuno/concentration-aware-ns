@@ -1,0 +1,50 @@
+{
+  "status": "frozen Foundation 14 replication protocol; one pre-existing compatibility case is reused and all other cases are run after this protocol and runner are committed",
+  "version": "v1",
+  "target": "OpenFOAM Foundation 14 package 20260724, Linux/arm64",
+  "runtime_image": "concentration-aware-ns:of14-20260724",
+  "runtime_image_id": "sha256:13a8802edab29a093c62ab90f063b823536e18985d52c91ab58212a4ac31447d",
+  "derived_from": "protocols/high-gradient-of13-v2.json",
+  "profile": "localized analytic high-gradient periodic MMS",
+  "domain": "[0,2*pi)^3",
+  "frequency_N": 4,
+  "amplitude": "exp(-t)",
+  "viscosity": 0.01,
+  "end_time": 0.05,
+  "spatial_matrix": {
+    "cell_counts": [16, 32, 64, 128],
+    "delta_t": 0.001
+  },
+  "temporal_matrix": {
+    "cell_count": 64,
+    "delta_t": [0.001, 0.0005, 0.00025]
+  },
+  "standard_acceptance": {
+    "complete_end_time_required": true,
+    "outer_corrector_residual_absolute": 1e-8,
+    "maximum_outer_correctors": 12
+  },
+  "local_quality_relative_error_thresholds": {
+    "velocity_l2": 0.02,
+    "energy": 0.02,
+    "max_gradient": 0.05,
+    "max_vorticity": 0.05,
+    "shell_spectrum": 0.05
+  },
+  "comparison": {
+    "baseline_solver": "OpenFOAM Foundation 13 pinned high-gradient v2 matrix",
+    "baseline_evidence": "evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json",
+    "interpretation": "Compare identical manufactured inputs and measured outputs case by case. Version agreement or disagreement is descriptive; it does not by itself validate either solver or establish a defect.",
+    "reused_case": {
+      "case": "n64-dt0.001",
+      "archive": "evidence/of14-high-gradient-v1/n64-dt0.001.tar.gz",
+      "archive_sha256": "de85e8e655804d45a22490b57c855360db28b4e984ce10e347b6b5516030df71"
+    }
+  },
+  "interpretation_limits": [
+    "Standard solver acceptance and sampled local numerical quality are separate verdicts.",
+    "A coarse-grid local failure alone is classified as underresolution, not a solver defect.",
+    "Cell-center derivative extrema are sampled diagnostics, not continuous extrema certificates.",
+    "No inference about singularity, blow-up, molecular alignment, physical hazard, or constitutive viscosity follows from this benchmark."
+  ]
+}

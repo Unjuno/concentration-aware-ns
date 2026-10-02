@@ -120,6 +120,38 @@ a sufficient power is therefore
 delta(Q) = O(Q^(C + max(r,kappa-1))).
 ```
 
+Here the angle condition means remaining inside a **fixed cone about the axis**;
+it does not mean that the nonlinear error is small relative to the shrinking
+transverse linear component. The distinction matters. Write
+`m=tan(theta_target)`, `c=cos(theta0)>0`, and
+`s=sin(theta0)`. For an initial displacement of length `delta`, the linear
+image has axial magnitude `A=Q^(-C)*delta*c` and transverse magnitude
+`B=Q^(C/2)*delta*s`. If the nonlinear remainder has norm at most `Z`, then
+the perturbed direction is in the target cone whenever
+
+```
+(B+Z)/(A-Z) <= m,       with Z < A.
+```
+
+The classical remainder estimate gives
+`Z <= Q^(-C)*k*delta^2*I/(1-k*delta*I)`. Thus
+
+```
+Z/A <= k*delta*I / (c*(1-k*delta*I)),
+B/A = Q^(3C/2)*tan(theta0).
+```
+
+It suffices that the first ratio is at most
+`eta(Q)=(m-Q^(3C/2)*tan(theta0))/(1+m)`, which is positive for sufficiently
+small `Q`. Equivalently, with
+`E(Q)=c*eta(Q)`, it suffices that
+`delta <= E(Q)/((1+E(Q))*k*I)`. Since `E(Q)` tends to
+`E0=m*c/(1+m)>0`, eventually `E(Q)>=E0/2`; using the stated upper bounds for
+`k` and `I` yields the angle radius prefactor in the next paragraph. By
+contrast, requiring `Z` to be at most a fixed fraction of the *transverse*
+linear magnitude is a stronger, different criterion and has a different power
+of `Q`. The checker records both quantities so they are not conflated.
+
 For explicit constants, put
 `B=k0*rho0*tau0/(C-1)` and
 `p=C+max(r,kappa-1)`. Since each denominator term is at most its dominant
@@ -145,12 +177,115 @@ symbolically by `python -m tools.check_packet_radius_scaling`; evidence is in
 `evidence/tests/packet-radius-scaling.json`.
 
 The source-rate audit in [packet-constant-dependencies.md](packet-constant-dependencies.md)
-now supplies the Hessian exponent `kappa=40` for the smooth base field. The
-assembled field is known to equal that base locally along the trajectory, but
-the radius of the full equality tube has no established lower envelope as
-`T` approaches 1. Therefore the generic formula above is not yet instantiated
-with a selected-construction tube exponent `r`; in particular, the earlier
-candidate `Q^(Cstretch+39)` order is not established for the assembled field.
+now Lean-checks a shrinking equality ball with radius proportional to
+`sqrt(1-t)` and transfers the base's full-spacetime Hessian rate `kappa=40`
+onto that ball. The new composition in
+`verification/SpatialHessianTransfer.lean` transfers the same bound to the
+fixed-time spatial Hessian. Combining that result with the classical nonlinear
+comparison gives candidate exponents `r=1/2` and
+`Cstretch+39`, enclosed in `[42.9999995,43)`. A simpler conservative power
+follows by using the source enclosure `Cstretch<4`: for
+`rho(Q)=rho0*Q^(1/2)` and `k(Q)<=k0*Q^(-40)`, we have
+`a(T)<=Q^(-4)`. Write `b=Cstretch-1` and `L=-log(Q)>0`. The exact integral
+obeys
+
+```
+I(T)/tau0 = (exp(b*L)-1)/b = integral_0^L exp(b*s) ds
+          <= integral_0^L exp(3*s) ds = (Q^(-3)-1)/3 < Q^(-3)/3,
+```
+
+because `0<b<3` and `s>=0`; equivalently, `Q<=s<=1` implies
+`s^(-Cstretch)<=s^(-4)` in the original integral. Thus the tube criterion
+allows `delta < rho0/(1+B)*Q^43`, where `B=k0*rho0*tau0/3`. For any fixed initial
+angle below pi/2 and positive target angle, the angle-error criterion also
+allows a constant times `Q^43` once its linear margin is positive. Using
+`E(Q)>=E0/2` and the monotonicity of `E/(1+E)`, a conservative angle
+prefactor is
+
+```
+3*E0/(2*(1+E0)*k0*tau0),
+```
+
+where
+`E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))`, choose
+
+```
+K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0)).
+```
+
+Then the combined sufficient law is `delta<=K*Q^43` for sufficiently small
+Q. The exact exponent specialization is checked in
+`evidence/tests/packet-radius-scaling.json`.
+
+This remains a conditional shrinking-packet allowance: the Lean spatial
+Hessian transfer is recorded in
+`evidence/lean-verification/spatial-hessian-transfer-2026-10-01.json`, while
+the nonlinear comparison is classical and K is non-effective. It is neither a
+numeric packet certificate nor evidence that fixed-size packets lose
+alignment.
+
+### A conditional finite-packet probability limit
+
+The fixed-direction `Q^43` allowance is not uniform over directions close to
+the transverse plane: its angular prefactor contains
+`cos(theta0)`. A distributional statement can still be obtained by shrinking
+the initial packet one extra power. Assume the source-derived envelopes
+`rho(Q)=rho0*Q^(1/2)`, `k(Q)<=k0*Q^(-40)`, and
+`7999999/2000000 <= C < 4`. Fix a Borel probability law `lambda` on initial
+unoriented directions, independent of Q, with zero mass on the exactly
+transverse set `E`. For each terminal time T, initialize a continuum tracer at
+`X(t0)+delta0*Q^44*omega`, where `omega` has law `lambda` and `delta0>0` is
+small enough for the tube prefactor. Let `c=|cos(theta0)|`. On the event
+`c>=Q^(1/2)`, the linear transverse-to-axial ratio is bounded by
+`Q^(3C/2-1/2)`. The nonlinear remainder ratio obeys
+
+```
+Z/A <= D*delta0*Q^(5-C-1/2)/(1-D*delta0*Q^(5-C)),
+D = k0*tau0/(C-1),
+```
+
+and `5-C-1/2 > 1/2` because `C<4`. Both terms therefore vanish uniformly
+on this event, so every fixed cone of positive half-angle contains the packet
+center's endpoint for all sufficiently small Q. Meanwhile the excluded
+direction probability `lambda{c<Q^(1/2)}` tends to `lambda(E)=0` by
+continuity from above. Consequently, under these tube/Hessian envelopes and
+the classical packet comparison, the endpoint cone probability tends to one
+for this shrinking `Q^44` initial radius. A transverse atom of mass p would
+leave at least that mass outside the cone.
+
+This limiting statement also has two different positional scales. The scalar
+comparison bounds the endpoint displacement for every direction by
+
+```
+|e(T)| <= delta0*Q^(44-C)/(1-D*delta0*Q^(5-C)) = O(Q^40),
+D = k0*tau0/(C-1),
+```
+
+because `C<4`; hence the entire packet is absolutely close to its center in
+the limit. But this is a family whose *initial radius already tends to zero*
+as `Q^44`. On the high-probability event `c=|cos(theta0)|>=Q^(1/2)`, the
+remainder estimate gives `Z/A -> 0`. Eventually `Z<=A/2`, so
+
+```
+|e(T)|/initial_radius >= (1/2)*Q^(1/2-C) -> infinity.
+```
+
+Thus absolute endpoint localization and relative expansion of the packet are
+compatible: near-one probability of directions aligns while their displacement
+from the center grows without bound *relative to the much smaller initial
+radius*. This does not show that the flow contracts positional uncertainty or
+that a fixed-size packet becomes position-certain. The added exponent controls
+are recorded in `evidence/tests/packet-radius-scaling.json` and checked by
+`tests/test_packet_alignment_scaling.py`.
+
+This is a conditional existence-level result with non-effective `rho0`,
+`k0`, and hence no usable physical radius or onset time. It is weaker than a
+fixed-size-particle claim in scale and only concerns nearby continuum
+trajectories of the selected constructed field. The source's Lean Hessian
+transfer supplies the power-law envelope but not its numerical constants;
+the comparison step remains classical. No molecular interaction, particle
+orientation dynamics, or viscosity law is included. The exponent checks are
+recorded in `evidence/tests/packet-radius-scaling.json`.
 
 ## Verification and remaining inputs
 
@@ -159,6 +294,13 @@ checks nine exact identities, including both integral branches, rotation
 cancellation and the nonlinear denominator. Exact rational controls show one
 radius satisfying the tube criterion and another that cannot be certified by
 it; they are illustrative constants, not parameters of the OpenAI field.
+
+The rational controls include an explicit logical-boundary audit: one example
+is certified inside its tube (`4/99 < 1/10`), while another comparison upper
+exceeds the tube (`4/19 > 1/10`). The second case means only that this
+sufficient estimate cannot certify containment. It is deliberately not
+classified as an actual exit, finite-packet misalignment, molecular change,
+or constitutive-viscosity change; those claims require separate evidence.
 
 The scalar comparison and continuation proofs above are classical, not
 Lean-formalized. The actual tube radius rho and Hessian bound M remain
@@ -177,3 +319,93 @@ condition J*qmin>1. Neither result supplies numerical rho or M yet.
 explicit conservative replacements a<=Q^(-4) and
 I<=(1-t0)*(Q^(-3)-1)/3 in the packet-radius and remainder formulas. This
 removes the need to evaluate C; numerical rho and M are still missing.
+
+The measure-theoretic step in the conditional probability limit has a separate
+Lean formalization in `verification/FinitePacketProbability.lean`. For a finite
+measure and measurable nonnegative observable `c`, it proves that the strict
+sublevel mass tends to the mass of `{c = 0}` as the reciprocal cutoff shrinks.
+For the direction-law application, this covers the implication from zero mass
+on exactly transverse directions to vanishing mass in the shrinking transverse
+band, once `c=|cos(theta0)|` and its measurability are supplied. It does not
+formalize a sphere/projective-sphere model or verify the pushforward direction
+law in the packet argument. The exact Lean output and source hash are recorded
+in `evidence/lean-verification/finite-packet-probability-2026-10-01.json`.
+
+#### The no-transverse-atom assumption gives no rate
+
+The conclusion above is qualitative for an arbitrary fixed direction law. It
+does not give a power-law rate for the endpoint-cone probability. To see why,
+choose an unoriented direction law by drawing its axial magnitude `c` on
+`(0,1]` with density
+
+```
+f(c) = 1 / (c * (log(e/c))^2),
+```
+
+and then choosing the azimuth uniformly. This is a probability density because
+`integral_0^1 f(c) dc = 1`; its exactly transverse set has zero mass, but its
+mass in the excluded band is
+
+```
+lambda{c < Q^(1/2)} = 1 / (1 + (1/2)*log(1/Q)).
+```
+
+This tends to zero only logarithmically. For every fixed `eta>0`, its ratio to
+`Q^eta` diverges as `Q -> 0`. Thus the current assumptions prove that the
+endpoint-cone probability tends to one, conditional on the same packet bounds,
+but they cannot support any universal algebraic convergence rate. Such a rate
+would require a quantitative anti-concentration condition on the direction
+law, for example `lambda{c<epsilon} <= L*epsilon^beta` for specified `L,beta>0`.
+The construction and exact tail are recorded in
+`evidence/tests/packet-angle-law-rate.json`.
+
+There is also a sharper conditional rate when the direction law has a known
+anti-concentration modulus. For the existing `Q^44` packet and envelopes
+`k<=k0*Q^(-40)`, `I<=tau0/(C-1)*Q^(1-C)`, consider the good directions
+`c>=Q^s`. The linear transverse-to-axial ratio is at most
+`tan(theta0)*Q^(3C/2-s)`, while the nonlinear remainder ratio satisfies
+
+```
+Z/A <= D*delta0*Q^(5-C-s)/(1-D*delta0*Q^(5-C)),
+D = k0*tau0/(C-1).
+```
+
+Both ratios vanish whenever `s < min(3C/2, 5-C)`. Since the audited exponent
+has `C<4`, the choice `s=1` satisfies both strict inequalities: the linear
+ratio decays at least as `Q^(3C/2-1)`, and the nonlinear ratio as
+`Q^(4-C)`. Thus for sufficiently small Q, all directions with `c>=Q` end in
+any fixed positive cone about the axis. If in addition the fixed law obeys
+`lambda{c<epsilon}<=L*epsilon^beta`, the probability outside that endpoint
+cone is at most `L*Q^beta` for sufficiently small Q. Uniform surface measure
+on unoriented directions has `c=|omega_3|` uniform on `[0,1]`, so it gives the
+example `L=beta=1`. The threshold for “sufficiently small” still depends on
+the non-effective packet constants, and the bound remains conditional on the
+classical comparison and tube/Hessian assumptions. Full exponent arithmetic is
+reproducible with `uv run --with-requirements requirements-verification.txt
+python -m tools.check_packet_radius_scaling`; the exact symbolic controls are
+recorded in `evidence/tests/packet-radius-scaling.json`, with the probability
+law examples and assumptions in `evidence/tests/packet-angle-law-rate.json`.
+
+#### Exact angular concentration of the tangent map
+
+The ideal linearized map gives a sharper, separate result. Its singular values
+are `Q^(C/2), Q^(C/2), Q^(-C)` and its determinant is one. For a uniform
+unoriented spherical initial direction, `c=|omega_3|` is uniform on `[0,1]`.
+Writing `m=tan(theta_star)>0`, the image lies in the fixed axial cone exactly
+when
+
+```
+Q^(3C/2)*sqrt(1-c^2)/c <= m,
+```
+
+or equivalently `c >= c_star`, where
+`c_star=Q^(3C/2)/sqrt(m^2+Q^(3C))`. Hence the linearized failure probability
+is exactly `c_star` and is asymptotic to `Q^(3C/2)/m`. With the audited
+`C in [7999999/2000000,4)`, the exponent `3C/2` lies in
+`[5.99999925,6)`. This is an orientation law for infinitesimal material
+separations under the tangent map; it does not describe particle centers or
+molecules. Its much faster rate than the finite-packet `O(Q)` conditional
+bound reflects that the latter must also control a nonlinear remainder. The
+finite-packet estimate does not prove that the gap is attained by an actual
+trajectory: it may be conservative. The exact cutoff identity is checked in
+`evidence/tests/packet-radius-scaling.json`.

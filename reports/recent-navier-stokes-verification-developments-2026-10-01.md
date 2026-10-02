@@ -1,0 +1,240 @@
+# Recent Navier–Stokes verification developments (2026-10-01)
+
+## A nearby method worth auditing
+
+An arXiv preprint submitted 14 September 2026 claims computer-assisted global
+regularity for specified continuous families of 3D periodic Navier–Stokes
+initial data. It is not a theorem for arbitrary initial data and does not
+contradict a finite-time blowup result for a different, forced problem. Its
+method combines finite Fourier comparison paths, a common a-posteriori error
+bound, and exact-rational checks of finite inequalities; it also claims a
+uniform extension over a coefficient interval and infinitely many smooth
+perturbation modes. The paper says it uses separate primary and independent
+implementations and deliberate negative controls.
+
+The potentially useful connection to this repository is methodological:
+replace a sampled or globally coarse bound with a finite approximation plus a
+rigorous enclosure of the whole untested set, then independently reconstruct
+the finite checks. For our continuous peak question, this suggests testing
+local/adaptive interval enclosures around candidate extrema and explicitly
+covering the remaining domain. The preprint concerns global regularity of
+solutions, however, while our current audit concerns a pointwise derivative
+error in a manufactured benchmark; its result does not transfer directly.
+
+The evidence is preliminary. The arXiv record lists a single-author v1
+preprint, not a peer-reviewed publication. It says a permanent reproducibility
+repository/DOI will be created before journal submission; the current arXiv
+record does not link that package. Therefore its detailed calculations and
+code have not been independently reproduced here. Treat the conclusions as
+the author's claims pending artifact availability and independent audit.
+
+## Relation to the OpenAI announcement and the user's hypothesis
+
+OpenAI's public description frames its result as a singularity for a smooth,
+externally forced 3D incompressible continuum flow, with finite energy. The
+repository describes the Lean files as formalizations accompanying its
+Navier–Stokes and Euler papers. Neither the announcement nor this newly found
+preprint supplies evidence that molecular positions become ordered, that a
+continuum singularity predicts particle trajectories, or that viscosity
+collapses in a material above a speed threshold. Those would need a separate
+model connecting continuum fields to kinetic/statistical mechanics and
+experimental observables; they remain hypotheses, not consequences of these
+PDE results.
+
+## Sources checked
+
+- OpenAI announcement: <https://openai.com/index/navier-stokes-solution/>
+- OpenAI Lean repository: <https://github.com/openai/NavierStokesAndEuler>
+- Preprint record: <https://arxiv.org/abs/2609.16157>
+- Full preprint: <https://arxiv.org/html/2609.16157v1>
+
+## Upstream feedback route
+
+GitHub repository metadata was checked on 2026-10-01: the OpenAI repository
+has GitHub Issues disabled and Discussions disabled, and GitHub reports no
+open issues. There is therefore no issue/discussion channel in that repository
+for a reproducible finding. This benchmark's own pull request remains on its
+separate repository; no message was sent to OpenAI maintainers.
+The raw metadata and decision are preserved in
+`evidence/upstream-refresh/openai-navierstokes-feedback-surface-2026-10-01.json`.
+
+## Newly posted profile-construction exposition (checked 2026-10-01)
+
+A second, narrower source appeared in the latest search: Lei and Ren,
+[Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat
+Remainder](https://arxiv.org/abs/2609.35406), submitted September 28 and revised
+September 29 (v2). The abstract says it presents a readable account of the
+profile-construction part, yielding a divergence-form residual plus a remainder
+flat to infinite order on fixed similarity sectors. It explicitly says the
+oscillatory-pulse residual cancellation is deferred to a companion Part II; the
+comments call this an expository article that will not be submitted to a journal.
+
+This is useful as a new explanatory source for the inner profile, but its own
+scope and stated relationship to the OpenAI manuscript mean it is not an
+independent verification of the entire force-correction/blow-up construction,
+and it does not peer-review or certify the OpenAI proof. We have checked only
+the arXiv metadata and abstract in this refresh, not the body derivations. No
+benchmark theorem, solver verdict, or molecule/viscosity hypothesis changes.
+Metadata notes are saved in
+`evidence/upstream-refresh/lei-ren-profile-part1-2026-10-01.json`.
+
+## Physical and numerical follow-up, reread (checked 2026-10-02)
+
+Duraiswami's [arXiv:2609.17642](https://arxiv.org/abs/2609.17642) is a
+single-author computational follow-up. It recasts the leading-order
+similarity system, compares it with an exact porous-cylinder swirl solution,
+and reports a verified collocation solver for a related reduced profile
+problem. Its central limitation is explicit: it does not compute the
+oscillatory-pulse annulus or higher-order terms in the complete forced
+Navier–Stokes construction. For its smooth matched profiles the admissibility
+cone fails; the author explains that the construction's piecewise profile
+and very large similarity radii are essential, beyond what this computation
+reaches. That is a limit of the tested reduced representations, not a
+counterexample to the full construction.
+
+Under one chosen water-vortex scaling, its physical section estimates
+cavitation around a 0.6–1 mm core, before the illustrative molecular scale; for
+air, compressibility intervenes before molecular rarefaction. It also
+distinguishes collapse of the profile from material-line winding: at the
+computed amplitude, a tracer turns only a fraction of a revolution per decade
+in time-to-singularity. These are order-of-magnitude estimates from
+similarity scalings and a reduced profile, not measured outcomes or a
+simulation of the complete forced flow. They strengthen the physical-cutoff
+objection to reading molecular order or a viscosity law directly from the
+continuum theorem. They do not rule out the narrower infinitesimal
+tangent-direction alignment derived for the selected axis trajectory in this
+repository; those are different observables, and the finite-packet extension
+remains conditional. The fuller comparison is in
+`reports/recent-developments-and-hypothesis-audit-2026-09-28.md`; checked
+claims and limits are captured in
+`evidence/upstream-refresh/duraiswami-physical-followup-2026-10-02.json`.
+
+## Post-announcement analytical developments (checked 2026-10-01)
+
+Two newer analysis preprints sharpen the mathematical picture, but neither is
+an independent verification of the complete OpenAI construction. Cao, Chi,
+and Nie's [*Density of Forces Producing Navier--Stokes Blowup*]
+(https://arxiv.org/abs/2609.10262), v4 (22 September), takes the compact,
+smoothly forced blow-up solution as an input and proves a density result for
+forces in a specified relative `L^1_t H^s_x` topology when `s < 1/2`.
+This is a consequence conditional on that starting construction; it is not a
+second derivation of the construction itself.
+
+Constantin, Ignatova, and Vicol's [*Regularity of asymptotically axisymmetric
+solutions to the 3D Navier--Stokes equations with analytic forcing*]
+(https://arxiv.org/abs/2609.20803), v2 (29 September), proves regularity at a
+putative singular point under joint assumptions including real-analytic
+forcing, anisotropic Type-II bounds for the angular mean, and an exactly
+axisymmetric shrinking core. Their source comparison says the OpenAI
+construction has the latter geometric properties and a smooth, bounded-`C²`
+force. Conditional on the comparison and the claimed singular construction,
+the force cannot be real-analytic in the stated local-uniform sense. This is
+not a contradiction: smoothness does not imply analyticity, and the OpenAI
+manuscript claims a `C∞` force. The paper also derives nonvanishing-on-every-
+neighborhood consequences from stated profile geometry; these give no
+quantitative lower bound on forcing amplitude.
+
+The OpenAI announcement itself describes Navier--Stokes as a continuum model
+and says that a singularity would mark breakdown of that model, after which
+individual-particle tracking would be needed to continue modeling. This
+motivates a precise open modeling question—what kinetic or particle system,
+limit, and observables could continue a given continuum solution—but supplies
+no such bridge. In particular, the shrinking vortex core and fine oscillatory
+pulses in the continuum construction do not establish molecular ordering,
+deterministic molecular positions, optical-fluid behavior, a phase transition,
+or a speed-triggered viscosity collapse. Those remain separate hypotheses
+requiring a defined microscopic model and independently testable predictions.
+
+The scope above was checked against the arXiv version records/abstracts and
+relevant stated theorem assumptions, plus the OpenAI announcement and paper.
+It is a literature and assumption audit, not a line-by-line independent proof
+review. These results motivate no new CFD solver defect report or simulation
+run by themselves.
+
+## SU2 Discussion #2890 follow-up (checked 2026-10-01)
+
+The discussion now includes a second-order dual-time control. The pinned
+v8.5.0 run reports observed endpoint orders `0.87905, 0.94267` for the
+original old-time source evaluation and `1.99408, 1.99998` for a diagnostic
+time-shift intervention, with all configured residual thresholds passing.
+The post explicitly limits this to a causal reproducer, not a general fix or
+a fresh current-master executable. The maintainer reply cautions that the
+physical-time variable also feeds verification errors and time-dependent
+boundary states, and recommends separating stored-state and target/solution
+time semantics before changing it globally. This is a concrete temporal
+verification/documentation candidate; multizone, restart, moving-grid, and
+broader time-scheme behavior remain open.
+
+The live GitHub GraphQL record checked at 2026-10-01 14:24 UTC now shows the
+discussion closed on 30 September but `isAnswered=false`. Its visible content
+still contains the maintainer's time-level analysis and the BDF2 follow-up; no
+code change or general fix is recorded there. SU2 `master` remains at the
+previously checked source commit. The thread status therefore changes the
+follow-up channel, not the technical conclusion.
+
+## 2026-10-02 refresh: newer OpenFOAM target and adaptive-estimator literature
+
+The OpenFOAM Foundation released v14 on 14 July 2026, with a patch-release
+announcement on 25 July. The official summary lists changes to modular
+isothermal solvers, flux calculations, mesh handling, field initialization,
+and units. This is a real coverage update because our archived high-gradient
+uniform-grid matrix and AMR stage probes target Foundation v13. It is not
+evidence that v13's result is wrong or that v14 has a defect. A useful next
+comparison is a separately pinned v14 runtime on the unchanged manufactured
+case, first checking case compatibility and then replaying the same numerical
+gates; only a controlled source/config/runtime comparison could attribute a
+difference to the version.
+
+A 2026 paper, *An adaptive error estimator for stationary Navier-Stokes
+equations using variational physics informed neural networks*, reports a
+reliable and locally efficient estimator for its stated energy-norm error
+framework, with PDE approximation, data oscillation, loss-minimization, and
+residual terms. It is methodologically adjacent to our question about local
+high-gradient error visibility, but uses a stationary VPINN framework rather
+than this unsteady finite-volume solver. It therefore suggests a separate
+estimator-comparison avenue; it does not certify our solver field, transfer a
+bound to our metric, or justify a physical/molecular interpretation. The
+available publication abstract itself lists training convergence and
+validation of approximation rates as further work.
+
+This focused refresh changes the planned version-coverage matrix, not any
+existing solver verdict or upstream defect disposition. Official release
+details and the paper DOI/abstract were checked on 2026-10-02; no full
+independent reproduction of the paper was performed.
+
+Sources: [OpenFOAM Foundation v14 release notes](https://openfoam.org/version/14/),
+[release history](https://openfoam.org/download/history/), and the
+[adaptive-estimator paper](https://doi.org/10.1016/j.cma.2026.118876).
+The focused check metadata and scope limits are archived in
+`evidence/upstream-refresh/openfoam14-and-vpinn-estimator-2026-10-02.json`.
+
+## 2026-10-02 refresh: stochastic high-vorticity mechanism
+
+Schorlepp, Rosenhaus, and Falkovich's [*How turbulent flows grow vorticity at
+a point*](https://arxiv.org/abs/2609.13056), submitted 11 September, is a
+separate and newly identified connection to the OpenAI construction. It
+computes a most-probable history (an instanton) for a prescribed, large but
+finite pointwise vorticity in randomly forced, incompressible turbulence. In
+the authors' axisymmetric setup, simple radial squeezing plus axial stretching
+stops being the optimal growth strategy above a threshold; the reported
+higher-vorticity path uses propagating vorticity pulses and their collisions.
+The authors explicitly call the last-stage scaling estimates speculative and
+say larger target vorticities need further study. This is a stochastic,
+finite-target optimization result, not a finite-time singularity proof or a
+reproduction of OpenAI's forced construction.
+
+The mathematical analogy is worth tracking because both accounts involve
+thin vortex filaments, stretching, and pulse/wave dynamics. It does not
+establish that the instanton is the same solution mechanism, nor that
+individual molecules align or become predictably located. The paper evolves a
+continuum velocity/vorticity field and optimizes a probability over force
+histories; it supplies no molecular state model, particle-size law, phase
+transition, or constitutive viscosity measurement. Its setup also assumes
+axisymmetry and a temporally white Gaussian force, with the optimization
+equations solved numerically. I found no code link on the arXiv record, so its
+reported thresholds and high-vorticity branches have not been independently
+reproduced in this benchmark. This is a literature lead, not an upstream
+defect report or validation of the physical hypothesis.
+
+Source and scope metadata are recorded in
+`evidence/upstream-refresh/vorticity-instanton-2026-10-02.json`.

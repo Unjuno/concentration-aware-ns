@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "scope": "Independent nanoda typecheck of the selected-schedule tail coefficient and pressure bounds, plus the existential rate-capped prepared/full ProfileData construction.",
+  "source_sha256": "40cf2df9d0c1b8e82c5aebc6d6d9be53fcfcd475b24bfb0ac7a4929804856e51",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "lean": "4.34.0-rc2",
+  "lean4export": "3.1.0",
+  "nanoda": "0.4.16",
+  "nanoda_commit": "05055695879dfebb6628a67da88ceca6cd6b0421",
+  "checked_declarations": 64191,
+  "typechecker_errors": 0,
+  "pretty_printer_errors": [
+    "Unable to print axioms"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "selected_declarations_present": [
+    "tail_relative_coefficient_small",
+    "tail_pressure_lower_bound_small",
+    "exists_rate_capped_prepared_profile",
+    "exists_rate_capped_profile_data",
+    "rate_capped_profile_data_tail_pressure_small"
+  ],
+  "artifacts": [
+    {
+      "path": "SelectedScheduleTailPressure.olean",
+      "bytes": 964040,
+      "sha256": "634e166b1e735be6a22ef05718fdd005cc7f586c1356a0832e69e94b22a7e398"
+    },
+    {
+      "path": "selected-tail.ndjson",
+      "bytes": 641951857,
+      "sha256": "0cf3b78405296112bad3217cbbde5400e90ef12a9c5f00a3f9f909854d7a02ef"
+    },
+    {
+      "path": "nanoda-config.json",
+      "bytes": 234,
+      "sha256": "422b53231e8536c5dfd60c35fbbf1e1cff5cfbcb0d30d1c564ffb5d6a9d4318c"
+    },
+    {
+      "path": "lean.log",
+      "bytes": 1884,
+      "sha256": "6d88fd17b66070540006b68c8700ae79cbe4bbe986f4c484dfce90b2cf576973"
+    },
+    {
+      "path": "export.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "nanoda.log",
+      "bytes": 114,
+      "sha256": "20d76436a6253b5d058c8928841b01e835370d6985c1dd20d9e8acbd1ce6d518"
+    }
+  ],
+  "limitations": [
+    "The rate-capped result is existential and does not transfer to FinalSlowBase.actualProfile.",
+    "Independent term checking is not a validation of the pinned upstream construction's mathematical truth or its application to physical fluids.",
+    "The result supplies one conditional pressure-tail bound, not a full pressure-sign conclusion or physical/molecular consequence."
+  ]
+}

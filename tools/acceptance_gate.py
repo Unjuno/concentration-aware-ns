@@ -14,6 +14,9 @@ REQUIRED=("reference_verified","forcing_verified","derivatives_verified",
 def evaluate(report, artifact_root=None):
     result=dict(standard_acceptance='UNCERTAIN',local_quality='UNCERTAIN',hypothesis='UNCERTAIN')
     if not isinstance(report,dict) or report.get('schema_version')!=2 or artifact_root is None:return result
+    scope=report.get('scope')
+    if not isinstance(scope,str) or not scope.strip():return result
+    result['scope']=scope.strip()
     evidence=report.get('evidence');artifacts=report.get('artifacts')
     if not isinstance(evidence,dict) or not isinstance(artifacts,dict):return result
     root=Path(artifact_root).resolve()

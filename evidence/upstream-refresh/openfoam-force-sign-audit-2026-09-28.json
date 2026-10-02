@@ -1,0 +1,77 @@
+{
+  "audit_date": "2026-09-28",
+  "repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+  "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "verdict": "SOURCE_SIGN_CONFIRMED_STATIC",
+  "generated_source_form": "eqn.source()[celli] -= volumes[celli]*forcing",
+  "assembled_interpretation": "positive physical +forcing on the momentum-equation right-hand side",
+  "mock_extraction": "-eqn.source()/V == forcing",
+  "independent_source_chain": [
+    {
+      "path": "applications/modules/incompressibleFluid/momentumPredictor.C",
+      "lines": "32-52",
+      "sha256": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/applications/modules/incompressibleFluid/momentumPredictor.C#L32-L52",
+      "observation": "fvModels().source(U) is the right-hand side of the momentum equation"
+    },
+    {
+      "path": "src/fvModels/general/codedFvModel/codedFvModel.C",
+      "lines": "143-158",
+      "sha256": "895290164762d3eb64fdcf1c6b693e5c5e2c7601fa69185021218c08f4ba8859",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvModels/general/codedFvModel/codedFvModel.C#L143-L158",
+      "observation": "codedFvModel forwards the same equation object to the generated addSup implementation"
+    },
+    {
+      "path": "src/finiteVolume/cfdTools/general/fvModels/fvModelTemplates.C",
+      "lines": "65-89",
+      "sha256": "5f6879ccbc93d3a30bfc37cacf33b29a58cbea8df306e8b2908a0c678b1cfcd8",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/cfdTools/general/fvModels/fvModelTemplates.C#L65-L89",
+      "observation": "fvModel source creates a matrix and invokes addSup on it"
+    },
+    {
+      "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C",
+      "lines": "1137-1145,1527-1535",
+      "sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+      "urls": [
+        "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C#L1137-L1145",
+        "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C#L1527-L1535"
+      ],
+      "observation": "matrix equality uses subtraction, and subtraction subtracts source arrays"
+    },
+    {
+      "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrixSolve.C",
+      "lines": "127-134,186-197",
+      "sha256": "643527cc128fb6e0d9ec36aabf7ea62971c277c71b4b690cff49c933155bf237",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fvMatrices/fvMatrix/fvMatrixSolve.C#L127-L197",
+      "observation": "fvMatrix::solve copies stored source_ and passes it as the source argument to the LDU solver"
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtScheme.C",
+      "lines": "303-318",
+      "sha256": "5450404723d4d8089a7aa561b4ec4c01744d4dd941d0f998e4de762c293d356e",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtScheme.C#L303-L318",
+      "observation": "Euler ddt sets diagonal V/dt and old-time source V*U_old/dt"
+    },
+    {
+      "path": "src/fvModels/general/codedFvModel/codedFvModel.H",
+      "lines": "45-52",
+      "sha256": "22adfbad3ca4ce3f2dbae6f5bb7a9731c4aa24745bf48454186eb62e526832fc",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/fvModels/general/codedFvModel/codedFvModel.H#L45-L52",
+      "observation": "official coded-source example mutates eqn.source directly; this is supporting API context, not the sign derivation"
+    }
+  ],
+  "scope": {
+    "checks": [
+      "source callback and matrix assembly path at the pinned OpenFOAM Foundation revision",
+      "sign of the explicit coded source in the assembled transient matrix",
+      "sign of the mock check's -source/volume extraction"
+    ],
+    "not_checked": [
+      "live OpenFOAM build or generated-code compilation",
+      "pressure-correction and constraint behavior in a live run",
+      "spatial or temporal solution accuracy",
+      "physical singularity, molecular order or material constitutive behavior"
+    ],
+    "solver_execution": "NOT_RUN"
+  }
+}

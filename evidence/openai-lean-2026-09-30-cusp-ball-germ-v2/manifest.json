@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "Pinned Lean elaboration and axiom audit of Euclidean-ball coordinate bounds, fixed-time cusp-ball exterior inclusion, and conditional local germ equality for the actual selected velocity field.",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+  "lean": "4.34.0-rc2",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "source_sha256": "15f5f73cd560ab2d148c840bcfff51dbe4039db652e80038e70e1202e65b0c6d",
+  "lean_log_sha256": "6636a332240e569bf91163cc439a9935b7ee86af94012fb62f492bb85d64d3e5",
+  "declarations": [
+    "ConcentrationAware.coordinateEta_margin_of_euclidean_ball",
+    "ConcentrationAware.transverse_radius_le_of_euclidean_ball",
+    "ConcentrationAware.axial_deviation_le_of_euclidean_ball",
+    "ConcentrationAware.cusp_ball_point_in_physical_exterior",
+    "ConcentrationAware.selected_velocity_germ_of_cusp_ball_point"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "The exterior and field-germ conclusions hold at a fixed point and time under the theorem's explicit margin, horizon, cutoff, and localization hypotheses.",
+    "No uniform positive endpoint interval for the axial center and no endpoint-wide tube theorem is proved.",
+    "The result does not imply particle alignment, a phase transition, molecular determinism, or reduced viscosity.",
+    "It is not a particle ensemble, molecular model, numerical solver validation, or independent review of the upstream construction."
+  ]
+}

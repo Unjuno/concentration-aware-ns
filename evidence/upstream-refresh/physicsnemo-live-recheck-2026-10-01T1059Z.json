@@ -1,0 +1,35 @@
+{
+  "observed_at_utc": "2026-10-01T10:59:50Z",
+  "repository": {
+    "full_name": "NVIDIA/physicsnemo",
+    "default_branch": "main",
+    "license": "Apache-2.0",
+    "pushed_at": "2026-10-01T04:53:29Z"
+  },
+  "main": {
+    "sha": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+    "committed_at": "2026-09-30T20:31:05Z",
+    "power_spectrum_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552"
+  },
+  "issue_2007": {
+    "state": "open",
+    "title": "\ud83d\udc1b[BUG]: power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+    "updated_at": "2026-09-28T00:41:11Z",
+    "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+  },
+  "pr_2008": {
+    "state": "open",
+    "updated_at": "2026-09-30T08:39:08Z",
+    "base_sha": "ff5d19d08123de47ca446caed1d70a225d540184",
+    "head_sha": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+    "mergeable_state": "behind",
+    "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+  },
+  "focused_reproduction": {
+    "path": "evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-10-01-b08dd3f.json",
+    "sha256": "8ebfd249245c1761f44e17f0740160932ca97dcf4a88e360f6f6dbbc846d1ae6",
+    "expectation_met": true,
+    "reproduced": true,
+    "suite_scope": "Focused deterministic reproduction of odd-width radial-spectrum asymmetry; not a full PhysicsNeMo test suite."
+  }
+}

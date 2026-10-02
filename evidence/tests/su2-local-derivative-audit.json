@@ -1,0 +1,365 @@
+{
+  "scope": "Pointwise centered-FD2 derivative audit on archived SU2 vertex samples. For each derivative, solver FD2 versus exact analytic derivative combines stencil truncation and solver-field error; analytic-reference FD2 versus exact derivative measures stencil truncation; solver FD2 versus reference FD2 isolates differences between the two sampled fields under the same stencil. Top-decile enrichment is descriptive and does not certify continuous-domain extrema, physical concentration, or solver correctness.",
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "8c1290a281201596e0d5c88af701798a4d0498b1ae4c7065ec23f42a591c3466",
+      "unique_vertices": 4096,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "reference_time": 0.05,
+      "top_concentration_fraction": 0.1,
+      "gradient_reference_peak": 20.13373197596784,
+      "vorticity_reference_peak": 28.473396821598573,
+      "contrasts": {
+        "gradient_solver_fd_vs_exact": {
+          "global_rms": 0.3806240651143535,
+          "max_pointwise_norm": 7.613529665802991,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.9984829261327515,
+          "top_concentration_error_enrichment": 9.975087964487194,
+          "top_concentration_rms": 1.2021387882831966,
+          "remaining_region_rms": 0.01562794648850985,
+          "top_to_remaining_rms_ratio": 76.92237679256492
+        },
+        "gradient_reference_fd_vs_exact": {
+          "global_rms": 0.283213241556264,
+          "max_pointwise_norm": 5.66370763002835,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.9983084024571839,
+          "top_concentration_error_enrichment": 9.973344430401525,
+          "top_concentration_rms": 0.8944044754001863,
+          "remaining_region_rms": 0.012279039209699461,
+          "top_to_remaining_rms_ratio": 72.83993968303955
+        },
+        "gradient_solver_fd_vs_reference_fd": {
+          "global_rms": 0.11846779849441025,
+          "max_pointwise_norm": 2.0802972888267566,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.9964970210098666,
+          "top_concentration_error_enrichment": 9.955248287942473,
+          "top_concentration_rms": 0.3737888703001486,
+          "remaining_region_rms": 0.007391309579950717,
+          "top_to_remaining_rms_ratio": 50.57139959528538
+        },
+        "vorticity_solver_fd_vs_exact": {
+          "global_rms": 0.37702475003296426,
+          "max_pointwise_norm": 10.701565526318278,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.9988120135580453,
+          "top_concentration_error_enrichment": 9.978375628131106,
+          "top_concentration_rms": 1.1909671563346482,
+          "remaining_region_rms": 0.013698654470674072,
+          "top_to_remaining_rms_ratio": 86.94044797496407
+        },
+        "vorticity_reference_fd_vs_exact": {
+          "global_rms": 0.27744990071928527,
+          "max_pointwise_norm": 8.009692143702072,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.9985673690895086,
+          "top_concentration_error_enrichment": 9.975931570221043,
+          "top_concentration_rms": 0.8763171365067856,
+          "remaining_region_rms": 0.011070163645743798,
+          "top_to_remaining_rms_ratio": 79.16026940068836
+        },
+        "vorticity_solver_fd_vs_reference_fd": {
+          "global_rms": 0.11514758190422426,
+          "max_pointwise_norm": 2.6920457629392724,
+          "top_concentration_fraction": 0.10009765625,
+          "error_energy_fraction_in_top_concentration": 0.998235621960592,
+          "top_concentration_error_enrichment": 9.97261733548923,
+          "top_concentration_rms": 0.363629743525763,
+          "remaining_region_rms": 0.005098623608450362,
+          "top_to_remaining_rms_ratio": 71.31919738556303
+        }
+      }
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+      "unique_vertices": 32768,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "reference_time": 0.05,
+      "top_concentration_fraction": 0.1,
+      "gradient_reference_peak": 20.13373197596784,
+      "vorticity_reference_peak": 28.473396821598573,
+      "contrasts": {
+        "gradient_solver_fd_vs_exact": {
+          "global_rms": 0.11193428212727476,
+          "max_pointwise_norm": 2.2718685196685744,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9990331987795972,
+          "top_concentration_error_enrichment": 9.989722263536724,
+          "top_concentration_rms": 0.3537853338953425,
+          "remaining_region_rms": 0.003668697731820801,
+          "top_to_remaining_rms_ratio": 96.43349214266183
+        },
+        "gradient_reference_fd_vs_exact": {
+          "global_rms": 0.07838960251734996,
+          "max_pointwise_norm": 1.609051247937303,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9985470657908365,
+          "top_concentration_error_enrichment": 9.984861230343038,
+          "top_concentration_rms": 0.24770198051638734,
+          "remaining_region_rms": 0.0031496453491493756,
+          "top_to_remaining_rms_ratio": 78.64440375272225
+        },
+        "gradient_solver_fd_vs_reference_fd": {
+          "global_rms": 0.03996711624694923,
+          "max_pointwise_norm": 0.7046033420202802,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9987293783577488,
+          "top_concentration_error_enrichment": 9.98668424474419,
+          "top_concentration_rms": 0.1263029438212901,
+          "remaining_region_rms": 0.0015017275760765435,
+          "top_to_remaining_rms_ratio": 84.10509724491628
+        },
+        "vorticity_solver_fd_vs_exact": {
+          "global_rms": 0.1108471089816882,
+          "max_pointwise_norm": 3.201006166060019,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9989438843891585,
+          "top_concentration_error_enrichment": 9.988829174142186,
+          "top_concentration_rms": 0.3503334966106837,
+          "remaining_region_rms": 0.0037971724364597526,
+          "top_to_remaining_rms_ratio": 92.26167693804099
+        },
+        "vorticity_reference_fd_vs_exact": {
+          "global_rms": 0.07672134719240511,
+          "max_pointwise_norm": 2.275542097386287,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9983870584139615,
+          "top_concentration_error_enrichment": 9.983261254229078,
+          "top_concentration_rms": 0.24241106436949147,
+          "remaining_region_rms": 0.0032479232479849848,
+          "top_to_remaining_rms_ratio": 74.63571207228605
+        },
+        "vorticity_solver_fd_vs_reference_fd": {
+          "global_rms": 0.03964588135412163,
+          "max_pointwise_norm": 0.9609327337490953,
+          "top_concentration_fraction": 0.100006103515625,
+          "error_energy_fraction_in_top_concentration": 0.9993546916393261,
+          "top_concentration_error_enrichment": 9.992936995922319,
+          "top_concentration_rms": 0.1253270022083867,
+          "remaining_region_rms": 0.0010616025200869618,
+          "top_to_remaining_rms_ratio": 118.05454474441193
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "unique_vertices": 262144,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "reference_time": 0.05,
+      "top_concentration_fraction": 0.1,
+      "gradient_reference_peak": 20.13373197596784,
+      "vorticity_reference_peak": 28.473396821598573,
+      "contrasts": {
+        "gradient_solver_fd_vs_exact": {
+          "global_rms": 0.025888094175500493,
+          "max_pointwise_norm": 0.5141334044262867,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9987857197620507,
+          "top_concentration_error_enrichment": 9.987628598943468,
+          "top_concentration_rms": 0.08181468675495292,
+          "remaining_region_rms": 0.0009509087438223894,
+          "top_to_remaining_rms_ratio": 86.03842091732227
+        },
+        "gradient_reference_fd_vs_exact": {
+          "global_rms": 0.02013749035666443,
+          "max_pointwise_norm": 0.4157970174427123,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9986132558140206,
+          "top_concentration_error_enrichment": 9.985903998936129,
+          "top_concentration_rms": 0.06363543815507432,
+          "remaining_region_rms": 0.0007904653180182363,
+          "top_to_remaining_rms_ratio": 80.50377000045209
+        },
+        "gradient_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007503143934169419,
+          "max_pointwise_norm": 0.1345756605348916,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9967919059541085,
+          "top_concentration_error_enrichment": 9.967690917201367,
+          "top_concentration_rms": 0.0236886635139557,
+          "remaining_region_rms": 0.0004479671015278122,
+          "top_to_remaining_rms_ratio": 52.88036427935094
+        },
+        "vorticity_solver_fd_vs_exact": {
+          "global_rms": 0.025504975513919725,
+          "max_pointwise_norm": 0.7265896922555819,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9991101579055399,
+          "top_concentration_error_enrichment": 9.990872906122062,
+          "top_concentration_rms": 0.08061699914177689,
+          "remaining_region_rms": 0.0008019747256642927,
+          "top_to_remaining_rms_ratio": 100.52311695359242
+        },
+        "vorticity_reference_fd_vs_exact": {
+          "global_rms": 0.01970590454384894,
+          "max_pointwise_norm": 0.5880257812617661,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.998656761204224,
+          "top_concentration_error_enrichment": 9.986339042880797,
+          "top_concentration_rms": 0.06227296266853233,
+          "remaining_region_rms": 0.0007612937871928773,
+          "top_to_remaining_rms_ratio": 81.79885835946693
+        },
+        "vorticity_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007288745708172073,
+          "max_pointwise_norm": 0.18486661796329393,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9996485625484686,
+          "top_concentration_error_enrichment": 9.996256829323126,
+          "top_concentration_rms": 0.023044723495733777,
+          "remaining_region_rms": 0.00014403104666680608,
+          "top_to_remaining_rms_ratio": 159.9983061224587
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "unique_vertices": 262144,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "reference_time": 0.05,
+      "top_concentration_fraction": 0.1,
+      "gradient_reference_peak": 20.13373197596784,
+      "vorticity_reference_peak": 28.473396821598573,
+      "contrasts": {
+        "gradient_solver_fd_vs_exact": {
+          "global_rms": 0.02592422416003452,
+          "max_pointwise_norm": 0.5161154947656207,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9987869324629858,
+          "top_concentration_error_enrichment": 9.98764072567526,
+          "top_concentration_rms": 0.08192891884051334,
+          "remaining_region_rms": 0.0009517602351831952,
+          "top_to_remaining_rms_ratio": 86.08146864293361
+        },
+        "gradient_reference_fd_vs_exact": {
+          "global_rms": 0.02013749035666443,
+          "max_pointwise_norm": 0.4157970174427123,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9986132558140206,
+          "top_concentration_error_enrichment": 9.985903998936129,
+          "top_concentration_rms": 0.06363543815507432,
+          "remaining_region_rms": 0.0007904653180182363,
+          "top_to_remaining_rms_ratio": 80.50377000045209
+        },
+        "gradient_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007547933521735744,
+          "max_pointwise_norm": 0.13559907724616208,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9968164210637929,
+          "top_concentration_error_enrichment": 9.967936062687276,
+          "top_concentration_rms": 0.023830364669455123,
+          "remaining_region_rms": 0.00044891609378335293,
+          "top_to_remaining_rms_ratio": 53.08422887809334
+        },
+        "vorticity_solver_fd_vs_exact": {
+          "global_rms": 0.02554171187205105,
+          "max_pointwise_norm": 0.7294704896264071,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9991120122458713,
+          "top_concentration_error_enrichment": 9.99089144910096,
+          "top_concentration_rms": 0.0807331915992961,
+          "remaining_region_rms": 0.0008022926014982075,
+          "top_to_remaining_rms_ratio": 100.6281142921352
+        },
+        "vorticity_reference_fd_vs_exact": {
+          "global_rms": 0.01970590454384894,
+          "max_pointwise_norm": 0.5880257812617661,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.998656761204224,
+          "top_concentration_error_enrichment": 9.986339042880797,
+          "top_concentration_rms": 0.06227296266853233,
+          "remaining_region_rms": 0.0007612937871928773,
+          "top_to_remaining_rms_ratio": 81.79885835946693
+        },
+        "vorticity_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007334929066792436,
+          "max_pointwise_norm": 0.18632987216912367,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9996531882769937,
+          "top_concentration_error_enrichment": 9.996303085549656,
+          "top_concentration_rms": 0.0231907944187485,
+          "remaining_region_rms": 0.00014398660786034867,
+          "top_to_remaining_rms_ratio": 161.06216240083273
+        }
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "unique_vertices": 262144,
+      "periodic_duplicate_max_mismatch": 0.0,
+      "reference_time": 0.05,
+      "top_concentration_fraction": 0.1,
+      "gradient_reference_peak": 20.13373197596784,
+      "vorticity_reference_peak": 28.473396821598573,
+      "contrasts": {
+        "gradient_solver_fd_vs_exact": {
+          "global_rms": 0.02594286335631251,
+          "max_pointwise_norm": 0.5171115984216931,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9987872907354264,
+          "top_concentration_error_enrichment": 9.987644308317666,
+          "top_concentration_rms": 0.08198783942385962,
+          "remaining_region_rms": 0.0009523038791476288,
+          "top_to_remaining_rms_ratio": 86.09419873123255
+        },
+        "gradient_reference_fd_vs_exact": {
+          "global_rms": 0.02013749035666443,
+          "max_pointwise_norm": 0.4157970174427123,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9986132558140206,
+          "top_concentration_error_enrichment": 9.985903998936129,
+          "top_concentration_rms": 0.06363543815507432,
+          "remaining_region_rms": 0.0007904653180182363,
+          "top_to_remaining_rms_ratio": 80.50377000045209
+        },
+        "gradient_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007572817373700111,
+          "max_pointwise_norm": 0.13614683843325978,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9968270903412986,
+          "top_concentration_error_enrichment": 9.968042753020384,
+          "top_concentration_rms": 0.023909056014833754,
+          "remaining_region_rms": 0.00044964071980195487,
+          "top_to_remaining_rms_ratio": 53.173689485606516
+        },
+        "vorticity_solver_fd_vs_exact": {
+          "global_rms": 0.02556066164032961,
+          "max_pointwise_norm": 0.7308916403720331,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9991129835702324,
+          "top_concentration_error_enrichment": 9.990901162122258,
+          "top_concentration_rms": 0.08079312800374787,
+          "remaining_region_rms": 0.00080244859496666,
+          "top_to_remaining_rms_ratio": 100.68324439786034
+        },
+        "vorticity_reference_fd_vs_exact": {
+          "global_rms": 0.01970590454384894,
+          "max_pointwise_norm": 0.5880257812617661,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.998656761204224,
+          "top_concentration_error_enrichment": 9.986339042880797,
+          "top_concentration_rms": 0.06227296266853233,
+          "remaining_region_rms": 0.0007612937871928773,
+          "top_to_remaining_rms_ratio": 81.79885835946693
+        },
+        "vorticity_solver_fd_vs_reference_fd": {
+          "global_rms": 0.007360574110800649,
+          "max_pointwise_norm": 0.18705561618828528,
+          "top_concentration_fraction": 0.10000228881835938,
+          "error_energy_fraction_in_top_concentration": 0.9996557075505976,
+          "top_concentration_error_enrichment": 9.996328277709093,
+          "top_concentration_rms": 0.023271905500999904,
+          "remaining_region_rms": 0.00014396427567229497,
+          "top_to_remaining_rms_ratio": 161.65055804520284
+        }
+      }
+    }
+  ]
+}

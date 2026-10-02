@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-10-01T08:08:15Z",
+  "repository": "https://github.com/openai/NavierStokesAndEuler",
+  "default_branch": "main",
+  "current_main_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "commit_date": "2026-09-10T13:40:53Z",
+  "commit_message": ".",
+  "repository_pushed_at": "2026-09-10T15:14:13Z",
+  "license_spdx_id": "Apache-2.0",
+  "has_issues": false,
+  "has_discussions": false,
+  "source": "GitHub REST commits and repository endpoints; GraphQL repository metadata",
+  "comparison": "main is unchanged from the source revision pinned by this audit",
+  "interpretation": "A live metadata recheck only. It does not revalidate source theorem proofs or the mathematical claims."
+}

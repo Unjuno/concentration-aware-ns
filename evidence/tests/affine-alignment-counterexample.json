@@ -1,0 +1,39 @@
+{
+  "scope": "Exact symbolic counterexample on R^3 with prescribed affine flow; not finite-energy, periodic, molecular, or a claim about the pinned OpenAI construction.",
+  "sympy": "1.14.0",
+  "source_sha256": "2019bac67fda012069101b82bfda7285ebfe7765eb2bf868eccb216af3315c89",
+  "assumptions": [
+    "a > 0",
+    "nu >= 0",
+    "x,y,z,t real"
+  ],
+  "field": {
+    "velocity": "Matrix([[-a*x], [-a*y], [2*a*z]])",
+    "pressure": "-a**2*x**2/2 - a**2*y**2/2 - 2*a**2*z**2",
+    "deformation": "Matrix([[exp(-a*t), 0, 0], [0, exp(-a*t), 0], [0, 0, exp(2*a*t)]])"
+  },
+  "identities": {
+    "incompressibility_zero": true,
+    "pressure_balances_acceleration": true,
+    "viscous_laplacian_zero": true,
+    "full_equation_zero": true,
+    "volume_preserved": true
+  },
+  "residuals": {
+    "incompressibility": "0",
+    "steady_material_acceleration_matches_pressure": "Matrix([[0], [0], [0]])",
+    "viscous_laplacian": "Matrix([[0], [0], [0]])",
+    "navier_stokes_residual": "Matrix([[0], [0], [0]])"
+  },
+  "deformation_facts": {
+    "determinant": "1",
+    "transverse_to_axial_ratio_factor": "exp(-3*a*t)",
+    "viscosity_coefficient": "nu",
+    "viscous_force": "Matrix([[0], [0], [0]])"
+  },
+  "negative_controls": {
+    "wrong_pressure_sign_rejected": true,
+    "nonzero_laplacian_control_rejected": true
+  },
+  "success": true
+}

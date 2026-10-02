@@ -29,6 +29,11 @@
   },
   "amr": {
     "required": true,
+    "baseline_cell_count": 16,
+    "max_refinement": 2,
+    "cell_budgets": [4096, 5000, 100000],
+    "refine_interval": 2,
+    "sensor": "analytic chi(y,z) envelope from the manufactured reference",
     "compare_with": "uniform n=64 control",
     "record": ["requested_refinement", "actual_cell_count", "maximum_level", "blocked_candidates", "cell_budget"]
   },

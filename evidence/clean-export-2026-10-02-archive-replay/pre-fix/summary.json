@@ -1,0 +1,138 @@
+{
+  "scope": "Archived-input report generation and exact algebra replay. No new solver, training or Lean run and no scientific verdict upgrade.",
+  "success": false,
+  "steps": [
+    {
+      "step": "tests",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/tests.log",
+      "log_sha256": "c4716c8c2632b948f04d0cb77a8630ceba78f4f247e5062c22fabc173bf9f0aa"
+    },
+    {
+      "step": "global_peaks",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_global_peaks"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/global_peaks.log",
+      "log_sha256": "cdad40df4aad32d60b5be31c1e7e97c7695eac8d876761aa0100117a6f89c95a"
+    },
+    {
+      "step": "peak_decomposition",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.decompose_peak_diagnostic"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/peak_decomposition.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "spectral_derivatives",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_openfoam_spectral"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/spectral_derivatives.log",
+      "log_sha256": "7fc0cbf2a065f761a4ba68d9f76970f72ed456af7f14ab50bcd3689faa170736"
+    },
+    {
+      "step": "openfoam_uniform_archive_schedules",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_high_gradient_time_sequence"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_uniform_archive_schedules.log",
+      "log_sha256": "0a708d06956e72cd86842ae9ff145fc06efba0967cd6e7283140af757dce24b4"
+    },
+    {
+      "step": "openfoam_fd2_synthetic_controls",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_openfoam_fd2_synthetic_controls"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_fd2_synthetic_controls.log",
+      "log_sha256": "4c7b438bc500ecf22f4f33d9fcffe49520373c0433aa87aacc7f9db431e07d43"
+    },
+    {
+      "step": "openfoam_trig_supremum_arb",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_trig_supremum"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_trig_supremum_arb.log",
+      "log_sha256": "572892756569ec3f416d340f6c422bd39a8523ded2b69e53d235c00bd65a4511"
+    },
+    {
+      "step": "openfoam_temporal_triplet",
+      "command": [
+        "<REPO>/work/clean-export-2026-10-02-head/venv/bin/python",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.compare_high_gradient_temporal"
+      ],
+      "exit_code": 1,
+      "log": "evidence/report-replay/openfoam_temporal_triplet.log",
+      "log_sha256": "336d67438bc17c6721b59a7433fc9a1b1607aa20dcb60280c1ae880dbc29d77f"
+    }
+  ]
+}
