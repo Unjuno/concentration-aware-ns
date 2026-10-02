@@ -1,5 +1,9 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 192 — integrate AMR derivative error over each cell
+
+Added a reproducible volume-integrated diagnostic for the archived n=16/n=32/n=64 first-map Gauss-gradient fields. It compares the cellwise-constant finite-volume gradient/curl to the analytic MMS derivatives integrated throughout each retained cubic cell, on the same physical interior. At n=64, gradient relative L2 is 13.9804% preMap and 14.0147% mapped; earlier cell-center values were 1.8830% and 12.1431%. Order-6/order-8 tensor quadrature agrees within 1.20e-13 in absolute relative-L2 ratio. This captures P0 within-cell variation but is not a continuous OpenFOAM field bound; AMR quality remains `UNCERTAIN` because no threshold was preregistered. Added unit tests and the replay to the published report runner. Evidence is in `reports/openfoam-amr-volume-integrated-diagnostics-2026-10-02.md` and `evidence/of13-amr-volume-integrated-comparison-2026-10-02.json`. Goal remains active.
+
 ## Revision 191 — reconcile the incomplete OpenFOAM repeat with the completed matrix row
 
 Current manifests show that the October 2 n64/dt=.0005 attempt stopped after 36/100 converged steps, while the identical protocol row had already completed 100/100 steps, passed standard and local gates, and entered the six-case matrix on September 30. Corrected the current completion audit so the partial repeat remains preserved/excluded but is not described as a separate missing matrix condition. The matrix verdict does not change. Evidence is `evidence/of13-high-gradient-v2/incomplete-rerun-2026-10-02/status.json`, `evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005-manifest.json`, and `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`. Goal remains active.
