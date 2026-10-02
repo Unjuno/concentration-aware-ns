@@ -613,4 +613,5 @@ tests, one skipped, and five subtests. Follow-up source check found that
 Benaïm (1999), Theorem 9.1, concerns discrete Robbins–Monro processes and
 cannot be transferred directly to this continuous-time SDE. The equator
 exception therefore remains open. PR #4 CI for the pushed revision is pending.
-Goal remains active.
+The theorem scope is pinned to §9, pp. 49–50 in the source PDF. Goal remains
+active.

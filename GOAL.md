@@ -30,6 +30,18 @@ The full 42-step report replay and 220-test suite passed on the preceding
 revision; PR #4 CI for that code revision is pending. The wider benchmark goal
 remains active.
 
+## Revision 230 — pin the inapplicable nonconvergence theorem precisely
+
+Read Benaïm (1999), §9 and Theorem 9.1 (pp. 49–50), rather than relying on a
+search-result summary. It treats a discrete Robbins–Monro process and requires
+gain, smoothness, and unstable-direction noise conditions. Therefore it
+supports neither zero probability of equator convergence nor almost-sure
+alignment for this continuous-time sphere SDE. Recorded this exact scope
+boundary in the model note; the analytical question remains open. No new
+simulation or upstream finding was inferred. PR #4's latest hosted test job
+remains queued; local code tests were already green on the preceding code
+revision. Goal remains active.
+
 ## Revision 227 — replace the supercritical tangent-plane claim with a full-sphere result
 
 The earlier rotational-diffusion calculation found divergent variance for
