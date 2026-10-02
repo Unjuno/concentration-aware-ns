@@ -1,0 +1,41 @@
+{
+  "status": "PASS_SYMBOLIC_CORE_ENCLOSURE_AND_MASS_SCALING",
+  "source_sha256": "af47bd4ab3462822c76f3ef2d80c4de18014c6b11773065a94305d8adc8c2639",
+  "primary_source": "OpenAI, Finite Time Blowup for Navier\u2013Stokes, Section 2.1, similarity coordinates (3.2) and core definition (2.1)",
+  "assumptions": [
+    "0 < tau <= 1",
+    "0 < h < 1/100",
+    "X_c > 0 and 0 < eta_c < 1 are fixed",
+    "the preterminal classical flow preserves volume",
+    "the initial passive-tracer position density is bounded by fixed K"
+  ],
+  "formulas": {
+    "D": "1/2-h",
+    "similarity_relations": [
+      "tau=q(1-eta^2)",
+      "r^2=2Xq",
+      "z=q^D eta"
+    ],
+    "enclosing_cylinder_radius_squared_upper": "2*X_c*tau/(1-eta_c^2)",
+    "enclosing_cylinder_axial_half_length_upper": "eta_c*(tau/(1-eta_c^2))^(1/2-h)",
+    "core_volume_upper": "4*pi*X_c*eta_c*tau**(3/2 - h)*(1 - eta_c**2)**(h - 3/2)",
+    "core_mass_probability_upper": "K*core_volume_upper",
+    "asymptotic_probability_order": "O(tau^(3/2-h))",
+    "exponent_range": "149/100 < 3/2-h < 3/2"
+  },
+  "checks": {
+    "similarity_coordinate_cylinder_volume_identity": true,
+    "axial_similarity_exponent_lower_endpoint": true,
+    "axial_similarity_exponent_decreases_with_h": true,
+    "core_volume_exponent_lower_endpoint": true,
+    "core_volume_exponent_upper_endpoint": true,
+    "core_volume_exponent_decreases_with_h": true,
+    "probability_bound_vanishes_for_fixed_finite_density": true,
+    "uniform_lower_exponent_bound_vanishes": true
+  },
+  "interpretation": [
+    "Bounds a bounded-density passive-tracer ensemble's occupancy of the time-dependent Eulerian core, not an individual trajectory.",
+    "Point-mass laws, unbounded densities, finite-size or inertial particles, and molecular interactions are outside scope.",
+    "Infinitesimal direction alignment can coexist with vanishing core occupancy because the observables differ."
+  ]
+}

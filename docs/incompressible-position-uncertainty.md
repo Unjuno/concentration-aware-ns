@@ -121,3 +121,37 @@ about a point-mass tracer, Brownian/molecular dynamics, or particle orientation.
 This sharpens the application scope of the abstract measure lemma; it still
 does not turn directional alignment of infinitesimal material vectors into
 position certainty or a constitutive law.
+
+## Occupancy bound for the shrinking Eulerian core
+
+The [OpenAI paper's Section 2.1](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf)
+defines its core by fixed similarity-coordinate bounds `0≤X≤X_c`,
+`|η|≤η_c<1`, with `τ=1-t=q(1-η²)`, `r²=2Xq`, and
+`z=q^Dη`, `D=1/2-h`, `0<h<1/100`. These coordinates imply
+`q≤τ/(1-η_c²)`. Therefore the core lies inside a cylinder with
+
+```
+r² ≤ 2 X_c τ/(1-η_c²),
+|z| ≤ η_c (τ/(1-η_c²))^(1/2-h).
+```
+
+The cylinder's volume, and hence the core's volume, is bounded by
+
+```
+vol(C_τ) ≤ 4π X_c η_c (1-η_c²)^(-(3/2-h)) τ^(3/2-h).
+```
+
+If passive-tracer positions at a fixed preterminal time have density bounded
+by `K`, volume preservation gives
+`P(X_t(X_0)∈C_τ)≤K vol(C_τ)=O(τ^(3/2-h))→0`. The exponent is between 1.49
+and 1.5. Thus this construction's shrinking Eulerian core does not become
+occupied by an increasing fraction of any fixed bounded-density tracer
+ensemble. This is compatible with the separate alignment of infinitesimal
+material directions: core occupancy and tangent-direction alignment are
+different events. It does not rule out an individual trajectory following the
+axis, and says nothing about point masses, inertial or finite-size particles,
+molecules, or constitutive viscosity. The algebra and exponent range are
+checked in `tools/check_shrinking_core_mass_bound.py` and
+`evidence/tests/shrinking-core-mass-bound.json`; the volume-preserving measure
+lemma is Lean-checked, while its classical flow-map application remains under
+the conditions stated above.

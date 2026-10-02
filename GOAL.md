@@ -1,5 +1,11 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 200 — bound tracer occupancy of the shrinking Eulerian core
+
+Combined the pinned OpenAI paper's fixed-similarity-coordinate core definition
+with the existing preterminal incompressible-flow measure bound. An explicit
+enclosing-cylinder calculation gives `vol(C_tau) <= 4*pi*X_c*eta_c*(1-eta_c^2)^(-(3/2-h))*tau^(3/2-h)`. Since `0<h<0.01`, any passive-tracer law with a fixed bounded initial density has core-occupancy probability `O(tau^(3/2-h)) -> 0`. A SymPy check validates the coordinate algebra and exponent range; the measure-domination lemma is already Lean-checked. This does not track a point-mass trajectory, finite particle, molecule, or orientation law. It sharpens the distinction between shrinking Eulerian-core occupancy and infinitesimal tangent-direction alignment; no physical or software defect claim follows. See `docs/incompressible-position-uncertainty.md` and `evidence/tests/shrinking-core-mass-bound.json`. Goal remains active.
+
 ## Revision 199 — assess the archived maximum-refinement endpoint
 
 Analyzed the archived cap100000 endpoint at `t=0.05`, validating its 101,760
