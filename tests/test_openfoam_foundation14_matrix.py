@@ -57,3 +57,20 @@ def test_complete_case_requires_all_steps_end_marker_and_endpoint_fields(tmp_pat
     assert runner.complete_case(case, 0.05)
     (case / "log.foamRun").write_text("Time = 0.001\nEnd\n")
     assert not runner.complete_case(case, 0.05)
+
+
+def test_completed_replay_compares_inputs_metrics_and_endpoint_fields(tmp_path):
+    original = tmp_path / "original"
+    replay = tmp_path / "replay"
+    for case, log_hash in ((original, "a"), (replay, "b")):
+        (case / "0.05").mkdir(parents=True)
+        (case / "input-hashes.json").write_text('{"input":"same"}\n')
+        (case / "diagnostics.json").write_text(json.dumps({
+            "local_quality": {"status": "FAIL"},
+            "sha256": {"log.foamRun": log_hash},
+        }))
+        for field in ("U", "p", "C", "phi"):
+            (case / "0.05" / field).write_text(field + " data\n")
+    result = runner.compare_completed_replay(original, replay)
+    assert result["status"] == "PASS"
+    assert result["preserved_run_log_sha256"] != result["replay_run_log_sha256"]

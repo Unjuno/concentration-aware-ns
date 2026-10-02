@@ -28,7 +28,7 @@ The protocol and runner were committed before any new v14 matrix run. The
 existing compatibility case predates this matrix, remains identified as such,
 and is not represented as a prospective rerun.
 
-The first n128 run was stopped after 11 of 50 time steps when comparison with
+The first n128 run was stopped after 13 of 50 time steps when comparison with
 the preserved Foundation 13 n128 log showed that this grid can require roughly
 93 minutes; the initial 40-minute timeout was therefore inadequate. Its inputs,
 partial log, outputs, and nonzero exit record are preserved as an incomplete
@@ -36,3 +36,12 @@ attempt. The resume path reuses only cases that pass a strict completion check,
 preserves incomplete attempts, and reruns an incomplete grid from clean inputs
 under a four-hour per-case cap. This correction changes run control, not the
 frozen numerical protocol or acceptance thresholds.
+
+The first resume exposed a bug in the new completion check: it counted every
+occurrence of `Time =` rather than only OpenFOAM's time-step header lines. It
+therefore replayed the already complete n16 and n32 cases before rejecting the
+reused n64 archive. Those original attempts remain preserved. The checker now
+counts anchored `^Time =` lines and reclassifies preserved runs using the full
+step, convergence, end-marker, exit-code, and endpoint-field checks. Their
+diagnostic and input hashes will be compared against the replay before the
+matrix result is interpreted.

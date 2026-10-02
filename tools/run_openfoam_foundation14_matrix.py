@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -51,7 +52,7 @@ def complete_case(case, end_time):
     if not isinstance(dt, (int, float)) or dt <= 0:
         return False
     log = required[1].read_text(errors="replace")
-    steps = log.count("Time = ")
+    steps = len(re.findall(r"^Time = ", log, re.MULTILINE))
     endpoint = f"{end_time:g}"
     return (
         exit_record.get("exit_code") == 0
@@ -70,13 +71,44 @@ def existing_archive_record(case_name, evidence_root):
     parts_path = evidence_root / f"{case_name}.tar.gz.parts.json"
     if parts_path.is_file():
         manifest = json.loads(parts_path.read_text())
+        aggregate = hashlib.sha256()
         for part in manifest["parts"]:
             path = evidence_root / part["file"]
             if not path.is_file() or sha256(path) != part["sha256"]:
                 raise ValueError(f"existing archive part is missing or changed: {path}")
+            with path.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(1 << 20), b""):
+                    aggregate.update(chunk)
+        if aggregate.hexdigest() != manifest["archive_sha256"]:
+            raise ValueError(f"existing split archive does not reassemble to its recorded hash: {parts_path}")
         return {"archive": parts_path.name, "archive_sha256": manifest["archive_sha256"],
                 "archive_bytes": manifest["archive_bytes"], "parts": manifest["parts"]}
     raise FileNotFoundError(f"complete run lacks an archived case: {case_name}")
+
+
+def compare_completed_replay(first, second):
+    first, second = Path(first), Path(second)
+    first_diagnostics = json.loads((first / "diagnostics.json").read_text())
+    second_diagnostics = json.loads((second / "diagnostics.json").read_text())
+    first_log_sha = first_diagnostics.get("sha256", {}).get("log.foamRun")
+    second_log_sha = second_diagnostics.get("sha256", {}).get("log.foamRun")
+    first_diagnostics.get("sha256", {}).pop("log.foamRun", None)
+    second_diagnostics.get("sha256", {}).pop("log.foamRun", None)
+    input_hashes_equal = (first / "input-hashes.json").read_bytes() == (second / "input-hashes.json").read_bytes()
+    metrics_equal_ignoring_run_log_hash = first_diagnostics == second_diagnostics
+    endpoint_fields = {
+        field: sha256(first / "0.05" / field) == sha256(second / "0.05" / field)
+        for field in ("U", "p", "C", "phi")
+    }
+    passed = input_hashes_equal and metrics_equal_ignoring_run_log_hash and all(endpoint_fields.values())
+    return {
+        "status": "PASS" if passed else "FAIL",
+        "input_hashes_equal": input_hashes_equal,
+        "diagnostics_equal_ignoring_run_log_hash": metrics_equal_ignoring_run_log_hash,
+        "endpoint_field_hashes_equal": endpoint_fields,
+        "preserved_run_log_sha256": first_log_sha,
+        "replay_run_log_sha256": second_log_sha,
+    }
 
 
 def archive_case(case, evidence, name):
@@ -194,6 +226,35 @@ def main():
         "reused_from_single_case_compatibility_probe": True,
     }]
     attempts = []
+    preserved_attempts = run_root / "attempts"
+    if preserved_attempts.is_dir():
+        for attempt_dir in sorted(preserved_attempts.iterdir()):
+            suffix = "-attempt-01-incomplete"
+            if not attempt_dir.is_dir() or not attempt_dir.name.endswith(suffix):
+                continue
+            original_name = attempt_dir.name[:-len(suffix)]
+            if complete_case(attempt_dir, protocol["end_time"]):
+                reclassified = attempt_dir.with_name(f"{original_name}-attempt-01-complete-preserved")
+                if reclassified.exists():
+                    raise FileExistsError(f"refusing to replace reclassified attempt: {reclassified}")
+                shutil.move(str(attempt_dir), str(reclassified))
+                attempt_dir = reclassified
+                status = "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION"
+            else:
+                status = "INCOMPLETE_PRIOR_ATTEMPT_PRESERVED"
+            old_log = attempt_dir / "log.foamRun"
+            attempts.append({
+                "case": original_name, "status": status,
+                "path": str(attempt_dir.relative_to(run_root)),
+                "observed_steps": len(re.findall(r"^Time = ",
+                                                   old_log.read_text(errors="replace"),
+                                                   re.MULTILINE)) if old_log.is_file() else 0,
+                "log_sha256": sha256(old_log) if old_log.is_file() else None,
+                "diagnostics_sha256": sha256(attempt_dir / "diagnostics.json")
+                if (attempt_dir / "diagnostics.json").is_file() else None,
+                "input_hashes_sha256": sha256(attempt_dir / "input-hashes.json")
+                if (attempt_dir / "input-hashes.json").is_file() else None,
+            })
     for name in names:
         if name == reused:
             case_dir = run_root / name
@@ -286,6 +347,13 @@ def main():
 
     baseline_diag = json.loads((run_root / reused / "diagnostics.json").read_text())
     baseline_diag["parameters"]
+    for attempt in attempts:
+        if attempt["status"] != "COMPLETE_REPLAY_PRESERVED_AFTER_FALSE_INCOMPLETE_CLASSIFICATION":
+            continue
+        preserved = run_root / attempt["path"]
+        replay = run_root / attempt["case"]
+        attempt["replay_comparison"] = compare_completed_replay(preserved, replay)
+
     summary = {
         "protocol": str(PROTOCOL.relative_to(ROOT)),
         "protocol_sha256": sha256(PROTOCOL),
