@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 209 — make clean test environments actually runnable
+
+An isolated review of PR #6's exact head exposed a reproducibility gap: a
+fresh venv installed from its advertised verification lock lacked `pytest`,
+so the documented test command failed to start. Added and pinned `pytest` and
+its transitive dependencies on PR #6 (commit `7088dcf`); a newly created
+Python 3.14.5 environment then passed all 65 tests and five subtests, and all
+10 archived cases matched their manifest digests and required members. The
+current PR #4 branch already declared pytest but omitted those transitive
+pins, so its verification lock was aligned. This is a benchmark-tooling
+reproducibility correction, not a solver or physical finding. Goal remains
+active.
+
 ## Revision 208 — recover the sharp one-third integral bound
 
 An independent re-derivation corrected Revision 207's over-conservative
