@@ -60,6 +60,14 @@ observable exists in the repository. No causal bridge from the formal
 continuum theorem to molecular alignment or a constitutive viscosity change is
 established by this review.
 
+The benchmark now records a separate exact identifiability example in
+[`docs/particle-position-probability.md`](../docs/particle-position-probability.md):
+two orientation distributions can have the same translational moments but
+different nematic order, and two homogeneous particle ensembles can share the
+same one-particle density while differing in pair correlations. This does not
+test the third-party simulations or exclude a specified molecular mechanism;
+it isolates which extra state variables such a mechanism would need.
+
 ## Disposition
 
 This is a literature lead, not a reproducible defect in OpenAI, OpenFOAM, SU2,

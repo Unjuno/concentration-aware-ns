@@ -103,3 +103,57 @@ event boundary, and an exact rational example symbolically. Its output is
 `evidence/tests/particle-position-probability.json`. These symbolic checks do
 not prove the continuum flow-derivative theorem; see
 [`axis-flow-derivative.md`](axis-flow-derivative.md) for that proof's scope.
+
+## Microscopic state is not identified by the continuum fields
+
+There is a direct identifiability obstruction to inferring molecular
+orientation from a Navier–Stokes velocity field alone. Consider planar
+unoriented rods with angle `theta` in `[0, pi)`. Let `f(x,v)` be any fixed
+translational one-particle distribution and set
+
+```
+F_alpha(x,v,theta) = f(x,v) * p_alpha(theta),
+p_alpha(theta) = (1 + alpha*cos(2*theta))/pi,   |alpha| < 1.
+```
+
+The angular density is positive and normalized because
+`integral_0^pi cos(2 theta) dtheta = 0`. Every translational moment with an
+integrand independent of `theta` is therefore independent of `alpha`. In
+particular, the mass density, mean velocity, translational temperature and
+translational kinetic-stress tensor computed from `F_alpha` are exactly the
+same for every permitted `alpha`. But the nematic orientational order differs:
+
+```
+S_2 = integral_0^pi cos(2 theta) p_alpha(theta) dtheta = alpha/2.
+```
+
+Thus `alpha=0` is isotropic while any nonzero `alpha` has a preferred axis,
+despite identical translational hydrodynamic moments. This is an algebraic
+non-identifiability example, not a claim that each such distribution is a
+solution of a particular molecular kinetic equation. If orientation-dependent
+interactions contribute to stress or evolution, a kinetic/constitutive model
+must specify them; the incompressible Newtonian equations do not carry this
+orientation state variable.
+
+The same distinction applies to positions beyond the one-particle density. On
+a periodic box, take two particle centers `X_1,X_2`. If both are independent
+uniform points, their one-particle marginals are uniform and their relative
+displacement is uniform. If `X_1` is uniform and `X_2=X_1+d` modulo the box for
+a fixed nonzero displacement `d`, the individual marginals are still uniform
+but the relative displacement is fixed. The mean density is identical while
+the pair correlation is different. A continuum density/velocity field cannot
+select between these microstates without additional state and evolution laws.
+
+These constructions do not refute a possible dynamical mechanism in a
+specified fluid. They establish the narrower point needed here: neither
+directional alignment of infinitesimal continuum separations nor a continuum
+blow-up theorem uniquely determines molecular orientation, pair ordering, or
+absolute particle positions. A proposed causal effect must be tested in a
+microscopic or kinetic model with explicit observables and material
+parameters.
+
+`python -m tools.check_molecular_state_nonidentifiability` symbolically checks
+the angular normalization and order parameter exactly. Its result is
+`evidence/tests/molecular-state-nonidentifiability-2026-10-02.json`. This is an
+algebraic consistency check, not a simulation or a proof about any molecular
+dynamics model.
