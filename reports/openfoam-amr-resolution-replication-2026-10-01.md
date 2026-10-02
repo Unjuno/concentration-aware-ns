@@ -22,6 +22,20 @@ specific first-refinement events.
 |---:|---:|---:|---:|---:|---:|
 | n=16 | 4,096 → 16,640 | 0 | 13.7834% | 42.4839% | 41.7955% |
 | n=32 | 32,768 → 118,784 | 0 | 3.4942% | 21.0789% | 20.9906% |
+| n=64 | 262,144 → 901,888 | 0 | 0.8802% | 10.5016% | 10.4905% |
+| n=128 | 2,097,152 → 6,949,888 | 0 | 0.2206% | 5.2451% | 5.2437% |
+
+The added n=64 and n=128 rows come from separate exploratory same-run events.
+They extend the discrete DOF comparison to four base resolutions; they do not
+turn it into a preregistered convergence or AMR-quality study.
+
+At n=128, the solver selected 693,248 cells after the periodic one-layer
+buffer, matching the independent predictor, and refined to 6,949,888 cells.
+Parent-volume closure error was `4.46e-14`; mapped cell `U` matched
+piecewise-constant injection from the captured parent values exactly in the
+reported metrics (relative L2 and max absolute difference both zero). The
+volume-integrated velocity change scaled by integrated speed was
+`1.27e-16`.
 
 A fixed-first-map-time temporal-step control at `n=32`, `dt=0.0005` was also
 completed. `refineInterval=4` kept the first map at `t=0.002`; the solver-stage
@@ -65,6 +79,15 @@ subdomains.
 | n=32 / 0.001 | 8.7188% → 22.0848% | 9.0557% → 21.5574% |
 | n=32 / 0.0005 | 8.7197% → 22.0856% | 9.0557% → 21.5571% |
 
+An additional n=128 run used a two-base-cell-width interior margin of
+`0.09817` rather than the n=16 comparison's common physical margin of `pi/4`.
+Within that run, preMap → mapped gradient error was 0.6084% → 5.2472% and
+vorticity error was 0.5901% → 4.6854%; 40.0254% of mapped internal faces were
+same-parent child interfaces with exactly injected parent `Uf`. Because its
+interior mask differs from the cross-resolution table above, these numbers are
+reported separately and should not be read as a like-for-like resolution
+trend.
+
 At n=32, 147,456 of 352,128 captured mapped internal faces (41.8757%) join
 children of the same parent cell. On those faces, `Uf` equals the injected
 parent value exactly (max absolute difference 0). The mapping therefore
@@ -100,6 +123,15 @@ defined as an exact volume average, and it is not a continuous P0 error norm.
   `tools/analyze_amr_same_run_map.py`, `tools/analyze_amr_gauss_gradient.py`
 - Tests: `tests/test_predict_amr_grid_candidates.py`,
   `tests/test_amr_same_run_map_v5_n32.py`
+- n=128 exploratory run protocol: `protocols/high-gradient-of13-amr-same-run-map-v8-n128.json`
+- n=128 mapping and gradient audits: `evidence/of13-amr-same-run-map-v8-n128/analysis.json`,
+  `evidence/of13-amr-same-run-map-v8-n128/gauss-gradient-audit.json`
+- n=128 compact review archive is distributed as 15 SHA-256 checked GitHub
+  Release assets (tag `of13-amr-same-run-map-v8-n128`); the parts manifest gives
+  the download and reconstruction commands: `evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json`;
+  the full as-run archive is retained locally under ignored `work/`. The included
+solver snapshots were replayed against the as-run member hashes; see
+`evidence/of13-amr-same-run-map-v8-n128/review-archive-members-verification.json`.
 
 The frozen v5 protocol SHA-256 is
 `56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99` and is
@@ -126,18 +158,20 @@ acceptance.
 
 ## Interpretation limits
 
-The spatial comparison is a two-resolution replication of the same exploratory
-first-refinement event, not a preregistered AMR convergence study. Both mapped
-fields match parent injection, and the point-sample and exact-cell-average DOF
-errors decrease at n=32; this is evidence about these cases only. It does not
-establish a solver defect, general AMR accuracy, mathematical singularity,
+The spatial comparison now includes four base resolutions of the same
+exploratory first-refinement event; it is not a preregistered AMR convergence
+study. All mapped fields match parent injection, and the point-sample and
+exact-cell-average DOF errors decrease in these rows; this is evidence about
+these cases only. It does not establish a solver defect, general AMR accuracy,
+mathematical singularity,
 physical blow-up, particle ordering, phase transition, or viscosity change.
 The full AMR-quality gate remains UNCERTAIN pending a broader resolution and
 time-step study and independent assessment of the solver/runtime stack.
 
-The runner source was modified in the worktree during execution. Its captured
-manifest records the parent commit and dirty path list, but not a byte-exact
-worktree patch hash at execution. The frozen case inputs, protocol hash, solver
-log, binary and all stage hashes are retained; this harness-provenance gap is
-explicit and should be closed for future runs by recording the source overlay
-hash before launch.
+The run manifest captured the startup worktree state as containing only the
+untracked frozen protocol. A post-run provenance audit confirms that the runner
+and its three case/packaging/Docker helpers match their blobs in recorded commit
+`e92a77ed172e9410fa076f079113b49ff53915a2`; their hashes and the derivation are
+in `evidence/of13-amr-same-run-map-v8-n128/harness-provenance-a1.json`. This
+resolves the harness-source uncertainty for this run. It does not establish
+source equivalence of the full packaged OpenFOAM solver stack.

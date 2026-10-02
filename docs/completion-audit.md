@@ -208,8 +208,9 @@ This remains exploratory two-resolution evidence; the AMR quality status stays
 UNCERTAIN. The solver run completed normally; the current 36.5 MB archive
 contains the same-run cell pair and mapped face snapshot for the gradient
 audit. Later-stage fields and faces remain in ignored local raw data and the
-manifest/log. A runner source-overlay hash was
-not captured at launch and remains a reproducibility limitation. See
+manifest/log. For this earlier n=32 run, a runner source-overlay hash was not
+captured at launch and remains a reproducibility limitation. The later n=128
+run has a separate verified harness-provenance addendum below. See
 [`n=32 AMR report`](../reports/openfoam-amr-resolution-replication-2026-10-01.md).
 
 The common-support n=16/n=32/n=64 derivative comparison now integrates the
@@ -1293,3 +1294,20 @@ passed. Sanitized logs and post-sanitization hashes are preserved in
 This is Python postprocessing and evidence replay only. It does not execute
 Lean or solver runs and does not discharge the actual-profile pressure premise
 or change any scientific verdict.
+
+### 2026-10-02 n=128 same-run AMR extension and harness provenance
+
+The Foundation 13 n=128 first-map run completed at 6,949,888 cells. Its mapped
+velocity exactly matches parent-value injection; the reported coarse/mapped
+cell-DOF errors against analytic cell averages are 0.2206%/5.2451%. The within-
+run two-base-cell-width interior Gauss-gradient error changes 0.6084% to 5.2472%,
+but its boundary mask differs from the common-physical-mask cross-resolution
+table and is reported separately. AMR quality remains UNCERTAIN; no blow-up,
+particle-ordering, viscosity-change, or solver-defect inference follows. The
+full run archive is preserved locally and a 15-part compact review archive
+is prepared for GitHub Release distribution; after download, it reconstructs
+with its recorded SHA-256. A replay audit confirms the runner and
+its three helper files match commit `e92a77e`; the startup worktree status
+recorded by the runner contains only the untracked protocol. See
+`reports/openfoam-amr-resolution-replication-2026-10-01.md` and
+`evidence/of13-amr-same-run-map-v8-n128/harness-provenance-a1.json`.
