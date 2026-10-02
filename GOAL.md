@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 201 — refresh targeted upstream states and odd-width reproduction
+
+Re-read the live records for the four audited projects. PhysicsNeMo `main`
+advanced to `83d6a337`, while the affected power-spectrum file blob stayed
+unchanged and the 33x33 asymmetry reproduced again; issue #2007 remains open
+and fix PR #2008 remains behind main. Posted the source hash, reproduction
+result, even-grid non-impact, and limitation to the existing issue. SU2
+Discussion #2890 is closed/resolved with no chosen answer; adjacent issues
+#2353/#2932 remain open, so no duplicate was filed. OpenFOAM's AMR result
+still does not establish a defect; the OpenAI Lean repository has no issue
+route. The bounded statuses and dispositions are in
+`reports/upstream-status-2026-10-02.md` and
+`evidence/upstream-refresh/upstream-status-2026-10-02.json`. Goal remains
+active.
+
 ## Revision 200 — bound tracer occupancy of the shrinking Eulerian core
 
 Combined the pinned OpenAI paper's fixed-similarity-coordinate core definition
