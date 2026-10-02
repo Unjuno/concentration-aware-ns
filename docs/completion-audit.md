@@ -23,7 +23,7 @@ finding to a supported improvement and the evidence required to extend it.
 | Other target report/no-report decisions | Interim audit and contribution policies | Explicit no-defect-report decisions for OpenFOAM and PhysicsNeMo are recorded in reports/upstream-disposition.md; the SU2 BDF2 finding is scoped separately |
 | OpenAI construction audit and transfer | Independent NS kernel logs for both pins; current source-bound extension checks; docs/axis-flow-derivative.md; docs/packet-constant-dependencies.md | Full axis Jacobian, explicit variational solution, inverse identity and eventual axis smoothness are Lean-checked. Variational uniqueness on compact terminal intervals is Lean-checked. The updated source velocity-rate theorem gives a base-field endpoint Hessian exponent `kappa=40`, but the assembled-field base-equality tube has no established lower-radius envelope as `T` approaches 1; the previous `Q^(Cstretch+39)` transfer is withdrawn. Nonlinear-flow identification remains classical; there is no end-to-end Lean flow theorem or fixed-size packet certificate. The strict negative force-ratio limit still requires the unresolved actual-profile pressure premise. The pinned Euler challenge has passed the recorded independent checks; this does not establish molecular or constitutive consequences. Executable finite-stage extraction remains unperformed. |
 | OpenFOAM n=64 endpoint pressure reconstruction | v3 frozen protocol, three Docker archives, and independent archive replay | All three dt cases exit 0; U/p/phi are byte-identical to same-dt baselines, and endpoint velocity algebra replays at 2.12e-16–2.15e-16 relative L2. Narrow endpoint gate passes; trajectory cause, molecular alignment, phase change, and material-viscosity claims remain unsupported. |
-| Reproducible public deliverables | Runtime instructions, scripts, archived raw results | Comparative report published. Locked same-host export at 5b8e305 reproduces 75/75 files; the historical supported-range dependency drift failure remains preserved. Current 25-step archived report replay passes. Full current-tree clean export and solver-build reproduction remain separate |
+| Reproducible public deliverables | Runtime instructions, scripts, archived raw results; `evidence/reproducibility/clean-export-fdedfb6.json` | Comparative report published. Locked same-host current clean export at `fdedfb6b` reproduces 119/119 compared files, with 25/25 replay steps and eight commands successful; 14 gate reports link to 117 matching artifacts. The historical supported-range dependency drift failure remains preserved. Solver-build and training reproduction remain separate. |
 
 An UNCERTAIN result is legitimate evidence of a limitation, but it is not a
 substitute for an unperformed required run or a missing final report. The archive
@@ -81,10 +81,13 @@ ran all eight clean-export commands successfully and replayed all 25 report
 steps, but detected that the tracked artifact-link audit was stale: it recorded
 93 links while the current reports contain 117. Regenerated
 `evidence/tests/gate-artifact-audit.json` from all 14 gate reports; all 117
-references match their target bytes. The same fresh export ran 65 tests. A
-second clean export from the commit containing this refreshed audit is required
-to verify byte-for-byte idempotence. Scope remains locked Python postprocessing
-on this host; no solver build, training, or Lean execution is included.
+references match their target bytes. A second clean export from
+`fdedfb6b701cd6c0a2043fb645a40179ee7391ab` then passed with 119 compared files,
+zero changes, all eight commands successful, 25 replay steps and 65 tests.
+The sanitized run manifest is
+[`clean-export-fdedfb6.json`](../evidence/reproducibility/clean-export-fdedfb6.json).
+Scope is locked Python postprocessing on the recorded macOS host; no solver
+build, training, or Lean execution is included.
 
 ### Quantitative copy-support hole, 2026-09-28
 
