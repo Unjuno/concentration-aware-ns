@@ -37,3 +37,15 @@ def verify_query_ball(queries,ball):
         distance=sum(max(abs(Fraction.from_float(q[a])-lo),abs(Fraction.from_float(q[a])-hi))**2 for a,(lo,hi) in zip('xyz',bounds))
         if distance>=radius**2:raise ValueError('native query outside certified ball')
     return True
+
+
+def verify_candidate_coverage(candidates,queries,ball):
+    expected={(c['face'],c['tetPt']) for c in ball['candidate_labels']}
+    if len(expected)!=len(ball['candidate_labels']):raise ValueError('duplicate enclosed candidate label')
+    ids={q['query'] for q in queries}
+    if {c['query'] for c in candidates}!=ids:raise ValueError('candidate query coverage differs')
+    for q in ids:
+        labels=[(c['face'],c['tetPt']) for c in candidates if c['query']==q]
+        if len(labels)!=len(expected) or set(labels)!=expected:
+            raise ValueError('native candidate set differs from enclosed ball')
+    return True
