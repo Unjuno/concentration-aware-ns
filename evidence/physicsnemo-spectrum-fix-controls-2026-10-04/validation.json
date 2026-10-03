@@ -1,0 +1,47 @@
+{
+  "status": "PASS_FOCUSED_REPRODUCTION_FIX_AND_NEGATIVE_CONTROLS",
+  "numerical_source_commit": "fa15e1ebae0dcadd5844200a6a847bc1eaa10d2b",
+  "benchmark_tests": {
+    "passed": 308,
+    "skipped": 1,
+    "subtests_passed": 83,
+    "seconds": 101.99
+  },
+  "focused_runtime": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "torch": "2.11.0",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "device": "CPU"
+  },
+  "commands": {
+    "main": "work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007 --source-file work/upstream-status-20261004/power_spectrum-main.py --source-reference b45a5c810c741e6b41f8515be24c51121f8fc21f --output NEW_OUTPUT",
+    "fix": "work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007 --expect-fixed --source-file work/upstream-status-20261004/power_spectrum-pr2008.py --source-reference 7407608723062dc11ba5332e9ff3774f42bb02d9 --output NEW_OUTPUT",
+    "negative": "work/physicsnemo-env/bin/python -m tools.reproduce_physicsnemo_issue_2007 --expect-fixed --source-file evidence/physicsnemo-spectrum-fix-controls-2026-10-04/zero-spectrum-control.py --output NEW_OUTPUT",
+    "suite": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests"
+  },
+  "negative_exit_code": 1,
+  "not_claimed": [
+    "full PhysicsNeMo test suite",
+    "general spectrum correctness",
+    "new CFD/PINN run",
+    "whole-history replay",
+    "new upstream defect"
+  ],
+  "source_sha256": {
+    "tools/reproduce_physicsnemo_issue_2007.py": "d373ad52d06734e7c42efd45aefe14ff3b9a2e6aef1a854bdb177b5e171cbdf9",
+    "tests/test_physicsnemo_issue_2007_controls.py": "5832c30c37ae448ead7d07c4010a21c3c8ae16bfa9432f50b566b835033818f9",
+    "requirements-verification-locked.txt": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "evidence_sha256": {
+    "zero-spectrum-rejected.json": "e6b9ed5110a8c93c181832a1048ba2cea5c0b2ad6f7b644f761a5d8c79879eae",
+    "live-status.json": "ba042e4a6343173b5d677a351ecc98da4833be236772881051ef5b403040553a",
+    "pr2008.log": "3dfeba2fba1d10dd9b2eb5cfa6dd69428285b819b6991d121f5039df2ae2e054",
+    "zero-spectrum.log": "e6b9ed5110a8c93c181832a1048ba2cea5c0b2ad6f7b644f761a5d8c79879eae",
+    "pr2008-validation.json": "3dfeba2fba1d10dd9b2eb5cfa6dd69428285b819b6991d121f5039df2ae2e054",
+    "README.md": "1b8ac96f51ce4d0ac1d6f07e3404a9ca91002434bc2fae0291747de6215b543f",
+    "main-reproduction.json": "491f78678b8c50dcb409206e7dccfa1b2f332380b42000d79cd8688d5985277d",
+    "zero-spectrum-control.py": "bdb3c91c43a5fd4183d266a07dcb23ff3fb3d6efd9534c744fd9696adc5e05d7",
+    "test-suite.log": "2ad50f51aaa9265a4a21d81890a9168c04c2f6f9436ae44b6b6868d263ad31f3",
+    "main.log": "491f78678b8c50dcb409206e7dccfa1b2f332380b42000d79cd8688d5985277d"
+  }
+}

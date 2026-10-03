@@ -1,5 +1,17 @@
 # Completion audit — interim, 2026-09-27
 
+### Reject broken controls before accepting a spectrum fix — 2026-10-04
+
+The benchmark's focused PhysicsNeMo fix rule now requires every symmetry
+control and finite positive spectra, rather than merely absence of the old
+failure pattern. Current main reproduces the already-reported issue; the
+existing fix passes. An executed zero-spectrum negative control is rejected,
+and eleven adversarial regressions plus the full 308-test suite pass (1 skip,
+83 subtests). Upstream heads/tracking were refreshed with immutable file hashes;
+no new issue is justified. This closes a local verdict weakness, not full
+upstream or continuous-quality validation. See
+[report](../reports/upstream-spectrum-fix-controls-2026-10-04.md).
+
 ### Point initialization and source interpretation — 2026-10-04
 
 The four frozen AMR inputs match independent analytic point values, not exact

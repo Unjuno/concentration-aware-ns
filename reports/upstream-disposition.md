@@ -254,3 +254,16 @@ The two fresh PhysicsNeMo JSON replays bind the source hashes and exact outputs.
 OpenAI's public formalization repository still reports only its original two
 commits in this check. These are status and focused-reproduction updates, not an
 exhaustive upstream review or a new defect claim.
+
+## Fresh state and fix-verdict self-audit, 2026-10-04
+
+PhysicsNeMo main is now b45a5c81, with the audited spectrum function unchanged.
+Existing #2007/#2008 remain open; PR #2008 is two ahead and fourteen behind.
+The focused reproducer now requires all positive-finite and symmetry controls
+for a fixed verdict. Current main still reproduces the issue, the existing fix
+passes, and an executed degenerate zero-spectrum control is correctly rejected.
+This repairs our verifier, not the upstream implementation. SU2 master and
+OpenFOAM head remain unchanged; SU2 discussion #2890 has no new maintainer reply
+in the fresh read and PR #2857 remains closed/unmerged. No duplicate issue was
+filed. Old experiments, thresholds and historical records are preserved. See
+[report](upstream-spectrum-fix-controls-2026-10-04.md) for scope and exact hashes.

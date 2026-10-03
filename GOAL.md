@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 270 — adversarially validate the focused upstream fix verdict
+
+A weakness in our PhysicsNeMo spectrum reproducer's fixed expectation is now
+corrected: disappearance of the old failure pattern alone is insufficient.
+All even/odd axis and transpose controls plus positive finite spectra must
+pass. The freshly fetched current main reproduces existing Issue #2007; the
+existing PR #2008 passes every fix control. A deliberately invalid zero-spectrum
+function is rejected with exit 1, though the old negative rule would accept it.
+Eleven adversarial tests and the complete 308-test suite pass (1 skip, 83 subtests).
+
+Fresh API reads show PhysicsNeMo main advanced to b45a5c81 without changing the
+spectrum function; PR #2008 remains open, 2 ahead/14 behind. OpenFOAM and SU2
+heads are unchanged; the existing SU2 discussion has no new reply and PR #2857
+remains closed/unmerged. No duplicate upstream report is justified. Historical
+evidence and all frozen solver verdicts stay separate. See
+`reports/upstream-spectrum-fix-controls-2026-10-04.md` and
+`evidence/physicsnemo-spectrum-fix-controls-2026-10-04/`.
+This repairs a benchmark verification weakness and refreshes disposition; it
+does not complete upstream validation, continuous quality, physical/proof
+obligations or the full goal.
+
 ## Revision 269 — verify archived point-value inputs before transferring mean bounds
 
 All four original AMR mean-quality cases are initialized at cell centres,
