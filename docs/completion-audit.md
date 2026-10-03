@@ -2041,3 +2041,16 @@ regression tests pass. See [correction](../reports/su2-source-lag-reference-corr
 The seeded point result does not prove continuous peak bounds or PDE-error
 attribution. Prior artifacts are preserved; original solver outputs and gates
 are unchanged. The full objective is not complete.
+
+
+### Public conditional-force snapshot — 2026-10-04
+
+The [frozen release](https://github.com/Unjuno/concentration-aware-ns/releases/tag/su2-conditional-force-response-v3-aa35691)
+publishes corrected SU2 forcing, envelope bounds, bounded-lag continuous
+response and their preserved assumptions/evidence at aa35691. REST readback
+verifies the annotated tag resolves to the exact local snapshot commit. This
+publishes results while leaving PR #4's pending fb35ac5 CI untouched. The
+release explicitly separates earlier full-suite and later focused validation;
+there is no hosted or full-suite-at-snapshot success claim. Conditional
+continuous estimates do not cover discrete solver error, prove solution
+existence or close physical/proof/global requirements. Goal remains active.
