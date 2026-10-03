@@ -1,0 +1,29 @@
+{
+  "observed_utc": "2026-10-03T22:44:36.044122+00:00",
+  "records": [
+    {
+      "command": [
+        "docker",
+        "context",
+        "show"
+      ],
+      "exit_code": 0,
+      "stdout": "orbstack\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit_code": 1,
+      "stdout": "\n",
+      "stderr": "Error response from daemon: rpc error: code = Unknown desc = blob sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643 expected at /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643: open /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643: operation not supported\n"
+    }
+  ],
+  "scope": "Read-only original-image preflight; no solver started, daemon restart, rebuild or container deletion"
+}
