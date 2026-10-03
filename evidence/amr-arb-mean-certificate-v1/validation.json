@@ -1,0 +1,58 @@
+{
+  "status": "PASS_ARB_MATRIX_TESTS_GUARDED_REPLAY_AND_RATIONAL_SCALAR_CHECK",
+  "numerical_source_commit": "4222bd312c7f70768261c9087b2303dae5a7733a",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python_flint": "0.9.0",
+    "precision_bits": 96
+  },
+  "full_suite": "295 passed, 1 skipped, 83 subtests passed",
+  "command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m tools.audit_amr_arb_mean_certificate --raw-map /path/to/map.json --output /new/output/path --source-commit 4222bd312c7f70768261c9087b2303dae5a7733a",
+  "source_export": {
+    "commit": "4222bd312c7f70768261c9087b2303dae5a7733a",
+    "paths": [
+      "tools",
+      "protocols/amr-arb-mean-certificate-v1.json",
+      "protocols/of13-amr-mean-quality-v1.json",
+      "evidence/of13-amr-mean-quality-v1",
+      "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json",
+      "runtime/openfoam13/instrumentation/prepare_amr_stage_module.py",
+      "runtime/of13-interface-operator/Dockerfile",
+      "runtime/of13-interface-operator/fetch_pinned_package.sh",
+      "requirements-verification-locked.txt",
+      "requirements-verification.txt",
+      "requirements.txt"
+    ],
+    "archive_sha256": "2d32450fcaacbe6c976def36d0c68d61f8df7a1b8b32372db90572bd40e67cf8",
+    "archive_bytes": 2734080,
+    "strict_analysis_json_byte_identity": true
+  },
+  "checks": [
+    "All four final-state arithmetic certificates executed",
+    "Raw archives/member hashes and twenty frozen CFD input source identities checked",
+    "Independent direct DFT and known shear controls pass",
+    "Reference mean table compared with independently integrated numeric means",
+    "Rational polynomial critical values support the analytic reference peak bounds",
+    "Rational scalar inequality chain checked without Arb; four corrupted lower-bound variants rejected",
+    "compileall and git diff --check pass; no configured project linter exists"
+  ],
+  "limits": [
+    "Nominal binary64 decoded values on canonical dyadic geometry only",
+    "No original gate, solver contract, unpublished internal state or physical verdict upgraded",
+    "Arb arithmetic is not formal verification of the C library or the analytic derivation",
+    "Same-host locked dependency replay; Python guards are not a general native syscall sandbox"
+  ],
+  "artifacts_sha256": {
+    "clean-export-replay.log": "354223cf1d0e4b379d75f75d5a9e7afd312e82ca05ee6e67f588efd08c0001b6",
+    "full-suite.log": "44c770c2448e3330ffaf5bd1d753c57ce64ab749c81c4e1fbb3c69e84c186bd5",
+    "initial-test-failure-note.md": "68eef01551da3bdd15385950711700ec11a6b09c0d81d97127842a2e1ab14ef0",
+    "audit.log": "15a92ce636ba4ccd59409beed84e13948e6aa437b92f931c6441c396afb42c89",
+    "isolation.json": "308e7c55d49cbd661546d04b4e1cceef53d8d4a78063faf71dde2925c75b75bc",
+    "analysis.json": "9a56752502c50ae63f798eb45adfe7dfeaacc9a5f3d7509491dc12ddc2809f35",
+    "isolate_replay.py": "9ab5bbf44b76d46aef7e47bded01e1a0abd8a813d3cb0cf345bab34b863453c1",
+    "scalar-chain-check.json": "97ffd96835d98d6cf49a18186e8a35030bab3997588276e2f84d4d7bf2c49e5c",
+    "check_scalar_chain.py": "f540f97cfa2415f676b76da61bd57b3edb14da5a73d83c61738a2e1afbf1a378"
+  }
+}

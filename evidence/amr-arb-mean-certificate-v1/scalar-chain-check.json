@@ -1,0 +1,1 @@
+{"status": "PASS_RATIONAL_SCALAR_CHAIN_ONLY", "cases": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"], "limits": "Does not independently prove raw-input interpretation, DFT ball enclosures, alias inequality or reference peak theorem."}

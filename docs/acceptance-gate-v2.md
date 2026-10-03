@@ -68,6 +68,16 @@ a divergence-free reconstruction. The conditional example and its limits are
 in `reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md`; none of its
 uncertified floating endpoints changes the original gate.
 
+Outward arithmetic enclosure can substantiate a conditional lower bound without
+settling the field interpretation. An Arb certificate for decoded binary64
+nominal means on canonical dyadic geometry does not cover other decoding
+conventions, rounded geometry as a distinct exact tiling or unpublished internal
+solver values. A scoped threshold exclusion still needs those conditions in
+the reviewed gate. The new four-case certificate is recorded in
+`reports/openfoam-amr-arb-mean-certificate-2026-10-04.md`; it leaves original
+solver verdicts unchanged. A rational scalar-chain checker validates only that
+chain, not Fourier enclosure correctness or analytic/source interpretation.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.

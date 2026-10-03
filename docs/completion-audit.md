@@ -1,5 +1,20 @@
 # Completion audit — interim, 2026-09-27
 
+### Arb arithmetic enclosure for nominal-mean H1 constraints — 2026-10-04
+
+Four final states now have outward-enclosed necessary-condition bounds on
+canonical dyadic geometry and exact decoded binary64 nominal means. At n64,
+gradient relative L2 error is at least 46.6290%, gradient peak-of-error at least
+7.4621%; divergence-free reconstruction additionally implies curl peak-of-error
+at least 6.2651%. The alias-class H^-1 bound includes all continuum aliases and
+uses analytic reference peak bounds. All cases exclude the disclosed 5% target
+under these conditions. The 295-test suite, strict selected-export certificate
+replay and independent rational scalar checks pass. This closes the arithmetic
+enclosure gap for these four final states; source interpretation and original
+gate/whole-goal obligations remain open. See
+[`certificate report`](../reports/openfoam-amr-arb-mean-certificate-2026-10-04.md).
+
+
 ### Native-mean reconstruction and conditional H1 obstruction — 2026-10-04
 
 The new twelve-state audit compares a mean-preserving smooth polynomial with

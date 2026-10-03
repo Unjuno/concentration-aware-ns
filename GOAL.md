@@ -1,5 +1,32 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 268 — outward-enclosed nominal-mean continuum error bounds
+
+Arb at 96 bits now encloses the four final-state native-mean necessary-condition
+calculations. A Fourier alias-class bound includes the entire continuum H^-1
+mass without truncation; rational polynomial envelope bounds replace the
+floating reference peak enclosure. Under the exact decoded binary64 means on
+the canonical dyadic partition, n64 gradient L2 error is at least 46.6290% and
+relative peak-of-gradient-error at least 7.4621%. For divergence-free H1
+reconstructions, relative peak-of-curl-error is at least 6.2651%. Quotations are
+rounded down from exact rational endpoints. All four final cases exclude the
+disclosed 5% target in this specific scope.
+
+The original gate is unchanged: nominal means/canonical geometry are explicit
+conditions, not an upstream exact-average contract or a certificate for
+unpublished internal values. Earlier floating results and all twelve-state
+records remain separate. Three new independent controls and the full 295-test
+suite pass; a frozen selected export reproduces all four certificates
+byte-for-byte. A standard-library rational scalar checker validates the
+normalization chain and rejects four corrupted bound variants, without claiming
+to prove the FFT or source interpretation. The initial zero-centred-ball power
+failure was corrected before freeze and is recorded.
+
+See `reports/openfoam-amr-arb-mean-certificate-2026-10-04.md` and
+`evidence/amr-arb-mean-certificate-v1/`; source is `4222bd31`. No new solver,
+upstream defect or physical claim follows. Original acceptance, other targets,
+proof/physical obligations and the full goal remain open.
+
 ## Revision 267 — separate mean conservation from filtered gradient quality
 
 All twelve archived states now have an explicitly mean-preserving smooth
