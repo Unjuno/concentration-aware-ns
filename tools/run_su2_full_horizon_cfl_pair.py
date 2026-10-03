@@ -1,6 +1,7 @@
 """Original-image paired runner; never rebuilds or repairs Docker."""
 import argparse,csv,json,os,shutil,subprocess,math
 from pathlib import Path
+import hashlib
 from tools.verify_su2_cfl_pair_inputs import verify
 from tools.analyze_su2 import analyze
 
@@ -20,17 +21,35 @@ def verify_history(history,steps=50,dt=.001):
             'scope':'Recorded history only, not source callback or internal floating clock proof'}
 
 
-def run(root,protocol,output,preflight_only=False):
+def run(root,protocol,output,preflight_only=False,successor_receipt=None):
     if output.exists():raise FileExistsError('preserve previous experiment')
     inputs=verify(root,protocol);p=json.loads(protocol.read_text())
+    image_id=p['image_id_required']
+    successor=None
+    if successor_receipt is not None:
+        successor=json.loads(Path(successor_receipt).read_text())
+        frozen=json.loads(Path('protocols/su2-n32-full-horizon-cfl-successor-v2.json').read_text())
+        if successor.get('source_commit')!=frozen['source_commit'] or successor.get('architecture')!=frozen['architecture']:
+            raise ValueError('successor source or architecture mismatch')
+        for path,digest in frozen['build_inputs_sha256'].items():
+            if hashlib.sha256(Path(path).read_bytes()).hexdigest()!=digest or successor.get('build_inputs_sha256',{}).get(path)!=digest:
+                raise ValueError('successor recipe identity mismatch')
+        for key in ('binary_sha256','patched_source_sha256','package_versions_sha256'):
+            value=successor.get(key,'')
+            if len(value)!=64 or any(c not in '0123456789abcdef' for c in value):raise ValueError('missing successor identity evidence')
+        image_id=successor.get('image_id','')
+        if not image_id.startswith('sha256:') or len(image_id)!=71:raise ValueError('invalid successor image identity')
+
     for label in ('baseline','control'):
         if {x.name for x in (root/label).iterdir()}!={'case.cfg','mesh.su2','parameters.json'}:
             raise ValueError('prepared directory contains non-input files')
-    output.mkdir();(output/'input-verification.json').write_text(json.dumps(inputs,indent=2)+'\n')
+    output.mkdir()
+    if successor is not None:(output/'successor-receipt.json').write_text(json.dumps(successor,indent=2)+'\n')
+    (output/'input-verification.json').write_text(json.dumps(inputs,indent=2)+'\n')
     manifest={'status':'INCOMPLETE','completed_cases':0,'expected_cases':2,'preflight_only':preflight_only,'cases':[]}
     def save(): (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     save()
-    command=['docker','image','inspect',p['image_id_required'],'--format','{{json .}}']
+    command=['docker','image','inspect',image_id,'--format','{{json .}}']
     try:
         result=subprocess.run(command,capture_output=True,text=True,timeout=10)
     except subprocess.TimeoutExpired:
@@ -39,15 +58,25 @@ def run(root,protocol,output,preflight_only=False):
     if result.returncode:
         manifest['preflight_status']='IMAGE_UNAVAILABLE';save();raise RuntimeError('original image inspection failed; no solver started')
     image=json.loads(result.stdout)
-    if image['Id']!=p['image_id_required']:raise ValueError('wrong original image')
-    manifest['preflight_status']='ORIGINAL_IMAGE_IDENTITY_VERIFIED';save()
+    if image['Id']!=image_id:raise ValueError('wrong selected image')
+    if successor is not None and (image.get('Architecture')!='arm64' or image.get('Os')!='linux'):raise ValueError('wrong successor platform')
+    manifest['preflight_status']='SELECTED_IMAGE_IDENTITY_VERIFIED';save()
+    if successor is not None:
+        probe_code="import json,hashlib,subprocess; from pathlib import Path; paths={'binary_sha256':'/opt/su2-install/bin/SU2_CFD','patched_source_sha256':'/opt/SU2/Common/src/toolboxes/MMS/CUserDefinedSolution.cpp','package_versions_sha256':'/opt/package-versions.txt'}; r={k:hashlib.sha256(Path(v).read_bytes()).hexdigest() for k,v in paths.items()}; r['compiler_version']=subprocess.check_output(['g++','--version'],text=True); print(json.dumps(r))"
+        probe=subprocess.run(['docker','run','--rm','--cpus','1','--entrypoint','python3',image_id,'-c',probe_code],capture_output=True,text=True,timeout=30)
+        (output/'successor-probe.stdout').write_text(probe.stdout);(output/'successor-probe.stderr').write_text(probe.stderr)
+        if probe.returncode:raise ValueError('successor identity probe failed')
+        measured=json.loads(probe.stdout)
+        if any(successor.get(key)!=value for key,value in measured.items()):raise ValueError('actual successor image evidence differs from receipt')
+
     if preflight_only:return manifest
     for label in ('baseline','control'):
         case=output/label;shutil.copytree(root/label,case)
         params=json.loads((case/'parameters.json').read_text());params['CFL_NUMBER']=10 if label=='baseline' else 100
+        params['predecessor_image_id']=params['image_id'];params['image_id']=image_id
         (case/'parameters.json').write_text(json.dumps(params,indent=2)+'\n')
         cmd=['docker','run','--rm','--cpus','2','--user',f'{os.getuid()}:{os.getgid()}',
-             '-e','OMP_NUM_THREADS=2','-v',f'{case.resolve()}:/case',p['image_id_required'],'SU2_CFD','case.cfg']
+             '-e','OMP_NUM_THREADS=2','-v',f'{case.resolve()}:/case',image_id,'SU2_CFD','case.cfg']
         (case/'command.json').write_text(json.dumps(cmd)+'\n')
         with (case/'solver.log').open('w') as log:result=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT)
         (case/'exit_code').write_text(str(result.returncode)+'\n')
@@ -65,4 +94,4 @@ def run(root,protocol,output,preflight_only=False):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--protocol',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--preflight-only',action='store_true');a=p.parse_args();run(a.root,a.protocol,a.output,a.preflight_only)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--protocol',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--preflight-only',action='store_true');p.add_argument('--successor-receipt',type=Path);a=p.parse_args();run(a.root,a.protocol,a.output,a.preflight_only,a.successor_receipt)
