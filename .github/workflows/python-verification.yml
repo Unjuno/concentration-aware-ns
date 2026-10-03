@@ -41,6 +41,7 @@ jobs:
       - name: Recompute conditional particle drag audit
         run: |
           python -m tools.audit_solid_particle_drag_branches --output work/solid-particle-drag-branch-audit --source-commit "$GITHUB_SHA"
+          python -m tools.audit_particle_body_force_sensitivity --output work/particle-body-force-audit --source-commit "$GITHUB_SHA"
           g++ --version > work/solid-particle-drag-compiler.txt
           for opt in 0 2; do
             g++ -std=c++17 -O"$opt" evidence/solid-particle-drag-branches-v2/standalone-control.cpp -o "work/solid-particle-drag-O$opt"
@@ -58,6 +59,7 @@ jobs:
             work/published-cell-point-matrix-environment.json
             work/published-cell-point-dyadic-scalar.json
             work/solid-particle-drag-branch-audit/
+            work/particle-body-force-audit/
             work/solid-particle-drag-compiler.txt
             work/solid-particle-drag-O*.json
             work/solid-particle-drag-transcription-check.json

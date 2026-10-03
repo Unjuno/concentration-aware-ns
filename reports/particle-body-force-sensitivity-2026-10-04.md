@@ -34,3 +34,16 @@ bound follows. No upstream issue is justified by this conditional algebra.
 The pending a611973 Python run 37157306920 remains queued on fresh inspection.
 The new audit and CI integration are local commits held until that exact-head
 job terminates, avoiding cancellation. Full goal remains active.
+
+Follow-up verification: a Git-directory-free selected export at e3bd42e8
+reproduces the analysis JSON exactly under Python process/network/Git-open
+guards, with all tools module origins inside the export. Unlike the earlier
+platform-metadata replay, no metadata subprocess warmup is needed. These are
+Python audit hooks, not an operating-system sandbox. Six independent mpmath
+90-digit central differences (h=1e-4,1e-8,1e-16 for both force choices) converge
+to the analytic derivatives; the final diagnostic errors are below 1e-30.
+These diagnostics supplement the interval enclosure and are not certificates.
+The hosted conditional-drag step now also recomputes this body-force audit and
+uploads its output; execution remains pending. An initial invocation from the
+wrong working directory failed before loading Python, then the documented
+export-directory invocation succeeded; no solver run was restarted.
