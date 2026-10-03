@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 255 — fixed-commit clean export at the viscosity-jump audit head
+
+Exported commit `0526de204d4cab95a432db254c148bdb1773c0bc` from tracked Git
+content into a fresh locked CPython 3.14.5 environment on macOS 27.0.1 arm64.
+All 44 report-replay steps and six follow-up checks exited zero. The strict
+comparison covered 230 tracked report/test-evidence files and found no changes.
+The result and sanitized logs are preserved in
+`evidence/clean-export-2026-10-03-success-0526de2/`. This is a Python
+postprocessing/evidence reproducibility check only; hosted CI for this new head
+is pending, and no solver, Lean proof, or physical verdict was rerun or
+upgraded. Goal remains active.
+
 ## Revision 254 — replay the added stress-interpolation analysis
 
 Added the generic same-weight interpolation-covariance checker to the public

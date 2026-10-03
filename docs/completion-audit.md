@@ -1,5 +1,18 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 clean export at viscosity-jump audit head
+
+Exported fixed commit `0526de204d4cab95a432db254c148bdb1773c0bc` from tracked
+Git content into a fresh locked CPython 3.14.5 environment on macOS 27.0.1
+arm64. All 44 report/evidence replay steps and six follow-up checks exited
+zero; all 230 compared tracked files remained byte-identical. The sanitized
+manifest and logs are preserved at
+[`clean-export-2026-10-03-success-0526de2/`](../evidence/clean-export-2026-10-03-success-0526de2/README.md).
+Hosted CI for this new commit is still pending. This verifies the tracked
+Python postprocessing/evidence path for the recorded host and commit; it does
+not rerun OpenFOAM, SU2, PhysicsNeMo, or Lean and does not upgrade any
+scientific verdict.
+
 ### Completion audit refresh — 2026-10-03 stress-interpolation checker replay
 
 Added the symbolic face-interpolation identity as a report-replay step and ran
