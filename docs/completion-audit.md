@@ -1,5 +1,16 @@
 # Completion audit — interim, 2026-09-27
 
+### n32 capture verified, partial derivative matrix — 2026-10-04
+
+The n32 hosted job completes; independent source/input/final-field, raw/mesh
+and shared-triangle checks pass, and complete data are public with a matching
+remote digest. Bounded-batch source reproduces n16's old witness and encloses
+n32 local gradient/curl errors at 86.3341%/9.9634% of reference peaks. The 339-
+test suite and two-case guarded export replay pass. n64/temporal execution,
+native n32 selection, global continuity/extrema and full-goal requirements
+remain unproved. No original gate or solver-defect claim changes. See
+[report](../reports/cell-point-n32-capture-derivative-2026-10-04.md).
+
 ### Fine/temporal native capture launched, results unproved — 2026-10-04
 
 Frozen source 4e60b230 launches hosted run 37147687736 for n32, n64 and n32

@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 277 — verify/publicize n32 capture and screen derivatives in bounded batches
+
+The n32-dt0.001 hosted job succeeds on frozen source 4e60b230. Independent
+checks verify original twenty recipe hashes, inputs/final U/p byte identity,
+read-only probe invariance, complete raw/mesh members and shared triangles.
+All native degeneration/base counts are zero. Complete n32 data are public
+with a GitHub digest matching local SHA256; n64/temporal jobs remain pending.
+
+New numerical source 24af332b retains node arrays but screens tetrahedral rows
+in batches of 10000. n16 reproduces the prior interval witness exactly; the
+n32 selected idealized affine piece has gradient/curl error lower bounds of
+86.3341%/9.9634% of analytic global peaks at its centroid. The full 339-test
+suite passes (1 skip, 89 subtests); both JSONs replay byte for byte in a guarded
+same-host selected export. No whole-program RSS limit is claimed.
+
+This is partial two-case local evidence, not global maxima, convergence rates,
+native n32 branch/continuity certification, original-gate upgrades or a defect/
+physical result. n64 and half-step execution and independent analysis remain
+required. See `reports/cell-point-n32-capture-derivative-2026-10-04.md` and the
+n32 capture/bounded-batch evidence. The full objective stays unchanged and active.
+
 ## Revision 276 — launch unchanged fine and temporal native captures
 
 Frozen source 4e60b23065811d488fe6890ad59af698a81c35b8 launches hosted run

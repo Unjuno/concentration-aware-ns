@@ -1,0 +1,19 @@
+{
+  "status": "ARCHIVES_INPUTS_FINAL_FIELDS_AND_CAPTURE_IDENTITIES_VERIFIED",
+  "case_id": "n32-dt0.001",
+  "runtime_source_commit": "4e60b23065811d488fe6890ad59af698a81c35b8",
+  "raw_archive_sha256": "eba36c01c82ad75c4fa1efb5b55a203d565ac0a1944b02f34d6555766260dda3",
+  "raw_members": 161,
+  "mesh_archive_sha256": "963ff6f3b8d6897b7326ab0606f7c5b26b2870defdb92944e130b45a363ae787",
+  "mesh_members": 14,
+  "capture_manifest_sha256": "4239c17d56dead63d1701a8c9d3b2160ef074f37787cb66eec9b907fc2ed0ed4",
+  "original_input_and_final_fields_byte_identical": true,
+  "probe_fields_unchanged": true,
+  "source_files_verified": 20,
+  "installed_interpolation_sources_verified": 8,
+  "probe_binary_sha256": "e50efc87d4bb874688d3941c9dfca2529a908af384836f85c22020370fe900ba",
+  "limits": [
+    "one completed matrix case; other jobs still pending",
+    "floating topology and later local/continuous quality remain separate"
+  ]
+}
