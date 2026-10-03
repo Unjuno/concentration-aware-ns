@@ -1,0 +1,8 @@
+{
+  "status": "ACCEPTED_NOT_RESULT",
+  "requested_utc": "2026-10-03T22:59:39.695644+00:00",
+  "expected_commit": "c9f0c4367aa5c06b4c875f9acd74739de2cef7c7",
+  "tag": "su2-cfl-successor-hosted-v1",
+  "purpose": "Fresh isolated ARM64 build and fresh matched full-horizon pair; local content store was unusable",
+  "existing_tag_verification_retained": 37159301543
+}
