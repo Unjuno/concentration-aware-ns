@@ -11,6 +11,7 @@ Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
+- [Native position replay and enclosed local neighborhood](reports/cell-point-position-neighborhood-2026-10-04.md)
 - [Enclosed local affine gradient and curl witness](reports/cell-point-local-derivative-2026-10-04.md)
 - [Executed n16 cellPoint runtime capture and public raw mesh](reports/openfoam-cell-point-capture-n16-2026-10-04.md)
 - [Built-in cellPoint interpolation and missing mesh evidence](reports/openfoam-cell-point-contract-2026-10-04.md)

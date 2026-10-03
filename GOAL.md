@@ -1,5 +1,30 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 275 — execute native position queries and enclose a unique local region
+
+An isolated ARM64 read-only replay restores the existing public n16 mesh/U/p
+without evolution. Nineteen native position queries select the target face
+vertices and exactly match the explicit tet overload; no nearest-tet fallback
+is logged. Twelve native candidates per query are recorded; nine source files
+and two stock libraries match the pin/original binary receipts, and U/p are
+unchanged. Native nodal data exactly match the earlier derivative witness.
+
+Separately, Arb128 proves the radius-1/128 ball around the exact centroid is
+strictly inside the target candidate and outside all eleven others of cell
+5332. All nineteen decoded native points and candidate identities match this
+region/list. The 330-test suite passes (1 skip, 85 subtests); guarded selected
+export reproduces the analytic JSON byte for byte. Cross-host NumPy secant
+reference diagnostics differ by about 1e-16, so both outputs and the byte-
+identity failure are retained. The frozen native verifier passes on both hosts.
+
+This closes local idealized overlap and finite native-query evidence gaps;
+it does not certify arbitrary floating inputs, global geometry/continuity,
+automatic cell location, larger resolutions or whole-domain extrema. Earlier
+95.1187%/9.1092% error bounds remain centroid results, not bounds throughout
+the ball. Original gates, physical/proof claims and the full goal remain open.
+See `reports/cell-point-position-neighborhood-2026-10-04.md` and the native
+query/local-neighborhood evidence directories. No new upstream defect is claimed.
+
 ## Revision 274 — enclose one actual local affine derivative witness
 
 The n16 runtime capture now yields an Arb96 local witness on tet CSV row 71793

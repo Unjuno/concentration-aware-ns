@@ -1,0 +1,34 @@
+{
+  "runtime_source_commit": "4bea7e3731e7e19ac1741f928f82845332f0fe71",
+  "independent_analyzer_source_commit": "6e7dedaa61d684dd193f334e7c1195347c661f89",
+  "independent_status_matches": true,
+  "cross_host_analysis_byte_identical": false,
+  "floating_numpy_diagnostic_differences": [
+    {
+      "h": 0.00390625,
+      "hosted": 1.887379141862766e-15,
+      "local": 1.7486012637846216e-15,
+      "absolute_difference": 1.3877787807814457e-16
+    },
+    {
+      "h": 1.52587890625e-05,
+      "hosted": 8.415490526658687e-13,
+      "local": 8.414380303634061e-13,
+      "absolute_difference": 1.1102230246251565e-16
+    }
+  ],
+  "all_other_analysis_content_identical": true,
+  "all_19_decoded_native_query_points_strictly_within_certified_ball": true,
+  "all_12_native_candidate_labels_match_ball_certificate_at_every_query": true,
+  "maximum_query_distance_squared_upper": {
+    "lower_rational": "9903520314284168099099836449/649037107316853453566312041152512",
+    "upper_rational": "9903520314284168099099836449/649037107316853453566312041152512",
+    "ball": "[1.5258789062501734723475976857938962456e-5 +/- 3.05e-43]",
+    "display_lower": 1.5258789062501735e-05,
+    "display_upper": 1.5258789062501735e-05
+  },
+  "native_manifest_sha256": "007531f277246cf59d27a68fd221a8265ba1b6022a2347a5aa01c18d13206571",
+  "hosted_run_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37146624489",
+  "scope": "Cross-host reanalysis preserves tiny NumPy secant-reference diagnostic differences. Both pass the frozen absolute 1e-8 diagnostic threshold; this is not bit-identical or continuum certification.",
+  "initial_cross_host_byte_identity_assertion": "FAILED; differences preserved, not normalized away"
+}

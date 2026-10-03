@@ -1,0 +1,13 @@
+{
+  "numerical_source_commit": "6e7dedaa61d684dd193f334e7c1195347c661f89",
+  "source_sha256": {
+    "tools/cell_point_local_neighborhood.py": "f85ce566ae69b93152e7f69a6dc916bc910acd033709a2be776c56c6ff336b26",
+    "tools/audit_cell_point_local_neighborhood.py": "c10b8b0abb608ff00fec297df3241237aabbffda945f0b4b2ae587772d6d7291",
+    "tests/test_cell_point_local_neighborhood.py": "49b07c8e76faeccfb5e142727fe927c5d226d6b167235749a7192aca19a5545a"
+  },
+  "tests": "330 passed, 1 skipped, 85 subtests passed",
+  "guarded_export_replay_json_byte_identical": true,
+  "analysis_sha256": "4a68edc6b92d5b7a18fc7b19edd9d02b82d556a8b59cf272c23e148c27c7d4e4",
+  "replay_analysis_sha256": "4a68edc6b92d5b7a18fc7b19edd9d02b82d556a8b59cf272c23e148c27c7d4e4",
+  "scope": "Same-host locked-dependency selected-source export; not independent native execution or universal C-level isolation"
+}

@@ -1,5 +1,18 @@
 # Completion audit — interim, 2026-09-27
 
+### Native position replay and local neighborhood achieved — 2026-10-04
+
+Hosted run 37146624489 replays the original mesh/fields read-only without CFD
+evolution. Nineteen native position queries select the target vertices and
+exactly match the explicit overload; source/binary and U/p identities pass.
+Arb128 encloses a radius-1/128 ball inside exactly one of twelve candidates of
+cell 5332, and every decoded native query belongs to that ball. This verifies
+finite runtime samples and local idealized uniqueness, not all floating inputs
+or global continuity. The 330-test suite and same-host analytic export replay
+pass; cross-host NumPy diagnostic byte differences are explicitly preserved.
+Original gates, larger cases, physical/proof and full-goal requirements remain
+open. See [report](../reports/cell-point-position-neighborhood-2026-10-04.md).
+
 ### Local affine derivative witness enclosed — 2026-10-04
 
 A captured n16 tet's idealized real-affine Jacobian and independent analytic
