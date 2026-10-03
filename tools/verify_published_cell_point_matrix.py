@@ -34,7 +34,7 @@ def verify(output,verification_source_commit):
         dest=output/key/'native';shutil.copytree(original,dest)
         previous=json.loads((original/'analysis.json').read_text())
         current=analyze(dest,protocol)
-        baseline=ROOT/'evidence/cell-point-uniform-ball-error-v1'/key/'analysis.json'
+        baseline=ROOT/'evidence/cell-point-uniform-ball-error-v2'/key/'analysis.json'
         old=json.loads(baseline.read_text());analytic=output/key/'analytic'
         audit(protocol,analytic,old['numerical_source_commit'])
         identical=(analytic/'analysis.json').read_bytes()==baseline.read_bytes()
