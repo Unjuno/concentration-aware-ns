@@ -71,3 +71,34 @@ jobs:
             work/solid-particle-drag-transcription-check.json
           if-no-files-found: warn
           retention-days: 90
+
+  su2-cfl-successor:
+    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/su2-cfl-successor-')
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+      - name: Prepare exact paired inputs
+        run: |
+          mkdir -p work/su2-hosted-successor
+          uname -m > work/su2-hosted-successor/architecture.txt
+          python -m tools.prepare_su2_full_horizon_cfl_pair --output work/su2-hosted-successor/inputs --protocol protocols/su2-n32-full-horizon-cfl-control-v1.json > work/su2-hosted-successor/preparation.json
+      - name: Build frozen successor and preserve image identity
+        run: |
+          docker build --platform linux/arm64 --iidfile work/su2-hosted-successor/image-id -t cans-su2-hosted-successor runtime/su2 > work/su2-hosted-successor/build.log 2>&1
+          python -m tools.collect_su2_successor_image --image-id "$(cat work/su2-hosted-successor/image-id)" --output work/su2-hosted-successor/image-audit
+      - name: Run fresh matched full-horizon pair
+        run: python -m tools.run_su2_full_horizon_cfl_pair --root work/su2-hosted-successor/inputs --protocol protocols/su2-n32-full-horizon-cfl-control-v1.json --output work/su2-hosted-successor/results --successor-receipt work/su2-hosted-successor/image-audit/receipt.json
+      - name: Preserve native successor evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-full-horizon-successor-${{ github.sha }}
+          path: work/su2-hosted-successor/
+          if-no-files-found: warn
+          retention-days: 90
