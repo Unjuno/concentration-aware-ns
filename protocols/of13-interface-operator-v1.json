@@ -1,0 +1,64 @@
+{
+  "version": "of13-interface-operator-v1",
+  "status": "prospective package operator probe; predictions derived before package execution",
+  "target": {
+    "implementation": "OpenFOAM Foundation 13 Debian package",
+    "package_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam13_20260624_arm64.deb",
+    "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+    "inspected_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "runtime_recipe": "runtime/openfoam13/Dockerfile",
+    "platform": "linux/arm64",
+    "hosted_runner": "ubuntu-24.04-arm",
+    "runtime_identity": "Record resolved image ID, package inventory, compiler, linked libraries and source hashes; a fresh image is not the historic matrix runtime."
+  },
+  "inputs": {"nx": [16, 32, 64], "ny": 2, "nz": 2, "mu_left": 1, "mu_right": 100, "traction": 1, "density": 1},
+  "geometry": "x in [-1,1], y,z in [0,1], orthogonal uniform cell-centred block; interface x=0 aligned with an internal face; fixed x walls and translational y/z cyclic patches",
+  "model": {
+    "velocity": "U=(0,tau*x/mu_side,0); scalar shear=U_y; positive prescribed kinematic mu; rho=1",
+    "scalar_equation": "negative fvm::laplacian(muFace,shear)=0; no pressure, time advancement, interface advection or full momentum model",
+    "means": ["arithmetic common linear face interpolation", "harmonic mean on the internal coefficient jump with initialized boundary values"],
+    "gradient": "Gauss linear; orthogonal snGrad; Gauss linear orthogonal laplacian",
+    "constant_control": "constantControl=1 including fixed x walls, y/z cyclic, face coefficient uniformly one; assemble but do not solve",
+    "solver": "shear PCG with DIC, tolerance 1e-12, relTol 0"
+  },
+  "records": [
+    "Frozen harness commit, protocol, generator, utility, runner and every case-input hash before production execution",
+    "Cell centres/volumes/values; raw and boundary-completed matrix diagonal, source, internal upper/lower and all patch coefficients",
+    "All face centres/area vectors/owners/neighbours, coefficient, distance coefficient, snGrad, physical flux and matrix flux",
+    "Native scalar residual, independently reconstructed complete b-Au, oriented physical face balance, div(faceFlux)*V, and normalized SolverPerformance as separate quantities",
+    "Exact-nodal and solved shear states; estimated gradient tensors and arithmetic parent-product/separated explicit-correction face vectors and divergences"
+  ],
+  "acceptance": {
+    "run_integrity": "Three cases, five named JSON snapshots each, normal end markers, container exit zero, all finite arrays, geometry/input hashes and image/platform match recorded values",
+    "operator_quality": {
+      "absolute_cell_value_error": 1e-8,
+      "absolute_complete_integrated_residual": 1e-8,
+      "absolute_flux_balance_difference": 1e-9,
+      "relative_physical_shear_flux_error_to_chain": 1e-8,
+      "absolute_matrix_flux_plus_physical_flux": 1e-9,
+      "absolute_x_face_explicit_correction": 1e-10,
+      "absolute_explicit_correction_integrated_divergence": 1e-9
+    },
+    "constant_control": {
+      "absolute_complete_residual_and_physical_flux": 1e-12,
+      "source_prediction": "native residual = complete b-Au + sum_cyclic(boundaryCoeffs*u_neighbour); with this constant control it is 2*h per cell, h=2/nx",
+      "absolute_prediction_difference": 1e-12,
+      "disposition": "OBSERVED or NOT_OBSERVED separately from physical/operator-quality gate; API contract/source-package identity and duplicate search are required before an upstream defect claim"
+    }
+  },
+  "predictions": {
+    "exact_nodal_arithmetic_interface_flux_ratio": "10201/400",
+    "solved_arithmetic_flux_ratio": "1/[1-(h/2)*(99/101)^2]",
+    "harmonic_flux_and_cell_values": "exact continuum chain values",
+    "explicit_correction": "x-normal faces zero; y-normal correction vectors generally nonzero but paired divergence cancels; do not require all face vectors to vanish",
+    "estimated_gradient": "kink-adjacent Gauss gradients differ from exact one-sided gradients; preserve both before/after rather than assuming equality"
+  },
+  "limits": [
+    "This auxiliary interface probe does not replace or complete the original smooth 3D concentration benchmark or its AMR quality requirement.",
+    "No assertion of packaged-source/binary equivalence follows merely from an upstream pin; compare supplied package source hashes and record linked libraries.",
+    "Runtime/build failure is STOP/INCOMPLETE, not numerical quality FAIL.",
+    "The arithmetic interface effect is a known conditional diffusion-discretization control, not automatically an implementation defect.",
+    "Native residual discrepancy is a separate diagnostic candidate. No molecular ordering, constitutive-viscosity change or continuum blow-up follows.",
+    "The source prediction and scalar stencil were already analytically inspected; this is prospective execution validation, not a blinded discovery experiment."
+  ]
+}

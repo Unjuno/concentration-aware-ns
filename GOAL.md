@@ -1,5 +1,28 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 259 — freeze an auxiliary package operator probe
+
+Prepared a prospective stationary scalar Couette operator probe on aligned
+16/32/64 by 2 by 2 Cartesian grids. Its committed protocol separates process
+integrity, complete matrix/physical-flux quality and the native scalar residual
+prediction. The specified constant field has complete residual and physical
+flux zero; source inspection predicts an extra cyclic load in the native
+scalar residual. This is a candidate to test, not yet a package reproduction.
+The utility, case generator, independent matrix/flux analyzer, runner and
+ARM64 hosted workflow are frozen together before production execution.
+
+The exact official Debian package hash matches the runtime recipe. Its 25
+relevant supplied source files match source commit
+`18870c24d21c6b982e2cdec27b2f59738cca5f90` byte for byte, and three selected
+library payload hashes are recorded for comparison with runtime-linked files.
+This does not prove how those binaries were compiled. The local containerd
+blob read failed even during a fresh additive build; preserved environment
+logs classify this as STOP/INCOMPLETE, with no solver quality verdict. Use a
+fresh hosted ARM64 VM for the package run and retain its full logs/identity.
+The probe is auxiliary to the original smooth 3D concentration and AMR work;
+those open gates and all molecular/constitutive bridges remain open.
+Goal remains active.
+
 ## Revision 258 — clean export of compatible-interface analysis
 
 Exported fixed commit `b0e590e3c1b9b19044748fac7ad06109785f6fe5` from

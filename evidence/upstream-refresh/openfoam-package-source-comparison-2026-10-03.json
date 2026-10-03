@@ -1,0 +1,201 @@
+{
+  "observed_at_utc": "2026-10-03T10:24:41.448299+00:00",
+  "package_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam13_20260624_arm64.deb",
+  "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+  "inspected_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "files": [
+    {
+      "path": "src/MomentumTransportModels/momentumTransportModels/linearViscousStress/linearViscousStress.C",
+      "package_source_sha256": "cb10dee31fc2fd6e78a42a238fac52b45be918e5f366a4a0b25a72a2054c1fc7",
+      "bytes": 3993,
+      "upstream_sha256": "cb10dee31fc2fd6e78a42a238fac52b45be918e5f366a4a0b25a72a2054c1fc7",
+      "byte_equal": true
+    },
+    {
+      "path": "src/MomentumTransportModels/momentumTransportModels/momentumTransportModel.C",
+      "package_source_sha256": "7e393a1de09c1e4d5f325552d6fc6adc8135309977188f6c56f4b006b159edc8",
+      "bytes": 4340,
+      "upstream_sha256": "7e393a1de09c1e4d5f325552d6fc6adc8135309977188f6c56f4b006b159edc8",
+      "byte_equal": true
+    },
+    {
+      "path": "src/OpenFOAM/matrices/lduMatrix/lduMatrix/lduMatrixATmul.C",
+      "package_source_sha256": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+      "bytes": 9244,
+      "upstream_sha256": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+      "byte_equal": true
+    },
+    {
+      "path": "src/OpenFOAM/primitives/Tensor/TensorI.H",
+      "package_source_sha256": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+      "bytes": 23499,
+      "upstream_sha256": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/fields/fvPatchFields/constraint/cyclic/cyclicFvPatchField.C",
+      "package_source_sha256": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8",
+      "bytes": 5854,
+      "upstream_sha256": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/divSchemes/gaussDivScheme/gaussDivScheme.C",
+      "package_source_sha256": "61ff25e13a610361dfcb7ff1a1b1d575653317df974ac001718a90129392204f",
+      "bytes": 2268,
+      "upstream_sha256": "61ff25e13a610361dfcb7ff1a1b1d575653317df974ac001718a90129392204f",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvc/fvcDiv.C",
+      "package_source_sha256": "c2d24b8fa8916b4bd750715db1ed5b55da0a2c8e8cd4210566b2e4ef113d4853",
+      "bytes": 5317,
+      "upstream_sha256": "c2d24b8fa8916b4bd750715db1ed5b55da0a2c8e8cd4210566b2e4ef113d4853",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvc/fvcFluxTemplates.C",
+      "package_source_sha256": "ec1d4186f407d85a444d2d7b9e2487cd30c5dc4284591c0703cde470a98711c2",
+      "bytes": 4642,
+      "upstream_sha256": "ec1d4186f407d85a444d2d7b9e2487cd30c5dc4284591c0703cde470a98711c2",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvc/fvcSurfaceIntegrate.C",
+      "package_source_sha256": "2f598d0827ab2e79b062bb01cfd45a07a03e4e0f4594a05608ee14d3ffbfc62f",
+      "bytes": 5497,
+      "upstream_sha256": "2f598d0827ab2e79b062bb01cfd45a07a03e4e0f4594a05608ee14d3ffbfc62f",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvm/fvmDiv.C",
+      "package_source_sha256": "1ff2b27df2c552f81995d0db78fd4db89205b7e3b93dc0d220866337387a67b8",
+      "bytes": 3202,
+      "upstream_sha256": "1ff2b27df2c552f81995d0db78fd4db89205b7e3b93dc0d220866337387a67b8",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C",
+      "package_source_sha256": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e",
+      "bytes": 8043,
+      "upstream_sha256": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvm/fvmSup.C",
+      "package_source_sha256": "418ef75e73f87a80f1f9716eaf3a8b46ae3e84fdfac2c4207795b2af0da7b75f",
+      "bytes": 5350,
+      "upstream_sha256": "418ef75e73f87a80f1f9716eaf3a8b46ae3e84fdfac2c4207795b2af0da7b75f",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+      "package_source_sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+      "bytes": 4251,
+      "upstream_sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C",
+      "package_source_sha256": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5",
+      "bytes": 6372,
+      "upstream_sha256": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C",
+      "package_source_sha256": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800",
+      "bytes": 7916,
+      "upstream_sha256": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H",
+      "package_source_sha256": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7",
+      "bytes": 3684,
+      "upstream_sha256": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C",
+      "package_source_sha256": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b",
+      "bytes": 5228,
+      "upstream_sha256": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C",
+      "package_source_sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+      "bytes": 57415,
+      "upstream_sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.H",
+      "package_source_sha256": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5",
+      "bytes": 27025,
+      "upstream_sha256": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C",
+      "package_source_sha256": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+      "bytes": 6510,
+      "upstream_sha256": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear/linear.H",
+      "package_source_sha256": "7eb41d852dc0f00a63a903fd25b49801e06aa0fe69a6ca5dc4d0d5c8f46c9310",
+      "bytes": 3535,
+      "upstream_sha256": "7eb41d852dc0f00a63a903fd25b49801e06aa0fe69a6ca5dc4d0d5c8f46c9310",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolate.C",
+      "package_source_sha256": "3eff326b5359debce798e933ffe78aface4f4fabc1258329ddb35bae2792a3e8",
+      "bytes": 7770,
+      "upstream_sha256": "3eff326b5359debce798e933ffe78aface4f4fabc1258329ddb35bae2792a3e8",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C",
+      "package_source_sha256": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c",
+      "bytes": 12079,
+      "upstream_sha256": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C",
+      "package_source_sha256": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461",
+      "bytes": 10655,
+      "upstream_sha256": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461",
+      "byte_equal": true
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.H",
+      "package_source_sha256": "8030ce24516498acb7028c9d9d9e7ac0f9ddb953206a04f3ca61b3c4023a2807",
+      "bytes": 8767,
+      "upstream_sha256": "8030ce24516498acb7028c9d9d9e7ac0f9ddb953206a04f3ca61b3c4023a2807",
+      "byte_equal": true
+    }
+  ],
+  "scope": "Supplied source text in exact Debian payload compared with pinned source; selected library payload hashes recorded for future runtime comparison. Compiler reconstruction equivalence is not proved.",
+  "linked_library_payloads": [
+    {
+      "path": "./opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libOpenFOAM.so",
+      "bytes": 11449440,
+      "sha256": "77da6b8ddd48a88eb256b86a3f1cab1a003ee9b3998765a8a9b79bf9c70f03cc"
+    },
+    {
+      "path": "./opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libfiniteVolume.so",
+      "bytes": 32121264,
+      "sha256": "1665fea121e152cca2ab630edfad80169a781008750acbe4b43509939a2ca9e2"
+    },
+    {
+      "path": "./opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libmeshTools.so",
+      "bytes": 5333032,
+      "sha256": "f29b819950c3886a7048c25f7773916939f7c53d12b8e1544499e2918352a601"
+    }
+  ]
+}

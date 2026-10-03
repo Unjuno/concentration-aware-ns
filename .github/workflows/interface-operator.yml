@@ -1,0 +1,57 @@
+name: Foundation 13 interface operator
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/interface-operator.yml'
+      - 'runtime/of13-interface-operator/**'
+      - 'runtime/openfoam13/Dockerfile'
+      - 'tools/build_interface_operator_cases.py'
+      - 'tools/run_interface_operator_probe.py'
+      - 'tools/analyze_interface_operator_probe.py'
+      - 'protocols/of13-interface-operator-v1.json'
+      - 'requirements-interface-operator.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: interface-operator-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  operator:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install frozen analysis dependencies
+        run: python -m pip install -r requirements-interface-operator.txt
+      - name: Build pinned-package runtime in the fresh runner
+        run: |
+          mkdir -p evidence/of13-interface-runtime-build
+          set -o pipefail
+          docker build --platform linux/arm64 -t concentration-aware-ns:of13-interface-v1 runtime/openfoam13 2>&1 | tee evidence/of13-interface-runtime-build/build.log
+          docker image inspect concentration-aware-ns:of13-interface-v1 > evidence/of13-interface-runtime-build/image-inspect.json
+      - name: Execute frozen three-grid operator probe
+        run: python -m tools.run_interface_operator_probe --image concentration-aware-ns:of13-interface-v1
+      - name: Independently compare matrices, fluxes and exact chains
+        run: |
+          python -m tools.analyze_interface_operator_probe --case-root work/of13-interface-operator-v1/cases --output evidence/of13-interface-operator-v1/analysis.json
+          python -m pip freeze > evidence/of13-interface-operator-v1/analysis-packages.txt
+      - name: Preserve complete or partial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: of13-interface-operator-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            evidence/of13-interface-runtime-build/
+            evidence/of13-interface-operator-v1/
+          if-no-files-found: error
+          retention-days: 90

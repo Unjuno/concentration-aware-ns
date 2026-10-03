@@ -1,0 +1,2 @@
+# Preserve the original failed-build diagnostic, including its source-excerpt whitespace.
+evidence/environment/of13-interface-runtime-recovery-2026-10-03/build.log whitespace=-blank-at-eol
