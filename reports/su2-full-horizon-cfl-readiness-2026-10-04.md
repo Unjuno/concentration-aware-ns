@@ -32,3 +32,15 @@ runner rejects the unavailable original image with zero cases started.
 Artifacts are under `evidence/su2-full-horizon-runner-preflight-v1`.
 The runner does not yet implement the separately frozen rebuilt-image successor;
 that healthy isolated execution lane still has to be established.
+
+Successor support (source 8df1c63): `--successor-receipt FILE` explicitly
+selects a new image while preserving the original prepared config/mesh checks.
+The receipt must bind the frozen source, architecture and recipe hashes and
+record binary, patched C++ source, package-list and compiler identities. An
+actual image probe recomputes those fields before either solver starts; a
+receipt alone is not accepted as runtime evidence. Both fresh runs use that
+same new image, and their parameters record actual and predecessor IDs.
+The original-only default still retains its image gate. Six history tests and
+Python compilation pass, but the successor path has not executed on a healthy
+runtime; no build, binary equivalence or solver result is claimed. A new
+image build/receipt and healthy isolated capacity remain required.
