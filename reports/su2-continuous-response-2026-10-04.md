@@ -41,3 +41,19 @@ zeroed linear/quadratic constant rejections. All three response records remain
 identical to v1; evidence is `evidence/su2-continuous-response-v2`, source
 0777d12. This does not establish the hypothetical strong solution or a discrete
 solver-error connection. Hosted correction run remains queued.
+
+Additive v3 removes fixed-lag restriction for the comparison model. Let
+0<=tau(t)<=h be measurable and drive v with f(t-tau(t)). At each time,
+exp(tau)-1<=exp(h)-1 and exp(2*tau)-1<=exp(2*h)-1, so the same F0 and
+energy estimate hold. Ideal sample-and-hold uses tau(t)=t-floor(t/h)*h;
+on the first interval its force is f(0), requiring no negative-time extension.
+Assume spatial smoothness, absolutely continuous L2 energy and the energy
+identity almost everywhere, which accommodates forcing jumps. Existence and
+these regularity conditions are still assumptions, not proved conclusions.
+All three interval response records are unchanged. Twenty-seven exact rational
+schedule controls cover startup, interiors and boundaries for the three time
+steps. These ideal controls do not verify SU2's floating clock or BDF assembly.
+V3 binds the frozen study protocol hash; evidence is
+`evidence/su2-continuous-response-v3`, numerical source 852d6ea. A prospective
+matched discrete stability/residual study remains necessary before assigning
+observed SU2 error to this continuous comparison.
