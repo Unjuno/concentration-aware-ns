@@ -1,0 +1,23 @@
+{
+  "status": "LOCAL_SUITE_PASS_WITH_SNAPSHOT_SOURCE_CLOSURE",
+  "executed_commit": "7d12d5064906a99d10dba8d3261293100dffa5ef",
+  "snapshot_commit": "aa3569176bad1ef7a26a9c12d3cfa4c133555cc6",
+  "compared_paths": [
+    "tools",
+    "tests",
+    "protocols",
+    "requirements.txt",
+    "requirements-verification.txt",
+    "requirements-verification-locked.txt"
+  ],
+  "changed_paths": [],
+  "evidence_difference": "Four public release/tag metadata files only; scientific inputs unchanged",
+  "passed": 386,
+  "skipped": 1,
+  "subtests_passed": 89,
+  "elapsed_seconds": 125.5,
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.1.8 ]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "log_sha256": "bbf200db766d8a38f801b6c7ac8a600e8be6015b4a2df3baf08a7864aca6f2d0",
+  "scope": "Local benchmark suite; not hosted CI or upstream/native/physical verification"
+}
