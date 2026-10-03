@@ -9,3 +9,5 @@ Three protocol files are `protocols/of13-cell-point-matrix-query-{n32,n64,n32hal
 Fourteen focused tests (two subtests) pass, covering existing replay corruption controls and six new checks for target/hash substitution, fixed schedule, strict ball membership and uncertain-centre rejection. Execution results are unproved at launch; future receipts must distinguish runtime failure, input/source integrity, finite position agreement, field quality and global certification. The full objective remains active.
 
 The full local suite passes: **354 passed, 1 skipped, 89 subtests**. The preceding publication commit `834cc2d759be4ad70518e83ec1c0e8eaefe40ae8` separately passed hosted Python CI run 37153357450. Neither result proves the pending native matrix runtime.
+
+[Hosted replay run 37153721711](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37153721711) is confirmed active on exact source `560a786f35749dcc0c1d24ebcc6839a1edcd0f77`. All three matrix jobs are present and active; numerical execution has not yet been verified. Launch and preceding CI receipts are stored in `evidence/cell-point-matrix-native-query-launch-v1`.
