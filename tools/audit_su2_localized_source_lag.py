@@ -6,11 +6,11 @@ from pathlib import Path
 
 import numpy as np
 
-from tools.high_gradient_reference import fields
+from tools.reference import fields
 
 
-def audit():
-    base = Path("evidence/su2-study-v1")
+def audit(base=Path("evidence/su2-study-v1")):
+    base = Path(base)
     summary = json.loads((base / "summary.json").read_text())
     cases = [row for row in summary["cases"] if row["case"].startswith("n64-dt")]
     rng = np.random.default_rng(20261001)
@@ -28,8 +28,8 @@ def audit():
         if abs(round(end / h) * h - end) > 1e-14:
             raise ValueError("endpoint is not aligned with time step")
 
-        old = fields(points, N=params["n"], nu=params["nu"], time=end - h)["force"]
-        target = fields(points, N=params["n"], nu=params["nu"], time=end)["force"]
+        old = fields(points, sigma=params["sigma"], nu=params["nu"], time=end - h)["force"]
+        target = fields(points, sigma=params["sigma"], nu=params["nu"], time=end)["force"]
         delta = old - target
         norms = np.linalg.norm(delta, axis=-1)
         target_norms = np.linalg.norm(target, axis=-1)
@@ -45,6 +45,8 @@ def audit():
     orders = [math.log2(rows[i]["rms_force_difference"] / rows[i+1]["rms_force_difference"])
               for i in range(len(rows)-1)]
     return {
+        "reference_family": "tools.reference: periodic exponential-envelope MMS, archive sigma and nu",
+        "supersedes": "Prior source-lag receipt used the unrelated high-gradient family and is inapplicable to SU2 study-v1",
         "scope": "Analytic manufactured-force pointwise old-time versus target-time mismatch only. This is not a PDE solution-error attribution or a solver defect finding.",
         "source_time_contract": "completed k updates represent k*dt; callback uses (k-1)*dt",
         "cases": rows,
@@ -55,7 +57,7 @@ def audit():
 
 if __name__ == "__main__":
     result = audit()
-    out = Path("evidence/tests/su2-localized-source-lag.json")
+    out = Path("evidence/tests/su2-localized-source-lag-v2.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
