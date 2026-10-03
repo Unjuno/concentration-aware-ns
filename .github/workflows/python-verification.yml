@@ -48,6 +48,10 @@ jobs:
             "work/solid-particle-drag-O$opt" > "work/solid-particle-drag-O$opt.json"
           done
           python -m tools.check_solid_particle_drag_transcriptions --input work/solid-particle-drag-O0.json --input work/solid-particle-drag-O2.json --output work/solid-particle-drag-transcription-check.json
+      - name: Recompute continuous SU2 manufactured-force bounds
+        run: |
+          python -m tools.bound_su2_force_time_displacement --output work/su2-force-coarse-bound --source-commit "$GITHUB_SHA"
+          python -m tools.tighten_su2_force_envelope_bound --output work/su2-force-envelope-bound --source-commit "$GITHUB_SHA"
       - name: Preserve published-matrix verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,6 +64,8 @@ jobs:
             work/published-cell-point-dyadic-scalar.json
             work/solid-particle-drag-branch-audit/
             work/particle-body-force-audit/
+            work/su2-force-coarse-bound/
+            work/su2-force-envelope-bound/
             work/solid-particle-drag-compiler.txt
             work/solid-particle-drag-O*.json
             work/solid-particle-drag-transcription-check.json

@@ -44,3 +44,11 @@ The three numeric bound records remain identical to v1. Evidence is preserved
 under `evidence/su2-force-envelope-upper-v2`, numerical source 0f2b2f8. This
 focused result is separate from the earlier 377-test full-suite result and
 pending hosted run; no broader validation is claimed.
+
+Guarded source replay at 5aafc291 exports source, the prior coarse receipt and
+all three original archives while excluding the envelope output. Python
+process/network/Git-open guards are active during fresh input validation and
+calculation. The v2 output is byte-identical; origins, export hash, wrapper and
+log are preserved. Same-host dependency reuse and Python audit-hook scope
+remain explicit. Hosted CI is still queued, and these new local commits are
+not inferred to have passed it.

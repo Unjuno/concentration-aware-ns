@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 292 — validate and replay the tightened force bound
+
+Envelope-aware upper endpoints are about forty times smaller than the coarse
+bound. Input source/archive/parameter checks and five corruption controls pass;
+previous coarse expressions are recomputed. A guarded source export with the
+output excluded reproduces v2 exactly on the same host. Prepared hosted CI
+now recomputes both force bounds and preserves outputs. Its execution remains
+pending; full objective and global/physical/proof requirements remain active.
+See `reports/su2-force-envelope-upper-2026-10-04.md`.
+
 ## Revision 291 — bound corrected MMS force displacement across the domain
 
 Derived conservative Euclidean bounds for the executed SU2 reference's linear
