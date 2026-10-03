@@ -1,0 +1,7 @@
+{
+  "method": "independent SymPy differentiation",
+  "sympy_version": "1.14.0",
+  "residual": "0",
+  "source_formula": "(x(r)*r+b)/(1+x(r))",
+  "scope": "Fixed scalar branch, constant b; sign of b not used by differentiation"
+}

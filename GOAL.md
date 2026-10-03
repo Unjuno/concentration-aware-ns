@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 289 — verify the body-force restriction analytically
+
+Arb128 proves a synthetic smooth-branch local derivative above one with
+opposing body force, while the matched zero-force control is below one.
+Independent symbolic differentiation and repeated same-host JSON pass.
+This prevents extending the earlier body-force-free contraction to arbitrary
+forcing; no native trajectory or physical instability is established.
+Current publication CI remains queued, so new commits remain local.
+Full goal active; see `reports/particle-body-force-sensitivity-2026-10-04.md`.
+
 ## Revision 288 — prepare hosted branch and scalar-transcription checks
 
 Added conditional drag recomputation and g++ -O0/-O2 scalar controls to Python
