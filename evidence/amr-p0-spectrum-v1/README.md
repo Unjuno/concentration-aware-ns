@@ -40,3 +40,7 @@ This uses analytic cube integration, a lossless voxel repetition and the
 corrected FFT; it does not interpolate a smooth field. See the
 [`report`](../../reports/openfoam-amr-p0-spectrum-2026-10-03.md) for formulas
 and the distinction between P0 spectral mass and ordinary continuum derivatives.
+
+The guarded fresh-export replay produces thirteen byte-identical files;
+[`its record`](../amr-p0-spectrum-clean-export-e6e3480/README.md) states
+source, environment, access-guard and initial launch-error limits.

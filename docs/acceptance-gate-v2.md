@@ -35,6 +35,17 @@ result does not apply to a fixed known manufactured forcing or prove a software
 defect. Keep the hypothesis/reproduction verdict tied to the exact stated
 observable family.
 
+Spectral metrics must name the reconstructed field, coefficient normalization,
+mode set and omitted-mode treatment. A finite-band result supports that band;
+a whole-field L2 claim also needs the outside mass or a valid upper bound for
+it. For a declared cube-constant velocity, analytic cell integrals and Parseval
+can recover complete outside-band mass; this does not certify an ordinary
+continuum gradient or dissipation norm for a discontinuous P0 field. Native
+Gauss tensors and derivatives of a named continuous reconstruction are distinct
+objects. The archived example and formula controls are in
+`reports/openfoam-amr-p0-spectrum-2026-10-03.md`. No earlier solver verdict or
+quality threshold is changed by this scope requirement.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.

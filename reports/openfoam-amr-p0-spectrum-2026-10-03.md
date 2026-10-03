@@ -111,3 +111,11 @@ Raw inputs remain the four original published archives from frozen CFD commit
 3566f890; no prior artifact, threshold or original gate result is overwritten.
 Local full suite: 281 passed, one skipped and 83 subtests passed. No new upstream
 issue is justified by these representation diagnostics alone.
+
+A guarded fresh code export of `e6e3480` repeats all twelve states and produces
+strict byte identity in the analysis JSON and all twelve coefficient arrays.
+Python-level process/network/Git-file access is blocked and every tools module
+must originate in the export. This is a same-host/interpreter comparison,
+with external original raw inputs; it is not a native-library syscall sandbox.
+Initial CWD/path launch mistakes are excluded from this accepted check. See
+[`export validation`](../evidence/amr-p0-spectrum-clean-export-e6e3480/README.md).

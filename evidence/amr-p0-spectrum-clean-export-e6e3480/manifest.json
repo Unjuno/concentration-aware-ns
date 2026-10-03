@@ -1,0 +1,105 @@
+{
+  "status": "PASS_GUARDED_EXPORTED_CODE_REPLAY_AND_STRICT_13_FILE_IDENTITY",
+  "source_commit": "e6e3480cfce44c3eceda561363501b50972258a6",
+  "source_export_tar_sha256": "598d1b9dfac48350ff26594e3d8cd2e009e4f13f2a8b0039d2b7ceb134139fa6",
+  "source_export_bytes": 1881323520,
+  "git_directory_present": false,
+  "runtime_control": "Python audit hook rejects subprocess, os.system/exec/spawn, socket.connect and Git-path opens. All tools modules must originate in the exported source directory. Native library internals are not a general syscall sandbox.",
+  "environment": "Same host CPython 3.14.5 and locked verification dependencies",
+  "external_inputs": "Four original release raw archives; SHA256 and every regular member are checked by the exported audit",
+  "initial_launch_errors": "First repeat used the original checkout CWD and was not an independence check. First guard wrapper creation used a wrong relative path and failed before analysis; only the tool excerpt remains, as its redirected stderr was reused. These runs are not the accepted guarded validation. Creation and execution were separated with absolute paths.",
+  "files": [
+    {
+      "path": "analysis.json",
+      "bytes": 81245,
+      "published_sha256": "05ffbc6c2198cdc0e556e47597fba4f19c5817d4d24f11c75610d60ea815a3e8",
+      "isolated_replay_sha256": "05ffbc6c2198cdc0e556e47597fba4f19c5817d4d24f11c75610d60ea815a3e8",
+      "byte_identical": true
+    },
+    {
+      "path": "n16-dt0.001-mapped-band.npz",
+      "bytes": 162670,
+      "published_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+      "isolated_replay_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+      "byte_identical": true
+    },
+    {
+      "path": "n16-dt0.001-postSolve-band.npz",
+      "bytes": 152935,
+      "published_sha256": "7d6806e136d54d8cf2effe8269ba53bd4a2226421878ba159a07103af7d23fc2",
+      "isolated_replay_sha256": "7d6806e136d54d8cf2effe8269ba53bd4a2226421878ba159a07103af7d23fc2",
+      "byte_identical": true
+    },
+    {
+      "path": "n16-dt0.001-preMap-band.npz",
+      "bytes": 162670,
+      "published_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+      "isolated_replay_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.0005-mapped-band.npz",
+      "bytes": 162218,
+      "published_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+      "isolated_replay_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.0005-postSolve-band.npz",
+      "bytes": 154155,
+      "published_sha256": "7e7717682125239c4bde471a948bc21072e75ea3bf7400d843044ad4d781e981",
+      "isolated_replay_sha256": "7e7717682125239c4bde471a948bc21072e75ea3bf7400d843044ad4d781e981",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.0005-preMap-band.npz",
+      "bytes": 162218,
+      "published_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+      "isolated_replay_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.001-mapped-band.npz",
+      "bytes": 163209,
+      "published_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+      "isolated_replay_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.001-postSolve-band.npz",
+      "bytes": 153888,
+      "published_sha256": "fc7efae5beba24922e63cf632010b8b3aed88342509cb5e65dca32a846c47a2d",
+      "isolated_replay_sha256": "fc7efae5beba24922e63cf632010b8b3aed88342509cb5e65dca32a846c47a2d",
+      "byte_identical": true
+    },
+    {
+      "path": "n32-dt0.001-preMap-band.npz",
+      "bytes": 163209,
+      "published_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+      "isolated_replay_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+      "byte_identical": true
+    },
+    {
+      "path": "n64-dt0.001-mapped-band.npz",
+      "bytes": 161443,
+      "published_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+      "isolated_replay_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+      "byte_identical": true
+    },
+    {
+      "path": "n64-dt0.001-postSolve-band.npz",
+      "bytes": 156979,
+      "published_sha256": "983ca6ce3fcb376fe1429e7332c6813c407a7654b6d43e17bf314c60caea2fa0",
+      "isolated_replay_sha256": "983ca6ce3fcb376fe1429e7332c6813c407a7654b6d43e17bf314c60caea2fa0",
+      "byte_identical": true
+    },
+    {
+      "path": "n64-dt0.001-preMap-band.npz",
+      "bytes": 161443,
+      "published_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+      "isolated_replay_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+      "byte_identical": true
+    }
+  ],
+  "scope": "Only the new 12-state declared P0 spectrum audit. No CFD, Lean, entire report suite, cross-platform byte identity, whole-runtime equivalence or original quality-gate completion follows."
+}

@@ -26,6 +26,14 @@ limit implies no physical blow-up, molecular alignment or viscosity change.
 Goal remains active. See `reports/openfoam-amr-p0-spectrum-2026-10-03.md` and
 `evidence/amr-p0-spectrum-v1/`.
 
+A fresh code export of `e6e3480` completes all twelve states under Python-level
+process/network/Git-file guards; all tools modules originate in that export.
+Its analysis JSON and twelve coefficient arrays are strictly byte-identical
+to the published result. The initial wrong-CWD/relative-path launch mistakes
+are preserved and excluded from the accepted guarded validation. No CFD,
+proof or entire historical report replay is performed by this scoped test.
+`evidence/amr-p0-spectrum-clean-export-e6e3480/` records exact hashes and limits.
+
 ## Revision 264 — execute the four-case AMR matrix and qualify the discrepancy
 
 Frozen `3566f890` hosted run `37124421538` completes all four fresh ARM64
