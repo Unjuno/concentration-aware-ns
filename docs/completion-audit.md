@@ -1,5 +1,15 @@
 # Completion audit — interim, 2026-09-27
 
+### Fine/temporal native capture launched, results unproved — 2026-10-04
+
+Frozen source 4e60b230 launches hosted run 37147687736 for n32, n64 and n32
+half-step native captures. Original twenty recipe file hashes match; strict
+input/final-field identity precedes the unchanged read-only probe. Four
+rejection controls pass. The observed n32 job is active and the other cases
+queued; native capture completion and quality are INCOMPLETE/UNCERTAIN.
+Larger-data processing and independent analysis remain required. Poll existing
+handles before any restart. See [launch](../reports/cell-point-fine-capture-launch-2026-10-04.md).
+
 ### Native position replay and local neighborhood achieved — 2026-10-04
 
 Hosted run 37146624489 replays the original mesh/fields read-only without CFD

@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 276 — launch unchanged fine and temporal native captures
+
+Frozen source 4e60b23065811d488fe6890ad59af698a81c35b8 launches hosted run
+37147687736 for n32-dt0.001, n64-dt0.001 and n32-dt0.0005, serially on fresh
+ARM64 VMs. Together with archived n16, these target three spatial resolutions
+and a temporal interpolation comparison. All twenty original recipe hashes
+match; the complete locked suite passes 334 tests (1 skip, 85 subtests).
+The added collector requires original initial inputs and final U/p to
+match before the unchanged read-only probe executes. Four rejection controls
+pass. The original numerical recipe, gates and predecessor evidence are preserved.
+
+At the launch observation n32 is active and the other cases are queued;
+results remain INCOMPLETE/UNCERTAIN, not capture or quality PASS. Poll the same
+live handles before restarting. Later independent capture checks and bounded-
+memory local derivative/resolution analysis are still required. No physical,
+solver-defect, global-continuity or full-goal conclusion changes. See
+`reports/cell-point-fine-capture-launch-2026-10-04.md` and
+`evidence/of13-cell-point-capture-matrix-v1/launch.json`.
+
 ## Revision 275 — execute native position queries and enclose a unique local region
 
 An isolated ARM64 read-only replay restores the existing public n16 mesh/U/p
