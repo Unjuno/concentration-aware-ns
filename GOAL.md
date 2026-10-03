@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 279 — enclose local neighborhoods of three larger matrix witnesses
+
+At the n32/n64/half-step selected targets, Arb128 proves a fixed radius-1/4096
+ball inside exactly one of twelve captured candidates. Full streams and node
+hashes bind the candidates to the earlier derivative witnesses. This extends
+idealized local uniqueness beyond n16, without native floating search or global
+continuity claims. Same-host guarded selected-export replay and corruption
+controls support reproducibility. Native larger-target position replay and the
+full objective remain open. See `reports/cell-point-matrix-neighborhood-2026-10-04.md`.
+
 ## Revision 278 — complete native spatial/temporal captures and independent local checks
 
 All three frozen hosted capture jobs succeed, completing n16/n32/n64 plus n32

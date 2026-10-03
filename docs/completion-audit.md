@@ -1,5 +1,15 @@
 # Completion audit — interim, 2026-09-27
 
+### Complete captures and larger local neighborhoods — 2026-10-04
+
+Revision 278 supersedes the partial capture observations below: all original
+spatial/temporal native captures finish and are publicly hash-verified. Revision
+279 adds Arb128 radius-1/4096 unique idealized neighborhoods for the three larger
+selected witnesses. Finite native position replay for these targets, global
+error/continuity and physical/proof requirements remain unproved. The reports
+`cell-point-capture-derivative-matrix-2026-10-04.md` and
+`cell-point-matrix-neighborhood-2026-10-04.md` distinguish their evidence scopes.
+
 ### n32 capture verified, partial derivative matrix — 2026-10-04
 
 The n32 hosted job completes; independent source/input/final-field, raw/mesh
