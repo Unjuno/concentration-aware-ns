@@ -57,3 +57,15 @@ metadata before any new external report.
 - `reports/recent-developments-and-hypothesis-audit-2026-09-28.md`
 - `reports/upstream-disposition.md`
 
+## Live upstream metadata refresh
+
+At 2026-10-03 23:55 UTC, the OpenFOAM Foundation 13 default branch still pointed
+to `18870c24…`; its four open issues were unrelated to the exercised AMR path.
+SU2 `master` remained `bc154666…`; issue #2353 and #2932 remained open, while
+discussion #2890 remained closed without an accepted answer. PhysicsNeMo `main`
+had advanced to `b45a5c81…`; issues #2001/#2007 remained open and PRs #1853/#2008
+remained open (with #1853 still draft). These records preserve existing
+overlap; they do not warrant a duplicate issue. The refresh is intentionally
+metadata-scoped and is not a source audit of PhysicsNeMo's new commits. Exact
+responses and the then-live SU2 job state are recorded in
+`evidence/upstream-refresh/live-status-2026-10-03T2355Z.json`.

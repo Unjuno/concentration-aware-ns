@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 294 — refresh target and duplicate-reporting status
+
+Captured a read-only live metadata snapshot for all three solver repositories
+and the directly overlapping issues/discussions/PRs. OpenFOAM Foundation 13
+and SU2 default heads are unchanged; PhysicsNeMo main advanced to
+`b45a5c810c741e6b41f8515be24c51121f8fc21f`, while the relevant issue/PR records
+remain open and tracked. No duplicate post is justified. The scope and exact
+normalized responses are in
+`evidence/upstream-refresh/live-status-2026-10-03T2355Z.json`, linked from the
+proposal audit. Hosted SU2 successor job 37160281461 remains active without
+case output yet; the full goal remains active.
+
 ## Revision 293 — test the attached proposal against archived benchmark evidence
 
 The proposal's standard-pass/local-fail hypothesis is observed narrowly on
