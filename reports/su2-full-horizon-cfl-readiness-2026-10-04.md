@@ -21,3 +21,14 @@ Exact public-tag hosted Python run 37159301543 remains queued. This runtime
 failure does not block independent analytic/proof/other-project work, and the
 full goal remains active. Neither the successful one-step control nor the
 conditional continuous energy estimate resolves full-horizon inner convergence.
+
+An original-image paired runner now preserves preflight failures and partial
+outputs, verifies input identities before/after execution and requires 50
+unique physical update IDs. Recorded CSV time/step values must match the frozen
+old-time convention within an explicit absolute 1e-12 diagnostic tolerance;
+this is not a proof of internal callback timing. Six focused tests pass on the
+archived n32 history and five corruption controls. The actual preflight
+runner rejects the unavailable original image with zero cases started.
+Artifacts are under `evidence/su2-full-horizon-runner-preflight-v1`.
+The runner does not yet implement the separately frozen rebuilt-image successor;
+that healthy isolated execution lane still has to be established.
