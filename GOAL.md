@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 274 — enclose one actual local affine derivative witness
+
+The n16 runtime capture now yields an Arb96 local witness on tet CSV row 71793
+(cell 5332, face 22295). For the idealized real-arithmetic piece of cellPoint's
+explicit barycentric overload, its interior-centroid gradient/curl errors are
+at least 95.1187% / 9.1092% of the respective analytic reference global peaks.
+The local determinant excludes zero; gradient and curl are computed directly
+from the captured nodal affine map and the independent analytic derivative.
+This requires no exact cell-average interpretation or global chord-to-curl transfer.
+
+Three controls and the full 318-test suite pass (1 skip, 83 subtests); a guarded
+Git-directory-free selected export reproduces the witness JSON byte-for-byte.
+Floating search selects a witness, not a global optimum. Global partition and
+continuity, actual position-query branch/rounding, larger cases and original
+gates remain unverified or unchanged. See
+`reports/cell-point-local-derivative-2026-10-04.md` and
+`evidence/cell-point-local-derivative-v1/`. No new CFD or physical/defect claim
+follows. Other solver, proof/physical and full-goal obligations stay open.
+
 ## Revision 273 — execute unchanged n16 recipe and capture actual cellPoint data
 
 A fresh isolated ARM64 hosted run completed the original n16 recipe and a

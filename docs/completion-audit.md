@@ -1,5 +1,15 @@
 # Completion audit — interim, 2026-09-27
 
+### Local affine derivative witness enclosed — 2026-10-04
+
+A captured n16 tet's idealized real-affine Jacobian and independent analytic
+gradient give enclosed local gradient/curl errors of at least 95.1187% / 9.1092%
+relative to reference global peaks. Curl is computed directly. A nonzero local
+determinant and strict interior centroid are verified; global partition,
+continuity and floating point-query selection are not certified. The 318-test
+suite and selected-export byte-identical replay pass. Original gates/full goal
+remain open. See [report](../reports/cell-point-local-derivative-2026-10-04.md).
+
 ### Actual n16 cellPoint capture executed — 2026-10-04
 
 Hosted run 37143558038 successfully executes unchanged n16 numerical input and
