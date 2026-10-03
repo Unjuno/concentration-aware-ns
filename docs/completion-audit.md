@@ -1,5 +1,16 @@
 # Completion audit — interim, 2026-09-27
 
+### Point-interpolation gradient constraint — 2026-10-04
+
+All four final AMR fields now have an Arb-enclosed chord witness constraining
+any C1 point-interpolating field's peak gradient error. At n64 the relative
+lower bound is 46.1968%, without assuming exact cell averages. It requires a
+point interpolation/regularity condition not established as an upstream
+contract; H1 alone and a pointwise curl conclusion are not sufficient.
+The 311-test suite and guarded selected-export byte-identical replay pass.
+Original solver gates and the full goal remain open. See
+[report](../reports/openfoam-amr-point-gradient-bound-2026-10-04.md).
+
 ### Reject broken controls before accepting a spectrum fix — 2026-10-04
 
 The benchmark's focused PhysicsNeMo fix rule now requires every symmetry

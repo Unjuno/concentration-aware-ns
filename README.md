@@ -11,6 +11,7 @@ Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
+- [Conditional native-point gradient-error witnesses](reports/openfoam-amr-point-gradient-bound-2026-10-04.md)
 - [Live upstream refresh and adversarial spectrum-fix controls](reports/upstream-spectrum-fix-controls-2026-10-04.md)
 - [Archived point-value initialization and forcing audit](reports/openfoam-amr-input-representation-2026-10-04.md)
 - [Arb-enclosed nominal-mean continuum error certificates](reports/openfoam-amr-arb-mean-certificate-2026-10-04.md)

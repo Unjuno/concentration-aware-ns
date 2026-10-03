@@ -118,3 +118,11 @@ error must not be subtracted from later solver error without a validated
 controlled evolution comparison. This condition refines interpretation only;
 all original thresholds remain unchanged. See
 [the source/input audit](../reports/openfoam-amr-input-representation-2026-10-04.md).
+
+A point-interpolating C1/Lipschitz reconstruction can instead be constrained
+by an error chord between stored native points. Such a bound concerns the
+peak norm of the gradient-error field, not only the difference of peak values.
+It requires the interpolation and regularity condition explicitly; H1 alone
+or an infinity-norm curl transfer is insufficient. The source-bound example is
+[the point witness report](../reports/openfoam-amr-point-gradient-bound-2026-10-04.md).
+The original gate is unchanged.

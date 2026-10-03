@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 271 — constrain gradients under native point interpolation
+
+An independent Arb96 chord witness now bounds peak gradient-field error for
+any C1 field interpolating the exact decoded native velocity points. No exact
+cell-average interpretation is required. At n64 the relative lower bound is
+46.1968%; the other three cases give 78.4778%, 80.6201%, 79.4674%. All are
+rounded down from exact rational endpoints. The floating nearest-neighbour
+search only selects witnesses; it is not a global maximum certificate.
+
+The condition is C1 point interpolation (or a Lipschitz representative), not
+H1 alone or an established upstream continuum contract. No pointwise curl
+bound follows, and the original acceptance gate remains unchanged. Three
+controls and the full 311-test suite pass (1 skip, 83 subtests); a guarded
+Git-directory-free selected export reproduces the four-case analysis JSON
+byte-for-byte. See `reports/openfoam-amr-point-gradient-bound-2026-10-04.md`
+and `evidence/amr-point-gradient-bound-v1/`. No new CFD or upstream defect
+is claimed. Reconstruction relevance, original solver quality, other targets,
+proof/physical obligations and the full goal remain open.
+
 ## Revision 270 — adversarially validate the focused upstream fix verdict
 
 A weakness in our PhysicsNeMo spectrum reproducer's fixed expectation is now
