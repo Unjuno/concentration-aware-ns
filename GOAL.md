@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 282 — make published matrix evidence independently executable
+
+A single verifier checks published finite native samples/receipts against the
+independent source pin and recomputes all three analytic ball error JSONs. The
+local command passes; new source-substitution/duplicate controls pass. Hosted CI
+now executes and preserves the same recheck after tests. A fresh-host result is
+not claimed until exact run/artifact verification. Prior neighborhood geometry
+certificates are hash-bound inputs, not reconstructed by this small recheck.
+Full goal active; see `reports/published-cell-point-matrix-recheck-2026-10-04.md`.
+
 ## Revision 281 — verify larger native queries and uniform local error
 
 All three larger-target read-only jobs succeed on source 560a786f. Independent
