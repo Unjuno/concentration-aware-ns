@@ -1,0 +1,6 @@
+{
+  "symbolic_residual": "0",
+  "drag_family": "C*(k*nu**(1 - p)*r**p + nu)",
+  "elasticity": "(k*r**p*(1 - p)/nu**p + 1)/(k*r**p/nu**p + 1)",
+  "scope": "Positive constant geometry/densities and relative-speed magnitude; smooth high-Re branch only"
+}

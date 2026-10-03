@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 287 — distinguish smooth drag sensitivity, threshold and viscosity input
+
+Pinned solidParticle algebra gives body-force-free branch sensitivities below
+one, but an idealized Re=.01 branch jump remains. Arb128, Python negative
+controls and twenty exact parameter controls verify the declared synthetic
+example; no native cloud execution is claimed. High-Re drag viscosity elasticity
+lies between approximately .313 and one while nu remains an input. Independent
+symbolic differentiation and metadata-qualified guarded replay pass. Optional
+C++ compilation failed on Xcode license state and is preserved. Preceding CI
+37156524829 passes 375 tests/rechecks; current new audit is separate. Full goal
+active; see `reports/solid-particle-drag-branch-scope-2026-10-04.md`.
+
 ## Revision 286 — identify a concrete carrier-interpolation consumer
 
 Three pinned Foundation 13 source files show solidParticleCloud constructing
