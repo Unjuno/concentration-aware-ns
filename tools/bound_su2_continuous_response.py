@@ -1,11 +1,25 @@
 """Conditional continuous-PDE energy response, not a SU2 discretization estimate."""
 import argparse,json
+from fractions import Fraction
 from pathlib import Path
 from flint import arb,ctx
 from tools.run_amr_mean_quality import ROOT,sha
 from tools.amr_point_gradient_bound import exact_float
 from tools.amr_arb_mean_certificate import endpoints
 from tools.tighten_su2_force_envelope_bound import validate_prior
+
+
+def checked_force_constants(row,beta,nu):
+    def maximum(a,c):return (a*((a/c).log()-1)).exp()
+    half=arb(1)/2;threehalf=arb(3)/2
+    BL=(14*beta/arb(1).exp()).sqrt()+nu*arb(14).sqrt()*(2*beta).sqrt()*(2*beta*maximum(threehalf,1)+(5*beta+1)*maximum(half,1))
+    BQ=14*(2*beta).sqrt()*(2*beta*maximum(threehalf,2)+arb(3).sqrt()*beta*maximum(half,2))
+    for key,value in [('linear_force_bound_expression',BL),('quadratic_force_bound_expression',BQ)]:
+        recorded=row[key];fresh=endpoints(value)
+        if (Fraction(recorded['lower_rational'])>Fraction(fresh['lower_rational'])
+            or Fraction(recorded['upper_rational'])<Fraction(fresh['upper_rational'])):
+            raise ValueError('force constant receipt does not enclose recomputed bound')
+    return arb(endpoints(BL)['upper_rational']),arb(endpoints(BQ)['upper_rational'])
 
 
 def audit(output,source_commit):
@@ -23,8 +37,7 @@ def audit(output,source_commit):
             if row['archive_sha256']!=p['archive_sha256']:raise ValueError('archive mismatch')
             beta=1/exact_float(p['sigma'])**2;h=exact_float(p['dt']);T=exact_float(p['end'])
             K=2*arb(14).sqrt()*beta*(arb(-1)/2).exp()
-            BL=arb(row['linear_force_bound_expression']['upper_rational'])
-            BQ=arb(row['quadratic_force_bound_expression']['upper_rational'])
+            BL,BQ=checked_force_constants(row,beta,exact_float(p['nu']))
             F=(h.exp()-1)*BL+((2*h).exp()-1)*BQ
             E=F*((K*T).exp()-1)/K
             rows.append({'case':row['case'],'gradient_operator_upper_expression':endpoints(K),
@@ -32,7 +45,7 @@ def audit(output,source_commit):
                          'normalized_L2_response_upper_expression':endpoints(E)})
     finally:ctx.prec=old
     result={'status':'CONDITIONAL_CONTINUOUS_PDE_RESPONSE_UPPER','source_commit':source_commit,
-            'envelope_receipt_sha256':sha(envelope_path),'precision_bits':128,'cases':rows,
+            'envelope_receipt_sha256':sha(envelope_path),'force_constants_recomputed_and_receipts_enclosed':True,'precision_bits':128,'cases':rows,
             'assumptions':['Smooth incompressible periodic strong solutions u and v on [0,T]',
                            'Same viscosity and identical initial velocity',
                            'v forced by analytic shifted force f(t-h), including its extension at negative times',
