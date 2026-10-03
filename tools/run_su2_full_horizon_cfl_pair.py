@@ -21,6 +21,17 @@ def verify_history(history,steps=50,dt=.001):
             'scope':'Recorded history only, not source callback or internal floating clock proof'}
 
 
+def verify_successor_probe(successor,measured):
+    keys={'binary_sha256','patched_source_sha256','package_versions_sha256','compiler_version'}
+    if set(measured)!=keys:raise ValueError('missing or unexpected successor probe fields')
+    for key in keys:
+        value=measured[key]
+        if not isinstance(value,str) or not value or successor.get(key)!=value:
+            raise ValueError('actual successor image evidence differs from receipt')
+        if key.endswith('_sha256') and (len(value)!=64 or any(c not in '0123456789abcdef' for c in value)):
+            raise ValueError('invalid successor measured digest')
+
+
 def run(root,protocol,output,preflight_only=False,successor_receipt=None):
     if output.exists():raise FileExistsError('preserve previous experiment')
     inputs=verify(root,protocol);p=json.loads(protocol.read_text())
@@ -38,7 +49,7 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
             value=successor.get(key,'')
             if len(value)!=64 or any(c not in '0123456789abcdef' for c in value):raise ValueError('missing successor identity evidence')
         image_id=successor.get('image_id','')
-        if not image_id.startswith('sha256:') or len(image_id)!=71:raise ValueError('invalid successor image identity')
+        if not image_id.startswith('sha256:') or len(image_id)!=71 or any(c not in '0123456789abcdef' for c in image_id[7:]):raise ValueError('invalid successor image identity')
 
     for label in ('baseline','control'):
         if {x.name for x in (root/label).iterdir()}!={'case.cfg','mesh.su2','parameters.json'}:
@@ -67,7 +78,8 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
         (output/'successor-probe.stdout').write_text(probe.stdout);(output/'successor-probe.stderr').write_text(probe.stderr)
         if probe.returncode:raise ValueError('successor identity probe failed')
         measured=json.loads(probe.stdout)
-        if any(successor.get(key)!=value for key,value in measured.items()):raise ValueError('actual successor image evidence differs from receipt')
+        verify_successor_probe(successor,measured)
+        manifest['preflight_status']='SUCCESSOR_ACTUAL_PROBE_VERIFIED';save()
 
     if preflight_only:return manifest
     for label in ('baseline','control'):
