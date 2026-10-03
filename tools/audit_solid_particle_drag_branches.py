@@ -26,6 +26,8 @@ def audit(output,source_commit):
             radial=x/(1+x)+p*theta*x/(1+x)**2
             margin=(1+(1-p*theta)*x)/(1+x)**2
             if radial<0 or not radial<1 or radial+margin!=1:raise ValueError('branch sensitivity control failed')
+            elasticity=1-p*theta
+            if not 1-p<=elasticity<=1:raise ValueError('viscosity elasticity control failed')
             controls+=1
     low=.01;high=math.nextafter(low,math.inf);measures={}
     for mode in ('source','continuous','constant'):
@@ -40,7 +42,7 @@ def audit(output,source_commit):
         if not jump>0:raise ValueError('positive idealized branch jump unproved')
         enclosed=endpoints(jump)
     finally:ctx.prec=old
-    result={'status':'CONDITIONAL_DRAG_BRANCH_AUDIT','analysis_source_commit':source_commit,'consumer_record_sha256':sha(consumer),'upstream_commit':provenance['upstream_commit'],'precision_bits':128,'assumptions':{'nu':1,'diameter':1,'density_ratio':1,'dt':1,'old_particle_velocity':0,'gravity':0,'carrier_direction':'one positive coordinate axis'},'idealized_branch_jump':enclosed,'python_transcription_controls':measures,'exact_radial_sensitivity_controls':controls,'radial_formula':'x/(1+x)+p*theta*x/(1+x)^2','positive_margin_formula':'(1+(1-p*theta)*x)/(1+x)^2','environment':{'python':sys.version,'platform':platform.platform()},'limits':['Body-force-free fixed positive properties; actual trajectories/fields not executed','Real branch limits with decoded binary64 literals; Python two-float quotients are not continuous derivatives','Continuous and constant variants are negative controls, not production fixes','No native OpenFOAM binary equivalence, physical transition, viscosity law or violated contract claim']}
+    result={'status':'CONDITIONAL_DRAG_BRANCH_AUDIT','analysis_source_commit':source_commit,'consumer_record_sha256':sha(consumer),'upstream_commit':provenance['upstream_commit'],'precision_bits':128,'assumptions':{'nu':1,'diameter':1,'density_ratio':1,'dt':1,'old_particle_velocity':0,'gravity':0,'carrier_direction':'one positive coordinate axis'},'idealized_branch_jump':enclosed,'python_transcription_controls':measures,'exact_radial_sensitivity_controls':controls,'radial_formula':'x/(1+x)+p*theta*x/(1+x)^2','positive_margin_formula':'(1+(1-p*theta)*x)/(1+x)^2','viscosity_elasticity_formula':'(1+(1-p)*z)/(1+z) = 1-p*theta','viscosity_elasticity_bounds':{'lower_limit':str(1-p),'upper_limit':'1'},'symbolic_family_assumptions':'Fixed positive density/diameter/viscosity, zero body force; within one Reynolds branch; x=dt*Dc, z=0.15*Re^p, theta=z/(1+z)','environment':{'python':sys.version,'platform':platform.platform()},'limits':['Body-force-free fixed positive properties; actual trajectories/fields not executed','Real branch limits with decoded binary64 literals; Python two-float quotients are not continuous derivatives','Continuous and constant variants are negative controls, not production fixes','No native OpenFOAM binary equivalence, physical transition, viscosity law or violated contract claim']}
     output.mkdir(parents=True);(output/'analysis.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n');print(result['status'])
 
 
