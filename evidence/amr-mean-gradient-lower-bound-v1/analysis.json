@@ -1,0 +1,1227 @@
+{
+  "status": "MEASURED_CONDITIONAL_H1_NATIVE_MEAN_CONSTRAINT_LOWER_BOUNDS",
+  "numerical_source_commit": "5abbe08e7d6488f1f23dfea0a83f8d2f34e8fc17",
+  "protocol_sha256": "4fe8edcd8b35558b8b718edbdf4a9bcd23d51b133cbe680802a6fd7bc410684d",
+  "input_protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "source_sha256": {
+    "tools/amr_mean_gradient_lower_bound.py": "3484a51815edabe7764aff68412dbc902060054fe02ace923259378e883ee23e",
+    "tools/audit_amr_mean_gradient_lower_bound.py": "246c4ef64193e951ea36c8ad0b0fbcd7d64296c6266621be8e908c9875a912bb",
+    "tools/amr_p0_spectrum.py": "a059ca8a6dc90650865085c2c88002ad2cb3d99accc8d74000854b3a8fee8187",
+    "tools/amr_band_reconstruction.py": "eaedb9e48d6d5066c24f5e4120764c4b125f68a1092c7049de2e1b9cd0f1ee88",
+    "tools/high_gradient_cell_average.py": "665bc283b37281bcd18a6544064e75261c44d55bcabeccf27b55618294ba9079",
+    "tools/analyze_amr_mean_quality.py": "d47e7054cc5cf6ac4a17c724996c36c6d6885f376e6b0cb5f8f7ed698c92265c",
+    "tools/analyze_amr_gauss_gradient.py": "050dd8f181b72d6997c3261a24a602906e26ea6c36d4b839909351f59b18d7a8",
+    "tools/compare_amr_resolution_volume_integrated.py": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e"
+  },
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 4096,
+          "native_mean_error_voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 1.5462065721842636e-05,
+            "cell_mean_square": 1.5462065721842633e-05,
+            "cell_voxel_norm_difference": 3.3881317890172014e-21
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 1.5462065721842636e-05,
+              "constant_mode_mean_square": 1.1561076054369087e-35,
+              "centered_p0_mean_square": 1.5462065721842636e-05,
+              "inside_cube_mean_square": 1.321438246770177e-05,
+              "outside_cube_mean_square": 2.247683254140866e-06,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 1.1403753926034894e-06,
+              "upper_hminus_mean_square": 1.1754954434494404e-06,
+              "gradient_mean_norm_lower": 0.014261231833148195,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.08665901870373324,
+              "gradient_relative_peak_error_lower": 0.009935189367116633,
+              "solenoidal_curl_relative_l2_lower": 0.08665901870373323,
+              "solenoidal_curl_relative_peak_error_lower": 0.008733900663839283
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 1.5462065721842636e-05,
+              "constant_mode_mean_square": 1.1561076054369087e-35,
+              "centered_p0_mean_square": 1.5462065721842636e-05,
+              "inside_cube_mean_square": 1.4799902346728488e-05,
+              "outside_cube_mean_square": 6.621633751141487e-07,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 1.147028009924074e-06,
+              "upper_hminus_mean_square": 1.147674653845084e-06,
+              "gradient_mean_norm_lower": 0.014433050118170419,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.08770308026514588,
+              "gradient_relative_peak_error_lower": 0.010054887806802694,
+              "solenoidal_curl_relative_l2_lower": 0.08770308026514587,
+              "solenoidal_curl_relative_peak_error_lower": 0.008839126064503993
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 1.5462065721842636e-05,
+              "constant_mode_mean_square": 1.1561076054369087e-35,
+              "centered_p0_mean_square": 1.5462065721842636e-05,
+              "inside_cube_mean_square": 1.5130956182487994e-05,
+              "outside_cube_mean_square": 3.3110953935464176e-07,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 1.147218725306543e-06,
+              "upper_hminus_mean_square": 1.1472995625964244e-06,
+              "gradient_mean_norm_lower": 0.014435409252854175,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.08771741565349635,
+              "gradient_relative_peak_error_lower": 0.0100565313148881,
+              "solenoidal_curl_relative_l2_lower": 0.08771741565349633,
+              "solenoidal_curl_relative_peak_error_lower": 0.008840570851898351
+            }
+          ]
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 16640,
+          "native_mean_error_voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.00025594540634966663,
+            "cell_mean_square": 0.00025594540634966647,
+            "cell_voxel_norm_difference": 1.6263032587282567e-19
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 0.00025594540634966663,
+              "constant_mode_mean_square": 3.617896465461967e-35,
+              "centered_p0_mean_square": 0.00025594540634966663,
+              "inside_cube_mean_square": 6.593658652612386e-06,
+              "outside_cube_mean_square": 0.00024935174769705426,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 5.724872385718176e-07,
+              "upper_hminus_mean_square": 4.46860829633829e-06,
+              "gradient_mean_norm_lower": 0.12107687286042462,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.7357290809488826,
+              "gradient_relative_peak_error_lower": 0.08434907123875539,
+              "solenoidal_curl_relative_l2_lower": 0.7357290809488825,
+              "solenoidal_curl_relative_peak_error_lower": 0.07415021315292704
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 0.00025594540634966663,
+              "constant_mode_mean_square": 3.617896465461967e-35,
+              "centered_p0_mean_square": 0.00025594540634966663,
+              "inside_cube_mean_square": 0.00020950178493142727,
+              "outside_cube_mean_square": 4.6443621418239365e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 1.5161676289704618e-06,
+              "upper_hminus_mean_square": 1.5615227280117111e-06,
+              "gradient_mean_norm_lower": 0.20482038797129357,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.2446003290440855,
+              "gradient_relative_peak_error_lower": 0.14268959123230834,
+              "solenoidal_curl_relative_l2_lower": 1.2446003290440852,
+              "solenoidal_curl_relative_peak_error_lower": 0.12543663432441388
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 0.00025594540634966663,
+              "constant_mode_mean_square": 3.617896465461967e-35,
+              "centered_p0_mean_square": 0.00025594540634966663,
+              "inside_cube_mean_square": 0.00023164853972249314,
+              "outside_cube_mean_square": 2.4296866627173492e-05,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 1.5260828606944484e-06,
+              "upper_hminus_mean_square": 1.5320147128983482e-06,
+              "gradient_mean_norm_lower": 0.20678349494984682,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.2565292371750405,
+              "gradient_relative_peak_error_lower": 0.14405720377854722,
+              "solenoidal_curl_relative_l2_lower": 1.2565292371750403,
+              "solenoidal_curl_relative_peak_error_lower": 0.12663888540228507
+            }
+          ]
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 16640,
+          "native_mean_error_voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.00017551369860248865,
+            "cell_mean_square": 0.00017551369860248852,
+            "cell_voxel_norm_difference": 1.3552527156068805e-19
+          },
+          "reference": {
+            "gradient_mean_square": 0.024603351750080757,
+            "curl_mean_square": 0.024603351750080757,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 0.9744335520299401,
+              "analytic_peak_upper": 1.368153278538232,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.5700924586837752e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.1626137410564281,
+              "analytic_peak_upper": 1.5563334675647198,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.942890293094024e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 0.00017551369860248865,
+              "constant_mode_mean_square": 6.133807293606562e-35,
+              "centered_p0_mean_square": 0.00017551369860248865,
+              "inside_cube_mean_square": 3.655955003984746e-06,
+              "outside_cube_mean_square": 0.0001718577435985039,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 3.1088639763481335e-07,
+              "upper_hminus_mean_square": 2.996163641361437e-06,
+              "gradient_mean_norm_lower": 0.10139773488746197,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.6464443076966119,
+              "gradient_relative_peak_error_lower": 0.07411284720656282,
+              "solenoidal_curl_relative_l2_lower": 0.6464443076966119,
+              "solenoidal_curl_relative_peak_error_lower": 0.06515167668155628
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 0.00017551369860248865,
+              "constant_mode_mean_square": 6.133807293606562e-35,
+              "centered_p0_mean_square": 0.00017551369860248865,
+              "inside_cube_mean_square": 0.00014350137925388893,
+              "outside_cube_mean_square": 3.201231934859972e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 9.604914331212838e-07,
+              "upper_hminus_mean_square": 9.917534637351507e-07,
+              "gradient_mean_norm_lower": 0.17624189557772255,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.1236007421697065,
+              "gradient_relative_peak_error_lower": 0.12881736157956195,
+              "solenoidal_curl_relative_l2_lower": 1.1236007421697065,
+              "solenoidal_curl_relative_peak_error_lower": 0.11324173080560807
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 0.00017551369860248865,
+              "constant_mode_mean_square": 6.133807293606562e-35,
+              "centered_p0_mean_square": 0.00017551369860248865,
+              "inside_cube_mean_square": 0.0001587611042424442,
+              "outside_cube_mean_square": 1.675259436004445e-05,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 9.673110728727658e-07,
+              "upper_hminus_mean_square": 9.714010617301986e-07,
+              "gradient_mean_norm_lower": 0.17807859942203272,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.1353103404797336,
+              "gradient_relative_peak_error_lower": 0.1301598309308561,
+              "solenoidal_curl_relative_l2_lower": 1.1353103404797336,
+              "solenoidal_curl_relative_peak_error_lower": 0.11442187881539427
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 32768,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 1.1013524200614585e-06,
+            "cell_mean_square": 1.1013524200614581e-06,
+            "cell_voxel_norm_difference": 4.235164736271502e-22
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 1.1013524200614585e-06,
+              "constant_mode_mean_square": 3.3431796421233e-36,
+              "centered_p0_mean_square": 1.1013524200614585e-06,
+              "inside_cube_mean_square": 1.0591228911091034e-06,
+              "outside_cube_mean_square": 4.22295289523551e-08,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 9.0877785791282e-08,
+              "upper_hminus_mean_square": 9.153762218116255e-08,
+              "gradient_mean_norm_lower": 0.003640210491527888,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.02211990329878842,
+              "gradient_relative_peak_error_lower": 0.0025359787283894485,
+              "solenoidal_curl_relative_l2_lower": 0.022119903298788417,
+              "solenoidal_curl_relative_peak_error_lower": 0.0022293471700369745
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 1.1013524200614585e-06,
+              "constant_mode_mean_square": 3.3431796421233e-36,
+              "centered_p0_mean_square": 1.1013524200614585e-06,
+              "inside_cube_mean_square": 1.074151839745305e-06,
+              "outside_cube_mean_square": 2.7200580316153478e-08,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 9.089522782458747e-08,
+              "upper_hminus_mean_square": 9.092179089130247e-08,
+              "gradient_mean_norm_lower": 0.0036525176202050354,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.022194688121495196,
+              "gradient_relative_peak_error_lower": 0.0025445525777878382,
+              "solenoidal_curl_relative_l2_lower": 0.022194688121495193,
+              "solenoidal_curl_relative_peak_error_lower": 0.002236884333767351
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 1.1013524200614585e-06,
+              "constant_mode_mean_square": 3.3431796421233e-36,
+              "centered_p0_mean_square": 1.1013524200614585e-06,
+              "inside_cube_mean_square": 1.0883681044184465e-06,
+              "outside_cube_mean_square": 1.2984315643012022e-08,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 9.09050294078739e-08,
+              "upper_hminus_mean_square": 9.090819940681018e-08,
+              "gradient_mean_norm_lower": 0.0036527906499292323,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.022196347198933434,
+              "gradient_relative_peak_error_lower": 0.0025447427859020097,
+              "solenoidal_curl_relative_l2_lower": 0.02219634719893343,
+              "solenoidal_curl_relative_peak_error_lower": 0.002237051543340641
+            }
+          ]
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 118784,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 6.502474148500804e-05,
+            "cell_mean_square": 6.502474148500798e-05,
+            "cell_voxel_norm_difference": 6.776263578034403e-20
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 6.502474148500804e-05,
+              "constant_mode_mean_square": 1.9715415105546446e-35,
+              "centered_p0_mean_square": 6.502474148500804e-05,
+              "inside_cube_mean_square": 4.994982219554344e-07,
+              "outside_cube_mean_square": 6.452524326305262e-05,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 4.328162227842248e-08,
+              "upper_hminus_mean_square": 1.0514885482636195e-06,
+              "gradient_mean_norm_lower": 0.06341271688299988,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.3853302353339089,
+              "gradient_relative_peak_error_lower": 0.0441769236968417,
+              "solenoidal_curl_relative_l2_lower": 0.3853302353339088,
+              "solenoidal_curl_relative_peak_error_lower": 0.03883538088154225
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 6.502474148500804e-05,
+              "constant_mode_mean_square": 1.9715415105546446e-35,
+              "centered_p0_mean_square": 6.502474148500804e-05,
+              "inside_cube_mean_square": 3.1033585961614705e-05,
+              "outside_cube_mean_square": 3.399115552339334e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 7.88376590195416e-08,
+              "upper_hminus_mean_square": 1.120321468353554e-07,
+              "gradient_mean_norm_lower": 0.19427070003943533,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.1804946743221374,
+              "gradient_relative_peak_error_lower": 0.13534007552473998,
+              "solenoidal_curl_relative_l2_lower": 1.1804946743221372,
+              "solenoidal_curl_relative_peak_error_lower": 0.11897576702281178
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 6.502474148500804e-05,
+              "constant_mode_mean_square": 1.9715415105546446e-35,
+              "centered_p0_mean_square": 6.502474148500804e-05,
+              "inside_cube_mean_square": 5.2853233040365654e-05,
+              "outside_cube_mean_square": 1.2171508444642389e-05,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 9.681932348128566e-08,
+              "upper_hminus_mean_square": 9.979088316015344e-08,
+              "gradient_mean_norm_lower": 0.20584162474223983,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.250805920361146,
+              "gradient_relative_peak_error_lower": 0.14340104314801386,
+              "solenoidal_curl_relative_l2_lower": 1.2508059203611457,
+              "solenoidal_curl_relative_peak_error_lower": 0.12606206280184545
+            }
+          ]
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 116992,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 4.156231886265471e-05,
+            "cell_mean_square": 4.156231886265466e-05,
+            "cell_voxel_norm_difference": 5.421010862427522e-20
+          },
+          "reference": {
+            "gradient_mean_square": 0.024603351750080757,
+            "curl_mean_square": 0.024603351750080757,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 0.9744335520299401,
+              "analytic_peak_upper": 1.368153278538232,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.5700924586837752e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.1626137410564281,
+              "analytic_peak_upper": 1.5563334675647198,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.942890293094024e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 4.156231886265471e-05,
+              "constant_mode_mean_square": 5.7729230442451765e-36,
+              "centered_p0_mean_square": 4.156231886265471e-05,
+              "inside_cube_mean_square": 2.281079497428264e-07,
+              "outside_cube_mean_square": 4.1334210912911886e-05,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 1.9356269619816926e-08,
+              "upper_hminus_mean_square": 6.652033151340652e-07,
+              "gradient_mean_norm_lower": 0.05095919600819092,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.32488183509081825,
+              "gradient_relative_peak_error_lower": 0.0372467009417519,
+              "solenoidal_curl_relative_l2_lower": 0.32488183509081825,
+              "solenoidal_curl_relative_peak_error_lower": 0.032743108768283166
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 4.156231886265471e-05,
+              "constant_mode_mean_square": 5.7729230442451765e-36,
+              "centered_p0_mean_square": 4.156231886265471e-05,
+              "inside_cube_mean_square": 1.9805426047617112e-05,
+              "outside_cube_mean_square": 2.17568928150376e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 4.217655872893425e-08,
+              "upper_hminus_mean_square": 6.342352436861941e-08,
+              "gradient_mean_norm_lower": 0.16503444009738455,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.0521494833514629,
+              "gradient_relative_peak_error_lower": 0.12062569500524922,
+              "solenoidal_curl_relative_l2_lower": 1.0521494833514629,
+              "solenoidal_curl_relative_peak_error_lower": 0.10604053921401753
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 4.156231886265471e-05,
+              "constant_mode_mean_square": 5.7729230442451765e-36,
+              "centered_p0_mean_square": 4.156231886265471e-05,
+              "inside_cube_mean_square": 3.3776398376486086e-05,
+              "outside_cube_mean_square": 7.785920486168625e-06,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 5.370088986102038e-08,
+              "upper_hminus_mean_square": 5.560174935471389e-08,
+              "gradient_mean_norm_lower": 0.1762607209130588,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.1237207599480337,
+              "gradient_relative_peak_error_lower": 0.12883112124789117,
+              "solenoidal_curl_relative_l2_lower": 1.1237207599480337,
+              "solenoidal_curl_relative_peak_error_lower": 0.11325382675787575
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 262144,
+          "native_mean_error_voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 7.129339620798813e-08,
+            "cell_mean_square": 7.129339620798812e-08,
+            "cell_voxel_norm_difference": 1.3234889800848443e-23
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 7.129339620798813e-08,
+              "constant_mode_mean_square": 1.517616945243046e-36,
+              "centered_p0_mean_square": 7.129339620798813e-08,
+              "inside_cube_mean_square": 7.060079655935164e-08,
+              "outside_cube_mean_square": 6.925996486364893e-10,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 6.050121532138073e-09,
+              "upper_hminus_mean_square": 6.060943401648018e-09,
+              "gradient_mean_norm_lower": 0.0009157547699315346,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.0055646251785257785,
+              "gradient_relative_peak_error_lower": 0.00063796712370685,
+              "solenoidal_curl_relative_l2_lower": 0.005564625178525778,
+              "solenoidal_curl_relative_peak_error_lower": 0.0005608289162250735
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 7.129339620798813e-08,
+              "constant_mode_mean_square": 1.517616945243046e-36,
+              "centered_p0_mean_square": 7.129339620798813e-08,
+              "inside_cube_mean_square": 7.060079655942018e-08,
+              "outside_cube_mean_square": 6.925996485679458e-10,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 6.0501215321388705e-09,
+              "upper_hminus_mean_square": 6.050797898983175e-09,
+              "gradient_mean_norm_lower": 0.0009165221812182404,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.005569288387835196,
+              "gradient_relative_peak_error_lower": 0.0006385017462797866,
+              "solenoidal_curl_relative_l2_lower": 0.005569288387835195,
+              "solenoidal_curl_relative_peak_error_lower": 0.0005612988962397605
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 7.129339620798813e-08,
+              "constant_mode_mean_square": 1.517616945243046e-36,
+              "centered_p0_mean_square": 7.129339620798813e-08,
+              "inside_cube_mean_square": 7.082921765979486e-08,
+              "outside_cube_mean_square": 4.64178548193272e-10,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 6.050182272242743e-09,
+              "upper_hminus_mean_square": 6.0502955970836105e-09,
+              "gradient_mean_norm_lower": 0.0009165602257460251,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.005569519567124856,
+              "gradient_relative_peak_error_lower": 0.0006385282502727338,
+              "solenoidal_curl_relative_l2_lower": 0.005569519567124855,
+              "solenoidal_curl_relative_peak_error_lower": 0.0005613221955683432
+            }
+          ]
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 901888,
+          "native_mean_error_voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 1.6297794872211065e-05,
+            "cell_mean_square": 1.629779487221105e-05,
+            "cell_voxel_norm_difference": 1.3552527156068805e-20
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 1.6297794872211065e-05,
+              "constant_mode_mean_square": 2.665076508438346e-36,
+              "centered_p0_mean_square": 1.6297794872211065e-05,
+              "inside_cube_mean_square": 3.3083367502460216e-08,
+              "outside_cube_mean_square": 1.6264711504708604e-05,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 2.86462817526081e-09,
+              "upper_hminus_mean_square": 2.5700074543633276e-07,
+              "gradient_mean_norm_lower": 0.03214856970546032,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.1953522343650696,
+              "gradient_relative_peak_error_lower": 0.02239653149479645,
+              "solenoidal_curl_relative_l2_lower": 0.19535223436506957,
+              "solenoidal_curl_relative_peak_error_lower": 0.019688510612341687
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 1.6297794872211065e-05,
+              "constant_mode_mean_square": 2.665076508438346e-36,
+              "centered_p0_mean_square": 1.6297794872211065e-05,
+              "inside_cube_mean_square": 3.324136518989264e-08,
+              "outside_cube_mean_square": 1.626455350702117e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 2.8651325421519713e-09,
+              "upper_hminus_mean_square": 1.8748485576352335e-08,
+              "gradient_mean_norm_lower": 0.11902707214943334,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.7232733744411295,
+              "gradient_relative_peak_error_lower": 0.08292106288247772,
+              "solenoidal_curl_relative_l2_lower": 0.7232733744411294,
+              "solenoidal_curl_relative_peak_error_lower": 0.07289486887412129
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 1.6297794872211065e-05,
+              "constant_mode_mean_square": 2.665076508438346e-36,
+              "centered_p0_mean_square": 1.6297794872211065e-05,
+              "inside_cube_mean_square": 7.1839086288376846e-06,
+              "outside_cube_mean_square": 9.11388624337338e-06,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 4.769059368635027e-09,
+              "upper_hminus_mean_square": 6.994129252271106e-09,
+              "gradient_mean_norm_lower": 0.19487764396505672,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.184182796471606,
+              "gradient_relative_peak_error_lower": 0.13576290736050423,
+              "solenoidal_curl_relative_l2_lower": 1.1841827964716058,
+              "solenoidal_curl_relative_peak_error_lower": 0.11934747319917281
+            }
+          ]
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 887552,
+          "native_mean_error_voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 3.3402636855610555e-06,
+            "cell_mean_square": 3.340263685561052e-06,
+            "cell_voxel_norm_difference": 3.3881317890172014e-21
+          },
+          "reference": {
+            "gradient_mean_square": 0.024603351750080757,
+            "curl_mean_square": 0.024603351750080757,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 0.9744335520299401,
+              "analytic_peak_upper": 1.368153278538232,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.5700924586837752e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.1626137410564281,
+              "analytic_peak_upper": 1.5563334675647198,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.942890293094024e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 3.3402636855610555e-06,
+              "constant_mode_mean_square": 1.509990534634011e-36,
+              "centered_p0_mean_square": 3.3402636855610555e-06,
+              "inside_cube_mean_square": 1.4122074491065526e-08,
+              "outside_cube_mean_square": 3.32614161106999e-06,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 1.1966773488267343e-09,
+              "upper_hminus_mean_square": 5.316764002179533e-08,
+              "gradient_mean_norm_lower": 0.014486286171707035,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.09235489575538935,
+              "gradient_relative_peak_error_lower": 0.010588204113492702,
+              "solenoidal_curl_relative_l2_lower": 0.09235489575538935,
+              "solenoidal_curl_relative_peak_error_lower": 0.009307957756877464
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 3.3402636855610555e-06,
+              "constant_mode_mean_square": 1.509990534634011e-36,
+              "centered_p0_mean_square": 3.3402636855610555e-06,
+              "inside_cube_mean_square": 1.4294538150804513e-08,
+              "outside_cube_mean_square": 3.325969147410251e-06,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 1.1973661812122873e-09,
+              "upper_hminus_mean_square": 4.445382926730111e-09,
+              "gradient_mean_norm_lower": 0.05009866618265162,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.3193956710464198,
+              "gradient_relative_peak_error_lower": 0.03661772914521555,
+              "solenoidal_curl_relative_l2_lower": 0.3193956710464198,
+              "solenoidal_curl_relative_peak_error_lower": 0.032190187531624406
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 3.3402636855610555e-06,
+              "constant_mode_mean_square": 1.509990534634011e-36,
+              "centered_p0_mean_square": 3.3402636855610555e-06,
+              "inside_cube_mean_square": 1.477492177206946e-06,
+              "outside_cube_mean_square": 1.8627715083541095e-06,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 1.587096614112715e-09,
+              "upper_hminus_mean_square": 2.04187481439448e-09,
+              "gradient_mean_norm_lower": 0.07392072128279675,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.4712692009059912,
+              "gradient_relative_peak_error_lower": 0.05402956119198533,
+              "solenoidal_curl_relative_l2_lower": 0.4712692009059912,
+              "solenoidal_curl_relative_peak_error_lower": 0.04749671122761663
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 32768,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 1.1017086688661698e-06,
+            "cell_mean_square": 1.1017086688661696e-06,
+            "cell_voxel_norm_difference": 2.117582368135751e-22
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 1.1017086688661698e-06,
+              "constant_mode_mean_square": 5.310215855392902e-36,
+              "centered_p0_mean_square": 1.1017086688661698e-06,
+              "inside_cube_mean_square": 1.0594670595732044e-06,
+              "outside_cube_mean_square": 4.2241609292965456e-08,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 9.09103615037319e-08,
+              "upper_hminus_mean_square": 9.157038664893448e-08,
+              "gradient_mean_norm_lower": 0.003640736457506781,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.022123099354790857,
+              "gradient_relative_peak_error_lower": 0.002536345146358254,
+              "solenoidal_curl_relative_l2_lower": 0.022123099354790853,
+              "solenoidal_curl_relative_peak_error_lower": 0.002229669283488741
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 1.1017086688661698e-06,
+              "constant_mode_mean_square": 5.310215855392902e-36,
+              "centered_p0_mean_square": 1.1017086688661698e-06,
+              "inside_cube_mean_square": 1.0745003181032941e-06,
+              "outside_cube_mean_square": 2.720835076287571e-08,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 9.092780856213012e-08,
+              "upper_hminus_mean_square": 9.095437921717199e-08,
+              "gradient_mean_norm_lower": 0.003653044475087017,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.022197889578957353,
+              "gradient_relative_peak_error_lower": 0.002544919615017351,
+              "solenoidal_curl_relative_l2_lower": 0.02219788957895735,
+              "solenoidal_curl_relative_peak_error_lower": 0.0022372069916034567
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 1.1017086688661698e-06,
+              "constant_mode_mean_square": 5.310215855392902e-36,
+              "centered_p0_mean_square": 1.1017086688661698e-06,
+              "inside_cube_mean_square": 1.0887206479546645e-06,
+              "outside_cube_mean_square": 1.2988020911505366e-08,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 9.093761295734557e-08,
+              "upper_hminus_mean_square": 9.094078386088842e-08,
+              "gradient_mean_norm_lower": 0.003653317524114197,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.022199548773691038,
+              "gradient_relative_peak_error_lower": 0.002545109836579084,
+              "solenoidal_curl_relative_l2_lower": 0.022199548773691034,
+              "solenoidal_curl_relative_peak_error_lower": 0.00223737421299833
+            }
+          ]
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 118784,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 6.502509773381275e-05,
+            "cell_mean_square": 6.502509773381268e-05,
+            "cell_voxel_norm_difference": 6.776263578034403e-20
+          },
+          "reference": {
+            "gradient_mean_square": 0.02708236244353352,
+            "curl_mean_square": 0.027082362443533528,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.0223470883534038,
+              "analytic_peak_upper": 1.4354262718282798,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533528,
+              "parseval_mean_square": 0.02708236244353352,
+              "maximum_imaginary_residual": 1.6653345369377348e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.2197802205934072,
+              "analytic_peak_upper": 1.6328594040682831,
+              "lipschitz_bound": 4.858506452201368,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.027082362443533535,
+              "parseval_mean_square": 0.027082362443533528,
+              "maximum_imaginary_residual": 2.355138688025663e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 6.502509773381275e-05,
+              "constant_mode_mean_square": 2.400557234330469e-35,
+              "centered_p0_mean_square": 6.502509773381275e-05,
+              "inside_cube_mean_square": 4.9991768349441e-07,
+              "outside_cube_mean_square": 6.452518005031835e-05,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 4.332091692168716e-08,
+              "upper_hminus_mean_square": 1.0515268552079114e-06,
+              "gradient_mean_norm_lower": 0.06341190922597364,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.38532532756954735,
+              "gradient_relative_peak_error_lower": 0.044176361036785884,
+              "solenoidal_curl_relative_l2_lower": 0.3853253275695473,
+              "solenoidal_curl_relative_peak_error_lower": 0.03883488625412717
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 6.502509773381275e-05,
+              "constant_mode_mean_square": 2.400557234330469e-35,
+              "centered_p0_mean_square": 6.502509773381275e-05,
+              "inside_cube_mean_square": 3.103397376228199e-05,
+              "outside_cube_mean_square": 3.399112397153076e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 7.887691641965026e-08,
+              "upper_hminus_mean_square": 1.1207137342309827e-07,
+              "gradient_mean_norm_lower": 0.1942377624564123,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.1802945276127477,
+              "gradient_relative_peak_error_lower": 0.13531712932146264,
+              "solenoidal_curl_relative_l2_lower": 1.1802945276127474,
+              "solenoidal_curl_relative_peak_error_lower": 0.11895559530261286
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 6.502509773381275e-05,
+              "constant_mode_mean_square": 2.400557234330469e-35,
+              "centered_p0_mean_square": 6.502509773381275e-05,
+              "inside_cube_mean_square": 5.285359943111296e-05,
+              "outside_cube_mean_square": 1.2171498302699792e-05,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 9.68585625429296e-08,
+              "upper_hminus_mean_square": 9.983011974573716e-08,
+              "gradient_mean_norm_lower": 0.20580229695107882,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.2505669432636783,
+              "gradient_relative_peak_error_lower": 0.14337364516043843,
+              "solenoidal_curl_relative_l2_lower": 1.2505669432636781,
+              "solenoidal_curl_relative_peak_error_lower": 0.12603797757377067
+            }
+          ]
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 116992,
+          "native_mean_error_voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 4.054578405562682e-05,
+            "cell_mean_square": 4.054578405562678e-05,
+            "cell_voxel_norm_difference": 4.0657581468206416e-20
+          },
+          "reference": {
+            "gradient_mean_square": 0.024603351750080757,
+            "curl_mean_square": 0.024603351750080757,
+            "gradient_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 0.9744335520299401,
+              "analytic_peak_upper": 1.368153278538232,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.5700924586837752e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            },
+            "curl_peak": {
+              "sample_count_per_axis": 64,
+              "sampled_peak_lower": 1.1626137410564281,
+              "analytic_peak_upper": 1.5563334675647198,
+              "lipschitz_bound": 4.630806654327181,
+              "covering_radius": 0.08502184519847895,
+              "grid_mean_square": 0.024603351750080764,
+              "parseval_mean_square": 0.024603351750080757,
+              "maximum_imaginary_residual": 1.942890293094024e-16,
+              "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+            }
+          },
+          "bounds": [
+            {
+              "cutoff_cube": 7,
+              "mode_count": 3375,
+              "p0_mean_square": 4.054578405562682e-05,
+              "constant_mode_mean_square": 7.775378090476996e-36,
+              "centered_p0_mean_square": 4.054578405562682e-05,
+              "inside_cube_mean_square": 2.2901681465510317e-07,
+              "outside_cube_mean_square": 4.0316767240971715e-05,
+              "minimum_outside_wavevector_square": 64,
+              "partial_hminus_mean_square": 1.9406368943965214e-08,
+              "upper_hminus_mean_square": 6.493558570841482e-07,
+              "gradient_mean_norm_lower": 0.050315793021463925,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 0.32077992690927665,
+              "gradient_relative_peak_error_lower": 0.03677642981290995,
+              "solenoidal_curl_relative_l2_lower": 0.32077992690927665,
+              "solenoidal_curl_relative_peak_error_lower": 0.03232969930293654
+            },
+            {
+              "cutoff_cube": 31,
+              "mode_count": 250047,
+              "p0_mean_square": 4.054578405562682e-05,
+              "constant_mode_mean_square": 7.775378090476996e-36,
+              "centered_p0_mean_square": 4.054578405562682e-05,
+              "inside_cube_mean_square": 1.9321406552198848e-05,
+              "outside_cube_mean_square": 2.122437750342797e-05,
+              "minimum_outside_wavevector_square": 1024,
+              "partial_hminus_mean_square": 4.1669003563635217e-08,
+              "upper_hminus_mean_square": 6.23959347193266e-08,
+              "gradient_mean_norm_lower": 0.162318326137601,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.0348333528648588,
+              "gradient_relative_peak_error_lower": 0.11864045402210037,
+              "solenoidal_curl_relative_l2_lower": 1.0348333528648588,
+              "solenoidal_curl_relative_peak_error_lower": 0.10429533870500733
+            },
+            {
+              "cutoff_cube": 63,
+              "mode_count": 2048383,
+              "p0_mean_square": 4.054578405562682e-05,
+              "constant_mode_mean_square": 7.775378090476996e-36,
+              "centered_p0_mean_square": 4.054578405562682e-05,
+              "inside_cube_mean_square": 3.295152944763554e-05,
+              "outside_cube_mean_square": 7.5942546079912814e-06,
+              "minimum_outside_wavevector_square": 4096,
+              "partial_hminus_mean_square": 5.291436856490888e-08,
+              "upper_hminus_mean_square": 5.4768434631313e-08,
+              "gradient_mean_norm_lower": 0.17325291040491103,
+              "scope": "Any periodic H1 error with these exact native cell averages. Analytical lower-bound formula evaluated in floating point; no outward-rounded certificate.",
+              "gradient_relative_l2_lower": 1.104544966881451,
+              "gradient_relative_peak_error_lower": 0.12663267568237577,
+              "solenoidal_curl_relative_l2_lower": 1.104544966881451,
+              "solenoidal_curl_relative_peak_error_lower": 0.11132120076811645
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quality_verdict": "NO_ROUNDING_CERTIFICATE_OR_ORIGINAL_SOLVER_GATE_COMPLETION",
+  "limits": [
+    "No particular velocity reconstruction is assumed; the lower bound is conditional on exact native-mean conservation and periodic H1 regularity.",
+    "Curl inherits the same absolute L2 lower bound only for divergence-free reconstructions and the divergence-free reference.",
+    "Original solver cell-centered values are interpreted as nominal means, not claimed to carry an upstream exact-average guarantee.",
+    "Analytic formulas use floating point without interval-certified rounding; no original gate is upgraded.",
+    "The cutoff-7 n64 pilot was observed before this protocol; these are not blind prospective thresholds.",
+    "No new solver threshold, upstream defect, nonconvergence theorem for the solver, physical singularity or viscosity inference follows."
+  ]
+}

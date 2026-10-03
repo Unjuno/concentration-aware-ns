@@ -56,6 +56,18 @@ The archived example is
 `reports/openfoam-amr-band-reconstruction-2026-10-03.md`; it adds diagnostics
 without changing any original solver verdict or retrospective threshold.
 
+Mean conservation is a separate reconstruction requirement. A filtered
+polynomial need not preserve native cell averages, and a mean-preserving
+polynomial need not have a consistent derivative operator. Exact-native-mean
+controls must accompany claims about such an operator. A lower bound derived
+from prescribed native means can constrain every periodic H1 reconstruction
+with those means, but must state the partition, mean interpretation, metric
+and arithmetic uncertainty. Cell-centered solver variables alone do not
+establish an upstream exact-average guarantee. Curl bounds additionally need
+a divergence-free reconstruction. The conditional example and its limits are
+in `reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md`; none of its
+uncertified floating endpoints changes the original gate.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.

@@ -1,5 +1,32 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 267 — separate mean conservation from filtered gradient quality
+
+All twelve archived states now have an explicitly mean-preserving smooth
+Fourier reconstruction and exact-native-mean controls, plus a separate
+reconstruction-independent H1 gradient lower-bound formula. The latter uses
+native mean errors as a P0 dual test field, measured Fourier coefficients and
+complete outside mass to bound its H^-1 norm. It imposes no copied subcell
+averages on the unknown H1 field. At n64/postSolve, C=63 gives gradient L2 lower
+formula 47.1269% and peak-of-error lower formula 5.4030%, conditional on exact
+native-mean interpretation; this is not a rounding-certified gate verdict.
+
+The chosen mean-preserving polynomial has actual gradient/curl errors
+107.6343% / 97.3415%, versus its exact-native-mean control 3.8968% / 3.2128%.
+A smooth shear proves that copying exact coarse means to extra voxels before
+reconstruction can have velocity L2 error tending to zero but derivative
+relative error tending to pi^2/4. This is an analysis-operator limit, not a
+solver nonconvergence theorem. The old filtered polynomial's small errors stay
+valid for its separate non-mean-preserving scope.
+
+Seven new analytical controls, complete 292-test local suite and byte-identical
+selected-export replay of both analyses pass. Their source pins and the earlier
+289-test R-source result remain separate. No new threshold or upstream defect
+is introduced. See `reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md`
+and the two linked evidence directories. The new conditional bound narrows the
+continuous-field interpretation gap; original acceptance, other targets,
+proof/physical obligations and the complete goal remain open.
+
 ## Revision 266 — measure a named smooth AMR reconstruction
 
 The twelve archived states now have exact finite-polynomial gradient/curl

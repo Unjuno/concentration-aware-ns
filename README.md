@@ -11,6 +11,7 @@ Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
+- [Native mean constraints and reconstruction-independent gradient bounds](reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md)
 - [Named smooth AMR reconstruction and derivative bounds](reports/openfoam-amr-band-reconstruction-2026-10-03.md)
 - [Validated AMR P0 spectrum and outside-band mass](reports/openfoam-amr-p0-spectrum-2026-10-03.md)
 - [Executed prospective AMR mean-quality study](reports/openfoam-amr-mean-quality-v1-2026-10-03.md)

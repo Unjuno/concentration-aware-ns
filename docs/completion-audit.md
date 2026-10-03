@@ -1,5 +1,20 @@
 # Completion audit — interim, 2026-09-27
 
+### Native-mean reconstruction and conditional H1 obstruction — 2026-10-04
+
+The new twelve-state audit compares a mean-preserving smooth polynomial with
+exact-native-mean controls and derives a reconstruction-independent H1 lower
+bound from the native mean errors. At n64/postSolve, the conditional formula
+gives gradient L2 lower 47.1269% and peak-of-error lower 5.4030%. The chosen
+polynomial has gradient/curl errors 107.6343% / 97.3415%, versus its reference
+operator control 3.8968% / 3.2128%. Earlier filtered precision does not transfer
+to native-mean preservation. All 292 tests and both guarded selected-export
+analysis replays pass with byte identity. Numerical formulas lack certified
+outward rounding and presume nominal means on the validated periodic dyadic
+partition; no original gate or solver defect is upgraded. The full goal stays
+open. See [`report`](../reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md).
+
+
 ### Named smooth AMR reconstruction measured — 2026-10-03
 
 All twelve states now have a declared finite Fourier reconstruction w=P_B v,

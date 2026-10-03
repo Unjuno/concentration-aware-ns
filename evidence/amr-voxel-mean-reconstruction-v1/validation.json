@@ -1,0 +1,66 @@
+{
+  "status": "PASS_EXECUTED_MATRIX_TESTS_AND_SCOPED_GUARDED_REPLAY",
+  "numerical_source_commit": "6819ed429172ce37713ab16a9c17b10a3cc301a7",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64"
+  },
+  "full_suite": "289 passed, 1 skipped, 83 subtests passed",
+  "command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m tools.audit_amr_voxel_mean_reconstruction --raw-map /path/to/raw-map.json --output /new/output/path --source-commit 6819ed429172ce37713ab16a9c17b10a3cc301a7",
+  "lockfile_sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d",
+  "clean_export": {
+    "export_commit": "5abbe08e7d6488f1f23dfea0a83f8d2f34e8fc17",
+    "paths": [
+      "tools",
+      "protocols/of13-amr-mean-quality-v1.json",
+      "protocols/amr-voxel-mean-reconstruction-v1.json",
+      "protocols/amr-mean-gradient-lower-bound-v1.json",
+      "evidence/of13-amr-mean-quality-v1",
+      "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json",
+      "runtime/openfoam13/instrumentation/prepare_amr_stage_module.py",
+      "runtime/of13-interface-operator/Dockerfile",
+      "runtime/of13-interface-operator/fetch_pinned_package.sh",
+      "requirements-verification-locked.txt",
+      "requirements-verification.txt",
+      "requirements.txt"
+    ],
+    "archive_sha256": "c9039073808bab3ae9f143be8ba751c17c083b985962ccab6f179cbb05511736",
+    "archive_bytes": 2723840,
+    "analysis_json_byte_identity": true,
+    "analysis_json_sha256": "55c8fa05bb177956082c4f9fef2a05ccc018485c6448e0f194f661ef9e9550fc",
+    "source_files_match_claimed_numerical_commit": {
+      "tools/amr_voxel_mean_reconstruction.py": true,
+      "tools/audit_amr_voxel_mean_reconstruction.py": true,
+      "tools/amr_p0_spectrum.py": true,
+      "tools/high_gradient_cell_average.py": true,
+      "tools/amr_projection_decomposition.py": true,
+      "tools/analyze_amr_mean_quality.py": true,
+      "tools/analyze_amr_gauss_gradient.py": true,
+      "tools/compare_amr_resolution_volume_integrated.py": true
+    },
+    "scope": "The reconstruction files inherited unchanged from 6819ed4 are replayed inside the later selected 5abbe08 export; lower-bound files use 5abbe08. Raw archives are external verified data. Both replays run without Git directory access under Python-level process/network/Git-open guards."
+  },
+  "checks": [
+    "Raw archive and every member SHA checked",
+    "All twenty frozen CFD input-source identities checked",
+    "Complete twelve-state matrix measured",
+    "Analytical controls and full local suite pass",
+    "compileall and git diff --check pass; no configured project linter exists"
+  ],
+  "limits": [
+    "Analytic floating formulas without outward rounding",
+    "Same host/interpreter locked dependency replay",
+    "Python audit guards are not a native syscall sandbox",
+    "No CFD, upstream suite, proof or entire historical report replay performed"
+  ],
+  "artifacts_sha256": {
+    "clean-export-replay.log": "2bced331876e85c11107d2c9769361bf83f631dcc752133f74e10557844d0e30",
+    "full-suite.log": "fa265d4b9ae418860b71582c2cb104825f964aef04a49736f9d9c9f08154b100",
+    "README.md": "033b0c5ad97afaf94b45fae21417574bcc83076ea24ca6ad56788d10f76a985d",
+    "audit.log": "2bced331876e85c11107d2c9769361bf83f631dcc752133f74e10557844d0e30",
+    "isolation.json": "e08977d1e3b526686a17a4d1f3fd2cbd984523864a25ab715993b8bf9be99b85",
+    "analysis.json": "55c8fa05bb177956082c4f9fef2a05ccc018485c6448e0f194f661ef9e9550fc",
+    "isolate_replay.py": "a20980f368a3800c070c78a192f7ec14c84f55495ece0b42cd40d1abe406698f"
+  }
+}
