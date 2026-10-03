@@ -1,5 +1,43 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 254 — replay the added stress-interpolation analysis
+
+Added the generic same-weight interpolation-covariance checker to the public
+report replay and ran the complete replay with the verification environment on
+PATH. All 44 steps passed, including the full pytest suite (223 passed, one
+skipped, five subtests passed), and the new symbolic identity step passed.
+The working-tree replay also refreshed the repository's prior recorded
+diagnostics whose platform provenance had advanced to macOS 27.0.1. The
+fixed-commit clean export and hosted CI for the next commit remain to be
+verified. This algebraic control neither reproduces the upstream VoF case nor
+changes the solver or physical verdict. Goal remains active.
+
+## Revision 253 — distinguish the existing viscosity-jump issue from the hypothesis
+
+Repeated the live version/license/issue check across the pinned OpenAI source,
+OpenFOAM Foundation 13, SU2 v8.5.0 and NVIDIA PhysicsNeMo. OpenAI remains at
+the pinned source with Issues/Discussions disabled. SU2's source-time
+Discussion #2890 and Issue #2353 remain the existing records; broad target-time
+PR #2857 is closed unmerged. PhysicsNeMo main advanced to `b45a5c8`, but the
+odd-width spectrum source is unchanged and its Issue #2007 / PR #2008 remain
+the correct reports. No duplicate post was warranted. The live status and
+source identities are in
+`reports/live-upstream-recheck-2026-10-03-0824Z.md`.
+
+The OpenFOAM GitHub tracker has a directly adjacent existing Issue #2 about
+two-phase stress-flux interpolation at viscosity/gradient jumps. For a generic
+same-weight face interpolation, symbolically verified
+`I(aG)-I(a)I(G)=w(1-w)(a_P-a_N)(G_P-G_N)`: smooth affine fields give an `O(h^2)`
+face defect, while finite unresolved jumps can give a defect without an `h`
+factor. The derivation does not replay OpenFOAM's full operator or reproduce
+the attached case. The frozen smooth, single-phase MMS uses constant `nu`, so
+this is a separate interface-discretization benchmark candidate, not evidence
+for molecular alignment or physical viscosity loss. No upstream post was
+made because the existing issue already tracks that report. See
+`reports/openfoam-stress-interpolation-covariance-2026-10-03.md` and the exact
+symbolic record in `evidence/tests/openfoam-stress-interpolation-covariance-2026-10-03.json`.
+Goal remains active.
+
 ## Revision 252 — clean export passes at the refreshed current head
 
 Ran fixed commit `48579a4e70176c1166f33a75b2ef803b2714e30a` from a

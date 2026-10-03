@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "645d37d00c6da640112328a3b644a3bd8e79ab02291826c5472584a50d66ceb6"
+      "log_sha256": "79d894d43c4d9c4e4bf5005314192ac020581c7e834e70b85dfaa2a3d82bd2c8"
     },
     {
       "step": "global_peaks",
@@ -183,6 +183,22 @@
       "log_sha256": "40235b90c28a701548c101c00cd333b5bc44dfd6c91b9ffb9bd22f7665ed1366"
     },
     {
+      "step": "openfoam_stress_interpolation_identity",
+      "command": [
+        "python",
+        "-m",
+        "tools.audit_openfoam_stress_interpolation_identity"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_stress_interpolation_identity"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_stress_interpolation_identity.log",
+      "log_sha256": "2b0f3e3a15c6b856d45f87e219b191767b079b4b853b31272875da24d65f1cfa"
+    },
+    {
       "step": "su2_archive_review",
       "command": [
         "python",
@@ -228,7 +244,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/su2_diagnostic_replay.log",
-      "log_sha256": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18"
+      "log_sha256": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed"
     },
     {
       "step": "su2_spectral_derivatives",
@@ -500,7 +516,23 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/spherical_orientation_diffusion.log",
-      "log_sha256": "2fcdf7d24aff57e515d7cc4b7caa672c050f442c313d5d702e3e6069b36be031"
+      "log_sha256": "17d7557d5e5bcf60c84cd0b80e413ae134eda21b1a4c058327de3b577db499dd"
+    },
+    {
+      "step": "visco_morphoelastic_internal_state",
+      "command": [
+        "python",
+        "-m",
+        "tools.check_visco_morphoelastic_internal_state"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.check_visco_morphoelastic_internal_state"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/visco_morphoelastic_internal_state.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "step": "su2_output_clock_control",

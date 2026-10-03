@@ -1,5 +1,39 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 stress-interpolation checker replay
+
+Added the symbolic face-interpolation identity as a report-replay step and ran
+the complete replay from the locked verification environment. All 44 steps
+exited zero, including 223 tests, one skip and five subtests. The replay also
+refreshed existing report/test metadata for the current macOS 27.0.1 host. This
+is an exact generic algebra control, not an OpenFOAM operator reproduction or
+a run of the issue #2 case. A tracked-only clean export and CI at the next
+commit are still required. The finding remains a distinct, unconfirmed
+interface-discretization question; benchmark and physical verdicts are
+unchanged.
+
+### Completion audit refresh — 2026-10-03 cross-project issue and viscosity-jump analysis
+
+Read-only live checks confirm the OpenAI source pin is unchanged, SU2 target-time
+PR #2857 is closed unmerged while its issue/discussion records remain available,
+and PhysicsNeMo main advanced without changing the affected odd-width spectrum
+file. The Foundation 13 GitHub tracker contains an existing open issue #2 with
+a two-phase, high-viscosity-contrast stress-flux reproducer. Do not merge that
+with the smooth single-phase MMS or the proposed physical-viscosity hypothesis.
+The current source/disposition snapshot is
+[`live-upstream-recheck-2026-10-03-0824Z.md`](../reports/live-upstream-recheck-2026-10-03-0824Z.md).
+
+For the generic model of two factors interpolated with the same linear face
+weights, the exact checker proves
+`I_w(aG)-I_w(a)I_w(G)=w(1-w)(a_P-a_N)(G_P-G_N)`. It is quadratic in cell
+spacing for smooth affine data and can remain finite across unresolved jumps.
+This gives a discrete numerical confounder for interface-viscosity cases, not
+a verdict on the full OpenFOAM operator, the attached issue case, the current
+benchmark, or physical viscosity. No duplicate upstream report was made. The
+derivation, exact scope and limits are recorded in
+[`openfoam-stress-interpolation-covariance-2026-10-03.md`](../reports/openfoam-stress-interpolation-covariance-2026-10-03.md)
+and its replayable symbolic result.
+
 ### Completion audit refresh — 2026-10-03 clean export at current head
 
 Fixed commit `48579a4e70176c1166f33a75b2ef803b2714e30a` was exported from

@@ -1,0 +1,127 @@
+{
+  "observed_at_utc": "2026-10-03T08:24:16Z",
+  "method": "Read-only GitHub REST/GraphQL/API and official raw license/contribution files; no upstream writes",
+  "projects": {
+    "openai/NavierStokesAndEuler": {
+      "default_branch": "main",
+      "head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "commit_date": "2026-09-10T13:40:53Z",
+      "license_api": "Apache-2.0",
+      "issues_enabled": false,
+      "discussions_enabled": false,
+      "audited_source_pin_current": true,
+      "disposition": "No upstream report channel; the selected-profile pressure obligation remains an extension proof-provenance gap, not a reproduced upstream theorem defect.",
+      "source": "https://github.com/openai/NavierStokesAndEuler"
+    },
+    "OpenFOAM/OpenFOAM-13": {
+      "default_branch": "master",
+      "master_head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "master_commit_date": "2026-06-23T20:54:34Z",
+      "version_13_tag": "version-13",
+      "version_13_tag_commit": "65eda17ad4caa916bfd0606039db92509670f9f7",
+      "license_api": "NOASSERTION",
+      "license_file": {
+        "path": "COPYING",
+        "git_blob": "7d136509e0408ed3a9b45ab85a173431d3b24614",
+        "declares": "GNU GPL version 3 or (at the user's option) any later version"
+      },
+      "issues_enabled": true,
+      "discussions_enabled": false,
+      "visible_open_issue_count": 4,
+      "related_existing_issue": {
+        "number": 2,
+        "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2",
+        "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases",
+        "state": "open",
+        "updated_at": "2025-08-29T19:28:04Z",
+        "comments": 0,
+        "reproducer_attached": true,
+        "scope": "Two-phase incompressibleVoF stress-flux interpolation under viscosity/gradient jumps; distinct from the benchmark's smooth single-phase constant-viscosity MMS"
+      },
+      "implementation_change": {
+        "commit": "6592798ca0704aa6eaaaaf74ea3cc6a9553317dc",
+        "stated_rationale": "Make explicit surface stress, momentum-matrix stress, wall-shear-stress and force-object evaluations consistent"
+      },
+      "tracker_limit": "The separate Foundation Mantis issue tracker was not exhaustively searchable in this environment; this records the GitHub tracker only.",
+      "contribution_route": "GitHub issues are enabled; repository root contains COPYING and README.org but no root CONTRIBUTING file. The existing issue already records the reported viscosity-jump behavior; no duplicate was filed.",
+      "source": "https://github.com/OpenFOAM/OpenFOAM-13"
+    },
+    "su2code/SU2": {
+      "default_branch": "master",
+      "master_head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "master_commit_date": "2026-04-28T06:05:27Z",
+      "latest_release": "v8.5.0",
+      "v8.5.0_tag_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+      "license_api": "NOASSERTION",
+      "license_file": {
+        "path": "LICENSE.md",
+        "git_blob": "bce3315e4c4dc93b6643d0daf1dbf25a6ba4b545",
+        "declares": "GNU LGPL version 2.1"
+      },
+      "discussion_2890": {
+        "url": "https://github.com/su2code/SU2/discussions/2890",
+        "state": "closed",
+        "updated_at": "2026-09-30T17:05:38Z",
+        "comments": 2,
+        "is_answered": false,
+        "latest_reply_date": "2026-09-26T14:00:52Z",
+        "disposition": "Maintainer confirms source-time diagnosis and requests separation of stored-state and target-state time; no accepted answer or general fix recorded."
+      },
+      "issue_2353": {
+        "url": "https://github.com/su2code/SU2/issues/2353",
+        "state": "open",
+        "updated_at": "2026-09-30T17:05:37Z",
+        "scope": "Implicit time-varying boundary/motion endpoint semantics; benchmark restart and MAX_TIME follow-ups are already posted there."
+      },
+      "issue_2932": {
+        "url": "https://github.com/su2code/SU2/issues/2932",
+        "state": "open",
+        "scope": "Opt-in output of maximum-residual locations, relevant to residual observability."
+      },
+      "pr_2857": {
+        "url": "https://github.com/su2code/SU2/pull/2857",
+        "state": "closed",
+        "merged": false,
+        "draft_at_close": true,
+        "head": "df00fb7b7a34e08765796fd3342ac825e690694f",
+        "target_branch": "develop",
+        "related_issue": 2353,
+        "validation_scope": "SU2_CFD and UnitTests/test_driver builds plus two configuration/motion test cases; full regression, adjoint, variable-step and end-to-end source-time validation not claimed"
+      },
+      "disposition": "Existing discussion and issue cover the temporal finding; the broader target-time PR is closed unmerged. No duplicate post was made.",
+      "source": "https://github.com/su2code/SU2"
+    },
+    "NVIDIA/physicsnemo": {
+      "default_branch": "main",
+      "main_head": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+      "main_commit_date": "2026-10-02T16:45:37Z",
+      "latest_release": "v2.2.2",
+      "v2.2.2_tag_commit": "072465a1a56817f180f64dee8a4069a1612b2d9e",
+      "license_api": "Apache-2.0",
+      "license_file": {
+        "path": "LICENSE.txt",
+        "git_blob": "82676a5d11201bc4b7dedfa819fb37b2abe81d08"
+      },
+      "contribution_policy": "CONTRIBUTING.md and README ask contributors to start with an issue/discussion and coordinate with maintainers; every PR should correspond to an open issue, and substantial changes should wait for maintainer feedback.",
+      "issue_2007": {
+        "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+        "state": "open",
+        "updated_at": "2026-10-02T03:48:30Z",
+        "affected_file_blob_on_current_main": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "prior_source_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552"
+      },
+      "pr_2008": {
+        "url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+        "state": "open",
+        "review_decision": "REVIEW_REQUIRED",
+        "target": "ff5d19d08123de47ca446caed1d70a225d540184",
+        "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+        "comparison_to_current_main": "current main is 14 commits ahead of PR head; PR head has 2 commits not in current main"
+      },
+      "issues_2001_and_1852": "Both remain open for periodic-boundary assumptions and nonperiodic boundary-mode support; PR #1853 remains an unmerged, stale implementation attempt.",
+      "disposition": "Existing issue/PR track the odd-width defect; the benchmark's even-width spectra show no demonstrated impact. No duplicate report was filed.",
+      "source": "https://github.com/NVIDIA/physicsnemo"
+    }
+  },
+  "global_disposition": "No new upstream post is justified by this refresh. OpenFOAM issue #2 is a relevant existing viscosity-jump discretization report, not independent confirmation of the attached case or evidence for a physical viscosity transition. SU2 and PhysicsNeMo findings remain on their existing records; the OpenAI pressure obligation is local to the extension."
+}
