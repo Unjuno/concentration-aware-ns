@@ -1,0 +1,7 @@
+{
+  "sympy_version": "1.14.0",
+  "derivative_residual": "0",
+  "stationary_point": "S=a/c",
+  "derivative_sign": "positive for S<a/c; negative for S>a/c",
+  "limits": "Real scalar maximum identity; spatial bounds are separately derived"
+}
