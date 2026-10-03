@@ -30,7 +30,7 @@ class DerivativeProjectionTests(unittest.TestCase):
         centers = np.array([[.1, .2, .4], [2.2, 1.9, 3.1], [6.1, 5.8, 5.4]])
         widths = np.array([2*np.pi/16, 2*np.pi/32, 2*np.pi/64])
         nodes, weights = leggauss(12)
-        for n in (1, 4, 7):
+        for n in (1, 3, 4, 7):
             with self.subTest(frequency=n):
                 result = derivative_moments(centers, widths, .002, n)
                 means = np.zeros((3, 3, 3))

@@ -1,5 +1,16 @@
 # Completion audit — interim, 2026-09-27
 
+### Prospective AMR mean-quality successor — frozen inputs pending execution
+
+The N=3 reference precheck passes the new named mean gates at n32/n64;
+n16 is coarse. This analytic preflight is not an actual solver or mapped-mesh
+quality result. Four fresh hosted cases and the n16 disabled-capture control
+are required. Missing identity, run, measurement or adequate reference
+operator evidence forces UNCERTAIN. These engineering gates leave the
+original continuous peak/spectrum and other solver/physical obligations open.
+See [`protocol`](../protocols/of13-amr-mean-quality-v1.json) and
+[`runtime/replay instructions`](../runtime/of13-amr-quality/README.md).
+
 ### Completion audit refresh — 2026-10-03 AMR derivative projection
 
 The new three-resolution archive replay splits the integrated P0 gradient/curl

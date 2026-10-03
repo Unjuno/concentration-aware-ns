@@ -1,5 +1,35 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 263 — freeze and execute prospective AMR mean-quality controls
+
+The new N=3 successor fixes n16/n32/n64 at dt=.001 and n32 at dt=.0005,
+common first-map time .002, end .05 and one refinement level. Full-domain
+velocity/curl/gradient mean errors have prospective 2%/5%/5% engineering
+limits; integrated P0 representation floors remain separate. These new
+mean norms do not replace the original N=4 peak/spectrum obligations.
+
+The analytic uniform reference precheck passes for n32/n64; n16 remains
+coarse. Actual native reference-operator adequacy must pass on every fine
+captured stage before a persistent discrepancy is reportable. Three cell-only
+snapshots retain native gradients and an independent real-space MMS control.
+An n16 disabled-capture run must leave final U/p byte-identical. The matrix
+aggregator rejects missing controls, cases, source/protocol identities or
+inadequate reference reconstruction. No actual N=3 solver outcome is claimed
+by this preflight record.
+
+All eight pinned module source files and 167 stock library payloads are
+checked against the official hash-pinned package. Fresh hosted ARM64 VMs,
+bounded solver resources and preserved raw/partial artifacts isolate each
+case from the unresponsive local Docker service. Compilation, solver
+execution and archive analysis are still required after the harness commit
+is frozen. Quality failure alone is not a solver defect or evidence of
+molecular alignment, phase transition or viscosity reduction. Goal stays
+active. Protocol: `protocols/of13-amr-mean-quality-v1.json`.
+Local locked preflight: 271 tests pass, one skip and 80 subtests pass;
+workflow shell/YAML and Python syntax/whitespace checks pass. This is
+harness validation, not CFD execution. Evidence:
+`evidence/amr-mean-quality-preflight-v1/manifest.json`.
+
 ## Revision 262 — separate AMR derivative representation and mean errors
 
 Recomputed the n=16/32/64 archived first-map tensors and curls on the same
