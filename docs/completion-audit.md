@@ -1,5 +1,17 @@
 # Completion audit — interim, 2026-09-27
 
+### Actual n16 cellPoint capture executed — 2026-10-04
+
+Hosted run 37143558038 successfully executes unchanged n16 numerical input and
+read-only compiled interpolation capture. Original input/final U/p, disabled
+control and probe before/after fields are byte-identical. Fourteen mesh members,
+207,488 tet records, shared points and centre/face evaluations are public with
+hash receipts. Shared triangles match and native degenerate counts are zero;
+centre/face errors are 5.58e-17/3.82e-15. Independent floating/topology validation
+and the 315-test suite pass. Actual n16 capture is achieved; geometric interval
+proof, global-continuity/rounding certification and larger cases remain open.
+See [report](../reports/openfoam-cell-point-capture-n16-2026-10-04.md).
+
 ### Named cellPoint source family, actual geometry missing — 2026-10-04
 
 Eight pinned source files identify a relevant cell-centre/vertex tetrahedral

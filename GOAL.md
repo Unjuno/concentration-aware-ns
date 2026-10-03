@@ -1,5 +1,29 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 273 — execute unchanged n16 recipe and capture actual cellPoint data
+
+A fresh isolated ARM64 hosted run completed the original n16 recipe and a
+compiled read-only cellPoint probe. All twenty recipe source identities,
+original n16 input/final U/p byte identity, disabled-control identity and
+read-only probe field hashes pass. Eight installed source files match the pin.
+Final and initial polyMesh instances, 20,209 point values, 207,488 tetrahedra
+and 48,816 internal-face evaluations are preserved for 16,640 cells.
+
+Centre interpolation differs by at most 5.58e-17; shared-face samples by
+3.82e-15. Every shared triangle matches owner/neighbour vertex identities;
+native degenerate/invalid-base counts are zero. Floating cell/tet volume sums
+agree within 1.06e-14 relative. The independent analyzer and 315-test suite
+pass (1 skip, 83 subtests). A full public release bundle matches GitHub's SHA256
+receipt; old raw evidence and thresholds are unchanged.
+
+This executes the capture specification for a prospective n16 successor,
+not recovery of old meshes or larger-case execution. Full geometric partition,
+rounding/continuity certification and exact point-witness transfer remain
+unproved. See `reports/openfoam-cell-point-capture-n16-2026-10-04.md` and
+`evidence/of13-cell-point-capture-v1-n16/`. No solver defect, physical claim
+or original gate upgrade follows. Remaining resolution studies, source/proof,
+other solver and full-goal obligations stay open.
+
 ## Revision 272 — identify a named cellPoint interpolation and its runtime gap
 
 Eight pinned Foundation 13 source files identify `cellPoint` as tetrahedral
