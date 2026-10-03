@@ -1,0 +1,29 @@
+{
+  "case_id": "n32-dt0.0005",
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-cell-point-capture-matrix-v1-4e60b23/cell-point-capture-n32-dt0.0005-4e60b23.tar.gz",
+  "release_sha256": "9e2fbd5fbe526e841b28578dcb61eee6d7f3e3ac189e486f357eb84f795943c4",
+  "capture_manifest_sha256": "7fbefad0a7d21c844500ce4f42a07e92b91aa1ce39c56289d8bdec66e5ffd884",
+  "cell": 112150,
+  "face": 336654,
+  "tetPt": 2,
+  "point_indices": [
+    125023,
+    47277,
+    122947
+  ],
+  "query_count": 19,
+  "step_powers": [
+    14,
+    16,
+    18
+  ],
+  "witness_path": "evidence/cell-point-derivative-batches-v1/n32-dt0.0005/analysis.json",
+  "witness_sha256": "3640bde86a6af46c37f362cf2dedc78c831aa6240598d03be87a02c381b1962e",
+  "neighborhood_path": "evidence/cell-point-matrix-neighborhood-v1/n32-dt0.0005/analysis.json",
+  "neighborhood_sha256": "ea59e944407d7ed776c8254e9a736bc9ed74a0ba2b9041ac8eeded1e31ca64a4",
+  "limits": [
+    "Read-only field replay; no CFD evolution",
+    "Finite queries do not certify every floating search input or global continuity",
+    "Original acceptance gates and physical conclusions unchanged"
+  ]
+}

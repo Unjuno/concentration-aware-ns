@@ -8,6 +8,11 @@ on:
       - 'tools/analyze_of13_cell_point_query.py'
       - 'protocols/of13-cell-point-query-v1.json'
   workflow_dispatch:
+    inputs:
+      matrix:
+        description: Replay the three larger hash-pinned witness targets
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -45,7 +50,7 @@ jobs:
           printf 'execute=%s\n' "$execute" >> "$GITHUB_OUTPUT"
   replay:
     needs: changes
-    if: needs.changes.outputs.execute == 'true'
+    if: needs.changes.outputs.execute == 'true' && github.event.inputs.matrix != 'true'
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
     steps:
@@ -88,3 +93,7 @@ jobs:
             work/query-replay-v1/probe/cansCellPointQueryProbe
           if-no-files-found: error
           retention-days: 90
+
+  matrix-replay:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.matrix == 'true'
+    uses: ./.github/workflows/cell-point-matrix-query.yml

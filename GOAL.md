@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 280 — freeze larger-target native position replay
+
+Three SHA-bound protocols replay n32/n64/half-step captured fields read-only,
+with nineteen fixed queries each inside the previously enclosed local balls.
+Target/hash/schedule and exact rational membership controls reject substitutions.
+Fresh hosted jobs must verify native candidate search, node/stock source identity,
+explicit-overload agreement and unchanged U/p. Runtime execution/results remain
+unproved at launch; no continuum or original quality gate is upgraded. See
+`reports/cell-point-matrix-native-query-launch-2026-10-04.md`. Full goal active.
+
 ## Revision 279 — enclose local neighborhoods of three larger matrix witnesses
 
 At the n32/n64/half-step selected targets, Arb128 proves a fixed radius-1/4096

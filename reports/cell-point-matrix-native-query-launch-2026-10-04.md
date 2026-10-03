@@ -1,0 +1,11 @@
+# Frozen larger-target native position replay — 2026-10-04
+
+This extends the earlier n16 read-only query procedure to the three captured n32/n64/half-step derivative witnesses. Protocols bind release bundle SHA256, capture manifest, witness and Arb128 neighborhood hashes, target cell/face/tet/vertices, and nineteen queries (centroid plus signed coordinate offsets at 2^-14, 2^-16, 2^-18). All offsets lie strictly below the proved radius 1/4096; exact rational checks on decoded runtime coordinates must subsequently prove membership in the stored enclosed ball.
+
+Fresh hosted ARM64 jobs restore original fields/mesh from public releases, build the GPL probe against the pinned Foundation 13 package and sources, and run the actual position overload read-only. Checks require original stock-library identity, installed sources, unchanged U/p, exact recorded node agreement, full candidate search coverage, identical selected vertices/first candidate and agreement with explicit weighted interpolation. Secants remain floating diagnostics with the existing 1e-8 component discrepancy tolerance, not an analytic derivative certificate. No solver evolution, original acceptance change or physical inference occurs.
+
+Three protocol files are `protocols/of13-cell-point-matrix-query-{n32,n64,n32half}-v1.json`. The existing registered `cell-point-query.yml` dispatch with boolean input `matrix=true` invokes the frozen matrix workflow; the historical n16 replay remains its default. Matrix jobs use separate fresh VMs. Complete or partial evidence and probe binary are uploaded even after failure. Poll the exact dispatched run and do not restart because observation is slow.
+
+Fourteen focused tests (two subtests) pass, covering existing replay corruption controls and six new checks for target/hash substitution, fixed schedule, strict ball membership and uncertain-centre rejection. Execution results are unproved at launch; future receipts must distinguish runtime failure, input/source integrity, finite position agreement, field quality and global certification. The full objective remains active.
+
+The full local suite passes: **354 passed, 1 skipped, 89 subtests**. The preceding publication commit `834cc2d759be4ad70518e83ec1c0e8eaefe40ae8` separately passed hosted Python CI run 37153357450. Neither result proves the pending native matrix runtime.
