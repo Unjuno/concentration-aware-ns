@@ -11,6 +11,7 @@ Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
+- [Executed prospective AMR mean-quality study](reports/openfoam-amr-mean-quality-v1-2026-10-03.md)
 - [Goal and completion requirements](GOAL.md)
 - [Verification protocol](docs/protocol.md)
 - [Source audit and candidate findings](docs/audit.md)

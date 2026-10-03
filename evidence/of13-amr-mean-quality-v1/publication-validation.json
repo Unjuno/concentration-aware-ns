@@ -1,0 +1,15 @@
+{
+  "status": "PASS_LOCAL_PUBLICATION_AND_SUPPLEMENTAL_AUDIT_TESTS",
+  "command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests",
+  "tests_passed": 276,
+  "skipped": 1,
+  "subtests_passed": 83,
+  "log_sha256": "83095b16d99f207b3607ab5160c36c96a5b7898aaaa9757544a394b15b20b26c",
+  "new_files_sha256": {
+    "tools/replay_amr_mean_archive.py": "ac94a00edbae616f1512ed4313ad06481c80c32e33a937c4328691a7745bced9",
+    "tools/audit_amr_mean_transfer.py": "a9c8bc37b15fae70a5077c8a5c40e78d6ca2666c2cdc5507cdf749ee48df7935",
+    "tests/test_amr_mean_archive_replay.py": "1cc3e6f0f3e508f106ad245466cb9584524a80480a19ffd219d134e2796d66b8",
+    "tests/test_amr_mean_transfer.py": "5e6746c9f1ffcaaf508e60b8755c04937c66f0fe6ba03fd4db6b384bc9d47096"
+  },
+  "scope": "Local harness and supplemental archive/map controls. Hosted CFD and every named numerical gate remain separate records."
+}

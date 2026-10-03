@@ -1,0 +1,28 @@
+{
+  "schema": "of13-amr-mean-quality-matrix/v1",
+  "status": "REPRODUCED_SPECIFIED_MEAN_GATE_DISCREPANCY",
+  "expected_cases": [
+    "n16-dt0.001",
+    "n32-dt0.0005",
+    "n32-dt0.001",
+    "n64-dt0.001"
+  ],
+  "missing_cases": [],
+  "complete_same_source_protocol_and_stage_identity": true,
+  "disabled_capture_control_verified": true,
+  "all_case_standard_acceptance_pass": true,
+  "both_fine_cases_reference_operator_adequate_at_all_stages": true,
+  "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "source_commits": [
+    "3566f89058071910a41bb68010eb258c7bbc3d74"
+  ],
+  "rule": "Only consider a persistent mean-gate discrepancy if the n16 disabled-capture control matches and both fixed-dt fine cases have standard PASS, reference-operator mean-gradient/curl PASS at every captured stage, and measured mean-quality FAIL at postSolve. Otherwise NOT_OBSERVED only if both pass all specified mean gates; incomplete/mixed evidence is UNCERTAIN. No upstream contract violation follows.",
+  "original_AMR_peak_spectrum_gate": "UNCERTAIN_SEPARATE_OPEN_OBLIGATIONS",
+  "limits": [
+    "This is an AMR mean-quality study; it does not replace the frozen N=4 uniform benchmark or its peak/spectrum gates.",
+    "Sampled peak discrepancies are diagnostics; continuous extrema and AMR spectra remain separate open obligations.",
+    "The thresholds are prospective but informed by earlier N=4 diagnostics; no blinded study or independent benchmark-design novelty is claimed.",
+    "Source equivalence of the whole packaged runtime is not established; instrumented module source is verified and its load is recorded.",
+    "Quality failure alone does not imply an implementation bug, singularity, molecular alignment, phase transition or viscosity change."
+  ]
+}

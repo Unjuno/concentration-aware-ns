@@ -1,0 +1,32 @@
+{
+  "parent_cells": 32768,
+  "mapped_cells": 118784,
+  "velocity_parent_injection_max_absolute_difference": 0.0,
+  "pressure_parent_injection_max_absolute_difference": 0.0,
+  "exact_captured_parent_value_copy": true,
+  "velocity_integral_difference": [
+    1.3306887601365058e-17,
+    5.261633143072153e-16,
+    -5.789602543381151e-20
+  ],
+  "velocity_repartition_decomposition": {
+    "preMap": {
+      "mean_mismatch_relative_l2_squared": 0.0004615683681082795,
+      "projection_floor_relative_l2_squared": 0.03586043337759847,
+      "p0_total_relative_l2_squared": 0.03632200174570675
+    },
+    "mapped": {
+      "mean_mismatch_relative_l2_squared": 0.027242708617302557,
+      "projection_floor_relative_l2_squared": 0.009079293128404524,
+      "p0_total_relative_l2_squared": 0.03632200174570708
+    }
+  },
+  "velocity_mean_error_floor_exchange_identity_residual": 3.3306690738754696e-16,
+  "velocity_p0_total_squared_difference": 3.2612801348363973e-16,
+  "interpretation": "If parent injection is exact, the same P0 velocity function is merely repartitioned: its continuum L2 error remains constant, while a lower projection floor becomes higher cell-mean mismatch. No new continuum velocity error is inferred from that mean-error jump.",
+  "velocity_integral_difference_relative_to_parent_l1": 1.1331177580276353e-16,
+  "scope": "Empirical comparison of archived cell values at the same map event; no mapping contract violation, continuous-field accuracy or universality claim.",
+  "case_id": "n32-dt0.0005",
+  "source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8"
+}

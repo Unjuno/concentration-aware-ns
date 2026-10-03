@@ -1,5 +1,33 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 264 — execute the four-case AMR matrix and qualify the discrepancy
+
+Frozen `3566f890` hosted run `37124421538` completes all four fresh ARM64
+cases and native analyses. Every standard gate passes. The n16 disabled
+capture control leaves final U/p byte-identical; all eight original module
+sources and 167 stock-library payloads match the pinned official package.
+Both fine fixed-dt reference operators pass at all captured stages.
+
+Final n32/n64 velocity mean mismatches are 13.8446% / 3.9248%, exceeding the
+prospective 2% target. At n64, gradient/curl means 4.0255% / 3.2919% PASS their
+5% targets. The common fine-grid discrepancy concerns velocity mean quality;
+the errors improve with resolution, so no nonconvergence or upstream contract
+violation is established. The original AMR peak/spectrum obligations stay open.
+
+Same-time map snapshots show exact parent-value injection. Analytic P0
+orthogonality explains the changed velocity mean error: its lower representation
+floor is exchanged for mean mismatch while total continuum P0 velocity error
+stays unchanged, with squared-identity residuals near 1e-16. A mean-error jump
+alone therefore does not establish newly introduced continuum velocity error.
+
+Cross-platform initial-U byte identity failure is retained. Separate optional
+32-epsilon numerical compatibility does not relabel byte identity as PASS or
+change any solver quality threshold. Archives, conditional replay records,
+source/environment identities and the raw release remain in this single
+repository. Overall goal is active; other solver, continuous-field and
+proof/physical obligations remain open. See
+`reports/openfoam-amr-mean-quality-v1-2026-10-03.md`.
+
 ## Revision 263 — freeze and execute prospective AMR mean-quality controls
 
 The new N=3 successor fixes n16/n32/n64 at dt=.001 and n32 at dt=.0005,

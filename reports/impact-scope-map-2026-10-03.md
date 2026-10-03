@@ -1,5 +1,22 @@
 # Impact-scope map and falsification plan — 2026-10-03
 
+## Executed AMR mean-quality successor
+
+The prospective N=3 four-case matrix at frozen `3566f890` completes with all
+standard gates PASS. Final velocity mean error exceeds the new 2% target
+at n32/n64 (13.8446%/3.9248%); n64 derivative mean targets PASS. Fine native
+reference operators and the n16 disabled-capture control pass. Error reduction
+under refinement is substantial; this is a specified accuracy-target
+discrepancy without a demonstrated upstream contract violation. Exact parent
+copy keeps the P0 velocity function unchanged at mapping: representation floor
+is exchanged for cell-mean mismatch, rather than newly created continuum
+velocity error. No duplicate upstream issue is warranted. Strict initial-U
+cross-platform byte identity failure is preserved separately from optional
+machine-scale compatibility. See
+[`report`](openfoam-amr-mean-quality-v1-2026-10-03.md). Original AMR continuous
+peaks/spectra, other solver quality and proof/physical transfer remain open.
+
+
 This report maps what the current evidence does and does not reach. It is a
 working impact inventory, not an exhaustive survey of every application or a
 claim that the pinned Navier–Stokes construction is a physical flow.

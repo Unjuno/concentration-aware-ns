@@ -7,3 +7,6 @@ evidence/clean-export-2026-10-03-amr-5bc0691-py312/replay/*.log whitespace=-blan
 evidence/clean-export-2026-10-03-amr-5bc0691-py312/wrapper/*.log whitespace=-blank-at-eol,-blank-at-eof
 evidence/clean-export-2026-10-03-amr-5bc0691-py314/replay/*.log whitespace=-blank-at-eol,-blank-at-eof
 evidence/clean-export-2026-10-03-amr-5bc0691-py314/wrapper/*.log whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve AMR mean-quality solver/build/replay diagnostics without byte edits.
+evidence/of13-amr-mean-quality-v1/**/*.log whitespace=-blank-at-eol,-blank-at-eof

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/tools/replay_amr_mean_quality_archive.py", line 102, in <module>
+    main()
+    ~~~~^^
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/tools/replay_amr_mean_quality_archive.py", line 96, in main
+    result = replay(args.evidence_root)
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/tools/replay_amr_mean_quality_archive.py", line 36, in replay
+    raise ValueError('independently regenerated input hashes differ; preserve platform/input discrepancy')
+ValueError: independently regenerated input hashes differ; preserve platform/input discrepancy

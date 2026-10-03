@@ -1,0 +1,56 @@
+{
+  "scope": "Interpret composite frozen mean-gate reproduction by individual metric; no added quality threshold",
+  "metrics": {
+    "velocity_mean_mismatch_relative_l2": {
+      "common_failure": true,
+      "fine_cases": [
+        {
+          "case_id": "n32-dt0.001",
+          "value": 0.13844607757589536,
+          "threshold": 0.02,
+          "status": "FAIL"
+        },
+        {
+          "case_id": "n64-dt0.001",
+          "value": 0.03924832679729078,
+          "threshold": 0.02,
+          "status": "FAIL"
+        }
+      ]
+    },
+    "gradient_mean_mismatch_relative_l2": {
+      "common_failure": false,
+      "fine_cases": [
+        {
+          "case_id": "n32-dt0.001",
+          "value": 0.1404654363571954,
+          "threshold": 0.05,
+          "status": "FAIL"
+        },
+        {
+          "case_id": "n64-dt0.001",
+          "value": 0.040255333662440745,
+          "threshold": 0.05,
+          "status": "PASS"
+        }
+      ]
+    },
+    "curl_mean_mismatch_relative_l2": {
+      "common_failure": false,
+      "fine_cases": [
+        {
+          "case_id": "n32-dt0.001",
+          "value": 0.11713609680397781,
+          "threshold": 0.05,
+          "status": "FAIL"
+        },
+        {
+          "case_id": "n64-dt0.001",
+          "value": 0.032918536805584125,
+          "threshold": 0.05,
+          "status": "PASS"
+        }
+      ]
+    }
+  }
+}

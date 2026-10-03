@@ -1,0 +1,2 @@
+Filesystem        1B-blocks        Used    Available Use% Mounted on
+/dev/root      154894188544 43112857600 111764553728  28% /

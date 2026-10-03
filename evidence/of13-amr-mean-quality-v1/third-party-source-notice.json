@@ -1,0 +1,7 @@
+{
+  "upstream": "OpenFOAM/OpenFOAM-13",
+  "commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "source_license": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/COPYING",
+  "copying_sha256": "a62f4262b9739f43478d025ed9fc5419585ec27b4b50e88f55e3186141e18ef1",
+  "scope": "The raw archives contain instrumented OpenFOAM module sources with their original copyright/GPL headers retained. The accompanying upstream COPYING applies to those sources; the benchmark repository license is separate."
+}

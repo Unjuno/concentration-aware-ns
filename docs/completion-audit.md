@@ -1,5 +1,23 @@
 # Completion audit — interim, 2026-09-27
 
+### Executed prospective AMR mean-quality matrix — 2026-10-03
+
+Frozen `3566f890` run `37124421538` completes all four hosted cases with
+standard PASS and the byte-identical n16 capture-disabled control. Native
+reference-operator gates pass on both fine grids at every stage. Final n32/n64
+velocity mean errors 13.8446% / 3.9248% fail the new 2% target; n64 gradient/curl
+means 4.0255% / 3.2919% pass their 5% targets. This reproduces a specified
+velocity-mean threshold discrepancy, with strong improvement under refinement.
+It does not establish nonconvergence, an upstream bug or viscosity reduction.
+
+Exact parent-value injection merely repartitions the same P0 velocity field:
+the projection floor decreases and mean mismatch increases while total
+continuum velocity error is constant. The source/package/control and archived
+replay evidence is in `evidence/of13-amr-mean-quality-v1/`; strict cross-platform
+input byte identity failure is explicitly preserved. The original continuous
+peak/spectrum and remaining overall-goal obligations stay open.
+See [`new report`](../reports/openfoam-amr-mean-quality-v1-2026-10-03.md).
+
 ### Prospective AMR mean-quality successor — frozen inputs pending execution
 
 The N=3 reference precheck passes the new named mean gates at n32/n64;
