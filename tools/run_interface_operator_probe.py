@@ -210,7 +210,7 @@ def prepare_and_run(recorder, args):
         raise StopRun("utility source or its runtime script is incomplete")
     source_paths.extend([Path(__file__).resolve(), REPOSITORY / "tools/build_interface_operator_cases.py",
                          REPOSITORY / "tools/analyze_interface_operator_probe.py",
-                         REPOSITORY / "runtime/openfoam13/Dockerfile",
+                         REPOSITORY / spec["target"]["runtime_recipe"],
                          REPOSITORY / "requirements-interface-operator.txt",
                          REPOSITORY / ".github/workflows/interface-operator.yml", protocol_path])
     source_paths = sorted(set(source_paths))

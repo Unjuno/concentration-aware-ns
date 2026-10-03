@@ -6,7 +6,7 @@
     "package_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam13_20260624_arm64.deb",
     "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
     "inspected_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
-    "runtime_recipe": "runtime/openfoam13/Dockerfile",
+    "runtime_recipe": "runtime/of13-interface-operator/Dockerfile",
     "platform": "linux/arm64",
     "hosted_runner": "ubuntu-24.04-arm",
     "runtime_identity": "Record resolved image ID, package inventory, compiler, linked libraries and source hashes; a fresh image is not the historic matrix runtime."

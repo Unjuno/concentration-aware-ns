@@ -17,6 +17,13 @@ the actual package, image, build and execution evidence separately.
 
 ## Build and invocation
 
+`Dockerfile` uses the same immutable base and official Foundation package as
+`runtime/openfoam13/Dockerfile`, with a bounded resumed download and the same
+final package SHA256 check. Its acquisition change follows hosted run
+37117700448, which stopped during a partial transfer before compilation. The
+frozen recipe/harness commit and actual image ID are recorded independently.
+
+
 After loading the Foundation 13 environment, compile from this directory with
 `wmake`; `Make/files` writes `/probe/interfaceOperatorProbe`. The only required
 runtime argument is the standard case argument:

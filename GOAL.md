@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 260 — preserve failed acquisition and change the download path
+
+Hosted run `37117700448` at frozen commit `85aad783` stopped before utility
+compilation/execution: the official package transfer closed with 13,326,066
+bytes remaining and curl exited 18. The exact failed build log and hosted
+status are retained in `evidence/of13-interface-hosted-failure-37117700448/`.
+There is no operator or solver-quality result from that run. Python CI at the
+same commit passed 252 tests, one skip and 57 subtests.
+
+Use an additive interface runtime recipe with the same pinned Ubuntu base,
+package URL and final SHA256, but bounded resumable package acquisition.
+Controls confirm that a partial transfer resumes to the expected hash and an
+incorrect payload is rejected after the retry bound. Numerical inputs and
+acceptance thresholds are unchanged. The source-only review identifies exact
+2024 prior discussion, current 13/14/dev contribution paths and limited tracker
+access; mechanism novelty and a universal simulation defect are not claimed.
+An archive-only replayer now verifies frozen sources/inputs and independent
+matrix/flux analysis without executing archived binaries. Freeze this revised
+harness before another hosted execution. Original benchmark/AMR/physical gates
+remain open; the goal is active.
+
 ## Revision 259 — freeze an auxiliary package operator probe
 
 Prepared a prospective stationary scalar Couette operator probe on aligned

@@ -1,0 +1,12 @@
+{
+  "run_id": 37117700448,
+  "run_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37117700448",
+  "source_commit": "85aad7831ec5d061535d27b5e1df5ed993d6a42a",
+  "status": "INCOMPLETE",
+  "disposition": "STOP_ENVIRONMENT_DOWNLOAD",
+  "operator_executed": false,
+  "failure": "curl18: official package transfer closed with13326066bytes remaining; Docker build exited1",
+  "build_log_sha256": "420de44392247e5a22420a67b79e2228ec0d4d08bf8ad78c012a11c0f07259e5",
+  "scientific_quality": "NOT_ASSESSED",
+  "next_action": "Bounded resumed fetch of same URL with the same final SHA256, additive runtime recipe; retain failure and freeze next source commit before execution."
+}

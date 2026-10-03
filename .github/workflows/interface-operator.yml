@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p evidence/of13-interface-runtime-build
           set -o pipefail
-          docker build --platform linux/arm64 -t concentration-aware-ns:of13-interface-v1 runtime/openfoam13 2>&1 | tee evidence/of13-interface-runtime-build/build.log
+          docker build --platform linux/arm64 -t concentration-aware-ns:of13-interface-v1 runtime/of13-interface-operator 2>&1 | tee evidence/of13-interface-runtime-build/build.log
           docker image inspect concentration-aware-ns:of13-interface-v1 > evidence/of13-interface-runtime-build/image-inspect.json
       - name: Execute frozen three-grid operator probe
         run: python -m tools.run_interface_operator_probe --image concentration-aware-ns:of13-interface-v1
