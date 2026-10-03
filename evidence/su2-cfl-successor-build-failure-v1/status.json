@@ -1,0 +1,10 @@
+{
+  "status": "BUILD_FAILED_BEFORE_SOURCE_OR_COMPILATION",
+  "exit_code": 1,
+  "phase": "fixed Ubuntu base image metadata resolution",
+  "cause": "containerd content blob open: operation not supported",
+  "image_id_created": false,
+  "solver_cases_started": 0,
+  "build_log_sha256": "cb17c37e076a6be230c015b939c45686fe162564a7dc6b9b0f960c744016c5f4",
+  "scope": "Fresh distinct-image attempt; no daemon restart/prune, original replacement or identical retry"
+}

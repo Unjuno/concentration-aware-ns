@@ -64,3 +64,15 @@ build log/checksummed inputs, and the collector explicitly does not prove it.
 On a healthy isolated lane, build a separately named image from the pinned
 recipe, collect its immutable ID, then use the emitted receipt for both fresh
 paired cases. No shared daemon repair or original-image replacement is needed.
+
+Actual successor build attempt: a read-only inventory showed Docker info/list
+responding and no running containers. A distinct new tag and copied hash-checked
+build context were used. Docker build exited 1 while resolving the fixed Ubuntu
+base digest, with the same containerd operation-not-supported error. It never
+reached source download/patch/compilation, emitted no image ID and started zero
+solver cases. Logs/input hashes/status are preserved in
+`evidence/su2-cfl-successor-build-failure-v1`. Runtime inventory success was
+therefore insufficient evidence of content-store/build health. Do not repeat
+this build on the same unchanged store; a healthy independent runtime is needed.
+The fixed-tag hosted verification is still queued. No global goal completion
+or native numerical conclusion follows from this environmental failure.

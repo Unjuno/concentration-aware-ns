@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "context",
+    "ls",
+    "--format",
+    "{{json .}}"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"Current\":false,\"Description\":\"Current DOCKER_HOST based configuration\",\"DockerEndpoint\":\"unix:///var/run/docker.sock\",\"Error\":\"\",\"Name\":\"default\"}\n{\"Current\":true,\"Description\":\"OrbStack\",\"DockerEndpoint\":\"unix:///Users/taka/.orbstack/run/docker.sock\",\"Error\":\"\",\"Name\":\"orbstack\"}\n",
+  "stderr": ""
+}

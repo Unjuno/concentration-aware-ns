@@ -1,0 +1,11 @@
+{
+  "tag": "cans-su2-cfl-successor-20261004-v1",
+  "source_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "build_inputs_sha256": {
+    "runtime/su2/Dockerfile": "59296c749f15961ede0adfaa21bd836b86c8afe6b9cf95e70c3446378f1a8f20",
+    "runtime/su2/mms.patch": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83"
+  },
+  "architecture": "linux/arm64",
+  "existing_containers_observed": 0,
+  "scope": "Fresh distinct build; original image not replaced"
+}
