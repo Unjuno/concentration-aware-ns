@@ -1,0 +1,8 @@
+{
+  "status": "DISPATCH_ACCEPTED_NOT_TEST_RESULT",
+  "requested_utc": "2026-10-03T22:41:43.141493+00:00",
+  "ref": "su2-conditional-force-response-v3-aa35691",
+  "expected_commit": "aa3569176bad1ef7a26a9c12d3cfa4c133555cc6",
+  "prior_pr_job_retained": 37158068332,
+  "purpose": "First hosted check of the exact published tag; distinct source target, not restart of a timed-out observation"
+}
