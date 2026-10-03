@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 283 — preserve host mismatch and use conservative dyadic v2 receipts
+
+Publication-head CI passes 362 tests but fails v1 analytic byte equality on n32;
+computed interval lower bounds differ around 1e-13 while inputs/reference boxes
+match. Failure evidence is retained. Additive v2 rounds absolute and normalized
+lower bounds down on an exact 32-bit dyadic grid; reported four-decimal percent
+claims remain unchanged. Local v2 recheck passes. Locked dependencies and runtime
+version receipts improve diagnosis; fresh-host v2 success remains unproved.
+No weakened byte-equality gate or original solver-gate change. Full goal active.
+See `reports/published-cell-point-dyadic-bounds-2026-10-04.md`.
+
 ## Revision 282 — make published matrix evidence independently executable
 
 A single verifier checks published finite native samples/receipts against the
