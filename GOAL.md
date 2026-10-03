@@ -1,5 +1,31 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 265 — validate the declared AMR P0 spectrum and its outside mass
+
+Computed continuum Fourier coefficients of the cube-constant velocity in all
+12 archived N=3 states. Finest-voxel repetition preserves the same function;
+the voxel FFT needs its center phase and sinc window. Selected coefficients
+agree with direct cube integrals within 3.01e-15. The independent binomial
+reference matches real-space quadrature and the earlier rational Parseval norm.
+Finite-cube coefficient mismatch plus the complete outside mass recovers every
+archived spatial P0 error within 2.04e-15 in relative L2.
+
+At n64/postSolve, inside-cube coefficient error is 0.4814%, outside-cube norm
+is 6.1608% and global P0 error is 6.1795%, relative to the same continuum
+reference norm. Every preMap/mapped band array and voxel norm is bit-identical.
+This quantifies unchanged spectral content at the parent-value map and the
+error omitted by finite-band-only inspection. The outside mass includes all
+unresolved integer modes but is not resolved into individual outside shells.
+
+The method is a validated P0 spectral diagnostic, with 281 local tests, one
+skip and 83 subtests passing. It adds no retrospective quality threshold and
+does not replace the original AMR peak/spectrum quality gate or a smooth
+velocity/gradient reconstruction. P0 jumps can themselves produce divergent
+derivative-weighted Fourier sums for bounded step fields; this representation
+limit implies no physical blow-up, molecular alignment or viscosity change.
+Goal remains active. See `reports/openfoam-amr-p0-spectrum-2026-10-03.md` and
+`evidence/amr-p0-spectrum-v1/`.
+
 ## Revision 264 — execute the four-case AMR matrix and qualify the discrepancy
 
 Frozen `3566f890` hosted run `37124421538` completes all four fresh ARM64

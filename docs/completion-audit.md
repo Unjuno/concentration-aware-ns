@@ -1,5 +1,19 @@
 # Completion audit — interim, 2026-09-27
 
+### Declared P0 spectral measurement validated — 2026-10-03
+
+All 12 archived N=3 states now have a separately validated continuum Fourier
+measurement for their cube-constant velocity. Direct integrals, corrected
+voxel FFT, real-space reference quadrature/Parseval and archived spatial P0
+errors agree. The finite-band mismatch plus complete outside mass recovers
+relative L2 totals within 2.04e-15; all four map pairs preserve band coefficients
+and norms exactly. At n64/postSolve, 0.4814% inside-band mismatch coexists with
+6.1795% full P0 error. The measurement gap is reduced for this explicit
+representation; original AMR peak/spectrum quality, smooth reconstruction and
+physical interpretation obligations remain open. No new threshold or upstream
+bug claim is introduced. See
+[`spectral report`](../reports/openfoam-amr-p0-spectrum-2026-10-03.md).
+
 ### Executed prospective AMR mean-quality matrix — 2026-10-03
 
 Frozen `3566f890` run `37124421538` completes all four hosted cases with
