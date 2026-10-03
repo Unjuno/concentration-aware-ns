@@ -1,5 +1,28 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 257 — impose incompressible interface compatibility before interpretation
+
+Derived the admissible velocity-gradient jump `[A]=b outer n`, with `b dot n=0`
+for shared differentiable velocity traces and incompressibility on both sides.
+The source-convention normal contraction of the explicit transpose-gradient
+correction is therefore zero at the interface. This excludes the earlier
+independent-tensor fixed-jump norm growth for that compatible continuum class.
+Built an exact piecewise-viscosity planar Couette control: the explicit term
+vanishes, while the orthogonal scalar FV arithmetic interface coefficient gives
+solved flux errors of 6.39%, 3.10% and 1.52% at 16/32/64 cells; harmonic
+half-cell resistance reproduces the exact flux/cell values. Independently
+assembled stiffness matrices match the exact chain. This is a conditional
+stencil analysis, not an executed OpenFOAM case or a scheme-wide defect.
+Ten controls and five new targeted tests pass. Relative metrics explicitly
+require nonzero traction. Full published replay passes all 46 steps, including
+233 tests, one skip and five subtests. Details are in
+`reports/incompressible-interface-stress-compatibility-2026-10-03.md`.
+Separately, fixed commit `a444a5f` passes a fresh locked 45-step clean export,
+six follow-up checks and 232 unchanged tracked files; that export predates
+the compatibility additions. A tracked-only export of the new additions remains
+to be checked. Core AMR, solver-quality and proof/physical gaps remain open.
+Goal stays active.
+
 ## Revision 256 — link interpolation algebra to the pinned correction operator
 
 Captured the relevant parent/change/current Foundation-13 sources at immutable

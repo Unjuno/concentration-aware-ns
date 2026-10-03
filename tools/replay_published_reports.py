@@ -22,6 +22,7 @@ steps = [
     ('openfoam_amr_volume_integrated', [sys.executable, '-m', 'tools.compare_amr_resolution_volume_integrated']),
     ('openfoam_stress_interpolation_identity', [sys.executable, '-m', 'tools.audit_openfoam_stress_interpolation_identity']),
     ('openfoam_stress_operator_controls', [sys.executable, '-m', 'tools.audit_openfoam_stress_operator']),
+    ('interface_stress_compatibility', [sys.executable, '-m', 'tools.check_interface_stress_compatibility']),
     ('su2_archive_review', [sys.executable, '-m', 'tools.review_su2_archives']),
     ('su2_standard_review', [sys.executable, '-m', 'tools.review_su2_standard']),
     ('su2_diagnostic_replay', [sys.executable, '-m', 'tools.replay_su2_diagnostics']),

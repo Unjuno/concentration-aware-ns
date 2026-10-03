@@ -1,5 +1,24 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 compatible interface control
+
+The new analytical trace-compatibility lemma narrows the independent-tensor
+stress control: for continuous velocity with a common differentiable tangential
+trace and divergence-free one-sided gradients, the interface jump of the
+normal-contracted explicit transpose correction is zero. A compatible planar
+Couette weak solution instead exercises the implicit diffusion coefficient.
+The exact orthogonal FV resistance analysis and independent stiffness-matrix
+tests show first-order arithmetic-interface flux error and exact harmonic
+half-cell resistance for this aligned case. Seven further pinned-source files,
+ten exact controls and five tests are recorded in
+[`incompressible-interface-stress-compatibility-2026-10-03.md`](../reports/incompressible-interface-stress-compatibility-2026-10-03.md).
+No packaged solver, VoF model, pressure coupling or upstream case was executed.
+The fresh locked export at `a444a5f` passed 45 steps, six follow-up checks and
+232 unchanged files, but predates this compatibility addition. The new full
+replay passes all 46 steps, including 233 tests, one skip and five subtests;
+its saved log and checker/source-manifest hashes match. A new tracked-only
+export remains to be verified. No broad verdict is upgraded.
+
 ### Completion audit refresh — 2026-10-03 source-linked stress correction controls
 
 The new pinned-source trace establishes the generic covariance model for the

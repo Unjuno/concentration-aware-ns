@@ -5,6 +5,13 @@ Date: 2026-10-03
 Disposition: analytical operator controls; existing upstream Issue #2 remains
 unreproduced here. No solver or upstream post was performed.
 
+A subsequent [incompressible-interface compatibility audit](incompressible-interface-stress-compatibility-2026-10-03.md)
+proves that the fixed contracted tensor jump used by the synthetic planar
+control is excluded under continuous velocity, common differentiable
+tangential traces and one-sided incompressibility. It also gives a compatible
+piecewise-shear control for the implicit diffusion term. Read that constraint
+before interpreting the independent-tensor norm-growth example.
+
 ## Pinned source trace
 
 The source capture binds 22 file/revision pairs to immutable raw URLs, SHA-256,
@@ -30,7 +37,7 @@ The [current explicit correction](https://github.com/OpenFOAM/OpenFOAM-13/blob/1
 first interpolates `a`, then multiplies that face coefficient by
 `fvc::dotInterpolate(Sf,G)`, with the negative stress sign. Each expression
 can select a [field-name interpolation entry](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolate.C#L78-L90).
-The [linear scheme](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear/linear.H#L97-L106)
+The [linear scheme](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear/linear.H#L90-L97)
 returns the common mesh weights, independently of the field. The
 [internal-face contraction kernel](https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C#L224-L300)
 uses the owner/neighbour weighted tensor contracted with the same face vector.
