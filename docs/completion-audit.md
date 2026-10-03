@@ -8,10 +8,11 @@ arm64. All 44 report/evidence replay steps and six follow-up checks exited
 zero; all 230 compared tracked files remained byte-identical. The sanitized
 manifest and logs are preserved at
 [`clean-export-2026-10-03-success-0526de2/`](../evidence/clean-export-2026-10-03-success-0526de2/README.md).
-Hosted CI for this new commit is still pending. This verifies the tracked
-Python postprocessing/evidence path for the recorded host and commit; it does
-not rerun OpenFOAM, SU2, PhysicsNeMo, or Lean and does not upgrade any
-scientific verdict.
+Hosted Python CI passed for branch head
+`e5d78a4b1c9bcd129b75578bf0e443c843c6866e` in run `37110793834`. This verifies
+the tracked Python postprocessing/evidence path for the recorded host and
+commit; it does not rerun OpenFOAM, SU2, PhysicsNeMo, or Lean and does not
+upgrade any scientific verdict.
 
 ### Completion audit refresh — 2026-10-03 stress-interpolation checker replay
 

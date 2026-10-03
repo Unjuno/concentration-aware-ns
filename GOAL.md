@@ -8,8 +8,9 @@ All 44 report-replay steps and six follow-up checks exited zero. The strict
 comparison covered 230 tracked report/test-evidence files and found no changes.
 The result and sanitized logs are preserved in
 `evidence/clean-export-2026-10-03-success-0526de2/`. This is a Python
-postprocessing/evidence reproducibility check only; hosted CI for this new head
-is pending, and no solver, Lean proof, or physical verdict was rerun or
+postprocessing/evidence reproducibility check only. Hosted Python CI passed on
+the resulting branch head `e5d78a4b1c9bcd129b75578bf0e443c843c6866e` (run
+`37110793834`). No solver, Lean proof, or physical verdict was rerun or
 upgraded. Goal remains active.
 
 ## Revision 254 — replay the added stress-interpolation analysis
