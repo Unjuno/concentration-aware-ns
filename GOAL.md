@@ -1,5 +1,25 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 272 — identify a named cellPoint interpolation and its runtime gap
+
+Eight pinned Foundation 13 source files identify `cellPoint` as tetrahedral
+interpolation of cell-centre and shared vertex values. A finite conforming
+nondegenerate idealized decomposition yields a Lipschitz point-interpolating
+field, so it is a specific candidate for the prior gradient chord bound. The
+source's degenerate quarter-weight fallback prevents unconditional transfer.
+Exact shared-face/centre affine identities, 125 integer controls and an
+independent discontinuous negative control clarify the required hypotheses.
+
+All four original raw archives/member hashes pass verification but contain no
+polyMesh members. Actual decomposition, direct cellPoint evaluation, fallback
+behavior and binary identity remain unverified. A prospective capture checklist
+records the mesh/tet/point-field and runtime evidence needed; it is not an
+executed run. The 312-test suite passes (1 skip, 83 subtests); no new CFD,
+C++ interpolation run, clean-export replay or solver gate upgrade is claimed.
+See `reports/openfoam-cell-point-contract-2026-10-04.md` and
+`evidence/of13-cell-point-contract-v1/`. Reconstruction relevance, original
+quality, other solver targets, proof/physical obligations and full goal remain open.
+
 ## Revision 271 — constrain gradients under native point interpolation
 
 An independent Arb96 chord witness now bounds peak gradient-field error for

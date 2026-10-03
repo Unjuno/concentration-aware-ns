@@ -126,3 +126,10 @@ It requires the interpolation and regularity condition explicitly; H1 alone
 or an infinity-norm curl transfer is insufficient. The source-bound example is
 [the point witness report](../reports/openfoam-amr-point-gradient-bound-2026-10-04.md).
 The original gate is unchanged.
+
+A named built-in interpolation must be checked on the actual mesh before
+transferring a continuous bound. For `cellPoint`, nondegenerate conforming
+tetrahedra and shared point values matter; its quarter-weight degenerate
+fallback need not reproduce centre data. The original four-case archive lacks
+polyMesh and therefore cannot establish these conditions. See
+[the source/runtime gap](../reports/openfoam-cell-point-contract-2026-10-04.md).

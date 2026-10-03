@@ -1,5 +1,17 @@
 # Completion audit — interim, 2026-09-27
 
+### Named cellPoint source family, actual geometry missing — 2026-10-04
+
+Eight pinned source files identify a relevant cell-centre/vertex tetrahedral
+interpolation. Exact affine controls verify the mathematical centre/face
+mechanism, while the source degenerate fallback and independent discontinuous
+control show why regularity conditions cannot be dropped. Every original raw
+archive/member hash matches, but all four archives omit polyMesh. Actual
+cellPoint geometry/evaluation remains unverified. A prospective capture
+specification records the missing evidence. Full locked suite: 312 passed,
+1 skipped, 83 subtests. Original gates/full goal remain open. See
+[report](../reports/openfoam-cell-point-contract-2026-10-04.md).
+
 ### Point-interpolation gradient constraint — 2026-10-04
 
 All four final AMR fields now have an Arb-enclosed chord witness constraining
