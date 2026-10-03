@@ -45,12 +45,12 @@ def audit(output,source_commit):
                          'normalized_L2_response_upper_expression':endpoints(E)})
     finally:ctx.prec=old
     result={'status':'CONDITIONAL_CONTINUOUS_PDE_RESPONSE_UPPER','source_commit':source_commit,
-            'envelope_receipt_sha256':sha(envelope_path),'force_constants_recomputed_and_receipts_enclosed':True,'precision_bits':128,'cases':rows,
-            'assumptions':['Smooth incompressible periodic strong solutions u and v on [0,T]',
+            'envelope_receipt_sha256':sha(envelope_path),'protocol_sha256':sha(ROOT/'protocols/su2-study-v1.json'),'forcing_schedule_class':'f(t-tau(t)), measurable lag 0<=tau(t)<=h; includes sample-and-hold tau(t)=t-floor(t/h)*h','force_constants_recomputed_and_receipts_enclosed':True,'precision_bits':128,'cases':rows,
+            'assumptions':['Spatially smooth incompressible periodic solutions u and v on [0,T], with absolutely continuous L2 energy and a valid energy identity',
                            'Same viscosity and identical initial velocity',
-                           'v forced by analytic shifted force f(t-h), including its extension at negative times',
+                           'v forced by analytic f(t-tau(t)), 0<=tau(t)<=h; the sample-and-hold member evaluates only nonnegative times',
                            'Volume-normalized L2 norm and real arithmetic'],
-            'limits':['Does not prove existence of v or represent the discrete SU2 source schedule',
+            'limits':['Does not prove existence of v or the SU2 discrete update; sample-and-hold is a continuous comparison model',
                       'No inner residual, discretization, restart or floating error included',
                       'Absolute conditional upper bound, not endpoint-error attribution or acceptance verdict']}
     output.mkdir(parents=True);(output/'analysis.json').write_text(json.dumps(result,indent=2)+'\n');print(result['status'])
