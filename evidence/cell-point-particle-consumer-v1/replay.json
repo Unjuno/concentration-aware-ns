@@ -1,0 +1,6 @@
+{
+  "analysis_source_commit": "39de0fe02dfc7546ac55e08cf86b377ac2e42c87",
+  "own_tools_selected_export": true,
+  "analysis_json_byte_identical": true,
+  "scope": "Own tools exported without Git; explicitly supplied upstream Git checkout is still read using git show. This is not a process/Git-access-isolated replay."
+}

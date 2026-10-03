@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 286 — identify a concrete carrier-interpolation consumer
+
+Three pinned Foundation 13 source files show solidParticleCloud constructing
+cellPoint carrier U/nu/rho interpolators and solidParticle using explicit
+barycentric interpolation in drag. Tracking uses particle U_, so carrier-field
+divergence is not the particle-volume Jacobian rate. The frozen-Dc sensitivity
+formula and twenty exact controls pass; own-tools export replay matches JSON.
+No cloud execution, general particle error, viscosity inference or violated
+contract is claimed. Current publication-head CI 37156115323 is tracked without
+restart. Full goal active; see
+`reports/cell-point-solid-particle-consumer-2026-10-04.md`.
+
 ## Revision 285 — distinguish affine incompressibility from discrete mass balance
 
 All four recorded affine pieces have enclosed nonzero divergence. Trace alone
