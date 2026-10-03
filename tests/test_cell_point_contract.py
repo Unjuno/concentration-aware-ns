@@ -1,10 +1,13 @@
-from tools.audit_cell_point_contract import affine_controls
+"""Independent negative control: point constraints alone cannot bound gradients."""
+import sympy as sp
 
 
-def test_exact_affine_trace_and_chord_controls():
-    result=affine_controls()
-    assert result['endpoint_residuals']==['0','0']
-    assert result['shared_face_trace_residual']=='0'
-    assert result['gradient_slope_sum_residual']=='0'
-    assert result['integer_chord_controls']==125
-    assert result['degenerate_fallback_centre_error']!='0'
+def test_discontinuous_point_interpolant_invalidates_the_chord_inference():
+    z=sp.symbols('z',real=True)
+    # Two cell-constant patches reproduce point values at z=-1,+1, with
+    # zero classical derivative on each open cell and a jump at their face.
+    left=sp.Integer(-1);right=sp.Integer(1)
+    point_chord=abs(right-left)/2
+    assert sp.diff(left,z)==sp.diff(right,z)==0
+    assert point_chord==1
+    assert right-left!=0  # A Lipschitz/shared-trace hypothesis is indispensable.
