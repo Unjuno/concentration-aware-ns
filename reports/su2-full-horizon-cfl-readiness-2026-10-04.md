@@ -53,3 +53,14 @@ plus one positive and the six history checks pass (13 focused tests). This
 runner path was never used to claim a native successful run. Image/source
 provenance beyond these actual-file measurements remains a build audit duty;
 the unit fixtures do not substitute for a healthy-runtime probe or simulation.
+
+An executable collector (`tools.collect_su2_successor_image`) now emits the
+receipt from an explicitly selected immutable image ID, preserving inspect
+and in-image probe stdout/stderr. It rejects mutable/malformed IDs before
+Docker and emits no receipt after an unavailable image or failed/incomplete
+probe. Three such input controls and Python compilation pass. Successful
+image collection has not occurred; source provenance still needs the frozen
+build log/checksummed inputs, and the collector explicitly does not prove it.
+On a healthy isolated lane, build a separately named image from the pinned
+recipe, collect its immutable ID, then use the emitted receipt for both fresh
+paired cases. No shared daemon repair or original-image replacement is needed.
