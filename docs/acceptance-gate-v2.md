@@ -46,6 +46,16 @@ objects. The archived example and formula controls are in
 `reports/openfoam-amr-p0-spectrum-2026-10-03.md`. No earlier solver verdict or
 quality threshold is changed by this scope requirement.
 
+A finite Fourier projection is a valid named smooth reconstruction, but removes
+outside modes and generally changes the original cell averages. Its derivative
+quality must be reported with that discarded mass and reconstruction operator.
+An analytical Lipschitz/grid enclosure formula evaluated in floating point is
+not an interval-certified rounding budget. Do not substitute such endpoints for
+reviewed numerical error bounds without accounting for arithmetic uncertainty.
+The archived example is
+`reports/openfoam-amr-band-reconstruction-2026-10-03.md`; it adds diagnostics
+without changing any original solver verdict or retrospective threshold.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.

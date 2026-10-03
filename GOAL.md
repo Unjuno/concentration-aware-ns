@@ -1,5 +1,28 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 266 — measure a named smooth AMR reconstruction
+
+The twelve archived states now have exact finite-polynomial gradient/curl
+Parseval diagnostics and analytical peak enclosure formulas on 32^3/64^3
+periodic grids. The representation is explicitly w=P_B v, |k_j|<=7; it removes
+outside modes and generally changes original cell averages. Final n64 gradient
+and curl L2 errors are 0.5023% / 0.4965%; peak-error formulas give
+0.3974–0.8353% / 0.4182–0.7699%. Endpoints are floating evaluations without
+interval-certified rounding, so no acceptance verdict is upgraded.
+
+The discarded P0 velocity norm is 6.1608%, and original global P0 error stays
+6.1795%. Helmholtz diagnostics quantify a 0.0725% longitudinal band correction
+at n64; curl is invariant to its removal. This is a representation diagnostic,
+not an executed CFD correction. All four map-stage diagnostic pairs are exactly
+identical. Four new analytic controls and the full 285-test suite pass; a
+selected frozen export reproduces the complete analysis JSON byte-for-byte
+under Python-level process/network/Git-open guards. Its initial dependency-file
+omission is preserved and excluded. See
+`reports/openfoam-amr-band-reconstruction-2026-10-03.md` and
+`evidence/amr-band-reconstruction-v1/`. Numerical source is `21754518`.
+Original AMR acceptance, other targets, mathematical/physical obligations and
+the full goal remain open; no retrospective threshold or upstream claim follows.
+
 ## Revision 265 — validate the declared AMR P0 spectrum and its outside mass
 
 Computed continuum Fourier coefficients of the cube-constant velocity in all

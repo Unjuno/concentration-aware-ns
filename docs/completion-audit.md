@@ -1,5 +1,21 @@
 # Completion audit — interim, 2026-09-27
 
+### Named smooth AMR reconstruction measured — 2026-10-03
+
+All twelve states now have a declared finite Fourier reconstruction w=P_B v,
+with gradient/curl Parseval measurements and analytical sampled-grid peak
+bounds. At n64/postSolve, L2 errors are 0.5023% / 0.4965%, and peak formula
+intervals are 0.3974–0.8353% / 0.4182–0.7699%. These floating endpoints lack
+interval-certified rounding. Discarded velocity norm remains 6.1608%, original
+P0 global error 6.1795%; neither is replaced by the filtered derivative errors.
+
+This closes the absence of an explicitly named smooth reconstruction diagnostic,
+not its prospective original-field acceptance gate. All four map diagnostics
+are unchanged. The 285-test suite and byte-identical selected-export replay
+validate this scope. Original full AMR, other solver, proof and physical goals
+remain open. See [`report`](../reports/openfoam-amr-band-reconstruction-2026-10-03.md).
+
+
 ### Declared P0 spectral measurement validated — 2026-10-03
 
 All 12 archived N=3 states now have a separately validated continuum Fourier
@@ -32,7 +48,7 @@ input byte identity failure is explicitly preserved. The original continuous
 peak/spectrum and remaining overall-goal obligations stay open.
 See [`new report`](../reports/openfoam-amr-mean-quality-v1-2026-10-03.md).
 
-### Prospective AMR mean-quality successor — frozen inputs pending execution
+### Historical preflight — superseded by the executed mean-quality matrix above
 
 The N=3 reference precheck passes the new named mean gates at n32/n64;
 n16 is coarse. This analytic preflight is not an actual solver or mapped-mesh
