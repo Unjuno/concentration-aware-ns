@@ -1,5 +1,16 @@
 # Completion audit — interim, 2026-09-27
 
+### Point initialization and source interpretation — 2026-10-04
+
+The four frozen AMR inputs match independent analytic point values, not exact
+cube means. The initial point/mean gap falls from 7.765609% at n16 to 0.465768%
+at n64. Forcing uses centre quadrature with volume weighting. Six pinned source
+files and primary documents do not establish an exact-average H1 reconstruction
+contract. Existing nominal-mean certificates remain conditional; no solver
+verdict or threshold is changed. Full locked suite: 297 passed, 1 skipped,
+83 subtests passed. No new CFD or clean-export replay is claimed. The full goal
+remains open. See [report](../reports/openfoam-amr-input-representation-2026-10-04.md).
+
 ### Arb arithmetic enclosure for nominal-mean H1 constraints — 2026-10-04
 
 Four final states now have outward-enclosed necessary-condition bounds on

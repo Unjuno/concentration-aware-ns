@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 269 — verify archived point-value inputs before transferring mean bounds
+
+All four original AMR mean-quality cases are initialized at cell centres,
+confirmed independently by finite Fourier point evaluation. Relative errors
+against exact initial cube means are 7.765609%, 1.878300%, 0.465768% at
+n16/n32/n64; the n32 half-time-step input is identical. Forcing is evaluated
+at centres and volume weighted. Six pinned OpenFOAM source files and primary
+documents do not establish the exact-native-average H1 reconstruction guarantee
+needed to transfer the previous conditional certificate to the solver.
+
+The certificate remains valid under its stated conditions. This audit distinguishes
+input recipe, engineering mean target and continuous reconstruction; it does not
+subtract initial errors from final errors or label centre quadrature a bug.
+All four archive/member hashes and frozen input source identities are checked;
+two new controls and the complete 297-test suite pass (1 skip, 83 subtests).
+No new CFD run or clean-export replay is claimed. See
+`reports/openfoam-amr-input-representation-2026-10-04.md` and
+`evidence/amr-input-representation-v1/`. No new upstream issue is justified.
+Reconstruction interpretation, original acceptance, other targets, physical/proof
+obligations and the full goal remain open.
+
 ## Revision 268 — outward-enclosed nominal-mean continuum error bounds
 
 Arb at 96 bits now encloses the four final-state native-mean necessary-condition

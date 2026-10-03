@@ -106,3 +106,15 @@ the configured time units. A complete-looking log with duplicate or skipped
 time labels is a failed run-level gate, even if its record count and final time
 match. This checks the logged schedule; it does not independently prove that
 the solver advanced its internal physical clock correctly.
+
+## Input representation audit condition
+
+An exact-native-mean reconstruction condition must not be inferred solely from
+finite-volume storage or volume weighting. Record the actual initialization
+and source quadrature separately from the engineering comparison target.
+The frozen AMR mean-quality inputs use centre-evaluated velocity and forcing;
+the exact cell-mean target is a separate diagnostic. Initial representation
+error must not be subtracted from later solver error without a validated
+controlled evolution comparison. This condition refines interpretation only;
+all original thresholds remain unchanged. See
+[the source/input audit](../reports/openfoam-amr-input-representation-2026-10-04.md).
