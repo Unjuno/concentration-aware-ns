@@ -1,0 +1,8 @@
+{
+  "status": "INCOMPLETE",
+  "completed_cases": 0,
+  "expected_cases": 2,
+  "preflight_only": true,
+  "cases": [],
+  "preflight_status": "IMAGE_UNAVAILABLE"
+}
