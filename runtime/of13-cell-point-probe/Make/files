@@ -1,0 +1,3 @@
+cellPointProbe.C
+
+EXE = /probe/cansCellPointProbe

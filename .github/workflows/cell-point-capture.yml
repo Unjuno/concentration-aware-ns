@@ -1,0 +1,90 @@
+name: Foundation 13 cellPoint capture
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/cell-point-capture.yml'
+      - 'runtime/of13-cell-point-probe/**'
+      - 'tools/run_of13_cell_point_capture.py'
+      - 'protocols/of13-cell-point-capture-v1.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cell-point-capture-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  changes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      execute: ${{ steps.changed.outputs.execute }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - id: changed
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          BEFORE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          execute=true
+          if [[ "$EVENT_NAME" == pull_request && "$EVENT_ACTION" == synchronize && "$BEFORE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            if git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$BEFORE_SHA"; then
+              execute=false
+              while IFS= read -r -d '' path; do
+                case "$path" in
+                  .github/workflows/cell-point-capture.yml|runtime/of13-cell-point-probe/*|tools/run_of13_cell_point_capture.py|protocols/of13-cell-point-capture-v1.json) execute=true; break ;;
+                esac
+              done < <(git diff --name-only --no-renames -z "$BEFORE_SHA" "$HEAD_SHA" --)
+            fi
+          fi
+          printf 'execute=%s\n' "$execute" >> "$GITHUB_OUTPUT"
+  capture:
+    needs: changes
+    if: needs.changes.outputs.execute == 'true'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install locked dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+      - name: Fetch pinned module and interpolation source
+        shell: bash
+        run: |
+          git init work/pinned-of13
+          git -C work/pinned-of13 remote add origin https://github.com/OpenFOAM/OpenFOAM-13.git
+          git -C work/pinned-of13 sparse-checkout init --cone
+          git -C work/pinned-of13 sparse-checkout set applications/modules/incompressibleFluid src/finiteVolume/interpolation/interpolation src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition src/OpenFOAM/meshes/primitiveShapes/tetrahedron
+          git -C work/pinned-of13 fetch --filter=blob:none --depth=1 origin 18870c24d21c6b982e2cdec27b2f59738cca5f90
+          git -C work/pinned-of13 checkout --detach FETCH_HEAD
+      - name: Build pinned ARM64 package runtime
+        shell: bash
+        run: |
+          mkdir -p evidence/cell-point-build
+          set -o pipefail
+          docker build --platform linux/arm64 -t concentration-aware-ns:of13-cell-point-v1 runtime/of13-interface-operator 2>&1 | tee evidence/cell-point-build/build.log
+          docker image inspect concentration-aware-ns:of13-cell-point-v1 > evidence/cell-point-build/image.json
+      - name: Execute unchanged recipe and read-only interpolation capture
+        run: |
+          python -m tools.run_of13_cell_point_capture --image concentration-aware-ns:of13-cell-point-v1 --source work/pinned-of13 --work work/cell-point-v1 --evidence evidence/of13-cell-point-capture-v1
+          python -m tools.analyze_amr_mean_quality --evidence-root evidence/of13-cell-point-capture-v1/base
+          python -m pip freeze > evidence/of13-cell-point-capture-v1/packages.txt
+      - name: Preserve complete or partial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: of13-cell-point-capture-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            evidence/cell-point-build/
+            evidence/of13-cell-point-capture-v1/
+            work/cell-point-v1/probe/cansCellPointProbe
+          if-no-files-found: error
+          retention-days: 90
