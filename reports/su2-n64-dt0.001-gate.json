@@ -38,7 +38,7 @@
     },
     "evaluation_time_verified": {
       "path": "evidence/su2-study-v1/diagnostic-replay.json",
-      "sha256": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18"
+      "sha256": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed"
     },
     "standard_acceptance_verified": {
       "path": "evidence/su2-study-v1/summary.json",

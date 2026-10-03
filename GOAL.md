@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 251 — refresh environment provenance after macOS upgrade
+
+A fresh locked clean export of `1160042e53d2db0a372f6a7a60bec9570784bd06`
+completed all 43 report-replay steps and six follow-up checks, but its strict
+artifact comparison found seven differences. Field-level audit showed only the
+platform string changing from macOS 26.6.2 to 27.0.1 in two test-evidence JSON
+files; five SU2 gate hashes changed because their referenced diagnostic replay
+also recorded the upgraded host. Numeric values and verdicts were unchanged.
+Preserved the failed comparison and sanitized logs in
+`evidence/clean-export-2026-10-03-current-head-1160042-os-drift/`. Refreshed
+the two test records, SU2 diagnostic replay, and dependent SU2 report hashes
+for the current host. A new fixed-commit clean export is required; this
+metadata refresh does not change any solver or scientific verdict. Goal
+remains active.
+
 ## Revision 250 — revalidate the published n=128 AMR review artifact
 
 Recomputed the four-resolution nested-cell-average audit in memory and matched

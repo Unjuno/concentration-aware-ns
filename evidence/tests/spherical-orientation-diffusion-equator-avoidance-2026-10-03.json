@@ -3,7 +3,7 @@
   "checker_sha256": "822db6165bbedbc7b6792de7cbf4f6b70471e18dd9dd363b01b281cb48cc100f",
   "python_version": "3.14.5",
   "python_implementation": "cpython",
-  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
   "sympy_version": "1.14.0",
   "scope": "Full unit-sphere Smoluchowski equation for an ideal rigid Jeffery director in spatially uniform axisymmetric extension with prescribed rotational diffusion.",
   "time_change": "s=log(tau0/tau), tau=1-t",

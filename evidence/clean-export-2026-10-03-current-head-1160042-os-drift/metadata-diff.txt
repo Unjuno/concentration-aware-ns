@@ -1,0 +1,10 @@
+Field-level differences versus commit 1160042:
+- evidence/tests/force-concentration-scaling-2026-10-03.json: /platform: macOS-26.6.2-arm64-arm-64bit-Mach-O -> macOS-27.0.1-arm64-arm-64bit-Mach-O
+- evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json: /platform: macOS-26.6.2-arm64-arm-64bit-Mach-O -> macOS-27.0.1-arm64-arm-64bit-Mach-O
+- reports/su2-n16-dt0.001-gate.json: /artifacts/evaluation_time_verified/sha256 changed as a consequence
+- reports/su2-n32-dt0.001-gate.json: /artifacts/evaluation_time_verified/sha256 changed as a consequence
+- reports/su2-n64-dt0.00025-gate.json: /artifacts/evaluation_time_verified/sha256 changed as a consequence
+- reports/su2-n64-dt0.0005-gate.json: /artifacts/evaluation_time_verified/sha256 changed as a consequence
+- reports/su2-n64-dt0.001-gate.json: /artifacts/evaluation_time_verified/sha256 changed as a consequence
+
+No numeric, verdict, or other JSON field differences were found.

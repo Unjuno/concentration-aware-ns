@@ -1,5 +1,19 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 OS provenance drift
+
+A fresh locked export of fixed head `1160042e53d2db0a372f6a7a60bec9570784bd06`
+completed all 43 report replay steps and six follow-up checks. Strict byte
+comparison found seven files changed: two test-evidence files differed only
+in the recorded platform string after the host upgraded from macOS 26.6.2 to
+27.0.1, and five SU2 report hashes changed because the regenerated diagnostic
+replay records that host metadata. No numerical fields or verdicts changed.
+The attempt is preserved at
+[`clean-export-2026-10-03-current-head-1160042-os-drift/`](../evidence/clean-export-2026-10-03-current-head-1160042-os-drift/README.md).
+Refreshed those runtime-provenance records and dependent report hashes for
+the current host. A new fixed-commit clean export is still required; this
+metadata refresh is not solver validation or a scientific-verdict change.
+
 ### Completion audit refresh — 2026-10-03 clean-export metadata comparison
 
 The corrected exporter at `a6e2ce5` completed the 42-step report replay and

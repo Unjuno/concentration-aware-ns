@@ -1,6 +1,6 @@
 {
   "Lq_homogeneous_Hs_exponent": "2/q-3/2-s",
-  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
   "pointwise_derivative_exponents": {
     "force_amplitude": "epsilon^-3",
     "general_k_spatial_ell_time": "epsilon^(-3-k-2*ell)",

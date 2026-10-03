@@ -1,0 +1,59 @@
+{
+  "scope": "Symbolic identities and rational controls for docs/axis-packet-bound.md. Not a proof of the comparison theorem, certified rho/M estimates, a packet simulation, or end-to-end Lean verification.",
+  "sympy": "1.14.0",
+  "source_sha256": "ec6b841cdd9e486bc0d73d27ad8243347c90acfbf39f59511a6f6021d1adb977",
+  "conditions": [
+    "0 < q <= 1",
+    "tau0 > 0",
+    "C > 0",
+    "k = M/2 >= 0",
+    "delta >= 0",
+    "k*delta*I < 1",
+    "A*delta/(1-k*delta*I) < rho"
+  ],
+  "fixed_cone_alignment": {
+    "linear_transverse_over_axial": "Q^(3C/2)*tan(theta0)",
+    "cone_remainder_allowance_ratio": "eta(Q)=(tan(theta_target)-Q^(3C/2)*tan(theta0))/(1+tan(theta_target))",
+    "normalized_remainder_over_axial": "k*delta*I/(cos(theta0)*(1-k*delta*I))",
+    "sufficient_packet_threshold": "delta<=E(Q)/((1+E(Q))*k*I), E(Q)=cos(theta0)*eta(Q)",
+    "asymptotic_power_under_k_and_I_envelopes": "Q^(C+kappa-1)",
+    "scope": "Keeps a fixed non-transverse initial direction inside a fixed axis cone; it is distinct from relative error against the contracting transverse component."
+  },
+  "residuals": {
+    "primitive_derivative_C_ne_one": "0",
+    "primitive_derivative_C_one": "0",
+    "primitive_initial_C_ne_one": "0",
+    "primitive_initial_C_one": "0",
+    "comparison_derivative_in_I": "0",
+    "remainder_identity": "0",
+    "tube_threshold_equality": "0",
+    "rotation_cancellation": "0",
+    "growth_bound_slack": "0",
+    "linear_transverse_to_axial_ratio": "0",
+    "cone_boundary_from_component_inequality": "0",
+    "remainder_over_axial_amplification": "0",
+    "cone_radius_threshold_saturates_comparison": "0"
+  },
+  "controls": {
+    "small_packet_bound_inside_tube": true,
+    "large_packet_bound_not_certified": true,
+    "failed_sufficient_bound_is_not_an_exit_claim": true,
+    "omitting_denominator_is_detected": true
+  },
+  "rational_bounds": {
+    "small": "4/99",
+    "large": "4/19",
+    "tube": "1/10"
+  },
+  "logical_boundary": {
+    "certified_inside": "the upper comparison bound is strictly below tube radius",
+    "not_certified": "the upper comparison bound exceeds tube radius",
+    "not_implied": [
+      "actual trajectory exits the tube",
+      "finite-packet alignment fails",
+      "molecular alignment changes",
+      "constitutive viscosity changes"
+    ]
+  },
+  "success": true
+}
