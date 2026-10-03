@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 256 — link interpolation algebra to the pinned correction operator
+
+Captured the relevant parent/change/current Foundation-13 sources at immutable
+revisions; all 13 current files match the local tree, and the change's
+`linearViscousStress.C` matches the current pin byte for byte. Traced the
+explicit correction through product flux versus separately interpolated
+coefficient/tensor, field-name scheme selection, face contraction and
+owner/neighbour conservative assembly. The simple covariance is established
+for the common uncorrected linear kernel; mixed weights, corrections and
+multi-donor mappings require additional terms. Exact controls show that signed
+global cancellation can coexist with local residual-density growth in a
+synthetic unresolved planar layer. A product-constant, independently
+prescribed tensor control also exposes a contrast-dependent interpolation
+overshoot. Neither control is a compatible manufactured fluid solution or an
+upstream defect reproduction. The checker passes ten exact controls and five
+targeted tests. Full published replay passes all 45 steps, including 228 tests,
+one skip and five subtests. Fresh tracked-only export and hosted checks are
+separate validation stages. Source identities, limits and next evidence are in
+`reports/openfoam-stress-operator-source-link-2026-10-03.md`. The original
+benchmark, AMR-quality and proof/physical bridges remain open. Goal is active.
+
 ## Revision 255 — fixed-commit clean export at the viscosity-jump audit head
 
 Exported commit `0526de204d4cab95a432db254c148bdb1773c0bc` from tracked Git

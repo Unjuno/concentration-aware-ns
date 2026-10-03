@@ -68,3 +68,9 @@ and the particle-scale hypothesis remain unchanged.
 
 The exact symbolic result is in
 [`openfoam-stress-interpolation-covariance-2026-10-03.json`](../evidence/tests/openfoam-stress-interpolation-covariance-2026-10-03.json).
+
+A subsequent [pinned-source and conservative-assembly audit](openfoam-stress-operator-source-link-2026-10-03.md)
+connects the identity to the uncorrected linear explicit-correction path and
+records extra terms for field-specific/corrected schemes. It adds exact
+global-cancellation/local-norm controls, while still not reproducing the
+upstream issue or the full momentum solution.

@@ -1,5 +1,23 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 source-linked stress correction controls
+
+The new pinned-source trace establishes the generic covariance model for the
+explicit correction with common uncorrected linear weights. Captured source
+identities match the local tree; binary equivalence remains unverified.
+Mixed-weight/corrected and noncommuting neighbour-map controls make the
+missing premises explicit. Exact conservative assembly shows that a synthetic
+planar face mismatch can cancel globally while its local residual-density
+norms grow under refinement. The prescribed product-constant tensor control
+is not a compatible manufactured incompressible flow and does not compare
+the complete stress or solution. Ten exact algebra controls and five targeted
+tests pass. Full published-report replay passes all 45 steps, including 228
+tests, one skip and five subtests. Fresh tracked-only export and hosted checks
+remain separate validation stages.
+The details and source links are in
+[`openfoam-stress-operator-source-link-2026-10-03.md`](../reports/openfoam-stress-operator-source-link-2026-10-03.md).
+No CFD, AMR-quality, upstream-defect or particle-scale verdict is upgraded.
+
 ### Completion audit refresh — 2026-10-03 clean export at viscosity-jump audit head
 
 Exported fixed commit `0526de204d4cab95a432db254c148bdb1773c0bc` from tracked

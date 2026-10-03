@@ -20,7 +20,7 @@
       ],
       "exit_code": 0,
       "log": "evidence/report-replay/tests.log",
-      "log_sha256": "79d894d43c4d9c4e4bf5005314192ac020581c7e834e70b85dfaa2a3d82bd2c8"
+      "log_sha256": "affb408b0008f51b4d8d36d4d7e521ce1f074f5dac968e4013aa9cb2ecc8a053"
     },
     {
       "step": "global_peaks",
@@ -197,6 +197,22 @@
       "exit_code": 0,
       "log": "evidence/report-replay/openfoam_stress_interpolation_identity.log",
       "log_sha256": "2b0f3e3a15c6b856d45f87e219b191767b079b4b853b31272875da24d65f1cfa"
+    },
+    {
+      "step": "openfoam_stress_operator_controls",
+      "command": [
+        "python",
+        "-m",
+        "tools.audit_openfoam_stress_operator"
+      ],
+      "replay_command": [
+        "python3",
+        "-m",
+        "tools.audit_openfoam_stress_operator"
+      ],
+      "exit_code": 0,
+      "log": "evidence/report-replay/openfoam_stress_operator_controls.log",
+      "log_sha256": "39708521763ec7c0962bc80927e5a264a6b8a0a6f4659f63bbdb9e3415cbb41a"
     },
     {
       "step": "su2_archive_review",
