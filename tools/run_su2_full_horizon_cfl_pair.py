@@ -1,8 +1,23 @@
 """Original-image paired runner; never rebuilds or repairs Docker."""
-import argparse,csv,json,os,shutil,subprocess
+import argparse,csv,json,os,shutil,subprocess,math
 from pathlib import Path
 from tools.verify_su2_cfl_pair_inputs import verify
 from tools.analyze_su2 import analyze
+
+
+def verify_history(history,steps=50,dt=.001):
+    if len(history)!=steps or [int(r['Time_Iter']) for r in history]!=list(range(steps)):
+        raise ValueError('missing or duplicate physical updates')
+    # Recorded CSV times are decimal diagnostics, not exact binary state.
+    for k,row in enumerate(history):
+        step=float(row['Time_Step']);time=float(row['Cur_Time'])
+        if not (math.isfinite(step) and math.isfinite(time)):
+            raise ValueError('nonfinite history clock')
+        if abs(step-dt)>1e-12 or abs(time-k*dt)>1e-12:
+            raise ValueError('history does not match frozen old-time clock')
+    return {'status':'PHYSICAL_UPDATE_AND_REPORTED_CLOCK_MATCH',
+            'steps':steps,'CSV_absolute_clock_tolerance':1e-12,
+            'scope':'Recorded history only, not source callback or internal floating clock proof'}
 
 
 def run(root,protocol,output,preflight_only=False):
@@ -39,8 +54,8 @@ def run(root,protocol,output,preflight_only=False):
         if result.returncode:save();raise RuntimeError('solver failed; preserve partial case')
         with (case/'history.csv').open() as stream:history=list(csv.DictReader(stream))
         history=[{k.strip().strip('"'):v for k,v in r.items()} for r in history]
-        if len(history)!=50 or [int(r['Time_Iter']) for r in history]!=list(range(50)):
-            raise ValueError('missing or duplicate physical updates')
+        clock=verify_history(history)
+        (case/'history-verification.json').write_text(json.dumps(clock,indent=2)+'\n')
         diagnostics=analyze(case);(case/'diagnostics.json').write_text(json.dumps(diagnostics,indent=2)+'\n')
         for filename,key in [('case.cfg',label+'_config_sha256'),('mesh.su2','mesh_sha256')]:
             if diagnostics['sha256'][filename]!=p[key]:raise ValueError('input mutated during solver')
