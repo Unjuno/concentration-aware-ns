@@ -1,0 +1,91 @@
+{
+  "status": "CONDITIONAL_CONTINUOUS_PDE_RESPONSE_UPPER",
+  "source_commit": "dc34d0f485c4ba3c1a199ecc252859a64237f740",
+  "envelope_receipt_sha256": "407f2df7aeb2d6854156179bd90cc085820cdc6fef3e0a902bb9df6b9a2bb969",
+  "precision_bits": 128,
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "gradient_operator_upper_expression": {
+        "lower_rational": "193061746458511182322571938994281677507/10633823966279326983230456482242756608",
+        "upper_rational": "193061746458511182322571938994281677513/10633823966279326983230456482242756608",
+        "ball": "[18.155439385749173328917151882741617553 +/- 6.99e-37]",
+        "display_lower": 18.155439385749172,
+        "display_upper": 18.155439385749172
+      },
+      "time_uniform_force_upper_expression": {
+        "lower_rational": "44971544144252322690098313023603914311/170141183460469231731687303715884105728",
+        "upper_rational": "89943088288504645380196626047207829165/340282366920938463463374607431768211456",
+        "ball": "[0.26431898044661864630235318327709324 +/- 2.40e-36]",
+        "display_lower": 0.26431898044661867,
+        "display_upper": 0.26431898044661867
+      },
+      "normalized_L2_response_upper_expression": {
+        "lower_rational": "117216449206231169970363765285467374569/5444517870735015415413993718908291383296",
+        "upper_rational": "58608224603115584985181882642733687645/2722258935367507707706996859454145691648",
+        "ball": "[0.021529261541464429219498138791866930 +/- 1.30e-37]",
+        "display_lower": 0.02152926154146443,
+        "display_upper": 0.02152926154146443
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "gradient_operator_upper_expression": {
+        "lower_rational": "193061746458511182322571938994281677507/10633823966279326983230456482242756608",
+        "upper_rational": "193061746458511182322571938994281677513/10633823966279326983230456482242756608",
+        "ball": "[18.155439385749173328917151882741617553 +/- 6.99e-37]",
+        "display_lower": 18.155439385749172,
+        "display_upper": 18.155439385749172
+      },
+      "time_uniform_force_upper_expression": {
+        "lower_rational": "179797227459608210372519526710386504857/1361129467683753853853498429727072845824",
+        "upper_rational": "179797227459608210372519526710386507025/1361129467683753853853498429727072845824",
+        "ball": "[0.13209414073267457413372338809254086 +/- 5.33e-36]",
+        "display_lower": 0.1320941407326746,
+        "display_upper": 0.1320941407326746
+      },
+      "normalized_L2_response_upper_expression": {
+        "lower_rational": "234316977335032364854220254731871915877/21778071482940061661655974875633165533184",
+        "upper_rational": "234316977335032364854220254731871918729/21778071482940061661655974875633165533184",
+        "ball": "[0.010759307935901739270346295601136331 +/- 9.79e-38]",
+        "display_lower": 0.010759307935901739,
+        "display_upper": 0.010759307935901739
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "gradient_operator_upper_expression": {
+        "lower_rational": "193061746458511182322571938994281677507/10633823966279326983230456482242756608",
+        "upper_rational": "193061746458511182322571938994281677513/10633823966279326983230456482242756608",
+        "ball": "[18.155439385749173328917151882741617553 +/- 6.99e-37]",
+        "display_lower": 18.155439385749172,
+        "display_upper": 18.155439385749172
+      },
+      "time_uniform_force_upper_expression": {
+        "lower_rational": "89876387505592379182961647915620888995/1361129467683753853853498429727072845824",
+        "upper_rational": "89876387505592379182961647915620891161/1361129467683753853853498429727072845824",
+        "ball": "[0.06603074111571166614989692489891883 +/- 3.03e-36]",
+        "display_lower": 0.06603074111571167,
+        "display_upper": 0.06603074111571167
+      },
+      "normalized_L2_response_upper_expression": {
+        "lower_rational": "117129522805536846107766776436535676201/21778071482940061661655974875633165533184",
+        "upper_rational": "29282380701384211526941694109133919759/5444517870735015415413993718908291383296",
+        "ball": "[0.005378323920797611513040293911351126 +/- 5.29e-37]",
+        "display_lower": 0.005378323920797612,
+        "display_upper": 0.005378323920797612
+      }
+    }
+  ],
+  "assumptions": [
+    "Smooth incompressible periodic strong solutions u and v on [0,T]",
+    "Same viscosity and identical initial velocity",
+    "v forced by analytic shifted force f(t-h), including its extension at negative times",
+    "Volume-normalized L2 norm and real arithmetic"
+  ],
+  "limits": [
+    "Does not prove existence of v or represent the discrete SU2 source schedule",
+    "No inner residual, discretization, restart or floating error included",
+    "Absolute conditional upper bound, not endpoint-error attribution or acceptance verdict"
+  ]
+}
