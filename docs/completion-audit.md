@@ -1,5 +1,14 @@
 # Completion audit — interim, 2026-09-27
 
+### Hosted scalar chain and local affine divergence — 2026-10-04
+
+Publication 4d169bf4 passes hosted 371 tests, v2 analytic equality and exact
+scalar checking; executed merge/source closures match. Four affine-piece traces
+are nonzero, providing conditional continuous-gradient constraints, without a
+discrete mass-balance or physical claim. Representation/consumer contracts and
+cross-project/proof/physical bridges remain unproved. See
+[impact audit](../reports/cell-point-affine-divergence-impact-2026-10-04.md).
+
 ### Fresh-host analytic v2 equality achieved — 2026-10-04
 
 The actual source/data closure of the tested merge matches publication 8eafdd28.

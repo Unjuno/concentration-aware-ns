@@ -1,0 +1,17 @@
+{
+  "OpenFOAM": {
+    "sha": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "url": "https://github.com/OpenFOAM/OpenFOAM-13/commit/18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "committed_at": "2026-06-23T20:54:34Z"
+  },
+  "SU2": {
+    "sha": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "url": "https://github.com/su2code/SU2/commit/bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "committed_at": "2026-04-28T06:05:27Z"
+  },
+  "PhysicsNeMo": {
+    "sha": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+    "url": "https://github.com/NVIDIA/physicsnemo/commit/b45a5c810c741e6b41f8515be24c51121f8fc21f",
+    "committed_at": "2026-10-02T16:45:37Z"
+  }
+}

@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 285 — distinguish affine incompressibility from discrete mass balance
+
+All four recorded affine pieces have enclosed nonzero divergence. Trace alone
+forces gradient-error lower bounds 52.4054%, 48.2669%, 27.5135% and 47.7117%
+relative to reference peaks. Same-host guarded replay matches all certificates.
+This is a point-reconstruction constraint, not discrete mass-conservation failure;
+no automatic SU2/PhysicsNeMo, particle, proof or physical transfer is made.
+Their missing bridges and upstream no-post reasons are recorded. Hosted run
+37155563101 separately passes 371 tests, v2 equality and the rational scalar
+checker. Full goal remains active. See
+`reports/cell-point-affine-divergence-impact-2026-10-04.md`.
+
 ## Revision 284 — verify hosted v2 equality and independent scalar normalization
 
 Hosted CI 37155045329 passes 366 tests and all three v2 analytic byte-equality
