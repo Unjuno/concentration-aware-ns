@@ -76,3 +76,17 @@ therefore insufficient evidence of content-store/build health. Do not repeat
 this build on the same unchanged store; a healthy independent runtime is needed.
 The fixed-tag hosted verification is still queued. No global goal completion
 or native numerical conclusion follows from this environmental failure.
+
+Hosted execution: run 37160281461 registered the expected frozen source
+c9f0c43. Native ARM64 job 111312142060 started; setup, checkout, dependencies
+and exact input preparation completed, and the frozen successor build is
+in progress on an actual GitHub runner. No compiler/image/pair success is
+inferred before its terminal outputs are inspected. No restart or duplicate
+native dispatch is issued.
+
+A separate reviewer (source a2336b9) recomputes diagnostics from raw completed
+cases, validates the input/clock identities and rejects mixed image IDs. It
+reports all-step residual convergence separately from original observed
+velocity/energy/derivative thresholds. An incomplete-pair control is rejected
+before field reads. This reviewer is prepared locally and is not an executed
+native result or continuous peak certificate.
