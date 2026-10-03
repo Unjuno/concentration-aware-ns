@@ -1,5 +1,8 @@
 # Three-project scope refresh — 2026-10-04
 
+> Correction (2026-10-04): the original localized source-lag receipt used an unrelated high-gradient reference family. Its numerical force mismatch is inapplicable to SU2 study-v1. Original archives and other SU2 diagnostics are unchanged. See `reports/su2-source-lag-reference-correction-2026-10-04.md` and additive v2 evidence.
+
+
 The current OpenFOAM particle work is source-linked conditional algebra, not
 an executed particle cloud or a replacement for the frozen field benchmark.
 The source-linked body-force counterexample prevents transferring the

@@ -1,5 +1,14 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 290 — correct an independently identified reference-family mistake
+
+The SU2 source-lag auxiliary audit used an unrelated MMS. Corrected source
+matches archived sigma/nu and the executed reference; additive v2 results
+supersede that quantitative v1 interpretation. Two family/resolution regression
+tests pass. Old evidence is retained with explicit report correction. Publish
+this scientific correction despite queued old CI, preserving its prior state.
+Full goal active; see `reports/su2-source-lag-reference-correction-2026-10-04.md`.
+
 ## Revision 289 — verify the body-force restriction analytically
 
 Arb128 proves a synthetic smooth-branch local derivative above one with

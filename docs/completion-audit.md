@@ -2029,3 +2029,15 @@ claim is still unproved. Prepared hosted scalar/branch checks remain pending.
 The live Python job 37157306920 at a611973 is queued; local prepared commits
 are not published and are not covered by its result. These narrow checks do
 not close the full goal's global, physical, proof or upstream requirements.
+
+
+### SU2 source-lag reference correction — 2026-10-04
+
+The previous localized source-lag reanalysis matched its old receipt but used
+a different manufactured reference family from the executed SU2 study. That
+quantitative interpretation is withdrawn. The additive v2 recomputes using
+archived sigma/nu and the executed reference family; two resolution/family
+regression tests pass. See [correction](../reports/su2-source-lag-reference-correction-2026-10-04.md).
+The seeded point result does not prove continuous peak bounds or PDE-error
+attribution. Prior artifacts are preserved; original solver outputs and gates
+are unchanged. The full objective is not complete.
