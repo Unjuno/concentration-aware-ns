@@ -106,6 +106,18 @@ cap100000 endpoint are outside this three-resolution decomposition.
 
 ## Consequence for the remaining goal
 
+At source commit `5bc0691a60d2282aef6828f5da6d5f2a803673e9`, hosted Python CI
+passes 264 tests, one skip and 70 subtests. The fresh locked CPython 3.14.5
+export passes all 47 report-replay steps, six follow-up checks and strict
+comparison of 237 unchanged files. The earlier CPython 3.12 export executed
+all computations but failed strict artifact identity in nine files due to
+environment metadata and cascading hashes; its failure/differences remain
+preserved. The new decomposition JSON is byte-identical in both exports.
+Records are in [`validation`](../evidence/amr-derivative-projection-validation-2026-10-03/README.md),
+[`3.14 export`](../evidence/clean-export-2026-10-03-amr-5bc0691-py314/README.md)
+and [`3.12 strict failure`](../evidence/clean-export-2026-10-03-amr-5bc0691-py312/README.md).
+Later documentation/evidence commits are outside this fixed-commit test scope.
+
 A future AMR quality gate must name its representation, norm, support, time
 and reference-resolution floor before execution. For example, no constant
 gradient tensor on the archived n=64 mapped partition can attain an integrated

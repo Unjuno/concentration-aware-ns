@@ -20,6 +20,15 @@ evidence. Next AMR work needs a prospective representation-aware quality gate
 and transfer versus post-step controls. Other solver, proof/physical and
 release obligations remain open. Goal remains active.
 
+Validation at frozen source `5bc0691`: hosted tests pass 264 with one skip and
+70 subtests. A fresh locked CPython 3.14.5 export passes 47 replay steps,
+six follow-up checks and strict comparison of 237 unchanged files. The earlier
+3.12 strict metadata/hash failure is preserved with every differing field;
+the new AMR artifact matches exactly in both environments. A supplemental
+package archive replay in the fresh export also passes, using immutable
+input-source Git blobs from the clone, without rerunning CFD. These records
+do not certify later publication commits or broaden scientific conclusions.
+
 ## Revision 261 — execute the package control and independently replay evidence
 
 Frozen commit `e6a5b1ad` completed hosted ARM64 run `37118442037`: runtime

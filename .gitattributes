@@ -2,3 +2,8 @@
 evidence/environment/of13-interface-runtime-recovery-2026-10-03/build.log whitespace=-blank-at-eol
 evidence/of13-interface-hosted-failure-37117700448/build.log whitespace=-blank-at-eol
 evidence/of13-interface-operator-v1/runtime-build/build.log whitespace=-blank-at-eol
+# Preserve verified replay logs without trimming their diagnostic bytes.
+evidence/clean-export-2026-10-03-amr-5bc0691-py312/replay/*.log whitespace=-blank-at-eol,-blank-at-eof
+evidence/clean-export-2026-10-03-amr-5bc0691-py312/wrapper/*.log whitespace=-blank-at-eol,-blank-at-eof
+evidence/clean-export-2026-10-03-amr-5bc0691-py314/replay/*.log whitespace=-blank-at-eol,-blank-at-eof
+evidence/clean-export-2026-10-03-amr-5bc0691-py314/wrapper/*.log whitespace=-blank-at-eol,-blank-at-eof

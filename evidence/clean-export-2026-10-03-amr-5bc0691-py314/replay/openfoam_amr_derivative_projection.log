@@ -1,0 +1,7 @@
+Recomputing n=16 preMap
+Recomputing n=16 mapped
+Recomputing n=32 preMap
+Recomputing n=32 mapped
+Recomputing n=64 preMap
+Recomputing n=64 mapped
+{"status": "PASS_ARCHIVED_DERIVATIVE_PROJECTION_REPLAY", "output": "<CLEAN_EXPORT_ROOT>/source/evidence/tests/openfoam-amr-derivative-projection-2026-10-03.json"}

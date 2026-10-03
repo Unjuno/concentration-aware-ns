@@ -1,0 +1,30 @@
+{
+  "status": "PASS_GENERIC_IDENTITY_ONLY",
+  "checker": "tools/audit_openfoam_stress_interpolation_identity.py",
+  "checker_sha256": "609ab2a8376644bf7a43d53f939e2c2f3b2b8054b9a255651cc0d55e63b6dc31",
+  "symbolic_backend": "SymPy 1.14.0",
+  "interpolation_convention": "I_w(f)=w*f_P+(1-w)*f_N; identical weight on both factors",
+  "identity": "I_w(a*G)-I_w(a)*I_w(G)=w*(1-w)*(a_P-a_N)*(G_P-G_N)",
+  "sympy_defect": "-w*(G_N - G_P)*(a_N - a_P)*(w - 1)",
+  "smooth_affine_field_defect": "-G_1*a_1*h**2*w*(w - 1)",
+  "piecewise_constant_jump_defect": "-delta_G*delta_a*w*(w - 1)",
+  "checks": {
+    "product_interpolation_identity": true,
+    "zero_for_endpoint_weights_or_one_constant_factor": true,
+    "smooth_affine_data_defect_is_quadratic_in_cell_spacing": true,
+    "finite_jump_defect_has_no_cell_spacing_factor": true
+  },
+  "interpretation": {
+    "smooth_coefficient_and_gradient": "For fixed 0<w<1 and differentiable fields sampled at adjacent cells, the face product defect is O(h^2).",
+    "unresolved_interface_jump": "For finite coefficient and gradient jumps, the algebraic face defect can remain O(1) as h shrinks; this says nothing by itself about the assembled operator or solution error.",
+    "benchmark_relation": "The primary OpenFOAM MMS uses a smooth single-phase field and constant nu=0.01, so this coefficient-jump mechanism is outside that frozen case.",
+    "upstream_issue": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2",
+    "upstream_change": "https://github.com/OpenFOAM/OpenFOAM-13/commit/6592798ca0704aa6eaaaaf74ea3cc6a9553317dc"
+  },
+  "scope_limits": [
+    "This is an algebraic identity for a generic same-weight linear interpolation, componentwise for vector or tensor G.",
+    "It does not establish that OpenFOAM fvc::dotInterpolate uses this exact equivalent operator in every scheme or mesh geometry.",
+    "It does not reproduce the attached OpenFOAM issue case or prove either version's discretization is wrong.",
+    "It supports no inference about molecular ordering, physical viscosity reduction, phase transition, or a continuum singularity."
+  ]
+}

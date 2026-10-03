@@ -1,0 +1,31 @@
+{
+  "status": "ALGEBRA_IDENTITIES_PASS",
+  "scope": "Jeffery director under prescribed spatially uniform axisymmetric strain; kinematic counterexample to inferring complete alignment from pointwise rate blow-up alone.",
+  "general_angle_law": "tan(beta(t))/tan(beta(t0)) = exp(-3*kappa*integral_[t0,t](gamma(s) ds))",
+  "rate_family": "gamma(t)=gamma0*(1-t)^(-alpha), gamma0>0, alpha>0, t0<1",
+  "pointwise_strain_diverges_for": "every alpha>0",
+  "integrated_strain_finite_for": "0<alpha<1",
+  "integrated_strain_diverges_for": "alpha>=1",
+  "subcritical_integral_limit": "gamma0*(1-t0)^(1-alpha)/(1-alpha), valid for 0<alpha<1 by direct integration",
+  "subcritical_tangent_ratio_limit": "exp(-3*kappa*gamma0*(1-t0)^(1-alpha)/(1-alpha)) > 0",
+  "critical_rate": "alpha=1 gives logarithmically divergent integrated strain and ideal alignment for kappa>0",
+  "openai_ideal_rate_comparison": "gamma=C/(2*(1-t)) has alpha=1; under the assumed Jeffery model it is on the nonintegrable side.",
+  "counterexample": {
+    "alpha": "1/2",
+    "gamma0": "1/10",
+    "kappa": "3/4",
+    "initial_time": "0",
+    "strain_rate": "(1/10)/sqrt(1-t), which diverges as t approaches 1",
+    "integrated_strain": "1/5",
+    "tangent_ratio_for_any_initial_direction": "exp(-9/20)",
+    "initial_director_law": "isotropic unoriented directors",
+    "target_cone_half_angle_degrees": 10,
+    "limiting_target_cone_probability": 0.036174024526831515,
+    "probability_is_strictly_below_one": true
+  },
+  "limits": [
+    "No finite-particle uniformity or trajectory premise is supplied by a pointwise velocity-gradient estimate.",
+    "This prescribed strain is not asserted to solve Navier-Stokes or to equal the OpenAI selected profile.",
+    "It does not model molecules, Brownian rotation, interactions, stress, viscosity, or a physical cutoff."
+  ]
+}

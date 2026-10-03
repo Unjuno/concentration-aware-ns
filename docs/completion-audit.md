@@ -13,6 +13,15 @@ This adds an analytic diagnostic and a constraint on prospective gate design;
 it introduces no retrospective AMR quality PASS/FAIL, new solver run or
 upstream defect. AMR quality and the overall goal remain open.
 
+At frozen source `5bc0691`, hosted tests pass 264/one skip/70 subtests.
+The fresh CPython 3.14.5 export passes 47 replay steps, six follow-up checks
+and strict comparison of 237 unchanged files. The prior 3.12 metadata/hash
+identity failure is preserved; the new AMR result matches in both. Separate
+package archive replay also passes in the fresh export with immutable Git
+input blobs from the local clone. See
+[`validation record`](../evidence/amr-derivative-projection-validation-2026-10-03/README.md).
+No solver or proof rerun, physical claim, or overall completion follows.
+
 
 ### Completion audit refresh — 2026-10-03 executed package operator
 
