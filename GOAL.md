@@ -1,5 +1,14 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 291 — bound corrected MMS force displacement across the domain
+
+Derived conservative Euclidean bounds for the executed SU2 reference's linear
+and quadratic force terms, yielding an absolute O(dt) continuous-domain bound.
+Three digest-verified archived parameter cases have Arb128 upper endpoints;
+corrected point diagnostics fall below the bounds. The estimate is loose and
+does not determine solver error, acceptance or physical behavior. Full goal
+active; see `reports/su2-force-time-uniform-upper-2026-10-04.md`.
+
 ## Revision 290 — correct an independently identified reference-family mistake
 
 The SU2 source-lag auxiliary audit used an unrelated MMS. Corrected source
