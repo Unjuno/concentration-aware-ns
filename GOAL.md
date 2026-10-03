@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 293 — test the attached proposal against archived benchmark evidence
+
+The proposal's standard-pass/local-fail hypothesis is observed narrowly on
+OpenFOAM n16/n32; the preregistered fine-grid persistence criterion is
+`NOT_OBSERVED`. SU2 has no case passing the complete aggregate-accuracy and
+all-step-residual conjunction while failing sampled local quality.
+PhysicsNeMo stays UNCERTAIN because continuous peaks and a model-specific
+threshold are missing. Foundation 13's reproduced maxCells overshoot follows
+the inspected approximate whole-level budget behavior and is not a defect
+finding. Molecular ordering, phase transition, viscosity collapse, and
+deployed-control implications remain unsupported. The proposal-to-evidence
+crosswalk and no-post rationale are in
+`reports/attachment-hypothesis-audit-2026-10-04.md`. Existing long-horizon
+SU2 successor run 37160281461 is still live at its paired-solver step; no
+result is inferred from the running job. The full goal remains active.
+
 ## Revision 292 — validate and replay the tightened force bound
 
 Envelope-aware upper endpoints are about forty times smaller than the coarse
