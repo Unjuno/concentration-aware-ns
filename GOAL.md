@@ -1,5 +1,27 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 258 — clean export of compatible-interface analysis
+
+Exported fixed commit `b0e590e3c1b9b19044748fac7ad06109785f6fe5` from
+tracked Git content into a fresh locked CPython 3.14.5 environment on macOS
+27.0.1 arm64. All 46 report/evidence replay steps and six follow-up checks
+exited zero; all 234 compared tracked report/test-evidence files remained
+byte-identical. The fresh test stage passed 233 tests, with one skip and five
+subtests. Saved wrapper/test-log hashes and all 46 raw replay log hashes match.
+The sanitized result and logs are preserved in
+`evidence/clean-export-2026-10-03-success-b0e590e/`. This confirms Python
+postprocessing/evidence reproducibility at the named commit and host only;
+no CFD solver or Lean proof was rerun and no physical verdict is upgraded.
+
+The PR description also removes its stale whole-repository OPEN claim:
+the October 2 pinned-source audit records compiled OpenAI candidate/whole-space
+theorem declarations with standard axioms, and their source hashes match the
+pinned checkout. The OPEN note is local to the proposition-definition module.
+Our actual-profile pressure premise remains a separate unresolved extension
+obligation. Next interface work is a frozen package-level operator probe;
+the AMR-quality, other solver-quality and physical bridges remain open.
+Hosted Python CI is a separate PR check. Goal remains active.
+
 ## Revision 257 — impose incompressible interface compatibility before interpretation
 
 Derived the admissible velocity-gradient jump `[A]=b outer n`, with `b dot n=0`

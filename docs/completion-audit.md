@@ -1,5 +1,25 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 compatible-interface clean export
+
+The tracked-only export of fixed commit
+`b0e590e3c1b9b19044748fac7ad06109785f6fe5` passes all 46 report/evidence
+replay steps, six follow-up checks and strict comparison of 234 unchanged
+tracked report/test-evidence files in a fresh locked CPython 3.14.5 environment
+on macOS 27.0.1 arm64. The fresh suite reports 233 passed, one skipped and
+five subtests passed. Saved wrapper/test-log hashes and all 46 internal raw
+replay log hashes match. The result and sanitized logs are in
+[`clean-export-2026-10-03-success-b0e590e/`](../evidence/clean-export-2026-10-03-success-b0e590e/README.md).
+Subsequent evidence/documentation commits are separate from this tested source
+commit; hosted Python CI is recorded as its own PR check. No CFD solver or
+Lean proof was rerun, and no scientific verdict is upgraded.
+
+The PR description's earlier blanket OPEN candidate-statement claim is also
+corrected to the October 2 source audit below: proposition definitions and
+their proving modules are separate. The candidate and whole-space theorem
+declarations compile at the pin, while our extension's actual-profile pressure
+condition and independent mathematical/physical interpretation remain open.
+
 ### Completion audit refresh — 2026-10-03 compatible interface control
 
 The new analytical trace-compatibility lemma narrows the independent-tensor
