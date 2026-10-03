@@ -1,0 +1,24 @@
+{
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-cell-point-capture-v1-4999a4d/cell-point-capture-n16-4999a4d.tar.gz",
+  "release_sha256": "ad1fb32afd6e9cb1f799945fa2967d09150fc567bd3daa11e0a62029a268e830",
+  "capture_manifest_sha256": "8c262b596ced7b98c83ee67d1051026aa7b10d99aaca829dbbf9224c7efba400",
+  "cell": 5332,
+  "face": 22295,
+  "tetPt": 2,
+  "point_indices": [
+    14487,
+    14486,
+    5089
+  ],
+  "query_count": 19,
+  "step_powers": [
+    8,
+    12,
+    16
+  ],
+  "limits": [
+    "read-only replay of existing fields; no CFD evolution",
+    "finite position samples and floating secants do not certify a continuum derivative or complete neighborhood",
+    "original gates and physical claims unchanged"
+  ]
+}
