@@ -1,0 +1,22 @@
+{
+  "schema": "amr-voxel-mean-reconstruction/v1",
+  "status": "Archived-input analytic operator audit; freeze before the twelve-state measurement",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "stages": ["preMap", "mapped", "postSolve"],
+  "representation": "Copy native cell constants to finest voxels, then reconstruct a real polynomial whose voxel averages equal those imposed constants",
+  "coefficients": "F_(k modulo m) exp(-i*pi*sum(k)/m) / product sinc(k_j/m), |k_j|<=m/2, with a half weight at each Nyquist coordinate",
+  "normalization": "Mean-square norms on the 2*pi periodic cube, no kinetic-energy factor 1/2",
+  "control": "Run the same native-mesh repetition and reconstruction on independently integrated exact MMS cell averages; uniform resolved voxel averages recover the reference in tests",
+  "independent_checks": ["Frozen raw archive identities", "Dyadic cube coverage", "Real-field conjugacy", "Voxel-average round trip", "Selected native-cell analytic mean integrals", "Gradient equals curl plus divergence mean-square identity", "Exact mean shear alias formula", "Same-time parent-copy coefficient identity"],
+  "limits": [
+    "The repeated child averages are imposed constraints, not actual subcell measurements.",
+    "Native mean conservation does not establish derivative consistency; the exact-mean control must accompany all actual-field errors.",
+    "This polynomial is a chosen analysis operator, not an OpenFOAM interpolation or executed solver correction.",
+    "No new solver-quality threshold or original AMR gate completion is introduced.",
+    "Floating arithmetic is checked independently but is not interval-certified.",
+    "No upstream defect, singularity, molecular ordering, phase transition or viscosity change follows."
+  ]
+}
