@@ -38,6 +38,15 @@ jobs:
           python -c "import sys,json,platform,flint,numpy; print(json.dumps({'python':sys.version,'platform':platform.platform(),'machine':platform.machine(),'python_flint':flint.__version__,'flint':flint.__FLINT_VERSION__,'numpy':numpy.__version__},indent=2))" > work/published-cell-point-matrix-environment.json
           python -m tools.verify_published_cell_point_matrix --output work/published-cell-point-matrix-verification --source-commit "$GITHUB_SHA" > work/published-cell-point-matrix-verification.log 2>&1
           python -m tools.check_cell_point_dyadic_receipts --output work/published-cell-point-dyadic-scalar.json
+      - name: Recompute conditional particle drag audit
+        run: |
+          python -m tools.audit_solid_particle_drag_branches --output work/solid-particle-drag-branch-audit --source-commit "$GITHUB_SHA"
+          g++ --version > work/solid-particle-drag-compiler.txt
+          for opt in 0 2; do
+            g++ -std=c++17 -O"$opt" evidence/solid-particle-drag-branches-v2/standalone-control.cpp -o "work/solid-particle-drag-O$opt"
+            "work/solid-particle-drag-O$opt" > "work/solid-particle-drag-O$opt.json"
+          done
+          python -m tools.check_solid_particle_drag_transcriptions --input work/solid-particle-drag-O0.json --input work/solid-particle-drag-O2.json --output work/solid-particle-drag-transcription-check.json
       - name: Preserve published-matrix verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -48,5 +57,9 @@ jobs:
             work/published-cell-point-matrix-verification.log
             work/published-cell-point-matrix-environment.json
             work/published-cell-point-dyadic-scalar.json
+            work/solid-particle-drag-branch-audit/
+            work/solid-particle-drag-compiler.txt
+            work/solid-particle-drag-O*.json
+            work/solid-particle-drag-transcription-check.json
           if-no-files-found: warn
           retention-days: 90

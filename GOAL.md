@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 288 — prepare hosted branch and scalar-transcription checks
+
+Added conditional drag recomputation and g++ -O0/-O2 scalar controls to Python
+CI, with failure-preserving artifacts. Local numerical controls and three
+checker corruption controls pass. C++/hosted execution remains pending.
+Exact-head run 37157306920 at a611973 is queued; publication is held to avoid
+cancelling it. These are scalar transcriptions, not native OpenFOAM cloud
+verification. Full goal active; see
+`reports/solid-particle-drag-ci-integration-2026-10-04.md`.
+
 ## Revision 287 — distinguish smooth drag sensitivity, threshold and viscosity input
 
 Pinned solidParticle algebra gives body-force-free branch sensitivities below
