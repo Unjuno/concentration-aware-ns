@@ -2011,3 +2011,21 @@ check, so the hosted Ubuntu job is unverified.
 
 
 Native capture matrix update: [three resolutions and temporal comparison](../reports/cell-point-capture-derivative-matrix-2026-10-04.md). All four captures and local checks complete; global/physical/proof obligations remain open.
+
+
+### Cross-project and particle-scope refresh — 2026-10-04
+
+The latest [three-project refresh](../reports/three-project-refresh-2026-10-04-drag.md)
+records fresh upstream tracker evidence and a digest-verified SU2 forcing-lag
+reanalysis. Three archive calculations reproduce the prior outputs; this is
+not a new solver experiment. PhysicsNeMo #2007/#2008 remain open, and SU2
+#2857 remains closed/unmerged. No duplicate post is justified.
+
+The [body-force analysis](../reports/particle-body-force-sensitivity-2026-10-04.md)
+adds an interval-certified synthetic local derivative above one, independent
+symbolic/difference controls and guarded export replay. The earlier
+body-force-free sensitivity remains conditional; a global particle/trajectory
+claim is still unproved. Prepared hosted scalar/branch checks remain pending.
+The live Python job 37157306920 at a611973 is queued; local prepared commits
+are not published and are not covered by its result. These narrow checks do
+not close the full goal's global, physical, proof or upstream requirements.
