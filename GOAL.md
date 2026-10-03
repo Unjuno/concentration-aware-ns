@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 284 — verify hosted v2 equality and independent scalar normalization
+
+Hosted CI 37155045329 passes 366 tests and all three v2 analytic byte-equality
+checks on Linux x86_64. Executed merge and publication-head source/data/dependency
+closures match. Environment and cross-host floating native diagnostics are saved.
+A standard-library rational checker independently validates conservative dyadic
+floors/normalization and rejects four corrupted variants; 371 local tests pass.
+Its next hosted check remains separate. The v1 failure is retained; no universal
+portability, global continuity/extrema or physical/proof completion is claimed.
+Full goal active; see `reports/published-cell-point-dyadic-hosted-2026-10-04.md`.
+
 ## Revision 283 — preserve host mismatch and use conservative dyadic v2 receipts
 
 Publication-head CI passes 362 tests but fails v1 analytic byte equality on n32;

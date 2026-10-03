@@ -37,6 +37,7 @@ jobs:
           mkdir -p work
           python -c "import sys,json,platform,flint,numpy; print(json.dumps({'python':sys.version,'platform':platform.platform(),'machine':platform.machine(),'python_flint':flint.__version__,'flint':flint.__FLINT_VERSION__,'numpy':numpy.__version__},indent=2))" > work/published-cell-point-matrix-environment.json
           python -m tools.verify_published_cell_point_matrix --output work/published-cell-point-matrix-verification --source-commit "$GITHUB_SHA" > work/published-cell-point-matrix-verification.log 2>&1
+          python -m tools.check_cell_point_dyadic_receipts --output work/published-cell-point-dyadic-scalar.json
       - name: Preserve published-matrix verification evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -46,5 +47,6 @@ jobs:
             work/published-cell-point-matrix-verification/
             work/published-cell-point-matrix-verification.log
             work/published-cell-point-matrix-environment.json
+            work/published-cell-point-dyadic-scalar.json
           if-no-files-found: warn
           retention-days: 90

@@ -1,5 +1,15 @@
 # Completion audit — interim, 2026-09-27
 
+### Fresh-host analytic v2 equality achieved — 2026-10-04
+
+The actual source/data closure of the tested merge matches publication 8eafdd28.
+Hosted run 37155045329 passes 366 tests and all three v2 analytic byte-equality
+checks. Native floating diagnostics remain separately preserved. Exact rational
+scalar checks add 371-test local validation without proving geometric/reference
+or interval-kernel correctness. Earlier v1 portability failure remains recorded.
+Full-goal global/physical/proof and cross-project obligations stay open. See
+[report](../reports/published-cell-point-dyadic-hosted-2026-10-04.md).
+
 ### Larger native samples and uniform idealized-ball bounds — 2026-10-04
 
 Revision 281 verifies all 57 larger-target native samples and complete candidate
