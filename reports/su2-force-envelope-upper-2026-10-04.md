@@ -34,3 +34,13 @@ This is an absolute real-reference bound, not a native solver experiment,
 relative acceptance result or endpoint PDE-error bound. Floating rounding,
 inner solves and discretization are separate. No threshold changes or upstream
 issue is justified. The full goal remains active and hosted CI remains pending.
+
+Additive v2 hardens the evidence chain: reference source identity, exactly the
+three unique temporal cases, original archive hashes and all sigma/nu/dt/end
+parameters are revalidated before computation. The previous coarse bound is
+also freshly recomputed instead of trusting a stored lower endpoint to assert
+improvement. Six focused tests pass, including five corrupted-input controls.
+The three numeric bound records remain identical to v1. Evidence is preserved
+under `evidence/su2-force-envelope-upper-v2`, numerical source 0f2b2f8. This
+focused result is separate from the earlier 377-test full-suite result and
+pending hosted run; no broader validation is claimed.
