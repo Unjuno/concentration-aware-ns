@@ -44,3 +44,12 @@ The original-only default still retains its image gate. Six history tests and
 Python compilation pass, but the successor path has not executed on a healthy
 runtime; no build, binary equivalence or solver result is claimed. A new
 image build/receipt and healthy isolated capacity remain required.
+
+Successor probe correction: the first receipt comparison iterated only over
+reported fields, so an empty measured JSON could satisfy it vacuously. The
+probe now requires exactly binary/source/package digests and compiler version,
+valid nonempty values, digest syntax and equality. Six negative probe controls
+plus one positive and the six history checks pass (13 focused tests). This
+runner path was never used to claim a native successful run. Image/source
+provenance beyond these actual-file measurements remains a build audit duty;
+the unit fixtures do not substitute for a healthy-runtime probe or simulation.
