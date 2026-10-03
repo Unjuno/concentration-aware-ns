@@ -1,5 +1,37 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 261 — execute the package control and independently replay evidence
+
+Frozen commit `e6a5b1ad` completed hosted ARM64 run `37118442037`: runtime
+build, wmake, all three aligned grids and 15 snapshots. The independent
+archive replayer verifies106 regular files, frozen inputs/sources and selected
+25 source / 3 linked-library payload identities. Hosted and macOS replay verdicts
+match; seven derived floating metrics differ by at most 1.083e-15. Both return
+PASS for the specified discrete-operator gate, which is not a continuum-error
+or whole-benchmark PASS.
+
+The constant-one control has exactly zero complete residual and physical flux
+in saved numbers, but native scalar residual is exactly 0.25 / 0.125 / 0.0625,
+matching the extra cyclic-source prediction. This is a diagnostic reproduction
+with 2024 prior discussion; mechanism novelty/maintainer contract confirmation
+are not claimed. Inspected standard solve/convergence paths use separate
+statistics; no universal simulation failure is established. Actual arithmetic
+flux errors are 6.38855/3.09540/1.52411percent despite normalized PCG residuals
+below 1e-12. Harmonic equilibrium matches traction to 4.67e-15 but takes zero PCG
+iterations, so perturbed-start convergence is untested.
+
+The e6 Python CI failed three synthetic fixture tests missing the moved recipe
+in app/Dockerfile; production data and replay passed. The corrected local
+suite passes 260 tests, one skip and 57 subtests; separate raw-data review
+found no material evidence or scope issue. Corrected the fixture,
+retained the failure distinction and record final tests/CI separately. Full
+observations, prior-art/channel limits and replay commands are in
+`reports/openfoam-interface-package-operator-2026-10-03.md` and
+`evidence/of13-interface-operator-v1/`. No new upstream issue is posted while
+prior official-tracker status and API intent remain unresolved. Original AMR,
+other solver-quality, proof/physical and release obligations remain open.
+Goal is active.
+
 ## Revision 260 — preserve failed acquisition and change the download path
 
 Hosted run `37117700448` at frozen commit `85aad783` stopped before utility

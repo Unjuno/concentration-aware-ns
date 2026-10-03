@@ -9,6 +9,7 @@ on:
       - 'tools/build_interface_operator_cases.py'
       - 'tools/run_interface_operator_probe.py'
       - 'tools/analyze_interface_operator_probe.py'
+      - 'tools/check_interface_stress_compatibility.py'
       - 'protocols/of13-interface-operator-v1.json'
       - 'requirements-interface-operator.txt'
   workflow_dispatch:
@@ -21,7 +22,66 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  changes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      run_operator: ${{ steps.changed.outputs.run_operator }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Check inputs changed by this update
+        id: changed
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.event.after || github.event.pull_request.head.sha || github.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          run_operator=true
+          valid_sha() {
+            [[ "$1" =~ ^[0-9a-f]{40}$ && "$1" != 0000000000000000000000000000000000000000 ]]
+          }
+          # Opened PRs and manual runs always execute. Missing history is conservative.
+          if [[ "$EVENT_NAME" == pull_request && "$EVENT_ACTION" == synchronize ]] &&
+             valid_sha "$BEFORE_SHA" && valid_sha "$AFTER_SHA" &&
+             [[ "$AFTER_SHA" == "$HEAD_SHA" && "$(git rev-parse HEAD)" == "$HEAD_SHA" ]]; then
+            if git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null ||
+               git fetch --no-tags --depth=1 origin "$BEFORE_SHA"; then
+              changed_paths="$RUNNER_TEMP/interface-operator-changed-paths"
+              if git diff --name-only --no-renames -z "$BEFORE_SHA" "$AFTER_SHA" -- > "$changed_paths"; then
+                run_operator=false
+                while IFS= read -r -d '' changed_path; do
+                  case "$changed_path" in
+                    runtime/of13-interface-operator/Dockerfile|\
+                    runtime/openfoam13/Dockerfile|\
+                    runtime/of13-interface-operator/*.C|\
+                    runtime/of13-interface-operator/*.H|\
+                    runtime/of13-interface-operator/Make/*|\
+                    runtime/of13-interface-operator/run_cases.sh|\
+                    runtime/of13-interface-operator/fetch_pinned_package.sh|\
+                    runtime/of13-interface-operator/package-source-paths.txt|\
+                    tools/build_interface_operator_cases.py|\
+                    tools/run_interface_operator_probe.py|\
+                    tools/analyze_interface_operator_probe.py|\
+                    tools/check_interface_stress_compatibility.py|\
+                    protocols/of13-interface-operator-v1.json|\
+                    requirements-interface-operator.txt)
+                      run_operator=true
+                      break
+                      ;;
+                  esac
+                done < "$changed_paths"
+              fi
+            fi
+          fi
+          printf 'run_operator=%s\n' "$run_operator" >> "$GITHUB_OUTPUT"
   operator:
+    needs: changes
+    if: needs.changes.outputs.run_operator == 'true'
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
     steps:
@@ -40,11 +100,11 @@ jobs:
           docker build --platform linux/arm64 -t concentration-aware-ns:of13-interface-v1 runtime/of13-interface-operator 2>&1 | tee evidence/of13-interface-runtime-build/build.log
           docker image inspect concentration-aware-ns:of13-interface-v1 > evidence/of13-interface-runtime-build/image-inspect.json
       - name: Execute frozen three-grid operator probe
-        run: python -m tools.run_interface_operator_probe --image concentration-aware-ns:of13-interface-v1
+        run: python -m tools.run_interface_operator_probe --image concentration-aware-ns:of13-interface-v1 --evidence-root evidence/of13-interface-hosted-current
       - name: Independently compare matrices, fluxes and exact chains
         run: |
-          python -m tools.analyze_interface_operator_probe --case-root work/of13-interface-operator-v1/cases --output evidence/of13-interface-operator-v1/analysis.json
-          python -m pip freeze > evidence/of13-interface-operator-v1/analysis-packages.txt
+          python -m tools.analyze_interface_operator_probe --case-root work/of13-interface-operator-v1/cases --output evidence/of13-interface-hosted-current/analysis.json
+          python -m pip freeze > evidence/of13-interface-hosted-current/analysis-packages.txt
       - name: Preserve complete or partial evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -52,6 +112,6 @@ jobs:
           name: of13-interface-operator-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             evidence/of13-interface-runtime-build/
-            evidence/of13-interface-operator-v1/
+            evidence/of13-interface-hosted-current/
           if-no-files-found: error
           retention-days: 90

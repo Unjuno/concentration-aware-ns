@@ -24,7 +24,9 @@ class OperatorArchiveIntegrity(unittest.TestCase):
         names = [replay.ANALYZER,replay.GENERATOR,replay.DEPENDENCY,'tools/run_interface_operator_probe.py',
                  'protocols/of13-interface-operator-v1.json',replay.AUDIT]
         protocol_current = json.loads((replay.REPOSITORY/'protocols/of13-interface-operator-v1.json').read_text())
-        names.append(protocol_current['target']['runtime_recipe'])
+        recipe = protocol_current['target']['runtime_recipe']; names.append(recipe)
+        if recipe.startswith('runtime/of13-interface-operator/'):
+            utility_names.append(recipe.removeprefix('runtime/of13-interface-operator/'))
         names += ['runtime/of13-interface-operator/'+name for name in utility_names]
         self.blobs = {name:(replay.REPOSITORY/name).read_bytes() for name in names}
         protocol_name = 'protocols/of13-interface-operator-v1.json'
@@ -78,7 +80,7 @@ class OperatorArchiveIntegrity(unittest.TestCase):
                 'build.log','package-source-sha256.log','linked-library-sha256.log')}}
         self.repack()
 
-    def repack(self, hostile=None):
+    def repack(self, hostile=None, symlink=False):
         files = sorted(path for path in self.raw.rglob('*') if path.is_file())
         hashes = {path.relative_to(self.raw).as_posix():replay.digest(path.read_bytes()) for path in files}
         archive = self.evidence/'raw.tar.gz'
@@ -86,7 +88,12 @@ class OperatorArchiveIntegrity(unittest.TestCase):
             for path in files: stream.add(path,arcname=path.relative_to(self.raw).as_posix(),recursive=False)
             if hostile is not None:
                 info = tarfile.TarInfo(hostile); info.size = 1
-                stream.addfile(info,io.BytesIO(b'x')); hashes[hostile] = replay.digest(b'x')
+                if symlink:
+                    info.type = tarfile.SYMTYPE; info.linkname = '../outside'; info.size = 0
+                    stream.addfile(info)
+                else:
+                    stream.addfile(info,io.BytesIO(b'x'))
+                hashes[hostile] = replay.digest(b'x')
         self.manifest['work_files_sha256'] = hashes
         self.manifest['archive'] = {'sha256':replay.digest(archive.read_bytes()),'regular_file_count':len(hashes)}
         self.save_manifest()
@@ -99,6 +106,12 @@ class OperatorArchiveIntegrity(unittest.TestCase):
             return replay.replay(self.evidence,commit)
 
     def test_complete_synthetic_archive_replays_all_fifteen_snapshots(self):
+        recipe = self.manifest['protocol']['content']['target']['runtime_recipe']
+        self.assertIn(recipe,self.manifest['source_files_sha256'])
+        if recipe.startswith('runtime/of13-interface-operator/'):
+            archived = 'app/'+recipe.removeprefix('runtime/of13-interface-operator/')
+            with tarfile.open(self.evidence/'raw.tar.gz') as archive:
+                self.assertEqual(archive.extractfile(archived).read(),self.blobs[recipe])
         result = self.checked_replay(self.head)
         self.assertEqual(result['integrity'],'VERIFIED_ARCHIVE_AND_FROZEN_INPUTS')
         self.assertEqual(result['operator_quality'],'PASS')
@@ -117,6 +130,12 @@ class OperatorArchiveIntegrity(unittest.TestCase):
         self.repack('../escape')
         with self.assertRaisesRegex(ValueError,'unsafe'): self.checked_replay()
         self.assertFalse((self.root/'escape').exists())
+
+    def test_nonregular_and_duplicate_members_are_rejected(self):
+        self.repack('hostile-link',symlink=True)
+        with self.assertRaisesRegex(ValueError,'nonregular'): self.checked_replay()
+        self.repack('COMPLETED')
+        with self.assertRaisesRegex(ValueError,'member map'): self.checked_replay()
 
     def test_missing_generated_input_is_rejected_even_with_self_consistent_tar(self):
         (self.raw/'cases/nx32/0/U').unlink(); self.repack()

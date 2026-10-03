@@ -1,5 +1,27 @@
 # Completion audit — interim, 2026-09-27
 
+
+### Completion audit refresh — 2026-10-03 executed package operator
+
+Hosted ARM64 run `37118442037` at frozen `e6a5b1ad` completed the stationary scalar
+interface probe and all 15 snapshots. Archive-only independent replay verifies
+frozen source/input and25 source / 3 linked-library payload identities; specified
+operator gates pass on 16/32/64 grids. The constant-field native scalar residual
+is0.25 / 0.125 / 0.0625 while complete b-Au/physical flux are zero. Arithmetic
+continuum flux errors are 6.39/3.10/1.52percent despite small solver residuals.
+Harmonic is initially at discrete equilibrium and performs zero PCG iterations;
+this is not perturbed-start convergence evidence. Prior 2024 discussion exists,
+Mantis inspection is incomplete and the API contract interpretation remains
+for maintainers. No new upstream post or broad scientific verdict follows.
+See [`package operator report`](../reports/openfoam-interface-package-operator-2026-10-03.md)
+and [`archived evidence`](../evidence/of13-interface-operator-v1/README.md).
+
+The production job and replay passed, but e6 Python CI failed three synthetic fixture
+tests due to an omitted recipe file. The fixture is corrected; final-suite/CI
+results are separate. The earlier clean-export counts below remain tied to
+their historical commits. AMR/full-solver/continuous-field/proof/physical
+obligations remain open; goal stays active.
+
 ### Completion audit refresh — 2026-10-03 compatible-interface clean export
 
 The tracked-only export of fixed commit

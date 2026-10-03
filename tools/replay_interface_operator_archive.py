@@ -61,9 +61,11 @@ def unpack(archive_path, manifest, root):
     for name in expected:
         safe_path(name)
     with tarfile.open(archive_path, "r:gz") as archive:
-        members = archive.getmembers()
-        require(len(members) <= 20000 and sum(item.size for item in members) <= 512*1024*1024,
-                "archive exceeds replay bounds")
+        members, total = [], 0
+        for member in archive:
+            total += member.size; members.append(member)
+            require(0 <= member.size and len(members) <= 20000 and total <= 512*1024*1024,
+                    "archive exceeds replay bounds")
         names = [safe_path(item.name) for item in members]
         require(all(item.isfile() and not item.issparse() for item in members), "archive has nonregular members")
         require(len(set(names)) == len(names) and set(names) == set(expected)
@@ -193,6 +195,7 @@ def replay(evidence_root, source_commit=None):
             cases.append(analyze_case(case, protocol))
         provenance = package_provenance(root, head, protocol)
     return {"status":"REPLAY_COMPLETE_OPERATOR_ONLY", "integrity":"VERIFIED_ARCHIVE_AND_FROZEN_INPUTS", "git_head":head,
+            "replay_sha256":file_digest(Path(__file__)), "analyzer_sha256":sources[ANALYZER],
             "archive_sha256":manifest["archive"]["sha256"], "cases":cases, "package_provenance":provenance,
             "operator_quality":"PASS" if all(row["operator_quality"] == "PASS" for row in cases) else "FAIL_SPECIFIED_OPERATOR_GATE",
             "native_diagnostic":{str(row["nx"]):row["constant_control"]["source_predicted_extra_cyclic_term"] for row in cases}}
@@ -206,7 +209,7 @@ def main():
         parser.error("refusing to overwrite existing output")
     try:
         result = replay(args.evidence_root, args.source_commit)
-    except (ValueError, KeyError, TypeError, OSError, subprocess.SubprocessError, tarfile.TarError) as error:
+    except (ValueError, KeyError, IndexError, TypeError, OSError, subprocess.SubprocessError, tarfile.TarError) as error:
         result = {"status":"STOP_INTEGRITY", "operator_quality":"NOT_ASSESSED", "reason":str(error)}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x") as stream:
