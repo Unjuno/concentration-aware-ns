@@ -6,6 +6,9 @@ from tools.verify_su2_cfl_pair_inputs import verify
 
 def prepare(output,protocol):
     if output.exists():raise FileExistsError('preserve previous prepared inputs')
+    frozen=json.loads(Path('protocols/su2-n32-full-horizon-cfl-successor-v2.json').read_text())
+    for path,digest in frozen['build_inputs_sha256'].items():
+        if hashlib.sha256(Path(path).read_bytes()).hexdigest()!=digest:raise ValueError('frozen build recipe changed')
     p=json.loads(protocol.read_text());archive=Path('evidence/su2-study-v1')/(p['case']+'.tar.gz')
     if hashlib.sha256(archive.read_bytes()).hexdigest()!=p['baseline_archive_sha256']:raise ValueError('original archive changed')
     with tarfile.open(archive) as stream:
