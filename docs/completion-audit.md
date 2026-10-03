@@ -1970,3 +1970,6 @@ two focused tests and exact checker also pass on that interpreter. The local
 run record is `evidence/tests/full-suite-2026-10-03-py31210-after-alignment.json`
 and `.log`; GitHub Actions for the same head remained queued at the latest
 check, so the hosted Ubuntu job is unverified.
+
+
+Native capture matrix update: [three resolutions and temporal comparison](../reports/cell-point-capture-derivative-matrix-2026-10-04.md). All four captures and local checks complete; global/physical/proof obligations remain open.

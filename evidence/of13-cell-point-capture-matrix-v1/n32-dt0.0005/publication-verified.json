@@ -1,0 +1,12 @@
+{
+  "case_id": "n32-dt0.0005",
+  "runtime_source_commit": "4e60b23065811d488fe6890ad59af698a81c35b8",
+  "asset_name": "cell-point-capture-n32-dt0.0005-4e60b23.tar.gz",
+  "size_bytes": 120102497,
+  "sha256": "9e2fbd5fbe526e841b28578dcb61eee6d7f3e3ac189e486f357eb84f795943c4",
+  "scope": "Complete original base/raw input/field/log receipts, native CSVs, fourteen mesh members, license and unchanged probe source; binary omitted with digest preserved",
+  "asset_id": 608515385,
+  "url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-cell-point-capture-matrix-v1-4e60b23/cell-point-capture-n32-dt0.0005-4e60b23.tar.gz",
+  "remote_digest": "sha256:9e2fbd5fbe526e841b28578dcb61eee6d7f3e3ac189e486f357eb84f795943c4",
+  "verified": true
+}

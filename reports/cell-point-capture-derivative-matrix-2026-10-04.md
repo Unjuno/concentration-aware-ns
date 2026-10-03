@@ -1,0 +1,24 @@
+# Native capture and local derivative matrix — 2026-10-04
+
+Hosted run [37147687736](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736) completed successfully on frozen capture source `4e60b23065811d488fe6890ad59af698a81c35b8`. Together with the earlier n16 baseline, three spatial resolutions and the n32 half-step case are captured and independently analyzed. The original twenty recipe hashes, inputs and final U/p, all archived raw/mesh members, eight installed source identities, and unchanged probe inputs pass verification. This closes the native capture matrix execution gap; the full research goal remains active.
+
+| Case | Tetrahedra | Gradient error lower bound | Curl error lower bound |
+|---|---:|---:|---:|
+| n16, dt .001 | 207488 | 95.1187% | 9.1092% |
+| n32, dt .001 | 1432320 | 86.3341% | 9.9634% |
+| n64, dt .001 | 10758656 | 48.8169% | 6.5732% |
+| n32, dt .0005 | 1432320 | 85.2550% | 9.7278% |
+
+Percentages are rounded down from Arb 96-bit enclosures. They concern the error-field gradient and direct curl of a selected **idealized real-arithmetic affine cellPoint piece**, evaluated at its centroid and normalized by an analytic global reference peak upper bound. They are neither differences of peak magnitudes nor whole-domain error percentages. Floating screening chooses a witness; it does not certify a global maximum. Curl is evaluated at the gradient-selected witness, not maximized independently. The earlier native position-query neighborhood certificate applies only to its n16 target and is not transferred to these other pieces.
+
+Gradient lower bounds decrease across resolutions. These different-point lower bounds cannot establish a convergence rate, an error upper bound, or nonconvergence. The two n32 final meshes have identical hashes for points, faces, owner, neighbour and boundary; selected pieces differ, and identical final meshes do not establish identical transient AMR histories or isolate pure temporal error.
+
+All four derivative JSONs reproduce byte for byte in guarded Git-directory-free selected exports of numerical source `24af332bb51bae0aa84bb1bbfaff48b9e5f44c31`. This is a same-host replay with Python-level process/network/path guards, not a new host or complete security sandbox. Screening was designed after seeing earlier cases, so it is exploratory rather than a prospective acceptance gate.
+
+The disk-backed topology checker at source `1ef03b97df2bf39bd4435df55d40570af78053bf` streams tetrahedra and stores canonical shared triangle keys in SQLite. All four captures pass owner/neighbour triangle pairing, positive determinant, node-range and native degeneracy checks. n64 covers 5,313,696 internal triangle keys; native bad-base and degenerate counts are zero. Cell/face arrays remain resident; no whole-program RSS or global geometric certificate is claimed. n16/n32 measurements equal the original checker and their guarded export JSONs match byte for byte. Five controls exercise reversed orientation, mismatched vertices, duplicate owner incidence, degeneracy/volume deficit and missing tetrahedra. The full suite reports **344 passed, 1 skipped, 89 subtests**.
+
+Original Gauss-P0 acceptance gates remain unchanged. n64 gradient/curl mean errors (4.0255%/3.2919%) pass their 5% gates, but velocity mean error 3.9248% fails its 2% gate. Thus no overall mean-quality PASS is claimed. Residual convergence and field quality remain separate. The new cellPoint local operator and pointwise norm differ from the original mean gates. Results expose an evaluation coverage gap, not an established upstream source-contract defect, singularity, phase transition, molecular alignment, or viscosity law. No new upstream accusation is justified by this matrix.
+
+Complete captures are published in the [fine/temporal release](https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-cell-point-capture-matrix-v1-4e60b23); n16 remains in its [baseline release](https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-cell-point-capture-v1-4999a4d). Release receipts bind sizes, local SHA256 and GitHub asset digests. Small identity/topology records live in `evidence/of13-cell-point-capture-matrix-v1`, derivative records in `evidence/cell-point-derivative-batches-v1`, and checker controls in `evidence/cell-point-capture-stream-v1`.
+
+Reproduce derivative analysis with `python -m tools.audit_cell_point_capture_derivative --help` and complete topology diagnostics with `python -m tools.analyze_of13_cell_point_capture_stream --help`, using the archived capture directory. The preserved archive verifier checks original recipe and archive identities. Global continuous error certification, physical inference, OpenAI proof identity/qualification obligations, and remaining cross-project obligations are still open; executed cases and successful tests do not substitute for them.

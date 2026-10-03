@@ -202,3 +202,6 @@ python3 -m tools.check_clean_export --locked --destination work/clean-export-loc
 The fixed-commit check at `5b8e305` passes all 75 compared report/test files
 unchanged; see `evidence/clean-export-2026-09-27-locked/README.md`. Its scope is
 same-host Python postprocessing, not solver, training or Lean reproduction.
+
+
+Native capture matrix update: [three resolutions and temporal comparison](reports/cell-point-capture-derivative-matrix-2026-10-04.md). All four captures and local checks complete; global/physical/proof obligations remain open.

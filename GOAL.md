@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 278 — complete native spatial/temporal captures and independent local checks
+
+All three frozen hosted capture jobs succeed, completing n16/n32/n64 plus n32
+half-step native coverage. Original recipe/input/final field and archive identities
+pass. All four selected affine derivative witnesses replay byte for byte; gradient
+lower bounds are 95.1187%, 86.3341%, 48.8169% and 85.2550%, respectively.
+Disk-backed topology diagnostics pass for all cases; the full suite has 344 tests
+passing, one skip and 89 subtests. Complete capture releases and digest receipts
+preserve reproducibility. This closes the execution gap recorded in revision 277,
+without upgrading local bounds to global maxima, convergence rates, physical laws
+or an upstream defect. The full goal remains active. See
+`reports/cell-point-capture-derivative-matrix-2026-10-04.md`.
+
 ## Revision 277 — verify/publicize n32 capture and screen derivatives in bounded batches
 
 The n32-dt0.001 hosted job succeeds on frozen source 4e60b230. Independent
