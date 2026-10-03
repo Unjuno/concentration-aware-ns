@@ -1,0 +1,10 @@
+{
+  "status": "RECOMPUTED_CONSTANTS_RECEIPTS_VALIDATED",
+  "all_case_results_identical_to_v1": true,
+  "focused_tests_passed": 3,
+  "corruptions_rejected": [
+    "zero linear force upper",
+    "zero quadratic force upper"
+  ],
+  "limits": "Same-host focused controls; no full suite or hosted proof"
+}

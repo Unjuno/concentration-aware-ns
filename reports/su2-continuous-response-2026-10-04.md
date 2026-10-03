@@ -32,3 +32,12 @@ its observed error to forcing lag. Unconverged inner solves, time-discrete
 assembly, startup timing, spatial error and floating rounding remain absent.
 No original acceptance verdict changes and no upstream issue follows.
 The full goal remains active; hosted publication CI is still queued.
+
+Additive v2 recomputes the two force constants from archived parameters before
+using them. Exact rational comparisons reject a stored interval that fails to
+enclose the fresh expression. The response uses freshly recomputed upper
+endpoints instead of trusting stored ones. Three focused tests pass, including
+zeroed linear/quadratic constant rejections. All three response records remain
+identical to v1; evidence is `evidence/su2-continuous-response-v2`, source
+0777d12. This does not establish the hypothetical strong solution or a discrete
+solver-error connection. Hosted correction run remains queued.
