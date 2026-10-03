@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 281 — verify larger native queries and uniform local error
+
+All three larger-target read-only jobs succeed on source 560a786f. Independent
+checks verify 57 samples, complete twelve-candidate sets, exact rational ball
+membership, source/binary/field identities and explicit-overload agreement.
+Cross-host floating diagnostic differences are preserved. New Arb128 enclosures
+give uniform idealized-ball gradient error lower bounds 86.3198%, 48.8078% and
+85.2408%, with direct curl bounds; all three analytic JSONs replay byte-identically.
+No global maximum, universal floating search, original gate or physical claim is
+upgraded. Full goal active. See `reports/cell-point-matrix-native-uniform-error-2026-10-04.md`.
+
 ## Revision 280 — freeze larger-target native position replay
 
 Three SHA-bound protocols replay n32/n64/half-step captured fields read-only,

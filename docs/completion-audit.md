@@ -1,5 +1,14 @@
 # Completion audit — interim, 2026-09-27
 
+### Larger native samples and uniform idealized-ball bounds — 2026-10-04
+
+Revision 281 verifies all 57 larger-target native samples and complete candidate
+sets, with exact ball membership and unchanged fields. Uniform local real-affine
+gradient/curl lower bounds hold on the three radius-1/4096 balls. Earlier missing
+larger-target finite-query evidence below is superseded. Universal native search,
+global continuity/extrema and proof/physical requirements remain unproved. See
+[report](../reports/cell-point-matrix-native-uniform-error-2026-10-04.md).
+
 ### Complete captures and larger local neighborhoods — 2026-10-04
 
 Revision 278 supersedes the partial capture observations below: all original
