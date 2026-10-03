@@ -1,5 +1,25 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 262 — separate AMR derivative representation and mean errors
+
+Recomputed the n=16/32/64 archived first-map tensors and curls on the same
+physical support. Closed-form Fourier cell moments separate integrated P0
+error into exact cell-mean mismatch and an unavoidable representation floor.
+All 18 total-error comparisons agree with the independent saved quadrature
+within 8.33e-16. At n=64 the gradient floor falls 13.8870% to 7.0390% while
+mean mismatch rises 1.6132% to 12.1187%; similar totals near 14% obscure these
+opposing changes. Tests independently differentiate the real-space envelope,
+check nested-cube moments and attack invalid geometry/values.
+
+This is an archived-input analytic diagnostic, with no new solver execution,
+AMR quality threshold or upstream defect claim. It bounds the named P0
+representation only; the earlier uniform peak threshold is a different norm.
+The n=16 original protocol-hash limitation is preserved. See
+`reports/openfoam-amr-derivative-projection-2026-10-03.md` and its machine-readable
+evidence. Next AMR work needs a prospective representation-aware quality gate
+and transfer versus post-step controls. Other solver, proof/physical and
+release obligations remain open. Goal remains active.
+
 ## Revision 261 — execute the package control and independently replay evidence
 
 Frozen commit `e6a5b1ad` completed hosted ARM64 run `37118442037`: runtime

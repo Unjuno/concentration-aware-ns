@@ -20,6 +20,7 @@ steps = [
     ('openfoam_amr_archive_integrity', [sys.executable, '-m', 'tools.verify_openfoam_amr_archives']),
     ('openfoam_same_run_amr_mapping', [sys.executable, '-m', 'tools.analyze_amr_same_run_map']),
     ('openfoam_amr_volume_integrated', [sys.executable, '-m', 'tools.compare_amr_resolution_volume_integrated']),
+    ('openfoam_amr_derivative_projection', [sys.executable, '-m', 'tools.audit_amr_derivative_projection']),
     ('openfoam_stress_interpolation_identity', [sys.executable, '-m', 'tools.audit_openfoam_stress_interpolation_identity']),
     ('openfoam_stress_operator_controls', [sys.executable, '-m', 'tools.audit_openfoam_stress_operator']),
     ('interface_stress_compatibility', [sys.executable, '-m', 'tools.check_interface_stress_compatibility']),

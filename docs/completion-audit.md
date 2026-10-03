@@ -1,5 +1,18 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 AMR derivative projection
+
+The new three-resolution archive replay splits the integrated P0 gradient/curl
+error into exact cell-mean mismatch and a representation floor. All 18 total
+comparisons agree with saved independent quadrature within 8.33e-16. At n=64,
+gradient floor decreases 13.8870% to 7.0390%, while mismatch increases 1.6132%
+to 12.1187%; the total changes only 13.9804% to 14.0147%. The floor applies to
+the specified constant-tensor representation, not every CFD reconstruction.
+See [`derivative decomposition`](../reports/openfoam-amr-derivative-projection-2026-10-03.md).
+This adds an analytic diagnostic and a constraint on prospective gate design;
+it introduces no retrospective AMR quality PASS/FAIL, new solver run or
+upstream defect. AMR quality and the overall goal remain open.
+
 
 ### Completion audit refresh — 2026-10-03 executed package operator
 
