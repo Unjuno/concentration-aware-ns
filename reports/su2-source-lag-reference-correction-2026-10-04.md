@@ -28,3 +28,11 @@ and the completion audit carry this correction. The queued preceding CI state
 is saved separately; it does not validate this correction or the new particle
 checks. Publication is necessary to correct the exposed audit source, even
 though it may cancel the old queued job. Full goal remains active.
+
+Follow-up: the remaining interim-report numerical values and current output
+link now point to v2. A hashed binding receipt records the C++ patch's sigma
+squared=.25, the matching reference implementation and all three archive
+parameters/digests. The complete local suite on publication fb35ac5 passes
+377 tests, one skip and 89 subtests in 122.51 seconds; log and environment are
+preserved alongside the correction. Hosted run 37158068332 remains queued
+and its result is not inferred from this local pass.

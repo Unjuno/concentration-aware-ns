@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "source_commit": "fb35ac5cff9859a28a9a638bcdf6e819f18113f2",
+  "command": "work/clean-export-5cb3d65-2026-10-02/venv/bin/python -m pytest -q tests",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.1.8 ]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "counts": {
+    "passed": 377,
+    "skipped": 1,
+    "subtests_passed": 89
+  },
+  "elapsed_seconds": 122.51,
+  "requirements_sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d",
+  "log_sha256": "cd8ee1a9107ffddf712ca50888fc3721a0b095f64bcdda7a1407a2ac6972c96a",
+  "scope": "Local benchmark repository suite; no hosted CI, native cloud, upstream solver or physical proof claim"
+}
