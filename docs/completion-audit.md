@@ -1,5 +1,18 @@
 # Completion audit — interim, 2026-09-27
 
+### Completion audit refresh — 2026-10-03 clean export at current head
+
+Fixed commit `48579a4e70176c1166f33a75b2ef803b2714e30a` was exported from
+tracked Git content and replayed with locked dependencies in a fresh
+CPython 3.14.5 environment on macOS 27.0.1 arm64. All 43 report/evidence
+replay steps and six follow-up checks exited zero; all 227 compared tracked
+files remained byte-identical. GitHub Actions passed for the same commit.
+The result and sanitized logs are preserved at
+[`clean-export-2026-10-03-success-48579a4/`](../evidence/clean-export-2026-10-03-success-48579a4/README.md).
+This verifies the tracked Python postprocessing/evidence path for this
+fixed commit and host; no CFD solver, training run, or Lean proof was rerun,
+and no scientific or benchmark-quality verdict is upgraded.
+
 ### Completion audit refresh — 2026-10-03 OS provenance drift
 
 A fresh locked export of fixed head `1160042e53d2db0a372f6a7a60bec9570784bd06`

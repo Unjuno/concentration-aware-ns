@@ -1,0 +1,141 @@
+{
+  "commit": "48579a4e70176c1166f33a75b2ef803b2714e30a",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "4e6d74c27bf5d1187493e864d139e6fdbd775defe47e3a10d208d00937d6c09c",
+  "archive_sha256": "862f104a6f1c8054b35f9cbf8381e8a6940e022a68daab280b0f40e76c7e2d0f",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "<REPO>/work/reference-check-env/bin/python",
+        "-m",
+        "venv",
+        "<CLEAN_EXPORT_ROOT>/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "79cf92d21d47a4d7225da42227838527103099d6888b76b9f56561915a9a2dc5",
+      "raw_log_sha256": "3605c3e9503e170bb1bc5154aca7e7f12cf1c4456b6d0b595159fab995ed0cfb"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "c434958d21e03724de910cdcc795b51a451bc53d76dd6df14588099c118c7b4d",
+      "raw_log_sha256": "c434958d21e03724de910cdcc795b51a451bc53d76dd6df14588099c118c7b4d"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76",
+      "raw_log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a",
+      "raw_log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501",
+      "raw_log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6",
+      "raw_log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737",
+      "raw_log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "command": [
+        "<CLEAN_EXPORT_ROOT>/venv/bin/python",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "alignment-uncertainty.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616",
+      "raw_log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "success": true,
+  "packages": [
+    "iniconfig==2.3.0",
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "packaging==26.3",
+    "pluggy==1.6.0",
+    "Pygments==2.21.0",
+    "pytest==9.1.1",
+    "python-flint==0.9.0",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 227,
+  "changed_files": [],
+  "replay_steps": 43,
+  "replay_success": true,
+  "result_log_sanitization": "Absolute repository and export paths were replaced with <REPO> and <CLEAN_EXPORT_ROOT>; raw and sanitized log digests are both recorded."
+}

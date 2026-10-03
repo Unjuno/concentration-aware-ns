@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 252 — clean export passes at the refreshed current head
+
+Ran fixed commit `48579a4e70176c1166f33a75b2ef803b2714e30a` from a
+tracked-only archive in a fresh locked CPython 3.14.5 environment on macOS
+27.0.1 arm64. All 43 report-replay steps and six follow-up checks exited zero;
+all 227 compared report/test-evidence files remained byte-identical. GitHub
+Actions also passed for this commit. The sanitized result and logs are in
+`evidence/clean-export-2026-10-03-success-48579a4/`. This confirms the
+postprocessing/evidence path on the recorded host only; it does not rerun
+solvers, Lean, or change any scientific verdict. The main benchmark, upstream
+audit, and proof-scope gaps remain open.
+
 ## Revision 251 — refresh environment provenance after macOS upgrade
 
 A fresh locked clean export of `1160042e53d2db0a372f6a7a60bec9570784bd06`
