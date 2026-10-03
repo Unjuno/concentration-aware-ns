@@ -36,3 +36,13 @@ parameters/digests. The complete local suite on publication fb35ac5 passes
 377 tests, one skip and 89 subtests in 122.51 seconds; log and environment are
 preserved alongside the correction. Hosted run 37158068332 remains queued
 and its result is not inferred from this local pass.
+
+Source-export verification: the selected export at 1d9708e contains only the
+corrected auditor, executed reference evaluator, frozen summary and three
+original archives. The stored output JSON is absent before execution. Python
+process/network/Git-open guards remain active throughout recomputation; tool
+module origins are inside the Git-directory-free export. The new v2 JSON is
+byte-identical to the published receipt. Export hash, wrapper, isolation and
+verification/log files are preserved. This closes the same-host cache/source
+replay question for the corrected calculation; portability and native solver
+behavior remain independent obligations.
