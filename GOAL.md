@@ -5538,3 +5538,17 @@ limitations are in `reports/physicsnemo-shared-high-gradient-2026-10-04.md` and
 pass; the attempted full local collection could not start because the available
 Python environments lack the repository-wide SciPy and python-flint
 dependencies. Goal remains active.
+
+## Revision 147 — full locked-suite replay on the matched-MMS commit
+
+Re-ran the repository-wide suite from PR head `f49a482826f954e4e8f97fa5a1953856f36e54ea`
+using `requirements-verification-locked.txt`: 424 passed, four skipped and 89
+subtests passed. The two shared-MMS Torch/autodiff tests separately pass in the
+recorded PhysicsNeMo v2.2.1 CPU environment with Torch 2.11.0. Commands,
+versions, raw logs and hashes are in
+`evidence/tests/f49a482-verification.json`. PR #4's Foundation 13 forced-
+periodic exact-control check has passed; remaining queued changes checks and
+the Python CI job have not completed. Hosted SU2 run 37180101797 is still
+reported `in_progress` at the frozen CFL=10 solver step and has exposed no
+logs or numerical result. Overall target coverage and the active goal remain
+incomplete.
