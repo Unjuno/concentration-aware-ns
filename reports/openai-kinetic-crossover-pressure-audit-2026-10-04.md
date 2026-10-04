@@ -9,7 +9,7 @@ that threshold?
 ## Source-side rate scale
 
 OpenAI's paper uses remaining time `s = 1-t` and gives
-`|u_r|/ell_r = O(s^-1)` and `|u_z|/ell_z \u224d s^-1` for its leading core
+`|u_r|/ell_r = O(s^-1)` and `|u_z|/ell_z ~ s^-1` for its leading core
 profile (Section 2.1). Let
 
 ```
@@ -17,7 +17,7 @@ Gamma_core(s) = max(|u_r|/ell_r, |u_z|/ell_z),
 ```
 
 with fixed dimensional reference scales restored by a factor `kappa/t_ref`.
-The published scaling then gives `Gamma_core \u224d (kappa/t_ref) s^-1`.
+The published scaling then gives `Gamma_core ~ (kappa/t_ref) s^-1`.
 This is the paper's characteristic transport/deformation rate. It is not a
 newly computed bound on the full symmetric-gradient norm `|S|`; obtaining such
 a bound needs a nonzero component of the dimensionless symmetrized profile
@@ -32,9 +32,9 @@ chi(s) = tau_rel(s) Gamma_core(s).
 If `tau_rel` is bounded below by a positive constant near `s=0`, then `chi`
 grows at least like `s^-1` and crosses any fixed order-one comparison level
 before the continuum singular time. If `tau_rel(s)=tau_0 s^alpha`, the model
-prediction is `chi(s) \u224d (kappa tau_0/t_ref) s^(alpha-1)`: it diverges only for
+prediction is `chi(s) ~ (kappa tau_0/t_ref) s^(alpha-1)`: it diverges only for
 `alpha<1`, remains order one for `alpha=1`, and tends to zero for `alpha>1`.
-The candidate crossover `s_c \u2248 kappa tau_0/t_ref` in the constant-time case
+The candidate crossover `s_c ~ kappa tau_0/t_ref` in the constant-time case
 is an order-of-magnitude boundary, not a universal material prediction or a
 proof that a kinetic solution loses regularity there. It is quantitatively
 useful only if it falls in a time range where the core scaling applies; if it
