@@ -84,6 +84,22 @@ in progress on an actual GitHub runner. No compiler/image/pair success is
 inferred before its terminal outputs are inspected. No restart or duplicate
 native dispatch is issued.
 
+Terminal follow-up: the hosted job ended `cancelled` at 2026-10-04 04:00:12
+UTC, at the configured 300-minute job limit. The frozen ARM64 image build and
+actual-source probe completed, and both same-image cases started. The CFL=10
+baseline reached all 50 updates and process exit 0, but only 48 steps met the
+inner residual criterion. Its sampled velocity relative error is 2.277% against
+the frozen 2% threshold; sampled gradient and vorticity errors are each about
+11.24% against 5% thresholds. Its quality remains `UNCERTAIN` and acceptance
+was not evaluated. The CFL=100 control has only initial/restart and partial
+history/log files, with no completed diagnostics. Thus this is an incomplete
+pair and says nothing about full-horizon CFL recovery. All downloaded runner,
+image, baseline and partial-control evidence is preserved under
+`evidence/su2-full-horizon-run-37160281461/`; the Actions record is
+[37160281461](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37160281461).
+A new run needs a better bounded execution strategy or split job budget; do
+not relabel this cancellation as a numerical solver failure.
+
 A separate reviewer (source a2336b9) recomputes diagnostics from raw completed
 cases, validates the input/clock identities and rejects mixed image IDs. It
 reports all-step residual convergence separately from original observed

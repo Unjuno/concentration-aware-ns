@@ -1,5 +1,39 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 324 — preserve the canceled SU2 full-horizon successor honestly
+
+The hosted same-image SU2 pair run 37160281461 built and probed its ARM64
+successor image and started both cases, but the job reached its 300-minute
+limit before the CFL=100 control completed. The CFL=10 baseline reached all
+50 updates with process exit zero; 48 met the inner residual criterion, and
+sampled velocity/gradient/vorticity errors exceeded their frozen local
+thresholds. The partial control cannot be analyzed as a completed run, so the
+matched-pair question stays open. Artifacts and the exact evidence boundary
+are in `evidence/su2-full-horizon-run-37160281461/` and
+`reports/su2-full-horizon-cfl-readiness-2026-10-04.md`. Continue with a
+bounded/split execution design; do not infer that cancellation is a solver
+failure or call the control successful. The overall research goal remains
+active.
+
+## Revision 323 — execute and independently replay the Foundation 13 exact control
+
+The new ARM64 Foundation 13 workflow completed all six v1 cases to t=0.05 in
+image `sha256:383b0f958aa9867af6e2db9ec7681141393c9d213cd821c1f68a33f4353f0baf`;
+the OpenFOAM `codedFvModel` compiled and ran. Afterward, the repository's
+existing 1e-8/12-corrector standard gate passes all six. We downloaded all case
+archives and independently rechecked their hashes, exits, exact step sequences,
+and numerical diagnostics with `tools.verify_forced_periodic_openfoam_run.py`;
+all 6 replay successfully. Spatial velocity and pressure errors show roughly
+second-order refinement. At fixed n=32, the time-step changes are too small
+relative to spatial error to resolve temporal order, so that part stays
+UNCERTAIN. Machine replay evidence and solver archives are under
+`evidence/of13-forced-periodic-control-hosted-1cacf3c/`; the run is
+[37174784940](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37174784940).
+This control still does not test concentration, singularity, molecular
+alignment, or a viscosity transition. Continue with a more time-sensitive
+control only if it can be isolated without conflating spatial error; full goal
+remains open.
+
 ## Revision 322 — scope the photon-fluid connection against primary sources
 
 Audited established photon-fluid and radiation-hydrodynamics literature to

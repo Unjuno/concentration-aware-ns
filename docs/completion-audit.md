@@ -28,12 +28,16 @@ It is now connected to OpenFOAM case generation through the separate
 `forced-periodic` profile in `tools/openfoam_case.py`, which writes exact
 initial velocity/pressure and analytic forcing. The output analyzer now uses
 that profile's exact velocity and computes gauge-invariant pressure error.
-Synthetic exact-field tests pass, while hosted C++ control and a Foundation 13
-solver run remain pending. A six-case Linux/arm64 workflow is frozen at
+Synthetic exact-field tests pass. A six-case Linux/arm64 Foundation 13 workflow
+ran successfully and all six cases pass the shared standard stopping gate; the
+raw cases, diagnostics and independent replay receipt are in
+`evidence/of13-forced-periodic-control-hosted-1cacf3c/`. A six-case workflow is frozen at
 `protocols/of13-forced-periodic-control-v1.json`; it records spatial and time
 refinement archives and metrics but does not assert convergence in advance.
-It adds no solver verdict and does not exercise concentration. The separate
-hosted SU2 pair remains active; cross-solver completion is still open.
+Spatial refinement is roughly second order for the measured smooth-field
+errors; temporal order remains unresolved because the fixed-grid error floor
+dominates. It does not exercise concentration. The separate hosted SU2 pair
+remains active; cross-solver completion is still open.
 
 ### Fresh published cellPoint sample and enclosure replay — 2026-10-04
 

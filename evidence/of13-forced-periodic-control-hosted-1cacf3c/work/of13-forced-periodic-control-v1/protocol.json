@@ -1,0 +1,33 @@
+{
+  "protocol": "of13-forced-periodic-control-v1",
+  "reference": "arXiv:2609.38210v1",
+  "solver": "OpenFOAM Foundation 13 incompressibleFluid",
+  "image_recipe": "runtime/openfoam13/Dockerfile",
+  "profile": "forced-periodic",
+  "nu": 0.01,
+  "end": 0.05,
+  "spatial_cases": [
+    {"n": 16, "dt": 0.001},
+    {"n": 32, "dt": 0.001},
+    {"n": 64, "dt": 0.001}
+  ],
+  "temporal_cases": [
+    {"n": 32, "dt": 0.002},
+    {"n": 32, "dt": 0.001},
+    {"n": 32, "dt": 0.0005}
+  ],
+  "expected_time_step_counts": {
+    "0.001": 50,
+    "0.002": 25,
+    "0.0005": 100
+  },
+  "recorded_metrics": [
+    "velocity_relative_l2",
+    "pressure_relative_l2_gauge_invariant",
+    "energy_relative_error_cell_samples",
+    "shell_spectrum_relative_l1_error",
+    "gradient_peak_relative_error_cell_samples",
+    "vorticity_peak_relative_error_cell_samples"
+  ],
+  "claims_boundary": "Smooth periodic solver/source calibration only. No concentration, molecular, singularity, constitutive-transition, or engineering inference. Spatial and temporal convergence are measured and not presumed."
+}

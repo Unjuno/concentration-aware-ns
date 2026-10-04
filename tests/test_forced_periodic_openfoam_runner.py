@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.run_forced_periodic_openfoam import build_cases
+from tools.verify_forced_periodic_openfoam_run import observed_order
 
 
 class ForcedPeriodicOpenFoamRunnerTests(unittest.TestCase):
@@ -24,6 +25,11 @@ class ForcedPeriodicOpenFoamRunnerTests(unittest.TestCase):
             path.write_text(json.dumps({"end": 0.05, "nu": 0.01, "cases": []}))
             with self.assertRaisesRegex(ValueError, "spatial_cases"):
                 build_cases(json.loads(path.read_text()))
+
+    def test_observed_order_uses_the_refinement_ratio(self):
+        self.assertAlmostEqual(observed_order(1.0, 0.25), 2.0)
+        with self.assertRaisesRegex(ValueError, "positive"):
+            observed_order(0.0, 0.25)
 
 
 if __name__ == "__main__":
