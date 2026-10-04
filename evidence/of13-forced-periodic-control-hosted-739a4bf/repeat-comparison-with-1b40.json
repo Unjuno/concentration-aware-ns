@@ -1,0 +1,312 @@
+{
+  "schema": "forced-periodic-control-run-comparison/v1",
+  "same_protocol": true,
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "old_source_commit": "1b40ece31627cde6cba6da7e7ba8bb5706dddc2d",
+  "new_source_commit": "739a4bf76cc39b4af3ea8e31b46bdf41cb56120f",
+  "old_image_id": "sha256:667bd7977fab8f295c7423272cb588ba59372128b48a559ddcb24ae1b3be8c66",
+  "new_image_id": "sha256:39e4a262019bd81627d9b1e3357ea13f4b4ba2606974b543b6752383f026cb8a",
+  "image_ids_differ": true,
+  "case_count": 6,
+  "all_metric_values_exactly_equal": true,
+  "maximum_absolute_metric_difference": 0.0,
+  "all_archive_hashes_equal": false,
+  "standard_recheck_statuses_equal": true,
+  "standard_recheck_statuses": {
+    "spatial-n016-dt0p001": "PASS",
+    "spatial-n032-dt0p001": "PASS",
+    "spatial-n064-dt0p001": "PASS",
+    "temporal-n032-dt0p002": "PASS",
+    "temporal-n032-dt0p001": "PASS",
+    "temporal-n032-dt0p0005": "PASS"
+  },
+  "old_spatial_velocity_observed_orders": [
+    1.9546194257342775,
+    2.009709031502043
+  ],
+  "new_spatial_velocity_observed_orders": [
+    1.9546194257342775,
+    2.009709031502043
+  ],
+  "old_spatial_pressure_observed_orders": [
+    1.853310827109758,
+    2.1946908835496957
+  ],
+  "new_spatial_pressure_observed_orders": [
+    1.853310827109758,
+    2.1946908835496957
+  ],
+  "cases": [
+    {
+      "case": "spatial-n016-dt0p001",
+      "old_archive_sha256": "59b216e90ee792de1c52ed7c5ca8f989b040f45b96779c1c0d8eb51ddaec2e86",
+      "new_archive_sha256": "53055b905ea282c74cbc3e1eba3a9251c5fee4e70c7c2e4bbd4b447dc1fca445",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.0027056170502904836,
+          "new": 0.0027056170502904836,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.11678496411533484,
+          "new": 0.11678496411533484,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 9.23109248191405e-05,
+          "new": 9.23109248191405e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 9.231092481972743e-05,
+          "new": 9.231092481972743e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.024963290111027756,
+          "new": 0.024963290111027756,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.020372285581565383,
+          "new": 0.020372285581565383,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    },
+    {
+      "case": "spatial-n032-dt0p001",
+      "old_archive_sha256": "42da0c062f67f7d5a231175c1d2a4d7c7a2f68595d041117a6141be7c84037c2",
+      "new_archive_sha256": "2288e5160bfb675578909588c4230b99349b8dc82246a5e9c9871b73a9b083a5",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.0006980190090314366,
+          "new": 0.0006980190090314366,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.032320999416203776,
+          "new": 0.032320999416203776,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 2.2724689108107868e-05,
+          "new": 2.2724689108107868e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 2.2724689108175468e-05,
+          "new": 2.2724689108175468e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.006243045440945417,
+          "new": 0.006243045440945417,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.004915506626529776,
+          "new": 0.004915506626529776,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    },
+    {
+      "case": "spatial-n064-dt0p001",
+      "old_archive_sha256": "67acb15d7ba9cac48485fe627867c202154ce0314938a00d8fb0b343e3daa782",
+      "new_archive_sha256": "7e8648ddcee028fc371a8150a6b3101729e651e3fdee20120ea01c288e5545e2",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.00017333431511727364,
+          "new": 0.00017333431511727364,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.0070601998436658,
+          "new": 0.0070601998436658,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 5.7121226276541465e-06,
+          "new": 5.7121226276541465e-06,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 5.7121226276187744e-06,
+          "new": 5.7121226276187744e-06,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.0015644025002935387,
+          "new": 0.0015644025002935387,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.001216647761332459,
+          "new": 0.001216647761332459,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    },
+    {
+      "case": "temporal-n032-dt0p0005",
+      "old_archive_sha256": "0dc7b25e001fdd08610d87daf21cfb0e2a632942011a0e1c3635e74616267b76",
+      "new_archive_sha256": "c015d19a2c15546aaeb92de54d5e0fbc9a34961b73a4238fc10042921207de43",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.0006971709044088239,
+          "new": 0.0006971709044088239,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.03167404979684368,
+          "new": 0.03167404979684368,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 2.257143925384765e-05,
+          "new": 2.257143925384765e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 2.257143925342893e-05,
+          "new": 2.257143925342893e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.006245872187754764,
+          "new": 0.006245872187754764,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.004915386690681894,
+          "new": 0.004915386690681894,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    },
+    {
+      "case": "temporal-n032-dt0p001",
+      "old_archive_sha256": "bb0229b9b0b093cb8ed43ee4cb40f8d93ed4b23d0156fad6a520728d50f9d60a",
+      "new_archive_sha256": "ad8ea4b0260bf4b6566ce3318677575f2b3fe91302e8baf5a58c0fefa1680ca9",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.0006980190090314366,
+          "new": 0.0006980190090314366,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.032320999416203776,
+          "new": 0.032320999416203776,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 2.2724689108107868e-05,
+          "new": 2.2724689108107868e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 2.2724689108175468e-05,
+          "new": 2.2724689108175468e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.006243045440945417,
+          "new": 0.006243045440945417,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.004915506626529776,
+          "new": 0.004915506626529776,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    },
+    {
+      "case": "temporal-n032-dt0p002",
+      "old_archive_sha256": "bc359be4adef3afd3e972588a3dfa4da00d4212a840692fc4827fdf97edcb739",
+      "new_archive_sha256": "aff281084ddad7cc2868722b5d08976af2927fee99743e92fff49d7ae268cca0",
+      "archive_hash_equal": false,
+      "all_metrics_exactly_equal": true,
+      "metrics": {
+        "velocity_relative_l2": {
+          "old": 0.0006983717098543446,
+          "new": 0.0006983717098543446,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "pressure_relative_l2_gauge_invariant": {
+          "old": 0.0326685731285412,
+          "new": 0.0326685731285412,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "energy_relative_error_cell_samples": {
+          "old": 2.3047337489017047e-05,
+          "new": 2.3047337489017047e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "shell_spectrum_relative_l1_error": {
+          "old": 2.3047337488730763e-05,
+          "new": 2.3047337488730763e-05,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "gradient_peak_relative_error_cell_samples": {
+          "old": 0.006241620670390543,
+          "new": 0.006241620670390543,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        },
+        "vorticity_peak_relative_error_cell_samples": {
+          "old": 0.004915766509585527,
+          "new": 0.004915766509585527,
+          "absolute_difference": 0.0,
+          "exactly_equal": true
+        }
+      }
+    }
+  ],
+  "interpretation": "Exact equality means equality of the six replayed scalar diagnostics, not identity of raw archives or proof that the solver field's continuous extrema are bounded."
+}

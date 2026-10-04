@@ -33,6 +33,17 @@ gauge-free pressure errors are 1.168e-1, 3.232e-2 and 7.060e-3, with observed
 orders 1.853 and 2.195. At n=32, the three time-step cases complete at 25/50/100
 steps, but their temporal-order conclusion remains `UNCERTAIN`.
 
+A third hosted run, [37197955693](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37197955693),
+was executed at PR source `739a4bf76cc39b4af3ea8e31b46bdf41cb56120f` on image
+`sha256:39e4a262019bd81627d9b1e3357ea13f4b4ba2606974b543b6752383f026cb8a`.
+Its six archives and diagnostics independently replay, and all six metrics for
+every case exactly match both prior runs. The three builds used three distinct
+image IDs; every per-case archive digest differs across runs. The new receipt,
+both pairwise comparisons, build provenance and replayable raw case bundle are
+under [`evidence/of13-forced-periodic-control-hosted-739a4bf`](../evidence/of13-forced-periodic-control-hosted-739a4bf/verification.json)
+and in [the third-run release](https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-forced-periodic-control-rerun-739a4bf),
+whose remote asset digest matches the local package SHA-256.
+
 The permanent replay receipts, both run manifests/provenance and build
 inventory are under
 [`evidence/of13-forced-periodic-control-hosted-1b40ece`](../evidence/of13-forced-periodic-control-hosted-1b40ece/verification.json).
