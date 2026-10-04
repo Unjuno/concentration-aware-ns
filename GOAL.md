@@ -6201,3 +6201,24 @@ keeps the experiment trigger usable before any merge and avoids making the 15
 solver cases run on every code push. The Python verification for commit
 `ae75a45e` remains queued; the revised workflow file and its trigger behavior
 need one more review/push before the run. No solver execution has begun.
+
+## Revision 367 — scope OpenAI's formal proof and preserve the new SU2 run
+
+Identified OpenAI's public `NavierStokesAndEuler` Lean repository and pinned
+the audit to commit `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. Read the
+official paper and formalization README. The theorem constructs a forced,
+positive-viscosity continuum flow with a slender shrinking core and unbounded
+velocity, while retaining bounded energy; it does not derive molecular
+alignment, a phase transition, or vanishing viscosity. A local Lean rebuild
+could not be completed because Lake aborts inside dependency materialization
+on this macOS environment, so this is not recorded as successful independent
+formal verification. No source defect or reproduced CFD acceptance blind spot
+is established. See
+`reports/openai-navier-stokes-proof-audit-2026-10-05.md`.
+
+SU2 pilot `37190363204` is preserved as incomplete with an exact replay
+receipt. Same-image matrix workflow run `37230949147` built and uploaded its
+pinned image successfully; all five case workers started and are still
+running. This does not change the OpenFOAM width-run status above. Full goal
+remains active pending the hosted matrices, archive replay, and independent
+proof review.

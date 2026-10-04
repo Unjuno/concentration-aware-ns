@@ -1,0 +1,27 @@
+# Audit of OpenAI's Navier–Stokes and Euler result
+
+## Source identity and reproducibility status
+
+The relevant public repository is [`openai/NavierStokesAndEuler`](https://github.com/openai/NavierStokesAndEuler), pinned for this audit at commit `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. GitHub reports the repository as public, Apache-2.0 licensed, with two commits and no open issues at the time of inspection. Its README describes Lean 4 formalizations accompanying OpenAI's Navier–Stokes and Euler papers, and gives `lake exe cache get` followed by `lake build` as the reproduction path. It also points to Comparator challenges for an independent proof-checking route.
+
+The official paper is [Finite Time Blowup for Navier–Stokes](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf); the announcement is [On the Navier–Stokes Millennium Prize Problem](https://openai.com/index/navier-stokes-solution/). The paper's theorem states that for every positive viscosity there is a smooth compactly supported force and a solution starting from rest that is smooth for each time before the singular time, has uniformly bounded kinetic energy, and has unbounded `L∞` velocity as the singular time is approached. This is a theorem about a constructed forced continuum Navier–Stokes solution, not a numerical simulation of an observed material.
+
+The repository was cloned at the pinned commit and its declared Lean 4.34.0-rc2 toolchain was available locally. The local `lake exe cache get` and `lake build` attempts both terminated with macOS `SIGTRAP` / `EXC_BREAKPOINT` (exit 133) inside Lake while materializing dependencies; the crash report shows an Apple malloc abort during pthread cleanup. Dependencies were then fetched manually at the manifest's pinned revisions and a single further `lake exe cache get` attempt failed identically. This is an environment/toolchain execution failure, not a Lean theorem counterexample. No successful independent local rebuild is claimed. The proof source, formalization boundaries, and proof build still warrant independent review; the Lean kernel certificate establishes the formalized propositions under their imported definitions and axioms, not physical applicability beyond those propositions.
+
+## What the constructed flow says
+
+Let `τ = 1 − t` be time to blow-up. The paper describes a shrinking core with radial scale `ℓr ≍ τ^(1/2)` and axial scale `ℓz ≍ τ^(1/2−h)`, for `0 < h < 1/100`. Thus `ℓr/ℓz ≍ τ^h → 0`: the core becomes a slender column. Typical azimuthal and axial velocity scales grow like `τ^(−1/2−h)` while radial velocity is `O(τ^(−1/2))`; the core's kinetic energy tends to zero. The described motion spirals inward and has axial outflow on opposite sides of a dividing layer. It is not a claim that individual molecules become ordered or line up.
+
+The paper also distinguishes Reynolds-number directions. Its angular Reynolds number grows like `τ^(−h)`, but the radial Reynolds number remains `O(1)`; radial transport, radial diffusion, and axial transport remain in the leading balance. That does not support the claim that positive viscosity suddenly loses its effect. The construction deliberately retains viscosity in the equations and in the radial balance.
+
+The announcement notes that an actual material cannot attain infinite speed and that the continuum description would then break down. The theorem itself contains no molecular degrees of freedom, equation of state, heat transport, cavitation, phase transition, or particle-position predictions. Mapping its shrinking continuum scales to a real liquid or gas requires physical parameters and a coupled microscopic or compressible model; the paper supplies no universal molecular cutoff or transition prediction.
+
+## How this relates to our numerical audit
+
+This result strengthens the rationale for testing whether common numerical acceptance criteria can miss local concentration. It does not validate our OpenFOAM, SU2, or PhysicsNeMo test cases automatically. Those are separate manufactured-solution or model audits with their own forcing, discretization, implementation, convergence, and archive-integrity checks. The Navier–Stokes proof uses a specially constructed smooth force with increasingly fine, oscillatory internal momentum-flux corrections; a finite CFD result near a sharp feature cannot certify the singularity, and numerical divergence cannot distinguish the theorem's mechanism from ordinary under-resolution or a faulty solver setup.
+
+Our SU2 run `37190363204` remains incomplete (one of five cases), and the first completed coarse case fails both its ordinary stopping test and local sampled-quality test. It is not a reproduced acceptance blind spot. The revised same-image parallel matrix is running as Actions run `37230949147`; its completion and independent archive replay are still required before changing this assessment. OpenFOAM, SU2, and PhysicsNeMo reports remain conditional on their exact executed gates.
+
+## Disposition
+
+No defect report or issue against OpenAI's repository is warranted by this audit. The source repository is a Lean proof formalization, not a CFD solver, and the current numerical evidence does not identify an error in the proof or a verified physical consequence. The useful next work is to finish the frozen CFD/ML matrices, perform the independent proof audit, and keep mathematical blow-up, a continuum-to-molecular transition, and engineering-system reachability as separate claims.
