@@ -6027,3 +6027,17 @@ proposed mode-resolution guard are in
 step is to adapt OpenFOAM's analytic forcing to selected widths and preregister
 the solver matrix with independently verified spatial support and sampling.
 The whole-repository objective remains active.
+
+## Revision 360 — extend the uniform OpenFOAM adapter to envelope width
+
+`tools/openfoam_case.py` now accepts positive integer envelope powers for the
+uniform high-gradient profile, writes the corresponding exact initial field,
+and emits the matching Fourier-derived C++ force. The historical m=4 generated
+code path is retained. Tests verify m=2 input fields and compile/compare m=2,8
+forcing against the independent NumPy MMS. The full local suite passes (445
+passed, five skipped, 89 subtests); the new C++ test skips locally because the
+Xcode license is unavailable, and must pass on hosted Linux before the adapter
+is accepted. No simulation or width-wise solver protocol exists yet; AMR still
+uses its fixed historical envelope. Next gate: hosted compile parity, then
+freeze an OpenFOAM width matrix whose fine grids meet the mode-resolution
+condition. Full goal remains active.

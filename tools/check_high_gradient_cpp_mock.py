@@ -34,8 +34,7 @@ def resolve_compiler():
     return str(compiler)
 
 
-def main():
-    compiler = resolve_compiler()
+def _audit_one(envelope_power, compiler):
     n, frequency, now = 4, 4, 0.037
     rng = np.random.default_rng(8831)
     points = rng.uniform(0, 2*np.pi, (48, 3))
@@ -44,7 +43,8 @@ def main():
         root = Path(temp)
         case = root/"case"
         generate(case, n=n, dt=0.001, end=0.05, nu=0.01,
-                 profile="high-gradient", frequency=frequency)
+                 profile="high-gradient", frequency=frequency,
+                 envelope_power=envelope_power)
         source = (case/"constant/fvModels").read_text()
         body = source.split("#{",1)[1].split("#};",1)[0]
         point_rows = ",\n".join("vector("+",".join(format(float(v), ".17g") for v in row)+")" for row in points)
@@ -94,16 +94,33 @@ BODY
             raise RuntimeError("mock C++ compile failed: "+compile_run.stderr[-2000:])
         run = subprocess.run([str(binary)],capture_output=True,text=True,timeout=10,check=True)
         actual=np.loadtxt(run.stdout.splitlines())
-    expected=fields(points,N=frequency,nu=0.01,time=now)["force"]
+    expected=fields(points,N=frequency,nu=0.01,time=now,
+                    envelope_power=envelope_power)["force"]
     error=float(np.max(np.abs(actual-expected)))
     version=subprocess.run([compiler,"--version"],capture_output=True,text=True,check=True).stdout.splitlines()[0]
     result={"scope":"Generated codeAddSup C++ body with minimal mock types; no OpenFOAM headers or solver.",
             "compiler":version,"compiler_path":compiler,
             "compiler_sha256":hashlib.sha256(Path(compiler).read_bytes()).hexdigest(),
             "seed":8831,"points":len(points),"time":now,"N":frequency,
+            "envelope_power":envelope_power,
             "fvModels_sha256":hashlib.sha256(source.encode()).hexdigest(),
             "max_absolute_force_error":error,"tolerance":1e-10,"passed":error<1e-10,
             "limitations":"Does not establish compatibility with Foundation headers or live solver source sign convention."}
+    return result
+
+
+def audit(envelope_powers=(4,)):
+    """Compile generated source snippets and compare forcing to NumPy fields."""
+    powers = tuple(envelope_powers)
+    if not powers or any(int(power) != power or power < 1 for power in powers):
+        raise ValueError("envelope_powers must contain positive integers")
+    compiler = resolve_compiler()
+    return [_audit_one(int(power), compiler) for power in powers]
+
+
+def main():
+    results = audit()
+    result = results[0]
     out=Path("evidence/tests/high-gradient-cpp-mock.json");out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,indent=2)+"\n");print(json.dumps(result,indent=2))
     if not result["passed"]: raise SystemExit(1)

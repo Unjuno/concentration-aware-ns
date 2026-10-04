@@ -2222,3 +2222,12 @@ exposes a resolution gate missing from the peak-only width sweep; it is an
 analytic diagnostic, not solver evidence. See
 [`width-sweep preflight`](../reports/high-gradient-width-sweep-analytic-prefight-2026-10-04.md)
 and [`reference-only output`](../evidence/tests/high-gradient-width-sweep-reference-only.json).
+
+The uniform OpenFOAM generator now supports `envelope_power` for this MMS and
+emits matching Fourier-based C++ forcing, retaining the historical m=4 code
+path. Initial-field testing for m=2 passes. A real host-compiled C++ parity
+test for m=2 and m=8 has been added but skips on this Mac because Xcode's
+compiler license is unaccepted; hosted Linux CI is its required execution
+gate. The local full suite is 445 passed, five skipped, 89 subtests. No
+non-default-width solver experiment or frozen width protocol exists yet, and
+the AMR case generator is unchanged.

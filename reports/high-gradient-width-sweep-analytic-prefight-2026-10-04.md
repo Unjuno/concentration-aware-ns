@@ -35,13 +35,27 @@ For a single mode, solving `sin(theta)/theta=0.95` gives
 FD2 derivative-symbol error. This is a conservative mode-level screen, not a
 continuous-extrema certificate or a complete multi-mode error bound.
 
-This preflight does not run OpenFOAM, SU2 or PhysicsNeMo; it does not establish
+This preflight did not run OpenFOAM, SU2 or PhysicsNeMo; it does not establish
 solver acceptance, cross-target comparability, a software defect, or any
 physical claim. It shows why a width-sweep protocol must freeze a
 shortest-wavelength resolution condition alongside local peak thresholds.
-The next solver protocol should select widths whose two finest grids meet that
-condition, then independently verify forcing, source timing, sampling phase,
-spectral tails and continuous-peak search before interpreting results.
+
+## OpenFOAM uniform-grid adapter extension
+
+The case generator now accepts an `envelope_power` parameter for the uniform
+high-gradient profile. It writes the exact initial field from the independent
+NumPy evaluator and generates Fourier coefficients for the C++ `fvModels`
+forcing. The historical `m=4` path retains its existing generated-code branch.
+Tests compare generated initial fields for `m=2` and compile the generated
+forcing at `m=2` and `m=8` against the independent reference. The local Apple
+compiler is unavailable until its Xcode license is accepted, so that compiler
+parity test is explicitly skipped locally and is pending the hosted Linux test.
+No width sweep has been run. The separate AMR generator remains on its
+historical fixed envelope; AMR width generalization is still open.
+
+Before execution, select widths whose finest grids meet the frozen
+shortest-wavelength condition, then independently verify source timing,
+sampling phase, spectral tails and continuous-peak search.
 
 Replay commands:
 

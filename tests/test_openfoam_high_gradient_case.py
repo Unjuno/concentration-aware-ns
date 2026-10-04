@@ -48,6 +48,42 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             expected = fields(points, N=4, nu=0.01, time=0)["u"]
             np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-15)
 
+    def test_case_generation_uses_requested_envelope_power(self):
+        n, power = 4, 2
+        with tempfile.TemporaryDirectory() as directory:
+            case = Path(directory) / "case"
+            generate(case, n=n, dt=0.001, end=0.005, nu=0.01,
+                     profile="high-gradient", frequency=4,
+                     envelope_power=power)
+            params = json.loads((case / "parameters.json").read_text())
+            self.assertEqual(params["envelope_power"], power)
+            text = (case / "0/U").read_text()
+            count_pos = text.index("internalField nonuniform List<vector>")
+            payload = text[count_pos:].split("(", 1)[1].split(");", 1)[0]
+            actual = np.array([[float(v) for v in line.strip(" ()").split()]
+                               for line in payload.splitlines() if line.strip()])
+            coordinates = (np.arange(n) + 0.5) * 2 * np.pi / n
+            z, y, x = np.meshgrid(coordinates, coordinates, coordinates, indexing="ij")
+            points = np.stack((x, y, z), axis=-1).reshape(-1, 3)
+            expected = fields(points, N=4, nu=0.01, time=0,
+                              envelope_power=power)["u"]
+            np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-15)
+
+    @unittest.skipUnless(shutil.which("g++") or shutil.which("clang++")
+                         or shutil.which("c++"),
+                         "a C++ compiler is required for generated forcing parity")
+    def test_generated_cpp_forcing_matches_reference_across_envelope_powers(self):
+        from tools.check_high_gradient_cpp_mock import audit
+
+        try:
+            results = audit(envelope_powers=(2, 8))
+        except RuntimeError as exc:
+            if "Xcode license agreements" in str(exc):
+                self.skipTest("Apple compiler unavailable until its Xcode license is accepted")
+            raise
+        self.assertEqual([row["envelope_power"] for row in results], [2, 8])
+        self.assertTrue(all(row["passed"] for row in results))
+
     def test_case_generation_supports_pressure_bearing_periodic_control(self):
         n = 4
         with tempfile.TemporaryDirectory() as directory:

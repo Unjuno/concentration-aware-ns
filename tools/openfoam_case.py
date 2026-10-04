@@ -1,6 +1,7 @@
 """Generate a pilot periodic MMS case. Not a completed acceptance experiment."""
 import argparse
 import json
+from math import comb
 from pathlib import Path
 import numpy as np
 from tools.reference import fields
@@ -9,7 +10,7 @@ from tools.forced_periodic_reference import fields as forced_periodic_fields
 
 
 def generate(root, n=8, dt=0.001, end=0.005, sigma=0.5, nu=0.01,
-             profile='gaussian', frequency=8):
+             profile='gaussian', frequency=8, envelope_power=4):
     root = Path(root)
     if root.exists():
         raise ValueError('refusing to overwrite an existing case')
@@ -17,6 +18,10 @@ def generate(root, n=8, dt=0.001, end=0.005, sigma=0.5, nu=0.01,
         raise ValueError('invalid case parameters')
     if profile not in ('gaussian', 'high-gradient', 'forced-periodic') or int(frequency) != frequency or frequency < 1:
         raise ValueError('unsupported profile or frequency')
+    if int(envelope_power) != envelope_power or envelope_power < 1:
+        raise ValueError('envelope_power must be a positive integer')
+    if profile != 'high-gradient' and envelope_power != 4:
+        raise ValueError('envelope_power is supported only for high-gradient profile')
     root.mkdir(parents=True)
     def write(path, body, kind='dictionary'):
         p = root / path
@@ -57,7 +62,8 @@ PIMPLE {
     if profile == 'gaussian':
         u = fields(points, sigma=sigma, nu=nu)['u']
     elif profile == 'high-gradient':
-        u = high_gradient_fields(points, N=frequency, nu=nu)['u']
+        u = high_gradient_fields(points, N=frequency, nu=nu,
+                                 envelope_power=envelope_power)['u']
     else:
         exact = forced_periodic_fields(points, time=0, nu=nu)
         u = exact['u']
@@ -164,6 +170,68 @@ PIMPLE {
  }
  #};
 }'''.replace('NU',repr(nu)).replace('FREQ',repr(float(frequency)))
+    if envelope_power != 4:
+        amplitudes = [comb(2*envelope_power, envelope_power) / 4**envelope_power]
+        amplitudes.extend(2*comb(2*envelope_power, envelope_power-mode) / 4**envelope_power
+                          for mode in range(1, envelope_power+1))
+        coefficient_list = ', '.join(format(value, '.17g') for value in amplitudes)
+        generic_high_gradient_code = r'''mmsForce {
+ type coded;
+ cellZone all;
+ field U;
+ codeAddSup
+ #{
+ const scalar viscosity = NU;
+ const scalar frequency = FREQ;
+ const scalar decay = exp(-mesh().time().value());
+ const vectorField& centers = mesh().C();
+ const scalarField& volumes = mesh().V();
+ vectorField& source = eqn.source();
+ auto gDeriv = [](scalar q, label order) {
+   const scalar amplitude[] = {AMPLITUDES};
+   scalar value = amplitude[0];
+   for (label mode=1; mode<=POWER; ++mode) {
+     const scalar phase = mode*q + order*constant::mathematical::pi/2;
+     value += amplitude[mode]*pow(scalar(mode),order)*cos(phase);
+   }
+   return value;
+ };
+ forAll(centers, celli) {
+   const scalar x = centers[celli].x();
+   const scalar y = centers[celli].y();
+   const scalar z = centers[celli].z();
+   scalar gy[4], hz[4];
+   for (label order=0; order<4; ++order) {
+     gy[order] = gDeriv(y, order);
+     hz[order] = gDeriv(z, order);
+   }
+   const scalar chi = gy[0]*hz[0];
+   const scalar chiY = gy[1]*hz[0];
+   const scalar chiZ = gy[0]*hz[1];
+   const scalar chiYY = gy[2]*hz[0];
+   const scalar chiZZ = gy[0]*hz[2];
+   const scalar chiYZ = gy[1]*hz[1];
+   const scalar chiYYY = gy[3]*hz[0];
+   const scalar chiYZZ = gy[1]*hz[2];
+   const scalar sx = sin(frequency*x), cx = cos(frequency*x);
+   const vector u(chiY*sx/sqr(frequency), -chi*cx/frequency, 0);
+   const scalar duxDx = chiY*cx/frequency;
+   const scalar duxDy = chiYY*sx/sqr(frequency);
+   const scalar duyDx = chi*sx;
+   const scalar duyDy = -chiY*cx/frequency;
+   const vector conv(u.x()*duxDx + u.y()*duxDy,
+                     u.x()*duyDx + u.y()*duyDy, 0);
+   const vector lapU(sx*(-chiY + (chiYYY+chiYZZ)/sqr(frequency)),
+                     cx*(frequency*chi - (chiYY+chiZZ)/frequency), 0);
+   const vector forcing = -decay*u + sqr(decay)*conv - viscosity*decay*lapU;
+   source[celli] -= volumes[celli]*forcing;
+ }
+ #};
+}'''.replace('NU', repr(nu)).replace('FREQ', repr(float(frequency)))
+        generic_high_gradient_code = generic_high_gradient_code.replace(
+            'POWER', str(envelope_power)
+        ).replace('AMPLITUDES', coefficient_list)
+        high_gradient_code = generic_high_gradient_code
     forced_periodic_code = r'''mmsForce {
  type coded;
  cellZone all;
@@ -202,6 +270,8 @@ PIMPLE {
     parameters = dict(n=n,dt=dt,end=end,sigma=sigma,nu=nu,
                       profile=profile,frequency=frequency,
                       purpose='integration pilot, not production')
+    if profile == 'high-gradient':
+        parameters['envelope_power'] = envelope_power
     if profile == 'forced-periodic':
         parameters['reference'] = 'arXiv:2609.38210v1'
         parameters['forcing'] = 'f=(u0.grad)u0+grad(p0), scaled by exp(-4*nu*t); dt-nu*laplacian cancellation is exact'
@@ -214,5 +284,7 @@ if __name__ == '__main__':
     parser.add_argument('--n',type=int,default=8)
     parser.add_argument('--profile',choices=['gaussian','high-gradient'],default='gaussian')
     parser.add_argument('--frequency',type=int,default=8)
+    parser.add_argument('--envelope-power',type=int,default=4)
     args=parser.parse_args()
-    generate(args.directory,n=args.n,profile=args.profile,frequency=args.frequency)
+    generate(args.directory,n=args.n,profile=args.profile,frequency=args.frequency,
+             envelope_power=args.envelope_power)
