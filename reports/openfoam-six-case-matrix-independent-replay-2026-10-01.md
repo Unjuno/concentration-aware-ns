@@ -58,3 +58,18 @@ The September 28/October 2 partial n=64, `dt=0.0005` work directory remains a
 historical incomplete rerun; its separately archived 100/100-step matrix row
 is still the accepted evidence. The recheck does not add a new solver run,
 source-to-binary equivalence proof, or physical conclusion.
+
+## Current-state recheck (2026-10-05)
+
+Repeated the verifier against the current checkout and wrote
+`evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-05.json`.
+It again passes all six archive hashes, endpoint-field checks, acceptance and
+local-quality recomputations, and the matrix classification. The sampled
+local-quality gate fails only at n=16 and n=32; all four n=64-or-finer rows
+pass. The 2026-10-02 work directory is a duplicate operational rerun that
+stopped at 36/100 observed steps; it is not the 2026-09-30 completed matrix
+row, whose archive has 100/100 converged steps and SHA-256
+`93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5`.
+This status reconciliation strengthens archive-level current evidence but
+does not make a temporal asymptotic-convergence claim or certify the solver
+implementation against source.
