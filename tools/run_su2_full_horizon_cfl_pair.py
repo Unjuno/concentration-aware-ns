@@ -1,5 +1,5 @@
 """Original-image paired runner; never rebuilds or repairs Docker."""
-import argparse,csv,json,os,shutil,subprocess,math
+import argparse,csv,json,os,shutil,subprocess,math,sys
 from pathlib import Path
 import hashlib
 from tools.verify_su2_cfl_pair_inputs import verify
@@ -30,6 +30,26 @@ def verify_successor_probe(successor,measured):
             raise ValueError('actual successor image evidence differs from receipt')
         if key.endswith('_sha256') and (len(value)!=64 or any(c not in '0123456789abcdef' for c in value)):
             raise ValueError('invalid successor measured digest')
+
+
+def run_logged_command(command, log_path):
+    """Save child output verbatim while streaming a readable copy to stdout."""
+    with Path(log_path).open('wb') as log:
+        process = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            bufsize=0,
+        )
+        try:
+            while chunk := process.stdout.read(8192):
+                log.write(chunk)
+                log.flush()
+                sys.stdout.write(chunk.decode('utf-8', errors='replace'))
+                sys.stdout.flush()
+            return subprocess.CompletedProcess(command, process.wait())
+        finally:
+            process.stdout.close()
 
 
 def run(root,protocol,output,preflight_only=False,successor_receipt=None):
@@ -90,7 +110,7 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
         cmd=['docker','run','--rm','--cpus','2','--user',f'{os.getuid()}:{os.getgid()}',
              '-e','OMP_NUM_THREADS=2','-v',f'{case.resolve()}:/case',image_id,'SU2_CFD','case.cfg']
         (case/'command.json').write_text(json.dumps(cmd)+'\n')
-        with (case/'solver.log').open('w') as log:result=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT)
+        result=run_logged_command(cmd,case/'solver.log')
         (case/'exit_code').write_text(str(result.returncode)+'\n')
         if result.returncode:save();raise RuntimeError('solver failed; preserve partial case')
         with (case/'history.csv').open() as stream:history=list(csv.DictReader(stream))

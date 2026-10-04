@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 313 — stream native SU2 progress without weakening log evidence
+
+The full-horizon runner wrote solver output only to an artifact file, leaving
+the long GitHub Actions step silent until completion. It now tees combined
+stdout/stderr to the same byte-preserving log while flushing decoded progress
+to Actions and returns a `CompletedProcess` with the original exit code. A new
+test first failed because the streaming helper was absent, then verified that
+progress is visible before its child exits, both streams are preserved exactly,
+and a nonzero exit remains observable. The locked full suite passes: 400
+passed, 1 skipped, 89 subtests. The already-running native pair uses its frozen
+older checkout, so this change affects future executions only and supplies no
+result for that active pair. Goal remains active.
+
 ## Revision 312 — search the Foundation issue tracker for AMR/gradient overlap
 
 Followed the OpenFOAM Foundation README to its separate `bugs.openfoam.org`
