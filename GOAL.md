@@ -6349,7 +6349,8 @@ and a reproducible SymPy chain-rule checker verifies the boosted material
 acceleration, gradient, divergence, Laplacian, strain rate, pressure gradient,
 and constant-viscosity Navier–Stokes right-hand side. Its command and JSON
 evidence are linked from `docs/affine-alignment-viscosity-counterexample.md`.
-Updated the impact map. No molecular or OpenAI-flow constitutive claim follows.
-SU2 `37230949147` and Lean `37233433718` remain live under their frozen
-timeouts; n16 archive replay passes but both acceptance gates fail for that
-case.
+Wired the checker into Python-verification CI and included its JSON receipt in
+the retained artifact. Updated the impact map. No molecular or OpenAI-flow
+constitutive claim follows. SU2 `37230949147` and Lean `37233433718` remain
+live under their frozen timeouts; n16 archive replay passes but both acceptance
+gates fail for that case.

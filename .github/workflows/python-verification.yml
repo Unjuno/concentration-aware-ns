@@ -32,6 +32,9 @@ jobs:
       - name: Run Python test suite
         run: python -m pytest -q tests
 
+      - name: Recompute Galilean-invariant viscosity identities
+        run: python -m tools.check_galilean_viscosity_invariance
+
       - name: Compile the SU2 shared-MMS adapter and compare its forcing
         run: CXX=g++ python -m tools.check_su2_high_gradient_force
 
@@ -71,6 +74,7 @@ jobs:
             work/published-cell-point-matrix-environment.json
             work/published-cell-point-dyadic-scalar.json
             work/forced-periodic-ns-candidate.json
+            evidence/tests/galilean-viscosity-invariance.json
             work/solid-particle-drag-branch-audit/
             work/particle-body-force-audit/
             work/su2-force-coarse-bound/
