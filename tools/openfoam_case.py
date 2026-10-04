@@ -189,7 +189,7 @@ PIMPLE {
  vectorField& source = eqn.source();
  auto gDeriv = [](scalar q, label order) {
    const scalar amplitude[] = {AMPLITUDES};
-   scalar value = amplitude[0];
+   scalar value = order == 0 ? amplitude[0] : 0;
    for (label mode=1; mode<=POWER; ++mode) {
      const scalar phase = mode*q + order*constant::mathematical::pi/2;
      value += amplitude[mode]*pow(scalar(mode),order)*cos(phase);
