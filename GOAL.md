@@ -6222,3 +6222,16 @@ pinned image successfully; all five case workers started and are still
 running. This does not change the OpenFOAM width-run status above. Full goal
 remains active pending the hosted matrices, archive replay, and independent
 proof review.
+
+## Revision 368 — include post-announcement mathematical and numerical work
+
+Reviewed the September arXiv follow-ups by Cao, Chi, and Nie and by Lei and
+Ren, plus the public AMReX/PhiFlow finite-surrogate repository. The first is
+explicitly built on the OpenAI construction; the second explains its profile
+stage and reserves pulse correction for Part II. The numerical project
+reports non-negligible mesh-to-mesh field/forcing differences and explicitly
+does not claim blow-up verification. These developments strengthen the case
+for numerical sensitivity checks while providing no molecular alignment or
+phase-transition evidence. Their status and limits are recorded in
+`reports/openai-navier-stokes-proof-audit-2026-10-05.md`. SU2 matrix run
+`37230949147` remains in progress.
