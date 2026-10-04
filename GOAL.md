@@ -5775,6 +5775,15 @@ Reproduction code, test, JSON receipt, and scope note are in
 `evidence/tests/high-gradient-cell-center-peak-sampling.json`, and
 `reports/openfoam-continuum-peak-sampling-2026-10-04.md`. Full locked local
 verification: 432 passed, 4 skipped, 89 subtests passed. The implementation
-and receipt are in commit `4d82240c`; this goal-log update is in `f0d20541`.
-Both are pushed to PR #4. The latest Python CI job is still running, so hosted
-validation is pending. Goal remains active.
+and receipt are in commit `4d82240c`; the goal-log update and its correction
+are in `f0d20541` and `8f6bd69`. All are pushed to PR #4. The latest Python CI
+job is still running, so hosted validation is pending. Goal remains active.
+
+## Revision 344 — guard the frequency scope of the continuum diagnostic
+
+Extended the OpenFOAM analyzer regression to verify that the N=4 continuum
+certificate is not applied to an N=2 reference: all certificate-specific peaks
+and sampling fractions are null for the unsupported frequency. The focused
+regression passes. The prior full locked suite remains 432 passed, 4 skipped,
+89 subtests; this added assertion has only had its focused test rerun so far.
+Hosted CI is pending for the latest PR head. Goal remains active.

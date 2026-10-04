@@ -214,6 +214,15 @@ int main(){{
             self.assertLess(
                 result["reference_gradient_peak_sampling_fraction_of_continuum"], 1.0,
             )
+            params = json.loads((case / "parameters.json").read_text())
+            params["frequency"] = 2
+            (case / "parameters.json").write_text(json.dumps(params))
+            other_frequency = analyze(case)
+            self.assertFalse(other_frequency["reference_continuum_peak_certified"])
+            self.assertIsNone(other_frequency["reference_gradient_peak_continuum_certified"])
+            self.assertIsNone(other_frequency["reference_vorticity_peak_continuum_certified"])
+            self.assertIsNone(other_frequency["reference_gradient_peak_sampling_fraction_of_continuum"])
+            self.assertIsNone(other_frequency["reference_vorticity_peak_sampling_fraction_of_continuum"])
             self.assertEqual(result["standard_acceptance"]["status"], "PASS")
             self.assertEqual(result["quality"], "FAIL")
             self.assertIn("shell_spectrum", result["local_quality"]["metrics"])
