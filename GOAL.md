@@ -7,7 +7,11 @@ unforced Navier–Stokes global-regularity preprint withdrawn; its author says a
 error in equation (27) makes the crucial inequality below equation (29) wrong.
 The claimed theorem is therefore not usable evidence, and it concerns the
 homogeneous unforced equations, so it neither refutes nor validates OpenAI's
-smooth-forced construction. Separately, the Lean Kernel Arena currently records
+smooth-forced construction. Replaying equation (27)'s Hölder step confirms that
+the displayed second factor should have exponent 1, not 1/alpha^2; propagating
+that gives an exponent about 2.268 in place of the paper's subquadratic 1.89,
+so its stated energy absorption does not follow. This matches the author's
+withdrawal note; no broader proof audit was attempted. Separately, the Lean Kernel Arena currently records
 acceptance of 129,842 declarations exported from OpenAI/NavierStokesAndEuler at
 the same latest source commit, f9e8bc5. This is additional proof-term/kernel
 checking evidence, not a mathematical review of the derivation or physical

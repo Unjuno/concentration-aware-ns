@@ -8,7 +8,14 @@
 
 Thomas Ruf's arXiv:2609.18808 v1 (submitted 2026-09-16, updated 2026-09-17) claimed global regularity for strong solutions of the homogeneous, unforced 3D Navier–Stokes equations for (H^1_\sigma(\mathbb R^3)) data, with broader uniqueness and smoothness consequences. As checked on 2026-10-04, the arXiv record marks the work withdrawn. Its comment states: “There is an error in equation (27) that renders the crucial inequality below equation (29) wrong.” The original v1 PDF remains retrievable at the versioned arXiv URL; its SHA256 is `a5fc896be86f14f144eae65edcde47ccbbac3c3b3b15eefad7114d412276ba41`.
 
-This is an instructive false lead, not a counterexample or current proof of global regularity. I checked the versioned PDF to identify equations (27) and (29), but did not independently derive the correction or audit the rest of the proof. The author's explicit withdrawal notice is sufficient to exclude the advertised conclusion from accepted evidence pending a corrected version and independent review.
+This is an instructive false lead, not a counterexample or current proof of global regularity. I checked the versioned PDF and independently replayed the Hölder exponents in equation (27). Writing \(a=r/2-1\) and \(h=|u|^a|\partial_i u|\), the displayed split and Hölder exponents \(q=(2/\alpha)'\), \(p=2/\alpha\) give
+
+\[
+\left(\int |u|^{2a\alpha}|\partial_i u|^\alpha\,dx\right)^{1/\alpha}
+\le \left(\int |u|^2\,dx\right)^{(2-\alpha)/(2\alpha)}\|h\|_2.
+\]
+
+The second factor is \(\|h^\alpha\|_{2/\alpha}^{1/\alpha}=\|h\|_2\). In the printed equation (27), it is instead raised to \(1/\alpha^2\); equation (29) carries that exponent into \(\|h\|_2^{1/\alpha^2+4/r}\). For \(r=2+2/\sqrt3\) and \(\alpha=3r/(3r-2)\), the printed exponent is about 1.89, while the direct Hölder calculation gives \(1+4/r\approx2.268>2\). Thus the stated subquadratic power used for the subsequent energy absorption does not follow from the displayed estimate. This agrees with the author's withdrawal comment. This is a narrow replay of the cited inequality chain, not an audit of every other step or a proposed repair; the withdrawal notice remains the reason the advertised conclusion is excluded from accepted evidence.
 
 The equation class also differs from OpenAI's advertised Navier–Stokes theorem, which uses a constructed smooth body force. A result about the unforced equations would have been especially relevant to the classical problem, but its withdrawal cannot be used to infer anything about the forced construction. Neither paper describes molecule-resolved motion or a physical phase transition.
 

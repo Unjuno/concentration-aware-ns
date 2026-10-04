@@ -11,7 +11,7 @@
     "claim_summary": "Global in time strong solutions for H^1_sigma initial data, plus uniqueness and smoothness consequences",
     "v1_pdf_url": "https://arxiv.org/pdf/2609.18808v1",
     "v1_pdf_sha256": "a5fc896be86f14f144eae65edcde47ccbbac3c3b3b15eefad7114d412276ba41",
-    "scope_note": "The v1 PDF was inspected to locate the cited inequalities. The correction and remaining proof were not independently audited. Withdrawn claim is not accepted evidence."
+    "scope_note": "The displayed Hölder step in equation (27) was independently replayed: it yields || |u|^(r/2-1) partial_i u ||_2 to power 1, not 1/alpha^2. Equation (29)'s printed exponent 1/alpha^2 + 4/r is about 1.89; direct Hölder gives 1 + 4/r about 2.268, so the displayed subquadratic absorption does not follow. This checks the cited inequality chain only, not the rest of the proof or a repair. Withdrawn claim is not accepted evidence."
   },
   "openai_repository": {
     "url": "https://github.com/openai/NavierStokesAndEuler",
