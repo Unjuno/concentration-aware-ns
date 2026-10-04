@@ -33,6 +33,29 @@ The independent checker is
 This is a symbolic replay of the closed-form base solution, not a discretized
 solver validation.
 
+## Independent reference evaluator
+
+The exact base solution is now available as a separate vectorized evaluator in
+`tools/forced_periodic_reference.py`. It returns velocity, `grad_u` with the
+convention `grad_u[i,j] = d_j u_i`, vorticity, pressure, pressure gradient,
+and the exact body force on arbitrary leading batch shapes. A pinned numerical
+sample was evaluated independently from the paper's equations, and periodic
+translation plus sampled zero-divergence checks protect the reference API.
+This helper is deliberately separate from
+`tools/high_gradient_reference.py`: the Fourier base field has fixed spatial
+shape and exponential decay, so it exercises a nonlinear pressure/source
+path but does not measure local concentration. No solver adapter consumes it
+yet, and no CFD result is claimed.
+
+The locked Python 3.12.10 / NumPy 2.5.2 / SymPy 1.14.0 environment passes
+the focused reference tests (2 passed) and the full suite (402 passed, one
+skipped, 89 subtests). The existing independent symbolic replay reproduces its
+stored JSON byte-for-byte. Source, test, lockfile and raw test-log hashes are
+recorded in
+`evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
+These are repository-level reference checks only; the control has not yet been
+run through any target solver.
+
 ## Critical separation of the paper's two results
 
 Theorem 4.1's exact solution evolves by pure exponential decay, retaining its

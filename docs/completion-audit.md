@@ -1,5 +1,19 @@
 # Completion audit — interim, 2026-09-27
 
+### Independent pressure-bearing periodic reference evaluator — 2026-10-04
+
+Added a separate NumPy evaluator for the closed-form trigonometric solution in
+arXiv:2609.38210v1, including velocity, analytic gradient, vorticity, pressure,
+pressure gradient and forcing. Two tests check an independent fixed sample,
+periodic translations and sampled incompressibility; the existing SymPy
+residual/zero-work replay reproduces its committed JSON byte-for-byte. The
+focused tests pass and the locked full suite reports 402 passed, one skipped
+and 89 subtests. Logs, environment and hashes are in
+`evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
+This field has not been connected to an OpenFOAM, SU2 or PhysicsNeMo runner, so
+it adds no solver verdict and does not exercise concentration. The separate
+hosted SU2 pair remains active; cross-solver completion is still open.
+
 ### Fresh published cellPoint sample and enclosure replay — 2026-10-04
 
 At source commit `4e44429a371ee3e096ce3f74a06b789aa3ea8ef0`, the locked Python

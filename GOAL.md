@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 318 — add a separate pressure-bearing periodic reference control
+
+Implemented the exact smooth 3D periodic solution from arXiv:2609.38210v1 as
+`tools/forced_periodic_reference.py`, returning velocity, analytic gradient,
+vorticity, pressure, pressure gradient and exact forcing. It remains a
+separate calibration field: its fixed Fourier profile decays exponentially
+and does not test concentration. Test-first fixed values caught a wrong
+coordinate derivative before correction; focused tests pass (2), the existing
+symbolic residual/work replay matches its stored output, and the full locked
+suite passes (402 passed, 1 skipped, 89 subtests). Logs, environment and hashes
+are recorded under `evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
+No solver adapter uses the new reference yet, so no CFD conclusion changes.
+The active SU2 pair and hosted PR CI remain open.
+
 ## Revision 317 — distinguish stale closure from PhysicsNeMo resolution
 
 Live API refresh found that feature request #1852 was closed by the stale bot
