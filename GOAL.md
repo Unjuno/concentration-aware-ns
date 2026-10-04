@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 339 — add the conditional analytic-forcing regularity follow-up
+
+The literature refresh found Constantin, Ignatova and Vicol's September 17
+preprint, arXiv:2609.20803. It proves conditional regularity under anisotropic
+Type II angular-mean bounds and axisymmetry on a shrinking core when the force
+is spatially analytic. The authors identify the OpenAI construction as
+satisfying the profile hypotheses for their argument, but its smooth,
+compactly supported force is non-analytic, so the theorem does not contradict
+that construction. They explicitly do not claim to have verified OpenAI's
+proof; our review has not independently checked or formalized theirs. This
+sharpens the mathematical boundary around the constructed forcing, but gives
+no molecular or solver-defect result. Recorded in
+`reports/recent-openai-ns-followup-2026-10-04.md`; OpenFOAM verdicts and the
+two live SU2 runs are unchanged.
+
 ## Revision 338 — commit the replay receipt for the six-case OpenFOAM matrix
 
 Re-ran `tools.verify_openfoam_high_gradient_matrix` against the current six
