@@ -5885,5 +5885,5 @@ and PhysicsNeMo boundary/spectrum reports; newly opened PhysicsNeMo #2044 is
 unrelated. OpenAI still has no GitHub issue/discussion route. No new
 reproducible software defect emerged, so no upstream report was posted. Exact
 branch SHAs and record metadata are preserved in
-`evidence/upstream-refresh/live-status-2026-10-04T1136Z.json`. Goal remains
+`evidence/upstream-refresh/live-status-2026-10-04T1137Z.json`. Goal remains
 active.
