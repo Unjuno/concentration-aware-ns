@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 333 — separate SU2 stencil underresolution from solution error
+
+Added a reproducible reference-only audit on the same unique periodic vertex
+phase used by SU2. For the exact N=4 field at t=0.05, centered-FD2 peak errors
+for gradient/vorticity are 35.9%/33.8% at n=16, 9.86%/9.25% at n=32, and
+2.52%/2.36% at n=64. Thus coarse-grid failures of the 5% derivative gates can
+come from the diagnostic operator even when sampled velocity is exact; n=64 is
+the first tested resolution whose exact-field operator floor is below both
+limits. This is a resolution floor, not evidence about SU2's simulated field.
+The receipt and test are `evidence/tests/su2-shared-high-gradient-resolution-floor.json`
+and `tests/test_su2_shared_high_gradient_resolution.py`. The shared SU2 matrix
+is still executing; its build and solver results must be interpreted against
+this floor before calling any disagreement reproducible.
+
 ## Revision 332 — freeze the SU2 shared-reference matrix
 
 Added the separate five-case SU2 Fourier-envelope protocol, LGPL-preserving
