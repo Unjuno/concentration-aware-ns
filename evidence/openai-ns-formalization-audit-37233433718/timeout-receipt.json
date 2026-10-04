@@ -1,0 +1,36 @@
+{
+  "record_type": "incomplete_external_lean_audit_run",
+  "repository": "Unjuno/concentration-aware-ns",
+  "workflow_run": {
+    "id": 37233433718,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37233433718",
+    "head_sha": "55cda47a8ec8723c6dcb53b4c240bf978e12bcaf",
+    "workflow_file": ".github/workflows/openai-ns-formalization-audit.yml",
+    "source_repository": "openai/NavierStokesAndEuler",
+    "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "runner": "ubuntu-24.04"
+  },
+  "job": {
+    "id": 111527730274,
+    "name": "lean-build-and-independent-check",
+    "status": "cancelled",
+    "started_at": "2026-10-04T20:54:40Z",
+    "completed_at": "2026-10-04T22:24:57Z",
+    "configured_timeout_minutes": 90,
+    "build_step_started_at": "2026-10-04T20:54:46Z",
+    "build_step_completed_at": "2026-10-04T22:24:53Z",
+    "build_step_elapsed_ms": 5298086,
+    "last_completed_module": 10489,
+    "total_modules_reported": 11424,
+    "axiom_audit_euler_step": "skipped",
+    "log_terminal_message": "The operation was canceled."
+  },
+  "assessment": "INCOMPLETE: the full Lean build did not finish before the workflow timeout, and the Euler axiom-audit step did not execute. This is not a Lean compilation failure or a passing audit.",
+  "remediation": {
+    "workflow_timeout_minutes": 180,
+    "workflow_fix_commit": "2220227709b9c9c63f80cb3cef9fd525f117a313",
+    "retry_run_id": 37240186684,
+    "retry_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37240186684",
+    "retry_status_at_receipt": "in_progress"
+  }
+}
