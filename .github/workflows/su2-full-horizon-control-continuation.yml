@@ -2,12 +2,21 @@ name: SU2 full-horizon CFL control continuation
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - physicsnemo-global-hessian-audit
+    paths:
+      - .github/workflows/su2-full-horizon-control-continuation.yml
+      - protocols/su2-n32-full-horizon-cfl-control-continuation-v3.json
 
 permissions:
   contents: read
 
 jobs:
   control:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.head_commit.message, '[run-su2-cfl-control]')
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 360
     steps:
