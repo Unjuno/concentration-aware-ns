@@ -189,6 +189,17 @@ resolution studies can test whether a solver's acceptance metrics miss local
 features, but cannot establish the unforced Clay blow-up alternative. It is
 not a reason to discard simulations; it limits the claim they can support.
 
+### Follow-up-paper status check
+
+The September 2026 Lei–Ren Part I says residual correction by oscillatory
+pulses will be handled in a companion Part II. I queried arXiv's Atom API on
+2026-10-04 for both the exact Part II title and the phrase “Residual
+Correction via Oscillatory Pulses.” The exact-title query returned no record;
+the phrase query returned only Part I, arXiv:2609.35406v2. This is a bounded
+index check, not proof that no manuscript or alternate title exists elsewhere.
+The raw query scope and response summary are preserved in
+[`evidence/upstream-refresh/lei-ren-companion-arxiv-check-2026-10-04.json`](../evidence/upstream-refresh/lei-ren-companion-arxiv-check-2026-10-04.json).
+
 ## Status and next discriminating work
 
 - The supported result is a valid exact strain–diffusion model calculation

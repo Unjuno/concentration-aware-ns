@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 304 — check for the announced oscillatory-correction companion
+
+Queried the arXiv Atom API at 2026-10-04 01:24:44 UTC for the exact announced
+Lei–Ren Part II title and its distinctive subtitle. The exact-title query
+returned zero records; the subtitle query found only Part I, arXiv:2609.35406v2.
+This bounded metadata check leaves the companion unlocated; it does not prove
+absence from other indexes or unpublished sources. The captured scope and
+result are in `evidence/upstream-refresh/lei-ren-companion-arxiv-check-2026-10-04.json`.
+No conclusion about the OpenAI construction changes; full goal remains active.
+
 ## Revision 303 — replay the shared strain–diffusion algebra in the pinned environment
 
 Reran `tools/check_burgers_vortex.py` with the repository's
