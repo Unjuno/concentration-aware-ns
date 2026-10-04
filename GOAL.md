@@ -5758,3 +5758,22 @@ defect or physical mechanism. Full receipt and limits are in
 `evidence/tests/openfoam-amr-mean-quality-replay-2026-10-04-b996015.json` and
 `reports/openfoam-amr-mean-quality-independent-replay-2026-10-04.md`. No new
 upstream post is justified.
+
+## Revision 150 — certified-reference peak sampling diagnostic
+
+Added a supplemental N=4 diagnostic comparing the exact analytic gradient and
+vorticity sampled at the frozen uniform cell centers against their newly
+certified continuous maxima. At protocol time t=0.05, captured fractions range
+from 66.3242%/65.2161% (gradient/vorticity) at n=16 to 99.3972%/99.3871% at
+n=128. This measures reference-field undersampling only; it does not bound a
+solver field between cells, and it does not modify either gate or its
+denominators. The analyzer reports certified continuum values and sampling
+fractions separately for N=4; other frequencies receive null for these fields.
+Reproduction code, test, JSON receipt, and scope note are in
+`tools/measure_high_gradient_peak_sampling.py`,
+`tests/test_high_gradient_peak_sampling.py`,
+`evidence/tests/high-gradient-cell-center-peak-sampling.json`, and
+`reports/openfoam-continuum-peak-sampling-2026-10-04.md`. Full locked local
+verification: 432 passed, 4 skipped, 89 subtests passed. Commit `4d82240c` was
+pushed to PR #4; its Python CI job is still running, so hosted validation is
+pending. Goal remains active.
