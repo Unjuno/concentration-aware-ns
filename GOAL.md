@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 342 — certify exact continuum peaks for the shared N=4 MMS
+
+Closed the reference-side continuous-extremum gap for the active
+Fourier-envelope MMS. A trigonometric reduction followed by exact rational
+Bernstein certificates on `[0,1]^2` proves `max |grad u|_F =
+sqrt(65)/8*exp(-t)` and `max |curl u| = 9/8*exp(-t)`, both attained at
+`(x,y,z)=(pi/(2N),0,0)` for `N=4`. The checker stores all four 9x9 coefficient
+tables and source/runtime provenance. Its focused TDD regression passes; a
+200,000-point field-evaluator sample is recorded only as a sanity check. This
+certifies the analytic reference, not solver extrema. Existing same-grid
+acceptance denominators and historical verdicts are unchanged. See
+`reports/high-gradient-global-peaks-analytic-certificate-2026-10-04.md` and
+`evidence/tests/high-gradient-global-peaks.json`. The live SU2 jobs remain
+separate execution gates.
+
 ## Revision 341 — reconcile the follow-up note with earlier source audits
 
 A repository-wide cross-check found that the September 15 reduced-profile
