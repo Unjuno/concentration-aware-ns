@@ -10,6 +10,38 @@ Constantin, Ignatova, and Vicol's arXiv:2609.20803 (v2, September 29) studies so
 
 This is a meaningful constraint on the forcing needed by that solution mechanism. It is compatible with a force that is (C^\infty) but nonanalytic, as the OpenAI construction describes. It therefore neither refutes the announced theorem nor establishes that its forcing is physically realizable. In particular, it gives no bridge from a continuum velocity singularity to deterministic molecular positions, particle alignment, or a speed-dependent drop in material viscosity.
 
+There is an important provenance boundary: the authors explicitly say they do
+not claim to have verified OpenAI's construction. They take the relevant
+anisotropic bounds and exact core symmetry from statements in that manuscript,
+then derive the conditional regularity and force consequences. The theorem's
+spatial analyticity is imposed on every compact pre-singular time cylinder;
+the force's analyticity radius may shrink toward blowup. Its force-only
+corollary says that, if the singularity and stated solution hypotheses hold,
+the force violates this local-uniform analyticity condition and cannot vanish
+identically on any space-time cylinder extending to the singular endpoint.
+This does not imply a nonzero point value exactly at the singular point.
+
+## Cross-check against the pinned Lean source
+
+At OpenAI/NavierStokesAndEuler commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, the whole-space candidate record
+stores smoothness of the force, compact spatial support, future time support,
+the residual equation, and unbounded speed. The compact-force construction
+uses a smooth spatial cutoff. A separate theorem proves only that, if the
+force has the paper's positive-time support and there is no global finite-
+energy solution, then the force is nonzero at some positive time and some
+point. This is weaker than the later paper's conditional no-cylinder-vanishing
+corollary. The reviewed Lean files do not state the external paper's spatial
+analyticity hypothesis or local no-cylinder conclusion. This is a scope
+difference, not evidence of a formalization defect: the extra result depends
+on a separate regularity theorem and the construction's asserted profile
+bounds.
+
+The exact archived source hashes are in
+`evidence/upstream-refresh/post-announcement-navier-stokes-literature-2026-10-04.json`.
+No general theorem bridge from continuum blowup to molecular alignment or a
+viscosity transition follows from this comparison.
+
 ## Density in a weak forcing topology
 
 Cao, Chi, and Nie's arXiv:2609.10262 (v4, September 22; the version record says the manuscript was unchanged in v4) starts from the compact forced blowup construction and builds a blowup solution near each given smooth solution while preserving its initial velocity. For fixed viscosity and zero initial velocity, they state that smooth blowup-producing forces are dense in the relative (L^1_t H^s_x) topology on both the torus and ℝ³ exactly for (s<1/2).

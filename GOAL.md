@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 315 — trace the post-announcement force constraint to formal fields
+
+Read the full Constantin–Ignatova–Vicol paper (2609.20803 v2), including its
+scope caveat and force-only corollary. Its authors explicitly do not claim to
+verify OpenAI's construction; they infer the needed velocity hypotheses from
+that manuscript. Conditionally, if the asserted singularity and those bounds
+hold, their Corollary 2.3 rules out the force vanishing identically in any
+space-time cylinder reaching the singular point, but does not require a
+nonzero value exactly at the endpoint. Hash-pinned source inspection of
+OpenAI's compact candidate found smoothness, compact spatial support, future
+time support and the residual equation; its `force_nonzero_of_no_global_solution`
+lemma only gives a nonzero value somewhere at positive time. The stronger
+external consequence is a separate regularity-theorem result, not a formal
+source defect. Exact hypotheses, source hashes and scope are recorded in
+`reports/post-announcement-navier-stokes-literature-2026-10-04.md`. This does
+not imply molecular alignment or constitutive change. The benchmark, PR checks,
+and long SU2 run remain active.
+
 ## Revision 314 — record post-announcement regularity and force-density results
 
 Checked recent primary arXiv work beyond the OpenAI announcement. Constantin,

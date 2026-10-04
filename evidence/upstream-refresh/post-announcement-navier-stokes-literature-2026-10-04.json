@@ -23,5 +23,18 @@
     }
   ],
   "project_disposition": "Relevant post-announcement mathematical progress was found and recorded. Neither paper demonstrates a solver defect or supports the user's molecular-scale interpretation. No OpenAI issue was filed; the repository's issue tracker is disabled per the 2026-10-04 repository inventory.",
-  "effect_on_benchmark": "No CFD matrix or acceptance gate changed. Next useful mathematical check is the exact forcing regularity/vanishing behavior at the singular point in the pinned OpenAI construction, compared with the hypotheses and conclusions of arXiv:2609.20803."
+  "openai_source_crosscheck": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "files": {
+      "NavierStokes/R3CompactCandidate.lean": "5831f975030543c5b670ee3b0ed116222848725df7b14892ba4d6592a47ae5f0",
+      "NavierStokes/R3/ProblemStatement.lean": "8b0a28b3b93fb8dfcf967d0082a5a2829a5e5f079de6662c846417057b0856d7",
+      "NavierStokes/R3/CandidateBreakdown.lean": "a9aa816d3aa474012f5e4020e1a2744ffcab3a89e8ef3d172235c8046e2c09e5",
+      "NavierStokes/R3/ActualCandidate.lean": "93d728679c20650ca6ae256b8f96618aaaf004904b589d8f69da759e740046fa"
+    },
+    "formalized_fields": ["force smoothness", "compact spatial support", "future time support", "force equals the momentum residual", "unbounded candidate speed"],
+    "related_lemma_scope": "force_nonzero_of_no_global_solution concludes nonzero at some positive time and some point; it does not conclude nonvanishing on every cylinder approaching the singular endpoint.",
+    "external_paper_scope": "The authors of arXiv:2609.20803 explicitly do not claim to have verified OpenAI's construction; their profile hypotheses are taken from that manuscript. Under those hypotheses and the claimed singularity, Corollary 2.3 rules out force vanishing identically on any space-time cylinder reaching the singular point. This does not entail a nonzero endpoint point value."
+  },
+  "effect_on_benchmark": "No CFD matrix or acceptance gate changed. The source-level distinction is documented; a full independent proof audit and molecular/constitutive bridge remain open."
 }
