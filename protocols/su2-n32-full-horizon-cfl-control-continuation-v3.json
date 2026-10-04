@@ -1,0 +1,75 @@
+{
+  "status": "FROZEN_CONTROL_ONLY_CONTINUATION_NOT_EXECUTED",
+  "created_from": "2026-10-04 post-run log and artifact audit",
+  "predecessor_run_id": 37160281461,
+  "predecessor_artifact_sha256": "0e9515f3e1d2fe44afb6edd3e769798bda1a8116382dfdbbe4c6ee67da12553a",
+  "baseline_evidence": {
+    "root": "evidence/su2-full-horizon-run-37160281461/results",
+    "manifest_sha256": "92c1945f68d1ea2ae87ea070a498e8fb9aead11959adaa7be258f9c204796ed3",
+    "successor_receipt_sha256": "bd732d4398015bd5fe851ffe83041ebe737f1c52e786b0d4d30408b4c34d7d2c",
+    "completed_case": "baseline",
+    "process_exit": 0,
+    "physical_updates": 50,
+    "residual_converged_steps": 48
+  },
+  "input_protocol": "protocols/su2-n32-full-horizon-cfl-control-v1.json",
+  "input_protocol_sha256": "35aed7cb0abc146dd001c88419e30b1c1cce5cb90d15f227489022a7240936fe",
+  "quality_protocol": "protocols/su2-study-v1.json",
+  "quality_protocol_sha256": "d0cc3b9715a347ca70025524fe70cf1517c2fdce52a7153c7b36099e038b7670",
+  "case": {
+    "name": "control",
+    "n": 32,
+    "dt": 0.001,
+    "end": 0.05,
+    "expected_physical_updates": 50,
+    "cfl_number": 100,
+    "threads": 2,
+    "inner_cap": 3000,
+    "residual_log10_threshold": -10
+  },
+    "runtime": {
+      "architecture": "linux/arm64",
+      "expected_image_id": "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92",
+      "source_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+    "recipe_sha256": {
+      "runtime/su2/Dockerfile": "59296c749f15961ede0adfaa21bd836b86c8afe6b9cf95e70c3446378f1a8f20",
+      "runtime/su2/mms.patch": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83"
+    },
+    "must_match_baseline_receipt": "evidence/su2-full-horizon-run-37160281461/results/successor-receipt.json",
+    "required_equal_fields": [
+      "image_id",
+      "source_commit",
+      "architecture",
+      "build_inputs_sha256",
+      "binary_sha256",
+      "patched_source_sha256",
+      "package_versions_sha256",
+      "compiler_version"
+    ],
+    "mismatch_action": "STOP_BEFORE_SOLVER_AND_PRESERVE_BUILD_RECEIPT"
+  },
+  "execution": {
+    "runner": "tools/run_su2_full_horizon_cfl_pair.py --case control",
+    "only_case": "control",
+    "workflow": ".github/workflows/su2-full-horizon-control-continuation.yml",
+    "job_timeout_minutes": 360,
+    "reason_for_split": "The predecessor's 300-minute job completed the 50-update baseline but reached only seven history rows in its second case. The cases are independently run from fresh directories, and the baseline's immutable image receipt is preserved.",
+    "same_image_pairing": "The continuation is pairable with the archived completed baseline only after full measured image-receipt equality and frozen input equality are verified. Otherwise report the continuation as unpaired.",
+    "completion_rule": "Require exit 0, all 50 unique update IDs, exact reported old-time clock within the frozen 1e-12 tolerance, and preserved final fields/history/log. A partial run remains INCOMPLETE and is never accepted by the pair reviewer."
+  },
+  "analysis": {
+    "reviewer": "tools/review_su2_full_horizon_cfl_pair.py",
+    "command": "python -m tools.review_su2_full_horizon_cfl_pair --baseline-root evidence/su2-full-horizon-run-37160281461/results --control-root work/su2-cfl-control-continuation-v3/results --protocol protocols/su2-n32-full-horizon-cfl-control-v1.json --output work/su2-cfl-control-continuation-v3/pair-review.json",
+    "verdict_separation": [
+      "inner residual convergence per update",
+      "velocity, energy, gradient-peak and vorticity-peak sampled quality thresholds",
+      "physical/source interpretation and continuous peak certification remain out of scope"
+    ]
+  },
+  "stopping_rules": [
+    "Do not start SU2 if the immutable image receipt differs from the completed baseline receipt.",
+    "Do not change the frozen prepared mesh, case configuration, CFL values, time step, inner cap, residual criterion, or quality thresholds.",
+    "Do not call a timeout a solver failure or a partial history a completed horizon.",
+    "Do not infer singularity, molecular alignment, particle-position certainty, or material-viscosity change from solver error."
+  ]
+}

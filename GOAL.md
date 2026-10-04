@@ -1108,6 +1108,21 @@ The probe is auxiliary to the original smooth 3D concentration and AMR work;
 those open gates and all molecular/constitutive bridges remain open.
 Goal remains active.
 
+## SU2 control continuation addendum — 2026-10-04
+
+Replayed the completed baseline from raw archived outputs and verified its
+diagnostics against the saved receipt. The result remains quality `UNCERTAIN`:
+48/50 physical updates meet the inner residual threshold, velocity relative
+error is 2.277%, and sampled gradient/vorticity relative errors are about
+11.24%. Added a control-only continuation protocol that rechecks the archived
+baseline, rebuilds and measures the ARM64 runtime, and stops before SU2 unless
+the immutable image receipt exactly matches the completed baseline. Added
+separate-run review support so the previously cancelled seven-row control
+cannot be relabeled complete or paired. Local locked suite: 424 passed, 2
+skipped, 89 subtests passed. Hosted continuation has not yet run; no new
+numerical conclusion or goal completion is claimed. AMR staging artifacts
+present in the shared checkout were left untouched.
+
 ## Revision 258 — clean export of compatible-interface analysis
 
 Exported fixed commit `b0e590e3c1b9b19044748fac7ad06109785f6fe5` from

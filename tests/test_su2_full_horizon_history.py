@@ -1,7 +1,7 @@
 import copy,csv,io,tarfile
 from pathlib import Path
 import pytest
-from tools.run_su2_full_horizon_cfl_pair import verify_history
+from tools.run_su2_full_horizon_cfl_pair import normalize_case_labels, verify_history
 
 
 def original():
@@ -12,6 +12,16 @@ def original():
 
 def test_existing_full_horizon_clock_matches():
     assert verify_history(original())['steps']==50
+
+
+def test_control_can_be_run_as_a_separate_case_without_pair_verdict():
+    assert normalize_case_labels(['control'])==('control',)
+    assert normalize_case_labels(None)==('baseline','control')
+
+
+@pytest.mark.parametrize('labels', [[], ['control','control'], ['control','other']])
+def test_case_selection_rejects_empty_duplicate_or_unknown_labels(labels):
+    with pytest.raises(ValueError):normalize_case_labels(labels)
 
 
 @pytest.mark.parametrize('kind',['missing','duplicate','step','time','nonfinite'])

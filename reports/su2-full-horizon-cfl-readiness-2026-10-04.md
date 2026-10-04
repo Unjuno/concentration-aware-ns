@@ -106,3 +106,25 @@ reports all-step residual convergence separately from original observed
 velocity/energy/derivative thresholds. An incomplete-pair control is rejected
 before field reads. This reviewer is prepared locally and is not an executed
 native result or continuous peak certificate.
+
+Continuation v3 (2026-10-04): the predecessor baseline archive was replayed
+from its raw files before scheduling more solver work. The saved and recomputed
+velocity, sampled-gradient and sampled-vorticity diagnostics agree within the
+frozen replay tolerance; the baseline itself remains quality `UNCERTAIN` (48/50
+inner-residual-converged steps, velocity error 2.277%, sampled gradient and
+vorticity errors about 11.24%). The protocol binds the original artifact,
+manifest, receipt, frozen input/quality protocols and build-recipe hashes.
+
+To avoid exceeding the previous 300-minute job limit solely because the
+baseline is already complete, continuation v3 runs only the missing CFL=100
+case and uploads partial evidence on every exit path. It still rebuilds and
+probes the ARM64 image, then requires exact equality of immutable image ID,
+source, recipe, binary, patched source, installed package list and compiler
+with the completed baseline receipt before starting SU2. This conservative
+identity gate may stop a rebuild whose installed environment has drifted; a
+build or probe stop is not a solver result. On success the split-root reviewer
+replays both cases, checks the full physical update clock and process exit, and
+reports residual convergence independently from all observed quality metrics.
+The predecessor's seven-row CFL=100 partial remains intact and cannot count as
+a completed pair. The continuation has not yet run; no solver result or
+updated acceptance verdict is claimed here.

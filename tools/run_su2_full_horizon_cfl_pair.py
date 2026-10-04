@@ -21,6 +21,14 @@ def verify_history(history,steps=50,dt=.001):
             'scope':'Recorded history only, not source callback or internal floating clock proof'}
 
 
+def normalize_case_labels(case_labels):
+    labels=('baseline','control') if case_labels is None else tuple(case_labels)
+    if (not labels or len(set(labels))!=len(labels)
+            or set(labels)-{'baseline','control'}):
+        raise ValueError('case_labels must be unique baseline/control selections')
+    return labels
+
+
 def verify_successor_probe(successor,measured):
     keys={'binary_sha256','patched_source_sha256','package_versions_sha256','compiler_version'}
     if set(measured)!=keys:raise ValueError('missing or unexpected successor probe fields')
@@ -52,8 +60,10 @@ def run_logged_command(command, log_path):
             process.stdout.close()
 
 
-def run(root,protocol,output,preflight_only=False,successor_receipt=None):
+def run(root,protocol,output,preflight_only=False,successor_receipt=None,
+        case_labels=None):
     if output.exists():raise FileExistsError('preserve previous experiment')
+    case_labels=normalize_case_labels(case_labels)
     inputs=verify(root,protocol);p=json.loads(protocol.read_text())
     image_id=p['image_id_required']
     successor=None
@@ -77,7 +87,13 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
     output.mkdir()
     if successor is not None:(output/'successor-receipt.json').write_text(json.dumps(successor,indent=2)+'\n')
     (output/'input-verification.json').write_text(json.dumps(inputs,indent=2)+'\n')
-    manifest={'status':'INCOMPLETE','completed_cases':0,'expected_cases':2,'preflight_only':preflight_only,'cases':[]}
+    manifest={'status':'INCOMPLETE','completed_cases':0,
+              'expected_cases':len(case_labels),'case_labels':list(case_labels),
+              'preflight_only':preflight_only,'cases':[]}
+    manifest['selected_image_id']=image_id
+    if successor_receipt is not None:
+        manifest['successor_receipt_sha256']=hashlib.sha256(
+            Path(successor_receipt).read_bytes()).hexdigest()
     def save(): (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     save()
     command=['docker','image','inspect',image_id,'--format','{{json .}}']
@@ -102,7 +118,7 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
         manifest['preflight_status']='SUCCESSOR_ACTUAL_PROBE_VERIFIED';save()
 
     if preflight_only:return manifest
-    for label in ('baseline','control'):
+    for label in case_labels:
         case=output/label;shutil.copytree(root/label,case)
         params=json.loads((case/'parameters.json').read_text());params['CFL_NUMBER']=10 if label=='baseline' else 100
         params['predecessor_image_id']=params['image_id'];params['image_id']=image_id
@@ -122,8 +138,11 @@ def run(root,protocol,output,preflight_only=False,successor_receipt=None):
             if diagnostics['sha256'][filename]!=p[key]:raise ValueError('input mutated during solver')
         manifest['cases'].append({'case':label,'converged_steps':diagnostics['converged_steps'],'steps':50,'velocity_relative_l2':diagnostics['velocity_relative_l2']})
         manifest['completed_cases']+=1;save()
-    manifest['status']='EXECUTION_COMPLETE_QUALITY_SEPARATE';save();return manifest
+    manifest['status']=('EXECUTION_COMPLETE_QUALITY_SEPARATE'
+                        if set(case_labels)=={'baseline','control'}
+                        else 'SINGLE_CASE_COMPLETE_NOT_PAIRED')
+    save();return manifest
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--protocol',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--preflight-only',action='store_true');p.add_argument('--successor-receipt',type=Path);a=p.parse_args();run(a.root,a.protocol,a.output,a.preflight_only,a.successor_receipt)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--protocol',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--preflight-only',action='store_true');p.add_argument('--successor-receipt',type=Path);p.add_argument('--case',choices=('baseline','control'),action='append',dest='case_labels');a=p.parse_args();run(a.root,a.protocol,a.output,a.preflight_only,a.successor_receipt,a.case_labels)
