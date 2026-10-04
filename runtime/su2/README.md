@@ -16,3 +16,23 @@ pilot reached all four residual thresholds at every step. The mapping between
 MMS time, history time and the updated solution remains unresolved; no local
 quality verdict is assigned. See docs/progress.md and evidence/su2.
 This adapter is our experiment, not an upstream SU2 change or proven bug fix.
+
+## Shared Fourier-envelope MMS
+
+`high_gradient.patch` is a separate adapter for the cross-solver reference in
+`protocols/su2-shared-high-gradient-v1.json`. It fixes frequency N=4 and
+implements the same analytic velocity and momentum forcing used by the
+OpenFOAM and PhysicsNeMo high-gradient cases. Its helper was compiled with GCC
+and matched the independent NumPy evaluator at 257 seeded points; this check
+does not cover SU2 linking, the solver residual path, or time integration.
+
+Build it with:
+
+```sh
+docker build --platform linux/arm64 -f runtime/su2/Dockerfile.high-gradient -t cans-su2-high-gradient runtime/su2
+```
+
+The candidate study retains the historical Gaussian adapter and archives each
+case, run log, time history, sampled quality metrics, protocol hash, and image
+identity separately. The source patch remains under SU2's LGPL-2.1-or-later
+terms.

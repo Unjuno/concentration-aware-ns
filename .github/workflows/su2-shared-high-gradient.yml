@@ -1,0 +1,62 @@
+name: SU2 shared high-gradient MMS matrix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [physicsnemo-global-hessian-audit]
+    paths:
+      - '.github/workflows/su2-shared-high-gradient.yml'
+      - 'protocols/su2-shared-high-gradient-v1.json'
+      - 'runtime/su2/Dockerfile.high-gradient'
+      - 'runtime/su2/high_gradient.patch'
+      - 'tools/analyze_su2.py'
+      - 'tools/high_gradient_reference.py'
+      - 'tools/run_su2_high_gradient_study.py'
+      - 'tools/su2_case.py'
+
+permissions:
+  contents: read
+
+jobs:
+  matrix:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.head_commit.message, '[run-su2-shared-high-gradient]')
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-verification-locked.txt
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+
+      - name: Build the pinned SU2 image with the shared MMS adapter
+        run: |
+          mkdir -p work/su2-shared-high-gradient-v1/build
+          docker build --platform linux/arm64 \
+            --iidfile work/su2-shared-high-gradient-v1/build/image-id \
+            -f runtime/su2/Dockerfile.high-gradient \
+            -t cans-su2-high-gradient runtime/su2 \
+            > work/su2-shared-high-gradient-v1/build/build.log 2>&1
+
+      - name: Execute the frozen five-case SU2 matrix
+        run: |
+          python -m tools.run_su2_high_gradient_study \
+            --protocol protocols/su2-shared-high-gradient-v1.json \
+            --root work/su2-shared-high-gradient-v1/run \
+            --image cans-su2-high-gradient
+
+      - name: Preserve build and all available case evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-shared-high-gradient-${{ github.sha }}
+          path: work/su2-shared-high-gradient-v1/
+          if-no-files-found: warn
+          retention-days: 90

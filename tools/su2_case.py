@@ -5,7 +5,13 @@ import math
 from pathlib import Path
 
 
-def generate(root,n=8,dt=.001,end=.005,inner=1000):
+def generate(root,n=8,dt=.001,end=.005,inner=1000,profile='gaussian',frequency=4):
+    if profile not in ('gaussian','high-gradient'):
+        raise ValueError('unsupported SU2 reference profile')
+    if int(frequency)!=frequency or frequency<1:
+        raise ValueError('frequency must be a positive integer')
+    if profile=='high-gradient' and frequency!=4:
+        raise ValueError('compiled adapter frequency is frozen at N=4')
     root=Path(root);root.mkdir(parents=True,exist_ok=False)
     length=2*math.pi
     def node(i,j,k):return i+(n+1)*(j+(n+1)*k)
@@ -74,7 +80,9 @@ SCREEN_OUTPUT= (TIME_ITER, INNER_ITER, RMS_PRESSURE, RMS_VELOCITY-X, RMS_VELOCIT
 HISTORY_OUTPUT= (ITER, RMS_RES, TIME_DOMAIN)
 '''
     (root/'case.cfg').write_text(config)
-    (root/'parameters.json').write_text(json.dumps({'n':n,'dt':dt,'end':end,'sigma':.5,'nu':.01,'status':'pilot; convergence unverified'},indent=2)+'\n')
+    (root/'parameters.json').write_text(json.dumps({'n':n,'dt':dt,'end':end,'sigma':.5,'nu':.01,
+        'profile':profile,'frequency':int(frequency),
+        'status':'pilot; convergence unverified'},indent=2)+'\n')
 
 
 if __name__=='__main__':

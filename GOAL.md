@@ -1,5 +1,32 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 332 — freeze the SU2 shared-reference matrix
+
+Added the separate five-case SU2 Fourier-envelope protocol, LGPL-preserving
+adapter image recipe, periodic-vertex case generation, and analysis that
+reports residual completion separately from velocity, energy, sampled
+gradient/vorticity peaks, and sampled spectrum gates. The pinned driver source
+sets MMS physical time to `TimeIter*dt`; the analyzer now reports the final
+source time, printed history time, and completed solution time as separate
+values. Four focused tests pass, including an exact-field analysis fixture
+whose coarse sampled derivative gate correctly fails. The full local suite
+passes (428 passed, 4 skipped, 89 subtests). This is a frozen prospective
+matrix; the SU2 image build and five solver cases have not yet run. The marked
+push will launch them on the pinned Linux/arm64 workflow, with all build and
+case evidence retained as an artifact. The full goal remains active.
+
+## Revision 331 — verify the SU2 shared-MMS formulas on Linux
+
+The new adapter helper compiled with GCC in hosted Python-verification run
+37189462449 and matched the independent NumPy high-gradient reference at 257
+seeded points (maximum absolute error `2.43e-17` in velocity and `2.78e-17`
+in forcing). The run also passed the complete locked Python suite (425 passed,
+3 skipped, 89 subtests). This checks the helper's algebra, not the patched SU2
+build, solver integration, time-level semantics, or accuracy. The PR's
+`exact-control` check and the separate full-horizon SU2 CFL run are still
+running. The matched-reference SU2 case matrix is therefore not yet executed.
+The full goal remains active.
+
 ## Revision 330 — close the SU2 reference-family gap before comparing solvers
 
 An audit of the frozen SU2 source adapter and `protocols/su2-study-v1.json`
