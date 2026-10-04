@@ -10,6 +10,14 @@ transition or viscosity collapse. Its physical description is inward spiral
 and axial stretching of a shrinking vortex core, with velocity and vorticity
 growing while the core's total kinetic energy tends to zero.
 
+In the proof's similarity description, with remaining time `τ → 0+` and
+`0 < h < 0.01`, the radial and axial core scales are respectively
+`ℓr ~ τ^(1/2)` and `ℓz ~ τ^(1/2-h)`, while the characteristic azimuthal/axial
+speeds scale as `τ^(-1/2-h)` and core kinetic energy as `τ^(1/2-3h) → 0`.
+These are asymptotic scalings of continuum fields. They describe a slender,
+shrinking vortex and rising speed; they contain no molecular orientation or
+particle-position probability variable.
+
 The September 15, 2026 arXiv preprint by Ramani Duraiswami is a relevant new
 physical-bridge investigation. It studies the leading-order similarity profile
 and a porous-wall analogue, proposes cavitation/shock observables, and gives
