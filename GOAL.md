@@ -6252,3 +6252,21 @@ workers remain in progress and OpenFOAM hosted validation is mixed: cellPoint
 capture and earlier AMR-mean / interface jobs pass, while this revision's
 position replay and some solver jobs remain queued or active. The overall goal
 remains active pending hosted results and independent archive review.
+
+## Revision 370 — reconcile completed OpenFOAM evidence
+
+The 15-case Foundation 13 width/time matrix had already completed in Actions
+run `37211431276` and was independently replayed; earlier goal entries that
+called it prepared or not yet run are superseded. All 1,350 expected steps
+completed. Every case passed solver stopping; the `n=32` cases passed velocity,
+energy, and spectrum targets but missed the 5% sampled gradient/vorticity peak
+targets, while all `n=64` and `n=128` cases passed all local targets for all
+three widths. Exact-field FD2 floors explain the coarse peak discrepancy, so
+all fine-grid classifications are `NOT_OBSERVED`. All 15 archive hashes, 150
+input hashes, 60 stored diagnostic hashes, and analyzer outputs replayed. This
+supports a coarse-grid local-accuracy limitation in this manufactured
+benchmark, not an OpenFOAM defect, singularity, or molecular claim; see
+`reports/openfoam-high-gradient-width-run-2026-10-04.md` and the updated impact
+map. SU2 run `37230949147` is still actively executing its five frozen cases.
+OpenAI formal audit run `37233433718` was queued immediately after push; its
+build and independent checks have not yet run. The overall goal remains active.
