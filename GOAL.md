@@ -1,5 +1,60 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 303 — replay the shared strain–diffusion algebra in the pinned environment
+
+Reran `tools/check_burgers_vortex.py` with the repository's
+`requirements-verification.txt` under SymPy 1.14.0. Continuity, radial and
+axial momentum, azimuthal momentum, and vorticity residuals are zero for the
+stated ansatz under `q'=4 nu-aq`; the smooth-axis swirl limit also matches.
+This independently reproduces the continuum algebra but not its imposed
+feedback closure, finite-energy suitability, molecular interpretation, or the
+OpenAI construction. The full benchmark goal remains active; details are in
+the 2026-10-04 research report.
+
+## Revision 302 — replay the analytic-forcing obstruction's source hypotheses
+
+Compared the local pure-swirl and positive axial-on-axis hypotheses used in
+Remark 2.6 of arXiv:2609.20803v2 against OpenAI's Theorem 3.1, coordinate
+bound (10.3), axis datum (B.1), and localization discussion (10.1). The
+fixed off-axis set follows by choosing a small time/axial slab so that
+`X=r^2/(2q)>X_ext`; on-axis `u_z=j0*tau^(-A)>0`, while annular corrections
+vanish there. This verifies those source statements and their compatibility;
+it does not audit the complete correction-series proof or Lean artifact. The
+result is a conditional exclusion of spatially analytic forcing, not an
+upstream defect. The detailed crosswalk is in the 2026-10-04 research report;
+full benchmark goal remains active.
+
+## Revision 301 — verify the new forcing regularity boundary and preserve the live wait
+
+Read the full relevant proof and corollaries of Constantin–Ignatova–Vicol
+arXiv:2609.20803v2. Under their profile hypotheses, analytic forcing implies
+regularity; their separate pure-swirl/open-set argument also rules out
+space-analytic forcing on pre-singular time slabs for the stated OpenAI flow
+properties. The authors explicitly do not verify OpenAI's construction, so
+this remains a conditional mathematical boundary, not a proof defect. Recast
+the shared Burgers-strain calculation with its explicit azimuthal residual in
+the report; it remains an infinite-energy ansatz and says nothing about
+molecular coordinates. The public GitHub run page independently shows the
+frozen SU2 run 37160281461 as `In progress` at 2026-10-04 01:11 UTC; logs are
+not exposed there, and it was not restarted. Full goal remains active.
+
+## Revision 300 — audit the shared molecular hypothesis against new results
+
+Re-derived the shared conversation's strain–diffusion vortex equations and
+bounded-strain width estimate. Its feedback blow-up branch is an exact
+idealized unforced solution family, but imposes a closure and has infinite
+whole-space energy because of its linear background; it does not imply
+molecular alignment or determine particle positions. Read two new primary
+preprints: Constantin–Ignatova–Vicol (arXiv:2609.20803v2) give conditional
+regularity under analytic forcing and profile hypotheses while explicitly
+leaving the OpenAI construction unverified; Petrillo–Glimm (arXiv:2609.23868)
+prove a limit on finite Galerkin computations as evidence for unforced blow-up.
+Clay's “apparently been settled” notice is procedural, not technical validation.
+Neither preprint yields a verified upstream defect. Details and bounded claim language
+are in `reports/research-refresh-2026-10-04-shared-hypothesis-and-new-regularity-results.md`.
+The active hosted SU2 pair and PR checks remain separate gates; full goal
+remains active.
+
 ## Revision 299 — verify the tracked project from a fresh locked export
 
 The fixed local HEAD `e039e4b4098fedda2f53f76a71d3a447e384b5c1` passed
