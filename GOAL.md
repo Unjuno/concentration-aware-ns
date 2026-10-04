@@ -5517,3 +5517,24 @@ upstream targets is stored at
 `evidence/upstream-refresh/three-project-live-status-2026-10-04T0543Z.json`;
 existing tracked issues/PRs remain the right reporting channels, so no duplicate
 upstream post was made. Overall goal remains active.
+
+## Revision 146 — matched high-gradient PhysicsNeMo PINN study
+
+The historical PhysicsNeMo PINN matrix uses a different Gaussian MMS from the
+OpenFOAM/SU2 high-gradient benchmark. Added a Torch implementation of the shared
+periodic Fourier-envelope MMS, checked its values and gradients against the
+independent NumPy reference, and verified the full momentum residual with
+independent analytic forcing (maximum sampled residual below 2e-11). Froze and
+ran the additive 25-model PhysicsNeMo v2.2.1 matrix: five collocation
+configurations by five seeds, each with 5,000 updates. All 25 archives, exit
+codes, update counts, finite final losses/metrics and SHA-256 digests passed the
+run-integrity audit. All 25 failed the preregistered sampled field/derivative
+quality gate; their global metrics failed along with local derivative metrics,
+so the sampled blind-spot rule was not reproduced. Continuous extrema remain
+uncertain, and this is a PINN approximation result rather than evidence of an
+upstream solver defect or physical particle alignment. Full results and
+limitations are in `reports/physicsnemo-shared-high-gradient-2026-10-04.md` and
+`evidence/physicsnemo-shared-high-gradient-v1/`. Focused MMS/reference tests
+pass; the attempted full local collection could not start because the available
+Python environments lack the repository-wide SciPy and python-flint
+dependencies. Goal remains active.
