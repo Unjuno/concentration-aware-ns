@@ -70,6 +70,32 @@ for orientational order. A viscosity drop would need a specified constitutive
 law and independent rheological evidence. Neither follows from the benchmark
 errors or from the theorem's divergence.
 
+## The material hypothesis is testable in a narrower form
+
+Targeted primary-literature checks show that shear-induced molecular
+orientation and shear thinning are established for some complex fluids. An
+infrared-rheometry experiment on two smectic side-chain liquid-crystalline
+polymers measured shear-induced mesogen orientation, with orientation
+perpendicular to the flow and a reported orientation function up to -0.35.
+Separate simultaneous SAXS/rheology measurements on a smectic side-chain
+polymer reported a strongly oriented state and shear thinning with a sharp
+reduction in dynamic shear moduli. A 2023 nonequilibrium molecular-dynamics
+study of bottlebrush polymer melts found molecular alignment and shear
+thinning, but found bond orientation more explanatory of architecture-related
+shear-thinning differences than whole-molecule alignment; dense side-chain
+packing impeded alignment and reduced shear thinning.
+
+So the defensible research question is narrower: for a named anisotropic or
+polymeric material, does a prescribed, physically reachable local shear
+history change an independently measured orientational order parameter and
+the constitutive stress/viscosity response? The simple-fluid Navier–Stokes
+blow-up theorem does not answer that question. A test needs a material model
+with internal orientation/conformation variables, dimensionless regime
+matching (including Deborah/Weissenberg and Reynolds numbers), and independent
+rheology or scattering data. For the theorem's illustrative water/air
+realization, the cited preprint instead estimates cavitation or compressibility
+before molecular-scale physics becomes relevant.
+
 ## Disposition and next checks
 
 This source review supports no defect claim against OpenAI, OpenFOAM, SU2, or
@@ -94,3 +120,6 @@ measured.
 
 - OpenAI, [On the Navier–Stokes Millennium Prize Problem](https://openai.com/index/navier-stokes-solution/), 2026-09-08, and its [proof paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf).
 - Ramani Duraiswami, [Self-similar swirl between contracting porous walls: the GD1998 exact Navier–Stokes solution revisited in the similarity variables of the OpenAI 2026 forced blow-up construction](https://arxiv.org/abs/2609.17642), arXiv:2609.17642, submitted 2026-09-15. Preprint; computational claims and physical estimates above are attributed to the author, not independently verified here.
+- G. Wiberg, M.-L. Skytt and U.W. Gedde, [Shear-induced alignment and relaxation of orientation in smectic side-chain liquid-crystalline polymers](https://doi.org/10.1016/S0032-3861(97)00626-5), *Polymer* 39 (1998), 2983–2986; direct infrared-rheometry experiment on two specified polymers.
+- [Shear-induced layer alignment in the smectic phase of a side-chain liquid crystal polymer](https://doi.org/10.1016/S0032-3861(98)00537-0), *Polymer* 40 (1999), 3599–3603; simultaneous SAXS and rheology for one specified polymer system.
+- A. Giuntoli et al., [Shear Thinning from Bond Orientation in Model Unentangled Bottlebrush Polymer Melts](https://doi.org/10.1021/acs.macromol.3c01061), *Macromolecules* 56 (2023), 5708–5717; nonequilibrium molecular-dynamics evidence, not an experimental fluid measurement.

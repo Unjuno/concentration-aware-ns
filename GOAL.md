@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 337 — separate established complex-fluid alignment from theorem implications
+
+Added a targeted literature check showing that shear-induced molecular
+orientation and shear thinning are real for particular liquid-crystalline and
+polymer systems, in experiments and molecular-dynamics studies. Updated the
+claim boundary: this keeps the user's material hypothesis open as a separate
+constitutive/microscopic research path, while the constant-viscosity
+continuum blow-up theorem does not entail that behavior. See the physical
+bridge audit and the revised row in `reports/attachment-hypothesis-audit-2026-10-04.md`.
+
 ## Revision 336 — audit post-announcement blow-up and physical bridge work
 
 Added a dated source audit of OpenAI's September 2026 forced 3D
