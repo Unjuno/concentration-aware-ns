@@ -96,7 +96,9 @@ BODY
         actual=np.loadtxt(run.stdout.splitlines())
     expected=fields(points,N=frequency,nu=0.01,time=now,
                     envelope_power=envelope_power)["force"]
-    error=float(np.max(np.abs(actual-expected)))
+    residual = np.abs(actual-expected)
+    worst = np.unravel_index(int(np.argmax(residual)), residual.shape)
+    error=float(residual[worst])
     version=subprocess.run([compiler,"--version"],capture_output=True,text=True,check=True).stdout.splitlines()[0]
     result={"scope":"Generated codeAddSup C++ body with minimal mock types; no OpenFOAM headers or solver.",
             "compiler":version,"compiler_path":compiler,
@@ -104,7 +106,11 @@ BODY
             "seed":8831,"points":len(points),"time":now,"N":frequency,
             "envelope_power":envelope_power,
             "fvModels_sha256":hashlib.sha256(source.encode()).hexdigest(),
-            "max_absolute_force_error":error,"tolerance":1e-10,"passed":error<1e-10,
+            "max_absolute_force_error":error,
+            "worst_point_index":int(worst[0]),"worst_component":int(worst[1]),
+            "actual_at_worst":float(actual[worst]),
+            "expected_at_worst":float(expected[worst]),
+            "tolerance":1e-10,"passed":error<1e-10,
             "limitations":"Does not establish compatibility with Foundation headers or live solver source sign convention."}
     return result
 
