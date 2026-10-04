@@ -5552,3 +5552,36 @@ the Python CI job have not completed. Hosted SU2 run 37180101797 is still
 reported `in_progress` at the frozen CFL=10 solver step and has exposed no
 logs or numerical result. Overall target coverage and the active goal remain
 incomplete.
+
+## Revision 148 — independent replay of the complete OpenFOAM matrix index
+
+Ran `tools.verify_openfoam_high_gradient_matrix` against the current six-case
+index and its archived inputs. All protocol/index/base-manifest hashes,
+archives, logs, endpoint fields, timestep counts, standard acceptance results
+and sampled-quality decisions reproduced. All six pass standard acceptance;
+n16/n32 at dt=0.001 fail local sampled quality while n64/n128 at dt=0.001 and
+both n64 temporal refinements pass. The predefined fine-grid concentration
+rule is `NOT_OBSERVED`. The saved 36-record dt=0.0005 attempt is superseded by
+the independently archived 100-step completion; no new solver run was needed.
+AMR remains a separate pilot with quality `UNCERTAIN`. Receipt and scope are in
+`evidence/tests/openfoam-high-gradient-matrix-2026-10-04-b996015.json` and
+`reports/openfoam-high-gradient-matrix-recheck-2026-10-04.md`. Goal remains
+active.
+
+## Revision 149 — raw-archive replay of the Foundation 13 AMR mean study
+
+Reconstructed the exact experiment harness tree at commit
+`3566f89058071910a41bb68010eb258c7bbc3d74`, retrieved all four raw cases from
+the existing checksummed GitHub Release, and verified each release digest,
+archive-member hash, stage analysis and case manifest. Same-host reanalysis
+exactly matches the saved macOS analysis objects; the pinned aggregator exactly
+reproduces the matrix JSON: all standard gates pass, the disabled-capture
+control is byte-identical, fine-grid derivative-reference controls are
+adequate, and n32/n64 fail the specified postSolve mean-quality gate. This
+supports `REPRODUCED_SPECIFIED_MEAN_GATE_DISCREPANCY` for that metric only; the
+analytic projection decomposition, improving resolution trend and separately
+uncertain N=4 peak/spectrum gate do not establish an OpenFOAM implementation
+defect or physical mechanism. Full receipt and limits are in
+`evidence/tests/openfoam-amr-mean-quality-replay-2026-10-04-b996015.json` and
+`reports/openfoam-amr-mean-quality-independent-replay-2026-10-04.md`. No new
+upstream post is justified.
