@@ -1,0 +1,113 @@
+{
+  "checked_at_utc": "2026-10-04T00:01:15Z",
+  "repository": "NVIDIA/physicsnemo",
+  "compare": {
+    "base": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+    "head": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "files": [
+      "CHANGELOG.md",
+      "docs/research.md",
+      "examples/cfd/external_aerodynamics/globe/airfrans/train.py",
+      "examples/cfd/external_aerodynamics/globe/drivaer/train.py",
+      "examples/cfd/external_aerodynamics/transformer_models/README.md",
+      "examples/cfd/external_aerodynamics/unified_external_aero_recipe/README.md",
+      "examples/cfd/external_aerodynamics/unified_external_aero_recipe/conf/model/globe_surface.yaml",
+      "examples/cfd/external_aerodynamics/unified_external_aero_recipe/conf/model/globe_volume.yaml",
+      "examples/cfd/external_aerodynamics/unified_external_aero_recipe/tests/test_synthetic_configs.py",
+      "physicsnemo/experimental/models/globe/field_kernel.py",
+      "physicsnemo/experimental/models/globe/model.py",
+      "physicsnemo/experimental/models/globe/utilities/tensordict_utils.py",
+      "physicsnemo/experimental/uq/__init__.py",
+      "physicsnemo/mesh/__init__.py",
+      "physicsnemo/mesh/fields.py",
+      "test/mesh/test_fields.py",
+      "test/models/globe/test_barnes_hut_kernel.py",
+      "test/models/globe/test_field_kernel.py",
+      "test/models/globe/test_inference.py",
+      "test/models/globe/test_measure.py",
+      "test/models/globe/test_nonregression.py",
+      "test/models/globe/test_validation.py"
+    ],
+    "status": "ahead",
+    "total_commits": 2
+  },
+  "purpose": "Scope check whether the newly observed main-branch commits change source paths already audited for Issue #2007 and Issue #2001.",
+  "audited_paths": [
+    {
+      "path": "physicsnemo/metrics/general/power_spectrum.py",
+      "base": {
+        "path": "physicsnemo/metrics/general/power_spectrum.py",
+        "sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "size": 4129
+      },
+      "head": {
+        "path": "physicsnemo/metrics/general/power_spectrum.py",
+        "sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "size": 4129
+      },
+      "unchanged_git_blob": true
+    },
+    {
+      "path": "physicsnemo/nn/functional/derivatives/uniform_grid_gradient/uniform_grid_gradient.py",
+      "base": {
+        "path": "physicsnemo/nn/functional/derivatives/uniform_grid_gradient/uniform_grid_gradient.py",
+        "sha": "a5049ff1239ab263a5e18c72b0cf098f9f322af5",
+        "size": 9472
+      },
+      "head": {
+        "path": "physicsnemo/nn/functional/derivatives/uniform_grid_gradient/uniform_grid_gradient.py",
+        "sha": "a5049ff1239ab263a5e18c72b0cf098f9f322af5",
+        "size": 9472
+      },
+      "unchanged_git_blob": true
+    },
+    {
+      "path": "physicsnemo/nn/functional/derivatives/spectral_grid_gradient/spectral_grid_gradient.py",
+      "base": {
+        "path": "physicsnemo/nn/functional/derivatives/spectral_grid_gradient/spectral_grid_gradient.py",
+        "sha": "3efa75aeb1ae2a4813cb7b8aa47b8df7ccec2c7b",
+        "size": 7974
+      },
+      "head": {
+        "path": "physicsnemo/nn/functional/derivatives/spectral_grid_gradient/spectral_grid_gradient.py",
+        "sha": "3efa75aeb1ae2a4813cb7b8aa47b8df7ccec2c7b",
+        "size": 7974
+      },
+      "unchanged_git_blob": true
+    },
+    {
+      "path": "physicsnemo/sym/eq/gradients.py",
+      "base": {
+        "path": "physicsnemo/sym/eq/gradients.py",
+        "sha": "660403fa92544725515e82beba38194e7047996b",
+        "size": 18309
+      },
+      "head": {
+        "path": "physicsnemo/sym/eq/gradients.py",
+        "sha": "660403fa92544725515e82beba38194e7047996b",
+        "size": 18309
+      },
+      "unchanged_git_blob": true
+    },
+    {
+      "path": "physicsnemo/sym/eq/phy_informer.py",
+      "base": {
+        "path": "physicsnemo/sym/eq/phy_informer.py",
+        "sha": "09d647d8977d2794d848e871be2caad50c2a1ac4",
+        "size": 12580
+      },
+      "head": {
+        "path": "physicsnemo/sym/eq/phy_informer.py",
+        "sha": "09d647d8977d2794d848e871be2caad50c2a1ac4",
+        "size": 12580
+      },
+      "unchanged_git_blob": true
+    }
+  ],
+  "limits": [
+    "Path identity only; no fresh code execution or full framework test suite.",
+    "This does not substitute current main for the pinned historical benchmark environment."
+  ]
+}

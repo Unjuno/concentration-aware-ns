@@ -22,3 +22,24 @@ Exact queried states and object IDs are recorded in
 `evidence/upstream-refresh/physicsnemo-current-status-2026-10-03T-live.json`.
 This is a focused upstream refresh, not an exhaustive repository audit, a new
 runtime reproduction, or a full PhysicsNeMo test-suite result.
+
+## 2026-10-04 target-path delta check
+
+PhysicsNeMo `main` advanced to `b45a5c810c741e6b41f8515be24c51121f8fc21f`.
+The GitHub compare against the previously inspected `83d6a337…` has two
+commits and 22 changed paths, all in GLOBE field schemas/examples and related
+tests. Exact tree entries confirm that these five previously audited files
+have unchanged Git blob IDs across the two commits:
+
+- `physicsnemo/metrics/general/power_spectrum.py`
+- `physicsnemo/nn/functional/derivatives/uniform_grid_gradient/uniform_grid_gradient.py`
+- `physicsnemo/nn/functional/derivatives/spectral_grid_gradient/spectral_grid_gradient.py`
+- `physicsnemo/sym/eq/gradients.py`
+- `physicsnemo/sym/eq/phy_informer.py`
+
+This path-level delta check leaves the existing duplicate-reporting decision
+unchanged: odd-width spectra remain tracked by Issue #2007 / PR #2008, and the
+periodic-boundary wrapper concern remains tracked by Issue #2001 / #1852 /
+draft PR #1853. No source was executed, no new issue was filed, and no full
+framework audit is claimed. Exact commit comparison and tree entries are in
+`evidence/upstream-refresh/physicsnemo-audited-source-delta-2026-10-04T0001Z.json`.

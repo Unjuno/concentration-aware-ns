@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 296 — check whether PhysicsNeMo head movement touches audited operators
+
+PhysicsNeMo `main` advanced from `83d6a337…` to `b45a5c81…` by two commits.
+The compare API lists 22 changed files; none is the odd-width spectrum path,
+the periodic grid-gradient implementations, `Gradients`, or `PhysicsInformer`.
+The exact tree entries at both revisions are recorded in
+`evidence/upstream-refresh/physicsnemo-audited-source-delta-2026-10-04T0001Z.json`
+and linked from `reports/physicsnemo-live-status-2026-10-03.md`. This does not
+reproduce the framework or expand the historical benchmark pin; the existing
+issue/PR disposition remains unchanged. Full goal active.
+
 ## Revision 295 — preserve the hosted verification artifact
 
 The independent `tests` job in hosted run 37160281461 completed successfully on
