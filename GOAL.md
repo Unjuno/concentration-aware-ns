@@ -5996,3 +5996,18 @@ establish general CFL behavior or an upstream defect; adjacent SU2 issues
 #2353/#2932 concern different questions, so no issue was posted. Continuous
 extrema and all broader cross-solver/physical goals remain open. Goal remains
 active.
+
+## Revision 358 — independently replay seventh Foundation 13 smooth-control build
+
+Hosted run 37202786082 completed all six spatial and temporal cases from
+`5b60a879d30aab6cb9e10a49f5ada64520c2728c` on a distinct ARM64 image. The
+downloaded artifact passed local archive/diagnostic replay, including the
+recorded input and endpoint hashes, exact time grids, zero exits and the
+retrospective Foundation stopping gate. Against run 37201155941, all 36 scalar
+metrics agree exactly while all case archive hashes differ. Replay, provenance,
+comparison and retention metadata are saved in
+`evidence/of13-forced-periodic-control-hosted-5b60a87/`. Spatial orders
+reproduce; temporal order remains UNCERTAIN because the spatial error floor is
+not separated. This smooth control does not test concentration, molecular
+alignment, or a constitutive transition. The whole-repository objective stays
+active.

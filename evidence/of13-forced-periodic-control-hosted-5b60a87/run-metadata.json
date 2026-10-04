@@ -1,0 +1,22 @@
+{
+  "github_actions_run_id": 37202786082,
+  "github_actions_artifact_id": 11303383588,
+  "github_actions_artifact_name": "of13-forced-periodic-control-5b60a879d30aab6cb9e10a49f5ada64520c2728c",
+  "github_actions_artifact_size_bytes": 39826383,
+  "github_actions_artifact_created_at_utc": "2026-10-04T12:43:27Z",
+  "github_actions_artifact_expires_at_utc": "2027-01-02T12:38:08Z",
+  "github_actions_artifact_zip_sha256": "8eb0a46c8b2c869b75ab39bbf52c25cea37dcea432df0e79e3873dddb735c2a2",
+  "source_commit": "5b60a879d30aab6cb9e10a49f5ada64520c2728c",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "image_inspect": "[\n    {\n        \"Id\": \"sha256:74f7c8d549d9207858ef40663defe5582d9a589be89f4ca2b4294cdc59af99c1\",\n        \"RepoTags\": [\n            \"concentration-aware-ns:of13\"\n        ],\n        \"RepoDigests\": [],\n        \"Parent\": \"\",\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-10-04T12:40:02.877020084Z\",\n        \"DockerVersion\": \"\",\n        \"Author\": \"\",\n        \"Config\": {\n            \"Hostname\": \"\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": false,\n            \"AttachStderr\": false,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"\n            ],\n            \"Cmd\": [\n                \"foamRun\",\n                \"-help\"\n            ],\n            \"ArgsEscaped\": true,\n            \"Image\": \"\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/case\",\n            \"Entrypoint\": [\n                \"/bin/bash\",\n                \"-c\",\n                \"source /opt/openfoam13/etc/bashrc; exec \\\"$@\\\"\",\n                \"--\"\n            ],\n            \"OnBuild\": null,\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\"\n            },\n            \"Shell\": [\n                \"/bin/bash\",\n                \"-c\"\n            ]\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 1612003003,\n        \"GraphDriver\": {\n            \"Data\": {\n                \"LowerDir\": \"/var/lib/docker/overlay2/ln614oirbvcpb6yorujqfjb6j/diff:/var/lib/docker/overlay2/c8dbb4c769f7e8c3e7052e91bc71d9c805bcaf005f548d61a9fc8693e729172e/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/xhov0fxu0vcd6853emer5dtrn/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/xhov0fxu0vcd6853emer5dtrn/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/xhov0fxu0vcd6853emer5dtrn/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b\",\n                \"sha256:0b5e9b92bea61474d40e8a07b5990da874b7d2f4148576bcbb30b472b838658b\",\n                \"sha256:3656ff302f5fc0f0e81d453b8ab32e2669b929ceff31d0ca75c53904d2815edf\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-10-04T12:40:09.527543837Z\"\n        }\n    }\n]",
+  "compared_run_ids": [
+    37201155941
+  ],
+  "interpretation": "Independent archive and diagnostic replay passes all six complete cases, including exact step counts, input/output hashes and retrospective Foundation 13 stopping checks. The 36 scalar diagnostics exactly match run 37201155941 (maximum absolute difference 0), while all six archive hashes and the image ID differ. Spatial velocity/pressure orders reproduce. Temporal order remains UNCERTAIN because total-error differences do not isolate the spatial floor.",
+  "limitations": [
+    "Smooth periodic control only; it does not exercise the localized high-gradient profile or AMR.",
+    "Cell-sampled diagnostics do not certify continuous extrema or physical validity.",
+    "The complete time-step sweep does not isolate temporal truncation error from the fixed-grid spatial floor.",
+    "The GitHub Actions artifact expires 2027-01-02; the ZIP checksum is recorded for retrieval verification."
+  ]
+}

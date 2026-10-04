@@ -2196,3 +2196,15 @@ retention metadata are in
 The full image tar remains in a separate expiring Actions artifact. Existing
 SU2 issues #2353 and #2932 are adjacent but address different behaviors; no
 new issue is warranted by this single matched pair.
+
+### Seventh Foundation 13 exact-control repeat — 2026-10-04
+
+Run 37202786082 completed all six calibration cases from commit `5b60a87`.
+The archived fields and diagnostics pass independent replay and retrospective
+stopping checks. All 36 scalar diagnostics match the preceding hosted build
+exactly, with a different image and different case archives. Evidence is
+retained in
+[`evidence/of13-forced-periodic-control-hosted-5b60a87`](../evidence/of13-forced-periodic-control-hosted-5b60a87/verification.json).
+The spatial orders reproduce, while temporal order remains UNCERTAIN because
+the fixed-grid spatial floor is not isolated. This smooth calibration does
+not validate concentrated flow or physical molecular claims.
