@@ -5808,3 +5808,16 @@ hash-verified receipt are `tools/compare_openfoam_peaks_to_continuum.py` and
 documented in `reports/openfoam-archived-continuum-peak-decomposition-2026-10-04.md`.
 The complete local suite passes 434 tests, 4 skipped, 89 subtests. Goal remains
 active.
+
+## Revision 346 — hosted replay of the continuum peak decomposition
+
+At commit `1b40ece31627cde6cba6da7e7ba8bb5706dddc2d`, GitHub's full Python
+verification job passed: 435 passed, 3 skipped, 89 subtests passed. The local
+locked run on macOS passed 434 tests with 4 skipped; the one-test skip-count
+difference is environment-dependent and is not a failure. The PR's other
+completed Foundation 13 analysis checks pass or are intentionally skipped by
+their path filters. A newly started Foundation 13 forced-periodic spatial and
+temporal control run has completed its container build and is executing the
+frozen cases. The separate SU2 shared matrix and CFL-control jobs remain
+in-progress. PR #4 remains open; no solver verdict is inferred until those
+archives finish and pass replay. Goal remains active.
