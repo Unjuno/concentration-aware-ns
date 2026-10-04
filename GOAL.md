@@ -5759,7 +5759,7 @@ defect or physical mechanism. Full receipt and limits are in
 `reports/openfoam-amr-mean-quality-independent-replay-2026-10-04.md`. No new
 upstream post is justified.
 
-## Revision 150 — certified-reference peak sampling diagnostic
+## Revision 343 — certified-reference peak sampling diagnostic
 
 Added a supplemental N=4 diagnostic comparing the exact analytic gradient and
 vorticity sampled at the frozen uniform cell centers against their newly
@@ -5774,6 +5774,7 @@ Reproduction code, test, JSON receipt, and scope note are in
 `tests/test_high_gradient_peak_sampling.py`,
 `evidence/tests/high-gradient-cell-center-peak-sampling.json`, and
 `reports/openfoam-continuum-peak-sampling-2026-10-04.md`. Full locked local
-verification: 432 passed, 4 skipped, 89 subtests passed. Commit `4d82240c` was
-pushed to PR #4; its Python CI job is still running, so hosted validation is
-pending. Goal remains active.
+verification: 432 passed, 4 skipped, 89 subtests passed. The implementation
+and receipt are in commit `4d82240c`; this goal-log update is in `f0d20541`.
+Both are pushed to PR #4. The latest Python CI job is still running, so hosted
+validation is pending. Goal remains active.
