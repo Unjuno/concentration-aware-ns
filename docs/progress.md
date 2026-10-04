@@ -648,3 +648,13 @@ subtests. Focused checker and tests also pass on Python 3.12.10 (4 tests,
 13 identities); environment and hashes are recorded in
 `evidence/tests/spherical-orientation-diffusion-py312-2026-10-03.json`. This is
 not a full Python 3.12 suite or hosted-CI result. Goal remains active.
+
+## 2026-10-05 — width/time sweep artifact independently replayed
+
+The downloaded Foundation 13 width/time artifact replay passed: 15/15 case
+archives, 150/150 frozen input hashes, 60/60 diagnostic hashes, and 1,350
+steps were verified. All analyzed metrics, reference FD2 floors, and the three
+`NOT_OBSERVED` fine-grid classifications reproduce. The result is limited to
+the frozen manufactured benchmark and its stored analyzer; it is not an
+independent solver audit or a molecular/physical result. README and completion
+audit now link the report and machine-readable receipt.

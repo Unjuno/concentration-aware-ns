@@ -2227,6 +2227,22 @@ The spatial orders reproduce, while temporal order remains UNCERTAIN because
 the fixed-grid spatial floor is not isolated. This smooth calibration does
 not validate concentrated flow or physical molecular claims.
 
+### Foundation 13 high-gradient width/time sweep replay — 2026-10-05
+
+The 15-case hosted Foundation 13 width/time sweep from source commit
+`999fe90ae0e8fef106fd9db521541f71a2dfca43` was independently replayed from its
+downloaded artifact. All 15 case archive hashes, 150 pre-run input hashes, and
+60 diagnostic-file hashes match; 1,350 logged steps, endpoints, convergence
+records, and exit statuses match the manifest. Recomputing every case with
+`tools.analyze_openfoam.analyze` reproduces its saved diagnostics within
+relative tolerance `1e-12` and absolute tolerance `1e-14`. The exact-field FD2
+floors and all three fine-grid classifications also replay: each width is
+`NOT_OBSERVED` at n=64 and n=128. Coarse n=32 peak errors fail local quality
+while the stopping gate passes, consistent with the reference stencil floor.
+This is artifact/postprocessor verification, not an independent solver or
+physical validation. See [the width/time report](../reports/openfoam-high-gradient-width-run-2026-10-04.md)
+and [replay receipt](../evidence/tests/openfoam-high-gradient-width-hosted-37211431276.json).
+
 ### Analytic concentration-width preflight — 2026-10-04
 
 Generalized the independent localized-MMS evaluator to integer envelope powers

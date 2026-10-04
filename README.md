@@ -12,6 +12,7 @@ Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
 - [Verified n32 capture and bounded-batch local derivative audit](reports/cell-point-n32-capture-derivative-2026-10-04.md)
+- [Foundation 13 high-gradient envelope-width and time-step sweep (15 cases)](reports/openfoam-high-gradient-width-run-2026-10-04.md)
 - [Fine and temporal native capture launch — results pending](reports/cell-point-fine-capture-launch-2026-10-04.md)
 - [Native position replay and enclosed local neighborhood](reports/cell-point-position-neighborhood-2026-10-04.md)
 - [Enclosed local affine gradient and curl witness](reports/cell-point-local-derivative-2026-10-04.md)
