@@ -5887,3 +5887,15 @@ reproducible software defect emerged, so no upstream report was posted. Exact
 branch SHAs and record metadata are preserved in
 `evidence/upstream-refresh/live-status-2026-10-04T1137Z.json`. Goal remains
 active.
+
+## Revision 351 — resolve the current state of the partial OpenFOAM case
+
+Rechecked the previously ambiguous n64/dt=0.0005 runner: neither its host
+process nor a matching running/stopped Docker record exists now. Its preserved
+log ends mid-step at 0.0185 s after 36 completed PIMPLE steps (37 time records),
+with no exit receipt or completion marker. Captured the exact log SHA and both
+successful state probes in
+`evidence/environment/of13-high-gradient-n64-dt0p0005-container-recheck-2026-10-04.json`
+and corrected the count in the status addendum. The case remains incomplete;
+absence of a container is not evidence of numerical success or failure. Goal
+remains active.

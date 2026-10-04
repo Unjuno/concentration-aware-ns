@@ -238,3 +238,20 @@ completed PIMPLE convergence records; it has no terminal `End` marker or
 activity. Container state therefore remains **unknown**, not confirmed stopped;
 no solver restart or OrbStack restart was attempted. Hash and command details
 are in `evidence/environment/orbstack-docker-hang-recheck-2026-09-28.json`.
+
+## Current recheck of the incomplete n64/dt=0.0005 case (2026-10-04)
+
+A fresh process probe and successful `docker ps -a --filter
+name=cans-hg-n64-dt0.0005` on 2026-10-04 11:39 UTC return no host runner
+process and no Docker record. The original launch used `--rm`; the empty list is
+consistent with container removal, but it cannot supply the missing solver
+exit code. The preserved partial `log.foamRun` has 37 time records through
+0.0185 s and 36 completed PIMPLE steps; its last lines stop during iteration 2
+of the next step. There is no `exit.json`, terminal `End` marker, or completed
+case archive. Its SHA-256 is
+`ebeac15e96ad6e9a14eec09ad194db4136bbd9f5b9faa7c68ede144fa9dbca9e`.
+The machine-readable observation is
+`evidence/environment/of13-high-gradient-n64-dt0p0005-container-recheck-2026-10-04.json`.
+This resolves the current container-presence question only. The case remains
+incomplete; no convergence-quality verdict, solver failure classification, or
+physical inference follows from the partial log.
