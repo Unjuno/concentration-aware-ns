@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 314 — record post-announcement regularity and force-density results
+
+Checked recent primary arXiv work beyond the OpenAI announcement. Constantin,
+Ignatova, and Vicol (2609.20803 v2) prove regularity under analytic forcing for
+solutions satisfying the construction's anisotropic Type II bounds and exact
+axisymmetry in a collapsing core; in the corresponding C2-bounded class, the
+force cannot vanish near the singular point or be locally uniformly spatially
+analytic. This is compatible with a smooth nonanalytic force and is not a
+refutation. Cao, Chi, and Nie (2609.10262 v4) state density of smooth
+blowup-producing forces in relative L1_t H^s_x exactly for s<1/2, while
+preserving initial velocity. This is a weak-topology density result, not
+engineering robustness or physical realizability. Neither result supports
+molecular position certainty, particle alignment, or a viscosity transition;
+no upstream implementation defect was identified, so no issue was filed. The
+source-scoped interpretation and follow-up forcing check are in
+`reports/post-announcement-navier-stokes-literature-2026-10-04.md`, with version
+metadata in its evidence JSON. The benchmark and active SU2 gates remain open.
+
 ## Revision 313 — stream native SU2 progress without weakening log evidence
 
 The full-horizon runner wrote solver output only to an artifact file, leaving

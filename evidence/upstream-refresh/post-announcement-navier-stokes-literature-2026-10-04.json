@@ -1,0 +1,27 @@
+{
+  "captured_at_utc": "2026-10-04T02:51:18Z",
+  "sources": [
+    {
+      "id": "2609.20803",
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "authors": ["Peter Constantin", "Mihaela Ignatova", "Vlad Vicol"],
+      "latest_version": "v2",
+      "latest_version_submitted_at_utc": "2026-09-29T19:56:14Z",
+      "url": "https://arxiv.org/abs/2609.20803",
+      "claim": "Under the paper's anisotropic Type II bounds and exact axisymmetry in a collapsing core, analytic spatial forcing implies regularity at the putative singular point. For constructions with those properties and force bounded in C2 through singular time, the force cannot vanish near the singular point or be locally uniformly real analytic in space.",
+      "scope_note": "This is a conditional regularity theorem, not a contradiction to a smooth nonanalytic forcing construction. It supplies no molecule-resolved dynamics, alignment, or constitutive viscosity result."
+    },
+    {
+      "id": "2609.10262",
+      "title": "Density of Forces Producing Navier-Stokes Blowup",
+      "authors": ["Shaozhen Cao", "Zhuoni Chi", "Ping Nie"],
+      "latest_version": "v4",
+      "latest_version_submitted_at_utc": "2026-09-22T06:15:09Z",
+      "url": "https://arxiv.org/abs/2609.10262",
+      "claim": "Starting from the OpenAI compact forced blowup solution, the authors construct a blowup solution near each given smooth solution while preserving its initial velocity; for fixed viscosity and zero initial velocity, blowup-producing smooth forces are dense in the relative L1_t H^s_x topology on T3 and R3 exactly for s<1/2.",
+      "scope_note": "Density in a low-regularity topology does not imply robustness under stronger norms or physical realizability. This does not establish particle alignment or a viscosity transition."
+    }
+  ],
+  "project_disposition": "Relevant post-announcement mathematical progress was found and recorded. Neither paper demonstrates a solver defect or supports the user's molecular-scale interpretation. No OpenAI issue was filed; the repository's issue tracker is disabled per the 2026-10-04 repository inventory.",
+  "effect_on_benchmark": "No CFD matrix or acceptance gate changed. Next useful mathematical check is the exact forcing regularity/vanishing behavior at the singular point in the pinned OpenAI construction, compared with the hypotheses and conclusions of arXiv:2609.20803."
+}
