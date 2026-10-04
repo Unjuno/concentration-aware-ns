@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 306 — check whether Part I leaves profile compatibility conditional
+
+Checked Lei–Ren arXiv:2609.35406v2 directly after a secondary search result
+characterized its construction as conditional on unresolved simultaneous
+compatibility. Part I does list Assumption 12.1, but Section 12.1 says it is
+discharged for its concrete pieces; Theorem 12.4 gives an ordered simultaneous
+choice (`P_*`, `delta`, `j`, then `Lambda`, then sufficiently large dependent
+`C_*`) and its proof verifies all four clauses. Thus “do not grow one parameter
+while freezing dependencies” is not equivalent to leaving compatibility open.
+This is a source-level correction only: constants and all supporting lemmas,
+lower-order induction, and Part II residual cancellation remain unaudited.
+No solver defect follows. Details and PDF digest are recorded in
+`reports/lei-ren-part1-compatibility-crosscheck-2026-10-04.md` and its evidence.
+Full goal remains active.
+
 ## Revision 305 — refresh primary project trackers and correct the SU2 thread shape
 
 Targeted GitHub REST/GraphQL responses confirm the audited OpenFOAM Foundation
