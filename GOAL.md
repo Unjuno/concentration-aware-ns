@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 308 — audit a new exact forced-flow and concentration preprint
+
+Found Thambynayagam, arXiv:2609.38210v1 (submitted Sep 24). Independently
+replayed the paper’s smooth 3D periodic exact base solution with SymPy 1.14.0:
+divergence, Laplacian eigenfield relation, projected-force divergence, strong
+forced-NS residual, and periodic zero-work identities all simplify to zero.
+That base field decays with fixed Fourier support, so it is a useful exact
+solver/source check but is not itself a concentration experiment. The separate
+localized simulations report under-resolution-sensitive peak vorticity and
+explicitly do not establish systematic enhancement or singularity; they were
+not independently rerun here. This is close prior art: differentiate our
+contribution as a predeclared cross-solver/AMR-cap acceptance audit, not the
+first local-gradient resolution warning. No upstream defect is demonstrated.
+Report, checker, output, source digest, and limits are recorded under
+`reports/forced-periodic-ns-new-source-audit-2026-10-04.md`,
+`tools/check_forced_periodic_ns_candidate.py`, and evidence files. Full goal
+remains active.
+
 ## Revision 307 — replay the displayed Part I scale thresholds
 
 Expanded the explicit sufficient lower bounds for `C_*` in Theorem 12.4

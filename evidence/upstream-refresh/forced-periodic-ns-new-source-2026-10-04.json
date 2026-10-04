@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-04T02:05:00Z",
+  "primary_source": {
+    "title": "Exact Periodic Solutions of the Forced Incompressible Navier-Stokes Equations in Arbitrary Dimensions",
+    "author": "R. K. Michael Thambynayagam",
+    "version": "arXiv:2609.38210v1",
+    "submitted": "2026-09-24",
+    "url": "https://arxiv.org/abs/2609.38210",
+    "pdf_sha256": "fbe0d2198b000e8632525a9d6fed5ae47ab9fc3099a990b1802a4de397f43c5d",
+    "license_record": "arXiv perpetual non-exclusive license to distribute the article; ancillary-code reuse license not established"
+  },
+  "analytic_replay": "tools/check_forced_periodic_ns_candidate.py",
+  "analytic_replay_output": "evidence/analytic-checks/forced-periodic-ns-candidate-2026-10-04.json",
+  "finding": "Independent SymPy replay confirms the exact smooth 3D forced periodic base solution identities; the base solution decays with fixed spatial Fourier support and is not itself a concentration trajectory.",
+  "paper_reported_numerics": {
+    "method": "pseudospectral with two-thirds dealiasing and midpoint/integrating-factor time integration",
+    "underresolution_example": "At Re=3000, the 96^3 tail is below 1e-4, yet refinement to 128^3 changes the reported peak vorticity by about 20%; the paper treats tail cutoff as necessary but insufficient.",
+    "localization_result": "Systematic enhancement over unforced evolution is not established; runs cross and the final unforced peak occurs after the cited spectral resolution threshold is exceeded.",
+    "independently_reproduced_here": false
+  },
+  "impact": "This is close prior art for local-vorticity resolution monitoring. Differentiate the repository by its predeclared, cross-solver acceptance protocol, AMR-cap evidence, exact-reference QoIs and software-specific reproduction criteria; do not claim first discovery of the generic resolution blind spot.",
+  "limits": [
+    "v1 preprint; peer-review status not established",
+    "No solver defect found or upstream issue warranted",
+    "No claim about finite-time singularity, molecular ordering, particle locations, or engineering hazard"
+  ]
+}
