@@ -1,0 +1,20 @@
+{
+  "github_actions_run_id": 37196452449,
+  "github_actions_artifact_id": 11301367793,
+  "github_actions_artifact_name": "of13-forced-periodic-control-1b40ece31627cde6cba6da7e7ba8bb5706dddc2d",
+  "github_actions_artifact_size_bytes": 39825665,
+  "github_actions_artifact_created_at_utc": "2026-10-04T10:54:24Z",
+  "github_actions_artifact_expires_at_utc": "2027-01-02T10:46:21Z",
+  "pull_request": "https://github.com/Unjuno/concentration-aware-ns/pull/4",
+  "source_commit": "1b40ece31627cde6cba6da7e7ba8bb5706dddc2d",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "image_inspect": "sha256:667bd7977fab8f295c7423272cb588ba59372128b48a559ddcb24ae1b3be8c66 linux/arm64",
+  "previous_run_id": 37174784940,
+  "previous_run_source_commit": "1cacf3c282a2c6ea5a81354865bba1ab0e932427",
+  "previous_run_image_inspect": "sha256:383b0f958aa9867af6e2db9ec7681141393c9d213cd821c1f68a33f4353f0baf linux/arm64",
+  "release_tag": "of13-forced-periodic-control-rerun-1b40ece",
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-forced-periodic-control-rerun-1b40ece",
+  "release_asset": "of13-forced-periodic-control-rerun-1b40ece.tar.gz",
+  "release_asset_sha256": "e57e25a1574c5a7a24c71c89b54d0df11971ad191ac8b5128141735af61c116d",
+  "interpretation": "Independent archive replay passes. All six numerical metric sets exactly equal the earlier separately replayed run despite different image IDs and archive hashes. This does not establish byte-identical raw archives, a preregistered local-quality gate, resolved temporal order, or continuous solver extrema."
+}

@@ -10,3 +10,5 @@ evidence/clean-export-2026-10-03-amr-5bc0691-py314/wrapper/*.log whitespace=-bla
 
 # Preserve AMR mean-quality solver/build/replay diagnostics without byte edits.
 evidence/of13-amr-mean-quality-v1/**/*.log whitespace=-blank-at-eol,-blank-at-eof
+# Preserve the hosted container build's raw carriage-return progress output.
+evidence/of13-forced-periodic-control-hosted-1b40ece/runtime-build/build.log whitespace=-blank-at-eol,-blank-at-eof

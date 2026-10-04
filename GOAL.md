@@ -5821,3 +5821,26 @@ temporal control run has completed its container build and is executing the
 frozen cases. The separate SU2 shared matrix and CFL-control jobs remain
 in-progress. PR #4 remains open; no solver verdict is inferred until those
 archives finish and pass replay. Goal remains active.
+
+## Revision 347 — cross-image replay of the Foundation 13 smooth control
+
+Hosted run `37196452449` from source `1b40ece31627cde6cba6da7e7ba8bb5706dddc2d`
+completed the frozen six-case forced-periodic matrix. Independent replay
+verified every archive, input/output hash, field diagnostic and exact step
+count. All six sets of six scalar metrics match the previously verified run
+`37174784940` exactly, despite distinct recorded runtime image IDs and six
+different archive hashes; both runs also give identical spatial velocity and
+pressure observed orders. The new replay receipt and comparison tool/test are
+in `evidence/of13-forced-periodic-control-hosted-1b40ece/`,
+`tools/compare_forced_periodic_control_runs.py`, and
+`tests/test_compare_forced_periodic_control_runs.py`. The full bundle is
+published at release `of13-forced-periodic-control-rerun-1b40ece`; GitHub's
+asset digest matches the locally replayed package SHA-256.
+
+The retrospective standard stopping check passes six of six; local quality
+and temporal order remain `UNCERTAIN` because this calibration protocol did
+not freeze a local threshold and does not isolate temporal error from the
+spatial floor. This is not a localized high-gradient or AMR result. The latest
+complete local suite passes 436 tests, 4 skipped, and 89 subtests. The
+separate SU2 matrix and CFL-control jobs remain in progress. Goal remains
+active.
