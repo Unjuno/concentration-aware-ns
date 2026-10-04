@@ -267,3 +267,19 @@ OpenFOAM head remain unchanged; SU2 discussion #2890 has no new maintainer reply
 in the fresh read and PR #2857 remains closed/unmerged. No duplicate issue was
 filed. Old experiments, thresholds and historical records are preserved. See
 [report](upstream-spectrum-fix-controls-2026-10-04.md) for scope and exact hashes.
+
+## Live tracker refresh — 2026-10-04 23:39 UTC
+
+The fresh source and tracker snapshot and its scoped conclusions are recorded in
+[`reports/three-project-live-status-2026-10-04T2339Z.md`](three-project-live-status-2026-10-04T2339Z.md)
+and
+[`evidence/upstream-refresh/three-project-live-status-2026-10-04T2339Z.json`](../evidence/upstream-refresh/three-project-live-status-2026-10-04T2339Z.json).
+SU2 Discussion #2890 is closed with no accepted answer, but it has a maintainer
+reply confirming the old-time source evaluation diagnosis and the user's
+reproduced BDF2 order reduction. Existing Issue #2353 already contains these
+source-time and restart/MAX_TIME follow-ups; PR #2857 is closed unmerged. This
+corrects any shorthand that described the thread as having no maintainer
+response. The status supports keeping the existing records and not opening a
+duplicate issue. PhysicsNeMo #2007/#2001 remain scoped to odd-width and
+non-periodic paths outside the current benchmark; #2044 is unrelated. OpenFOAM's
+visible GitHub issues remain non-overlapping. No new upstream post is justified.

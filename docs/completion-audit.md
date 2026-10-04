@@ -1,3 +1,18 @@
+### Three-project tracker refresh — 2026-10-04 23:39 UTC
+
+The live tracker/source snapshot at
+[`three-project-live-status-2026-10-04T2339Z.json`](../evidence/upstream-refresh/three-project-live-status-2026-10-04T2339Z.json)
+shows no new duplicate-worthy finding. SU2 Discussion #2890 has a maintainer
+reply agreeing with the old-time source-evaluation diagnosis and warning that
+advancing the global time variable affects other consumers; the user's BDF2
+order-reduction follow-up is already posted there. The discussion is closed
+without an accepted answer. Existing issue #2353 includes the related source,
+restart/history and MAX_TIME observations; target-time PR #2857 is closed
+unmerged. PhysicsNeMo #2007/#2001 cover adjacent odd-width/non-periodic paths,
+while #2044 is unrelated. OpenFOAM's visible GitHub issues do not overlap the
+exercised cases. No new upstream post is warranted. See the [scoped tracker
+report](../reports/three-project-live-status-2026-10-04T2339Z.md).
+
 # Completion audit — interim, 2026-09-27
 
 ### SU2 n16 case preserved and replayed across two image builds — 2026-10-05

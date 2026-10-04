@@ -658,3 +658,19 @@ steps were verified. All analyzed metrics, reference FD2 floors, and the three
 the frozen manufactured benchmark and its stored analyzer; it is not an
 independent solver audit or a molecular/physical result. README and completion
 audit now link the report and machine-readable receipt.
+
+## 2026-10-05 — upstream tracker refresh and SU2 BDF2 replay
+
+Saved a no-cache REST/GraphQL snapshot for OpenFOAM Foundation 13, SU2,
+PhysicsNeMo and the pinned OpenAI proof repository. SU2 Discussion #2890 is
+closed without an accepted answer but contains a maintainer confirmation of
+the old-time MMS source evaluation and the BDF2 order-reduction follow-up;
+existing issue #2353 already includes the related source/restart/MAX_TIME
+observations, so no duplicate was posted. PhysicsNeMo #2007/#2001 remain scoped
+to odd-width/non-periodic behavior outside the current benchmark; #2044 is
+unrelated. No new upstream issue is justified. Replayed the six saved SU2 BDF2
+archives with `tools.check_su2_bdf2_control`; exact recurrences, archive hashes,
+residual gates and observed orders pass. PR #4 head 67f9768 has all checks
+successful. The OpenAI Lean audit and remaining four SU2 solver cases are still
+actively running; no solver or formal-audit result is inferred from their
+status.
