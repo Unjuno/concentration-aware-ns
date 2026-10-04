@@ -1,0 +1,113 @@
+{
+  "case": {
+    "exit_code": 0,
+    "expected_last_source_time": 0.049,
+    "name": "n16-dt0.001",
+    "quality_metric_errors": {
+      "energy_relative_error": 0.006610237183242338,
+      "max_gradient_relative_error_samples": 0.36094757472174444,
+      "max_vorticity_relative_error_samples": 0.34034032219011584,
+      "shell_spectrum_relative_l1": 0.006635793691178023,
+      "velocity_relative_l2": 0.006180212230024557
+    },
+    "quality_sampled": "FAIL",
+    "reported_history_time": 0.049,
+    "standard_acceptance": "FAIL",
+    "steps": 50,
+    "updated_solution_time": 0.05
+  },
+  "ci": {
+    "artifact_expires_at": "2027-01-02T20:08:18Z",
+    "artifact_id": 11314639950,
+    "artifact_name": "su2-case-37230949147-n16-dt0.001",
+    "artifact_sha256": "14bad0b48050b425080ecbae08bd330666ff44816d6c32342ccd546cc8ca251c",
+    "artifact_size_bytes": 5415618,
+    "case_job": "cases (n16-dt0.001)",
+    "case_job_id": 111521984427,
+    "head_sha": "6ff7e5288d846745e6a15b587eef4e9c71b1af83",
+    "repository": "Unjuno/concentration-aware-ns",
+    "workflow_run_id": 37230949147
+  },
+  "cross_run_comparison": {
+    "all_nonmetadata_case_payloads_equal": true,
+    "command_equal_after_normalizing_ephemeral_case_mount": true,
+    "comparison_archive_sha256": "2441111ed75fc86ba1c914e9a32669893dff8c4e5ba9b700709bbbd60a220f2f",
+    "comparison_run_id": 37190363204,
+    "diagnostics_equal_after_removing_image_id": true,
+    "fresh_archive_sha256": "47ba08240c10b388528c78f310cf6eddf9e9bfbc2f86d3af505f28282a7c6550",
+    "identical_members": [
+      "n16-dt0.001/case.cfg",
+      "n16-dt0.001/exit_code",
+      "n16-dt0.001/history.csv",
+      "n16-dt0.001/mesh.su2",
+      "n16-dt0.001/restart_00000.csv",
+      "n16-dt0.001/restart_00049.csv",
+      "n16-dt0.001/solver.log"
+    ],
+    "member_paths_identical": true,
+    "members_each": 10,
+    "metadata_only_changed_members": {
+      "n16-dt0.001/command.json": {
+        "difference": "ephemeral Docker bind-mount path only",
+        "fresh_sha256": "d785dd80cbb7c2195562a49af963135221a9f30edf6ade187ac29807036792ee",
+        "previous_sha256": "5c99245e6ff540b23dcc57ba15a73d8013cf9c4a34721219f04e97604132146a"
+      },
+      "n16-dt0.001/diagnostics.json": {
+        "difference": "image_id only",
+        "fresh_sha256": "c350a64fa3a9153a68576df9d9e47f5e448e92314fcb2cd5df47324d8b6ee1da",
+        "previous_sha256": "6691884bfe7815b92d6ee089d50388f00b832b9ecfaf5ccf529955ea9b9db523"
+      },
+      "n16-dt0.001/parameters.json": {
+        "difference": "image_id only",
+        "fresh_sha256": "7d327bd5b7747228d89134122e9b018254e2bf17097cdd44facb4bd89204a565",
+        "previous_sha256": "0484c86a907ebd6b9baed8d1cdb8efc8f73ee064ef1a617af478d127ddcb4a02"
+      }
+    }
+  },
+  "files": {
+    "build/build.log": "3464a74e40d6ef01b160e88aff3f8f417690172ffaed7dacf0efcde72f756ce9",
+    "build/image-id": "b3b5f8f6f0130743a0f154c3a4cd6e95b831f00011e7a5826e98ab4f1de5d00a",
+    "cases/n16-dt0.001/case.cfg": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+    "cases/n16-dt0.001/command.json": "d785dd80cbb7c2195562a49af963135221a9f30edf6ade187ac29807036792ee",
+    "cases/n16-dt0.001/diagnostics.json": "c350a64fa3a9153a68576df9d9e47f5e448e92314fcb2cd5df47324d8b6ee1da",
+    "cases/n16-dt0.001/exit_code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "cases/n16-dt0.001/history.csv": "46a188d1c0f3b56833d2045645c3f6f8374ad2b9e1ec896d35d20c61b15f5228",
+    "cases/n16-dt0.001/mesh.su2": "54697f919b516d73c39a07930d6bea2a71702a20a6a77b9d4986f3829ecc8b33",
+    "cases/n16-dt0.001/parameters.json": "7d327bd5b7747228d89134122e9b018254e2bf17097cdd44facb4bd89204a565",
+    "cases/n16-dt0.001/restart_00000.csv": "1de921285f8dd1339a899648e1e663e468f29f4f673e6e03b03d2a0f5b9f9080",
+    "cases/n16-dt0.001/restart_00049.csv": "a26774403af4c9aceb36d4bb2fa91f0e1f10b1fba01ffbb4f1160672d1fcfa5c",
+    "cases/n16-dt0.001/solver.log": "961e84455b324485e301fe307984c98b229e44caf04ca20065ff389425c0c551",
+    "high_gradient.patch": "f89f131879b7cb43b03af3fcfc84eab5692540ca649ce805db2bf4ada539f498",
+    "independent-replay.json": "ff641ecc78652052393f15182d97b9794348f0e6b72505d4bd416041f6a476fe",
+    "n16-dt0.001.tar.gz": "47ba08240c10b388528c78f310cf6eddf9e9bfbc2f86d3af505f28282a7c6550",
+    "protocol.json": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+    "summary.json": "33531f75415d3483f1a3580514445cf7c92f3de17f3649a1e64e04b2ba6ec109"
+  },
+  "interpretation": "Deterministic n16 numerical repeat across two separately built images: all archived nonmetadata case payloads and all computed diagnostics agree. Both runs exit zero but fail standard_acceptance and sampled local quality. This single grid does not establish a standard-pass/local-fail blind spot, convergence, a solver defect, independent solver implementation, or continuous-extremum accuracy.",
+  "provenance": {
+    "analysis_tool_sha256": "46d5a6b0739a25babac4958dcf53acc3d12368c4fed2ac071cf6b23f97cc08d9",
+    "protocol_sha256": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+    "replay_output_sha256": "ff641ecc78652052393f15182d97b9794348f0e6b72505d4bd416041f6a476fe",
+    "replay_tool_sha256": "d49fd528bc5e5cfd91ce2f30774f9ff40a6dcd6ea1df17ff1bd8a18c90247e09",
+    "run_artifact_sha256": "47ba08240c10b388528c78f310cf6eddf9e9bfbc2f86d3af505f28282a7c6550",
+    "solver_image_id": "sha256:61416b92eeea8a06202c1acea06cfb5695d2310a6e18cda4e7a3f2e6483838db",
+    "workflow_build_log_sha256": "3464a74e40d6ef01b160e88aff3f8f417690172ffaed7dacf0efcde72f756ce9"
+  },
+  "record_type": "fresh_github_actions_artifact_independent_replay_and_repeat_comparison",
+  "replay": {
+    "attempted_cases": 1,
+    "command": "uv run --no-project --with-requirements requirements-verification-locked.txt --python 3.12 python -m tools.replay_su2_high_gradient_study --root <fresh-artifact-export> --output <fresh-artifact-export>/replay-independent-rerun.json",
+    "expected_cases": 5,
+    "missing_cases": [
+      "n32-dt0.001",
+      "n64-dt0.00025",
+      "n64-dt0.0005",
+      "n64-dt0.001"
+    ],
+    "reviewed_cases": 1,
+    "run_status": "INCOMPLETE",
+    "scope": "Archive integrity and rerun of the pinned postprocessor; not an independent solver implementation or continuum-extrema certificate.",
+    "status": "PASS"
+  },
+  "study_id": "su2-shared-high-gradient-v1"
+}

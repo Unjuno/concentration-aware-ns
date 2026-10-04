@@ -1,0 +1,1172 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.high-gradient
+#1 transferring dockerfile: 2.01kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517
+#2 ...
+
+#3 [auth] library/ubuntu:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517
+#2 DONE 0.9s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 5.50kB done
+#5 DONE 0.0s
+
+#6 [ 1/10] FROM docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517
+#6 resolve docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517 done
+#6 sha256:5b8c0c14690ed170da4e663fe0bae0d58efe59661e791296ffab28ed2113b650 2.07kB / 2.07kB done
+#6 sha256:0b613318ea879878918380aa3aeb220dfe824e311b83bc955cb8a1d4319650ab 0B / 28.89MB 0.1s
+#6 sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517 6.69kB / 6.69kB done
+#6 sha256:95fa486768020359141f1318720f43e7982ef926c792891d984aef9aaf05e7ea 424B / 424B done
+#6 sha256:0b613318ea879878918380aa3aeb220dfe824e311b83bc955cb8a1d4319650ab 24.12MB / 28.89MB 0.2s
+#6 sha256:0b613318ea879878918380aa3aeb220dfe824e311b83bc955cb8a1d4319650ab 28.89MB / 28.89MB 0.3s done
+#6 extracting sha256:0b613318ea879878918380aa3aeb220dfe824e311b83bc955cb8a1d4319650ab 0.1s
+#6 extracting sha256:0b613318ea879878918380aa3aeb220dfe824e311b83bc955cb8a1d4319650ab 0.7s done
+#6 DONE 1.1s
+
+#7 [ 2/10] RUN apt-get update && apt-get install -y --no-install-recommends build-essential ca-certificates curl python3 python3-venv ninja-build pkg-config patch && rm -rf /var/lib/apt/lists/*
+#7 1.434 Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]
+#7 2.295 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+#7 2.512 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+#7 2.723 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+#7 2.934 Get:5 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]
+#7 4.505 Get:6 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]
+#7 4.505 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]
+#7 4.505 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]
+#7 4.527 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1753 kB]
+#7 4.549 Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3122 kB]
+#7 4.637 Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2201 kB]
+#7 4.665 Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [94.8 kB]
+#7 4.666 Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [36.3 kB]
+#7 4.667 Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [671 B]
+#7 4.668 Get:15 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [49.0 kB]
+#7 4.668 Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1624 kB]
+#7 4.690 Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [89.7 kB]
+#7 4.811 Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1388 kB]
+#7 4.819 Get:19 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [2886 kB]
+#7 5.417 Fetched 35.1 MB in 4s (7935 kB/s)
+#7 5.417 Reading package lists...
+#7 6.872 Reading package lists...
+#7 7.665 Building dependency tree...
+#7 7.920 Reading state information...
+#7 8.200 The following additional packages will be installed:
+#7 8.200   binutils binutils-aarch64-linux-gnu binutils-common bzip2 cpp cpp-13
+#7 8.200   cpp-13-aarch64-linux-gnu cpp-aarch64-linux-gnu dpkg-dev g++ g++-13
+#7 8.200   g++-13-aarch64-linux-gnu g++-aarch64-linux-gnu gcc gcc-13
+#7 8.200   gcc-13-aarch64-linux-gnu gcc-13-base gcc-aarch64-linux-gnu libasan8
+#7 8.200   libatomic1 libbinutils libbrotli1 libbz2-1.0 libc-bin libc-dev-bin libc6
+#7 8.200   libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0 libctf0 libcurl4t64
+#7 8.200   libdpkg-perl libexpat1 libgcc-13-dev libgdbm-compat4t64 libgdbm6t64 libgomp1
+#7 8.200   libgprofng0 libgssapi-krb5-2 libhwasan0 libisl23 libitm1 libjansson4
+#7 8.200   libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2 liblsan0
+#7 8.200   libmpc3 libmpfr6 libnghttp2-14 libperl5.38t64 libpkgconf3 libpsl5t64
+#7 8.200   libpython3-stdlib libpython3.12-minimal libpython3.12-stdlib libreadline8t64
+#7 8.201   librtmp1 libsasl2-2 libsasl2-modules-db libsframe1 libsqlite3-0 libssh-4
+#7 8.201   libssl3t64 libstdc++-13-dev libtsan2 libubsan1 linux-libc-dev
+#7 8.201   lto-disabled-list make media-types netbase openssl perl perl-base
+#7 8.201   perl-modules-5.38 pkgconf pkgconf-bin python3-minimal python3-pip-whl
+#7 8.201   python3-setuptools-whl python3.12 python3.12-minimal python3.12-venv
+#7 8.201   readline-common rpcsvc-proto tzdata xz-utils
+#7 8.202 Suggested packages:
+#7 8.202   binutils-doc gprofng-gui bzip2-doc cpp-doc gcc-13-locales cpp-13-doc
+#7 8.202   debian-keyring gcc-13-doc gcc-multilib manpages-dev autoconf automake
+#7 8.202   libtool flex bison gdb gcc-doc gdb-aarch64-linux-gnu manpages glibc-doc
+#7 8.202   locales libnss-nis libnss-nisplus gnupg | sq | sqop | pgpainless-cli
+#7 8.202   | sequoia-chameleon-gnupg git bzr gdbm-l10n krb5-doc krb5-user
+#7 8.202   libstdc++-13-doc make-doc ed diffutils-doc perl-doc
+#7 8.202   libterm-readline-gnu-perl | libterm-readline-perl-perl
+#7 8.202   libtap-harness-archive-perl python3-doc python3-tk python3.12-doc
+#7 8.202   binfmt-support readline-doc
+#7 8.202 Recommended packages:
+#7 8.202   fakeroot gnupg | sq | sqop | pgpainless-cli | sequoia-chameleon-gnupg
+#7 8.202   libalgorithm-merge-perl manpages manpages-dev libc-devtools
+#7 8.202   libfile-fcntllock-perl liblocale-gettext-perl krb5-locales libldap-common
+#7 8.202   publicsuffix libsasl2-modules
+#7 8.348 The following NEW packages will be installed:
+#7 8.348   binutils binutils-aarch64-linux-gnu binutils-common build-essential bzip2
+#7 8.348   ca-certificates cpp cpp-13 cpp-13-aarch64-linux-gnu cpp-aarch64-linux-gnu
+#7 8.348   curl dpkg-dev g++ g++-13 g++-13-aarch64-linux-gnu g++-aarch64-linux-gnu gcc
+#7 8.348   gcc-13 gcc-13-aarch64-linux-gnu gcc-13-base gcc-aarch64-linux-gnu libasan8
+#7 8.348   libatomic1 libbinutils libbrotli1 libc-dev-bin libc6-dev libcc1-0
+#7 8.348   libcrypt-dev libctf-nobfd0 libctf0 libcurl4t64 libdpkg-perl libexpat1
+#7 8.348   libgcc-13-dev libgdbm-compat4t64 libgdbm6t64 libgomp1 libgprofng0
+#7 8.348   libgssapi-krb5-2 libhwasan0 libisl23 libitm1 libjansson4 libk5crypto3
+#7 8.348   libkeyutils1 libkrb5-3 libkrb5support0 libldap2 liblsan0 libmpc3 libmpfr6
+#7 8.349   libnghttp2-14 libperl5.38t64 libpkgconf3 libpsl5t64 libpython3-stdlib
+#7 8.349   libpython3.12-minimal libpython3.12-stdlib libreadline8t64 librtmp1
+#7 8.349   libsasl2-2 libsasl2-modules-db libsframe1 libsqlite3-0 libssh-4
+#7 8.349   libstdc++-13-dev libtsan2 libubsan1 linux-libc-dev lto-disabled-list make
+#7 8.349   media-types netbase ninja-build openssl patch perl perl-modules-5.38
+#7 8.349   pkg-config pkgconf pkgconf-bin python3 python3-minimal python3-pip-whl
+#7 8.349   python3-setuptools-whl python3-venv python3.12 python3.12-minimal
+#7 8.349   python3.12-venv readline-common rpcsvc-proto tzdata xz-utils
+#7 8.350 The following packages will be upgraded:
+#7 8.351   libbz2-1.0 libc-bin libc6 libssl3t64 perl-base
+#7 8.816 5 upgraded, 94 newly installed, 0 to remove and 27 not upgraded.
+#7 8.816 Need to get 94.5 MB of archives.
+#7 8.816 After this operation, 331 MB of additional disk space will be used.
+#7 8.816 Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 perl-base arm64 5.38.2-3.2ubuntu0.6 [1780 kB]
+#7 10.40 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libc6 arm64 2.39-0ubuntu8.9 [2776 kB]
+#7 10.77 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libc-bin arm64 2.39-0ubuntu8.9 [591 kB]
+#7 10.81 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libssl3t64 arm64 3.0.13-0ubuntu3.16 [1838 kB]
+#7 11.01 Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-minimal arm64 3.12.3-1ubuntu0.17 [835 kB]
+#7 11.04 Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libexpat1 arm64 2.6.1-2ubuntu0.6 [89.8 kB]
+#7 11.04 Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12-minimal arm64 3.12.3-1ubuntu0.17 [2253 kB]
+#7 11.11 Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3-minimal arm64 3.12.3-0ubuntu2.1 [27.4 kB]
+#7 11.11 Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 media-types all 10.1.0 [27.5 kB]
+#7 11.11 Get:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 netbase all 6.4 [13.1 kB]
+#7 11.11 Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 tzdata all 2026c-0ubuntu0.24.04.1 [280 kB]
+#7 11.17 Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libbz2-1.0 arm64 1.0.8-5.1ubuntu0.1 [35.9 kB]
+#7 11.17 Get:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 readline-common all 8.2-4build1 [56.5 kB]
+#7 11.23 Get:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libreadline8t64 arm64 8.2-4build1 [153 kB]
+#7 11.24 Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-0 arm64 3.45.1-1ubuntu2.8 [691 kB]
+#7 11.25 Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-stdlib arm64 3.12.3-1ubuntu0.17 [2039 kB]
+#7 11.39 Get:17 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12 arm64 3.12.3-1ubuntu0.17 [651 kB]
+#7 11.39 Get:18 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3-stdlib arm64 3.12.3-0ubuntu2.1 [10.1 kB]
+#7 11.39 Get:19 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3 arm64 3.12.3-0ubuntu2.1 [23.0 kB]
+#7 11.40 Get:20 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 perl-modules-5.38 all 5.38.2-3.2ubuntu0.6 [3110 kB]
+#7 11.44 Get:21 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libgdbm6t64 arm64 1.23-5.1build1 [34.4 kB]
+#7 11.45 Get:22 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libgdbm-compat4t64 arm64 1.23-5.1build1 [6578 B]
+#7 11.45 Get:23 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libperl5.38t64 arm64 5.38.2-3.2ubuntu0.6 [4785 kB]
+#7 11.57 Get:24 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 perl arm64 5.38.2-3.2ubuntu0.6 [231 kB]
+#7 11.57 Get:25 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openssl arm64 3.0.13-0ubuntu3.16 [985 kB]
+#7 11.59 Get:26 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 ca-certificates all 20260601~24.04.1 [139 kB]
+#7 11.69 Get:27 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libkrb5support0 arm64 1.20.1-6ubuntu2.10 [35.4 kB]
+#7 11.69 Get:28 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libk5crypto3 arm64 1.20.1-6ubuntu2.10 [85.8 kB]
+#7 11.69 Get:29 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libkeyutils1 arm64 1.6.3-3build1 [9654 B]
+#7 11.69 Get:30 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libkrb5-3 arm64 1.20.1-6ubuntu2.10 [350 kB]
+#7 11.69 Get:31 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgssapi-krb5-2 arm64 1.20.1-6ubuntu2.10 [142 kB]
+#7 11.69 Get:32 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjansson4 arm64 2.14-2build2 [34.4 kB]
+#7 11.84 Get:33 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libnghttp2-14 arm64 1.59.0-1ubuntu0.4 [74.8 kB]
+#7 11.84 Get:34 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpsl5t64 arm64 0.21.2-1.1build1 [57.4 kB]
+#7 11.84 Get:35 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 xz-utils arm64 5.6.1+really5.4.5-1ubuntu0.3 [268 kB]
+#7 11.85 Get:36 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 binutils-common arm64 2.42-4ubuntu2.10 [240 kB]
+#7 12.00 Get:37 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsframe1 arm64 2.42-4ubuntu2.10 [15.4 kB]
+#7 12.00 Get:38 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libbinutils arm64 2.42-4ubuntu2.10 [766 kB]
+#7 12.00 Get:39 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libctf-nobfd0 arm64 2.42-4ubuntu2.10 [101 kB]
+#7 12.00 Get:40 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libctf0 arm64 2.42-4ubuntu2.10 [95.7 kB]
+#7 12.00 Get:41 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgprofng0 arm64 2.42-4ubuntu2.10 [776 kB]
+#7 12.01 Get:42 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 binutils-aarch64-linux-gnu arm64 2.42-4ubuntu2.10 [3304 kB]
+#7 12.15 Get:43 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 binutils arm64 2.42-4ubuntu2.10 [18.1 kB]
+#7 12.15 Get:44 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libc-dev-bin arm64 2.39-0ubuntu8.9 [19.7 kB]
+#7 12.15 Get:45 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 linux-libc-dev arm64 6.8.0-146.146 [1515 kB]
+#7 12.16 Get:46 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libcrypt-dev arm64 1:4.4.36-4build1 [118 kB]
+#7 12.30 Get:47 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 rpcsvc-proto arm64 1.4.2-0ubuntu7 [64.8 kB]
+#7 12.30 Get:48 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libc6-dev arm64 2.39-0ubuntu8.9 [1596 kB]
+#7 12.31 Get:49 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gcc-13-base arm64 13.3.0-6ubuntu2~24.04.1 [51.6 kB]
+#7 12.31 Get:50 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libisl23 arm64 0.26-3build1.1 [669 kB]
+#7 12.32 Get:51 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libmpfr6 arm64 4.2.1-1build1.1 [329 kB]
+#7 12.32 Get:52 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libmpc3 arm64 1.3.1-1build1.1 [56.4 kB]
+#7 12.45 Get:53 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 cpp-13-aarch64-linux-gnu arm64 13.3.0-6ubuntu2~24.04.1 [9560 kB]
+#7 12.53 Get:54 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 cpp-13 arm64 13.3.0-6ubuntu2~24.04.1 [1038 B]
+#7 12.53 Get:55 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cpp-aarch64-linux-gnu arm64 4:13.2.0-7ubuntu1 [5316 B]
+#7 12.53 Get:56 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cpp arm64 4:13.2.0-7ubuntu1 [22.4 kB]
+#7 12.60 Get:57 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libcc1-0 arm64 14.2.0-4ubuntu2~24.04.1 [49.7 kB]
+#7 12.61 Get:58 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgomp1 arm64 14.2.0-4ubuntu2~24.04.1 [145 kB]
+#7 12.61 Get:59 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libitm1 arm64 14.2.0-4ubuntu2~24.04.1 [28.2 kB]
+#7 12.61 Get:60 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libatomic1 arm64 14.2.0-4ubuntu2~24.04.1 [11.6 kB]
+#7 12.61 Get:61 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libasan8 arm64 14.2.0-4ubuntu2~24.04.1 [2928 kB]
+#7 12.63 Get:62 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 liblsan0 arm64 14.2.0-4ubuntu2~24.04.1 [1289 kB]
+#7 12.76 Get:63 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libtsan2 arm64 14.2.0-4ubuntu2~24.04.1 [2697 kB]
+#7 12.77 Get:64 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libubsan1 arm64 14.2.0-4ubuntu2~24.04.1 [1157 kB]
+#7 12.78 Get:65 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libhwasan0 arm64 14.2.0-4ubuntu2~24.04.1 [1605 kB]
+#7 12.79 Get:66 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgcc-13-dev arm64 13.3.0-6ubuntu2~24.04.1 [2473 kB]
+#7 12.91 Get:67 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gcc-13-aarch64-linux-gnu arm64 13.3.0-6ubuntu2~24.04.1 [18.7 MB]
+#7 13.01 Get:68 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gcc-13 arm64 13.3.0-6ubuntu2~24.04.1 [484 kB]
+#7 13.06 Get:69 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gcc-aarch64-linux-gnu arm64 4:13.2.0-7ubuntu1 [1198 B]
+#7 13.06 Get:70 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gcc arm64 4:13.2.0-7ubuntu1 [5018 B]
+#7 13.07 Get:71 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstdc++-13-dev arm64 13.3.0-6ubuntu2~24.04.1 [2397 kB]
+#7 13.08 Get:72 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 g++-13-aarch64-linux-gnu arm64 13.3.0-6ubuntu2~24.04.1 [10.9 MB]
+#7 13.14 Get:73 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 g++-13 arm64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+#7 13.14 Get:74 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 g++-aarch64-linux-gnu arm64 4:13.2.0-7ubuntu1 [962 B]
+#7 13.14 Get:75 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 g++ arm64 4:13.2.0-7ubuntu1 [1082 B]
+#7 13.14 Get:76 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 make arm64 4.3-4.1build2 [178 kB]
+#7 13.22 Get:77 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libdpkg-perl all 1.22.6ubuntu6.6 [268 kB]
+#7 13.37 Get:78 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 bzip2 arm64 1.0.8-5.1ubuntu0.1 [34.0 kB]
+#7 13.37 Get:79 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 patch arm64 2.7.6-7build3 [101 kB]
+#7 13.37 Get:80 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 lto-disabled-list all 47 [12.4 kB]
+#7 13.37 Get:81 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dpkg-dev all 1.22.6ubuntu6.6 [1074 kB]
+#7 13.38 Get:82 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 build-essential arm64 12.10ubuntu1 [4932 B]
+#7 13.38 Get:83 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libbrotli1 arm64 1.1.0-2build2 [339 kB]
+#7 13.38 Get:84 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg1-5ubuntu3.1 [21.6 kB]
+#7 13.38 Get:85 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-2 arm64 2.1.28+dfsg1-5ubuntu3.1 [54.7 kB]
+#7 13.38 Get:86 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libldap2 arm64 2.6.10+dfsg-0ubuntu0.24.04.1 [196 kB]
+#7 13.52 Get:87 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librtmp1 arm64 2.4+20151223.gitfa8646d.1-2build7 [57.8 kB]
+#7 13.67 Get:88 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libssh-4 arm64 0.10.6-2ubuntu0.5 [192 kB]
+#7 13.68 Get:89 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.15 [337 kB]
+#7 13.68 Get:90 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 curl arm64 8.5.0-2ubuntu10.15 [222 kB]
+#7 13.68 Get:91 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpkgconf3 arm64 1.8.1-2build1 [31.2 kB]
+#7 13.68 Get:92 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 ninja-build arm64 1.11.1-2 [125 kB]
+#7 13.68 Get:93 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pkgconf-bin arm64 1.8.1-2build1 [20.5 kB]
+#7 13.68 Get:94 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pkgconf arm64 1.8.1-2build1 [16.8 kB]
+#7 13.68 Get:95 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pkg-config arm64 1.8.1-2build1 [7264 B]
+#7 13.68 Get:96 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-pip-whl all 24.0+dfsg-1ubuntu1.3 [1707 kB]
+#7 13.83 Get:97 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-setuptools-whl all 68.1.2-2ubuntu1.2 [716 kB]
+#7 13.98 Get:98 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3.12-venv arm64 3.12.3-1ubuntu0.17 [5684 B]
+#7 13.98 Get:99 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-venv arm64 3.12.3-0ubuntu2.1 [1032 B]
+#7 14.11 debconf: delaying package configuration, since apt-utils is not installed
+#7 14.15 Fetched 94.5 MB in 6s (16.8 MB/s)
+#7 14.16 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4376 files and directories currently installed.)
+#7 14.16 Preparing to unpack .../perl-base_5.38.2-3.2ubuntu0.6_arm64.deb ...
+#7 14.17 Unpacking perl-base (5.38.2-3.2ubuntu0.6) over (5.38.2-3.2ubuntu0.3) ...
+#7 14.82 Setting up perl-base (5.38.2-3.2ubuntu0.6) ...
+#7 14.83 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4376 files and directories currently installed.)
+#7 14.84 Preparing to unpack .../libc6_2.39-0ubuntu8.9_arm64.deb ...
+#7 14.90 Unpacking libc6:arm64 (2.39-0ubuntu8.9) over (2.39-0ubuntu8.8) ...
+#7 15.29 Setting up libc6:arm64 (2.39-0ubuntu8.9) ...
+#7 16.36 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4376 files and directories currently installed.)
+#7 16.36 Preparing to unpack .../libc-bin_2.39-0ubuntu8.9_arm64.deb ...
+#7 16.36 Unpacking libc-bin (2.39-0ubuntu8.9) over (2.39-0ubuntu8.8) ...
+#7 16.41 Setting up libc-bin (2.39-0ubuntu8.9) ...
+#7 16.43 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4376 files and directories currently installed.)
+#7 16.44 Preparing to unpack .../libssl3t64_3.0.13-0ubuntu3.16_arm64.deb ...
+#7 16.44 Unpacking libssl3t64:arm64 (3.0.13-0ubuntu3.16) over (3.0.13-0ubuntu3.12) ...
+#7 16.51 Setting up libssl3t64:arm64 (3.0.13-0ubuntu3.16) ...
+#7 16.52 Selecting previously unselected package libpython3.12-minimal:arm64.
+#7 16.52 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4376 files and directories currently installed.)
+#7 16.52 Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.17_arm64.deb ...
+#7 16.52 Unpacking libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.17) ...
+#7 16.56 Selecting previously unselected package libexpat1:arm64.
+#7 16.56 Preparing to unpack .../libexpat1_2.6.1-2ubuntu0.6_arm64.deb ...
+#7 16.56 Unpacking libexpat1:arm64 (2.6.1-2ubuntu0.6) ...
+#7 16.58 Selecting previously unselected package python3.12-minimal.
+#7 16.58 Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.17_arm64.deb ...
+#7 16.58 Unpacking python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#7 16.62 Setting up libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.17) ...
+#7 16.62 Setting up libexpat1:arm64 (2.6.1-2ubuntu0.6) ...
+#7 16.62 Setting up python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#7 17.24 Selecting previously unselected package python3-minimal.
+#7 17.24 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4695 files and directories currently installed.)
+#7 17.25 Preparing to unpack .../python3-minimal_3.12.3-0ubuntu2.1_arm64.deb ...
+#7 17.25 Unpacking python3-minimal (3.12.3-0ubuntu2.1) ...
+#7 17.26 Selecting previously unselected package media-types.
+#7 17.26 Preparing to unpack .../media-types_10.1.0_all.deb ...
+#7 17.26 Unpacking media-types (10.1.0) ...
+#7 17.27 Selecting previously unselected package netbase.
+#7 17.27 Preparing to unpack .../archives/netbase_6.4_all.deb ...
+#7 17.27 Unpacking netbase (6.4) ...
+#7 17.28 Selecting previously unselected package tzdata.
+#7 17.28 Preparing to unpack .../tzdata_2026c-0ubuntu0.24.04.1_all.deb ...
+#7 17.28 Unpacking tzdata (2026c-0ubuntu0.24.04.1) ...
+#7 17.32 Preparing to unpack .../libbz2-1.0_1.0.8-5.1ubuntu0.1_arm64.deb ...
+#7 17.32 Unpacking libbz2-1.0:arm64 (1.0.8-5.1ubuntu0.1) over (1.0.8-5.1build0.1) ...
+#7 17.34 Setting up libbz2-1.0:arm64 (1.0.8-5.1ubuntu0.1) ...
+#7 17.35 Selecting previously unselected package readline-common.
+#7 17.35 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5258 files and directories currently installed.)
+#7 17.35 Preparing to unpack .../0-readline-common_8.2-4build1_all.deb ...
+#7 17.35 Unpacking readline-common (8.2-4build1) ...
+#7 17.36 Selecting previously unselected package libreadline8t64:arm64.
+#7 17.37 Preparing to unpack .../1-libreadline8t64_8.2-4build1_arm64.deb ...
+#7 17.37 Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8 to /lib/aarch64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'
+#7 17.37 Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8.2 to /lib/aarch64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'
+#7 17.37 Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8 to /lib/aarch64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'
+#7 17.38 Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8.2 to /lib/aarch64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'
+#7 17.38 Unpacking libreadline8t64:arm64 (8.2-4build1) ...
+#7 17.39 Selecting previously unselected package libsqlite3-0:arm64.
+#7 17.39 Preparing to unpack .../2-libsqlite3-0_3.45.1-1ubuntu2.8_arm64.deb ...
+#7 17.39 Unpacking libsqlite3-0:arm64 (3.45.1-1ubuntu2.8) ...
+#7 17.41 Selecting previously unselected package libpython3.12-stdlib:arm64.
+#7 17.41 Preparing to unpack .../3-libpython3.12-stdlib_3.12.3-1ubuntu0.17_arm64.deb ...
+#7 17.41 Unpacking libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.17) ...
+#7 17.47 Selecting previously unselected package python3.12.
+#7 17.47 Preparing to unpack .../4-python3.12_3.12.3-1ubuntu0.17_arm64.deb ...
+#7 17.47 Unpacking python3.12 (3.12.3-1ubuntu0.17) ...
+#7 17.48 Selecting previously unselected package libpython3-stdlib:arm64.
+#7 17.48 Preparing to unpack .../5-libpython3-stdlib_3.12.3-0ubuntu2.1_arm64.deb ...
+#7 17.48 Unpacking libpython3-stdlib:arm64 (3.12.3-0ubuntu2.1) ...
+#7 17.49 Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+#7 17.60 Selecting previously unselected package python3.
+#7 17.60 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5701 files and directories currently installed.)
+#7 17.60 Preparing to unpack .../00-python3_3.12.3-0ubuntu2.1_arm64.deb ...
+#7 17.61 Unpacking python3 (3.12.3-0ubuntu2.1) ...
+#7 17.62 Selecting previously unselected package perl-modules-5.38.
+#7 17.62 Preparing to unpack .../01-perl-modules-5.38_5.38.2-3.2ubuntu0.6_all.deb ...
+#7 17.62 Unpacking perl-modules-5.38 (5.38.2-3.2ubuntu0.6) ...
+#7 17.76 Selecting previously unselected package libgdbm6t64:arm64.
+#7 17.76 Preparing to unpack .../02-libgdbm6t64_1.23-5.1build1_arm64.deb ...
+#7 17.76 Unpacking libgdbm6t64:arm64 (1.23-5.1build1) ...
+#7 17.77 Selecting previously unselected package libgdbm-compat4t64:arm64.
+#7 17.77 Preparing to unpack .../03-libgdbm-compat4t64_1.23-5.1build1_arm64.deb ...
+#7 17.77 Unpacking libgdbm-compat4t64:arm64 (1.23-5.1build1) ...
+#7 17.78 Selecting previously unselected package libperl5.38t64:arm64.
+#7 17.78 Preparing to unpack .../04-libperl5.38t64_5.38.2-3.2ubuntu0.6_arm64.deb ...
+#7 17.78 Unpacking libperl5.38t64:arm64 (5.38.2-3.2ubuntu0.6) ...
+#7 17.90 Selecting previously unselected package perl.
+#7 17.91 Preparing to unpack .../05-perl_5.38.2-3.2ubuntu0.6_arm64.deb ...
+#7 17.91 Unpacking perl (5.38.2-3.2ubuntu0.6) ...
+#7 17.92 Selecting previously unselected package openssl.
+#7 17.93 Preparing to unpack .../06-openssl_3.0.13-0ubuntu3.16_arm64.deb ...
+#7 17.93 Unpacking openssl (3.0.13-0ubuntu3.16) ...
+#7 17.95 Selecting previously unselected package ca-certificates.
+#7 17.95 Preparing to unpack .../07-ca-certificates_20260601~24.04.1_all.deb ...
+#7 17.95 Unpacking ca-certificates (20260601~24.04.1) ...
+#7 17.97 Selecting previously unselected package libkrb5support0:arm64.
+#7 17.97 Preparing to unpack .../08-libkrb5support0_1.20.1-6ubuntu2.10_arm64.deb ...
+#7 17.97 Unpacking libkrb5support0:arm64 (1.20.1-6ubuntu2.10) ...
+#7 17.98 Selecting previously unselected package libk5crypto3:arm64.
+#7 17.98 Preparing to unpack .../09-libk5crypto3_1.20.1-6ubuntu2.10_arm64.deb ...
+#7 17.99 Unpacking libk5crypto3:arm64 (1.20.1-6ubuntu2.10) ...
+#7 18.00 Selecting previously unselected package libkeyutils1:arm64.
+#7 18.00 Preparing to unpack .../10-libkeyutils1_1.6.3-3build1_arm64.deb ...
+#7 18.00 Unpacking libkeyutils1:arm64 (1.6.3-3build1) ...
+#7 18.01 Selecting previously unselected package libkrb5-3:arm64.
+#7 18.01 Preparing to unpack .../11-libkrb5-3_1.20.1-6ubuntu2.10_arm64.deb ...
+#7 18.01 Unpacking libkrb5-3:arm64 (1.20.1-6ubuntu2.10) ...
+#7 18.03 Selecting previously unselected package libgssapi-krb5-2:arm64.
+#7 18.03 Preparing to unpack .../12-libgssapi-krb5-2_1.20.1-6ubuntu2.10_arm64.deb ...
+#7 18.03 Unpacking libgssapi-krb5-2:arm64 (1.20.1-6ubuntu2.10) ...
+#7 18.04 Selecting previously unselected package libjansson4:arm64.
+#7 18.04 Preparing to unpack .../13-libjansson4_2.14-2build2_arm64.deb ...
+#7 18.04 Unpacking libjansson4:arm64 (2.14-2build2) ...
+#7 18.05 Selecting previously unselected package libnghttp2-14:arm64.
+#7 18.05 Preparing to unpack .../14-libnghttp2-14_1.59.0-1ubuntu0.4_arm64.deb ...
+#7 18.06 Unpacking libnghttp2-14:arm64 (1.59.0-1ubuntu0.4) ...
+#7 18.07 Selecting previously unselected package libpsl5t64:arm64.
+#7 18.07 Preparing to unpack .../15-libpsl5t64_0.21.2-1.1build1_arm64.deb ...
+#7 18.07 Unpacking libpsl5t64:arm64 (0.21.2-1.1build1) ...
+#7 18.08 Selecting previously unselected package xz-utils.
+#7 18.08 Preparing to unpack .../16-xz-utils_5.6.1+really5.4.5-1ubuntu0.3_arm64.deb ...
+#7 18.08 Unpacking xz-utils (5.6.1+really5.4.5-1ubuntu0.3) ...
+#7 18.10 Selecting previously unselected package binutils-common:arm64.
+#7 18.10 Preparing to unpack .../17-binutils-common_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.10 Unpacking binutils-common:arm64 (2.42-4ubuntu2.10) ...
+#7 18.11 Selecting previously unselected package libsframe1:arm64.
+#7 18.12 Preparing to unpack .../18-libsframe1_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.12 Unpacking libsframe1:arm64 (2.42-4ubuntu2.10) ...
+#7 18.13 Selecting previously unselected package libbinutils:arm64.
+#7 18.13 Preparing to unpack .../19-libbinutils_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.13 Unpacking libbinutils:arm64 (2.42-4ubuntu2.10) ...
+#7 18.15 Selecting previously unselected package libctf-nobfd0:arm64.
+#7 18.15 Preparing to unpack .../20-libctf-nobfd0_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.15 Unpacking libctf-nobfd0:arm64 (2.42-4ubuntu2.10) ...
+#7 18.16 Selecting previously unselected package libctf0:arm64.
+#7 18.16 Preparing to unpack .../21-libctf0_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.16 Unpacking libctf0:arm64 (2.42-4ubuntu2.10) ...
+#7 18.17 Selecting previously unselected package libgprofng0:arm64.
+#7 18.18 Preparing to unpack .../22-libgprofng0_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.18 Unpacking libgprofng0:arm64 (2.42-4ubuntu2.10) ...
+#7 18.20 Selecting previously unselected package binutils-aarch64-linux-gnu.
+#7 18.20 Preparing to unpack .../23-binutils-aarch64-linux-gnu_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.20 Unpacking binutils-aarch64-linux-gnu (2.42-4ubuntu2.10) ...
+#7 18.27 Selecting previously unselected package binutils.
+#7 18.28 Preparing to unpack .../24-binutils_2.42-4ubuntu2.10_arm64.deb ...
+#7 18.28 Unpacking binutils (2.42-4ubuntu2.10) ...
+#7 18.29 Selecting previously unselected package libc-dev-bin.
+#7 18.29 Preparing to unpack .../25-libc-dev-bin_2.39-0ubuntu8.9_arm64.deb ...
+#7 18.29 Unpacking libc-dev-bin (2.39-0ubuntu8.9) ...
+#7 18.30 Selecting previously unselected package linux-libc-dev:arm64.
+#7 18.30 Preparing to unpack .../26-linux-libc-dev_6.8.0-146.146_arm64.deb ...
+#7 18.30 Unpacking linux-libc-dev:arm64 (6.8.0-146.146) ...
+#7 18.39 Selecting previously unselected package libcrypt-dev:arm64.
+#7 18.39 Preparing to unpack .../27-libcrypt-dev_1%3a4.4.36-4build1_arm64.deb ...
+#7 18.39 Unpacking libcrypt-dev:arm64 (1:4.4.36-4build1) ...
+#7 18.40 Selecting previously unselected package rpcsvc-proto.
+#7 18.41 Preparing to unpack .../28-rpcsvc-proto_1.4.2-0ubuntu7_arm64.deb ...
+#7 18.41 Unpacking rpcsvc-proto (1.4.2-0ubuntu7) ...
+#7 18.42 Selecting previously unselected package libc6-dev:arm64.
+#7 18.42 Preparing to unpack .../29-libc6-dev_2.39-0ubuntu8.9_arm64.deb ...
+#7 18.42 Unpacking libc6-dev:arm64 (2.39-0ubuntu8.9) ...
+#7 18.49 Selecting previously unselected package gcc-13-base:arm64.
+#7 18.49 Preparing to unpack .../30-gcc-13-base_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 18.49 Unpacking gcc-13-base:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 18.50 Selecting previously unselected package libisl23:arm64.
+#7 18.50 Preparing to unpack .../31-libisl23_0.26-3build1.1_arm64.deb ...
+#7 18.50 Unpacking libisl23:arm64 (0.26-3build1.1) ...
+#7 18.52 Selecting previously unselected package libmpfr6:arm64.
+#7 18.52 Preparing to unpack .../32-libmpfr6_4.2.1-1build1.1_arm64.deb ...
+#7 18.52 Unpacking libmpfr6:arm64 (4.2.1-1build1.1) ...
+#7 18.54 Selecting previously unselected package libmpc3:arm64.
+#7 18.54 Preparing to unpack .../33-libmpc3_1.3.1-1build1.1_arm64.deb ...
+#7 18.54 Unpacking libmpc3:arm64 (1.3.1-1build1.1) ...
+#7 18.55 Selecting previously unselected package cpp-13-aarch64-linux-gnu.
+#7 18.55 Preparing to unpack .../34-cpp-13-aarch64-linux-gnu_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 18.55 Unpacking cpp-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 18.66 Selecting previously unselected package cpp-13.
+#7 18.66 Preparing to unpack .../35-cpp-13_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 18.66 Unpacking cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 18.67 Selecting previously unselected package cpp-aarch64-linux-gnu.
+#7 18.67 Preparing to unpack .../36-cpp-aarch64-linux-gnu_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 18.67 Unpacking cpp-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 18.68 Selecting previously unselected package cpp.
+#7 18.68 Preparing to unpack .../37-cpp_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 18.69 Unpacking cpp (4:13.2.0-7ubuntu1) ...
+#7 18.70 Selecting previously unselected package libcc1-0:arm64.
+#7 18.70 Preparing to unpack .../38-libcc1-0_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.70 Unpacking libcc1-0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.71 Selecting previously unselected package libgomp1:arm64.
+#7 18.71 Preparing to unpack .../39-libgomp1_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.71 Unpacking libgomp1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.72 Selecting previously unselected package libitm1:arm64.
+#7 18.73 Preparing to unpack .../40-libitm1_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.73 Unpacking libitm1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.74 Selecting previously unselected package libatomic1:arm64.
+#7 18.74 Preparing to unpack .../41-libatomic1_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.74 Unpacking libatomic1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.75 Selecting previously unselected package libasan8:arm64.
+#7 18.75 Preparing to unpack .../42-libasan8_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.75 Unpacking libasan8:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.80 Selecting previously unselected package liblsan0:arm64.
+#7 18.80 Preparing to unpack .../43-liblsan0_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.80 Unpacking liblsan0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.82 Selecting previously unselected package libtsan2:arm64.
+#7 18.82 Preparing to unpack .../44-libtsan2_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.82 Unpacking libtsan2:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.86 Selecting previously unselected package libubsan1:arm64.
+#7 18.87 Preparing to unpack .../45-libubsan1_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.87 Unpacking libubsan1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.89 Selecting previously unselected package libhwasan0:arm64.
+#7 18.89 Preparing to unpack .../46-libhwasan0_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+#7 18.89 Unpacking libhwasan0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 18.92 Selecting previously unselected package libgcc-13-dev:arm64.
+#7 18.92 Preparing to unpack .../47-libgcc-13-dev_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 18.92 Unpacking libgcc-13-dev:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 18.97 Selecting previously unselected package gcc-13-aarch64-linux-gnu.
+#7 18.97 Preparing to unpack .../48-gcc-13-aarch64-linux-gnu_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 18.97 Unpacking gcc-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.17 Selecting previously unselected package gcc-13.
+#7 19.17 Preparing to unpack .../49-gcc-13_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 19.17 Unpacking gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.18 Selecting previously unselected package gcc-aarch64-linux-gnu.
+#7 19.19 Preparing to unpack .../50-gcc-aarch64-linux-gnu_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 19.19 Unpacking gcc-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 19.20 Selecting previously unselected package gcc.
+#7 19.20 Preparing to unpack .../51-gcc_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 19.20 Unpacking gcc (4:13.2.0-7ubuntu1) ...
+#7 19.21 Selecting previously unselected package libstdc++-13-dev:arm64.
+#7 19.21 Preparing to unpack .../52-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 19.21 Unpacking libstdc++-13-dev:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.32 Selecting previously unselected package g++-13-aarch64-linux-gnu.
+#7 19.32 Preparing to unpack .../53-g++-13-aarch64-linux-gnu_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 19.32 Unpacking g++-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.44 Selecting previously unselected package g++-13.
+#7 19.44 Preparing to unpack .../54-g++-13_13.3.0-6ubuntu2~24.04.1_arm64.deb ...
+#7 19.44 Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.45 Selecting previously unselected package g++-aarch64-linux-gnu.
+#7 19.46 Preparing to unpack .../55-g++-aarch64-linux-gnu_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 19.46 Unpacking g++-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 19.47 Selecting previously unselected package g++.
+#7 19.47 Preparing to unpack .../56-g++_4%3a13.2.0-7ubuntu1_arm64.deb ...
+#7 19.47 Unpacking g++ (4:13.2.0-7ubuntu1) ...
+#7 19.48 Selecting previously unselected package make.
+#7 19.48 Preparing to unpack .../57-make_4.3-4.1build2_arm64.deb ...
+#7 19.48 Unpacking make (4.3-4.1build2) ...
+#7 19.49 Selecting previously unselected package libdpkg-perl.
+#7 19.50 Preparing to unpack .../58-libdpkg-perl_1.22.6ubuntu6.6_all.deb ...
+#7 19.50 Unpacking libdpkg-perl (1.22.6ubuntu6.6) ...
+#7 19.52 Selecting previously unselected package bzip2.
+#7 19.52 Preparing to unpack .../59-bzip2_1.0.8-5.1ubuntu0.1_arm64.deb ...
+#7 19.52 Unpacking bzip2 (1.0.8-5.1ubuntu0.1) ...
+#7 19.53 Selecting previously unselected package patch.
+#7 19.53 Preparing to unpack .../60-patch_2.7.6-7build3_arm64.deb ...
+#7 19.53 Unpacking patch (2.7.6-7build3) ...
+#7 19.54 Selecting previously unselected package lto-disabled-list.
+#7 19.55 Preparing to unpack .../61-lto-disabled-list_47_all.deb ...
+#7 19.55 Unpacking lto-disabled-list (47) ...
+#7 19.56 Selecting previously unselected package dpkg-dev.
+#7 19.56 Preparing to unpack .../62-dpkg-dev_1.22.6ubuntu6.6_all.deb ...
+#7 19.56 Unpacking dpkg-dev (1.22.6ubuntu6.6) ...
+#7 19.58 Selecting previously unselected package build-essential.
+#7 19.58 Preparing to unpack .../63-build-essential_12.10ubuntu1_arm64.deb ...
+#7 19.58 Unpacking build-essential (12.10ubuntu1) ...
+#7 19.59 Selecting previously unselected package libbrotli1:arm64.
+#7 19.60 Preparing to unpack .../64-libbrotli1_1.1.0-2build2_arm64.deb ...
+#7 19.60 Unpacking libbrotli1:arm64 (1.1.0-2build2) ...
+#7 19.61 Selecting previously unselected package libsasl2-modules-db:arm64.
+#7 19.61 Preparing to unpack .../65-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...
+#7 19.61 Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 19.62 Selecting previously unselected package libsasl2-2:arm64.
+#7 19.62 Preparing to unpack .../66-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...
+#7 19.63 Unpacking libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 19.64 Selecting previously unselected package libldap2:arm64.
+#7 19.64 Preparing to unpack .../67-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_arm64.deb ...
+#7 19.64 Unpacking libldap2:arm64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#7 19.65 Selecting previously unselected package librtmp1:arm64.
+#7 19.65 Preparing to unpack .../68-librtmp1_2.4+20151223.gitfa8646d.1-2build7_arm64.deb ...
+#7 19.65 Unpacking librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#7 19.67 Selecting previously unselected package libssh-4:arm64.
+#7 19.67 Preparing to unpack .../69-libssh-4_0.10.6-2ubuntu0.5_arm64.deb ...
+#7 19.67 Unpacking libssh-4:arm64 (0.10.6-2ubuntu0.5) ...
+#7 19.68 Selecting previously unselected package libcurl4t64:arm64.
+#7 19.68 Preparing to unpack .../70-libcurl4t64_8.5.0-2ubuntu10.15_arm64.deb ...
+#7 19.68 Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.15) ...
+#7 19.70 Selecting previously unselected package curl.
+#7 19.70 Preparing to unpack .../71-curl_8.5.0-2ubuntu10.15_arm64.deb ...
+#7 19.70 Unpacking curl (8.5.0-2ubuntu10.15) ...
+#7 19.71 Selecting previously unselected package libpkgconf3:arm64.
+#7 19.71 Preparing to unpack .../72-libpkgconf3_1.8.1-2build1_arm64.deb ...
+#7 19.71 Unpacking libpkgconf3:arm64 (1.8.1-2build1) ...
+#7 19.73 Selecting previously unselected package ninja-build.
+#7 19.73 Preparing to unpack .../73-ninja-build_1.11.1-2_arm64.deb ...
+#7 19.73 Unpacking ninja-build (1.11.1-2) ...
+#7 19.74 Selecting previously unselected package pkgconf-bin.
+#7 19.74 Preparing to unpack .../74-pkgconf-bin_1.8.1-2build1_arm64.deb ...
+#7 19.74 Unpacking pkgconf-bin (1.8.1-2build1) ...
+#7 19.76 Selecting previously unselected package pkgconf:arm64.
+#7 19.76 Preparing to unpack .../75-pkgconf_1.8.1-2build1_arm64.deb ...
+#7 19.76 Unpacking pkgconf:arm64 (1.8.1-2build1) ...
+#7 19.77 Selecting previously unselected package pkg-config:arm64.
+#7 19.77 Preparing to unpack .../76-pkg-config_1.8.1-2build1_arm64.deb ...
+#7 19.77 Unpacking pkg-config:arm64 (1.8.1-2build1) ...
+#7 19.78 Selecting previously unselected package python3-pip-whl.
+#7 19.79 Preparing to unpack .../77-python3-pip-whl_24.0+dfsg-1ubuntu1.3_all.deb ...
+#7 19.79 Unpacking python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+#7 19.80 Selecting previously unselected package python3-setuptools-whl.
+#7 19.80 Preparing to unpack .../78-python3-setuptools-whl_68.1.2-2ubuntu1.2_all.deb ...
+#7 19.80 Unpacking python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+#7 19.82 Selecting previously unselected package python3.12-venv.
+#7 19.82 Preparing to unpack .../79-python3.12-venv_3.12.3-1ubuntu0.17_arm64.deb ...
+#7 19.82 Unpacking python3.12-venv (3.12.3-1ubuntu0.17) ...
+#7 19.83 Selecting previously unselected package python3-venv.
+#7 19.83 Preparing to unpack .../80-python3-venv_3.12.3-0ubuntu2.1_arm64.deb ...
+#7 19.83 Unpacking python3-venv (3.12.3-0ubuntu2.1) ...
+#7 19.86 Setting up media-types (10.1.0) ...
+#7 19.86 Setting up python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+#7 19.86 Setting up libkeyutils1:arm64 (1.6.3-3build1) ...
+#7 19.86 Setting up lto-disabled-list (47) ...
+#7 19.86 Setting up libgdbm6t64:arm64 (1.23-5.1build1) ...
+#7 19.86 Setting up libgdbm-compat4t64:arm64 (1.23-5.1build1) ...
+#7 19.87 Setting up libbrotli1:arm64 (1.1.0-2build2) ...
+#7 19.87 Setting up libsqlite3-0:arm64 (3.45.1-1ubuntu2.8) ...
+#7 19.87 Setting up binutils-common:arm64 (2.42-4ubuntu2.10) ...
+#7 19.87 Setting up libpsl5t64:arm64 (0.21.2-1.1build1) ...
+#7 19.87 Setting up libnghttp2-14:arm64 (1.59.0-1ubuntu0.4) ...
+#7 19.88 Setting up linux-libc-dev:arm64 (6.8.0-146.146) ...
+#7 19.88 Setting up libctf-nobfd0:arm64 (2.42-4ubuntu2.10) ...
+#7 19.88 Setting up libgomp1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 19.88 Setting up bzip2 (1.0.8-5.1ubuntu0.1) ...
+#7 19.88 Setting up libsframe1:arm64 (2.42-4ubuntu2.10) ...
+#7 19.88 Setting up ninja-build (1.11.1-2) ...
+#7 19.89 Setting up libjansson4:arm64 (2.14-2build2) ...
+#7 19.89 Setting up libkrb5support0:arm64 (1.20.1-6ubuntu2.10) ...
+#7 19.89 Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 19.89 Setting up tzdata (2026c-0ubuntu0.24.04.1) ...
+#7 19.95 
+#7 19.95 Current default time zone: 'Etc/UTC'
+#7 19.95 Local time is now:      Sun Oct  4 20:11:12 UTC 2026.
+#7 19.95 Universal Time is now:  Sun Oct  4 20:11:12 UTC 2026.
+#7 19.95 Run 'dpkg-reconfigure tzdata' if you wish to change it.
+#7 19.95 
+#7 19.96 Setting up libpkgconf3:arm64 (1.8.1-2build1) ...
+#7 19.96 Setting up rpcsvc-proto (1.4.2-0ubuntu7) ...
+#7 19.96 Setting up gcc-13-base:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 19.97 Setting up make (4.3-4.1build2) ...
+#7 19.97 Setting up libmpfr6:arm64 (4.2.1-1build1.1) ...
+#7 19.97 Setting up librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#7 19.97 Setting up xz-utils (5.6.1+really5.4.5-1ubuntu0.3) ...
+#7 19.97 update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist
+#7 19.98 update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist
+#7 20.00 Setting up perl-modules-5.38 (5.38.2-3.2ubuntu0.6) ...
+#7 20.00 Setting up libmpc3:arm64 (1.3.1-1build1.1) ...
+#7 20.00 Setting up libatomic1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.01 Setting up patch (2.7.6-7build3) ...
+#7 20.01 Setting up pkgconf-bin (1.8.1-2build1) ...
+#7 20.01 Setting up libk5crypto3:arm64 (1.20.1-6ubuntu2.10) ...
+#7 20.01 Setting up libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 20.01 Setting up libubsan1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.01 Setting up libhwasan0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.02 Setting up libcrypt-dev:arm64 (1:4.4.36-4build1) ...
+#7 20.02 Setting up libasan8:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.02 Setting up netbase (6.4) ...
+#7 20.04 Setting up libkrb5-3:arm64 (1.20.1-6ubuntu2.10) ...
+#7 20.04 Setting up libperl5.38t64:arm64 (5.38.2-3.2ubuntu0.6) ...
+#7 20.04 Setting up libtsan2:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.04 Setting up libbinutils:arm64 (2.42-4ubuntu2.10) ...
+#7 20.04 Setting up libisl23:arm64 (0.26-3build1.1) ...
+#7 20.04 Setting up libc-dev-bin (2.39-0ubuntu8.9) ...
+#7 20.05 Setting up openssl (3.0.13-0ubuntu3.16) ...
+#7 20.05 Setting up readline-common (8.2-4build1) ...
+#7 20.05 Setting up libcc1-0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.06 Setting up libldap2:arm64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#7 20.06 Setting up liblsan0:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.06 Setting up libitm1:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 20.06 Setting up libctf0:arm64 (2.42-4ubuntu2.10) ...
+#7 20.06 Setting up cpp-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 20.07 Setting up pkgconf:arm64 (1.8.1-2build1) ...
+#7 20.07 Setting up ca-certificates (20260601~24.04.1) ...
+#7 20.38 Updating certificates in /etc/ssl/certs...
+#7 20.77 121 added, 0 removed; done.
+#7 20.78 Setting up perl (5.38.2-3.2ubuntu0.6) ...
+#7 20.79 Setting up cpp-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 20.79 Setting up libgprofng0:arm64 (2.42-4ubuntu2.10) ...
+#7 20.79 Setting up libgssapi-krb5-2:arm64 (1.20.1-6ubuntu2.10) ...
+#7 20.80 Setting up pkg-config:arm64 (1.8.1-2build1) ...
+#7 20.80 Setting up libdpkg-perl (1.22.6ubuntu6.6) ...
+#7 20.80 Setting up libssh-4:arm64 (0.10.6-2ubuntu0.5) ...
+#7 20.80 Setting up libreadline8t64:arm64 (8.2-4build1) ...
+#7 20.80 Setting up libgcc-13-dev:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 20.81 Setting up libc6-dev:arm64 (2.39-0ubuntu8.9) ...
+#7 20.81 Setting up libstdc++-13-dev:arm64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 20.81 Setting up libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.17) ...
+#7 20.81 Setting up cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 20.81 Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.15) ...
+#7 20.82 Setting up python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+#7 20.82 Setting up python3.12 (3.12.3-1ubuntu0.17) ...
+#7 21.53 Setting up binutils-aarch64-linux-gnu (2.42-4ubuntu2.10) ...
+#7 21.53 Setting up binutils (2.42-4ubuntu2.10) ...
+#7 21.54 Setting up gcc-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 21.54 Setting up dpkg-dev (1.22.6ubuntu6.6) ...
+#7 21.54 Setting up gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 21.54 Setting up cpp (4:13.2.0-7ubuntu1) ...
+#7 21.55 Setting up curl (8.5.0-2ubuntu10.15) ...
+#7 21.55 Setting up libpython3-stdlib:arm64 (3.12.3-0ubuntu2.1) ...
+#7 21.57 Setting up g++-13-aarch64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 21.57 Setting up gcc-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 21.57 Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 21.57 Setting up python3.12-venv (3.12.3-1ubuntu0.17) ...
+#7 21.61 Setting up python3 (3.12.3-0ubuntu2.1) ...
+#7 21.68 Setting up gcc (4:13.2.0-7ubuntu1) ...
+#7 21.69 Setting up python3-venv (3.12.3-0ubuntu2.1) ...
+#7 21.69 Setting up g++-aarch64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 21.69 Setting up g++ (4:13.2.0-7ubuntu1) ...
+#7 21.69 update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+#7 21.69 update-alternatives: warning: skip creation of /usr/share/man/man1/c++.1.gz because associated file /usr/share/man/man1/g++.1.gz (of link group c++) doesn't exist
+#7 21.70 Setting up build-essential (12.10ubuntu1) ...
+#7 21.70 Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+#7 21.70 Processing triggers for ca-certificates (20260601~24.04.1) ...
+#7 21.71 Updating certificates in /etc/ssl/certs...
+#7 22.01 0 added, 0 removed; done.
+#7 22.01 Running hooks in /etc/ca-certificates/update.d...
+#7 22.01 done.
+#7 DONE 25.0s
+
+#8 [ 3/10] RUN python3 -m venv /opt/build-env && /opt/build-env/bin/pip install meson==1.8.2
+#8 2.812 Collecting meson==1.8.2
+#8 2.867   Downloading meson-1.8.2-py3-none-any.whl.metadata (1.8 kB)
+#8 2.894 Downloading meson-1.8.2-py3-none-any.whl (1.0 MB)
+#8 2.968    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 14.1 MB/s eta 0:00:00
+#8 2.979 Installing collected packages: meson
+#8 3.633 Successfully installed meson-1.8.2
+#8 DONE 3.8s
+
+#9 [ 4/10] RUN curl -fL --retry 3 https://codeload.github.com/su2code/SU2/tar.gz/12eb826f049ef7f67df974dfcb44cf36ee07c0f8 -o /tmp/su2.tar.gz  && echo '316552bdf987a9254093f1179addc2afa2c396c8fe97fbeeae06250dccaea7e4  /tmp/su2.tar.gz' | sha256sum -c -  && mkdir /opt/SU2 && tar -xzf /tmp/su2.tar.gz --strip-components=1 -C /opt/SU2  && curl -fL --retry 3 https://gitlab.com/libeigen/eigen/-/archive/d71c30c47858effcbd39967097a2d99ee48db464/eigen-d71c30c47858effcbd39967097a2d99ee48db464.tar.gz -o /tmp/eigen.tar.gz  && echo 'f1d28c2205d015490a685b1e5a171c434da87f757746724de3cb85e69621dec2  /tmp/eigen.tar.gz' | sha256sum -c -  && tar -xzf /tmp/eigen.tar.gz --strip-components=1 -C /opt/SU2/externals/eigen
+#9 0.083   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#9 0.083                                  Dload  Upload   Total   Spent    Left  Speed
+#9 0.083   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 6304k    0 6304k    0     0  7987k      0 --:--:-- --:--:-- --:--:-- 7979k100 18.0M    0 18.0M    0     0  10.7M      0 --:--:--  0:00:01 --:--:-- 10.7M
+#9 1.770 /tmp/su2.tar.gz: OK
+#9 2.025   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#9 2.025                                  Dload  Upload   Total   Spent    Left  Speed
+#9 2.025   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 2655k    0 2655k    0     0  7504k      0 --:--:-- --:--:-- --:--:-- 7523k
+#9 2.383 /tmp/eigen.tar.gz: OK
+#9 DONE 2.9s
+
+#10 [ 5/10] RUN curl -fL --retry 3 https://codeload.github.com/pcarruscag/MEL/tar.gz/46205ab019e5224559091375a6d71aabae6bc5b9 -o /tmp/mel.tar.gz  && echo 'e0f7f95ab80d098a2c2bafceefb52e958378302c2150ef7cb9fe2bf4aa81177b  /tmp/mel.tar.gz' | sha256sum -c -  && tar -xzf /tmp/mel.tar.gz --strip-components=1 -C /opt/SU2/externals/mel
+#10 0.089   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#10 0.089                                  Dload  Upload   Total   Spent    Left  Speed
+#10 0.089   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 13894    0 13894    0     0  90181      0 --:--:-- --:--:-- --:--:-- 90810
+#10 0.245 /tmp/mel.tar.gz: OK
+#10 DONE 0.3s
+
+#11 [ 6/10] WORKDIR /opt/SU2
+#11 DONE 0.0s
+
+#12 [ 7/10] RUN python3 preconfigure.py --no-codi --no-medi --no-opdi --no-mpp --no-coolprop --no-mel --no-fado --no-mlpcpp --no-eigen
+#12 0.129 git command not found. Using fall-back method to init submodules
+#12 DONE 0.2s
+
+#13 [ 8/10] COPY high_gradient.patch /tmp/high_gradient.patch
+#13 DONE 0.0s
+
+#14 [ 9/10] RUN patch -p1 < /tmp/high_gradient.patch  && /opt/build-env/bin/meson setup build --prefix=/opt/su2-install -Dwith-mpi=disabled -Denable-cgns=false -Denable-tecio=false -Dcpu-arch=armv8-a  && ninja -C build -j2 install  && dpkg-query -W > /opt/package-versions.txt
+#14 0.080 patching file Common/include/toolboxes/MMS/CUserDefinedSolution.hpp
+#14 0.080 patching file Common/src/toolboxes/MMS/CUserDefinedSolution.cpp
+#14 0.786 The Meson build system
+#14 0.786 Version: 1.8.2
+#14 0.786 Source dir: /opt/SU2
+#14 0.786 Build dir: /opt/SU2/build
+#14 0.786 Build type: native build
+#14 0.786 Project name: SU2
+#14 0.786 Project version: 8.5.0 "Harrier"
+#14 0.786 C compiler for the host machine: cc (gcc 13.3.0 "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0")
+#14 0.786 C linker for the host machine: cc ld.bfd 2.42
+#14 0.786 C++ compiler for the host machine: c++ (gcc 13.3.0 "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0")
+#14 0.786 C++ linker for the host machine: c++ ld.bfd 2.42
+#14 0.786 Host machine cpu family: aarch64
+#14 0.786 Host machine cpu: aarch64
+#14 0.786 Program python3 found: YES (/opt/build-env/bin/python3)
+#14 0.786 Compiler for C++ supports arguments -Wno-empty-body: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-ignored-qualifiers: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-unused-parameter: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-deprecated-declarations: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-error=cast-function-type: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-cast-function-type: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-error=stringop-truncation: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-stringop-truncation: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-error=missing-field-initializers: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-missing-field-initializers: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-error=class-memaccess: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-class-memaccess: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-overloaded-virtual: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-array-bounds: YES 
+#14 0.786 Compiler for C++ supports arguments -Wno-dangling-pointer: YES 
+#14 0.786 Compiler for C++ supports arguments -fno-finite-math-only: YES 
+#14 0.786 Dependency mpi skipped: feature with-mpi disabled
+#14 0.786 Dependency mpi skipped: feature with-mpi disabled
+#14 0.786 SU2_PY/meson.build:74: WARNING: Project targets '>=1.8.2' but uses feature deprecated since '0.60.0': install_subdir with empty directory. It worked by accident and is buggy. Use install_emptydir instead.
+#14 0.786 Message: -------------------------------------------------------------------------
+#14 0.786          |    ___ _   _ ___                                                      |
+#14 0.786          |   / __| | | |_  )   Release 8.5.0 "Harrier"                           |
+#14 0.786          |   \__ \ |_| |/ /                                                      |
+#14 0.786          |   |___/\___//___|   Meson Configuration Summary                       |
+#14 0.786          |                                                                       |
+#14 0.786          -------------------------------------------------------------------------
+#14 0.786 
+#14 0.786          Option          Value
+#14 0.786          ---------------------
+#14 0.786          TecIO:          false
+#14 0.786          CGNS:           false
+#14 0.786          AD (reverse):   false
+#14 0.786          AD (forward):   false
+#14 0.786          Python Wrapper: false
+#14 0.786          Intel-MKL:      false
+#14 0.786          OpenBlas:       false
+#14 0.786          PaStiX:         false
+#14 0.786          Mixed Float:    false
+#14 0.786          libROM:         false
+#14 0.786          CoolProp:       false
+#14 0.786          MLPCpp:         false
+#14 0.786          Tracy Profiler: false
+#14 0.786 
+#14 0.786          Please be sure to add the $SU2_HOME and $SU2_RUN environment variables,
+#14 0.786          and update your $PATH (and $PYTHONPATH if applicable) with $SU2_RUN
+#14 0.786 
+#14 0.786          Based on the input to this configuration, add these lines to your .bashrc file:
+#14 0.786 
+#14 0.786          export SU2_RUN=/opt/su2-install/bin
+#14 0.786          export SU2_HOME=/opt/SU2
+#14 0.786          export PATH=$PATH:$SU2_RUN
+#14 0.786          export PYTHONPATH=$PYTHONPATH:$SU2_RUN
+#14 0.786 
+#14 0.786          Use './ninja -C build install' to compile and install SU2
+#14 0.786 
+#14 0.786 Build targets in project: 8
+#14 0.786 WARNING: Deprecated features used:
+#14 0.786  * 0.60.0: {'install_subdir with empty directory'}
+#14 0.786 
+#14 0.786 SU2 8.5.0 "Harrier"
+#14 0.786 
+#14 0.786   User defined options
+#14 0.786     cpu-arch    : armv8-a
+#14 0.786     enable-cgns : false
+#14 0.786     enable-tecio: false
+#14 0.786     prefix      : /opt/su2-install
+#14 0.786     with-mpi    : disabled
+#14 0.786 
+#14 0.786 Found ninja-1.11.1 at /usr/bin/ninja
+#14 0.832 ninja: Entering directory `build'
+#14 1.765 [1/305] Compiling C++ object Common/src/libSU2Common.a.p/graph_coloring_structure.cpp.o
+#14 2.079 [2/305] Compiling C++ object Common/src/libSU2Common.a.p/basic_types_ad_structure.cpp.o
+#14 3.085 [3/305] Compiling C++ object Common/src/libSU2Common.a.p/wall_model.cpp.o
+#14 3.880 [4/305] Compiling C++ object Common/src/libSU2Common.a.p/.._include_parallelization_mpi_structure.cpp.o
+#14 3.946 [5/305] Compiling C++ object Common/src/libSU2Common.a.p/.._include_parallelization_omp_structure.cpp.o
+#14 5.453 [6/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_CSysSolve_b.cpp.o
+#14 28.45 [7/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_CSysSolve.cpp.o
+#14 29.28 [8/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_CSysVector.cpp.o
+#14 30.98 [9/305] Compiling C++ object Common/src/libSU2Common.a.p/CConfig.cpp.o
+#14 30.99 [10/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_CPastixWrapper.cpp.o
+#14 31.44 [11/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_CSysMatrix.cpp.o
+#14 31.68 [12/305] Compiling C++ object Common/src/libSU2Common.a.p/linear_algebra_blas_structure.cpp.o
+#14 31.85 [13/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_CLinearPartitioner.cpp.o
+#14 32.21 [14/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_printing_toolbox.cpp.o
+#14 32.56 [15/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_C1DInterpolation.cpp.o
+#14 32.65 [16/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_CSquareMatrixCM.cpp.o
+#14 33.16 [17/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_CSymmetricMatrix.cpp.o
+#14 33.38 [18/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CInviscidVortexSolution.cpp.o
+#14 33.91 [19/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CIncTGVSolution.cpp.o
+#14 34.11 [20/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSIncNSSolution.cpp.o
+#14 34.64 [21/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSIncEulerSolution.cpp.o
+#14 34.87 [22/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CRinglebSolution.cpp.o
+#14 35.50 [23/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSNSTwoHalfSpheresSolution.cpp.o
+#14 35.62 [24/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CNSUnitQuadSolution.cpp.o
+#14 36.34 [25/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSNSUnitQuadSolution.cpp.o
+#14 36.45 [26/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSNSTwoHalfCirclesSolution.cpp.o
+#14 37.10 [27/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CTGVSolution.cpp.o
+#14 37.24 [28/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CMMSNSUnitQuadSolutionWallBC.cpp.o
+#14 37.92 [29/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CVerificationSolution.cpp.o
+#14 37.98 [30/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_MMS_CUserDefinedSolution.cpp.o
+#14 38.32 [31/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_fem_CMatchingFace.cpp.o
+#14 38.45 [32/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_fem_CFaceOfElement.cpp.o
+#14 38.54 [33/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_fem_CReorderElements.cpp.o
+#14 39.34 [34/305] Compiling C++ object Common/src/libSU2Common.a.p/toolboxes_fem_CSortFaces.cpp.o
+#14 44.40 [35/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CGeometry.cpp.o
+#14 47.64 [36/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CPhysicalGeometryFEM.cpp.o
+#14 47.66 [37/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CPhysicalGeometry.cpp.o
+#14 48.59 [38/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CDummyGeometry.cpp.o
+#14 49.77 [39/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CMultiGridQueue.cpp.o
+#14 50.16 [40/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_CMultiGridGeometry.cpp.o
+#14 50.41 [41/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CElement.cpp.o
+#14 50.64 [42/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CTRIA1.cpp.o
+#14 50.92 [43/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CQUAD4.cpp.o
+#14 51.12 [44/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CTETRA1.cpp.o
+#14 51.46 [45/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CPYRAM5.cpp.o
+#14 51.69 [46/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CPRISM6.cpp.o
+#14 52.04 [47/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CHEXA8.cpp.o
+#14 52.14 [48/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CLINE.cpp.o
+#14 52.55 [49/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CTRIA3.cpp.o
+#14 52.65 [50/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CTETRA4.cpp.o
+#14 53.08 [51/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_elements_CPYRAM6.cpp.o
+#14 53.30 [52/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_dual_grid_CDualGrid.cpp.o
+#14 53.45 [53/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_dual_grid_CEdge.cpp.o
+#14 54.13 [54/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_dual_grid_CVertex.cpp.o
+#14 54.45 [55/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_dual_grid_CPoint.cpp.o
+#14 54.79 [56/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_dual_grid_CTurboVertex.cpp.o
+#14 54.93 [57/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CPrimalGrid.cpp.o
+#14 55.55 [58/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CPrimalGridBoundFEM.cpp.o
+#14 55.56 [59/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CPrimalGridFEM.cpp.o
+#14 56.05 [60/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CTriangle.cpp.o
+#14 56.05 [61/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CLine.cpp.o
+#14 56.54 [62/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CPyramid.cpp.o
+#14 56.55 [63/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CPrism.cpp.o
+#14 57.02 [64/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CHexahedron.cpp.o
+#14 57.03 [65/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CTetrahedron.cpp.o
+#14 57.51 [66/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CQuadrilateral.cpp.o
+#14 57.52 [67/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_primal_grid_CVertexMPI.cpp.o
+#14 58.70 [68/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CBoxMeshReaderFVM.cpp.o
+#14 58.72 [69/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CCGNSElementType.cpp.o
+#14 58.80 [70/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CBoxMeshReaderFEM.cpp.o
+#14 59.49 [71/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CCGNSMeshReaderBase.cpp.o
+#14 59.66 [72/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CCGNSMeshReaderFEM.cpp.o
+#14 60.27 [73/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CCGNSMeshReaderFVM.cpp.o
+#14 60.70 [74/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CMeshReaderBase.cpp.o
+#14 61.43 [75/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CRectangularMeshReaderFEM.cpp.o
+#14 61.77 [76/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CRectangularMeshReaderFVM.cpp.o
+#14 63.01 [77/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CSU2ASCIIMeshReaderBase.cpp.o
+#14 63.17 [78/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CSU2ASCIIMeshReaderFEM.cpp.o
+#14 64.16 [79/305] Compiling C++ object Common/src/libSU2Common.a.p/containers_CTrapezoidalMap.cpp.o
+#14 64.75 [80/305] Compiling C++ object Common/src/libSU2Common.a.p/geometry_meshreader_CSU2ASCIIMeshReaderFVM.cpp.o
+#14 65.19 [81/305] Compiling C++ object Common/src/libSU2Common.a.p/containers_CFileReaderLUT.cpp.o
+#14 65.88 [82/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CInterpolatorFactory.cpp.o
+#14 66.54 [83/305] Compiling C++ object Common/src/libSU2Common.a.p/containers_CLookUpTable.cpp.o
+#14 67.10 [84/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CInterpolator.cpp.o
+#14 68.06 [85/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CMirror.cpp.o
+#14 68.72 [86/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CSlidingMesh.cpp.o
+#14 69.53 [87/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CIsoparametric.cpp.o
+#14 69.92 [88/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CNearestNeighbor.cpp.o
+#14 71.25 [89/305] Compiling C++ object Common/src/libSU2Common.a.p/interface_interpolation_CRadialBasisFunction.cpp.o
+#14 73.98 [90/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_integration_rules.cpp.o
+#14 74.65 [91/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_work_estimate_metis.cpp.o
+#14 77.11 [92/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_standard_element.cpp.o
+#14 78.20 [93/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_wall_distance.cpp.o
+#14 79.03 [94/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_gauss_jacobi_quadrature.cpp.o
+#14 79.12 [95/305] Compiling C++ object Common/src/libSU2Common.a.p/fem_fem_geometry_structure.cpp.o
+#14 79.45 [96/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CFreeFormBlending.cpp.o
+#14 79.85 [97/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CGridMovement.cpp.o
+#14 80.06 [98/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CBSplineBlending.cpp.o
+#14 80.40 [99/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CBezierBlending.cpp.o
+#14 81.49 [100/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CFreeFormDefBox.cpp.o
+#14 81.72 [101/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CVolumetricMovement.cpp.o
+#14 83.46 [102/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CVolumetricMovementFactory.cpp.o
+#14 85.94 [103/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CLinearElasticity.cpp.o
+#14 86.29 [104/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CSurfaceMovement.cpp.o
+#14 86.87 [105/305] Compiling C++ object Common/src/libSU2Common.a.p/adt_CADTBaseClass.cpp.o
+#14 87.23 [106/305] Compiling C++ object Common/src/libSU2Common.a.p/grid_movement_CRadialBasisFunctionInterpolation.cpp.o
+#14 87.48 [107/305] Compiling C++ object Common/src/libSU2Common.a.p/adt_CADTPointsOnlyClass.cpp.o
+#14 88.48 [108/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/definition_structure.cpp.o
+#14 88.61 [109/305] Compiling C++ object Common/src/libSU2Common.a.p/adt_CADTElemClass.cpp.o
+#14 88.63 [110/305] Linking static target Common/src/libSU2Common.a
+#14 90.28 [111/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/CMarkerProfileReaderFVM.cpp.o
+#14 90.73 [112/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/python_wrapper_structure.cpp.o
+#14 91.41 [113/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CFluidModel.cpp.o
+#14 91.50 [114/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CIdealGas.cpp.o
+#14 92.34 [115/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CFluidScalar.cpp.o
+#14 92.78 [116/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CFluidFlamelet.cpp.o
+#14 93.23 [117/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CPengRobinson.cpp.o
+#14 93.60 [118/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CVanDerWaalsGas.cpp.o
+#14 93.98 [119/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CCoolProp.cpp.o
+#14 93.99 [120/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CMutationTCLib.cpp.o
+#14 94.64 [121/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CNEMOGas.cpp.o
+#14 95.73 [122/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CDataDrivenFluid.cpp.o
+#14 96.82 [123/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_COutputFactory.cpp.o
+#14 96.84 [124/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/fluid_CSU2TCLib.cpp.o
+#14 100.2 [125/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CAdjElasticityOutput.cpp.o
+#14 100.4 [126/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CAdjFlowOutput.cpp.o
+#14 103.5 [127/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CAdjFlowCompOutput.cpp.o
+#14 103.8 [128/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CAdjFlowIncOutput.cpp.o
+#14 106.4 [129/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CBaselineOutput.cpp.o
+#14 106.6 [130/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CAdjHeatOutput.cpp.o
+#14 108.5 [131/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CMultizoneOutput.cpp.o
+#14 110.1 [132/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CElasticityOutput.cpp.o
+#14 113.0 [133/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CFlowCompOutput.cpp.o
+#14 113.4 [134/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CFlowCompFEMOutput.cpp.o
+#14 114.4 [135/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CFVMOutput.cpp.o
+#14 118.0 [136/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CFlowIncOutput.cpp.o
+#14 121.1 [137/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CHeatOutput.cpp.o
+#14 122.5 [138/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CMeshOutput.cpp.o
+#14 123.0 [139/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CFlowOutput.cpp.o
+#14 124.5 [140/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CTurboOutput.cpp.o
+#14 126.5 [141/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_CNEMOCompOutput.cpp.o
+#14 127.1 [142/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParallelDataSorter.cpp.o
+#14 128.2 [143/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CFVMDataSorter.cpp.o
+#14 129.3 [144/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CFEMDataSorter.cpp.o
+#14 131.0 [145/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSurfaceFEMDataSorter.cpp.o
+#14 131.1 [146/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_COutput.cpp.o
+#14 131.6 [147/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParallelFileWriter.cpp.o
+#14 132.4 [148/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParaviewFileWriter.cpp.o
+#14 132.7 [149/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSurfaceFVMDataSorter.cpp.o
+#14 133.2 [150/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParaviewBinaryFileWriter.cpp.o
+#14 133.4 [151/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CTecplotFileWriter.cpp.o
+#14 133.8 [152/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CTecplotBinaryFileWriter.cpp.o
+#14 134.0 [153/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CCSVFileWriter.cpp.o
+#14 134.6 [154/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSU2FileWriter.cpp.o
+#14 134.8 [155/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSTLFileWriter.cpp.o
+#14 135.1 [156/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSU2BinaryFileWriter.cpp.o
+#14 135.9 [157/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParaviewXMLFileWriter.cpp.o
+#14 136.1 [158/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CParaviewVTMFileWriter.cpp.o
+#14 136.6 [159/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CCGNSFileWriter.cpp.o
+#14 136.7 [160/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_filewriter_CSU2MeshFileWriter.cpp.o
+#14 137.1 [161/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/output_tools_CWindowingTools.cpp.o
+#14 137.8 [162/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CIncNSVariable.cpp.o
+#14 138.1 [163/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CTransLMVariable.cpp.o
+#14 138.9 [164/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CAdjEulerVariable.cpp.o
+#14 139.0 [165/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CHeatVariable.cpp.o
+#14 139.8 [166/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CTurbVariable.cpp.o
+#14 139.9 [167/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CScalarVariable.cpp.o
+#14 140.7 [168/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CSpeciesVariable.cpp.o
+#14 140.9 [169/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CSpeciesFlameletVariable.cpp.o
+#14 141.6 [170/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CAdjNSVariable.cpp.o
+#14 141.7 [171/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CBaselineVariable.cpp.o
+#14 142.6 [172/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CDiscAdjFEABoundVariable.cpp.o
+#14 142.7 [173/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CDiscAdjMeshBoundVariable.cpp.o
+#14 143.6 [174/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CFEABoundVariable.cpp.o
+#14 143.7 [175/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CDiscAdjVariable.cpp.o
+#14 144.7 [176/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CTurbSAVariable.cpp.o
+#14 144.8 [177/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CFEAVariable.cpp.o
+#14 145.6 [178/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CMeshVariable.cpp.o
+#14 145.7 [179/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CMeshBoundVariable.cpp.o
+#14 146.3 [180/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CMeshElement.cpp.o
+#14 146.7 [181/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CRadVariable.cpp.o
+#14 147.2 [182/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CRadP1Variable.cpp.o
+#14 147.6 [183/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CTurbSSTVariable.cpp.o
+#14 148.2 [184/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CVariable.cpp.o
+#14 148.8 [185/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CNSVariable.cpp.o
+#14 149.1 [186/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CAdjTurbVariable.cpp.o
+#14 149.8 [187/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CFlowVariable.cpp.o
+#14 150.2 [188/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CIncEulerVariable.cpp.o
+#14 151.0 [189/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CEulerVariable.cpp.o
+#14 151.5 [190/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CNEMOEulerVariable.cpp.o
+#14 152.1 [191/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CNEMONSVariable.cpp.o
+#14 152.4 [192/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/variables_CSobolevSmoothingVariable.cpp.o
+#14 154.8 [193/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CSolverFactory.cpp.o
+#14 157.8 [194/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CAdjEulerSolver.cpp.o
+#14 158.9 [195/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CAdjNSSolver.cpp.o
+#14 160.9 [196/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CAdjTurbSolver.cpp.o
+#14 162.2 [197/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CBaselineSolver.cpp.o
+#14 163.9 [198/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CBaselineSolver_FEM.cpp.o
+#14 165.4 [199/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CDiscAdjFEASolver.cpp.o
+#14 166.7 [200/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CDiscAdjMeshSolver.cpp.o
+#14 168.1 [201/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CRadSolver.cpp.o
+#14 169.7 [202/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CRadP1Solver.cpp.o
+#14 171.0 [203/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CDiscAdjSolver.cpp.o
+#14 176.0 [204/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CFEASolver.cpp.o
+#14 181.4 [205/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CEulerSolver.cpp.o
+#14 184.5 [206/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CFEM_DG_EulerSolver.cpp.o
+#14 186.2 [207/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CFEM_DG_NSSolver.cpp.o
+#14 188.9 [208/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CHeatSolver.cpp.o
+#14 192.1 [209/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CIncEulerSolver.cpp.o
+#14 195.8 [210/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CMeshSolver.cpp.o
+#14 197.2 [211/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CIncNSSolver.cpp.o
+#14 197.2 In file included from ../SU2_CFD/src/solvers/CIncNSSolver.cpp:31:
+#14 197.2 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl: In member function 'void CFVMFlowSolverBase<VariableType, FlowRegime>::EdgeFluxResidual(const CGeometry*, const CSolver* const*, CConfig*) [with VariableType = CIncEulerVariable; ENUM_REGIME FlowRegime = ENUM_REGIME::INCOMPRESSIBLE]':
+#14 197.2 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl:1629:34: note: parameter passing for argument of type 'simd::Array<double>' when C++17 is enabled changed to match C++14 in GCC 10.1
+#14 197.2  1629 |         edgeNumerics->ComputeFlux(iEdge, *config, *geometry, *nodes, UpdateType::COLORING, mask, LinSysRes, Jacobian);
+#14 197.2       |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#14 200.5 [212/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CNEMOEulerSolver.cpp.o
+#14 205.5 [213/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CNEMONSSolver.cpp.o
+#14 205.5 In file included from ../SU2_CFD/src/solvers/CNEMONSSolver.cpp:32:
+#14 205.5 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl: In member function 'void CFVMFlowSolverBase<VariableType, FlowRegime>::EdgeFluxResidual(const CGeometry*, const CSolver* const*, CConfig*) [with VariableType = CNEMOEulerVariable; ENUM_REGIME FlowRegime = ENUM_REGIME::COMPRESSIBLE]':
+#14 205.5 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl:1629:34: note: parameter passing for argument of type 'simd::Array<double>' when C++17 is enabled changed to match C++14 in GCC 10.1
+#14 205.5  1629 |         edgeNumerics->ComputeFlux(iEdge, *config, *geometry, *nodes, UpdateType::COLORING, mask, LinSysRes, Jacobian);
+#14 205.5       |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#14 209.1 [214/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CNSSolver.cpp.o
+#14 209.1 In file included from ../SU2_CFD/src/solvers/CNSSolver.cpp:32:
+#14 209.1 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl: In member function 'void CFVMFlowSolverBase<VariableType, FlowRegime>::EdgeFluxResidual(const CGeometry*, const CSolver* const*, CConfig*) [with VariableType = CEulerVariable; ENUM_REGIME FlowRegime = ENUM_REGIME::COMPRESSIBLE]':
+#14 209.1 ../SU2_CFD/src/solvers/../../include/solvers/CFVMFlowSolverBase.inl:1629:34: note: parameter passing for argument of type 'simd::Array<double>' when C++17 is enabled changed to match C++14 in GCC 10.1
+#14 209.1  1629 |         edgeNumerics->ComputeFlux(iEdge, *config, *geometry, *nodes, UpdateType::COLORING, mask, LinSysRes, Jacobian);
+#14 209.1       |         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#14 211.4 [215/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CTemplateSolver.cpp.o
+#14 214.6 [216/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CSolver.cpp.o
+#14 215.6 [217/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CSpeciesSolver.cpp.o
+#14 217.8 [218/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CSpeciesFlameletSolver.cpp.o
+#14 218.9 [219/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CTransLMSolver.cpp.o
+#14 221.7 [220/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CTurbSolver.cpp.o
+#14 222.8 [221/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CTurbSASolver.cpp.o
+#14 225.2 [222/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CTurbSSTSolver.cpp.o
+#14 225.4 [223/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CFEASolverBase.cpp.o
+#14 226.7 [224/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_CNumerics.cpp.o
+#14 227.4 [225/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_template.cpp.o
+#14 228.2 [226/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_radiation.cpp.o
+#14 228.8 [227/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/solvers_CGradientSmoothingSolver.cpp.o
+#14 229.5 [228/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_roe.cpp.o
+#14 229.7 [229/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_fds.cpp.o
+#14 230.4 [230/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_fvs.cpp.o
+#14 231.5 [231/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_hllc.cpp.o
+#14 231.6 [232/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_ausm_slau.cpp.o
+#14 232.4 [233/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_convection_centered.cpp.o
+#14 233.0 [234/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_flow_diffusion.cpp.o
+#14 233.5 [235/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_flow_flow_sources.cpp.o
+#14 234.5 [236/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_convection_lax.cpp.o
+#14 235.4 [237/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_convection_roe.cpp.o
+#14 235.5 [238/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_CNEMONumerics.cpp.o
+#14 236.4 [239/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_convection_msw.cpp.o
+#14 236.7 [240/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_convection_ausm_slau.cpp.o
+#14 237.4 [241/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_NEMO_diffusion.cpp.o
+#14 237.8 [242/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_NEMO_NEMO_sources.cpp.o
+#14 238.8 [243/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_continuous_adjoint_adj_diffusion.cpp.o
+#14 238.8 [244/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_continuous_adjoint_adj_convection.cpp.o
+#14 239.5 [245/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_scalar_scalar_sources.cpp.o
+#14 239.8 [246/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_continuous_adjoint_adj_sources.cpp.o
+#14 240.5 [247/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_species_species_sources.cpp.o
+#14 240.8 [248/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_elasticity_CFEAElasticity.cpp.o
+#14 241.6 [249/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_elasticity_CFEALinearElasticity.cpp.o
+#14 242.1 [250/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_elasticity_CFEANonlinearElasticity.cpp.o
+#14 242.6 [251/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_elasticity_nonlinear_models.cpp.o
+#14 242.9 [252/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/numerics_CGradSmoothing.cpp.o
+#14 245.4 [253/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_CInterface.cpp.o
+#14 247.5 [254/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_cfd_CConservativeVarsInterface.cpp.o
+#14 249.7 [255/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_cfd_CMixingPlaneInterface.cpp.o
+#14 251.8 [256/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_cfd_CSlidingInterface.cpp.o
+#14 254.0 [257/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_cht_CConjugateHeatInterface.cpp.o
+#14 256.1 [258/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_fsi_CDisplacementsInterface.cpp.o
+#14 258.3 [259/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/.._include_numerics_simd_CNumericsSIMD.cpp.o
+#14 258.3 In file included from ../SU2_CFD/include/numerics_simd/flow/convection/upwind.hpp:33,
+#14 258.3                  from ../SU2_CFD/include/numerics_simd/CNumericsSIMD.cpp:31:
+#14 258.3 ../SU2_CFD/include/numerics_simd/flow/convection/common.hpp: In function 'Double umusclProjection(Double, Double, Double)':
+#14 258.3 ../SU2_CFD/include/numerics_simd/flow/convection/common.hpp:44:49: note: parameter passing for argument of type 'simd::Array<double>' when C++17 is enabled changed to match C++14 in GCC 10.1
+#14 258.3    44 |                                     Double kappa) {
+#14 258.3       |                                                 ^
+#14 258.5 [260/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_fsi_CFlowTractionInterface.cpp.o
+#14 260.5 [261/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/interfaces_fsi_CDiscAdjFlowTractionInterface.cpp.o
+#14 263.1 [262/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CMultizoneDriver.cpp.o
+#14 265.6 [263/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CSinglezoneDriver.cpp.o
+#14 269.4 [264/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CDriver.cpp.o
+#14 269.9 [265/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CDiscAdjMultizoneDriver.cpp.o
+#14 272.2 [266/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CDummyDriver.cpp.o
+#14 272.3 [267/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CDiscAdjSinglezoneDriver.cpp.o
+#14 274.6 [268/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CIntegration.cpp.o
+#14 275.6 [269/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/drivers_CDriverBase.cpp.o
+#14 276.8 [270/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CIntegrationFactory.cpp.o
+#14 277.9 [271/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CSingleGridIntegration.cpp.o
+#14 279.8 [272/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CMultiGridIntegration.cpp.o
+#14 280.4 [273/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CNewtonIntegration.cpp.o
+#14 282.0 [274/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CStructuralIntegration.cpp.o
+#14 282.6 [275/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/integration_CFEM_DG_Integration.cpp.o
+#14 284.4 [276/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CIteration.cpp.o
+#14 284.8 [277/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CIterationFactory.cpp.o
+#14 286.9 [278/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CAdjFluidIteration.cpp.o
+#14 287.5 [279/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CDiscAdjFluidIteration.cpp.o
+#14 289.3 [280/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CDiscAdjHeatIteration.cpp.o
+#14 290.1 [281/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CDiscAdjFEAIteration.cpp.o
+#14 291.8 [282/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CFEAIteration.cpp.o
+#14 292.4 [283/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CFEMFluidIteration.cpp.o
+#14 294.7 [284/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CHeatIteration.cpp.o
+#14 295.1 [285/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CFluidIteration.cpp.o
+#14 296.0 [286/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/limiters_CLimiterDetails.cpp.o
+#14 297.2 [287/305] Compiling C++ object SU2_CFD/src/libSU2core.a.p/iteration_CTurboIteration.cpp.o
+#14 297.2 [288/305] Linking static target SU2_CFD/src/libSU2core.a
+#14 299.6 [289/305] Compiling C++ object SU2_DEF/src/SU2_DEF.p/SU2_DEF.cpp.o
+#14 302.4 [290/305] Compiling C++ object SU2_DEF/src/SU2_DEF.p/drivers_CDeformationDriver.cpp.o
+#14 303.9 [291/305] Compiling C++ object SU2_CFD/src/SU2_CFD.p/SU2_CFD.cpp.o
+#14 304.3 [292/305] Linking target SU2_CFD/src/SU2_CFD
+#14 306.5 [293/305] Compiling C++ object SU2_DEF/src/libSU2core_DEF.a.p/SU2_DEF.cpp.o
+#14 309.3 [294/305] Compiling C++ object SU2_DEF/src/libSU2core_DEF.a.p/drivers_CDeformationDriver.cpp.o
+#14 315.3 [295/305] Compiling C++ object SU2_DEF/src/SU2_DEF.p/drivers_CDiscAdjDeformationDriver.cpp.o
+#14 315.4 [296/305] Linking target SU2_DEF/src/SU2_DEF
+#14 317.7 [297/305] Compiling C++ object SU2_DOT/src/SU2_DOT.p/SU2_DOT.cpp.o
+#14 320.1 [298/305] Compiling C++ object SU2_GEO/src/SU2_GEO.p/SU2_GEO.cpp.o
+#14 320.2 [299/305] Linking target SU2_GEO/src/SU2_GEO
+#14 322.3 [300/305] Compiling C++ object SU2_DEF/src/libSU2core_DEF.a.p/drivers_CDiscAdjDeformationDriver.cpp.o
+#14 322.3 [301/305] Linking static target SU2_DEF/src/libSU2core_DEF.a
+#14 322.5 [302/305] Linking target SU2_DOT/src/SU2_DOT
+#14 322.9 [303/305] Compiling C++ object SU2_SOL/src/SU2_SOL.p/SU2_SOL.cpp.o
+#14 323.0 [304/305] Linking target SU2_SOL/src/SU2_SOL
+#14 323.0 [304/305] Installing files
+#14 323.2 Installing subdir /opt/SU2/SU2_PY/../externals/FADO to /opt/su2-install/bin/FADO
+#14 323.2 Installing SU2_CFD/src/SU2_CFD to /opt/su2-install/bin
+#14 323.2 Installing SU2_DEF/src/SU2_DEF to /opt/su2-install/bin
+#14 323.2 Installing SU2_DOT/src/SU2_DOT to /opt/su2-install/bin
+#14 323.2 Installing SU2_GEO/src/SU2_GEO to /opt/su2-install/bin
+#14 323.2 Installing SU2_SOL/src/SU2_SOL to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/continuous_adjoint.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/compute_uncertainty.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/finite_differences.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/mesh_deformation.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/parallel_computation.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/parallel_computation_fsi.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/shape_optimization.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/merge_solution.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/set_ffd_design_var.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/compute_polar.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/discrete_adjoint.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/direct_differentiation.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/fsi_computation.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2_CFD.py to /opt/su2-install/bin
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/__init__.py to /opt/su2-install/bin/SU2
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/eval/design.py to /opt/su2-install/bin/SU2/eval
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/eval/functions.py to /opt/su2-install/bin/SU2/eval
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/eval/gradients.py to /opt/su2-install/bin/SU2/eval
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/eval/__init__.py to /opt/su2-install/bin/SU2/eval
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/config.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/config_options.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/data.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/filelock.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/redirect.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/state.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/tools.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/historyMap.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/io/__init__.py to /opt/su2-install/bin/SU2/io
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/opt/project.py to /opt/su2-install/bin/SU2/opt
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/opt/scipy_tools.py to /opt/su2-install/bin/SU2/opt
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/opt/__init__.py to /opt/su2-install/bin/SU2/opt
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/adjoint.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/deform.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/direct.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/interface.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/merge.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/geometry.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/projection.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/run/__init__.py to /opt/su2-install/bin/SU2/run
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/bunch.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/filter_adjoint.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/lhc_unif.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/misc.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/mp_eval.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/ordered_bunch.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/ordered_dict.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/plot.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/polarSweepLib.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/which.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/switch.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2/util/__init__.py to /opt/su2-install/bin/SU2/util
+#14 323.2 Installing /opt/SU2/SU2_PY/FSI_tools/__init__.py to /opt/su2-install/bin/FSI_tools
+#14 323.2 Installing /opt/SU2/SU2_PY/FSI_tools/FSIInterface.py to /opt/su2-install/bin/FSI_tools
+#14 323.2 Installing /opt/SU2/SU2_PY/FSI_tools/FSI_config.py to /opt/su2-install/bin/FSI_tools
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2_Nastran/__init__.py to /opt/su2-install/bin/SU2_Nastran
+#14 323.2 Installing /opt/SU2/SU2_PY/SU2_Nastran/pysu2_nastran.py to /opt/su2-install/bin/SU2_Nastran
+#14 DONE 323.4s
+
+#15 [10/10] WORKDIR /case
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.9s done
+#16 writing image sha256:61416b92eeea8a06202c1acea06cfb5695d2310a6e18cda4e7a3f2e6483838db done
+#16 naming to docker.io/library/cans-su2-high-gradient done
+#16 DONE 1.9s

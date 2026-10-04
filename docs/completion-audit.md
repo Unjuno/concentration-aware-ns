@@ -1,5 +1,22 @@
 # Completion audit — interim, 2026-09-27
 
+### SU2 n16 case preserved and replayed across two image builds — 2026-10-05
+
+The n16 artifact from hosted run 37230949147 now has a byte-hash-verified
+independent replay and a permanent local copy of its case archive, exported
+files, protocol, build log and image ID. Its ten archive member paths match
+the earlier n16 run 37190363204. Seven are byte-identical; after normalizing
+the separately built image ID and ephemeral Docker mount path, both
+diagnostics and command match exactly. Both runs exit zero but fail both the
+standard acceptance and local sampled-quality gates. This confirms a
+repeatable coarse-grid result, not a pass/fail blind spot or solver defect.
+Run 37230949147's other four cases remain in progress. The separate Lean audit
+run 37233433718 hit its 90-minute job timeout after 10,489 of 11,424 modules;
+the Euler axiom step did not run, so the audit result is INCOMPLETE. The
+workflow cap is now 180 minutes for a clean retry. See [the SU2 repeat
+report](../reports/su2-n16-cross-image-repeat-2026-10-05.md) and its
+[preserved evidence](../evidence/su2-shared-high-gradient-v1-run-37230949147/README.md).
+
 ### Photon-fluid analogy and radiation-hydrodynamics scope — 2026-10-04
 
 Primary-source review confirms established photon-fluid models in nonlinear
