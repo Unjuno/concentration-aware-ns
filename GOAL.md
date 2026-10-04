@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 319 — connect the exact control to OpenFOAM case generation
+
+Extended `tools/openfoam_case.py` with a `forced-periodic` profile for the
+smooth pressure-bearing exact solution from arXiv:2609.38210v1. Generated
+cases contain exact cell-center velocity and pressure initial fields and
+analytic time-dependent forcing using the Foundation 13 source sign already
+audited for the existing cases. Test-first generation checks compare both
+initial fields with the independent NumPy reference; a generated-C++ source
+comparison is set to run on hosted Ubuntu. The local macOS compiler test was
+skipped because Apple's Xcode license blocks compiler invocation. No Foundation
+solver run has used this profile yet, so this changes no CFD verdict; the
+control remains unrelated to concentration and physical-particle claims. See
+`reports/openfoam-forced-periodic-control-integration-2026-10-04.md`. Goal
+remains open.
+
 ## Revision 318 — add a separate pressure-bearing periodic reference control
 
 Implemented the exact smooth 3D periodic solution from arXiv:2609.38210v1 as
@@ -11,7 +26,7 @@ coordinate derivative before correction; focused tests pass (2), the existing
 symbolic residual/work replay matches its stored output, and the full locked
 suite passes (402 passed, 1 skipped, 89 subtests). Logs, environment and hashes
 are recorded under `evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
-No solver adapter uses the new reference yet, so no CFD conclusion changes.
+No solver has run the new reference yet, so no CFD conclusion changes.
 The active SU2 pair and hosted PR CI remain open.
 
 ## Revision 317 — distinguish stale closure from PhysicsNeMo resolution

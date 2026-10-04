@@ -1,4 +1,6 @@
 import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -6,6 +8,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.high_gradient_reference import fields
+from tools.forced_periodic_reference import fields as forced_periodic_fields
 from tools.analyze_openfoam import analyze
 from tools.openfoam_case import generate
 from tools.openfoam_amr_case import generate_amr
@@ -44,6 +47,92 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
             points = np.stack((x,y,z), axis=-1).reshape(-1,3)
             expected = fields(points, N=4, nu=0.01, time=0)["u"]
             np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-15)
+
+    def test_case_generation_supports_pressure_bearing_periodic_control(self):
+        n = 4
+        with tempfile.TemporaryDirectory() as directory:
+            case = Path(directory) / "case"
+            generate(case, n=n, dt=0.001, end=0.005, nu=0.01,
+                     profile="forced-periodic")
+            params = json.loads((case / "parameters.json").read_text())
+            self.assertEqual(params["profile"], "forced-periodic")
+            self.assertEqual(params["reference"], "arXiv:2609.38210v1")
+            code = (case / "constant/fvModels").read_text()
+            self.assertIn("const vector gradp", code)
+            self.assertIn("exp(-4*viscosity*now)", code)
+            self.assertIn("source[celli] -= volumes[celli]*forcing", code)
+
+            coordinates = (np.arange(n) + 0.5) * 2 * np.pi / n
+            z, y, x = np.meshgrid(coordinates, coordinates, coordinates, indexing="ij")
+            points = np.stack((x, y, z), axis=-1).reshape(-1, 3)
+            expected = forced_periodic_fields(points, time=0, nu=0.01)
+            velocity_text = (case / "0/U").read_text()
+            velocity_start = velocity_text.index("internalField nonuniform List<vector>")
+            velocity_payload = velocity_text[velocity_start:].split("(", 1)[1].split(");", 1)[0]
+            velocity = np.array([[float(v) for v in line.strip(" ()").split()]
+                                 for line in velocity_payload.splitlines() if line.strip()])
+            np.testing.assert_allclose(velocity, expected["u"], rtol=0, atol=1e-15)
+
+            pressure_text = (case / "0/p").read_text()
+            pressure_start = pressure_text.index("internalField nonuniform List<scalar>")
+            pressure_payload = pressure_text[pressure_start:].split("(", 1)[1].split(");", 1)[0]
+            pressure = np.array([float(v) for v in pressure_payload.split()])
+            np.testing.assert_allclose(pressure, expected["pressure"], rtol=0, atol=1e-15)
+
+    @unittest.skipUnless(shutil.which("g++") or shutil.which("clang++"),
+                         "a C++ compiler is required for generated C++ control")
+    def test_forced_periodic_generated_cpp_matches_independent_reference(self):
+        points = np.array([[0.2, 1.1, 2.2], [2.4, 3.1, 5.2],
+                           [5.8, 0.7, 4.1], [1.7, 5.2, 0.4]])
+        volumes = np.array([0.25, 0.7, 1.3, 2.0])
+        now, nu = 0.31, 0.07
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            case = root / "case"
+            generate(case, n=4, dt=0.001, end=0.005, nu=nu,
+                     profile="forced-periodic")
+            body = (case / "constant/fvModels").read_text().split("#{", 1)[1].split("#};", 1)[0]
+            rows = ",\n".join(f"vector({x:.17g},{y:.17g},{z:.17g})" for x, y, z in points)
+            weights = ",".join(f"{v:.17g}" for v in volumes)
+            cpp = f'''#include <cmath>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using scalar=double;
+struct vector {{ scalar v[3]; vector(scalar x=0,scalar y=0,scalar z=0):v{{x,y,z}}{{}}
+ scalar x()const{{return v[0];}} scalar y()const{{return v[1];}} scalar z()const{{return v[2];}}
+ vector& operator-=(const vector& b){{for(int i=0;i<3;++i)v[i]-=b.v[i];return *this;}}
+}};
+vector operator+(vector a,const vector& b){{for(int i=0;i<3;++i)a.v[i]+=b.v[i];return a;}}
+vector operator*(scalar a,vector b){{for(double& x:b.v)x*=a;return b;}}
+using vectorField=std::vector<vector>; using scalarField=std::vector<scalar>;
+#define forAll(field,index) for(std::size_t index=0;index<(field).size();++index)
+struct Clock {{ scalar value()const{{return {now:.17g};}} }};
+struct Mesh {{ vectorField c{{{rows}}}; scalarField v{{{weights}}}; Clock t;
+ const vectorField& C()const{{return c;}} const scalarField& V()const{{return v;}}
+ const Clock& time()const{{return t;}} }};
+struct Equation {{ vectorField s=vectorField(4); vectorField& source(){{return s;}} }};
+int main(){{
+ const Mesh m; Equation eqn;
+ auto mesh=[&]() -> const Mesh& {{return m;}};
+{body}
+ std::cout<<std::setprecision(17);
+ forAll(m.c,i) std::cout<<-eqn.s[i].x()/m.v[i]<<" "<<-eqn.s[i].y()/m.v[i]<<" "<<-eqn.s[i].z()/m.v[i]<<"\\n";
+}}'''.replace("NU", repr(nu))
+            source, executable = root / "check.cpp", root / "check"
+            source.write_text(cpp)
+            compiler = shutil.which("g++") or shutil.which("clang++")
+            try:
+                subprocess.run([compiler, "-std=c++17", str(source), "-o", str(executable)],
+                               check=True, capture_output=True, text=True)
+            except subprocess.CalledProcessError as error:
+                if "Xcode license agreements" in error.stderr:
+                    self.skipTest("Apple compiler unavailable until its Xcode license is accepted")
+                raise
+            completed = subprocess.run([str(executable)], check=True, capture_output=True, text=True)
+            actual = np.loadtxt(completed.stdout.splitlines())
+        expected = forced_periodic_fields(points, time=now, nu=nu)["force"]
+        np.testing.assert_allclose(actual, expected, rtol=0, atol=2e-15)
 
     def test_amr_generator_uses_analytic_envelope_sensor(self):
         with tempfile.TemporaryDirectory() as directory:

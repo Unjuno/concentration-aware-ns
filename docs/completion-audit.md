@@ -10,9 +10,12 @@ residual/zero-work replay reproduces its committed JSON byte-for-byte. The
 focused tests pass and the locked full suite reports 402 passed, one skipped
 and 89 subtests. Logs, environment and hashes are in
 `evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
-This field has not been connected to an OpenFOAM, SU2 or PhysicsNeMo runner, so
-it adds no solver verdict and does not exercise concentration. The separate
-hosted SU2 pair remains active; cross-solver completion is still open.
+It is now connected to OpenFOAM case generation through the separate
+`forced-periodic` profile in `tools/openfoam_case.py`, which writes exact
+initial velocity/pressure and analytic forcing. Hosted C++ control and a
+Foundation 13 solver run remain pending; it adds no solver verdict and does
+not exercise concentration. The separate hosted SU2 pair remains active;
+cross-solver completion is still open.
 
 ### Fresh published cellPoint sample and enclosure replay — 2026-10-04
 
