@@ -5899,3 +5899,17 @@ successful state probes in
 and corrected the count in the status addendum. The case remains incomplete;
 absence of a container is not evidence of numerical success or failure. Goal
 remains active.
+
+## Revision 352 — independently replay fourth smooth-control image
+
+Downloaded Foundation 13 workflow artifact 11302697676 for source `0622352c`.
+Independent replay passed for all six archived cases: protocol/archive hashes,
+input and endpoint-field hashes, diagnostics, exact step counts, zero exits, and
+the existing stopping-condition check. A fourth runtime image reproduces all
+six scalar diagnostics per case exactly against the previous three-run matrix;
+all raw archive digests differ. Receipt and run metadata are under
+`evidence/of13-forced-periodic-control-hosted-0622352/`. Local quality remains
+UNCERTAIN, the time-step sweep does not isolate temporal order, and this smooth
+control says nothing about concentration or particle-scale behavior. The
+OpenAI and three-target solver investigation remains active; no upstream defect
+was justified by this control result.
