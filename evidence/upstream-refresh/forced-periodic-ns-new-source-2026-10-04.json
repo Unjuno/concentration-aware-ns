@@ -7,7 +7,8 @@
     "submitted": "2026-09-24",
     "url": "https://arxiv.org/abs/2609.38210",
     "pdf_sha256": "fbe0d2198b000e8632525a9d6fed5ae47ab9fc3099a990b1802a4de397f43c5d",
-    "license_record": "arXiv perpetual non-exclusive license to distribute the article; ancillary-code reuse license not established"
+    "license_record": "arXiv perpetual non-exclusive license to distribute the article; ancillary-code reuse license not established",
+    "source_package_url": "https://arxiv.org/src/2609.38210v1"
   },
   "analytic_replay": "tools/check_forced_periodic_ns_candidate.py",
   "analytic_replay_output": "evidence/analytic-checks/forced-periodic-ns-candidate-2026-10-04.json",
@@ -23,5 +24,28 @@
     "v1 preprint; peer-review status not established",
     "No solver defect found or upstream issue warranted",
     "No claim about finite-time singularity, molecular ordering, particle locations, or engineering hazard"
-  ]
+  ],
+  "ancillary_review": {
+    "source_archive_sha256": "f19c0e9fa35ad3532ceb6bca4a8fc5d7c55c4d6e241df0d139b46ee39480d20c",
+    "review_mode": "temporary downloaded source package inspected statically; no ancillary code copied, modified, or numerically rerun",
+    "file_sha256": {
+      "anc/concentration.py": "fdd330547344aa00c00902387f1db8571fcec961157e4bbc9f41dd067996f37c",
+      "anc/localize.py": "4237db14d4e6b68ce20e2cfe01dee9fa4db91c07a4a794faa7e6d99b6de35668",
+      "anc/fastbump.py": "e4ed1bc82842d9ccd5307d8b1792e261e49b8e15eab7ee0125ad24044f5b30f9",
+      "anc/dns.py": "ca8518bed4b195bfa642b2511e3e0a9b10ab451cf2e0c9c05d75eec085a177ed",
+      "NSFORCE.tex": "3b475ed3d5afbc30199829fe8c7270aaa3250dd60ac8d7f7a16bad31c0b1122a"
+    },
+    "findings": [
+      {
+        "type": "reproduction gap",
+        "evidence": "concentration.py lines 19-22: positional CLI has no neutral flag and default Tend=2; lines 47-48 call step_local without override. Table 2 includes peak times beyond 2 and work-doing rows."
+      },
+      {
+        "type": "conditional diagnostic mismatch",
+        "evidence": "localize.py lines 37-42 permits neutral=False for step_local, but lines 44-52 applied_work always computes and subtracts lambda*nrm. If manually switched to unneutralized evolution, this diagnostic reports zero algebraically rather than actual work."
+      }
+    ],
+    "classification": "Supplementary artifact reproduction/interface gap only; not a mathematical or solver defect.",
+    "disposition": "No upstream issue or PR: bounded exact-title/arXiv-ID search found no maintained project issue tracker for the ancillary package; code reuse rights are not established."
+  }
 }

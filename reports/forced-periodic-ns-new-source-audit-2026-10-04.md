@@ -88,3 +88,36 @@ proof nor its numerical claims are represented as peer reviewed here.
   7.1–7.3 and 8.
 - Reproduction command:
   `uv run --no-project --with-requirements requirements-verification.txt python tools/check_forced_periodic_ns_candidate.py`
+
+## Supplementary-code reproduction cross-check
+
+I downloaded the arXiv v1 source package to a temporary review directory, checked
+its SHA-256, and inspected—but did not copy or modify—the ancillary scripts. The
+paper says the concentration script reproduces Table 2. In the distributed
+script, however, `concentration.py` accepts only grid, Reynolds number, radius,
+and final time; final time defaults to 2.0, while several table peak times are
+later than 2.0 (including 2.72, 3.93, 3.01, 3.16 and 3.57). More significantly,
+the script calls `step_local` without its `neutral` argument, whose default is
+always `True`; there is no CLI switch to run the table's `work-doing` rows.
+
+There is a second interface mismatch if a user manually edits that call to
+`neutral=False`: `applied_work` has no matching mode argument and always
+subtracts the neutralizing coefficient `lambda * <|v|^2>`, returning zero by
+construction. It would therefore misreport the applied work for that altered,
+work-doing run. The neutralized runs invoked as distributed do use the same
+neutralized convention and this observation does not invalidate their reported
+zero-work diagnostic. It limits what the published artifact reproduces without
+manual source edits and prevents using its current diagnostic unchanged for the
+work-doing comparison.
+
+Classification: a narrow supplementary-artifact reproducibility/interface gap,
+not evidence against the analytic theorem, a PDE result, or any of the three
+benchmark target solvers. The static control-flow and algebra are sufficient to
+identify the gap; no numerical rerun was used to support it. The source package
+SHA-256 is
+`f19c0e9fa35ad3532ceb6bca4a8fc5d7c55c4d6e241df0d139b46ee39480d20c`;
+individual file hashes and the line-level crosswalk are recorded in
+`evidence/upstream-refresh/forced-periodic-ns-new-source-2026-10-04.json`.
+A bounded exact-title/arXiv-ID search found no maintained project issue tracker
+for this artifact; the arXiv record itself has no issue tracker. The code's reuse
+license is not established, so no upstream issue or code contribution was posted.

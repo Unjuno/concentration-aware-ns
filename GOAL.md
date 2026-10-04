@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 309 — cross-check the new preprint’s reproduction artifact
+
+Statically inspected the arXiv v1 ancillary source package and pinned its archive
+and file hashes. The paper says concentration.py reproduces Table 2, but its CLI
+defaults to Tend=2 although multiple tabulated peak times exceed 2, and it has
+no neutral/work-doing selector: step_local is always called with its default
+neutral=True. If manually switched to neutral=False, the separate applied_work
+helper still subtracts the neutralizing term and returns zero by construction.
+This is a narrow artifact reproducibility/interface gap; the shipped neutral
+path remains internally consistent. It does not challenge the PDE analysis or
+target solvers. The arXiv artifact has no issue tracker and its code license is
+unspecified, so no upstream post was made. Static evidence is added to the
+source audit report and JSON; no numerical run was used. Full goal remains
+active.
+
 ## Revision 308 — audit a new exact forced-flow and concentration preprint
 
 Found Thambynayagam, arXiv:2609.38210v1 (submitted Sep 24). Independently
