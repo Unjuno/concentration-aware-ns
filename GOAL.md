@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 321 — freeze a real Foundation 13 exact-control run
+
+Added `protocols/of13-forced-periodic-control-v1.json`, a non-overwriting
+runner that records per-case commands, raw logs, time-step counts, diagnostics,
+and archived case hashes, plus a Linux/arm64 GitHub Actions workflow using the
+repository's pinned Foundation package recipe. The six frozen rows are spatial
+n=16/32/64 at dt=0.001 and temporal dt=0.002/0.001/0.0005 at n=32, all to t=.05.
+The schedule builder checks exact integral step counts (50/50/50 and 25/50/100)
+and tests pass. This is a smooth, fixed-spectrum source/solver calibration only;
+it makes no prediction about local concentration or particles. The hosted
+OpenFOAM experiment has not yet run; its output must be inspected for
+completion and convergence before judging the control. Goal remains open.
+
 ## Revision 320 — add profile-aware OpenFOAM output analysis
 
 Extended `tools/analyze_openfoam.py` to compare the forced-periodic control

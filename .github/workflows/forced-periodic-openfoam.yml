@@ -1,0 +1,67 @@
+name: Foundation 13 forced-periodic exact control
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/forced-periodic-openfoam.yml'
+      - 'protocols/of13-forced-periodic-control-v1.json'
+      - 'runtime/openfoam13/**'
+      - 'tools/openfoam_case.py'
+      - 'tools/analyze_openfoam.py'
+      - 'tools/forced_periodic_reference.py'
+      - 'tools/run_forced_periodic_openfoam.py'
+      - 'requirements-verification-locked.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forced-periodic-openfoam-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-control:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-verification-locked.txt
+      - name: Install locked analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+      - name: Build the recorded Foundation 13 runtime recipe
+        run: |
+          mkdir -p evidence/of13-forced-periodic-build
+          set -o pipefail
+          docker build --platform linux/arm64 --iidfile evidence/of13-forced-periodic-build/image-id \
+            -t concentration-aware-ns:of13 runtime/openfoam13 \
+            2>&1 | tee evidence/of13-forced-periodic-build/build.log
+          docker image inspect concentration-aware-ns:of13 \
+            > evidence/of13-forced-periodic-build/image-inspect.json
+          docker run --rm --entrypoint cat concentration-aware-ns:of13 /opt/package-versions.txt \
+            > evidence/of13-forced-periodic-build/package-versions.txt
+      - name: Run frozen spatial and temporal control cases
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python -m tools.run_forced_periodic_openfoam
+          --protocol protocols/of13-forced-periodic-control-v1.json
+          --output work/of13-forced-periodic-control-v1
+          --image concentration-aware-ns:of13
+          --source-commit "$SOURCE_COMMIT"
+      - name: Preserve complete and partial solver evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: of13-forced-periodic-control-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            evidence/of13-forced-periodic-build/
+            work/of13-forced-periodic-control-v1/manifest.json
+            work/of13-forced-periodic-control-v1/protocol.json
+            work/of13-forced-periodic-control-v1/archives/
+          if-no-files-found: warn
+          retention-days: 90

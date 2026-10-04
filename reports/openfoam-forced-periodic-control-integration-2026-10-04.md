@@ -46,9 +46,14 @@ compiler test skipped for the host limitation above.
 ## Limits
 
 This is case-generator and source-expression integration only. The Foundation
-13 solver has not yet run this exact control; pressure-correction behavior,
-space/time convergence, archived mesh errors, and full-horizon completion are
-unverified. The field is a smooth solver/source calibration control with
+13 six-case workflow is now frozen in
+`protocols/of13-forced-periodic-control-v1.json` and
+`.github/workflows/forced-periodic-openfoam.yml`. It uses spatial n=16/32/64
+at dt=0.001 and temporal dt=0.002/0.001/0.0005 at n=32, to t=0.05. The runner
+refuses to overwrite prior outputs and saves failed as well as successful case
+archives. The hosted run has not yet completed, so pressure-correction
+behavior, space/time convergence, archived mesh errors, and full-horizon
+completion are still unverified. The field is a smooth solver/source calibration control with
 fixed Fourier support, not the paper's localized concentration simulation and
 not evidence for molecular alignment, particle-position certainty, or a
 viscosity transition. Any solver result remains contingent on independent
