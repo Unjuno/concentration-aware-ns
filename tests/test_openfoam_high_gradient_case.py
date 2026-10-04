@@ -82,7 +82,8 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
                 self.skipTest("Apple compiler unavailable until its Xcode license is accepted")
             raise
         self.assertEqual([row["envelope_power"] for row in results], [2, 8])
-        self.assertTrue(all(row["passed"] for row in results))
+        self.assertTrue(all(row["passed"] for row in results),
+                        msg=json.dumps(results, indent=2, sort_keys=True))
 
     def test_case_generation_supports_pressure_bearing_periodic_control(self):
         n = 4
