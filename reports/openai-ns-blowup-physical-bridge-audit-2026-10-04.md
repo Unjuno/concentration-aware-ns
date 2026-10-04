@@ -150,6 +150,56 @@ replacing it by an analytic local forcing while retaining the stated flow
 geometry, is not an innocuous change. It still supplies no microscopic
 particle dynamics, material law, or experimental realization.
 
+### Mathematical follow-up — Euler-length regularity (2026-10-05)
+
+The current v2 of Constantin, Ignatova, and Vicol's companion paper,
+*Regularity for axisymmetric Navier-Stokes with an Euler length* (arXiv:2609.20762,
+revised September 29), proves a distinct conditional regularity theorem for
+unforced, globally axisymmetric suitable weak solutions. Its Euler length
+`ell(t)` must be nonincreasing, doubling, tend to zero, and satisfy
+`(-t)/ell(t)^2 -> 0`. Under the pointwise bounds
+`|u| <= C ell/(-t)` and `|nabla^2 u| <= C/[(-t) ell]`, the putative point is
+regular; the paper also gives a weaker variant using Hölder control of
+azimuthal vorticity and bounded potential vorticity. The proof does not assume
+a self-similar ansatz.
+
+There is a scale-level connection to the OpenAI profile, but the theorem does
+not directly apply to that construction. For its axial scale
+`ell_z = (-t)^(1/2-h)`, with `h>0`, the Euler-length ratio is
+`(-t)/ell_z^2 = (-t)^(2h) -> 0`. At the radial core scale
+`ell_r = (-t)^(1/2)`, the ratio is exactly one, so that scale is not an Euler
+length. More importantly, the Euler-length theorem assumes global axial
+symmetry and isotropic velocity/Hessian bounds for the full field on a fixed
+ball. The OpenAI construction is exactly axisymmetric only inside a shrinking
+core, has non-axisymmetric pulse corrections in an annulus, and is described
+by anisotropic bounds on angular means. Those facts do not establish the
+theorem's full-field isotropic Hessian bound. This is a nearby conditional
+result, not a contradiction or independent validation of the forced
+construction.
+
+The same scaling gives a precise, limited interpretation of a “weakening
+viscous effect”: with viscosity normalized to one, the coefficient under the
+axial Euler rescaling is proportional to `(-t)/ell_z^2 = (-t)^(2h)`, which tends to zero;
+under radial parabolic scaling it remains order one. That is a relative balance
+in the rescaled PDE. The dimensional kinematic viscosity in the Navier-Stokes
+equation remains constant, and neither this theorem nor the OpenAI profile
+introduces molecular orientation, a constitutive viscosity law, or a phase
+transition.
+
+I compared the source archives for v1 and v2 of both this paper and
+arXiv:2609.20803. In both cases v2 updates citations and bibliography for
+recent axisymmetric regularity work (including Q.S. Zhang and the newly
+available companion preprint); the theorem/proof statements relevant here
+are unchanged. Archive and TeX hashes plus the compact diffs are preserved in
+[`evidence/literature/civ-axisymmetric-arxiv-source-diffs-2026-10-05.json`](../evidence/literature/civ-axisymmetric-arxiv-source-diffs-2026-10-05.json).
+
+The linked profile-study code was also inventoried at public GitLab commit
+`10377a74f81ab7f6edff0892a379d4937e17fd9b`: its license is MIT, its handoff
+says the author has closed the study, and its README says roughly 30 MB of raw
+run outputs are not in the repository. This audit did not rerun that
+specialized profile solver; the paper's numerical branches therefore remain
+author-reported evidence, separate from the analytical conditional theorems.
+
 Lei and Ren posted a detailed exposition of the leading self-similar profile
 construction on September 28. They describe the admissible stress cone and
 the flat residual, and identify oscillatory-pulse residual cancellation as
@@ -203,6 +253,7 @@ measured.
 - [Shear-induced layer alignment in the smectic phase of a side-chain liquid crystal polymer](https://doi.org/10.1016/S0032-3861(98)00537-0), *Polymer* 40 (1999), 3599–3603; simultaneous SAXS and rheology for one specified polymer system.
 - A. Giuntoli et al., [Shear Thinning from Bond Orientation in Model Unentangled Bottlebrush Polymer Melts](https://doi.org/10.1021/acs.macromol.3c01061), *Macromolecules* 56 (2023), 5708–5717; nonequilibrium molecular-dynamics evidence, not an experimental fluid measurement.
 - P. Constantin, M. Ignatova and V. Vicol, [Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing](https://arxiv.org/abs/2609.20803), arXiv:2609.20803 (2026); conditional regularity theorem and explicit non-verification caveat.
+- P. Constantin, M. Ignatova and V. Vicol, [Regularity for axisymmetric Navier-Stokes with an Euler length](https://arxiv.org/abs/2609.20762), arXiv:2609.20762v2 (2026); conditional regularity for unforced globally axisymmetric solutions at a scale larger than parabolic, with its hypotheses compared explicitly above.
 - Z. Lei and X. Ren, [Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder](https://arxiv.org/abs/2609.35406), arXiv:2609.35406 (2026); profile-construction exposition, with pulse cancellation deferred to a companion paper.
 - S. Cao, Z. Chi and P. Nie, [Density of Forces Producing Navier--Stokes Blowup](https://arxiv.org/abs/2609.10262), arXiv:2609.10262 (2026); topology result for a class of smooth forces.
 - Clay Mathematics Institute, [Navier-Stokes announcement](https://www.claymath.org/news/navier-stokes-announcement/), 2026-09-11; it describes the result as apparently settled and says evaluation is deliberately unhurried.
