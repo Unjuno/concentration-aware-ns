@@ -67,6 +67,9 @@ def analyze(case, protocol=None):
     actual=diagnostics(grid(u)); sampled=diagnostics(grid(ref['u']))
     exact_g=float(np.linalg.norm(ref['grad_u'],axis=(-2,-1)).max())
     exact_w=float(np.linalg.norm(ref['vorticity'],axis=-1).max())
+    continuum_peak_certified = profile == 'high-gradient' and params.get('frequency') == 4
+    continuum_gradient_peak = float(np.sqrt(65) / 8 * np.exp(-t)) if continuum_peak_certified else None
+    continuum_vorticity_peak = float(9 / 8 * np.exp(-t)) if continuum_peak_certified else None
     if profile == 'high-gradient':
         grad_fd2=np.stack([(np.roll(grid(u),-1,axis=j)-np.roll(grid(u),1,axis=j))/(4*np.pi/n)
                            for j in range(3)],axis=-1)
@@ -87,13 +90,20 @@ def analyze(case, protocol=None):
     gradient_error=abs(actual['max_gradient_fd2']-exact_g)/exact_g
     vorticity_error=abs(actual['max_vorticity_fd2']-exact_w)/exact_w
     result={'parameters':params,'quality':'UNCERTAIN','standard_acceptance':'UNCERTAIN',
-            'note':'Diagnostics only. Analytic peaks are evaluated at cell centers, not continuous extrema.',
+            'note':'Diagnostics only. Sampled reference peaks and certified N=4 continuum peaks are separate; acceptance denominators remain unchanged.',
             'velocity_relative_l2':velocity_error,
             'energy_relative_error_cell_samples':energy_error,
             'shell_spectrum_relative_l1_error':shell_spectrum_error,
             'gradient_peak_relative_error_cell_samples':gradient_error,
             'vorticity_peak_relative_error_cell_samples':vorticity_error,
             'reference_gradient_peak_cell_samples':exact_g,'reference_vorticity_peak_cell_samples':exact_w,
+            'reference_continuum_peak_certified':continuum_peak_certified,
+            'reference_gradient_peak_continuum_certified':continuum_gradient_peak,
+            'reference_vorticity_peak_continuum_certified':continuum_vorticity_peak,
+            'reference_gradient_peak_sampling_fraction_of_continuum':(
+                exact_g / continuum_gradient_peak if continuum_peak_certified else None),
+            'reference_vorticity_peak_sampling_fraction_of_continuum':(
+                exact_w / continuum_vorticity_peak if continuum_peak_certified else None),
             'selected_gradient_component_fd2_peak':selected_peak,
             'selected_gradient_component_reference_sample_peak':selected_reference_sample,
             'selected_gradient_component_reference_continuous_peak':selected_reference_continuous,

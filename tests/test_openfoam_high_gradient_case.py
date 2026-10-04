@@ -159,7 +159,7 @@ int main(){{
                 generate_amr(Path(directory) / "amr", refine_interval=1)
 
     def test_analyzer_separates_fd2_peak_from_continuous_reference(self):
-        n, frequency, end = 8, 2, 0.05
+        n, frequency, end = 8, 4, 0.05
         with tempfile.TemporaryDirectory() as directory:
             case = Path(directory)
             time_dir = case / str(end)
@@ -196,6 +196,24 @@ int main(){{
                 np.exp(-end), places=15,
             )
             self.assertFalse(result["continuous_full_gradient_peak_certified"])
+            self.assertTrue(result["reference_continuum_peak_certified"])
+            self.assertAlmostEqual(
+                result["reference_gradient_peak_continuum_certified"],
+                np.sqrt(65) / 8 * np.exp(-end), places=14,
+            )
+            self.assertAlmostEqual(
+                result["reference_vorticity_peak_continuum_certified"],
+                9 / 8 * np.exp(-end), places=14,
+            )
+            self.assertLessEqual(
+                result["reference_gradient_peak_sampling_fraction_of_continuum"], 1.0,
+            )
+            self.assertLessEqual(
+                result["reference_vorticity_peak_sampling_fraction_of_continuum"], 1.0,
+            )
+            self.assertLess(
+                result["reference_gradient_peak_sampling_fraction_of_continuum"], 1.0,
+            )
             self.assertEqual(result["standard_acceptance"]["status"], "PASS")
             self.assertEqual(result["quality"], "FAIL")
             self.assertIn("shell_spectrum", result["local_quality"]["metrics"])
