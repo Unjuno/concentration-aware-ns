@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 295 — preserve the hosted verification artifact
+
+The independent `tests` job in hosted run 37160281461 completed successfully on
+the immutable dispatch source `c9f0c4367aa5c06b4c875f9acd74739de2cef7c7`.
+Its artifact rechecked the finite n32/n64/n32-half OpenFOAM position samples
+and analytic enclosures; the three analytic JSONs remain byte-identical. The
+n64 native floating secant diagnostics differ slightly from the earlier
+record, and that difference is preserved rather than rounded away. Artifact
+ID/digest, extracted-file SHA256 manifest and scope are under
+`evidence/tests/dispatch-tests-37160281461/`. This is not solver output from
+the still-running paired SU2 job. The full goal remains active.
+
 ## Revision 294 — refresh target and duplicate-reporting status
 
 Captured a read-only live metadata snapshot for all three solver repositories
