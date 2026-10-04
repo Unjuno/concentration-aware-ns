@@ -1,5 +1,26 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 343 — complete and replay the Foundation 13 width/time sweep
+
+The frozen 15-case Foundation 13 sweep completed all 1,350 expected time steps
+to `t=0.05`; all solver stopping gates passed. The exact-reference FD2 floor
+passes at `n=64` and `n=128`. Each width (`m=1,2,4`) is classified
+`NOT_OBSERVED`: both fine grids pass local quality. All three coarse `n=32`
+cases fail only the gradient/vorticity peak thresholds, consistent with their
+approximately 9–10% exact-field stencil floor. The two additional `n=64`
+temporal refinements also pass local quality, without establishing a temporal
+convergence order.
+
+Downloaded evidence replay verified all 15 archive hashes, 150 input hashes,
+60 diagnostic-file hashes, all postprocessor results, the reference-only
+floor, and the width classifications. The GitHub artifact and local replay
+receipt are recorded in `reports/openfoam-high-gradient-width-run-2026-10-04.md`
+and `evidence/tests/openfoam-high-gradient-width-hosted-37211431276.json`.
+This finite manufactured-solution result does not verify the solver
+independently or support molecular, phase-transition, viscosity-collapse, or
+blow-up claims. It establishes no upstream defect, so no public issue is
+warranted from this run. The broader research goal remains active.
+
 ## Revision 342 — certify exact continuum peaks for the shared N=4 MMS
 
 Closed the reference-side continuous-extremum gap for the active
