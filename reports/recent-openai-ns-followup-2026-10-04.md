@@ -1,7 +1,16 @@
 # Recent follow-up to the OpenAI Navier–Stokes announcement
 
 **Checked:** 2026-10-04 UTC
-**Status:** primary-announcement and repository scope checked; new follow-up is an unreviewed preprint and its numerical work has not been independently reproduced here.
+**Status:** scoped recap of sources already recorded elsewhere in this repository; the cited preprints remain unreviewed here and their calculations have not been independently reproduced.
+
+This note consolidates the announcement's project context and two follow-up
+threads. Neither arXiv:2609.17642 nor arXiv:2609.20803v2 was newly discovered
+in this pass: the physical-bridge audit, the October 3 literature review, and
+the October 4 shared-hypothesis refresh already cover them. See
+[`openai-ns-blowup-physical-bridge-audit-2026-10-04.md`](openai-ns-blowup-physical-bridge-audit-2026-10-04.md),
+[`navier-stokes-followup-literature-2026-10-03.md`](navier-stokes-followup-literature-2026-10-03.md),
+[`research-refresh-2026-10-04-shared-hypothesis-and-new-regularity-results.md`](research-refresh-2026-10-04-shared-hypothesis-and-new-regularity-results.md),
+and the source records in `evidence/upstream-refresh/`.
 
 ## What OpenAI published
 

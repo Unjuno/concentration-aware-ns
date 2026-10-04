@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 341 — reconcile the follow-up note with earlier source audits
+
+A repository-wide cross-check found that the September 15 reduced-profile
+preprint and the Constantin–Ignatova–Vicol v2 theorem were already covered in
+the physical-bridge audit, October 3 literature review, October 4 shared-
+hypothesis review, and source metadata. The October 4 follow-up note therefore
+consolidates existing findings; it does not record two newly discovered
+results. Updated its status and cross-links so readers can distinguish a
+consolidated recap from new evidence. No theorem, simulation, benchmark verdict,
+or upstream disposition changed.
+
 ## Revision 340 — correct the analytic-forcing source to its current version
 
 Rechecked arXiv's version history: Constantin–Ignatova–Vicol
