@@ -282,22 +282,6 @@ bounded/split execution design; do not infer that cancellation is a solver
 failure or call the control successful. The overall research goal remains
 active.
 
-## Revision 348 — third exact replay and hosted control verification
-
-At PR source `739a4bf76cc39b4af3ea8e31b46bdf41cb56120f`, hosted Python
-verification passes: 437 passed, 3 skipped, 89 subtests. The local macOS
-suite passes 436 tests, 4 skipped, and 89 subtests; the skip-count difference
-is environment-specific. Foundation 13 exact-control job `37197955693`
-completed all six frozen cases; independent archive/diagnostic replay passes.
-Every case's six metrics exactly match both prior verified runs, on three
-distinct image IDs, with distinct per-case archive hashes. The third build,
-protocol and replay data are durably recorded and its full raw case bundle is
-published at `of13-forced-periodic-control-rerun-739a4bf`; GitHub's asset SHA
-matches the locally verified bundle. Results remain a smooth periodic control:
-quality and temporal order are `UNCERTAIN`, and no high-gradient/AMR or
-physical conclusion follows. The matched SU2 matrix and CFL-control jobs still
-need completion. PR #4 remains open and the complete goal remains active.
-
 ## Revision 323 — execute and independently replay the Foundation 13 exact control
 
 The new ARM64 Foundation 13 workflow completed all six v1 cases to t=0.05 in
