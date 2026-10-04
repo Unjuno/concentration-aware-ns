@@ -87,3 +87,13 @@ overlap; they do not warrant a duplicate issue. The refresh is intentionally
 metadata-scoped and is not a source audit of PhysicsNeMo's new commits. Exact
 responses and the then-live SU2 job state are recorded in
 `evidence/upstream-refresh/live-status-2026-10-03T2355Z.json`.
+
+A second authenticated GitHub REST refresh at 2026-10-04 11:36 UTC records the
+current default-branch commits and the relevant open/closed upstream records
+in `evidence/upstream-refresh/live-status-2026-10-04T1136Z.json`. OpenFOAM
+issue #2 already covers the two-phase viscosity-contrast topic. SU2 discussion
+#2890 is closed while #2353 and #2932 remain open. PhysicsNeMo issues #2001 and
+#2007 and PRs #1853/#2008 remain the relevant tracked reports; the new #2044
+concerns a histogram CRPS dimension bug and is unrelated. The OpenAI formal repo
+still disables Issues and Discussions. These checks reveal no new reproducible
+software defect, so no duplicate upstream post was made.

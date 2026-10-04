@@ -5875,3 +5875,15 @@ thermodynamic ideal-gas pressure, whereas incompressible NS pressure enforces
 molecular collision time. The SymPy algebra receipt and focused regression
 pass. No kinetic solve, physical crossover time, material transition, or
 upstream software defect is established. Goal remains active.
+
+## Revision 350 — refresh upstream scope before any further report
+
+Captured current GitHub REST records for the three solver targets and the
+OpenAI formalization repository at 2026-10-04 11:36 UTC. Relevant issues and
+PRs still cover the overlapping OpenFOAM viscosity-contrast, SU2 time/residual,
+and PhysicsNeMo boundary/spectrum reports; newly opened PhysicsNeMo #2044 is
+unrelated. OpenAI still has no GitHub issue/discussion route. No new
+reproducible software defect emerged, so no upstream report was posted. Exact
+branch SHAs and record metadata are preserved in
+`evidence/upstream-refresh/live-status-2026-10-04T1136Z.json`. Goal remains
+active.

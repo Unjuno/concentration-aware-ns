@@ -1,0 +1,136 @@
+{
+  "captured_at": "2026-10-04T11:37:23Z",
+  "method": "GitHub REST via authenticated gh api; repository metadata, default-branch commit objects, and specifically tracked issues/discussion/PRs",
+  "repositories": {
+    "OpenFOAM/OpenFOAM-13": {
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13",
+      "default_branch": "master",
+      "head_sha": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "head_commit_date": "2026-06-23T20:54:34Z",
+      "pushed_at": "2026-06-24T08:41:09Z",
+      "license_spdx": "NOASSERTION",
+      "has_issues": true,
+      "has_discussions": false
+    },
+    "su2code/SU2": {
+      "url": "https://github.com/su2code/SU2",
+      "default_branch": "master",
+      "head_sha": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "head_commit_date": "2026-04-28T06:05:27Z",
+      "pushed_at": "2026-10-04T07:31:22Z",
+      "license_spdx": "NOASSERTION",
+      "has_issues": true,
+      "has_discussions": true
+    },
+    "NVIDIA/physicsnemo": {
+      "url": "https://github.com/NVIDIA/physicsnemo",
+      "default_branch": "main",
+      "head_sha": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+      "head_commit_date": "2026-10-02T16:45:37Z",
+      "pushed_at": "2026-10-02T18:59:05Z",
+      "license_spdx": "Apache-2.0",
+      "has_issues": true,
+      "has_discussions": true
+    },
+    "openai/NavierStokesAndEuler": {
+      "url": "https://github.com/openai/NavierStokesAndEuler",
+      "default_branch": "main",
+      "head_sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "head_commit_date": "2026-09-10T13:40:53Z",
+      "pushed_at": "2026-09-10T15:14:13Z",
+      "license_spdx": "Apache-2.0",
+      "has_issues": false,
+      "has_discussions": false
+    }
+  },
+  "tracked_upstream_records": {
+    "openfoam_issue_2": {
+      "number": 2,
+      "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases",
+      "state": "open",
+      "updated_at": "2025-08-29T19:28:04Z",
+      "html_url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2",
+      "draft": null,
+      "merged": null
+    },
+    "su2_issue_2353": {
+      "number": 2353,
+      "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+      "state": "open",
+      "updated_at": "2026-09-30T17:05:37Z",
+      "html_url": "https://github.com/su2code/SU2/issues/2353",
+      "draft": null,
+      "merged": null
+    },
+    "su2_issue_2932": {
+      "number": 2932,
+      "title": "Output the location of the maximum residual to the history file (MAX_RES_LOC)",
+      "state": "open",
+      "updated_at": "2026-09-26T17:58:39Z",
+      "html_url": "https://github.com/su2code/SU2/issues/2932",
+      "draft": null,
+      "merged": null
+    },
+    "su2_discussion_2890": {
+      "number": 2890,
+      "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+      "state": "closed",
+      "updated_at": "2026-09-30T17:05:38Z",
+      "html_url": "https://github.com/su2code/SU2/discussions/2890",
+      "draft": null,
+      "merged": null
+    },
+    "physicsnemo_issue_2001": {
+      "number": 2001,
+      "title": "GradientsFiniteDifference/GradientsSpectral (and PhysicsInformer) silently assume a periodic domain — non-periodic BCs get a wrong residual at the boundary with no warning",
+      "state": "open",
+      "updated_at": "2026-09-18T05:01:57Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+      "draft": null,
+      "merged": null
+    },
+    "physicsnemo_issue_2007": {
+      "number": 2007,
+      "title": "🐛[BUG]: power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+      "state": "open",
+      "updated_at": "2026-10-02T03:48:30Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+      "draft": null,
+      "merged": null
+    },
+    "physicsnemo_issue_2044": {
+      "number": 2044,
+      "title": "Histogram CRPS reduces the wrong dimension for negative ensemble axes",
+      "state": "open",
+      "updated_at": "2026-10-04T10:00:20Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2044",
+      "draft": null,
+      "merged": null
+    },
+    "physicsnemo_pr_1853": {
+      "number": 1853,
+      "title": "Add non-periodic grid gradient boundary mode",
+      "state": "open",
+      "updated_at": "2026-07-17T21:43:39Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/pull/1853",
+      "draft": true,
+      "merged": false
+    },
+    "physicsnemo_pr_2008": {
+      "number": 2008,
+      "title": "Fix zero frequency index along the width in metrics.general.power_spectrum",
+      "state": "open",
+      "updated_at": "2026-09-30T08:39:08Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "draft": false,
+      "merged": false
+    }
+  },
+  "assessment": {
+    "openai_post_route": "No GitHub issue or discussion route: has_issues=false and has_discussions=false.",
+    "openfoam_overlap": "OpenFOAM-13 issue #2 already covers large inter-version differences in two-phase flows with viscosity contrast; the current analytic scale audit does not reproduce a software defect and should not create a duplicate.",
+    "su2_overlap": "Discussion #2890 is closed and issues #2353/#2932 are open; the recorded benchmark finding overlaps existing time-contract/residual-location threads and supplies no new reproducible defect.",
+    "physicsnemo_overlap": "Issues #2001/#2007 and PRs #1853/#2008 remain the relevant existing derivative-boundary/spectrum records. New issue #2044 concerns histogram CRPS negative ensemble axes and is unrelated to the audited periodic gradient/kinetic analysis.",
+    "disposition": "No upstream issue or PR was posted from this refresh."
+  }
+}
