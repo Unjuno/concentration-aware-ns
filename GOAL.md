@@ -5860,3 +5860,18 @@ matches the locally verified bundle. Results remain a smooth periodic
 control: quality and temporal order are `UNCERTAIN`, and no high-gradient/AMR
 or physical conclusion follows. The matched SU2 matrix and CFL-control jobs
 still need completion. PR #4 remains open and the complete goal remains active.
+
+## Revision 349 — separate kinetic crossover from incompressible pressure
+
+Added an analytical scale bridge using the OpenAI paper's reported
+characteristic core rate `Gamma_core ~ (T-t)^-1`: for a specified kinetic
+relaxation model, `chi = tau_rel Gamma_core` diverges under a fixed positive
+relaxation time, while `tau_rel ~ (T-t)^alpha` yields divergence only for
+`alpha < 1`. The independent spatial Knudsen ratio has its own exponent and
+crossover; neither determines a molecular orientation statistic. Corrected an
+important model boundary: the BGK identity `tau_rel = mu/p` uses a
+thermodynamic ideal-gas pressure, whereas incompressible NS pressure enforces
+`div u = 0` and supplies no temperature/EOS, so it cannot set the theorem's
+molecular collision time. The SymPy algebra receipt and focused regression
+pass. No kinetic solve, physical crossover time, material transition, or
+upstream software defect is established. Goal remains active.
