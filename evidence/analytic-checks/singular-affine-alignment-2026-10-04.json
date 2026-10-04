@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "sympy_version": "1.14.0",
+  "source_sha256": "b598513513d6bec8fdcb192272dc9d9fd0e57331dadbcf6300eefaa4739d0324",
+  "assumptions": [
+    "t0 < t < T",
+    "nu > 0",
+    "sigma > 0"
+  ],
+  "velocity": [
+    "-x/(T - t)",
+    "-y/(T - t)",
+    "2*z/(T - t)"
+  ],
+  "pressure": "-3*z**2/(T - t)**2",
+  "flow_map_from_t0": [
+    "(T - t)/(T - t0)",
+    "(T - t)/(T - t0)",
+    "(T - t0)**2/(T - t)**2"
+  ],
+  "gradient_operator_norm": "2/(T-t)",
+  "transverse_to_axial_material_line_ratio_factor": "((T-t)/(T-t0))^3",
+  "gaussian_covariance_from_isotropic_sigma2": [
+    "sigma^2*((T-t)/(T-t0))^2",
+    "sigma^2*((T-t)/(T-t0))^2",
+    "sigma^2*((T-t0)/(T-t))^4"
+  ],
+  "gaussian_peak_density_ratio": "1",
+  "residual": [
+    "0",
+    "0",
+    "0"
+  ],
+  "facts": {
+    "divergence_zero": true,
+    "navier_stokes_residual_zero": true,
+    "viscous_laplacian_zero": true,
+    "flow_solves_variational_ode": true,
+    "volume_jacobian_one": true,
+    "transverse_to_axial_ratio_factor_q_cubed": true,
+    "gradient_scale_diverges_at_T": true,
+    "isotropic_gaussian_covariance_exact": true,
+    "isotropic_gaussian_peak_unchanged": true,
+    "viscosity_parameter_drops_out_because_laplacian_zero": true
+  },
+  "negative_control_nonzero_viscous_laplacian": true,
+  "limitations": [
+    "The affine field has infinite kinetic energy and does not decay at spatial infinity.",
+    "It is not an admissible Clay-problem initial datum and is not the OpenAI construction.",
+    "A continuum deformation map does not supply a molecular orientation law or finite-particle model.",
+    "The constant viscosity is a parameter of this Newtonian equation; the example does not predict material rheology."
+  ]
+}

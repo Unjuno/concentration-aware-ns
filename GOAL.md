@@ -1,5 +1,31 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 325 — derive an exact singular affine counterexample to conflated physical claims
+
+Derived and symbolically checked an exact unforced affine Navier–Stokes field
+whose velocity-gradient scale diverges at a finite time and whose generic
+infinitesimal material directions align. The determinant of its deformation
+map remains one, an advected isotropic Gaussian keeps its peak density, and
+the fixed viscosity coefficient drops out because this particular field has
+zero Laplacian. This sharply separates continuum line-direction alignment,
+position-density concentration, and constitutive change. The example has
+infinite energy and linear spatial growth, so it is explicitly outside the
+Clay decaying-data class and is not claimed to reproduce OpenAI's flow. The
+derivation and SymPy receipt are in
+`reports/singular-affine-alignment-constant-viscosity-2026-10-04.md` and
+`evidence/analytic-checks/singular-affine-alignment-2026-10-04.json`.
+No upstream report is justified; OpenAI's GitHub repo has issues disabled and
+this result identifies no defect. The full benchmark and proof audit remain
+open.
+
+Live literature refresh found the public Lei–Ren explanatory record still at
+Part I; its abstract defers oscillatory-pulse residual cancellation to a
+planned Part II. A bounded exact-title search did not locate a separate Part
+II record, which is evidence of non-location only and does not establish that
+no draft exists or challenge OpenAI's proof. The independent public-paper
+audit still lacks a replay of that final stage. See
+`reports/research-refresh-openai-part-II-status-2026-10-04.md`.
+
 ## Revision 324 — preserve the canceled SU2 full-horizon successor honestly
 
 The hosted same-image SU2 pair run 37160281461 built and probed its ARM64

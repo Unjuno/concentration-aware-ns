@@ -2144,3 +2144,25 @@ engineering tolerances are not PhysicsNeMo-specific calibration, and the
 or optimizer convergence. The older comparative row is explicitly scoped to
 v1 and links to the separate v2 result. No benchmark verdict, solver claim, or
 upstream issue disposition changes; the full goal remains active.
+
+### Exact affine singular-flow implication check — 2026-10-04
+
+The new symbolic replay verifies an exact affine incompressible NS field with
+`|grad u|` coefficient diverging as `1/(T-t)`, generic material-line
+alignment factor `((T-t)/(T-t0))^3`, determinant one, and unchanged peak of an
+advected isotropic Gaussian. The Laplacian is identically zero, so the
+Newtonian viscosity parameter has no effect on this solution. This is an
+analytic implication check only: the field has infinite energy and linear
+growth at spatial infinity, is outside the Clay data class, and is unrelated
+to the detailed OpenAI construction. It provides no molecular or rheological
+evidence. The remaining benchmark, source-proof, consumer, and upstream
+integration requirements are still open.
+
+### OpenAI proof follow-up status check — 2026-10-04
+
+The exact-title arXiv search located Lei–Ren Part I only; its primary abstract
+defers the oscillatory-pulse cancellation stage to a companion Part II. This
+is a bounded non-location result, not proof no manuscript exists or a defect
+in OpenAI's proof. Our independent public-paper replay remains incomplete at
+that stage. Evidence and search limits are in
+[`research-refresh-openai-part-II-status-2026-10-04.md`](../reports/research-refresh-openai-part-II-status-2026-10-04.md).
