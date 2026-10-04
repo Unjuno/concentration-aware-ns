@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "scope": "Static fixed-dt BDF2 output-only causal control; no general fix or variable-step claim",
+  "method": "Decimal CSV replay, independent of runner NumPy arrays; finite entries, full node IDs, coordinates, imported inputs, residuals and old/new clocks checked",
+  "cases": [
+    {
+      "mode": "continuous",
+      "archive_sha256": "4828dd55df10d296282fefee1267b228a5711bb75c5da84791f1257529259f7f",
+      "baseline_sha256": "4511e3c747ee24bfaee0d0519ba849411b732acfcf0b169c9ad850c4cfbaad42",
+      "input_bytes_identical": [
+        "case.cfg",
+        "mesh.su2"
+      ],
+      "field_values_compared": 2000,
+      "maximum_difference": "0E-15",
+      "times": [
+        "0",
+        "0.1",
+        "0.2",
+        "0.3"
+      ]
+    },
+    {
+      "mode": "resumed",
+      "archive_sha256": "9566edaa7f0d7e8c45a34afdd7e88613bc8687511a88debd6f1ca9f3eeb1f145",
+      "baseline_sha256": "e346cfd6e7bc3c60ab311e52541657bc2343af8a94e882b30b1b3d8809b1a4c8",
+      "input_bytes_identical": [
+        "case.cfg",
+        "mesh.su2",
+        "restart_00000.csv",
+        "restart_00001.csv"
+      ],
+      "field_values_compared": 1000,
+      "maximum_difference": "0E-15",
+      "times": [
+        "0.2",
+        "0.3"
+      ]
+    }
+  ],
+  "general_fix_validated": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "PASS_COMPATIBILITY_AND_EXACT_RESISTANCE_CHAIN_ONLY",
+  "checker": "tools/check_interface_stress_compatibility.py",
+  "checker_sha256": "8d7176bc8a6e710226e71f6ed835c61d9400984a4390e903fe237cdc43810970",
+  "source_manifest": "evidence/upstream-refresh/openfoam-interface-diffusion-source-2026-10-03.json",
+  "source_manifest_sha256": "1fa025db5e374aced6229064e6ced1982522264d03ef24fc5d393ea7aa8de208",
+  "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "symbolic_backend": "SymPy 1.14.0",
+  "checks": {
+    "rank_one_jump_annihilates_tangent_directions": true,
+    "normal_dev2_contraction_is_one_third_divergence_jump": true,
+    "incompressible_tangent_jump_contraction_zero": true,
+    "compatible_shear_explicit_transpose_correction_zero": true,
+    "compatible_shear_total_traction_constant": true,
+    "exact_nodal_arithmetic_interface_ratio": true,
+    "solved_chain_flux_ratio": true,
+    "solved_flux_error_is_first_order": true,
+    "three_grid_harmonic_exact_cell_values": true,
+    "arithmetic_solved_flux_error_decreases": true
+  },
+  "compatibility": {
+    "premises": "C0 velocity with a common C1 tangential trace on a planar interface, piecewise C1 one-sided velocity gradients, divergence zero on both sides, matching interface normal and tensor convention.",
+    "gradient_jump": "[A]=b outer n; b dot n=0",
+    "explicit_contracted_jump": "n.T*dev2([A])=(b dot n)*n.T/3=0",
+    "bounded_piecewise_C2_sample_consequence": "Across adjacent normal samples, contracted tensor difference is O(h); with bounded coefficient jump and common linear weights, correction density is O(1), volume L1 is O(h), volume L2 squared is O(h). This excludes the fixed nonzero-contracted-jump scaling for this compatible continuum class."
+  },
+  "couette": {
+    "domain": "x in [-1,1]; interface x=0; rho=1; U=(0,tau*x/mu_side,0); p=constant; forcing=0; stationary material interface; mu_side>0; tau!=0 for relative metrics",
+    "discretization": "Even uniform cell-centered Cartesian grid; specified orthogonal uncorrected scalar-coefficient FV diffusion; fixed-value wall velocities; coefficient arithmetic or harmonic at the aligned interface.",
+    "explicit_correction_flux": "0 on both sides for exact shear gradients",
+    "exact_nodal_arithmetic_face_flux_ratio": "(mu_left + mu_right)**2/(4*mu_left*mu_right)",
+    "ratio_contrast_100": "10201/400",
+    "solved_arithmetic_flux_ratio": "1/(-h*(-mu_left + mu_right)**2/(2*(mu_left + mu_right)**2) + 1)",
+    "relative_flux_error_over_h_limit": "(mu_left**2/2 - mu_left*mu_right + mu_right**2/2)/(mu_left**2 + 2*mu_left*mu_right + mu_right**2)",
+    "all_discrete_cell_flux_balances": "0 by constant chain flux; independent stiffness-matrix tests verify the chain solution.",
+    "grids": [
+      {
+        "n": 16,
+        "h": "1/8",
+        "arithmetic_flux_exact": "163216/153415",
+        "arithmetic_relative_flux_error_exact": "9801/153415",
+        "arithmetic_relative_flux_error": 0.06388553922367435,
+        "arithmetic_relative_velocity_L2_squared_exact": "96059601/23536162225",
+        "harmonic_flux_exact": "1",
+        "harmonic_cell_value_error_exact": "0"
+      },
+      {
+        "n": 32,
+        "h": "1/16",
+        "arithmetic_flux_exact": "326432/316631",
+        "arithmetic_relative_flux_error_exact": "9801/316631",
+        "arithmetic_relative_flux_error": 0.030954012715116334,
+        "arithmetic_relative_velocity_L2_squared_exact": "96059601/100255190161",
+        "harmonic_flux_exact": "1",
+        "harmonic_cell_value_error_exact": "0"
+      },
+      {
+        "n": 64,
+        "h": "1/32",
+        "arithmetic_flux_exact": "652864/643063",
+        "arithmetic_relative_flux_error_exact": "9801/643063",
+        "arithmetic_relative_flux_error": 0.01524111945485901,
+        "arithmetic_relative_velocity_L2_squared_exact": "96059601/413530021969",
+        "harmonic_flux_exact": "1",
+        "harmonic_cell_value_error_exact": "0"
+      }
+    ]
+  },
+  "scope_limits": [
+    "The rank-one compatibility is conditional on shared differentiable velocity traces and one-sided incompressibility. Discontinuous/slip traces and inaccurate discrete gradients are outside it.",
+    "The resistance chain is an exact analysis of a specified stationary orthogonal FV stencil; no OpenFOAM binary, VoF interface transport, pressure coupling, nonorthogonal mesh or upstream reproducer was executed.",
+    "The observed face interpolation mismatch is a coefficient-interface discretization control. It is not a violated implementation contract or a new issue report.",
+    "Viscosity is prescribed and unchanged; no speed-dependent viscosity, particle alignment, phase transition or continuum blow-up follows."
+  ]
+}

@@ -1,5 +1,26 @@
 # Completion audit — interim, 2026-09-27
 
+### Locked clean-export replay at current local HEAD — 2026-10-04
+
+Fixed commit `e039e4b4098fedda2f53f76a71d3a447e384b5c1` was exported from
+tracked Git objects into a fresh CPython 3.14.5 environment on macOS arm64.
+Locked dependency installation, the complete report replay (47 steps), the
+399-test suite (one skip, 89 passing subtests), and seven additional analytic
+or review commands all passed. The checker compared 328 tracked reports and
+test-evidence files before and after replay and found no changes. Path-normalized
+logs, source archive hash, runtime, and per-file checksums are in
+`evidence/clean-export-2026-10-04-e039e4b/`; the ignored 1.8 GB archive and
+environment were not added to Git. This verifies same-host Python
+postprocessing, not any solver, training job, Lean execution, or physical
+interpretation.
+
+At the check recorded with this update, PR #4 head `c0b2b1f` had a successful
+hosted Python test job; remaining path-filter checks were pending/skipped. The
+local evidence commit `e039e4b` had not yet been pushed. The separate hosted
+SU2 full-horizon pair remained `in_progress` at its solver step, with no
+retrievable job log or archived native result. Full solver and cross-target
+completion are still open.
+
 ### Hosted scalar chain and local affine divergence — 2026-10-04
 
 Publication 4d169bf4 passes hosted 371 tests, v2 analytic equality and exact

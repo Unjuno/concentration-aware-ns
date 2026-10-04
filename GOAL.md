@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 299 — verify the tracked project from a fresh locked export
+
+The fixed local HEAD `e039e4b4098fedda2f53f76a71d3a447e384b5c1` passed
+`tools.check_clean_export --locked` in a new macOS arm64 / Python 3.14.5
+environment. All 47 report-replay steps, 399 tests (one skip; 89 subtests),
+and seven supplemental analytic/review commands passed; 328 tracked
+report/test-evidence files were byte-identical before and after. The
+path-normalized logs and checksums are in
+`evidence/clean-export-2026-10-04-e039e4b/`. This is postprocessing
+reproducibility only. At the same check, PR #4's `c0b2b1f` test job passed,
+some path filters were still pending, and the hosted native SU2 pair remained
+in progress without readable logs. Full goal remains active.
+
 ## Revision 298 — complete and preserve the full local verification suite
 
 On macOS arm64 with Python 3.14.5 / uv 0.11.17, ran the entire repository
