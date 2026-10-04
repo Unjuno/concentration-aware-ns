@@ -32,6 +32,11 @@ jobs:
       - name: Run Python test suite
         run: python -m pytest -q tests
 
+      - name: Recompute exact periodic forced-NS candidate
+        run: |
+          mkdir -p work
+          python tools/check_forced_periodic_ns_candidate.py > work/forced-periodic-ns-candidate.json
+
       - name: Recheck published native samples and analytic enclosures
         run: |
           mkdir -p work
@@ -62,6 +67,7 @@ jobs:
             work/published-cell-point-matrix-verification.log
             work/published-cell-point-matrix-environment.json
             work/published-cell-point-dyadic-scalar.json
+            work/forced-periodic-ns-candidate.json
             work/solid-particle-drag-branch-audit/
             work/particle-body-force-audit/
             work/su2-force-coarse-bound/

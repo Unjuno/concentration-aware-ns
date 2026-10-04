@@ -1,5 +1,16 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 310 — connect the new exact-solution audit to routine verification
+
+Added the independently derived periodic forced-NS checker to the Python PR
+workflow and its uploaded evidence bundle, and linked the source audit plus
+replay command from README. Re-ran it under the locked verification requirements
+(SymPy 1.14.0); all divergence, Laplacian, projected-force, PDE-residual and
+periodic-work identities are exactly zero. The workflow YAML parses locally.
+These are source-algebra and automation checks only, not a solver rerun or a
+reproduction of the paper’s concentration simulations. Changes are local while
+the previous commit’s hosted checks finish; full goal remains active.
+
 ## Revision 309 — cross-check the new preprint’s reproduction artifact
 
 Statically inspected the arXiv v1 ancillary source package and pinned its archive

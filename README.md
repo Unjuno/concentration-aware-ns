@@ -19,6 +19,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Built-in cellPoint interpolation and missing mesh evidence](reports/openfoam-cell-point-contract-2026-10-04.md)
 - [Conditional native-point gradient-error witnesses](reports/openfoam-amr-point-gradient-bound-2026-10-04.md)
 - [Live upstream refresh and adversarial spectrum-fix controls](reports/upstream-spectrum-fix-controls-2026-10-04.md)
+- [New exact periodic flow source and concentration-study audit](reports/forced-periodic-ns-new-source-audit-2026-10-04.md)
 - [Archived point-value initialization and forcing audit](reports/openfoam-amr-input-representation-2026-10-04.md)
 - [Arb-enclosed nominal-mean continuum error certificates](reports/openfoam-amr-arb-mean-certificate-2026-10-04.md)
 - [Native mean constraints and reconstruction-independent gradient bounds](reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md)
@@ -153,6 +154,7 @@ python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
 python -m tools.check_packet_radius_scaling
 python -m tools.check_particle_position_probability
+python tools/check_forced_periodic_ns_candidate.py
 ```
 
 These checks are separate from the eighteen-step report and exact-algebra replay. The force and
