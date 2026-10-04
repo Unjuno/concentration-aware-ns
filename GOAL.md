@@ -6270,3 +6270,20 @@ benchmark, not an OpenFOAM defect, singularity, or molecular claim; see
 map. SU2 run `37230949147` is still actively executing its five frozen cases.
 OpenAI formal audit run `37233433718` was queued immediately after push; its
 build and independent checks have not yet run. The overall goal remains active.
+
+## Revision 371 — audit a second public spectral surrogate
+
+Reviewed the source-bound README for `CokieMiner/nsblowup` at commit
+`658812f7b02ea00065c54818e699105914507f9c` and compared its viscosity
+interpretation with Section 7.2 of the OpenAI paper. The project clearly labels
+itself as a forced, finite-scale, band-limited surrogate and says its runs do
+not implement the paper's exact correction hierarchy. Its own README reports
+zero fitted correction-wave amplitudes at `N<=128` after the carrier reaches
+the retained spectral cutoff. A sentence then generalizes angular Reynolds
+number growth to viscosity becoming subdominant across the core, although the
+paper says viscosity remains leading-order in the pulse equation. Reported this
+specific, low-severity documentation overreach as `CokieMiner/nsblowup#1` with
+a proposed qualification; this is not a solver defect or a claim about
+material viscosity. Findings and evidence boundaries are in the proof-audit
+report. Continue monitoring the OpenAI formal check and complete SU2 matrix;
+no conclusions about molecular alignment or phase transition follow.
