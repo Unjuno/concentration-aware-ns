@@ -5913,3 +5913,21 @@ UNCERTAIN, the time-step sweep does not isolate temporal order, and this smooth
 control says nothing about concentration or particle-scale behavior. The
 OpenAI and three-target solver investigation remains active; no upstream defect
 was justified by this control result.
+
+## Revision 353 — test the “light as fluid” analogy against its actual equations
+
+Audited the suggestion using primary photon-fluid and radiation-transport
+papers. They describe three distinct regimes: free photons as a phase-space
+transport/moment system; radiation viscosity in an optically thick
+matter-scattering limit; and optical photon fluids whose Kerr-mediated NLSE
+maps exactly to a compressible, inviscid, dispersive Madelung system. Derived
+the latter's continuity, phase, and velocity equations and checked their
+amplitude/phase identities symbolically with the locked SymPy environment. The
+focused regression passes. This is a potentially useful controlled optical
+analogue for steepening and dispersive regularization, but it has no viscous
+Navier–Stokes term and no molecular-position observable; a dimensional and
+forcing map to the OpenAI 3-D incompressible profile has not been established.
+The report and receipt are
+`reports/light-as-fluid-model-boundary-2026-10-04.md` and
+`evidence/analytic-checks/fluid-of-light-hydrodynamic-bridge-2026-10-04.json`.
+No simulation or physical-transition claim follows. Goal remains active.

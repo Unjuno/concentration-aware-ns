@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checker": "tools/check_fluid_of_light_bridge.py",
+  "checker_sha256": "32e103e97813beefd096b1944f86a66c37bb1da16a935c9df1c82291d7e8a25e",
+  "sympy_version": "1.14.0",
+  "equation": "i*psi_z + (1/(2*k))*psi_xx - g*|psi|^2*psi = 0",
+  "madelung_variables": "psi=sqrt(rho)*exp(i*phi); v=phi_x/k",
+  "continuity_equation": "rho_z + (rho*v)_x = 0",
+  "phase_equation": "phi_z + phi_x^2/(2*k) + g*rho - (1/(2*k))*sqrt(rho)_xx/sqrt(rho) = 0",
+  "velocity_equation": "v_z + v*v_x = -(g/k)*rho_x + (1/(2*k^2))*d_x(sqrt(rho)_xx/sqrt(rho))",
+  "viscous_laplacian_term_present": false,
+  "identities": {
+    "nlse_real_part_equals_negative_bernoulli": true,
+    "nlse_imaginary_part_gives_continuity": true,
+    "bernoulli_gradient_equals_euler_residual": true,
+    "effective_velocity_is_phase_gradient": true
+  },
+  "assumptions": [
+    "rho>0 on the patch considered",
+    "smooth envelope",
+    "paraxial NLSE regime"
+  ],
+  "scope": "Exact 1-D amplitude-phase identity for one conservative optical NLSE convention. No photon molecular positions, incompressible 3-D Navier-Stokes equivalence, viscous closure, OpenAI-profile mapping, or physical transition is established."
+}
