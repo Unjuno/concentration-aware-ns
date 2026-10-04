@@ -4986,3 +4986,16 @@ macOS arm64/Python 3.14.5/uv 0.11.17 environment, lockfile hash and output
 hash under `evidence/tests/full-suite-2026-10-03-b6dde6f.*`. This is local
 benchmark-repository validation, not a full build of the upstream projects.
 GitHub Actions for that commit remains queued. Goal remains active.
+
+
+## Revision 145 — reconcile PhysicsNeMo v2 acceptance scope
+
+Corrected the cross-target hypothesis audit and impact map to include the
+prospectively frozen PhysicsNeMo held-out v2 policy: 19/25 checkpoints pass all
+six sampled metrics, six fail velocity L2 only, and all 25 pass the sampled
+local metrics. No sampled global-pass/local-fail blind spot was observed under
+the shared 2%/5% engineering tolerances. Clarified that these are not a
+PhysicsNeMo-specific calibration and do not certify continuous extrema,
+population-level seed behavior, or optimizer convergence. The v1 comparative
+matrix remains historical and now points to v2. No upstream issue or verdict
+change follows. Goal remains active.

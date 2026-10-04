@@ -2075,3 +2075,16 @@ release explicitly separates earlier full-suite and later focused validation;
 there is no hosted or full-suite-at-snapshot success claim. Conditional
 continuous estimates do not cover discrete solver error, prove solution
 existence or close physical/proof/global requirements. Goal remains active.
+
+### PhysicsNeMo v2 acceptance-scope reconciliation — 2026-10-04
+
+The attachment audit and impact map now include the prospective shared
+cross-target policy in `protocols/physicsnemo-heldout-validation-v2.json` and
+its held-out result: 19/25 models pass all six sampled metrics, six fail only
+velocity L2, and every model passes the sampled local metrics. No sampled
+global-pass/local-fail blind spot is observed under this policy. These common
+engineering tolerances are not PhysicsNeMo-specific calibration, and the
+64^3 evaluation does not certify continuous extrema, seed-population behavior,
+or optimizer convergence. The older comparative row is explicitly scoped to
+v1 and links to the separate v2 result. No benchmark verdict, solver claim, or
+upstream issue disposition changes; the full goal remains active.
