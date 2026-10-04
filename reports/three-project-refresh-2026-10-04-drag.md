@@ -61,3 +61,18 @@ behavior; no duplicate issue was filed. The complete targeted API/GraphQL
 responses, query scope and normalized hashes are in
 [`three-project-live-status-2026-10-04T0129Z.json`](../evidence/upstream-refresh/three-project-live-status-2026-10-04T0129Z.json).
 This is a focused tracker refresh, not a full source or issue-history audit.
+
+## Live API refresh — 2026-10-04 21:08 UTC
+
+A new no-cache REST/GraphQL snapshot is preserved at
+[`three-project-live-status-2026-10-04T2107Z.json`](../evidence/upstream-refresh/three-project-live-status-2026-10-04T2107Z.json).
+The OpenFOAM Foundation 13/14, SU2, PhysicsNeMo and OpenAI formalization
+default-branch SHAs match the October 4 inventory. OpenFOAM-13 issue #2 remains
+open and unrelated to the uniform MMS finding. SU2 issues #2353/#2932 remain
+open; PR #2857 remains closed; discussion #2890 remains unanswered with the
+same September 13 maintainer reply. PhysicsNeMo #2007 and PR #2008 remain open;
+the PR is still `behind` base. The OpenAI Lean repository remains unchanged
+with issues disabled. This supports no new upstream report or duplicate. The
+snapshot also records the live SU2 matrix and Lean-audit workflow states; both
+were still in progress at capture time. This is a focused tracker refresh, not
+a re-audit of all upstream source or issue history.

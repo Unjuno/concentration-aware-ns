@@ -6316,3 +6316,19 @@ positions. Updated the scope map and proof-audit report to state this boundary
 and the remaining nonlinear, finite-size and Brownian-coupling requirements.
 See `docs/openai-core-material-trajectory.md` and
 `docs/affine-alignment-viscosity-counterexample.md`.
+
+## Revision 374 — refresh all target project trackers
+
+Fetched a no-cache GitHub REST/GraphQL snapshot for OpenFOAM Foundation 13/14,
+SU2, PhysicsNeMo and OpenAI's formalization repository, including the existing
+issues/PRs/discussion that overlap our findings. The relevant default branch
+SHAs and tracked-item states have not changed since the prior refresh; SU2
+discussion #2890 remains unanswered, PhysicsNeMo #2007/#2008 remain open with
+the PR behind base, and OpenAI's issue tracker remains disabled. No duplicate
+upstream post is warranted. Raw API/GraphQL responses and the two active
+workflow states are preserved in
+`evidence/upstream-refresh/three-project-live-status-2026-10-04T2107Z.json`;
+the date-stamped interpretation is in
+`reports/three-project-refresh-2026-10-04-drag.md`. This focused refresh does
+not claim an exhaustive source or issue-history audit. Keep the OpenAI Lean
+check and five-case SU2 run under active observation.
