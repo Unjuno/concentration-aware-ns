@@ -1,4 +1,42 @@
-# Goal — revision 2, 2026-09-09
+# Goal — active research objective
+
+Maintain one public, reproducible repository that independently audits the
+OpenAI Navier–Stokes formalization and benchmarks whether standard numerical
+acceptance can miss local errors in matched OpenFOAM Foundation 13, SU2, and
+NVIDIA PhysicsNeMo cases. Verify analytic references and postprocessing before
+trusting simulations; preserve pinned inputs, raw evidence, and uncertainty;
+record a complete impact map; and publish only novel, reproducible,
+actionable upstream findings through the target project's accepted channel.
+Do not infer molecular alignment, phase transition, viscosity collapse,
+physical singularity, or theorem failure from a finite simulation. The goal is
+active until all three target audits, the independent analytic work, the
+evidence-backed upstream disposition, and the remaining gaps are documented.
+
+## Revision 344 — certify exact continuum peaks for every frozen width
+
+Extended the exact Bernstein proof from the historical `m=4` reference to all
+frozen width-v1 profiles `m=1,2,4`. For `N=4`, the exact maxima of the
+Frobenius velocity gradient are respectively `sqrt(1025)/32`, `sqrt(257)/16`,
+and `sqrt(65)/8`; the vorticity maxima are `33/32`, `17/16`, and `9/8`.
+Every maximum is attained at `(pi/(2N),0,0)`. All four sine/cosine branch gaps
+per width have nonnegative exact rational Bernstein coefficients on the full
+continuum domain. The complete coefficients, source hashes, and focused tests
+are in `evidence/tests/high-gradient-width-global-peaks.json`,
+`tools/check_high_gradient_width_peaks.py`, and
+`reports/high-gradient-width-global-peaks-analytic-certificate-2026-10-05.md`.
+This proves properties of the analytic reference only; the frozen grid-based
+gates, same-grid denominators, and historical `NOT_OBSERVED` classifications
+are unchanged.
+
+Refreshed current execution state on 2026-10-05: the repository has no queued
+or in-progress GitHub Actions runs; PR #4 remains open and clean. The earlier
+SU2-live wording in dated revisions below describes those revisions' state and
+is not a current execution status. The latest PhysicsNeMo release is v2.2.2,
+whose release note only aligns documentation with the PyPI name; the existing
+matched benchmark remains pinned to v2.2.1, so no benchmark verdict changes.
+The known odd-width spectrum report remains tracked by NVIDIA/PhysicsNeMo
+issue #2007 with PR #2008 open and unmerged as of this check. No new upstream
+issue is justified by the width certificate.
 
 ## Revision 343 — complete and replay the Foundation 13 width/time sweep
 
