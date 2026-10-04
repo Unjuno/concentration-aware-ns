@@ -57,7 +57,8 @@ def analyze(case, protocol=None):
     u=vectors(time_dir/'U',n**3)
     profile=params.get('profile','gaussian')
     if profile == 'high-gradient':
-        ref=high_gradient_fields(centers,N=params['frequency'],nu=params['nu'],time=t)
+        ref=high_gradient_fields(centers,N=params['frequency'],nu=params['nu'],time=t,
+                                envelope_power=params.get('envelope_power', 4))
     elif profile == 'forced-periodic':
         ref=forced_periodic_fields(centers,time=t,nu=params['nu'])
     else:
@@ -67,7 +68,9 @@ def analyze(case, protocol=None):
     actual=diagnostics(grid(u)); sampled=diagnostics(grid(ref['u']))
     exact_g=float(np.linalg.norm(ref['grad_u'],axis=(-2,-1)).max())
     exact_w=float(np.linalg.norm(ref['vorticity'],axis=-1).max())
-    continuum_peak_certified = profile == 'high-gradient' and params.get('frequency') == 4
+    continuum_peak_certified = (profile == 'high-gradient'
+                               and params.get('frequency') == 4
+                               and params.get('envelope_power', 4) == 4)
     continuum_gradient_peak = float(np.sqrt(65) / 8 * np.exp(-t)) if continuum_peak_certified else None
     continuum_vorticity_peak = float(9 / 8 * np.exp(-t)) if continuum_peak_certified else None
     if profile == 'high-gradient':

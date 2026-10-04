@@ -6041,3 +6041,76 @@ is accepted. No simulation or width-wise solver protocol exists yet; AMR still
 uses its fixed historical envelope. Next gate: hosted compile parity, then
 freeze an OpenFOAM width matrix whose fine grids meet the mode-resolution
 condition. Full goal remains active.
+
+## Revision 361 — diagnose and correct the generalized envelope derivative
+
+Hosted Linux C++ parity caught substantive forcing errors in the new widths:
+maximum absolute errors were 2.1212e-2 for m=2 and 1.0679e-2 for m=8. The
+constant Fourier mode had incorrectly remained in derivative orders 1–3. The
+generated helper now includes that coefficient only for the zero-order field.
+Diagnostic commits and the correction are on PR #4; the corrected hosted test
+is queued, so the width adapter is not yet accepted. Local checks cover case
+generation but skip actual C++ compilation because the Apple toolchain requires
+an unavailable Xcode license. No width-dependent simulation is authorized by
+this evidence yet. Once corrected parity passes, freeze a width matrix and
+independent sampling/local-resolution gates before running solvers. The
+whole-repository objective remains active.
+
+## Revision 362 — review related developments beyond the announcement
+
+A dated literature note is in
+`reports/high-gradient-width-sweep-analytic-prefight-2026-10-04.md`. The most
+relevant post-announcement preprint (Cao, Chi, Nie, arXiv:2609.10262, revised
+2026-09-22) derives a density result for smooth blow-up-producing forces in
+$L^1_tH^s_x$, $s<1/2$, conditional on the OpenAI compact forced construction;
+it is not an independent check of that construction or a result about generic
+initial data under a fixed force. Lei and Ren's 2026-09-28 Part I is an
+exposition of the profile construction and defers oscillatory-pulse residual
+cancellation to Part II. Chen--Hou's 2025 computer-assisted result concerns
+Euler/Boussinesq, so it informs numerical-evidence standards but does not
+settle viscous Navier--Stokes. Photon-fluid literature describes effective
+hydrodynamic mappings in nonlinear optical media, not molecular alignment in
+ordinary matter. These developments sharpen the research questions but do not
+change the physical-claim boundary. The corrected OpenFOAM width-parity CI is
+still queued; no width sweep has run.
+
+## Revision 363 — pass corrected uniform-grid forcing parity
+
+Hosted Linux run `37207039671` at `fdbd4e9c` passed the full Python verification
+job: 447 passed, three skipped, 89 subtests passed. That job also compiled the
+generated high-gradient OpenFOAM C++ body for m=2 and m=8 and the independent
+NumPy forcing comparison passed its 1e-10 absolute-error tolerance for both.
+The earlier detected constant-mode bug and its fix are documented in the
+width-sweep report. This is a host compiler/mock parity result, not an
+OpenFOAM-header or live solver validation. The width adapter is ready for a
+frozen benchmark protocol; no width-specific solver case has yet been run.
+The literature developments beyond the announcement are separately bounded
+in the report. Full goal remains active.
+
+## Revision 364 — freeze the width benchmark and close analyzer reference gap
+
+Frozen `protocols/high-gradient-of13-width-v1.json`: m=1,2,4; spatial n=32,64,128
+at dt=0.001; and n=64 temporal dt=0.0005,0.00025, deduplicated to 15 cases.
+The exact sampled reference FD2 audit passes the 5% gradient and vorticity
+floors at n=64 and n=128 for all three widths; n=32 is retained as a deliberately
+coarse comparison. Continuous extrema remain uncertified. Regression testing
+found that the OpenFOAM analyzer ignored `envelope_power` and silently compared
+non-m=4 cases to the m=4 reference; it now uses the recorded case width. The
+analyzer also limits its existing continuum-peak certification to its proven
+m=4 formula. Targeted local tests pass (13 passed, 2 compiler-dependent skips).
+A manually dispatched ARM64 Foundation 13 workflow and evidence-preserving
+runner are prepared but have not run. Corrected forcing parity passed on the
+previous hosted full-suite commit `fdbd4e9c`; the analyzer/runner changes still
+need hosted full verification before dispatch. Solver truth remains untested.
+The complete goal stays active.
+
+## Revision 365 — complete local full-suite verification for the frozen runner
+
+The full local suite now passes with 450 passed, five skipped, and 89 subtests;
+the new width-runner tests pass separately (4 passed). The preflight artifact
+exactly replays from the frozen protocol, and the runner refuses to start unless
+both reference FD2 fine-grid gates pass, the committed audit artifact matches,
+tracked sources are committed, and the pinned OpenFOAM image is linux/arm64.
+This does not exercise the container or solver. Proceed with hosted full
+verification, then the user-authorized manual 15-case container run; keep its
+matrix evidence separate from prior fixed-m=4 results. Full goal remains active.

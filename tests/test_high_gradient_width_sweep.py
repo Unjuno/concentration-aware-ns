@@ -29,6 +29,27 @@ class HighGradientWidthSweepTests(unittest.TestCase):
             self.assertEqual(current["vorticity_stencil_floor_relative_error"],
                              row["exact_solution_fd2_vorticity_peak_relative_error"])
 
+    def test_frozen_width_protocol_has_two_reference_resolved_fine_grids(self):
+        protocol_path = Path("protocols/high-gradient-of13-width-v1.json")
+        protocol = json.loads(protocol_path.read_text())
+        result = audit(tuple(protocol["envelope_powers"]),
+                       tuple(protocol["spatial_matrix"]["cell_counts"]),
+                       str(protocol_path))
+        self.assertEqual([row["envelope_power"] for row in result["widths"]],
+                         [1, 2, 4])
+        required = set(protocol["reference_resolution_gate"][
+            "required_fine_grid_counts"])
+        for width in result["widths"]:
+            by_n = {row["n"]: row for row in width["rows"]}
+            self.assertTrue(all(by_n[n]["gradient_floor_within_threshold"]
+                                and by_n[n]["vorticity_floor_within_threshold"]
+                                for n in required))
+            self.assertFalse(by_n[32]["gradient_floor_within_threshold"])
+            self.assertFalse(by_n[32]["vorticity_floor_within_threshold"])
+        self.assertFalse(protocol["reference_resolution_gate"][
+            "continuous_extrema_certified"])
+        self.assertEqual(protocol["expected_unique_cases"], 15)
+
     def test_coarse_reference_floor_is_reported_without_assuming_monotonicity(self):
         result = audit(envelope_powers=(2, 4, 8), n_values=(16, 32))
         by_power = {row["envelope_power"]: row for row in result["widths"]}

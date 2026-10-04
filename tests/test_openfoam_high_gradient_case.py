@@ -69,6 +69,30 @@ class OpenFoamHighGradientCaseTests(unittest.TestCase):
                               envelope_power=power)["u"]
             np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-15)
 
+    def test_analyzer_uses_case_envelope_power_for_reference(self):
+        n, end, power = 4, 0.005, 2
+        with tempfile.TemporaryDirectory() as directory:
+            case = Path(directory) / "case"
+            generate(case, n=n, dt=end, end=end, nu=0.01,
+                     profile="high-gradient", frequency=4,
+                     envelope_power=power)
+            axis = (np.arange(n) + 0.5) * 2 * np.pi / n
+            z, y, x = np.meshgrid(axis, axis, axis, indexing="ij")
+            centers = np.stack((x, y, z), axis=-1).reshape(-1, 3)
+            exact = fields(centers, N=4, nu=0.01, time=end,
+                           envelope_power=power)["u"]
+            final = case / f"{end:g}"
+            final.mkdir()
+            self.write_vectors(final / "C", centers)
+            self.write_vectors(final / "U", exact)
+            (case / "log.foamRun").write_text(f"Time = {end:g}\nEnd\n")
+
+            result = analyze(case)
+
+            self.assertEqual(result["parameters"]["envelope_power"], power)
+            self.assertLess(result["velocity_relative_l2"], 1e-14)
+            self.assertFalse(result["reference_continuum_peak_certified"])
+
     @unittest.skipUnless(shutil.which("g++") or shutil.which("clang++")
                          or shutil.which("c++"),
                          "a C++ compiler is required for generated forcing parity")

@@ -49,13 +49,21 @@ forcing. The historical `m=4` path retains its existing generated-code branch.
 Tests compare generated initial fields for `m=2` and compile the generated
 forcing at `m=2` and `m=8` against the independent reference. The local Apple
 compiler is unavailable until its Xcode license is accepted, so that compiler
-parity test is explicitly skipped locally and is pending the hosted Linux test.
-No width sweep has been run. The separate AMR generator remains on its
+parity test is skipped locally; corrected hosted Linux parity passed at
+`fdbd4e9c`. The analyzer now reads the case power for its reference solution
+and only claims a certified continuum peak for the historical m=4 formula.
+Regression tests caught the previous default-m=4 analyzer behavior. No width
+sweep has been run. The separate AMR generator remains on its
 historical fixed envelope; AMR width generalization is still open.
 
-Before execution, select widths whose finest grids meet the frozen
-shortest-wavelength condition, then independently verify source timing,
-sampling phase, spectral tails and continuous-peak search.
+Protocol `protocols/high-gradient-of13-width-v1.json` is now frozen for m=1,2,4
+with 15 deduplicated space/time cases. The exact-sampled FD2 preflight passes
+the existing 5% gradient/vorticity floors at n=64 and n=128 for every width;
+n=32 deliberately remains a coarse comparison and fails those reference-only
+floors. Continuous extrema are not certified. A manually dispatched ARM64
+Foundation 13 workflow preserves full case archives and partial evidence. The
+remaining solver run will independently record source timing, sampling phase,
+spectral tails and local acceptance.
 
 Replay commands:
 
@@ -65,3 +73,50 @@ uv run --python 3.14 --with-requirements requirements-verification-locked.txt \
 uv run --python 3.14 --with-requirements requirements-verification-locked.txt \
   python -m pytest -q tests
 ```
+
+Hosted parity diagnostic and correction (2026-10-04): the first Linux C++ run
+(`37205965405`, pre-fix commit `d93c1c88`) compiled but found maximum force
+errors 2.1212e-2 at m=2 and 1.0679e-2 at m=8. Inspection traced both to the
+generic derivative helper retaining the constant Fourier mode for derivative
+orders 1–3. Commit `fdbd4e9c` now initializes that coefficient only for order
+zero. The corrected test passed on hosted Linux in run `37207039671` at commit
+`fdbd4e9c`; the generated C++ forcing for both m=2 and m=8 is now below the
+1e-10 absolute-error gate against the independent NumPy reference. The complete
+Python verification job passed (447 tests, three skips, 89 subtests). This host
+mock still does not establish compatibility with Foundation headers or live
+solver behavior.
+
+## Related developments checked beyond the OpenAI announcement
+
+A current-literature check on 2026-10-04 found two directly related 2026
+preprints. Cao, Chi and Nie's [Density of Forces Producing Navier--Stokes
+Blowup](https://arxiv.org/abs/2609.10262), submitted 2026-09-09 and revised
+2026-09-22, starts from OpenAI's compact forced example and proves density of
+blow-up-producing smooth forces in a relative time-integrated spatial
+$L^1_tH^s_x$ topology for $s<1/2$ (with a sharp threshold in their setting).
+This is a genuine further mathematical consequence if the starting example
+and transfer argument are correct, but it depends on that example and does
+not independently validate its construction, classify generic initial data
+under one fixed force, or establish a molecular mechanism.
+
+Lei and Ren's [Part I profile construction](https://arxiv.org/abs/2609.35406),
+submitted 2026-09-28, presents itself as a readable derivation of the profile
+construction in OpenAI's manuscript. Its abstract says the cancellation by
+oscillatory pulses is deferred to a companion Part II. Treat it as an
+expository reconstruction in progress, not a completed independent audit.
+
+A useful neighboring benchmark is Chen and Hou's [computer-assisted
+singularity result for 3D axisymmetric Euler](https://authors.library.caltech.edu/records/40zbk-gep55),
+published 2025-07-08. It concerns inviscid Euler (and 2D Boussinesq), not
+viscous Navier--Stokes, but demonstrates why machine-checked bounds around a
+numerically constructed profile are stronger evidence than grid growth alone.
+
+For the light-as-fluid hypothesis, the 2025 review [Paraxial fluids of
+light](https://doi.org/10.1016/bs.aamop.2025.04.002) describes an effective
+mapping from nonlinear optical propagation to a 2D+1 Gross--Pitaevskii / fluid
+description. Experiments also report [Joule--Thomson expansion of a photon
+gas](https://doi.org/10.1038/s41567-024-02736-1). These are meaningful
+photon-fluid and optical-analogue platforms with their own interaction and
+medium assumptions. They do not mean photons in vacuum form a material liquid,
+nor that an incompressible Navier--Stokes singularity predicts molecular
+ordering or a viscosity collapse in an ordinary fluid.
