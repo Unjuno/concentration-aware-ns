@@ -5440,3 +5440,12 @@ rejected artifact and comparison are preserved in
 runs both CFL cases on the same saved image shared across two independent
 360-minute jobs. That matched pair has not run; overall solver and cross-project
 completion remain open.
+
+Hosted run 37180101797 has since passed frozen-input preparation, historical
+baseline replay and the shared-image build. Its fresh CFL=10 solver case is
+`in_progress`; the CFL=100 job waits on baseline completion. No fresh numerical
+result is available yet. A contemporaneous GitHub API snapshot of the three
+upstream targets is stored at
+`evidence/upstream-refresh/three-project-live-status-2026-10-04T0543Z.json`;
+existing tracked issues/PRs remain the right reporting channels, so no duplicate
+upstream post was made. Overall goal remains active.

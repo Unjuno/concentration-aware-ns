@@ -157,3 +157,11 @@ bytes, remeasures them, requires exact receipt equality, then runs CFL=100 and
 recomputes the split-root pair review. Each job has a separate 360-minute limit.
 This new two-case protocol has not yet run. Until both cases and the raw-output
 review complete, the existing numerical conclusion remains unchanged.
+
+Status update, 2026-10-04 05:45 UTC: hosted v4 run
+[37180101797](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37180101797)
+passed dependency installation, frozen input generation, replay of the old
+50-update baseline, and the new image build/measurement. Its fresh CFL=10
+baseline solver step is `in_progress`; the CFL=100 job is correctly waiting
+for baseline completion and artifact upload. No fresh-case numerical result
+is yet available, and the old quality verdict remains `UNCERTAIN`.

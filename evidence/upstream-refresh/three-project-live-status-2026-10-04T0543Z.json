@@ -1,0 +1,77 @@
+{
+  "observed_at_utc": "2026-10-04T05:43:39Z",
+  "method": "GitHub REST API reads through gh api; no upstream writes or posts",
+  "projects": {
+    "openai_navier_stokes_and_euler": {
+      "repository": "OpenAI/NavierStokesAndEuler",
+      "url": "https://github.com/OpenAI/NavierStokesAndEuler",
+      "default_branch": "main",
+      "head_sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "head_commit_date": "2026-09-10T13:40:53Z",
+      "has_issues": false,
+      "open_issues_count": 0,
+      "api_license_spdx": "Apache-2.0",
+      "open_pull_request_listing": "HTTP 404 Not Found",
+      "repo_last_updated": "2026-10-03T18:38:02Z",
+      "disposition": "No issue or PR post was made; the current repository still does not expose its issue tracker or pull-request listing endpoint."
+    },
+    "nvidia_physicsnemo": {
+      "repository": "NVIDIA/physicsnemo",
+      "url": "https://github.com/NVIDIA/physicsnemo",
+      "default_branch": "main",
+      "head_sha": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+      "head_commit_date": "2026-10-02T16:45:37Z",
+      "has_issues": true,
+      "open_issues_count": 97,
+      "api_license_spdx": "Apache-2.0",
+      "repo_last_updated": "2026-10-04T04:33:16Z",
+      "tracked_issue": {
+        "number": 2007,
+        "state": "open",
+        "title": "power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+        "updated_at": "2026-10-02T03:48:30Z",
+        "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+      },
+      "tracked_fix_pr": {
+        "number": 2008,
+        "state": "open",
+        "merged_at": null,
+        "draft": false,
+        "head_sha": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+        "base_sha": "ff5d19d08123de47ca446caed1d70a225d540184",
+        "updated_at": "2026-09-30T08:39:08Z",
+        "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+      },
+      "disposition": "Existing issue and fix PR still track the reproduced odd-width defect; no duplicate report was made."
+    },
+    "su2": {
+      "repository": "su2code/SU2",
+      "url": "https://github.com/su2code/SU2",
+      "default_branch": "master",
+      "head_sha": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "head_commit_date": "2026-04-28T06:05:27Z",
+      "has_issues": true,
+      "open_issues_count": 103,
+      "api_license_spdx": "NOASSERTION",
+      "repo_last_updated": "2026-10-04T00:12:18Z",
+      "tracked_issues": [
+        {
+          "number": 2353,
+          "state": "open",
+          "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+          "updated_at": "2026-09-30T17:05:37Z",
+          "url": "https://github.com/su2code/SU2/issues/2353"
+        },
+        {
+          "number": 2932,
+          "state": "open",
+          "title": "Output the location of the maximum residual to the history file (MAX_RES_LOC)",
+          "updated_at": "2026-09-26T17:58:39Z",
+          "url": "https://github.com/su2code/SU2/issues/2932"
+        }
+      ],
+      "disposition": "Tracked source-time and localized-residual questions remain open; this refresh produced no new reproduced defect suitable for a duplicate issue."
+    }
+  },
+  "scope": "Repository metadata and the named live tracking items only; this does not replace source-level or solver-quality validation."
+}
