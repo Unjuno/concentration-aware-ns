@@ -6235,3 +6235,20 @@ for numerical sensitivity checks while providing no molecular alignment or
 phase-transition evidence. Their status and limits are recorded in
 `reports/openai-navier-stokes-proof-audit-2026-10-05.md`. SU2 matrix run
 `37230949147` remains in progress.
+
+## Revision 369 — prepare an independent Linux formalization check
+
+The local Lean 4/Lake rebuild still stops inside dependency materialization on
+macOS, so no local proof-build result is claimed. Added a manually dispatchable
+Linux workflow pinned to OpenAI repository commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd` and `leanprover/lean-action`
+commit `f061402b660e0c34644504b324e830f2991d4865`. It builds the project,
+runs Nanoda with `sorryAx` disallowed, and audits the `NavierStokes` and
+`Euler` roots separately. YAML parsing and whitespace checks pass; the action
+inputs were checked against that pinned action source. The hosted result is
+pending and will only establish the corresponding formal checks, not expert
+mathematical review or physical applicability. On the CFD side, all five SU2
+workers remain in progress and OpenFOAM hosted validation is mixed: cellPoint
+capture and earlier AMR-mean / interface jobs pass, while this revision's
+position replay and some solver jobs remain queued or active. The overall goal
+remains active pending hosted results and independent archive review.
