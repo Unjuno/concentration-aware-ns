@@ -6301,3 +6301,18 @@ Preserved the files and provenance in
 `evidence/external-nsblowup-658812f/` and cross-linked the scope map. Continue
 awaiting the pinned Linux Lean run and five-case SU2 matrix; do not infer a
 physical material transition from either finite surrogate.
+
+## Revision 373 — separate continuum alignment from position certainty
+
+Rechecked the existing selected-axis material-trajectory analysis against the
+user's particle-position hypothesis. The source-checked linearized map is
+volume preserving with two contracting transverse singular values and one
+expanding axial singular value. For its isotropic Gaussian packet, directions
+concentrate toward the axis while covariance determinant and Gaussian entropy
+stay constant; the probability inside any fixed-radius ball about the center
+tends to zero. This is a precise conditional continuum calculation, not a
+finite-particle or molecular result, and does not imply deterministic particle
+positions. Updated the scope map and proof-audit report to state this boundary
+and the remaining nonlinear, finite-size and Brownian-coupling requirements.
+See `docs/openai-core-material-trajectory.md` and
+`docs/affine-alignment-viscosity-counterexample.md`.
