@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 297 — record a post-announcement similarity-flow study
+
+Checked OpenAI's announcement and `openai/NavierStokesAndEuler`: these describe
+an analytical forced-continuum result with Lean formalization, not a molecular
+simulation or ordinary CFD solver. Added a scoped review of Duraiswami's
+2026-09-15 arXiv preprint on a reduced similarity-profile problem. Its own
+abstract leaves part of the stability calculation unconverged, does not run
+the finite-viscosity full evolution, and reports no evidence of practical
+reachability. The numerical work was not independently reproduced; no solver
+verdict or upstream issue changes. Record: `reports/recent-openai-ns-followup-2026-10-04.md`.
+Full goal remains active.
+
 ## Revision 296 — check whether PhysicsNeMo head movement touches audited operators
 
 PhysicsNeMo `main` advanced from `83d6a337…` to `b45a5c81…` by two commits.
