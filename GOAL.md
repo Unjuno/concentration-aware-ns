@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 336 — audit post-announcement blow-up and physical bridge work
+
+Added a dated source audit of OpenAI's September 2026 forced 3D
+Navier–Stokes blow-up construction and a September 15 arXiv preprint that
+recasts its leading-order swirl profiles and estimates when liquid/gas
+continuum assumptions fail. The proof's diverging continuum velocity does not
+derive molecular alignment, particle-position determinism, phase transition,
+or viscosity collapse. The physical estimates are exploratory and the
+preprint explicitly leaves the finite-viscosity forced evolution and stress
+realizability open. No simulation-based claim or upstream report follows.
+Details and a bounded next-review list are in
+`reports/openai-ns-blowup-physical-bridge-audit-2026-10-04.md`.
+
 ## Revision 335 — freeze interpretation rules before SU2 output is visible
 
 Recorded the distinction between solver stopping acceptance, finite-sample

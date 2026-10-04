@@ -57,6 +57,14 @@ post was made. Exact metadata, license-file and contribution-template checks,
 and the live SU2 run state are in
 `evidence/upstream-refresh/live-status-2026-10-04T0646Z.json`.
 
+A follow-up source review covers OpenAI's September 2026 theorem and a new
+September 15 arXiv investigation of its leading-order physical bridge. That
+preprint estimates cavitation/compressibility cutoffs before molecular scales,
+but leaves the full finite-viscosity forced evolution and stress realization
+open; it reports no molecular-alignment or viscosity-collapse result. See
+`reports/openai-ns-blowup-physical-bridge-audit-2026-10-04.md` for the scoped
+assessment and its limitations.
+
 ## Primary evidence in this repository
 
 - `reports/openfoam-six-case-matrix-independent-replay-2026-10-01.md`
