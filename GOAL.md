@@ -5427,3 +5427,16 @@ The compact receipt is archived at
 postprocessing only, not a new OpenFOAM run or a global/native-floating search
 certificate. The separate SU2 matched full-horizon job remains active; the
 complete objective remains open.
+
+## SU2 continuation provenance result — 2026-10-04
+
+Hosted continuation v3 replayed the archived baseline and rebuilt the pinned
+ARM64 runtime, then stopped before CFL=100 because the new image ID and rootfs
+layers differed from the historical image. Binary, patched source, package
+versions, compiler, source revision, recipe and container config matched, but
+those measurements do not override the frozen image-identity gate. The
+rejected artifact and comparison are preserved in
+`evidence/su2-full-horizon-control-continuation-37179161618/`. Frozen v4 now
+runs both CFL cases on the same saved image shared across two independent
+360-minute jobs. That matched pair has not run; overall solver and cross-project
+completion remain open.

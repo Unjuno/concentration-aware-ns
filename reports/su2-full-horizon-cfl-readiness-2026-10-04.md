@@ -128,3 +128,32 @@ reports residual convergence independently from all observed quality metrics.
 The predecessor's seven-row CFL=100 partial remains intact and cannot count as
 a completed pair. The continuation has not yet run; no solver result or
 updated acceptance verdict is claimed here.
+
+Continuation v3 execution and gate result: hosted run
+[37179161618](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37179161618)
+successfully prepared the inputs and replayed the historical baseline (50
+updates, 48 residual-converged, quality `UNCERTAIN`). The ARM64 rebuild then
+produced image ID
+`sha256:3cddca9f4a9f63a8ca11da813fa8d20817dc12a7d28efc2fbed119c164a314d6`,
+which differs from the historical
+`sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92`.
+Measured solver binary, patched source, package-version list, compiler, source
+revision, build recipe and container config match, but rootfs layer digests do
+not. The exact-image gate therefore rejected the continuation and skipped the
+CFL=100 solver step. The 1.2 MB hosted artifact and a field-by-field comparison
+are archived at
+[`evidence/su2-full-horizon-control-continuation-37179161618/`](../evidence/su2-full-horizon-control-continuation-37179161618/).
+This is a correct provenance rejection, not a numerical run or solver failure.
+
+The v3 push-triggered workflow also exposed and fixed a missing parent-directory
+creation before input preparation; the first attempt failed at that step and
+never reached baseline replay or image build ([run
+37179072835](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37179072835)).
+To retain exact pairing without
+relying on a non-reproducible Docker rebuild, frozen protocol v4 runs both fresh
+cases in separate ARM64 jobs: the baseline job builds once and uploads a
+`docker save` archive; the control job downloads and loads those same image
+bytes, remeasures them, requires exact receipt equality, then runs CFL=100 and
+recomputes the split-root pair review. Each job has a separate 360-minute limit.
+This new two-case protocol has not yet run. Until both cases and the raw-output
+review complete, the existing numerical conclusion remains unchanged.

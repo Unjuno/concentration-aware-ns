@@ -1,0 +1,122 @@
+{
+  "status": "CONTROL_NOT_STARTED_IMAGE_IDENTITY_GATE_REJECTED",
+  "workflow_run_id": 37179161618,
+  "workflow_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37179161618",
+  "hosted_artifact_id": 11294596244,
+  "hosted_artifact_sha256": "bbc9629df3c801b9baf0de65c068037ce2d37e1a051db81abd22849d2fc383ca",
+  "precondition_replay_status": "BASELINE_ARCHIVE_AND_DIAGNOSTIC_REPLAY_PASS",
+  "baseline_image_id": "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92",
+  "rebuilt_image_id": "sha256:3cddca9f4a9f63a8ca11da813fa8d20817dc12a7d28efc2fbed119c164a314d6",
+  "image_id_equal": false,
+  "measured_receipt_fields": {
+    "binary_sha256": {
+      "equal": true,
+      "baseline_sha256": "04a48c1646f5533a6669ce7e9e3aa571023125d426de02dc93268545f0e3ac6d",
+      "rebuilt_sha256": "04a48c1646f5533a6669ce7e9e3aa571023125d426de02dc93268545f0e3ac6d"
+    },
+    "patched_source_sha256": {
+      "equal": true,
+      "baseline_sha256": "70edfd66689c74340e5c113189d892ca64e98baf029ae5dccb41542f882e4d6f",
+      "rebuilt_sha256": "70edfd66689c74340e5c113189d892ca64e98baf029ae5dccb41542f882e4d6f"
+    },
+    "package_versions_sha256": {
+      "equal": true,
+      "baseline_sha256": "713e9876e92018214282f5682eb9c89dfb45dab59f533e2c79da10e8771bb42c",
+      "rebuilt_sha256": "713e9876e92018214282f5682eb9c89dfb45dab59f533e2c79da10e8771bb42c"
+    },
+    "compiler_version": {
+      "equal": true,
+      "baseline_sha256": "24c95e5de2a276465aa68382b59617312c69b28f4e0b7c8465f5d1b2cdcad081",
+      "rebuilt_sha256": "24c95e5de2a276465aa68382b59617312c69b28f4e0b7c8465f5d1b2cdcad081"
+    },
+    "source_commit": {
+      "equal": true,
+      "baseline_sha256": "de5eb5ca04ddda5fd1a9943f03094a87977681a519f1455eb90694a8c31a0580",
+      "rebuilt_sha256": "de5eb5ca04ddda5fd1a9943f03094a87977681a519f1455eb90694a8c31a0580"
+    },
+    "architecture": {
+      "equal": true,
+      "baseline_sha256": "0dcf8a02f898cef0de04622e76a00b4a29490fd096d864702ee690ba1d807f3b",
+      "rebuilt_sha256": "0dcf8a02f898cef0de04622e76a00b4a29490fd096d864702ee690ba1d807f3b"
+    },
+    "build_inputs_sha256": {
+      "equal": true,
+      "baseline_sha256": "5d69be531fb550cf4e2c1d47adbe60ed5b61845d970cb3d8603128f81daaa7c5",
+      "rebuilt_sha256": "5d69be531fb550cf4e2c1d47adbe60ed5b61845d970cb3d8603128f81daaa7c5"
+    }
+  },
+  "container_config_equal": true,
+  "rootfs_layers_equal": false,
+  "baseline_rootfs_layers": [
+    "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+    "sha256:2d06f3da503d97bfec7888c76cc89a52bfd60ffd69568326afb4a712ea1bb3dc",
+    "sha256:9a2dccb9ab315a502403a02457965a92d372fd8754ec9cc5bd7e55cdc0162d09",
+    "sha256:50bce5cbdc2f0ad8931f8cd1f57502d9bbd0de7638f54bf00be6eaf055808d1c",
+    "sha256:198fb31f7896d69b6ff86538d7358219e1c394d236ce602c41c09a120a9c6a5f",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+    "sha256:a2507ef362b98d10199774179c58c3919afa95e67c3e5ce62e8243f3e706e6df",
+    "sha256:6d78446c3997f52c4b24d14d3e61297fc2ad695d29e41d54481419940858718d",
+    "sha256:89c26da3764cfb7ccc7156df4ec53b0f219012f4df98912e2d60f1c63f808c0d",
+    "sha256:8ba68855c0ddd211b0e8127bf38d2eaa7c8f8e307386f28b1f6c34fc2eb93095"
+  ],
+  "rebuilt_rootfs_layers": [
+    "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+    "sha256:525ee92eb6a35fd3f22ccb70c93db62e69718cf3f523dad8223d419daef290dd",
+    "sha256:b2a1dede13252c19fadb8694dd396464486955be3fcbb8cf92dfa9ff4ad957af",
+    "sha256:938af0733cb99775f70ff39057f9871db6208b4b58a054b4111a82376cb66b32",
+    "sha256:5a9456597bd8c18d53f7befa105350596e89c72c387c383e2b1c56af4f87b1f9",
+    "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+    "sha256:bf407c5fd42dfb0fa7ca12204a41f7e4e5e385aa8d05e0e46ed3f775abbf1336",
+    "sha256:bae1a87207d0c3bc16f4128b99cfc8febe94e7025cd376d5b4235bc8762fb403",
+    "sha256:fe15c99505302d8e5d5e54e0add8b0d4c8cb2226732d57a3a91c5c9760bfca8d",
+    "sha256:848627977198d3dad895b5cc38fee86cac1df99fd3e0e07aaa924f219e0d4caa"
+  ],
+  "solver_step": "SKIPPED",
+  "interpretation": "The fresh image reproduces the measured SU2 binary, patched source, installed package-version list, compiler, source revision and recipe, but has a distinct immutable image ID and different Docker rootfs layer digests. Under the frozen exact-image acceptance rule the old completed baseline cannot be paired with a run from this image. No CFL=100 solver step started; this is a provenance-gate rejection, not a numerical failure.",
+  "raw_file_sha256": {
+    "historical_successor_receipt": "bd732d4398015bd5fe851ffe83041ebe737f1c52e786b0d4d30408b4c34d7d2c",
+    "historical_image_inspect": "0ff2e48f6aa50cd4dd0e0e84a833d1665dbcdb2593272031c6c519ced38432a7",
+    "rebuilt_successor_receipt": "c613e4e7c50e5ef53927f0a310c8ceaf6c215bdb9767a71675e6ff7ab5da506e",
+    "rebuilt_image_inspect": "3ec584e5bf4e07be7355f323386ceb17405dc3545e5af4dc6290beb7124344e2",
+    "rebuilt_probe_stdout": "5250c08bbe51ba0720bc3b7f23ecd5dccde2062ef0b97f1b6fb4a7a2dbf51fa3",
+    "build_log_uncompressed": "dc5aedd6bc519dd2dbd1b149afcceb2f6dbbc5b39d92de6bef39a489ed83dd0f",
+    "build_log_gzip": "27b94b065397b875b744073d8a8e854fc9fd605559869faf7367e6e613859982"
+  },
+  "prepared_inputs_against_historical_protocol_artifact": {
+    "all_equal": true,
+    "files": {
+      "baseline/case.cfg": {
+        "historical_sha256": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+        "continuation_sha256": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+        "equal": true
+      },
+      "baseline/mesh.su2": {
+        "historical_sha256": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "continuation_sha256": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "equal": true
+      },
+      "baseline/parameters.json": {
+        "historical_sha256": "b870ebfda3d0aca1069ca8aaa7ecbe3e7b03d9ece14638e2c7a7b8f676996376",
+        "continuation_sha256": "b870ebfda3d0aca1069ca8aaa7ecbe3e7b03d9ece14638e2c7a7b8f676996376",
+        "equal": true
+      },
+      "control/case.cfg": {
+        "historical_sha256": "cae4ea96a55b686acbdb18abfaa2f002c340a0d56ec0b8752ef560ed59a1030b",
+        "continuation_sha256": "cae4ea96a55b686acbdb18abfaa2f002c340a0d56ec0b8752ef560ed59a1030b",
+        "equal": true
+      },
+      "control/mesh.su2": {
+        "historical_sha256": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "continuation_sha256": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "equal": true
+      },
+      "control/parameters.json": {
+        "historical_sha256": "b870ebfda3d0aca1069ca8aaa7ecbe3e7b03d9ece14638e2c7a7b8f676996376",
+        "continuation_sha256": "b870ebfda3d0aca1069ca8aaa7ecbe3e7b03d9ece14638e2c7a7b8f676996376",
+        "equal": true
+      }
+    },
+    "continuation_copy_retained_in_repository": false,
+    "reason": "Byte-identical inputs are already retained under evidence/su2-full-horizon-run-37160281461/inputs; avoid duplicating two 3.8 MiB mesh files."
+  }
+}
