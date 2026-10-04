@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 317 — distinguish stale closure from PhysicsNeMo resolution
+
+Live API refresh found that feature request #1852 was closed by the stale bot
+on October 4, with no technical maintainer response. The overlapping consumer
+issue #2001 remains open, while implementation PR #1853 remains an old draft
+and is marked unmergeable. The separate odd-width spectrum issue #2007 and
+focused fix PR #2008 remain open; #2008 passes focused checks but is two ahead
+and fourteen behind main, and no full upstream suite was run. Because existing
+issues/PRs already cover these findings, no duplicate issue or status-only
+comment was posted. Current status and source fields are saved in the dated
+evidence JSON and `reports/physicsnemo-status-refresh-2026-10-04.md`. The
+benchmark's even-grid spectral result is unchanged; the full objective remains
+open.
+
 ## Revision 316 — replay the directional-versus-positional countercheck
 
 Re-ran the alignment-uncertainty, accumulated-strain, and rotational-diffusion
