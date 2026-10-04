@@ -6287,3 +6287,17 @@ a proposed qualification; this is not a solver defect or a claim about
 material viscosity. Findings and evidence boundaries are in the proof-audit
 report. Continue monitoring the OpenAI formal check and complete SU2 matrix;
 no conclusions about molecular alignment or phase transition follow.
+
+## Revision 372 — preserve source-published spectral diagnostics
+
+Resolved the `artifacts-v1` release tag to the same pinned `nsblowup` commit
+and downloaded its small calibration, reference, and MMS-verification reports.
+All three SHA-256 values match the digests returned by GitHub's Releases API.
+The calibration has four zero wave coefficients and zero residual reduction;
+the accompanying reference report says the carrier is unresolved at its
+retained band and explicitly warns its coarse scan is not a global optimum
+certificate. These are publisher-produced records, not our own execution.
+Preserved the files and provenance in
+`evidence/external-nsblowup-658812f/` and cross-linked the scope map. Continue
+awaiting the pinned Linux Lean run and five-case SU2 matrix; do not infer a
+physical material transition from either finite surrogate.
