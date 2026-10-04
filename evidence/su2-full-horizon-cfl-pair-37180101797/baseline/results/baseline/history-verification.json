@@ -1,0 +1,6 @@
+{
+  "status": "PHYSICAL_UPDATE_AND_REPORTED_CLOCK_MATCH",
+  "steps": 50,
+  "CSV_absolute_clock_tolerance": 1e-12,
+  "scope": "Recorded history only, not source callback or internal floating clock proof"
+}

@@ -1,0 +1,19 @@
+{
+  "github_actions_run_id": 37180101797,
+  "head_commit": "1c2fd0855eb65433901b67a106b05945abebe747",
+  "baseline_artifact_id": 11298678808,
+  "baseline_artifact_bytes": 725413368,
+  "paired_artifact_id": 11303655387,
+  "paired_artifact_name": "su2-cfl-matched-pair-1c2fd0855eb65433901b67a106b05945abebe747",
+  "paired_artifact_bytes": 46374187,
+  "paired_artifact_zip_sha256": "e9d03067cfd251cd86055094ce5816912a5a07b3b3785da8d203516332a6b5e8",
+  "artifact_expires_at_utc": "2027-01-02T05:30:41Z",
+  "image_id": "sha256:0efbefdedf95b5451e1a10e61b2f340382d71b3d1fea496adb7a5c14f0ecbcd7",
+  "interpretation": "The same measured linux/arm64 image and same mesh/config family were used for fresh CFL=10 and CFL=100 full-horizon cases. The raw-output pair review was independently recomputed from the downloaded artifact. CFL=10 reaches 50 physical updates, exits zero, but only 48/50 inner steps meet log10 residual <= -10; CFL=100 reaches 50/50. Both fail all frozen sampled solution-quality thresholds, and their four measured error values differ by at most 5.85e-10. This is a convergence-gate comparison, not a quality improvement or a demonstrated solver defect.",
+  "limitations": [
+    "Actions artifacts expire on 2027-01-02; the paired artifact ZIP checksum is recorded.",
+    "Sampled field diagnostics do not certify continuous extrema.",
+    "This is one matched CFL pair at n=32, dt=0.001, t=0.05; it does not establish general CFL behavior.",
+    "No causal attribution, upstream defect, physical instability, or proof consequence is established."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "status": "MATCHED_PAIR_REANALYZED_CONVERGENCE_AND_QUALITY_SEPARATE",
+  "image_id": "sha256:0efbefdedf95b5451e1a10e61b2f340382d71b3d1fea496adb7a5c14f0ecbcd7",
+  "run_manifests": [
+    {
+      "sha256": "b2f2e61d9545505588f418ec37d2e1094e6bb7b6cfcf09950d74a26075448cd2"
+    },
+    {
+      "sha256": "0eb189d5e74ebc9208224f7d85a59b7bd5c2ccaf13e006ba61597369f968b9cb"
+    }
+  ],
+  "successor_receipt_sha256": [
+    "65f5004b3776cdb6d87d8d38b9072237803ff419f1ac1ee37075340b4bcc5d1d",
+    "65f5004b3776cdb6d87d8d38b9072237803ff419f1ac1ee37075340b4bcc5d1d"
+  ],
+  "cases": [
+    {
+      "case": "baseline",
+      "CFL_NUMBER": 10,
+      "converged_steps": 48,
+      "expected_steps": 50,
+      "all_steps_converged": false,
+      "observed_errors": {
+        "velocity_l2": 0.022771503203074146,
+        "energy": 0.024642320463917587,
+        "max_gradient": 0.1123590846177012,
+        "max_vorticity": 0.11241212144506016
+      },
+      "observed_quality_checks": {
+        "velocity_l2": false,
+        "energy": false,
+        "max_gradient": false,
+        "max_vorticity": false
+      },
+      "raw_output_sha256": {
+        "restart_00049.csv": "1673f69dc0a800e6a352ec483ca3d4472c725b5b4e868c836a9bb7c0859afdd0",
+        "case.cfg": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+        "mesh.su2": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "history.csv": "74c9910fa3d94d2a387c6d01f5f6b80d2aa56d333f72a0d5532d86e91a85616e",
+        "solver.log": "9abe72a97ee97b83c0b231c674ac34009622a32c0f84b939869a1e2ee240f6d3"
+      }
+    },
+    {
+      "case": "control",
+      "CFL_NUMBER": 100,
+      "converged_steps": 50,
+      "expected_steps": 50,
+      "all_steps_converged": true,
+      "observed_errors": {
+        "velocity_l2": 0.022771503357510187,
+        "energy": 0.02464232012380801,
+        "max_gradient": 0.11235908520220325,
+        "max_vorticity": 0.11241212202957754
+      },
+      "observed_quality_checks": {
+        "velocity_l2": false,
+        "energy": false,
+        "max_gradient": false,
+        "max_vorticity": false
+      },
+      "raw_output_sha256": {
+        "restart_00049.csv": "287194ee0670551d8bb2c905af9399a7de6ee3de1cd735dd7c1a1c2b6de12030",
+        "case.cfg": "cae4ea96a55b686acbdb18abfaa2f002c340a0d56ec0b8752ef560ed59a1030b",
+        "mesh.su2": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+        "history.csv": "ad7dbebbbef34ab21c8f1c485a36fbff4997a3b3670621246d01f13a30ab481e",
+        "solver.log": "ec8166b41d508e3764a4cc2b637fca5bab9a46bd393b37acf7631e960174d78b"
+      }
+    }
+  ],
+  "limits": [
+    "Recomputed grid diagnostics and original thresholds; not continuum peak certification",
+    "Convergence does not by itself imply quality; quality changes do not establish a source defect",
+    "No causal attribution to forcing lag, physical instability or unresolved proof claims"
+  ]
+}

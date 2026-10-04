@@ -2166,3 +2166,33 @@ is a bounded non-location result, not proof no manuscript exists or a defect
 in OpenAI's proof. Our independent public-paper replay remains incomplete at
 that stage. Evidence and search limits are in
 [`research-refresh-openai-part-II-status-2026-10-04.md`](../reports/research-refresh-openai-part-II-status-2026-10-04.md).
+
+### Sixth Foundation 13 exact-control repeat — 2026-10-04
+
+Hosted run 37201155941 completed all six spatial/temporal calibration cases
+from source `661a3969e2466bb2473bb52ee32dbd1269813aca`. The downloaded 39.8 MB
+Actions artifact passed the independent archive replay and a pairwise
+comparison against run 37200525739 reproduced all 36 scalar diagnostics
+exactly, with distinct image and case archive hashes. The result adds a sixth
+cross-build repeat, not evidence about concentrated-flow accuracy. The raw
+artifact is retained by GitHub through 2027-01-02; its checksum and replay
+receipt are committed in
+[`evidence/of13-forced-periodic-control-hosted-661a396`](../evidence/of13-forced-periodic-control-hosted-661a396/verification.json).
+See the [cross-image report](../reports/openfoam-forced-periodic-cross-image-repeat-2026-10-04.md).
+Local quality and temporal-order verdicts remain UNCERTAIN.
+
+### Matched SU2 full-horizon CFL pair executed and replayed — 2026-10-04
+
+Run 37180101797 completed CFL=10 and CFL=100 cases using the same measured
+ARM64 image. Both took 50 physical updates and exited zero; the archived
+baseline and recorded time grids recheck. A downloaded pair artifact was
+reanalyzed locally. Inner residual convergence is 48/50 versus 50/50, while
+both cases fail all four preregistered sampled-quality gates and differ in
+those metrics by at most 5.85e-10. This separates stopping behavior from
+solution quality without establishing a code defect or a general CFL rule.
+The raw paired outputs, replay receipt, image identity audit and artifact
+retention metadata are in
+[`evidence/su2-full-horizon-cfl-pair-37180101797`](../evidence/su2-full-horizon-cfl-pair-37180101797/README.md).
+The full image tar remains in a separate expiring Actions artifact. Existing
+SU2 issues #2353 and #2932 are adjacent but address different behaviors; no
+new issue is warranted by this single matched pair.

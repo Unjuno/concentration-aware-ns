@@ -1,0 +1,15 @@
+{
+  "status": "BASELINE_ARCHIVE_AND_DIAGNOSTIC_REPLAY_PASS",
+  "baseline_image_id": "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92",
+  "baseline_exit_code": 0,
+  "physical_updates": 50,
+  "residual_converged_steps": 48,
+  "baseline_quality": "UNCERTAIN",
+  "baseline_relative_errors": {
+    "velocity_relative_l2": 0.022771503203074146,
+    "gradient_peak_relative_error_samples": 0.1123590846177012,
+    "vorticity_peak_relative_error_samples": 0.11241212144506016
+  },
+  "receipt_sha256": "bd732d4398015bd5fe851ffe83041ebe737f1c52e786b0d4d30408b4c34d7d2c",
+  "scope": "Baseline identity and diagnostics replay only; does not validate or pair the not-yet-run control."
+}

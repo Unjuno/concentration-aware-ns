@@ -1,0 +1,1 @@
+["docker", "run", "--rm", "--cpus", "2", "--user", "1001:1001", "-e", "OMP_NUM_THREADS=2", "-v", "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/su2-cfl-matched-rebuild-v4/control/results/control:/case", "sha256:0efbefdedf95b5451e1a10e61b2f340382d71b3d1fea496adb7a5c14f0ecbcd7", "SU2_CFD", "case.cfg"]

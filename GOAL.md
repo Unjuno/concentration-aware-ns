@@ -5959,3 +5959,40 @@ hashes differ. Provenance, replay, and comparison are preserved in
 cross-build reproducibility only. Local quality and temporal order remain
 UNCERTAIN; no high-gradient, molecular, or physical claim is upgraded. Goal
 remains active.
+
+## Revision 356 — independently replay sixth smooth-control image
+
+Downloaded and integrity-checked Foundation 13 workflow run 37201155941 for
+source `661a3969e2466bb2473bb52ee32dbd1269813aca`; independent archive replay
+passes all six cases, all input/endpoint digests and diagnostics, exact step
+counts, zero exits and the retrospective standard stopping gate. Against the
+fifth replay (37200525739), all 36 scalar diagnostics match exactly while all
+case archive hashes and the recorded image differ. The ZIP checksum, expiry,
+manifest, full build provenance, independent receipt and comparison are saved
+in `evidence/of13-forced-periodic-control-hosted-661a396/`; raw archives remain
+available in the linked Actions artifact until 2027-01-02. Hosted Python
+verification at the same source also passes 439 tests, three skips and 89
+subtests. One tiny n64 floating-secants cross-platform difference is preserved;
+all exact sample/analytic checks pass. The smooth control still does not
+exercise concentration, its temporal-order verdict remains UNCERTAIN, and
+there is no new upstream defect or physical claim. Goal remains active.
+
+## Revision 357 — complete and independently reanalyze the SU2 full-horizon CFL pair
+
+Hosted run 37180101797 finished its two fresh 50-update, n=32, dt=0.001,
+t=0.05 cases in the same immutable ARM64 image. Its image receipt matches image
+ID, source, architecture, build-input digest, SU2 binary, patched source,
+package inventory and compiler. Both cases exited zero and passed recorded
+physical-update/time-grid checks. I downloaded and checked paired artifact
+11303655387, then reran the raw-output review locally; the old archived baseline
+also passed its separate replay. CFL=10 met the per-update inner residual limit
+on 48/50 updates, while CFL=100 met it on 50/50. Both failed all four frozen
+solution-quality gates; their four metric values differ by at most 5.85e-10.
+Thus only inner-iteration convergence changed in this pair, not sampled solution
+quality. Full raw paired evidence, independent review, image-match receipts,
+metadata and a replay command are in
+`evidence/su2-full-horizon-cfl-pair-37180101797/`. The pair is too limited to
+establish general CFL behavior or an upstream defect; adjacent SU2 issues
+#2353/#2932 concern different questions, so no issue was posted. Continuous
+extrema and all broader cross-solver/physical goals remain open. Goal remains
+active.
