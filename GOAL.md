@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 322 — scope the photon-fluid connection against primary sources
+
+Audited established photon-fluid and radiation-hydrodynamics literature to
+test the light-as-fluid hypothesis. Nonlinear optics does support a useful
+2D paraxial wave-fluid model, including measured excitation spectra, steepening
+and a superfluid-like optical-drag reduction. But its density/velocity come
+from optical intensity/phase; effective time is propagation distance;
+interactions are mediated by a nonlinear material; diffraction/quantum
+pressure and material response limit the ideal hydrodynamic singularity.
+Radiation hydrodynamics is a separate photon-distribution/matter-coupling
+transport theory whose viscous limit assumes optically thick scattering and
+scales above the mean free path. These results suggest an established optical
+analogue for threshold-dependent drag, not deterministic molecule alignment or
+a material's viscosity changing due to the audited 3D NS solution. This is a
+literature-scope correction, not a new finding or upstream defect; evidence and
+primary sources are in
+`reports/photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md`.
+
 ## Revision 321 — freeze a real Foundation 13 exact-control run
 
 Added `protocols/of13-forced-periodic-control-v1.json`, a non-overwriting

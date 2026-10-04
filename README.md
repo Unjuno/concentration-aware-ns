@@ -20,6 +20,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Conditional native-point gradient-error witnesses](reports/openfoam-amr-point-gradient-bound-2026-10-04.md)
 - [Live upstream refresh and adversarial spectrum-fix controls](reports/upstream-spectrum-fix-controls-2026-10-04.md)
 - [New exact periodic flow source and concentration-study audit](reports/forced-periodic-ns-new-source-audit-2026-10-04.md)
+- [Photon-fluid analogy and radiation-hydrodynamics scope audit](reports/photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md)
 - [Archived point-value initialization and forcing audit](reports/openfoam-amr-input-representation-2026-10-04.md)
 - [Arb-enclosed nominal-mean continuum error certificates](reports/openfoam-amr-arb-mean-certificate-2026-10-04.md)
 - [Native mean constraints and reconstruction-independent gradient bounds](reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md)

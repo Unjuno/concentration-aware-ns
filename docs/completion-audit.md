@@ -1,5 +1,19 @@
 # Completion audit — interim, 2026-09-27
 
+### Photon-fluid analogy and radiation-hydrodynamics scope — 2026-10-04
+
+Primary-source review confirms established photon-fluid models in nonlinear
+optics and a measured reduction of optical obstacle drag in a low-Mach
+superfluid-like regime. These are 2D paraxial wave analogues with medium-driven
+interactions, not the audited 3D incompressible viscous NS solution. Radiation
+hydrodynamics is a separate kinetic/moment-closure framework; its viscosity
+appears in a large-optical-depth diffusion limit with a mean-free-path scale
+restriction. Neither line of work implies deterministic molecular positions,
+alignment, or a constitutive-viscosity jump from a PDE derivative singularity.
+This points to a potential optical drag-analogue study while leaving material
+claims unsubstantiated. See
+[`photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md`](../reports/photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md).
+
 ### Independent pressure-bearing periodic reference evaluator — 2026-10-04
 
 Added a separate NumPy evaluator for the closed-form trigonometric solution in
