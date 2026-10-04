@@ -60,8 +60,9 @@ Protocol `protocols/high-gradient-of13-width-v1.json` is now frozen for m=1,2,4
 with 15 deduplicated space/time cases. The exact-sampled FD2 preflight passes
 the existing 5% gradient/vorticity floors at n=64 and n=128 for every width;
 n=32 deliberately remains a coarse comparison and fails those reference-only
-floors. Continuous extrema are not certified. A manually dispatched ARM64
-Foundation 13 workflow preserves full case archives and partial evidence. The
+floors. Continuous extrema are not certified. A workflow-dispatch job in the repository’s existing Foundation 13 control
+workflow runs on ARM64 and preserves full case archives and partial evidence;
+PR-triggered runs continue to exercise the existing smooth-control job. The
 remaining solver run will independently record source timing, sampling phase,
 spectral tails and local acceptance.
 

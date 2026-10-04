@@ -10,6 +10,10 @@ on:
       - 'tools/analyze_openfoam.py'
       - 'tools/forced_periodic_reference.py'
       - 'tools/run_forced_periodic_openfoam.py'
+      - 'protocols/high-gradient-of13-width-v1.json'
+      - 'evidence/tests/high-gradient-width-v1-reference-only.json'
+      - 'tools/run_high_gradient_width_sweep.py'
+      - 'tools/audit_high_gradient_width_sweep.py'
       - 'requirements-verification-locked.txt'
   workflow_dispatch:
 
@@ -22,6 +26,7 @@ concurrency:
 
 jobs:
   exact-control:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 90
     steps:
@@ -63,5 +68,49 @@ jobs:
             work/of13-forced-periodic-control-v1/manifest.json
             work/of13-forced-periodic-control-v1/protocol.json
             work/of13-forced-periodic-control-v1/archives/
+          if-no-files-found: warn
+          retention-days: 90
+
+  width-sweep:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-verification-locked.txt
+      - name: Install locked analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+      - name: Build the recorded Foundation 13 runtime recipe
+        run: |
+          mkdir -p evidence/of13-high-gradient-width-build
+          set -o pipefail
+          docker build --platform linux/arm64 \
+            --iidfile evidence/of13-high-gradient-width-build/image-id \
+            -t concentration-aware-ns:of13 runtime/openfoam13 \
+            2>&1 | tee evidence/of13-high-gradient-width-build/build.log
+          docker image inspect concentration-aware-ns:of13 \
+            > evidence/of13-high-gradient-width-build/image-inspect.json
+          docker run --rm --entrypoint cat concentration-aware-ns:of13 \
+            /opt/package-versions.txt \
+            > evidence/of13-high-gradient-width-build/package-versions.txt
+      - name: Run the frozen width and time-step matrix
+        run: >-
+          python -m tools.run_high_gradient_width_sweep
+          --protocol protocols/high-gradient-of13-width-v1.json
+          --output work/of13-high-gradient-width-v1-${GITHUB_RUN_ID}
+          --image concentration-aware-ns:of13
+          --source-commit "$GITHUB_SHA"
+      - name: Preserve complete and partial solver evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: of13-high-gradient-width-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            evidence/of13-high-gradient-width-build/
+            work/of13-high-gradient-width-v1-${{ github.run_id }}/
           if-no-files-found: warn
           retention-days: 90

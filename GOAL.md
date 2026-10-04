@@ -6114,3 +6114,16 @@ tracked sources are committed, and the pinned OpenFOAM image is linux/arm64.
 This does not exercise the container or solver. Proceed with hosted full
 verification, then the user-authorized manual 15-case container run; keep its
 matrix evidence separate from prior fixed-m=4 results. Full goal remains active.
+
+
+## Revision 366 — route manual width execution through an existing workflow
+
+GitHub does not list a newly added workflow until the default branch contains
+it, so the initial width-only workflow file could not yet be dispatched from
+this PR branch. The experiment job now lives behind `workflow_dispatch` in the
+already registered Foundation 13 control workflow; that manual event runs the
+width matrix alone, while pull requests retain the smooth-control job. This
+keeps the experiment trigger usable before any merge and avoids making the 15
+solver cases run on every code push. The Python verification for commit
+`ae75a45e` remains queued; the revised workflow file and its trigger behavior
+need one more review/push before the run. No solver execution has begun.
