@@ -1,5 +1,25 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 326 — add a kinetic-scale bridge to the hypothesis audit
+
+An official arXiv query for 2026-09-27 through 2026-10-04 returned 32
+Navier–Stokes-keyword records. Four primary-source preprints were relevant to
+the particle/continuum and concentration questions: Liu–Xu's exact
+wave–particle kinetic decomposition (including its full Boltzmann extension),
+Dimarco et al.'s low-Mach kinetic relaxation/AP scheme, and Chiarini's DNS of
+an explicitly modified equation separating vorticity amplification from
+vortex tilting. Together they suggest a future, separately specified kinetic
+comparison and strengthen the need to report gradient extremes, energy
+dissipation and geometric organization independently. They do not establish
+molecular alignment, deterministic positions, spontaneous blow-up, or a
+viscosity-coefficient transition in OpenAI's construction. Evidence, query
+response hash, and scope limits are in
+`reports/research-refresh-2026-10-04-kinetic-bridge-and-vorticity.md` and
+`evidence/upstream-refresh/arxiv-ns-window-2026-10-04.json`. No upstream issue
+was warranted. The hosted same-image SU2 pair remains the next numerical
+discriminator; its current execution is still in progress. The full goal
+remains active.
+
 ## Revision 325 — derive an exact singular affine counterexample to conflated physical claims
 
 Derived and symbolically checked an exact unforced affine Navier–Stokes field
