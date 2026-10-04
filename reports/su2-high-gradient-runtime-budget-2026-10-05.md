@@ -25,6 +25,16 @@ parallel efficiency can change scaling substantially. Still, observed n32/n64
 runtime already exceeds 2 hours, so completion within each 6-hour job limit is
 not demonstrated and looks doubtful under this simple model.
 
+The repository's earlier `su2-study-v1` archive is not a calibration set for
+this run: it used a different manufactured reference/protocol and an older
+image. It nevertheless illustrates why grid-cell scaling alone is weak: its
+history records about 1,133 inner iterations per update at n16 but about 353
+at n64-dt0.001. This does not predict the present high-gradient workload, but
+shows that the solver's iteration count can change substantially with
+resolution. No comparable completed n32 or n64 timing from the current frozen
+protocol is available yet, so a defensible runtime forecast still requires
+the active job outcomes or a separately frozen, same-image pilot.
+
 The current runner prints a START line, redirects all SU2 output to the local
 `solver.log`, and prints END only after the solver exits. The workflow uploads
 the case directory in an `always()` step, so partial logs should be preserved
