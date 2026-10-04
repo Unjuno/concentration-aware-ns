@@ -1,5 +1,15 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 298 — complete and preserve the full local verification suite
+
+On macOS arm64 with Python 3.14.5 / uv 0.11.17, ran the entire repository
+suite in an ephemeral environment using the locked verification requirements:
+399 passed, 1 skipped, 89 subtests passed. The exact command, dependency-file
+hash, raw log hash and scope limitation are in
+`evidence/tests/full-suite-2026-10-04-c0b2b1f/`. This validates the benchmark
+repository at `c0b2b1f`; it is not the SU2 native pair or any upstream
+project's own complete test suite. Full goal remains active.
+
 ## Revision 297 — record a post-announcement similarity-flow study
 
 Checked OpenAI's announcement and `openai/NavierStokesAndEuler`: these describe

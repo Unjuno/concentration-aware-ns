@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "commit": "c0b2b1f03920f0f58451ca18392d2c91ba4300db",
+  "command": "uv run --with-requirements requirements-verification-locked.txt --python 3.14 python -m pytest -q",
+  "environment": {
+    "os": "macOS",
+    "architecture": "arm64",
+    "python": "3.14.5",
+    "uv": "0.11.17",
+    "dependency_manifest": "requirements-verification-locked.txt",
+    "dependency_manifest_sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "result": {
+    "passed": 399,
+    "skipped": 1,
+    "subtests_passed": 89,
+    "elapsed_seconds": 107.42
+  },
+  "log": {
+    "path": "pytest.log",
+    "sha256": "d26cd8f893e7be55d8c7ef1b4c3b875a8668f74cdc29ec540bb9a18275bd0de1"
+  },
+  "scope": "Repository Python verification suite only. Does not independently reproduce the OpenFOAM, SU2 or PhysicsNeMo upstream project suites, nor the still-running hosted SU2 native pair."
+}
