@@ -96,6 +96,43 @@ rheology or scattering data. For the theorem's illustrative water/air
 realization, the cited preprint instead estimates cavitation or compressibility
 before molecular-scale physics becomes relevant.
 
+### Literature update — direct shear-order/rheology link in HDPE (2026-10-05)
+
+A newer, peer-reviewed study supplies a particularly close *material-specific*
+example. Bhadu, Rhoades and Colby report flow-induced nematic alignment and
+form birefringence in high-density polyethylene melts in *Macromolecules*
+(published online 2026-07-20; 59(15), 8750–8759). Using shear rheology together
+with polarized-light imaging and Raman measurements, they associate a strong
+increase in birefringence and a Raman signature of stretched long chains with
+the high-shear regime. Above about 20 s⁻¹, their reported flow curve has the
+`-1/2` shear-rate scaling characteristic of nematic-polymer rheology; they
+also report a pronounced failure of the Cox–Merz relation and a decrease in
+primary normal-stress difference in the aligned regime. The paper discusses
+long-chain stretching, loss of entanglements, and a material-specific
+isotropic/biphase/nematic processing map. Some temperature/shear combinations
+did not reach a steady nematic viscosity before normal stress began to rise,
+so even the transition boundary is condition-dependent.
+
+This is a useful positive result for the user's narrower intuition: molecular
+*chain orientation* can accompany a marked constitutive response in a named
+polymer melt. It does not show that a generic Newtonian fluid's molecules
+align merely because a continuum velocity or gradient grows; the study uses a
+semicrystalline, viscoelastic polymer, controlled shear, specified temperature,
+and direct structural/rheological observables. Its shear-thinning law and
+relaxation physics are additional material behavior. The OpenAI construction
+keeps a constant positive viscosity in its continuum equations and supplies
+neither polymer-chain variables nor a dimensional shear/temperature mapping.
+This finding strengthens the case for a future polymer-specific experiment or
+constitutive model, while leaving the alleged singular flow's molecular
+interpretation unverified.
+
+Primary source: Bhadu, Rhoades & Colby, [“When Flow Creates Order: Nematic
+Alignment and Form Birefringence in Shear for High-Density Polyethylene
+Melts”](https://doi.org/10.1021/acs.macromol.6c00994), *Macromolecules* 59
+(15), 8750–8759 (2026). Open-access article and supporting data are linked
+from the publisher page. This is an experimental rheology/rheo-optics result
+for HDPE; it is not a simulation or validation of the OpenAI flow.
+
 ## Disposition and next checks
 
 This source review supports no defect claim against OpenAI, OpenFOAM, SU2, or
