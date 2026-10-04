@@ -5784,6 +5784,27 @@ job is still running, so hosted validation is pending. Goal remains active.
 Extended the OpenFOAM analyzer regression to verify that the N=4 continuum
 certificate is not applied to an N=2 reference: all certificate-specific peaks
 and sampling fractions are null for the unsupported frequency. The focused
-regression passes. The prior full locked suite remains 432 passed, 4 skipped,
-89 subtests; this added assertion has only had its focused test rerun so far.
-Hosted CI is pending for the latest PR head. Goal remains active.
+regression passes, and the subsequent full locked suite passes 434 tests, with
+4 skipped and 89 subtests. Hosted CI is pending for the latest PR head. Goal
+remains active.
+
+## Revision 345 — decompose archived solver peaks against continuum reference
+
+Replayed all six archived OpenFOAM matrix cases after verifying the frozen
+index, protocol, archive hashes, endpoint fields and stored gate decisions.
+Compared the certified N=4 continuum maxima with three distinct quantities:
+exact analytic derivatives at cell centers, FD2 on exact sampled velocity,
+and FD2 on solver cell-centered velocity. At n=64, the solver FD2 peak is
+95.027% of the continuum gradient maximum and 95.271% of the continuum
+vorticity maximum; the n=128 ratios are 98.738% and 98.802%. Both temporal
+refinements at n=64 change these ratios by at most about 0.002 percentage points,
+while the finer spatial grid raises them. All six standard/local verdicts
+remain exactly as frozen: standard PASS throughout, local FAIL at n16/n32 and
+PASS at n64/n128 and temporal refinements; the predefined adequately resolved
+blind-spot rule remains `NOT_OBSERVED`. These are sampled FD2/reference ratios,
+not continuous solver extrema or a defect claim. Reproduction code and
+hash-verified receipt are `tools/compare_openfoam_peaks_to_continuum.py` and
+`evidence/tests/openfoam-continuum-peak-decomposition-2026-10-04.json`; scope is
+documented in `reports/openfoam-archived-continuum-peak-decomposition-2026-10-04.md`.
+The complete local suite passes 434 tests, 4 skipped, 89 subtests. Goal remains
+active.
