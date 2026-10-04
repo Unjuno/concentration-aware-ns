@@ -1,5 +1,19 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 338 — commit the replay receipt for the six-case OpenFOAM matrix
+
+Re-ran `tools.verify_openfoam_high_gradient_matrix` against the current six
+archived Foundation 13 cases. All six archive/input/log checks and standard
+gates reproduced; n=16/n=32 fail only the sampled local-quality gate while
+n=64/n=128 and both n=64 temporal refinements pass. The predefined fine-grid
+blind spot remains `NOT_OBSERVED`. Committed the previously untracked
+machine-readable receipt referenced by the already tracked report. The
+separate n=128 AMR snapshot remains an exploratory, no-quality-gate result;
+its 15 release parts are present with SHA-256 digests. See
+`reports/openfoam-high-gradient-matrix-recheck-2026-10-04.md` and
+`evidence/tests/openfoam-high-gradient-matrix-2026-10-04-b996015.json`.
+Goal remains active.
+
 ## Revision 337 — separate established complex-fluid alignment from theorem implications
 
 Added a targeted literature check showing that shear-induced molecular
