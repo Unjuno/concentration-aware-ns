@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-04T01:48:00Z",
+  "source": {
+    "arxiv": "2609.35406v2",
+    "section": "Theorem 12.4, equations (12.6), (10.21)-(10.22)",
+    "pdf_sha256": "8396b998dcf737cd6a7c12ff1019c6b2fd308a7e6f0907c0c6647a9b2ec64e8d"
+  },
+  "assumptions_used": [
+    "P_* > 0 fixed before final C_* increase",
+    "C_* >= 1",
+    "A and K are finite constants independent of the subsequent C_* increase"
+  ],
+  "checks": [
+    {
+      "sufficient": "C_* >= P_*^-1 exp(40 A + 1) (1 + A)",
+      "target": "R_ref >= 110 exp(400 A + 10) (1 + A)^10",
+      "derivation": "Raise C_* P_* >= exp(40 A + 1)(1+A) to the tenth power and multiply by 110."
+    },
+    {
+      "sufficient": "C_*^8 >= exp(8) (1+K)^2 P_*^-12",
+      "target": "exp(-8) R_ref >= 110 (1+K)^2 / P_*^2",
+      "derivation": "C_* >= 1 implies C_*^10 >= C_*^8; substitute R_ref=110(C_*P_*)^10 and multiply by exp(-8)."
+    },
+    {
+      "sufficient": "C_* >= exp(4 A)",
+      "target": "same condition in (12.6)",
+      "derivation": "Directly identical."
+    }
+  ],
+  "result": "The displayed sufficient bounds algebraically imply the listed scale conditions, conditional on the stated fixed data.",
+  "limitations": [
+    "No independent proof of Lemmas 9.1 or 10.2 or Theorem 12.4.",
+    "No audit of moment closure, lower-order induction, or Part II residual cancellation.",
+    "No conclusion about solver defects or physical particle behavior."
+  ]
+}

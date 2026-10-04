@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 307 — replay the displayed Part I scale thresholds
+
+Expanded the explicit sufficient lower bounds for `C_*` in Theorem 12.4
+against both radius inequalities in (12.6). With `P_* > 0`, `C_* >= 1`, and
+finite `A,K` fixed independently of the final `C_*` increase, the tenth-power
+and eighth-to-tenth-power implications check algebraically. This supports the
+displayed simultaneous-choice step only; it does not prove the cited lemmas,
+moment closure, lower-order induction, or Part II cancellation. No solver or
+physical-particle claim follows. Derivation and scope are recorded in
+`reports/lei-ren-part1-scale-inequality-replay-2026-10-04.md` and its JSON.
+Full goal remains active.
+
 ## Revision 306 — check whether Part I leaves profile compatibility conditional
 
 Checked Lei–Ren arXiv:2609.35406v2 directly after a secondary search result
