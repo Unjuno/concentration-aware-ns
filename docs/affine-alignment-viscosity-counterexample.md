@@ -43,6 +43,46 @@ advective, and forcing terms, their spatial scales, and a nonzero denominator
 for any proposed relative-effectiveness ratio. A continuum velocity field
 contains no molecular ensemble or constitutive transition law.
 
+## Absolute speed is not a constitutive threshold
+
+There is a separate issue with saying that viscosity changes once “the fluid
+reaches a certain speed.” For forced incompressible Navier–Stokes,
+
+```
+partial_t u + (u·grad)u = -grad p + nu Delta u + f,
+```
+
+take any constant observer velocity `V` and define
+`u'(x',t)=u(x'+Vt,t)-V`, `p'(x',t)=p(x'+Vt,t)`, and
+`f'(x',t)=f(x'+Vt,t)`. The chain rule gives
+`partial_t u' = partial_t u + V·grad u` and
+`(u'·grad')u' = ((u-V)·grad)u`; their sum is exactly
+`partial_t u + (u·grad)u`. Also `grad' u'=grad u` and
+`Delta' u'=Delta u`, so the transformed fields solve the same equation with
+the same constant `nu`, while the measured velocity magnitude changes with
+the observer. The symmetric rate-of-strain tensor
+`D=(grad u + grad u^T)/2` is unchanged by this boost.
+
+Thus a threshold based only on absolute `|u|` is frame-dependent. If “speed”
+means speed relative to a wall, or is shorthand for local shear rate, it can be
+physically meaningful, but the wall/gap or strain-rate measure, material,
+temperature, pressure, and constitutive law must then be specified. Particular
+non-Newtonian fluids can shear-thin; that behavior is an additional material
+model and is not implied by the constant-`nu` Navier–Stokes singularity
+construction. In nonequilibrium molecular-dynamics simulations of squalane
+under elastohydrodynamic-lubrication conditions, molecular alignment saturates
+after viscosity has fallen by roughly a factor of three, while a thermally
+activated Eyring-type mechanism accounts for much larger viscosity reductions
+in the reported high-viscosity regime. This material- and regime-specific
+result is evidence against treating alignment as a universal cause of a sharp
+viscosity collapse, not a claim that alignment never contributes in other
+materials. See Jadhao and Robbins, [*Rheological properties of liquids under
+conditions of elastohydrodynamic lubrication*](https://arxiv.org/abs/1903.03996).
+Reproduce the boost identities with
+`python -m tools.check_galilean_viscosity_invariance`; the exact symbolic
+results and assumptions are saved in
+`evidence/tests/galilean-viscosity-invariance.json`.
+
 The selected-construction axis calculation has a related exact distinction:
 for its linearized volume-preserving propagator, an isotropic Gaussian's
 orientation concentrates toward the axis while its probability in any fixed

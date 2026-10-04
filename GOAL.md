@@ -6332,3 +6332,24 @@ the date-stamped interpretation is in
 `reports/three-project-refresh-2026-10-04-drag.md`. This focused refresh does
 not claim an exhaustive source or issue-history audit. Keep the OpenAI Lean
 check and five-case SU2 run under active observation.
+
+## Revision 375 — distinguish absolute speed from rheological response
+
+Added the exact Galilean-boost calculation to the viscosity hypothesis audit:
+adding a constant observer velocity changes `|u|` while leaving the velocity
+gradient, symmetric strain rate, material acceleration, and constant-viscosity
+equation invariant when the prescribed force is transformed with the frame.
+Thus an absolute-speed threshold for viscosity is frame-dependent; a speed
+relative to a boundary or a local shear-rate criterion requires a specified
+geometry and material law. The squalane NEMD result remains a bounded
+counterexample to treating alignment as a universal explanation of shear
+thinning: its molecular alignment saturates after about a threefold viscosity
+drop under EHL conditions. The symbolic affine counterexample replay passed,
+and a reproducible SymPy chain-rule checker verifies the boosted material
+acceleration, gradient, divergence, Laplacian, strain rate, pressure gradient,
+and constant-viscosity Navier–Stokes right-hand side. Its command and JSON
+evidence are linked from `docs/affine-alignment-viscosity-counterexample.md`.
+Updated the impact map. No molecular or OpenAI-flow constitutive claim follows.
+SU2 `37230949147` and Lean `37233433718` remain live under their frozen
+timeouts; n16 archive replay passes but both acceptance gates fail for that
+case.
