@@ -35,6 +35,14 @@ until the Xcode license is accepted; no attempt was made to change system
 license state. Thus the emitted C++ expression has not yet passed compilation
 in this local run.
 
+The generic OpenFOAM analyzer was also extended to select this exact reference
+and measure pressure error after removing only the spatially constant gauge
+offset. A synthetic archive containing exact fields initially failed because
+the analyzer was selecting the Gaussian reference. After the profile-aware
+fix, the synthetic velocity and gauge-invariant pressure errors are each below
+`1e-15`; the OpenFOAM case/analyzer test group passes locally, with the C++
+compiler test skipped for the host limitation above.
+
 ## Limits
 
 This is case-generator and source-expression integration only. The Foundation

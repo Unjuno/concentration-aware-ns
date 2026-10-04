@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 320 — add profile-aware OpenFOAM output analysis
+
+Extended `tools/analyze_openfoam.py` to compare the forced-periodic control
+against its own exact velocity and pressure, with pressure error invariant to
+a constant gauge offset. A synthetic exact archive initially failed because
+the analyzer compared velocity to the Gaussian field; after the fix, velocity
+and gauge-adjusted pressure errors are below `1e-15`, and existing OpenFOAM
+case/analyzer tests pass. This exercises stored-field parsing and metric
+selection only, not a solver run. The solver control still needs fresh
+multi-resolution and time-step results before any CFD quality inference; no
+concentration or molecular claim follows. The updated report is
+`reports/openfoam-forced-periodic-control-integration-2026-10-04.md`.
+
 ## Revision 319 — connect the exact control to OpenFOAM case generation
 
 Extended `tools/openfoam_case.py` with a `forced-periodic` profile for the

@@ -12,10 +12,12 @@ and 89 subtests. Logs, environment and hashes are in
 `evidence/analytic-checks/forced-periodic-reference-implementation-2026-10-04.json`.
 It is now connected to OpenFOAM case generation through the separate
 `forced-periodic` profile in `tools/openfoam_case.py`, which writes exact
-initial velocity/pressure and analytic forcing. Hosted C++ control and a
-Foundation 13 solver run remain pending; it adds no solver verdict and does
-not exercise concentration. The separate hosted SU2 pair remains active;
-cross-solver completion is still open.
+initial velocity/pressure and analytic forcing. The output analyzer now uses
+that profile's exact velocity and computes gauge-invariant pressure error.
+Synthetic exact-field tests pass, while hosted C++ control and a Foundation 13
+solver run remain pending; it adds no solver verdict and does not exercise
+concentration. The separate hosted SU2 pair remains active; cross-solver
+completion is still open.
 
 ### Fresh published cellPoint sample and enclosure replay — 2026-10-04
 

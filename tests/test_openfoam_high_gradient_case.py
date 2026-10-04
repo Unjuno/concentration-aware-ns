@@ -200,6 +200,34 @@ int main(){{
             self.assertEqual(result["quality"], "FAIL")
             self.assertIn("shell_spectrum", result["local_quality"]["metrics"])
 
+    def test_analyzer_compares_forced_periodic_velocity_and_gauge_free_pressure(self):
+        n, end, nu = 4, 0.005, 0.01
+        with tempfile.TemporaryDirectory() as directory:
+            case = Path(directory)
+            time_dir = case / str(end)
+            time_dir.mkdir()
+            axis = (np.arange(n) + 0.5) * 2 * np.pi / n
+            z, y, x = np.meshgrid(axis, axis, axis, indexing="ij")
+            centers = np.stack((x, y, z), axis=-1).reshape(-1, 3)
+            expected = forced_periodic_fields(centers, time=end, nu=nu)
+            self.write_vectors(time_dir / "C", centers)
+            self.write_vectors(time_dir / "U", expected["u"])
+            scalar_text = "FoamFile { format ascii; class volScalarField; object p; }\n"
+            scalar_text += f"internalField nonuniform List<scalar>\n{n**3}\n(\n"
+            scalar_text += "\n".join(f"{v:.17g}" for v in expected["pressure"])
+            (time_dir / "p").write_text(scalar_text + "\n);\n")
+            (case / "parameters.json").write_text(json.dumps({
+                "n": n, "dt": 0.001, "end": end, "nu": nu,
+                "sigma": 0.5, "profile": "forced-periodic",
+                "reference": "arXiv:2609.38210v1",
+            }))
+            (case / "log.foamRun").write_text("Time = 0.005s\nPIMPLE: Converged in 3 iterations\nEnd\n")
+            result = analyze(case)
+            self.assertLess(result["velocity_relative_l2"], 1e-15)
+            self.assertLess(result["pressure_relative_l2_gauge_invariant"], 1e-15)
+            self.assertEqual(result["quality"], "UNCERTAIN")
+            self.assertEqual(result["standard_acceptance"], "UNCERTAIN")
+
     def test_frozen_matrix_has_two_fine_grids_below_reference_fd2_floor(self):
         result = audit()
         rows = {row["n"]: row for row in result["rows"]}
