@@ -1,5 +1,35 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 328 — independently replay the fresh six-case Foundation 13 run
+
+Hosted run 37181406146 completed all six smooth forced-periodic cases on one
+Linux/arm64 image. An independent archive replay verified all inputs, endpoint
+fields, diagnostics, update counts, exits, and the standard stopping gate.
+Velocity/pressure spatial observed orders range from about 1.85 to 2.19; the three-step
+fixed-grid comparison remains unable to resolve temporal order. A cross-run
+comparison found bit-identical saved fields and metrics against the earlier
+complete run, but different immutable image IDs and upper rootfs layers despite
+an identical 393-package inventory. The image rebuild is therefore not
+byte-identical; within each case matrix all six rows shared one image. Detailed
+receipts and limits are recorded in
+`reports/openfoam-forced-periodic-rerun-2026-10-04.md` and
+`evidence/of13-forced-periodic-control-hosted-37181406146/`. The local
+kinetic-gradient analysis is also recorded but not yet pushed. The long SU2
+matched pair is still in progress; the full goal remains active.
+
+## Revision 327 — define a kinetic gradient-to-collision crossover test
+
+Replayed the published BGK/Chapman–Enskog stress relation to distinguish the
+dimensionless strain-over-collision rate from the paper's numerical
+wave–particle horizon ratio. The order estimate `||sigma||/p ~
+tau_coll*||S||` gives a concrete trigger for testing where a continuum
+constitutive closure loses accuracy; it does not imply molecular alignment,
+deterministic positions, or viscosity collapse. A preregisterable kinetic
+comparison and the observable-separation requirements are in
+`reports/kinetic-gradient-crossover-analysis-2026-10-04.md`. This is an
+analytical proposal, not a completed kinetic simulation, and leaves the current
+CFD benchmark unchanged. The full goal remains active.
+
 ## Revision 326 — add a kinetic-scale bridge to the hypothesis audit
 
 An official arXiv query for 2026-09-27 through 2026-10-04 returned 32

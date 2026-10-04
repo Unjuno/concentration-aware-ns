@@ -1,0 +1,17 @@
+# Foundation 13 forced-periodic control: second hosted run and independent review
+
+## Result
+
+GitHub Actions run [37181406146](https://github.com/Unjuno/concentration-aware-ns/actions/runs/37181406146) completed the six frozen spatial/temporal cases from source commit `f823fa6355cb0451dc710ece6dd0a366b0736811`. The archived run says `COMPLETE_WITH_DIAGNOSTICS`. I downloaded its artifact (artifact 11295302077; SHA-256 `ef6feb9d5fbcf387aab02a75105907c1696d567e57efdf65fc8fda319e0322cd`) and replayed it with `tools.verify_forced_periodic_openfoam_run.py` under the locked Python dependencies. All six archives, inputs, 0.05 endpoint fields, reported diagnostics, step counts, exits, and the existing Foundation convergence check replay successfully. Compact receipts and the package inventory are retained in `evidence/of13-forced-periodic-control-hosted-37181406146/`; the public Actions artifact contains the full logs and archives.
+
+The replay again gives nearly second-order spatial error decay: observed velocity orders are 1.955 and 2.010; gauge-adjusted pressure orders are 1.853 and 2.195. For n=64 at dt=0.001, cell-sampled relative velocity, gradient-peak and vorticity-peak errors are about 0.0173%, 0.1564%, and 0.1217%. All six cases pass the independently reapplied standard OpenFOAM time/PIMPLE stopping gate. The workflow's own per-case diagnostic `quality` label remains `UNCERTAIN`; passing that stopping criterion is not a physical-accuracy PASS. The three time steps at n=32 finish (25, 50, 100 steps), but differences in total error are too small to resolve temporal order above the spatial-error floor. The temporal-order conclusion remains `UNCERTAIN`.
+
+## Cross-run environment check
+
+The previous complete hosted run is retained under `evidence/of13-forced-periodic-control-hosted-1cacf3c/`. Both runs use the same frozen protocol and have the same 393-line installed package inventory. All six runs' saved input and field member hashes and computed diagnostics are identical. Only `log.blockMesh`, `log.centres`, and `log.foamRun` differ in each extracted case. The Docker image IDs differ (`sha256:383b0f...` previously, `sha256:cdc8cd...` now); the base rootfs layer is equal but both upper-layer digests differ. The image sizes are equal.
+
+Therefore, the new execution independently reproduces the numerical fields and metrics, but it is not an exact byte-identical image reproduction. The Dockerfile pins the Ubuntu base image by digest and verifies the OpenFOAM Debian package hash; it runs `apt-get update` against unsnapshotted package indexes. The package inventory is unchanged, but this does not explain the changed upper rootfs bytes. We do not assign a cause without comparing the full image tarballs. Each individual six-case matrix did use one common image, so this cross-run difference does not confound the within-run resolution comparisons.
+
+## Evidence boundary
+
+This exact, smooth, fixed-spectrum forced solution checks a source/solver/pressure/derivative path; it is not the localized concentration stress case and is unrelated to OpenAI's forced profile. Cell-sampled peaks do not certify continuous extrema. No conclusion follows about singularities, particle alignment, molecular position certainty, viscosity changes, or physical danger. The frozen protocol and prior run's complete files, commands and replay remain the durable reproduction path; the new full artifact is retained by GitHub for 90 days and its identity is recorded in the compact evidence directory.
