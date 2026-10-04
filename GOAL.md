@@ -1,5 +1,18 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 316 — replay the directional-versus-positional countercheck
+
+Re-ran the alignment-uncertainty, accumulated-strain, and rotational-diffusion
+tests under `requirements-verification-locked.txt`: 7 passed. Recomputed the
+particle-position probability artifact with SymPy 1.14.0; all 14 symbolic
+identity/control checks pass and the output matches the committed evidence
+JSON byte-for-byte. This supports only the stated affine Gaussian and
+infinitesimal-direction models: direction alignment can rise while a bounded
+3D position event becomes less likely, and pointwise-diverging strain need not
+have divergent accumulated strain. No molecular law or finite-particle
+transfer follows. The separate SU2 full-horizon pair and new PR CI are still
+running, so the overall objective remains open.
+
 ## Revision 315 — trace the post-announcement force constraint to formal fields
 
 Read the full Constantin–Ignatova–Vicol paper (2609.20803 v2), including its

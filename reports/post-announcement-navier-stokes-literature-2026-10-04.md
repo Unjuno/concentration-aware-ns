@@ -42,6 +42,19 @@ The exact archived source hashes are in
 No general theorem bridge from continuum blowup to molecular alignment or a
 viscosity transition follows from this comparison.
 
+## Direction-versus-position replay (2026-10-04)
+
+The current locked environment re-ran the adjacent analytic controls:
+`tests/test_alignment_uncertainty.py`,
+`tests/test_alignment_integrability_threshold.py`, and
+`tests/test_rotational_diffusion_alignment.py` (7 passed total). The standalone
+particle-position probability checker also passed all 14 identity and
+negative-control checks under SymPy 1.14.0; its output matched the committed
+JSON byte-for-byte. This confirms the model-level distinction already stated
+above: alignment of infinitesimal directions under the prescribed tangent map
+does not entail increasing probability of a bounded 3D position event. It is
+not molecular or finite-particle evidence.
+
 ## Density in a weak forcing topology
 
 Cao, Chi, and Nie's arXiv:2609.10262 (v4, September 22; the version record says the manuscript was unchanged in v4) starts from the compact forced blowup construction and builds a blowup solution near each given smooth solution while preserving its initial velocity. For fixed viscosity and zero initial velocity, they state that smooth blowup-producing forces are dense in the relative (L^1_t H^s_x) topology on both the torus and ℝ³ exactly for (s<1/2).
