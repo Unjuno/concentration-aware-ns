@@ -6011,3 +6011,19 @@ reproduce; temporal order remains UNCERTAIN because the spatial error floor is
 not separated. This smooth control does not test concentration, molecular
 alignment, or a constitutive transition. The whole-repository objective stays
 active.
+
+## Revision 359 — analytically preflight concentration-width sensitivity
+
+Extended the independent localized-MMS reference to the smooth periodic family
+`h_m(q)=((1+cos(q))/2)^m`, retaining the original m=4 evaluation path exactly.
+SymPy differentiation, solenoidality checks and a 444-test full suite pass.
+The reference-only FD2 audit spans m=1,2,4,8,16,32 and n=16,32,64,128; m=4
+reproduces the old receipt exactly. It reveals that m=32 at n=64 has only two
+cells per highest envelope wavelength even though the aggregate peak floor is
+under 5%, so peak metrics alone can hide unresolved modes. No solver was run
+and no defect or physical claim is made. The new reference-width audit and
+proposed mode-resolution guard are in
+`reports/high-gradient-width-sweep-analytic-prefight-2026-10-04.md`; the next
+step is to adapt OpenFOAM's analytic forcing to selected widths and preregister
+the solver matrix with independently verified spatial support and sampling.
+The whole-repository objective remains active.

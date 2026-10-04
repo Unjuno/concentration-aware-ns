@@ -2208,3 +2208,17 @@ retained in
 The spatial orders reproduce, while temporal order remains UNCERTAIN because
 the fixed-grid spatial floor is not isolated. This smooth calibration does
 not validate concentrated flow or physical molecular claims.
+
+### Analytic concentration-width preflight — 2026-10-04
+
+Generalized the independent localized-MMS evaluator to integer envelope powers
+m=1,2,4,8,16,32. Direct SymPy derivative checks pass, the m=4 reference-only
+FD2 floor reproduces its prior receipt exactly, and the complete local suite
+passes (444 passed, four skipped, 89 subtests). At m=32 and n=64 the aggregate
+gradient/vorticity peak floors are below 5%, but the highest envelope mode is
+at the two-cell Nyquist limit. A one-mode FD2 symbol calculation requires about
+about 11.39 cells per wavelength for less than 5% derivative-symbol error. This
+exposes a resolution gate missing from the peak-only width sweep; it is an
+analytic diagnostic, not solver evidence. See
+[`width-sweep preflight`](../reports/high-gradient-width-sweep-analytic-prefight-2026-10-04.md)
+and [`reference-only output`](../evidence/tests/high-gradient-width-sweep-reference-only.json).
