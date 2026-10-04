@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 340 — correct the analytic-forcing source to its current version
+
+Rechecked arXiv's version history: Constantin–Ignatova–Vicol
+arXiv:2609.20803 is v2, revised September 29, not v1. The v2 theorem requires
+spatial analyticity locally uniformly on cylinders strictly before the
+candidate singular time; its analyticity radius may shrink toward that time.
+It separately assumes a uniform spatial C2 force bound up to the endpoint.
+This keeps the result conditional and distinct from OpenAI's smooth,
+non-analytic force. Corrected the dated literature note to link and describe
+v2 precisely. No proof verification, solver verdict, or physical inference is
+upgraded.
+
 ## Revision 339 — add the conditional analytic-forcing regularity follow-up
 
 The literature refresh found Constantin, Ignatova and Vicol's September 17

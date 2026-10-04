@@ -19,15 +19,18 @@ Accordingly, this preprint does not establish that fluid particles align, that m
 
 ## A conditional regularity result for analytic forcing
 
-Constantin, Ignatova and Vicol's September 17, 2026 preprint,
-arXiv:2609.20803, is a directly relevant mathematical follow-up. It assumes
-anisotropic Type II bounds on the angular mean and exact axisymmetry on a
-shrinking core, properties which the authors derive from the OpenAI manuscript
-for purposes of their argument. Under those hypotheses, it proves regularity
-at the candidate singular point when the force is real analytic in space with
-the stated local uniformity. It also notes that bounded-C2 forcing in the
-construction cannot be real analytic near the singular point if blow-up
-occurs.
+Constantin, Ignatova and Vicol's September 17, 2026 preprint, revised as v2 on
+September 29 (arXiv:2609.20803v2), is a directly relevant mathematical
+follow-up. It assumes anisotropic Type II bounds on the angular mean and exact
+axisymmetry on a shrinking core, properties which the authors derive from the
+OpenAI manuscript for purposes of their argument. Under those hypotheses, it
+proves regularity at the candidate singular point when the force is real
+analytic in space, locally uniformly on cylinders whose time intervals stay
+strictly before the singular time. The analyticity radius is allowed to shrink
+as those intervals approach that time. A separate hypothesis requires a
+uniform spatial C2 bound on the force up to the singular time. The paper also
+notes that bounded-C2 forcing in the construction cannot be real analytic near
+the singular point if blow-up occurs.
 
 This does not contradict the OpenAI construction: its force is smooth and
 compactly supported, but not analytic, and the new theorem's force hypothesis
@@ -51,5 +54,5 @@ This is a scoped literature refresh, not an independent proof audit of OpenAI's 
 - OpenAI announcement: <https://openai.com/index/navier-stokes-solution/>
 - OpenAI Lean repository: <https://github.com/openai/NavierStokesAndEuler>
 - Duraiswami, arXiv:2609.17642 (v1): <https://arxiv.org/abs/2609.17642>
-- Peter Constantin, Mihaela Ignatova and Vlad Vicol, arXiv:2609.20803 (v1): <https://arxiv.org/abs/2609.20803>
+- Peter Constantin, Mihaela Ignatova and Vlad Vicol, [arXiv:2609.20803v2](https://arxiv.org/html/2609.20803v2), revised 2026-09-29.
 - Supplementary code link listed by arXiv: <https://gitlab.umiacs.umd.edu/ramanid/swirl-collapse> (project page content not available to this audit client)
