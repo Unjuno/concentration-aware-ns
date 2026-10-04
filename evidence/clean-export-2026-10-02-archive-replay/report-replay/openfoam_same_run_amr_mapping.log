@@ -1,0 +1,71 @@
+{
+  "status": "SAME_RUN_PARENT_INJECTION_MATCH",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v4.json",
+  "archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed",
+  "preMap_time": "0.002",
+  "mapped_time": "0.002",
+  "preMap_cells": 4096,
+  "mapped_cells": 16640,
+  "parent_value_injection": {
+    "parent_grid_cells_per_axis": 16,
+    "mapped_cells": 16640,
+    "parent_group_size_counts": {
+      "1": 2304,
+      "8": 1792
+    },
+    "parent_volume_closure_relative_max": 6.531086649958597e-15,
+    "mapped_vs_parent_injection_relative_l2": 0.0,
+    "mapped_vs_parent_injection_max_abs": 0.0
+  },
+  "volume_integral_velocity_preMap": [
+    -2.0166160408230382e-17,
+    5.377642775528102e-16,
+    -4.70950318673391e-19
+  ],
+  "volume_integral_velocity_mapped": [
+    -2.710505431213761e-20,
+    8.278967789099312e-16,
+    -7.4920064184642865e-19
+  ],
+  "absolute_volume_integral_velocity_change": 2.9083075373407526e-16,
+  "net_integral_change_scaled_by_integrated_speed": 8.09671389157264e-17,
+  "mapped_velocity_point_sample_error_vs_exact_mms": 0.41795531114604173,
+  "exact_cell_average_reference": {
+    "method": "Closed-form tensor factorization of the separable Fourier-polynomial MMS; each one-dimensional Fourier mode is integrated over its cell with a sinc factor. The formula is independently checked against tensor Gauss quadrature in tools.audit_uniform_cell_center_quadrature.",
+    "preMap_velocity_relative_l2_vs_exact_cell_averages": 0.13783397972555342,
+    "mapped_velocity_relative_l2_vs_exact_cell_averages": 0.42483868569575145,
+    "independent_formula_validation": {
+      "crosscheck_artifact": "evidence/of13-high-gradient-v2/uniform-cell-center-quadrature-audit.json",
+      "crosscheck_artifact_sha256": "45666d8fc7ba49e85b80617da64a964706c91f995ed3b0964738c8a5d09851ef",
+      "closed_form_vs_tensor_gauss_max_abs_difference": 1.8041124150158794e-16
+    },
+    "same_run_cell_average_error_decomposition": {
+      "inherited_parent_solution_error_squared_relative": 0.015870775766713387,
+      "exact_child_average_refinement_change_squared_relative": 0.16461713309698012,
+      "twice_normalized_cross_term": 1.9915008573185093e-17,
+      "total_mapped_cell_average_error_squared_relative": 0.1804879088636935,
+      "identity_residual": -1.9915008573185093e-17,
+      "basis": "Exact averages use the closed form on preMap parent cubes and mapped child cubes. This DOF-level identity separates inherited coarse average error from exact-reference variation revealed by refinement; it is not a continuous P0 reconstruction norm."
+    },
+    "cubic_cell_width_range": {
+      "preMap_min": 0.39269908169872286,
+      "preMap_max": 0.3926990816987252,
+      "mapped_min": 0.1963495408493609,
+      "mapped_max": 0.39269908169872525
+    },
+    "interpretation": "This is a comparison of stored cell degrees of freedom to analytic volume averages. OpenFOAM volVectorField storage is cell-associated; this diagnostic does not assume the evolved stored U is itself defined as an exact cell average."
+  },
+  "point_sample_error_decomposition": {
+    "inherited_parent_solution_error_squared_relative": 0.0034514737082288215,
+    "exact_parent_to_child_center_change_squared_relative": 0.17224822217151312,
+    "twice_normalized_cross_term": -0.0010130537645573797,
+    "total_mapped_error_squared_relative": 0.17468664211518453,
+    "identity_residual": -2.3635607360183997e-17,
+    "basis": "Same-run preMap U is compared with exact MMS at preMap centers; exact reference change is evaluated from each containing parent center to each mapped child center. This is a point-sample identity, not a finite-volume cell-average error decomposition."
+  },
+  "interpretation_limits": [
+    "This same-run comparison directly tests whether mapped cell-centered velocity equals containing-parent piecewise-constant injection for this single event.",
+    "It is a point-value mapping audit, not a finite-volume cell-average accuracy certificate.",
+    "A single n=16 diagnostic does not establish convergence, a general solver defect, or physical behavior."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "binary_sha256": "e05107047f490292afd707333ef7e94dc88bde4d3eadcee40678b14dba92ea69",
+  "patched_source_sha256": "341687c112d4d93a8ae3d1ffabfdc61ea2331aa75f1f30f5cdec6d804091399e",
+  "package_versions_sha256": "455ab0cf5167d380a629f02a2632438926c5f78b73b1057c7eb444069f2e7288",
+  "compiler_version": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "image_id": "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92",
+  "source_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "architecture": "linux/arm64",
+  "build_inputs_sha256": {
+    "runtime/su2/Dockerfile": "59296c749f15961ede0adfaa21bd836b86c8afe6b9cf95e70c3446378f1a8f20",
+    "runtime/su2/mms.patch": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83"
+  },
+  "scope": "Actual image files/compiler identities; recipe/source provenance is not independently proved by these hashes"
+}

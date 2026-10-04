@@ -1,0 +1,9 @@
+{
+  "numeric_source_commit": "d4f10ead169e40006a438346c85a6b3a6054b40a",
+  "all_three_guarded_export_jsons_byte_identical": true,
+  "full_suite": "359 passed, 1 skipped, 89 subtests",
+  "limits": [
+    "Same-host selected source export",
+    "Native queries separately verified; continuum derivatives are idealized real arithmetic"
+  ]
+}

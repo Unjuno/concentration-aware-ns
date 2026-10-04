@@ -1,0 +1,12 @@
+{
+  "source_export_commit": "5bc0691a60d2282aef6828f5da6d5f2a803673e9",
+  "runtime_python": "3.14.5",
+  "package_input_commit": "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1",
+  "exit_code": 0,
+  "status": "REPLAY_COMPLETE_OPERATOR_ONLY",
+  "operator_quality": "PASS",
+  "result_sha256": "33cf5cb03f4f4f6c657324a1e70ab3ee4bd8f23d307464d0a1cd80dc37cac068",
+  "equals_prior_macOS_replay_object": true,
+  "source_blobs": "Read-only immutable Git blobs at the package input commit, resolved through the local clone object database; not a standalone Git-free export.",
+  "scope": "Supplemental replay in the fresh exported code/environment with the exported raw archive. Verifies original package evidence without executing binaries, Docker or a solver. Separate from the 47-step/six-follow-up export result."
+}

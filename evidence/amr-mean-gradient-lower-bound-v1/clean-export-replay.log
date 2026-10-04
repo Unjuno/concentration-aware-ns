@@ -1,0 +1,13 @@
+{"case_id": "n16-dt0.001", "stage": "preMap", "gradient_l2_lower": [0.08665901870373324, 0.08770308026514588, 0.08771741565349635], "gradient_peak_lower": 0.0100565313148881}
+{"case_id": "n16-dt0.001", "stage": "mapped", "gradient_l2_lower": [0.7357290809488826, 1.2446003290440855, 1.2565292371750405], "gradient_peak_lower": 0.14405720377854722}
+{"case_id": "n16-dt0.001", "stage": "postSolve", "gradient_l2_lower": [0.6464443076966119, 1.1236007421697065, 1.1353103404797336], "gradient_peak_lower": 0.1301598309308561}
+{"case_id": "n32-dt0.001", "stage": "preMap", "gradient_l2_lower": [0.02211990329878842, 0.022194688121495196, 0.022196347198933434], "gradient_peak_lower": 0.0025447427859020097}
+{"case_id": "n32-dt0.001", "stage": "mapped", "gradient_l2_lower": [0.3853302353339089, 1.1804946743221374, 1.250805920361146], "gradient_peak_lower": 0.14340104314801386}
+{"case_id": "n32-dt0.001", "stage": "postSolve", "gradient_l2_lower": [0.32488183509081825, 1.0521494833514629, 1.1237207599480337], "gradient_peak_lower": 0.12883112124789117}
+{"case_id": "n64-dt0.001", "stage": "preMap", "gradient_l2_lower": [0.0055646251785257785, 0.005569288387835196, 0.005569519567124856], "gradient_peak_lower": 0.0006385282502727338}
+{"case_id": "n64-dt0.001", "stage": "mapped", "gradient_l2_lower": [0.1953522343650696, 0.7232733744411295, 1.184182796471606], "gradient_peak_lower": 0.13576290736050423}
+{"case_id": "n64-dt0.001", "stage": "postSolve", "gradient_l2_lower": [0.09235489575538935, 0.3193956710464198, 0.4712692009059912], "gradient_peak_lower": 0.05402956119198533}
+{"case_id": "n32-dt0.0005", "stage": "preMap", "gradient_l2_lower": [0.022123099354790857, 0.022197889578957353, 0.022199548773691038], "gradient_peak_lower": 0.002545109836579084}
+{"case_id": "n32-dt0.0005", "stage": "mapped", "gradient_l2_lower": [0.38532532756954735, 1.1802945276127477, 1.2505669432636783], "gradient_peak_lower": 0.14337364516043843}
+{"case_id": "n32-dt0.0005", "stage": "postSolve", "gradient_l2_lower": [0.32077992690927665, 1.0348333528648588, 1.104544966881451], "gradient_peak_lower": 0.12663267568237577}
+{"status": "MEASURED_CONDITIONAL_H1_NATIVE_MEAN_CONSTRAINT_LOWER_BOUNDS", "states": 12}

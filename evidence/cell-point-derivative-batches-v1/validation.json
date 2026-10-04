@@ -1,0 +1,21 @@
+{
+  "numerical_source_commit": "24af332bb51bae0aa84bb1bbfaff48b9e5f44c31",
+  "status": "TWO_CAPTURED_CASE_WITNESSES_REPLAY_VERIFIED_MATRIX_INCOMPLETE",
+  "tests": "339 passed, 1 skipped, 89 subtests",
+  "same_host_selected_export_byte_identical_cases": [
+    "n16-dt0.001",
+    "n32-dt0.001"
+  ],
+  "n16_original_witness_content_identical": true,
+  "tets_loaded_per_batch": 10000,
+  "source_sha256": {
+    "tools/cell_point_capture_chunks.py": "ab908fb5c3bff198d7deb3de528188727b75b36ba21692c12c19ef5efdab95a6",
+    "tools/audit_cell_point_capture_derivative.py": "371006b4a5beaa08913f705b5506139855dd60fdc706e610455f6ebeed6865c6",
+    "tests/test_cell_point_capture_chunks.py": "f3fb1cce08ae433c6a4b409cc0ef2ba24e83172e21563979375d5a91105b0583"
+  },
+  "limits": [
+    "Node coordinate/value arrays remain resident; only tetrahedral rows are bounded to 10000",
+    "No whole-program memory benchmark or global-optimum certificate",
+    "n64 and temporal witnesses unavailable; no complete resolution conclusion"
+  ]
+}

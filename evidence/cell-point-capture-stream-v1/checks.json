@@ -1,0 +1,18 @@
+{
+  "numerical_source_commit": "1ef03b97df2bf39bd4435df55d40570af78053bf",
+  "checks": {
+    "n16-dt0.001": {
+      "all_old_measurements_identical": true,
+      "guarded_export_json_byte_identical": true
+    },
+    "n32-dt0.001": {
+      "all_old_measurements_identical": true,
+      "guarded_export_json_byte_identical": true
+    }
+  },
+  "tests": "344 passed, 1 skipped, 89 subtests",
+  "limits": [
+    "Disk-backed keys; resident cell/face arrays remain",
+    "No whole-program RSS guarantee or global geometry certificate"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "STRICT_INPUT_BYTE_IDENTITY_FAILED",
+  "scope": "Cross-platform byte comparison; not a CFD or quality failure",
+  "differences": [
+    {
+      "path": "0/U",
+      "archived_sha256": "414267cb69bb982289a4fdffb4c7694bfb906608f5f6fc4bfde3a247980a4f0e",
+      "regenerated_sha256": "7fb88003de8e89f67d6d94ce431977f84f1a648fef3853477e0394dc2dbca36e",
+      "maximum_absolute_difference": 1.3877787807814457e-17,
+      "relative_l2_difference": 2.489598134209384e-17,
+      "different_components": 2295
+    }
+  ]
+}

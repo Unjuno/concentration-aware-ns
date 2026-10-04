@@ -1,0 +1,74 @@
+{
+  "status": "ENCLOSED_UNIFORM_IDEALIZED_BALL_ERROR_LOWER_BOUND",
+  "case_id": "n32-dt0.0005",
+  "numerical_source_commit": "05154f762b19b047657c4bcc609397755c2fa9b8",
+  "protocol_sha256": "eff798e4abbc0a21c96f5365a1d515bca54ebddf3b21bbaea8da07263fe50a6a",
+  "witness_sha256": "3640bde86a6af46c37f362cf2dedc78c831aa6240598d03be87a02c381b1962e",
+  "neighborhood_sha256": "ea59e944407d7ed776c8254e9a736bc9ed74a0ba2b9041ac8eeded1e31ca64a4",
+  "precision_bits": 128,
+  "lower_bound_quantization_bits": 32,
+  "radius": {
+    "lower_rational": "1/4096",
+    "upper_rational": "1/4096",
+    "ball": "0.00024414062500000000000000000000000000000",
+    "display_lower": 0.000244140625,
+    "display_upper": 0.000244140625
+  },
+  "reference_box": [
+    {
+      "lower_rational": "22436398846455561/9007199254740992",
+      "upper_rational": "22440796892974857/9007199254740992",
+      "ball": "[2.491 +/- 4.29e-4]",
+      "display_lower": 2.4909406589008265,
+      "display_upper": 2.491428940151736
+    },
+    {
+      "lower_rational": "15881850569909623/144115188075855872",
+      "upper_rational": "15952219314218359/144115188075855872",
+      "ball": "[0.110 +/- 6.91e-4]",
+      "display_lower": 0.11020247610231143,
+      "display_upper": 0.11069075735322093
+    },
+    {
+      "lower_rational": "27687909189668993/4503599627370496",
+      "upper_rational": "27690108212928641/4503599627370496",
+      "ball": "[6.148 +/- 4.40e-4]",
+      "display_lower": 6.147950857220195,
+      "display_upper": 6.148439138471105
+    }
+  ],
+  "gradient_error_lower": {
+    "lower_rational": "3588390339/4294967296",
+    "upper_rational": "3588390339/4294967296",
+    "ball": "0.83548723231069743633270263671875000000",
+    "display_lower": 0.8354872323106974,
+    "display_upper": 0.8354872323106974
+  },
+  "curl_error_lower": {
+    "lower_rational": "242878925/2147483648",
+    "upper_rational": "242878925/2147483648",
+    "ball": "0.11309931287541985511779785156250000000",
+    "display_lower": 0.11309931287541986,
+    "display_upper": 0.11309931287541986
+  },
+  "gradient_relative_reference_peak_error_lower": {
+    "lower_rational": "1830533541/2147483648",
+    "upper_rational": "1830533541/2147483648",
+    "ball": "0.85240860516205430030822753906250000000",
+    "display_lower": 0.8524086051620543,
+    "display_upper": 0.8524086051620543
+  },
+  "curl_relative_reference_peak_error_lower": {
+    "lower_rational": "416099453/4294967296",
+    "upper_rational": "416099453/4294967296",
+    "ball": "0.096880703466013073921203613281250000000",
+    "display_lower": 0.09688070346601307,
+    "display_upper": 0.09688070346601307
+  },
+  "limits": [
+    "Componentwise interval infima on a containing box, not sharp minima",
+    "Exact downward dyadic rounding at 32 bits; old unquantized records retained",
+    "Certified idealized ball only; native floating search and global continuity remain separate",
+    "No CFD evolution, original acceptance upgrade or physical claim"
+  ]
+}

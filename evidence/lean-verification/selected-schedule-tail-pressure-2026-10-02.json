@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "captured_at_local_date": "2026-10-02",
+  "command": "sh runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
+  "upstream_repository": "openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "source_sha256": {
+    "NavierStokes/SchedulePressure.lean": "d4146daa477827b6f69c752510699becf1c97973f96e50f8636991958fa1e159",
+    "NavierStokes/PressureDatum.lean": "a1ad3e25e569532b0dc21c71f5f8e0092bb8abd2096f03c3469639d2435a2513",
+    "NavierStokes/OutgoingTail.lean": "450c6d0cea94de6ebaad98d199bfa5b45b1cbc249decec3fd44b796ddd43eba5",
+    "NavierStokes/OutgoingSchedule.lean": "680379d41f5ecb928f53278860c807e3344e9bcaefbcd6c4bbcc493f812bc552",
+    "NavierStokes/FuturePressureBounds.lean": "e55060a6239e37b56308ab631949c20174d4231c6f209eaa005ce182c32d5c86",
+    "NavierStokes/OutgoingPulseBounds.lean": "c7a25e38f34f1c6d7f3a3f0de830cee9979155956c80896014558b61e27de478",
+    "NavierStokes/OutgoingCone.lean": "615b435a0983f522137f82501ea105773c38d43287433fa33c5de951692c4ce3",
+    "NavierStokes/PreparedOutgoing.lean": "b17ae08fd3e31ae75821d47fe801901a226d7ebe8f2fff8f442fc8751ad1a069",
+    "NavierStokes/ScheduledProfileChoice.lean": "8601fa30190269937efd5afeb72587ed0834d28631603b9996477061709a3485",
+    "NavierStokes/FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "NavierStokes/ModulatedProfileAssembly.lean": "006af898d4f7dd76d8ac79a0ee43189e88ac34ca80e9e92ec7e0d78927fcae47",
+    "NavierStokes/NominalConeAssembly.lean": "ad0f8947723416c950c1e3cbb82bac8c83b03ef25fa5aba495a3e29508b14cb5"
+  },
+  "extension": "verification/SelectedScheduleTailPressure.lean",
+  "extension_sha256": "40cf2df9d0c1b8e82c5aebc6d6d9be53fcfcd475b24bfb0ac7a4929804856e51",
+  "runner": "runtime/lean-verification/check_selected_schedule_tail_pressure.sh",
+  "runner_sha256": "fd8a5ed2e03af1db399da58dfdb98f62b9cd848432a5e6485c06cec62ef8bc1b",
+  "log": "evidence/lean-verification/selected-schedule-tail-pressure-2026-10-02.log",
+  "log_sha256": "6d88fd17b66070540006b68c8700ae79cbe4bbe986f4c484dfce90b2cf576973",
+  "declarations": [
+    "ConcentrationAwareSelectedScheduleTail.tail_integrand_constant",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_independent_of_eta",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_nonpos",
+    "ConcentrationAwareSelectedScheduleTail.clockWeight_flattenEnd_eq",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_from_pulse_decay",
+    "ConcentrationAwareSelectedScheduleTail.tail_relative_coefficient_small",
+    "ConcentrationAwareSelectedScheduleTail.exists_ordered_profile_cone_rate_capped",
+    "ConcentrationAwareSelectedScheduleTail.pulse_decay_coefficient_eq",
+    "ConcentrationAwareSelectedScheduleTail.tail_pressure_lower_bound_small",
+    "ConcentrationAwareSelectedScheduleTail.rate_capped_prepared_tail_pressure_small",
+    "ConcentrationAwareSelectedScheduleTail.exists_rate_capped_prepared_profile",
+    "ConcentrationAwareSelectedScheduleTail.exists_rate_capped_profile_data",
+    "ConcentrationAwareSelectedScheduleTail.rate_capped_profile_data_tail_pressure_small"
+  ],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "sorryAx": false,
+  "scope": "Proves eta-independence and nonpositivity of the selected schedule pressure tail, bounds it using clockWeight(flattenEnd), proves the exact endpoint clock-weight formula, and derives a P^2-relative tail lower bound conditional on the exact wait identity. The explicit coefficient is at most 1/100 under the incoming lambda cap exp(-(exp(m)+12+3/5))/4. A rerun of the existing scheduled-family selector produces an existential source-derived rate-capped prepared profile with tail pressure at least -P^2/100. The pinned FinalSlowBase.actualProfile does not retain the prepared witness, amplitude proof, wait identity, or cap, so this result is not transferred to actualProfile and does not establish its root-pressure premise. No solver-validity or molecular/constitutive consequence is established. The capped profile also passes through the pinned nominal-cone and finite-modulation constructors, yielding an existential full ProfileData record with an exact outgoing-profile equality and the same tail bound. This remains a separate existential from FinalSlowBase.actualProfile; no equality to that classical choice or universal bound for all ProfileData is established.",
+  "environment": {
+    "container_image": "concentration-aware-ns:checker",
+    "dependency_volume": "cans-lean-verification",
+    "network": "disabled",
+    "resource_limits": "2 CPUs, 4 GiB memory",
+    "lean_toolchain": "Pinned prepared environment; see runtime/lean-verification/README.md"
+  }
+}

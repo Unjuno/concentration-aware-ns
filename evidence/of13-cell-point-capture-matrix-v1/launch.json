@@ -1,0 +1,315 @@
+{
+  "status": "LAUNCHED_RESULTS_INCOMPLETE_UNCERTAIN",
+  "runtime_source_commit": "4e60b23065811d488fe6890ad59af698a81c35b8",
+  "hosted_run_id": 37147687736,
+  "hosted_run_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736",
+  "original_recipe_source_checks": {
+    "n32-dt0.001": {
+      "tools/run_amr_mean_quality.py": true,
+      "tools/analyze_amr_mean_quality.py": true,
+      "tools/run_high_gradient_openfoam.py": true,
+      "requirements-verification-locked.txt": true,
+      "requirements-verification.txt": true,
+      "requirements.txt": true,
+      "tools/prepare_amr_mean_quality_module.py": true,
+      "tools/openfoam_amr_case.py": true,
+      "tools/openfoam_case.py": true,
+      "tools/high_gradient_reference.py": true,
+      "tools/amr_derivative_projection.py": true,
+      "tools/amr_projection_decomposition.py": true,
+      "tools/high_gradient_cell_average.py": true,
+      "tools/high_gradient_acceptance.py": true,
+      "runtime/openfoam13/instrumentation/prepare_amr_stage_module.py": true,
+      "runtime/of13-interface-operator/Dockerfile": true,
+      "runtime/of13-interface-operator/fetch_pinned_package.sh": true,
+      "tools/analyze_amr_gauss_gradient.py": true,
+      "tools/compare_amr_resolution_volume_integrated.py": true,
+      "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json": true
+    },
+    "n64-dt0.001": {
+      "tools/run_amr_mean_quality.py": true,
+      "tools/analyze_amr_mean_quality.py": true,
+      "tools/run_high_gradient_openfoam.py": true,
+      "requirements-verification-locked.txt": true,
+      "requirements-verification.txt": true,
+      "requirements.txt": true,
+      "tools/prepare_amr_mean_quality_module.py": true,
+      "tools/openfoam_amr_case.py": true,
+      "tools/openfoam_case.py": true,
+      "tools/high_gradient_reference.py": true,
+      "tools/amr_derivative_projection.py": true,
+      "tools/amr_projection_decomposition.py": true,
+      "tools/high_gradient_cell_average.py": true,
+      "tools/high_gradient_acceptance.py": true,
+      "runtime/openfoam13/instrumentation/prepare_amr_stage_module.py": true,
+      "runtime/of13-interface-operator/Dockerfile": true,
+      "runtime/of13-interface-operator/fetch_pinned_package.sh": true,
+      "tools/analyze_amr_gauss_gradient.py": true,
+      "tools/compare_amr_resolution_volume_integrated.py": true,
+      "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json": true
+    },
+    "n32-dt0.0005": {
+      "tools/run_amr_mean_quality.py": true,
+      "tools/analyze_amr_mean_quality.py": true,
+      "tools/run_high_gradient_openfoam.py": true,
+      "requirements-verification-locked.txt": true,
+      "requirements-verification.txt": true,
+      "requirements.txt": true,
+      "tools/prepare_amr_mean_quality_module.py": true,
+      "tools/openfoam_amr_case.py": true,
+      "tools/openfoam_case.py": true,
+      "tools/high_gradient_reference.py": true,
+      "tools/amr_derivative_projection.py": true,
+      "tools/amr_projection_decomposition.py": true,
+      "tools/high_gradient_cell_average.py": true,
+      "tools/high_gradient_acceptance.py": true,
+      "runtime/openfoam13/instrumentation/prepare_amr_stage_module.py": true,
+      "runtime/of13-interface-operator/Dockerfile": true,
+      "runtime/of13-interface-operator/fetch_pinned_package.sh": true,
+      "tools/analyze_amr_gauss_gradient.py": true,
+      "tools/compare_amr_resolution_volume_integrated.py": true,
+      "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json": true
+    }
+  },
+  "observed_jobs": {
+    "total_count": 4,
+    "jobs": [
+      {
+        "id": 111274900166,
+        "run_id": 37147687736,
+        "workflow_name": "Foundation 13 fine cellPoint capture",
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/runs/37147687736",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUTGBaM8AAAAZ6IA6xg",
+        "head_sha": "4e60b23065811d488fe6890ad59af698a81c35b8",
+        "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/jobs/111274900166",
+        "html_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736/job/111274900166",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-03T19:23:03Z",
+        "started_at": "2026-10-03T19:23:07Z",
+        "completed_at": "2026-10-03T19:25:11Z",
+        "name": "changes",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-03T19:23:08Z",
+            "completed_at": "2026-10-03T19:23:09Z"
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-03T19:23:09Z",
+            "completed_at": "2026-10-03T19:24:10Z"
+          },
+          {
+            "name": "Run execute=true",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-03T19:24:10Z",
+            "completed_at": "2026-10-03T19:25:09Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-03T19:25:09Z",
+            "completed_at": "2026-10-03T19:25:09Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-03T19:25:09Z",
+            "completed_at": "2026-10-03T19:25:09Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/check-runs/111274900166",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "runner_id": 1000094216,
+        "runner_name": "GitHub Actions 1000094216",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 111275277209,
+        "run_id": 37147687736,
+        "workflow_name": "Foundation 13 fine cellPoint capture",
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/runs/37147687736",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUTGBaM8AAAAZ6IX7mQ",
+        "head_sha": "4e60b23065811d488fe6890ad59af698a81c35b8",
+        "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/jobs/111275277209",
+        "html_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736/job/111275277209",
+        "status": "queued",
+        "conclusion": null,
+        "created_at": "2026-10-03T19:25:12Z",
+        "started_at": "2026-10-03T19:25:12Z",
+        "completed_at": null,
+        "name": "capture (n64-dt0.001)",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/check-runs/111275277209",
+        "labels": [
+          "ubuntu-24.04-arm"
+        ],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      },
+      {
+        "id": 111275277274,
+        "run_id": 37147687736,
+        "workflow_name": "Foundation 13 fine cellPoint capture",
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/runs/37147687736",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUTGBaM8AAAAZ6IX72g",
+        "head_sha": "4e60b23065811d488fe6890ad59af698a81c35b8",
+        "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/jobs/111275277274",
+        "html_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736/job/111275277274",
+        "status": "queued",
+        "conclusion": null,
+        "created_at": "2026-10-03T19:25:12Z",
+        "started_at": "2026-10-03T19:25:12Z",
+        "completed_at": null,
+        "name": "capture (n32-dt0.0005)",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/check-runs/111275277274",
+        "labels": [
+          "ubuntu-24.04-arm"
+        ],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      },
+      {
+        "id": 111275277372,
+        "run_id": 37147687736,
+        "workflow_name": "Foundation 13 fine cellPoint capture",
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/runs/37147687736",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOUTGBaM8AAAAZ6IX8PA",
+        "head_sha": "4e60b23065811d488fe6890ad59af698a81c35b8",
+        "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/jobs/111275277372",
+        "html_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37147687736/job/111275277372",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-10-03T19:25:12Z",
+        "started_at": "2026-10-03T19:25:17Z",
+        "completed_at": null,
+        "name": "capture (n32-dt0.001)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-03T19:25:17Z",
+            "completed_at": "2026-10-03T19:25:18Z"
+          },
+          {
+            "name": "Run actions/checkout@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-03T19:25:18Z",
+            "completed_at": "2026-10-03T19:26:02Z"
+          },
+          {
+            "name": "Run actions/setup-python@v6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-03T19:26:02Z",
+            "completed_at": "2026-10-03T19:26:02Z"
+          },
+          {
+            "name": "Install locked dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-03T19:26:02Z",
+            "completed_at": "2026-10-03T19:26:20Z"
+          },
+          {
+            "name": "Fetch pinned module and interpolation source",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-03T19:26:20Z",
+            "completed_at": "2026-10-03T19:26:21Z"
+          },
+          {
+            "name": "Build pinned ARM64 package runtime",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-03T19:26:21Z",
+            "completed_at": "2026-10-03T19:27:27Z"
+          },
+          {
+            "name": "Execute unchanged recipe and read-only interpolation capture",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 7,
+            "started_at": "2026-10-03T19:27:27Z",
+            "completed_at": null
+          },
+          {
+            "name": "Preserve complete or partial evidence",
+            "status": "pending",
+            "conclusion": null,
+            "number": 8,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/setup-python@v6",
+            "status": "pending",
+            "conclusion": null,
+            "number": 15,
+            "started_at": null,
+            "completed_at": null
+          },
+          {
+            "name": "Post Run actions/checkout@v5",
+            "status": "pending",
+            "conclusion": null,
+            "number": 16,
+            "started_at": null,
+            "completed_at": null
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/check-runs/111275277372",
+        "labels": [
+          "ubuntu-24.04-arm"
+        ],
+        "runner_id": 1000094220,
+        "runner_name": "GitHub Actions 1000094220",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ]
+  },
+  "limits": [
+    "no completed fine native captures or quality comparison yet",
+    "live jobs must be polled before any restart",
+    "strict input/final field identity failures remain failures; no tolerance substitution"
+  ],
+  "full_locked_suite": "334 passed, 1 skipped, 85 subtests"
+}

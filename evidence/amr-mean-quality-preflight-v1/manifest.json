@@ -1,0 +1,27 @@
+{
+  "status": "PASS_LOCAL_HARNESS_PREFLIGHT_ONLY",
+  "suite": {
+    "command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests",
+    "passed": 271,
+    "skipped": 1,
+    "subtests_passed": 80,
+    "log_sha256": "6b6692d9c445c95c516e2534e64d752152543c571d85169c13752668e9805f3d",
+    "interpreter": "CPython 3.14.5 macOS arm64",
+    "initial_unlocked_interpreter": "Collection failed due to missing sympy; no test ran. Replaced with locked uv environment."
+  },
+  "lint": "compileall tools/tests; AST parse new Python; whitespace/git diff --check; workflow YAML parse and bash -n on every embedded shell block; no project lint configuration found",
+  "files_sha256": {
+    "tools/run_amr_mean_quality.py": "985e1396ca589b924be236effccd528a42b5f828396f1df5448789d851d8d15a",
+    "tools/analyze_amr_mean_quality.py": "d47e7054cc5cf6ac4a17c724996c36c6d6885f376e6b0cb5f8f7ed698c92265c",
+    "tools/summarize_amr_mean_quality.py": "a62285e939e962e9b47cf769d6e0608c76353a9d25762567782fa2253e48c8e4",
+    "tools/prepare_amr_mean_quality_module.py": "46b94402d8fca5e5c6ecdd464130fa0bd8a847c5e9ef2b52dd18855f8411be06",
+    "tools/audit_amr_mean_reference_precheck.py": "b806d4c6d14849076b049d019f51fb0d08177182eae5be98de1633e8079d38c0",
+    "tests/test_amr_mean_quality.py": "676476a0a1cdafc9e5ac4d6e29f59add2a6a873e2e1cdfd39d13d8e83b4f040e",
+    "tests/test_amr_derivative_projection.py": "66427b0580f6a9447dfe5c081048145d9c0e6dd0aa6a8eb824bc992a93ed0430",
+    "protocols/of13-amr-mean-quality-v1.json": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+    ".github/workflows/amr-mean-quality.yml": "d9efccf5a6eeb4a11afa057080fea3c979b37ff3df4b91d3ac504ae019614152",
+    "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json": "bece41355ea63670bd483432ee21b0bf32973b2de2d461bfb1c74fe74cde1000",
+    "evidence/tests/amr-mean-quality-reference-precheck-v1.json": "fb3ec75d317dba98d8484b477288d17739077aee0eff439472f63d733f803475"
+  },
+  "scope": "No N=3 solver execution, C++ compilation, native mapped-reference adequacy, AMR peak/spectrum quality, or overall goal completion follows."
+}

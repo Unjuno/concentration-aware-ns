@@ -1,0 +1,11 @@
+{
+  "retrieved_utc": "2026-10-03T22:17:03.180445+00:00",
+  "analysis_source_commit": "c772574f489abab074790a22dde23872c516cf3e",
+  "metadata_sha256": {
+    "physicsnemo-pr-2008": "79bc5e811f0213eeaae0b1e57f898d95e607741237f28bf642e204c3c669bd5f",
+    "physicsnemo-issue-2007": "7fb6dee50aaa5461d0fc5f98022fdcb3d993db40410e5fd06c099e7d4a9b6824",
+    "su2-pr-2857": "ae088effb371bff784d052b6585ac57f7c61711f15670bbe85baa8f38761b267"
+  },
+  "su2_recomputed_equal_to_prior": true,
+  "scope": "Fresh upstream metadata and existing manufactured-force archive reanalysis, not new solver execution or complete upstream audit"
+}

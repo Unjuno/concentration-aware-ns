@@ -1,0 +1,57 @@
+{
+  "status": "PASS_SOURCE_LINKED_OPERATOR_MODEL_CONTROLS",
+  "checker": "tools/audit_openfoam_stress_operator.py",
+  "checker_sha256": "abca2234da29a5a75a498e44f67cbe7aa650b9d190209492ae837eca2dbf6977",
+  "symbolic_backend": "SymPy 1.14.0",
+  "source_manifest": "evidence/upstream-refresh/openfoam-stress-operator-source-2026-10-03.json",
+  "source_manifest_sha256": "569a2c41ed526b8f5a7df54878b8c670ee58573095bb0289a0eb4f5e8e170a52",
+  "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "implementation_change_parent": "909a5f52bd9f2a059c35da16b1caeff287c5af9b",
+  "checks": {
+    "mixed_weight_and_correction_identity": true,
+    "uncorrected_common_weight_covariance": true,
+    "constant_coefficient_zero_with_common_weights": true,
+    "three_component_face_contraction": true,
+    "internal_face_conservative_cancellation": true,
+    "constant_product_control": true,
+    "constant_product_contrast_100_exact": true,
+    "constant_coefficient_mixed_weight_counterexample": true,
+    "multi_donor_product_noncommutation_control": true,
+    "planar_layer_norm_scalings": true
+  },
+  "models": {
+    "mixed_weight_correction_defect": "-C_coefficient*C_gradient - C_coefficient*(G_N + w_gradient*(-G_N + G_P)) - C_gradient*(a_N + w_coefficient*(-a_N + a_P)) + C_product + G_N*(-a_N + a_P)*(-w_coefficient + w_product) + a_N*(-G_N + G_P)*(-w_gradient + w_product) + (-G_N + G_P)*(-a_N + a_P)*(-w_coefficient*w_gradient + w_product)",
+    "new_minus_old_negative_stress_flux": "Sf & [I_product(a*G)-I_coefficient(a)*I_gradient(G)]",
+    "common_uncorrected_weights": "w*(1-w)*(a_P-a_N)*(Sf & (G_P-G_N))",
+    "three_cell_divergence": [
+      "delta_F_0/V_0",
+      "(-delta_F_0 + delta_F_1)/V_1",
+      "-delta_F_1/V_2"
+    ],
+    "volume_weighted_signed_integral": "0",
+    "constant_product_separated_ratio": "w*(1 - w)*(r - 2 + 1/r) + 1",
+    "constant_product_ratio_w_half_r_100_exact": "10201/400",
+    "constant_coefficient_mixed_weight_defect": "1/2",
+    "synthetic_multi_donor_defect": "-1",
+    "fixed_area_two_layer_jump_control": {
+      "face_count": "area/h**2",
+      "cell_volume": "h**3",
+      "owner_neighbour_residual_density": [
+        "c/h",
+        "-c/h"
+      ],
+      "volume_L1": "2*area*Abs(c)",
+      "volume_L2_squared": "2*area*c**2/h",
+      "Linf": "Abs(c)/h",
+      "action_on_phi_x": "-area*c*h"
+    }
+  },
+  "scope_limits": [
+    "Default replay recomputes exact algebra only. Pinned-source acquisition and local-tree byte matches are separately recorded in the source manifest; --source-root rechecks its current-role file hashes.",
+    "Source linkage is to the explicit transpose-gradient correction and a fixed, stationary mesh. The implicit Laplacian, boundary conditions, pressure solve and full solution are not compared.",
+    "The simple covariance requires common uncorrected linear weights and coherent product endpoint values. Corrected, field-specific and multi-donor schemes require extra terms.",
+    "The constant-product control uses prescribed independent coefficient/tensor data; it is not a manufactured incompressible velocity or a physical interface traction result.",
+    "The planar-layer norm scalings describe a synthetic discrete correction mismatch. They establish neither a continuum singularity nor a physical viscosity or particle transition.",
+    "No packaged-source equivalence, upstream-case reproduction or new solver verdict is established."
+  ]
+}

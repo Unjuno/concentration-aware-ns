@@ -45,6 +45,10 @@ These are statements about a designed, externally forced continuum solution. The
 
 There is a sharper implication for the proposed “particle alignment” reading: the paper defines its shrinking core by **fixed similarity-coordinate bounds** at each time, so this is an Eulerian region, not a fixed set of material parcels. Its volume scales like `tau^(3/2-h)` and tends to zero. Since the velocity is divergence-free, the flow map preserves the volume of each transported material set for every `t<1`; therefore the shrinking core cannot itself be interpreted as the same material particles being compressed into a line. Particles can enter and leave this changing core, and the stated axial outflow explicitly carries incoming fluid away.
 
+### Analytic extension — 2026-10-02
+
+Combining that geometry with the bounded-density transport inequality gives a quantitative ensemble statement. For the paper's core `0≤X≤X_c`, `|eta|≤eta_c`, its similarity coordinates place it inside a cylinder whose volume is at most `4*pi*X_c*eta_c*(1-eta_c^2)^(-(3/2-h))*tau^(3/2-h)`. Thus any fixed bounded-density passive-tracer ensemble has probability `O(tau^(3/2-h)) -> 0` of occupying this core as `t -> 1`. The enclosure algebra is checked in `tools/check_shrinking_core_mass_bound.py`; this is a consequence of the paper's stated coordinates and the classical volume-preserving flow-map hypothesis, not a formalized particle theorem. It says nothing about a point-mass trajectory or molecular/finite-particle dynamics.
+
 For the selected axis trajectory, the audited tangent map has singular values `Q^(C/2), Q^(C/2), Q^(-C)` and determinant one, where `Q=(1-t)/(1-t0)`. An infinitesimal separation with nonzero axial component therefore has its transverse-to-axial ratio reduced by `Q^(3C/2)`. If initial infinitesimal directions are additionally distributed isotropically, the probability of lying within any fixed nonzero angle of the axis tends to one. This is a precise tangent-direction alignment result, not molecular orientation or absolute-position certainty; see [`particle-position-probability.md`](particle-position-probability.md).
 
 The later cusp-ball extension also gives a selected-field equality neighborhood of radius `c*sqrt(1-t)` and an existential full-spacetime Hessian bound `C2*q^(-40)` there. At the September 30 snapshot the spatial restriction was not yet composed with that transfer. The October 1 `SpatialHessianTransfer.lean` now proves the corresponding fixed-time spatial Hessian bound on the same ball, with an axiom audit. The classical packet comparison and constants remain conditional and non-effective; no fixed-size packet alignment through the singular time follows. See [`axis-packet-bound.md`](axis-packet-bound.md) and [`packet-constant-dependencies.md`](packet-constant-dependencies.md).
@@ -91,14 +95,24 @@ asymptotic time order or a general solver verdict; see
 
 ## 2026-10-01: conditional regularity result for analytic forcing
 
-Constantin, Ignatova and Vicol's 2026-09-17 preprint
-[arXiv:2609.20803](https://arxiv.org/abs/2609.20803) proves regularity near a
-candidate singular point assuming the anisotropic Type-II bounds and exact
-axisymmetry in a collapsing core identified in OpenAI's construction, when the
-forcing is spatially real analytic. This constrains any construction satisfying
-those hypotheses: its force cannot be analytic locally uniformly in time (or
-vanish identically near the point) if it remains bounded in `C^2` to the
-singular time. It does not contradict a merely `C∞` force, and we have not
-verified the hypotheses against OpenAI's actual force. Treat this as a
-conditional mathematical check, not a molecular interpretation. Full caveats
-are in the [hypothesis audit](../reports/recent-developments-and-hypothesis-audit-2026-09-28.md).
+Constantin, Ignatova and Vicol's preprint [arXiv:2609.20803
+v2](https://arxiv.org/html/2609.20803v2), revised 2026-09-29, proves
+regularity near a candidate singular point under spatially analytic forcing,
+anisotropic Type-II bounds for the angular mean, and exact axisymmetry on a
+collapsing core. Its Appendix A crosswalks those profile properties and the
+`C^2`-bounded smooth force to cited OpenAI statements; the authors explicitly
+do not claim to verify the OpenAI construction. Conditional on that crosswalk
+and the claimed singularity, Corollary 2.3 implies the force is not locally
+uniformly spatially analytic and is not identically zero in any neighborhood
+cylinder. Independently, Remark 2.6 uses the cited pure-swirl open set and
+nonzero axial velocity to rule out a common spatial-analyticity bound on
+time-slabs intersecting that set, without invoking blow-up or Type-II bounds.
+These restrictions do not imply a lower bound on force amplitude or physical
+actuation feasibility. The full assumption map and elementary continuation
+argument are in
+[`openai-analytic-forcing-bridge-2026-10-01.md`](../reports/openai-analytic-forcing-bridge-2026-10-01.md).
+OpenAI Lemmas 10.2-10.3 also imply that all mixed space-time jets of the
+extended force vanish at the singular point. Together with conditional
+nonvanishing in each neighborhood cylinder, this yields the sharper
+"flat-at-the-point but locally active" description, with no force-amplitude
+lower bound.

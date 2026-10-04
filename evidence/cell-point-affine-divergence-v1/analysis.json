@@ -1,0 +1,148 @@
+{
+  "status": "ENCLOSED_IDEALIZED_AFFINE_DIVERGENCE_AUDIT",
+  "numeric_source_commit": "b3ed2b74754e19c63909811445a57dea82dfd553",
+  "precision_bits": 128,
+  "cases": {
+    "n16-dt0.001": {
+      "status": "NONZERO_IDEALIZED_AFFINE_DIVERGENCE",
+      "signed_divergence": {
+        "lower_rational": "151369464379915833157371205560309182253/170141183460469231731687303715884105728",
+        "upper_rational": "2365147880936184893083925086879830973/2658455991569831745807614120560689152",
+        "ball": "[0.8896697513279326749977796753511023054 +/- 9.09e-38]",
+        "display_lower": 0.8896697513279327,
+        "display_upper": 0.8896697513279327
+      },
+      "absolute_divergence_lower": {
+        "lower_rational": "1910551243/2147483648",
+        "upper_rational": "1910551243/2147483648",
+        "ball": "0.88966975128278136253356933593750000000",
+        "display_lower": 0.8896697512827814,
+        "display_upper": 0.8896697512827814
+      },
+      "distance_to_trace_free_gradient_lower": {
+        "lower_rational": "2206114549/4294967296",
+        "upper_rational": "2206114549/4294967296",
+        "ball": "0.51365107041783630847930908203125000000",
+        "display_lower": 0.5136510704178363,
+        "display_upper": 0.5136510704178363
+      },
+      "gradient_error_relative_reference_peak_lower_from_trace": {
+        "lower_rational": "2250795647/4294967296",
+        "upper_rational": "2250795647/4294967296",
+        "ball": "0.52405419922433793544769287109375000000",
+        "display_lower": 0.5240541992243379,
+        "display_upper": 0.5240541992243379
+      },
+      "lower_bound_quantization_bits": 32,
+      "witness_sha256": "e26e6c1e35dc17c51b6168c385a6087c2fa1f6efd7a731993991c75ed5996c03",
+      "capture_manifest_sha256": "8c262b596ced7b98c83ee67d1051026aa7b10d99aaca829dbbf9224c7efba400"
+    },
+    "n32-dt0.001": {
+      "status": "NONZERO_IDEALIZED_AFFINE_DIVERGENCE",
+      "signed_divergence": {
+        "lower_rational": "-8713487636652232724387750546347407713/10633823966279326983230456482242756608",
+        "upper_rational": "-17426975273304465448775501092694815425/21267647932558653966460912964485513216",
+        "ball": "[-0.8194124394275635613489654471696596456 +/- 4.47e-38]",
+        "display_lower": -0.8194124394275636,
+        "display_upper": -0.8194124394275636
+      },
+      "absolute_divergence_lower": {
+        "lower_rational": "3519349629/4294967296",
+        "upper_rational": "3519349629/4294967296",
+        "ball": "0.81941243936307728290557861328125000000",
+        "display_lower": 0.8194124393630773,
+        "display_upper": 0.8194124393630773
+      },
+      "distance_to_trace_free_gradient_lower": {
+        "lower_rational": "2031897455/4294967296",
+        "upper_rational": "2031897455/4294967296",
+        "ball": "0.47308799228630959987640380859375000000",
+        "display_lower": 0.4730879922863096,
+        "display_upper": 0.4730879922863096
+      },
+      "gradient_error_relative_reference_peak_lower_from_trace": {
+        "lower_rational": "1036525041/2147483648",
+        "upper_rational": "1036525041/2147483648",
+        "ball": "0.48266958491876721382141113281250000000",
+        "display_lower": 0.4826695849187672,
+        "display_upper": 0.4826695849187672
+      },
+      "lower_bound_quantization_bits": 32,
+      "witness_sha256": "61b83d118067cc7f9a824489b6035bc94b77c6416fa3bbb28afa7a1e8399bbb9",
+      "capture_manifest_sha256": "4239c17d56dead63d1701a8c9d3b2160ef074f37787cb66eec9b907fc2ed0ed4"
+    },
+    "n64-dt0.001": {
+      "status": "NONZERO_IDEALIZED_AFFINE_DIVERGENCE",
+      "signed_divergence": {
+        "lower_rational": "-158941838496466784411355547754881447323/340282366920938463463374607431768211456",
+        "upper_rational": "-158941838496466784411355547754881447305/340282366920938463463374607431768211456",
+        "ball": "[-0.4670880831547627208186139723343574955 +/- 5.57e-38]",
+        "display_lower": -0.46708808315476275,
+        "display_upper": -0.46708808315476275
+      },
+      "absolute_divergence_lower": {
+        "lower_rational": "2006128041/4294967296",
+        "upper_rational": "2006128041/4294967296",
+        "ball": "0.46708808303810656070709228515625000000",
+        "display_lower": 0.46708808303810656,
+        "display_upper": 0.46708808303810656
+      },
+      "distance_to_trace_free_gradient_lower": {
+        "lower_rational": "289559641/1073741824",
+        "upper_rational": "289559641/1073741824",
+        "ball": "0.26967343036085367202758789062500000000",
+        "display_lower": 0.26967343036085367,
+        "display_upper": 0.26967343036085367
+      },
+      "gradient_error_relative_reference_peak_lower_from_trace": {
+        "lower_rational": "295424179/1073741824",
+        "upper_rational": "295424179/1073741824",
+        "ball": "0.27513520698994398117065429687500000000",
+        "display_lower": 0.275135206989944,
+        "display_upper": 0.275135206989944
+      },
+      "lower_bound_quantization_bits": 32,
+      "witness_sha256": "754788c8d3a48e9abb3fa4728e1ec307a77bc17fc6b1f74aeb549848ac9fde61",
+      "capture_manifest_sha256": "034900f60cf6af17c7120a3b635426cbce2cad2125be9e1bd5a472cba8968c20"
+    },
+    "n32-dt0.0005": {
+      "status": "NONZERO_IDEALIZED_AFFINE_DIVERGENCE",
+      "signed_divergence": {
+        "lower_rational": "-275624438762432690545471438273782719173/340282366920938463463374607431768211456",
+        "upper_rational": "-275624438762432690545471438273782719139/340282366920938463463374607431768211456",
+        "ball": "[-0.8099874267845078821918562513042186729 +/- 5.77e-38]",
+        "display_lower": -0.8099874267845079,
+        "display_upper": -0.8099874267845079
+      },
+      "absolute_divergence_lower": {
+        "lower_rational": "869717377/1073741824",
+        "upper_rational": "869717377/1073741824",
+        "ball": "0.80998742673546075820922851562500000000",
+        "display_lower": 0.8099874267354608,
+        "display_upper": 0.8099874267354608
+      },
+      "distance_to_trace_free_gradient_lower": {
+        "lower_rational": "2008526247/4294967296",
+        "upper_rational": "2008526247/4294967296",
+        "ball": "0.46764645888470113277435302734375000000",
+        "display_lower": 0.46764645888470113,
+        "display_upper": 0.46764645888470113
+      },
+      "gradient_error_relative_reference_peak_lower_from_trace": {
+        "lower_rational": "1024602765/2147483648",
+        "upper_rational": "1024602765/2147483648",
+        "ball": "0.47711784252896904945373535156250000000",
+        "display_lower": 0.47711784252896905,
+        "display_upper": 0.47711784252896905
+      },
+      "lower_bound_quantization_bits": 32,
+      "witness_sha256": "3640bde86a6af46c37f362cf2dedc78c831aa6240598d03be87a02c381b1962e",
+      "capture_manifest_sha256": "7fbefad0a7d21c844500ce4f42a07e92b91aa1ce39c56289d8bdec66e5ffd884"
+    }
+  },
+  "limits": [
+    "Constant divergence of decoded-node real-affine pieces only",
+    "Any trace-free gradient differs by at least abs(trace)/sqrt(3); no reconstruction correction executed",
+    "No discrete face-flux mass-balance failure, global pressure or physical claim"
+  ]
+}

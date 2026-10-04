@@ -6,7 +6,7 @@ construction. Numerical observations do not establish blow-up or physical danger
 
 | Target | Evidence and classification | Reporting decision |
 |---|---|---|
-| OpenFOAM Foundation 13 | The n32 uniform case's FD2 deficit exceeds the reference-only stencil floor; all six high-gradient v2 uniform cases are complete, with n64/n128 passing standard and local gates. Three AMR runs have high errors, while same-mesh analytic-initialized controls reduce error to 1.88%/0.483%. The cap100000 event is explained by whole-level candidate grouping and subsequent unrefinement in pinned source. | No defect report. AMR quality remains UNCERTAIN and the exact field-transfer/remapping component is not isolated. The observed maxCells overshoot matches source behavior. Keep investigating without claiming a violated contract. |
+| OpenFOAM Foundation 13 | The n32 uniform case's FD2 deficit exceeds the reference-only stencil floor; all six high-gradient v2 uniform cases are complete, with n64/n128 passing standard and local gates. Same-run AMR audits at n16/32/64/128 show mapped cell values exactly match piecewise-constant parent injection; a nested exact-cell-average identity attributes most child-DOF error to smooth-reference subcell variation, with the variation term halving as n doubles. Same-mesh analytic-initialized controls reduce AMR-path error to 1.88%/0.483%. The cap100000 event is explained by whole-level candidate grouping and subsequent unrefinement in pinned source. | No defect report. The remap value-transfer step is isolated for four captured first-refinement events, but AMR quality remains UNCERTAIN: stored cell DOFs are not assumed to be exact averages, no AMR threshold was preregistered, and other temporal/flux/pressure effects are not certified. The observed maxCells overshoot matches source behavior. See `reports/openfoam-amr-nested-cell-average-error-2026-10-03.md`; do not claim a violated contract. |
 | SU2 v8.5.0 | The uniform analytic time control distinguishes source evaluation at the old time from evaluation at the updated solution time. Both tested recurrences remain first-order consistent. This is a time-contract clarification, not proof of an inconsistent solver. | [Q&A 2890](https://github.com/su2code/SU2/discussions/2890) submitted with baseline, intervention and reproduction evidence. Live GraphQL now confirms a September 13 reply agreeing with the time-lag diagnosis and proposing a BDF2 regression. The earlier zero-comment record is historical. The new six-case uniform BDF2 control reproduces first-order lag error and second-order behavior under the diagnostic time shift; all inner residual thresholds pass. Results were [replied to the existing discussion](https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462). This is not maintainer acceptance of a general fix; see reports/su2-bdf2-source-time.md. The localized grid/time study now has all five runs archived; direct endpoint temporal differences have observed order 0.99916, with unconverged inner steps still recorded. This does not establish a new contract violation. |
 | NVIDIA PhysicsNeMo | Explicit time derivatives obey the documented PhysicsInformer contract; independent exact-field residual checks pass. The odd-width spectrum defect reproduces on current main and is already tracked by issue #2007. Existing PR #2008 fixes the focused reproducer, but remains OPEN, BEHIND main and review-required; only focused controls, not the full framework suite, were run. | No duplicate issue. Focused evidence was added to the existing PR conversation. Do not treat focused CI or a deterministic reproducer as full framework validation or maintainer acceptance. |
 
@@ -154,3 +154,116 @@ reproduction queries are preserved in
 [`evidence/upstream-refresh/three-project-inventory-2026-10-01.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-01.json).
 This refresh updates versions and tracking state; it is not a new solver run,
 full source audit, or PhysicsNeMo acceptance verdict.
+
+## Three-project live refresh, 2026-10-01 08:28 UTC
+
+The focused GitHub inventory was reread after the prior disposition. The audited
+source heads are unchanged: OpenFOAM Foundation 13 remains at
+`18870c24d21c6b982e2cdec27b2f59738cca5f90`, SU2 master at
+`bc15466602a687d6fb796d5df7a12ce3fde0949a`, and PhysicsNeMo main at
+`b08dd3f61ac44c784f7c03b0cc93947226365cad`. The repository API reports
+`NOASSERTION` for the first two license identifiers, so their pinned `COPYING`
+files were read directly: OpenFOAM declares GPL-3.0-or-later and SU2 declares
+LGPL-2.1. PhysicsNeMo's pinned `LICENSE.txt` declares Apache-2.0.
+
+The four listed OpenFOAM GitHub issues still do not match the AMR observation;
+its README directs bug reports to the separate bugs.openfoam.org tracker, so
+this is explicitly not an exhaustive search of that system. SU2 Discussion
+#2890's `updatedAt` is September 30, but its thread still contains the known
+September 13 maintainer diagnosis and September 26 BDF2 author reply, with no
+later comment or accepted fix observed. PhysicsNeMo issue #2007 and PR #2008
+remain open, and the PR remains behind its base; no duplicate finding was
+posted. Full metadata, pinned license-file blob IDs and scope notes are in
+`evidence/upstream-refresh/current-project-inventory-2026-10-01T0828Z.json`.
+
+This refresh changes no scientific verdict and justifies no new upstream post.
+
+## Three-project focused refresh, 2026-10-02 JST
+
+The read-only refresh in
+[`evidence/upstream-refresh/three-project-inventory-2026-10-02.json`](../evidence/upstream-refresh/three-project-inventory-2026-10-02.json)
+confirms OpenFOAM Foundation 13 and SU2 still point to their audited default-
+branch commits. PhysicsNeMo main advanced one commit; its only changed paths
+are three example READMEs, and the audited `power_spectrum.py` blob is
+unchanged. Existing records remain current: SU2 Discussion #2890 and Issue
+#2353, and PhysicsNeMo Issue #2007 and PR #2008. No duplicate post is
+justified.
+
+For OpenFOAM, the research browser's direct fetch of `bugs.openfoam.org`
+returned HTTP 403. A later direct HTTP check of its all-issues page redirected
+to the tracker login form (302 then 200), confirming that an exhaustive current
+Mantis listing is not available in this environment. Focused searches found
+older or differently-scoped AMR reports (including the resolved 1.7.x mapping
+report and a multiple-cellZone `maxRefinement` question), but no matching
+report for the present v13 observations. This is useful duplicate screening,
+not an exhaustive tracker audit; no new report was filed. No scientific
+verdict changed.
+
+## OpenFOAM AMR derivative controls, 2026-10-02
+
+Replayed Foundation 13 `grad(U)`/`vorticity` on the two dynamic-AMR endpoint
+archives and their fixed-final-mesh analytic-initialization controls. Each pair
+has byte-identical final mesh geometry and cell centers/volumes. Dynamic cases
+show larger sampled derivative errors than their static controls, but the
+control does not isolate remapping from coarse-history error and subsequent
+evolution. The evidence narrows the benchmark-path attribution without
+demonstrating an upstream contract violation. AMR quality remains UNCERTAIN;
+no new Foundation bug report was filed. See
+`reports/openfoam-amr-remap-derivative-controls-2026-10-02.md` and its replay
+evidence.
+
+## OpenFOAM Foundation current-version and tracker-policy refresh, 2026-10-02
+
+The Foundation's current release is v14; its GitHub source repository advanced
+to `162fa7a2e51e9c9a86c3000efdd885907f7d1acc` on September 30. The v14 repo
+has one unrelated open issue and two open pull requests; its `COPYING` file
+declares GPL-3.0-or-later even though GitHub's license API says
+`NOASSERTION`. The official contribution guide directs effective development
+to `OpenFOAM-dev`, asks for reproducible test cases and tests, and requires a
+Contributor Agreement for significant fixes or new developments.
+
+The benchmark has one v14 `n=64`, `dt=0.001` compatibility probe. Its
+version-banner-normalized endpoint fields and five sampled diagnostics match
+Foundation 13 exactly. There is no v14 space/time matrix or v14 AMR audit, and
+continuous extrema remain uncertified. No defect was reproduced and no report
+was filed. Current release, source, issue/API and tracker-login observations
+are in [`openfoam-foundation-current-2026-10-02.json`](../evidence/upstream-refresh/openfoam-foundation-current-2026-10-02.json);
+the full scope decision is in
+[`openfoam-foundation-current-upstream-audit-2026-10-02.md`](openfoam-foundation-current-upstream-audit-2026-10-02.md).
+
+
+## Live upstream refresh, 2026-10-02 23:36 UTC
+
+The targeted live inventory is saved in
+`evidence/upstream-refresh/live-status-2026-10-02.json`. OpenFOAM Foundation
+13 and SU2 default branches remain at their audited heads. The four visible
+OpenFOAM issues do not concern the measured AMR path. SU2's existing
+Discussion #2890 and Issue #2353 remain the right records; no duplicate is
+warranted.
+
+PhysicsNeMo main advanced to `83d6a337eecfc70e215ed1978af8dba9a38580fb` on
+October 1. The current `power_spectrum.py` still has SHA-256
+`13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552`; a fresh
+CPU replay reproduces the 33-wide axis asymmetry while the 32-wide control
+passes. The existing Issue #2007 tracks it. PR #2008's fixed source
+(`7407608723062dc11ba5332e9ff3774f42bb02d9`) passes the same focused control,
+but remains open, review-required, and based on an older main commit. This is
+not a full PhysicsNeMo test-suite result; no duplicate issue or PR was opened.
+
+The two fresh PhysicsNeMo JSON replays bind the source hashes and exact outputs.
+OpenAI's public formalization repository still reports only its original two
+commits in this check. These are status and focused-reproduction updates, not an
+exhaustive upstream review or a new defect claim.
+
+## Fresh state and fix-verdict self-audit, 2026-10-04
+
+PhysicsNeMo main is now b45a5c81, with the audited spectrum function unchanged.
+Existing #2007/#2008 remain open; PR #2008 is two ahead and fourteen behind.
+The focused reproducer now requires all positive-finite and symmetry controls
+for a fixed verdict. Current main still reproduces the issue, the existing fix
+passes, and an executed degenerate zero-spectrum control is correctly rejected.
+This repairs our verifier, not the upstream implementation. SU2 master and
+OpenFOAM head remain unchanged; SU2 discussion #2890 has no new maintainer reply
+in the fresh read and PR #2857 remains closed/unmerged. No duplicate issue was
+filed. Old experiments, thresholds and historical records are preserved. See
+[report](upstream-spectrum-fix-controls-2026-10-04.md) for scope and exact hashes.

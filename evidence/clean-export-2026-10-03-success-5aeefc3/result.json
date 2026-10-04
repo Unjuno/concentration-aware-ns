@@ -1,0 +1,131 @@
+{
+  "commit": "5aeefc37d8a09407a7a700f47f2034759e9bc647",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "4e6d74c27bf5d1187493e864d139e6fdbd775defe47e3a10d208d00937d6c09c",
+  "archive_sha256": "585bca062310b2e26c4b5f1fe053d647c9a9f93d4b3bab3d2f6f0deeee50bf89",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "venv",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "9c673b6699b67e01a2973b09df2ba1993ee13569d2801d2b4472023a59b656ad"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "826427edd1ba2b4aba07c0290bab000a39d2b5fd6db7611f49e1a061f4608684"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-5aeefc3-python314-2026-10-03/venv/bin/python",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "alignment-uncertainty.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "success": true,
+  "packages": [
+    "iniconfig==2.3.0",
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "packaging==26.3",
+    "pluggy==1.6.0",
+    "Pygments==2.21.0",
+    "pytest==9.1.1",
+    "python-flint==0.9.0",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 219,
+  "changed_files": [],
+  "replay_steps": 42,
+  "replay_success": true
+}

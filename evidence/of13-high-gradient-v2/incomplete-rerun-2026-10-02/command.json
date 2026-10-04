@@ -1,0 +1,18 @@
+[
+  "docker",
+  "run",
+  "--rm",
+  "--name",
+  "cans-hg-n64-dt0.0005",
+  "--network",
+  "none",
+  "--entrypoint",
+  "/bin/bash",
+  "-v",
+  "$CASE/work/of13-high-gradient-v2/n64-dt0.0005:/case",
+  "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "-c",
+  "useradd -o -u \"$1\" -m runner && su runner -s /bin/bash -c \"source /opt/openfoam13/etc/bashrc && cd /case && blockMesh > log.blockMesh 2>&1 && foamRun > log.foamRun 2>&1 && foamPostProcess -func writeCellCentres -latestTime > log.centres 2>&1\"",
+  "--",
+  "501"
+]

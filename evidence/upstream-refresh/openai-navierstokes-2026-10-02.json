@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-10-01T20:59:04.511870+00:00",
+  "repository": {
+    "default_branch": "main",
+    "full_name": "openai/NavierStokesAndEuler",
+    "has_issues": false,
+    "html_url": "https://github.com/openai/NavierStokesAndEuler",
+    "license": "Apache-2.0",
+    "name": "NavierStokesAndEuler",
+    "updated_at": "2026-10-01T14:34:39Z"
+  },
+  "default_branch_head": {
+    "committed_at": "2026-09-10T13:40:53Z",
+    "sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd"
+  },
+  "issues": [],
+  "reporting_decision": "No issue filed: issue tracker is disabled; no source defect reproduced by this audit. The observed selection-record provenance gap is a formalization limitation under investigation, not yet a validated defect in the stated theorem."
+}

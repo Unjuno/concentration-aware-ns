@@ -1,0 +1,21 @@
+{
+  "status": "MEASURED_CAPTURE_IDENTITIES_NOT_CONTINUUM_CERTIFICATION",
+  "cells": 116992,
+  "points": 129953,
+  "tets": 1432320,
+  "internal_faces": 346776,
+  "maximum_centre_error": 1.1102992632445761e-16,
+  "maximum_face_trace_difference": 3.7574320598078426e-15,
+  "shared_internal_face_triangles_match_owner_neighbour": true,
+  "maximum_cell_tet_volume_relative_mismatch": 2.727015127526639e-14,
+  "all_recorded_tet_determinants_above_native_small": true,
+  "native_degenerate_and_invalid_base_counts_zero": true,
+  "disk_backed_internal_triangle_keys": 699096,
+  "csv_chunk_size": 10000,
+  "limits": [
+    "Floating volume sums and sampled face traces, not outward-enclosed geometry/continuity proof",
+    "Cell volumes and internal-face owner/neighbour arrays remain resident; triangle keys use temporary SQLite storage",
+    "Batch summation may differ in last floating bits from the old all-at-once diagnostic",
+    "Original quality gates and point-witness/native branch obligations unchanged"
+  ]
+}

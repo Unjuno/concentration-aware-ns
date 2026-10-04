@@ -1,0 +1,20 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v5-n32-package-a2",
+  "scope": "Post-run archive packaging for the interior Gauss-gradient/vorticity replay only. Does not change the solver run protocol or its acceptance gate.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+  "run_protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+  "archive": "evidence/of13-amr-same-run-map-v5-n32/amr-stage-snapshot-n32.tar.gz",
+  "included_face_stages": [
+    "preMap at t=0.002",
+    "mapped at t=0.002"
+  ],
+  "excluded": [
+    "postProcessing/amrStages/0.003/*_faces.csv",
+    "dynamicCode"
+  ],
+  "raw_case": "work/of13-amr-same-run-map-v5-n32/amr-n32-cap120000",
+  "limits": [
+    "No face-flux, divergence, or later PIMPLE-stage face claim is made.",
+    "Full raw case and excluded face files remain under ignored work/."
+  ]
+}

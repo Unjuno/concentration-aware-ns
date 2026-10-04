@@ -1,0 +1,120 @@
+{
+  "commit": "33c460715ad6cc3f9f61303d94b85efc5be06f2b",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "5cd76e690e6fda8668bf57558d82619c7b8e2139f0e2cc0d10ffa53700fd46a8",
+  "archive_sha256": "09f9b3dc9d63dec79922fab803d11e350d7ee3dc6d3dd40f50e933d20636264b",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/reference-check-env/bin/python",
+        "-m",
+        "venv",
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "4672e810f359ca0846835ef5c88a9af13591c3dc699f7b82b45b36920b09006e"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "747090d377ca4368730a2a4f853f7902e41cdcd444a94190da1e8fbfba769f11"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/clean-export-2026-10-01-33c4607/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    }
+  ],
+  "success": true,
+  "packages": [
+    "iniconfig==2.3.0",
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "packaging==26.3",
+    "pluggy==1.6.0",
+    "Pygments==2.21.0",
+    "pytest==9.1.1",
+    "python-flint==0.9.0",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 152,
+  "changed_files": [],
+  "replay_steps": 26,
+  "replay_success": true
+}

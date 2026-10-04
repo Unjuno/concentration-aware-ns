@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 from tools.reference import fields
 from tools.high_gradient_reference import fields as high_gradient_fields
+from tools.forced_periodic_reference import fields as forced_periodic_fields
 from tools.metrics import diagnostics
 from tools.high_gradient_acceptance import local_quality, standard_acceptance
 
@@ -25,6 +26,20 @@ def vectors(path, count):
     return values.reshape(count,3)
 
 
+def scalars(path, count):
+    text=Path(path).read_text()
+    text=re.sub(r'/\*.*?\*/|//[^\n]*','',text,flags=re.S)
+    if re.search(r'format\s+binary',text):
+        raise ValueError('ASCII only')
+    match=re.search(r'internalField\s+nonuniform\s+List<scalar>\s+(\d+)\s*\((.*?)\)\s*;',text,re.S)
+    if not match or int(match[1]) != count:
+        raise ValueError('expected matching nonuniform scalar field')
+    values=np.fromstring(match[2],sep=' ')
+    if values.size != count or not np.isfinite(values).all():
+        raise ValueError('invalid scalar data')
+    return values
+
+
 def analyze(case, protocol=None):
     case=Path(case)
     params=json.loads((case/'parameters.json').read_text())
@@ -40,8 +55,11 @@ def analyze(case, protocol=None):
     if not np.allclose(centers,points,atol=1e-12,rtol=0):
         raise ValueError('unverified mesh ordering/geometry')
     u=vectors(time_dir/'U',n**3)
-    if params.get('profile','gaussian') == 'high-gradient':
+    profile=params.get('profile','gaussian')
+    if profile == 'high-gradient':
         ref=high_gradient_fields(centers,N=params['frequency'],nu=params['nu'],time=t)
+    elif profile == 'forced-periodic':
+        ref=forced_periodic_fields(centers,time=t,nu=params['nu'])
     else:
         ref=fields(centers,t,sigma=params['sigma'],nu=params['nu'])
     def grid(v):
@@ -49,7 +67,7 @@ def analyze(case, protocol=None):
     actual=diagnostics(grid(u)); sampled=diagnostics(grid(ref['u']))
     exact_g=float(np.linalg.norm(ref['grad_u'],axis=(-2,-1)).max())
     exact_w=float(np.linalg.norm(ref['vorticity'],axis=-1).max())
-    if params.get('profile','gaussian') == 'high-gradient':
+    if profile == 'high-gradient':
         grad_fd2=np.stack([(np.roll(grid(u),-1,axis=j)-np.roll(grid(u),1,axis=j))/(4*np.pi/n)
                            for j in range(3)],axis=-1)
         selected_peak=float(np.abs(grad_fd2[...,1,0]).max())
@@ -100,6 +118,15 @@ def analyze(case, protocol=None):
             standard['outer_corrector_residual_absolute'],
             standard['maximum_outer_correctors'],
             (case/'system/fvSolution').read_text())
+    if profile == 'forced-periodic':
+        pressure=scalars(time_dir/'p',n**3)
+        pressure_difference=pressure-ref['pressure']
+        gauge_offset=float(np.mean(pressure_difference))
+        result['pressure_gauge_offset_relative_to_reference']=gauge_offset
+        result['pressure_relative_l2_gauge_invariant']=float(
+            np.linalg.norm(pressure_difference-gauge_offset)/np.linalg.norm(ref['pressure']))
+        result['sha256'][str((time_dir/'p').relative_to(case))]=hashlib.sha256(
+            (time_dir/'p').read_bytes()).hexdigest()
     return result
 
 

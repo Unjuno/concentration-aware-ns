@@ -1,0 +1,33 @@
+{
+  "status": "FINITE_NATIVE_POSITION_REPLAY_VERIFIED",
+  "runtime_source_commit": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+  "manifest_sha256": "808258f8c9dbf14a35b48c464ba8fe3de20639fcc9f22c8afcb8b5ee1e429a55",
+  "measurements": {
+    "queries": 19,
+    "candidates_per_query": 12,
+    "selected_face": 2558946,
+    "selected_tetPt": 2,
+    "minimum_native_barycentric_weight": 0.2475132040141892,
+    "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+    "maximum_explicit_overload_component_discrepancy": 0.0,
+    "floating_secant_diagnostics": [
+      {
+        "h": 6.103515625e-05,
+        "maximum_absolute_component_discrepancy": 8.88872309090516e-14
+      },
+      {
+        "h": 1.52587890625e-05,
+        "maximum_absolute_component_discrepancy": 4.0034642267983145e-13
+      },
+      {
+        "h": 3.814697265625e-06,
+        "maximum_absolute_component_discrepancy": 1.418642980866025e-12
+      }
+    ]
+  },
+  "limits": [
+    "Read-only field replay; no CFD evolution",
+    "Finite queries do not certify every floating search input or global continuity",
+    "Original acceptance gates and physical conclusions unchanged"
+  ]
+}

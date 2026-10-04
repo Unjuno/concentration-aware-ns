@@ -138,6 +138,18 @@ quality verdict. Its inputs, command and raw logs are preserved. The smaller-dt
 case and all dedicated high-gradient AMR budgets remain unrun. Do not interpret
 this runtime stall as an OpenFOAM solver defect or a numerical result.
 
+## Evidence reconciliation (2026-10-03)
+
+A later review found the retained partial-run README had overstated that the
+container was absent and that Docker `inspect` returned `no such object`. The
+contemporaneous runner report above is authoritative on this point: Docker
+control/API requests were blocked and container removal/liveness could not be
+verified. A later host process check found neither recorded PID 37980 nor
+91031, but that does not resolve the historical or container state. The raw
+partial logs and their hashes remain unchanged. The status JSON timestamp
+`2026-10-01T22:19:05Z` is October 2 in JST, consistent with the directory
+label.
+
 ## Docker observability follow-up (2026-09-28)
 
 Read-only host checks found the original `docker run` client (PID 91031) still

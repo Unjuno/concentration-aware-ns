@@ -1,0 +1,519 @@
+{
+  "scope": "Three-grid stationary scalar package operator probe only; native residual diagnostic is separate from complete physical balance and solver normalization.",
+  "analyzer_sha256": "663a50cb47157b04ddb41e99d1a825c5229fbfd859395603ad3e6794d129f1d3",
+  "protocol_sha256": "8e4421692e722018567093daf35588fcdd45f4c7bc9c3fdf8f3e3e72afa8ac4e",
+  "input_sha256": {
+    "nx16/case_metadata.json": "232f99aee3a9c1e9cf563a9d303c126f7c23b6121973b4b8cb2c0aabffdc1b38",
+    "nx16/probe/arithmetic/after.json": "6cfb23515653be7493253aa356d8558113a92fc27eeca5f514f1bc33c7fb1abd",
+    "nx16/probe/arithmetic/before.json": "7ade0e2413cd343e3bc36a57d27aac949deb9a862effe890e4c9b19d213f04dd",
+    "nx16/probe/constant/before.json": "f6bbdb4c182310c8771dbd661c506895c10b1d3f20e9296c717d5067b5fef4c6",
+    "nx16/probe/harmonic/after.json": "d00bbfc7479fb354f4960961bbee585065e8e7b081898dc1f2506153e8f3e113",
+    "nx16/probe/harmonic/before.json": "979bdc4b7be714179067df2db37fdb6389dfbd0fdb90a7457d5e9c1e7d2865fc",
+    "nx32/case_metadata.json": "88e2cf202ba6add5466d9e5893507a470f84bdb33a58b4c2e284aeeccb057113",
+    "nx32/probe/arithmetic/after.json": "d1be9c871cd8d6e6bab3dc0a56a2d1a863ff6701b8f0de971927e1e0a16f5ba6",
+    "nx32/probe/arithmetic/before.json": "56dd6dfa971b5f11f9ddb21e2e10f3f164384c215629bc2fb23525fe6928f11a",
+    "nx32/probe/constant/before.json": "418ae71c42663e6635ffcd60af8dcc37b76c72230511459e71c26003ce39b661",
+    "nx32/probe/harmonic/after.json": "f46d68b6cd67281b9afe73d0b0f2c2762d634c3b8167873bdad354d1aa90c4c9",
+    "nx32/probe/harmonic/before.json": "5c43d4779b4d80c1337dadf5294476f2d022784b0dc3f8855ac25b025f069af6",
+    "nx64/case_metadata.json": "8e0d189055a5bfe9c46ce2a4da74be52040de5fef6227a359c5b07c675e116dc",
+    "nx64/probe/arithmetic/after.json": "21202b5e8fd0022d1f25b9ba2726db290fad16bb241ad8a1a5fdefa05f0c832d",
+    "nx64/probe/arithmetic/before.json": "29ef24b75e2c8c3b6f5bab388d9884ba90582329cf9bc605ba86c46c612567cd",
+    "nx64/probe/constant/before.json": "aed3e62f4b83d71e8a8bfd7fd675a6feeb459f61e6bb26223b37207f75eaaad7",
+    "nx64/probe/harmonic/after.json": "f4d3cf52aa404661ef98638f2911ac13c7fc164e6925228d7e87cdcfe5fae226",
+    "nx64/probe/harmonic/before.json": "cd3d8dc143b7d2c1c17ce370cd9fe8d09a64a82ae97854992f56a428906236d2"
+  },
+  "cases": [
+    {
+      "nx": 16,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 3.739231146937527e-11,
+            "oriented_physical_balance_Linf": 3.7392478002828966e-11,
+            "complete_residual_minus_face_balance_Linf": 7.771561172376096e-16,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.2333767884513087,
+            "native_minus_complete_residual_Linf": 0.23337678845015983,
+            "native_minus_complete_minus_cyclic_load_Linf": 1.7763568394002505e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 6.11,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 2.7700897131666125e-12,
+          "relative_flux_error_to_chain_Linf": 9.467093775583635e-11,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.06388553922367457,
+          "expected_chain_flux": 1.0638855392236746,
+          "relative_velocity_L2_to_continuum": 0.06388553922366065,
+          "solverPerformance": {
+            "initialResidual": 0.05462693055841977,
+            "finalResidual": 6.395373902844644e-13,
+            "iterations": 13
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 2.220446049250313e-16,
+            "oriented_physical_balance_Linf": 3.3306690738754696e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.234375,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 2.220446049250313e-16,
+            "oriented_physical_balance_Linf": 3.3306690738754696e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.234375,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 9.768661574094395e-17,
+          "relative_flux_error_to_chain_Linf": 8.881784197001252e-16,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.0,
+          "expected_chain_flux": 1.0,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 2.3740253682501436e-18,
+            "finalResidual": 2.3740253682501436e-18,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.25,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.25,
+          "native_minus_complete_residual_Linf": 0.25,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    },
+    {
+      "nx": 32,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 1.772415547662831e-11,
+            "oriented_physical_balance_Linf": 1.772409996547708e-11,
+            "complete_residual_minus_face_balance_Linf": 1.4432899320127035e-15,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 4.996003610813204e-16,
+            "native_integrated_residual_Linf": 0.12097283588780049,
+            "native_minus_complete_residual_Linf": 0.1209728358883632,
+            "native_minus_complete_minus_cyclic_load_Linf": 3.552713678800501e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 6.12171875,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.159183860011126e-12,
+          "relative_flux_error_to_chain_Linf": 1.4247580892856604e-10,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.03095401271511644,
+          "expected_chain_flux": 1.0309540127151164,
+          "relative_velocity_L2_to_continuum": 0.030954012715123623,
+          "solverPerformance": {
+            "initialResidual": 0.02808043938538763,
+            "finalResidual": 3.8181043946447743e-13,
+            "iterations": 14
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 8.881784197001252e-16,
+            "oriented_physical_balance_Linf": 6.938893903907228e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.12109375,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 8.881784197001252e-16,
+            "oriented_physical_balance_Linf": 6.938893903907228e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.12109375,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.3944466241422315e-15,
+          "relative_flux_error_to_chain_Linf": 2.220446049250313e-15,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": -1.3322676295501878e-15,
+          "expected_chain_flux": 0.9999999999999987,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 7.3912154104321e-18,
+            "finalResidual": 7.3912154104321e-18,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.125,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.125,
+          "native_minus_complete_residual_Linf": 0.125,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    },
+    {
+      "nx": 64,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 5.7478466430893604e-11,
+            "oriented_physical_balance_Linf": 5.7478521942044836e-11,
+            "complete_residual_minus_face_balance_Linf": 3.3861802251067274e-15,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 7.771561172376096e-16,
+            "native_integrated_residual_Linf": 0.06150855359405178,
+            "native_minus_complete_residual_Linf": 0.06150855359485028,
+            "native_minus_complete_minus_cyclic_load_Linf": 7.105427357601002e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 1.7763568394002505e-15,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 6.1246484375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 7.147060721024445e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 4.5421444383464404e-12,
+          "relative_flux_error_to_chain_Linf": 6.100844274214978e-10,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.015241119454857621,
+          "expected_chain_flux": 1.0152411194548576,
+          "relative_velocity_L2_to_continuum": 0.015241119454878087,
+          "solverPerformance": {
+            "initialResidual": 0.014240154591618065,
+            "finalResidual": 9.321873466116689e-13,
+            "iterations": 13
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 1.7763568394002505e-15,
+            "oriented_physical_balance_Linf": 1.3877787807814457e-15,
+            "complete_residual_minus_face_balance_Linf": 1.7763568394002505e-15,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 0.0615234375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 7.147060721024445e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 1.7763568394002505e-15,
+            "oriented_physical_balance_Linf": 1.3877787807814457e-15,
+            "complete_residual_minus_face_balance_Linf": 1.7763568394002505e-15,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 0.0615234375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 7.147060721024445e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.8562896445667443e-15,
+          "relative_flux_error_to_chain_Linf": 6.439293542825908e-15,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 1.7763568394002505e-15,
+          "expected_chain_flux": 1.0000000000000018,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 1.3651400934068985e-17,
+            "finalResidual": 1.3651400934068985e-17,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.0625,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.0625,
+          "native_minus_complete_residual_Linf": 0.0625,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    }
+  ],
+  "operator_quality": "PASS",
+  "upstream_disposition": "Native residual candidate requires package/source identity, API contract review and duplicate search; no issue automatically created.",
+  "physical_scope": "No molecular alignment, constitutive-viscosity change, phase transition or continuum singularity verdict."
+}

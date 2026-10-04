@@ -1,0 +1,170 @@
+{
+  "status": "PUBLISHED_MATRIX_SAMPLES_AND_ANALYTIC_ENCLOSURES_VERIFIED",
+  "verification_source_commit": "f014b60ade808b2c8d835fd3474f4754285ea4ca",
+  "results": {
+    "n32": {
+      "native_status": "FINITE_NATIVE_POSITION_REPLAY_VERIFIED",
+      "native_analysis_equal": true,
+      "previous_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 134881,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.24875660200709473,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 7.214367991892345e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 5.566658245470535e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.519472048183701e-12
+          }
+        ]
+      },
+      "current_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 134881,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.24875660200709473,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 7.214367991892345e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 5.566658245470535e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.519472048183701e-12
+          }
+        ]
+      },
+      "analytic_json_byte_identical": true,
+      "published_native_manifest_sha256": "b5673948e9f1da7a75f4777e15a017abc7ddf5cc4a45ba7539e66c458d311066",
+      "published_analytic_sha256": "f6c37a2633db03f1f0964e77107f13afcd645be08a1ea30ca070bacab70a3976"
+    },
+    "n64": {
+      "native_status": "FINITE_NATIVE_POSITION_REPLAY_VERIFIED",
+      "native_analysis_equal": true,
+      "previous_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 2558946,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.2475132040141892,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 8.881784197001252e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 4.005684672847565e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.4184209362611e-12
+          }
+        ]
+      },
+      "current_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 2558946,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.2475132040141892,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 8.881784197001252e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 4.005684672847565e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.4184209362611e-12
+          }
+        ]
+      },
+      "analytic_json_byte_identical": true,
+      "published_native_manifest_sha256": "808258f8c9dbf14a35b48c464ba8fe3de20639fcc9f22c8afcb8b5ee1e429a55",
+      "published_analytic_sha256": "f8b689c1f97c4130441090d6ca48d005bea4ada8054ff36057e55637753baf57"
+    },
+    "n32half": {
+      "native_status": "FINITE_NATIVE_POSITION_REPLAY_VERIFIED",
+      "native_analysis_equal": true,
+      "previous_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 336654,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.2487566020070947,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 8.748557434046234e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 2.0117241206207837e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.5654144647214707e-12
+          }
+        ]
+      },
+      "current_measurements": {
+        "queries": 19,
+        "candidates_per_query": 12,
+        "selected_face": 336654,
+        "selected_tetPt": 2,
+        "minimum_native_barycentric_weight": 0.2487566020070947,
+        "maximum_weighted_value_component_discrepancy": 1.3877787807814457e-17,
+        "maximum_explicit_overload_component_discrepancy": 0.0,
+        "floating_secant_diagnostics": [
+          {
+            "h": 6.103515625e-05,
+            "maximum_absolute_component_discrepancy": 8.748557434046234e-14
+          },
+          {
+            "h": 1.52587890625e-05,
+            "maximum_absolute_component_discrepancy": 2.0117241206207837e-13
+          },
+          {
+            "h": 3.814697265625e-06,
+            "maximum_absolute_component_discrepancy": 1.5654144647214707e-12
+          }
+        ]
+      },
+      "analytic_json_byte_identical": true,
+      "published_native_manifest_sha256": "33211d65d9e3f3de90cddb16ab66e44a918f80a0fc240981a6c5748bf39f24b0",
+      "published_analytic_sha256": "22d6c398893165c6291ee07af11ccedbba1869fe424aae64cf29374e529c0798"
+    }
+  },
+  "limits": [
+    "Finite native samples only; stock binaries are hashed receipts, not re-executed here",
+    "Recompute on installed host dependencies; no global search/continuity or physical claim",
+    "Small numeric diagnostic differences are preserved; analytic JSON equality required"
+  ]
+}

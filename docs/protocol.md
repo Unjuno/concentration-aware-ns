@@ -1,4 +1,14 @@
-# Verification protocol — draft, not yet frozen for execution
+# Verification methodology and protocol index
+
+This file began as a general draft. It is a methodology note, **not** the
+authoritative record of production parameters or execution status. Frozen
+solver-specific protocols live in `protocols/`; run manifests and reports are
+the authority for what actually ran. The current OpenFOAM Foundation 13
+high-gradient matrix is frozen in `protocols/high-gradient-of13-v2.json`, with
+joined run status in `evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json`
+and results in `reports/solver-matrix-coverage-2026-09-30.md`. SU2 and
+PhysicsNeMo protocols/results are linked from the same coverage report. Never
+retroactively change those frozen thresholds to match an observed outcome.
 
 ## Reference construction
 
@@ -22,7 +32,10 @@ separate differentiation implementation. Check divergence, forcing sign, volume
 weighting, density conventions, initialization and periodic boundaries. Forcing
 must be based on the reference field, not the computed field. Validate a
 nontrivial transient case so exact initialization cannot mask time-integration
-errors. A second reference/derivative implementation is still TODO.
+errors. This repository now has symbolic-versus-numeric reference checks and
+solver-specific forcing/source audits; consult the per-project reports for the
+scope of each check. A successful formula check does not validate solver
+integration or certify a continuous-field error bound.
 
 An additional analytic stress-test candidate isolates small velocity amplitude
 from large local derivatives. On the same periodic cube, set
@@ -38,9 +51,10 @@ analytic bound `||u_N||_infinity <= exp(-t)*(1/N + 2/N^2)` tends to zero, while
 gradient accuracy. This is a verification stress case, not a singularity model.
 The symbolic checker derives the exact forcing identity, divergence, vorticity,
 selected peak and Fourier-orthogonality volume means for finite `N=4,8,16`:
-`tools/check_high_gradient_mms.py`. It has not yet been run through OpenFOAM,
-SU2 or PhysicsNeMo, and no solver gate failure or acceptance threshold is
-claimed. The original unrun OpenFOAM matrix is preserved in
+`tools/check_high_gradient_mms.py`. The OpenFOAM, SU2 and PhysicsNeMo studies
+have since been run under distinct pinned configurations; their scope and
+verdicts are in the current matrix report, not inferred from the symbolic
+checker. The original OpenFOAM v1 protocol is preserved in
 `protocols/high-gradient-of13-v1.json`. The active six-case successor and its
 reference-only derivative-resolution audit are in
 `protocols/high-gradient-of13-v2.json` and
@@ -73,7 +87,18 @@ Record volume-weighted velocity L2 error, energy, max Frobenius norm of grad(u),
 max magnitude of curl(u), periodic peak location/set distance, shell energy
 spectrum and local-region error. Treat equivalent multiple peaks as a set.
 Evaluate analytic values both at solver sample sites and against independently
-resolved continuous extrema to separate sampling and derivative error.
+resolved continuous extrema to separate sampling and derivative error. Label
+the object whose continuous extremum is reported: analytic reference, named
+reconstruction, or underlying solver field. A bound for a trigonometric or
+finite-volume reconstruction certifies only that declared reconstruction.
+Finite-volume DOFs alone do not bound continuous derivatives of an
+unspecified within-cell field, even if cell averages are exact and velocity
+observations converge uniformly: a smooth divergence-free cell-local null
+sequence preserves the averages while its gradient grows (see
+`reports/openfoam-fv-continuous-derivative-identifiability.md`). For the underlying
+solver field, require explicit regularity or unresolved-mode assumptions and
+include them in the certificate; absent those premises, mark its continuous
+extremum UNCERTAIN rather than inheriting a reconstruction's bound.
 AMR/nonuniform samples require a documented spectral reconstruction; otherwise
 mark the spectrum unavailable rather than applying a uniform-grid FFT directly.
 
@@ -89,7 +114,11 @@ Budget equality alone does not establish saturation or inaccurate results.
 
 Before production, freeze absolute/relative tolerances, error normalization,
 near-zero handling, evaluation times, metrics, seeds and required evidence.
-Current code uses supplied per-metric tolerances; **no tolerances are frozen yet**.
+The OpenFOAM v2 protocol freezes its per-metric thresholds and reproduction
+rule. SU2 and PhysicsNeMo use their own pinned protocols and verdict artifacts;
+where a project-specific threshold or continuous-error certificate is absent,
+the result stays `UNCERTAIN`. See `docs/acceptance-gate-v2.md` for the shared
+evidence and interval decision contract.
 
 Report independent fields:
 

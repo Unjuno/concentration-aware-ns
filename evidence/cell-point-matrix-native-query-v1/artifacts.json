@@ -1,0 +1,65 @@
+{
+  "total_count": 3,
+  "artifacts": [
+    {
+      "id": 11284793193,
+      "node_id": "MDg6QXJ0aWZhY3QxMTI4NDc5MzE5Mw==",
+      "name": "of13-cell-point-matrix-query-n64-560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+      "size_in_bytes": 187721,
+      "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284793193",
+      "archive_download_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284793193/zip",
+      "expired": false,
+      "digest": "sha256:bf2086756e4fe7704a4e85b38ad268cc0b6ad49ca48ff5ffe21d75f64e56fdcf",
+      "created_at": "2026-10-03T21:06:38Z",
+      "updated_at": "2026-10-03T21:06:38Z",
+      "expires_at": "2027-01-01T21:02:58Z",
+      "workflow_run": {
+        "id": 37153721711,
+        "repository_id": 1362198888,
+        "head_repository_id": 1362198888,
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "head_sha": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77"
+      }
+    },
+    {
+      "id": 11284568879,
+      "node_id": "MDg6QXJ0aWZhY3QxMTI4NDU2ODg3OQ==",
+      "name": "of13-cell-point-matrix-query-n32half-560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+      "size_in_bytes": 187399,
+      "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284568879",
+      "archive_download_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284568879/zip",
+      "expired": false,
+      "digest": "sha256:12c3d587eb57c489cf8483b819a41790ef992c3add1785aa4e1d3158fe62f9a3",
+      "created_at": "2026-10-03T21:05:16Z",
+      "updated_at": "2026-10-03T21:05:16Z",
+      "expires_at": "2027-01-01T21:02:58Z",
+      "workflow_run": {
+        "id": 37153721711,
+        "repository_id": 1362198888,
+        "head_repository_id": 1362198888,
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "head_sha": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77"
+      }
+    },
+    {
+      "id": 11284394125,
+      "node_id": "MDg6QXJ0aWZhY3QxMTI4NDM5NDEyNQ==",
+      "name": "of13-cell-point-matrix-query-n32-560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+      "size_in_bytes": 187584,
+      "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284394125",
+      "archive_download_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11284394125/zip",
+      "expired": false,
+      "digest": "sha256:0abe6045a7912386ed1be218dd6b716475adcca21a9fb3f1689c40fb369468e3",
+      "created_at": "2026-10-03T21:05:38Z",
+      "updated_at": "2026-10-03T21:05:38Z",
+      "expires_at": "2027-01-01T21:02:58Z",
+      "workflow_run": {
+        "id": 37153721711,
+        "repository_id": 1362198888,
+        "head_repository_id": 1362198888,
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "head_sha": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77"
+      }
+    }
+  ]
+}

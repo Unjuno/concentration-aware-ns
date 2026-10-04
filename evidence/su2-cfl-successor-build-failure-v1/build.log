@@ -1,0 +1,18 @@
+#0 building with "orbstack" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.97kB done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517
+#2 ERROR: rpc error: code = Unknown desc = blob sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517 expected at /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: open /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: operation not supported
+------
+ > [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517:
+------
+Dockerfile:1
+--------------------
+   1 | >>> FROM ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517
+   2 |     ARG DEBIAN_FRONTEND=noninteractive
+   3 |     RUN apt-get update && apt-get install -y --no-install-recommends build-essential ca-certificates curl python3 python3-venv ninja-build pkg-config patch && rm -rf /var/lib/apt/lists/*
+--------------------
+ERROR: failed to build: failed to solve: ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: failed to resolve source metadata for docker.io/library/ubuntu:24.04@sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: rpc error: code = Unknown desc = blob sha256:33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517 expected at /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: open /var/lib/docker/containerd/daemon/io.containerd.content.v1.content/blobs/sha256/33ceb71981b602c1a7443a53469e4dba065f7503eab3078a2d7a57a2ab987517: operation not supported

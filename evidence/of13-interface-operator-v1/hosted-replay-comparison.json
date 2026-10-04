@@ -1,0 +1,50 @@
+{
+  "scope": "Same archived binary outputs analyzed on Linux CPython3.12 and macOS CPython3.14; numeric postprocessing need not be byte-identical",
+  "all_nonnumeric_verdicts_equal": true,
+  "numeric_difference_count": 7,
+  "maximum_absolute_numeric_difference": 1.0824674490095276e-15,
+  "differences": [
+    {
+      "path": "cases[2].modes.arithmetic.before.complete_residual_minus_face_balance_Linf",
+      "hosted": 1.7763568394002505e-15,
+      "replay": 6.938893903907228e-16,
+      "absolute_difference": 1.0824674490095276e-15
+    },
+    {
+      "path": "cases[2].modes.arithmetic.before.native_minus_complete_minus_cyclic_load_Linf",
+      "hosted": 7.147060721024445e-16,
+      "replay": 1.061650767297806e-15,
+      "absolute_difference": 3.469446951953614e-16
+    },
+    {
+      "path": "cases[2].modes.arithmetic.relative_velocity_L2_to_continuum",
+      "hosted": 0.015241119454878087,
+      "replay": 0.01524111945487809,
+      "absolute_difference": 1.734723475976807e-18
+    },
+    {
+      "path": "cases[2].modes.harmonic.after.complete_residual_minus_face_balance_Linf",
+      "hosted": 1.7763568394002505e-15,
+      "replay": 6.938893903907228e-16,
+      "absolute_difference": 1.0824674490095276e-15
+    },
+    {
+      "path": "cases[2].modes.harmonic.after.native_minus_complete_minus_cyclic_load_Linf",
+      "hosted": 7.147060721024445e-16,
+      "replay": 1.061650767297806e-15,
+      "absolute_difference": 3.469446951953614e-16
+    },
+    {
+      "path": "cases[2].modes.harmonic.before.complete_residual_minus_face_balance_Linf",
+      "hosted": 1.7763568394002505e-15,
+      "replay": 6.938893903907228e-16,
+      "absolute_difference": 1.0824674490095276e-15
+    },
+    {
+      "path": "cases[2].modes.harmonic.before.native_minus_complete_minus_cyclic_load_Linf",
+      "hosted": 7.147060721024445e-16,
+      "replay": 1.061650767297806e-15,
+      "absolute_difference": 3.469446951953614e-16
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "observed_at_utc": "2026-10-01T22:19:05Z",
+  "case": {
+    "cells_per_axis": 64,
+    "delta_t": 0.0005,
+    "requested_end_time": 0.05,
+    "expected_steps": 100
+  },
+  "run_status": "INCOMPLETE_FORCED_TERMINATION",
+  "completed_converged_steps": 36,
+  "last_converged_time_seconds": 0.018,
+  "last_time_label_without_following_convergence_seconds": 0.0185,
+  "standard_acceptance": "NOT_EVALUATED_INCOMPLETE",
+  "quality_gate": "NOT_EVALUATED_INCOMPLETE",
+  "exit_code": "unknown; no exit.json was written",
+  "container_liveness": "container absent at observation; docker inspect returned no such object and filtered docker ps -a returned no rows",
+  "host_solver_process": "none observed in process listing",
+  "partial_logs": {
+    "log.foamRun": "ebeac15e96ad6e9a14eec09ad194db4136bbd9f5b9faa7c68ede144fa9dbca9e",
+    "log.container": "9c293bf4e2e0637b30d798a9bc35f28618b50fe42bcd5e445d3c2b8e97128e5a"
+  },
+  "source_run_dir": "work/of13-high-gradient-v2/n64-dt0.0005",
+  "superseded_by_completed_matrix_row": {
+    "index": "evidence/of13-high-gradient-v2/manifest-current-2026-09-30.json",
+    "archive": "evidence/of13-high-gradient-v2-temporal-addendum/n64-dt0.0005.tar.gz",
+    "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+    "completed_steps": 100,
+    "standard_acceptance": "PASS",
+    "local_quality": "PASS",
+    "interpretation": "The October 2 attempt is a later incomplete repeat of a matrix row already completed on September 30; it does not invalidate or replace the archived completed row."
+  },
+  "interpretation": "This incomplete operational run is excluded from the frozen six-case matrix and all scientific verdicts. It is not evidence of a solver defect, numerical instability, or physical behavior."
+}

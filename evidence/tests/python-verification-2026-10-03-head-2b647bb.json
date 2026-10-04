@@ -1,0 +1,33 @@
+{
+  "source_commit": "2b647bbcc64106c758497d875a29f7850320b3be",
+  "command": "work/clean-export-d4cbe01-python314-2026-10-03/venv/bin/python -m pytest -q tests",
+  "result": {
+    "exit_code": 0,
+    "passed": 223,
+    "skipped": 1,
+    "subtests_passed": 5,
+    "duration_seconds": 100.7
+  },
+  "environment": {
+    "python": "3.14.5",
+    "numpy": "2.5.2",
+    "pytest": "9.1.1",
+    "sympy": "1.14.0",
+    "scipy": "1.16.2",
+    "python_flint": "0.9.0",
+    "note": "Reused the isolated venv created for the clean-export run; command executed from the current repository checkout. GitHub workflow separately uses ubuntu-24.04/Python 3.12."
+  },
+  "log": "evidence/tests/python-suite-2026-10-03-head-2b647bb.log",
+  "scope": "Maintained Python test suite only. This does not rerun OpenFOAM, SU2, PhysicsNeMo, Lean, or the clean-export comparison.",
+  "hosted_ci": {
+    "run_id": 37074469430,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37074469430",
+    "status_at_record": "queued"
+  },
+  "initial_noncanonical_attempt": {
+    "documented_command": "python3 -m pip install -r requirements.txt followed by python3 -m unittest discover -s tests -v",
+    "observed_attempt": "python3 -m unittest discover -s tests -v in the host Python 3.14.5 environment",
+    "outcome": "failed with import errors for sympy and python-flint and downstream assertions; not a code regression because requirements.txt provides only numpy and the maintained CI suite uses requirements-verification.txt plus pytest",
+    "fix": "README now distinguishes the minimal requirements.txt from the full verification suite and gives the CI-equivalent install/test commands"
+  }
+}

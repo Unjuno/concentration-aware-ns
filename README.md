@@ -11,17 +11,42 @@ Priority: OpenFOAM Foundation 13, followed by SU2 and NVIDIA PhysicsNeMo.
 Use smooth, analytically forced, three-dimensional incompressible manufactured
 solutions; compare space/time refinement, local gradients, vorticity and spectra.
 
+- [Verified n32 capture and bounded-batch local derivative audit](reports/cell-point-n32-capture-derivative-2026-10-04.md)
+- [Fine and temporal native capture launch — results pending](reports/cell-point-fine-capture-launch-2026-10-04.md)
+- [Native position replay and enclosed local neighborhood](reports/cell-point-position-neighborhood-2026-10-04.md)
+- [Enclosed local affine gradient and curl witness](reports/cell-point-local-derivative-2026-10-04.md)
+- [Executed n16 cellPoint runtime capture and public raw mesh](reports/openfoam-cell-point-capture-n16-2026-10-04.md)
+- [Built-in cellPoint interpolation and missing mesh evidence](reports/openfoam-cell-point-contract-2026-10-04.md)
+- [Conditional native-point gradient-error witnesses](reports/openfoam-amr-point-gradient-bound-2026-10-04.md)
+- [Live upstream refresh and adversarial spectrum-fix controls](reports/upstream-spectrum-fix-controls-2026-10-04.md)
+- [New exact periodic flow source and concentration-study audit](reports/forced-periodic-ns-new-source-audit-2026-10-04.md)
+- [Executed Foundation 13 exact-control matrix and independent replay](reports/openfoam-forced-periodic-control-integration-2026-10-04.md)
+- [Photon-fluid analogy and radiation-hydrodynamics scope audit](reports/photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md)
+- [Exact singular affine foil separating direction alignment, density and viscosity](reports/singular-affine-alignment-constant-viscosity-2026-10-04.md)
+- [OpenAI proof follow-up paper status refresh](reports/research-refresh-openai-part-II-status-2026-10-04.md)
+- [Archived point-value initialization and forcing audit](reports/openfoam-amr-input-representation-2026-10-04.md)
+- [Arb-enclosed nominal-mean continuum error certificates](reports/openfoam-amr-arb-mean-certificate-2026-10-04.md)
+- [Native mean constraints and reconstruction-independent gradient bounds](reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md)
+- [Named smooth AMR reconstruction and derivative bounds](reports/openfoam-amr-band-reconstruction-2026-10-03.md)
+- [Validated AMR P0 spectrum and outside-band mass](reports/openfoam-amr-p0-spectrum-2026-10-03.md)
+- [Executed prospective AMR mean-quality study](reports/openfoam-amr-mean-quality-v1-2026-10-03.md)
 - [Goal and completion requirements](GOAL.md)
 - [Verification protocol](docs/protocol.md)
 - [Source audit and candidate findings](docs/audit.md)
 - [Progress](docs/progress.md)
 - [Requirement-by-requirement completion audit](docs/completion-audit.md)
+- [Impact-scope map, falsification checklist and publication boundary](reports/impact-scope-map-2026-10-03.md)
 - [Three-target comparative audit](reports/comparative-audit.md)
 - [Cross-solver matrix coverage, AMR upper-state and upstream disposition](reports/solver-matrix-coverage-2026-09-30.md)
 - [PhysicsNeMo comparison](reports/physicsnemo-study-v1.md)
 - [SU2 time-contract discussion](https://github.com/su2code/SU2/discussions/2890)
 - [Analytic interpretation and self-audit](docs/analytic-self-audit.md)
+- [Flat-but-active analytic-forcing bridge to the OpenAI construction](reports/openai-analytic-forcing-bridge-2026-10-01.md)
+- [Follow-up literature: forcing structure and finite-grid observability](reports/navier-stokes-followup-literature-2026-10-03.md)
+- [New OpenAI profile exposition and force-space density result](reports/research-refresh-2026-10-03-openai-ns-profile-exposition.md)
+- [Internal strain alignment versus fixed viscous stress in a visco-morphoelastic model](reports/visco-morphoelastic-internal-state-2026-10-03.md)
 - [OpenAI material trajectory and viscous-force analysis](docs/openai-core-material-trajectory.md)
+- [Axis-tube concentration versus bounded-position probability](docs/linearized-axis-tube-concentration.md)
 - [OpenAI natural-core deformation analysis](docs/openai-core-deformation.md)
 - [Exact counterexample: alignment does not imply reduced viscosity](docs/affine-alignment-viscosity-counterexample.md)
 - [Burgers vortex: alignment with nonzero viscous balance](docs/burgers-vortex-alignment-viscous-balance.md)
@@ -31,15 +56,18 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Independent spectral derivative comparison](reports/openfoam-spectral-gradient.md)
 - [SU2 FD2 and spectral derivative comparison](reports/su2-spectral-gradient.md)
 - [Upstream reporting decisions](reports/upstream-disposition.md)
+- [Live upstream status recheck (2026-10-03)](reports/upstream-status-2026-10-03.md)
 
 ## Acceptance report checker
 
-Python 3.10+. The report checker needs no third-party dependencies; the analytic
-reference and its tests need NumPy.
+Python 3.10+. The acceptance-gate CLI itself uses only the standard library.
+`requirements.txt` supplies NumPy for the analytic reference. The maintained
+test suite also exercises symbolic, interval and numerical audits, so use the
+verification dependencies and pytest command used by CI:
 
 ```sh
-python3 -m pip install -r requirements.txt
-python3 -m unittest discover -s tests -v
+python3 -m pip install -r requirements-verification.txt
+python3 -m pytest -q tests
 python3 tools/acceptance_gate.py examples/unverified.json
 ```
 
@@ -88,11 +116,14 @@ python3 -m tools.replay_published_reports
 This runs the tests, reconstructs the global-peak and derivative comparisons from
 archived fields, reviews and replays completed SU2 diagnostics and the
 Dirichlet boundary-time pilot, reproduces the specific restart-history mismatch,
-rebuilds the
-OpenFOAM, SU2 and PhysicsNeMo gates, checks the root-pressure and pressure-moment
-identities and cone sign symmetry, and checks every gate artifact hash. Logs and
+checks OpenFOAM's six-case fixed/time-step archives and AMR archive tree hashes,
+rechecks all five SU2 cases and the five PhysicsNeMo sampled-derivative
+checkpoint/evaluation pairs, rebuilds all three acceptance reports, and checks
+the analytic identities and every gate artifact hash. Each step records both
+the exact interpreter argv and a portable `python3` replay command. Logs and
 step exit codes are saved in evidence/report-replay. It does not rerun solvers,
-train networks or validate the OpenAI proof. The current replay covers all five required SU2 cases.
+train networks or validate the OpenAI proof. Scientific `UNCERTAIN` results
+remain so.
 Scientific UNCERTAIN results remain so.
 
 ## Contribution and publication
@@ -105,6 +136,11 @@ speculative findings.
 
 Original files use MIT; upstream software retains its own licenses. Do not copy
 upstream source into this repository without preserving its applicable terms.
+The optional verification dependency `python-flint==0.9.0` is used for the
+experimental Arb interval audit. The package metadata reports MIT and
+LGPL-3.0-or-later components; its maintainers describe Python-FLINT as MIT and
+bundled FLINT/Arb as LGPL-2.1-or-later. This repository imports the package for
+verification and does not redistribute its binary wheel.
 
 The pinned OpenAI Navier–Stokes challenge passed the recorded independent check;
 see [verification result and scope](reports/openai-ns-independent-verification.md).
@@ -122,6 +158,7 @@ python -m tools.check_axis_deformation
 python -m tools.check_axis_packet_bound
 python -m tools.check_packet_radius_scaling
 python -m tools.check_particle_position_probability
+python tools/check_forced_periodic_ns_candidate.py
 ```
 
 These checks are separate from the eighteen-step report and exact-algebra replay. The force and
@@ -136,6 +173,13 @@ The current [analytic connection](docs/axis-flow-derivative.md) distinguishes
 Lean-checked component lemmas from the classical nonlinear-flow argument.
 The [comparative audit](reports/comparative-audit.md) includes the separate SU2
 BDF2 reproducer; the eleven localized acceptance verdicts remain UNCERTAIN.
+
+The pre-publication source head's tracked-only export and complete test replay
+are recorded in [the 2026-10-02 clean-export bundle](evidence/clean-export-2026-10-02-tracer-head/README.md):
+37 replay steps and six added checks pass, 178 tracked report/evidence files are
+unchanged, and the exported tree's full test suite reports 200 passed, one
+skipped, and five subtests passed. This is stored-evidence/postprocessing
+reproduction; solver rebuilds and runs remain separate.
 
 The tracked-only export at commit `a9ff4ab` was also checked in a newly
 created virtual environment: dependency installation, the twelve-step replay
@@ -164,3 +208,6 @@ python3 -m tools.check_clean_export --locked --destination work/clean-export-loc
 The fixed-commit check at `5b8e305` passes all 75 compared report/test files
 unchanged; see `evidence/clean-export-2026-09-27-locked/README.md`. Its scope is
 same-host Python postprocessing, not solver, training or Lean reproduction.
+
+
+Native capture matrix update: [three resolutions and temporal comparison](reports/cell-point-capture-derivative-matrix-2026-10-04.md). All four captures and local checks complete; global/physical/proof obligations remain open.

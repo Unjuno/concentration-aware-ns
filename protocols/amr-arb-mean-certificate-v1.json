@@ -1,0 +1,25 @@
+{
+  "schema": "amr-arb-mean-certificate/v1",
+  "status": "First interval certificate, after disclosed floating pilots; not a blind prospective solver gate",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "stage": "postSolve",
+  "precision_bits": 96,
+  "time_exact_decimal": "0.05",
+  "comparison_threshold_rational": "1/20",
+  "input_mean_interpretation": "Exact values are the binary64 numbers decoded from archived CSV; native geometry is its validated canonical periodic dyadic partition, not the slightly rounded coordinate/volume text",
+  "reference_interpretation": "Exact smooth N=3 MMS at exact decimal time 0.05; its canonical cube means enclosed by Arb",
+  "hminus_upper": "All nonconstant discrete Fourier classes: sum |F_r|^2/|wrap(r)|^2. Infinite continuum aliases have total mass |F_r|^2 and no physical wavevector shorter than wrap(r).",
+  "gradient_peak_upper": "exp(-t)*sqrt(1+5/N^4), using |g|<=1, |g'|<=1, |g''|<=2",
+  "curl_peak_upper": "exp(-t)*sqrt(1+4/N^2+5/N^4); curl-error lower requires divergence-free reconstruction",
+  "limits": [
+    "Certificate applies to the declared exact nominal means and canonical dyadic geometry; it does not enclose the unpublished internal solver state or all possible decoding conventions.",
+    "Native cell-centered variables do not establish an upstream exact-average contract.",
+    "Only final states are certified here; preceding twelve-state floating analyses remain separate.",
+    "Five percent is a disclosed comparison, not a retroactive change to original gates.",
+    "Arb arithmetic enclosure is not a formal proof of software, source interpretation or the analytic inequalities.",
+    "No solver defect, physical singularity, phase transition or viscosity change follows."
+  ]
+}

@@ -17,7 +17,7 @@ This related result must not be merged with the forced Navier–Stokes claim: th
 ## New work after the announcement
 
 - **A numerical/physical follow-up appeared 15 September.** Ramani Duraiswami's preprint recasts the leading-order similarity equations, constructs and verifies a related porous-wall profile solver, and estimates when a real fluid would leave the continuum regime. For its illustrative water scaling it estimates cavitation around a 0.6–1 mm core, far before molecular lengths; in air it estimates compressibility/shock before rarefaction reaches molecular scales. It explicitly says the forced construction does not establish a mechanism reachable in flows normally computed or built, and leaves the unforced engineering equations unchanged. This is a useful physical cutoff analysis, but it is a single preprint with stated approximations: it does not numerically integrate the complete forced Navier–Stokes construction, including the oscillatory stress-realizing annulus and higher-order corrections. The paper marks its inception numbers as order-of-magnitude estimates, dependent on annulus content. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), [HTML, especially §8](https://arxiv.org/html/2609.17642v1).
-- **A conditional regularity theorem appeared 17 September.** Constantin, Ignatova, and Vicol show regularity at the proposed singular point under the construction's stated anisotropic Type-II bounds and an exactly axisymmetric collapsing core, if the force is real analytic in space; they conclude forces for that setup cannot be analytic (or vanish near the singular point under their stated conditions). This narrows a regularity boundary; it does not contradict a merely smooth compactly supported, non-analytic force. Source: [arXiv:2609.20803](https://arxiv.org/abs/2609.20803).
+- **A conditional regularity theorem appeared 17 September and was revised 29 September.** Constantin, Ignatova, and Vicol's current [v2](https://arxiv.org/html/2609.20803v2) proves regularity at the proposed point under anisotropic Type-II bounds for the angular mean, an exactly axisymmetric core, bounded spatial `C²` force, and local-uniform spatial analyticity. Appendix A crosswalks the first three properties to cited OpenAI manuscript statements, while explicitly disclaiming verification of that construction. Conditional on the claimed singularity and crosswalk, Corollary 2.3 excludes analytic forcing and a force that is identically zero on any neighborhood cylinder. Independently, Remark 2.6 uses a pure-swirl open set and nonzero axial velocity to rule out uniform spatial analyticity on ball-time slabs intersecting that set without the blow-up/Type-II assumptions. OpenAI Lemmas 10.2–10.3 add that the force is smooth and flat at the endpoint; combining this with conditional local nonvanishing yields a flat-at-the-point but locally active force, with no amplitude lower bound. This narrows a regularity/forcing boundary; it does not contradict a merely smooth compactly supported force or imply physical actuation. See the source crosswalk in `reports/openai-analytic-forcing-bridge-2026-10-01.md`.
 - **A force-density result appeared 9 September and has a revised public version.** The current arXiv v4 for Cao, Chi, and Nie says smooth blow-up-producing forces are dense in the relative time-integrated spatial `H^s` topology for `s < 1/2` on both the torus and whole space, under its stated fixed-viscosity and initial-state assumptions. Their construction starts from OpenAI's example and uses a localized vector potential/cutoff to avoid nonlinear interaction. The earlier separate whole-space record, [arXiv:2609.10269](https://arxiv.org/abs/2609.10269), is marked withdrawn; the authors say it was combined into v3/v4 of [arXiv:2609.10262](https://arxiv.org/abs/2609.10262). Density in a specified topology is not a probability, physical typicality, or smallness in a norm controlling pointwise derivatives. It remains a preprint and is downstream of the OpenAI construction, not an independent physical validation.
 - **A new weak-solution search target appeared 20 September.** Petrillo and Glimm formulate positive energy defect on a finite time window for unforced periodic Leray–Hopf solutions and reduce it to a time-averaged lower bound on fine Littlewood–Paley energy flux. They explicitly state that a finite pseudo-spectral computation cannot establish the required Galerkin-uniform ceiling; their 128³/256³ runs are exploratory and fail the scale requirement at the Kolmogorov wavenumber. This is a distinct unforced problem, not a validation of the forced construction or evidence about molecular positions. Source: [arXiv:2609.23868](https://arxiv.org/abs/2609.23868).
 - **The physical cutoff study itself reports numerical scope limits.** Duraiswami's preprint computes a leading-order profile and a related porous-wall model, but says it does not integrate the full forced evolution, pulse annulus, or higher-order corrections. It also reports non-converged branches/spectra in parts of its parameter sweep. Its order-of-magnitude water/air estimates therefore inform likely continuum cutoffs, rather than independently validating the entire singular construction. Source: [arXiv:2609.17642](https://arxiv.org/abs/2609.17642), especially §§5–9.
@@ -33,7 +33,7 @@ This is a result about **directions of infinitesimal continuum separations**, no
 
 The announcement's continuum equations are also **not a molecular probability model**: a blow-up means a field norm becomes unbounded within the stipulated PDE model. It does not mean the probability of a molecule occupying a location tends to one, nor that an infinite value means particle diameters shrink or particles line up. Such interpretations require new equations and a limiting argument. Separately, the particular physical-cutoff estimates in the porous-wall preprint say water cavitation and air compressibility occur while the similarity correction is still modest, well before the illustrative molecular scale. That cuts against extrapolating its continuum profile to molecular arrangement; it remains a model-dependent estimate and not a measurement of the OpenAI construction.
 
-The 17 September conditional-regularity result has one useful sharper consequence for reading the construction: it identifies spatial analyticity of the forcing as a decisive added hypothesis, and its authors state that compactly supported cutoffs in the OpenAI force violate that hypothesis. Thus smoothness of forcing alone cannot be silently upgraded to analyticity; the paper narrows the theorem's hypothesis boundary without contradicting the announced example. Source: [Constantin, Ignatova and Vicol, arXiv:2609.20803](https://arxiv.org/abs/2609.20803).
+The conditional-regularity result's v2 makes the forcing boundary more precise than the global observation that compact support is not analytic: under its source crosswalk and claimed singularity, local-uniform spatial analyticity is ruled out near the event, and no full neighborhood cylinder can be force-free. OpenAI's endpoint force jets are nevertheless all zero, so the combined conclusion is smooth flatness at the point together with conditional nonvanishing somewhere in every surrounding cylinder. It gives no positive lower bound or real-world forcing feasibility. See `reports/openai-analytic-forcing-bridge-2026-10-01.md`.
 
 ## Additional progress: a real but separate molecular-rheology connection
 
@@ -129,6 +129,18 @@ As of this review, the Clay Institute's public statement still describes the
 claim as “apparently” settled and says its prize-evaluation process is
 deliberately unhurried; it is not an independent mathematical endorsement or
 award. [Clay Mathematics Institute, 11 September 2026](https://www.claymath.org/news/navier-stokes-announcement/).
+
+### Official status-page refresh — 2026-10-02
+
+The OpenAI announcement still states its claim that the forced construction
+establishes Clay alternatives C and D, while the Clay news statement describes
+the result as “apparently” settled and says prize evaluation is unhurried. The
+Clay Navier–Stokes problem page is currently labeled **Active**. I read that
+label as current administrative status, not as a mathematical rejection: the
+same Clay site has acknowledged the announcement, and no final prize decision
+is shown on the checked pages. OpenAI's post itself says it does not intend to
+claim the prize. The live source capture and interpretation are in
+`evidence/upstream-refresh/clay-status-2026-10-02.json`.
 
 The live OpenAI Lean repository still points to
 `f9e8bc5b38b6e212696e8a30e3e91517af887bbd` on 28 September; its latest commit
@@ -355,3 +367,60 @@ Niemi's version 2 (25 September) of [arXiv:2609.24490](https://arxiv.org/abs/260
 The phrase “light as a fluid” has a precise established analogue in nonlinear optics: medium-induced effective photon–photon interactions let a many-photon system behave collectively as a quantum fluid. This supports a separate model-comparison research track, already recorded in `docs/exploratory-directions.md`, but does not make free-space light an incompressible Newtonian fluid or transfer the OpenAI Navier–Stokes theorem to optical propagation. Any bridge must specify the optical platform and compare its nonlinear-wave equation, dispersive/quantum-pressure term, losses, and boundary conditions against the proposed reduced hydrodynamics. Source: [Carusotto and Ciuti, *Quantum fluids of light*, Reviews of Modern Physics](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.85.299).
 
 For the user's hypothesis, retain four separate levels: continuum deformation of infinitesimal material directions; finite parcels, needing a nonzero-neighborhood estimate; molecular positions/statistics and viscosity, needing a kinetic/constitutive model; and optical quantum fluids, needing their own effective-wave model. Current proof work reaches the first level conditionally and supplies only a shrinking-packet allowance with non-effective constants for the second. It gives neither absolute-position certainty nor molecular ordering. The determinant-one deformation contracts transversely while expanding axially, and our separate conditional axial viscous-force/material-acceleration ratio does not tend to zero. No constitutive-viscosity drop follows.
+
+### Distribution-independent directional limit
+
+The exact finite-time spherical-cap formula above assumes isotropic initial
+infinitesimal directions. The qualitative limit can be sharpened: for any
+fixed Borel probability law `lambda` on the unoriented direction sphere, the
+probability of entering a fixed positive-angle cone about the selected axis
+tends to `1 - lambda(E)`, where `E` is the exactly transverse great circle. For
+each direction off `E`, the axial component is nonzero and its angle contracts
+by the factor `Q^(3C/2)`; on `E` the axis angle remains pi/2. Bounded
+convergence proves the probability limit. Hence isotropy is not required for
+the qualitative conclusion when the initial law gives zero mass to `E`, but
+the law remains an added ensemble choice and the result remains about
+infinitesimal continuum directions. It does not infer molecule trajectories,
+absolute-position concentration, or finite-size alignment. The cone-boundary
+identity is included in `evidence/tests/particle-position-probability.json`.
+
+The finite-packet estimate can be made distributional only by shrinking the
+initial radius faster. Under the source-derived but non-effective envelopes
+`rho~Q^(1/2)`, `k<=k0*Q^(-40)`, and `C<4`, an initial continuum tracer offset
+of `delta0*Q^44` makes both the linear transverse/axial ratio and nonlinear
+remainder/axial ratio vanish uniformly outside the band
+`|cos(theta0)|<Q^(1/2)`. A fixed initial direction law with zero mass on the
+transverse plane assigns vanishing probability to that shrinking band, so the
+endpoint directions enter every fixed positive-angle cone in probability.
+This is conditional on the classical packet comparison and unknown constants,
+and says nothing about fixed-size particles or molecules. Symbolic exponent
+checks are in `evidence/tests/packet-radius-scaling.json`.
+
+## 2026-10-01 rotational-diffusion extension
+
+The recent primary study [Recktenwald et al., Soft Matter 22 (2026),
+1389–1401](https://doi.org/10.1039/D5SM01122A) experimentally measures
+cellulose-nanocrystal rod orientation under planar extensional flow and
+compares it with orientation-distribution simulations using measured
+rotational diffusion. In steady flow, birefringence saturates as the rods
+become highly aligned at `Pe` above roughly 10, while the measured steady
+velocity field remains Newtonian-like over the tested strain-rate interval.
+This is a direct example of orientation order and bulk-flow response being
+separate observables, but it is a dilute colloid experiment in a specified
+microfluidic setup, not a molecular test or the OpenAI field.
+
+To test whether rotational Brownian motion would reverse the ideal Jeffery
+alignment law under a `1/(1-t)` strain history, we solved the small-angle
+tangent-plane stochastic director ODE. With `D_r~(1-t)^(-delta)`, its variance
+tends to zero for `delta<1`, tends to a finite positive value at `delta=1`,
+and diverges in the linearized chart for `delta>1`; equivalently, the
+instantaneous flow-to-diffusion Péclet number scales as `(1-t)^(delta-1)`.
+For constant diffusion and the audited large stretching exponent, the angular
+RMS narrows as `(1-t)^(1/2)`, slower than the deterministic `Jeffery`
+power-law. This is an exact calculation for a reduced OU model, verified at
+`evidence/tests/rotational-diffusion-alignment.json`, not a stochastic
+simulation, full-sphere Fokker–Planck solution, or physical prediction. It
+identifies the missing input for a molecular bridge: a measured or derived
+rotational-diffusion law and physical endpoint cutoff, coupled consistently
+to the constitutive stress. Details and limits are in
+`docs/rotational-diffusion-alignment-cutoff.md`.

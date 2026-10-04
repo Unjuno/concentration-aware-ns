@@ -1,0 +1,141 @@
+{
+  "status": "NATIVE_QUERY_REPLAY_COMPLETE_NOT_CONTINUUM_CERTIFICATION",
+  "source_commit": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+  "protocol_sha256": "896b86efc1a852a409baa47d17dbbef519aef4fb1f4057f1d8a2edd389bd0e79",
+  "bundle_sha256": "f07e089b19cdda9e9dc75180eb36ef285b60b6565f343e043e95930ed07185a1",
+  "capture_manifest_sha256": "034900f60cf6af17c7120a3b635426cbce2cad2125be9e1bd5a472cba8968c20",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "upstream_files_sha256": {
+    "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.H": "408145e686026c6495639ec9dfe99d89501df4754ad313521a15987474e2b78b",
+    "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.C": "65e7a861ddbb7978ab90150940a0eb31f325c186ee1beb15e7d03f102a65ff02",
+    "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPointI.H": "b5954f34e7dbd876c924d37879db41edf4c2fc79befd49bfcc6b21bd721a61fe",
+    "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.C": "89afb35c63efe834397293d839c2c9c5034927d55a728d2108a8fb7a152030db",
+    "src/finiteVolume/interpolation/interpolation/interpolationVolPointInterpolation/interpolationVolPointInterpolation.C": "0d880da9e7f819e473ef5f9d05a1e5758734d80599ef187f25351b8d3d229e22",
+    "src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/tetIndicesI.H": "79a8c0b20512ff4b97265fe14a5ec8d9db5351c367d708bebfc4a9105109c001",
+    "src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/polyMeshTetDecomposition.C": "10fe99e9bc14d4cf4ec8f15da59ef45691a17fd9ecd833308aa8baafbfac928a",
+    "src/OpenFOAM/meshes/primitiveShapes/tetrahedron/tetrahedronI.H": "54867381a9d7155c855f9a2ad984bdc39569bebf3c4b827f535b787ccb869434",
+    "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.H": "4b2416ec5c57e1bfcba201c67073d3513ae9dc4288e745272d84b52540f6e86e"
+  },
+  "image": {
+    "Id": "sha256:72bb4694d340c02218e3e768da99168463223ef18114c1339b9db3cd54d2fce9",
+    "RepoTags": [
+      "concentration-aware-ns:of13-cell-point-matrix-query-v1"
+    ],
+    "RepoDigests": [],
+    "Parent": "",
+    "Comment": "buildkit.dockerfile.v0",
+    "Created": "2026-10-03T21:05:45.534394728Z",
+    "DockerVersion": "",
+    "Author": "",
+    "Config": {
+      "Hostname": "",
+      "Domainname": "",
+      "User": "",
+      "AttachStdin": false,
+      "AttachStdout": false,
+      "AttachStderr": false,
+      "Tty": false,
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "Cmd": [
+        "foamRun",
+        "-help"
+      ],
+      "ArgsEscaped": true,
+      "Image": "",
+      "Volumes": null,
+      "WorkingDir": "/case",
+      "Entrypoint": [
+        "/bin/bash",
+        "-c",
+        "source /opt/openfoam13/etc/bashrc; exec \"$@\"",
+        "--"
+      ],
+      "OnBuild": null,
+      "Labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "Shell": [
+        "/bin/bash",
+        "-c"
+      ]
+    },
+    "Architecture": "arm64",
+    "Os": "linux",
+    "Size": 1612003695,
+    "GraphDriver": {
+      "Data": {
+        "LowerDir": "/var/lib/docker/overlay2/z21r4xugetyu9sxn5ah9oukjp/diff:/var/lib/docker/overlay2/kqcbb3eda1vi2mskqj5uq9uoy/diff:/var/lib/docker/overlay2/19d10d2af3d81c9d260cf65eb8013112254059e78bd396b4c2304a790e774ca3/diff",
+        "MergedDir": "/var/lib/docker/overlay2/zl3abv1v08ohy113n9mlks5on/merged",
+        "UpperDir": "/var/lib/docker/overlay2/zl3abv1v08ohy113n9mlks5on/diff",
+        "WorkDir": "/var/lib/docker/overlay2/zl3abv1v08ohy113n9mlks5on/work"
+      },
+      "Name": "overlay2"
+    },
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+        "sha256:ce4f1ec3750963a52a6a6eb7ce3a6ad02bef48788b278addb6f6b4ad7b563b08",
+        "sha256:37b9e3b0dd1330e67a033a8a11c3ce56cf5db84e449dd0654f62d3f397e469be",
+        "sha256:c2099f857aab3b40a614cbe681e86af65c145743628b8110b2a283a20e3574f9"
+      ]
+    },
+    "Metadata": {
+      "LastTagTime": "2026-10-03T21:05:52.465278689Z"
+    }
+  },
+  "argv": [
+    "/usr/bin/docker",
+    "--context",
+    "default",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--platform",
+    "linux/arm64",
+    "--cpus",
+    "3",
+    "--memory",
+    "12g",
+    "--pids-limit",
+    "512",
+    "--entrypoint",
+    "/bin/bash",
+    "-v",
+    "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/query-replay-v1/probe:/probe",
+    "-v",
+    "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/query-replay-v1/case:/case:ro",
+    "-v",
+    "/home/runner/work/concentration-aware-ns/concentration-aware-ns/evidence/of13-cell-point-matrix-query-v1:/capture",
+    "sha256:72bb4694d340c02218e3e768da99168463223ef18114c1339b9db3cd54d2fce9",
+    "-lc",
+    "source /opt/openfoam13/etc/bashrc\ncd /probe\nwmake > /capture/build.log 2>&1 || exit $?\nsha256sum /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.H /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.C /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPointI.H /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.C /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationVolPointInterpolation/interpolationVolPointInterpolation.C /opt/openfoam13/src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/tetIndicesI.H /opt/openfoam13/src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/polyMeshTetDecomposition.C /opt/openfoam13/src/OpenFOAM/meshes/primitiveShapes/tetrahedron/tetrahedronI.H /opt/openfoam13/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.H > /capture/installed-source-files.sha256 || exit $?\nsha256sum /opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libfiniteVolume.so /opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libOpenFOAM.so > /capture/libraries.sha256 || exit $?\ncp /opt/package-versions.txt /capture/package-versions.txt || exit $?\ncd /case\n/probe/cansCellPointQueryProbe > /capture/probe.log 2>&1\n"
+  ],
+  "field_sha256_before": {
+    "U": "f871849660ace80955dae7c5c5f466bcfca3ce0308f0837cb677ef26163bcc08",
+    "p": "64db73108b833de88da943cf488f70766943777c26c3a4f42ffe633635a39efa"
+  },
+  "exit_code": 0,
+  "libraries_match_original_stock": true,
+  "field_sha256_after": {
+    "U": "f871849660ace80955dae7c5c5f466bcfca3ce0308f0837cb677ef26163bcc08",
+    "p": "64db73108b833de88da943cf488f70766943777c26c3a4f42ffe633635a39efa"
+  },
+  "installed_sources_match_pin": true,
+  "probe_binary_sha256": "52206e60333e77b2c4581a6a0b51f7dd1b4678e8ae8cda91cac20decf9b24327",
+  "output_files_sha256": {
+    "probe.log": "913d11833e536888127a840066eefeb83499f3753df46f73fb286660e0d92642",
+    "build.log": "554eca5eaeaf7721bcae30ef2abace57c3d16a533c22409de5c9b657c551fa27",
+    "installed-source-files.sha256": "a92e08fc7e5b8b632f1f41625a79a8854776d761e83851ec6af8f9384e1c32af",
+    "nodes.csv": "1130c1e94af74c4271ba7f6caf18f81a8ea1a88e841fa3b6145a350ea62e7d36",
+    "candidates.csv": "9533660f7b1bc98c2b062406deb19c514b48b975f08f871234568869a89f0083",
+    "package-versions.txt": "bc5ec515c9a169481aa52381feac27dc5ff6ede08a26b6e484d6944703fdc930",
+    "queries.csv": "1d27303445ee41a3320d7c48c42cf33dc5f8a4509408a79b03860b254a0ae6fb",
+    "libraries.sha256": "2f677595ef25d303fa7b089d294f267ab7d50b17fee9e57718f2b593986e9fd5"
+  }
+}

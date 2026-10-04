@@ -1,0 +1,28 @@
+{
+  "observed_at_utc": "2026-10-02T19:37:29Z",
+  "upstream_repository": "https://github.com/openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "upstream_license": "Apache-2.0",
+  "upstream_issues_enabled": false,
+  "scope": "Analytic and Lean recheck of the pressure-amplitude witness path into FinalSlowBase.actualProfile. No CFD simulation was run or used.",
+  "source_path": "work/upstream-refresh/build-source",
+  "source_files": {
+    "NavierStokes/FinalSlowBase.lean": "d46846fea27ac623967e008301789edc4c52f915e63e2ba1f5f8f73df3d95314",
+    "NavierStokes/PreparedOutgoing.lean": "b17ae08fd3e31ae75821d47fe801901a226d7ebe8f2fff8f442fc8751ad1a069",
+    "NavierStokes/NominalConeAssembly.lean": "ad0f8947723416c950c1e3cbb82bac8c83b03ef25fa5aba495a3e29508b14cb5",
+    "NavierStokes/ModulatedProfileAssembly.lean": "006af898d4f7dd76d8ac79a0ee43189e88ac34ca80e9e92ec7e0d78927fcae47"
+  },
+  "extension_sha256": "0e302d57495d5df514bad186ee45c15173a730c0b16e8b6efb23d495aa554f59",
+  "checker_sha256": "72302d6ea7ef8a9149f3e4029f1a1795082b9573f6e0f443aa42689dca100dfe",
+  "checker_exit_code": 0,
+  "checker_log_sha256": "a2abdf2d430182cc50462c6b3c461b9c9f8555c30e3d3df271430a28512ea873",
+  "rechecked_results": {
+    "exists_final_profile_data_with_pressure_amplitude": "proved existentially: some ProfileData has outgoing core.P >= 2",
+    "actual_profile_is_a_profile_data": "proved only that the selected actualProfile has outgoing core.P > 0",
+    "no_uniform_lower_bound_over_normalizations": "proved that no positive amplitude floor follows uniformly over every normalization above a finite threshold"
+  },
+  "axioms_for_all_three_theorems": ["propext", "Classical.choice", "Quot.sound"],
+  "sorryAx": false,
+  "interpretation": "PreparedOutgoing carries amplitude_lower through its prepared profile and later assembly, but FinalSlowBase.ProfileData omits that witness field. profileData_nonempty separately constructs an ordinary profileData, and actualProfile is Classical.choice of that ordinary existential. The recheck confirms a provenance gap in this extension; it does not show that the selected profile violates the threshold or that the upstream theorem is false.",
+  "upstream_reporting": "No issue submitted: the audited item is a limitation of this external verification bridge, not a reproduced defect in the upstream repository's stated theorem. Its issue tracker is disabled."
+}

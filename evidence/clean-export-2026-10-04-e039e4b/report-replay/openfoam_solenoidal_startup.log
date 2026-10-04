@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "bc4f7d57f12e0537087b68717e13bcaa2c21c1e15b697f1921765def09bbe03a",
+      "baseline_archive_sha256": "636be2718a8dbeb6f64eda0d7f7d23ffce3d38a11d2cc54f83ad75554782edbd",
+      "baseline_first_pressure_impulse_rms": 0.0002715641437283035,
+      "first_pressure_impulse_control_over_baseline": 0.030294501783212652,
+      "steps": [
+        {
+          "time": 0.001,
+          "relative_velocity_increment_from_own_initial": 0.001001920353680691,
+          "pressure_range": 0.3910057300091973,
+          "centered_pressure_impulse_rms": 8.226900436433707e-06
+        }
+      ]
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "41093324a1e5dd81015b208622126c84e3a0b5c95a18f2bd487e3d17f79fa01e",
+      "baseline_archive_sha256": "6663f1254d204ec071ceea904ba08deade704bc00af2ebe675978e1d33d072fa",
+      "baseline_first_pressure_impulse_rms": 0.0002715614360333265,
+      "first_pressure_impulse_control_over_baseline": 0.015164233169185758,
+      "steps": [
+        {
+          "time": 0.0005,
+          "relative_velocity_increment_from_own_initial": 0.0005012511848382518,
+          "pressure_range": 0.39141438059594613,
+          "centered_pressure_impulse_rms": 4.1180209357682864e-06
+        },
+        {
+          "time": 0.001,
+          "relative_velocity_increment_from_own_initial": 0.0010022114266067224,
+          "pressure_range": 0.3910299278397479,
+          "centered_pressure_impulse_rms": 4.113677805398325e-06
+        }
+      ]
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "39550b5d3c1beb0c22d09e5c83b92db2df2032206dee487d5080da6396c7fc0c",
+      "baseline_archive_sha256": "e92267dafdc248e2142610639c5d7f440d6250b6315acc13cd1f05411dd6c5c6",
+      "baseline_first_pressure_impulse_rms": 0.0002715852782141723,
+      "first_pressure_impulse_control_over_baseline": 0.007585483797036465,
+      "steps": [
+        {
+          "time": 0.00025,
+          "relative_velocity_increment_from_own_initial": 0.0002506983671996893,
+          "pressure_range": 0.39160804971489827,
+          "centered_pressure_impulse_rms": 2.0601057274072447e-06
+        },
+        {
+          "time": 0.0005,
+          "relative_velocity_increment_from_own_initial": 0.0005013239676324025,
+          "pressure_range": 0.3914219124876904,
+          "centered_pressure_impulse_rms": 2.059042869295903e-06
+        },
+        {
+          "time": 0.00075,
+          "relative_velocity_increment_from_own_initial": 0.0007518768233285393,
+          "pressure_range": 0.39123855090393056,
+          "centered_pressure_impulse_rms": 2.057986878197221e-06
+        },
+        {
+          "time": 0.001,
+          "relative_velocity_increment_from_own_initial": 0.0010023569567933447,
+          "pressure_range": 0.39105720753604784,
+          "centered_pressure_impulse_rms": 2.056935440362843e-06
+        }
+      ]
+    }
+  ],
+  "quality": "UNCERTAIN",
+  "scope": "Changed initial value problem, not an acceptance run for the original continuum MMS. Startup response only; does not establish the cause of late-time order or propose a production fix.",
+  "protocol_sha256": "3648ea901285eae0b6b8a3bb5f4a12261d73ad7d6b6c31eed02d32ed9f83593f",
+  "interpretation": "Measurements only; no original-MMS accuracy score or automatic causal verdict. RMS uses equal-volume cells of the uniform mesh."
+}

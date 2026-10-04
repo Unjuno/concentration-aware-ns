@@ -1,0 +1,11 @@
+{
+  "command": [
+    "docker",
+    "ps",
+    "--format",
+    "{{json .}}"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

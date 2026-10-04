@@ -1,0 +1,236 @@
+{
+  "status": "PASS_CATEGORICAL_AND_NUMERICAL_ANALYSIS_COMPATIBILITY",
+  "floating_differences": [
+    {
+      "path": "/stages/0/metrics/velocity_mean_mismatch_relative_l2",
+      "hosted": 0.08048563842444165,
+      "mac": 0.08048563842444166,
+      "absolute_difference": 1.3877787807814457e-17
+    },
+    {
+      "path": "/stages/0/derivative_decomposition/curl/mean_mismatch_integrated_energy",
+      "hosted": 0.10292837278241253,
+      "mac": 0.10292837278241251,
+      "absolute_difference": 1.3877787807814457e-17
+    },
+    {
+      "path": "/stages/0/derivative_decomposition/curl/p0_total_relative_l2",
+      "hosted": 0.3959648618248501,
+      "mac": 0.39596486182485,
+      "absolute_difference": 5.551115123125783e-17
+    },
+    {
+      "path": "/stages/0/derivative_decomposition/curl/projection_fraction_of_squared_error",
+      "hosted": 0.9022772545175414,
+      "mac": 0.9022772545175415,
+      "absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "path": "/stages/0/reference_operator_decomposition/gradient/mean_mismatch_integrated_energy",
+      "hosted": 0.11580253279918504,
+      "mac": 0.11580253279918501,
+      "absolute_difference": 2.7755575615628914e-17
+    },
+    {
+      "path": "/stages/0/reference_operator_decomposition/gradient/mean_mismatch_relative_l2",
+      "hosted": 0.13129432465025165,
+      "mac": 0.13129432465025162,
+      "absolute_difference": 2.7755575615628914e-17
+    },
+    {
+      "path": "/stages/0/reference_operator_decomposition/curl/mean_mismatch_integrated_energy",
+      "hosted": 0.1029564925223809,
+      "mac": 0.10295649252238084,
+      "absolute_difference": 5.551115123125783e-17
+    },
+    {
+      "path": "/stages/0/reference_operator_decomposition/curl/mean_mismatch_relative_l2",
+      "hosted": 0.12379804712437917,
+      "mac": 0.12379804712437914,
+      "absolute_difference": 2.7755575615628914e-17
+    },
+    {
+      "path": "/stages/0/velocity_projection_floor_relative_l2",
+      "hosted": 0.36961478825927824,
+      "mac": 0.36961478825927796,
+      "absolute_difference": 2.7755575615628914e-16
+    },
+    {
+      "path": "/stages/0/velocity_p0_total_relative_l2",
+      "hosted": 0.3782763932530565,
+      "mac": 0.3782763932530563,
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "path": "/stages/0/sampled_peak_diagnostics/curl/reference_sampled_peak",
+      "hosted": 1.0941212881524447,
+      "mac": 1.094121288152445,
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "path": "/stages/0/sampled_peak_diagnostics/curl/sampled_peak_relative_discrepancy",
+      "hosted": 0.20016423341034995,
+      "mac": 0.20016423341035017,
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "path": "/stages/0/independent_uniform_operator_relative_differences/reference",
+      "hosted": 2.277535802035295e-15,
+      "mac": 2.2782180629109335e-15,
+      "absolute_difference": 6.822608756385932e-19
+    },
+    {
+      "path": "/stages/0/local_mean_quality/metrics/velocity_mean_mismatch_relative_l2/value",
+      "hosted": 0.08048563842444165,
+      "mac": 0.08048563842444166,
+      "absolute_difference": 1.3877787807814457e-17
+    },
+    {
+      "path": "/stages/0/reference_operator_quality/metrics/gradient_mean_mismatch_relative_l2/value",
+      "hosted": 0.13129432465025165,
+      "mac": 0.13129432465025162,
+      "absolute_difference": 2.7755575615628914e-17
+    },
+    {
+      "path": "/stages/0/reference_operator_quality/metrics/curl_mean_mismatch_relative_l2/value",
+      "hosted": 0.12379804712437917,
+      "mac": 0.12379804712437914,
+      "absolute_difference": 2.7755575615628914e-17
+    },
+    {
+      "path": "/stages/1/derivative_decomposition/curl/exact_cell_mean_integrated_energy",
+      "hosted": 6.467632624950797,
+      "mac": 6.467632624950798,
+      "absolute_difference": 8.881784197001252e-16
+    },
+    {
+      "path": "/stages/1/derivative_decomposition/curl/projection_floor_integrated_energy",
+      "hosted": 0.25015315969208096,
+      "mac": 0.2501531596920801,
+      "absolute_difference": 8.881784197001252e-16
+    },
+    {
+      "path": "/stages/1/derivative_decomposition/curl/projection_floor_relative_l2",
+      "hosted": 0.1929700551222116,
+      "mac": 0.19297005512221127,
+      "absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "path": "/stages/1/derivative_decomposition/curl/p0_total_relative_l2",
+      "hosted": 0.3270528967795807,
+      "mac": 0.3270528967795805,
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "path": "/stages/1/derivative_decomposition/curl/projection_fraction_of_squared_error",
+      "hosted": 0.34813191699456814,
+      "mac": 0.3481319169945673,
+      "absolute_difference": 8.326672684688674e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/gradient/mean_mismatch_integrated_energy",
+      "hosted": 0.008274251503487687,
+      "mac": 0.008274251503487685,
+      "absolute_difference": 1.734723475976807e-18
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/gradient/mean_mismatch_relative_l2",
+      "hosted": 0.03509548780866516,
+      "mac": 0.03509548780866515,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/exact_cell_mean_integrated_energy",
+      "hosted": 6.467632624950797,
+      "mac": 6.467632624950798,
+      "absolute_difference": 8.881784197001252e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/mean_mismatch_integrated_energy",
+      "hosted": 0.007361147522345279,
+      "mac": 0.007361147522345277,
+      "absolute_difference": 2.6020852139652106e-18
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/projection_floor_integrated_energy",
+      "hosted": 0.25015315969208096,
+      "mac": 0.2501531596920801,
+      "absolute_difference": 8.881784197001252e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/mean_mismatch_relative_l2",
+      "hosted": 0.033102415465624216,
+      "mac": 0.03310241546562421,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/projection_floor_relative_l2",
+      "hosted": 0.1929700551222116,
+      "mac": 0.19297005512221127,
+      "absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/p0_total_relative_l2",
+      "hosted": 0.1957886924302019,
+      "mac": 0.19578869243020153,
+      "absolute_difference": 3.608224830031759e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_decomposition/curl/projection_fraction_of_squared_error",
+      "hosted": 0.9714146075922072,
+      "mac": 0.9714146075922071,
+      "absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "path": "/stages/1/reference_operator_quality/metrics/gradient_mean_mismatch_relative_l2/value",
+      "hosted": 0.03509548780866516,
+      "mac": 0.03509548780866515,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/1/reference_operator_quality/metrics/curl_mean_mismatch_relative_l2/value",
+      "hosted": 0.033102415465624216,
+      "mac": 0.03310241546562421,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_decomposition/gradient/mean_mismatch_integrated_energy",
+      "hosted": 0.007516859750820953,
+      "mac": 0.007516859750820951,
+      "absolute_difference": 1.734723475976807e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_decomposition/gradient/mean_mismatch_relative_l2",
+      "hosted": 0.03509548780866516,
+      "mac": 0.03509548780866515,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_decomposition/curl/mean_mismatch_integrated_energy",
+      "hosted": 0.006687337641023998,
+      "mac": 0.006687337641023996,
+      "absolute_difference": 1.734723475976807e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_decomposition/curl/mean_mismatch_relative_l2",
+      "hosted": 0.033102415465624216,
+      "mac": 0.03310241546562421,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_quality/metrics/gradient_mean_mismatch_relative_l2/value",
+      "hosted": 0.03509548780866516,
+      "mac": 0.03509548780866515,
+      "absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "path": "/stages/2/reference_operator_quality/metrics/curl_mean_mismatch_relative_l2/value",
+      "hosted": 0.033102415465624216,
+      "mac": 0.03310241546562421,
+      "absolute_difference": 6.938893903907228e-18
+    }
+  ],
+  "maximum_absolute_difference": 8.881784197001252e-16,
+  "independent_initial_input_byte_identity": "FAIL_PRESERVED_IN_NUMERICAL_REPLAY",
+  "scope": "Recorded floating comparison, not strict byte identity or CFD rerun"
+}

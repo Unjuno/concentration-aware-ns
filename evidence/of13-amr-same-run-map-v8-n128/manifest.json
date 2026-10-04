@@ -1,0 +1,85 @@
+{
+  "status": "RUN_COMPLETE_SAME_RUN_MAP_CAPTURED",
+  "source_commit": "e92a77ed172e9410fa076f079113b49ff53915a2",
+  "harness_worktree_porcelain": "?? protocols/high-gradient-of13-amr-same-run-map-v8-n128.json",
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v8-n128.json",
+  "protocol_sha256": "c57730737982a7583db20193c4f4b2ce1ec9e5fa44494d8de42a55838a552f00",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "docker_cli": "/run/current-system/sw/bin/docker",
+  "docker_cli_resolved": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_context": "orbstack",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "instrumented_module_sha256": "414d68c299a466b3c06757192c4e3d0f89df24d78dae94da1a0286387bdbc4a7",
+  "instrumented_source_files": {
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "incompressibleFluid.C": "eff1f5bbe9eaecb395bafecad5dad562eaf6648eb0bdfa0cb3bd8782cbf23df4",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011"
+  },
+  "case_input_sha256": {
+    "0/U": "34ae257bc0bce79b89dc19908d423bf7015fc753fd5b6892d5050de2603bc11e",
+    "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+    "constant/dynamicMeshDict": "d112a60114c2908d457e61b064e0d05210acc5a68f975164b89f232ce4ba1161",
+    "constant/fvModels": "906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+    "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+    "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382",
+    "parameters.json": "539066239cbc26cfc1b49f1d09d48c906f08887fe92f4eefe305531bdedbd735",
+    "system/blockMeshDict": "f1d86e9405b61a518602bb9e6e85680f898e26947437154a295dd39ae6a7a307",
+    "system/controlDict": "3f4f4b2ab57f41118c7d8cab316efe2794fc6f976787f8ad31fceec47470e8ce",
+    "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+    "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+  },
+  "exit_code": 0,
+  "end_marker": true,
+  "instrumented_library_load_confirmed": true,
+  "snapshot_events": [
+    "AMR_STAGE_SNAPSHOT stage=preMap time=0.002 cells=2097152 internalFaces=6242304",
+    "AMR_STAGE_SNAPSHOT stage=mapped time=0.002 cells=6949888 internalFaces=20784264",
+    "AMR_STAGE_SNAPSHOT stage=afterCorrectPhi time=0.003 cells=6949888 internalFaces=20784264",
+    "AMR_STAGE_SNAPSHOT stage=prePressure time=0.003 cells=6949888 internalFaces=20784264",
+    "AMR_STAGE_SNAPSHOT stage=postPressure time=0.003 cells=6949888 internalFaces=20784264",
+    "AMR_STAGE_SNAPSHOT stage=postSolve time=0.003 cells=6949888 internalFaces=20784264"
+  ],
+  "case_directory": "amr-n128-cap7000000",
+  "stage_times": {
+    "preMap": "0.002",
+    "mapped": "0.002",
+    "afterCorrectPhi": "0.003",
+    "prePressure": "0.003",
+    "postPressure": "0.003",
+    "postSolve": "0.003"
+  },
+  "snapshot_sha256": {
+    "postProcessing/amrStages/0.002/preMap_cells.csv": "e778a1c2a1dd22b67c5fc7c5555deb5e2c56685030d0ee6a6da047edacfcf8a6",
+    "postProcessing/amrStages/0.002/preMap_faces.csv": "3d2a4dc69c59ddbfadb22f8e272ec5d51938c80bf1ddf62489bffd26d710ef22",
+    "postProcessing/amrStages/0.002/mapped_cells.csv": "a0dca1a45e6576d29a7df79f2bd7ef85d017d7079f206b56a0d4a9ae85a62235",
+    "postProcessing/amrStages/0.002/mapped_faces.csv": "70122ddbf192ee88d7414acffda6b9de83d48f0fa09cb7a92a7e0a36bc0cf5fe",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_cells.csv": "a0dca1a45e6576d29a7df79f2bd7ef85d017d7079f206b56a0d4a9ae85a62235",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_faces.csv": "4dddb2223c7a99ec4e1c5e188fdd8211816092d0f6a2433510ff2e8013b74994",
+    "postProcessing/amrStages/0.003/prePressure_cells.csv": "e150434b88061c15d6e218b9f7298f1cdba04d31e07ab03eaab858f4a8e64cb0",
+    "postProcessing/amrStages/0.003/prePressure_faces.csv": "4dddb2223c7a99ec4e1c5e188fdd8211816092d0f6a2433510ff2e8013b74994",
+    "postProcessing/amrStages/0.003/postPressure_cells.csv": "0b8dff1124564541e0c1213be1cffcae9b0628e936a20279d7d0ecebf33cd0f1",
+    "postProcessing/amrStages/0.003/postPressure_faces.csv": "1dbd3e39d462e4507447dadb968e3a1eccf27a886c9fa838e04fbdb7c32c6c03",
+    "postProcessing/amrStages/0.003/postSolve_cells.csv": "0b8dff1124564541e0c1213be1cffcae9b0628e936a20279d7d0ecebf33cd0f1",
+    "postProcessing/amrStages/0.003/postSolve_faces.csv": "1dbd3e39d462e4507447dadb968e3a1eccf27a886c9fa838e04fbdb7c32c6c03"
+  },
+  "archive": "amr-stage-snapshot-n128.tar.gz",
+  "archive_sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100",
+  "archive_packaging": {
+    "archive": "amr-stage-snapshot-n128.tar.gz",
+    "archive_sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100",
+    "excluded_patterns": [],
+    "excluded_patterns_observed": [],
+    "status": "PACKAGED_WITH_PROTOCOL_DECLARED_EXCLUSIONS"
+  },
+  "solver_log_sha256": "184396c1dd6d4c79fdd89fe66e99796466d241e2883d635fc2379344e2bdf78f",
+  "limitations": [
+    "Independent predictor estimates 663040 raw sensor candidates, 693248 after the periodic one-face-layer buffer, and 6949888 mapped cells. Prediction is not solver evidence; actual selection and map logs must match before attribution.",
+    "The target container runtime reports 16 GiB memory. The 6.95-million-cell mapped mesh may exceed practical memory during remapping or full field/face snapshot capture. Any resource failure is incomplete/uncertain, never a solver-quality failure.",
+    "The n=128 event extends the n=16/n=32/n=64 same-run first-map diagnostic to another base resolution. It does not establish AMR convergence or a continuous-field guarantee.",
+    "No preregistered AMR quality threshold exists; report discrete DOF and specified reconstruction errors descriptively, without promoting a pass/fail quality verdict.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time is inherited from prior exploratory first-refinement events and is not blinded or independently preregistered."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "sympy": "1.14.0",
+  "identity_checked": true,
+  "identity": "Z = -2*A*eta*(M0 + d*M1/(A*(1+eta^2)) - T)",
+  "T": "(2*h - 1)*(2*eta**2*h - 1)/(4*(eta - 1)**2*(eta + 1)**2)",
+  "sufficient_amplitude_squared_threshold": "(eta**2 + 1)**2*(2*h - 1)*(2*eta**2*h - 1)/(20*(eta - 1)**2*(eta + 1)**2)",
+  "controls": [
+    {
+      "M0": "1/100",
+      "M1": "1/100",
+      "Z": "-57286201244989583133334333/1302083281249997916666750000000"
+    },
+    {
+      "M0": "1/2",
+      "M1": "1/2",
+      "Z": "6515629426979395412499817/26041665624999958333335000000"
+    }
+  ],
+  "actual_profile_bound_proved": false,
+  "scope": "Exact algebra with the root equation and pressure moment formulas; integral differentiation and prefix inequalities rely on separately identified source results. Controls are not realized complete profiles."
+}

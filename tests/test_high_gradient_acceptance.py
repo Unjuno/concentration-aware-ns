@@ -84,6 +84,15 @@ class HighGradientAcceptanceTests(unittest.TestCase):
         self.assertEqual(matrix_reproduction([case(64, "PASS", "FAIL")])["status"], "UNCERTAIN")
         self.assertEqual(matrix_reproduction([case(64, "FAIL", "FAIL"), case(128, "PASS", "FAIL")])["status"], "UNCERTAIN")
 
+    def test_coarse_disagreement_is_reported_but_does_not_override_fine_grid_rule(self):
+        cases = [
+            case(16, "PASS", "FAIL"),
+            case(32, "PASS", "FAIL"),
+            case(64, "PASS", "PASS"),
+            case(128, "PASS", "PASS"),
+        ]
+        self.assertEqual(matrix_reproduction(cases)["status"], "NOT_OBSERVED")
+
     def test_local_gate_keeps_missing_metrics_uncertain_and_reports_threshold_failures(self):
         thresholds = {"max_gradient": 0.05, "shell_spectrum": 0.05}
         self.assertEqual(local_quality({"max_gradient": 0.01}, thresholds)["status"], "UNCERTAIN")

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "theorem": "PacketProbability.sublevel_measure_tendsto_zero_atTop",
+  "scope": "For a finite measure and measurable nonnegative real observable c, the measure of {x | c x < 1 / max t 1} tends to the measure of {x | c x = 0} as t tends to infinity. In the conditional packet application, this formalizes the shrinking exceptional-band measure step only after the direction-law, observable measurability, and zero-mass assumptions are supplied.",
+  "source": "verification/FinitePacketProbability.lean",
+  "source_sha256": "3d05e73b1f25b7eaf5e4c0f33f05b374e91d93a692d481bfb7821d5ac631a7da",
+  "lean": "4.34.0-rc2",
+  "environment": "Existing prepared pinned Lean project at work/lean-verification/independent-source; native macOS arm64 Lean executable via elan. Upstream NavierStokesAndEuler source archive SHA256 e44f67a2bc3c133c14856d73b697f77344b030e3fae2f798254b64dcefbbb772; dependency pins are recorded in work/lean-verification/dependency-archives.json.",
+  "reproduction": "sh runtime/lean-verification/check_finite_packet_probability.sh",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "limitations": [
+    "Does not construct the sphere or projective-sphere measurable space, or prove measurability of the direction observable in that model.",
+    "Does not establish that any Navier-Stokes solution satisfies the packet tube/Hessian hypotheses or the classical nonlinear packet comparison.",
+    "Does not imply molecular alignment, deterministic particle positions, a phase transition, or a constitutive-viscosity change."
+  ]
+}

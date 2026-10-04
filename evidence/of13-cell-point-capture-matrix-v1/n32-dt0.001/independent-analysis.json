@@ -1,0 +1,18 @@
+{
+  "status": "MEASURED_CAPTURE_IDENTITIES_NOT_CONTINUUM_CERTIFICATION",
+  "cells": 116992,
+  "points": 129953,
+  "tets": 1432320,
+  "internal_faces": 346776,
+  "maximum_centre_error": 1.1102992632445761e-16,
+  "maximum_face_trace_difference": 3.7574320598078426e-15,
+  "shared_internal_face_triangles_match_owner_neighbour": true,
+  "maximum_cell_tet_volume_relative_mismatch": 2.727015127526639e-14,
+  "all_recorded_tet_determinants_above_native_small": true,
+  "native_degenerate_and_invalid_base_counts_zero": true,
+  "limits": [
+    "CSV and topology checks, floating volume sum; no outward-enclosed geometric partition proof",
+    "face samples do not by themselves certify global continuity",
+    "no solver quality threshold or point-witness transfer is upgraded"
+  ]
+}

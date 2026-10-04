@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 11285133904,
+      "node_id": "MDg6QXJ0aWZhY3QxMTI4NTEzMzkwNA==",
+      "name": "published-cell-point-matrix-verification-ebbbe07be642e0a75207d6b76958f9544a239100",
+      "size_in_bytes": 22515,
+      "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11285133904",
+      "archive_download_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/artifacts/11285133904/zip",
+      "expired": false,
+      "digest": "sha256:3476cd5241fa86545df49adc91446b494dfba58baa5596c30a75dac1d04f15bf",
+      "created_at": "2026-10-03T21:19:35Z",
+      "updated_at": "2026-10-03T21:19:35Z",
+      "expires_at": "2027-01-01T21:14:14Z",
+      "workflow_run": {
+        "id": 37154392234,
+        "repository_id": 1362198888,
+        "head_repository_id": 1362198888,
+        "head_branch": "physicsnemo-global-hessian-audit",
+        "head_sha": "ebbbe07be642e0a75207d6b76958f9544a239100"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PREPARED_INPUTS_IDENTICAL_EXCEPT_CFL",
+  "cases": [
+    {
+      "case": "baseline",
+      "CFL_NUMBER_from_actual_config": 10,
+      "expected_updates": 50
+    },
+    {
+      "case": "control",
+      "CFL_NUMBER_from_actual_config": 100,
+      "expected_updates": 50
+    }
+  ],
+  "limits": [
+    "Input verification only; image availability and source equivalence are separate",
+    "No solver run, residual, final-time accuracy or acceptance result"
+  ]
+}

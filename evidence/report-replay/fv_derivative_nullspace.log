@@ -1,0 +1,14 @@
+{
+  "scope": "Symbolic derivative identity for a conditional smooth compactly supported construction; not an OpenFOAM field reconstruction or Navier-Stokes solution with the benchmark forcing.",
+  "vector_potential": "A_k=(0,0,k^(-3/2)*chi(x,y,z)*sin(k*y))",
+  "cutoff_assumption": "chi is a nonzero C-infinity function supported strictly inside one cell",
+  "curl_x": "k^(-3/2)*chi_y*sin(k*y) + k^(-1/2)*chi*cos(k*y)",
+  "curl_y": "-k^(-3/2)*chi_x*sin(k*y)",
+  "divergence_identity": "identically zero by cancellation of mixed partial derivatives",
+  "uniform_velocity_bound": "O(k^(-1/2)) for fixed smooth chi",
+  "gradient_y_component": "-k^(1/2)*chi*sin(k*y) + 2*k^(-1/2)*chi_y*cos(k*y) + k^(-3/2)*chi_yy*sin(k*y)",
+  "gradient_supremum": "Theta(k^(1/2)) for nonzero chi; the oscillatory phase attains order-one sine values where |chi| is bounded below",
+  "cell_average_invariance": "each curl component is a derivative of a function compactly supported inside the cell, hence its integral over that cell is zero",
+  "face_trace_invariance": "the perturbation vanishes in a neighborhood of every cell face",
+  "sympy_version": "1.14.0"
+}

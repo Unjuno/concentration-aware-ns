@@ -1,0 +1,20 @@
+{
+  "status": "ARCHIVES_INPUTS_FINAL_FIELDS_AND_CAPTURE_IDENTITIES_VERIFIED",
+  "case_id": "n64-dt0.001",
+  "runtime_source_commit": "4e60b23065811d488fe6890ad59af698a81c35b8",
+  "raw_archive_sha256": "73132219372bf1e81eaeca419bdc378c2b419adeecb55b837cf269bcc7b0e80c",
+  "raw_members": 161,
+  "mesh_archive_sha256": "3a4d84d88c03a8a3f56972f9ea2da80a7c13fd864c5043e00fea097ddefb8fec",
+  "mesh_members": 14,
+  "capture_manifest_sha256": "034900f60cf6af17c7120a3b635426cbce2cad2125be9e1bd5a472cba8968c20",
+  "original_input_and_final_fields_byte_identical": true,
+  "probe_fields_unchanged": true,
+  "source_files_verified": 20,
+  "installed_interpolation_sources_verified": 8,
+  "probe_binary_hash_matches_downloaded_artifact": true,
+  "probe_binary_sha256": "e50efc87d4bb874688d3941c9dfca2529a908af384836f85c22020370fe900ba",
+  "verification_script_sha256": "8c6fcb1893a8db78f2320386ee9a4a1e277e428f0ef0f6c097f961584a08bf5e",
+  "limits": [
+    "Archive integrity and floating topology are separate from continuous quality/native branch obligations"
+  ]
+}

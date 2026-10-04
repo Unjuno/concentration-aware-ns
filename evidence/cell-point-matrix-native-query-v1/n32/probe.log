@@ -1,0 +1,177 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-18870c24d21c
+Exec   : /probe/cansCellPointQueryProbe
+Date   : Oct 03 2026
+Time   : 21:05:36
+Host   : "624cef2b601b"
+PID    : 328
+I/O    : uncollated
+Case   : //case
+nProcs : 1
+sigFpe : Floating point exception trapping - not supported on this platform
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Selecting fvMeshTopoChanger refiner
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791939472497055 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791939472497055 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792061542809555 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792061542809555 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1103855815715163 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1103855815715163 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1105076518840163 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1105076518840163 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.1481339626894)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.1481339626894)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.1482560330019)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.1482560330019)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791985248864242 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791985248864242 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792015766442367 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792015766442367 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104313579387038 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104313579387038 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104618755168288 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104618755168288 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148179739056587)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148179739056587)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148210256634712)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148210256634712)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791996692956039 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.791996692956039 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792004322350571 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792004322350571 0.1104466167277663 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104428020305007 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104428020305007 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104504314250319 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104504314250319 6.14819499784565)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148191183148384)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148191183148384)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148198812542915)
+celli = 112198
+
+Foam::cellPointWeight::findTetrahedron
+position = (3.792000507653305 0.1104466167277663 6.148198812542915)
+celli = 112198
+CELL_POINT_QUERY_REPLAY_COMPLETE queries=19

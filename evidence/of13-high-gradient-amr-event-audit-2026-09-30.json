@@ -24,7 +24,15 @@
       ],
       "note": "No cellLevel history is written per time; final levels do not identify transitions or candidates rejected by maxCells.",
       "refinement_events": [],
-      "interpretation": "All 24 adaptation checks had zero candidates available; the maxCells budget equaled the initial mesh size."
+      "candidate_reconstruction": {
+        "audit": "evidence/tests/openfoam-amr-candidate-budget-audit.json",
+        "raw_sensor_eligible_cells": 1280,
+        "periodic_face_neighbor_buffered_candidates_before_maxCells_guard": 1792,
+        "blocked_by_guard_at_each_eligible_check": 1792,
+        "eligible_check_count": "not inferred from unrefinement diagnostics",
+        "cross_checked_against": "cap5000 first refinement event selected 1792 cells"
+      },
+      "interpretation": "The log has no refinement events, but that does not mean zero candidates were available. Retrospective reconstruction from the archived sensor, periodic mesh, one-layer source buffer algorithm, and maxCells guard yields 1792 pre-guard candidates at each eligible check; the count of eligible checks is not inferred from unrefinement log lines. This is expected guard behavior at maxCells=initial cells, not evidence of a defect."
     },
     {
       "case": "cap5000",
@@ -79,5 +87,5 @@
     }
   ],
   "source_audit": "reports/openfoam-amr-source-budget-audit-2026-09-28.md",
-  "conclusion": "Per-check selected counts are recorded. The cap100000 event exceeds the nominal candidate allowance because selection is truncated only after each full refinement-level group; 2:1 consistency does not increase the logged candidate count in this event. The subsequent 256 points are unrefined and final count is 101760. This is consistent with the documented approximate maxCells behavior; no defect issue is supported. cap5000 did not exercise a second refinement under its cap."
+  "conclusion": "Per-check selected counts are recorded where the log exposes them. The cap4096 archived sensor and mesh support a retrospective 1792-candidate reconstruction before its maxCells guard; no refinement selection event occurred because current cells equaled the cap. The number of eligible checks is not reconstructed. The cap100000 event exceeds the nominal candidate allowance because selection is truncated only after each full refinement-level group; 2:1 consistency does not increase the logged candidate count in this event. The subsequent 256 points are unrefined and final count is 101760. This is consistent with the documented approximate maxCells behavior; no defect issue is supported. cap5000 did not exercise a second refinement under its cap."
 }

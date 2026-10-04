@@ -1,0 +1,10 @@
+{
+  "status": "PASS_COMPLETE_ARTIFACT_ZIP_CRC_AND_RAW_ARCHIVE_HASH",
+  "bytes": 370896850,
+  "artifact_id": 11274902036,
+  "raw_archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+  "metadata_preview_byte_identical": true,
+  "download": "Four bounded range readers plus preserved prefix from this task owned gh downloader; no unrelated process touched.",
+  "github_reported_zip_sha256": "e5b124fe898ad89d962f9ac37d407bd70a075a3f9c4846451e84a0510c997e20",
+  "github_artifact_digest_matches": true
+}

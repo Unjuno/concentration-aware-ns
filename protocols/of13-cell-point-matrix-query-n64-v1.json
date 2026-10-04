@@ -1,0 +1,29 @@
+{
+  "case_id": "n64-dt0.001",
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-cell-point-capture-matrix-v1-4e60b23/cell-point-capture-n64-dt0.001-4e60b23.tar.gz",
+  "release_sha256": "f07e089b19cdda9e9dc75180eb36ef285b60b6565f343e043e95930ed07185a1",
+  "capture_manifest_sha256": "034900f60cf6af17c7120a3b635426cbce2cad2125be9e1bd5a472cba8968c20",
+  "cell": 850097,
+  "face": 2558946,
+  "tetPt": 2,
+  "point_indices": [
+    910076,
+    358618,
+    902310
+  ],
+  "query_count": 19,
+  "step_powers": [
+    14,
+    16,
+    18
+  ],
+  "witness_path": "evidence/cell-point-derivative-batches-v1/n64-dt0.001/analysis.json",
+  "witness_sha256": "754788c8d3a48e9abb3fa4728e1ec307a77bc17fc6b1f74aeb549848ac9fde61",
+  "neighborhood_path": "evidence/cell-point-matrix-neighborhood-v1/n64-dt0.001/analysis.json",
+  "neighborhood_sha256": "9601bcab64656a42caae860352fad083329c76c80980c6dfc373354f42519bc7",
+  "limits": [
+    "Read-only field replay; no CFD evolution",
+    "Finite queries do not certify every floating search input or global continuity",
+    "Original acceptance gates and physical conclusions unchanged"
+  ]
+}

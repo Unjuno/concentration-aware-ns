@@ -1,0 +1,23 @@
+{
+  "Lq_homogeneous_Hs_exponent": "2/q-3/2-s",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "pointwise_derivative_exponents": {
+    "force_amplitude": "epsilon^-3",
+    "general_k_spatial_ell_time": "epsilon^(-3-k-2*ell)",
+    "one_spatial_derivative": "epsilon^-4",
+    "one_time_derivative": "epsilon^-5"
+  },
+  "python_implementation": "cpython",
+  "python_version": "3.14.5",
+  "rescaling": "F_epsilon(x,t)=epsilon^-3 F((x-x0)/epsilon,(t-t_epsilon)/epsilon^2)",
+  "scope": "Exact scaling of a fixed nonzero smooth compactly supported force. Weak force-norm smallness does not give uniform pointwise amplitude or derivative bounds. This is not an actuator-feasibility theorem and does not validate the underlying blowup construction.",
+  "source": "Cao-Chi-Nie, arXiv:2609.10262v4, equations (20) and force scaling after Theorem 1.1",
+  "source_sha256": "b4be5302fdf91340b0c7e0e09812c96581c44c5a4ec114268a2fd724176128a5",
+  "status": "PASS",
+  "sympy_version": "1.14.0",
+  "thresholds": {
+    "q1": "1/2-s; vanishes for s<1/2",
+    "q2": "-1/2-s; vanishes for s<-1/2"
+  },
+  "tool": "SymPy exact scaling algebra"
+}

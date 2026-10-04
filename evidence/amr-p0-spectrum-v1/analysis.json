@@ -1,0 +1,2009 @@
+{
+  "status": "PASS_DECLARED_P0_SPECTRUM_FORMULAS_AND_ARCHIVED_CONTROLS",
+  "protocol_sha256": "47ef19b15086968c123c2058513e89f6f6948fb1b1c1bbc30c522184bdfc2fa4",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "prior_spatial_analysis_sha256": "59e391c7692527f800bb5d5dba0cbe8258d71948b15bd224ca8f8443bc058165",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 4096,
+          "voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.002380750981060117,
+            "cell_mean_square": 0.002380750981060115,
+            "cell_voxel_norm_difference": 1.734723475976807e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 4.949674278842373e-17,
+          "archived_spatial_p0_error_relative_l2": 0.3782763932530565,
+          "spectral_spatial_relative_l2_difference": 1.6653345369377348e-16,
+          "band_artifact": "n16-dt0.001-preMap-band.npz",
+          "band_artifact_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.002380750981060117,
+            "inside_cube_mean_square": 0.0020555212908332384,
+            "outside_cube_mean_square": 0.0003252296902268785,
+            "inside_cube_coefficient_error_mean_square": 1.631631283374413e-05,
+            "outside_cube_fraction_of_actual_norm": 0.1366080252887507,
+            "inside_cube_error_relative_l2": 0.08267908231230808,
+            "outside_cube_norm_relative_to_reference": 0.36913032798800993,
+            "p0_global_error_relative_l2": 0.3782763932530567,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.3589561452380836e-35,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3589561452380836e-35
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.4888771068738058e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.4888771068738058e-13
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.552872230000108e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.552872230000108e-13
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0014936700962715822,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 9.689160575200697e-06
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0005539543935618351,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 6.417244742990197e-06
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 7.886633805829365e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 2.0923677529946944e-07
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0163760015663377e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 6.673062773975488e-10
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.7537474989164106e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.7537474989164106e-12
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.54235718777286e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.54235718777286e-14
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.27592411199591e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.27592411199591e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.773326250646519e-18,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.773326250646519e-18
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.859104930361421e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.859104930361421e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.9965349415071544e-23,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.9965349415071544e-23
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 16640,
+          "voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.002380750981060117,
+            "cell_mean_square": 0.0023807509810601125,
+            "cell_voxel_norm_difference": 4.336808689942018e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 8.165204762449536e-17,
+          "archived_spatial_p0_error_relative_l2": 0.3782763932530564,
+          "spectral_spatial_relative_l2_difference": 2.7755575615628914e-16,
+          "band_artifact": "n16-dt0.001-mapped-band.npz",
+          "band_artifact_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.002380750981060117,
+            "inside_cube_mean_square": 0.0020555212908332384,
+            "outside_cube_mean_square": 0.0003252296902268785,
+            "inside_cube_coefficient_error_mean_square": 1.631631283374413e-05,
+            "outside_cube_fraction_of_actual_norm": 0.1366080252887507,
+            "inside_cube_error_relative_l2": 0.08267908231230808,
+            "outside_cube_norm_relative_to_reference": 0.36913032798800993,
+            "p0_global_error_relative_l2": 0.3782763932530567,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.3589561452380836e-35,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3589561452380836e-35
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.4888771068738058e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.4888771068738058e-13
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.552872230000108e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.552872230000108e-13
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0014936700962715822,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 9.689160575200697e-06
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0005539543935618351,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 6.417244742990197e-06
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 7.886633805829365e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 2.0923677529946944e-07
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0163760015663377e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 6.673062773975488e-10
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.7537474989164106e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.7537474989164106e-12
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.54235718777286e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.54235718777286e-14
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.27592411199591e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.27592411199591e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.773326250646519e-18,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.773326250646519e-18
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.859104930361421e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.859104930361421e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.9965349415071544e-23,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.9965349415071544e-23
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 16640,
+          "voxelization": {
+            "m": 32,
+            "coverage": {
+              "finest_voxels": 32768,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.002097736121024242,
+            "cell_mean_square": 0.002097736121024239,
+            "cell_voxel_norm_difference": 3.0357660829594124e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 6.628871163801065e-17,
+          "archived_spatial_p0_error_relative_l2": 0.3417670242307,
+          "spectral_spatial_relative_l2_difference": -1.1102230246251565e-16,
+          "band_artifact": "n16-dt0.001-postSolve-band.npz",
+          "band_artifact_sha256": "7d6806e136d54d8cf2effe8269ba53bd4a2226421878ba159a07103af7d23fc2",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0021683953039456916,
+            "actual_p0_mean_square": 0.002097736121024242,
+            "inside_cube_mean_square": 0.0018572554707597653,
+            "outside_cube_mean_square": 0.00024048065026447676,
+            "inside_cube_coefficient_error_mean_square": 1.2798110203923425e-05,
+            "outside_cube_fraction_of_actual_norm": 0.11463817963293663,
+            "inside_cube_error_relative_l2": 0.07682519897438267,
+            "outside_cube_norm_relative_to_reference": 0.33302040125802246,
+            "p0_global_error_relative_l2": 0.3417670242306999,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.7111634606090373e-35,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.7111634606090373e-35
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.787237116931564e-11,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.787237116931564e-11
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.6689912575537978e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.6689912575537978e-10
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0013509817791432742,
+                "reference_mean_square_velocity": 0.0015519551866924755,
+                "coefficient_error_mean_square": 7.213927214246795e-06
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0004990743823517154,
+                "reference_mean_square_velocity": 0.0006067917061792096,
+                "coefficient_error_mean_square": 5.367083345238735e-06
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 7.168898126045577e-06,
+                "reference_mean_square_velocity": 9.633965608316891e-06,
+                "coefficient_error_mean_square": 1.9114580853143694e-07
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.1475603330050769e-08,
+                "reference_mean_square_velocity": 1.4445465689811645e-08,
+                "coefficient_error_mean_square": 7.018300506865121e-09
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 8.213238214650997e-09,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.213238214650997e-09
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.334663654309787e-09,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.334663654309787e-09
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.5385156289470718e-09,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5385156289470718e-09
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.286307169489908e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.286307169489908e-10
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 4.164119977543551e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.164119977543551e-12
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.5515678331813772e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5515678331813772e-12
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "prior_spatial_analysis_sha256": "969092e715ab505ee3154a3c41710b2eb2a4f6fca9c758712fcc759238f5a683",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 32768,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0023865657513107187,
+            "cell_mean_square": 0.0023865657513107165,
+            "cell_voxel_norm_difference": 2.168404344971009e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 6.822328561893057e-17,
+          "archived_spatial_p0_error_relative_l2": 0.1905829281253647,
+          "spectral_spatial_relative_l2_difference": 6.106226635438361e-16,
+          "band_artifact": "n32-dt0.001-preMap-band.npz",
+          "band_artifact_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.0023865657513107187,
+            "inside_cube_mean_square": 0.0023009827452600603,
+            "outside_cube_mean_square": 8.558300605065843e-05,
+            "inside_cube_coefficient_error_mean_square": 1.112925745193632e-06,
+            "outside_cube_fraction_of_actual_norm": 0.03586031769862433,
+            "inside_cube_error_relative_l2": 0.021593235950497378,
+            "outside_cube_norm_relative_to_reference": 0.18935570932513313,
+            "p0_global_error_relative_l2": 0.19058292812536531,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.2519526054245975e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.2519526054245975e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0112782838787033e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.0112782838787033e-14
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.7823452709889288e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.7823452709889288e-14
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016531791262987309,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 6.584885874624245e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.000637932585863361,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 4.398723517074997e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 9.85678765964076e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 1.4515518724201355e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.424493348888788e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 4.8782460821260426e-11
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.58294230953128e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.58294230953128e-13
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.477433207569853e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.477433207569853e-15
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.298711129471939e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.298711129471939e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 9.139075326914454e-19,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 9.139075326914454e-19
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.517548827811232e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.517548827811232e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.244316040326666e-24,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.244316040326666e-24
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 118784,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0023865657513107187,
+            "cell_mean_square": 0.0023865657513107144,
+            "cell_voxel_norm_difference": 4.336808689942018e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 4.0250045322667623e-16,
+          "archived_spatial_p0_error_relative_l2": 0.1905829281253656,
+          "spectral_spatial_relative_l2_difference": -2.7755575615628914e-16,
+          "band_artifact": "n32-dt0.001-mapped-band.npz",
+          "band_artifact_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.0023865657513107187,
+            "inside_cube_mean_square": 0.0023009827452600603,
+            "outside_cube_mean_square": 8.558300605065843e-05,
+            "inside_cube_coefficient_error_mean_square": 1.112925745193632e-06,
+            "outside_cube_fraction_of_actual_norm": 0.03586031769862433,
+            "inside_cube_error_relative_l2": 0.021593235950497378,
+            "outside_cube_norm_relative_to_reference": 0.18935570932513313,
+            "p0_global_error_relative_l2": 0.19058292812536531,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.2519526054245975e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.2519526054245975e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0112782838787033e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.0112782838787033e-14
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.7823452709889288e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.7823452709889288e-14
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016531791262987309,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 6.584885874624245e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.000637932585863361,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 4.398723517074997e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 9.85678765964076e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 1.4515518724201355e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.424493348888788e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 4.8782460821260426e-11
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.58294230953128e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.58294230953128e-13
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.477433207569853e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.477433207569853e-15
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.298711129471939e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.298711129471939e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 9.139075326914454e-19,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 9.139075326914454e-19
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.517548827811232e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.517548827811232e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.244316040326666e-24,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.244316040326666e-24
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 116992,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0021484128870441575,
+            "cell_mean_square": 0.0021484128870441536,
+            "cell_voxel_norm_difference": 3.903127820947816e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 7.488487578111942e-17,
+          "archived_spatial_p0_error_relative_l2": 0.16807037326784435,
+          "spectral_spatial_relative_l2_difference": -4.163336342344337e-16,
+          "band_artifact": "n32-dt0.001-postSolve-band.npz",
+          "band_artifact_sha256": "fc7efae5beba24922e63cf632010b8b3aed88342509cb5e65dca32a846c47a2d",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0021683953039456916,
+            "actual_p0_mean_square": 0.0021484128870441575,
+            "inside_cube_mean_square": 0.0020879683559875423,
+            "outside_cube_mean_square": 6.0444531056615125e-05,
+            "inside_cube_coefficient_error_mean_square": 8.07541354043515e-07,
+            "outside_cube_fraction_of_actual_norm": 0.028134504043017677,
+            "inside_cube_error_relative_l2": 0.019298037981418683,
+            "outside_cube_norm_relative_to_reference": 0.16695878563424002,
+            "p0_global_error_relative_l2": 0.16807037326784394,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.869266160126195e-38,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.869266160126195e-38
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.6195169397663767e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.6195169397663767e-12
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 6.998992439234706e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.998992439234706e-12
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0015004442358543936,
+                "reference_mean_square_velocity": 0.0015519551866924755,
+                "coefficient_error_mean_square": 4.4948677750588724e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0005785567600919092,
+                "reference_mean_square_velocity": 0.0006067917061792096,
+                "coefficient_error_mean_square": 3.447488576380575e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 8.954156842460697e-06,
+                "reference_mean_square_velocity": 9.633965608316891e-06,
+                "coefficient_error_mean_square": 1.2665025774855825e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.2772558728724245e-08,
+                "reference_mean_square_velocity": 1.4445465689811645e-08,
+                "coefficient_error_mean_square": 2.1005307415836587e-10
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.493818652851295e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.493818652851295e-10
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.3177419429121574e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3177419429121574e-10
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.206188734002031e-11,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.206188734002031e-11
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.80241782074318e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.80241782074318e-12
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.0253204921271208e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.0253204921271208e-15
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.5111951537024816e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5111951537024816e-16
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "prior_spatial_analysis_sha256": "e60d8ee320b0343b9236ffdbf79623b62ffe650a5329c56d73d0c1a257d2ed22",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 262144,
+          "voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.002386871498859842,
+            "cell_mean_square": 0.002386871498859841,
+            "cell_voxel_norm_difference": 8.673617379884035e-19
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 9.99242457950346e-16,
+          "archived_spatial_p0_error_relative_l2": 0.09542438795704491,
+          "spectral_spatial_relative_l2_difference": -2.040034807748725e-15,
+          "band_artifact": "n64-dt0.001-preMap-band.npz",
+          "band_artifact_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.002386871498859842,
+            "inside_cube_mean_square": 0.002365208387447548,
+            "outside_cube_mean_square": 2.1663111412293778e-05,
+            "inside_cube_coefficient_error_mean_square": 7.138062051092491e-08,
+            "outside_cube_fraction_of_actual_norm": 0.009075943729120645,
+            "inside_cube_error_relative_l2": 0.00546858283959163,
+            "outside_cube_norm_relative_to_reference": 0.09526756225863427,
+            "p0_global_error_relative_l2": 0.09542438795704287,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.5048941559391457e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5048941559391457e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 6.461266978751842e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.461266978751842e-16
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.7543084602034754e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.7543084602034754e-15
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016944452493044412,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 4.2243478457451634e-08
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0006603345472601476,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 2.8201536843253097e-08
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0413119334150312e-05,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 9.323844705260686e-10
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.547150884885075e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 3.1807798136238367e-12
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.683166413611107e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.683166413611107e-14
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.165244337860737e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.165244337860737e-16
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.116997180323714e-17,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.116997180323714e-17
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.673866251051852e-20,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.673866251051852e-20
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.584115253822762e-23,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.584115253822762e-23
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.250243945215675e-25,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.250243945215675e-25
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 901888,
+          "voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.002386871498859842,
+            "cell_mean_square": 0.0023868714988598385,
+            "cell_voxel_norm_difference": 3.469446951953614e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 3.0080295686609033e-15,
+          "archived_spatial_p0_error_relative_l2": 0.09542438795704439,
+          "spectral_spatial_relative_l2_difference": -1.5126788710517758e-15,
+          "band_artifact": "n64-dt0.001-mapped-band.npz",
+          "band_artifact_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.002386871498859842,
+            "inside_cube_mean_square": 0.002365208387447548,
+            "outside_cube_mean_square": 2.1663111412293778e-05,
+            "inside_cube_coefficient_error_mean_square": 7.138062051092491e-08,
+            "outside_cube_fraction_of_actual_norm": 0.009075943729120645,
+            "inside_cube_error_relative_l2": 0.00546858283959163,
+            "outside_cube_norm_relative_to_reference": 0.09526756225863427,
+            "p0_global_error_relative_l2": 0.09542438795704287,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.5048941559391457e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5048941559391457e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 6.461266978751842e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.461266978751842e-16
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.7543084602034754e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.7543084602034754e-15
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016944452493044412,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 4.2243478457451634e-08
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0006603345472601476,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 2.8201536843253097e-08
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0413119334150312e-05,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 9.323844705260686e-10
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.547150884885075e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 3.1807798136238367e-12
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.683166413611107e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.683166413611107e-14
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.165244337860737e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.165244337860737e-16
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.116997180323714e-17,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.116997180323714e-17
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.673866251051852e-20,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.673866251051852e-20
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.584115253822762e-23,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.584115253822762e-23
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.250243945215675e-25,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.250243945215675e-25
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 887552,
+          "voxelization": {
+            "m": 128,
+            "coverage": {
+              "finest_voxels": 2097152,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0021564348198166196,
+            "cell_mean_square": 0.0021564348198166157,
+            "cell_voxel_norm_difference": 3.903127820947816e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 7.720087938894746e-16,
+          "archived_spatial_p0_error_relative_l2": 0.061795292428856126,
+          "spectral_spatial_relative_l2_difference": 1.457167719820518e-16,
+          "band_artifact": "n64-dt0.001-postSolve-band.npz",
+          "band_artifact_sha256": "983ca6ce3fcb376fe1429e7332c6813c407a7654b6d43e17bf314c60caea2fa0",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0021683953039456916,
+            "actual_p0_mean_square": 0.0021564348198166196,
+            "inside_cube_mean_square": 0.0021482047013215403,
+            "outside_cube_mean_square": 8.23011849507933e-06,
+            "inside_cube_coefficient_error_mean_square": 5.02419402466061e-08,
+            "outside_cube_fraction_of_actual_norm": 0.0038165394193454957,
+            "inside_cube_error_relative_l2": 0.0048135332079122725,
+            "outside_cube_norm_relative_to_reference": 0.061607532529912176,
+            "p0_global_error_relative_l2": 0.06179529242885627,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.033962075216301e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.033962075216301e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.726013993451813e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.726013993451813e-13
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 8.194002605598269e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.194002605598269e-13
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0015390378086349173,
+                "reference_mean_square_velocity": 0.0015519551866924755,
+                "coefficient_error_mean_square": 2.7948465206476823e-08
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0005996953330719022,
+                "reference_mean_square_velocity": 0.0006067917061792096,
+                "coefficient_error_mean_square": 2.142966189156013e-08
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 9.457496853902489e-06,
+                "reference_mean_square_velocity": 9.633965608316891e-06,
+                "coefficient_error_mean_square": 8.292899129322256e-10
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.4043407752120068e-08,
+                "reference_mean_square_velocity": 1.4445465689811645e-08,
+                "coefficient_error_mean_square": 1.51701690414871e-11
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.3261119968583986e-11,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3261119968583986e-11
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.683503970405556e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.683503970405556e-12
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.151907082733693e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.151907082733693e-13
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 4.012500694138839e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.012500694138839e-13
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.5821479193565407e-19,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.5821479193565407e-19
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 6.062745438476817e-20,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 6.062745438476817e-20
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "prior_spatial_analysis_sha256": "39d60fc187e3c4ba193dae2543053b96f3825a44ff9de4599db4703cb08510b2",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "cells": 32768,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0023865633384324322,
+            "cell_mean_square": 0.0023865633384324305,
+            "cell_voxel_norm_difference": 1.734723475976807e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 2.447720680136581e-16,
+          "archived_spatial_p0_error_relative_l2": 0.19058331969431835,
+          "spectral_spatial_relative_l2_difference": 6.106226635438361e-16,
+          "band_artifact": "n32-dt0.0005-preMap-band.npz",
+          "band_artifact_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.0023865633384324322,
+            "inside_cube_mean_square": 0.002300980418816475,
+            "outside_cube_mean_square": 8.558291961595701e-05,
+            "inside_cube_coefficient_error_mean_square": 1.1133684286997822e-06,
+            "outside_cube_fraction_of_actual_norm": 0.035860317737123414,
+            "inside_cube_error_relative_l2": 0.021597530046070613,
+            "outside_cube_norm_relative_to_reference": 0.18935561370504989,
+            "p0_global_error_relative_l2": 0.19058331969431896,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.527694545132432e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.527694545132432e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0126138701433825e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.0126138701433825e-14
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.78564963475516e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.78564963475516e-14
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016531774455709237,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 6.589008453312881e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0006379319499034075,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 4.399006578006863e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 9.856777911696676e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 1.4517626619972377e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.4244924726012796e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 4.879322669508926e-11
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.588389934443162e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.588389934443162e-13
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.768163327333146e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.768163327333146e-15
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.3043181678005983e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3043181678005983e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 9.161089160704108e-19,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 9.161089160704108e-19
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.5967232337777377e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.5967232337777377e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.061214031068261e-24,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.061214031068261e-24
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "cells": 118784,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0023865633384324322,
+            "cell_mean_square": 0.002386563338432428,
+            "cell_voxel_norm_difference": 4.336808689942018e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 4.008275679442425e-16,
+          "archived_spatial_p0_error_relative_l2": 0.19058331969431921,
+          "spectral_spatial_relative_l2_difference": -2.498001805406602e-16,
+          "band_artifact": "n32-dt0.0005-mapped-band.npz",
+          "band_artifact_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0023868807851401995,
+            "actual_p0_mean_square": 0.0023865633384324322,
+            "inside_cube_mean_square": 0.002300980418816475,
+            "outside_cube_mean_square": 8.558291961595701e-05,
+            "inside_cube_coefficient_error_mean_square": 1.1133684286997822e-06,
+            "outside_cube_fraction_of_actual_norm": 0.035860317737123414,
+            "inside_cube_error_relative_l2": 0.021597530046070613,
+            "outside_cube_norm_relative_to_reference": 0.18935561370504989,
+            "p0_global_error_relative_l2": 0.19058331969431896,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.527694545132432e-36,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.527694545132432e-36
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.0126138701433825e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.0126138701433825e-14
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.78564963475516e-14,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.78564963475516e-14
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0016531774455709237,
+                "reference_mean_square_velocity": 0.0017083287386642104,
+                "coefficient_error_mean_square": 6.589008453312881e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0006379319499034075,
+                "reference_mean_square_velocity": 0.0006679314705331363,
+                "coefficient_error_mean_square": 4.399006578006863e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 9.856777911696676e-06,
+                "reference_mean_square_velocity": 1.0604674965561084e-05,
+                "coefficient_error_mean_square": 1.4517626619972377e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.4244924726012796e-08,
+                "reference_mean_square_velocity": 1.5900977291674204e-08,
+                "coefficient_error_mean_square": 4.879322669508926e-11
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 4.588389934443162e-13,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 4.588389934443162e-13
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 8.768163327333146e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 8.768163327333146e-15
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.3043181678005983e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.3043181678005983e-16
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 9.161089160704108e-19,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 9.161089160704108e-19
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 3.5967232337777377e-22,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.5967232337777377e-22
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 7.061214031068261e-24,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.061214031068261e-24
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "cells": 116992,
+          "voxelization": {
+            "m": 64,
+            "coverage": {
+              "finest_voxels": 262144,
+              "minimum_coverage": 1,
+              "maximum_coverage": 1
+            },
+            "voxel_mean_square": 0.0021473461413986424,
+            "cell_mean_square": 0.0021473461413986385,
+            "cell_voxel_norm_difference": 3.903127820947816e-18
+          },
+          "direct_integral_selected_modes": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              4
+            ],
+            [
+              -3,
+              -4,
+              2
+            ],
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              7,
+              -7
+            ]
+          ],
+          "maximum_direct_fft_coefficient_difference": 5.933033541403589e-17,
+          "archived_spatial_p0_error_relative_l2": 0.16666989674232136,
+          "spectral_spatial_relative_l2_difference": 7.494005416219807e-16,
+          "band_artifact": "n32-dt0.0005-postSolve-band.npz",
+          "band_artifact_sha256": "7e7717682125239c4bde471a948bc21072e75ea3bf7400d843044ad4d781e981",
+          "spectrum": {
+            "cutoff_cube": 7,
+            "mode_count": 3375,
+            "reference_mean_square": 0.0021683953039456916,
+            "actual_p0_mean_square": 0.0021473461413986424,
+            "inside_cube_mean_square": 0.002087919588521563,
+            "outside_cube_mean_square": 5.942655287707963e-05,
+            "inside_cube_coefficient_error_mean_square": 8.08984726551944e-07,
+            "outside_cube_fraction_of_actual_norm": 0.027674417147471632,
+            "inside_cube_error_relative_l2": 0.0193152766169495,
+            "outside_cube_norm_relative_to_reference": 0.16554689537803793,
+            "p0_global_error_relative_l2": 0.1666698967423221,
+            "shells": [
+              {
+                "shell": 0,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.850381777805218e-37,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.850381777805218e-37
+              },
+              {
+                "shell": 1,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 2.6726867606480155e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.6726867606480155e-12
+              },
+              {
+                "shell": 2,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 7.169014459131177e-12,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 7.169014459131177e-12
+              },
+              {
+                "shell": 3,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0015004537809724485,
+                "reference_mean_square_velocity": 0.0015519551866924755,
+                "coefficient_error_mean_square": 4.4939569463801606e-07
+              },
+              {
+                "shell": 4,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 0.0005784933604164886,
+                "reference_mean_square_velocity": 0.0006067917061792096,
+                "coefficient_error_mean_square": 3.4615012142165573e-07
+              },
+              {
+                "shell": 5,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 8.95902039796841e-06,
+                "reference_mean_square_velocity": 9.633965608316891e-06,
+                "coefficient_error_mean_square": 1.2512133432762757e-08
+              },
+              {
+                "shell": 6,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 1.2786003517934572e-08,
+                "reference_mean_square_velocity": 1.4445465689811645e-08,
+                "coefficient_error_mean_square": 2.8604591939360835e-10
+              },
+              {
+                "shell": 7,
+                "complete_integer_shell": true,
+                "actual_mean_square_velocity": 3.598375687048695e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 3.598375687048695e-10
+              },
+              {
+                "shell": 8,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.0375587242035201e-10,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.0375587242035201e-10
+              },
+              {
+                "shell": 9,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 5.623979915337409e-11,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 5.623979915337409e-11
+              },
+              {
+                "shell": 10,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 1.1053532809521095e-11,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 1.1053532809521095e-11
+              },
+              {
+                "shell": 11,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.4160396881944143e-15,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.4160396881944143e-15
+              },
+              {
+                "shell": 12,
+                "complete_integer_shell": false,
+                "actual_mean_square_velocity": 2.4976820946858744e-16,
+                "reference_mean_square_velocity": 0.0,
+                "coefficient_error_mean_square": 2.4976820946858744e-16
+              }
+            ],
+            "normalization": "(2*pi)^-3 integral |velocity|^2; no kinetic-energy factor 1/2",
+            "scope": "Specified cube-constant velocity field. Analytic integral formulas evaluated in floating point; no interval certificate or numerical continuous-gradient bound."
+          }
+        }
+      ]
+    }
+  ],
+  "same_time_map_identities": [
+    {
+      "case_id": "n16-dt0.001",
+      "pre_map_to_mapped_coefficient_max_difference": 0.0,
+      "p0_norm_difference": 0.0,
+      "exact_band_array_identity": true
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "pre_map_to_mapped_coefficient_max_difference": 0.0,
+      "p0_norm_difference": 0.0,
+      "exact_band_array_identity": true
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "pre_map_to_mapped_coefficient_max_difference": 0.0,
+      "p0_norm_difference": 0.0,
+      "exact_band_array_identity": true
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "pre_map_to_mapped_coefficient_max_difference": 0.0,
+      "p0_norm_difference": 0.0,
+      "exact_band_array_identity": true
+    }
+  ],
+  "source_sha256": {
+    "tools/amr_p0_spectrum.py": "a059ca8a6dc90650865085c2c88002ad2cb3d99accc8d74000854b3a8fee8187",
+    "tools/audit_amr_p0_spectrum.py": "69356f52c2790ebee52353ac62144b9b24151333fd6dc0b9ba57800daab1692f",
+    "tools/amr_projection_decomposition.py": "ad047e3ff7e61cd0d66eb0e6abdb1d5e2ac96931283ce9e359c345e4d245348f",
+    "tools/analyze_amr_mean_quality.py": "d47e7054cc5cf6ac4a17c724996c36c6d6885f376e6b0cb5f8f7ed698c92265c",
+    "tools/analyze_amr_gauss_gradient.py": "050dd8f181b72d6997c3261a24a602906e26ea6c36d4b839909351f59b18d7a8",
+    "tools/compare_amr_resolution_volume_integrated.py": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e"
+  },
+  "quality_verdict": "NO_NEW_QUALITY_THRESHOLD_OR_ORIGINAL_GATE_COMPLETION",
+  "limits": [
+    "No original peak/spectrum quality threshold is reused or retroactively introduced.",
+    "Shells beyond index 7 are cube-truncated; the outside-cube mass is exact in the declared representation but is not resolved into individual shells.",
+    "Formula exactness is analytic; floating implementation has no interval certificate.",
+    "P0 velocity jumps do not define an ordinary finite continuum gradient norm; native Gauss tensors are separate quantities.",
+    "No solver defect, physical singularity, molecular ordering or viscosity reduction follows."
+  ]
+}

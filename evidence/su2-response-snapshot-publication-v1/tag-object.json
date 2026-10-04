@@ -1,0 +1,24 @@
+{
+  "node_id": "TA_kwDOUTGBaNoAKDY3ZmNmOGJkNDg4YjgxYjFkZjA3N2FmMWYyOTI4NzI3OTQzOWU4Zjc",
+  "sha": "67fcf8bd488b81b1df077af1f29287279439e8f7",
+  "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/git/tags/67fcf8bd488b81b1df077af1f29287279439e8f7",
+  "tagger": {
+    "name": "Unjuno",
+    "email": "unjuno.org@unjuno.org",
+    "date": "2026-10-03T22:36:48Z"
+  },
+  "object": {
+    "sha": "aa3569176bad1ef7a26a9c12d3cfa4c133555cc6",
+    "type": "commit",
+    "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/git/commits/aa3569176bad1ef7a26a9c12d3cfa4c133555cc6"
+  },
+  "tag": "su2-conditional-force-response-v3-aa35691",
+  "message": "Conditional SU2 reference-force bounds and continuous response; native solver attribution unresolved\n",
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

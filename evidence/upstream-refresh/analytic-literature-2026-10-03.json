@@ -1,0 +1,69 @@
+{
+  "checked_at_utc": "2026-10-02T23:15:29Z",
+  "scope": "Primary-source refresh on analytic forcing regularity, the unforced positive-defect target, and the announced explanatory companion to the OpenAI forced Navier-Stokes construction.",
+  "pinned_openai_repository_status": {
+    "repository": "openai/NavierStokesAndEuler",
+    "default_branch": "main",
+    "latest_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "pushed_at": "2026-09-10T15:14:13Z",
+    "license": "Apache-2.0",
+    "issues_enabled": false,
+    "discussions_enabled": false,
+    "checked_via": "GitHub REST API"
+  },
+  "records": [
+    {
+      "arxiv_id": "2609.20803v2",
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "authors": ["Peter Constantin", "Mihaela Ignatova", "Vlad Vicol"],
+      "submitted": "2026-09-17",
+      "version_date": "2026-09-29",
+      "primary_url": "https://arxiv.org/abs/2609.20803v2",
+      "verified_scope": [
+        "Suitable weak solution, smooth on compact subsets before the candidate time.",
+        "Force bounded in spatial C^2 up to the candidate time and spatially real analytic locally uniformly on compact time intervals before it.",
+        "Anisotropic derivative bounds on the angular mean through order two, and exact axisymmetry of the full velocity on a positive-radius ball at each pre-singular time; the radius has no assumed lower bound.",
+        "Under these hypotheses the candidate point is regular; application to the OpenAI construction uses properties stated in that manuscript and does not independently verify it."
+      ],
+      "reported_implication": "For a singular solution with the cited velocity properties and bounded C2 force, the force violates the stated local-uniform spatial analyticity condition and cannot vanish identically on any backward space-time cylinder ending at the candidate point.",
+      "limitations": [
+        "Not a contradiction to a C-infinity smooth but nonanalytic compactly supported force.",
+        "Nonvanishing on every backward cylinder is not a pointwise lower bound and does not say the force is nonzero at every time or location.",
+        "Not a claim about molecular alignment, positional certainty, phase transition, or constitutive viscosity.",
+        "The authors explicitly do not independently verify the OpenAI construction."
+      ]
+    },
+    {
+      "arxiv_id": "2609.23868v1",
+      "title": "The Positive Defect Problem: Target and Admissibility Criteria for a Programmatic Search for Unforced Navier-Stokes Blowup",
+      "authors": ["Jarret Petrillo", "James Glimm"],
+      "submitted": "2026-09-20",
+      "version_date": "2026-09-20",
+      "primary_url": "https://arxiv.org/abs/2609.23868v1",
+      "verified_scope": [
+        "Unforced, fixed-viscosity periodic Navier-Stokes problem, distinct from the smooth-forced OpenAI result.",
+        "Positive energy defect is sufficient for a negative answer to the addressed global-regularity alternative; converse is stated unknown.",
+        "The target is reduced to an averaged fine-shell energy-flux floor.",
+        "Paper states no finite computation witnesses the required Galerkin-uniform ceiling; its 128^3/256^3 spectral runs are exploratory for its own search."
+      ],
+      "limitations": [
+        "Does not verify or falsify the forced OpenAI construction.",
+        "Finite-grid numerical observations do not establish an infinite-dimensional regularity or blow-up theorem."
+      ]
+    },
+    {
+      "arxiv_id": "2609.35406v2",
+      "title": "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder",
+      "authors": ["Zhen Lei", "Xiao Ren"],
+      "version_date": "2026-09-29",
+      "primary_url": "https://arxiv.org/abs/2609.35406v2",
+      "verified_scope": [
+        "Expository reconstruction of the profile-construction stage.",
+        "The record says oscillatory-pulse residual correction is deferred to companion Part II.",
+        "Bounded arXiv search did not locate the companion Part II at this check; this does not prove it is unavailable elsewhere."
+      ]
+    }
+  ],
+  "repository_disposition": "No issue or discussion filed: these are mathematical results and conditional literature constraints, not reproduced defects in the three solver targets or pinned OpenAI source repository. Existing solver gates and numerical verdicts unchanged.",
+  "simulation": "None run for this analytic literature refresh."
+}

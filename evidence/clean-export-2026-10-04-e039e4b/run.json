@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "source_commit": "e039e4b4098fedda2f53f76a71d3a447e384b5c1",
+  "dependency_mode": "locked",
+  "command": "python3 -m tools.check_clean_export --locked --revision e039e4b4 --destination work/clean-export-2026-10-04-e039e4b",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "packages": [
+      "iniconfig==2.3.0",
+      "mpmath==1.3.0",
+      "numpy==2.5.2",
+      "packaging==26.3",
+      "pluggy==1.6.0",
+      "Pygments==2.21.0",
+      "pytest==9.1.1",
+      "python-flint==0.9.0",
+      "scipy==1.16.2",
+      "sympy==1.14.0"
+    ],
+    "requirements_file": "requirements-verification-locked.txt"
+  },
+  "source_archive_sha256": "a3ee17e595eb4f377189cd68e231d8f989144a029f1aaa336cc2641a36de315d",
+  "runner_sha256": "4e6d74c27bf5d1187493e864d139e6fdbd775defe47e3a10d208d00937d6c09c",
+  "source_result_json_sha256": "349854e32bc8e5ee8a23cd3713a952c60cd5999cd942de6ca04c30ea673a297d",
+  "source_report_replay_summary_sha256": "7b6f2f1d1f18074a056b2b57021a8eb192e086c1846752e977b45db4139af080",
+  "checks": [
+    {
+      "name": "venv",
+      "exit_code": 0,
+      "original_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "included_log": "venv.log",
+      "included_path_normalized_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "exit_code": 0,
+      "original_log_sha256": "146dbae9f8d27c5e8e48afc1f7f95a4f893e49f895be64c5fe79551aefbfab64",
+      "included_log": "install.log",
+      "included_path_normalized_log_sha256": "6eb92216910a43c33c669f3d969f0c58ee88f9bfe3efaf7d8e80cdbd31333574"
+    },
+    {
+      "name": "report-replay",
+      "exit_code": 0,
+      "original_log_sha256": "dcb3674523d9fadcec43b427d93451b354f842ed55e78be0134212ce09fe6d1a",
+      "included_log": "report-replay.log",
+      "included_path_normalized_log_sha256": "dcb3674523d9fadcec43b427d93451b354f842ed55e78be0134212ce09fe6d1a"
+    },
+    {
+      "name": "su2-standard",
+      "exit_code": 0,
+      "original_log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76",
+      "included_log": "su2-standard.log",
+      "included_path_normalized_log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "exit_code": 0,
+      "original_log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a",
+      "included_log": "axis-force.log",
+      "included_path_normalized_log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "exit_code": 0,
+      "original_log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501",
+      "included_log": "axis-dissipation.log",
+      "included_path_normalized_log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "exit_code": 0,
+      "original_log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6",
+      "included_log": "axis-deformation.log",
+      "included_path_normalized_log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "exit_code": 0,
+      "original_log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737",
+      "included_log": "axis-packet.log",
+      "included_path_normalized_log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "exit_code": 0,
+      "original_log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616",
+      "included_log": "alignment-uncertainty.log",
+      "included_path_normalized_log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "report_replay": {
+    "steps": 47,
+    "success": true,
+    "summary": "report-replay/summary.json",
+    "step_log_hashes_scope": "included normalized copies"
+  },
+  "tracked_reports_and_test_evidence": {
+    "compared_files": 328,
+    "changed_files": []
+  },
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade. Host-specific filesystem prefixes in included log copies are normalized; original and normalized hashes are recorded."
+}

@@ -1,0 +1,17 @@
+{
+  "cases": [
+    "n32-dt0.001",
+    "n64-dt0.001",
+    "n32-dt0.0005"
+  ],
+  "baseline": "existing public n16 capture at 4999a4db38d0ac41a5f253a6665f6701d64f561c",
+  "recipe": "original twenty source files and per-case protocol unchanged",
+  "required_identity": "original main inputs and final U/p byte-identical before probe",
+  "capture": "same read-only cellPoint probe as n16, all mesh members/points/tets/centre and face samples",
+  "execution": "one fresh hosted ARM64 VM per case, serial matrix, preserve incomplete output",
+  "limits": [
+    "capture integrity is separate from local/global reconstruction quality",
+    "no predetermined defect or physical result",
+    "continuous extrema, floating selection and reconstruction resolution study require independent later analysis"
+  ]
+}

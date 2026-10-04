@@ -1,0 +1,134 @@
+{
+  "status": "PASS_COMMON_PHYSICAL_INTERIOR_REPLAY",
+  "analyzer": {
+    "path": "tools/compare_amr_resolution_gauss.py",
+    "sha256": "813eec42d2f1c38e3404c0afb5bcadf7592ddde270b536cf40cd5d90a136c168",
+    "operator_implementation": "tools/analyze_amr_gauss_gradient.py",
+    "operator_implementation_sha256": "19ff555f5269dc77f60cdbb2eb9ee9ce48f322774f355801816206b692f6bae5"
+  },
+  "scope": "Archived first-refinement Gauss-gradient and vorticity diagnostics recomputed on one shared physical interior subdomain. This is not a continuous-field bound, AMR convergence certificate, or solver-defect verdict.",
+  "mask": {
+    "definition": "cell centers whose distance from every periodic boundary exceeds pi/4",
+    "physical_margin": 0.7853981633974483,
+    "equivalent_to_two_base_cell_widths_at": "n=16",
+    "expected_volume_fraction": 0.421875,
+    "same_support_across_resolutions": true
+  },
+  "cases": [
+    {
+      "n": 16,
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v4.json",
+      "protocol_sha256_current": "909a7b9b495cb3938e584b4edf297052c942fa26de1ab5c7f06bc8cfecca878d",
+      "protocol_sha256_at_run": null,
+      "protocol_hash_at_run_limitation": "The original runner computed the protocol hash but raised before serializing its manifest; the tracked protocol was augmented afterward with analysis criteria and a complete limitations field. Do not treat the current file hash as the exact at-run hash.",
+      "archive": "evidence/of13-amr-same-run-map-v4-run3/amr-stage-snapshot.tar.gz",
+      "archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed",
+      "case_directory": "amr-cap5000",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": "0.002",
+          "cells": 4096,
+          "gradient_method": "periodic centered difference, equivalent to the arithmetic-midpoint Gauss face sum on the uniform orthogonal preMap grid",
+          "interior_cells": 1728,
+          "interior_volume_fraction": 0.421875,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.2708060395203592,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.3107816281698726,
+          "gauss_gradient_max_abs_component_error_interior": 0.034057714956153465,
+          "gauss_vorticity_max_abs_component_error_interior": 0.03146407788253395
+        },
+        {
+          "stage": "mapped",
+          "time": "0.002",
+          "cells": 16640,
+          "gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+          "interior_cells": 4416,
+          "interior_volume_fraction": 0.42187500000000006,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.4835155796212415,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.5439492065211085,
+          "gauss_gradient_max_abs_component_error_interior": 0.0759597731311334,
+          "gauss_vorticity_max_abs_component_error_interior": 0.07252184613542109
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+      "protocol_sha256_current": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+      "protocol_sha256_at_run": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+      "protocol_hash_at_run_limitation": null,
+      "archive": "evidence/of13-amr-same-run-map-v5-n32/amr-stage-snapshot-n32.tar.gz",
+      "archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1",
+      "case_directory": "amr-n32-cap120000",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": "0.002",
+          "cells": 32768,
+          "gradient_method": "periodic centered difference, equivalent to the arithmetic-midpoint Gauss face sum on the uniform orthogonal preMap grid",
+          "interior_cells": 13824,
+          "interior_volume_fraction": 0.42187500000000006,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.07343878719874936,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.08624549408460681,
+          "gauss_gradient_max_abs_component_error_interior": 0.018327135537888145,
+          "gauss_vorticity_max_abs_component_error_interior": 0.01719656234737385
+        },
+        {
+          "stage": "mapped",
+          "time": "0.002",
+          "cells": 118784,
+          "gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+          "interior_cells": 31296,
+          "interior_volume_fraction": 0.421875,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.2429941667826338,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.27913324886533414,
+          "gauss_gradient_max_abs_component_error_interior": 0.060834567541292545,
+          "gauss_vorticity_max_abs_component_error_interior": 0.05641623372677487
+        }
+      ]
+    },
+    {
+      "n": 64,
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v7-n64.json",
+      "protocol_sha256_current": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+      "protocol_sha256_at_run": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+      "protocol_hash_at_run_limitation": null,
+      "archive": "evidence/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz",
+      "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+      "case_directory": "amr-n64-cap920000",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": "0.002",
+          "cells": 262144,
+          "gradient_method": "periodic centered difference, equivalent to the arithmetic-midpoint Gauss face sum on the uniform orthogonal preMap grid",
+          "interior_cells": 110592,
+          "interior_volume_fraction": 0.42187500000000006,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.01882998246379331,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.0221211743055598,
+          "gauss_gradient_max_abs_component_error_interior": 0.006008229458850101,
+          "gauss_vorticity_max_abs_component_error_interior": 0.005654306161747086
+        },
+        {
+          "stage": "mapped",
+          "time": "0.002",
+          "cells": 901888,
+          "gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+          "interior_cells": 235584,
+          "interior_volume_fraction": 0.4218750000000001,
+          "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.1214306100704969,
+          "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.14084990650097268,
+          "gauss_gradient_max_abs_component_error_interior": 0.03320210169423618,
+          "gauss_vorticity_max_abs_component_error_interior": 0.03128334927669804
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Mapped values are compared through a specified finite-volume Gauss reconstruction using captured face Uf and S.",
+    "The exact gradient and vorticity are evaluated at cell centers, not integrated over cells.",
+    "The preMap stage uses centered periodic differences, equivalent to arithmetic-midpoint Gauss interpolation on its uniform orthogonal grid.",
+    "The n=16 v4 run manifest records a post-hoc protocol-hash limitation; its raw archive hash is verified, and the current protocol is separately hashed.",
+    "These are exploratory single-run map events with no preregistered AMR quality threshold; no OpenFOAM defect or physical consequence is inferred."
+  ]
+}

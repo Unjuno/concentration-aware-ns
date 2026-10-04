@@ -1,0 +1,11 @@
+{
+  "numeric_source_commit": "05154f762b19b047657c4bcc609397755c2fa9b8",
+  "all_three_local_v2_rechecks_pass": true,
+  "guarded_full_verification_json_byte_identical": true,
+  "hosted_v2_result": "UNPROVED",
+  "full_suite": "366 passed, 1 skipped, 89 subtests",
+  "limits": [
+    "32-bit downward quantization is conservative, not universal host identity guarantee",
+    "Old unquantized failure and records retained"
+  ]
+}

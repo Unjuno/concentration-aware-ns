@@ -91,6 +91,55 @@ experiment also reports absorption and non-universal dependence on control
 parameters. This is an experimentally tractable companion track, not a
 transfer of the OpenAI theorem or a molecular validation of it.
 
+### Analytic model check: why the standard photon-fluid analogy is different
+
+In a common dimensionless paraxial model, the slowly varying optical envelope
+obeys a cubic nonlinear Schrödinger equation
+
+```
+i partial_t psi = -(1/2) Delta_perp psi + g |psi|^2 psi,
+psi = sqrt(rho) exp(i phi),  v = grad_perp phi.
+```
+
+Separating real and imaginary parts gives
+
+```
+partial_t rho + div_perp(rho v) = 0,
+partial_t v + (v.grad_perp)v
+  = -g grad_perp rho
+    + (1/2) grad_perp(Delta_perp sqrt(rho)/sqrt(rho)).
+```
+
+The first equation transports a variable density: it is not the
+incompressibility condition `div v=0`. The second is an inviscid compressible
+Euler-type equation with a dispersive quantum-pressure term, not a viscous
+Navier–Stokes equation. Locally, for constant `g`, the barotropic pressure
+corresponds to `p(rho)=g rho^2/2` up to an additive constant, while the
+quantum-pressure term remains unless a separately justified long-wave limit
+is taken. Because `v` is a phase gradient, it is irrotational away from phase
+singularities; vortices enter through singular phase winding. Actual optical
+setups may further add loss, nonlocal response, drive, or a cavity, each of
+which changes the reduced equations.
+
+This narrows the analogy rather than dismissing it: photon-fluid work supplies
+experimentally useful compressible dispersive-flow systems, and its
+obstacle-drag/superfluid thresholds may be studied on their own terms. It does
+not inherit the determinant-one material-flow map, the OpenAI forced
+incompressible solution, or a molecular-viscosity interpretation. A fair
+concentration-aware optical benchmark would compare the full NLSE against a
+stated dispersionless Euler reduction on a smooth exact solution, then report
+density/intensity, phase velocity, gradient, dispersive residual, and loss
+separately. It must pin the optical equation and parameters before designing
+a numerical test.
+
+The model class is supported by Carusotto and Ciuti's primary-source review
+([RMP 85, 299](https://doi.org/10.1103/RevModPhys.85.299)); the specific
+obstacle-drag experiment used a biased photorefractive SBN:Ce crystal and
+reports linear absorption ([Michel et al., 2018](https://doi.org/10.1038/s41467-018-04534-9)).
+The paraxial model is commonly 2D in transverse coordinates with propagation
+as its evolution variable, so dimensionality and observable mapping also
+differ from the 3D time-dependent Navier–Stokes benchmark.
+
 An experiment on actual molecular viscosity would need a different bridge:
 use a specified material, drive it through a measured strain-rate history,
 and jointly record molecular orientation/order, stress-derived apparent

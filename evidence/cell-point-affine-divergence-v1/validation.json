@@ -1,0 +1,10 @@
+{
+  "numeric_source_commit": "b3ed2b74754e19c63909811445a57dea82dfd553",
+  "guarded_export_analysis_byte_identical": true,
+  "controls": "4 passed",
+  "full_suite": "375 passed, 1 skipped, 89 subtests",
+  "limits": [
+    "Same-host exact signed trace enclosure; no universal portability claim",
+    "Point interpolant divergence is separate from discrete flux mass balance"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS_GIT_DIRECTORY_FREE_EXPORT_WITH_PROCESS_NETWORK_AND_GIT_OPEN_GUARDS",
+  "actual_cwd": "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/su2-reference-clean-1d9708/source",
+  "tools_module_origins": {
+    "tools.reference": "tools/reference.py"
+  },
+  "blocked_attempts": [],
+  "environment_metadata_prepared_before_guards": false,
+  "scope": "Three original SU2 archives and summary are included in the frozen selected export; the scientific output receipt is excluded. The exported analysis completed without Python process/network/Git-object opens; dependencies are the locked same-host verification environment."
+}

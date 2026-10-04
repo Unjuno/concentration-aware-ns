@@ -1,0 +1,15 @@
+{
+  "status": "INCOMPLETE",
+  "completed_cases": 1,
+  "expected_cases": 2,
+  "preflight_only": false,
+  "cases": [
+    {
+      "case": "baseline",
+      "converged_steps": 48,
+      "steps": 50,
+      "velocity_relative_l2": 0.022771503203074146
+    }
+  ],
+  "preflight_status": "SUCCESSOR_ACTUAL_PROBE_VERIFIED"
+}

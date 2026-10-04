@@ -1,0 +1,28 @@
+{
+  "D": "diag(shear_rate,-shear_rate,0)",
+  "F_eigenvectors": "coordinate axes, which are the extension/compression axes",
+  "F_is_symmetric_trace_free": true,
+  "F_xx": "shear_rate*(alpha - 3*beta)*(exp(alpha*t) - 1)*exp(-alpha*t)/alpha**2",
+  "F_yy": "shear_rate*(1 - exp(alpha*t))*(alpha - 3*beta)*exp(-alpha*t)/alpha**2",
+  "F_zz": "0",
+  "W": "zero",
+  "assumptions": [
+    "smooth homogeneous incompressible extension v=(shear_rate*x,-shear_rate*y,0)",
+    "constant positive alpha and lambda; beta >= 0",
+    "trace initialized at q(0)=3*beta/alpha",
+    "initial deviatoric effective strain F(0)=0",
+    "no spatial dependence, so transport and strain diffusion vanish"
+  ],
+  "constitutive_viscous_coefficient": "mu1",
+  "elastic_stress_coefficient_symbol": "lam",
+  "projected_total_stress_coefficient": "(alpha**2*mu1*exp(alpha*t) + alpha*lam*exp(alpha*t) - alpha*lam - 3*beta*lam*exp(alpha*t) + 3*beta*lam)*exp(-alpha*t)/alpha**2",
+  "scope": "Exact homogeneous tensor ODE for one visco-morphoelastic Kelvin\u2013Voigt model. Tensor principal axes follow the imposed extension; this is not particle alignment, positional certainty, a Newtonian viscosity law, a singularity result, or evidence about OpenAI's flow. The projected total stress coefficient includes elastic memory stress and must not be mislabeled as the fixed constitutive viscous coefficient.",
+  "source": "Banerjee et al., arXiv:2610.01487v1, equations (1.1), (1.2), (3.2)",
+  "source_sha256": "ae9205a5e209b023616b902bab10394b47ed4f4ef8e970fa9f8c9a863eb439f4",
+  "status": "PASS",
+  "sympy_version": "1.14.0",
+  "tool": "SymPy exact homogeneous reduction",
+  "trace_equation": "q'=-alpha*q+3*beta",
+  "trace_solution": "q=3*beta/alpha",
+  "weak_limit_note": "The paper's vanishing-diffusion weak limit may contain a Jaumann commutator defect; strong convergence of F in L-infinity L2 or of grad(v) in L2 is sufficient for its disappearance."
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-03",
+  "status": "PASS",
+  "commit": "b6dde6fa5b1014f5149a4ed6ca8e8d119df3b2a3",
+  "command": "PYTHONPATH=. uv run --with-requirements requirements-verification-locked.txt -- pytest -q",
+  "environment": {
+    "os": "macOS 25.6.0",
+    "architecture": "arm64",
+    "python": "3.14.5",
+    "uv": "0.11.17"
+  },
+  "dependency_lock": {
+    "path": "requirements-verification-locked.txt",
+    "sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "result": {
+    "passed": 212,
+    "skipped": 1,
+    "subtests_passed": 5,
+    "duration_seconds": 105.44
+  },
+  "log": {
+    "path": "evidence/tests/full-suite-2026-10-03-b6dde6f.log",
+    "bytes": 377,
+    "sha256": "40b41dfc2740982ada05ffc1a3e049b271ff4e69ac321544ffd23839e6f3383a"
+  },
+  "scope_limit": "This is the benchmark repository test suite on the recorded macOS environment; it is not a full build/test of OpenFOAM, SU2, or PhysicsNeMo."
+}

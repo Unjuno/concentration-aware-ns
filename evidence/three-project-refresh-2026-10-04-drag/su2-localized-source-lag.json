@@ -1,0 +1,47 @@
+{
+  "scope": "Analytic manufactured-force pointwise old-time versus target-time mismatch only. This is not a PDE solution-error attribution or a solver defect finding.",
+  "source_time_contract": "completed k updates represent k*dt; callback uses (k-1)*dt",
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "dt": 0.001,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.0005815885700585975,
+      "rms_force_difference": 7.760128817308193e-05,
+      "max_relative_force_difference": 0.001008752683428791,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "dt": 0.0005,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.00029072159731970685,
+      "rms_force_difference": 3.879094409525892e-05,
+      "max_relative_force_difference": 0.0005042481837919296,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "dt": 0.00025,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.00014534263127379546,
+      "rms_force_difference": 1.9393047655996373e-05,
+      "max_relative_force_difference": 0.0002520920606829731,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    }
+  ],
+  "successive_halving_force_difference_orders": [
+    1.0003607125390805,
+    1.000180344999887
+  ],
+  "interpretation": "The sampled forcing mismatch scales approximately linearly with dt, consistent with first-order time-level displacement. It cannot quantify its contribution to endpoint velocity error because the discrete flow operator, nonlinear response, spatial error, and failed inner solves also contribute."
+}

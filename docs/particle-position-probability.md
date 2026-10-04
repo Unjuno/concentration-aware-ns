@@ -57,6 +57,27 @@ relative to the axis becomes localized while 3D location, peak density, and
 volume do not concentrate. The event depends on the chosen observation window;
 it is not an intrinsic increase in certainty for every position question.
 
+The same model gives a sharper bound for any fixed-radius ball, including one
+whose center moves with time. Write the transformed axial coordinate as
+`Z ~ N(0, sigma^2 Q^(-2C))`. A ball of radius `R` centered at any point has
+axial projection contained in an interval of length `2R`. The axial density is
+bounded above by `Q^C/(sqrt(2*pi)*sigma)`, so
+
+```
+P(X_t is in any ball of radius R)
+  <= P(Z is in the ball's axial projection)
+  <= sqrt(2/pi) * R * Q^C / sigma  -> 0.
+```
+
+The bound is uniform over the ball center. It makes “position becomes
+predictable” false for this particular global affine Gaussian model if
+predictability means entering a fixed bounded 3D observation region: the
+transverse tube probability tends to one, but every fixed ball probability
+tends to zero. This is an exact consequence of the imposed Gaussian and affine
+map, not a prediction for the nonlinear selected PDE or for molecules. The
+symbolic bound is checked by `tools.check_alignment_uncertainty` and
+`tools.check_particle_position_probability`.
+
 There is nevertheless a precise directional-probability consequence under an
 explicit extra model. Sample an initial *infinitesimal separation direction*
 uniformly from the sphere. For the angle `theta0` to the unoriented axis, set
@@ -94,6 +115,34 @@ are not jointly formalized and the constants are non-effective. This does not
 certify any fixed-size packet through the endpoint. Interparticle forces,
 molecular alignment, phase change and constitutive viscosity remain
 unmodeled.
+
+### Qualitative limit for non-isotropic direction laws
+
+The closed-form probability above uses isotropy, but its limiting conclusion
+does not. Fix any Borel probability law `lambda` on unoriented initial directions
+at `t0`, independent of the later observation time. Let `E` be the set of
+directions exactly perpendicular to the axis. For each initial direction
+outside `E`, its axial component is nonzero and
+`tan(theta_t)=Q^(3C/2)tan(theta0) -> 0`; its indicator of lying in any fixed
+positive-angle axis cone therefore tends to one. For each direction in `E`,
+the axial component remains zero under the transverse-plane rotation/stretch,
+so that indicator remains zero for every cone narrower than a half-space.
+Bounded convergence applied to these indicators gives
+
+```
+lim P_lambda(theta_t <= theta_star) = 1 - lambda(E),
+0 < theta_star < pi/2.
+```
+
+Thus every fixed initial direction law assigning zero mass to the exactly
+transverse plane has directional alignment in probability; isotropy is
+sufficient, but not necessary. If a law places mass `p` on that plane, the
+limiting aligned fraction is exactly `1-p`. The finite-time probability still
+depends on the full initial law, and a family of laws that changes with `Q` is
+outside this bounded-convergence argument. This extends only the
+infinitesimal-direction statement derived from the selected local flow
+derivative. It supplies no law for actual molecules, no absolute-position
+concentration, and no uniform finite-packet estimate near the endpoint.
 
 ## Conditional finite-aspect Jeffery director model
 

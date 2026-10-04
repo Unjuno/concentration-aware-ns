@@ -1,0 +1,11 @@
+{
+  "scope": "Exact symbolic identities only; no support-family instantiation or end-to-end tube theorem.",
+  "sympy": "1.14.0",
+  "D_equals_half_minus_h": true,
+  "2D_plus_2h_equals_one": true,
+  "similarity_chart_factor_identity": true,
+  "normalized_axis_trajectory_identity": true,
+  "F_derivative_factorization": true,
+  "derivative_factor": "(1-s^2)^(-D-1) * (1-2*h*s^2)",
+  "positive_lower_bound_under_note_assumptions": "1-2*h > 0 for 0<h<1/2 and |s|<1"
+}

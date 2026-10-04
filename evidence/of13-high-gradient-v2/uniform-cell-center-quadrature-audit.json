@@ -1,0 +1,125 @@
+{
+  "scope": "Post-hoc exact-MMS velocity-error audit of the four completed OpenFOAM uniform spatial cases at dt=0.001, t=0.05.",
+  "reconstructions": [
+    "Stored cell-centre U held constant within each verified uniform Cartesian cell.",
+    "Cellwise linear field U + grad(U) dot (x-C), with periodic Gauss gradient from the uniform orthogonal finite-volume stencil."
+  ],
+  "gradient_method": "Periodic central difference, cross-checked against the saved OpenFOAM grad(U) postprocessing field from the AMR probe with the tensor index order normalized.",
+  "gradient_crosscheck": {
+    "saved_field": "work/of13-amr-first-refinement-v1/uniform-n16/0.002/grad(U)",
+    "max_abs_difference": 3.0531133177191805e-15,
+    "saved_field_sha256": "2b5ddada4e46f1c07a1ea91155ebe2353ed5814432418610c80f1207b88bbc08"
+  },
+  "cell_average_formula_crosscheck_max_abs_difference": 1.8041124150158794e-16,
+  "not_claimed": [
+    "This is not the solver's unique reconstructed field or a continuous pointwise bound.",
+    "It does not recompute gradient, vorticity or spectrum gates.",
+    "It does not change the frozen acceptance protocol; it tests how much its centre-sampled velocity norm depends on spatial quadrature."
+  ],
+  "cases": [
+    {
+      "n": 16,
+      "case": "n16-dt0.001",
+      "end_time": 0.05,
+      "cell_count": 4096,
+      "center_sample_relative_l2": 0.08875833380125643,
+      "exact_cell_average_relative_l2": 0.15557713759516686,
+      "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
+        "8": 0.481117479865935,
+        "10": 0.4811174798659343
+      },
+      "cellwise_gauss_linear_cell_volume_relative_l2_by_gauss_order": {
+        "8": 0.22636956499792585,
+        "10": 0.22636956499792565
+      },
+      "quadrature_abs_difference": {
+        "piecewise_constant": 7.216449660063518e-16,
+        "gauss_linear": 1.942890293094024e-16
+      },
+      "field_sha256": {
+        "C": "5c14867ddaab8e4c56868d31ea118a7babcfd79595b59ca96d955b28ced0179e",
+        "U": "56c0aab7aa99fb4ca696fca84f38ddc1be80fb61313b432d2929e25db1968979",
+        "parameters": "3aaec096dc8520ede8fd698917d8638a0b66ae6e7d78bee88c830286ff2aef4c",
+        "solver_log": "d05b1b23413d9ecc40598b5fe3ec6f8b5d8546a4a8e1e9e0d89ad1c9ede247f2"
+      }
+    },
+    {
+      "n": 32,
+      "case": "n32-dt0.001",
+      "end_time": 0.05,
+      "cell_count": 32768,
+      "center_sample_relative_l2": 0.018760163452901026,
+      "exact_cell_average_relative_l2": 0.035814291081609745,
+      "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
+        "5": 0.2417007123870892,
+        "6": 0.24170071238723462
+      },
+      "cellwise_gauss_linear_cell_volume_relative_l2_by_gauss_order": {
+        "5": 0.04970158434501249,
+        "6": 0.0497015843393725
+      },
+      "quadrature_abs_difference": {
+        "piecewise_constant": 1.4541146065027988e-13,
+        "gauss_linear": 5.6399884762470265e-12
+      },
+      "field_sha256": {
+        "C": "0dbace39111e8f2e7b9ace3bf80257f13d34c287227cdd5995606a7e6dd7a834",
+        "U": "c313ce692165f9cb53667dfee38d48c09933f1eed7dd950e335217109f717563",
+        "parameters": "84827a186d0d7c47a85e3e83d10e5ac2e7a9eae57825e64825259822f1c88fa6",
+        "solver_log": "2bad7608ff659186a7a6ea3b59fc40fbb1352fcfcec07c3e7a99854b07884acd"
+      }
+    },
+    {
+      "n": 64,
+      "case": "n64-dt0.001",
+      "end_time": 0.05,
+      "cell_count": 262144,
+      "center_sample_relative_l2": 0.004780664208810196,
+      "exact_cell_average_relative_l2": 0.008936473409921788,
+      "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
+        "3": 0.12104703105868478,
+        "4": 0.12104704619711054
+      },
+      "cellwise_gauss_linear_cell_volume_relative_l2_by_gauss_order": {
+        "3": 0.011928815771668884,
+        "4": 0.011928071645398141
+      },
+      "quadrature_abs_difference": {
+        "piecewise_constant": 1.5138425762950547e-08,
+        "gauss_linear": 7.44126270742565e-07
+      },
+      "field_sha256": {
+        "C": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c",
+        "U": "8226679a728c1fdc87b5a88635ad1ed2caeb3201dfc0105d659ca91d1e01ca72",
+        "parameters": "538db3cda4836b66f8f59b9db6b211c8d304f97f1ab1ea287052599bac7b0882",
+        "solver_log": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292"
+      }
+    },
+    {
+      "n": 128,
+      "case": "n128-dt0.001",
+      "end_time": 0.05,
+      "cell_count": 2097152,
+      "center_sample_relative_l2": 0.0012095963662190174,
+      "exact_cell_average_relative_l2": 0.002252264234734789,
+      "piecewise_constant_cell_volume_relative_l2_by_gauss_order": {
+        "3": 0.06054471685564148,
+        "4": 0.06054471732921928
+      },
+      "cellwise_gauss_linear_cell_volume_relative_l2_by_gauss_order": {
+        "3": 0.0029618355033079738,
+        "4": 0.002961787479445716
+      },
+      "quadrature_abs_difference": {
+        "piecewise_constant": 4.73577801973768e-10,
+        "gauss_linear": 4.802386225754435e-08
+      },
+      "field_sha256": {
+        "C": "48082a4d2a20cde61e0deeed91a6c621e7655e2faa3508fcdf808610667edfcf",
+        "U": "7428e662a592c6edbe1638b13c1005ae9f212a584b538ffedf90f33f53ec72e5",
+        "parameters": "01e513533f90349fb23ed16a1b310296b62d635e805da2b57b725badcf11a631",
+        "solver_log": "af65c5d3a600d07be3e41e7249d2d70ef33f358b0979431f473f26b16f782ebe"
+      }
+    }
+  ]
+}

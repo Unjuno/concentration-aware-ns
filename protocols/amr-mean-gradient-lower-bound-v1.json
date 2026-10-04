@@ -1,0 +1,24 @@
+{
+  "schema": "amr-mean-gradient-lower-bound/v1",
+  "status": "Analytic necessary-condition audit, frozen after the disclosed n64 cutoff-7 pilot",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "stages": ["preMap", "mapped", "postSolve"],
+  "cutoff_cubes": [7, 31, 63],
+  "reference_peak_sample_grid": 64,
+  "field_constraint": "A periodic H1 velocity whose exact native cube averages equal the archived numerical values, interpreted as nominal finite-volume means",
+  "test_field": "a=P_K(w-u), computed solely as archived numerical values minus independently integrated exact MMS native means",
+  "identity": "<w-u,a-mean(a)>=mean(|a-mean(a)|^2)",
+  "hminus_upper": "sum_inside_nonzero |a_hat_k|^2/|k|^2 plus all outside L2 mass divided by (cutoff+1)^2",
+  "gradient_lower": "mean(|a-mean(a)|^2) divided by the upper H-1 norm",
+  "limits": [
+    "No particular velocity reconstruction is assumed; the lower bound is conditional on exact native-mean conservation and periodic H1 regularity.",
+    "Curl inherits the same absolute L2 lower bound only for divergence-free reconstructions and the divergence-free reference.",
+    "Original solver cell-centered values are interpreted as nominal means, not claimed to carry an upstream exact-average guarantee.",
+    "Analytic formulas use floating point without interval-certified rounding; no original gate is upgraded.",
+    "The cutoff-7 n64 pilot was observed before this protocol; these are not blind prospective thresholds.",
+    "No new solver threshold, upstream defect, nonconvergence theorem for the solver, physical singularity or viscosity inference follows."
+  ]
+}

@@ -81,6 +81,52 @@ experienced the spatially uniform axisymmetric strain
 mathematical correspondence between two kinematic laws, not a derivation of a
 Jeffery model for the constructed flow.
 
+For an imposed isotropic distribution of initial unoriented directors and a
+fixed target angle `0 < beta_star < pi/2`, let
+`a=Q^(3*kappa*C/2)`. Since `|cos(beta_0)|` is uniform on `[0,1]`, direct
+integration gives
+
+```
+P(beta(t) <= beta_star) = 1 - a/sqrt(a^2 + tan(beta_star)^2).
+```
+
+For every fixed prolate aspect ratio (`kappa>0`) and `C>0`, this tends to one
+as `Q -> 0`; the sphere has `kappa=0` and no distinguished director. This
+probability comes from the added initial-director law and ideal Jeffery ODE.
+It is not a probability law supplied by Navier–Stokes, and does not describe
+molecular orientation or absolute particle positions. Thermal rotational
+diffusion can change the limit. The reduced tangent-plane model with
+`D_r ~ (1-t)^(-delta)` has a formal variance threshold at `delta=1`; for
+`delta>1` its variance divergence marks breakdown of its small-angle
+assumption. A separate full-sphere Smoluchowski analysis shows, within that
+imposed model, a finite-width stationary law at `delta=1` and isotropization
+for `delta>1`, rather than unbounded angular variance. See
+`docs/full-sphere-rotational-diffusion.md`. These are separate model
+assumptions, not a microscopic derivation. For `delta<1`, finite integrated
+diffusion plus the asymptotic-pseudotrajectory/strict-Lyapunov framework
+narrows the pathwise limit set to the equator or a pole; it does not yet
+exclude the unstable-equator case or prove almost-sure alignment.
+
+The alignment law depends on **accumulated strain**
+`I(t)=integral_[t0,t] gamma(s) ds`, not on the instantaneous fact that
+`gamma(t)` becomes unbounded. For the prescribed family
+`gamma(t)=gamma0*(1-t)^(-alpha)`, every `alpha>0` has a pointwise-diverging
+rate, but `I(t)` has a finite endpoint limit when `0<alpha<1`. Then a Jeffery
+director has
+`tan(beta(T-))/tan(beta(t0)) = exp(-3*kappa*gamma0*(1-t0)^(1-alpha)/(1-alpha)) > 0`;
+complete alignment does not follow. An exact dimensionless example uses
+`gamma=(1/10)/sqrt(1-t)`, `kappa=3/4`: the rate diverges, yet the integrated
+strain is only `1/5`, and an initially isotropic director ensemble has only
+3.62% probability of entering a fixed 10-degree cone in the endpoint limit.
+At and above `alpha=1`, the accumulated strain instead diverges; the OpenAI
+construction's idealized `C/[2(1-t)]` rate is exactly the critical case, so it
+does predict limiting director alignment **if** a finite Jeffery object
+actually experiences that spatially uniform strain. The construction's
+pointwise continuum derivative does not establish that finite-size premise.
+Exact integration and the counterexample are replayed by
+`tools.check_alignment_integrability_threshold` and recorded in
+`evidence/tests/alignment-integrability-threshold.json`.
+
 For the aspect ratios 10 and 100 measured in the rigid-fiber study,
 `kappa=99/101` and `9999/10001`; the ideal Jeffery alignment rate is therefore
 within about 2% of the slender-particle limit. In that regime, aspect ratio

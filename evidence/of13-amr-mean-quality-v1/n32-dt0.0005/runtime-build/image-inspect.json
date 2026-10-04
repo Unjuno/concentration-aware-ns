@@ -1,0 +1,74 @@
+[
+    {
+        "Id": "sha256:ef3f540d35812e3490e62774798c538ac3ebc88d695b4371c654f255734d1575",
+        "RepoTags": [
+            "concentration-aware-ns:of13-amr-mean-v1"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-03T13:00:25.299649249Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "foamRun",
+                "-help"
+            ],
+            "ArgsEscaped": true,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/case",
+            "Entrypoint": [
+                "/bin/bash",
+                "-c",
+                "source /opt/openfoam13/etc/bashrc; exec \"$@\"",
+                "--"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.version": "24.04"
+            },
+            "Shell": [
+                "/bin/bash",
+                "-c"
+            ]
+        },
+        "Architecture": "arm64",
+        "Os": "linux",
+        "Size": 1612003695,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/efjo1yjk2ptz0m4q8q64f1v2u/diff:/var/lib/docker/overlay2/udjgvqwlnf28ffs2aoc4reomn/diff:/var/lib/docker/overlay2/79640c9bcc1f968ce9dceae7fb9e2f1100b823bde80b7cefed9dcabe515a23bc/diff",
+                "MergedDir": "/var/lib/docker/overlay2/eb685fc510px94gc1sns20pph/merged",
+                "UpperDir": "/var/lib/docker/overlay2/eb685fc510px94gc1sns20pph/diff",
+                "WorkDir": "/var/lib/docker/overlay2/eb685fc510px94gc1sns20pph/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+                "sha256:f9206f28875c2eaa8b2a845df9c1b11a4bdb2fd844932cf76cb4fb2753b63ff3",
+                "sha256:99475ee227c0f840bd0674a8d6e6910f2aacd3419c6d7e9e13ae3cb24054dea2",
+                "sha256:0d7286c0d2fbdf87fa55044b6aaf0639a0f1878db571dd072c75f2f2c767cb52"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-03T13:00:31.973170124Z"
+        }
+    }
+]

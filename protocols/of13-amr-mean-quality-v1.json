@@ -1,0 +1,174 @@
+{
+  "schema": "of13-amr-mean-quality/v1",
+  "status": "prospective successor informed by prior N=4 archives; freeze before any N=3 run",
+  "target": {
+    "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "package_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam13_20260624_arm64.deb",
+    "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+    "platform": "linux/arm64",
+    "module_source_sha256": {
+      "Make/files": "8ddc720c6ba08247ecd5e88576481b2fbe357545d20fd2b16e4b28349a79ac3b",
+      "Make/options": "988d042122697ae042d99f2ad0895ab68fd81ed3ec3a9df23b0e68f1613356c1",
+      "correctPressure.C": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+      "incompressibleFluid.C": "07435202057db9850178690b61b4bc99cf46202cac9b0e78163a5f6ff52ae9d5",
+      "incompressibleFluid.H": "8781de41392ad7dc30d65c80d6cc4564744d16c672eaeede6fcdbce5571173b7",
+      "momentumPredictor.C": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+      "moveMesh.C": "f6543b7b004e67221d0a977d926198f0b0f6d56dd63d1d8647c887a457c9612e",
+      "setRDeltaT.C": "153f116837e664db4ceac450554b8066911fc0cd9b6085fc8e8e5bfe89f2f177"
+    },
+    "stock_payload_audit": "evidence/upstream-refresh/of13-amr-stock-payload-hashes-v1.json",
+    "stock_payload_audit_sha256": "bece41355ea63670bd483432ee21b0bf32973b2de2d461bfb1c74fe74cde1000"
+  },
+  "model": {
+    "profile": "smooth periodic localized high-gradient MMS",
+    "domain": "[0,2*pi)^3",
+    "frequency": 3,
+    "nu": 0.01,
+    "end": 0.05,
+    "pre_map_time": 0.002,
+    "max_refinement": 1
+  },
+  "cases": [
+    {
+      "id": "n16-dt0.001",
+      "n": 16,
+      "dt": 0.001,
+      "refine_interval": 2,
+      "max_cells": 5000,
+      "expected_first_mapped_cells": 16640,
+      "candidate_prediction": {
+        "n": 16,
+        "initial_cells": 4096,
+        "raw_sensor_candidates": 1280,
+        "one_layer_periodic_face_buffer_candidates": 1792,
+        "predicted_cells_after_one_level": 16640,
+        "sensor_thresholds_strict": [
+          0.01,
+          1.1
+        ],
+        "buffer_layers": 1,
+        "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+      },
+      "capture_disabled_control": true
+    },
+    {
+      "id": "n32-dt0.001",
+      "n": 32,
+      "dt": 0.001,
+      "refine_interval": 2,
+      "max_cells": 120000,
+      "expected_first_mapped_cells": 118784,
+      "candidate_prediction": {
+        "n": 32,
+        "initial_cells": 32768,
+        "raw_sensor_candidates": 10368,
+        "one_layer_periodic_face_buffer_candidates": 12288,
+        "predicted_cells_after_one_level": 118784,
+        "sensor_thresholds_strict": [
+          0.01,
+          1.1
+        ],
+        "buffer_layers": 1,
+        "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+      },
+      "capture_disabled_control": false
+    },
+    {
+      "id": "n64-dt0.001",
+      "n": 64,
+      "dt": 0.001,
+      "refine_interval": 2,
+      "max_cells": 920000,
+      "expected_first_mapped_cells": 901888,
+      "candidate_prediction": {
+        "n": 64,
+        "initial_cells": 262144,
+        "raw_sensor_candidates": 83712,
+        "one_layer_periodic_face_buffer_candidates": 91392,
+        "predicted_cells_after_one_level": 901888,
+        "sensor_thresholds_strict": [
+          0.01,
+          1.1
+        ],
+        "buffer_layers": 1,
+        "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+      },
+      "capture_disabled_control": false
+    },
+    {
+      "id": "n32-dt0.0005",
+      "n": 32,
+      "dt": 0.0005,
+      "refine_interval": 4,
+      "max_cells": 120000,
+      "expected_first_mapped_cells": 118784,
+      "candidate_prediction": {
+        "n": 32,
+        "initial_cells": 32768,
+        "raw_sensor_candidates": 10368,
+        "one_layer_periodic_face_buffer_candidates": 12288,
+        "predicted_cells_after_one_level": 118784,
+        "sensor_thresholds_strict": [
+          0.01,
+          1.1
+        ],
+        "buffer_layers": 1,
+        "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+      },
+      "capture_disabled_control": false
+    }
+  ],
+  "standard": {
+    "residual_tolerance": 1e-08,
+    "max_outer_correctors": 12,
+    "all_steps_required": true
+  },
+  "quality": {
+    "velocity_mean_mismatch_relative_l2": 0.02,
+    "gradient_mean_mismatch_relative_l2": 0.05,
+    "curl_mean_mismatch_relative_l2": 0.05
+  },
+  "quality_scope": "Full-domain volume-weighted mismatch against exact cube means, normalized by integrated continuum reference energy. Gradient/curl are specified P0 native Gauss tensors; projection floors and total P0 errors are separate. These 5% mean gates are new engineering tolerances, not a reuse of the original peak-error rule.",
+  "threshold_rationale": "Hold finite-volume mean error to 2% of reference velocity norm and derivative mean error to 5% of reference derivative norm. Chosen prospectively as explicit accuracy targets; not application-certified tolerances or adjusted per result. N=3 is an unexecuted parameter extension of the validated N=4 reference.",
+  "measurements": {
+    "stages": [
+      "preMap",
+      "mapped",
+      "postSolve"
+    ],
+    "state_times": {
+      "preMap": 0.002,
+      "mapped": 0.002,
+      "postSolve": 0.05
+    },
+    "fields": "Cell center, volume, U, p, native Gauss gradient of U and native Gauss gradient of independent real-space analytic center-value field.",
+    "reference_operator_floor": "Apply the same native Gauss operator to independently real-space-evaluated exact MMS center values at each stage. Compare this tensor to exact cube mean derivatives. Failure indicates reference-reconstruction underresolution, not a solver defect.",
+    "instrumentation_control": "For n16 only, same compiled module/case inputs with snapshot callbacks disabled; final U and p must be byte-identical before measurement integrity can pass."
+  },
+  "reproduction": {
+    "adequate_counts": [
+      32,
+      64
+    ],
+    "rule": "Only consider a persistent mean-gate discrepancy if the n16 disabled-capture control matches and both fixed-dt fine cases have standard PASS, reference-operator mean-gradient/curl PASS at every captured stage, and measured mean-quality FAIL at postSolve. Otherwise NOT_OBSERVED only if both pass all specified mean gates; incomplete/mixed evidence is UNCERTAIN. No upstream contract violation follows."
+  },
+  "resources": {
+    "runner": "ubuntu-24.04-arm",
+    "runner_documentation": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+    "docker_cpus": 3,
+    "docker_memory": "12g",
+    "pids_limit": 512,
+    "case_timeout_seconds": 2700,
+    "minimum_free_disk_bytes": 8000000000,
+    "fresh_vm_per_case": true
+  },
+  "publication": "Retain raw snapshots/inputs/logs and source/image/module hashes. Never overwrite older exploratory protocols or evidence.",
+  "limits": [
+    "This is an AMR mean-quality study; it does not replace the frozen N=4 uniform benchmark or its peak/spectrum gates.",
+    "Sampled peak discrepancies are diagnostics; continuous extrema and AMR spectra remain separate open obligations.",
+    "The thresholds are prospective but informed by earlier N=4 diagnostics; no blinded study or independent benchmark-design novelty is claimed.",
+    "Source equivalence of the whole packaged runtime is not established; instrumented module source is verified and its load is recorded.",
+    "Quality failure alone does not imply an implementation bug, singularity, molecular alignment, phase transition or viscosity change."
+  ],
+  "reference_precheck": "evidence/tests/amr-mean-quality-reference-precheck-v1.json"
+}

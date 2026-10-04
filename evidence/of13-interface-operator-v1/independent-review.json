@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-03",
+  "status": "INDEPENDENT_READ_ONLY_REVIEW_COMPLETE",
+  "frozenCommit": "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1",
+  "githubRunId": "37118442037",
+  "archiveSha256": "b3a5cf8e4bc325e77d835d35afd5322e72804bc3f4142f1496a45dcca5bf2cd3",
+  "operatorObservation": "Saved package results are consistent with the specified scalar operators; nonzero constant-mode native residual discrepancy independently confirmed.",
+  "provenance": {
+    "archiveShaMatchesManifest": true,
+    "archiveFileHashesMatched": 106,
+    "snapshotHashesMatched": 15,
+    "threeCaseEndMarkersVerified": true,
+    "frozenGitHeadMatches": true,
+    "containerExitCode": 0,
+    "containerOOMKilled": false,
+    "packageVersion": "openfoam13 20260624",
+    "suppliedSourceRowsMatchingAuditReference": 25,
+    "selectedLinkedLibraryRowsMatchingDEBAuditReference": 3,
+    "identityLimit": "Checks archived hash records and selected package-source/library identities; not a reproducible rebuild of every packaged library."
+  },
+  "constantControl": [
+    {
+      "nx": 16,
+      "allPsiAndGammaOne": true,
+      "nativeResidualMin": 0.25,
+      "nativeResidualMax": 0.25,
+      "completeBMinusAuLinf": 0.0,
+      "orientedPhysicalBalanceLinf": 0.0,
+      "savedDivTimesVolumeLinf": 0,
+      "matrixFluxLinf": 0,
+      "nativeMinusCompleteMinusIndependentCyclicLoadLinf": 0.0
+    },
+    {
+      "nx": 32,
+      "allPsiAndGammaOne": true,
+      "nativeResidualMin": 0.125,
+      "nativeResidualMax": 0.125,
+      "completeBMinusAuLinf": 0.0,
+      "orientedPhysicalBalanceLinf": 0.0,
+      "savedDivTimesVolumeLinf": 0,
+      "matrixFluxLinf": 0,
+      "nativeMinusCompleteMinusIndependentCyclicLoadLinf": 0.0
+    },
+    {
+      "nx": 64,
+      "allPsiAndGammaOne": true,
+      "nativeResidualMin": 0.0625,
+      "nativeResidualMax": 0.0625,
+      "completeBMinusAuLinf": 0.0,
+      "orientedPhysicalBalanceLinf": 0.0,
+      "savedDivTimesVolumeLinf": 0,
+      "matrixFluxLinf": 0,
+      "nativeMinusCompleteMinusIndependentCyclicLoadLinf": 0.0
+    }
+  ],
+  "arithmeticActualContinuumFluxError": [
+    {
+      "nx": 16,
+      "xFacesIncludingFixedWalls": 68,
+      "tractionMin": 1.0638855391456183,
+      "tractionMax": 1.0638855393243936,
+      "absoluteRelativeErrorMin": 0.06388553914561834,
+      "absoluteRelativeErrorMax": 0.06388553932439356,
+      "percentErrorMin": 6.388553914561834,
+      "percentErrorMax": 6.388553932439356,
+      "analysisPredictedErrorLabel": 0.06388553922367457,
+      "arithmeticIterations": 13,
+      "arithmeticFinalNormalizedResidual": 6.395373902844644e-13
+    },
+    {
+      "nx": 32,
+      "xFacesIncludingFixedWalls": 132,
+      "tractionMin": 1.0309540125682304,
+      "tractionMax": 1.030954012807439,
+      "absoluteRelativeErrorMin": 0.030954012568230382,
+      "absoluteRelativeErrorMax": 0.030954012807439035,
+      "percentErrorMin": 3.0954012568230382,
+      "percentErrorMax": 3.0954012807439035,
+      "analysisPredictedErrorLabel": 0.03095401271511644,
+      "arithmeticIterations": 14,
+      "arithmeticFinalNormalizedResidual": 3.8181043946447743e-13
+    },
+    {
+      "nx": 64,
+      "xFacesIncludingFixedWalls": 260,
+      "tractionMin": 1.0152411188354749,
+      "tractionMax": 1.0152411198321387,
+      "absoluteRelativeErrorMin": 0.015241118835474854,
+      "absoluteRelativeErrorMax": 0.015241119832138716,
+      "percentErrorMin": 1.5241118835474854,
+      "percentErrorMax": 1.5241119832138716,
+      "analysisPredictedErrorLabel": 0.015241119454857621,
+      "arithmeticIterations": 13,
+      "arithmeticFinalNormalizedResidual": 9.321873466116689e-13
+    }
+  ],
+  "harmonicActualContinuumFluxErrorLinf": [
+    {
+      "nx": 16,
+      "observedRelativeErrorMax": 8.881784197001252e-16,
+      "iterations": 0
+    },
+    {
+      "nx": 32,
+      "observedRelativeErrorMax": 1.887379141862766e-15,
+      "iterations": 0
+    },
+    {
+      "nx": 64,
+      "observedRelativeErrorMax": 4.6629367034256575e-15,
+      "iterations": 0
+    }
+  ],
+  "independentReconstructionMethod": "Complete matrix assembled from rawDiag, internal upper/lower and both patch coefficient sets; fixed-wall coefficients added to RHS, cyclic neighbour cells independently matched by centres/Sf. Physical balance independently sums owner/neighbour-oriented saved face fluxes. Actual x traction is physicalFlux/Sf_x, continuum target tau=1. No analyzer import or binary execution.",
+  "materialScope": [
+    "One serial arm64 Foundation13 packaged scalar diffusion control, specified orthogonal grid and matching translational cyclic boundaries; no full incompressible momentum, pressure, transport or constitutive model solved.",
+    "No Foundation14/dev binary behavior is established; source chain and prior2024 discussion remain separate evidence.",
+    "Arithmetic interface bias is conditional discretization behavior, not evidence of a new upstream solver defect.",
+    "Native raw diagnostic residual discrepancy does not by itself establish wrong solved velocities or normalized solver/convergence-control residuals.",
+    "Original3D/AMR benchmark, particle physics/viscosity and global regularity remain unproved."
+  ],
+  "harmonicIterationCaveat": "Exact initial nodal data already satisfy the harmonic scalar system; reported zero solver iterations demonstrate a null-residual control, not iterative convergence from a perturbed initial field.",
+  "arithmeticAcceptanceCaveat": "PASS means agreement with the assembled scalar diffusion chain and complete balance; it does not mean zero continuum traction bias.",
+  "priorDiscussion": "Exact mechanism public in CFD Online thread256831,2024-07-03; scalar method explicitly untested there; no novelty or maintainer acceptance claim.",
+  "metadataCaveat": "case_metadata.execution_status remains NOT_RUN because it is frozen construction metadata; actual run state is established separately by manifest, logs and snapshots.",
+  "ciCaveat": "Review concerns actual operator artifact; synthetic-fixture Python CI failures reported by root are a separate pending test-harness issue, not an operator result or an all-CI-pass claim.",
+  "binaryExecutionPerformedByReviewer": false,
+  "supportingDetails": "actual-run-reconstruction-details-37118442037.json",
+  "independent15SnapshotConsistencyLinf": {
+    "reconstructedDiagonalMinusSavedCompleteDiagonalLinf": 0.0,
+    "completeResidualMinusOrientedBalanceLinf": 2.248201624865942e-15,
+    "savedDivTimesVolumeMinusOrientedBalanceLinf": 5.551115123125783e-17,
+    "matrixFluxPlusPhysicalFluxLinf": 7.771561172376096e-16,
+    "nativeMinusCompleteMinusIndependentCyclicLoadLinf": 3.552713678800501e-15,
+    "savedCyclicNeighbourValuesMinusGeometryMatchedValuesLinf": 0
+  },
+  "arithmeticExactNodalBeforeObservation": "All3 initial snapshots have interface x traction25.5025 versus continuum1 (relative error24.5025), while other xfaces agree with1 to roundoff. This initial interface error is separate from solved-chain global bias.",
+  "explicitCorrectionObservation": "Saved x-face correction is zero; y-face correction vectors are nonzero and their saved integrated divergence cancels exactly. This conditional shear diagnostic does not test the full momentum equation."
+}

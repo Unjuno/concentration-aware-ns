@@ -1,0 +1,138 @@
+{
+  "archive_files_total": 40,
+  "archived_input_hashes_independently_verified": true,
+  "baseline_archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+  "baseline_log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce",
+  "byte_identical_files": [
+    "0.05/C",
+    "0.05/Ccx",
+    "0.05/Ccy",
+    "0.05/Ccz",
+    "0.05/U",
+    "0.05/p",
+    "0.05/phi",
+    "0.05/uniform/time",
+    "0/U",
+    "0/p",
+    "constant/fvModels",
+    "constant/momentumTransport",
+    "constant/physicalProperties",
+    "constant/polyMesh/boundary",
+    "constant/polyMesh/faces",
+    "constant/polyMesh/neighbour",
+    "constant/polyMesh/owner",
+    "constant/polyMesh/points",
+    "dynamicCode/mmsForce/Make/SHA1Digest",
+    "dynamicCode/mmsForce/Make/files",
+    "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.C.dep",
+    "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/codedFvModelTemplate.o",
+    "dynamicCode/mmsForce/Make/linuxArm64GccDPInt32Opt/files",
+    "dynamicCode/mmsForce/Make/options",
+    "dynamicCode/mmsForce/codedFvModelTemplate.C",
+    "dynamicCode/mmsForce/codedFvModelTemplate.H",
+    "dynamicCode/platforms/linuxArm64GccDPInt32Opt/lib/libmmsForce_444d57f8b1f049296bde1a83c2c8b984e16dc769.so",
+    "exit.json",
+    "input-hashes.json",
+    "log.container",
+    "parameters.json",
+    "system/blockMeshDict",
+    "system/controlDict",
+    "system/fvSchemes",
+    "system/fvSolution"
+  ],
+  "case": "n64-dt0.0005",
+  "converged_steps_each": [
+    100,
+    100
+  ],
+  "diagnostic_metrics_identical": {
+    "energy_relative_error_cell_samples": {
+      "baseline": 0.00021648373536992314,
+      "exactly_equal": true,
+      "repeat": 0.00021648373536992314
+    },
+    "gradient_peak_relative_error_cell_samples": {
+      "baseline": 0.026416825296389272,
+      "exactly_equal": true,
+      "repeat": 0.026416825296389272
+    },
+    "shell_spectrum_relative_l1_error": {
+      "baseline": 0.00021648379100562383,
+      "exactly_equal": true,
+      "repeat": 0.00021648379100562383
+    },
+    "velocity_relative_l2": {
+      "baseline": 0.004784089312365507,
+      "exactly_equal": true,
+      "repeat": 0.004784089312365507
+    },
+    "vorticity_peak_relative_error_cell_samples": {
+      "baseline": 0.023499967101778593,
+      "exactly_equal": true,
+      "repeat": 0.023499967101778593
+    }
+  },
+  "diagnostics_identical_except_source_log_hash": true,
+  "endpoint_field_hashes": {
+    "0.05/C": {
+      "baseline": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c",
+      "byte_identical": true,
+      "repeat": "3f20265c7c668acfff7c473b4bb87d3e05dad91fc86aa1698b722d5484303d4c"
+    },
+    "0.05/U": {
+      "baseline": "c5b9399166132790075bcb79ae69824b88a06e0bfba9ead0fa10d645ae4da3a2",
+      "byte_identical": true,
+      "repeat": "c5b9399166132790075bcb79ae69824b88a06e0bfba9ead0fa10d645ae4da3a2"
+    },
+    "0.05/p": {
+      "baseline": "7bb2843ea99821b5d041a1d8a57890bb1f8ceb51dde46fc985e05d6819a40b87",
+      "byte_identical": true,
+      "repeat": "7bb2843ea99821b5d041a1d8a57890bb1f8ceb51dde46fc985e05d6819a40b87"
+    },
+    "0.05/phi": {
+      "baseline": "afffadfb0d2de299317ddc40f06363edf62aa258a81e454f03af6d6971e899e7",
+      "byte_identical": true,
+      "repeat": "afffadfb0d2de299317ddc40f06363edf62aa258a81e454f03af6d6971e899e7"
+    }
+  },
+  "interpretation": "All four endpoint fields and listed diagnostics reproduce exactly for this one run. Raw archive/log hashes differ because run-root, timestamp/host, timing metadata and the log-hash reference differ. No solver-wide guarantee or analytic/physical conclusion follows.",
+  "local_quality_each": [
+    "PASS",
+    "PASS"
+  ],
+  "logs_identical_after_runtime_metadata_normalization": {
+    "log.blockMesh": true,
+    "log.centres": true,
+    "log.foamRun": true
+  },
+  "manifest_and_diagnostic_provenance_cross_checked": true,
+  "raw_different_files": [
+    "command.json",
+    "diagnostics.json",
+    "log.blockMesh",
+    "log.centres",
+    "log.foamRun"
+  ],
+  "raw_log_steps_end_and_convergence_independently_verified": true,
+  "repeat_archive_sha256": "47aeec885a46083c9310772e119f0842335b1c723b6eb55d2287b4230d47d599",
+  "repeat_log_sha256": "716732140fe51b6a240f81f487f9d8e3d5bcec3c175b5926e676ddeff4cdd246",
+  "runtime_metadata_difference_allowlist": [
+    "command.json",
+    "diagnostics.json",
+    "log.blockMesh",
+    "log.centres",
+    "log.foamRun"
+  ],
+  "same_case_parameters_and_input_hashes": true,
+  "scope": "One repeated OpenFOAM Foundation 13 n=64, dt=0.0005 case; numerical reproducibility only, not physical validation.",
+  "standard_acceptance_each": [
+    "PASS",
+    "PASS"
+  ],
+  "success": true,
+  "time_steps_each": [
+    100,
+    100
+  ],
+  "unexpected_raw_differences": []
+}

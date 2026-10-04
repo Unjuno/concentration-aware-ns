@@ -1,0 +1,14 @@
+{
+  "source_commit": "0dc1e99b06ef1632e9199891c8382a21ee2a267b",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "container_platform": "linux/arm64",
+  "docker_cli": "/run/current-system/sw/bin/docker",
+  "docker_cli_resolved": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_cli_version": "Docker version 29.5.2, build v29.5.2",
+  "docker_context": "orbstack",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "parent_matrix_manifest_sha256": "9dc26bad1e249669fa18a3a430712edf8df83445238c1cb846fb4b262debb89c",
+  "scope": "single frozen n=64 temporal addendum; not a complete matrix"
+}

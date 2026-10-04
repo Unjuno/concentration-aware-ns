@@ -1,0 +1,12 @@
+{
+  "source_commit": "1d9708e7d6d14e618b93aa425f5ff81b6f9faab4",
+  "selected_paths": [
+    "tools/audit_su2_localized_source_lag.py",
+    "tools/reference.py",
+    "evidence/su2-study-v1/summary.json",
+    "evidence/su2-study-v1/n64-dt0.001.tar.gz",
+    "evidence/su2-study-v1/n64-dt0.0005.tar.gz",
+    "evidence/su2-study-v1/n64-dt0.00025.tar.gz"
+  ],
+  "archive_sha256": "bdc448ec2e7d51ac30ae7fa16fe9051fa10da5a0fb8adf2fb043c0a4590a8f4e"
+}

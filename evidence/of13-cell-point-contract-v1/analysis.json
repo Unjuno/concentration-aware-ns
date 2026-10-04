@@ -1,0 +1,100 @@
+{
+  "status": "PINNED_SOURCE_AND_AFFINE_CONTROLS_VERIFIED_ACTUAL_MESH_UNVERIFIED",
+  "numerical_source_commit": "5207235c60417112cb35e620df8e9ecde37b8d75",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "source_files": [
+    {
+      "path": "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.H",
+      "sha256": "408145e686026c6495639ec9dfe99d89501df4754ad313521a15987474e2b78b",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.H"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.C",
+      "sha256": "65e7a861ddbb7978ab90150940a0eb31f325c186ee1beb15e7d03f102a65ff02",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPoint.C"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPointI.H",
+      "sha256": "b5954f34e7dbd876c924d37879db41edf4c2fc79befd49bfcc6b21bd721a61fe",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/interpolationCellPointI.H"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.C",
+      "sha256": "89afb35c63efe834397293d839c2c9c5034927d55a728d2108a8fb7a152030db",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/interpolation/interpolationCellPoint/cellPointWeight/cellPointWeight.C"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/interpolation/interpolationVolPointInterpolation/interpolationVolPointInterpolation.C",
+      "sha256": "0d880da9e7f819e473ef5f9d05a1e5758734d80599ef187f25351b8d3d229e22",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/interpolation/interpolationVolPointInterpolation/interpolationVolPointInterpolation.C"
+    },
+    {
+      "path": "src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/tetIndicesI.H",
+      "sha256": "79a8c0b20512ff4b97265fe14a5ec8d9db5351c367d708bebfc4a9105109c001",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/tetIndicesI.H"
+    },
+    {
+      "path": "src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/polyMeshTetDecomposition.C",
+      "sha256": "10fe99e9bc14d4cf4ec8f15da59ef45691a17fd9ecd833308aa8baafbfac928a",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/meshes/polyMesh/polyMeshTetDecomposition/polyMeshTetDecomposition.C"
+    },
+    {
+      "path": "src/OpenFOAM/meshes/primitiveShapes/tetrahedron/tetrahedronI.H",
+      "sha256": "54867381a9d7155c855f9a2ad984bdc39569bebf3c4b827f535b787ccb869434",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/meshes/primitiveShapes/tetrahedron/tetrahedronI.H"
+    }
+  ],
+  "affine_controls": {
+    "endpoint_residuals": [
+      "0",
+      "0"
+    ],
+    "shared_face_trace_residual": "0",
+    "gradient_slope_sum_residual": "0",
+    "integer_chord_controls": 125,
+    "degenerate_fallback_centre_error": "-3*a/4 + p/4 + q/4 + r/4",
+    "scope": "Exact scalar two-tetrahedron affine identities, componentwise applicable to vector fields; not upstream C++ execution or actual mesh validation."
+  },
+  "archives": [
+    {
+      "case_id": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "archive_members": 310,
+      "polyMesh_members": [],
+      "actual_tetrahedral_geometry_verified": false
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "archive_members": 161,
+      "polyMesh_members": [],
+      "actual_tetrahedral_geometry_verified": false
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "archive_members": 161,
+      "polyMesh_members": [],
+      "actual_tetrahedral_geometry_verified": false
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "archive_members": 161,
+      "polyMesh_members": [],
+      "actual_tetrahedral_geometry_verified": false
+    }
+  ],
+  "required_actual_case_evidence": [
+    "final mesh points/faces/owner/neighbour and boundaries",
+    "nondegenerate conforming tetrahedral decomposition with consistent shared-face triangles",
+    "actual cellPoint centre interpolation and shared-face trace checks",
+    "binary/source implementation identity and recorded scheme selection"
+  ],
+  "limits": [
+    "cellPoint is a named interpolation, not the implicit solver continuum solution",
+    "source fallback behavior requires a nondegeneracy condition",
+    "no actual cellPoint C++ evaluation or new CFD run performed",
+    "original gates and conditional point witnesses unchanged"
+  ]
+}

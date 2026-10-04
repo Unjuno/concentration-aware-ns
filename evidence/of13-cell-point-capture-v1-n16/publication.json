@@ -1,0 +1,11 @@
+{
+  "url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-cell-point-capture-v1-4999a4d",
+  "source_commit": "4999a4db38d0ac41a5f253a6665f6701d64f561c",
+  "asset": {
+    "id": 608313703,
+    "name": "cell-point-capture-n16-4999a4d.tar.gz",
+    "size": 17269083,
+    "digest": "sha256:ad1fb32afd6e9cb1f799945fa2967d09150fc567bd3daa11e0a62029a268e830",
+    "browser_download_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-cell-point-capture-v1-4999a4d/cell-point-capture-n16-4999a4d.tar.gz"
+  }
+}

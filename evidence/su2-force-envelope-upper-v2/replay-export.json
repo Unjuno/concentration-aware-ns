@@ -1,0 +1,13 @@
+{
+  "source_commit": "5aafc291ee811d4e06a8afb06ee9d43e34bc5157",
+  "selected_paths": [
+    "tools",
+    "evidence/su2-force-time-uniform-upper-v1/analysis.json",
+    "evidence/su2-study-v1/summary.json",
+    "evidence/su2-study-v1/n64-dt0.001.tar.gz",
+    "evidence/su2-study-v1/n64-dt0.0005.tar.gz",
+    "evidence/su2-study-v1/n64-dt0.00025.tar.gz"
+  ],
+  "archive_sha256": "7430340215972539ed0eb2a289a6d78f366c0772a86302343a0b0d82f9e7cb71",
+  "result_receipt_included": false
+}

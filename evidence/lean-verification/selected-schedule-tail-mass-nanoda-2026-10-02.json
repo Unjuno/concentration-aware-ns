@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "scope": "Independent nanoda typecheck of the selected-schedule tail coefficient and pressure bounds, plus the existential rate-capped prepared/full ProfileData construction and the derived tail clock-weight mass upper bound P^2/50.",
+  "source_sha256": "d047cb638d428c72f8b68ee32d2f821842f7246efb0ecf388203574a4aa05910",
+  "checker_image_id": "sha256:0637e54d4b04b0fb3b1eae5829b7616bee43ddb4fa9019628a76219d3466e9de",
+  "lean": "4.34.0-rc2",
+  "lean4export": "3.1.0",
+  "nanoda": "0.4.16",
+  "nanoda_commit": "05055695879dfebb6628a67da88ceca6cd6b0421",
+  "checked_declarations": 64192,
+  "typechecker_errors": 0,
+  "pretty_printer_errors": [
+    "Unable to print axioms"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "selected_declarations_present": [
+    "tail_relative_coefficient_small",
+    "tail_pressure_lower_bound_small",
+    "exists_rate_capped_prepared_profile",
+    "exists_rate_capped_profile_data",
+    "rate_capped_profile_data_tail_pressure_small",
+    "rate_capped_profile_data_tail_mass_upper_bound"
+  ],
+  "artifacts": [
+    {
+      "path": "SelectedScheduleTailPressure.olean",
+      "bytes": 995744,
+      "sha256": "e087fa7c2661da4045d51c8b787c6d2e6937197513c49f39f4b150df7b23a0d3"
+    },
+    {
+      "path": "selected-tail.ndjson",
+      "bytes": 641987553,
+      "sha256": "3a39d99f6536098612b42891e8347aa1edeb721f2fbc8994fd53938fcf0be1cd"
+    },
+    {
+      "path": "nanoda-config.json",
+      "bytes": 234,
+      "sha256": "422b53231e8536c5dfd60c35fbbf1e1cff5cfbcb0d30d1c564ffb5d6a9d4318c"
+    },
+    {
+      "path": "lean.log",
+      "bytes": 2033,
+      "sha256": "8e0e726113365c7f466ba8459d37f0e6aa32640cc3cafa8df4142fd145efddd8"
+    },
+    {
+      "path": "export.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "nanoda.log",
+      "bytes": 114,
+      "sha256": "da914a68f629b2ed7320a188badc63c3b239ac2a9f55f5fb82d5be347810c38b"
+    }
+  ],
+  "limitations": [
+    "The rate-capped result is existential and does not transfer to FinalSlowBase.actualProfile.",
+    "Independent term checking is not a validation of the pinned upstream construction's mathematical truth or its application to physical fluids.",
+    "The result supplies one conditional pressure-tail bound, not a full pressure-sign conclusion or physical/molecular consequence.",
+    "The tail mass estimate is a one-sided upper bound for the existential rate-capped profile under the recorded source cap; it is not a concentration lower bound or a property of FinalSlowBase.actualProfile."
+  ]
+}

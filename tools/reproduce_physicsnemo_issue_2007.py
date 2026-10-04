@@ -3,9 +3,9 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 from pathlib import Path
 
-import torch
 
 
 def sha256(path):
@@ -31,7 +31,37 @@ def radial_peak(power_spectrum, field):
     return {"index": int(flat.argmax()), "power": float(flat.max()), "bins": flat.tolist()}
 
 
+def classify_controls(results):
+    """Require healthy positive spectra and every symmetry control for a fix."""
+    healthy = True
+    for n in ("32", "33"):
+        for axis in ("height_wave_peak", "width_wave_peak"):
+            peak = results[n][axis]
+            bins = peak["bins"]
+            healthy = healthy and bool(bins) and all(
+                math.isfinite(value) and value >= 0 for value in bins
+            ) and math.isfinite(peak["power"]) and peak["power"] > 0
+    controls = results["transpose_controls"]
+    healthy = healthy and all(math.isfinite(controls[key]) for key in (
+        "odd_33x33_max_abs_difference", "even_32x32_max_abs_difference"
+    ))
+    even = (results["32"]["height_vs_width_peak_equal"]
+            and results["32"]["height_vs_width_spectrum_allclose"]
+            and controls["even_32x32_allclose"])
+    odd = (results["33"]["height_vs_width_peak_equal"]
+           and results["33"]["height_vs_width_spectrum_allclose"]
+           and controls["odd_33x33_allclose"])
+    reproduced = (healthy and even
+                  and not results["33"]["height_vs_width_peak_equal"]
+                  and not results["33"]["height_vs_width_spectrum_allclose"]
+                  and not controls["odd_33x33_allclose"])
+    repaired = healthy and even and odd
+    return bool(reproduced), bool(repaired)
+
+
 def run(source_file, output_file, expect_bug, source_reference):
+    import torch
+
     source_file = Path(source_file)
     power_spectrum = load_power_spectrum(source_file)
     device = torch.device("cpu")
@@ -68,16 +98,9 @@ def run(source_file, output_file, expect_bug, source_reference):
         "even_32x32_max_abs_difference": float((even_power - even_transpose_power).abs().max()),
         "even_32x32_allclose": bool(torch.allclose(even_power, even_transpose_power, rtol=1e-4, atol=1e-6)),
     }
-    reproduced = (
-        results["32"]["height_vs_width_peak_equal"]
-        and results["32"]["height_vs_width_spectrum_allclose"]
-        and not results["33"]["height_vs_width_peak_equal"]
-        and not results["33"]["height_vs_width_spectrum_allclose"]
-        and not results["transpose_controls"]["odd_33x33_allclose"]
-        and results["transpose_controls"]["even_32x32_allclose"]
-    )
+    reproduced, repaired = classify_controls(results)
     expected_outcome = "defect_reproduced" if expect_bug else "fix_suppresses_defect"
-    expectation_met = reproduced if expect_bug else not reproduced
+    expectation_met = reproduced if expect_bug else repaired
     evidence = {
         "scope": "Focused deterministic reproduction of odd-width radial-spectrum asymmetry; not a full PhysicsNeMo test suite.",
         "upstream_issue": "https://github.com/NVIDIA/physicsnemo/issues/2007",
@@ -89,13 +112,15 @@ def run(source_file, output_file, expect_bug, source_reference):
         "device": "CPU",
         "results": results,
         "reproduced": bool(reproduced),
+        "all_fix_controls_pass": bool(repaired),
+        "fix_rule": "Positive finite spectra and all even/odd axis and transpose controls must pass; absence of the old failure pattern alone is insufficient.",
         "expected_outcome": expected_outcome,
         "expectation_met": bool(expectation_met),
     }
     output = Path(output_file)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(evidence, indent=2) + "\n")
-    print(json.dumps(evidence, indent=2))
+    output.write_text(json.dumps(evidence, indent=2, allow_nan=False) + "\n")
+    print(json.dumps(evidence, indent=2, allow_nan=False))
     return expectation_met
 
 

@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-01",
+  "upstream_repository": "openai/NavierStokesAndEuler",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "checker": "concentration-aware-ns:checker, pinned cans-lean-verification volume, read-only, network none",
+  "files": {
+    "verification/ActualProfilePressureProvenance.lean": "dbee5ca0d380feb202cfdba046ef658760937f9e744762182ef0151edbc6c913",
+    "runtime/lean-verification/check_actual_profile_pressure_provenance.sh": "72302d6ea7ef8a9149f3e4029f1a1795082b9573f6e0f443aa42689dca100dfe",
+    "evidence/lean-verification/actual-profile-pressure-provenance-2026-10-01.log": "63f15b0e3e250b47b358b63a4087e4db823cc49657342534fbb4fa4aea4674a0",
+    "reports/actual-profile-pressure-provenance-2026-10-01.md": "750a8c28701ebb757e9c3154cf20be880488832f3a3edb96e4d648de37d2791d"
+  },
+  "theorems": {
+    "exists_final_profile_data_with_pressure_amplitude": "exists D : ProfileData, 2 <= D.outgoing.data.core.P",
+    "actual_profile_is_a_profile_data": "actualProfile.outgoing.data.core.P > 0"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "conclusion": "Prepared existential amplitude bound is not transferred to actualProfile by current ProfileData choice. Does not show actualProfile violates any threshold.",
+  "upstream_disposition": "no report; extension proof-provenance gap, not upstream defect; issues and discussions disabled"
+}

@@ -1,0 +1,57 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v4",
+  "status": "additive same-run parent-field versus post-map measurement; exploratory, no quality threshold",
+  "runner": "tools.run_amr_stage_snapshot_v4",
+  "reproduction": {
+    "run": "CANS_AMR_STAGE_RUN_ROOT=work/of13-amr-same-run-map-v4 CANS_AMR_STAGE_EVIDENCE=evidence/of13-amr-same-run-map-v4 python3 -m tools.run_amr_stage_snapshot_v4",
+    "recover_manifest_if_solver_and_archive_succeeded_but_serialization_failed": "CANS_AMR_STAGE_RUN_ROOT=work/of13-amr-same-run-map-v4 CANS_AMR_STAGE_EVIDENCE=evidence/of13-amr-same-run-map-v4 python3 -m tools.finalize_amr_stage_snapshot_v4",
+    "analyze": "CANS_AMR_STAGE_EVIDENCE=evidence/of13-amr-same-run-map-v4 python3 -m tools.analyze_amr_same_run_map"
+  },
+  "target": {
+    "implementation": "OpenFOAM Foundation 13",
+    "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "platform": "linux/arm64"
+  },
+  "case": {
+    "inherits": "protocols/high-gradient-of13-amr-stage-snapshot-v3.json",
+    "initial_grid_cells_per_axis": 16,
+    "initial_cells": 4096,
+    "max_cells": 5000,
+    "max_refinement": 2,
+    "delta_t": 0.001,
+    "end_time": 0.003,
+    "refine_interval": 2,
+    "frequency": 4
+  },
+  "new_measurement": {
+    "preMap": "write C, V, U, p, face centers/areas/owners/neighbours/phi/Uf immediately before mesh_.update() at t=0.002",
+    "mapped": "same fields immediately after mesh_.update() at t=0.002",
+    "equation_changes": false,
+    "same_run_pair_required": true
+  },
+  "acceptance": {
+    "measurement_gate": "Exactly six named stage events; preMap has 4096 cells, mapped has the refined topology, both at t=0.002; solver exits zero with End; LD_DEBUG confirms instrumented library load.",
+    "analysis": [
+      "Compare mapped cell values against piecewise-constant injection from this run's preMap field using geometrically containing uniform-grid parents.",
+      "Check parent-child volume closure, cell counts, levels, domain integral and weighted relative L2/max absolute differences.",
+      "Compare stored parent and mapped child DOFs with the analytic finite-volume average of the smooth MMS using the independently quadrature-checked closed form; label this a DOF diagnostic, not an assumed OpenFOAM storage definition or a continuous reconstruction norm.",
+      "Decompose point-sample error algebraically into inherited parent-center error, exact-reference center shift, and cross term; do not label this finite-volume truncation error.",
+      "Compare mapped and exact-MMS cell-center samples only as point-sample diagnostics; keep finite-volume cell-average accuracy claims separate.",
+      "Compare preMap and mapped face flux/divergence only after matching geometric face relationships; no assumption that face indices persist across remapping."
+    ],
+    "quality_gate": "None. The run is a mapping-mechanism diagnostic, not a convergence or solver-quality pass/fail."
+  },
+  "limits": [
+    "The preMap and mapped pair is same-run, but equality with piecewise-constant injection would establish transfer behavior only for this case and field representation.",
+    "A single n=16 event is not a resolution study or a general AMR guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time is chosen from the frozen v3 event and is exploratory rather than preregistered before any earlier observation."
+  ],
+  "limitations": [
+    "The preMap and mapped pair is same-run, but equality with piecewise-constant injection would establish transfer behavior only for this case and field representation.",
+    "A single n=16 event is not a resolution study or a general AMR guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time is chosen from the frozen v3 event and is exploratory rather than preregistered before any earlier observation."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "of13-cell-point-capture/v1",
+  "status": "prospective frozen successor: unchanged n16 recipe followed by read-only cellPoint capture",
+  "base_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "base_case": "n16-dt0.001",
+  "original_source_identity_manifest": "evidence/of13-amr-mean-quality-v1/n16-dt0.001/manifest.json",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "read_time": "0.05",
+  "platform": "linux/arm64",
+  "probe_limits": {"cpus": 3, "memory": "12g", "timeout_seconds": 600, "network": "none", "case_mount": "read-only"},
+  "required_capture": ["all effective polyMesh instances", "points and shared point values", "cells, volumes, stored and interpolated centre values", "tet cell/face/vertex addressing and determinants", "internal-face owner and neighbour interpolated traces", "installed source digests and probe build/runtime logs", "unchanged final U/p hashes", "original recipe capture-disabled byte-identity control"],
+  "limits": ["No new solver quality threshold", "Runtime capture is distinct from continuum and rounding certification", "No actual-run success inferred before verified process and evidence results", "Source-to-binary identity limited to recorded package/source digests"]
+}

@@ -43,6 +43,14 @@ advective, and forcing terms, their spatial scales, and a nonzero denominator
 for any proposed relative-effectiveness ratio. A continuum velocity field
 contains no molecular ensemble or constitutive transition law.
 
+The selected-construction axis calculation has a related exact distinction:
+for its linearized volume-preserving propagator, an isotropic Gaussian's
+orientation concentrates toward the axis while its probability in any fixed
+ball around the center tends to zero as `Q^C`. Its covariance determinant and
+Gaussian differential entropy stay constant. See
+[`openai-core-material-trajectory.md`](openai-core-material-trajectory.md#exact-positional-probability-check-in-the-linearized-gaussian-model)
+for the calculation and its nonlinear-scope limit.
+
 Reproduce the exact algebra with `python -m tools.check_affine_alignment_counterexample`.
 The checker also runs wrong-pressure-sign and nonzero-Laplacian negative
 controls and writes `evidence/tests/affine-alignment-counterexample.json`.

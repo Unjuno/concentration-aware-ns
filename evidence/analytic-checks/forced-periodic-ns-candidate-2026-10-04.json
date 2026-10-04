@@ -1,0 +1,21 @@
+{
+  "sympy_version": "1.14.0",
+  "source": "arXiv:2609.38210v1 equations (5.1), (5.4), Theorem 4.1",
+  "exact_checks": {
+    "divergence_u0": "0",
+    "laplacian_plus_2u0": [
+      "0",
+      "0",
+      "0"
+    ],
+    "divergence_U0": "0",
+    "forced_ns_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "convective_work_divergence_identity": "0",
+    "pressure_work_divergence_identity": "0"
+  },
+  "scope": "Independent algebraic replay of the smooth periodic exact solution only; no concentration simulation, discretization, or particle-trajectory claim is verified."
+}

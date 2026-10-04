@@ -7,11 +7,22 @@ indicators and solver/training stopping criteria. All conclusions below refer
 to the pinned versions and configured smooth manufactured problem, not other
 flows or physical singularities.
 
+Scope note: the OpenFOAM row below refers specifically to the Gaussian MMS
+matrix in `protocols/of13-study-v1.json`, which shares the `tools/reference.py`
+manufactured field used by the SU2 localized study and PhysicsNeMo v1. The later
+OpenFOAM Foundation 13 high-gradient matrix in
+`protocols/high-gradient-of13-v2.json` is a distinct follow-up with a
+frequency-4 trigonometric-envelope MMS (`tools/high_gradient_reference.py`).
+Its results are valid evidence for that separate profile and its own gate, but
+must not be pooled into the three-target same-profile comparison below. The
+PhysicsNeMo held-out v2 validation is likewise a separate, shifted-grid
+re-evaluation of archived checkpoints, not another solver run in this matrix.
+
 | Target | Completed comparison | Main observation | Limitation affecting acceptance |
 |---|---|---|---|
-| OpenFOAM Foundation 13 | Three spatial resolutions; three time steps at n64; AMR and fixed-refined controls | n32 velocity error 1.87001% and energy error 0.201044% meet the 2% aggregate thresholds, while its FD2 gradient peak deficit is about 13.12% | Exact-field FD2/sampling alone has a 13.90% deficit. The discrepancy is not isolated solver error; temporal observed order is about 0.493 |
+| OpenFOAM Foundation 13, Gaussian MMS | Three spatial resolutions; three time steps at n64; AMR and fixed-refined controls | n32 velocity error 1.87001% and energy error 0.201044% meet the 2% aggregate thresholds, while its FD2 gradient peak deficit is about 13.12% | Exact-field FD2/sampling alone has a 13.90% deficit. The discrepancy is not isolated solver error; temporal observed order is about 0.493 |
 | SU2 v8.5.0 | Three spatial resolutions; three time steps at n64 | Direct temporal field differences give observed order 0.99916. n64 velocity/energy errors meet 2% thresholds | No case meets velocity, energy and every-step residual checks simultaneously. These runs do not supply an established standard-PASS counterexample |
-| PhysicsNeMo v2.2.1 | Three spatial collocation densities; three temporal node counts; five paired seeds per case | Across five seeds, per-case mean velocity relative-L2 errors are 1.77–1.89%, with observed per-case ranges 1.42–2.57%; spatial paired contrasts have mixed signs, while temporal-node contrasts are lower in all five seeds | Density is not discretization convergence; five-seed evidence shows seed sensitivity but not optimizer convergence. Sampled derivative peaks do not bound continuous extrema, and no PhysicsNeMo-specific acceptance threshold was preregistered. See [the paired-seed report](physicsnemo-seed-control-v1.md). |
+| PhysicsNeMo v2.2.1 v1 matrix | Three spatial collocation densities; three temporal node counts; five paired seeds per case | Across five seeds, per-case mean velocity relative-L2 errors are 1.77–1.89%, with observed per-case ranges 1.42–2.57%; spatial paired contrasts have mixed signs, while temporal-node contrasts are lower in all five seeds | This historical v1 analysis had no PhysicsNeMo-specific acceptance threshold preregistered. Density is not discretization convergence; five-seed evidence shows seed sensitivity but not optimizer convergence. For the separate prospective shared-threshold held-out v2 evaluation, see [the v2 report](physicsnemo-heldout-validation-v2-2026-10-02.md). |
 
 ## What the derivative comparisons mean
 

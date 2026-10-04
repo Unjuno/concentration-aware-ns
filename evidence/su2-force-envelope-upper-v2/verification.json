@@ -1,0 +1,13 @@
+{
+  "status": "INPUT_CHAIN_VALIDATED_BOUNDS_UNCHANGED",
+  "all_case_bounds_equal_to_v1": true,
+  "focused_tests_passed": 6,
+  "negative_controls": [
+    "reference source mismatch",
+    "archive sigma mismatch",
+    "missing temporal case",
+    "duplicate temporal case",
+    "archive digest mismatch"
+  ],
+  "scope": "Focused input-chain and same-host numerical verification; no new full-suite or hosted pass"
+}

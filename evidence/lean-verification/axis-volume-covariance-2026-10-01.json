@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-01",
+  "upstream_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "checker": "pinned concentration-aware-ns checker image and read-only volume; network disabled",
+  "sha256": {
+    "verification/AxisForceSign.lean": "a61600fcc260fb75c00323bb53c94d96effa24b2c4e82c66355c352fe7eb0dce",
+    "evidence/lean-verification/axis-volume-covariance-2026-10-01.log": "0cea167d85234dcb648b3bb8071af0cf6d2ce84b2f30bf0752e88c81572a4b04",
+    "reports/linearized-flow-volume-audit-2026-10-01.md": "546b4f26601703a5ea1cfb2e64e87910bbbe314a70d62d40f2641ae2f74cb075"
+  },
+  "declarations": {
+    "ConcentrationAware.terminalScale_volume_factor": "transverse scale squared times axial scale equals one",
+    "ConcentrationAware.isotropic_covariance_determinant_preserved": "isotropic Gaussian covariance eigenvalue product remains sigma^6 under unit-volume factor"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "linearized continuum variational map only; no nonlinear finite packet or molecular model"
+}

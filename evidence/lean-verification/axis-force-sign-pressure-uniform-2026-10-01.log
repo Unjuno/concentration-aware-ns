@@ -1,0 +1,290 @@
+/extension/AxisForceSign.lean:29:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/extension/AxisForceSign.lean:329:5: warning: Variable name `hL` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hL
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/extension/AxisForceSign.lean:373:33: warning: `ContinuousMultilinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+/extension/AxisForceSign.lean:1246:13: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [id_eq] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/extension/AxisForceSign.lean:1709:34: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [AxisymmetricResidual.velocity, AxisymmetricResidual.componentX, AxisymmetricResidual.componentY,
+    AxisymmetricResidual.lift, AxisymmetricFields.profilePoint, AxisymmetricFields.radialEnergy,
+    AxisymmetricResidual.pack_zero, AxisymmetricResidual.pack_one, AxisymmetricResidual.pack_two,
+    zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero, sub_zero, neg_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.root_pressure_threshold_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.root_Z_positive_iff_pressure_below_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.exists_actual_root_with_negative_physical_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.exists_pressure_profile_with_negative_slow_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.exists_profileData_with_pressure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_ratio_has_strictly_negative_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_viscous_acceleration_ratio_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_normalized_axis_laplacian_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_normalized_axis_laplacian_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_normalized_second_axial_derivative_tends_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_stream_physical_second_axial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_stream_axis_second_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_axis_deriv_expression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_axis_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_axis_expression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.concrete_axial_gradient_expression_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axialGradientCoefficient_differentiableAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axis_first_derivative_expression_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axis_velocity_expression_axial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.candidate_axis_coordinateEta_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_coordinateQ_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_material_acceleration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.material_curve_chain_rule' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_velocity_time_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_base_axis_velocity_time_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axis_velocity_formula_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_axis_laplacian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_material_trajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.exists_actual_schedule_with_terminal_base_germ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.actual_candidate_terminal_base_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.terminal_diagonal_eq_selected_base_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_source_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_eventually_localization_conditions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.diagonal_activated_periodic_eq_selected_base_germ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.activated_periodic_eq_selected_base_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_normalized_force_ratio_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.normalized_force_ratio_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.radial_force_div_acceleration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_base_material_trajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_base_velocity_on_candidate_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_on_candidate_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_sum_axis_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.root_axis_curve_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_curve_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_normalized_stream_derivative_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.candidate_axis_physicalChart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_forward_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.candidate_axis_inverse_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.trajectory_scale_tends_zero_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_normalized_radial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_averaged_derivative_sum_tends_natural' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.slowSum_axis_proportional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.averaged_derivative_slowSum_at_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.bundle_average_derivative_at_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_bundle_average_derivative_at_axis' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.average_radial_derivative_at_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.radial_derivative_compact_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_radial_derivative_physical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_base_velocity_laplacian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_base_velocity_slice_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.curl_velocity_eq_profile_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_profile_velocity_laplacian_on_axis' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_transverse_profiles_sliceC2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_axial_velocity_sliceC2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_stream_sliceC2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physical_stream_laplacian_of_sliceC2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physical_stream_laplacian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.stream_axial_second_derivative_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_slice_derivative_eq_partialZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_second_derivative_eq_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.stream_axial_radial_derivative_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physical_axial_laplacian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.prepared_root_with_negative_radial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.exists_selected_root_with_negative_radial_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_axial_radial_derivative_eventually_negative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_natural_derivative_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.original_axis_derivative_eq_natural' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_axial_radial_derivative_tends_natural' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.modulated_axis_derivative_eq_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_axial_radial_derivative_tends_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_axial_radial_derivative_tends_modulated' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.deriv_eq_of_nonnegative_agreement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_leading_derivative_eq_modulated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_axial_radial_derivative_tends_leading' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axial_radial_derivative_tends_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_radial_tail_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.radial_derivative_limit_of_first_jet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.chart_radial_derivative_eq_fderiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.first_jet_radial_component_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_derivative_tail_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.power_bounded_remainder_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.uncut_prefix_derivative_tends_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.uncut_prefix_as_positive_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.finite_prefix_derivative_tends_leading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.finite_prefix_radial_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.finite_positive_prefix_tends_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_axial_component_derivative_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axial_component_derivative_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.natural_radial_derivative_quantitative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.natural_radial_derivative_negative_at_root' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.natural_axis_radial_identity_from_solution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.natural_axis_radial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_axis_force_ratio_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.exists_negative_axis_force_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.root_axial_gradient_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.materialStretchCoefficient_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selected_root_axial_stretch_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2527:36: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [AxisymmetricResidual.velocity, AxisymmetricResidual.lift, AxisymmetricFields.profilePoint,
+    AxisymmetricFields.radialEnergy, AxisymmetricResidual.pack_zero, AxisymmetricResidual.pack_one,
+    AxisymmetricResidual.pack_two, zero_pow (by decide : 2 ≠ 0), zero_div, zero_mul, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'ConcentrationAware.selected_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_velocity_axial_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisymmetric_velocity_jacobian_on_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2629:10: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.selected_base_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_transverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2739:6: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/extension/AxisForceSign.lean:2739:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'ConcentrationAware.axisDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.terminalScale_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.terminalScale_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2793:8: warning: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/extension/AxisForceSign.lean:2793:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'ConcentrationAware.axisDeformation_directional_ratio_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:2808:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/extension/AxisForceSign.lean:2811:62: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.powerLawDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.rotationAngle_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.rotationAngle_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.selectedAxisOmega_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisDeformation_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_candidate_axis_contDiffAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.compact_jet_bound_from_selected_base_germs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.spatial_jet_norm_le_spacetime_jet_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.cutoff_stage_jets_zero_above_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_eq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_eventuallyEq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.slowSum_jet_eq_cutPrefix_of_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.physicalProfile_eventuallyEq_cutPrefix_of_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.materialStretchCoefficient_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.natural_root_stretch_enclosure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.exists_actual_root_with_stretch_enclosure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.selected_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_axis_jacobian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_deformation_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.eventually_scale_to_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_root_common_terminal_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.linear_variational_unique_on_compact_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.axisRateOperator_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.axisRateOperator_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.integratedDeformation_unique_on_compact_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.actual_root_variational_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+/extension/AxisForceSign.lean:3453:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'ConcentrationAware.root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.outgoing_root_pressure_moment_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.outgoing_root_Z_positive_iff_moment_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.outgoing_root_Z_positive_of_prefix_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.actual_ratio_negative_of_local_Z' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConcentrationAware.outgoing_root_Z_positive_of_uniform_amplitude' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.exists_profile_data_with_positive_root_pressure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ConcentrationAware.uniform_amplitude_sufficient' depends on axioms: [propext, Classical.choice, Quot.sound]

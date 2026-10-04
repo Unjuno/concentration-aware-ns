@@ -1,0 +1,48 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v8-n128-package-a1",
+  "scope": "Post-run publication packaging only; solver inputs, run protocol, solver execution, and acceptance criteria are unchanged.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v8-n128.json",
+  "run_protocol_sha256": "c57730737982a7583db20193c4f4b2ce1ec9e5fa44494d8de42a55838a552f00",
+  "archive": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz",
+  "archive_sha256": "e08e17eaf9789bf5c7cc9d8c368ec48dae2d2104e5d4be457cd39b4d955721bb",
+  "archive_bytes": 1158891275,
+  "split_zstandard_manifest": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json",
+  "split_zstandard_manifest_sha256": "ad1eada5a71a7fea2cfb3f39c213c22402d385c0d1684d27fc8258c07e7bd6d0",
+  "included": [
+    "preMap cells at t=0.002",
+    "mapped cells at t=0.002",
+    "mapped internal faces at t=0.002",
+    "case inputs and solver logs"
+  ],
+  "excluded": [
+    "preMap face snapshot",
+    "all t=0.003 PIMPLE stage snapshots",
+    "generated mesh/checkpoint and dynamicCode files"
+  ],
+  "full_as_run_archive": {
+    "path": "work/of13-amr-same-run-map-v8-n128/archive-recovery/amr-stage-snapshot-n128-full.tar.gz",
+    "bytes": 8017981549,
+    "sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100",
+    "public": false
+  },
+  "reconstruction": "python3 -m tools.reconstruct_amr_published_archive evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json work/of13-amr-same-run-map-v8-n128/reconstructed-review.tar.gz",
+  "limits": [
+    "The compact archive supports replay of same-run parent injection and mapped-face Gauss-gradient/vorticity diagnostics.",
+    "Later PIMPLE stage numerical comparisons are not published from this compact package.",
+    "The full archive and raw case remain under ignored work/; the original as-run archive hash remains in manifest.json."
+  ],
+  "review_archive_member_verification": {
+    "artifact": "evidence/of13-amr-same-run-map-v8-n128/review-archive-members-verification.json",
+    "status": "PASS_REVIEW_PACKAGE_MEMBERS_MATCH_AS_RUN_SNAPSHOTS",
+    "replay_command": "python3 -m tools.verify_amr_v8_n128_review_members",
+    "scope": "Reassembled compact package members are byte-identical to the preMap cells, mapped cells, and mapped faces referenced by the as-run manifest."
+  },
+  "review_archive_distribution": {
+    "type": "GitHub release assets (the data parts are kept out of Git history to keep repository clones smaller)",
+    "repository": "Unjuno/concentration-aware-ns",
+    "tag": "of13-amr-same-run-map-v8-n128",
+    "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-amr-same-run-map-v8-n128",
+    "download_command": "gh release download of13-amr-same-run-map-v8-n128 --repo Unjuno/concentration-aware-ns --dir evidence/of13-amr-same-run-map-v8-n128",
+    "assets": "All 15 part files listed above; concatenate in order and run the recorded reconstruction command."
+  }
+}

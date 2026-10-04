@@ -1,0 +1,75 @@
+# Post-announcement Navier–Stokes research update
+
+**Checked:** 2026-10-04 02:51 UTC  
+**Purpose:** identify substantive work after OpenAI's announcement and test its relevance to the active concentration audit.  
+**Status:** primary arXiv records and paper text checked; no independent full proof replay or new CFD run performed.
+
+## Conditional regularity result for analytic forcing
+
+Constantin, Ignatova, and Vicol's arXiv:2609.20803 (v2, September 29) studies solutions satisfying the OpenAI construction's anisotropic Type II bounds and exact axisymmetry in a collapsing core. They prove regularity at the proposed singular point when the body force is spatially analytic. Under the same structural solution hypotheses and a force bounded in (C^2) through the proposed singular time, they further conclude that the force cannot vanish identically near the singular point and cannot be locally uniformly real analytic in space.
+
+This is a meaningful constraint on the forcing needed by that solution mechanism. It is compatible with a force that is (C^\infty) but nonanalytic, as the OpenAI construction describes. It therefore neither refutes the announced theorem nor establishes that its forcing is physically realizable. In particular, it gives no bridge from a continuum velocity singularity to deterministic molecular positions, particle alignment, or a speed-dependent drop in material viscosity.
+
+There is an important provenance boundary: the authors explicitly say they do
+not claim to have verified OpenAI's construction. They take the relevant
+anisotropic bounds and exact core symmetry from statements in that manuscript,
+then derive the conditional regularity and force consequences. The theorem's
+spatial analyticity is imposed on every compact pre-singular time cylinder;
+the force's analyticity radius may shrink toward blowup. Its force-only
+corollary says that, if the singularity and stated solution hypotheses hold,
+the force violates this local-uniform analyticity condition and cannot vanish
+identically on any space-time cylinder extending to the singular endpoint.
+This does not imply a nonzero point value exactly at the singular point.
+
+## Cross-check against the pinned Lean source
+
+At OpenAI/NavierStokesAndEuler commit
+`f9e8bc5b38b6e212696e8a30e3e91517af887bbd`, the whole-space candidate record
+stores smoothness of the force, compact spatial support, future time support,
+the residual equation, and unbounded speed. The compact-force construction
+uses a smooth spatial cutoff. A separate theorem proves only that, if the
+force has the paper's positive-time support and there is no global finite-
+energy solution, then the force is nonzero at some positive time and some
+point. This is weaker than the later paper's conditional no-cylinder-vanishing
+corollary. The reviewed Lean files do not state the external paper's spatial
+analyticity hypothesis or local no-cylinder conclusion. This is a scope
+difference, not evidence of a formalization defect: the extra result depends
+on a separate regularity theorem and the construction's asserted profile
+bounds.
+
+The exact archived source hashes are in
+`evidence/upstream-refresh/post-announcement-navier-stokes-literature-2026-10-04.json`.
+No general theorem bridge from continuum blowup to molecular alignment or a
+viscosity transition follows from this comparison.
+
+## Direction-versus-position replay (2026-10-04)
+
+The current locked environment re-ran the adjacent analytic controls:
+`tests/test_alignment_uncertainty.py`,
+`tests/test_alignment_integrability_threshold.py`, and
+`tests/test_rotational_diffusion_alignment.py` (7 passed total). The standalone
+particle-position probability checker also passed all 14 identity and
+negative-control checks under SymPy 1.14.0; its output matched the committed
+JSON byte-for-byte. This confirms the model-level distinction already stated
+above: alignment of infinitesimal directions under the prescribed tangent map
+does not entail increasing probability of a bounded 3D position event. It is
+not molecular or finite-particle evidence.
+
+## Density in a weak forcing topology
+
+Cao, Chi, and Nie's arXiv:2609.10262 (v4, September 22; the version record says the manuscript was unchanged in v4) starts from the compact forced blowup construction and builds a blowup solution near each given smooth solution while preserving its initial velocity. For fixed viscosity and zero initial velocity, they state that smooth blowup-producing forces are dense in the relative (L^1_t H^s_x) topology on both the torus and ℝ³ exactly for (s<1/2).
+
+That result suggests an instability under sufficiently weak forcing-distance measurements. Topology matters: density in this low-regularity metric does not say blowup is robust under stronger smooth norms, that approximating forces are small in engineering-relevant quantities, or that a real material follows the continuum model to singular scales. It is not evidence for molecular alignment or a constitutive transition.
+
+## Consequence for this audit
+
+These papers are genuine post-announcement developments, but they do not expose an implementation defect in OpenFOAM, SU2, PhysicsNeMo, or the OpenAI Lean source. No upstream report is justified. They sharpen a follow-up proof check: compare the pinned construction's actual forcing near the singular point against the exact hypotheses of the analytic-forcing regularity theorem, and quantify perturbation size only in the norms each source actually states. Until then, keep the local-concentration numerical audit, the claimed continuum singularity, and any particle-scale interpretation as separate evidence questions.
+
+The source summaries and version timestamps are archived in
+`evidence/upstream-refresh/post-announcement-navier-stokes-literature-2026-10-04.json`.
+
+## Sources
+
+- Constantin, Ignatova, Vicol, [arXiv:2609.20803](https://arxiv.org/abs/2609.20803), v2 submitted 2026-09-29.
+- Cao, Chi, Nie, [arXiv:2609.10262](https://arxiv.org/abs/2609.10262), v4 submitted 2026-09-22.
+- OpenAI, [On the Navier–Stokes Millennium Prize Problem](https://openai.com/index/navier-stokes-solution/), for the construction being analyzed and its published framing.

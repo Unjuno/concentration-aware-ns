@@ -1,0 +1,18 @@
+{
+  "schema": "amr-point-gradient-bound/v1",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "precision_bits": 96,
+  "time_exact_decimal": "0.05",
+  "condition": "A C1 field w on the convex cube, with w(C_i)=decoded stored U_i at the two witness points; W1-infinity may use its Lipschitz representative",
+  "limits": [
+    "Exact binary64-decoded points and values, exact decimal time, independent Arb analytic point evaluation; no cell-average interpretation.",
+    "Floating six-nearest-neighbor search only selects a pair; no global optimum is claimed.",
+    "The lower bound is for peak-of-gradient-error in Frobenius norm, not error in the peak value alone.",
+    "No pointwise curl bound follows, including for solenoidal fields; H1 alone does not supply point interpolation in three dimensions.",
+    "The upstream solver is not established to supply this continuous point-interpolating reconstruction; original gate unchanged.",
+    "No new CFD simulation, singularity, molecular alignment or viscosity claim."
+  ]
+}

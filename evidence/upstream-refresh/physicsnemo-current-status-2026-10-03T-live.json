@@ -1,0 +1,55 @@
+{
+  "checked_on": "2026-10-03",
+  "repository": "NVIDIA/physicsnemo",
+  "main_commit": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+  "power_spectrum_py": {
+    "path": "physicsnemo/metrics/general/power_spectrum.py",
+    "git_blob": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+    "finding": "odd-width center-index defect remains in the unchanged audited file"
+  },
+  "odd_width_tracking": {
+    "issue_2007": {
+      "state": "OPEN",
+      "updated_at": "2026-10-02T03:48:30Z",
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+    },
+    "pr_2008": {
+      "state": "OPEN",
+      "review_decision": "REVIEW_REQUIRED",
+      "updated_at": "2026-09-30T08:39:08Z",
+      "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "base": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "relation_to_main": {
+        "ahead_by": 2,
+        "behind_by": 12,
+        "status": "diverged",
+        "merge_base": "ff5d19d08123de47ca446caed1d70a225d540184"
+      },
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+    }
+  },
+  "periodic_derivative_tracking": {
+    "issue_2001": {
+      "state": "OPEN",
+      "updated_at": "2026-09-18T05:01:57Z",
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2001"
+    },
+    "issue_1852": {
+      "state": "OPEN",
+      "updated_at": "2026-09-20T01:44:34Z",
+      "labels": [
+        "enhancement",
+        "? - Needs Triage",
+        "stale"
+      ],
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/1852"
+    },
+    "pr_1853": {
+      "state": "OPEN",
+      "is_draft": true,
+      "updated_at": "2026-07-17T21:43:39Z",
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/1853"
+    }
+  },
+  "disposition": "No duplicate issue or PR filed. The odd-width finding remains already reported; periodic-only derivative behavior and missing consumer-facing warning are already represented by existing issues/PR. This targeted tracker check is not an exhaustive audit of every PhysicsNeMo item."
+}

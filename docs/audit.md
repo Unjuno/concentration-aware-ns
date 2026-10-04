@@ -37,9 +37,9 @@ executed; exact dependency freeze is in runtime/physicsnemo.
 | ID | Candidate | Classification now | Next evidence |
 |---|---|---|---|
 | OF-01 | residual convergence with inaccurate local gradients | high-gradient v2 uniform matrix complete; n16/n32 local failures exceed the exact-reference FD2 resolution floor, while n64/n128 at dt=.001 and n64 at dt=.0005/.00025 are standard/local PASS | temporal trend is descriptive; AMR-path attribution remains open |
-| OF-02 | AMR accuracy under finite budgets | completed budget and static refined-mesh controls; attribution unresolved | isolate initialization/remapping/flux effects |
+| OF-02 | AMR accuracy under finite budgets | same-run pre/post `mesh_.update()` capture shows cell-centered mapped `U` exactly equals piecewise-constant containing-parent injection for the n16 event; the 41.8% child-center point error is mostly exact-reference center shift under an algebraic decomposition | validate finite-volume cell averages, higher resolutions and alternative transfer controls; no general accuracy verdict |
 | OF-03 | strict interpretation of maxCells | source loop and cap100000 log agree: allowance 11,908, whole level group 12,416, transient 103,552, then 256 split points unrefined to 101,760 | approximate-cap behavior explained for this event; exact unselected candidate count unavailable; no defect issue warranted |
-| OF-04 | high-gradient AMR accuracy under frozen budgets | Three v2 budgets and fixed-final-mesh controls complete. Endpoint and logged time-step continuity residuals are tiny despite 37–40% AMR velocity error | continue with momentum/field-transfer history controls; do not attribute to a specific map or projection component; blocked candidates remain unobserved |
+| OF-04 | high-gradient AMR accuracy under frozen budgets | Three v2 budgets, fixed-final-mesh controls and v4 same-run map capture complete. Same-run child-DOF error vs analytic cell averages is 42.484% (parent coarse DOFs: 13.783%); error decomposition attributes its square mainly to exact parent-to-child subcell average variation. This is a DOF metric, not assumed storage semantics or a continuous reconstruction bound; quality remains UNCERTAIN | add higher-resolution AMR cases and verify cell-average meaning for the target scheme; do not generalize the single-event map rule |
 | SU-01 | conventional convergence with inaccurate local QoI | localized grid/time sweep complete; no standard-PASS/local-FAIL counterexample established, residual gate limits conclusions | investigate nonuniform/AMR and additional solver paths only under a distinct preregistered contract |
 | SU-02 | MMS old-time forcing | reproduced with analytic control and intervention; contract question | upstream Q&A 2890 |
 | ML-01 | aggregate and peak accuracy disagreement | five-case sampling matrix complete; all gate outcomes uncertain | bound continuum peaks and assess optimization/seed effects |
@@ -59,6 +59,17 @@ The stronger classical Burgers-vortex check has nonzero azimuthal viscous
 diffusion balanced exactly by advection during axis-direction alignment; it
 still makes no claim about the selected OpenAI field. See
 [`docs/burgers-vortex-alignment-viscous-balance.md`](burgers-vortex-alignment-viscous-balance.md).
+
+A new reduced stochastic calculation adds rotational Brownian diffusion to a
+small-angle Jeffery director in an imposed `gamma ~ (1-t)^(-1)` extensional
+strain. It predicts variance `~(1-t)` for constant diffusion and gives a
+threshold when the diffusion coefficient itself grows as `(1-t)^(-delta)`:
+the tangent-plane variance tends to zero for `delta<1`, stays finite for
+`delta=1`, and leaves the small-angle regime for `delta>1`. This is a model
+calculation, not an OpenAI-flow or molecule result. It makes the missing
+dimensionless comparison explicit: flow rate versus measured rotational
+diffusion at the physical cutoff. See
+[`docs/rotational-diffusion-alignment-cutoff.md`](rotational-diffusion-alignment-cutoff.md).
 
 ### OpenFOAM temporal addendum update (2026-09-30)
 

@@ -1,0 +1,52 @@
+{
+  "scope": "Exact calculation for the linearized, volume-preserving axis propagator applied to an isotropic Gaussian. It is not a finite-packet theorem for the nonlinear selected PDE.",
+  "sympy": "1.14.0",
+  "source_sha256": "31b363f959a5505a72930d10ab1d03e76e48a63e96ff3b0749d3c5c2f18bd38a",
+  "assumptions": [
+    "0 < q <= 1",
+    "C > 0",
+    "sigma > 0",
+    "R > 0"
+  ],
+  "deformation": [
+    [
+      "q**(C/2)",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "q**(C/2)",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "q**(-C)"
+    ]
+  ],
+  "covariance_eigenvalues": [
+    "q**C*sigma**2",
+    "q**C*sigma**2",
+    "sigma**2/q**(2*C)"
+  ],
+  "covariance_determinant": "sigma**6",
+  "gaussian_peak_density_ratio": "1",
+  "fixed_ball_probability_upper_bound": "sqrt(2)*R*q**C/(sqrt(pi)*sigma)",
+  "directional_transverse_axial_factor": "q**(3*C/2)",
+  "identities": {
+    "volume_preserving_deformation": true,
+    "transverse_variances_contract": true,
+    "axial_variance_expands": true,
+    "covariance_determinant_constant": true,
+    "gaussian_peak_density_constant": true,
+    "directional_transverse_axial_factor": true,
+    "fixed_ball_bound_has_q_power": true
+  },
+  "negative_controls": {
+    "non_volume_preserving_control_changes_covariance_determinant": true,
+    "wrong_axial_variance_power_rejected": true
+  },
+  "interpretation": "Angular alignment can improve while Gaussian mass in every fixed-radius ball around the packet center tends to zero; the linear model preserves covariance volume and Gaussian differential entropy.",
+  "success": true
+}

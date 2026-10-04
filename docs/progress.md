@@ -416,3 +416,215 @@ gradient guarantee. Algebra identities and assumptions are in
 `tools/check_jeffery_axisymmetric_bridge.py` and
 `evidence/tests/jeffery-axisymmetric-bridge.json`; literature boundary is in
 `docs/fiber-vortex-literature-audit.md`.
+
+## Qualified slow-base force ratio and a nonvanishing-magnitude check — 2026-10-01
+
+The selected pressure-qualified slow-base field now has a Lean-checked finite
+limit for `nu * Δu / (∂t u + u·∇u)` along its material curve. At the selected
+root, the signed limit is negative; a follow-up theorem proves the magnitude
+tends to a strictly positive constant. Thus this particular ratio does not
+vanish on this alternate base field. This is not a material-viscosity law and
+does not transfer to the upstream fixed `actualProfile` or periodic/corrected
+field. The pinned isolated checker exits 0 with no `sorryAx`; exact outputs and
+hashes are in `evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+The full scope and non-implications are recorded in
+`reports/qualified-profile-pressure-selection-2026-10-01.md` and `GOAL.md`.
+
+## Follow-up Navier–Stokes literature audit — 2026-10-03
+
+Read the primary arXiv texts for Constantin–Ignatova–Vicol, arXiv:2609.20803v2,
+and Cao–Chi–Nie, arXiv:2609.10262v4. The former proves a conditional regularity
+result under analytic forcing plus specific anisotropic and exact-core
+axisymmetry assumptions; it does not exclude blow-up under arbitrary smooth
+forcing. The latter proves topology-dependent density thresholds and a theorem
+showing that finite prescribed whole-space grid averages can be identical for
+a regular comparison and a terminally singular construction. Its authors
+explicitly distinguish this from refinement convergence for one fixed smooth
+problem. This is a benchmark-scope/reporting result, not a solver defect or
+physical validation. Details and limits are in
+`reports/navier-stokes-followup-literature-2026-10-03.md`.
+
+## Live upstream status recheck — 2026-10-03
+
+Requeried PhysicsNeMo issue #2007/PR #2008, SU2 discussion #2890 and release
+v8.5.0, and the OpenAI source repository. The known PhysicsNeMo odd-width
+finding remains tracked with no merged fix; the SU2 discussion remains closed
+without a marked answer; OpenAI's issue tracker remains disabled. The existing
+public issue/discussion is sufficient for these observations, and the
+actualProfile proof gap is not an upstream defect. No new report was filed.
+The API response snapshot is `evidence/upstream-refresh/upstream-status-2026-10-03.json`;
+interpretation is in `reports/upstream-status-2026-10-03.md`.
+
+## 2026-10-03 correction to the retained-entrance limit audit
+
+The all-scale entrance witnesses are individually selected, but their
+coefficient pairs all lie within `O(1/Λ)` of one fixed reference pair. Thus
+any selected sequence converges; lack of a coherent selection is not the
+obstruction. At the zero-`chi` root, however, the reference radial derivative
+vanishes and `p1 → 0`, while the retained cone expression `p1 + p2²/p1` is
+singular and `p2` includes a scale-dependent angular-amplitude denominator.
+The joint rate is still unresolved, so the limit does not yet give the root
+pressure moment. The corrected source-level reasoning is in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`; no Lean replay or
+pressure-sign conclusion is claimed for this correction.
+
+The pinned `reference_u_derivative` already identifies the reference axial
+derivative with `-Z/(2L)`, and `ns_error` bounds the actual shear deviation by
+`O(1/Λ)`. At `X=4/Λ`, the cone variables satisfy exactly
+`q=-8 φ_Y/φ` and `p2²=(2/Λ)ns²/(a²φ²)`. If `Z=0`, the known estimates only give
+`ns=O(1/Λ)` and `φ_Y=O(1/Λ)`; the normalization provides no positive lower
+bound on `a` at the root. A coupled first-order fixed-point expansion and
+root amplitude asymptotic are still required. Details are in the actualProfile
+provenance report; no new theorem is claimed.
+
+The cone inequality also has an exact denominator-free form when `q=p1>0`:
+`q²+p2²>(9/4)q`. This avoids manipulating the singular quotient directly but
+degenerates unscaled as `q→0`; the next analytic target is a uniform joint
+estimate of `Λq` and `Λp2²`, plus an identity relating their first-order terms
+to the pressure moment `Z`. No such estimate is claimed yet; details are in
+the actualProfile provenance report.
+
+The final normalization choice is itself rate-opaque: `C0` is selected via
+an `eventually_atTop` threshold, with only a lower bound and no explicit
+`C0(Λ)` upper estimate. Because `realAmplitude=exp(Λ*realPhase)/C`, current
+proof fields cannot compare the selected root amplitude with coefficient
+errors as `Λ` grows. This is an interface gap, not a claim that the selected
+normalization grows too fast. See the updated provenance report.
+
+Added `no_uniform_lower_bound_over_normalizations` to the isolated Lean
+extension. It proves constructively that for fixed phase and any finite
+threshold, `exp(Λ*phase)/C` has no positive floor uniformly over all larger
+`C`; the checker reports only `[propext, Classical.choice, Quot.sound]` and
+no `sorryAx`. This formalizes the limitation of the all-larger-`C` interface,
+not a property of the selected single finite normalization. Evidence is in
+`evidence/lean-verification/actual-profile-amplitude-normalization-2026-10-03.json`.
+
+
+## n=128 archive replay and current mathematical context — 2026-10-03
+
+Reassembled the compact AMR review archive from its Zstandard parts; its gzip
+SHA-256 and the three analysis snapshot members match their recorded hashes.
+The stored n=128 result is descriptive: specified interior Gauss gradient
+point-error is 0.6084% preMap and 5.2472% after mapping, and same-parent faces
+retain the injected parent value. A separate fresh full numerical replay
+remains resource-intensive and incomplete. Do not treat the stored metric as a
+fresh independent replay or an OpenFOAM defect.
+
+Reviewed OpenAI's official Navier–Stokes statement and the 2026-09-17
+Constantin–Ignatova–Vicol preprint. The preprint's regularity result requires
+analytic forcing plus specified anisotropic and axisymmetric-core conditions;
+the authors explicitly do not certify the OpenAI construction. It is not
+evidence for molecular ordering or viscosity change. PR #4 CI run 37032506247
+passed. No upstream issue is justified; SU2 and PhysicsNeMo audit work remains
+outstanding.
+
+
+## Finite-mesh observability corollary — 2026-10-03
+
+Added a conditional proof adaptation from finite uniform-grid averages to any
+fixed finite family of finite AMR-like mesh partitions on the torus, with an
+additional finite set of point probes. The key geometric step is choosing the
+localized insertion ball away from the finite mesh skeletons and probe sites;
+zero divergence and compact support preserve the cell averages of velocity,
+while the integrated momentum equation preserves force averages. The continuum
+solution premise remains the OpenAI packet and the localized gluing theorem.
+This limits universal claims from finite observations; it does not invalidate
+the fixed manufactured-solution convergence study. Full proof and caveats are
+in `reports/finite-mesh-observation-nullspace-2026-10-03.md`.
+
+
+## Acceptance-gate scope refinement — 2026-10-03
+
+The v2 gate now says a local PASS is specific to the frozen MMS, its input
+representation, reconstruction operator and reported metrics. Finite cell/face
+or point observations cannot be promoted to a universal continuous-peak
+guarantee; such a claim needs an explicit validated reconstruction or an
+independent regularity/unresolved-mode estimate. This records the finite-mesh
+observation analysis without changing existing case verdicts. Targeted gate
+tests: 14 passed. PR #4 CI for head `793bdc46` is queued.
+
+
+## PhysicsNeMo upstream tracking refresh and local full suite — 2026-10-03
+
+Requeried current main, the odd-width spectrum source blob, and related issue
+and PR records. The fix PR is open/review-required and diverged from current
+main; periodic gradient issue #1852 remains open/stale, with linked draft PR
+#1853, while the consumer-facing issue #2001 remains open. No duplicate post
+was warranted. Current metadata is stored in the dated upstream-refresh JSON.
+The complete local verification suite on the current benchmark checkout passed
+212 tests, skipped one, and passed five subtests. This is not the upstream
+PhysicsNeMo suite.
+
+## Full locked local test suite — 2026-10-03
+
+The full benchmark test suite passed on commit `b6dde6f`: 212 passed, one
+skipped, five subtests passed. Exact command, runtime, dependency-lock digest
+and stdout hash are preserved in `evidence/tests/full-suite-2026-10-03-b6dde6f.json`
+and `.log`. This is repository-level regression evidence, not upstream solver
+validation; PR CI for the same commit is still queued.
+
+
+## CI Python-version compatibility run — 2026-10-03
+
+Ran the full local benchmark suite under Python 3.12.10 (same minor version as
+the Ubuntu 24.04 workflow): 212 passed, one skipped, five subtests passed.
+The frozen command, dependency versions, spec digest, stdout and hash are in
+`evidence/tests/full-suite-2026-10-03-py31210.json` and `.log`. This is a local
+macOS compatibility check only; the hosted workflow remains separately
+unverified while queued.
+
+
+## Finite-volume nullspace replay and stable AMR archive diagnostics — 2026-10-03
+
+Added `tools.check_fv_derivative_nullspace` to the report replay. Its SymPy
+identity is a conditional smooth compact-support construction, not a solver
+solution or verification of the generalized finite-AMR proof. A second replay
+hygiene fix suppresses successful zstd temporary-path output but preserves
+error diagnostics. Full 39-step replay passed; 213 tests passed, one skipped,
+and five subtests passed. Every log hash matched its summary entry, the AMR
+archive path no longer leaks, and the numerical AMR result did not change.
+See `evidence/report-replay/summary.json` and the adjacent logs.
+# Full-sphere correction to the rotational-diffusion model — 2026-10-03
+
+Extended the ideal Jeffery-plus-rotational-diffusion calculation from the
+tangent plane to the full orientation sphere. The critical `delta=1` law has a
+finite-width stationary density proportional to `exp(chi*p_z^2)`; for
+`delta>1`, the increasing diffusion coefficient and sphere Poincare gap imply
+convergence to isotropy in the prescribed model. Thus the tangent-plane
+variance divergence marks small-angle approximation failure. The full global
+stochastic theorem for `delta<1` remains unproved, and no physical molecular
+diffusivity law or transfer from the OpenAI field is established. The SymPy
+checker passes; Python 3.14.5 full report replay passed 42 steps and 219 tests
+(one skipped, five subtests). See
+`docs/full-sphere-rotational-diffusion.md` and
+`evidence/tests/spherical-orientation-diffusion-2026-10-03.json`.
+
+## Subcritical stochastic limit-set refinement — 2026-10-03
+
+For `delta<1`, the time-integrated rotational diffusion is finite, giving an
+asymptotic pseudotrajectory of the deterministic Jeffery flow. Its strict
+Lyapunov function narrows the pathwise limit set to the equator or one pole.
+This does not exclude the unstable-equator exception, so almost-sure
+alignment remains unproved. The APT/strict-Lyapunov framework is from
+Benaïm–Hirsch (1996) and Benaïm (1999); the SDE-specific estimate and exact
+identities are recorded in the full-sphere note/checker. Python 3.14.5
+full replay passed 42/42 with all log hashes matching; the suite passed 220
+tests, one skipped, and five subtests. Follow-up source check found that
+Benaïm (1999), Theorem 9.1, concerns discrete Robbins–Monro processes and
+cannot be transferred directly to this continuous-time SDE. The equator
+exception therefore remains open. PR #4 CI for the pushed revision is pending.
+The theorem scope is pinned to §9, pp. 49–50 in the source PDF. Goal remains
+active.
+
+## Exact equatorial marginal — 2026-10-03
+
+The `x=p_z` Itô marginal is now checked as
+`dx=[(a-2d(s))*x-a*x^3]ds+sqrt(2*d(s)*(1-x^2))*dW_s`. The linearized
+equatorial model has a nondegenerate Gaussian integrating-factor amplitude;
+this does not resolve the nonlinear no-atom question. All 13 symbolic
+identities pass, focused tests pass 4/4, and the 42-step full report replay
+passes with matching log hashes. Full suite: 221 passed, one skipped, five
+subtests. Focused checker and tests also pass on Python 3.12.10 (4 tests,
+13 identities); environment and hashes are recorded in
+`evidence/tests/spherical-orientation-diffusion-py312-2026-10-03.json`. This is
+not a full Python 3.12 suite or hosted-CI result. Goal remains active.

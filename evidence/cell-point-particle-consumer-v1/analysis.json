@@ -1,0 +1,41 @@
+{
+  "status": "PINNED_CONSUMER_TRACE_AND_CONDITIONAL_SYMBOLIC_SENSITIVITY",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "analysis_source_commit": "39de0fe02dfc7546ac55e08cf86b377ac2e42c87",
+  "sources": [
+    {
+      "path": "src/lagrangian/solidParticle/solidParticleCloud.C",
+      "sha256": "17eb0ba112ff122075b3acfaff29c49e811a000782e044a6935980890b54faca",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/lagrangian/solidParticle/solidParticleCloud.C"
+    },
+    {
+      "path": "src/lagrangian/solidParticle/solidParticle.C",
+      "sha256": "cb5ada9034158e767809c98ceddcefab22e00e0324208d1b9beb0f4ed071dc57",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/lagrangian/solidParticle/solidParticle.C"
+    },
+    {
+      "path": "src/lagrangian/solidParticle/solidParticleI.H",
+      "sha256": "963b8984a1b655f141830bbec848af91f363fd9c29606a3dfc0a2b590655e79a",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/lagrangian/solidParticle/solidParticleI.H"
+    }
+  ],
+  "source_lines": {
+    "src/lagrangian/solidParticle/solidParticleCloud.C": {
+      "interpolationCellPoint<vector> UInterp(U);": 81
+    },
+    "src/lagrangian/solidParticle/solidParticle.C": {
+      "trackToAndHitFace(f*trackTime*U_, f, cloud, td);": 61,
+      "vector Uc = td.UInterp().interpolate(this->coordinates(), tetIs);": 67,
+      "scalar Re = magUr*d_/nuc;": 74,
+      "U_ = (U_ + dt*(Dc*Uc + (1.0 - rhoc/rhop)*td.g()))/(1.0 + dt*Dc);": 83
+    }
+  },
+  "frozen_dc_velocity_gain": "Dc*dt/(Dc*dt + 1)",
+  "exact_nonnegative_parameter_controls": 20,
+  "limits": [
+    "Source trace only; no solidParticleCloud execution or trajectory experiment",
+    "Frozen nonnegative Dc and body term only; actual Dc depends on relative speed, viscosity, diameter and density",
+    "Particle tracking uses U_, not direct Uc advection; carrier-field divergence does not equal particle-volume rate",
+    "No violated divergence-preservation contract, upstream defect or physical viscosity claim"
+  ]
+}

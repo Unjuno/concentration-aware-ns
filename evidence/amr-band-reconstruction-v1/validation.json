@@ -1,0 +1,51 @@
+{
+  "status": "PASS_LOCAL_TESTS_AND_SCOPED_GUARDED_REPLAY",
+  "numerical_source_commit": "21754518dbecefc3fed8c19badb97f28756ccb26",
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64"
+  },
+  "test_result": "285 passed, 1 skipped, 83 subtests passed",
+  "test_command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests",
+  "replay_command": "From selected export source/: uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python ../isolate_replay.py --output ../result --source-commit 21754518dbecefc3fed8c19badb97f28756ccb26",
+  "source_export": {
+    "commit": "21754518dbecefc3fed8c19badb97f28756ccb26",
+    "paths": [
+      "tools",
+      "protocols/amr-band-reconstruction-v1.json",
+      "evidence/amr-p0-spectrum-v1",
+      "requirements-verification-locked.txt",
+      "requirements-verification.txt",
+      "requirements.txt"
+    ],
+    "archive_sha256": "6b91e04a8da5cd99c49777e4eea43b8c74768ef5ba0e6154c3029c3359bb6b64",
+    "archive_bytes": 3338240
+  },
+  "replay_strict_analysis_json_identity": true,
+  "analysis_json_sha256": "ddb4bf10a8d9d4697671ab25cb9a7ca72265f5df715e0973f60a3eeb47f38bf3",
+  "initial_launch_failure": "First selected export omitted requirements.txt required recursively by requirements-verification.txt; uv stopped before executing analysis. Failure log preserved; accepted export includes the file from the same frozen commit.",
+  "checks": [
+    "Four new analytical controls pass",
+    "All twelve states evaluated on complete 32^3 and 64^3 periodic grids",
+    "Grid means agree with derivative Parseval norms",
+    "All four parent-copy diagnostic pairs remain exactly identical",
+    "Fresh selected export, without .git, completes under Python-level process/network/Git-open guards and reproduces the entire analysis JSON byte-for-byte",
+    "compileall and git diff --check pass; no configured project linter exists"
+  ],
+  "limits": [
+    "Same host/interpreter locked dependency environment",
+    "Python guards are not a general native-library syscall sandbox",
+    "No CFD, upstream suite, proof or entire historical report replay performed",
+    "Peak enclosures use analytical formulas in floating point; no interval-certified rounding budget"
+  ],
+  "artifacts_sha256": {
+    "clean-export-replay.log": "39e859087c1ff1089e4b5e8015b6ee46e647fcd86689cd434475a487bc3c0446",
+    "full-suite.log": "d8e14985c68f5b338cc9eea0e8740427ee0c5c91f8d1964114a21dfbb5870e0d",
+    "audit.log": "39e859087c1ff1089e4b5e8015b6ee46e647fcd86689cd434475a487bc3c0446",
+    "initial-incomplete-export.log": "d40bc6594c7c5cc5ddd261d54c0413638dc973f5e91965ea6ace4fd7903965c8",
+    "isolation.json": "35d2685a1fed810c267673649ecc5fe5b3b7e1e0a5bd3f7337b5071f11afd6cd",
+    "analysis.json": "ddb4bf10a8d9d4697671ab25cb9a7ca72265f5df715e0973f60a3eeb47f38bf3",
+    "isolate_replay.py": "1b12e912433458722806c3d132a094f96b9b6cd129fd376cbeee1aeb3fa01e02"
+  }
+}

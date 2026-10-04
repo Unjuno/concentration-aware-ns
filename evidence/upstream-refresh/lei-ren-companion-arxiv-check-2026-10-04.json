@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-04T01:24:44Z",
+  "endpoint": "https://export.arxiv.org/api/query",
+  "queries": [
+    {
+      "search_query": "ti:\"Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part II\"",
+      "start": 0,
+      "max_results": 20,
+      "returned_records": 0,
+      "raw_response": "lei-ren-companion-title-query-2026-10-04.atom.xml",
+      "raw_response_sha256": "c34cf76386f666c36bb644ce5304ad65a546348ebca29395f6269174e88e0662",
+      "records": []
+    },
+    {
+      "search_query": "all:\"Residual Correction via Oscillatory Pulses\"",
+      "start": 0,
+      "max_results": 20,
+      "returned_records": 1,
+      "raw_response": "lei-ren-companion-phrase-query-2026-10-04.atom.xml",
+      "raw_response_sha256": "ac6d77713b0c51a4f06ac3590f01da9cb0c8033bd34947c6c198c44427dee2bf",
+      "records": [
+        {
+          "arxiv_id": "2609.35406v2",
+          "title": "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder",
+          "published": "2026-09-28T15:27:16Z",
+          "url": "https://arxiv.org/abs/2609.35406v2"
+        }
+      ]
+    }
+  ],
+  "interpretation": "The announced companion was not located by these bounded arXiv metadata queries. This does not establish that it is absent from other indexes, repositories, or unpublished sources.",
+  "source_note": "Responses were obtained from the arXiv Atom API during this check; the query result is a discovery record, not a paper review."
+}

@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/drag-branch-clean-5d6/isolate_replay.py", line 16, in <module>
+    runpy.run_module('tools.audit_solid_particle_drag_branches',run_name='__main__')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 234, in run_module
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/drag-branch-clean-5d6/source/tools/audit_solid_particle_drag_branches.py", line 50, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--source-commit',required=True);a=p.parse_args();audit(a.output,a.source_commit)
+                                                                                                                                                                       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/drag-branch-clean-5d6/source/tools/audit_solid_particle_drag_branches.py", line 45, in audit
+    result={'status':'CONDITIONAL_DRAG_BRANCH_AUDIT','analysis_source_commit':source_commit,'consumer_record_sha256':sha(consumer),'upstream_commit':provenance['upstream_commit'],'precision_bits':128,'assumptions':{'nu':1,'diameter':1,'density_ratio':1,'dt':1,'old_particle_velocity':0,'gravity':0,'carrier_direction':'one positive coordinate axis'},'idealized_branch_jump':enclosed,'python_transcription_controls':measures,'exact_radial_sensitivity_controls':controls,'radial_formula':'x/(1+x)+p*theta*x/(1+x)^2','positive_margin_formula':'(1+(1-p*theta)*x)/(1+x)^2','viscosity_elasticity_formula':'(1+(1-p)*z)/(1+z) = 1-p*theta','viscosity_elasticity_bounds':{'lower_limit':str(1-p),'upper_limit':'1'},'symbolic_family_assumptions':'Fixed positive density/diameter/viscosity, zero body force; within one Reynolds branch; x=dt*Dc, z=0.15*Re^p, theta=z/(1+z)','environment':{'python':sys.version,'platform':platform.platform()},'limits':['Body-force-free fixed positive properties; actual trajectories/fields not executed','Real branch limits with decoded binary64 literals; Python two-float quotients are not continuous derivatives','Continuous and constant variants are negative controls, not production fixes','No native OpenFOAM binary equivalence, physical transition, viscosity law or violated contract claim']}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/platform.py", line 1354, in platform
+    system, node, release, version, machine, processor = uname()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/platform.py", line 959, in __iter__
+    (self.processor,)
+     ^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/functools.py", line 1126, in __get__
+    val = self.func(instance)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/platform.py", line 954, in processor
+    return _unknown_as_blank(_Processor.get())
+                             ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/platform.py", line 886, in get
+    return func() or ''
+           ~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/platform.py", line 922, in from_subprocess
+    return subprocess.check_output(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        ['uname', '-p'],
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        encoding="utf8",
+        ^^^^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 473, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1858, in _execute_child
+    sys.audit("subprocess.Popen", executable, args, cwd, env)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/drag-branch-clean-5d6/isolate_replay.py", line 9, in audit
+    blocked.append(event);raise RuntimeError('process/network access is blocked in this archive replay')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: process/network access is blocked in this archive replay

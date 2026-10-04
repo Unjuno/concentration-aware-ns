@@ -1,0 +1,120 @@
+{
+  "commit": "a6e2ce5f13d53478f1e22bd4333435f3e6df488a",
+  "runner_sha256": "4e6d74c27bf5d1187493e864d139e6fdbd775defe47e3a10d208d00937d6c09c",
+  "tracked_archive_sha256": "4725fbe34efa18e0e9957f398d515cae5f3f38654ec932ba984acab959037a72",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "python3.14",
+        "-m",
+        "venv",
+        "<EXPORT>/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "raw_log_sha256": "e35f7b6a9d6541d46263eff9348cc3ab828541d03849d38f813f28360a231511"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "raw_log_sha256": "826427edd1ba2b4aba07c0290bab000a39d2b5fd6db7611f49e1a061f4608684"
+    },
+    {
+      "name": "su2-standard",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.review_su2_standard"
+      ],
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "raw_log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_force"
+      ],
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "raw_log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_dissipation"
+      ],
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "raw_log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_deformation"
+      ],
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "raw_log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.check_axis_packet_bound"
+      ],
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "raw_log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.check_alignment_uncertainty"
+      ],
+      "exit_code": 0,
+      "log": "alignment-uncertainty.log",
+      "raw_log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "report_replay_success": true,
+  "report_replay_steps": 42,
+  "compared_files": 219,
+  "changed_files": [
+    "evidence/tests/force-concentration-scaling-2026-10-03.json",
+    "evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json"
+  ],
+  "success": false
+}

@@ -1,0 +1,55 @@
+{
+  "captured_at_utc": "2026-10-04T03:02:26Z",
+  "repository": {
+    "name": "NVIDIA/PhysicsNeMo",
+    "default_branch": "main",
+    "main_sha": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+    "main_commit_date_utc": "2026-10-02T16:45:37Z",
+    "pushed_at_utc": "2026-10-02T18:59:05Z",
+    "license": "Apache-2.0",
+    "issues_enabled": true
+  },
+  "boundary_operator": {
+    "issue_1852": {
+      "state": "closed",
+      "state_reason": "not_planned",
+      "closed_at_utc": "2026-10-04T02:17:26Z",
+      "closure_comment": "Issue was closed by the stale bot after 14 days without activity; no maintainer technical resolution was given.",
+      "url": "https://github.com/NVIDIA/PhysicsNeMo/issues/1852"
+    },
+    "issue_2001": {
+      "state": "open",
+      "title": "Finite-difference/spectral gradients and PhysicsInformer silently assume periodic domains",
+      "updated_at_utc": "2026-09-18T05:01:57Z",
+      "url": "https://github.com/NVIDIA/PhysicsNeMo/issues/2001"
+    },
+    "pull_1853": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "95a4cac597def5df014c2b4eac22bf42e25a9fd8",
+      "base_sha": "e571668232a1376aed7f43ea27af5000edbb9e7e",
+      "updated_at_utc": "2026-07-17T21:43:39Z",
+      "mergeable": false,
+      "url": "https://github.com/NVIDIA/PhysicsNeMo/pull/1853"
+    }
+  },
+  "odd_width_spectrum": {
+    "issue_2007": {
+      "state": "open",
+      "updated_at_utc": "2026-10-02T03:48:30Z",
+      "url": "https://github.com/NVIDIA/PhysicsNeMo/issues/2007"
+    },
+    "pull_2008": {
+      "state": "open",
+      "head_sha": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "base_sha": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "head_ahead_of_main": 2,
+      "main_ahead_of_head": 14,
+      "mergeable": true,
+      "focused_checks": "Greptile Review, pre-commit.ci, and report checks pass; this is not a full PhysicsNeMo suite result.",
+      "url": "https://github.com/NVIDIA/PhysicsNeMo/pull/2008"
+    }
+  },
+  "disposition": "No duplicate issue or comment was posted. The new event on #1852 is automated stale closure, not resolution; the consumer-level issue #2001 remains open and #1853 remains a stale draft. Odd-width spectrum defect and focused fix remain tracked by #2007/#2008, with the PR 14 commits behind main and not integrated.",
+  "scope_note": "This status refresh does not change the benchmark's even-grid spectral verdict or add full upstream-suite evidence."
+}

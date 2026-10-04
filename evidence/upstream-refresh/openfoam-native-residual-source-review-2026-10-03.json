@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-03",
+  "evidenceState": "SOURCE_ONLY_RUNTIME_UNCONFIRMED",
+  "currentPinsObservedAtUtc": "2026-10-03T10:39:10.946323+00:00",
+  "sources": {
+    "repositoryRelativePathsByFile": {
+      "fvScalarMatrix.C": "src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C",
+      "fvMatrix.H": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.H",
+      "fvMatrix.C": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C",
+      "fvMatrixSolve.C": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrixSolve.C",
+      "lduMatrixATmul.C": "src/OpenFOAM/matrices/lduMatrix/lduMatrix/lduMatrixATmul.C",
+      "lduMatrix.H": "src/OpenFOAM/matrices/lduMatrix/lduMatrix/lduMatrix.H",
+      "cyclicFvPatchField.C": "src/finiteVolume/fields/fvPatchFields/constraint/cyclic/cyclicFvPatchField.C"
+    },
+    "repositories": [
+      {
+        "repository": "OpenFOAM/OpenFOAM-13",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "commitDateUtc": "2026-06-23T20:54:34Z",
+        "commitUrl": "https://github.com/OpenFOAM/OpenFOAM-13/commit/18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sha256BySourceFile": {
+          "fvScalarMatrix.C": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+          "fvMatrix.H": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5",
+          "fvMatrix.C": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+          "fvMatrixSolve.C": "643527cc128fb6e0d9ec36aabf7ea62971c277c71b4b690cff49c933155bf237",
+          "lduMatrixATmul.C": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+          "lduMatrix.H": "440df7c293c45dc21993ad0e0a47d0f32ed0c094512ce2e85b8067d84b1c94a6",
+          "cyclicFvPatchField.C": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8"
+        }
+      },
+      {
+        "repository": "OpenFOAM/OpenFOAM-14",
+        "pin": "162fa7a2e51e9c9a86c3000efdd885907f7d1acc",
+        "commitDateUtc": "2026-09-30T14:42:37Z",
+        "commitUrl": "https://github.com/OpenFOAM/OpenFOAM-14/commit/162fa7a2e51e9c9a86c3000efdd885907f7d1acc",
+        "sha256BySourceFile": {
+          "fvScalarMatrix.C": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+          "fvMatrix.H": "524178a557bb2aebca23c6abecae41551cf9b4adc48f281ddefbaf79a135e0c2",
+          "fvMatrix.C": "a30fee4aac650a538164e174e8290b503de84ac1add6cf04edc1cc425a223dca",
+          "fvMatrixSolve.C": "643527cc128fb6e0d9ec36aabf7ea62971c277c71b4b690cff49c933155bf237",
+          "lduMatrixATmul.C": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+          "lduMatrix.H": "440df7c293c45dc21993ad0e0a47d0f32ed0c094512ce2e85b8067d84b1c94a6",
+          "cyclicFvPatchField.C": "9396643a3d64cfbe4e5ab7f60e77a40b5d790c5d59664f2337755ddc313f418c"
+        }
+      },
+      {
+        "repository": "OpenFOAM/OpenFOAM-dev",
+        "pin": "c128d80c0e10efef7bc57d7465dddfac8159980f",
+        "commitDateUtc": "2026-10-03T07:26:22Z",
+        "commitUrl": "https://github.com/OpenFOAM/OpenFOAM-dev/commit/c128d80c0e10efef7bc57d7465dddfac8159980f",
+        "sha256BySourceFile": {
+          "fvScalarMatrix.C": "b710803dacc978f965e859ce58ae3b0799e89ff7441fbb7701033a226dd9ccc4",
+          "fvMatrix.H": "e54f2c9e98ce429aaca378789424f0414e435bb9126fa6b73e6995bf667e6b83",
+          "fvMatrix.C": "9c469be5b7777abb1b95bb6f614d813cd76838de01b920a122fd4f22d19ad94a",
+          "fvMatrixSolve.C": "6651863676aa5143ab872a9ba66d8ff0433bba016b06154c83c99e1e1bc14723",
+          "lduMatrixATmul.C": "0347d8eb92cfd2df423984b35ece4bb5d2c68090292a3b55fe6f35a8a5fa305a",
+          "lduMatrix.H": "642133d3578befd7f3d1ae059810e899b69830f26d12e6a309821c0e9a051781",
+          "cyclicFvPatchField.C": "5099e1ccb7a4096c3025f163b1155ad46a55986bab76fd8464358219b7214d75"
+        }
+      }
+    ],
+    "downloadedFileHashesChecked": 21,
+    "Foundation13DownloadedFilesMatchingExistingPinnedLocalBytes": 7
+  },
+  "candidate": {
+    "method": "Foam::fvMatrix<Foam::scalar>::residual() const",
+    "apiContractAssessment": "Header labels this as the matrix residual; identifying it with complete b-Au is an API-contract interpretation, not an explicit documented formula.",
+    "sourceObservation": "13 and 14 scalar residual definitions have identical bytes. dev retains the same contribution structure with a boundary accessor rename. The LDU residual includes the cyclic neighbour contribution before addBoundarySource defaults to including it again.",
+    "predictionForSpecifiedScalarTranslationalCyclicCase": "nativeResidual = complete_b_minus_Au + sum_cyclic_boundaryCoeffs_times_neighbourValue",
+    "constantOneControlPrediction": {
+      "geometry": "x in [-1,1], unit y/z widths, Ny=Nz=2, h=2/Nx",
+      "nativeResidualPerCell": "2*h",
+      "completeBMinusAuPerCell": 0,
+      "integratedPhysicalFluxBalancePerCell": 0,
+      "faceCoefficient": "Gamma=1 on every internal and boundary face",
+      "scalarAndBoundaryData": "psi=1 in every cell and at both x fixedValue walls; y/z patches are matching translational cyclic pairs"
+    },
+    "runtimeResultClaimed": false,
+    "maintainerAcceptedDefectClaimed": false,
+    "physicalOrViscosityConclusionClaimed": false
+  },
+  "priorDiscussion": {
+    "url": "https://www.cfd-online.com/Forums/openfoam-programming-development/256831-some-question-about-fvmatrix-residual.html",
+    "title": "Some question about fvMatrix::residual()",
+    "author": "Yueyun Xi",
+    "username": "yueyun",
+    "date": "2024-07-03",
+    "versionIdentifiedByAuthor": "OpenFOAM-10 (post 9)",
+    "post2": "10:42 as displayed: author identifies two coupled contributions and reports agreement with b-Ax after excluding coupled sources in addBoundarySource.",
+    "post3": "10:49 as displayed: author identifies the scalar specialization mechanism but explicitly states that the scalar method was not tested.",
+    "timezone": "Unspecified",
+    "scalarMethodUntestedCaveat": true,
+    "directOriginalDiscussionReadByIndependentReviewer": true,
+    "separateRawHttpFetchStatus": 403,
+    "foundationAcknowledgementOrResolutionObservedInThread": false,
+    "mechanismNoveltyClaimAllowed": false
+  },
+  "duplicateReview": {
+    "conclusion": "No exact official tracker duplicate identified by bounded searches; exact mechanism prior discussion exists, so novelty is not established.",
+    "githubQueries": [
+      "user:OpenFOAM residual",
+      "user:OpenFOAM fvMatrix",
+      "user:OpenFOAM addBoundarySource",
+      "user:OpenFOAM cyclic residual"
+    ],
+    "githubResultCounts": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "githubResidualHit": {
+      "url": "https://github.com/OpenFOAM/OpenFOAM-9/issues/12",
+      "relevance": "Unrelated IOstream debug-mode error"
+    },
+    "githubIncompleteResultsFlags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "mantisLiveInspectionIncomplete": true,
+    "mantisAccessLimit": "Browser direct opens failed; raw HTTP reads redirected to login pages. Related issue details were search-indexed primary-page content, not a successful live issue read.",
+    "relatedMantisIssue": {
+      "url": "https://bugs.openfoam.org/view.php?id=797",
+      "relevance": "AMI solver/mass-balance discussion; not an exact matching-cyclic scalar diagnostic residual duplicate or fix"
+    },
+    "absenceOfOtherReportsEstablished": false
+  },
+  "officialReporting": {
+    "channelUrl": "https://bugs.openfoam.org/",
+    "foundationPolicyUrl": "https://openfoam.org/dev/",
+    "contributionUrl": "https://openfoam.org/dev/how-to-contribute/",
+    "requirementsSummary": "Identify version/OS, provide evidence against user error, a small reproducible case and key files, and follow up by testing proposed patches.",
+    "eventualReportScope": "If execution confirms the prediction, present the raw diagnostic method and three independent residual quantities, cite the 2024 prior discussion, and ask whether the coupled-source convention is intended.",
+    "postingPerformed": false
+  },
+  "boundedImpactReview": {
+    "scope": "Existing pinned local src and applications files with extensions .C/.H only; lexical multiline search, not an AST or whole ecosystem audit.",
+    "filesScanned": 8848,
+    "zeroArgumentResidualHits": 4,
+    "zeroArgumentResidualActualCallSitesIdentified": 0,
+    "zeroArgumentHitsClassification": "Declarations/definitions only: fvMatrix.H429, fvMatrixSolve.C348, fvScalarMatrix.H78, fvScalarMatrix.C188.",
+    "inspectedSeparatePaths": [
+      {
+        "sha256": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+        "lines": [
+          111,
+          159,
+          116,
+          162,
+          170,
+          131,
+          181
+        ],
+        "observation": "Scalar solve excludes coupled boundary sources from totalSource, calls the LDU solver, and stores returned SolverPerformance in Residuals<scalar>.",
+        "repositoryRelativePath": "src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "93eb42c30d332c15ec177b65dd08c0a01080ae2f7c9b3bbef00a9bc5249d0dfd",
+        "lines": [
+          93,
+          96,
+          108,
+          110,
+          174,
+          175,
+          178,
+          180
+        ],
+        "observation": "PCG computes source-Apsi through LDU Amul and independently updates/normalizes its residual; it does not call the zero-argument fvMatrix wrapper.",
+        "repositoryRelativePath": "src/OpenFOAM/matrices/lduMatrix/solvers/PCG/PCG.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/matrices/lduMatrix/solvers/PCG/PCG.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "8f9227e1f7c38d25a9bf0e9abeb986d7a52d00d5541c57fb5f2f4d035ea5c885",
+        "lines": [
+          77,
+          82,
+          83
+        ],
+        "observation": "Convergence control reads stored SolverPerformance.initialResidual().",
+        "repositoryRelativePath": "src/finiteVolume/cfdTools/general/solutionControl/convergenceControl/convergenceControl/convergenceControlTemplates.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/cfdTools/general/solutionControl/convergenceControl/convergenceControl/convergenceControlTemplates.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "d56b9581fe9c724bcbed63459f8754cfa358902c5892e723805cad8e379e11e9",
+        "lines": [
+          74,
+          79,
+          85
+        ],
+        "observation": "The residuals functionObject writes initial residuals from stored SolverPerformance.",
+        "repositoryRelativePath": "src/functionObjects/utilities/residuals/residualsTemplates.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/functionObjects/utilities/residuals/residualsTemplates.C",
+        "canonicalGitObjectVerified": true
+      }
+    ],
+    "lduResidualWithArgumentsCallSites": [
+      {
+        "sha256": "aaf4292a19a8f04c37c92267254491da8e5dd74486e5281a8022db203ffc09f1",
+        "lines": [
+          88
+        ],
+        "observation": "Calls the LDU residual with arguments, bypassing the affected wrapper.",
+        "repositoryRelativePath": "src/OpenFOAM/matrices/lduMatrix/smoothers/DIC/DICSmoother.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/matrices/lduMatrix/smoothers/DIC/DICSmoother.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "e5cdfbd98bad7e983be73c659e9515248fd20dba98918d3ed57fb7f3b33532bb",
+        "lines": [
+          120
+        ],
+        "observation": "Calls the LDU residual with arguments, bypassing the affected wrapper.",
+        "repositoryRelativePath": "src/OpenFOAM/matrices/lduMatrix/smoothers/FDIC/FDICSmoother.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/matrices/lduMatrix/smoothers/FDIC/FDICSmoother.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "bb1c2b9d4d3b412869d72eb641adafd80a1ca146b54593b4d8b291f0cfd5e19d",
+        "lines": [
+          91
+        ],
+        "observation": "Calls the LDU residual with arguments, bypassing the affected wrapper.",
+        "repositoryRelativePath": "src/OpenFOAM/matrices/lduMatrix/smoothers/DILU/DILUSmoother.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/matrices/lduMatrix/smoothers/DILU/DILUSmoother.C",
+        "canonicalGitObjectVerified": true
+      },
+      {
+        "sha256": "4abaa82c47b08b4c01b787fab8c97559c706be5ec82393a11a6ece091e26454d",
+        "lines": [
+          171
+        ],
+        "observation": "Calls the LDU residual with arguments for normalized final solver residual, bypassing the affected wrapper.",
+        "repositoryRelativePath": "src/OpenFOAM/matrices/lduMatrix/solvers/smoothSolver/smoothSolver.C",
+        "pin": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "sourceOrigin": "git show pinned_commit:canonical_path (lazy fetch disabled; optional locks disabled)",
+        "blobUrl": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/matrices/lduMatrix/solvers/smoothSolver/smoothSolver.C",
+        "canonicalGitObjectVerified": true
+      }
+    ],
+    "conclusion": "No source evidence that the inspected standard solve, convergence-control, or residual-output paths invoke the affected zero-argument diagnostic method. No universal simulation-impact or unaffectedness claim.",
+    "excluded": "External utilities/plugins, macro-generated calls, other extensions, and files not visible because of APFS case-collapsed checkout paths.",
+    "pathCaseCaveat": "Call-site source entries now use canonical Git paths verified independently through git show at the fixed pin. The broader zero-argument-call lexical inventory still covers only visible local checkout files; APFS case-collapsed files are excluded from exhaustive claims.",
+    "canonicalDispatchVerification": {
+      "pcgClass": "PCG.H:50-52 inherits lowercase lduMatrix::solver; PCG.C:34-35 registers PCG with the scalar LDU runtime solver table; PCG.C:44 and 51-54 accept const lduMatrix& and initialize that base.",
+      "smoothSolverClass": "smoothSolver.H:54-56 inherits lowercase lduMatrix::solver.",
+      "smootherClasses": "DIC/FDIC/DILU headers inherit lowercase lduMatrix::smoother.",
+      "scalarSolveEntry": "fvScalarMatrix.C:162-170 calls lowercase lduMatrix::solver::New and passes scalar psi and source.",
+      "canonicalGitObjectFilesChecked": 13,
+      "allCanonicalGitObjectFilesMatchInspectedLocalBytes": true,
+      "manifestPath": "canonical-callsite-source-manifest.json",
+      "lduBaseClassAndDispatch": "Pinned scalar lduMatrix.H:80 declares the non-template class; solver matrix_ at101 and smoother matrix_ at278 have const lduMatrix& type. Residual overload declarations at676/686 are nonvirtual six/five-argument methods, so these calls do not dispatch to zero-argument fvMatrix::residual() or templated LduMatrix."
+    }
+  },
+  "verbatimWebSourceQuotations": [],
+  "supportingArtifactPaths": [
+    "source-manifest.json",
+    "function-line-map.json",
+    "github-duplicate-search.json",
+    "channel-source-manifest.json",
+    "search-log.md",
+    "callsite-rg-output.json",
+    "callsite-source-hashes.json",
+    "canonical-callsite-source-manifest.json"
+  ]
+}

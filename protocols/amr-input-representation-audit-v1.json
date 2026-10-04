@@ -1,0 +1,30 @@
+{
+  "schema": "amr-input-representation-audit/v1",
+  "status": "Source and archive interpretation audit; no new simulation or quality threshold",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "point_recipe_relative_tolerance": 2e-12,
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "upstream_files": [
+    "src/finiteVolume/fields/volFields/volFields.H",
+    "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+    "src/finiteVolume/finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtScheme.C",
+    "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C",
+    "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C",
+    "applications/modules/incompressibleFluid/momentumPredictor.C"
+  ],
+  "primary_documents": [
+    "https://doc.cfd.direct/notes/cfd-general-principles/the-finite-volume-concept",
+    "https://doc.cfd.direct/notes/cfd-general-principles/finite-volume-mesh",
+    "https://doc.cfd.direct/notes/cfd-general-principles/gradient-discretisation"
+  ],
+  "limits": [
+    "Initialization comparisons are independent Fourier point evaluation and exact cube means; they do not explain or subtract the final solver error.",
+    "Centroid source quadrature is a numerical approximation, not itself an implementation bug.",
+    "Only listed upstream files and cited documents are inspected; absence of an exact H1 reconstruction guarantee here is not an exhaustive absence claim.",
+    "The existing exact-nominal-mean certificate remains valid under its stated condition; it is not automatically an upstream solver contract.",
+    "Archived inputs, old source identities, thresholds and solver verdicts are preserved."
+  ]
+}

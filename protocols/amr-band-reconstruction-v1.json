@@ -1,0 +1,20 @@
+{
+  "schema": "amr-band-reconstruction/v1",
+  "status": "Archived analytic diagnostic, no retrospective solver-quality gate",
+  "input_analysis": "evidence/amr-p0-spectrum-v1/analysis.json",
+  "input_numerical_commit": "e6e3480cfce44c3eceda561363501b50972258a6",
+  "cutoff_cube": 7,
+  "sample_grids": [32, 64],
+  "reconstruction": "w(x)=sum_{|k_j|<=7} c_k exp(i k.x), with analytic P0 cell-integral coefficients",
+  "derivative_norms": "Gradient Frobenius and curl Euclidean; L2 mean-square normalization (2*pi)^-3 integral",
+  "peak_error": "sup |D(w-u)| divided by sup |D u|, bounded from sampled extrema plus Fourier Lipschitz covering-radius bound",
+  "covering_radius": "sqrt(3)*pi/m for the complete m^3 periodic grid",
+  "lipschitz_formula": "sum_k |k| |a_k| for the vector/tensor polynomial coefficients a_k",
+  "limits": [
+    "Finite projection removes all outside-cube modes; discarded velocity mass is separately reported, and original cell averages are generally not preserved.",
+    "These derivatives belong to the named smooth projection, not native Gauss tensors or ordinary P0 derivatives.",
+    "Analytic peak-enclosure formulas are evaluated in floating point, without a rounding-certified interval implementation.",
+    "Helmholtz projection is a diagnostic nearest divergence-free band polynomial, not an executed solver correction.",
+    "No new retrospective PASS/FAIL threshold, original full AMR gate completion or physical inference follows."
+  ]
+}

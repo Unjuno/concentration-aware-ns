@@ -1,0 +1,9 @@
+test_changed_recipe_rejected_before_solver (tests.test_cell_point_capture_matrix.CaptureIdentityControls.test_changed_recipe_rejected_before_solver) ... ok
+test_different_final_field_rejected_before_probe (tests.test_cell_point_capture_matrix.CaptureIdentityControls.test_different_final_field_rejected_before_probe) ... ok
+test_different_initial_input_rejected_before_probe (tests.test_cell_point_capture_matrix.CaptureIdentityControls.test_different_initial_input_rejected_before_probe) ... ok
+test_unfrozen_case_rejected (tests.test_cell_point_capture_matrix.CaptureIdentityControls.test_unfrozen_case_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.006s
+
+OK

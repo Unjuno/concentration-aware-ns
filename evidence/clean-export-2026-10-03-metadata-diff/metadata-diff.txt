@@ -1,0 +1,7 @@
+force-concentration-scaling-2026-10-03.json
+  interpreter: <WORK>/reference-check-env/bin/python
+           -> <EXPORT>/venv/bin/python
+
+spherical-orientation-diffusion-equator-avoidance-2026-10-03.json
+  python_version: 3.12.10 -> 3.14.5
+  platform: macOS-26.6.2-arm64-arm-64bit -> macOS-26.6.2-arm64-arm-64bit-Mach-O

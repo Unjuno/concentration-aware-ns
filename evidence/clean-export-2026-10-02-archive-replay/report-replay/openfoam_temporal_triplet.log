@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "dt": 0.001,
+      "archive_sha256": "03060dc6a9b031ce7204c2dc94af2e51407aae5195ad964cee586d9e2ed76d8e",
+      "source_log_sha256": "ea3cbff337cf298b21d1f9070ab981478c67e802f00eb23634e537660c836292",
+      "steps": 50,
+      "converged_steps": 50,
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "velocity_error_to_exact": 0.004780664208810287
+    },
+    {
+      "case": "n64-dt0.0005",
+      "dt": 0.0005,
+      "archive_sha256": "93a72add2e0f13352bf07e9a050c237756e02aa117d8bbed9f1d50f038afc0b5",
+      "source_log_sha256": "446b3e81ae3eb633f508ad3cd6bd16b6be854c1011cc9ea6c32e3912ebf07cce",
+      "steps": 100,
+      "converged_steps": 100,
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "velocity_error_to_exact": 0.004784089312365507
+    },
+    {
+      "case": "n64-dt0.00025",
+      "dt": 0.00025,
+      "archive_sha256": "705be3ab67347eedeb4dad548d4caa3a796b13ea7cd8cca1a70125f7452825c6",
+      "source_log_sha256": "2776137a1b38d01ac854fc7153426131374268cf770d750be844c2fcc525f4f7",
+      "steps": 200,
+      "converged_steps": 200,
+      "standard_acceptance": "PASS",
+      "local_quality": "PASS",
+      "velocity_error_to_exact": 0.0047904920726123765
+    }
+  ],
+  "relative_endpoint_differences_normalized_by_finest": [
+    1.3373605957687646e-05,
+    9.465816754317482e-06
+  ],
+  "observed_order_of_endpoint_differences": 0.49858961644061656,
+  "observed_orders_of_exact_velocity_error": [
+    -0.0010332477703523955,
+    -0.0019295322608244422
+  ],
+  "static_input_hashes_match": true,
+  "cell_centers_match_exactly": true,
+  "temporal_error_certified": false,
+  "matrix_reproduction": {
+    "status": "NOT_OBSERVED",
+    "adequately_resolved_grid_counts": [
+      64,
+      128
+    ],
+    "rule": "REPRODUCED only if both listed fine-grid cases pass standard acceptance and fail local quality; NOT_OBSERVED only if both pass both gates.",
+    "scope": "A persistent discrepancy under this frozen MMS matrix; not proof of a general solver defect or physical singularity."
+  },
+  "scope": "Fixed n=64 endpoint comparison with exact MMS reference. Orders are descriptive; a three-point finite-resolution trend is not an asymptotic temporal error certificate or a solver defect claim."
+}

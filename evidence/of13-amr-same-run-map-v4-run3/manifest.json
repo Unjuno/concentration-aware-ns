@@ -1,0 +1,72 @@
+{
+  "status": "RUN_COMPLETE_SAME_RUN_MAP_CAPTURED",
+  "run_manifest_recovered_posthoc": true,
+  "harness_commit": "1fcce026c8751dc73e837dc1a95064933f4d4b5b",
+  "harness_worktree_status_at_execution": "not serialized by the original runner after its post-run KeyError; current status cannot substitute for historical state",
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v4.json",
+  "protocol_sha256_at_execution": null,
+  "protocol_sha256_current_at_manifest_recovery": "f698f1b62774a5a032205ea57d612a731379e89ca3fc58b7658ca9f92a85bd6e",
+  "protocol_hash_limitation": "The original runner computed the protocol hash but raised before serializing its manifest; the tracked protocol was augmented afterward with analysis criteria and a complete limitations field. Do not treat the current file hash as the exact at-run hash.",
+  "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+  "docker_cli": "/run/current-system/sw/bin/docker",
+  "docker_cli_resolved": "/nix/store/6hz62n44yhyp1pkqd0ppbvwf80sd5zac-docker-29.5.2/bin/docker",
+  "docker_cli_sha256": "02bdf8a5081e00e225735ce7e8727c09008ba49aa37c22fca5b85ab0c677a20c",
+  "docker_context": "orbstack",
+  "container_platform": "linux/arm64",
+  "instrumented_module_sha256": "414d68c299a466b3c06757192c4e3d0f89df24d78dae94da1a0286387bdbc4a7",
+  "instrumented_source_files": {
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "incompressibleFluid.C": "7247d2bdfeab0fc0d1985dc151223f49ff37ad9c0d4f093fb9a29ac019f3963b",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011"
+  },
+  "case_input_sha256": {
+    "0/U": "7b9a2174dd1029f1b7b79918e9755553aac176f25f5372f731519313d2410d6b",
+    "0/p": "eadc3ebda7e61d3d2f4efca35c8ac7ffff48e1b864a01d032419810f6ff8af58",
+    "constant/dynamicMeshDict": "642db33b9e8ba8e88b825fe5ee3716e583d193916703817176cbc59174a33fc1",
+    "constant/fvModels": "906e13061e7de661a5265985a75cd9dccaa3dbc0b9e2617efce73b08088cc99e",
+    "constant/momentumTransport": "1e30ed3650d4c5a03bd4c6d8489a6e8bcd5d8baf0931b2b116734a2ce5c2c793",
+    "constant/physicalProperties": "af8622c37b4a3a2d3e62cfb42a32ece440d802a400b4bd8471f8b659546e8382",
+    "parameters.json": "8c94b421a432dad7af8db6695eb02d9fee5f969094a92ebbb61c8598d68961b7",
+    "system/blockMeshDict": "420e7151d6eea1086cc599cb308dd49be139d1a1000813b974ac880c93e86142",
+    "system/controlDict": "3f4f4b2ab57f41118c7d8cab316efe2794fc6f976787f8ad31fceec47470e8ce",
+    "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0",
+    "system/fvSolution": "da7103b7fd9cb859211f0bf259641146b2ac359102b2e0b728727459442194e1"
+  },
+  "exit_code": 0,
+  "end_marker": true,
+  "instrumented_library_load_confirmed": true,
+  "snapshot_events": [
+    "AMR_STAGE_SNAPSHOT stage=preMap time=0.002 cells=4096 internalFaces=11520",
+    "AMR_STAGE_SNAPSHOT stage=mapped time=0.002 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=afterCorrectPhi time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=prePressure time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=postPressure time=0.003 cells=16640 internalFaces=48816",
+    "AMR_STAGE_SNAPSHOT stage=postSolve time=0.003 cells=16640 internalFaces=48816"
+  ],
+  "snapshot_sha256": {
+    "postProcessing/amrStages/0.002/preMap_cells.csv": "c0494e93ba12e03f3f277552bafed10b434a7bfd32d64adb54d738d04c94d0b4",
+    "postProcessing/amrStages/0.002/preMap_faces.csv": "cceafe1f4bd848dd0ef328152834485e5ee977c5fe0afe54bb1ce633632d99aa",
+    "postProcessing/amrStages/0.002/mapped_cells.csv": "6592aef17f8690bc671628f888e86c5027025aaa148d35e9f5acd4c756b6bba2",
+    "postProcessing/amrStages/0.002/mapped_faces.csv": "a59c57f76dc3b17f65439362b984d09c14c68ee5a747c761a183e4d23d9e4a3a",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_cells.csv": "6592aef17f8690bc671628f888e86c5027025aaa148d35e9f5acd4c756b6bba2",
+    "postProcessing/amrStages/0.003/afterCorrectPhi_faces.csv": "2e4126a18dcecf98e9bed8e20bed3787d31a44673b9087c62165f36dd350b560",
+    "postProcessing/amrStages/0.003/prePressure_cells.csv": "178278f3aaddde27f74f499cb6b2bda8a75c000386ee13149dc1ea0b79c01392",
+    "postProcessing/amrStages/0.003/prePressure_faces.csv": "2e4126a18dcecf98e9bed8e20bed3787d31a44673b9087c62165f36dd350b560",
+    "postProcessing/amrStages/0.003/postPressure_cells.csv": "a6de53b39a093d0a630c5b136cfb833fc9d87255202c7535f355179efc081a2a",
+    "postProcessing/amrStages/0.003/postPressure_faces.csv": "a517bf7afd37e2b0a8159e49a400abaebb33ba50234d5c568414c0bb46d28638",
+    "postProcessing/amrStages/0.003/postSolve_cells.csv": "a6de53b39a093d0a630c5b136cfb833fc9d87255202c7535f355179efc081a2a",
+    "postProcessing/amrStages/0.003/postSolve_faces.csv": "a517bf7afd37e2b0a8159e49a400abaebb33ba50234d5c568414c0bb46d28638"
+  },
+  "archive": "amr-stage-snapshot.tar.gz",
+  "archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed",
+  "solver_log_sha256": "f1626fbdea61da6923fa941e3601bf65fe8e9ba4ca73bf2a8ed9f53b6d558c95",
+  "module_build_log_sha256": "df57e584f4506907c50f5fe7ff222be8038ecbb5b4e8f5107c04d104a77e6a6a",
+  "limitations": [
+    "The preMap and mapped pair is same-run, but equality with piecewise-constant injection would establish transfer behavior only for this case and field representation.",
+    "A single n=16 event is not a resolution study or a general AMR guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time is chosen from the frozen v3 event and is exploratory rather than preregistered before any earlier observation."
+  ],
+  "recovery_note": "The solver and tar archive completed successfully, but the runner raised KeyError after archiving because the initial protocol omitted the limitations key. This manifest was reconstructed from the preserved logs, exit.json, hashes, and archive; no solver rerun was used."
+}

@@ -5,6 +5,7 @@ from pathlib import Path
 import numpy as np
 from tools.reference import fields
 from tools.high_gradient_reference import fields as high_gradient_fields
+from tools.forced_periodic_reference import fields as forced_periodic_fields
 
 
 def generate(root, n=8, dt=0.001, end=0.005, sigma=0.5, nu=0.01,
@@ -14,7 +15,7 @@ def generate(root, n=8, dt=0.001, end=0.005, sigma=0.5, nu=0.01,
         raise ValueError('refusing to overwrite an existing case')
     if n < 4 or min(dt, end, sigma, nu) <= 0:
         raise ValueError('invalid case parameters')
-    if profile not in ('gaussian', 'high-gradient') or int(frequency) != frequency or frequency < 1:
+    if profile not in ('gaussian', 'high-gradient', 'forced-periodic') or int(frequency) != frequency or frequency < 1:
         raise ValueError('unsupported profile or frequency')
     root.mkdir(parents=True)
     def write(path, body, kind='dictionary'):
@@ -55,12 +56,22 @@ PIMPLE {
     points = np.stack([x,y,z],axis=-1).reshape(-1,3)
     if profile == 'gaussian':
         u = fields(points, sigma=sigma, nu=nu)['u']
-    else:
+    elif profile == 'high-gradient':
         u = high_gradient_fields(points, N=frequency, nu=nu)['u']
+    else:
+        exact = forced_periodic_fields(points, time=0, nu=nu)
+        u = exact['u']
     bcs = 'boundaryField {\n'+'\n'.join(f'{name} {{ type cyclic; }}' for name,_,_ in faces)+'\n}'
     values = '\n'.join('('+ ' '.join(f'{v:.17g}' for v in row)+')' for row in u)
     write('0/U', f'dimensions [0 1 -1 0 0 0 0];\ninternalField nonuniform List<vector>\n{len(u)}\n(\n{values}\n);\n'+bcs, 'volVectorField')
-    write('0/p', 'dimensions [0 2 -2 0 0 0 0]; internalField uniform 0;\n'+bcs, 'volScalarField')
+    if profile == 'forced-periodic':
+        pressure = '\n'.join(f'{value:.17g}' for value in exact['pressure'])
+        pressure_field = (f'dimensions [0 2 -2 0 0 0 0];\n'
+                          f'internalField nonuniform List<scalar>\n{len(pressure.splitlines())}\n(\n'
+                          f'{pressure}\n);\n{bcs}')
+        write('0/p', pressure_field, 'volScalarField')
+    else:
+        write('0/p', 'dimensions [0 2 -2 0 0 0 0]; internalField uniform 0;\n'+bcs, 'volScalarField')
     gaussian_code = '''mmsForce {
  type coded;
  cellZone all;
@@ -153,10 +164,48 @@ PIMPLE {
  }
  #};
 }'''.replace('NU',repr(nu)).replace('FREQ',repr(float(frequency)))
-    code = gaussian_code if profile == 'gaussian' else high_gradient_code
+    forced_periodic_code = r'''mmsForce {
+ type coded;
+ cellZone all;
+ field U;
+ codeAddSup
+ #{
+ const scalar viscosity = NU;
+ const scalar now = mesh().time().value();
+ const scalar scale = exp(-4*viscosity*now);
+ const vectorField& centers = mesh().C();
+ const scalarField& volumes = mesh().V();
+ vectorField& source = eqn.source();
+ forAll(centers, celli) {
+   const scalar x = centers[celli].x(), y = centers[celli].y(), z = centers[celli].z();
+   const scalar sx = sin(x), sy = sin(y), sz = sin(z);
+   const scalar cx = cos(x), cy = cos(y), cz = cos(z);
+   const vector u0(sx*sz + cx*cy, sy*sx + cy*cz, sz*sy + cz*cx);
+   const scalar a00 = cx*sz - sx*cy, a01 = -cx*sy, a02 = sx*cz;
+   const scalar a10 = sy*cx, a11 = cy*sx - sy*cz, a12 = -cy*sz;
+   const scalar a20 = -cz*sx, a21 = sz*cy, a22 = cz*sy - sz*cx;
+   const vector conv(a00*u0.x()+a01*u0.y()+a02*u0.z(),
+                     a10*u0.x()+a11*u0.y()+a12*u0.z(),
+                     a20*u0.x()+a21*u0.y()+a22*u0.z());
+   const vector gradp(
+     -(cx*sin(2*y)*cz + 2*cos(2*x)*sz*cy - sy*sin(2*z)*sx)/6,
+     -(2*sx*cos(2*y)*cz - sin(2*x)*sz*sy + cy*sin(2*z)*cx)/6,
+     -(-sx*sin(2*y)*sz + sin(2*x)*cz*cy + 2*sy*cos(2*z)*cx)/6);
+   const vector forcing = scale*(conv + gradp);
+   source[celli] -= volumes[celli]*forcing;
+ }
+ #};
+}'''.replace('NU', repr(nu))
+    code = {'gaussian': gaussian_code, 'high-gradient': high_gradient_code,
+            'forced-periodic': forced_periodic_code}[profile]
     write('constant/fvModels', code)
-    (root/'parameters.json').write_text(json.dumps(dict(n=n,dt=dt,end=end,sigma=sigma,nu=nu,
-        profile=profile,frequency=frequency,purpose='integration pilot, not production'),indent=2)+'\n')
+    parameters = dict(n=n,dt=dt,end=end,sigma=sigma,nu=nu,
+                      profile=profile,frequency=frequency,
+                      purpose='integration pilot, not production')
+    if profile == 'forced-periodic':
+        parameters['reference'] = 'arXiv:2609.38210v1'
+        parameters['forcing'] = 'f=(u0.grad)u0+grad(p0), scaled by exp(-4*nu*t); dt-nu*laplacian cancellation is exact'
+    (root/'parameters.json').write_text(json.dumps(parameters,indent=2)+'\n')
 
 
 if __name__ == '__main__':

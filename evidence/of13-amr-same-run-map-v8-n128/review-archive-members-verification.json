@@ -1,0 +1,23 @@
+{
+  "status": "PASS_REVIEW_PACKAGE_MEMBERS_MATCH_AS_RUN_SNAPSHOTS",
+  "parts_manifest": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json",
+  "reconstructed_archive_sha256": "e08e17eaf9789bf5c7cc9d8c368ec48dae2d2104e5d4be457cd39b4d955721bb",
+  "verified_members": [
+    {
+      "member": "amr-n128-cap7000000/postProcessing/amrStages/0.002/preMap_cells.csv",
+      "bytes": 378902233,
+      "sha256": "e778a1c2a1dd22b67c5fc7c5555deb5e2c56685030d0ee6a6da047edacfcf8a6"
+    },
+    {
+      "member": "amr-n128-cap7000000/postProcessing/amrStages/0.002/mapped_cells.csv",
+      "bytes": 1250253722,
+      "sha256": "a0dca1a45e6576d29a7df79f2bd7ef85d017d7079f206b56a0d4a9ae85a62235"
+    },
+    {
+      "member": "amr-n128-cap7000000/postProcessing/amrStages/0.002/mapped_faces.csv",
+      "bytes": 4712159855,
+      "sha256": "70122ddbf192ee88d7414acffda6b9de83d48f0fa09cb7a92a7e0a36bc0cf5fe"
+    }
+  ],
+  "scope": "The compact package contains byte-identical same-run cell and mapped-face snapshots used by the map and Gauss audits. This integrity check does not recompute their numerical diagnostics or certify the solver stack."
+}

@@ -1,0 +1,62 @@
+{
+  "scope": "Full periodic-domain centered Arb enclosure for frozen PhysicsNeMo n64-nt17; center autograd checks are diagnostics, not independent global proofs.",
+  "archive": "n64-nt17.tar.gz",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "domain": "[-pi, pi]^3, contained in the outward-rounded float cube",
+  "domain_endpoint_float": 3.141592653589794,
+  "endpoint_is_outward": true,
+  "interval_decimal_precision": 30,
+  "divisions": [
+    {
+      "cells_per_axis": 16,
+      "cell_count": 4096,
+      "domain_endpoint_float": 3.141592653589794,
+      "max_centered_cell_frobenius_upper": 52.133974852252756,
+      "max_autograd_cell_center_sample": 0.22005737672748948,
+      "upper_to_center_sample_ratio": 236.910825837997,
+      "max_autograd_sample_excess_outside_component_interval": 0.0,
+      "all_cell_center_samples_within_1e-8_tolerance": true,
+      "worst_cell_decomposition": {
+        "box": [
+          [
+            2.3561944901923457,
+            2.7488935718910694
+          ],
+          [
+            2.3561944901923457,
+            2.7488935718910694
+          ],
+          [
+            2.3561944901923457,
+            2.7488935718910694
+          ]
+        ],
+        "center": [
+          2.5525440310417076,
+          2.5525440310417076,
+          2.5525440310417076
+        ],
+        "center_jacobian_frobenius_upper": 0.05076566886987246,
+        "axiswise_hessian_variation_frobenius_bounds": [
+          16.691504406489223,
+          18.158949609600903,
+          17.377724659892266
+        ],
+        "componentwise_combined_frobenius_upper": 52.13397466754769,
+        "quadratic_taylor_frobenius_upper": 293.83303463912506
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.14.5",
+    "python_flint": "0.9.0",
+    "torch": "2.11.0"
+  },
+  "wall_seconds": 67.9349243750039,
+  "limitations": [
+    "Arb/FLINT is not independently verified in a proof assistant.",
+    "Cell-center autograd checks validate selected values only, not the complete interval enclosure.",
+    "No PhysicsNeMo-specific acceptance threshold is preregistered; quality remains UNCERTAIN."
+  ]
+}

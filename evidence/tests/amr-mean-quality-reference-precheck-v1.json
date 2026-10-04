@@ -1,0 +1,39 @@
+{
+  "status": "PASS_SELECTED_REFERENCE_GRID_PRECHECK",
+  "rows": [
+    {
+      "n": 16,
+      "reference_fd2_mean_gradient_error": 0.13129432465025168,
+      "reference_fd2_mean_curl_error": 0.1237980471243792,
+      "reference_p0_gradient_floor": 0.3761201951404689,
+      "reference_center_velocity_vs_mean_error": 0.07215688002362171,
+      "within_new_reference_mean_gate": false
+    },
+    {
+      "n": 32,
+      "reference_fd2_mean_gradient_error": 0.0350905399231269,
+      "reference_fd2_mean_curl_error": 0.033100895629798295,
+      "reference_p0_gradient_floor": 0.19295711707542673,
+      "reference_center_velocity_vs_mean_error": 0.018443141211142728,
+      "within_new_reference_mean_gate": true
+    },
+    {
+      "n": 64,
+      "reference_fd2_mean_gradient_error": 0.008919150402310526,
+      "reference_fd2_mean_curl_error": 0.008414265090895939,
+      "reference_p0_gradient_floor": 0.0971062351615543,
+      "reference_center_velocity_vs_mean_error": 0.0046364920595719835,
+      "within_new_reference_mean_gate": true
+    }
+  ],
+  "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "source_sha256": {
+    "tools/audit_amr_mean_reference_precheck.py": "b806d4c6d14849076b049d019f51fb0d08177182eae5be98de1633e8079d38c0",
+    "tools/amr_derivative_projection.py": "e20c2443dbd0e27c16ec5ce203ecb971f6336299654cc01dd9d61a91a03d9770",
+    "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3",
+    "tools/analyze_amr_gauss_gradient.py": "050dd8f181b72d6997c3261a24a602906e26ea6c36d4b839909351f59b18d7a8",
+    "tools/high_gradient_cell_average.py": "665bc283b37281bcd18a6544064e75261c44d55bcabeccf27b55618294ba9079",
+    "tools/amr_projection_decomposition.py": "ad047e3ff7e61cd0d66eb0e6abdb1d5e2ac96931283ce9e359c345e4d245348f"
+  },
+  "scope": "Analytic N=3 uniform centered/Gauss reference-operator precheck; no solver or mapped-mesh execution. Native captured reference operator must still verify adequacy on each actual mesh/stage."
+}

@@ -6,6 +6,7 @@ The destination must not exist; incomplete attempts remain available for audit.
 import argparse
 import hashlib
 import json
+import os
 import platform
 from pathlib import Path
 import subprocess
@@ -15,6 +16,16 @@ import tarfile
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def child_environment(venv, base_environment=None):
+    """Put the fresh venv first so nested commands resolve its interpreter."""
+    environment = dict(os.environ if base_environment is None else base_environment)
+    scripts = Path(venv) / ("Scripts" if os.name == "nt" else "bin")
+    environment["PATH"] = os.pathsep.join(
+        part for part in (str(scripts), environment.get("PATH", "")) if part
+    )
+    return environment
 
 
 def main():
@@ -56,10 +67,11 @@ def main():
     def save():
         record.write_text(json.dumps(result, indent=2)+'\n')
 
-    def run(name, command):
+    def run(name, command, process_environment=None):
         logfile = destination/(name+'.log')
         with logfile.open('w') as stream:
-            proc = subprocess.run(command, cwd=checkout, stdout=stream, stderr=subprocess.STDOUT)
+            proc = subprocess.run(command, cwd=checkout, stdout=stream,
+                                  stderr=subprocess.STDOUT, env=process_environment)
         result['checks'].append({'name': name, 'command': command, 'exit_code': proc.returncode,
                                  'log': logfile.name, 'log_sha256': digest(logfile)})
         save()
@@ -70,7 +82,9 @@ def main():
     env = destination/'venv'
     if not run('venv', [sys.executable, '-m', 'venv', str(env)]):
         return 1
-    python = str(env/'bin/python')
+    scripts = env / ('Scripts' if os.name == 'nt' else 'bin')
+    python = str(scripts / ('python.exe' if os.name == 'nt' else 'python'))
+    process_environment = child_environment(env)
     requirements = 'requirements-verification-locked.txt' if args.locked else 'requirements-verification.txt'
     commands = [('install', [python, '-m', 'pip', 'install', '-r', requirements])]
     commands += [(name, [python, '-m', module]) for name, module in [
@@ -80,9 +94,10 @@ def main():
         ('axis-dissipation', 'tools.check_axis_dissipation'),
         ('axis-deformation', 'tools.check_axis_deformation'),
         ('axis-packet', 'tools.check_axis_packet_bound'),
+        ('alignment-uncertainty', 'tools.check_alignment_uncertainty'),
     ]]
     for name, command in commands:
-        if not run(name, command):
+        if not run(name, command, process_environment):
             return 1
     freeze = subprocess.run([python, '-m', 'pip', 'freeze'], cwd=checkout,
                             text=True, capture_output=True, check=True)

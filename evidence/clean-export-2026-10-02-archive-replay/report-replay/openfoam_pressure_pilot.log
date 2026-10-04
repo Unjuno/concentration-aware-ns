@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "7ee7dded5e3b0c1ba2070c76c3a58a42800796c6aeead02e9cff69880a9212ca",
+  "velocity_update_identity_relative_l2": 2.157171771500502e-16,
+  "velocity_update_identity_max_abs": 8.881784197001252e-16,
+  "velocity_scale_max_abs": 3.461025774968825,
+  "post_constraint_velocity_relative_change": 0.0,
+  "endpoint_U_vs_recorded_after_constraints_relative_l2": 0.0,
+  "pressure_relaxation_relative_change": 0.0,
+  "endpoint_p_vs_recorded_after_relax_relative_l2": 0.0,
+  "corrected_face_flux_vs_endpoint_phi_relative_l2": 0.0,
+  "scope": "Final write-time correction call in n=16 pilot only. Does not reconstruct earlier trajectory or attribute n=64 temporal order."
+}

@@ -1,0 +1,37 @@
+{
+  "captured_at_utc": "2026-10-04T02:22:27Z",
+  "arxiv": {
+    "id": "2609.18808",
+    "title": "A very short proof of a new energy identity for strong solutions to the Navier-Stokes system in 3D",
+    "author": "Thomas Ruf",
+    "submitted_at_utc": "2026-09-16T15:20:32Z",
+    "withdrawn_version": "v2",
+    "withdrawal_comment": "There is an error in equation (27) that renders the crucial inequality below equation (29) wrong",
+    "claimed_equation_class": "homogeneous unforced 3D Navier-Stokes on R^3",
+    "claim_summary": "Global in time strong solutions for H^1_sigma initial data, plus uniqueness and smoothness consequences",
+    "v1_pdf_url": "https://arxiv.org/pdf/2609.18808v1",
+    "v1_pdf_sha256": "a5fc896be86f14f144eae65edcde47ccbbac3c3b3b15eefad7114d412276ba41",
+    "scope_note": "The displayed Hölder step in equation (27) was independently replayed: it yields || |u|^(r/2-1) partial_i u ||_2 to power 1, not 1/alpha^2. Equation (29)'s printed exponent 1/alpha^2 + 4/r is about 1.89; direct Hölder gives 1 + 4/r about 2.268, so the displayed subquadratic absorption does not follow. This checks the cited inequality chain only, not the rest of the proof or a repair. Withdrawn claim is not accepted evidence."
+  },
+  "openai_repository": {
+    "url": "https://github.com/openai/NavierStokesAndEuler",
+    "latest_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "latest_commit_date_utc": "2026-09-10T11:51:24Z",
+    "pushed_at_utc": "2026-09-10T15:14:13Z",
+    "issues_enabled": false,
+    "discussions_enabled": false,
+    "pull_requests_enabled": false,
+    "license": "Apache-2.0"
+  },
+  "lean_kernel_arena": {
+    "checker_page": "https://arena.lean-lang.org/checker/official/",
+    "project": "navier-stokes-euler",
+    "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "lean_version": "4.34.0-rc2",
+    "exported_declarations_accepted": 129842,
+    "reported_wall_time": "9.9 minutes",
+    "result": "accepted",
+    "scope_note": "External export/kernel acceptance evidence; not a mathematical peer review, source-to-statement semantic audit, or physical validation."
+  },
+  "effect_on_project": "No CFD gate or physical interpretation changes. SU2 matched-pair workflow remains a separate in-progress gate."
+}

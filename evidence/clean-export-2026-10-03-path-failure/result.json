@@ -1,0 +1,58 @@
+{
+  "commit": "2d3983d1a563a2aae368348618a69cca46e2e8b6",
+  "runner_sha256": "babbc80755fa90c6eaee9e4289c8ee3b12ac663f11f427ce96652dc184edbf99",
+  "tracked_archive_sha256": "7b43ff8f55a49854c8a444f8428bb3f2ef72bbe64f4d48b46cfdd717682bc9db",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "command": [
+        "python3.14",
+        "-m",
+        "venv",
+        "<EXPORT>/venv"
+      ],
+      "exit_code": 0,
+      "log": "venv.log",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-verification-locked.txt"
+      ],
+      "exit_code": 0,
+      "log": "install.log",
+      "raw_log_sha256": "4623ab363d5ec5c477fdf5b9122336d3bb21797b947a3184805c77ce33e777cb"
+    },
+    {
+      "name": "report-replay",
+      "command": [
+        "<EXPORT>/venv/bin/python",
+        "-m",
+        "tools.replay_published_reports"
+      ],
+      "exit_code": 1,
+      "log": "report-replay.log",
+      "raw_log_sha256": "970675648cbf102b60a149d767e9f52b62cb7e0ec923f1abb76baa5e5413312d"
+    }
+  ],
+  "report_replay": {
+    "success": false,
+    "completed_steps": 1,
+    "first_step": "tests",
+    "exit_code": 1,
+    "summary_sha256": "2102c39559d3e2bff66de7be67f0adefc4d6cf20a0115bf55d21a2c3d6d8f3b0",
+    "step_log_sha256": "e60ac573522d264bd4baeba14c6224fb4fe0e64f5b0a4ce5e73a6134a5392a1d",
+    "nested_test_log_sha256": "e60ac573522d264bd4baeba14c6224fb4fe0e64f5b0a4ce5e73a6134a5392a1d",
+    "observed_error": "/run/current-system/sw/bin/python: No module named pytest"
+  },
+  "classification": "clean-export runner PATH propagation defect; no scientific verdict change",
+  "successful_replay": false
+}

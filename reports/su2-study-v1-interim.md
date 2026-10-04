@@ -1,5 +1,8 @@
 # SU2 localized study v1 — three completed cases
 
+> Correction (2026-10-04): the original localized source-lag receipt used an unrelated high-gradient reference family. Its numerical force mismatch is inapplicable to SU2 study-v1. Original archives and other SU2 diagnostics are unchanged. See `reports/su2-source-lag-reference-correction-2026-10-04.md` and additive v2 evidence.
+
+
 The n16, dt=0.001 case completed 50 updates to t=0.05. All four residual thresholds
 were met at each update, and duplicated periodic values match exactly. The
 archive hash was checked against the run summary before extracting this review.
@@ -98,6 +101,49 @@ Reproduce with `python3 -m tools.compare_su2_time`. The JSON evidence includes
 archive hashes, convergence counts and both differences in
 `evidence/tests/su2-time-comparison.json`.
 
+The separate analytic source-lag audit evaluates the exact manufactured force
+at callback time `T-dt` and target endpoint `T` on 4,096 fixed-seed points for
+these three verified archives. Since `u`, its derivatives and the viscous and
+time-derivative force terms scale as `exp(-t)`, while `grad(u)u` scales as
+`exp(-2t)`, the force has the form `f(t)=exp(-t)L+exp(-2t)Q`. The computed RMS
+force differences in the corrected exponential-envelope calculation halve with orders 1.00072 and 1.00036. This is consistent
+with an O(dt) input-time mismatch and the observed near-first-order endpoint
+field differences, but it does not attribute the solution error to that
+mismatch: nonlinear response, spatial error, discrete operator details and
+unconverged inner solves remain mixed in. Reproduce with
+`python3 -m tools.audit_su2_localized_source_lag`; results and archive hashes
+are in `evidence/tests/su2-localized-source-lag-v2.json`. The original v1 JSON is preserved but withdrawn from this SU2 interpretation.
+
+## Interpretation check: SU2 sample and reconstruction semantics
+
+The frozen velocity relative-L2 metric is a discrete norm over the unique
+periodic vertices of the archived SU2 restart field. `tools/analyze_su2.py`
+checks the Cartesian vertex coordinates, removes duplicate periodic endpoints,
+and compares those saved nodal values directly with the manufactured reference
+at the same coordinates. It is not a cell-average error norm. The finite
+difference and spectral derivative metrics are likewise grid diagnostics; they
+do not bound extrema between vertices.
+
+For the pinned SU2 source checkout `7478e9d684537fbb123a5e170eb7956d51b54ca6`
+(v8.5.0), the archived cases use `INC_NAVIER_STOKES`, `CONV_NUM_METHOD_FLOW=FDS`,
+`MUSCL_FLOW=YES`, `SLOPE_LIMITER_FLOW=NONE`, and `NUM_METHOD_GRAD=GREEN_GAUSS`.
+The source constructs MUSCL edge states from nodal primitive values plus
+reconstruction gradients for the convective residual. The incompressible
+Navier–Stokes preprocessing separately computes primitive gradients used by the
+viscous residual. Thus these settings do not define one canonical continuous
+velocity reconstruction for postprocessing, and treating the archived values
+as OpenFOAM-style finite-volume cell averages would be unjustified. No new
+continuous-field metric or defect finding is assigned here; existing sampled
+results and UNCERTAIN gates are unchanged.
+
+Source locations inspected: `SU2_CFD/src/solvers/CIncEulerSolver.cpp`
+(`Preprocessing` and MUSCL edge reconstruction),
+`SU2_CFD/src/solvers/CIncNSSolver.cpp` (primitive-gradient preprocessing), and
+`SU2_CFD/include/solvers/CFVMFlowSolverBase.inl` (Green–Gauss primitive
+gradient and viscous residual inputs). Source commit identity is recorded with
+the local checkout; archived per-case configs and vertex outputs remain the
+run-specific evidence.
+
 ## Evidence-linked gates for every frozen case
 
 `python3 -m tools.build_su2_report` writes all five schema-2 gate/verdict pairs.
@@ -136,3 +182,90 @@ benchmark evidence and do not by themselves establish a solver defect.
 Energy quadrature and solution error are combined; continuous numerical-field
 energy is not certified. Schema-2 conservative verdicts remain unchanged.
 Evidence: evidence/tests/su2-standard-review.json, with archive SHA256 values.
+
+## Analytic vertex-grid energy reference
+
+The manufactured field is (u = grad(psi) cross (1,2,3)), with
+\(\psi=e^{-t}\exp[\beta\sum_j(\cos d_j-1)]\),
+\(d_j=x_j-\pi\), and \(\beta=\sigma^{-2}\). For the frozen even-n
+grid \(x_j=2\pi j/n\), separability and symmetry give its exact discrete
+mean kinetic energy from two one-dimensional finite sums:
+
+\[
+E_n=14\beta^2e^{-2t-6\beta}
+\left(\frac1n\sum_j e^{2\beta\cos d_j}\sin^2d_j\right)
+\left(\frac1n\sum_j e^{2\beta\cos d_j}\right)^2.
+\]
+
+This matches direct evaluation of the reference field on n=8 and n=16 grids.
+At the benchmark parameters and endpoint, the n=16 reference-grid energy is
+0.06991245955582895 versus continuum energy 0.06991747645268451 (relative
+quadrature bias -0.0071755%); n=32 and n=64 agree with the continuum value to
+floating-point precision. Recomputing the archived sampled-energy comparison
+against this exact finite-grid reference changes the n=16 error from 12.0279%
+to 12.0216%, and leaves the other four errors unchanged to displayed
+precision. Thus reference sampling quadrature is far too small to explain the
+observed energy discrepancies; the frozen threshold outcomes are unchanged.
+This compares sampled kinetic energy only and is not a continuous-field error
+certificate. The case-by-case values and archive hashes are in
+`evidence/tests/su2-standard-review.json`.
+
+## Three-way sampled-spectrum audit
+
+The same distinction was applied to the radial shell spectrum using each
+archive's solver FFT, its analytic-reference FFT at the identical unique
+vertices, and the continuum Fourier shell energies. All three comparisons use
+zero-padded shell vectors and normalize L1 differences by continuum reference
+energy. Results are percentages:
+
+| Case | Solver samples vs analytic samples | Analytic samples vs continuum | Solver samples vs continuum |
+|---|---:|---:|---:|
+| n16 dt=.001 | 12.0738% | 0.00718% | 12.0772% |
+| n32 dt=.001 | 2.4667% | <1e-12% | 2.4667% |
+| n64 dt=.001 | 0.35519% | <1e-12% | 0.35519% |
+| n64 dt=.0005 | 0.35531% | <1e-12% | 0.35531% |
+| n64 dt=.00025 | 0.35536% | <1e-12% | 0.35536% |
+
+For the coarsest grid, the sampled-reference/continuum contrast is again
+negligible compared with the solver-sample contrast. This separates the
+reference's grid-sampling, aliasing and shell-assignment contribution from
+the difference between the two sampled fields; it does not certify a
+continuous numerical spectrum. Parseval energy residuals for both FFT arrays
+are at most 2.8e-17. The continuum spectrum uses the existing mode-cube
+cutoff-32 floating-point coefficients, whose omitted tail is not an interval
+bound. Reproduce with `python -m tools.audit_su2_spectral_aliasing`; archive
+hashes and raw contrasts are recorded in
+`evidence/tests/su2-spectral-aliasing-audit.json`.
+
+## Spatial concentration of sampled derivative error
+
+To see whether the remaining derivative discrepancies are located in the
+manufactured high-gradient region, the archived restart fields were reloaded
+and the same periodic centered-FD2 stencil was applied to solver and analytic
+vertex samples. This separates (a) solver-FD2 versus exact analytic derivatives,
+(b) analytic-sample FD2 versus exact derivatives (stencil truncation), and
+(c) solver-sample FD2 versus analytic-sample FD2 (the solver sample difference
+passed through the same stencil). Values below are absolute global RMS norms,
+not relative errors:
+
+| n | Gradient (a) | Gradient (b) | Gradient (c) | Vorticity (a) | Vorticity (b) | Vorticity (c) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 16 | 0.3806 | 0.2832 | 0.1185 | 0.3770 | 0.2774 | 0.1151 |
+| 32 | 0.1119 | 0.07839 | 0.03997 | 0.1108 | 0.07672 | 0.03965 |
+| 64, dt=.001 | 0.02589 | 0.02014 | 0.007503 | 0.02550 | 0.01971 | 0.007289 |
+
+The reference-only centered-difference truncation RMS falls by factors 3.61
+and 3.89 for gradient as n doubles, and 3.61 and 3.89 for vorticity, consistent
+with the expected second-order stencil behavior on this smooth reference.
+For the solver-sample-vs-reference-sample term (c), the top 10% of vertices
+ranked by exact analytic gradient magnitude contain 99.65%, 99.87%, and 99.68%
+of its squared gradient error for n=16/32/64. Ranked by exact vorticity
+magnitude, they contain 99.82%, 99.94%, and 99.96% of squared vorticity error.
+This is a spatial concentration of the discrete derivative discrepancy around
+the manufactured field's own high-derivative region. It does not distinguish
+physical localization from the smooth reference's steep spatial profile, does
+not bound inter-vertex extrema, and is not a solver defect or singularity
+finding. The temporal n=64 triplet has similar descriptive values; the full
+five-case data, archive hashes and replay guards are in
+`evidence/tests/su2-local-derivative-audit.json`. Reproduce with
+`python -m tools.audit_su2_local_derivatives`.

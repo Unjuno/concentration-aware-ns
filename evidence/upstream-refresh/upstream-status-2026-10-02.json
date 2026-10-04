@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-02",
+  "scope": "Bounded live inventory of benchmark-relevant OpenFOAM, SU2, PhysicsNeMo, and OpenAI Lean records; not an exhaustive tracker search.",
+  "openfoam": {
+    "project": "OpenFOAM Foundation 13",
+    "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "github_master_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "github_open_issues": [
+      {"number": 5, "title": "Documentation does not reflect the source code"},
+      {"number": 4, "title": "Installation on Almalinux"},
+      {"number": 3, "title": "Migration to organization"},
+      {"number": 2, "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases"}
+    ],
+    "other_github_pull_requests": [
+      {"number": 7, "title": "cambiando README"}
+    ],
+    "matching_issue_found_in_bounded_github_inventory": false,
+    "tracker_limit": "README points bug reports to bugs.openfoam.org; this GitHub issue list is not the complete Foundation tracker.",
+    "new_report_disposition": "not filed: AMR endpoint is exploratory and no solver defect is established"
+  },
+  "su2": {
+    "master_commit": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "latest_release": "v8.5.0",
+    "discussion_2890": {
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "state": "closed",
+      "state_reason": "resolved",
+      "answer_chosen_at": null,
+      "updated_at": "2026-09-30T17:05:38Z"
+    },
+    "related_open_issues": [
+      {"number": 2353, "state": "open", "updated_at": "2026-09-30T17:05:37Z"},
+      {"number": 2932, "state": "open", "updated_at": "2026-09-26T17:58:39Z"}
+    ],
+    "new_report_disposition": "not filed: existing discussion and issues cover adjacent topics; benchmark does not establish a general defect"
+  },
+  "physicsnemo": {
+    "main_commit": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+    "latest_release": "v2.2.2",
+    "issue_2007": {"state": "open", "updated_at": "2026-10-02T03:43:24Z", "comment_url": "https://github.com/NVIDIA/physicsnemo/issues/2007#issuecomment-5945199005"},
+    "target_file_git_blob": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+    "target_file_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552",
+    "pr_2008": {
+      "state": "open",
+      "base_commit": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "head_commit": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "merge_state": "behind",
+      "review_decision": "review_required"
+    },
+    "reproduction_artifact": "evidence/upstream-refresh/physicsnemo-main-issue-2007-validation-2026-10-02-83d6a33.json",
+    "benchmark_impact": "not demonstrated: current benchmark uses even uniform grids"
+  },
+  "openai_lean": {
+    "main_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "repository_updated_at": "2026-10-02T02:47:17Z",
+    "license": "Apache-2.0",
+    "has_issues": false,
+    "has_discussions": false,
+    "new_report_disposition": "no post; no usable public issue/discussion route"
+  }
+}

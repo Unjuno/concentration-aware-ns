@@ -61,6 +61,16 @@ ActualCandidateAssembly uses noncomputable definitions and calls a selected
 candidate construction. This is not a flaw in a mathematical existence proof;
 it means an executable floating-point case needs an additional extraction and
 truncation argument. Reading these modules does not verify their proof closure.
+The later finite-prefix identities alone would not close that extraction: a
+generic smooth diagonal counterexample shows fixed-prefix decay need not imply
+decay of a cutoff sum with a growing active prefix. However, the pinned source
+also supplies `AdmissibleScales.ordinary` and `ordinary_tail_bound`, and the
+Lean extension uses them to prove `axial_derivative_tail_tends_zero` for the
+selected observable. The analytic limit exchange is therefore proved under
+those hypotheses. What remains open is effective extraction of the chosen
+schedule, compact derivative constants and coefficient data for a numerical
+finite-stage certificate. See
+[`diagonal-finite-prefix-limit-audit.md`](diagonal-finite-prefix-limit-audit.md).
 
 Sources:
 - https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes/ComparatorDefinitions.lean

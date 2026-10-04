@@ -1,0 +1,35 @@
+{
+  "source": {
+    "title": "How turbulent flows grow vorticity at a point",
+    "authors": [
+      "Timo Schorlepp",
+      "Vladimir Rosenhaus",
+      "Gregory Falkovich"
+    ],
+    "arxiv": "2609.13056v1",
+    "url": "https://arxiv.org/abs/2609.13056",
+    "submitted": "2026-09-11",
+    "checked": "2026-10-02"
+  },
+  "reported_scope": {
+    "equations": "Incompressible Navier-Stokes with spatially smooth, temporally white Gaussian forcing",
+    "method": "Numerical and analytical instanton optimization for a prescribed pointwise vorticity target",
+    "symmetry": "Axisymmetric flow and reflection symmetry in the axial direction are assumed",
+    "target": "Large but finite vorticity; no finite-time blow-up result",
+    "reported_mechanism": "At higher target values, axial vorticity pulses propagate and collide; simple squeezing/stretching is insufficient in the authors' optimized path",
+    "author_caveat": "The largest-target scaling estimates are described as speculative and may change at higher targets.",
+    "reproducibility": "No code link was found on the arXiv record during this check; computations and thresholds were not independently reproduced here."
+  },
+  "relation_to_project": {
+    "relevance": "Mechanistic comparison for vortex filament, stretching, and pulse dynamics discussed in the OpenAI construction.",
+    "not_established": [
+      "equivalence to the OpenAI singular solution",
+      "molecular alignment or deterministic molecular positions",
+      "particle-size-dependent law",
+      "phase transition",
+      "speed-triggered viscosity collapse"
+    ],
+    "upstream_finding": false,
+    "disposition": "Record as a scoped literature lead; do not file a solver or OpenAI repository issue on this evidence."
+  }
+}

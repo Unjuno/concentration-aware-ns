@@ -1,0 +1,103 @@
+{
+  "checked_at_utc": "2026-10-03T17:35:44.005013+00:00",
+  "method": "Fresh gh REST reads with Cache-Control no-cache and per-request timestamp, immutable content refs; bounded GraphQL discussion read",
+  "openfoam": {
+    "head": "18870c24d21c6b982e2cdec27b2f59738cca5f90"
+  },
+  "su2": {
+    "head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "pr2857": {
+      "state": "closed",
+      "merged": false,
+      "draft": true,
+      "updated_at": "2026-09-05T08:08:07Z",
+      "html_url": "https://github.com/su2code/SU2/pull/2857"
+    },
+    "discussion2890": {
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+      "updatedAt": "2026-09-30T17:05:38Z",
+      "isAnswered": false,
+      "comments_count": 1,
+      "comments": [
+        {
+          "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18418174",
+          "createdAt": "2026-09-13T03:31:50Z",
+          "author": "sbryngelson",
+          "reply_count": 1,
+          "replies": [
+            {
+              "url": "https://github.com/su2code/SU2/discussions/2890#discussioncomment-18613462",
+              "createdAt": "2026-09-26T14:00:52Z",
+              "author": "Unjuno"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "physicsnemo": {
+    "main": "b45a5c810c741e6b41f8515be24c51121f8fc21f",
+    "latest_release": "v2.2.2",
+    "issue2007": {
+      "state": "open",
+      "updated_at": "2026-10-02T03:48:30Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+      "labels": []
+    },
+    "pr2008": {
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "updated_at": "2026-09-30T08:39:08Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "labels": [],
+      "relation_to_main": {
+        "status": "diverged",
+        "ahead_by": 2,
+        "behind_by": 14,
+        "merge_base": "ff5d19d08123de47ca446caed1d70a225d540184"
+      }
+    },
+    "issue2001": {
+      "state": "open",
+      "updated_at": "2026-09-18T05:01:57Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+      "labels": []
+    },
+    "issue1852": {
+      "state": "open",
+      "updated_at": "2026-09-20T01:44:34Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/issues/1852",
+      "labels": [
+        "enhancement",
+        "? - Needs Triage",
+        "stale"
+      ]
+    },
+    "pr1853": {
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "updated_at": "2026-07-17T21:43:39Z",
+      "html_url": "https://github.com/NVIDIA/physicsnemo/pull/1853",
+      "head": "95a4cac597def5df014c2b4eac22bf42e25a9fd8",
+      "labels": []
+    },
+    "source_files": {
+      "main": {
+        "path": "physicsnemo/metrics/general/power_spectrum.py",
+        "sha": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+        "size": 4129,
+        "html_url": "https://github.com/NVIDIA/physicsnemo/blob/b45a5c810c741e6b41f8515be24c51121f8fc21f/physicsnemo/metrics/general/power_spectrum.py"
+      },
+      "pr2008": {
+        "path": "physicsnemo/metrics/general/power_spectrum.py",
+        "sha": "8a69aa785b981baffa637df99937da74690df642",
+        "size": 4269,
+        "html_url": "https://github.com/NVIDIA/physicsnemo/blob/7407608723062dc11ba5332e9ff3774f42bb02d9/physicsnemo/metrics/general/power_spectrum.py"
+      }
+    }
+  }
+}

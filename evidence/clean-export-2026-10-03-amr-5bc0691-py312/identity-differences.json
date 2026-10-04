@@ -1,0 +1,170 @@
+{
+  "status": "STRICT_IDENTITY_FAIL_ENVIRONMENT_METADATA_DRIFT",
+  "strict_success": false,
+  "all_47_replay_steps_and_six_follow_up_checks_exit_zero": true,
+  "new_amr_derivative_artifact_byte_identical": true,
+  "differences": [
+    {
+      "path": "evidence/tests/force-concentration-scaling-2026-10-03.json",
+      "tracked_sha256": "8008cdc32e3e723461102e5890f1fa0e763b43a7933e90846e930db6115755af",
+      "replayed_sha256": "ff21e71319f49c22dbbf83ed541471a34bfcf1c557e9bb3c4842bf060577619e",
+      "differences": [
+        {
+          "pointer": "/platform",
+          "before": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "after": "macOS-27.0.1-arm64-arm-64bit"
+        },
+        {
+          "pointer": "/python_version",
+          "before": "3.14.5",
+          "after": "3.12.10"
+        }
+      ]
+    },
+    {
+      "path": "evidence/tests/openfoam-trig-supremum-arb-v3.json",
+      "tracked_sha256": "572892756569ec3f416d340f6c422bd39a8523ded2b69e53d235c00bd65a4511",
+      "replayed_sha256": "c4b78a8a000166c316ac80139e75df7ea894983871b716c8f1357a9ad8fd6266",
+      "differences": [
+        {
+          "pointer": "/environment/python",
+          "before": "3.14.5",
+          "after": "3.12.10"
+        }
+      ]
+    },
+    {
+      "path": "evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json",
+      "tracked_sha256": "17d7557d5e5bcf60c84cd0b80e413ae134eda21b1a4c058327de3b577db499dd",
+      "replayed_sha256": "4abc47f16deb9b4dcac616ece3675f539f9b4ba569447a6f413a0152674e2ff3",
+      "differences": [
+        {
+          "pointer": "/python_version",
+          "before": "3.14.5",
+          "after": "3.12.10"
+        },
+        {
+          "pointer": "/platform",
+          "before": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "after": "macOS-27.0.1-arm64-arm-64bit"
+        }
+      ]
+    },
+    {
+      "path": "evidence/tests/su2-spectral-gradient.json",
+      "tracked_sha256": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+      "replayed_sha256": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c",
+      "differences": [
+        {
+          "pointer": "/environment/python",
+          "before": "3.14.5",
+          "after": "3.12.10"
+        }
+      ]
+    },
+    {
+      "path": "reports/su2-n16-dt0.001-gate.json",
+      "tracked_sha256": "c9063c699fdfd3213ecfa8c986301368c3df5460d81003828ac2e8fb18ebdc41",
+      "replayed_sha256": "668765fad3503d75089e6cb70b73e605331849393314ca56029c20c832aedad0",
+      "differences": [
+        {
+          "pointer": "/artifacts/derivatives_verified/sha256",
+          "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+          "after": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c"
+        },
+        {
+          "pointer": "/artifacts/evaluation_time_verified/sha256",
+          "before": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+          "after": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411"
+        }
+      ]
+    },
+    {
+      "path": "reports/su2-n32-dt0.001-gate.json",
+      "tracked_sha256": "d7c07146e9d1ec323bf637d48e77bd622dbbda64d60415fd68c55e979d4e393c",
+      "replayed_sha256": "9a38051ecff8e46a3635aab61563716ac9e228300d9fb183d7879449c9c5145b",
+      "differences": [
+        {
+          "pointer": "/artifacts/derivatives_verified/sha256",
+          "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+          "after": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c"
+        },
+        {
+          "pointer": "/artifacts/evaluation_time_verified/sha256",
+          "before": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+          "after": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411"
+        }
+      ]
+    },
+    {
+      "path": "reports/su2-n64-dt0.00025-gate.json",
+      "tracked_sha256": "22328d07e5ad221c6692789743b849fa7e86b2d301b2c6b151730821fe7babb3",
+      "replayed_sha256": "0cecf5cf48ca9ee39573cffd193bf7b38c96d0f37c80284932cbd0ba75a80540",
+      "differences": [
+        {
+          "pointer": "/artifacts/derivatives_verified/sha256",
+          "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+          "after": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c"
+        },
+        {
+          "pointer": "/artifacts/evaluation_time_verified/sha256",
+          "before": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+          "after": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411"
+        }
+      ]
+    },
+    {
+      "path": "reports/su2-n64-dt0.0005-gate.json",
+      "tracked_sha256": "4c36710d4abbc301cab8a6e4c9d53f399f30ce687766c66fbf71bfed43b96708",
+      "replayed_sha256": "19ecb10cad8a3627c4c061005c010ee94babd7a2938dadf744f85e574d6331b7",
+      "differences": [
+        {
+          "pointer": "/artifacts/derivatives_verified/sha256",
+          "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+          "after": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c"
+        },
+        {
+          "pointer": "/artifacts/evaluation_time_verified/sha256",
+          "before": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+          "after": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411"
+        }
+      ]
+    },
+    {
+      "path": "reports/su2-n64-dt0.001-gate.json",
+      "tracked_sha256": "7f147ae05cdcf5011b261781a8cce2fee2b968c88543c95fc6de338db2e87e67",
+      "replayed_sha256": "aaf801d34a403b9f7ce2f9a39649827df563319dab0df558a1593a1c12c499ce",
+      "differences": [
+        {
+          "pointer": "/artifacts/derivatives_verified/sha256",
+          "before": "536c1aae0b9aaae434096755057a3cf89f7bbf54bb89df0452fba567cc30aff3",
+          "after": "c4cdee4b870ef0f26200101aa45c69ea93232ba5215a8e5f12046b7b44b9ff0c"
+        },
+        {
+          "pointer": "/artifacts/evaluation_time_verified/sha256",
+          "before": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+          "after": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411"
+        }
+      ]
+    },
+    {
+      "path": "evidence/su2-study-v1/diagnostic-replay.json",
+      "tracked_sha256": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed",
+      "replayed_sha256": "2e57d724e4bcbc8291ea893f294e111d19ccc85675441ec7e6cb29111c82e411",
+      "differences": [
+        {
+          "pointer": "/environment/python",
+          "before": "3.14.5",
+          "after": "3.12.10"
+        },
+        {
+          "pointer": "/environment/platform",
+          "before": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "after": "macOS-27.0.1-arm64-arm-64bit"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Nine strictly compared files differ only in interpreter/platform metadata or hashes referencing changed metadata-bearing artifacts. The separately traced SU2 diagnostic-replay input has the same metadata-only change. Scientific values/verdicts in these differences are unchanged. This is not a strict byte-identity PASS or a CFD rerun.",
+  "next_attempt": "Same frozen commit, explicit /opt/homebrew/bin/python3 (CPython 3.14.5), new export path; preserve this failed strict audit."
+}
