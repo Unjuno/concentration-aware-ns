@@ -1,5 +1,22 @@
 # Completion audit — interim, 2026-09-27
 
+### Fresh published cellPoint sample and enclosure replay — 2026-10-04
+
+At source commit `4e44429a371ee3e096ce3f74a06b789aa3ea8ef0`, the locked Python
+verifier reproduced the published n32, n64, and n32/dt=0.0005 native-query
+measurements and all three Arb128 uniform idealized-ball error enclosures.
+Every native analysis matched its stored JSON, and each analytic enclosure was
+byte-identical. The concise receipt is
+[`verification.json`](../evidence/cell-point-matrix-review-2026-10-04/verification.json);
+the replay command is `uv run --python 3.14 --with-requirements
+requirements-verification-locked.txt python -m
+tools.verify_published_cell_point_matrix --output
+work/cell-point-matrix-review-current-4e44429 --source-commit
+4e44429a371ee3e096ce3f74a06b789aa3ea8ef0`.
+This is same-host postprocessing of stored captures, not a new solver run. It
+still does not certify all floating position searches, global continuity or
+extrema, or transfer to molecular/viscous behavior.
+
 ### Locked clean-export replay at current local HEAD — 2026-10-04
 
 Fixed commit `e039e4b4098fedda2f53f76a71d3a447e384b5c1` was exported from

@@ -4999,3 +4999,17 @@ PhysicsNeMo-specific calibration and do not certify continuous extrema,
 population-level seed behavior, or optimizer convergence. The v1 comparative
 matrix remains historical and now points to v2. No upstream issue or verdict
 change follows. Goal remains active.
+
+
+## Verification addendum — larger cellPoint evidence replay (2026-10-04)
+
+Re-ran `tools.verify_published_cell_point_matrix` at source commit
+`4e44429a371ee3e096ce3f74a06b789aa3ea8ef0` in the locked Python 3.14
+environment. The n32, n64 and n32 half-step
+finite native-query measurements reproduce exactly from the stored JSONs;
+all three Arb128 uniform idealized-ball enclosures reproduce byte-for-byte.
+The compact receipt is archived at
+`evidence/cell-point-matrix-review-2026-10-04/verification.json`. This verifies
+postprocessing only, not a new OpenFOAM run or a global/native-floating search
+certificate. The separate SU2 matched full-horizon job remains active; the
+complete objective remains open.
