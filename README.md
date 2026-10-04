@@ -24,6 +24,7 @@ solutions; compare space/time refinement, local gradients, vorticity and spectra
 - [Photon-fluid analogy and radiation-hydrodynamics scope audit](reports/photon-fluid-and-radiation-hydrodynamics-audit-2026-10-04.md)
 - [Exact singular affine foil separating direction alignment, density and viscosity](reports/singular-affine-alignment-constant-viscosity-2026-10-04.md)
 - [OpenAI proof follow-up paper status refresh](reports/research-refresh-openai-part-II-status-2026-10-04.md)
+- [Weak forcing-topology density versus actuator amplitude](reports/forcing-scope-audit.md)
 - [Archived point-value initialization and forcing audit](reports/openfoam-amr-input-representation-2026-10-04.md)
 - [Arb-enclosed nominal-mean continuum error certificates](reports/openfoam-amr-arb-mean-certificate-2026-10-04.md)
 - [Native mean constraints and reconstruction-independent gradient bounds](reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md)

@@ -616,6 +616,26 @@ exception therefore remains open. PR #4 CI for the pushed revision is pending.
 The theorem scope is pinned to §9, pp. 49–50 in the source PDF. Goal remains
 active.
 
+## Force-density scale versus pointwise amplitude — 2026-10-05
+
+Re-read Cao–Chi–Nie arXiv:2609.10262v4 through its scaling estimate and
+Remark 3.13. The force-density family approaches the reference in
+`L^1_t dot-H^s_x` like `epsilon^(1/2-s)` for `s<1/2`, while its force difference
+has `L-infinity` norm bounded below by
+`epsilon^(-3)||F||_infinity - C epsilon^(-2)`, which diverges. This makes the
+topology/actuator distinction explicit: the result does not establish bounded-
+amplitude reachability, probability, or experimental robustness. The locked
+SymPy scaling and observation controls passed their three focused tests.
+An independent OpenFOAM six-case archive replay also passed and reconfirmed
+`NOT_OBSERVED` for the predeclared persistent standard-pass/local-quality blind
+spot; the incomplete October repeat remains excluded. Report:
+`reports/forcing-scope-audit.md`; replay:
+`evidence/tests/openfoam-high-gradient-matrix-replay-2026-10-05.json`.
+The SU2 matrix and OpenAI Lean audit GitHub Actions remain in progress; GitHub's
+Actions API returned HTTP 403 rate-limit responses, so their
+completion states have not been refreshed through the API. No change to a
+numerical or physical verdict follows.
+
 ## Exact equatorial marginal — 2026-10-03
 
 The `x=p_z` Itô marginal is now checked as

@@ -60,3 +60,39 @@ Analyticity of our manufactured forcing neither supplies that pressure bound nor
 invalidates the smooth-forced construction. The benchmark results and conditional
 Lean extension therefore retain their existing verdicts. No new upstream defect
 report follows from this comparison alone.
+
+## Weak-topology density versus actuator-scale forcing — 2026-10-05
+
+The full text of Cao–Chi–Nie v4 adds a useful quantitative caveat to the force-
+density statement above. Their rescaled seed is
+
+    F_epsilon(x,t) = epsilon^(-3) F((x-x0)/epsilon,
+                                     (t-t_epsilon)/epsilon^2),
+
+with a cutoff correction `H_epsilon` whose pointwise amplitude is
+`O(epsilon^(-2))`. Since the seed force `F` is nonzero, their Remark 3.13 gives
+
+    ||g_epsilon-g||_(L-infinity in space-time)
+      >= epsilon^(-3)||F||_infinity - C epsilon^(-2) -> infinity.
+
+At the same time, the scaling estimate for the seed in
+`L^1_t dot-H^s_x` is `O(epsilon^(1/2-s))`; it tends to zero for `s<1/2`, the
+same threshold as the density theorem. Thus the theorem's “nearby forces” can
+be close in its stated weak topology while their peak amplitude diverges; the
+paper also notes that this family has no uniform bounds on all derivatives.
+This is not a contradiction: the topology deliberately does not control those
+stronger observables.
+
+This strengthens the operational boundary: topology-density is not a
+probability, robustness under bounded actuator amplitudes, or evidence that a
+physical flow follows the construction. A physically relevant reachability
+claim would need explicit dimensional bounds on force amplitude, spatial and
+temporal bandwidth, energy input, and the material response. This calculation
+does not show such a bounded-control realization exists. The preprint starts
+from the OpenAI blow-up seed, so the result remains conditional on that input
+and is not independent validation of it.
+
+Primary source: Cao, Chi and Nie, [*Density of Forces Producing Navier–Stokes
+Blowup*, arXiv:2609.10262v4](https://arxiv.org/html/2609.10262v4), equations
+(20), (43), Theorem 4.1 and Remark 3.13. This is a source-level scaling audit;
+no new PDE proof, actuator model, or solver run is claimed.
