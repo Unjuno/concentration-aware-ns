@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 335 — freeze interpretation rules before SU2 output is visible
+
+Recorded the distinction between solver stopping acceptance, finite-sample
+quality, and replay integrity before the active SU2 matrix produced a result.
+The exact-field FD2 floor supports treating n=16/n=32 peak-metric failures as
+resolution-limited. A possible n=64 standard-PASS/local-FAIL will be an
+observed fine-grid quality gap, but the SU2 defect-reproduction rule requires a
+second adequate spatial grid at n=128; n=64 time refinements do not substitute.
+The live run's inputs and thresholds are unchanged. Rules and reporting limits
+are in `reports/su2-shared-high-gradient-interpretation-2026-10-04.md`. The
+five-case run remains active and no output has been judged yet.
+
 ## Revision 334 — prepare a post-run SU2 archive replay gate
 
 Added a verifier that checks the run protocol, adapter patch, archive hashes,
