@@ -1,5 +1,21 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 312 — search the Foundation issue tracker for AMR/gradient overlap
+
+Followed the OpenFOAM Foundation README to its separate `bugs.openfoam.org`
+tracker and searched targeted terms for `maxCells`, `maxRefinement`, dynamic
+refinement, field mapping/history, and gradient evaluation. Search-indexed
+historical matches include the region-specific `maxRefinement` design question
+(#4107), a refinement-history write issue (#3928), and an old least-squares
+gradient report (#141). Their described scopes do not match this benchmark's
+approximate whole-level `maxCells` cap, first-map exact-cell-average audit, or
+Gauss derivative diagnostic. Direct unauthenticated page fetches returned the
+tracker login screen, so current ticket details and exhaustive absence of a
+duplicate remain unverified. No new solver defect was found, so no Foundation
+issue was filed; the record and retrieval limitation are documented in
+`reports/openfoam-foundation-tracker-refresh-2026-10-04.md` and its evidence
+JSON. The complete benchmark goal remains active.
+
 ## Revision 311 — capture a withdrawn opposite-claim preprint and external kernel replay
 
 The arXiv record for Thomas Ruf, 2609.18808, now marks the September 16–17
