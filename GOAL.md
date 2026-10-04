@@ -1,5 +1,20 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 305 — refresh primary project trackers and correct the SU2 thread shape
+
+Targeted GitHub REST/GraphQL responses confirm the audited OpenFOAM Foundation
+13 and SU2 heads are unchanged and PhysicsNeMo remains at `b45a5c8`, with the
+audited spectrum blob unchanged. OpenFOAM Issue #2 is adjacent but unrelated;
+SU2 #2353/#2932 remain open and #2857 closed/unmerged; PhysicsNeMo #2007/#2008
+remain open. The SU2 #2890 thread has one maintainer comment and one nested
+author reply (created Sep 26, updated Sep 30), no later reply, and no accepted
+answer. The existing BDF2 evidence is a reply in that thread, not maintainer
+acceptance. GitHub repository metadata says `NOASSERTION` for OpenFOAM and SU2;
+their pinned source/package license evidence remains separately recorded.
+Full targeted responses and hashes are in
+`evidence/upstream-refresh/three-project-live-status-2026-10-04T0129Z.json`.
+No duplicate upstream post is warranted; full goal remains active.
+
 ## Revision 304 — check for the announced oscillatory-correction companion
 
 Queried the arXiv Atom API at 2026-10-04 01:24:44 UTC for the exact announced

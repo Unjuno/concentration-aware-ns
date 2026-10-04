@@ -35,3 +35,29 @@ upstream source/issue or run any new solver. The broader objective remains
 active, including global reconstruction bounds, unresolved proof identities,
 full consumer trajectories, project-specific continuous quality requirements
 and justified public integration.
+
+## Live tracker and source refresh, 2026-10-04 01:29 UTC
+
+A read-only GitHub API refresh confirms OpenFOAM Foundation 13 `master` remains
+at `18870c24d21c6b982e2cdec27b2f59738cca5f90`; its repository license field
+is `NOASSERTION`, while the previously inspected source headers identify
+GPL-3.0-or-later. Adjacent Issue #2 remains open and concerns a two-phase
+version difference, not the reproduced AMR case. The Foundation README's
+separate bug-tracker requirement still bounds this GitHub-only duplicate check.
+
+SU2 `master` remains at `bc15466602a687d6fb796d5df7a12ce3fde0949a`; its
+repository license field is `NOASSERTION`. Issues #2353 and #2932 remain open,
+and PR #2857 remains closed/unmerged. GraphQL confirms Discussion #2890 is
+unanswered and has one top-level comment by `sbryngelson` plus one nested reply
+by `Unjuno` (posted September 26 and updated September 30); no later reply or
+accepted answer is present. The BDF2 report is our reply to the existing
+thread, not maintainer acceptance of a general fix.
+
+PhysicsNeMo `main` remains at `b45a5c810c741e6b41f8515be24c51121f8fc21f`;
+the API declares Apache-2.0 and the audited `power_spectrum.py` blob remains
+`fb3e8cda3bc7916b8e56833dda240cb74463fabb`. Issue #2007 and PR #2008 remain
+open, with the PR unmerged. The existing records cover the known odd-width
+behavior; no duplicate issue was filed. The complete targeted API/GraphQL
+responses, query scope and normalized hashes are in
+[`three-project-live-status-2026-10-04T0129Z.json`](../evidence/upstream-refresh/three-project-live-status-2026-10-04T0129Z.json).
+This is a focused tracker refresh, not a full source or issue-history audit.
