@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 329 — refresh the three-project upstream disposition
+
+Refreshed OpenFOAM Foundation 13, SU2, PhysicsNeMo and the OpenAI reference
+repository through GitHub's live API at 2026-10-04 06:46 UTC. OpenFOAM and SU2
+default-branch commits remain at their pinned audit revisions; PhysicsNeMo's
+latest source commit matches the previously inspected October 2 head. SU2
+issues #2353/#2932 and discussion #2890, PhysicsNeMo issues #2001/#2007 and
+PRs #1853/#2008, and OpenFOAM's inspected open issue list add no new overlap.
+PhysicsNeMo #2042 is a newly open nonuniform-bin Wasserstein integration
+report and is unrelated to the periodic derivative/spectrum paths exercised
+here. License files and contribution guidance were checked; OpenAI's reference
+repository still disables issues and discussions. No upstream post is
+warranted. The scoped API response and still-live SU2 baseline handle are
+recorded in `evidence/upstream-refresh/live-status-2026-10-04T0646Z.json`.
+PR #4 remains open with `CLEAN` merge state and successful Python and exact
+OpenFOAM-control checks. The fresh SU2 baseline remains in progress, so the
+full goal remains active.
+
 ## Revision 328 — independently replay the fresh six-case Foundation 13 run
 
 Hosted run 37181406146 completed all six smooth forced-periodic cases on one

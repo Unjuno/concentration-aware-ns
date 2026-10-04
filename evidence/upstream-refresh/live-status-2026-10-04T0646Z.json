@@ -1,0 +1,166 @@
+{
+  "checked_at_utc": "2026-10-04T06:46:23Z",
+  "scope": "Read-only refresh of default-branch identity, directly relevant existing upstream records, license files and contribution guidance. The issue inventory is targeted rather than exhaustive.",
+  "repositories": {
+    "OpenFOAM/OpenFOAM-13": {
+      "default_branch": "master",
+      "default_branch_commit": {
+        "date": "2026-06-23T20:54:34Z",
+        "sha": "18870c24d21c6b982e2cdec27b2f59738cca5f90"
+      },
+      "license_metadata": "NOASSERTION",
+      "license_file": "COPYING declares GNU GPL v3 or any later version",
+      "contribution_guidance": "No CONTRIBUTING, issue-template or pull-request-template path was present in the default-branch tree checked.",
+      "open_issues_checked": [
+        {
+          "number": 2,
+          "state": "open",
+          "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases",
+          "updated_at": "2025-08-29T19:28:04Z",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2"
+        },
+        {
+          "number": 3,
+          "state": "open",
+          "title": "Migration to organization",
+          "updated_at": "2025-11-24T00:22:20Z",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/3"
+        },
+        {
+          "number": 4,
+          "state": "open",
+          "title": "Installation on Almalinux",
+          "updated_at": "2025-12-05T17:54:58Z",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/4"
+        },
+        {
+          "number": 5,
+          "state": "open",
+          "title": "Documentation does not reflect the source code",
+          "updated_at": "2026-01-12T10:13:56Z",
+          "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/5"
+        }
+      ],
+      "disposition": "No listed open issue matches the reproduced residual/local-QoI or same-run AMR mapping observations. No new issue justified."
+    },
+    "su2code/SU2": {
+      "default_branch": "master",
+      "default_branch_commit": {
+        "date": "2026-04-28T06:05:27Z",
+        "sha": "bc15466602a687d6fb796d5df7a12ce3fde0949a"
+      },
+      "license_metadata": "NOASSERTION",
+      "license_files": ["COPYING", "LICENSE.md"],
+      "contribution_guidance": "Default tree includes bug/feature issue templates, CODE_OF_CONDUCT.md and .github/pull_request_template.md. The PR template asks for develop as target, relevant tests and docs, style checks and pre-commit.",
+      "issues": {
+        "2353": {
+          "state": "open",
+          "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+          "updated_at": "2026-09-30T17:05:37Z",
+          "url": "https://github.com/su2code/SU2/issues/2353"
+        },
+        "2932": {
+          "state": "open",
+          "title": "Output the location of the maximum residual to the history file (MAX_RES_LOC)",
+          "updated_at": "2026-09-26T17:58:39Z",
+          "url": "https://github.com/su2code/SU2/issues/2932"
+        }
+      },
+      "discussion_2890": {
+        "state": "closed",
+        "answered": false,
+        "title": "Clarifying MMS source time in first-order dual-time stepping: uniform analytic reproducer",
+        "updated_at": "2026-09-30T17:05:38Z",
+        "url": "https://github.com/su2code/SU2/discussions/2890"
+      },
+      "disposition": "The temporal-source discussion and maximum-residual-location request overlap with existing records. The current periodic matched-pair experiment yields no new issue."
+    },
+    "NVIDIA/physicsnemo": {
+      "default_branch": "main",
+      "default_branch_commit": {
+        "date": "2026-10-02T16:45:37Z",
+        "sha": "b45a5c810c741e6b41f8515be24c51121f8fc21f"
+      },
+      "license_metadata": "Apache-2.0",
+      "license_file": "LICENSE.txt",
+      "contribution_guidance": "CONTRIBUTING.md asks contributors to open/link an issue before a PR, add relevant tests/docs and changelog entries, and sign off commits under DCO.",
+      "issues": {
+        "2001": {
+          "state": "open",
+          "title": "GradientsFiniteDifference/GradientsSpectral (and PhysicsInformer) silently assume a periodic domain — non-periodic BCs get a wrong residual at the boundary with no warning",
+          "updated_at": "2026-09-18T05:01:57Z",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2001"
+        },
+        "2007": {
+          "state": "open",
+          "title": "power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+          "updated_at": "2026-10-02T03:48:30Z",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+        },
+        "2042": {
+          "state": "open",
+          "title": "Wasserstein CDF distance uses the first width for every bin",
+          "updated_at": "2026-10-03T15:47:30Z",
+          "url": "https://github.com/NVIDIA/physicsnemo/issues/2042",
+          "scope_note": "The reproduction concerns integration over nonuniform histogram bins and is separate from the periodic gradient and spectrum paths in this audit."
+        }
+      },
+      "pull_requests": {
+        "1853": {
+          "state": "open",
+          "draft": true,
+          "title": "Add non-periodic grid gradient boundary mode",
+          "head_sha": "95a4cac597def5df014c2b4eac22bf42e25a9fd8",
+          "base_sha": "e571668232a1376aed7f43ea27af5000edbb9e7e",
+          "url": "https://github.com/NVIDIA/physicsnemo/pull/1853"
+        },
+        "2008": {
+          "state": "open",
+          "draft": false,
+          "title": "Fix zero frequency index along the width in metrics.general.power_spectrum",
+          "head_sha": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+          "base_sha": "ff5d19d08123de47ca446caed1d70a225d540184",
+          "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+        }
+      },
+      "disposition": "Relevant gradient and spectrum reports already have issues/PRs. The newly opened #2042 is unrelated to the exercised paths. No duplicate issue justified."
+    },
+    "OpenAI/NavierStokesAndEuler": {
+      "default_branch": "main",
+      "default_branch_commit": {
+        "date": "2026-09-10T13:40:53Z",
+        "sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd"
+      },
+      "license_metadata": "Apache-2.0",
+      "has_issues": false,
+      "has_discussions": false,
+      "disposition": "Reference source remains separately audited; GitHub issue/discussion reporting is disabled on this repository."
+    }
+  },
+  "benchmark_repository": {
+    "pull_request": "https://github.com/Unjuno/concentration-aware-ns/pull/4",
+    "head_sha": "275fd80b14cba97042fc0840b5a030ac030aeba9",
+    "state": "open",
+    "merge_state": "CLEAN",
+    "latest_python_tests": "success",
+    "latest_foundation13_forced_periodic_exact_control": "success",
+    "fine_cell_point_capture_change_check": "success; capture job skipped by workflow path filter"
+  },
+  "hosted_su2_successor_job": {
+    "run_id": 37180101797,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37180101797",
+    "head_sha": "1c2fd0855eb65433901b67a106b05945abebe747",
+    "status": "in_progress",
+    "baseline_job_started_at": "2026-10-04T05:30:46Z",
+    "baseline_case_step_started_at": "2026-10-04T05:37:55Z",
+    "steps_completed_before_live_case": [
+      "checkout",
+      "setup-python",
+      "install-locked-analysis-dependencies",
+      "prepare-frozen-inputs-and-verify-historical-baseline",
+      "build-and-measure-one-shared-image"
+    ],
+    "control_case": "not started; gated on baseline success"
+  },
+  "reporting_disposition": "No upstream post made: available numerical discrepancies are either already tracked or narrowly scoped benchmark observations without a verified upstream defect."
+}

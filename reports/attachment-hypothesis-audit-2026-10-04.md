@@ -43,10 +43,19 @@ concerns are already tracked and do not apply to this periodic/autodiff path;
 its odd-width spectrum issue has its own issue and PR. Current contribution
 policy and bounded overlap searches are recorded in the dated upstream audits.
 
-This is a claim audit against the repository's archived evidence, not a fresh
-exhaustive inventory of every upstream issue or current default-branch commit.
-The last scoped three-project inventory is dated 2026-10-02; refresh live
-metadata before any new external report.
+This is a claim audit against the repository's archived evidence, not an
+exhaustive inventory of every upstream issue. A scoped live metadata refresh
+on 2026-10-04 found no new overlap or reportable benchmark finding: OpenFOAM
+Foundation 13 and SU2 default-branch SHAs were unchanged; PhysicsNeMo's
+default-branch SHA matched the already inspected 2026-10-02 state. The newly
+opened PhysicsNeMo #2042 concerns nonuniform-bin Wasserstein CDF integration,
+outside the audited periodic gradient/spectrum paths. SU2 #2353 and #2932,
+PhysicsNeMo #2001 and #2007, and PRs #1853 and #2008 retain their recorded
+states; discussion #2890 remains closed without an accepted answer. OpenAI's
+reference repository still has issues and discussions disabled. No upstream
+post was made. Exact metadata, license-file and contribution-template checks,
+and the live SU2 run state are in
+`evidence/upstream-refresh/live-status-2026-10-04T0646Z.json`.
 
 ## Primary evidence in this repository
 
