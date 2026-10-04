@@ -37,6 +37,14 @@ case, run log, time history, sampled quality metrics, protocol hash, and image
 identity separately. The source patch remains under SU2's LGPL-2.1-or-later
 terms.
 
+The frozen shared-MMS matrix workflow builds the adapter image once, distributes
+that exact image to one parallel worker per frozen case, verifies each loaded
+image ID, then aggregates and replays the case archives. Matrix coverage is
+reported independently of each case's standard residual gate. The 360-minute
+serial pilot at run `37190363204` did not finish; its partial evidence and
+replay are recorded in
+`reports/su2-shared-high-gradient-incomplete-2026-10-05.md`.
+
 After downloading a completed matrix artifact, replay its archive and
 postprocessing checks with:
 

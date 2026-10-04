@@ -12,6 +12,21 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 345 — preserve the incomplete SU2 run and parallelize frozen cases
+
+Replayed and preserved hosted SU2 run `37190363204`: it ended at the configured
+360-minute limit after one of five cases. The completed n16 archive passes
+independent archive and postprocessor replay but fails both standard and local
+quality gates; n32 is partial and three cases are absent. This is not a solver
+defect or a blind-spot reproduction. Reworked the SU2 workflow to build one
+pinned image and distribute it to five parallel case workers, then aggregate
+and replay their case archives. Matrix coverage and per-case standard
+acceptance are now separate fields. Focused tests and a real partial-run
+replay pass; the new hosted parallel matrix is not yet executed. Details are
+in `reports/su2-shared-high-gradient-incomplete-2026-10-05.md`.
+The existing OpenFOAM, SU2, and PhysicsNeMo numerical interpretations remain
+bounded to their pinned manufactured-solution studies.
+
 ## Revision 344 — certify exact continuum peaks for every frozen width
 
 Extended the exact Bernstein proof from the historical `m=4` reference to all

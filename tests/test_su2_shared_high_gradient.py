@@ -9,7 +9,12 @@ import numpy as np
 from tools.analyze_su2 import analyze
 from tools.high_gradient_reference import fields
 from tools.su2_case import generate
-from tools.run_su2_high_gradient_study import case_pairs
+from tools.run_su2_high_gradient_study import (
+    case_pairs,
+    expected_case_labels,
+    select_case_pairs,
+    study_status,
+)
 
 
 class Su2SharedHighGradientTests(unittest.TestCase):
@@ -17,6 +22,37 @@ class Su2SharedHighGradientTests(unittest.TestCase):
         protocol = {"cases": {"spatial": [[16, .001], [64, .001]],
                               "temporal": [[64, .001], [64, .0005]]}}
         self.assertEqual(case_pairs(protocol), [(16, .001), (64, .001), (64, .0005)])
+
+    def test_completed_matrix_is_distinct_from_per_case_standard_acceptance(self):
+        protocol = {
+            "cases": {
+                "spatial": [[16, .001], [32, .001], [64, .001]],
+                "temporal": [[64, .001], [64, .0005], [64, .00025]],
+            }
+        }
+        expected = expected_case_labels(protocol)
+        rows = [{"case": label, "standard_acceptance": "FAIL" if label.startswith("n16") else "PASS"}
+                for label in expected]
+
+        self.assertEqual(len(expected), 5)
+        self.assertEqual(study_status(expected, rows), "COMPLETE")
+        self.assertEqual(study_status(expected, rows[:-1]), "INCOMPLETE")
+        self.assertEqual(study_status(expected, rows + [rows[0]]), "INCOMPLETE")
+
+    def test_parallel_worker_selects_only_a_frozen_unique_case(self):
+        protocol = {
+            "cases": {
+                "spatial": [[16, .001], [32, .001], [64, .001]],
+                "temporal": [[64, .001], [64, .0005], [64, .00025]],
+            }
+        }
+        self.assertEqual(select_case_pairs(protocol, ["n64-dt0.0005"]), [(64, .0005)])
+        with self.assertRaisesRegex(ValueError, "unknown selected"):
+            select_case_pairs(protocol, ["n128-dt0.001"])
+        with self.assertRaisesRegex(ValueError, "unique"):
+            select_case_pairs(protocol, ["n64-dt0.0005", "n64-dt0.0005"])
+        with self.assertRaisesRegex(ValueError, "at least one"):
+            select_case_pairs(protocol, [])
 
     def test_case_records_vertex_sampled_shared_mms(self):
         with tempfile.TemporaryDirectory() as temp:

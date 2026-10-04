@@ -1,0 +1,22 @@
+{
+  "n": 16,
+  "dt": 0.001,
+  "end": 0.05,
+  "sigma": 0.5,
+  "nu": 0.01,
+  "profile": "high-gradient",
+  "frequency": 4,
+  "status": "pilot; convergence unverified",
+  "study_id": "su2-shared-high-gradient-v1",
+  "protocol_sha256": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+  "image": "cans-su2-high-gradient",
+  "image_id": "sha256:88796454471f478a15081123bca0e7e092249eceb2ce2aeacd60397d4dcc3847",
+  "rho": 1.0,
+  "quality_thresholds": {
+    "velocity_relative_l2": 0.02,
+    "energy_relative_error": 0.02,
+    "max_gradient_relative_error_samples": 0.05,
+    "max_vorticity_relative_error_samples": 0.05,
+    "shell_spectrum_relative_l1": 0.05
+  }
+}
