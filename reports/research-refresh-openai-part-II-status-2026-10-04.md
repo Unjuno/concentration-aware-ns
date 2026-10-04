@@ -25,3 +25,14 @@ phrase “Residual Correction via Oscillatory Pulses” on arXiv-indexed results
 then opened the primary Part I abstract. This is a bounded title/phrase
 search, not an exhaustive crawl. Its result supports “not located,” not “does
 not exist.”
+
+### Official API recheck — 2026-10-04 05:48 UTC
+
+Queried arXiv's Atom API directly with an exact `ti:` Part II title search and
+an exact-phrase `all:` search. The title query returned `totalResults=0`; the
+phrase query returned one result only, Part I v2 (`2609.35406v2`). Raw Atom
+responses, captured timestamps, and SHA-256 hashes are preserved at
+`evidence/upstream-refresh/lei-ren-part-ii-exact-title-2026-10-04T0548Z.atom.xml`
+and `evidence/upstream-refresh/lei-ren-part-ii-phrase-2026-10-04T0548Z.atom.xml`.
+This strengthens the current public-catalog check but still cannot rule out an
+unsubmitted draft, a changed title, or a manuscript outside arXiv.
