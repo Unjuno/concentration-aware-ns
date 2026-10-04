@@ -1,5 +1,24 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 311 — capture a withdrawn opposite-claim preprint and external kernel replay
+
+The arXiv record for Thomas Ruf, 2609.18808, now marks the September 16–17
+unforced Navier–Stokes global-regularity preprint withdrawn; its author says an
+error in equation (27) makes the crucial inequality below equation (29) wrong.
+The claimed theorem is therefore not usable evidence, and it concerns the
+homogeneous unforced equations, so it neither refutes nor validates OpenAI's
+smooth-forced construction. Separately, the Lean Kernel Arena currently records
+acceptance of 129,842 declarations exported from OpenAI/NavierStokesAndEuler at
+the same latest source commit, f9e8bc5. This is additional proof-term/kernel
+checking evidence, not a mathematical review of the derivation or physical
+validation. GitHub confirms the OpenAI repository has not moved since Sep 10
+and has no issues, discussions, or pull requests enabled. Sources, captured
+metadata, exact scope and limitations are in
+`reports/research-refresh-withdrawn-global-regularity-and-kernel-replay-2026-10-04.md`
+and `evidence/upstream-refresh/withdrawn-ruf-paper-and-lean-arena-2026-10-04.json`.
+The hosted SU2 matched-pair workflow remains in progress; the full goal remains
+active.
+
 ## Revision 310 — connect the new exact-solution audit to routine verification
 
 Added the independently derived periodic forced-NS checker to the Python PR
