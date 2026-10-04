@@ -32,6 +32,9 @@ jobs:
       - name: Run Python test suite
         run: python -m pytest -q tests
 
+      - name: Compile the SU2 shared-MMS adapter and compare its forcing
+        run: CXX=g++ python -m tools.check_su2_high_gradient_force
+
       - name: Recompute exact periodic forced-NS candidate
         run: |
           mkdir -p work

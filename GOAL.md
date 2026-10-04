@@ -1,5 +1,23 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 330 — close the SU2 reference-family gap before comparing solvers
+
+An audit of the frozen SU2 source adapter and `protocols/su2-study-v1.json`
+confirms that the existing SU2 matrix uses a Gaussian-streamfunction MMS,
+whereas the OpenFOAM and added PhysicsNeMo high-gradient matrices use the
+Fourier-envelope MMS. The existing runs therefore do not form a three-solver
+matched-reference comparison. A separate local candidate patch for pinned
+SU2 v8.5.0 and a randomized helper-parity checker are drafted without changing
+the historical Gaussian study or the active CFL job. The patch applies in a
+dry run against the checksum-verified pinned SU2 source archive. C++ parity
+execution is still unverified: the local Apple compiler refuses to run before
+the Xcode license is accepted, and Docker's content store currently returns an
+I/O error. No license action, daemon restart, solver run, or upstream report
+was made. Next gate: compile and compare the adapter helper in an authorized
+Linux build environment, then freeze the matched SU2 cases only after the
+existing source-time semantics and mesh sampling contract are independently
+resolved. The full goal remains active.
+
 ## Revision 329 — refresh the three-project upstream disposition
 
 Refreshed OpenFOAM Foundation 13, SU2, PhysicsNeMo and the OpenAI reference
