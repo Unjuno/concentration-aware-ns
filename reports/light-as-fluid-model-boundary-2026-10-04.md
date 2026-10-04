@@ -58,6 +58,19 @@ propagation distance is the evolution variable and retarded time is the fluid
 coordinate. This is a powerful optical analogue and testbed, not ordinary
 three-dimensional, incompressible material flow.
 
+There is also a direct symmetry obstruction to copying the OpenAI swirl with a
+single scalar optical field. Its effective velocity is a phase gradient. For
+an axisymmetric, single-valued phase `phi(r,z)`, the angular derivative is
+zero, hence `v_theta=(k r)^-1 partial_theta phi=0`. Introducing winding
+`m*theta` instead gives `v_theta=m/(k r)`, circulation `2*pi*m/k`, and an
+undefined phase on the axis; the ideal vortex therefore requires an intensity
+zero there. The OpenAI paper's leading velocity is axisymmetric, has a
+nontrivial azimuthal swirl, and is smooth across the axis. A standard scalar
+photon-fluid Madelung field cannot directly reproduce that regular swirl while
+preserving the same symmetry and positive intensity. Vector or multicomponent
+optical models may have different degrees of freedom, but no mapping from one
+of those models to the OpenAI profile has been proposed or validated here.
+
 The published photon-superfluid piston experiment gives a concrete caution
 for the user's “acceleration/ordering” intuition: steepening is balanced by
 diffraction/dispersion, and its shock-like structures are dispersive shock
@@ -84,8 +97,9 @@ viscosity loss.
 
 `tools/check_fluid_of_light_bridge.py` symbolically derives the real/imaginary
 parts of the one-dimensional NLSE under the amplitude/phase substitution and
-checks their equivalence to continuity and the dispersive Euler equation.
-The locked focused test and checker pass. The machine receipt is
+checks their equivalence to continuity and the dispersive Euler equation,
+zero vorticity for a smooth scalar phase, and the circulation of a point phase
+defect. The locked focused test and checker pass. The machine receipt is
 `evidence/analytic-checks/fluid-of-light-hydrodynamic-bridge-2026-10-04.json`.
 This verifies an equation rewrite only; it does not execute an optical model,
 validate its experimental parameters, or test the OpenAI profile.
@@ -101,6 +115,9 @@ validate its experimental parameters, or test the OpenAI profile.
   cavityless nonlinear optical medium,”
   [arXiv:1412.5405](https://arxiv.org/abs/1412.5405). The interaction is
   mediated by the Kerr `chi^(3)` nonlinearity of the optical medium.
+- OpenAI, “Finite Time Blowup for Navier–Stokes,” v1, especially Sections 2.3
+  and 4.3 for the azimuthal exterior and leading axisymmetric velocity:
+  [proof paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf).
 - E. R. Coughlin and M. C. Begelman, “The general relativistic equations of
   radiation hydrodynamics in the viscous limit,”
   [arXiv:1410.2892v2](https://arxiv.org/abs/1410.2892v2). The viscous correction

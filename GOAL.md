@@ -5931,3 +5931,18 @@ The report and receipt are
 `reports/light-as-fluid-model-boundary-2026-10-04.md` and
 `evidence/analytic-checks/fluid-of-light-hydrodynamic-bridge-2026-10-04.json`.
 No simulation or physical-transition claim follows. Goal remains active.
+
+## Revision 354 — identify the scalar photon-fluid swirl obstruction
+
+Extended the optical-field algebra check: a smooth scalar phase has
+`v=grad(phi)/k`, hence zero curl; an integer phase winding has quantized
+circulation but requires a phase defect/intensity zero. For an axisymmetric
+single-valued phase, the azimuthal velocity is identically zero. OpenAI's
+source instead specifies a nontrivial axisymmetric swirl while retaining
+smoothness across the axis. Thus the standard scalar photon-fluid model cannot
+directly reproduce that regular swirl with the same symmetry and positive
+intensity. This narrows the proposed analogy without ruling out vector or
+multicomponent optical systems; no such mapping is established. The analytic
+identities and regression pass, and the report now cites the primary OpenAI
+paper for the swirl/smoothness properties. No experiment or particle claim
+follows. Goal remains active.

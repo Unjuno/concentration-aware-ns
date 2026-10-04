@@ -12,8 +12,10 @@ import sympy as sp
 
 
 def verify():
-    x, z = sp.symbols("x z", real=True)
+    x, y, z = sp.symbols("x y z", real=True)
+    r, theta = sp.symbols("r theta", positive=True)
     k, g = sp.symbols("k g", positive=True)
+    winding = sp.symbols("winding", integer=True)
     rho = sp.Function("rho")(x, z)
     phi = sp.Function("phi")(x, z)
     amplitude = sp.sqrt(rho)
@@ -48,6 +50,17 @@ def verify():
         + velocity * sp.diff(velocity, x)
         + sp.diff(g * rho / k - quantum_pressure / (2 * k**2), x)
     )
+    phase_xy = sp.Function("phase")(x, y, z)
+    vx = sp.diff(phase_xy, x) / k
+    vy = sp.diff(phase_xy, y) / k
+    scalar_phase_vorticity = sp.simplify(sp.diff(vy, x) - sp.diff(vx, y))
+    point_vortex_vtheta = winding / (k * r)
+    point_vortex_curl_away_from_core = sp.simplify(
+        sp.diff(r * point_vortex_vtheta, r) / r
+    )
+    point_vortex_circulation = sp.simplify(
+        sp.integrate(point_vortex_vtheta * r, (theta, 0, 2 * sp.pi))
+    )
     identities = {
         "nlse_real_part_equals_negative_bernoulli": sp.simplify(real_part + bernoulli) == 0,
         "nlse_imaginary_part_gives_continuity": sp.simplify(
@@ -58,6 +71,11 @@ def verify():
         ) == 0,
         "effective_velocity_is_phase_gradient": sp.simplify(
             velocity - sp.diff(phi, x) / k
+        ) == 0,
+        "smooth_scalar_phase_has_zero_vorticity": scalar_phase_vorticity == 0,
+        "phase_vortex_is_irrotational_away_from_its_zero": point_vortex_curl_away_from_core == 0,
+        "phase_vortex_circulation_is_quantized_by_winding": sp.simplify(
+            point_vortex_circulation - 2 * sp.pi * winding / k
         ) == 0,
     }
     return {
@@ -71,9 +89,12 @@ def verify():
         "phase_equation": "phi_z + phi_x^2/(2*k) + g*rho - (1/(2*k))*sqrt(rho)_xx/sqrt(rho) = 0",
         "velocity_equation": "v_z + v*v_x = -(g/k)*rho_x + (1/(2*k^2))*d_x(sqrt(rho)_xx/sqrt(rho))",
         "viscous_laplacian_term_present": False,
+        "smooth_scalar_phase_vorticity": str(scalar_phase_vorticity),
+        "phase_vortex_circulation": str(point_vortex_circulation),
+        "phase_vortex_curl_scope": "zero pointwise away from rho=0; circulation is concentrated at the phase defect, not a smooth distributed vorticity field",
         "identities": identities,
         "assumptions": ["rho>0 on the patch considered", "smooth envelope", "paraxial NLSE regime"],
-        "scope": "Exact 1-D amplitude-phase identity for one conservative optical NLSE convention. No photon molecular positions, incompressible 3-D Navier-Stokes equivalence, viscous closure, OpenAI-profile mapping, or physical transition is established.",
+        "scope": "Exact amplitude-phase identities for one conservative optical NLSE convention, plus the scalar-phase irrotationality and point-vortex circulation identities. No photon molecular positions, incompressible 3-D Navier-Stokes equivalence, viscous closure, OpenAI-profile mapping, or physical transition is established.",
     }
 
 

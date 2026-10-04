@@ -8,6 +8,8 @@ class FluidOfLightBridgeTests(unittest.TestCase):
         result = verify()
         self.assertEqual(result["status"], "PASS")
         self.assertTrue(all(result["identities"].values()))
+        self.assertEqual(result["smooth_scalar_phase_vorticity"], "0")
+        self.assertEqual(result["phase_vortex_circulation"], "2*pi*winding/k")
         self.assertFalse(result["viscous_laplacian_term_present"])
         self.assertIn("No photon molecular positions", result["scope"])
 
