@@ -126,6 +126,48 @@ This finding strengthens the case for a future polymer-specific experiment or
 constitutive model, while leaving the alleged singular flow's molecular
 interpretation unverified.
 
+### Mathematical follow-up — force regularity and profile expositions (2026-10-05)
+
+Two recent mathematical papers sharpen the boundary between the announced
+forced construction and the harder unforced question. Constantin, Ignatova,
+and Vicol assume the same two local geometric properties attributed to the
+OpenAI construction: anisotropic Type-II bounds on the angular mean and exact
+axisymmetry on a shrinking core. Under those hypotheses, they prove local
+regularity if the force is spatially real analytic (locally uniformly before
+the putative singular time) and bounded in spatial `C^2` up to that time.
+Their paper explicitly says it does not verify the correctness of the OpenAI
+construction. It deduces instead that, if that construction has the cited
+properties, its force cannot vanish identically near the singular point or be
+spatially analytic there. Since the unforced case has zero, hence analytic,
+force, this excludes an unforced singularity *with those specific geometric
+features and assumptions*. It does not exclude every possible unforced
+Navier–Stokes singularity and is not a counterexample to the forced theorem.
+
+This is relevant to physical interpretation: the paper's own construction
+uses a smooth residual force with increasingly structured content, and the
+conditional regularity result makes clear that switching that force off, or
+replacing it by an analytic local forcing while retaining the stated flow
+geometry, is not an innocuous change. It still supplies no microscopic
+particle dynamics, material law, or experimental realization.
+
+Lei and Ren posted a detailed exposition of the leading self-similar profile
+construction on September 28. They describe the admissible stress cone and
+the flat residual, and identify oscillatory-pulse residual cancellation as
+the subject of a companion Part II. This is useful for auditing the
+construction's mechanism; it is not an independent verification of the full
+blow-up argument. A separate September 9 paper by Cao, Chi, and Nie proves a
+density result for smooth blow-up-producing forces in a relative
+time-integrated `H^s` topology exactly for `s < 1/2`, while preserving the
+initial velocity in its setup. This is a mathematical topology statement,
+not evidence that such forcing is experimentally robust or physically
+attainable.
+
+The Clay Institute's September 11 notice says the problem has “apparently
+been settled” and that its evaluation process is deliberately unhurried.
+That institutional notice and the new papers are evidence of substantial
+mathematical engagement, not a completed independent audit or a change to
+the physical-model limits above.
+
 Primary source: Bhadu, Rhoades & Colby, [“When Flow Creates Order: Nematic
 Alignment and Form Birefringence in Shear for High-Density Polyethylene
 Melts”](https://doi.org/10.1021/acs.macromol.6c00994), *Macromolecules* 59
@@ -160,3 +202,7 @@ measured.
 - G. Wiberg, M.-L. Skytt and U.W. Gedde, [Shear-induced alignment and relaxation of orientation in smectic side-chain liquid-crystalline polymers](https://doi.org/10.1016/S0032-3861(97)00626-5), *Polymer* 39 (1998), 2983–2986; direct infrared-rheometry experiment on two specified polymers.
 - [Shear-induced layer alignment in the smectic phase of a side-chain liquid crystal polymer](https://doi.org/10.1016/S0032-3861(98)00537-0), *Polymer* 40 (1999), 3599–3603; simultaneous SAXS and rheology for one specified polymer system.
 - A. Giuntoli et al., [Shear Thinning from Bond Orientation in Model Unentangled Bottlebrush Polymer Melts](https://doi.org/10.1021/acs.macromol.3c01061), *Macromolecules* 56 (2023), 5708–5717; nonequilibrium molecular-dynamics evidence, not an experimental fluid measurement.
+- P. Constantin, M. Ignatova and V. Vicol, [Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing](https://arxiv.org/abs/2609.20803), arXiv:2609.20803 (2026); conditional regularity theorem and explicit non-verification caveat.
+- Z. Lei and X. Ren, [Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder](https://arxiv.org/abs/2609.35406), arXiv:2609.35406 (2026); profile-construction exposition, with pulse cancellation deferred to a companion paper.
+- S. Cao, Z. Chi and P. Nie, [Density of Forces Producing Navier--Stokes Blowup](https://arxiv.org/abs/2609.10262), arXiv:2609.10262 (2026); topology result for a class of smooth forces.
+- Clay Mathematics Institute, [Navier-Stokes announcement](https://www.claymath.org/news/navier-stokes-announcement/), 2026-09-11; it describes the result as apparently settled and says evaluation is deliberately unhurried.
