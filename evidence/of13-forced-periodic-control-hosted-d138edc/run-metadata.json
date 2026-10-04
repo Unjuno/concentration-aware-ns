@@ -1,0 +1,18 @@
+{
+  "github_actions_run_id": 37200525739,
+  "github_actions_artifact_id": 11301943699,
+  "github_actions_artifact_name": "of13-forced-periodic-control-d138edc23c33d5f2a5dc540f10afda15f10955ac",
+  "github_actions_artifact_size_bytes": 39823522,
+  "github_actions_artifact_created_at_utc": "2026-10-04T12:04:10Z",
+  "github_actions_artifact_expires_at_utc": "2027-01-02T11:58:42Z",
+  "source_commit": "d138edc23c33d5f2a5dc540f10afda15f10955ac",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "image_inspect": "sha256:40ab4665a484a38f4d6e0c34162d44afffbd4a9a4b0c9d69bf08b7051a7b06c2",
+  "compared_run_ids": [37174784940, 37196452449, 37197955693, 37199509312],
+  "interpretation": "Independent replay verifies the six archived cases, hashes, inputs, endpoint fields, scalar diagnostics, step counts, zero exits, and retrospective standard stopping checks. All six scalar diagnostics per case exactly match the previous four verified matrices; all case archive hashes differ and the recorded runtime image is distinct. Local-quality and temporal-order conclusions remain UNCERTAIN.",
+  "limitations": [
+    "The run is a smooth periodic control, not the localized high-gradient case.",
+    "Matching sampled diagnostics does not certify continuous extrema or physical validity.",
+    "The time-step sweep does not separate temporal truncation error from the fixed-grid spatial floor."
+  ]
+}

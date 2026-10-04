@@ -5946,3 +5946,16 @@ multicomponent optical systems; no such mapping is established. The analytic
 identities and regression pass, and the report now cites the primary OpenAI
 paper for the swirl/smoothness properties. No experiment or particle claim
 follows. Goal remains active.
+
+## Revision 355 — independently replay fifth smooth-control image
+
+Downloaded the Foundation 13 artifact for run 37200525739 and replayed all six
+cases independently. Protocol and archive hashes, input and endpoint-field
+hashes, stored diagnostics, exact step counts, zero exits, and the retrospective
+stopping check all pass. All 36 scalar diagnostic values exactly match the
+previous four matrices across a fifth distinct recorded image; the archive
+hashes differ. Provenance, replay, and comparison are preserved in
+`evidence/of13-forced-periodic-control-hosted-d138edc/`. This strengthens
+cross-build reproducibility only. Local quality and temporal order remain
+UNCERTAIN; no high-gradient, molecular, or physical claim is upgraded. Goal
+remains active.
