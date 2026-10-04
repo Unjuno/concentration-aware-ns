@@ -1,5 +1,17 @@
 # Goal — revision 2, 2026-09-09
 
+## Revision 334 — prepare a post-run SU2 archive replay gate
+
+Added a verifier that checks the run protocol, adapter patch, archive hashes,
+case metadata, process exit, SU2 success markers, input/output digests, and
+then reruns the saved postprocessor on every successful archived case. A fixed
+`1e-12` comparison is used only to compare replayed diagnostic values with
+their saved copies; it does not alter any solver-quality threshold. A synthetic
+archive test passes and the full locked suite passes (430 passed, 4 skipped,
+89 subtests). The active GitHub matrix is still running, so this reviewer has
+not yet been applied to the real archives. Its stated scope excludes an
+independent SU2 solver implementation and continuum-extrema certification.
+
 ## Revision 333 — separate SU2 stencil underresolution from solution error
 
 Added a reproducible reference-only audit on the same unique periodic vertex

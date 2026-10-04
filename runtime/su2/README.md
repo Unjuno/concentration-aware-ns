@@ -36,3 +36,10 @@ The candidate study retains the historical Gaussian adapter and archives each
 case, run log, time history, sampled quality metrics, protocol hash, and image
 identity separately. The source patch remains under SU2's LGPL-2.1-or-later
 terms.
+
+After downloading a completed matrix artifact, replay its archive and
+postprocessing checks with:
+
+```sh
+python -m tools.replay_su2_high_gradient_study --root path/to/run --output evidence/tests/su2-shared-high-gradient-replay.json
+```
