@@ -1,0 +1,11 @@
+{
+  "workflow_run_id": 37244697840,
+  "workflow_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37244697840",
+  "artifact_id": 11318417584,
+  "artifact_name": "published-cell-point-matrix-verification-82c9ae9eb3f4ccd1189891b36015d5cbf93c1b7c",
+  "artifact_size_bytes": 75061,
+  "artifact_sha256": "e1bf8ddf8b545cca1e72fdd4840b2bc3dd9c966514750ec9404e4bfd83159e85",
+  "artifact_digest_reported_by_github": "sha256:e1bf8ddf8b545cca1e72fdd4840b2bc3dd9c966514750ec9404e4bfd83159e85",
+  "download_sha256_matches_github_digest": true,
+  "source_commit": "82c9ae9eb3f4ccd1189891b36015d5cbf93c1b7c"
+}

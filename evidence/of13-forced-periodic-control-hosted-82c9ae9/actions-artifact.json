@@ -1,0 +1,13 @@
+{
+  "workflow_run_id": 37244697803,
+  "workflow_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37244697803",
+  "artifact_id": 11318029983,
+  "artifact_name": "of13-forced-periodic-control-82c9ae9eb3f4ccd1189891b36015d5cbf93c1b7c",
+  "artifact_size_bytes": 39823648,
+  "artifact_sha256": "23f509b33ddd2d4c099b96b1facb9020adef455ad6920e1934f7d5c305612136",
+  "artifact_digest_reported_by_github": "sha256:23f509b33ddd2d4c099b96b1facb9020adef455ad6920e1934f7d5c305612136",
+  "download_sha256_matches_github_digest": true,
+  "interpretation": "Full source-run artifact retained; exact raw archives differ from prior image/run but independent replayed metrics are identical.",
+  "build_log_uncompressed_sha256": "98066c89452581299ab3b1e28ad1d2df83b01e9e00ba29c2bdaaf66c76a2e459",
+  "build_log_storage": "gzip-compressed exact artifact member; gunzip to recover original bytes"
+}

@@ -674,3 +674,21 @@ residual gates and observed orders pass. PR #4 head 67f9768 has all checks
 successful. The OpenAI Lean audit and remaining four SU2 solver cases are still
 actively running; no solver or formal-audit result is inferred from their
 status.
+
+## 2026-10-05 — exact-control repeat and same-head CI replay
+
+Foundation 13 run 37244697803 completed and its six archives independently
+replayed. Compared with the prior hosted run, all 36 recomputed scalar metrics
+match exactly across different source commits, image IDs, and raw archive
+hashes. All six retrospective stopping checks pass; temporal-order assessment
+remains `UNCERTAIN` because fixed-grid spatial error is not isolated. Run
+archives, provenance, replay, and comparison are retained under
+`evidence/of13-forced-periodic-control-hosted-82c9ae9/`.
+
+The same-head Python verification run 37244697840 also passed. Its exact
+cell-point scalar implications and analytic records replay; n64 finite secant
+diagnostics have tiny preserved cross-host differences. The PR is open and
+GitHub reports required checks clean. These checks add no concentrated-flow,
+global-continuity, or molecular evidence. The separate SU2 matrix and pinned
+OpenAI Lean build remain in progress; see
+`reports/openfoam-forced-periodic-cross-image-repeat-2026-10-05.md`.
