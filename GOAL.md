@@ -12,6 +12,21 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 382 — reconcile Euler evidence and review the profile-stage follow-up
+
+The 2026-10-05 integrated Nanoda retry failed at module discovery before the
+Euler axiom-audit step. Re-ran the nine-check consistency auditor on the
+separate 2026-09-26 Euler Comparator result at the same pinned OpenAI source;
+all checks pass for the two configured Euler targets, with only the allowed
+axioms recorded. This is a replay of the preserved evidence, not a new kernel
+run, and it does not erase the integrated retry's `INCOMPLETE` status.
+Reviewed Lei and Ren's 2026-09-28 readable reconstruction of the OpenAI
+profile stage; their abstract defers oscillatory-pulse residual cancellation
+to Part II, so this is supporting exposition rather than an end-to-end
+independent proof. No particle-scale or constitutive consequence follows.
+Details: `reports/research-refresh-profile-rederivation-and-euler-reconciliation-2026-10-05.md`;
+receipt: `evidence/upstream-refresh/euler-comparator-reconciliation-2026-10-05.json`.
+
 ## Revision 381 — identify the Lean audit retry's tooling failure
 
 The 180-minute retry of the pinned OpenAI source audit failed in the external

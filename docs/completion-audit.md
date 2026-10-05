@@ -27,6 +27,21 @@ report](../reports/three-project-live-status-2026-10-04T2339Z.md).
 
 # Completion audit — interim, 2026-09-27
 
+### Profile-stage research refresh and Euler evidence reconciliation — 2026-10-05
+
+Lei and Ren's arXiv:2609.35406 gives a readable reconstruction of the
+OpenAI profile-construction stage, while deferring oscillatory-pulse residual
+correction to a companion paper. It is useful for identity and intermediate
+construction checks, not an independent end-to-end theorem verification.
+Separately, a fresh nine-check audit passes against the preserved 2026-09-26
+Euler Comparator log and configuration at the pinned source. This reconciles
+the earlier Euler acceptance with the failed 2026-10-05 integrated retry:
+the latter's Euler step did not run, but prior independent-kernel evidence
+exists. The replay checks recorded-result consistency and is not a new kernel
+run. See
+[`profile-stage research and Euler reconciliation`](../reports/research-refresh-profile-rederivation-and-euler-reconciliation-2026-10-05.md)
+and its [machine-readable receipt](../evidence/upstream-refresh/euler-comparator-reconciliation-2026-10-05.json).
+
 ### SU2 n16 case preserved and replayed across two image builds — 2026-10-05
 
 The n16 artifact from hosted run 37230949147 now has a byte-hash-verified
