@@ -157,6 +157,41 @@ model is supplied. It does not show that finite fibers, molecules, or material
 viscosity align/change in the OpenAI construction. No change to solver
 acceptance follows from either fiber paper.
 
+### Quantitative finite-size limit of the certified tube
+
+The pinned cusp-ball Lean result gives a selected-field equality neighborhood
+of radius `c*sqrt(tau)`, where `tau=1-t`, for each fixed admissible construction
+and some `c>0`; the terminal interval and constants remain existential. Write
+`tau=tau_s*Q`, with `tau_s>0` fixed and `Q -> 0` at the endpoint. A body with
+circumscribed radius `a>0`, centered on the selected trajectory, is wholly
+inside this certified neighborhood only when
+
+```text
+a <= c*sqrt(tau_s)*sqrt(Q)
+Q >= (a/(c*sqrt(tau_s)))^2
+a/(c*sqrt(tau_s*Q)) -> infinity  (fixed a>0, Q -> 0)
+```
+
+Thus the available proof neighborhood can support a whole-body local-field
+argument only down to a positive, construction-dependent `Q` for each fixed
+body size. To keep the body inside it along a sequence approaching the
+endpoint, its radius must shrink at least as fast as `sqrt(Q)`. This makes the
+point-object limit and endpoint limit nonuniform: the Lean-checked tangent
+alignment takes the infinitesimal-separation limit, while a fixed physical
+fiber eventually exceeds the radius of this particular certified tube.
+
+This is a limitation of the available certificate, not an upper bound on the
+actual flow's region of spatial uniformity and not evidence that a real fiber
+loses alignment. It also is not a molecular prediction: the field construction
+has no molecular forces, Brownian motion, steric interactions, or particle
+feedback. It identifies the missing uniform-in-size estimate needed before
+the tangent-map result can be transferred to a finite particle. The source
+receipt is `evidence/openai-lean-2026-09-30-cusp-hessian-v6/manifest.json`;
+the source file SHA-256 verified against the receipt is
+`a31432420d0783c94e4be3bd65fec7b0b3a516a422cec64dce4bd97f407618f7`. The exact
+scaling statement and limits are recorded in
+`reports/finite-object-shrinking-cusp-scale-2026-10-05.md`.
+
 ## Source details
 
 - Primary source: [Journal of Fluid Mechanics article](https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/dancing-fibres-in-a-microscale-burgerslike-vortex/8F92E5502602BE02BCE4515B0DBF3D58)
