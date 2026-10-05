@@ -427,3 +427,33 @@ machine-readable record are
 and `.json`. This formalizes the absence of a bound from that quantifier. It
 does not apply to one fixed finite selected `C` and proves nothing about the
 sign of `Z` or the actual-profile pressure condition.
+
+### Exact normalization constraints on the final nominal witness
+
+Tracing the witness selection further gives explicit forms for the two
+geometric requirements in `PreparedProfile.large_nominal`. The pinned source
+defines
+
+`matchingRadius(F,C) = 110 (C P)^10`,
+`separation(T,C,P) = exp(T) / (C P)^10`,
+
+where `P = F.data.core.P > 0`. Requiring `radiusFloor < matchingRadius` and
+`separation < exp(-8)` is therefore equivalent to the lower bounds
+
+`C > (radiusFloor / 110)^(1/10) / P`,
+`C > exp((T + 8)/10) / P`,
+
+for positive `radiusFloor`, `T`, and `C`. The construction obtains a threshold
+from `eventually_matching_geometry` and then chooses a normalization beyond
+it. These closed-form rearrangements make the lower-bound direction explicit;
+they do not give any upper bound on the chosen `C`. The selected natural
+amplitude remains exactly `exp(Λ * realPhase(η)) / C`, so these constraints
+alone cannot provide the positive lower amplitude needed to transfer the
+pressure-scaled root estimate to the fixed `actualProfile`.
+
+This is a selector-interface limitation, not a numerical counterexample or a
+claim that the selected amplitude is small. Replacing the eventual threshold
+with an explicit sufficient bound could produce a quantitatively controlled
+alternative witness, but it would still require preserving that witness's
+provenance in the final `ProfileData` choice before any conclusion could be
+stated about `actualProfile`.

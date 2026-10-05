@@ -2303,3 +2303,16 @@ check. GitHub Search found no matching issue; Eshkol issue [#741](https://github
 now reports the documentation mismatch, and its open state and body were
 read back. Provenance, issue and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
 and [`pinned source record`](../evidence/upstream-refresh/eshkol-ns-mechanization-2026-10-05.json).
+
+### Superseded OpenFOAM n64 temporal-attempt cleanup check — 2026-10-05
+
+Current-state evidence in the OrbStack Docker context shows no host runner or
+client at the previously recorded PIDs and no container named
+`cans-hg-n64-dt0.0005` (`docker inspect`: no such object; filtered `docker ps`:
+empty). The frozen input and partial `log.foamRun` remain in the work directory
+and stop at `t=0.0185`; the wrapper log records session termination. No
+completion archive or endpoint field is present for that attempt. The accepted
+temporal matrix still uses the separate complete 100-step addendum archive,
+whose six-case replay already passed. This closes the container-liveness
+question only; it does not upgrade the old partial run or alter the solver
+classification.

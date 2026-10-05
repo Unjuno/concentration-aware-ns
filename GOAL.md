@@ -12,6 +12,30 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 378 — make the final-profile normalization gap explicit
+
+Traced the pinned final nominal-witness path through `PreparedProfile`,
+`NominalConeAssembly`, and `FinalSlowBase.actualProfile`. The matching-radius
+and separation conditions reduce to explicit lower bounds on the chosen
+normalization `C`; the eventual-threshold interface supplies no upper bound.
+Thus it cannot yield a positive lower bound on the selected entrance amplitude
+`exp(Λ * realPhase(η))/C`, and the pressure-scaled root estimate still does not
+transfer to the fixed `actualProfile`. This is a selector/provenance gap in
+the available proof interface, not a counterexample or a claim the selected
+amplitude is small. Details and exact formulas are in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`. The fixed-profile
+pressure question remains open; no upstream defect or reportable issue is
+established.
+
+## Revision 379 — reconcile the superseded OpenFOAM run state
+
+Rechecked the original stalled n64 temporal attempt against the active OrbStack
+context. Its runner PIDs and container are gone; only the preserved partial log
+through `t=0.0185` remains. The run has no completion archive and stays
+`INCOMPLETE`; the independently replayed 100-step addendum remains the valid
+matrix case. This resolves cleanup state only and does not change the numerical
+verdict. See `reports/openfoam-high-gradient-matrix-recheck-2026-10-04.md`.
+
 ## Revision 345 — preserve the incomplete SU2 run and parallelize frozen cases
 
 Replayed and preserved hosted SU2 run `37190363204`: it ended at the configured
@@ -6354,3 +6378,34 @@ the retained artifact. Updated the impact map. No molecular or OpenAI-flow
 constitutive claim follows. SU2 `37230949147` and Lean `37233433718` remain
 live under their frozen timeouts; n16 archive replay passes but both acceptance
 gates fail for that case.
+
+## Revision 376 — add a material-state PDE follow-up and refresh source status
+
+Reviewed the 2026-10-01 visco-morphoelastic preprint as a neighboring
+mathematical model for coupling internal material state to incompressible flow.
+It evolves an Eulerian effective-strain tensor with a Zaremba–Jaumann rate and
+couples it through a Kelvin–Voigt stress with fixed viscosity coefficients.
+The vanishing-diffusion limit records a weakly unresolved Jaumann commutator as
+a defect term. This is a useful model-design and compactness reference, but
+has no molecular variables, state-dependent viscosity transition, alignment
+claim, or transfer to OpenAI's forced construction. The proof has not been
+independently checked here. A bounded arXiv search found no Part II under the
+exact proposed title or phrase. The OpenAI Lean repository remains at
+`f9e8bc5`; Issues and Discussions are disabled. No upstream post or solver
+verdict change is justified. Raw API records and scope analysis are saved in
+`evidence/upstream-refresh/openai-ns-arxiv-refresh-2026-10-05.json` and
+`reports/material-state-model-followup-2026-10-05.md`.
+The previously noted OpenAI Lean-audit workflow `37233433718` is now recorded
+as cancelled (no result); SU2 workflow `37230949147` remains in progress.
+
+## Revision 377 — separate internal strain stress from viscosity
+
+Decomposed the new visco-morphoelastic model's effective strain into trace and
+deviatoric parts. In its incompressible constant-coefficient momentum law, the
+isotropic elastic stress is an exact pressure gradient and can be absorbed
+into a shifted pressure; only the deviatoric internal strain contributes a
+direct elastic force. The trace can still affect deviatoric-strain evolution,
+but the shear-viscosity coefficient remains fixed. Added the algebra and its
+limits to `reports/material-state-model-followup-2026-10-05.md`. This narrows a
+possible continuum material-state model without supporting molecular
+alignment, a viscosity transition, or transfer to the OpenAI construction.

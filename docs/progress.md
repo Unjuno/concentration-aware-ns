@@ -692,3 +692,54 @@ GitHub reports required checks clean. These checks add no concentrated-flow,
 global-continuity, or molecular evidence. The separate SU2 matrix and pinned
 OpenAI Lean build remain in progress; see
 `reports/openfoam-forced-periodic-cross-image-repeat-2026-10-05.md`.
+
+## 2026-10-05 — material-state literature and OpenAI source refresh
+
+Reviewed arXiv:2610.01487v1, a new incompressible visco-morphoelastic weak-
+solution result with an evolving effective-strain tensor and a Jaumann defect
+in the vanishing-diffusion limit. It provides a concrete mathematical example
+of why a particle/material hypothesis needs an explicit internal-state law and
+closure, while using fixed viscosity coefficients and making no molecular-
+alignment or phase-transition claim. A bounded official arXiv API search found
+no Part II title/phrase match beyond Part I; the OpenAI Lean repository remains
+at its 2026-09-10 source pin, with Issues and Discussions disabled. The report
+and hashed metadata/Atom responses are in
+`reports/material-state-model-followup-2026-10-05.md` and
+`evidence/upstream-refresh/openai-ns-arxiv-refresh-2026-10-05.json`.
+Status correction: the previously referenced OpenAI Lean-audit run
+`37233433718` ended cancelled, so no formal-build result is available from it;
+SU2 run `37230949147` remained in progress at its last recorded update.
+
+The constitutive stress in arXiv:2610.01487v1 was then split exactly into
+trace and deviatoric parts. Incompressibility absorbs the direct isotropic
+elastic stress into pressure; the deviatoric strain supplies an elastic force,
+while the shear-viscosity coefficient stays fixed. The trace can still couple
+indirectly through internal-state evolution. This exact algebra further
+separates internal material memory from a viscosity-switch claim; details are
+in the material-state report.
+
+## 2026-10-05 — exact lower bounds in the final-profile selector
+
+Traced the pinned OpenAI source from `PreparedOutgoing.PreparedProfile` into
+the final nominal witness and `FinalSlowBase.actualProfile`. The exact
+relations `matchingRadius = 110 (C P)^10` and
+`separation = exp(T)/(C P)^10` show that the radius and separation gates
+constrain the selected normalization only from below. The source then admits
+every sufficiently large `C`, so the selected entrance amplitude
+`exp(Λ * realPhase(η))/C` receives no positive lower bound from this route.
+This refines the existing pressure-provenance gap without asserting a bad
+selected witness or a false theorem. The fixed-profile root-pressure result
+remains unproved, and no OpenAI upstream issue is justified. The exact
+rearrangement and scope are recorded in
+`reports/actual-profile-pressure-provenance-2026-10-01.md`.
+
+## 2026-10-05 — close the stale Foundation 13 container-state check
+
+Rechecked the previously stalled original n64, dt=0.0005 attempt in the
+current OrbStack context. Both recorded host PIDs are absent; `docker inspect`
+returns `no such object`, and `docker ps` has no matching container. The local
+case and partial solver log remain preserved at t=0.0185. This attempt has no
+endpoint archive and remains incomplete; the later 100-step temporal addendum
+is still the accepted, independently replayed matrix case. No numerical
+classification changes. Details are in
+`reports/openfoam-high-gradient-matrix-recheck-2026-10-04.md`.

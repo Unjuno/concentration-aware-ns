@@ -31,3 +31,15 @@ This is a replay of archived solver outputs and declared gates, not a fresh
 solver run, an independent source-to-binary proof, or a continuous-domain error
 certificate. The separate AMR/remap pilot remains quality `UNCERTAIN`; no
 AMR conclusion follows from this six-case uniform-grid replay.
+
+### Cleanup check for the superseded partial attempt — 2026-10-05
+
+Rechecked the original `n64-dt0.0005` attempt from the incomplete v2 runner in
+the `orbstack` Docker context. The recorded host runner and Docker-client PIDs
+are absent, `docker inspect` reports no object with that container name, and
+`docker ps` returns no matching container. Its retained local input and
+`log.foamRun` still end at `t=0.0185`; the wrapper log records session
+termination. There is no endpoint archive or successful completion receipt
+for this attempt. The later 100-step temporal addendum remains the accepted
+matrix case and independently replays as documented above; this cleanup check
+does not upgrade or replace either run's numerical evidence.

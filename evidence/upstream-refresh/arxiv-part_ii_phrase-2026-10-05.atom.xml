@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/3UZLVed3tKij61dec5Nl4RmRguY</id>
+  <title>arXiv Query: search_query=all:"Residual Correction via Oscillatory Pulses"&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <updated>2026-10-05T01:14:09Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:%22Residual+Correction+via+Oscillatory+Pulses%22&amp;start=0&amp;max_results=100&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>100</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35406v2</id>
+    <title>Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder</title>
+    <updated>2026-09-29T11:39:50Z</updated>
+    <link href="https://arxiv.org/abs/2609.35406v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35406v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper gives a readable and accessible version of the profile-construction part of OpenAI's manuscript "Finite Time Blowup for Navier-Stokes". We regard OpenAI's work as a major advance on the Navier-Stokes Millennium Prize Problem. The profiles are smooth and axi-symmetric. Inserting them into the Navier-Stokes equations gives a residual consisting of a divergence-form term and a remainder vanishing to infinite order in $1-t$ on fixed similarity sectors. The associated stress and radial shear satisfy the admissible cone condition. The stress need not be small. We introduce a new linear model that provides a clearer explanation of the inner core construction. The cancellation by oscillatory pulses will be treated in the companion paper "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part II: Residual Correction via Oscillatory Pulses".</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T15:27:16Z</published>
+    <arxiv:comment>This expository article is intended to help the community understand OpenAI's manuscript and will not be submitted to any journal</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Zhen Lei</name>
+    </author>
+    <author>
+      <name>Xiao Ren</name>
+    </author>
+  </entry>
+</feed>
