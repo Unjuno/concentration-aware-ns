@@ -12,6 +12,21 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 384 — quantify the finite-size limit of the certified field tube
+
+Combined the source-bound cusp-ball result with the user’s finite-particle
+size question. The Lean-checked neighborhood radius is `c*sqrt(1-t)` with
+existential `c>0`. A body of fixed circumscribed radius `a>0` can fit inside
+this certified local-field neighborhood only while
+`Q=(1-t)/tau_s >= (a/(c*sqrt(tau_s)))^2`; along an endpoint sequence the
+normalized radius ratio grows as `Q^(-1/2)`. The available tangent-map proof
+therefore gives no uniform-in-size finite-body transfer through the endpoint.
+This is a limitation of the certificate, not a claim about the maximal actual
+flow neighborhood, finite-fiber alignment, or molecular order. Exact derivation
+and source boundary: `reports/finite-object-shrinking-cusp-scale-2026-10-05.md`
+and `docs/fiber-vortex-literature-audit.md`. No solver verdict or upstream
+disposition changed.
+
 ## Revision 383 — bind current axis-force Lean claims to the matching log
 
 Replayed the exact SymPy axis-force, pressure-threshold, Jeffery, strain-
