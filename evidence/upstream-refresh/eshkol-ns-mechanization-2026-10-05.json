@@ -74,9 +74,12 @@
     ],
     "all_cmake_source_files_exist": true,
     "evidence_ledger_self_check": "PASS, 84 rows; this gate does not validate the user guide",
-    "issue_candidate": "Synchronize the Navier-Stokes examples guide with the current CTest matrix",
-    "issue_submitted": false,
-    "reason_not_submitted": "GitHub API rate limit blocked the required duplicate-issue check; contribution guidance asks reporters to check existing issues first"
+    "issue_submitted": true,
+    "issue_number": 741,
+    "issue_url": "https://github.com/tsotchke/eshkol/issues/741",
+    "issue_state_at_readback": "OPEN",
+    "duplicate_search": "No matching Navier-Stokes example issue found; full issue search returned only unrelated reports",
+    "issue_content_readback_verified": true
   },
-  "reporting_decision": "No mathematical issue; a concrete documentation issue is prepared but awaits duplicate checking after API access returns."
+  "reporting_decision": "Eshkol documentation discrepancy reported as issue 741; no mathematical or solver issue reported."
 }

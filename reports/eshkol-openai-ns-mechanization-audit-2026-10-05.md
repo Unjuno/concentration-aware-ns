@@ -81,13 +81,13 @@ the design pipeline table and does not check this user guide. This is a
 documentation synchronization issue, not a mathematical or compiler defect.
 
 The project's contribution guide asks reporters to check existing Issues
-before opening one. The authenticated issue-list request returned HTTP 403
-for API rate limiting, so duplicate status could not be confirmed; no issue
-was submitted. The prepared candidate is **“Synchronize the Navier–Stokes
-examples guide with the current CTest matrix.”** It would cite the
-`ESHKOL_NS_EXAMPLES` list and the three omitted programs, and request updating
-the guide or adding a small consistency check. Recheck the issue list when API
-access is available before posting.
+before opening one. The core API was rate-limited, but GitHub Search found no
+existing Navier–Stokes example issue, and its full issue search showed only
+unrelated reports. I opened [Eshkol issue #741](https://github.com/tsotchke/eshkol/issues/741)
+with the pinned source comparison, omitted programs, runner scope, and a
+request to update the guide or add a consistency check. A readback confirmed
+issue #741 is open with that content. It reports documentation drift only and
+explicitly disclaims an execution omission or mathematical defect.
 
 This is a useful addition to the analytical cross-check map, not evidence for
 molecular alignment, particle-position certainty, a viscosity transition,

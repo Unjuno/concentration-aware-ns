@@ -2299,7 +2299,7 @@ omission. The evidence-ledger self-check does not cover that guide. The
 examples were not locally executed because the macOS SDK ImageIO framework was
 unavailable after the system compiler's Xcode-license gate; the relevant lite
 CI lanes were active, then GitHub API rate limiting prevented a fresh status
-check. No issue was submitted because contribution guidance requires a
-duplicate check that the rate limit prevented. Provenance, prepared issue
-scope and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
+check. GitHub Search found no matching issue; Eshkol issue [#741](https://github.com/tsotchke/eshkol/issues/741)
+now reports the documentation mismatch, and its open state and body were
+read back. Provenance, issue and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
 and [`pinned source record`](../evidence/upstream-refresh/eshkol-ns-mechanization-2026-10-05.json).
