@@ -12,6 +12,16 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 380 — refresh the published AMR evidence integrity check
+
+Recomputed hashes for all 15 locally preserved n128 AMR release parts and
+confirmed the assembled Zstandard archive and instrumented-library hashes.
+A fresh GitHub Release API response lists the same 15 uploaded assets with
+matching sizes and digests. The read-only receipt is
+`evidence/tests/openfoam-amr-n128-release-live-recheck-2026-10-05.json`.
+This refresh confirms distribution integrity only; the AMR numerical-quality
+assessment remains `UNCERTAIN`, with no solver or physical claim upgraded.
+
 ## Revision 378 — make the final-profile normalization gap explicit
 
 Traced the pinned final nominal-witness path through `PreparedProfile`,

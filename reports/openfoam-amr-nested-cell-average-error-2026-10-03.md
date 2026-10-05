@@ -123,3 +123,17 @@ it does not validate the AMR solution as a finite-volume approximation,
 identify flux/pressure/time-integration effects, or establish behavior for
 other meshes and fields. The AMR quality verdict stays `UNCERTAIN`; no upstream
 defect or physical inference follows.
+
+### Live release asset integrity recheck — 2026-10-05
+
+The local 15-part package, reassembled `.zst` file, and instrumented library
+were hashed again. Every part's byte count and SHA-256 matches the parts
+manifest; the reassembled archive hash is
+`68f635f06c1a00bca533e30556deeba472dd25fa91c24b1cc8ab563607a51da9`. A fresh
+GitHub Release API read returned the same 15 uploaded asset names, sizes, and
+SHA-256 digests. The library hash still matches the run manifest. The
+machine-readable receipt is
+`evidence/tests/openfoam-amr-n128-release-live-recheck-2026-10-05.json`.
+This confirms current artifact distribution integrity only; it does not rerun
+OpenFOAM, recompute AMR errors, establish cell-average storage semantics, or
+change the AMR quality verdict from `UNCERTAIN`.

@@ -1,0 +1,224 @@
+{
+  "status": "PASS_LOCAL_AND_GITHUB_RELEASE_HASHES_MATCH",
+  "observed_at_utc": "2026-10-05T01:39:03.582054+00:00",
+  "repository": "Unjuno/concentration-aware-ns",
+  "release_tag": "of13-amr-same-run-map-v8-n128",
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-amr-same-run-map-v8-n128",
+  "parts_manifest": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst.parts.json",
+  "parts_manifest_sha256": "ad1eada5a71a7fea2cfb3f39c213c22402d385c0d1684d27fc8258c07e7bd6d0",
+  "part_count": 15,
+  "total_part_bytes": 1107717919,
+  "local_parts": [
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-00",
+      "size": 78643200,
+      "sha256": "90634c86f1b327daeb51eceaf5d53ccfdfc57329396989663c8a89d033999dc6",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-01",
+      "size": 78643200,
+      "sha256": "941cbae54274588baff2e7249171eaad6b94d4ccab62f399a69aea30e303acf9",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-02",
+      "size": 78643200,
+      "sha256": "6b6f97790f1b87073c2246df6338189d76d30a1ac0b59e5161eba97a7684d97c",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-03",
+      "size": 78643200,
+      "sha256": "97077975d2945527ca0d1fd16902c22b36849172849cf3eac60371f68008d8d4",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-04",
+      "size": 78643200,
+      "sha256": "24f8821917b373ac908d9bce19023811f0bf6d8b495f29e1bb1ac597d06abefc",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-05",
+      "size": 78643200,
+      "sha256": "6f8136e4655ba2259b3b15266b4440676fb54586deea5f331c90df0647c5b978",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-06",
+      "size": 78643200,
+      "sha256": "a8d6305feab5915ed1384190cd216ef0108f66a57a38631f8f3bb31abef5b6fe",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-07",
+      "size": 78643200,
+      "sha256": "5e9c5a8ceb1438e653c4767eea3fb2a29c7b01ce15495a2a0d248b77e0d8f124",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-08",
+      "size": 78643200,
+      "sha256": "a9a71095238e5be666bf441879e1b157d7bf382aad8eab87ad85168c2354c25e",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-09",
+      "size": 78643200,
+      "sha256": "e8812fc4acdec3d3731a3437355d3a4c5020815388b3e12b04e49f877cb2bf1a",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-10",
+      "size": 78643200,
+      "sha256": "514c4bb40dae334881fbb410ae6ec1fb5f9410aeacdb524b5f4d5b28e796baf1",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-11",
+      "size": 78643200,
+      "sha256": "9c1a9373d8ce443f50e63829604651221cdf1f77350ebbe485c6ec5b1273785f",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-12",
+      "size": 78643200,
+      "sha256": "d272fd5dac11e8ea68101a1845f005a27f40d72750aa7fb56383e6daae99ab42",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-13",
+      "size": 78643200,
+      "sha256": "8f1052682f84d30dc6effb1abf793e1e3c1be8d0ef86eeed98e656eb12839a9a",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-14",
+      "size": 6713119,
+      "sha256": "73f388cdd622d224e1b57f478b71f769f5e2f4ad196b6999b1fffb2052134b0a",
+      "status": "PASS"
+    }
+  ],
+  "reassembled_archive": {
+    "path": "evidence/of13-amr-same-run-map-v8-n128/amr-stage-snapshot-n128-review.tar.gz.zst",
+    "size": 1107717919,
+    "sha256": "68f635f06c1a00bca533e30556deeba472dd25fa91c24b1cc8ab563607a51da9",
+    "status": "PASS"
+  },
+  "github_release_assets": [
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-00",
+      "size": 78643200,
+      "sha256": "90634c86f1b327daeb51eceaf5d53ccfdfc57329396989663c8a89d033999dc6",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-01",
+      "size": 78643200,
+      "sha256": "941cbae54274588baff2e7249171eaad6b94d4ccab62f399a69aea30e303acf9",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-02",
+      "size": 78643200,
+      "sha256": "6b6f97790f1b87073c2246df6338189d76d30a1ac0b59e5161eba97a7684d97c",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-03",
+      "size": 78643200,
+      "sha256": "97077975d2945527ca0d1fd16902c22b36849172849cf3eac60371f68008d8d4",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-04",
+      "size": 78643200,
+      "sha256": "24f8821917b373ac908d9bce19023811f0bf6d8b495f29e1bb1ac597d06abefc",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-05",
+      "size": 78643200,
+      "sha256": "6f8136e4655ba2259b3b15266b4440676fb54586deea5f331c90df0647c5b978",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-06",
+      "size": 78643200,
+      "sha256": "a8d6305feab5915ed1384190cd216ef0108f66a57a38631f8f3bb31abef5b6fe",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-07",
+      "size": 78643200,
+      "sha256": "5e9c5a8ceb1438e653c4767eea3fb2a29c7b01ce15495a2a0d248b77e0d8f124",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-08",
+      "size": 78643200,
+      "sha256": "a9a71095238e5be666bf441879e1b157d7bf382aad8eab87ad85168c2354c25e",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-09",
+      "size": 78643200,
+      "sha256": "e8812fc4acdec3d3731a3437355d3a4c5020815388b3e12b04e49f877cb2bf1a",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-10",
+      "size": 78643200,
+      "sha256": "514c4bb40dae334881fbb410ae6ec1fb5f9410aeacdb524b5f4d5b28e796baf1",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-11",
+      "size": 78643200,
+      "sha256": "9c1a9373d8ce443f50e63829604651221cdf1f77350ebbe485c6ec5b1273785f",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-12",
+      "size": 78643200,
+      "sha256": "d272fd5dac11e8ea68101a1845f005a27f40d72750aa7fb56383e6daae99ab42",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-13",
+      "size": 78643200,
+      "sha256": "8f1052682f84d30dc6effb1abf793e1e3c1be8d0ef86eeed98e656eb12839a9a",
+      "state": "uploaded",
+      "status": "PASS"
+    },
+    {
+      "name": "amr-stage-snapshot-n128-review.tar.gz.zst.part-14",
+      "size": 6713119,
+      "sha256": "73f388cdd622d224e1b57f478b71f769f5e2f4ad196b6999b1fffb2052134b0a",
+      "state": "uploaded",
+      "status": "PASS"
+    }
+  ],
+  "instrumented_library": {
+    "path": "evidence/of13-amr-same-run-map-v8-n128/libincompressibleFluid.so",
+    "size": 1267048,
+    "sha256": "414d68c299a466b3c06757192c4e3d0f89df24d78dae94da1a0286387bdbc4a7",
+    "expected_sha256": "414d68c299a466b3c06757192c4e3d0f89df24d78dae94da1a0286387bdbc4a7",
+    "status": "PASS"
+  },
+  "scope": "Read-only distribution integrity verification. Does not decompress the archive, rerun OpenFOAM, recompute AMR metrics, certify cell-value semantics, or change the AMR quality verdict."
+}

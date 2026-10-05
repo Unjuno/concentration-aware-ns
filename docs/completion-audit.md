@@ -2316,3 +2316,14 @@ temporal matrix still uses the separate complete 100-step addendum archive,
 whose six-case replay already passed. This closes the container-liveness
 question only; it does not upgrade the old partial run or alter the solver
 classification.
+
+### Live n128 AMR release integrity recheck — 2026-10-05
+
+The 15 locally preserved release chunks match their manifest byte counts and
+SHA-256 values; their assembled Zstandard archive and the instrumented library
+also match the recorded hashes. A fresh `gh release view` response lists all
+15 GitHub assets with matching names, sizes, uploaded states and digests. The
+receipt is
+[`evidence/tests/openfoam-amr-n128-release-live-recheck-2026-10-05.json`](../evidence/tests/openfoam-amr-n128-release-live-recheck-2026-10-05.json).
+This closes current release-distribution integrity only. It is not an OpenFOAM
+rerun or AMR-quality certification; the AMR verdict remains `UNCERTAIN`.

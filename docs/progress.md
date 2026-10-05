@@ -743,3 +743,13 @@ endpoint archive and remains incomplete; the later 100-step temporal addendum
 is still the accepted, independently replayed matrix case. No numerical
 classification changes. Details are in
 `reports/openfoam-high-gradient-matrix-recheck-2026-10-04.md`.
+
+## 2026-10-05 — refresh the published n128 AMR package integrity
+
+Rehashed the 15 local Zstandard parts and the assembled package against their
+manifest, rechecked the instrumented library against the run manifest, and
+compared all 15 names/sizes/SHA-256 values to a fresh GitHub Release API
+response. Everything matches. The receipt is
+`evidence/tests/openfoam-amr-n128-release-live-recheck-2026-10-05.json`, and
+the AMR analysis records the check. This validates artifact distribution only;
+the AMR quality finding remains `UNCERTAIN`.
