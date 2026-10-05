@@ -39,6 +39,7 @@
   "upstream_disposition": {
     "existing_pull_request": "https://github.com/leanprover/lean-action/pull/187",
     "status_at_observation": "open",
+    "comment_url": "https://github.com/leanprover/lean-action/pull/187#issuecomment-5986827987",
     "disposition": "No duplicate issue opened; the existing PR directly addresses TOML lean_lib module discovery. A downstream real-project reproduction is shared there."
   },
   "interpretation": "The recorded failure is localized to the pinned independent-checker's module-discovery precondition. Without accessible step logs this run does not establish whether the preceding full build completed; it provides no adverse evidence about the OpenAI theorem. Previously completed clean-build and axiom-audit evidence remains a separate, pinned result."

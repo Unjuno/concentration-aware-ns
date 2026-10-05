@@ -42,7 +42,8 @@ That PR reports that its full nanoda success path is separately blocked by a
 nanoda export-format problem. The OpenAI run is a useful real-project case for
 the module-detection change; it does not diagnose or resolve that separate
 export-format issue. A concise reproduction was added to the existing PR, so
-no duplicate issue was filed.
+no duplicate issue was filed. The comment is
+[here](https://github.com/leanprover/lean-action/pull/187#issuecomment-5986827987).
 
 The machine-readable source hashes, hosted run status, exact detector result,
 and bounded interpretation are in
