@@ -19,14 +19,15 @@ integrability, and Gaussian-position checks in the pinned reference
 environment. Audited the saved Oct 1 Lean log against the current
 `AxisForceSign.lean` bytes: the manifest's source/log hashes match, all 156
 `#print axioms` declarations are covered, only standard axioms are reported,
-and no `sorryAx` or Lean errors appear. This is a saved-log consistency
-replay, not a new Lean run. The older aggregate receipt refers to a previous
-source snapshot. A fresh Docker rerun failed before Lean due to an unreadable
-checker-image blob (`operation not supported`); the failure is preserved
-separately and does not negate the matching Oct 1 log. Strict negativity of
-the axial force ratio remains conditional on `Z>0`, which is not established
-for the selected actual profile; no finite-rod, molecular, or viscosity-law
-claim follows. See
+and no `sorryAx` or Lean errors appear. The Oct 1 manifest omits the process
+exit status, so this establishes complete source-matched output, not a clean
+full-file execution. The older aggregate receipt refers to a previous source
+snapshot. A fresh Docker rerun failed before Lean due to an unreadable
+checker-image blob; a native retry emitted all matching reports but returned
+`-5`/`SIGTRAP`. Both attempts are preserved; neither is promoted to a clean
+PASS. Strict negativity of the axial force ratio remains conditional on `Z>0`,
+which is not established for the selected actual profile; no finite-rod,
+molecular, or viscosity-law claim follows. See
 `reports/axis-force-proof-replay-and-analytic-scope-2026-10-05.md` and
 `evidence/lean-verification/axis-sign-source-replay-2026-10-05.json`.
 

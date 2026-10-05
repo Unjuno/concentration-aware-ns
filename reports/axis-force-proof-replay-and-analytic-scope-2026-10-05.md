@@ -46,12 +46,15 @@ reported axioms are among `propext`, `Classical.choice`, and `Quot.sound`, and
 the saved log contains no `sorryAx` or Lean error. Its result is
 `evidence/lean-verification/axis-sign-source-replay-2026-10-05.json`.
 
-This is a source-bound consistency replay of the saved Oct 1 Lean output, not
-a new Lean execution and not authentication of the log's origin. The older
+The Oct 1 manifest does not record the Lean process exit status. This proves
+source-bound, complete axiom output, but not a clean-exit full-file run. The
+new native attempt below likewise emitted all reports but exited abnormally.
+The older
 aggregate `axis-force-sign.json` records source hash
 `fe989c3a279d7515b2584e82ada2632930a80299f98f502f68720ff45e2fb793`, which
 belongs to a preceding source snapshot, so it must not be cited as proof for
-the current bytes. The newer Oct 1 receipt is the matching saved full-file log.
+the current bytes. The newer Oct 1 receipt is the matching saved full-file
+output, with execution status unknown.
 
 A new exact rerun attempt on Oct 5 stopped before Lean started: Docker returned
 exit 125 because its content store could not read checker-image blob
@@ -59,6 +62,16 @@ exit 125 because its content store could not read checker-image blob
 (`operation not supported`). The attempt and full daemon output are preserved
 in `evidence/lean-verification/axis-force-sign-rerun-2026-10-05.json` and
 `.log`. This is an environment/image-storage failure, not a Lean counterexample.
+
+As a fallback, the same source was run natively with the prepared local Lean
+4.34.0-rc2 environment. It emitted all 156 axiom reports, and those reports
+exactly match the Oct 1 source-matched log, but Python recorded return code
+`-5` (`SIGTRAP`). No Lean `error:` or `sorryAx` appears, and output reaches
+the final declaration, yet the abnormal process exit prevents calling this a
+clean run. The native command output and execution receipt are preserved in
+`evidence/lean-verification/axis-force-sign-native-rerun-2026-10-05.log` and
+`.json`; the offline audit is
+`evidence/lean-verification/axis-force-sign-native-log-audit-2026-10-05.json`.
 
 ## Reproduction and limits
 
@@ -73,8 +86,9 @@ python3 -m tools.audit_axis_force_log \
 ```
 
 Its unit tests are `tests/test_audit_axis_force_log.py`. The output verifies
-stored-log consistency; it does not execute Lean, validate the source
+stored-log consistency and exposes a recorded exit code when one is available;
+it does not execute Lean, validate the source
 mathematically, prove `Z>0` for the selected profile, or model molecules,
-finite rods, or constitutive viscosity. The Docker rerun still needs a
-repairable or independently rebuilt pinned checker image before it can refresh
-the run evidence.
+finite rods, or constitutive viscosity. Current-source execution remains
+unverified at clean-exit status: Docker needs a repairable pinned checker image
+or the native runtime needs to return cleanly.

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-05",
+  "execution": {
+    "command": "lake env lean /Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/verification/AxisForceSign.lean",
+    "working_directory": "work/lean-verification/independent-source",
+    "exit_code": -5,
+    "signal": "SIGTRAP",
+    "interpretation": "Abnormal process exit; not a clean Lean run PASS."
+  },
+  "sha256": {
+    "verification/AxisForceSign.lean": "a61600fcc260fb75c00323bb53c94d96effa24b2c4e82c66355c352fe7eb0dce",
+    "evidence/lean-verification/axis-force-sign-native-rerun-2026-10-05.log": "218b874d977ba900f1ce51154f24d963964a4eb4dd6606892ee0679fdd1bc714"
+  },
+  "observed": {
+    "source_reported_declarations": 156,
+    "native_log_axiom_reports": 156,
+    "matches_october_1_source_matched_log_axiom_reports": true,
+    "has_lean_error": false,
+    "has_sorryAx": false,
+    "last_output_is_final_source_declaration": true
+  },
+  "interpretation": "Full source emitted all expected axiom reports and they match the saved Oct 1 source-matched log, but this rerun ended with SIGTRAP. The Oct 1 manifest does not record an exit status either. Neither artifact certifies a clean-exit full-file run; this artifact preserves supplemental abnormal-exit evidence."
+}

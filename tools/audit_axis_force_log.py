@@ -29,6 +29,8 @@ def audit(source_bytes, log_bytes, manifest, source_name, log_name):
 
     expected_source_hash = manifest.get("sha256", {}).get(source_name)
     expected_log_hash = manifest.get("sha256", {}).get(log_name)
+    execution = manifest.get("execution", {})
+    execution_exit_code = execution.get("exit_code")
     source_hash = hashlib.sha256(source_bytes).hexdigest()
     log_hash = hashlib.sha256(log_bytes).hexdigest()
     checks = {
@@ -43,6 +45,8 @@ def audit(source_bytes, log_bytes, manifest, source_name, log_name):
     return {
         "success": all(checks.values()),
         "checks": checks,
+        "execution_exit_code": execution_exit_code,
+        "execution_clean_exit": execution_exit_code == 0 if execution_exit_code is not None else None,
         "source": source_name,
         "source_sha256": source_hash,
         "log": log_name,

@@ -35,13 +35,17 @@ linearized Gaussian position law all replay successfully. The current
 `AxisForceSign.lean` hash is matched by the Oct 1 saved full-file log; a new
 offline auditor checked coverage of all 156 `#print axioms` declarations,
 allowed axioms only, and absence of `sorryAx`/Lean errors. The older aggregate
-receipt's source hash is from a previous snapshot. A fresh Docker rerun failed
-before Lean started because the daemon could not read the checker-image blob;
-that failure is preserved separately. The force-ratio sign remains conditional
-on `Z>0` for the selected profile. See the
+receipt's source hash is from a previous snapshot, and the Oct 1 manifest omits
+the Lean exit code. Thus the saved output is source-matched and complete but
+does not certify a clean-exit full-file run. A Docker rerun failed before Lean
+because the daemon could not read the checker-image blob; a native retry
+printed the same 156 reports but ended with SIGTRAP. Both attempts are
+preserved separately and neither is a clean PASS. The force-ratio sign remains
+conditional on `Z>0` for the selected profile. See the
 [source-bound replay report](../reports/axis-force-proof-replay-and-analytic-scope-2026-10-05.md),
 [replay receipt](../evidence/lean-verification/axis-sign-source-replay-2026-10-05.json),
-and [rerun failure](../evidence/lean-verification/axis-force-sign-rerun-2026-10-05.json).
+the [Docker rerun failure](../evidence/lean-verification/axis-force-sign-rerun-2026-10-05.json),
+and the [native rerun receipt](../evidence/lean-verification/axis-force-sign-native-rerun-2026-10-05.json).
 
 ### Profile-stage research refresh and Euler evidence reconciliation — 2026-10-05
 

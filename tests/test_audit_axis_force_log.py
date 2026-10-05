@@ -28,6 +28,17 @@ def test_exact_source_and_complete_allowed_axiom_log_pass():
     assert result["success"]
     assert result["printed_declaration_count"] == 2
     assert result["axiom_report_count"] == 2
+    assert result["execution_clean_exit"] is None
+
+
+def test_abnormal_exit_is_preserved_as_not_clean_even_when_log_matches():
+    source, log, manifest = fixture()
+    manifest["execution"] = {"exit_code": -5}
+    result = audit(source, log, manifest, "verification/AxisForceSign.lean",
+                   "evidence/lean-verification/axis-volume-covariance-2026-10-01.log")
+    assert result["success"]
+    assert result["execution_exit_code"] == -5
+    assert result["execution_clean_exit"] is False
 
 
 def test_changed_log_hash_fails_even_when_prints_look_valid():
