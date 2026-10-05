@@ -1,0 +1,15 @@
+{
+  "exit_code": 125,
+  "success": false,
+  "source": "verification/AxisForceSign.lean",
+  "source_sha256": "a61600fcc260fb75c00323bb53c94d96effa24b2c4e82c66355c352fe7eb0dce",
+  "runner_sha256": "42226b01df7dc1f623d6cd9477fec1b64d0c5c902618cb9348345f590414fef5",
+  "log_sha256": "3f10c46a318456ca0c1829b78b4c6eec4930e7f5f975814014d7d7fd5ba6b75d",
+  "axioms": {},
+  "only_allowed_axioms": false,
+  "expected_axiom_reports_present": false,
+  "source_unchanged_during_run": true,
+  "contains_sorryAx": false,
+  "scope": "Pinned Lean check of scalar sign, existence, natural-profile radial derivatives, finite-prefix limits, ordinary radial derivative tail convergence, the full axial slow-sum radial derivative limit, the selected base-field material trajectory, its axis Laplacian identity, and the exact squared directional ratio of the infinitesimal deformation. Includes concrete actual-candidate assembly germ transfer, the physical axial Laplacian and material acceleration, their asymptotic ratio, and the norm-nonincreasing restriction of smooth spacetime jets to fixed-time spatial jets. Strict negativity remains conditional on the stated root interval/equation and PressureData; unconditional pressure instantiation for actualProfile is not established. Does not prove molecular alignment, phase transition, or changing constitutive viscosity. Not an independent nanoda check.",
+  "replay": "python3 -m tools.verify_axis_sign"
+}

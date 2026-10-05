@@ -12,6 +12,24 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 383 — bind current axis-force Lean claims to the matching log
+
+Replayed the exact SymPy axis-force, pressure-threshold, Jeffery, strain-
+integrability, and Gaussian-position checks in the pinned reference
+environment. Audited the saved Oct 1 Lean log against the current
+`AxisForceSign.lean` bytes: the manifest's source/log hashes match, all 156
+`#print axioms` declarations are covered, only standard axioms are reported,
+and no `sorryAx` or Lean errors appear. This is a saved-log consistency
+replay, not a new Lean run. The older aggregate receipt refers to a previous
+source snapshot. A fresh Docker rerun failed before Lean due to an unreadable
+checker-image blob (`operation not supported`); the failure is preserved
+separately and does not negate the matching Oct 1 log. Strict negativity of
+the axial force ratio remains conditional on `Z>0`, which is not established
+for the selected actual profile; no finite-rod, molecular, or viscosity-law
+claim follows. See
+`reports/axis-force-proof-replay-and-analytic-scope-2026-10-05.md` and
+`evidence/lean-verification/axis-sign-source-replay-2026-10-05.json`.
+
 ## Revision 382 — reconcile Euler evidence and review the profile-stage follow-up
 
 The 2026-10-05 integrated Nanoda retry failed at module discovery before the

@@ -27,6 +27,22 @@ report](../reports/three-project-live-status-2026-10-04T2339Z.md).
 
 # Completion audit — interim, 2026-09-27
 
+### Source-bound axis-force proof replay and analytic scope — 2026-10-05
+
+The pinned SymPy calculations for the axial-force identity, local pressure
+threshold, Jeffery director bridge, strain-integrability counterexample, and
+linearized Gaussian position law all replay successfully. The current
+`AxisForceSign.lean` hash is matched by the Oct 1 saved full-file log; a new
+offline auditor checked coverage of all 156 `#print axioms` declarations,
+allowed axioms only, and absence of `sorryAx`/Lean errors. The older aggregate
+receipt's source hash is from a previous snapshot. A fresh Docker rerun failed
+before Lean started because the daemon could not read the checker-image blob;
+that failure is preserved separately. The force-ratio sign remains conditional
+on `Z>0` for the selected profile. See the
+[source-bound replay report](../reports/axis-force-proof-replay-and-analytic-scope-2026-10-05.md),
+[replay receipt](../evidence/lean-verification/axis-sign-source-replay-2026-10-05.json),
+and [rerun failure](../evidence/lean-verification/axis-force-sign-rerun-2026-10-05.json).
+
 ### Profile-stage research refresh and Euler evidence reconciliation — 2026-10-05
 
 Lei and Ren's arXiv:2609.35406 gives a readable reconstruction of the
