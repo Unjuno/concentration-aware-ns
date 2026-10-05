@@ -12,6 +12,23 @@ physical singularity, or theorem failure from a finite simulation. The goal is
 active until all three target audits, the independent analytic work, the
 evidence-backed upstream disposition, and the remaining gaps are documented.
 
+## Revision 381 — identify the Lean audit retry's tooling failure
+
+The 180-minute retry of the pinned OpenAI source audit failed in the external
+nanoda module-discovery step: the pinned `lean-action` detector does not parse
+the source's top-level TOML package name or `[[lean_lib]]` declarations. The
+exact detector was replayed against immutable source files; OpenAI's pinned
+`lakefile.toml` yields an empty legacy detector result while listing the
+`NavierStokes`, `Euler`, and `ComparatorChallenges` modules. This is a failure
+of the independent-check setup, not theorem or build evidence. The Euler axiom
+audit is not established by the failed retry; earlier clean-build and axiom
+results remain separate evidence. Existing `lean-action` PR #187 addresses
+this exact detector gap, and a real-project reproduction was added there
+instead of opening a duplicate. Details and hashes:
+`reports/lean-action-nanoda-toml-detection-2026-10-05.md` and
+`evidence/upstream-refresh/lean-action-nanoda-toml-repro-2026-10-05.json`.
+The full goal remains active.
+
 ## Revision 380 — refresh the published AMR evidence integrity check
 
 Recomputed hashes for all 15 locally preserved n128 AMR release parts and

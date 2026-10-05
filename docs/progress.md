@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-10-05 — reproduce the OpenAI Lean audit's nanoda setup failure
+
+The 180-minute retry run 37240186684 failed with `nanoda check failed` and
+`Could not detect module name from lakefile.toml or lakefile.lean`. Replaying
+the pinned action's exact detector against OpenAI's pinned lakefile confirms
+it only accepts the legacy `[package]`/`lakefile.lean` forms, while the source
+uses a top-level TOML package name and `[[lean_lib]]` module declarations. The
+failure is in independent-checker setup; it does not establish whether the
+preceding build completed and is not theorem evidence. The Euler axiom audit
+is not verified by this retry. Existing lean-action PR #187 already proposes
+the same module-discovery fix, so the real OpenAI project case was added there
+instead of filing a duplicate. Full details and source hashes are in
+`reports/lean-action-nanoda-toml-detection-2026-10-05.md` and
+`evidence/upstream-refresh/lean-action-nanoda-toml-repro-2026-10-05.json`.
+
 ## 2026-09-09 — repository bootstrap
 
 - User authorized repository creation after the initial read-only review.

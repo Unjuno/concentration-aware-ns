@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "record_type": "external_lean_action_module_detection_reproduction",
+  "scope": "Failure in the independent nanoda verification setup for a pinned OpenAI Lake TOML project. This is not a Lean theorem counterexample or a completed proof audit.",
+  "openai_source": {
+    "repository": "openai/NavierStokesAndEuler",
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "lakefile_path": "lakefile.toml",
+    "lakefile_url": "https://raw.githubusercontent.com/openai/NavierStokesAndEuler/f9e8bc5b38b6e212696e8a30e3e91517af887bbd/lakefile.toml",
+    "lakefile_sha256": "97b2804da5b9a2cd0aaf44ce42b7c39e9947beff9d2ac01a11e0d3d867af1c09",
+    "package_name_form": "top-level name = NavierStokesAndEuler",
+    "lean_lib_modules": ["NavierStokes", "Euler", "ComparatorChallenges"]
+  },
+  "lean_action": {
+    "repository": "leanprover/lean-action",
+    "commit": "f061402b660e0c34644504b324e830f2991d4865",
+    "script_path": "scripts/run_nanoda.sh",
+    "script_url": "https://raw.githubusercontent.com/leanprover/lean-action/f061402b660e0c34644504b324e830f2991d4865/scripts/run_nanoda.sh",
+    "script_sha256": "eaec1d9520d322cc77f762e063ec301f5cd61e90af54b67a85b1ff66ae09c616",
+    "detector_behavior": "searches a legacy [package] table for name, then falls back to a lakefile.lean package declaration; it does not inspect top-level TOML name or [[lean_lib]] names"
+  },
+  "local_reproduction": {
+    "legacy_detector_output": "",
+    "available_lean_lib_modules": ["NavierStokes", "Euler", "ComparatorChallenges"],
+    "method": "Downloaded both immutable raw files and executed the detector's exact grep/sed/awk extraction against the pinned OpenAI lakefile."
+  },
+  "hosted_run": {
+    "repository": "Unjuno/concentration-aware-ns",
+    "run_id": 37240186684,
+    "head_sha": "2220227709b9c9c63f80cb3cef9fd525f117a313",
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37240186684",
+    "workflow": ".github/workflows/openai-ns-formalization-audit.yml",
+    "run_conclusion": "failure",
+    "elapsed": "1h 59m 8s",
+    "visible_annotation": "Could not detect module name from lakefile.toml or lakefile.lean",
+    "separate_annotation": "nanoda check failed",
+    "euler_axiom_audit": "not verified in this run"
+  },
+  "upstream_disposition": {
+    "existing_pull_request": "https://github.com/leanprover/lean-action/pull/187",
+    "status_at_observation": "open",
+    "disposition": "No duplicate issue opened; the existing PR directly addresses TOML lean_lib module discovery. A downstream real-project reproduction is shared there."
+  },
+  "interpretation": "The recorded failure is localized to the pinned independent-checker's module-discovery precondition. Without accessible step logs this run does not establish whether the preceding full build completed; it provides no adverse evidence about the OpenAI theorem. Previously completed clean-build and axiom-audit evidence remains a separate, pinned result."
+}

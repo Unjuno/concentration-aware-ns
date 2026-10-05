@@ -1,3 +1,15 @@
+### OpenAI Lean retry stopped in nanoda module discovery — 2026-10-05
+
+The 180-minute retry run 37240186684 ends in failure with the external
+nanoda module detector's exact error. A hash-verified replay against the pinned
+OpenAI lakefile confirms a format mismatch with the pinned action; it neither
+proves nor refutes the formalized theorem, and accessible job logs do not
+establish whether the preceding build completed. The Euler axiom audit remains
+unverified in this run. Existing action PR #187 covers the TOML module case;
+the downstream reproduction is recorded without a duplicate report. See the
+[failure analysis](../reports/lean-action-nanoda-toml-detection-2026-10-05.md)
+and [machine-readable receipt](../evidence/upstream-refresh/lean-action-nanoda-toml-repro-2026-10-05.json).
+
 ### Three-project tracker refresh — 2026-10-04 23:39 UTC
 
 The live tracker/source snapshot at
