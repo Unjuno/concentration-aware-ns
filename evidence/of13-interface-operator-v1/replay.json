@@ -1,0 +1,705 @@
+{
+  "status": "REPLAY_COMPLETE_OPERATOR_ONLY",
+  "integrity": "VERIFIED_ARCHIVE_AND_FROZEN_INPUTS",
+  "git_head": "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1",
+  "replay_sha256": "83e0f7f8a942dfcb4b52b40230d11524455a59960dbc30f7490dbf0860be5983",
+  "analyzer_sha256": "663a50cb47157b04ddb41e99d1a825c5229fbfd859395603ad3e6794d129f1d3",
+  "archive_sha256": "b3a5cf8e4bc325e77d835d35afd5322e72804bc3f4142f1496a45dcca5bf2cd3",
+  "cases": [
+    {
+      "nx": 16,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 3.739231146937527e-11,
+            "oriented_physical_balance_Linf": 3.7392478002828966e-11,
+            "complete_residual_minus_face_balance_Linf": 7.771561172376096e-16,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.2333767884513087,
+            "native_minus_complete_residual_Linf": 0.23337678845015983,
+            "native_minus_complete_minus_cyclic_load_Linf": 1.7763568394002505e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 6.11,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 2.7700897131666125e-12,
+          "relative_flux_error_to_chain_Linf": 9.467093775583635e-11,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.06388553922367457,
+          "expected_chain_flux": 1.0638855392236746,
+          "relative_velocity_L2_to_continuum": 0.06388553922366065,
+          "solverPerformance": {
+            "initialResidual": 0.05462693055841977,
+            "finalResidual": 6.395373902844644e-13,
+            "iterations": 13
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 2.220446049250313e-16,
+            "oriented_physical_balance_Linf": 3.3306690738754696e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.234375,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 2.220446049250313e-16,
+            "oriented_physical_balance_Linf": 3.3306690738754696e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.234375,
+            "native_minus_complete_residual_Linf": 0.234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 9.71445146547012e-17,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 9.768661574094395e-17,
+          "relative_flux_error_to_chain_Linf": 8.881784197001252e-16,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.0,
+          "expected_chain_flux": 1.0,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 2.3740253682501436e-18,
+            "finalResidual": 2.3740253682501436e-18,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.25,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.25,
+          "native_minus_complete_residual_Linf": 0.25,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    },
+    {
+      "nx": 32,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 1.772415547662831e-11,
+            "oriented_physical_balance_Linf": 1.772409996547708e-11,
+            "complete_residual_minus_face_balance_Linf": 1.4432899320127035e-15,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 4.996003610813204e-16,
+            "native_integrated_residual_Linf": 0.12097283588780049,
+            "native_minus_complete_residual_Linf": 0.1209728358883632,
+            "native_minus_complete_minus_cyclic_load_Linf": 3.552713678800501e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 6.12171875,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.159183860011126e-12,
+          "relative_flux_error_to_chain_Linf": 1.4247580892856604e-10,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.03095401271511644,
+          "expected_chain_flux": 1.0309540127151164,
+          "relative_velocity_L2_to_continuum": 0.030954012715123623,
+          "solverPerformance": {
+            "initialResidual": 0.02808043938538763,
+            "finalResidual": 3.8181043946447743e-13,
+            "iterations": 14
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 8.881784197001252e-16,
+            "oriented_physical_balance_Linf": 6.938893903907228e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.12109375,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 8.881784197001252e-16,
+            "oriented_physical_balance_Linf": 6.938893903907228e-16,
+            "complete_residual_minus_face_balance_Linf": 3.3306690738754696e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 2.220446049250313e-16,
+            "native_integrated_residual_Linf": 0.12109375,
+            "native_minus_complete_residual_Linf": 0.12109375,
+            "native_minus_complete_minus_cyclic_load_Linf": 2.3592239273284576e-16,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.3944466241422315e-15,
+          "relative_flux_error_to_chain_Linf": 2.220446049250313e-15,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": -1.3322676295501878e-15,
+          "expected_chain_flux": 0.9999999999999987,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 7.3912154104321e-18,
+            "finalResidual": 7.3912154104321e-18,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.125,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.125,
+          "native_minus_complete_residual_Linf": 0.125,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    },
+    {
+      "nx": 64,
+      "modes": {
+        "arithmetic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 5.7478466430893604e-11,
+            "oriented_physical_balance_Linf": 5.7478521942044836e-11,
+            "complete_residual_minus_face_balance_Linf": 3.3861802251067274e-15,
+            "div_times_V_minus_face_balance_Linf": 1.1102230246251565e-16,
+            "matrix_flux_plus_physical_flux_Linf": 7.771561172376096e-16,
+            "native_integrated_residual_Linf": 0.06150855359405178,
+            "native_minus_complete_residual_Linf": 0.06150855359485028,
+            "native_minus_complete_minus_cyclic_load_Linf": 7.105427357601002e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 6.125625,
+            "oriented_physical_balance_Linf": 6.125625,
+            "complete_residual_minus_face_balance_Linf": 6.938893903907228e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 6.1246484375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 1.061650767297806e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 4.5421444383464404e-12,
+          "relative_flux_error_to_chain_Linf": 6.100844274214978e-10,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 0.015241119454857621,
+          "expected_chain_flux": 1.0152411194548576,
+          "relative_velocity_L2_to_continuum": 0.01524111945487809,
+          "solverPerformance": {
+            "initialResidual": 0.014240154591618065,
+            "finalResidual": 9.321873466116689e-13,
+            "iterations": 13
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        },
+        "harmonic": {
+          "quality": "PASS",
+          "checks": {
+            "solved_field_matches_exact_chain": true,
+            "initial_field_matches_exact_nodal_values": true,
+            "complete_integrated_residual_small": true,
+            "all_x_face_fluxes_match_chain": true,
+            "complete_matrix_matches_physical_flux_balance": true,
+            "saved_divergence_matches_oriented_balance": true,
+            "matrix_flux_sign_matches_negative_laplacian": true,
+            "x_explicit_correction_zero": true,
+            "explicit_correction_divergence_cancels": true,
+            "saved_face_geometry_and_coefficients_match_model": true,
+            "initial_matrix_matches_physical_flux_balance": true,
+            "initial_saved_divergence_matches_oriented_balance": true,
+            "initial_matrix_flux_sign_matches_negative_laplacian": true,
+            "initial_saved_face_geometry_and_coefficients_match_model": true
+          },
+          "after": {
+            "complete_integrated_residual_Linf": 1.7763568394002505e-15,
+            "oriented_physical_balance_Linf": 1.3877787807814457e-15,
+            "complete_residual_minus_face_balance_Linf": 6.938893903907228e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 0.0615234375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 1.061650767297806e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "before": {
+            "complete_integrated_residual_Linf": 1.7763568394002505e-15,
+            "oriented_physical_balance_Linf": 1.3877787807814457e-15,
+            "complete_residual_minus_face_balance_Linf": 6.938893903907228e-16,
+            "div_times_V_minus_face_balance_Linf": 0.0,
+            "matrix_flux_plus_physical_flux_Linf": 3.885780586188048e-16,
+            "native_integrated_residual_Linf": 0.0615234375,
+            "native_minus_complete_residual_Linf": 0.0615234375,
+            "native_minus_complete_minus_cyclic_load_Linf": 1.061650767297806e-15,
+            "full_matrix_symmetry_error_Linf": 0.0
+          },
+          "cell_error_to_chain_Linf": 1.8562896445667443e-15,
+          "relative_flux_error_to_chain_Linf": 6.439293542825908e-15,
+          "face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "initial_face_metrics": {
+            "area_error_Linf": 0.0,
+            "distance_coefficient_error_Linf": 0.0,
+            "face_coefficient_error_Linf": 0.0,
+            "physical_flux_product_error_Linf": 0.0,
+            "normal_gradient_to_saved_values_error_Linf": 0.0
+          },
+          "relative_flux_error_to_continuum_expected": 1.7763568394002505e-15,
+          "expected_chain_flux": 1.0000000000000018,
+          "relative_velocity_L2_to_continuum": 0.0,
+          "solverPerformance": {
+            "initialResidual": 1.3651400934068985e-17,
+            "finalResidual": 1.3651400934068985e-17,
+            "iterations": 0
+          },
+          "explicit_x_face_flux_Linf": 0.0,
+          "explicit_integrated_divergence_Linf": 0.0
+        }
+      },
+      "constant_control": {
+        "independent_zero_balance": true,
+        "source_predicted_extra_cyclic_term": "OBSERVED",
+        "native_residual_expected_per_cell_if_predicted": 0.0625,
+        "metrics": {
+          "complete_integrated_residual_Linf": 0.0,
+          "oriented_physical_balance_Linf": 0.0,
+          "complete_residual_minus_face_balance_Linf": 0.0,
+          "div_times_V_minus_face_balance_Linf": 0.0,
+          "matrix_flux_plus_physical_flux_Linf": 0.0,
+          "native_integrated_residual_Linf": 0.0625,
+          "native_minus_complete_residual_Linf": 0.0625,
+          "native_minus_complete_minus_cyclic_load_Linf": 0.0,
+          "full_matrix_symmetry_error_Linf": 0.0
+        },
+        "face_metrics": {
+          "area_error_Linf": 0.0,
+          "distance_coefficient_error_Linf": 0.0,
+          "face_coefficient_error_Linf": 0.0,
+          "physical_flux_product_error_Linf": 0.0,
+          "normal_gradient_to_saved_values_error_Linf": 0.0
+        }
+      },
+      "operator_quality": "PASS"
+    }
+  ],
+  "package_provenance": {
+    "source_log": "package-source-sha256.log",
+    "linked_log": "linked-library-sha256.log",
+    "supplied_source_rows": {
+      "/opt/openfoam13/src/MomentumTransportModels/momentumTransportModels/linearViscousStress/linearViscousStress.C": "cb10dee31fc2fd6e78a42a238fac52b45be918e5f366a4a0b25a72a2054c1fc7",
+      "/opt/openfoam13/src/MomentumTransportModels/momentumTransportModels/momentumTransportModel.C": "7e393a1de09c1e4d5f325552d6fc6adc8135309977188f6c56f4b006b159edc8",
+      "/opt/openfoam13/src/OpenFOAM/matrices/lduMatrix/lduMatrix/lduMatrixATmul.C": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+      "/opt/openfoam13/src/OpenFOAM/primitives/Tensor/TensorI.H": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+      "/opt/openfoam13/src/finiteVolume/fields/fvPatchFields/constraint/cyclic/cyclicFvPatchField.C": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/divSchemes/gaussDivScheme/gaussDivScheme.C": "61ff25e13a610361dfcb7ff1a1b1d575653317df974ac001718a90129392204f",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvc/fvcDiv.C": "c2d24b8fa8916b4bd750715db1ed5b55da0a2c8e8cd4210566b2e4ef113d4853",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvc/fvcFluxTemplates.C": "ec1d4186f407d85a444d2d7b9e2487cd30c5dc4284591c0703cde470a98711c2",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvc/fvcSurfaceIntegrate.C": "2f598d0827ab2e79b062bb01cfd45a07a03e4e0f4594a05608ee14d3ffbfc62f",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvm/fvmDiv.C": "1ff2b27df2c552f81995d0db78fd4db89205b7e3b93dc0d220866337387a67b8",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/fvm/fvmSup.C": "418ef75e73f87a80f1f9716eaf3a8b46ae3e84fdfac2c4207795b2af0da7b75f",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7",
+      "/opt/openfoam13/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b",
+      "/opt/openfoam13/src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+      "/opt/openfoam13/src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.H": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5",
+      "/opt/openfoam13/src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+      "/opt/openfoam13/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear/linear.H": "7eb41d852dc0f00a63a903fd25b49801e06aa0fe69a6ca5dc4d0d5c8f46c9310",
+      "/opt/openfoam13/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolate.C": "3eff326b5359debce798e933ffe78aface4f4fabc1258329ddb35bae2792a3e8",
+      "/opt/openfoam13/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c",
+      "/opt/openfoam13/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461",
+      "/opt/openfoam13/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.H": "8030ce24516498acb7028c9d9d9e7ac0f9ddb953206a04f3ca61b3c4023a2807"
+    },
+    "linked_library_rows": {
+      "/lib/aarch64-linux-gnu/libc.so.6": "0f1905dc27dbc6715875c70527bc8da846a10084c9c483e9d8ff76dce8d69d0e",
+      "/lib/aarch64-linux-gnu/libcap.so.2": "1b6d3932cf8b60b2f27f80cdd26d9a296b8a9608fc02b4eccb8fb2fdab73fea2",
+      "/lib/aarch64-linux-gnu/libevent_core-2.1.so.7": "72dc55af40edeeabcbe8369c8056b3acb629fca9840837255f642a5759de0f77",
+      "/lib/aarch64-linux-gnu/libevent_pthreads-2.1.so.7": "8e03ea005d405f89f9ed77910e40b48aa0cf84a16c40258e4bcd1a72029304e0",
+      "/lib/aarch64-linux-gnu/libgcc_s.so.1": "f2d3ad2bf0b61f6bc944cc37d7b6ab7f88d2582b41ff989ca164803f56cc5f20",
+      "/lib/aarch64-linux-gnu/libhwloc.so.15": "43db4b0fdcb5052559c3c478ac6435e402679f2c54c77eb9080da5f458726450",
+      "/lib/aarch64-linux-gnu/libm.so.6": "5e0391562de36de323fb9cb0f2c1b6bd6d034c840b1dac018499f5fe4ded1b4a",
+      "/lib/aarch64-linux-gnu/libmpi.so.40": "981c4526cd9184063cb3e8b246f6893dbbe79e4cd8326f06227d1055493de292",
+      "/lib/aarch64-linux-gnu/libopen-pal.so.40": "0d73f5bcf55d61092c4403b7e2a39f2ca34396086178605029300dd041f7c591",
+      "/lib/aarch64-linux-gnu/libopen-rte.so.40": "56b095bad147da72cb51b305d5cdf25857142ea098940ee99976d5425f380a83",
+      "/lib/aarch64-linux-gnu/libstdc++.so.6": "6e3112d35cfc86db7ee85b27e1746f67408e2837ff8628b46386c3eabd5682a4",
+      "/lib/aarch64-linux-gnu/libudev.so.1": "8bc3e61d93877d05dd4efc8a4b36a2c8559afbd1d154c7b95a662b5e83e1f740",
+      "/lib/aarch64-linux-gnu/libz.so.1": "e3bc90ee8cce46778c2f46c2a3e580d3b930f7b455910f25ea400a0b797fb9dc",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libOpenFOAM.so": "77da6b8ddd48a88eb256b86a3f1cab1a003ee9b3998765a8a9b79bf9c70f03cc",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libfileFormats.so": "68e760fc26e5feab1e8763c7a010649a087314ef3c2f1b2708a3cf36ed595bb9",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libfiniteVolume.so": "1665fea121e152cca2ab630edfad80169a781008750acbe4b43509939a2ca9e2",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libmeshTools.so": "f29b819950c3886a7048c25f7773916939f7c53d12b8e1544499e2918352a601",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libsurfMesh.so": "b756b11e294b814287964ac6ffc425e6a2c8527f6ee1362ec788a449b09976ed",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libtriSurface.so": "a0b33151dcd14742d4435b9d773d9f76ebdb8484aa0ee1b3b56fd0e411bad7e0",
+      "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/openmpi-system/libPstream.so": "7c84bebdf8fe54500ca7243661de5c80bd4324f443cf317fb7443321f269c91b"
+    },
+    "audit_path": "evidence/upstream-refresh/openfoam-package-source-comparison-2026-10-03.json",
+    "comparison": "MATCH_SELECTED_PACKAGE_PAYLOADS",
+    "audit_sha256": "871580b177d3f9074d01422ee04d6f97c48ff9dae3e42bd3840dfafc9cdc5593",
+    "source_comparisons": [
+      {
+        "path": "src/MomentumTransportModels/momentumTransportModels/linearViscousStress/linearViscousStress.C",
+        "expected_sha256": "cb10dee31fc2fd6e78a42a238fac52b45be918e5f366a4a0b25a72a2054c1fc7",
+        "runtime_sha256": "cb10dee31fc2fd6e78a42a238fac52b45be918e5f366a4a0b25a72a2054c1fc7"
+      },
+      {
+        "path": "src/MomentumTransportModels/momentumTransportModels/momentumTransportModel.C",
+        "expected_sha256": "7e393a1de09c1e4d5f325552d6fc6adc8135309977188f6c56f4b006b159edc8",
+        "runtime_sha256": "7e393a1de09c1e4d5f325552d6fc6adc8135309977188f6c56f4b006b159edc8"
+      },
+      {
+        "path": "src/OpenFOAM/matrices/lduMatrix/lduMatrix/lduMatrixATmul.C",
+        "expected_sha256": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1",
+        "runtime_sha256": "bc2ad138919867c3b4209a8b597ad638011ec033ee967da7281a4bf60ad288b1"
+      },
+      {
+        "path": "src/OpenFOAM/primitives/Tensor/TensorI.H",
+        "expected_sha256": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+        "runtime_sha256": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d"
+      },
+      {
+        "path": "src/finiteVolume/fields/fvPatchFields/constraint/cyclic/cyclicFvPatchField.C",
+        "expected_sha256": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8",
+        "runtime_sha256": "bbdd2395be79a58419d07f627e6fdcf92ebb8d100552abe60eef039990217db8"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/divSchemes/gaussDivScheme/gaussDivScheme.C",
+        "expected_sha256": "61ff25e13a610361dfcb7ff1a1b1d575653317df974ac001718a90129392204f",
+        "runtime_sha256": "61ff25e13a610361dfcb7ff1a1b1d575653317df974ac001718a90129392204f"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvc/fvcDiv.C",
+        "expected_sha256": "c2d24b8fa8916b4bd750715db1ed5b55da0a2c8e8cd4210566b2e4ef113d4853",
+        "runtime_sha256": "c2d24b8fa8916b4bd750715db1ed5b55da0a2c8e8cd4210566b2e4ef113d4853"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvc/fvcFluxTemplates.C",
+        "expected_sha256": "ec1d4186f407d85a444d2d7b9e2487cd30c5dc4284591c0703cde470a98711c2",
+        "runtime_sha256": "ec1d4186f407d85a444d2d7b9e2487cd30c5dc4284591c0703cde470a98711c2"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvc/fvcSurfaceIntegrate.C",
+        "expected_sha256": "2f598d0827ab2e79b062bb01cfd45a07a03e4e0f4594a05608ee14d3ffbfc62f",
+        "runtime_sha256": "2f598d0827ab2e79b062bb01cfd45a07a03e4e0f4594a05608ee14d3ffbfc62f"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvm/fvmDiv.C",
+        "expected_sha256": "1ff2b27df2c552f81995d0db78fd4db89205b7e3b93dc0d220866337387a67b8",
+        "runtime_sha256": "1ff2b27df2c552f81995d0db78fd4db89205b7e3b93dc0d220866337387a67b8"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C",
+        "expected_sha256": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e",
+        "runtime_sha256": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/fvm/fvmSup.C",
+        "expected_sha256": "418ef75e73f87a80f1f9716eaf3a8b46ae3e84fdfac2c4207795b2af0da7b75f",
+        "runtime_sha256": "418ef75e73f87a80f1f9716eaf3a8b46ae3e84fdfac2c4207795b2af0da7b75f"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+        "expected_sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+        "runtime_sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C",
+        "expected_sha256": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5",
+        "runtime_sha256": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C",
+        "expected_sha256": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800",
+        "runtime_sha256": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H",
+        "expected_sha256": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7",
+        "runtime_sha256": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7"
+      },
+      {
+        "path": "src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C",
+        "expected_sha256": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b",
+        "runtime_sha256": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b"
+      },
+      {
+        "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.C",
+        "expected_sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e",
+        "runtime_sha256": "ccc320e987c1c825a73f65b6ef84bd434afc0453ecd16dbda4d347edde2cef2e"
+      },
+      {
+        "path": "src/finiteVolume/fvMatrices/fvMatrix/fvMatrix.H",
+        "expected_sha256": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5",
+        "runtime_sha256": "a3af4efa41e931817bc121a3d98eedd616a13a3387058845474b1a2e1a1229b5"
+      },
+      {
+        "path": "src/finiteVolume/fvMatrices/fvScalarMatrix/fvScalarMatrix.C",
+        "expected_sha256": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79",
+        "runtime_sha256": "8153a251b213125cf37a2374d966c3a6d81e0fae957156455c761081006bfc79"
+      },
+      {
+        "path": "src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear/linear.H",
+        "expected_sha256": "7eb41d852dc0f00a63a903fd25b49801e06aa0fe69a6ca5dc4d0d5c8f46c9310",
+        "runtime_sha256": "7eb41d852dc0f00a63a903fd25b49801e06aa0fe69a6ca5dc4d0d5c8f46c9310"
+      },
+      {
+        "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolate.C",
+        "expected_sha256": "3eff326b5359debce798e933ffe78aface4f4fabc1258329ddb35bae2792a3e8",
+        "runtime_sha256": "3eff326b5359debce798e933ffe78aface4f4fabc1258329ddb35bae2792a3e8"
+      },
+      {
+        "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C",
+        "expected_sha256": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c",
+        "runtime_sha256": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c"
+      },
+      {
+        "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C",
+        "expected_sha256": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461",
+        "runtime_sha256": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461"
+      },
+      {
+        "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.H",
+        "expected_sha256": "8030ce24516498acb7028c9d9d9e7ac0f9ddb953206a04f3ca61b3c4023a2807",
+        "runtime_sha256": "8030ce24516498acb7028c9d9d9e7ac0f9ddb953206a04f3ca61b3c4023a2807"
+      }
+    ],
+    "linked_library_comparisons": [
+      {
+        "path": "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libOpenFOAM.so",
+        "expected_sha256": "77da6b8ddd48a88eb256b86a3f1cab1a003ee9b3998765a8a9b79bf9c70f03cc",
+        "runtime_sha256": "77da6b8ddd48a88eb256b86a3f1cab1a003ee9b3998765a8a9b79bf9c70f03cc"
+      },
+      {
+        "path": "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libfiniteVolume.so",
+        "expected_sha256": "1665fea121e152cca2ab630edfad80169a781008750acbe4b43509939a2ca9e2",
+        "runtime_sha256": "1665fea121e152cca2ab630edfad80169a781008750acbe4b43509939a2ca9e2"
+      },
+      {
+        "path": "/opt/openfoam13/platforms/linuxArm64GccDPInt32Opt/lib/libmeshTools.so",
+        "expected_sha256": "f29b819950c3886a7048c25f7773916939f7c53d12b8e1544499e2918352a601",
+        "runtime_sha256": "f29b819950c3886a7048c25f7773916939f7c53d12b8e1544499e2918352a601"
+      }
+    ]
+  },
+  "operator_quality": "PASS",
+  "native_diagnostic": {
+    "16": "OBSERVED",
+    "32": "OBSERVED",
+    "64": "OBSERVED"
+  }
+}

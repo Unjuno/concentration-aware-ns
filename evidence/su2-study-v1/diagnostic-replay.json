@@ -3,7 +3,7 @@
   "environment": {
     "python": "3.14.5",
     "numpy": "2.5.2",
-    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
   },
   "source_sha256": {
     "tools/analyze_su2.py": "e17c4e5718c9608f34101080c5206ed16d2284857bcdfd5690764c108a508c78",

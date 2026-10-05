@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "source": {
+    "paper": "arXiv:2609.17642v1",
+    "repository": "https://gitlab.umiacs.umd.edu/ramanid/swirl-collapse",
+    "repository_project_id": 2666,
+    "branch": "master",
+    "commit": "10377a74f81ab7f6edff0892a379d4937e17fd9b",
+    "commit_timestamp": "2026-09-18T09:54:30-04:00",
+    "archive_url": "https://gitlab.umiacs.umd.edu/api/v4/projects/2666/repository/archive.zip?sha=master",
+    "archive_sha256": "c4e041b1026c29e8a79f862961b99f0ed62b622562a3ed18f9f586e2f5a5738e",
+    "files": {
+      "core_solver.py": "a7d665299bb86ad3fd433e9f5eb94462c930597211608f8ce9e7e3ee0dc50733",
+      "tests.py": "877b64534f39cee6de061d996540bcdc0e6893e54605c687fff29a6e1a7eca9b"
+    }
+  },
+  "execution": {
+    "command": "python tests.py",
+    "working_directory": "work/external/swirl-collapse-master/swirl-collapse-master-10377a74f81ab7f6edff0892a379d4937e17fd9b",
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0",
+    "exit_code": 0,
+    "test_suite": "all four tests passed",
+    "captured_stdout_stderr": "work/external/swirl-collapse-master/tests-all.log",
+    "captured_log_sha256": "6f1dc4b94230b522a91067ba0438173e8facdefcce83a253a422d4f4aef85971"
+  },
+  "results": {
+    "coordinate_operator_identity": "PASS",
+    "leading_order_navier_stokes_substitution_identity": "PASS",
+    "heat_exterior_theta_residual_linf": [
+      "2.98e-02",
+      "6.93e-03",
+      "2.61e-03",
+      "9.77e-04"
+    ],
+    "heat_exterior_residual_grids": [
+      [8, 6],
+      [16, 8],
+      [24, 12],
+      [32, 16]
+    ],
+    "manufactured_solution_errors": [
+      {"grid": [12, 6], "theta_linf": "1.00e-07", "z_linf": "1.71e-06"},
+      {"grid": [20, 10], "theta_linf": "7.98e-13", "z_linf": "1.62e-11"},
+      {"grid": [28, 14], "theta_linf": "2.28e-12", "z_linf": "7.75e-12"},
+      {"grid": [36, 18], "theta_linf": "2.02e-11", "z_linf": "4.18e-11"}
+    ]
+  },
+  "scope": "Independent local replay of the repository's published verification script. It verifies those symbolic and discretization checks execute with the pinned code. It does not reproduce the complete OpenAI force-pulse construction, establish the continuum theorem, validate all published parameter sweeps, or test molecular particle alignment.",
+  "limitations": [
+    "The source's raw parameter-sweep and cluster outputs were not independently reproduced.",
+    "The heat-exterior test shows decreasing discrete residual but does not provide a rigorous error bound for the full profile problem.",
+    "The manufactured-solution test compares the discrete operator to the symbolic residual for its chosen smooth profiles; it does not prove correctness for all profiles or boundary treatments.",
+    "The tested model is a leading-order similarity system, not the full finite-viscosity forced Navier-Stokes evolution."
+  ]
+}

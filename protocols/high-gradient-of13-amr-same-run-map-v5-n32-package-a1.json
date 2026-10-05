@@ -1,0 +1,15 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v5-n32-package-a1",
+  "scope": "Post-run evidence packaging policy; does not change solver inputs, execution protocol, or scientific acceptance.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+  "run_protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+  "archive": "evidence/of13-amr-same-run-map-v5-n32/amr-stage-snapshot-n32.tar.gz",
+  "included": "All input files, logs, manifest, build provenance, and six cell snapshots.",
+  "excluded": [
+    "postProcessing/amrStages/*/*_faces.csv",
+    "dynamicCode"
+  ],
+  "full_raw_case": "work/of13-amr-same-run-map-v5-n32/amr-n32-cap120000",
+  "full_raw_archives": "work/of13-amr-same-run-map-v5-n32/archive-recovery",
+  "scientific_limit": "No n=32 face-flux, divergence, or spectrum conclusion; excluded face snapshots are not required by the published n=32 cell mapping analysis."
+}

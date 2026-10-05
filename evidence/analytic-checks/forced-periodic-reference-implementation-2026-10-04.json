@@ -1,0 +1,41 @@
+{
+  "captured_at_utc": "2026-10-04T03:15:45Z",
+  "repository_commit_before_change": "29e7997094b288462ea26a381180e93e91c7f381",
+  "source": {
+    "paper": "https://arxiv.org/abs/2609.38210v1",
+    "equations": "(5.1), (5.4), Theorem 4.1",
+    "reference_module": "tools/forced_periodic_reference.py",
+    "reference_module_sha256": "d3db2f85805be767aa688c91e044a905b06f99032f841a4dcb13eace661de8e2",
+    "test_file": "tests/test_forced_periodic_reference.py",
+    "test_file_sha256": "a23969028fe2f387b3e541d55aafb54c41f3f009436c016abe9ae78a377c1041",
+    "symbolic_checker": "tools/check_forced_periodic_ns_candidate.py",
+    "symbolic_checker_sha256": "0f24d511c3e3b18dfa1d063e2e45c7a5262f7aa0a5bad2d7e7cb5d3e8fca3aef",
+    "symbolic_output_sha256": "538e4f7e9b4e79740a8ccb20b110fd681c04176f7eecd1ae7342711a8c42bdc6"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.5.2",
+    "sympy": "1.14.0",
+    "lockfile": "requirements-verification-locked.txt",
+    "lockfile_sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "focused_tests": {
+    "command": "uv run --no-project --with-requirements requirements-verification-locked.txt python -m pytest -q tests/test_forced_periodic_reference.py",
+    "result": "2 passed",
+    "log": "evidence/tests/forced-periodic-reference-2026-10-04.log",
+    "log_sha256": "ef928bb62c792326c60dd80ba441244c3ce8ecee21aba49586d9ab445bcae601"
+  },
+  "full_suite": {
+    "command": "uv run --no-project --with-requirements requirements-verification-locked.txt python -m pytest -q",
+    "result": "402 passed, 1 skipped, 89 subtests passed in 109.53s",
+    "log": "evidence/tests/forced-periodic-full-suite-2026-10-04-29e7997.log",
+    "log_sha256": "4a9a6ed68c241b3d75fe7858d85bdb70a1ea2dd310c20e9d591707a1237fae0c"
+  },
+  "verified_behaviors": [
+    "one independently evaluated nontrivial sample for velocity, gradient, pressure, and force",
+    "periodicity under 2*pi spatial translations",
+    "zero divergence at sampled points",
+    "existing exact SymPy residual and periodic-work identities replay byte-for-byte"
+  ],
+  "scope_limit": "This is a vectorized analytic reference control only. No OpenFOAM, SU2, or PhysicsNeMo adapter consumes it yet; no solver output, local-concentration behavior, particle dynamics, or physical transition is verified."
+}

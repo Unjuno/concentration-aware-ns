@@ -16,3 +16,38 @@ pilot reached all four residual thresholds at every step. The mapping between
 MMS time, history time and the updated solution remains unresolved; no local
 quality verdict is assigned. See docs/progress.md and evidence/su2.
 This adapter is our experiment, not an upstream SU2 change or proven bug fix.
+
+## Shared Fourier-envelope MMS
+
+`high_gradient.patch` is a separate adapter for the cross-solver reference in
+`protocols/su2-shared-high-gradient-v1.json`. It fixes frequency N=4 and
+implements the same analytic velocity and momentum forcing used by the
+OpenFOAM and PhysicsNeMo high-gradient cases. Its helper was compiled with GCC
+and matched the independent NumPy evaluator at 257 seeded points; this check
+does not cover SU2 linking, the solver residual path, or time integration.
+
+Build it with:
+
+```sh
+docker build --platform linux/arm64 -f runtime/su2/Dockerfile.high-gradient -t cans-su2-high-gradient runtime/su2
+```
+
+The candidate study retains the historical Gaussian adapter and archives each
+case, run log, time history, sampled quality metrics, protocol hash, and image
+identity separately. The source patch remains under SU2's LGPL-2.1-or-later
+terms.
+
+The frozen shared-MMS matrix workflow builds the adapter image once, distributes
+that exact image to one parallel worker per frozen case, verifies each loaded
+image ID, then aggregates and replays the case archives. Matrix coverage is
+reported independently of each case's standard residual gate. The 360-minute
+serial pilot at run `37190363204` did not finish; its partial evidence and
+replay are recorded in
+`reports/su2-shared-high-gradient-incomplete-2026-10-05.md`.
+
+After downloading a completed matrix artifact, replay its archive and
+postprocessing checks with:
+
+```sh
+python -m tools.replay_su2_high_gradient_study --root path/to/run --output evidence/tests/su2-shared-high-gradient-replay.json
+```

@@ -1,0 +1,14 @@
+[
+  "docker",
+  "run",
+  "--rm",
+  "--name",
+  "cans-su2-hg-n32-dt0.001",
+  "-e",
+  "OMP_NUM_THREADS=2",
+  "-v",
+  "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/su2-shared-high-gradient-v1/run/cases/n32-dt0.001:/case",
+  "cans-su2-high-gradient",
+  "SU2_CFD",
+  "case.cfg"
+]

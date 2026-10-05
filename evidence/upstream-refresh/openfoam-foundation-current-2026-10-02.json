@@ -1,0 +1,106 @@
+{
+  "observed_at_utc": "2026-10-02T19:02:00Z",
+  "target": "OpenFOAM Foundation",
+  "current_release": {
+    "version": "14",
+    "released_at": "2026-07-14",
+    "patch_release_news_at": "2026-07-25",
+    "official_release_url": "https://openfoam.org/version/14/",
+    "contribution_guidance_url": "https://openfoam.org/dev/how-to-contribute/"
+  },
+  "current_repository": {
+    "url": "https://github.com/OpenFOAM/OpenFOAM-14",
+    "default_branch": "master",
+    "head": "162fa7a2e51e9c9a86c3000efdd885907f7d1acc",
+    "head_commit_at": "2026-09-30T14:42:37Z",
+    "pushed_at": "2026-09-30T14:43:23Z",
+    "github_license_api": "NOASSERTION",
+    "license_file": "COPYING",
+    "license_text": "GNU GPL version 3 or later",
+    "readme": "README.org (OpenFOAM Foundation, dated 2026-07-14)",
+    "open_issue_inventory": [
+      {
+        "number": 3,
+        "title": "Core dumped in tutorial circuitBoardCooling",
+        "state": "open",
+        "url": "https://github.com/OpenFOAM/OpenFOAM-14/issues/3",
+        "relevance": "Unrelated to the benchmark's static, single-phase incompressibleFluid and AMR paths"
+      }
+    ],
+    "open_pull_requests": [
+      {"number": 1, "title": "paraview: Quote library directory comparison", "url": "https://github.com/OpenFOAM/OpenFOAM-14/pull/1"},
+      {"number": 2, "title": "VTK: support unversioned include directories", "url": "https://github.com/OpenFOAM/OpenFOAM-14/pull/2"}
+    ]
+  },
+  "contribution_policy": {
+    "preferred_development_line": "OpenFOAM-dev",
+    "first_contact": "Foundation issue tracking system",
+    "report_expectations": ["reproducible convenient test case", "responsive follow-up", "run tests"],
+    "significant_fix_or_new_development": "OpenFOAM Foundation Contributor Agreement required",
+    "code_quality_and_style_guides": true,
+    "source_url": "https://openfoam.org/dev/how-to-contribute/"
+  },
+  "foundation_tracker_access": {
+    "url": "https://bugs.openfoam.org/",
+    "all_issues_path": "/view_all_bug_page.php",
+    "observed_http_chain": [302, 200],
+    "redirect_location": "/login_page.php?return=%2Fview_all_bug_page.php",
+    "interpretation": "Issue listing requires tracker login in this environment; individual issue pages returned HTTP 403 to the browser fetcher. Targeted public-index search records below do not constitute an exhaustive live tracker audit.",
+    "targeted_indexed_search": {
+      "queries": [
+        "site:bugs.openfoam.org refinementHistory",
+        "site:bugs.openfoam.org OpenFOAM-14 incompressibleFluid crash",
+        "site:bugs.openfoam.org PIMPLE v14",
+        "site:bugs.openfoam.org maxCells dynamicRefineFvMesh",
+        "site:bugs.openfoam.org 2026 max incompressibleFluid",
+        "site:bugs.openfoam.org 2026 PIMPLE solver",
+        "site:bugs.openfoam.org dynamicRefineFvMesh 2026",
+        "site:bugs.openfoam.org continuous extrema solver"
+      ],
+      "records": [
+        {
+          "id": 4178,
+          "title": "fvSolution/PIMPLE controls do nothing",
+          "url": "https://bugs.openfoam.org/view.php?id=4178",
+          "indexed_state": "resolved",
+          "disposition": "Historical PIMPLE-control report; no demonstrated match to the benchmark's static forced-flow path."
+        },
+        {
+          "id": 3928,
+          "title": "dynamicMesh: refiner does not write refinementHistory correctly",
+          "url": "https://bugs.openfoam.org/view.php?id=3928",
+          "indexed_state": "resolved",
+          "disposition": "Historical refinement-history report; does not establish a current fixed-mesh solver defect."
+        },
+        {
+          "id": 4378,
+          "title": "regenerate_ not being initialised if cellZone is defined without dictionary",
+          "url": "https://bugs.openfoam.org/view.php?id=4378",
+          "indexed_state": "resolved by commit 8934736737882fe4f1ecb6df68d7f6fd209c379e",
+          "disposition": "June 2026 parallel zone-generation crash on a distinct code path."
+        },
+        {
+          "id": 4282,
+          "title": "propellerDisk model has no effect with incompressibleFluid",
+          "url": "https://bugs.openfoam.org/view.php?id=4282",
+          "indexed_state": "closed as suspended development request",
+          "disposition": "Reporter accepted that incompressibleFluid support was outside the model's specified scope."
+        }
+      ],
+      "limitations": [
+        "Search engine coverage and crawl dates are incomplete.",
+        "Direct Mantis issue pages could not be fetched in this environment.",
+        "No claim of exhaustive tracker clearance is made."
+      ]
+    }
+  },
+  "benchmark_coverage": {
+    "basis": "Foundation 13 six-case matrix plus a Foundation 14 package 20260724 n=64, dt=0.001 single-case compatibility probe",
+    "v14_probe_record": "evidence/of14-high-gradient-v1/v13-v14-comparison.json",
+    "v14_probe_result": "Endpoint sampled fields and five diagnostics exactly match the Foundation 13 case after version-banner normalization; one resolution/time-step only.",
+    "full_v14_matrix": "not run",
+    "continuous_gradient_extrema": "uncertified",
+    "amr_version_14": "not audited",
+    "disposition": "No new upstream defect reproduced; do not file an issue. Preserve Foundation 13 matrix verdicts and identify Foundation 14 evidence as a limited compatibility probe."
+  }
+}

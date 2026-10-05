@@ -1,0 +1,13 @@
+{
+  "scope": "Final local Python suite and archive fixture correction; no CFD rerun",
+  "python_suite": "260passed,1skipped,57subtests",
+  "log_sha256": "342cf394744ddd8814d6bfdf98dc3c38eef20fff5460cffa631c5baeb8876cbb",
+  "replay_sha256": "83e0f7f8a942dfcb4b52b40230d11524455a59960dbc30f7490dbf0860be5983",
+  "archive_fixture_test_sha256": "8d5b43a6979b9b23365f18a2f2f38f5b8425af7b0bbdae373ff895a53cc3cef9",
+  "input_science_sources_unchanged_since": "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1",
+  "hosted_operator_run": 37118442037,
+  "initial_python_ci_run": 37118442033,
+  "initial_python_ci_status": "3synthetic archive fixture failures;256passed;fixed dynamic app/Dockerfile fixture",
+  "final_hosted_python_ci": "Separate publication check; not yet observed when this local record was written",
+  "recorded_at_utc": "2026-10-03T11:24:37.115881+00:00"
+}

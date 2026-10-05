@@ -1,0 +1,681 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/3frgOlbjEAYJ8tzfXBraQrcnUAo</id>
+  <title>arXiv Query: search_query=all:"Navier-Stokes" AND submittedDate:"202609270000 TO 202610042359"&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <updated>2026-10-04T05:54:29Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:%22Navier-Stokes%22+AND+submittedDate:%22202609270000+TO+202610042359%22&amp;start=0&amp;max_results=100&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>100</opensearch:itemsPerPage>
+  <opensearch:totalResults>32</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2610.01487v1</id>
+    <title>The Vanishing-Diffusion Limit of an Incompressible Visco-Morphoelastic System: Weak Solutions and a Jaumann Defect</title>
+    <updated>2026-10-01T11:29:56Z</updated>
+    <link href="https://arxiv.org/abs/2610.01487v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.01487v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study an incompressible visco-morphoelastic system in three dimensions in which the Eulerian effective strain is transported by the Zaremba-Jaumann rate and coupled to a Navier-Stokes momentum balance through a Kelvin-Voigt stress. The strain remains symmetric and splits into a scalar transport-relaxation equation for its trace and a deviatoric equation containing the nonlinear stretching and Jaumann terms. We regularize both equations by diffusion of order $\varepsilon$, which admits a mechanical interpretation as weakly nonlocal remodeling with a characteristic length scale. For fixed $\varepsilon&gt;0$ we construct Leray-Hopf type weak solutions by a truncated Galerkin scheme and remove the truncation a posteriori using a maximum principle for the scalar variable. As $\varepsilon\to0$, the scalar variable converges strongly in $L^p((0,T)\timesΩ)$ for every $1\le p&lt;\infty$, by a DiPerna-Lions commutator argument on bounded Lipschitz domains, allowing the stretching term to be identified in the limit. In contrast, the Jaumann commutator is a product of two weakly convergent sequences, and its limit cannot be identified from the available estimates. We therefore obtain a defect \[\boldsymbol{\mathcal{D}}\in L^2(0,T;(H^2(Ω;\mathbb{S}_0))^\ast)\] in the limiting deviatoric equation. We give two sufficient conditions for $\boldsymbol{\mathcal{D}}=0$. The energy-level cancellation used in related corotational viscoelastic models does not close here because the coefficient of the stretching term is itself an unknown.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-01T11:29:56Z</published>
+    <arxiv:comment>30 pages</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Swarupananda Banerjee</name>
+    </author>
+    <author>
+      <name>Amartya Chakrabortty</name>
+    </author>
+    <author>
+      <name>Hari Shankar Mahato</name>
+    </author>
+    <author>
+      <name>Raja Sekhar G P</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.01239v1</id>
+    <title>Structure of Convective-Reactive Zone in a Supernova Progenitor</title>
+    <updated>2026-10-01T07:37:47Z</updated>
+    <link href="https://arxiv.org/abs/2610.01239v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.01239v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Convective-reactive events are phases of stellar evolution where turbulent mixing and nuclear burning directly compete, since their timescales become similar within convection zones. During these events the convection zone structure is shaped by a complex and dynamic interaction of convective transport and nuclear burning of individual chemical elements, with plasma streams connecting the entrainment regions with the burning layers. Here we analyse a 3D hydrodynamic simulation of an oxygen--neon shell merger in a massive pre-supernova star. We study the emergent structure using the Reynolds-Averaged Navier-Stokes (RANS) mean-field composition transport equation. We find that the merged convective zone develops a complex, turbulence-driven mixing structure of multiple nested convective-reactive shells, all contained within the single convection zone. Key controlling factors include not only the mean stratification and mixing, but also emergent collective behaviour of involved nuclear reactions for every chemical isotope. Almost all layers show a quasi-steady balance between burning and mixing. We categorise the various layers, and discuss/contrast with 1D stellar evolution code treatments, highlighting some implications.</summary>
+    <category term="astro-ph.SR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="astro-ph.HE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-01T07:37:47Z</published>
+    <arxiv:primary_category term="astro-ph.SR"/>
+    <author>
+      <name>M. Mocak</name>
+    </author>
+    <author>
+      <name>C. Meakin</name>
+    </author>
+    <author>
+      <name>F. Rizzuti</name>
+    </author>
+    <author>
+      <name>S. W. Campbell</name>
+    </author>
+    <author>
+      <name>V. Varma</name>
+    </author>
+    <author>
+      <name>R. Hirschi</name>
+    </author>
+    <author>
+      <name>C. Georgy</name>
+    </author>
+    <author>
+      <name>W. D. Arnett</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00811v1</id>
+    <title>A relaxation system for the low-Mach limit of kinetic equations: Stability and higher order asymptotic preserving scheme</title>
+    <updated>2026-09-30T23:09:19Z</updated>
+    <link href="https://arxiv.org/abs/2610.00811v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.00811v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This work introduces a hyperbolic relaxation system designed for the simulation of kinetic equations in the low-Mach number limit. The methodology is built upon a micro-macro decomposition of the scaled BGK model, which reformulates the kinetic distribution function into a coupled system consisting of a macroscopic equilibrium part and a microscopic non-equilibrium remainder. By projecting the microscopic deviations onto a set of orthogonal polynomials, we derive a closed moment relaxation system. The resulting system is a version of Grad's 13 moment system with a linear hyperbolic part and a relaxation adapted to the incompressible limit. We prove the model's structural stability in the incompressible Navier-Stokes limit. Moreover, we develop a high order Asymptotic-Preserving (AP) numerical framework using Implicit-Explicit (IMEX) Runge Kutta schemes for temporal accuracy and finite difference WENO reconstructions as well as central difference approximations for high order spatial resolution. The proposed scheme ensures uniform stability and consistency across different physical regimes, automatically degenerating into a consistent high order discretization of the incompressible thermal Navier-Stokes limit as the scaling parameter vanishes. Numerical experiments in one and two dimensions corroborate the theoretical findings, demonstrating significant reductions in computational cost and robust performance across a wide range of Knudsen and Mach numbers.</summary>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T23:09:19Z</published>
+    <arxiv:comment>34 figures, 4 tables</arxiv:comment>
+    <arxiv:primary_category term="math.NA"/>
+    <author>
+      <name>Giacomo Dimarco</name>
+    </author>
+    <author>
+      <name>Axel Klar</name>
+    </author>
+    <author>
+      <name>Theresa Köfler</name>
+    </author>
+    <author>
+      <name>Lorenzo Pareschi</name>
+    </author>
+    <author>
+      <name>Sudarshan Tiwari</name>
+    </author>
+    <author>
+      <name>Yizhou Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00732v1</id>
+    <title>Global weak varifold solutions to Navier-Stokes/Mean Curvature Flow system</title>
+    <updated>2026-09-30T21:24:22Z</updated>
+    <link href="https://arxiv.org/abs/2610.00732v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.00732v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The Navier-Stokes/Mean Curvature Flow system describes a two-phase flow of incompressible, viscous and immiscible fluids separated by a sharp interface, whose evolution is governed by a convective mean curvature flow equation, coupled to a two-phase Navier-Stokes equation accounting for surface tension. Among others, this model describes the dynamics of dry foams and it also arises as a sharp interface limit of Navier-Stokes/Allen-Cahn systems with non-vanishing mobility. Despite this wide range of applications, global-in-time existence of any kind of weak solutions remains a challenging open problem. In this work, we introduce a novel notion of varifold weak solution in two and three ambient dimensions, based on a sharp energy dissipation principle à la De Giorgi, and we show for the first time the unconditional global-in-time existence of such a weak solution. We also show, by means of a relative entropy approach, that any classical solution to the Navier-Stokes/Mean Curvature Flow system is unique in the class of our new weak varifold solutions.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.DG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T21:24:22Z</published>
+    <arxiv:comment>50 pages, comments are welcome</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Andrea Poiatti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39914v1</id>
+    <title>Cluster Attention Neural Operators for Solving Parametric Partial Differential Equations</title>
+    <updated>2026-09-30T15:06:43Z</updated>
+    <link href="https://arxiv.org/abs/2609.39914v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39914v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Traditional simulations of parametric partial differential equations (PDEs) rely on repetitive computations for each parameter, which makes high-fidelity design impractical. Neural operators address this issue by learning solution operators, accelerating parameter-space mapping by orders of magnitude. Recent Transformer-based neural operators attempt to capture global dependencies, but often at the cost of quadratic attention complexity. Transolver resolves this problem by projecting physical states into a reduced slice space for attention computation. Although fast, this projection sacrifices fine spatial information. Moreover, by operating in this reduced space with shared weights across attention heads, it may constrain the model's flexibility, thereby limiting its capacity to capture complex phenomena. To address these issues, we propose the Cluster Attention Neural Operator (CANO), which reformulates attention via a novel cross-attention mechanism that dynamically clusters queries while preserving full-resolution keys and values. This avoids slice compression loss and removes weight-sharing limits. At the same time, the model remains fast without losing global interactions. Empirically, CANO achieves state-of-the-art performance across canonical PDE benchmarks, covering fluid and solid dynamics (e.g., Navier-Stokes, Airfoil, Plasticity), irregular unstructured geometries (e.g., Pipe Turbulence, Composites), and long-term temporal rollouts. Across solid deformation and turbulent flow benchmarks, CANO achieves lower errors than baselines and exhibits strong geometric adaptability and temporal consistency.</summary>
+    <category term="math-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.DS" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T15:06:43Z</published>
+    <arxiv:comment>30 pages, 9 figures</arxiv:comment>
+    <arxiv:primary_category term="math-ph"/>
+    <author>
+      <name>Ming Zhong</name>
+    </author>
+    <author>
+      <name>Antonio Colanera</name>
+    </author>
+    <author>
+      <name>Gianluigi Rozza</name>
+    </author>
+    <author>
+      <name>Zhenya Yan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39900v1</id>
+    <title>Low Mach number limit of a two-phase flow model in $\mathbb{R}^3$</title>
+    <updated>2026-09-30T15:01:26Z</updated>
+    <link href="https://arxiv.org/abs/2609.39900v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39900v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study the simultaneous low Mach number limit of a compressible Navier--Stokes--Euler two-phase system in $\mathbb R^3$, in which the pressure terms in both phases are scaled by $\varepsilon^{-2}$. For sufficiently small $H^3$-perturbations around the constant equilibrium, we establish the global well-posedness of the scaled compressible system and derive global energy-dissipation estimates that are uniform with respect to the Mach number $\varepsilon$. A key feature of the analysis is the degenerate dissipation structure: viscosity acts only on the Navier--Stokes phase, while the drag coupling transfers dissipation to the inviscid Euler phase through the relaxation mode. We then prove the global well-posedness and large-time decay of the limiting incompressible two-phase system, and show that the relative velocity $u-ω$ decays faster than the full velocity pair. Finally, for the well-prepared initial data, we introduce pressure-corrected acoustic variables to remove the singular pressure mismatch and establish a global-in-time $H^2$-error. As a result, the scaled compressible solutions converge uniformly in time to the corresponding solution of the limiting incompressible system.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T15:01:26Z</published>
+    <arxiv:comment>32 pages. All comments are welcome</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Fucai Li</name>
+    </author>
+    <author>
+      <name>Jinkai Ni</name>
+    </author>
+    <author>
+      <name>Zhipeng Zhang</name>
+    </author>
+    <author>
+      <name>Zhu Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39826v1</id>
+    <title>Is Vorticity Amplification Essential for Anomalous Dissipation and Intermittency in Turbulence?</title>
+    <updated>2026-09-30T14:27:34Z</updated>
+    <link href="https://arxiv.org/abs/2609.39826v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39826v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The distinct dynamical roles of vorticity amplification (VA) and vortex tilting (VT) in three-dimensional homogeneous isotropic turbulence are investigated using direct numerical simulations of a modified Navier--Stokes system. By selectively suppressing VA while retaining VT, we demonstrate that gradient amplification by VA is strictly required to sustain the classical forward energy cascade. Progressively suppressing VA weakens small-scale velocity gradients, heavily depletes extreme fluctuations, and entirely eliminates the classical energy dissipative anomaly, causing the normalized energy dissipation to decay as $Re_λ^{-1}$. In the limit of complete VA suppression, enstrophy emerges as the relevant inviscid invariant. Scale-by-scale budget analyses confirm that the dynamics transition to a purely forward enstrophy cascade, characterized by an anomalous enstrophy dissipation and a robust $E(k) \sim k^{-3}$ intermediate energy spectrum. We verify that these asymptotic scaling limits---including a $Re_λ^{-1/2}$ finite-Reynolds-number correction for the enstrophy anomalous dissipation---are universal properties of the VA-suppressed dynamics, independent of whether the large-scale forcing is helical or non-helical. Remarkably, despite the smoothing of the velocity field and the elimination of the energy dissipative anomaly, anomalous structural scaling and a broad multifractal spectrum persist. These results reveal a fundamental mechanistic separation: while VA is responsible for amplifying intense localized fluctuations, geometric reorganization by VT alone is mechanically sufficient to sustain multifractal intermittency.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T14:27:34Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Alessandro Chiarini</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39291v1</id>
+    <title>Physics-Informed Method of Group Data Handling: Adaptive Construction of Functional Representations with an Application to the Navier-Stokes Equations</title>
+    <updated>2026-09-30T08:37:26Z</updated>
+    <link href="https://arxiv.org/abs/2609.39291v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39291v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Physics-informed computational methods usually optimize parameters within a functional representation whose structure is fixed in advance. This work proposes a Physics-Informed Method of Group Data Handling (PI-GMDH), in which representations of coupled physical fields are progressively constructed during solution. Candidate functional directions are evaluated through the first variation of the complete physical and observational objective, introduced in packages, and followed by block-coordinate damped Gauss-Newton coefficient optimization. The framework is demonstrated with tensor-product Chebyshev functions on the incompressible Navier-Stokes equations using a two-dimensional time-dependent Taylor-Green benchmark. Under the tested configuration, adaptive PI-GMDH reached validation and held-out test losses of 5.299e-19 and 5.296e-19 with 204, 201, and 175 active functions for u, v, and p. Complete degree-by-degree and all-terms PI-GMDH variants, together with selected PINN and KAN reference configurations, are used to examine the effect of structural construction policy. The results show that, for this controlled synthetic benchmark, selective progressive construction can provide a favorable combination of accuracy, representation size, and wall-clock time. The comparison is illustrative rather than a claim of universal superiority over alternative physics-informed approaches.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T08:37:26Z</published>
+    <arxiv:comment>15 pages, 3 figures, 1 table; source code available at https://github.com/mininmy/PIMGDH</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Mykhailo Minin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39170v1</id>
+    <title>Quantum Frozen--Oseen homotopy analysis method with LCHS for solving nonlinear partial differential equations</title>
+    <updated>2026-09-30T07:30:21Z</updated>
+    <link href="https://arxiv.org/abs/2609.39170v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39170v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Nonlinear partial differential equations (PDEs) underpin computational fluid dynamics, yet resolving nonlinear transport on fine grids remains computationally demanding. Quantum linear-evolution algorithms offer a possible route to large-scale simulation but cannot directly propagate nonlinear coupling. Here we develop a Frozen--Oseen quantum homotopy method (FOQHAM) framework that links transport-aware auxiliary-operator selection to the size of the resulting linear representation. We freeze the full Fréchet derivative at a prescribed flow profile, retaining transport and profile-gradient coupling and close each prescribed finite-order homotopy hierarchy as a fixed affine linear system by product lifting. We formulate its propagation through Linear Combinations of Hamiltonian Simulations (LCHS), without outer homotopy iterations or profile updates. For spatially semidiscrete equations, we establish local approximation bounds and exact closure of the finite-order hierarchy. Classical tests on Burgers, Korteweg--de Vries, Zakharov--Kuznetsov, and one- and two-dimensional isothermal compressible Navier--Stokes equations provide numerical evidence of accurate non-iterative approximations in the tested regimes. The framework thus connects nonlinear PDE approximation to quantum linear evolution and offers a conditional path toward quantum acceleration.</summary>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="quant-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T07:30:21Z</published>
+    <arxiv:comment>52 pages, 7 figures</arxiv:comment>
+    <arxiv:primary_category term="math.NA"/>
+    <author>
+      <name>Jinhao Yuan</name>
+    </author>
+    <author>
+      <name>Leyu Chen</name>
+    </author>
+    <author>
+      <name>Tiegang Liu</name>
+    </author>
+    <author>
+      <name>Kun Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.38916v1</id>
+    <title>Warm-starting PDE solvers with any-dimensional machine learning</title>
+    <updated>2026-09-30T04:01:04Z</updated>
+    <link href="https://arxiv.org/abs/2609.38916v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.38916v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Any-dimensional machine learning models, such as graph neural networks (GNNs), can be naturally trained and evaluated on inputs of different sizes and dimensions. Inspired by the GNN transferability literature, we show mathematical conditions under which a partial differential equation (PDE) learning-based solver can be trained in small dimensions and directly applied to solve a higher dimensional PDE in a zero-shot fashion. These conditions are based on symmetries in both the partial differential equation and the initial data. When the equations satisfy the symmetries but the data does not, which is the case for many PDEs arising from physics, we show that our theory gives a principled way of warm-starting low-dimensional PDE solvers for higher dimensional PDEs. We apply this method on the heat equation, Burgers' equation, and the compressible Navier--Stokes equations, improving the performance in both zero-shot and typical training regimes on high dimensional data. For example, we train a surrogate model on 2D Navier--Stokes data and achieve better results on 3D test data than a baseline surrogate model trained on 3D data, while only using 12$\%$ of the flops and 20$\%$ of the total data size.</summary>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T04:01:04Z</published>
+    <arxiv:comment>29 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="stat.ML"/>
+    <author>
+      <name>Wilson G. Gregory</name>
+    </author>
+    <author>
+      <name>George A. Kevrekidis</name>
+    </author>
+    <author>
+      <name>Ben Blum-Smith</name>
+    </author>
+    <author>
+      <name>Soledad Villar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.38517v1</id>
+    <title>Does Text Steer Neural PDE Surrogates? A Controlled Diagnostic with OperatorCLIP</title>
+    <updated>2026-09-29T20:37:15Z</updated>
+    <link href="https://arxiv.org/abs/2609.38517v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.38517v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Lower error from a text-conditioned neural surrogate does not, by itself, show that the model uses the meaning of the text. We examine this attribution problem with OperatorCLIP, comparing an unconditioned FNO, a constant-sentence FiLM control, and a fixed task description trained with contrastive alignment. Three-seed experiments cover Darcy2D, ShallowWater2D, and three-dimensional compressible Navier-Stokes (CNS3D). Constant conditioning has lower mean test error on both 2D tasks. Relative to this control, task text plus alignment has a similar mean on ShallowWater2D and CNS3D and a higher mean on Darcy2D; these descriptive comparisons have substantial seed uncertainty. The latter comparison changes both prompt content and loss, so it isolates neither effect. The text encoder is trained from scratch, and each conditioned model sees only one description during training. In this regime, pairwise InfoNCE cannot identify matched pairs and has minimum $\log B$. Prompt interventions show no reliable semantic ordering. This methodological caution demonstrates why pathway controls are needed; it neither establishes semantic competence of the encoder nor tests the effectiveness of text under varying physical context.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T20:37:15Z</published>
+    <arxiv:comment>8 pages, 2 figures, 2 tables. Accepted to NeurIPS 2026 Workshop on Representation for the Physical Sciences</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Aadi Dash</name>
+    </author>
+    <author>
+      <name>Lennon J. Shikhman</name>
+    </author>
+    <author>
+      <name>Michael Galarnyk</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.38351v1</id>
+    <title>Three-Dimensional Simulation of Flood Propagation at Syabrubesi, Nepal</title>
+    <updated>2026-09-29T18:12:11Z</updated>
+    <link href="https://arxiv.org/abs/2609.38351v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.38351v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Three-dimensional flood propagation through the Bhote Koshi--Langtang Khola junction at Syabrubesi, Nepal, is studied using an incompressible free-surface model. The calculation is motivated by the August 2026 flood and examines the passage of an imposed inflow through the local bends and changes in channel width. The Navier--Stokes equations and an interface transport equation are solved on unstructured tetrahedral meshes constructed from pre-event terrain data. For an inlet speed of $10\,\mathrm{m\,s^{-1}}$, the solution indicates surface speeds above $40\,\mathrm{m\,s^{-1}}$. The advancing front spreads across the junction; as the flow develops, water deepens and slows around the bend. Higher speeds persist in the confined upstream and downstream regions.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T18:12:11Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Rainald Löhner</name>
+    </author>
+    <author>
+      <name>Harbir Antil</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.38049v1</id>
+    <title>Improving Function Space Flow Matching with Kernel Optimal Transport</title>
+    <updated>2026-09-29T17:20:54Z</updated>
+    <link href="https://arxiv.org/abs/2609.38049v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.38049v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative models for function-valued data, such as time series and solutions of partial differential equations, must learn distributions over infinite-dimensional spaces. Functional Flow Matching (FFM) extends Flow Matching to this setting, learning a velocity field whose flow transports a Gaussian prior to the data distribution, but it inherits the independent endpoint pairing of standard Flow Matching: in each batch, prior and data samples are matched arbitrarily, so the conditional bridge must traverse both the shared global structure of the dataset and instance-specific residuals. In function space this is harder to fix than in finite dimensions, since optimal transport (OT) on function spaces is delicate to formulate and a flat Euclidean surrogate ignores the geometry that distinguishes function-valued data. We propose kernel Functional Flow Matching (kFFM), which replaces the independent pairing by entropic OT under a kernel-induced cost, the coupling underlying the Hilbert Sinkhorn Divergence (HSD), leaving the FFM neural-operator architecture unchanged. We prove that the kernel cost and the HSD objective are uniformly bounded and well-posed on Banach ambient spaces, derive an error decomposition against quadratic-cost OT on compact metric spaces that isolates an irreducible kernel-cost mismatch term, and prove a discretization-invariance bound whose rate is governed by Sobolev regularity. Empirically, kFFM improves distributional matching over FFM, diffusion, adversarial, and finite-dimensional OT baselines on time-series and PDE benchmarks, with significant paired-seed gains over FFM and improvements that persist under non-kernel and physics-based diagnostics, including a turbulent Navier-Stokes benchmark. Bounded kernel costs already outperform raw $L^2$ Sinkhorn, and function-space-aware kernels (signature, Sobolev RBF) give further gains on rough or path-valued data.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T17:20:54Z</published>
+    <arxiv:comment>Paper is already accepted at Neurips</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Fred Xu</name>
+    </author>
+    <author>
+      <name>Thomas Markovich</name>
+    </author>
+    <author>
+      <name>Barbora Barancikova</name>
+    </author>
+    <author>
+      <name>Yizhou Sun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.37977v1</id>
+    <title>Boundary Layers and Initial-Boundary Corner Asymptotics for the 2D Navier-Stokes Equations with Vanishing Vertical Viscosity</title>
+    <updated>2026-09-29T16:44:39Z</updated>
+    <link href="https://arxiv.org/abs/2609.37977v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.37977v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Motivated by anisotropic viscosity in geophysical fluid dynamics, where vertical momentum diffusion is often much weaker than horizontal diffusion and may be negligible in the interior yet remains essential near a solid wall, we study the vanishing vertical viscosity limit for the two-dimensional incompressible Navier--Stokes equations in the upper half-plane, with horizontal viscosity fixed at one and vertical viscosity \(\varepsilon^2\). For arbitrary divergence-free \(H^4\) no-slip initial data, with no time-differentiated compatibility conditions required, we construct the limiting horizontally viscous flow and the boundary-layer profiles on every prescribed finite interval \([0,T]\). The leading-order corrected approximation has \(O(\varepsilon)\) error in \(L^\infty\), and the full finite-order expansion reduces this error to \(O(\varepsilon^{3/2})\), uniformly down to \(t=0\). We further describe the development of the layer from data that vanish initially at the wall. At the initial--boundary corner, we determine the first two self-similar coefficients and characterize matching through exact profile tails, thereby separating the fixed-time scale \(\varepsilon\) from the short-time scale \(\varepsilon\sqrt t\). When the initial wall acceleration is nonzero, both the leading correction rate and the first normalized corner remainder are sharp. Finally, continuity estimates for fixed data yield joint small-time and small-viscosity limits for the exact solution, as well as finite-\(L^p\) asymptotics.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T16:44:39Z</published>
+    <arxiv:comment>91 pages</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Siwei Chen</name>
+    </author>
+    <author>
+      <name>Yinghui Wang</name>
+    </author>
+    <author>
+      <name>Weihao Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.37860v1</id>
+    <title>Finite-Time Vanishing of Vacuum and Large-Time Behavior of the Multi-Dimensional Degenerate Compressible Navier-Stokes Equations with Large Spherically Symmetric Initial Data</title>
+    <updated>2026-09-29T15:45:05Z</updated>
+    <link href="https://arxiv.org/abs/2609.37860v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.37860v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we study the two- and three-dimensional barotropic compressible Navier-Stokes equations with degenerate density-dependent viscosity coefficients in the whole space or in a ball for arbitrarily large spherically symmetric initial data. For initial data allowing vacuum, we establish the global existence of weak solutions and derive uniform-in-time a priori estimates. As a consequence, we prove that the vacuum state of weak solutions will vanish in finite time. The key ingredients include a treatment of the pressure terms based on separate estimates in the low- and high-density regions, the Bresch-Desjardins entropy estimates, weighted radial estimates, and a coupled control of the velocity and effective velocity. In the three-dimensional case, this approach also allows us to treat the endpoint case of the adiabatic exponent. For sufficiently regular initial data with strictly positive density, we establish the global existence and large-time behavior of classical solutions.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T15:45:05Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Qinghao Lei</name>
+    </author>
+    <author>
+      <name>Zhilei Liang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.36567v1</id>
+    <title>Shock profiles for the Navier--Stokes--Fourier--Poisson system under the Boltzmann relation</title>
+    <updated>2026-09-29T02:50:13Z</updated>
+    <link href="https://arxiv.org/abs/2609.36567v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.36567v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The one-dimensional compressible Navier--Stokes--Fourier--Poisson system under the Boltzmann relation is studied for the existence of small-amplitude viscous shock profiles connecting the Rankine--Hugoniot states of the quasineutral Euler system with effective pressure $P_{\mathrm{eff}}=ρ(θ+1)$. This profile is unique up to translation, of Lax type, and orbitally stable in time without a zero-mass assumption on the perturbation. The proof is based on a center-manifold reduction of the traveling-wave ODE and on the method of $a$-contraction with shifts, together with a relative-entropy functional augmented by electric energy and a sharp estimate of the viscous flux associated with $P_{\mathrm{eff}}$.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T02:50:13Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Renjun Duan</name>
+    </author>
+    <author>
+      <name>Rui Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35590v1</id>
+    <title>High-order energy diminishing ALE-SAV finite element methods for two-phase Navier--Stokes flow</title>
+    <updated>2026-09-28T16:42:53Z</updated>
+    <link href="https://arxiv.org/abs/2609.35590v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35590v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We develop a high-order fully discrete ALE-SAV finite element method for sharp-interface two-phase Navier--Stokes flow that satisfies a discrete energy dissipation law. We introduce an SAV reformulation to ensure the stable treatment of the surface and gravitational potential energies, together with an energy-stable ALE transfer operator that controls the density-weighted kinetic energy across moving meshes. The resulting scheme is linear and satisfies a modified energy-dissipation inequality. Numerical experiments, including rising-bubble benchmarks, demonstrate the robustness of the method and confirm second-order convergence in time and arbitrarily high-order convergence in space.</summary>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T16:42:53Z</published>
+    <arxiv:primary_category term="math.NA"/>
+    <author>
+      <name>Shu Ma</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35531v1</id>
+    <title>Latent Twin Operator</title>
+    <updated>2026-09-28T16:13:38Z</updated>
+    <link href="https://arxiv.org/abs/2609.35531v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35531v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Surrogate models deployed on real physical systems rarely see data at fixed resolutions: sensor configurations vary across deployments and may evolve over time as sensing infrastructure changes. We introduce the Latent Twin Operator (LTO), a latent-space surrogate for time-evolving PDEs with a Convolutional Conditional Neural Process (ConvCNP)-style encoder and decoder that accepts a context set of $N$ sensor observations with arbitrary placement and can be queried at any resolution. A learned latent evolution map advances the encoded state directly between arbitrary time points, decoupling temporal evolution from the observation and query discretizations. We derive an explicit $\mathcal{O}(N^{-2/(3D)})$ rate for the context discretization error in spatial dimension $D$ under quasi-uniform refinement. We verify the predicted decay empirically on a 2D heat-equation benchmark. Across time-dependent PDE benchmarks, LTO achieves strong accuracy under one-step comparisons and transfers from native to coarser spatial resolutions with fixed parameters. On Navier--Stokes, its direct latent evolution further reduces error over longer prediction horizons relative to recursive evaluation.</summary>
+    <category term="cs.CE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T16:13:38Z</published>
+    <arxiv:comment>17 pages, 2 figures, 5 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CE"/>
+    <author>
+      <name>Deepanshu Verma</name>
+    </author>
+    <author>
+      <name>Riley Chen</name>
+    </author>
+    <author>
+      <name>Matthias Chung</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35406v2</id>
+    <title>Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder</title>
+    <updated>2026-09-29T11:39:50Z</updated>
+    <link href="https://arxiv.org/abs/2609.35406v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35406v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper gives a readable and accessible version of the profile-construction part of OpenAI's manuscript "Finite Time Blowup for Navier-Stokes". We regard OpenAI's work as a major advance on the Navier-Stokes Millennium Prize Problem. The profiles are smooth and axi-symmetric. Inserting them into the Navier-Stokes equations gives a residual consisting of a divergence-form term and a remainder vanishing to infinite order in $1-t$ on fixed similarity sectors. The associated stress and radial shear satisfy the admissible cone condition. The stress need not be small. We introduce a new linear model that provides a clearer explanation of the inner core construction. The cancellation by oscillatory pulses will be treated in the companion paper "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part II: Residual Correction via Oscillatory Pulses".</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T15:27:16Z</published>
+    <arxiv:comment>This expository article is intended to help the community understand OpenAI's manuscript and will not be submitted to any journal</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Zhen Lei</name>
+    </author>
+    <author>
+      <name>Xiao Ren</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35185v1</id>
+    <title>Enhanced dissipation and stability threshold for the Navier--Stokes equations near Poiseuille flow</title>
+    <updated>2026-09-28T13:47:23Z</updated>
+    <link href="https://arxiv.org/abs/2609.35185v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35185v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study the nonlinear stability of the quadratic plane Poiseuille flow $U(y)=(y^2,0)$ for the two-dimensional incompressible Navier--Stokes equations on $\mathbb T\times\mathbb R$. We prove that for initial perturbations of size $O(ν^{2/3})$ in a $ν$-dependent weighted Sobolev space, the flow is globally nonlinearly stable. In particular, the nonzero streamwise modes experience enhanced dissipation and decay exponentially on the characteristic time scale $O(ν^{-1/2})$, while the zero mode remains uniformly controlled. Thus, in this weighted Sobolev topology, \(O(ν^{2/3})\) is a sufficient stability scale without logarithmic loss.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T13:47:23Z</published>
+    <arxiv:comment>35pages. Any comments are welcome</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Tao Liang</name>
+    </author>
+    <author>
+      <name>Cuili Zhai</name>
+    </author>
+    <author>
+      <name>Xiaoping Zhai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.37484v1</id>
+    <title>$L^1$ Behavior of the Stokes System and the Navier--Stokes System in the Half Space</title>
+    <updated>2026-09-28T13:18:55Z</updated>
+    <link href="https://arxiv.org/abs/2609.37484v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.37484v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, the detailed behavior of solutions of both the Stokes and the Navier--Stokes system in the half space is investigated when the initial data belongs to $L^1$. We first give a detailed asymptotic expansion of the solution to the Stokes system supplemented with $L^1$ initial data. With the aid of this expansion, we provide two sufficient conditions on the initial data so that the associated solutions of the Navier--Stokes system do not belong to $L^1$, corresponding to long time and short time behaviors, respectively. Moreover, for the $n$- dimensional Navier--Stokes system, a pointwise spatial lower bound of order $n$ is derived in a conic neighborhood of the $x_n$-axis, provided that the initial data decays faster than order $n$. One of the main difficulties to get precise form of leading order term is the non-commutativity of the Leray projection operator with the Laplacian. Our strategy is to employ the special structure of the Green tensor observed by Han and a cancellation property of the initial data. This also yields the sufficient conditions on the initial data to get precise asymptotic behavior via comparing the linear and nonlinear parts.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T13:18:55Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Rao Li</name>
+    </author>
+    <author>
+      <name>Haitao Wang</name>
+    </author>
+    <author>
+      <name>Chunjing Xie</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35050v1</id>
+    <title>Handling geometric singularities efficiently with the immersed-boundary method: application to riblets</title>
+    <updated>2026-09-28T12:45:35Z</updated>
+    <link href="https://arxiv.org/abs/2609.35050v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35050v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present an enhancement of classical immersed boundary methods for the direct numerical simulation of the incompressible Navier-Stokes equations, designed to efficiently cope with geometrical singularities. The method, while general, is described here in the context of the flow over a plane wall covered by small longitudinal riblets. The enhancement consists in prescribing that the solution near the boundary matches the steady Stokes solution. In this way, sharp corners, where velocity gradients are strongest and viscous effects dominate, become tractable with grids comparable to those necessary for a smooth wall. The method requires the availability of a local Stokes solution, that can be obtained either analytically or numerically. Two test cases are discussed: the laminar flow over one riblet, which allows to measure protrusion heights, and a fully turbulent channel flow with ribbed walls. In both cases, the method reproduces reference results at a substantially lower computational cost.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T12:45:35Z</published>
+    <arxiv:comment>24 pages, 18 figures, submitted to the Journal of Computational Physics</arxiv:comment>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Stefano Cipelli</name>
+    </author>
+    <author>
+      <name>Alessandro Chiarini</name>
+    </author>
+    <author>
+      <name>Maurizio Quadrio</name>
+    </author>
+    <author>
+      <name>Davide Gatti</name>
+    </author>
+    <author>
+      <name>Paolo Luchini</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34755v1</id>
+    <title>Phase-field simulation of interfacial stability in structured gas-liquid contactors: design rules for gas diffusion electrodes</title>
+    <updated>2026-09-28T09:42:14Z</updated>
+    <link href="https://arxiv.org/abs/2609.34755v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34755v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Many process engineering applications hold a gas-liquid interface stationary inside a structured solid by a controlled pressure difference. Gas diffusion electrodes (GDEs) are one such case, where the interface separates the liquid electrolyte from the gaseous reactant. Maintaining it is particularly challenging in organic electrosynthesis, where low surface tensions lower the admissible pressures throughout and small contact angles leave the electrode with little margin against flooding. Here, we quantify how the shape, wettability, and three-dimensional topology of a structured medium set this window, using phase-field simulations of the Cahn-Hilliard-Navier-Stokes equations. Each geometry is characterised by its Laplace pressure curve, which yields both the maximum admissible pressure difference and the stiffness of the interface against pressure fluctuations. For single flat orifices at constant open area, elongating the opening from an aspect ratio of one to six raises the admissible pressure difference by 40 % and the stiffness by a factor of 3.3. Comparison with slits of equal width shows that this gain originates entirely from the reduced opening width. Sheared, diamond shaped openings are markedly less effective. In woven meshes, the wettability displaces the operating window several times as far as it stretches it. A less wetting surface therefore buys flooding margin largely at the expense of breakthrough margin, whereas the geometric route, established here for flat openings, widens the window itself. From these results we derive design rules for structured gas-liquid contactors and improved GDE architectures for organic electrosynthesis.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.app-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T09:42:14Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Alexander J. Wagner</name>
+    </author>
+    <author>
+      <name>Hari Murali Krishna Varma Gottumukkala</name>
+    </author>
+    <author>
+      <name>Henning Bonart</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34637v1</id>
+    <title>A Critical one-component regularity criteria for the three-dimensional Navier--Stokes equations</title>
+    <updated>2026-09-28T08:51:38Z</updated>
+    <link href="https://arxiv.org/abs/2609.34637v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34637v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We establish two critical one-component regularity criteria for the three-dimensional incompressible Navier--Stokes equations. First, for divergence-free initial data $u_0\in H^1(\mathbb R^3)$, we prove that a strong solution can be continued beyond a finite time $T$ provided that \[
+  u^3\in L^2\bigl(0,T;\dot B^{3/2}_{2,r}(\mathbb R^3)\bigr)
+  \qquad\text{for some }2&lt;r\leq\infty. \] Second, for every $2&lt;p&lt;\infty$, if $u_0\in\dot H^{1/2}(\mathbb R^3)$ and, for some fixed unit vector $\boldsymbol e\in\mathbb S^2$, \[
+  u\cdot\boldsymbol e
+  \in
+  L^p\bigl(0,T;\dot H^{1/2+2/p}(\mathbb R^3)\bigr), \] then the corresponding Fujita--Kato solution also extends beyond $T$, without any additional low-integrability assumption on the initial vorticity.
+  These results extend the critical one-component regularity criteria of Han, Lei, Li, and Zhao in two different directions. At the time endpoint $p=2$, we combine a new vertical-vorticity estimate with coupled anisotropic energy estimates and an energy-dependent frequency decomposition to relax the dyadic square-summability condition \[
+  \dot H^{3/2}=\dot B^{3/2}_{2,2} \] to \[
+  \dot B^{3/2}_{2,r},
+  \qquad 2&lt;r\leq\infty, \] with the endpoint case $r=\infty$ closed by an Osgood-type argument. In the nonendpoint range $2&lt;p&lt;\infty$, we use a positive-time heat-flow decomposition to separate the solution into a smooth linear part and a nonlinear remainder. The remainder has finite energy and acquires the required $L^q$-integrability of the vorticity at positive times, which allows the anisotropic energy estimates to be applied while the additional transport, stretching, and pressure terms generated by the heat flow remain integrable. This removes the extra $L^{q_0}$-integrability assumption on the initial vorticity while retaining the natural critical initial-data space $\dot H^{1/2}(\mathbb R^3)$.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T08:51:38Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Guo Maotuo</name>
+    </author>
+    <author>
+      <name>Xiong Shiyang</name>
+    </author>
+    <author>
+      <name>Zhao Chuankai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34610v1</id>
+    <title>Sharp linear stability and the absence of enhanced dissipation for Kolmogorov flow in the 2D Navier--Stokes equations with horizontal dissipation</title>
+    <updated>2026-09-28T08:38:28Z</updated>
+    <link href="https://arxiv.org/abs/2609.34610v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34610v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study the linearized dynamics of the Kolmogorov flow $U^{(0)}=(a\sin x_2,0)$ for the two-dimensional incompressible Navier--Stokes equations with horizontal dissipation $ν\partial_1^2$. Unlike the fully dissipative case, this anisotropic system admits $U^{(0)}$ as an exact unforced steady state. On each horizontal Fourier mode $k$, the dissipation reduces to the scalar $-νk^2$ and commutes with the advection, so that the linearized semigroup factors exactly into $e^{-νk^2t}$ times the inviscid Euler group. For $|k|&gt;1$, we prove two-sided bounds showing that the decay rate is exactly $νk^2$, uniformly in the shear amplitude $a$; hence no enhanced dissipation occurs. This reflects a fundamental mismatch: the shear transfers enstrophy to high vertical frequencies, which horizontal dissipation does not detect. At the critical modes $|k|=1$, the inviscid group grows like $\sqrt{2at}$, producing a transient amplification of size $(a/eν)^{1/2}$ before decay at the rate $ν$. The horizontally independent modes form an infinite-dimensional undamped kernel. For $0&lt;|k|&lt;1$, the viscous spectrum is an exact translate of the inviscid one, and the mode is linearly unstable if and only if $aΛ(k)&gt;νk^2$. In particular, when $L&gt;2π$, the flow is linearly unstable for all sufficiently large $a$.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T08:38:28Z</published>
+    <arxiv:comment>28pages. Any comments are welcome</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Wanrong Yang</name>
+    </author>
+    <author>
+      <name>Jiahong Wu</name>
+    </author>
+    <author>
+      <name>Xiaoping Zhai</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35905v1</id>
+    <title>A Tensorial Extension of Fractional Dissipation at Inertial Scales</title>
+    <updated>2026-09-28T05:50:12Z</updated>
+    <link href="https://arxiv.org/abs/2609.35905v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35905v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We formulate a scale dependent tensorial extension of a fractional dissipation operator motivated by a macroscopic Navier Stokes correspondence. The starting point is a fractional model in which the order of dissipation decreases continuously from the Laplacian value toward the Kolmogorov value as a local Reynolds number increases. At the critical value of the local Reynolds number, the model reduces to an isotropic operator. We then ask whether the same macroscopic description can be continued into a regime in which velocity fields have Onsager, critical or subcritical regularity without introducing an unrelated closure or an additional isotropic dissipation scale. In addition, we extend the original AFNS free, energy, construction by one nonnegative concentration order parameter c. The new term is quadratic in c and linearly coupled to the defect beta function, so that minimization leaves the original AFNS free energy exactly unchanged when the concentration branch is inactive. The resulting three regime mosaic is regular, inertial, and concentrated/anomalous. The construction uses the coarse-grained stress and its critical normalization. The normalized anisotropy tensor provides the lowest order objective tensorial information available at the critical scale, while the scale derivative of the Duchon Robert energy defect, supplies a scalar measure of departure from the Onsager threshold. We propose the minimal constitutive deformation of the critical operator: in Weyl quantization, the isotropic fractional symbol is dressed by this exponential tensorial factor, giving a pseudodifferential operator that reduces to the scalar critical operator. The exponential parametrization guarantees positive eigenvalues and unit determinant for symmetric traceless, so the deformation redistributes dissipation among directions without introducing a new isotropic amplitude.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T05:50:12Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>José I. H. López</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35894v1</id>
+    <title>Wave-Particle Decomposition for Kinetic Equations II: Full Boltzmann equation</title>
+    <updated>2026-09-27T14:40:23Z</updated>
+    <link href="https://arxiv.org/abs/2609.35894v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35894v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The wave-particle decomposition of kinetic relaxation equations is extended to the full Boltzmann equation. An identity transformation writes the collision term as a relaxation toward the local Maxwellian plus a conservative remainder. Along characteristics, the equilibrium integral over a local kinetic horizon defines the wave, and its exact complement, the particle, carries the remainder. The moments of the wave and particle equations are extended Navier-Stokes equations, and the total conservation law and the particle equation form the wave-particle multiscale equations, a closed system, exact for every horizon, that spans a continuous spectrum from the Boltzmann equation to Navier-Stokes hydrodynamics, parametrized by the horizon-to-relaxation ratio. A coupled implicit wave-particle iteration solves this system, updating the conservative variables with the particle fixed and the particle with the predicted wave and an endpoint traction from the macroscopic prediction. Under discrete compatibility assumptions the iteration preserves the discrete Boltzmann solution as its fixed point, and its near-continuum convergence factor is bounded by a particle transport share decaying exponentially with this ratio. Tests on a normal shock, Couette and cavity flows, and hypersonic cylinder and Apollo flows agree with the conventional iterative scheme in rarefied and transition regimes and with Navier-Stokes solutions near the continuum limit. There the wave-particle iteration needs about three to more than four orders of magnitude fewer iterations than this scheme or, where it did not converge, its Shakhov version, and the Boltzmann solution costs one to four times the wall time of a Navier-Stokes solver on the same mesh.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T14:40:23Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Chang Liu</name>
+    </author>
+    <author>
+      <name>Kun Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33622v1</id>
+    <title>A wave-particle decomposition framework for multiscale kinetic transport: continuous-spectrum equations and coupled wave-particle iteration</title>
+    <updated>2026-09-27T14:38:55Z</updated>
+    <link href="https://arxiv.org/abs/2609.33622v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33622v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The wave-particle decomposition is presented as a framework for multiscale kinetic transport, comprising a theory and an algorithm. Along the characteristics of the kinetic equation, the equilibrium integral of the solution over a local kinetic horizon defines a wave, which depends only on the conservative variables, and its exact complement defines a particle. Both obey kinetic equations whose moments are extended Navier-Stokes equations, and the conservation laws together with the particle equation form a closed system that is equivalent to the kinetic equation for every horizon. Parametrized by the ratio of the horizon to the relaxation time, these systems form a continuous spectrum from kinetic theory to Navier-Stokes hydrodynamics that adapts to the flow from cell to cell. The algorithm is a coupled wave-particle iteration for steady flows. It alternates a macroscopic iteration for the conservative variables, with the particle frozen, and a kinetic iteration for the particle, with the wave fixed. Its fixed point is the discrete kinetic solution, it is asymptotic preserving, and its near-continuum convergence factor is bounded by the share of the transport carried by the particle, a share that decays exponentially with the horizon-to-relaxation ratio. The collision model enters only through a conservative remainder, and the equations and the iteration are written out for the Bhatnagar-Gross-Krook, Shakhov and ellipsoidal statistical models, the Boltzmann and Landau equations, neutron transport and radiative transfer. The decomposition is related to the unified gas-kinetic wave-particle method, the micro-macro decomposition, penalization and synthetic acceleration. Computations of hypersonic flows past a cylinder and around the three-dimensional X38 vehicle illustrate how the division of the distribution adapts to the flow and how strongly the iteration is accelerated.</summary>
+    <category term="physics.flu-dyn" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T14:38:55Z</published>
+    <arxiv:primary_category term="physics.flu-dyn"/>
+    <author>
+      <name>Chang Liu</name>
+    </author>
+    <author>
+      <name>Kun Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33316v1</id>
+    <title>Forward self-similar solutions of the Navier-Stokes equations in R^n</title>
+    <updated>2026-09-27T07:32:43Z</updated>
+    <link href="https://arxiv.org/abs/2609.33316v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33316v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We investigate forward self-similar solutions to the incompressible Navier--Stokes equations with homogeneous initial data $u_0(x)=σ(x/|x|)/|x|$, $x\in\mathbb R^n$, focusing on the critical four-dimensional case. For the existence theory in dimensions $3\leq n\leq5$, we develop a Galerkin scheme for the Leray profile problem, featuring a decomposition of the self-similar data and nonlocal heat kernel effects across spatial scales. Exploiting the structural properties of the data and the coercivity of the Leray operator, we derive uniform \textit{a priori} estimates, pass to the limit, and obtain weak forward self-similar solutions. In the 4D case, we prove new Stokes-type estimates for the linear Leray system. The inverse Leray operator admits an integral representation as a singular integral operator; its $L^p$-boundedness follows from Calderón--Zygmund theory. Combined with a 4D compactness estimate for the convective term, this closes the regularity iteration. For spatial decay, we reformulate the problem in weighted spaces. The non-integrability of the low-frequency kernel causes a logarithmic loss under $σ\in W^{1,\infty}(\mathbb S^3)$. With $σ\in C^{1,γ}(\mathbb S^3)$, $0&lt;γ&lt;1$, frequency-localized estimates remove this loss and yield sharp decay.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T07:32:43Z</published>
+    <arxiv:comment>56 pages,0 figure</arxiv:comment>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Baishun Lai</name>
+    </author>
+    <author>
+      <name>Changxing Miao</name>
+    </author>
+    <author>
+      <name>Xiaoxin Zheng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33241v1</id>
+    <title>Global well-posedness and Decay estimates for solutions of the Navier--Stokes--Maxwell system</title>
+    <updated>2026-09-27T05:29:03Z</updated>
+    <link href="https://arxiv.org/abs/2609.33241v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33241v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We investigate the global solvability and the large-time asymptotic behavior of solutions to the Navier--Stokes--Maxwell system in two and three space dimensions. The system describes the interaction between a viscous incompressible fluid and an electromagnetic field through the Lorenz force and Ohm's law. The system exhibits a parabolic--hyperbolic coupling in which the dissipative Navier--Stokes system interacts with the hyperbolic Maxwell system. The Maxwell system is damped through Ohm's law with the Maxwell correction. For sufficiently small initial data with suitable Sobolev regularity, we establish the global well-posedness of strong solutions and derive optimal decay rates for the solution and its higher-order spatial derivatives. In addition, we show that the electric field decays faster by the extra factor $(1+t)^{-1/2}$ compared to the velocity and magnetic components.
+  One of the key ingredients of our analysis is a detailed study of the linearized system, which reveals refined decay properties of the electromagnetic components. These linear estimates play a crucial role in the analysis of the two-dimensional case, allowing us to overcome the logarithmic loss arising from the borderline decay estimates.
+  For the nonlinear system, our approach is based on a time-weighted energy method, specifically designed to capture the distinct dissipative properties of the fluid and electromagnetic components. A suitable compensating functional is introduced to exploit the coupling between the electric and magnetic fields and thereby recover the missing dissipation of the magnetic field. Combined with careful analysis of the nonlinear terms, these estimates yield our desired result.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T05:29:03Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Belkacem Said-Houari</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33205v1</id>
+    <title>SMORE: Stability-Promoting Mesh-Agnostic Model Reduction for Time-Dependent PDEs</title>
+    <updated>2026-09-27T04:45:13Z</updated>
+    <link href="https://arxiv.org/abs/2609.33205v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33205v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>High-fidelity simulations of time-dependent partial differential equations (PDEs) are computationally expensive, motivating data-driven reduced-order surrogates for many-query tasks such as uncertainty quantification, design optimization, data assimilation, and optimal control. However, existing surrogate models often exhibit poor temporal stability, which can lead to unstable rollouts and exploding gradients during backpropagation, especially in multistep long-horizon forecasting. To address this, we propose SMORE, a mesh-agnostic framework for model order reduction of time-dependent PDEs. Its latent dynamics are trained with Lyapunov-guided stability regularization, which promotes stable long-horizon rollouts. We provide theoretical guarantees under the stated structural assumptions. Beyond forecasting PDE evolution, the learned latent dynamics, which are interpretable and linear or linear-quadratic, could bring benefits for downstream tasks such as data assimilation and optimal control. Moreover, our framework is capable of predicting continuous PDE solution fields from sparse measurements of the initial condition. We evaluate SMORE on a range of problems, including wave propagation, the Navier-Stokes equations, and the shallow water equations. Our results show that it improves long-horizon rollout generalization and empirical robustness, and achieves competitive accuracy at comparable parameter budgets relative to competitive baselines including DINo, FNO, CNO, and Transolver.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T04:45:13Z</published>
+    <arxiv:comment>52 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Yangyuan Li</name>
+    </author>
+    <author>
+      <name>Weichao Li</name>
+    </author>
+    <author>
+      <name>Shaowu Pan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33033v1</id>
+    <title>Formalization of the Galerkin Construction for the Two-Dimensional Navier--Stokes Equations in Lean</title>
+    <updated>2026-09-27T00:02:19Z</updated>
+    <link href="https://arxiv.org/abs/2609.33033v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33033v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We formalize in Lean 4 the Galerkin construction of global Leray--Hopf weak solutions for the unforced two-dimensional Navier--Stokes equations on arbitrary bounded open domains with no-slip boundary conditions. For every initial datum in the solenoidal \(L^2\) velocity space, the solution has a weakly continuous velocity path, satisfies the weak equation locally in time, and obeys the energy inequality at every time. For rectangles, we also formalize finite-horizon solutions with continuous forcing in the dual energy space. The development includes divergence-free graph spaces, compact spectral coordinates, transport cancellation, Ladyzhenskaya estimates, and simultaneous space--time compactness. The abstract Hilbert-space results apply to evolution equations with a compact energy-to-velocity embedding and a skew trilinear nonlinearity.</summary>
+    <category term="math.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T00:02:19Z</published>
+    <arxiv:primary_category term="math.AP"/>
+    <author>
+      <name>Weinan Wang</name>
+    </author>
+  </entry>
+</feed>

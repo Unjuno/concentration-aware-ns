@@ -1,0 +1,18 @@
+{
+  "scope": "Mocked partial-transfer/hash rejection controls; no real network/package build",
+  "script_sha256": "f0f8aa276d0d7f78f23ffda42ed6e691ed124e9d518bceb28dbeda1db4d68fbe",
+  "cases": [
+    {
+      "scenario": "partial_then_complete",
+      "exit_code": 0,
+      "curl_calls": 2,
+      "payload_sha256": "da83f63e1a473003712c18f5afc5a79044221943d1083c7c5a7ac7236d85e8d2"
+    },
+    {
+      "scenario": "wrong_payload",
+      "exit_code": 1,
+      "curl_calls": 12,
+      "payload_sha256": "8810ad581e59f2bc3928b261707a71308f7e139eb04820366dc4d5c18d980225"
+    }
+  ]
+}

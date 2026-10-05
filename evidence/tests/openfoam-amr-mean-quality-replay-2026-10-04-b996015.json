@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "case_count": 4,
+  "same_host_saved_analyses_reproduced_exactly": true,
+  "aggregate_gate_reproduced_exactly": true,
+  "matrix_status": "REPRODUCED_SPECIFIED_MEAN_GATE_DISCREPANCY",
+  "all_case_standard_acceptance_pass": true,
+  "both_fine_cases_reference_operator_adequate_at_all_stages": true,
+  "disabled_capture_control_verified": true,
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "manifest_sha256": "f5ee4ec5a9f8bc867108fea646c1292cf9b0cade8f0f439c2e94df238775442e",
+      "mac_replay_sha256": "b459c9208ef6fea4f77d8e0b682057b8483fb7030966ea2ae3012a0408def191",
+      "standard_acceptance": "PASS",
+      "postSolve_mean_quality": "FAIL",
+      "raw_archive_member_and_stage_replay": "PASS",
+      "same_host_analysis_byte_semantics": "EXACT_JSON_OBJECT_MATCH"
+    },
+    {
+      "case": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "manifest_sha256": "86b7d1b340cffcad624d7e42a7f424d452b8218b3e8c505339f52fc9bd6ef6aa",
+      "mac_replay_sha256": "62f673a0d3923acdcc52fff3a4ea583e2cdbb4ca50af1a9195a7000bd12f5cee",
+      "standard_acceptance": "PASS",
+      "postSolve_mean_quality": "FAIL",
+      "raw_archive_member_and_stage_replay": "PASS",
+      "same_host_analysis_byte_semantics": "EXACT_JSON_OBJECT_MATCH"
+    },
+    {
+      "case": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "manifest_sha256": "938bd38422cff41f674fc7c33f316b4247984ec2062fe932b03ff560c9db947b",
+      "mac_replay_sha256": "c3c0a56db0de4a3075bfbe1b0d9d3c2e50b2f6077ca1ce861086f50dc27d82e5",
+      "standard_acceptance": "PASS",
+      "postSolve_mean_quality": "FAIL",
+      "raw_archive_member_and_stage_replay": "PASS",
+      "same_host_analysis_byte_semantics": "EXACT_JSON_OBJECT_MATCH"
+    },
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "manifest_sha256": "b7a2c6df7cda253efcf1c473368a7fcdcc9cf53ae99a3d1e7d43fd2eed064f08",
+      "mac_replay_sha256": "1887395b73fc36bc2108d7538084429da219fa790ed4e79ba35052d4fef5d500",
+      "standard_acceptance": "PASS",
+      "postSolve_mean_quality": "FAIL",
+      "raw_archive_member_and_stage_replay": "PASS",
+      "same_host_analysis_byte_semantics": "EXACT_JSON_OBJECT_MATCH"
+    }
+  ],
+  "scope": "Replayed all release raw AMR archives, verified per-member hashes and stage metrics from the exact frozen harness commit, matched prior same-host analyses, and reran the matrix aggregator. Cross-platform floating differences and strict regenerated-input byte-identity failure remain separately reported. This is not a solver rerun or upstream-defect proof."
+}

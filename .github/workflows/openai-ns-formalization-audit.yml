@@ -1,0 +1,52 @@
+name: OpenAI Navier-Stokes formalization audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [physicsnemo-global-hessian-audit]
+    paths:
+      - '.github/workflows/openai-ns-formalization-audit.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openai-ns-formalization-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  lean-build-and-independent-check:
+    runs-on: ubuntu-24.04
+    # A previous complete-from-source pass built 10,489/11,424 modules before
+    # the 90-minute cap. Leave room for the final modules and Euler axiom audit.
+    timeout-minutes: 180
+    steps:
+      - name: Checkout the pinned OpenAI formalization
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: openai/NavierStokesAndEuler
+          ref: f9e8bc5b38b6e212696e8a30e3e91517af887bbd
+          path: openai-proof
+
+      - name: Build with the repository's pinned Lean toolchain
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1
+        with:
+          lake-package-directory: openai-proof
+          build: 'true'
+          use-mathlib-cache: 'true'
+          nanoda: 'true'
+          nanoda-allow-sorry: 'false'
+          axiom-audit: 'true'
+          axiom-audit-root: NavierStokes
+
+      - name: Audit axioms in the Euler namespace
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1
+        with:
+          lake-package-directory: openai-proof
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+          use-github-cache: 'false'
+          axiom-audit: 'true'
+          axiom-audit-root: Euler

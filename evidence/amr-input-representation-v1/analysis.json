@@ -1,0 +1,124 @@
+{
+  "status": "VERIFIED_POINT_INITIALIZATION_AND_CENTRE_FORCING_RECIPE",
+  "numerical_source_commit": "e49f169fe86c4d433730df6d5011e79e8b8a42eb",
+  "protocol_sha256": "c0e31d998cb40f1168841d5ebc21158970e799d414fb48e1135d5dfa44509762",
+  "input_protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "initial_U_sha256": "414267cb69bb982289a4fdffb4c7694bfb906608f5f6fc4bfde3a247980a4f0e",
+      "fvModels_sha256": "80b35f01c566379f5a554f81a2279d057e680ba6ebb8cfbcac983c79d686aff7",
+      "diagnostic": {
+        "relative_l2_vs_point_reference": 1.9741199519003283e-15,
+        "relative_l2_vs_exact_cube_mean": 0.07765609001773409,
+        "point_to_mean_relative_l2": 0.0776560900177341,
+        "maximum_absolute_point_difference": 1.1796119636642288e-15,
+        "maximum_reference_imaginary_residual": 2.4820912589507013e-17,
+        "point_matches_at_recipe_tolerance": true,
+        "exact_mean_matches_at_recipe_tolerance": false,
+        "scope": "Initial values only; numerical recipe check, not a solver quality gate or attribution of final error."
+      },
+      "forcing_representation": "Centre-evaluated analytic force multiplied by cell volume; not independently integrated exact force average."
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "initial_U_sha256": "0b36ce58c85b37d7ca7b7a116741cc6567ca731f92690a0c1f1ef038022af1da",
+      "fvModels_sha256": "80b35f01c566379f5a554f81a2279d057e680ba6ebb8cfbcac983c79d686aff7",
+      "diagnostic": {
+        "relative_l2_vs_point_reference": 2.124391514814454e-15,
+        "relative_l2_vs_exact_cube_mean": 0.0187829991353062,
+        "point_to_mean_relative_l2": 0.01878299913530625,
+        "maximum_absolute_point_difference": 2.147587663259287e-15,
+        "maximum_reference_imaginary_residual": 3.2806941019950083e-17,
+        "point_matches_at_recipe_tolerance": true,
+        "exact_mean_matches_at_recipe_tolerance": false,
+        "scope": "Initial values only; numerical recipe check, not a solver quality gate or attribution of final error."
+      },
+      "forcing_representation": "Centre-evaluated analytic force multiplied by cell volume; not independently integrated exact force average."
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "initial_U_sha256": "9489dc9a95a63a20bc6215c381e8f6f6f7c59e2ca4b2e4f32c1f2e712dd9d1b9",
+      "fvModels_sha256": "80b35f01c566379f5a554f81a2279d057e680ba6ebb8cfbcac983c79d686aff7",
+      "diagnostic": {
+        "relative_l2_vs_point_reference": 2.4070768582131143e-15,
+        "relative_l2_vs_exact_cube_mean": 0.004657676645108248,
+        "point_to_mean_relative_l2": 0.004657676645108221,
+        "maximum_absolute_point_difference": 2.886579864025407e-15,
+        "maximum_reference_imaginary_residual": 3.331662502791649e-17,
+        "point_matches_at_recipe_tolerance": true,
+        "exact_mean_matches_at_recipe_tolerance": false,
+        "scope": "Initial values only; numerical recipe check, not a solver quality gate or attribution of final error."
+      },
+      "forcing_representation": "Centre-evaluated analytic force multiplied by cell volume; not independently integrated exact force average."
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "initial_U_sha256": "0b36ce58c85b37d7ca7b7a116741cc6567ca731f92690a0c1f1ef038022af1da",
+      "fvModels_sha256": "80b35f01c566379f5a554f81a2279d057e680ba6ebb8cfbcac983c79d686aff7",
+      "diagnostic": {
+        "relative_l2_vs_point_reference": 2.124391514814454e-15,
+        "relative_l2_vs_exact_cube_mean": 0.0187829991353062,
+        "point_to_mean_relative_l2": 0.01878299913530625,
+        "maximum_absolute_point_difference": 2.147587663259287e-15,
+        "maximum_reference_imaginary_residual": 3.2806941019950083e-17,
+        "point_matches_at_recipe_tolerance": true,
+        "exact_mean_matches_at_recipe_tolerance": false,
+        "scope": "Initial values only; numerical recipe check, not a solver quality gate or attribution of final error."
+      },
+      "forcing_representation": "Centre-evaluated analytic force multiplied by cell volume; not independently integrated exact force average."
+    }
+  ],
+  "pinned_upstream_files": [
+    {
+      "path": "src/finiteVolume/fields/volFields/volFields.H",
+      "sha256": "50c306c68b9e4c65253e6dda4968ee6183514c24e0e1604f8cebd5e9257fe8b0",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/fields/volFields/volFields.H"
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+      "sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C"
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtScheme.C",
+      "sha256": "5450404723d4d8089a7aa561b4ec4c01744d4dd941d0f998e4de762c293d356e",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/ddtSchemes/EulerDdtScheme/EulerDdtScheme.C"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C",
+      "sha256": "a2c54ff78854c05a94776655195b0a4fc60f96b95971a0f483e90de4ec75b461",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.C"
+    },
+    {
+      "path": "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C",
+      "sha256": "105eae9adf7a7a0a5ea9489b92db18f8458f096d0e563df258e834d99e95684c",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation/surfaceInterpolation.C"
+    },
+    {
+      "path": "applications/modules/incompressibleFluid/momentumPredictor.C",
+      "sha256": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/applications/modules/incompressibleFluid/momentumPredictor.C"
+    }
+  ],
+  "source_sha256": {
+    "tools/audit_amr_input_representation.py": "231b30680ded6d7d4d75ea5bc7c62d7d44342bcaa4f7fa194ddf9389ac3ab094",
+    "tools/amr_p0_spectrum.py": "a059ca8a6dc90650865085c2c88002ad2cb3d99accc8d74000854b3a8fee8187",
+    "tools/high_gradient_cell_average.py": "665bc283b37281bcd18a6544064e75261c44d55bcabeccf27b55618294ba9079",
+    "tools/openfoam_case.py": "e964022633f46bce98033db3427acf655aadb7ae631c78b18eab326e85be9bd0",
+    "tools/openfoam_amr_case.py": "39a31a57a72b0a01d3b988510881cfdde37bb9226f6309b5082a6328c4323806",
+    "tools/run_amr_mean_quality.py": "985e1396ca589b924be236effccd528a42b5f828396f1df5448789d851d8d15a"
+  },
+  "contract_disposition": "Exact native-average H1 preservation is a benchmark analysis condition; no such upstream exact-reconstruction guarantee established by these inspected files/docs.",
+  "limits": [
+    "Initialization comparisons are independent Fourier point evaluation and exact cube means; they do not explain or subtract the final solver error.",
+    "Centroid source quadrature is a numerical approximation, not itself an implementation bug.",
+    "Only listed upstream files and cited documents are inspected; absence of an exact H1 reconstruction guarantee here is not an exhaustive absence claim.",
+    "The existing exact-nominal-mean certificate remains valid under its stated condition; it is not automatically an upstream solver contract.",
+    "Archived inputs, old source identities, thresholds and solver verdicts are preserved."
+  ]
+}

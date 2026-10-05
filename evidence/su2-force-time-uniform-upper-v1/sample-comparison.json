@@ -1,0 +1,21 @@
+{
+  "status": "SAMPLED_DIAGNOSTICS_WITHIN_CONSERVATIVE_UPPER",
+  "rows": [
+    {
+      "case": "n64-dt0.001",
+      "absolute_uniform_upper_display": 9.692841711888178,
+      "sampled_max_diagnostic": 0.08505168681753739
+    },
+    {
+      "case": "n64-dt0.0005",
+      "absolute_uniform_upper_display": 4.844002857469935,
+      "sampled_max_diagnostic": 0.04250459395535583
+    },
+    {
+      "case": "n64-dt0.00025",
+      "absolute_uniform_upper_display": 2.421397231002777,
+      "sampled_max_diagnostic": 0.02124698726995484
+    }
+  ],
+  "scope": "Crosscheck of floating samples only; derivation establishes the real-domain upper bound"
+}

@@ -38,7 +38,7 @@
     },
     "evaluation_time_verified": {
       "path": "evidence/su2-study-v1/diagnostic-replay.json",
-      "sha256": "6c2956a488a3abdcf27ef7fdb57da3b08c17baccfc0cef345bc495ba25a1af18"
+      "sha256": "7859e41d6d5f580d91dd4a177be389b94be5eb7994447ce9b273c1c142fc8bed"
     },
     "standard_acceptance_verified": {
       "path": "evidence/su2-study-v1/summary.json",
@@ -46,7 +46,7 @@
     },
     "observed_aggregate_review": {
       "path": "evidence/tests/su2-standard-review.json",
-      "sha256": "f554b70b6a329e1147543d11bdb202dd21402223f281a89a3ecd8fe32f2d6278"
+      "sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
     }
   },
   "metrics": [
@@ -71,6 +71,9 @@
       "velocity_relative_l2": 0.003625047685324406,
       "continuum_reference_energy": 0.06991747645268451,
       "sample_energy_relative_error": 0.0035513863579329764,
+      "analytic_vertex_reference_energy": 0.06991747645268442,
+      "sample_energy_relative_error_vs_vertex_reference": 0.0035513863579317894,
+      "vertex_quadrature_bias_relative_to_continuum": -1.190928664355272e-15,
       "observed_checks": {
         "velocity": true,
         "energy": true,
@@ -78,7 +81,7 @@
       },
       "observed_conjunction": "FAIL"
     },
-    "aggregate_review_scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. The conjunction is an audit convention, not a newly preregistered gate. It does not certify continuous numerical-field energy or peak errors.",
+    "aggregate_review_scope": "Observed velocity, sample-energy versus analytic continuum integral, and all-step residual checks. An additional exact finite-grid reference separates analytic-solution quadrature bias from solver-field energy discrepancy; it does not certify continuous numerical-field energy or peak errors. The conjunction remains an audit convention, not a newly preregistered gate.",
     "case": "n64-dt0.001",
     "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
     "velocity_relative_l2": 0.003625047685324406,

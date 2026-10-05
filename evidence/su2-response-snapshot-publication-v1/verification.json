@@ -1,0 +1,8 @@
+{
+  "status": "PUBLIC_SNAPSHOT_IDENTITY_VERIFIED",
+  "verified_utc": "2026-10-03T22:37:17.984560+00:00",
+  "source_commit": "aa3569176bad1ef7a26a9c12d3cfa4c133555cc6",
+  "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/su2-conditional-force-response-v3-aa35691",
+  "pr_head_not_replaced": true,
+  "scope": "Public release/tag identity, not numerical/hosted validation or goal completion"
+}

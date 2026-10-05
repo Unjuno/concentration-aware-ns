@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<REPO>/work/clean-export-2026-10-02-head/source/tools/compare_high_gradient_temporal.py", line 107, in <module>
+    main()
+    ~~~~^^
+  File "<REPO>/work/clean-export-2026-10-02-head/source/tools/compare_high_gradient_temporal.py", line 100, in main
+    result = compare()
+  File "<REPO>/work/clean-export-2026-10-02-head/source/tools/compare_high_gradient_temporal.py", line 39, in compare
+    raise ValueError(f"case is not complete and standard-accepted: {name}")
+ValueError: case is not complete and standard-accepted: n64-dt0.001

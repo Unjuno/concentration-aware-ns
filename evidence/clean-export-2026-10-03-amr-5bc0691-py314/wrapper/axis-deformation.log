@@ -1,0 +1,39 @@
+{
+  "scope": "Exact symbolic matrix identities for the classical proof in docs/axis-variational-uniqueness.md. Not a Lean check, PDE solution construction, finite-packet bound or viscosity law.",
+  "sympy": "1.14.0",
+  "source_sha256": "9017aa9c74503cd18bc8e11b4f5f519a775ab3535c51a7dfc674fba01bff79cf",
+  "assumptions": [
+    "r > 0",
+    "z > 0",
+    "theta, g, omega real",
+    "r\u2032 = -g*r/2",
+    "z\u2032 = g*z",
+    "theta\u2032 = omega"
+  ],
+  "identities": {
+    "left_inverse": true,
+    "right_inverse": true,
+    "fundamental_ode": true,
+    "inverse_ode": true,
+    "conserved_initial_vector": true,
+    "gram_matrix": true,
+    "determinant": true,
+    "volume_rate": true
+  },
+  "residuals": {
+    "left_inverse": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+    "right_inverse": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+    "fundamental_ode": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+    "inverse_ode": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+    "conserved_initial_vector": "Matrix([[0], [0], [0]])",
+    "gram_matrix": "Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+    "determinant": "Matrix([[0]])",
+    "volume_rate": "Matrix([[0]])"
+  },
+  "negative_controls": {
+    "wrong_rotation_sign_rejected": true,
+    "wrong_axial_rate_rejected": true,
+    "missing_transverse_half_rejected": true
+  },
+  "success": true
+}

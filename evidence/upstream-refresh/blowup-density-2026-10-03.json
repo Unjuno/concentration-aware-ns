@@ -1,0 +1,32 @@
+{
+  "checked_date_utc": "2026-10-03",
+  "repository": "https://github.com/mathzhuonichi/blowup_density",
+  "paper": "https://arxiv.org/abs/2609.10262",
+  "main_sha": "af963994418ae32ff16e00a942bf532410928b09",
+  "main_pushed_at": "2026-09-22T06:00:41Z",
+  "actions": {
+    "run_id": 35692963936,
+    "url": "https://github.com/mathzhuonichi/blowup_density/actions/runs/35692963936",
+    "head_sha": "af963994418ae32ff16e00a942bf532410928b09",
+    "conclusion": "success",
+    "created_at": "2026-09-22T06:00:43Z",
+    "updated_at": "2026-09-22T08:14:52Z",
+    "checks_observed": [
+      "architecture",
+      "lean-contracts build",
+      "compile changed modules outside registered build closure",
+      "rejection and refactoring behavior"
+    ]
+  },
+  "readme_claim": "27 mapped article results are Closed in Lean; claims outside mapped scope excluded",
+  "repository_metadata": {
+    "default_branch": "main",
+    "issues_enabled": true,
+    "open_issues_count": 0,
+    "discussions_enabled": false,
+    "github_license": null,
+    "root_license_file_present": false
+  },
+  "disposition": "Read-only review. No code reused; no upstream report submitted because no defect was demonstrated and this is outside the three prioritized solver repositories.",
+  "scope_limit": "Successful CI validates the observed repository workflow and formalization scope; it is not an independent re-proof of OpenAI source mathematics or a particle-scale/physical validation."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "EXACT_BASELINE_IMAGE_IDENTITY_MATCH",
+  "image_id": "sha256:0efbefdedf95b5451e1a10e61b2f340382d71b3d1fea496adb7a5c14f0ecbcd7",
+  "matched_fields": [
+    "image_id",
+    "source_commit",
+    "architecture",
+    "build_inputs_sha256",
+    "binary_sha256",
+    "patched_source_sha256",
+    "package_versions_sha256",
+    "compiler_version"
+  ],
+  "scope": "Image ID, build inputs, installed binary/source/packages, and compiler match; this does not prove solver quality."
+}

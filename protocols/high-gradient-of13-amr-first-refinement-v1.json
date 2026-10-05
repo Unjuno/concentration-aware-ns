@@ -1,0 +1,53 @@
+{
+  "version": "amr-first-refinement-v1",
+  "status": "frozen exploratory diagnostic; no solver results included",
+  "target": {
+    "implementation": "OpenFOAM Foundation 13",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64",
+    "harness_source_commit": "recorded by runner after commit"
+  },
+  "manufactured_solution": {
+    "profile": "localized analytic high-gradient periodic MMS",
+    "frequency": 4,
+    "viscosity": 0.01,
+    "initial_grid_cells_per_axis": 16,
+    "delta_t": 0.001,
+    "end_time": 0.003
+  },
+  "cases": [
+    {
+      "name": "amr-cap5000",
+      "adaptation": true,
+      "max_cells": 5000,
+      "max_refinement": 2,
+      "refine_interval": 2,
+      "sensor": "analytic localized envelope chi(y,z), recomputed by source hook before adaptation"
+    },
+    {
+      "name": "uniform-n16",
+      "adaptation": false
+    }
+  ],
+  "checkpoints": [0.001, 0.002, 0.003],
+  "measurements": [
+    "cell-volume-weighted velocity L2 error against the exact MMS evaluated at each saved cell center",
+    "cell count and mesh level at each checkpoint",
+    "solver step and outer-corrector completion counts",
+    "archive, input, runtime and log hashes"
+  ],
+  "predeclared_comparison": {
+    "quantity": "(AMR error at 0.003 - AMR error at 0.002) - (uniform error at 0.003 - uniform error at 0.002)",
+    "interpretation": "Descriptive excess error growth across the interval containing the first mesh refinement, relative to same-grid non-AMR evolution.",
+    "logical_boundary": "The 0.003 AMR checkpoint includes one solved timestep after remapping. A positive contrast does not isolate interpolation, flux correction, pressure projection, sensor changes, or post-remap evolution and is not evidence of an upstream defect."
+  },
+  "acceptance": {
+    "run_completion": "Both cases must reach all three checkpoints with exit code zero and one converged outer-corrector record per step.",
+    "quality_gate": "No new acceptance threshold is defined; this is a diagnostic contrast, not a quality pass/fail or defect reproduction."
+  },
+  "scope_limits": [
+    "Two short n=16 runs do not establish an asymptotic AMR trend.",
+    "The first post-refinement checkpoint is after one solved timestep, not an instantaneous pre/post mapping pair.",
+    "Nonuniform-grid gradient and spectrum quality are outside this probe."
+  ]
+}

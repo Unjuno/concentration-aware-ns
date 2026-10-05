@@ -1,0 +1,406 @@
+{
+  "status": "COMPLETE_SPECIFIED_MEAN_GATE_ANALYSIS",
+  "source_commit": "4e60b23065811d488fe6890ad59af698a81c35b8",
+  "case_id": "n64-dt0.001",
+  "case": {
+    "id": "n64-dt0.001",
+    "n": 64,
+    "dt": 0.001,
+    "refine_interval": 2,
+    "max_cells": 920000,
+    "expected_first_mapped_cells": 901888,
+    "candidate_prediction": {
+      "n": 64,
+      "initial_cells": 262144,
+      "raw_sensor_candidates": 83712,
+      "one_layer_periodic_face_buffer_candidates": 91392,
+      "predicted_cells_after_one_level": 901888,
+      "sensor_thresholds_strict": [
+        0.01,
+        1.1
+      ],
+      "buffer_layers": 1,
+      "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+    },
+    "capture_disabled_control": false
+  },
+  "model": {
+    "profile": "smooth periodic localized high-gradient MMS",
+    "domain": "[0,2*pi)^3",
+    "frequency": 3,
+    "nu": 0.01,
+    "end": 0.05,
+    "pre_map_time": 0.002,
+    "max_refinement": 1
+  },
+  "archive_sha256": "73132219372bf1e81eaeca419bdc378c2b419adeecb55b837cf269bcc7b0e80c",
+  "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "standard_acceptance": {
+    "status": "PASS",
+    "complete_end_time": true,
+    "observed_time_steps": 50,
+    "expected_time_steps": 50,
+    "time_sequence_matches_fixed_delta_t": true,
+    "time_sequence_mismatches_zero_based": [],
+    "pimple_convergence_records": 50,
+    "failed_or_missing_convergence_steps_zero_based": [],
+    "maximum_observed_outer_correctors": 6,
+    "maximum_allowed_outer_correctors": 12,
+    "configured_outer_correctors": 12,
+    "configured_residual_tolerance": 1e-08,
+    "outer_residual_control_configuration_matches_protocol": true,
+    "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+  },
+  "stages": [
+    {
+      "coverage": {
+        "finest_voxels": 2097152,
+        "minimum_coverage": 1,
+        "maximum_coverage": 1
+      },
+      "metrics": {
+        "velocity_mean_mismatch_relative_l2": 0.005465240621993381,
+        "gradient_mean_mismatch_relative_l2": 0.009385207910930029,
+        "curl_mean_mismatch_relative_l2": 0.008412049407075439
+      },
+      "derivative_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.717785784642883,
+          "exact_cell_mean_integrated_energy": 6.654439611357581,
+          "mean_mismatch_integrated_energy": 0.0005917168642114302,
+          "projection_floor_integrated_energy": 0.06334617328530179,
+          "mean_mismatch_relative_l2": 0.009385207910930029,
+          "projection_floor_relative_l2": 0.09710623516155363,
+          "p0_total_relative_l2": 0.09755871583196622,
+          "projection_fraction_of_squared_error": 0.9907454427597195
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.717785784642882,
+          "exact_cell_mean_integrated_energy": 6.6544396113575806,
+          "mean_mismatch_integrated_energy": 0.0004753678219451888,
+          "projection_floor_integrated_energy": 0.06334617328530179,
+          "mean_mismatch_relative_l2": 0.008412049407075439,
+          "projection_floor_relative_l2": 0.09710623516155363,
+          "p0_total_relative_l2": 0.09746991065184185,
+          "projection_fraction_of_squared_error": 0.9925516085368987
+        }
+      },
+      "reference_operator_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.717785784642883,
+          "exact_cell_mean_integrated_energy": 6.654439611357581,
+          "mean_mismatch_integrated_energy": 0.0005344082154156077,
+          "projection_floor_integrated_energy": 0.06334617328530179,
+          "mean_mismatch_relative_l2": 0.008919150402310564,
+          "projection_floor_relative_l2": 0.09710623516155363,
+          "p0_total_relative_l2": 0.0975149842390901,
+          "projection_fraction_of_squared_error": 0.9916342618858346
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.717785784642882,
+          "exact_cell_mean_integrated_energy": 6.6544396113575806,
+          "mean_mismatch_integrated_energy": 0.00047561827304283565,
+          "projection_floor_integrated_energy": 0.06334617328530179,
+          "mean_mismatch_relative_l2": 0.008414265090895975,
+          "projection_floor_relative_l2": 0.09710623516155363,
+          "p0_total_relative_l2": 0.09747010189935591,
+          "projection_fraction_of_squared_error": 0.9925477135406323
+        }
+      },
+      "velocity_projection_floor_relative_l2": 0.09526775405099215,
+      "velocity_p0_total_relative_l2": 0.09542438795704491,
+      "sampled_peak_diagnostics": {
+        "gradient": {
+          "measured_sampled_peak": 1.0009784298009743,
+          "reference_sampled_peak": 1.0160090568523859,
+          "sampled_peak_relative_discrepancy": 0.014793792388009486
+        },
+        "curl": {
+          "measured_sampled_peak": 1.1953235526477735,
+          "reference_sampled_peak": 1.2115248421912435,
+          "sampled_peak_relative_discrepancy": 0.013372643283291907
+        }
+      },
+      "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+      "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+      "independent_uniform_operator_relative_differences": {
+        "measured": 7.461639541405812e-15,
+        "reference": 7.532026812968498e-15
+      },
+      "stage": "preMap",
+      "time": 0.002,
+      "cells": 262144,
+      "cell_budget_reached_or_exceeded": false,
+      "maximum_refinement_level": 0,
+      "local_mean_quality": {
+        "status": "PASS",
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": {
+            "value": 0.005465240621993381,
+            "threshold": 0.02,
+            "status": "PASS"
+          },
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.009385207910930029,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.008412049407075439,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "reference_operator_quality": {
+        "status": "PASS",
+        "metrics": {
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.008919150402310564,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.008414265090895975,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      }
+    },
+    {
+      "coverage": {
+        "finest_voxels": 2097152,
+        "minimum_coverage": 1,
+        "maximum_coverage": 1
+      },
+      "metrics": {
+        "velocity_mean_mismatch_relative_l2": 0.08263215128265958,
+        "gradient_mean_mismatch_relative_l2": 0.08421829086270856,
+        "curl_mean_mismatch_relative_l2": 0.06817475051105004
+      },
+      "derivative_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.717785784642879,
+          "exact_cell_mean_integrated_energy": 6.701859955300988,
+          "mean_mismatch_integrated_energy": 0.047647377055726504,
+          "projection_floor_integrated_energy": 0.015925829341890463,
+          "mean_mismatch_relative_l2": 0.08421829086270856,
+          "projection_floor_relative_l2": 0.04868979581337531,
+          "p0_total_relative_l2": 0.09728009422376171,
+          "projection_fraction_of_squared_error": 0.25051165804478664
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.717785784642878,
+          "exact_cell_mean_integrated_energy": 6.701880869375641,
+          "mean_mismatch_integrated_energy": 0.03122290197805459,
+          "projection_floor_integrated_energy": 0.01590491526723703,
+          "mean_mismatch_relative_l2": 0.06817475051105004,
+          "projection_floor_relative_l2": 0.04865781516937599,
+          "p0_total_relative_l2": 0.08375786282075895,
+          "projection_fraction_of_squared_error": 0.33748465761643215
+        }
+      },
+      "reference_operator_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.717785784642879,
+          "exact_cell_mean_integrated_energy": 6.701859955300988,
+          "mean_mismatch_integrated_energy": 4.410335790895353e-05,
+          "projection_floor_integrated_energy": 0.015925829341890463,
+          "mean_mismatch_relative_l2": 0.0025622573808905705,
+          "projection_floor_relative_l2": 0.04868979581337531,
+          "p0_total_relative_l2": 0.048757167465246665,
+          "projection_fraction_of_squared_error": 0.9972383504215077
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.717785784642878,
+          "exact_cell_mean_integrated_energy": 6.701880869375641,
+          "mean_mismatch_integrated_energy": 3.833086261780491e-05,
+          "projection_floor_integrated_energy": 0.01590491526723703,
+          "mean_mismatch_relative_l2": 0.002388697862658479,
+          "projection_floor_relative_l2": 0.04865781516937599,
+          "p0_total_relative_l2": 0.048716412578680555,
+          "projection_fraction_of_squared_error": 0.9975957930834408
+        }
+      },
+      "velocity_projection_floor_relative_l2": 0.04772568900892033,
+      "velocity_p0_total_relative_l2": 0.09542438795704439,
+      "sampled_peak_diagnostics": {
+        "gradient": {
+          "measured_sampled_peak": 1.0127831289436913,
+          "reference_sampled_peak": 1.0207581985085932,
+          "sampled_peak_relative_discrepancy": 0.007812888083146508
+        },
+        "curl": {
+          "measured_sampled_peak": 1.2080109323914732,
+          "reference_sampled_peak": 1.2177111898536428,
+          "sampled_peak_relative_discrepancy": 0.007965975465278885
+        }
+      },
+      "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+      "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+      "stage": "mapped",
+      "time": 0.002,
+      "cells": 901888,
+      "cell_budget_reached_or_exceeded": false,
+      "maximum_refinement_level": 1,
+      "local_mean_quality": {
+        "status": "FAIL",
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": {
+            "value": 0.08263215128265958,
+            "threshold": 0.02,
+            "status": "FAIL"
+          },
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.08421829086270856,
+            "threshold": 0.05,
+            "status": "FAIL"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.06817475051105004,
+            "threshold": 0.05,
+            "status": "FAIL"
+          }
+        }
+      },
+      "reference_operator_quality": {
+        "status": "PASS",
+        "metrics": {
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.0025622573808905705,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.002388697862658479,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      }
+    },
+    {
+      "coverage": {
+        "finest_voxels": 2097152,
+        "minimum_coverage": 1,
+        "maximum_coverage": 1
+      },
+      "metrics": {
+        "velocity_mean_mismatch_relative_l2": 0.03924832679729078,
+        "gradient_mean_mismatch_relative_l2": 0.040255333662440745,
+        "curl_mean_mismatch_relative_l2": 0.032918536805584125
+      },
+      "derivative_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.102866653005933,
+          "exact_cell_mean_integrated_energy": 6.088390449975632,
+          "mean_mismatch_integrated_energy": 0.009889645906416665,
+          "projection_floor_integrated_energy": 0.014476203030300283,
+          "mean_mismatch_relative_l2": 0.040255333662440745,
+          "projection_floor_relative_l2": 0.04870352468791693,
+          "p0_total_relative_l2": 0.06318643212985656,
+          "projection_fraction_of_squared_error": 0.5941185578182775
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.102866653005931,
+          "exact_cell_mean_integrated_energy": 6.08841429783731,
+          "mean_mismatch_integrated_energy": 0.006613249790449995,
+          "projection_floor_integrated_energy": 0.01445235516862109,
+          "mean_mismatch_relative_l2": 0.032918536805584125,
+          "projection_floor_relative_l2": 0.04866339145474934,
+          "p0_total_relative_l2": 0.05875164451569648,
+          "projection_fraction_of_squared_error": 0.6860640934215252
+        }
+      },
+      "reference_operator_decomposition": {
+        "gradient": {
+          "exact_reference_integrated_energy": 6.102866653005933,
+          "exact_cell_mean_integrated_energy": 6.088390449975632,
+          "mean_mismatch_integrated_energy": 4.2609339019447286e-05,
+          "projection_floor_integrated_energy": 0.014476203030300283,
+          "mean_mismatch_relative_l2": 0.0026423202812659156,
+          "projection_floor_relative_l2": 0.04870352468791693,
+          "p0_total_relative_l2": 0.048775149138627176,
+          "projection_fraction_of_squared_error": 0.9970652324766255
+        },
+        "curl": {
+          "exact_reference_integrated_energy": 6.102866653005931,
+          "exact_cell_mean_integrated_energy": 6.08841429783731,
+          "mean_mismatch_integrated_energy": 3.682718244379377e-05,
+          "projection_floor_integrated_energy": 0.01445235516862109,
+          "mean_mismatch_relative_l2": 0.0024565030420200494,
+          "projection_floor_relative_l2": 0.04866339145474934,
+          "p0_total_relative_l2": 0.04872535351409597,
+          "projection_fraction_of_squared_error": 0.9974582980908452
+        }
+      },
+      "velocity_projection_floor_relative_l2": 0.0477307763395999,
+      "velocity_p0_total_relative_l2": 0.061795292428856126,
+      "sampled_peak_diagnostics": {
+        "gradient": {
+          "measured_sampled_peak": 0.9644395656952719,
+          "reference_sampled_peak": 0.9729191274349067,
+          "sampled_peak_relative_discrepancy": 0.008715587452773343
+        },
+        "curl": {
+          "measured_sampled_peak": 1.1503795134982449,
+          "reference_sampled_peak": 1.160641677951857,
+          "sampled_peak_relative_discrepancy": 0.008841802468890547
+        }
+      },
+      "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+      "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+      "stage": "postSolve",
+      "time": 0.05,
+      "cells": 887552,
+      "cell_budget_reached_or_exceeded": false,
+      "maximum_refinement_level": 1,
+      "local_mean_quality": {
+        "status": "FAIL",
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": {
+            "value": 0.03924832679729078,
+            "threshold": 0.02,
+            "status": "FAIL"
+          },
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.040255333662440745,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.032918536805584125,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      },
+      "reference_operator_quality": {
+        "status": "PASS",
+        "metrics": {
+          "gradient_mean_mismatch_relative_l2": {
+            "value": 0.0026423202812659156,
+            "threshold": 0.05,
+            "status": "PASS"
+          },
+          "curl_mean_mismatch_relative_l2": {
+            "value": 0.0024565030420200494,
+            "threshold": 0.05,
+            "status": "PASS"
+          }
+        }
+      }
+    }
+  ],
+  "instrumentation_control": "INDEPENDENT_N16_CONTROL_REQUIRED_FOR_MATRIX",
+  "quality_scope": "Full-domain volume-weighted mismatch against exact cube means, normalized by integrated continuum reference energy. Gradient/curl are specified P0 native Gauss tensors; projection floors and total P0 errors are separate. These 5% mean gates are new engineering tolerances, not a reuse of the original peak-error rule.",
+  "limits": [
+    "This is an AMR mean-quality study; it does not replace the frozen N=4 uniform benchmark or its peak/spectrum gates.",
+    "Sampled peak discrepancies are diagnostics; continuous extrema and AMR spectra remain separate open obligations.",
+    "The thresholds are prospective but informed by earlier N=4 diagnostics; no blinded study or independent benchmark-design novelty is claimed.",
+    "Source equivalence of the whole packaged runtime is not established; instrumented module source is verified and its load is recorded.",
+    "Quality failure alone does not imply an implementation bug, singularity, molecular alignment, phase transition or viscosity change."
+  ],
+  "overall_original_AMR_peak_spectrum_gate": "UNCERTAIN_SEPARATE_OPEN_OBLIGATIONS"
+}

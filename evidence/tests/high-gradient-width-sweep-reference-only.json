@@ -1,0 +1,389 @@
+{
+  "status": "ANALYTIC_REFERENCE_ONLY",
+  "protocol": "protocols/high-gradient-of13-v2.json",
+  "scope": "Exact MMS samples passed through the benchmark's periodic centered-FD2 diagnostics; reference-only truncation floor, not solver output or defect evidence.",
+  "frequency_N": 4,
+  "time": 0.05,
+  "continuous_extrema": "NOT_CERTIFIED",
+  "widths": [
+    {
+      "envelope_power": 1,
+      "near_peak_equivalent_gaussian_sigma": 1.4142135623730951,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 16.0,
+          "gradient_stencil_floor_relative_error": 0.3624554390881103,
+          "vorticity_stencil_floor_relative_error": 0.35300363080306746,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.660674057412396,
+          "reference_sampled_vorticity_peak": 0.6803701845717139,
+          "fd2_gradient_peak": 0.42120915183886265,
+          "fd2_vorticity_peak": 0.44019703912774577
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 32.0,
+          "gradient_stencil_floor_relative_error": 0.09958337400469752,
+          "vorticity_stencil_floor_relative_error": 0.09686160539882857,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.8750535559767253,
+          "reference_sampled_vorticity_peak": 0.9018708328389989,
+          "fd2_gradient_peak": 0.7879127704377545,
+          "fd2_vorticity_peak": 0.8145141761078349
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 64.0,
+          "gradient_stencil_floor_relative_error": 0.02548099629042407,
+          "vorticity_stencil_floor_relative_error": 0.024780818749719023,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9322847928844658,
+          "reference_sampled_vorticity_peak": 0.9609311370725507,
+          "fd2_gradient_peak": 0.9085292475353579,
+          "fd2_vorticity_peak": 0.9371184767337944
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 128.0,
+          "gradient_stencil_floor_relative_error": 0.006407266823996839,
+          "vorticity_stencil_floor_relative_error": 0.006231005201431013,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9468258727907386,
+          "reference_sampled_vorticity_peak": 0.975933363012503,
+          "fd2_gradient_peak": 0.9407593067879046,
+          "fd2_vorticity_peak": 0.969852317151322
+        }
+      ]
+    },
+    {
+      "envelope_power": 2,
+      "near_peak_equivalent_gaussian_sigma": 1.0,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 8.0,
+          "gradient_stencil_floor_relative_error": 0.36023898832487344,
+          "vorticity_stencil_floor_relative_error": 0.34536446387373,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.6506802630469922,
+          "reference_sampled_vorticity_peak": 0.6871530124786068,
+          "fd2_gradient_peak": 0.4162798633639812,
+          "fd2_vorticity_peak": 0.4498347807247143
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 16.0,
+          "gradient_stencil_floor_relative_error": 0.099329438689178,
+          "vorticity_stencil_floor_relative_error": 0.09478062964933814,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.8721972651536971,
+          "reference_sampled_vorticity_peak": 0.9244363544268858,
+          "fd2_gradient_peak": 0.7855624003797442,
+          "fd2_vorticity_peak": 0.8368176946835668
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 32.0,
+          "gradient_stencil_floor_relative_error": 0.025420113614395924,
+          "vorticity_stencil_floor_relative_error": 0.024242002049495906,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9325240610144084,
+          "reference_sampled_vorticity_peak": 0.9887728843904106,
+          "fd2_gradient_peak": 0.9088191934352643,
+          "fd2_vorticity_peak": 0.9648030501005322
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 64.0,
+          "gradient_stencil_floor_relative_error": 0.006392056860615482,
+          "vorticity_stencil_floor_relative_error": 0.006095056408207161,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9479237588240417,
+          "reference_sampled_vorticity_peak": 1.0051822747497001,
+          "fd2_gradient_peak": 0.94186457625811,
+          "fd2_vorticity_peak": 0.9990556320845707
+        }
+      ]
+    },
+    {
+      "envelope_power": 4,
+      "near_peak_equivalent_gaussian_sigma": 0.7071067811865476,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 4.0,
+          "gradient_stencil_floor_relative_error": 0.35460386159092144,
+          "vorticity_stencil_floor_relative_error": 0.33664954558862337,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.6358050129577034,
+          "reference_sampled_vorticity_peak": 0.6978987068490939,
+          "fd2_gradient_peak": 0.41034610014403594,
+          "fd2_vorticity_peak": 0.4629514243214586
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 8.0,
+          "gradient_stencil_floor_relative_error": 0.09862212918812155,
+          "vorticity_stencil_floor_relative_error": 0.09250772968386405,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.8690546889027162,
+          "reference_sampled_vorticity_peak": 0.9681315738921257,
+          "fd2_gradient_peak": 0.7833466651022097,
+          "fd2_vorticity_peak": 0.8785719199560991
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 16.0,
+          "gradient_stencil_floor_relative_error": 0.02524637015632816,
+          "vorticity_stencil_floor_relative_error": 0.02365183719691493,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9356642035612573,
+          "reference_sampled_vorticity_peak": 1.0440448346583968,
+          "fd2_gradient_peak": 0.9120420787361239,
+          "fd2_vorticity_peak": 1.0193512562027764
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 32.0,
+          "gradient_stencil_floor_relative_error": 0.006348390344930982,
+          "vorticity_stencil_floor_relative_error": 0.005945971317525763,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9528539220242989,
+          "reference_sampled_vorticity_peak": 1.0635738048742074,
+          "fd2_gradient_peak": 0.9468048333855902,
+          "fd2_vorticity_peak": 1.0572498255363536
+        }
+      ]
+    },
+    {
+      "envelope_power": 8,
+      "near_peak_equivalent_gaussian_sigma": 0.5,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 2.0,
+          "gradient_stencil_floor_relative_error": 0.3488479415651352,
+          "vorticity_stencil_floor_relative_error": 0.3361705205275431,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.6216997900871143,
+          "reference_sampled_vorticity_peak": 0.7089820690573809,
+          "fd2_gradient_peak": 0.40482109804374783,
+          "fd2_vorticity_peak": 0.4706431978576667
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 4.0,
+          "gradient_stencil_floor_relative_error": 0.09788617058194951,
+          "vorticity_stencil_floor_relative_error": 0.09369809745449872,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.8718492361852261,
+          "reference_sampled_vorticity_peak": 1.049907814982634,
+          "fd2_gradient_peak": 0.7865072531302567,
+          "fd2_vorticity_peak": 0.9515334502161513
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 8.0,
+          "gradient_stencil_floor_relative_error": 0.02507719765177967,
+          "vorticity_stencil_floor_relative_error": 0.024045990187508356,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9520661430369908,
+          "reference_sampled_vorticity_peak": 1.152951909618141,
+          "fd2_gradient_peak": 0.9281909921904846,
+          "fd2_vorticity_peak": 1.1252280393127942
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 16.0,
+          "gradient_stencil_floor_relative_error": 0.006306756985515027,
+          "vorticity_stencil_floor_relative_error": 0.006050899300574194,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 0.9733139731474761,
+          "reference_sampled_vorticity_peak": 1.1799322968569064,
+          "fd2_gradient_peak": 0.9671755184482289,
+          "fd2_vorticity_peak": 1.17279264534713
+        }
+      ]
+    },
+    {
+      "envelope_power": 16,
+      "near_peak_equivalent_gaussian_sigma": 0.3535533905932738,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 1.0,
+          "gradient_stencil_floor_relative_error": 0.3722500570698756,
+          "vorticity_stencil_floor_relative_error": 0.35959479466823024,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.6270253561133935,
+          "reference_sampled_vorticity_peak": 0.6985739267305994,
+          "fd2_gradient_peak": 0.3936151315159237,
+          "fd2_vorticity_peak": 0.4473703789873302
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 2.0,
+          "gradient_stencil_floor_relative_error": 0.10538123394713643,
+          "vorticity_stencil_floor_relative_error": 0.10952256948168113,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.904267145769673,
+          "reference_sampled_vorticity_peak": 1.1921907168904031,
+          "fd2_gradient_peak": 0.8089743581306098,
+          "fd2_vorticity_peak": 1.0616189262643587
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 4.0,
+          "gradient_stencil_floor_relative_error": 0.027615029705312953,
+          "vorticity_stencil_floor_relative_error": 0.029092872358268258,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 1.0198696022307738,
+          "reference_sampled_vorticity_peak": 1.3643047193123679,
+          "fd2_gradient_peak": 0.9917058728696253,
+          "fd2_vorticity_peak": 1.3246131762556301
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 8.0,
+          "gradient_stencil_floor_relative_error": 0.006995943788039109,
+          "vorticity_stencil_floor_relative_error": 0.007389764701655539,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 1.05234767220853,
+          "reference_sampled_vorticity_peak": 1.4109565739426226,
+          "fd2_gradient_peak": 1.0449855070482854,
+          "fd2_vorticity_peak": 1.4005299368569326
+        }
+      ]
+    },
+    {
+      "envelope_power": 32,
+      "near_peak_equivalent_gaussian_sigma": 0.25,
+      "envelope": "((1+cos(q))/2)^m in each transverse coordinate",
+      "rows": [
+        {
+          "n": 16,
+          "cells_per_highest_envelope_wavelength": 0.5,
+          "gradient_stencil_floor_relative_error": 0.4632299760600857,
+          "vorticity_stencil_floor_relative_error": 0.4042695440095661,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 0.6685439134683275,
+          "reference_sampled_vorticity_peak": 0.6212470799852057,
+          "fd2_gradient_peak": 0.35885433243727816,
+          "fd2_vorticity_peak": 0.37009580624231214
+        },
+        {
+          "n": 32,
+          "cells_per_highest_envelope_wavelength": 1.0,
+          "gradient_stencil_floor_relative_error": 0.15328467492053882,
+          "vorticity_stencil_floor_relative_error": 0.1586466962180215,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": false,
+          "vorticity_floor_within_threshold": false,
+          "reference_sampled_gradient_peak": 1.0167641038153346,
+          "reference_sampled_vorticity_peak": 1.4020702280498127,
+          "fd2_gradient_peak": 0.860909748691128,
+          "fd2_vorticity_peak": 1.179636418504062
+        },
+        {
+          "n": 64,
+          "cells_per_highest_envelope_wavelength": 2.0,
+          "gradient_stencil_floor_relative_error": 0.04704479465803639,
+          "vorticity_stencil_floor_relative_error": 0.047728242828211934,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 1.2475843116817513,
+          "reference_sampled_vorticity_peak": 1.7619377848372688,
+          "fd2_gradient_peak": 1.1888919639200957,
+          "fd2_vorticity_peak": 1.6778435903943538
+        },
+        {
+          "n": 128,
+          "cells_per_highest_envelope_wavelength": 4.0,
+          "gradient_stencil_floor_relative_error": 0.012490235055294886,
+          "vorticity_stencil_floor_relative_error": 0.01253843589682781,
+          "gradient_threshold": 0.05,
+          "vorticity_threshold": 0.05,
+          "gradient_floor_within_threshold": true,
+          "vorticity_floor_within_threshold": true,
+          "reference_sampled_gradient_peak": 1.3197708855350632,
+          "reference_sampled_vorticity_peak": 1.8662847012199324,
+          "fd2_gradient_peak": 1.3032866369555955,
+          "fd2_vorticity_peak": 1.8428844101284558
+        }
+      ]
+    }
+  ],
+  "interpretation": "Near-peak equivalent width describes local curvature only. Each floor compares sampled analytic peaks to the same samples passed through centered-FD2; it is not a continuous-domain bound."
+}

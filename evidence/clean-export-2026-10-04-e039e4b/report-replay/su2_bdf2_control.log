@@ -1,0 +1,69 @@
+{
+  "success": true,
+  "initial_history": "U[-1]=U[0]=1 (confirmed by all-step recurrence match)",
+  "exact_error_original": "-2*k*h^2 + 3*h^2/2*(1-3^(-k))",
+  "exact_error_target": "h^2/2*(1-3^(-k))",
+  "scope": "Uniform MMS on pinned v8.5.0 source; not a general restart/multizone/boundary fix.",
+  "results": [
+    {
+      "variant": "original driver",
+      "cases": [
+        {
+          "dt": 0.1,
+          "endpoint_error": 0.08506172841051307,
+          "max_bound_on_formula_discrepancy": 3.710898255349093e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "73dacd13bc1462a96d4ce9ff6b39de85836d0e93f4f8979de9f6697fabffbeac"
+        },
+        {
+          "dt": 0.05,
+          "endpoint_error": 0.04625006352722094,
+          "max_bound_on_formula_discrepancy": 4.749511894885927e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "566e316410c509f80181f6e113fe3d568d9f1378d86d547458711065d34f3c22"
+        },
+        {
+          "dt": 0.025,
+          "endpoint_error": 0.024062500024502942,
+          "max_bound_on_formula_discrepancy": 5.3896664908847924e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "6697025ba87361f70d869b4cc7248c4ac23667f06822d9f239742f81d8d8e30b"
+        }
+      ],
+      "observed_orders": [
+        0.8790548228237279,
+        0.9426688050939984
+      ]
+    },
+    {
+      "variant": "target-time intervention",
+      "cases": [
+        {
+          "dt": 0.1,
+          "endpoint_error": 0.0049794238882279185,
+          "max_bound_on_formula_discrepancy": 3.732147924040419e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "1a28ee132fa600670490bfb872b8cd23b865ea9c05fbfa4d1f4960e34c8f8f65"
+        },
+        {
+          "dt": 0.05,
+          "endpoint_error": 0.0012499788555710989,
+          "max_bound_on_formula_discrepancy": 4.749511894885927e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "42152e04ccd0aabb7272f3fd763c3febd4f62ee778fb0e194c6cba6ba5b8b641"
+        },
+        {
+          "dt": 0.025,
+          "endpoint_error": 0.0003125000268930922,
+          "max_bound_on_formula_discrepancy": 5.3896442864243e-11,
+          "all_step_residuals_met": true,
+          "archive_sha256": "68fcea448402ff56a86e02d96c021c47248e7524445d8b455fe0f511ad935b82"
+        }
+      ],
+      "observed_orders": [
+        1.9940751436154394,
+        1.9999754716681273
+      ]
+    }
+  ]
+}

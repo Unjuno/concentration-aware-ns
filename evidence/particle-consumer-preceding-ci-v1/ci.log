@@ -1,0 +1,336 @@
+tests	Set up job	﻿2026-10-03T21:56:10.0783806Z Current runner version: '2.337.0'
+tests	Set up job	2026-10-03T21:56:10.0817717Z ##[group]Runner Image Provisioner
+tests	Set up job	2026-10-03T21:56:10.0819082Z Hosted Compute Agent
+tests	Set up job	2026-10-03T21:56:10.0819987Z Version: 20260901.588
+tests	Set up job	2026-10-03T21:56:10.0821073Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+tests	Set up job	2026-10-03T21:56:10.0822308Z Build Date: 2026-09-01T19:56:44Z
+tests	Set up job	2026-10-03T21:56:10.0823318Z Worker ID: {684af1e4-1aa6-4ae5-916d-852593327ab3}
+tests	Set up job	2026-10-03T21:56:10.0824846Z Azure Region: centralus
+tests	Set up job	2026-10-03T21:56:10.0825827Z ##[endgroup]
+tests	Set up job	2026-10-03T21:56:10.0827930Z ##[group]Operating System
+tests	Set up job	2026-10-03T21:56:10.0828925Z Ubuntu
+tests	Set up job	2026-10-03T21:56:10.0829712Z 24.04.5
+tests	Set up job	2026-10-03T21:56:10.0830592Z LTS
+tests	Set up job	2026-10-03T21:56:10.0831418Z ##[endgroup]
+tests	Set up job	2026-10-03T21:56:10.0832262Z ##[group]Runner Image
+tests	Set up job	2026-10-03T21:56:10.0833647Z Image: ubuntu-24.04
+tests	Set up job	2026-10-03T21:56:10.0834553Z Version: 20260927.320.1
+tests	Set up job	2026-10-03T21:56:10.0836323Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+tests	Set up job	2026-10-03T21:56:10.0839202Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+tests	Set up job	2026-10-03T21:56:10.0840899Z ##[endgroup]
+tests	Set up job	2026-10-03T21:56:10.0842699Z ##[group]GITHUB_TOKEN Permissions
+tests	Set up job	2026-10-03T21:56:10.0845906Z Contents: read
+tests	Set up job	2026-10-03T21:56:10.0846804Z Metadata: read
+tests	Set up job	2026-10-03T21:56:10.0847800Z ##[endgroup]
+tests	Set up job	2026-10-03T21:56:10.0850519Z Secret source: Actions
+tests	Set up job	2026-10-03T21:56:10.0852171Z Cache mode: write
+tests	Set up job	2026-10-03T21:56:10.0853732Z Prepare workflow directory
+tests	Set up job	2026-10-03T21:56:10.1215407Z Prepare all required actions
+tests	Set up job	2026-10-03T21:56:10.1269347Z Getting action download info
+tests	Set up job	2026-10-03T21:56:10.4159817Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+tests	Set up job	2026-10-03T21:56:10.5201397Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+tests	Set up job	2026-10-03T21:56:10.6096298Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+tests	Set up job	2026-10-03T21:56:10.8195658Z Complete job name: tests
+tests	Run actions/checkout@v5	﻿2026-10-03T21:56:10.9033951Z ##[group]Run actions/checkout@v5
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9034991Z with:
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9035470Z   repository: Unjuno/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9039654Z   token: ***
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9040106Z   ssh-strict: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9040681Z   ssh-user: git
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9041343Z   persist-credentials: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9041998Z   clean: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9042455Z   sparse-checkout-cone-mode: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9042968Z   fetch-depth: 1
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9043616Z   fetch-tags: false
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9044059Z   show-progress: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9044505Z   lfs: false
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9044906Z   submodules: false
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9045349Z   set-safe-directory: true
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9045852Z   allow-unsafe-pr-checkout: false
+tests	Run actions/checkout@v5	2026-10-03T21:56:10.9046651Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0129348Z Syncing repository: Unjuno/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0131861Z ##[group]Getting Git version info
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0132884Z Working directory is '/home/runner/work/concentration-aware-ns/concentration-aware-ns'
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0134683Z [command]/usr/bin/git version
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0192656Z git version 2.55.0
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0224701Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0231966Z Temporarily overriding HOME='/home/runner/work/_temp/a9f5f73a-ff12-45d7-8c00-ab516b44cfaf' before making global git config changes
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0234190Z Adding repository directory to the temporary git global config as a safe directory
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0239151Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/concentration-aware-ns/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0298606Z Deleting the contents of '/home/runner/work/concentration-aware-ns/concentration-aware-ns'
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0303240Z ##[group]Initializing the repository
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0309003Z [command]/usr/bin/git init /home/runner/work/concentration-aware-ns/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0412625Z hint: Using 'master' as the name for the initial branch. This default branch name
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0414382Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0415808Z hint: to use in all of your new repositories, which will suppress this warning,
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0416933Z hint: call:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0417957Z hint:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0418651Z hint: 	git config --global init.defaultBranch <name>
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0419591Z hint:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0420191Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0421671Z hint: 'development'. The just-created branch can be renamed via this command:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0422453Z hint:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0422877Z hint: 	git branch -m <name>
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0423539Z hint:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0424296Z hint: Disable this message with "git config set advice.defaultBranchName false"
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0425516Z Initialized empty Git repository in /home/runner/work/concentration-aware-ns/concentration-aware-ns/.git/
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0440895Z [command]/usr/bin/git remote add origin https://github.com/Unjuno/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0508885Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0510377Z ##[group]Disabling automatic garbage collection
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0511568Z [command]/usr/bin/git config --local gc.auto 0
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0561404Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0562470Z ##[group]Setting up auth
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0563799Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0593034Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.0990011Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1035282Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1319542Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1367462Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1647624Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1700764Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1701715Z ##[group]Fetching the repository
+tests	Run actions/checkout@v5	2026-10-03T21:56:11.1710550Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d6db731d1fad8475335357ce1cdb7665dfa423c8:refs/remotes/pull/4/merge
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4164250Z From https://github.com/Unjuno/concentration-aware-ns
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4165940Z  * [new ref]         d6db731d1fad8475335357ce1cdb7665dfa423c8 -> pull/4/merge
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4168275Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4169046Z ##[group]Determining the checkout info
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4170750Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4177986Z [command]/usr/bin/git sparse-checkout disable
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4252761Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4290452Z ##[group]Checking out the ref
+tests	Run actions/checkout@v5	2026-10-03T21:56:55.4294268Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/4/merge
+tests	Run actions/checkout@v5	2026-10-03T21:56:56.5370969Z Updating files:  48% (1183/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:56.6326950Z Updating files:  49% (1193/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.0237205Z Updating files:  50% (1217/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.3374893Z Updating files:  51% (1242/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.4654791Z Updating files:  52% (1266/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.6179390Z Updating files:  52% (1268/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.6190430Z Updating files:  53% (1291/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7319976Z Updating files:  54% (1315/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7698724Z Updating files:  55% (1339/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7710639Z Updating files:  56% (1364/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7724541Z Updating files:  57% (1388/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7736066Z Updating files:  58% (1412/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7746647Z Updating files:  59% (1437/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7755434Z Updating files:  60% (1461/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7848095Z Updating files:  61% (1485/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:57.7997165Z Updating files:  62% (1510/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2298056Z Updating files:  63% (1534/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2340660Z Updating files:  64% (1558/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2351173Z Updating files:  65% (1583/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2362046Z Updating files:  66% (1607/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2374910Z Updating files:  67% (1631/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2426110Z Updating files:  68% (1656/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2437946Z Updating files:  69% (1680/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2450910Z Updating files:  70% (1704/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2464651Z Updating files:  71% (1729/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2476727Z Updating files:  72% (1753/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2493734Z Updating files:  73% (1777/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2504044Z Updating files:  74% (1802/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2514288Z Updating files:  75% (1826/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2527348Z Updating files:  76% (1850/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2544111Z Updating files:  77% (1875/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2561451Z Updating files:  78% (1899/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2577202Z Updating files:  79% (1923/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2596174Z Updating files:  80% (1948/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2610507Z Updating files:  81% (1972/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2623939Z Updating files:  82% (1996/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2636148Z Updating files:  83% (2021/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2651496Z Updating files:  84% (2045/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2664629Z Updating files:  85% (2069/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2675659Z Updating files:  86% (2094/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2688974Z Updating files:  87% (2118/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2701216Z Updating files:  88% (2142/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2716287Z Updating files:  89% (2167/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2731149Z Updating files:  90% (2191/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2746251Z Updating files:  91% (2215/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2759814Z Updating files:  92% (2240/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2773745Z Updating files:  93% (2264/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2787483Z Updating files:  94% (2288/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2801292Z Updating files:  95% (2313/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2816888Z Updating files:  96% (2337/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2835007Z Updating files:  97% (2361/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2848871Z Updating files:  98% (2386/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2870005Z Updating files:  99% (2410/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2870686Z Updating files: 100% (2434/2434)
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.2871344Z Updating files: 100% (2434/2434), done.
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3035345Z Note: switching to 'refs/remotes/pull/4/merge'.
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3037180Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3037934Z You are in 'detached HEAD' state. You can look around, make experimental
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3039055Z changes and commit them, and you can discard any commits you make in this
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3039960Z state without impacting any branches by switching back to a branch.
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3040558Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3041048Z If you want to create a new branch to retain commits you create, you may
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3041996Z do so (now or later) by using -c with the switch command. Example:
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3042604Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3042959Z   git switch -c <new-branch-name>
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3043631Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3043989Z Or undo this operation with:
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3044435Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3044760Z   git switch -
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3045132Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3045661Z Turn off this advice by setting config variable advice.detachedHead to false
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3046352Z 
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3047154Z HEAD is now at d6db731 Merge 1fc853fa3a8c5e069c7fb0b78d6c24921af75d72 into ef695acc49a7496fc24fae5c24587cd882411231
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3288237Z ##[endgroup]
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3339760Z [command]/usr/bin/git log -1 --format=%H
+tests	Run actions/checkout@v5	2026-10-03T21:56:58.3377249Z d6db731d1fad8475335357ce1cdb7665dfa423c8
+tests	Run actions/setup-python@v6	﻿2026-10-03T21:56:58.3714359Z ##[group]Run actions/setup-python@v6
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3714686Z with:
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3714912Z   python-version: 3.12
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3715148Z   cache: pip
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3715642Z   cache-dependency-path: requirements-verification-locked.txt
+tests	Run actions/setup-python@v6	requirements-verification.txt
+tests	Run actions/setup-python@v6	requirements.txt
+tests	Run actions/setup-python@v6	
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3716188Z   check-latest: false
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3718723Z   token: ***
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3718951Z   update-environment: true
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3719206Z   allow-prereleases: false
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3719454Z   freethreaded: false
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.3719681Z ##[endgroup]
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.5096388Z ##[group]Installed versions
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.5182101Z Successfully set up CPython (3.12.14)
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.5183000Z ##[endgroup]
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.5509377Z [command]/opt/hostedtoolcache/Python/3.12.14/x64/bin/pip cache dir
+tests	Run actions/setup-python@v6	2026-10-03T21:56:58.8542308Z /home/runner/.cache/pip
+tests	Run actions/setup-python@v6	2026-10-03T21:56:59.0102373Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-5f4e781715e33cf21fbc43ceea11f16c62135891d37dc8a30a40905d497df7cf
+tests	Run actions/setup-python@v6	2026-10-03T21:57:00.1717013Z Received 87898380 of 87898380 (100.0%), 82.8 MBs/sec
+tests	Run actions/setup-python@v6	2026-10-03T21:57:00.1717899Z Cache Size: ~84 MB (87898380 B)
+tests	Run actions/setup-python@v6	2026-10-03T21:57:00.1770551Z [command]/usr/bin/tar -xf /home/runner/work/_temp/3550757e-07d1-4758-aa47-ba328ce28128/cache.tzst -P -C /home/runner/work/concentration-aware-ns/concentration-aware-ns --use-compress-program unzstd
+tests	Run actions/setup-python@v6	2026-10-03T21:57:00.6261294Z Cache restored successfully
+tests	Run actions/setup-python@v6	2026-10-03T21:57:00.6308529Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-5f4e781715e33cf21fbc43ceea11f16c62135891d37dc8a30a40905d497df7cf
+tests	Install verification dependencies	﻿2026-10-03T21:57:00.6499024Z ##[group]Run python -m pip install -r requirements-verification-locked.txt
+tests	Install verification dependencies	2026-10-03T21:57:00.6499688Z ^[[36;1mpython -m pip install -r requirements-verification-locked.txt^[[0m
+tests	Install verification dependencies	2026-10-03T21:57:01.7031893Z shell: /usr/bin/bash -e {0}
+tests	Install verification dependencies	2026-10-03T21:57:01.7032239Z env:
+tests	Install verification dependencies	2026-10-03T21:57:01.7032569Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Install verification dependencies	2026-10-03T21:57:01.7033060Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+tests	Install verification dependencies	2026-10-03T21:57:01.7033685Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Install verification dependencies	2026-10-03T21:57:01.7034075Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Install verification dependencies	2026-10-03T21:57:01.7034475Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Install verification dependencies	2026-10-03T21:57:01.7034862Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+tests	Install verification dependencies	2026-10-03T21:57:01.7035210Z ##[endgroup]
+tests	Install verification dependencies	2026-10-03T21:57:03.1035673Z Collecting numpy<3,>=1.26 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements.txt (line 1))
+tests	Install verification dependencies	2026-10-03T21:57:03.1053951Z   Using cached numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.1266062Z Collecting sympy==1.14.0 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements-verification.txt (line 2))
+tests	Install verification dependencies	2026-10-03T21:57:03.1278882Z   Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.2409228Z Collecting scipy==1.16.2 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements-verification.txt (line 3))
+tests	Install verification dependencies	2026-10-03T21:57:03.2422924Z   Using cached scipy-1.16.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (62 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.2824657Z Collecting python-flint==0.9.0 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements-verification.txt (line 4))
+tests	Install verification dependencies	2026-10-03T21:57:03.2836817Z   Using cached python_flint-0.9.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3115986Z Collecting pytest==9.1.1 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements-verification.txt (line 5))
+tests	Install verification dependencies	2026-10-03T21:57:03.3127732Z   Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3165708Z Collecting numpy<3,>=1.26 (from -r /home/runner/work/concentration-aware-ns/concentration-aware-ns/requirements.txt (line 1))
+tests	Install verification dependencies	2026-10-03T21:57:03.3177821Z   Using cached numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3355203Z Collecting mpmath==1.3.0 (from -r requirements-verification-locked.txt (line 5))
+tests	Install verification dependencies	2026-10-03T21:57:03.3367012Z   Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3532253Z Collecting iniconfig==2.3.0 (from -r requirements-verification-locked.txt (line 7))
+tests	Install verification dependencies	2026-10-03T21:57:03.3543608Z   Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3724805Z Collecting packaging==26.3 (from -r requirements-verification-locked.txt (line 8))
+tests	Install verification dependencies	2026-10-03T21:57:03.3736740Z   Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.3899912Z Collecting pluggy==1.6.0 (from -r requirements-verification-locked.txt (line 9))
+tests	Install verification dependencies	2026-10-03T21:57:03.3911560Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4117226Z Collecting Pygments==2.21.0 (from -r requirements-verification-locked.txt (line 10))
+tests	Install verification dependencies	2026-10-03T21:57:03.4128639Z   Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4215254Z Using cached numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4284067Z Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4315683Z Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4334320Z Using cached scipy-1.16.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (35.7 MB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4519263Z Using cached python_flint-0.9.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.1 MB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4566522Z Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4578782Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4590127Z Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4600956Z Using cached packaging-26.3-py3-none-any.whl (129 kB)
+tests	Install verification dependencies	2026-10-03T21:57:03.4612288Z Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+tests	Install verification dependencies	2026-10-03T21:57:03.6505621Z Installing collected packages: mpmath, sympy, python-flint, Pygments, pluggy, packaging, numpy, iniconfig, scipy, pytest
+tests	Install verification dependencies	2026-10-03T21:57:18.3163299Z 
+tests	Install verification dependencies	2026-10-03T21:57:18.3179704Z Successfully installed Pygments-2.21.0 iniconfig-2.3.0 mpmath-1.3.0 numpy-2.5.2 packaging-26.3 pluggy-1.6.0 pytest-9.1.1 python-flint-0.9.0 scipy-1.16.2 sympy-1.14.0
+tests	Run Python test suite	﻿2026-10-03T21:57:18.3989248Z ##[group]Run python -m pytest -q tests
+tests	Run Python test suite	2026-10-03T21:57:18.3989614Z ^[[36;1mpython -m pytest -q tests^[[0m
+tests	Run Python test suite	2026-10-03T21:57:18.4059500Z shell: /usr/bin/bash -e {0}
+tests	Run Python test suite	2026-10-03T21:57:18.4059798Z env:
+tests	Run Python test suite	2026-10-03T21:57:18.4060105Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Run Python test suite	2026-10-03T21:57:18.4060592Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+tests	Run Python test suite	2026-10-03T21:57:18.4061036Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Run Python test suite	2026-10-03T21:57:18.4061439Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Run Python test suite	2026-10-03T21:57:18.4061828Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Run Python test suite	2026-10-03T21:57:18.4062222Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+tests	Run Python test suite	2026-10-03T21:57:18.4062559Z ##[endgroup]
+tests	Run Python test suite	2026-10-03T21:57:24.7648911Z .............................................. [ 12%]
+tests	Run Python test suite	2026-10-03T21:58:12.1475460Z .................................................................... [ 30%]
+tests	Run Python test suite	2026-10-03T21:59:28.4244369Z ................................................................. [ 47%]
+tests	Run Python test suite	2026-10-03T22:00:17.1354596Z ............................................................................................ [ 72%]
+tests	Run Python test suite	2026-10-03T22:00:18.5560385Z ......................s................................................. [ 91%]
+tests	Run Python test suite	2026-10-03T22:00:23.3723709Z .................................                                        [100%]
+tests	Run Python test suite	2026-10-03T22:00:23.3724618Z 375 passed, 1 skipped, 89 subtests passed in 184.44s (0:03:04)
+tests	Recheck published native samples and analytic enclosures	﻿2026-10-03T22:00:23.5852660Z ##[group]Run mkdir -p work
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5852992Z ^[[36;1mmkdir -p work^[[0m
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5855006Z ^[[36;1mpython -c "import sys,json,platform,flint,numpy; print(json.dumps({'python':sys.version,'platform':platform.platform(),'machine':platform.machine(),'python_flint':flint.__version__,'flint':flint.__FLINT_VERSION__,'numpy':numpy.__version__},indent=2))" > work/published-cell-point-matrix-environment.json^[[0m
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5856761Z ^[[36;1mpython -m tools.verify_published_cell_point_matrix --output work/published-cell-point-matrix-verification --source-commit "$GITHUB_SHA" > work/published-cell-point-matrix-verification.log 2>&1^[[0m
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5857834Z ^[[36;1mpython -m tools.check_cell_point_dyadic_receipts --output work/published-cell-point-dyadic-scalar.json^[[0m
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5928063Z shell: /usr/bin/bash -e {0}
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5928339Z env:
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5928626Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5929082Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5929595Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5929989Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5930372Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5930757Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:23.5931084Z ##[endgroup]
+tests	Recheck published native samples and analytic enclosures	2026-10-03T22:00:24.5309904Z EXACT_RATIONAL_DYADIC_SCALAR_CHAIN_VERIFIED
+tests	Preserve published-matrix verification evidence	﻿2026-10-03T22:00:24.5452780Z ##[group]Run actions/upload-artifact@v4
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5453117Z with:
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5453977Z   name: published-cell-point-matrix-verification-1fc853fa3a8c5e069c7fb0b78d6c24921af75d72
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5455126Z   path: work/published-cell-point-matrix-verification/
+tests	Preserve published-matrix verification evidence	work/published-cell-point-matrix-verification.log
+tests	Preserve published-matrix verification evidence	work/published-cell-point-matrix-environment.json
+tests	Preserve published-matrix verification evidence	work/published-cell-point-dyadic-scalar.json
+tests	Preserve published-matrix verification evidence	
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5456012Z   if-no-files-found: warn
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5456256Z   retention-days: 90
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5456486Z   compression-level: 6
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5456708Z   overwrite: false
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5456931Z   include-hidden-files: false
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5457176Z env:
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5457447Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5457881Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5458309Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5458735Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5459106Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5459483Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.5459809Z ##[endgroup]
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7179691Z (node:2480) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7180480Z (Use `node --trace-deprecation ...` to show where the warning was created)
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7365595Z Multiple search paths detected. Calculating the least common ancestor of all paths
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7368008Z The least common ancestor is /home/runner/work/concentration-aware-ns/concentration-aware-ns/work. This will be the root directory of the artifact
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7369237Z With the provided path, there will be 43 files uploaded
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7370013Z Artifact name is valid!
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.7370412Z Root directory input is valid!
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:24.9830371Z Beginning upload of artifact content to blob storage
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.0445785Z (node:2480) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.2387218Z Uploaded bytes 66258
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.2795925Z Finished uploading artifact content to blob storage!
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.2796868Z SHA256 digest of uploaded artifact zip is 55299740e5896c619f5506e74945d2c02853b24e71e1e1a26aac7ab31fb5f150
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.2798764Z Finalizing artifact upload
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.5220436Z Artifact published-cell-point-matrix-verification-1fc853fa3a8c5e069c7fb0b78d6c24921af75d72.zip successfully finalized. Artifact ID 11286432134
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.5221988Z Artifact published-cell-point-matrix-verification-1fc853fa3a8c5e069c7fb0b78d6c24921af75d72 has been successfully uploaded! Final size is 66258 bytes. Artifact ID is 11286432134
+tests	Preserve published-matrix verification evidence	2026-10-03T22:00:25.5228426Z Artifact download URL: https://github.com/Unjuno/concentration-aware-ns/actions/runs/37156524829/artifacts/11286432134
+tests	Post Run actions/setup-python@v6	﻿2026-10-03T22:00:25.5423831Z Post job cleanup.
+tests	Post Run actions/setup-python@v6	2026-10-03T22:00:25.6663647Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.12.14-pip-5f4e781715e33cf21fbc43ceea11f16c62135891d37dc8a30a40905d497df7cf, not saving cache.
+tests	Post Run actions/checkout@v5	﻿2026-10-03T22:00:25.6793140Z Post job cleanup.
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7703144Z [command]/usr/bin/git version
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7764121Z git version 2.55.0
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7824684Z Temporarily overriding HOME='/home/runner/work/_temp/27af5abd-d036-419d-a247-6d36568d4707' before making global git config changes
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7844307Z Adding repository directory to the temporary git global config as a safe directory
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7854841Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/concentration-aware-ns/concentration-aware-ns
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7875571Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.7925750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8276643Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8332014Z http.https://github.com/.extraheader
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8346937Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8392161Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8776346Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+tests	Post Run actions/checkout@v5	2026-10-03T22:00:25.8820254Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+tests	Complete job	﻿2026-10-03T22:00:25.9238239Z Cleaning up orphan processes
+tests	Complete job	2026-10-03T22:00:25.9608980Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

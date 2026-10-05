@@ -1,0 +1,69 @@
+{
+  "version": "amr-stage-snapshot-v3",
+  "status": "corrected stage-time diagnostic protocol; v1 and v2 attempts preserved separately",
+  "target": {
+    "implementation": "OpenFOAM Foundation 13",
+    "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "container_platform": "linux/arm64"
+  },
+  "case": {
+    "inherits": "protocols/high-gradient-of13-amr-first-refinement-v1.json",
+    "profile": "localized analytic high-gradient periodic MMS",
+    "frequency": 4,
+    "initial_grid_cells_per_axis": 16,
+    "viscosity": 0.01,
+    "delta_t": 0.001,
+    "end_time": 0.003,
+    "max_cells": 5000,
+    "max_refinement": 2,
+    "refine_interval": 2
+  },
+  "instrumentation": {
+    "stages": [
+      {
+        "name": "mapped",
+        "location": "immediately after mesh_.update() in incompressibleFluid::preSolve()"
+      },
+      {
+        "name": "afterCorrectPhi",
+        "location": "after correctUphiBCs, fv::correctPhi and relative-flux conversion on first PIMPLE iteration"
+      },
+      {
+        "name": "prePressure",
+        "location": "after momentumPredictor, on first PIMPLE iteration"
+      },
+      {
+        "name": "postPressure",
+        "location": "after pressure correction on final PIMPLE iteration"
+      },
+      {
+        "name": "postSolve",
+        "location": "after the PIMPLE loop and before runTime.write()"
+      }
+    ],
+    "trigger": "mapped callback: runTime.value() == 0.002 within 1e-12 immediately after mesh_.update(); afterCorrectPhi/prePressure/postPressure/postSolve: runTime.value() == 0.003 within 1e-12",
+    "fields": "Cell CSV: C,V,U,p. Face CSV: owner,neighbour,Cf,Sf,phi,Uf.",
+    "equation_changes": false,
+    "source_to_binary_equivalence": "NOT_ESTABLISHED; instrumented incompressibleFluid module is built from pinned source and loaded ahead of the packaged module, while other runtime libraries come from the pinned image."
+  },
+  "analysis": {
+    "mapped_and_afterCorrectPhi_reference_time": 0.002,
+    "prePressure_postPressure_postSolve_reference_time": 0.003,
+    "comparisons": [
+      "Stage-to-stage cellwise U, p, face phi and Uf differences on identical topology",
+      "Volume-weighted cell-centre velocity error against exact MMS at the corresponding physical state time",
+      "Mapped U versus independent parent-value transfer from the archived t=0.002 AMR state",
+      "Final instrumented state versus frozen uninstrumented control"
+    ],
+    "acceptance": "Require exactly five stage snapshots, matching topology across stages, successful solver completion, and agreement of instrumented final state with the frozen uninstrumented control before interpreting stage attribution. No numerical quality threshold is introduced.",
+    "mapped_reference_time": 0.002
+  },
+  "limitations": [
+    "One n=16 first-refinement event is a mechanism diagnostic, not a convergence or production-quality study.",
+    "The v1 attempt completed the solver but failed the event-count gate: mapped was absent and repeated PIMPLE captures produced 12 events. Its raw logs and partial evidence are preserved.",
+    "The packaged Foundation binary is not proven equivalent to all inspected upstream source, even though this module is compiled from the pinned source commit.",
+    "Any separated change identifies where this run changes, not a general solver defect or physical singularity.",
+    "The v2 run completed but failed the five-stage gate because foamRun advances time after preSolve: the mapped callback occurs at t=0.002 while later stages occur at t=0.003."
+  ]
+}

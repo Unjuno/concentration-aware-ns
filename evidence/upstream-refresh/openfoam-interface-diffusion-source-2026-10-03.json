@@ -1,0 +1,86 @@
+{
+  "observed_at_utc": "2026-10-03T09:24:42.218481+00:00",
+  "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "scope": "Pinned tensor-convention and orthogonal scalar-coefficient Laplacian source bytes; no solver run or source-to-package equivalence.",
+  "license": "GPL-3.0-or-later in source headers; source files not vendored.",
+  "files": [
+    {
+      "path": "src/OpenFOAM/primitives/Tensor/TensorI.H",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/primitives/Tensor/TensorI.H",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/OpenFOAM/primitives/Tensor/TensorI.H",
+      "sha256": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+      "git_blob_sha1_calculated": "68cb0a994ae9b1972b932f009d055fe9934de355",
+      "bytes": 23499,
+      "lines": 997,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C",
+      "sha256": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380",
+      "git_blob_sha1_calculated": "8836421696e13f8f775d5c41644601aa1d1a3fcb",
+      "bytes": 4251,
+      "lines": 154,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianScheme.C",
+      "sha256": "98626711bb3f25b4967d1c202b03ad4d4ed235518cd86d73adcaa53b6ff40eb5",
+      "git_blob_sha1_calculated": "e39c2c9e5e152335d6ff1ddb2e08b3300c707483",
+      "bytes": 6372,
+      "lines": 238,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/laplacianSchemes/gaussLaplacianScheme/gaussLaplacianSchemes.C",
+      "sha256": "d71bed86fea3f447518831b8a6f5698e551804fe823618aae1b768328a7e8800",
+      "git_blob_sha1_calculated": "7c4325bb694888e699f272dfdb33ba04734fd39c",
+      "bytes": 7916,
+      "lines": 121,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.C",
+      "sha256": "86371e490115fef3073d187d186f808a6623aadfacab96b4930af21d42ae407e",
+      "git_blob_sha1_calculated": "b5a6653c8ac6ece27c0e9b1a81ed75ecbe9e40d2",
+      "bytes": 8043,
+      "lines": 413,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme/snGradScheme.C",
+      "sha256": "f0446de379c08626af72e7adf3eaa8b9b2cd2f4f3cefab6a45cc1d3cafdb0d0b",
+      "git_blob_sha1_calculated": "a0073f1ec303fb28bfa014a67719347cfc36f2f7",
+      "bytes": 5228,
+      "lines": 213,
+      "matches_local_tree": true
+    },
+    {
+      "path": "src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H",
+      "revision": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "raw_url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-13/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H",
+      "source_url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/src/finiteVolume/finiteVolume/snGradSchemes/orthogonalSnGrad/orthogonalSnGrad.H",
+      "sha256": "f41c3a9ae2b7ca42dcf54b1904372f042a6b7e3d9375d60d812b269ec00321b7",
+      "git_blob_sha1_calculated": "2ca6ffbc41bf7c41e692a2e9dd6f0978caa34d4d",
+      "bytes": 3684,
+      "lines": 135,
+      "matches_local_tree": true
+    }
+  ],
+  "all_match_local_tree": true
+}

@@ -1,0 +1,304 @@
+{
+  "status": "ENCLOSED_CONDITIONAL_POINT_INTERPOLATION_GRADIENT_WITNESSES",
+  "numerical_source_commit": "3711beb25d67daff4a04104b5ba983e2b4c98d5b",
+  "precision_bits": 96,
+  "protocol_sha256": "e93820a210ecc3f6150b4595d79b6ef05b5580913df079f212e4c1d1e9f2e0a4",
+  "input_protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "source_sha256": {
+    "tools/amr_point_gradient_bound.py": "2900928eca911a573a9f64318f858e57f62b6310d500102776a68c536e5f0916",
+    "tools/audit_amr_point_gradient_bound.py": "c950e99cc6a6d897c26254868fd5f3af2b30a5044901541591193bda7c6850d7",
+    "tools/amr_arb_mean_certificate.py": "594418bd6f88c6b9c6f187b5ff9112c85e9ebb0ea231c3e4b14983b120657442",
+    "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3"
+  },
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "member": "main/postProcessing/amrStages/0.05/postSolve_cells.csv",
+      "cells": 16640,
+      "witness": {
+        "a": [
+          0.4908738521234054,
+          0.0981747704246815,
+          0.09817477042468112
+        ],
+        "b": [
+          0.6872233929727676,
+          0.09817477042468159,
+          0.09817477042468122
+        ],
+        "Ua": [
+          -0.03239790759170598,
+          0.04344124194118841,
+          0.0003232753894601398
+        ],
+        "Ub": [
+          -0.032196668834480656,
+          0.06952357489659952,
+          7.774240831063879e-05
+        ],
+        "error_chord_norm": {
+          "lower_rational": "47863924523442262366797060223/316912650057057350374175801344",
+          "upper_rational": "47863924523442262366797060283/316912650057057350374175801344",
+          "ball": "[0.151031915307971396715742620 +/- 4.70e-28]",
+          "display_lower": 0.1510319153079714,
+          "display_upper": 0.1510319153079714
+        },
+        "point_distance": {
+          "lower_rational": "15556413332014451016584921087/79228162514264337593543950336",
+          "upper_rational": "31112826664028902033169842177/158456325028528675187087900672",
+          "ball": "[0.1963495408493621807721751793 +/- 1.27e-29]",
+          "display_lower": 0.19634954084936218,
+          "display_upper": 0.19634954084936218
+        },
+        "gradient_absolute_peak_error_lower": {
+          "lower_rational": "60942241469465782685558205047/79228162514264337593543950336",
+          "upper_rational": "60942241469465782685558205047/79228162514264337593543950336",
+          "ball": "[0.7691992283488041921418707636 +/- 1.55e-29]",
+          "display_lower": 0.7691992283488042,
+          "display_upper": 0.7691992283488042
+        },
+        "reference_gradient_peak_upper": {
+          "lower_rational": "77655384756945122889233257949/79228162514264337593543950336",
+          "upper_rational": "77655384756945122889233257959/79228162514264337593543950336",
+          "ball": "[0.9801487538343950634049860908 +/- 8.04e-29]",
+          "display_lower": 0.980148753834395,
+          "display_upper": 0.980148753834395
+        },
+        "gradient_relative_peak_error_lower": {
+          "lower_rational": "62176522931908478275120407811/79228162514264337593543950336",
+          "upper_rational": "62176522931908478275120407811/79228162514264337593543950336",
+          "ball": "[0.7847780506169651381870265496 +/- 1.33e-29]",
+          "display_lower": 0.7847780506169652,
+          "display_upper": 0.7847780506169652
+        },
+        "above_disclosed_five_percent_target": true,
+        "cell_rows": [
+          1,
+          4103
+        ],
+        "floating_search_slope": 0.7691992283488038,
+        "search_scope": "six nearest neighbors per point, no periodic wrapping; not a global maximum claim"
+      }
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "member": "main/postProcessing/amrStages/0.05/postSolve_cells.csv",
+      "cells": 116992,
+      "witness": {
+        "a": [
+          0.4417864669110649,
+          6.234097921967246,
+          6.234097921967246
+        ],
+        "b": [
+          0.539961237335746,
+          6.234097921967245,
+          6.234097921967247
+        ],
+        "Ua": [
+          0.01857190696024023,
+          -0.03793768386885631,
+          -4.6347931802993545e-05
+        ],
+        "Ub": [
+          0.01816190845036498,
+          -0.023355598048514364,
+          -5.073216243524899e-05
+        ],
+        "error_chord_norm": {
+          "lower_rational": "49170525178478136758224636691/633825300114114700748351602688",
+          "upper_rational": "49170525178478136758224636753/633825300114114700748351602688",
+          "ball": "[0.0775774100049736320570903261 +/- 7.10e-29]",
+          "display_lower": 0.07757741000497363,
+          "display_upper": 0.07757741000497363
+        },
+        "point_distance": {
+          "lower_rational": "31112826664028902033169842177/316912650057057350374175801344",
+          "upper_rational": "31112826664028902033169842179/316912650057057350374175801344",
+          "ball": "[0.09817477042468109038608758966 +/- 6.45e-30]",
+          "display_lower": 0.09817477042468109,
+          "display_upper": 0.09817477042468109
+        },
+        "gradient_absolute_peak_error_lower": {
+          "lower_rational": "3912866068289645241925801997/4951760157141521099596496896",
+          "upper_rational": "3912866068289645241925801997/4951760157141521099596496896",
+          "ball": "[0.7901970095717250410909487607 +/- 2.87e-29]",
+          "display_lower": 0.790197009571725,
+          "display_upper": 0.790197009571725
+        },
+        "reference_gradient_peak_upper": {
+          "lower_rational": "77655384756945122889233257949/79228162514264337593543950336",
+          "upper_rational": "77655384756945122889233257959/79228162514264337593543950336",
+          "ball": "[0.9801487538343950634049860908 +/- 8.04e-29]",
+          "display_lower": 0.980148753834395,
+          "display_upper": 0.980148753834395
+        },
+        "gradient_relative_peak_error_lower": {
+          "lower_rational": "63873832260375597857846062003/79228162514264337593543950336",
+          "upper_rational": "63873832260375597857846062003/79228162514264337593543950336",
+          "ball": "[0.8062011061896793720398084480 +/- 2.30e-29]",
+          "display_lower": 0.8062011061896793,
+          "display_upper": 0.8062011061896793
+        },
+        "above_disclosed_five_percent_target": true,
+        "cell_rows": [
+          116787,
+          116788
+        ],
+        "floating_search_slope": 0.7901970095717246,
+        "search_scope": "six nearest neighbors per point, no periodic wrapping; not a global maximum claim"
+      }
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "member": "main/postProcessing/amrStages/0.05/postSolve_cells.csv",
+      "cells": 887552,
+      "witness": {
+        "a": [
+          0.5154175447295759,
+          0.024543692606170415,
+          6.258641614573416
+        ],
+        "b": [
+          0.5645049299419166,
+          0.024543692606170547,
+          6.258641614573416
+        ],
+        "Ua": [
+          -0.007469005447748307,
+          0.003397741914702762,
+          -6.641690431784693e-06
+        ],
+        "Ub": [
+          -0.007645609825945109,
+          0.027710998944106564,
+          -6.435423670955796e-06
+        ],
+        "error_chord_norm": {
+          "lower_rational": "880488730025123111733391741/39614081257132168796771975168",
+          "upper_rational": "28175639360803939575468535771/1267650600228229401496703205376",
+          "ball": "[0.0222266603713445662248304654 +/- 3.37e-29]",
+          "display_lower": 0.022226660371344565,
+          "display_upper": 0.022226660371344565
+        },
+        "point_distance": {
+          "lower_rational": "15556413332014494997050032127/316912650057057350374175801344",
+          "upper_rational": "31112826664028989994100064257/633825300114114700748351602688",
+          "ball": "[0.04908738521234068397092187297 +/- 3.10e-30]",
+          "display_lower": 0.049087385212340684,
+          "display_upper": 0.049087385212340684
+        },
+        "gradient_absolute_peak_error_lower": {
+          "lower_rational": "71748676464744035812896401853/158456325028528675187087900672",
+          "upper_rational": "71748676464744035812896401853/158456325028528675187087900672",
+          "ball": "[0.4527978069150998816487115526 +/- 1.41e-29]",
+          "display_lower": 0.45279780691509985,
+          "display_upper": 0.45279780691509985
+        },
+        "reference_gradient_peak_upper": {
+          "lower_rational": "77655384756945122889233257949/79228162514264337593543950336",
+          "upper_rational": "77655384756945122889233257959/79228162514264337593543950336",
+          "ball": "[0.9801487538343950634049860908 +/- 8.04e-29]",
+          "display_lower": 0.980148753834395,
+          "display_upper": 0.980148753834395
+        },
+        "gradient_relative_peak_error_lower": {
+          "lower_rational": "18300455972641735158736199967/39614081257132168796771975168",
+          "upper_rational": "18300455972641735158736199967/39614081257132168796771975168",
+          "ball": "[0.4619684564651338000787954672 +/- 1.19e-29]",
+          "display_lower": 0.4619684564651338,
+          "display_upper": 0.4619684564651338
+        },
+        "above_disclosed_five_percent_target": true,
+        "cell_rows": [
+          868774,
+          868775
+        ],
+        "floating_search_slope": 0.4527978069150994,
+        "search_scope": "six nearest neighbors per point, no periodic wrapping; not a global maximum claim"
+      }
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "member": "main/postProcessing/amrStages/0.05/postSolve_cells.csv",
+      "cells": 116992,
+      "witness": {
+        "a": [
+          0.44178646691106455,
+          6.234097921967246,
+          0.049087385212341086
+        ],
+        "b": [
+          0.5399612373357455,
+          6.234097921967245,
+          0.04908738521234109
+        ],
+        "Ua": [
+          0.018381496548676008,
+          -0.03848539424264845,
+          5.285235563321529e-05
+        ],
+        "Ub": [
+          0.018065950220509597,
+          -0.022794944651047675,
+          5.980549796149418e-05
+        ],
+        "error_chord_norm": {
+          "lower_rational": "48467529307987455087809732801/633825300114114700748351602688",
+          "upper_rational": "48467529307987455087809732863/633825300114114700748351602688",
+          "ball": "[0.0764682780874498074108412300 +/- 8.61e-29]",
+          "display_lower": 0.07646827808744981,
+          "display_upper": 0.07646827808744981
+        },
+        "point_distance": {
+          "lower_rational": "62225653328057733697595506687/633825300114114700748351602688",
+          "upper_rational": "62225653328057733697595506693/633825300114114700748351602688",
+          "ball": "[0.09817477042468097936378512714 +/- 6.26e-30]",
+          "display_lower": 0.09817477042468098,
+          "display_upper": 0.09817477042468098
+        },
+        "gradient_absolute_peak_error_lower": {
+          "lower_rational": "30855387475270069604862285851/39614081257132168796771975168",
+          "upper_rational": "30855387475270069604862285851/39614081257132168796771975168",
+          "ball": "[0.7788994846299717478557609785 +/- 3.04e-29]",
+          "display_lower": 0.7788994846299717,
+          "display_upper": 0.7788994846299717
+        },
+        "reference_gradient_peak_upper": {
+          "lower_rational": "77655384756945122889233257949/79228162514264337593543950336",
+          "upper_rational": "77655384756945122889233257959/79228162514264337593543950336",
+          "ball": "[0.9801487538343950634049860908 +/- 8.04e-29]",
+          "display_lower": 0.980148753834395,
+          "display_upper": 0.980148753834395
+        },
+        "gradient_relative_peak_error_lower": {
+          "lower_rational": "31480310875836061606059485553/39614081257132168796771975168",
+          "upper_rational": "31480310875836061606059485553/39614081257132168796771975168",
+          "ball": "[0.7946747690928287530170509231 +/- 4.84e-29]",
+          "display_lower": 0.7946747690928287,
+          "display_upper": 0.7946747690928287
+        },
+        "above_disclosed_five_percent_target": true,
+        "cell_rows": [
+          37487,
+          37488
+        ],
+        "floating_search_slope": 0.778899484629971,
+        "search_scope": "six nearest neighbors per point, no periodic wrapping; not a global maximum claim"
+      }
+    }
+  ],
+  "limits": [
+    "Exact binary64-decoded points and values, exact decimal time, independent Arb analytic point evaluation; no cell-average interpretation.",
+    "Floating six-nearest-neighbor search only selects a pair; no global optimum is claimed.",
+    "The lower bound is for peak-of-gradient-error in Frobenius norm, not error in the peak value alone.",
+    "No pointwise curl bound follows, including for solenoidal fields; H1 alone does not supply point interpolation in three dimensions.",
+    "The upstream solver is not established to supply this continuous point-interpolating reconstruction; original gate unchanged.",
+    "No new CFD simulation, singularity, molecular alignment or viscosity claim."
+  ],
+  "original_gate_verdict": "UNCHANGED_POINT_RECONSTRUCTION_CONTRACT_NOT_ESTABLISHED"
+}

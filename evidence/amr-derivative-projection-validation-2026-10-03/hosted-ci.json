@@ -1,0 +1,28 @@
+{
+  "source_commit": "5bc0691a60d2282aef6828f5da6d5f2a803673e9",
+  "python_ci": {
+    "run_id": 37120677679,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37120677679",
+    "status": "completed",
+    "conclusion": "success",
+    "test_summary": "264 passed, 1 skipped, 70 subtests passed in 173.64s (0:02:53)"
+  },
+  "interface_ci": {
+    "run_id": 37120677709,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37120677709",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "changes",
+        "conclusion": "success"
+      },
+      {
+        "name": "operator",
+        "conclusion": "skipped"
+      }
+    ]
+  },
+  "scope": "Hosted Python tests and changed-input gate at this fixed commit. The scalar operator job is skipped; no new CFD result is generated.",
+  "new_amr_artifact_sha256": "1d01688aa3ec32a677428ccaf30e61805e43b5c926b10921c18bde1db300ed3c"
+}

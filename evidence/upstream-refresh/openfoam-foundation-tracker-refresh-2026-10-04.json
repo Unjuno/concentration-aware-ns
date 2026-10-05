@@ -1,0 +1,48 @@
+{
+  "captured_at_utc": "2026-10-04T02:32:48Z",
+  "tracker": {
+    "name": "OpenFOAM Issue Tracking",
+    "url": "https://bugs.openfoam.org/",
+    "route": "OpenFOAM Foundation README and GitHub repository direct users to the Foundation issue tracker",
+    "unauthenticated_ticket_fetch": "Queried view.php pages returned the tracker login screen in this environment; full ticket pages were not retrieved."
+  },
+  "search_scope": {
+    "terms": ["dynamic refinement", "maxCells", "maxRefinement", "mapped fields", "refinementHistory", "gradient evaluation"],
+    "method": "Targeted web index queries scoped to bugs.openfoam.org. Not an exhaustive ticket export or full-text scan."
+  },
+  "indexed_candidates": [
+    {
+      "id": 4107,
+      "url": "https://bugs.openfoam.org/view.php?id=4107",
+      "indexed_summary": "Multiple refinementRegions use the maximum maxRefinement setting; indexed response calls this a design decision.",
+      "indexed_disposition": "closed, no change required (as shown in indexed result)",
+      "overlap": "Different from the benchmark's approximate maxCells cap and whole-level selection."
+    },
+    {
+      "id": 3928,
+      "url": "https://bugs.openfoam.org/view.php?id=3928",
+      "indexed_summary": "Dynamic mesh refiner does not write refinementHistory correctly.",
+      "indexed_disposition": "resolved (as shown in indexed result)",
+      "overlap": "Benchmark's immediate first-map audit does not depend on restart refinement history."
+    },
+    {
+      "id": 141,
+      "url": "https://bugs.openfoam.org/view.php?id=141",
+      "indexed_summary": "Least-squares gradient calculation report on an unstructured hexahedral mesh.",
+      "indexed_disposition": "fixed/closed (as shown in indexed result)",
+      "overlap": "Different gradient operator from the benchmark's Gauss diagnostic and pinned Foundation 13 case."
+    },
+    {
+      "id": 75,
+      "url": "https://bugs.openfoam.org/view.php?id=75",
+      "indexed_summary": "Dynamic-refinement candidate scoring inconsistency.",
+      "indexed_disposition": "fixed in 1.7.x (as shown in indexed result)",
+      "overlap": "Historical selector behavior; no link to the pinned Foundation 13 run or its postprocessing metrics."
+    }
+  ],
+  "disposition": {
+    "finding": "No matching, reproducible Foundation 13 defect was identified in the targeted indexed results.",
+    "issue_filed": false,
+    "reason": "Observed AMR cap behavior is explained by whole-level selection under an approximate budget; the mapped-field and gradient comparisons are benchmark diagnostics and do not establish a contract violation. No directly matching open ticket surfaced in the targeted search. Full ticket pages were inaccessible without authentication, so duplicate absence is not claimed exhaustively."
+  }
+}

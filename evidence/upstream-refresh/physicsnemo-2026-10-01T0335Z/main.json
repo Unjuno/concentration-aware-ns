@@ -1,0 +1,113 @@
+{
+  "scope": "Focused deterministic reproduction of odd-width radial-spectrum asymmetry; not a full PhysicsNeMo test suite.",
+  "upstream_issue": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+  "upstream_fix_pr": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+  "source_file": "/tmp/physicsnemo-main-b08dd3-power_spectrum.py",
+  "source_reference": "NVIDIA/physicsnemo@b08dd3f61ac44c784f7c03b0cc93947226365cad",
+  "source_file_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552",
+  "torch_version": "2.11.0",
+  "device": "CPU",
+  "results": {
+    "32": {
+      "height_wave_peak": {
+        "index": 3,
+        "power": 9.84615421295166,
+        "bins": [
+          6.682313122979844e-13,
+          5.111866875975868e-13,
+          4.749784550048264e-13,
+          9.84615421295166,
+          4.505834453379792e-14,
+          2.2713752604566935e-14,
+          4.0005428440445523e-13,
+          1.6261326324113617e-13,
+          1.8756385875874637e-14,
+          4.964709978576894e-15,
+          1.4025684842602741e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "width_wave_peak": {
+        "index": 3,
+        "power": 9.84615421295166,
+        "bins": [
+          6.682313122979844e-13,
+          5.111866875975868e-13,
+          4.749784550048264e-13,
+          9.84615421295166,
+          4.505834453379792e-14,
+          2.2713752604566935e-14,
+          4.0005428440445523e-13,
+          1.6261326324113617e-13,
+          1.8756385875874637e-14,
+          4.964709978576894e-15,
+          1.4025684842602741e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "height_vs_width_peak_equal": true,
+      "height_vs_width_spectrum_allclose": true
+    },
+    "33": {
+      "height_wave_peak": {
+        "index": 3,
+        "power": 10.083333015441895,
+        "bins": [
+          2.460102976366285e-13,
+          1.0305682495532695e-13,
+          7.317356356256743e-14,
+          10.083333015441895,
+          3.1959586480100402e-15,
+          2.1050328973958206e-14,
+          7.333314795796193e-15,
+          4.259034124725128e-16,
+          3.3386737469852596e-15,
+          2.715514572305586e-16,
+          5.224614626903588e-16,
+          2.4242816207742772e-30,
+          6.720578620317812e-31,
+          2.897112327389712e-31,
+          0.0
+        ]
+      },
+      "width_wave_peak": {
+        "index": 2,
+        "power": 6.1875,
+        "bins": [
+          2.557880665089718e-13,
+          4.392779610657045e-14,
+          6.1875,
+          5.041666507720947,
+          7.375811794012657e-14,
+          1.962798955486289e-14,
+          1.8294139244250758e-15,
+          7.788589075714749e-15,
+          3.1732213190904194e-15,
+          5.952913671985333e-15,
+          2.2455535881145882e-15,
+          1.8162368975624366e-16,
+          1.8022898383414045e-16,
+          1.506406572225023e-17,
+          0.0
+        ]
+      },
+      "height_vs_width_peak_equal": false,
+      "height_vs_width_spectrum_allclose": false
+    },
+    "transpose_controls": {
+      "odd_33x33_max_abs_difference": 0.10944843292236328,
+      "odd_33x33_allclose": false,
+      "even_32x32_max_abs_difference": 2.384185791015625e-07,
+      "even_32x32_allclose": true
+    }
+  },
+  "reproduced": true,
+  "expected_outcome": "defect_reproduced",
+  "expectation_met": true
+}

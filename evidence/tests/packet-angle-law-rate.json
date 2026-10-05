@@ -1,0 +1,32 @@
+{
+  "status": "ANALYTIC",
+  "purpose": "Show that the fixed atomless direction-law assumption yields qualitative but not universal algebraic convergence of the shrinking exceptional-band probability.",
+  "reproduction": "uv run --with-requirements requirements-verification.txt python -m tools.check_packet_radius_scaling",
+  "symbolic_exponent_evidence": "evidence/tests/packet-radius-scaling.json#/anti_concentration_rate_specialization",
+  "linear_tangent_orientation_evidence": "evidence/tests/packet-radius-scaling.json#/linear_tangent_orientation_uniform_law",
+  "observable": "c = |omega_3| in (0,1] for an unoriented unit direction",
+  "density_with_respect_to_dc": "f(c) = 1 / (c * (log(e/c))^2)",
+  "normalization": "With u=log(e/c), integral_0^1 f(c) dc = integral_1^infinity u^(-2) du = 1.",
+  "transverse_atom": 0,
+  "exceptional_band_tail": "lambda{c < epsilon} = 1 / log(e/epsilon), for 0 < epsilon <= 1",
+  "packet_threshold": "epsilon = Q^(1/2)",
+  "exceptional_probability": "1 / (1 + (1/2)*log(1/Q))",
+  "asymptotic": "~ 2/log(1/Q) as Q -> 0",
+  "no_power_rate": "For every eta>0, [1/(1+(1/2)log(1/Q))]/Q^eta -> infinity as Q -> 0.",
+  "general_threshold_analysis": {
+    "good_direction_event": "c >= Q^s",
+    "linear_transverse_to_axial_ratio": "tan(theta0) * Q^(3C/2 - s)",
+    "nonlinear_remainder_to_axial_ratio_upper": "D*delta0*Q^(5-C-s)/(1-D*delta0*Q^(5-C)), D=k0*tau0/(C-1)",
+    "convergence_condition": "s < min(3C/2, 5-C)",
+    "available_choice": "s=1 is admissible because the audited C satisfies 7999999/2000000 <= C < 4; both ratios vanish, with nonlinear exponent 4-C > 0.",
+    "anti_concentration_implication": "If the fixed direction law satisfies lambda{c<epsilon} <= L*epsilon^beta, then the conditional probability outside any fixed positive endpoint cone is <= L*Q^beta for sufficiently small Q.",
+    "uniform_unoriented_sphere_example": "c=|omega_3| is uniform on [0,1], so L=1 and beta=1."
+  },
+  "interpretation": "Under only a fixed direction law with zero mass on exactly transverse directions, the packet argument can give exceptional probability tending to zero, but no universal O(Q^eta) rate. A quantitative rate needs an explicit anti-concentration bound on the law.",
+  "limitations": [
+    "This is a constructed mathematical direction law, not a measured physical ensemble.",
+    "It does not invalidate qualitative convergence to probability one under the packet hypotheses.",
+    "It does not validate the Navier-Stokes tube/Hessian bounds or the classical nonlinear packet comparison.",
+    "The quantitative conditional rate still has a non-effective sufficiently-small-Q threshold through the tube and Hessian constants."
+  ]
+}

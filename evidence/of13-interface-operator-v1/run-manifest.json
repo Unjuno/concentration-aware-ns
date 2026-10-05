@@ -1,0 +1,656 @@
+{
+  "archive": {
+    "path": "raw.tar.gz",
+    "regular_file_count": 106,
+    "sha256": "b3a5cf8e4bc325e77d835d35afd5322e72804bc3f4142f1496a45dcca5bf2cd3"
+  },
+  "case_input_hashes": {
+    "nx16": {
+      "files_sha256": {
+        "0/U": "dfc8eeaae53ac13d8abd89c122d2ad0abc03d1dfb79e0c3a9af289f0f07dbfc5",
+        "0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+        "0/mu": "932788201e9039e2d075176e922c64080d84e9be6b7f152eb2ad6423403905c3",
+        "0/shear": "69155ff8fbaf50de4dc50abd1afc2bd3634dfd2a8cb06bff8ad42b206c6513b3",
+        "system/blockMeshDict": "063cb7814f532aac476ea00e3bde12d2d392ae20dc3bce0bb792def3a1835874",
+        "system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+        "system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+        "system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479"
+      },
+      "inputs_sha256": "b0df8422d3bee1a3eb1472ba79176bb9310b5d8f6729f67f8356ff08ebb7c317",
+      "metadata_sha256": "232f99aee3a9c1e9cf563a9d303c126f7c23b6121973b4b8cb2c0aabffdc1b38"
+    },
+    "nx32": {
+      "files_sha256": {
+        "0/U": "b59b9a0efb539e29835964115ef7f01b4c1d1d08692e9b36285dda4a63671bdf",
+        "0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+        "0/mu": "6cdf79c38af5095e9ec7d20f24a6812d7e71b2e7ad4004b715edd179646666d6",
+        "0/shear": "ee8ded8d45bcef1375fbdca87fb860811c1d334d468edc3bc262a48118b58dec",
+        "system/blockMeshDict": "f3a1ac6220cecd99b5ae0810e5b5acc8ac837e4062457fec8f1d6689acf07e23",
+        "system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+        "system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+        "system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479"
+      },
+      "inputs_sha256": "42bffbb1e82e75b3771883b275ad7726034c18e4311fdab0eefe41309a10131c",
+      "metadata_sha256": "88e2cf202ba6add5466d9e5893507a470f84bdb33a58b4c2e284aeeccb057113"
+    },
+    "nx64": {
+      "files_sha256": {
+        "0/U": "cbaaa06b0a4314d459f803f5e829bf745c566e181fbc76b5566512051ad2ab31",
+        "0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+        "0/mu": "716194c22d5641e253536fac73a91b51338bca07bf0c63bb0a4b73ca56c0e8b7",
+        "0/shear": "b0b9e3ab78f51d3e22b88e1448b9281aa7b1d96f22b684283a1d7858e093d283",
+        "system/blockMeshDict": "be6e32cf8719a12b1ea4d6bdb8799f0ba3aa528125c581d77125cc2a5f1c0669",
+        "system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+        "system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+        "system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479"
+      },
+      "inputs_sha256": "568f147688ed0a17c4af02f937fadd7d2591a80cc76042e4ceab3d928d4fae4d",
+      "metadata_sha256": "8e0d189055a5bfe9c46ce2a4da74be52040de5fef6227a359c5b07c675e116dc"
+    }
+  },
+  "case_output_integrity": {
+    "nx16": {
+      "end_marker_verified": true,
+      "missing_outputs": []
+    },
+    "nx32": {
+      "end_marker_verified": true,
+      "missing_outputs": []
+    },
+    "nx64": {
+      "end_marker_verified": true,
+      "missing_outputs": []
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "finished_at": "2026-10-03T11:07:02.043220+00:00",
+      "label": "git-head",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:02.041421+00:00",
+      "stderr_file": "command-logs/01-git-head.stderr",
+      "stdout_file": "command-logs/01-git-head.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=no"
+      ],
+      "finished_at": "2026-10-03T11:07:03.023868+00:00",
+      "label": "git-tracked-status",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:02.043692+00:00",
+      "stderr_file": "command-logs/02-git-tracked-status.stderr",
+      "stdout_file": "command-logs/02-git-tracked-status.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1:protocols/of13-interface-operator-v1.json"
+      ],
+      "finished_at": "2026-10-03T11:07:03.026847+00:00",
+      "label": "git-protocol-blob",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.024414+00:00",
+      "stderr_file": "command-logs/03-git-protocol-blob.stderr",
+      "stdout_file": "command-logs/03-git-protocol-blob.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--error-unmatch",
+        "--",
+        ".github/workflows/interface-operator.yml",
+        "protocols/of13-interface-operator-v1.json",
+        "requirements-interface-operator.txt",
+        "runtime/of13-interface-operator/Dockerfile",
+        "runtime/of13-interface-operator/Make/files",
+        "runtime/of13-interface-operator/Make/options",
+        "runtime/of13-interface-operator/README.md",
+        "runtime/of13-interface-operator/fetch_pinned_package.sh",
+        "runtime/of13-interface-operator/interfaceOperatorProbe.C",
+        "runtime/of13-interface-operator/package-source-paths.txt",
+        "runtime/of13-interface-operator/run_cases.sh",
+        "tools/analyze_interface_operator_probe.py",
+        "tools/build_interface_operator_cases.py",
+        "tools/run_interface_operator_probe.py"
+      ],
+      "finished_at": "2026-10-03T11:07:03.030846+00:00",
+      "label": "git-source-tracked",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.028380+00:00",
+      "stderr_file": "command-logs/04-git-source-tracked.stderr",
+      "stdout_file": "command-logs/04-git-source-tracked.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "context",
+        "show"
+      ],
+      "finished_at": "2026-10-03T11:07:03.390736+00:00",
+      "label": "docker-context",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.380192+00:00",
+      "stderr_file": "command-logs/05-docker-context.stderr",
+      "stdout_file": "command-logs/05-docker-context.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "--context",
+        "default",
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "finished_at": "2026-10-03T11:07:03.407208+00:00",
+      "label": "docker-version",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.391334+00:00",
+      "stderr_file": "command-logs/06-docker-version.stderr",
+      "stdout_file": "command-logs/06-docker-version.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "--context",
+        "default",
+        "image",
+        "inspect",
+        "concentration-aware-ns:of13-interface-v1"
+      ],
+      "finished_at": "2026-10-03T11:07:03.421221+00:00",
+      "label": "image-inspect",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.407845+00:00",
+      "stderr_file": "command-logs/07-image-inspect.stderr",
+      "stdout_file": "command-logs/07-image-inspect.stdout",
+      "timeout_seconds": 15
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "--context",
+        "default",
+        "run",
+        "--pull=never",
+        "--name",
+        "cans-interface-operator-e6a5b1ad985c-62c9538f30c3",
+        "--cidfile",
+        "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/of13-interface-operator-v1/container-id",
+        "--network",
+        "none",
+        "--cpus",
+        "2",
+        "--memory",
+        "2g",
+        "--pids-limit",
+        "512",
+        "--platform",
+        "linux/arm64",
+        "--entrypoint",
+        "/bin/bash",
+        "-v",
+        "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/of13-interface-operator-v1:/probe",
+        "sha256:2e0f464f40a0b8c73e1d3db0853b85da26c1c87847d6e54b2d1f7384234bf552",
+        "/probe/app/run_cases.sh"
+      ],
+      "combined_log": "container.log",
+      "finished_at": "2026-10-03T11:07:18.928631+00:00",
+      "label": "container-run",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:03.430888+00:00",
+      "timeout_seconds": null
+    },
+    {
+      "argv": [
+        "/usr/bin/docker",
+        "--context",
+        "default",
+        "inspect",
+        "--type",
+        "container",
+        "28d6a79e733c0b30aec5ec09d2e814f9b05da232e50ce8ab1696167665ae9a96"
+      ],
+      "finished_at": "2026-10-03T11:07:18.941743+00:00",
+      "label": "container-inspect",
+      "return_code": 0,
+      "started_at": "2026-10-03T11:07:18.929538+00:00",
+      "stderr_file": "command-logs/09-container-inspect.stderr",
+      "stdout_file": "command-logs/09-container-inspect.stdout",
+      "timeout_seconds": 15
+    }
+  ],
+  "container_id": "28d6a79e733c0b30aec5ec09d2e814f9b05da232e50ce8ab1696167665ae9a96",
+  "container_image_id": "sha256:2e0f464f40a0b8c73e1d3db0853b85da26c1c87847d6e54b2d1f7384234bf552",
+  "container_name": "cans-interface-operator-e6a5b1ad985c-62c9538f30c3",
+  "container_retained": true,
+  "container_state": {
+    "Dead": false,
+    "Error": "",
+    "ExitCode": 0,
+    "FinishedAt": "2026-10-03T11:07:18.882444039Z",
+    "OOMKilled": false,
+    "Paused": false,
+    "Pid": 0,
+    "Restarting": false,
+    "Running": false,
+    "StartedAt": "2026-10-03T11:07:03.465208845Z",
+    "Status": "exited"
+  },
+  "disposition": "COMPLETE",
+  "docker_cli": {
+    "path": "/usr/bin/docker",
+    "resolved_path": "/usr/bin/docker",
+    "sha256": "94128e4afada0d46de642165e79dd70beb08e6775014648013283ed901b68248"
+  },
+  "docker_context": "default",
+  "docker_run_exit_code": 0,
+  "docker_version": {
+    "Client": {
+      "ApiVersion": "1.48",
+      "Arch": "arm64",
+      "BuildTime": "Tue Mar 25 15:07:55 2025",
+      "Context": "default",
+      "DefaultAPIVersion": "1.48",
+      "GitCommit": "b8034c0",
+      "GoVersion": "go1.23.7",
+      "Os": "linux",
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "28.0.4"
+    },
+    "Server": {
+      "ApiVersion": "1.48",
+      "Arch": "arm64",
+      "BuildTime": "2025-03-25T15:07:55.000000000+00:00",
+      "Components": [
+        {
+          "Details": {
+            "ApiVersion": "1.48",
+            "Arch": "arm64",
+            "BuildTime": "Tue Mar 25 15:07:55 2025",
+            "Experimental": "false",
+            "GitCommit": "6430e49",
+            "GoVersion": "go1.23.7",
+            "KernelVersion": "6.17.0-1022-azure",
+            "MinAPIVersion": "1.24",
+            "Os": "linux"
+          },
+          "Name": "Engine",
+          "Version": "28.0.4"
+        },
+        {
+          "Details": {
+            "GitCommit": "ee2735368117d2eb259779949d5e75cdafec9761"
+          },
+          "Name": "containerd",
+          "Version": "v2.3.6"
+        },
+        {
+          "Details": {
+            "GitCommit": "v1.5.1-0-g8f2685a4"
+          },
+          "Name": "runc",
+          "Version": "1.5.1"
+        },
+        {
+          "Details": {
+            "GitCommit": "de40ad0"
+          },
+          "Name": "docker-init",
+          "Version": "0.19.0"
+        }
+      ],
+      "GitCommit": "6430e49",
+      "GoVersion": "go1.23.7",
+      "KernelVersion": "6.17.0-1022-azure",
+      "MinAPIVersion": "1.24",
+      "Os": "linux",
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "28.0.4"
+    }
+  },
+  "environment": {
+    "cwd": "/home/runner/work/concentration-aware-ns/concentration-aware-ns",
+    "executable": "/opt/hostedtoolcache/Python/3.12.14/arm64/bin/python",
+    "gid": 1001,
+    "machine": "aarch64",
+    "platform": "Linux-6.17.0-1022-azure-aarch64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 13 2026, 02:48:06) [GCC 13.3.0]",
+    "uid": 1001,
+    "variables": {
+      "LANG": "C.UTF-8",
+      "PATH": "/opt/hostedtoolcache/Python/3.12.14/arm64/bin:/opt/hostedtoolcache/Python/3.12.14/arm64:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+    }
+  },
+  "evidence_root": "/home/runner/work/concentration-aware-ns/concentration-aware-ns/evidence/of13-interface-operator-v1",
+  "excluded_nonregular_paths": [],
+  "finished_at": "2026-10-03T11:07:18.973542+00:00",
+  "git_head": "e6a5b1ad985cdc6ca3c16de5ca8dde650205a8b1",
+  "image_inspect": {
+    "Architecture": "arm64",
+    "Author": "",
+    "Comment": "buildkit.dockerfile.v0",
+    "Config": {
+      "ArgsEscaped": true,
+      "AttachStderr": false,
+      "AttachStdin": false,
+      "AttachStdout": false,
+      "Cmd": [
+        "foamRun",
+        "-help"
+      ],
+      "Domainname": "",
+      "Entrypoint": [
+        "/bin/bash",
+        "-c",
+        "source /opt/openfoam13/etc/bashrc; exec \"$@\"",
+        "--"
+      ],
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "Hostname": "",
+      "Image": "",
+      "Labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "OnBuild": null,
+      "OpenStdin": false,
+      "Shell": [
+        "/bin/bash",
+        "-c"
+      ],
+      "StdinOnce": false,
+      "Tty": false,
+      "User": "",
+      "Volumes": null,
+      "WorkingDir": "/case"
+    },
+    "Created": "2026-10-03T11:06:55.011648578Z",
+    "DockerVersion": "",
+    "GraphDriver": {
+      "Data": {
+        "LowerDir": "/var/lib/docker/overlay2/sts1y7s0xuzzcvzlqfxzyyye4/diff:/var/lib/docker/overlay2/ty3oglyvui2tb15krecgicebh/diff:/var/lib/docker/overlay2/a07eefc9fec65ea8deea49dae7c4ebc77df328f01f5a80e3fc922cba8c84059b/diff",
+        "MergedDir": "/var/lib/docker/overlay2/usdppuwbc1hsrgbvg7itj02nk/merged",
+        "UpperDir": "/var/lib/docker/overlay2/usdppuwbc1hsrgbvg7itj02nk/diff",
+        "WorkDir": "/var/lib/docker/overlay2/usdppuwbc1hsrgbvg7itj02nk/work"
+      },
+      "Name": "overlay2"
+    },
+    "Id": "sha256:2e0f464f40a0b8c73e1d3db0853b85da26c1c87847d6e54b2d1f7384234bf552",
+    "Metadata": {
+      "LastTagTime": "2026-10-03T11:07:01.937395845Z"
+    },
+    "Os": "linux",
+    "Parent": "",
+    "RepoDigests": [],
+    "RepoTags": [
+      "concentration-aware-ns:of13-interface-v1"
+    ],
+    "RootFS": {
+      "Layers": [
+        "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+        "sha256:53516094e4419a5d81ca5d26bb0302fdde3a1e0f3e893a33d6c901b08c3be3d9",
+        "sha256:f27ba4f9ea9611915776452fa6dd4f56eecf32dd90a33f0af15eadb43f540491",
+        "sha256:63a2f0d675b0e350441917f2b739e5180b20384dd0d0137324a5c4928310c181"
+      ],
+      "Type": "layers"
+    },
+    "Size": 1612003695
+  },
+  "image_requested": "concentration-aware-ns:of13-interface-v1",
+  "phase": "container-inspect",
+  "protocol": {
+    "content": {
+      "acceptance": {
+        "constant_control": {
+          "absolute_complete_residual_and_physical_flux": 1e-12,
+          "absolute_prediction_difference": 1e-12,
+          "disposition": "OBSERVED or NOT_OBSERVED separately from physical/operator-quality gate; API contract/source-package identity and duplicate search are required before an upstream defect claim",
+          "source_prediction": "native residual = complete b-Au + sum_cyclic(boundaryCoeffs*u_neighbour); with this constant control it is 2*h per cell, h=2/nx"
+        },
+        "operator_quality": {
+          "absolute_cell_value_error": 1e-08,
+          "absolute_complete_integrated_residual": 1e-08,
+          "absolute_explicit_correction_integrated_divergence": 1e-09,
+          "absolute_flux_balance_difference": 1e-09,
+          "absolute_matrix_flux_plus_physical_flux": 1e-09,
+          "absolute_x_face_explicit_correction": 1e-10,
+          "relative_physical_shear_flux_error_to_chain": 1e-08
+        },
+        "run_integrity": "Three cases, five named JSON snapshots each, normal end markers, container exit zero, all finite arrays, geometry/input hashes and image/platform match recorded values"
+      },
+      "geometry": "x in [-1,1], y,z in [0,1], orthogonal uniform cell-centred block; interface x=0 aligned with an internal face; fixed x walls and translational y/z cyclic patches",
+      "inputs": {
+        "density": 1,
+        "mu_left": 1,
+        "mu_right": 100,
+        "nx": [
+          16,
+          32,
+          64
+        ],
+        "ny": 2,
+        "nz": 2,
+        "traction": 1
+      },
+      "limits": [
+        "This auxiliary interface probe does not replace or complete the original smooth 3D concentration benchmark or its AMR quality requirement.",
+        "No assertion of packaged-source/binary equivalence follows merely from an upstream pin; compare supplied package source hashes and record linked libraries.",
+        "Runtime/build failure is STOP/INCOMPLETE, not numerical quality FAIL.",
+        "The arithmetic interface effect is a known conditional diffusion-discretization control, not automatically an implementation defect.",
+        "Native residual discrepancy is a separate diagnostic candidate. No molecular ordering, constitutive-viscosity change or continuum blow-up follows.",
+        "The source prediction and scalar stencil were already analytically inspected; this is prospective execution validation, not a blinded discovery experiment."
+      ],
+      "model": {
+        "constant_control": "constantControl=1 including fixed x walls, y/z cyclic, face coefficient uniformly one; assemble but do not solve",
+        "gradient": "Gauss linear; orthogonal snGrad; Gauss linear orthogonal laplacian",
+        "means": [
+          "arithmetic common linear face interpolation",
+          "harmonic mean on the internal coefficient jump with initialized boundary values"
+        ],
+        "scalar_equation": "negative fvm::laplacian(muFace,shear)=0; no pressure, time advancement, interface advection or full momentum model",
+        "solver": "shear PCG with DIC, tolerance 1e-12, relTol 0",
+        "velocity": "U=(0,tau*x/mu_side,0); scalar shear=U_y; positive prescribed kinematic mu; rho=1"
+      },
+      "predictions": {
+        "estimated_gradient": "kink-adjacent Gauss gradients differ from exact one-sided gradients; preserve both before/after rather than assuming equality",
+        "exact_nodal_arithmetic_interface_flux_ratio": "10201/400",
+        "explicit_correction": "x-normal faces zero; y-normal correction vectors generally nonzero but paired divergence cancels; do not require all face vectors to vanish",
+        "harmonic_flux_and_cell_values": "exact continuum chain values",
+        "solved_arithmetic_flux_ratio": "1/[1-(h/2)*(99/101)^2]"
+      },
+      "records": [
+        "Frozen harness commit, protocol, generator, utility, runner and every case-input hash before production execution",
+        "Cell centres/volumes/values; raw and boundary-completed matrix diagonal, source, internal upper/lower and all patch coefficients",
+        "All face centres/area vectors/owners/neighbours, coefficient, distance coefficient, snGrad, physical flux and matrix flux",
+        "Native scalar residual, independently reconstructed complete b-Au, oriented physical face balance, div(faceFlux)*V, and normalized SolverPerformance as separate quantities",
+        "Exact-nodal and solved shear states; estimated gradient tensors and arithmetic parent-product/separated explicit-correction face vectors and divergences"
+      ],
+      "status": "prospective package operator probe; predictions derived before package execution",
+      "target": {
+        "hosted_runner": "ubuntu-24.04-arm",
+        "implementation": "OpenFOAM Foundation 13 Debian package",
+        "inspected_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+        "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+        "package_url": "https://dl.openfoam.org/ubuntu/dists/noble/main/binary-arm64/openfoam13_20260624_arm64.deb",
+        "platform": "linux/arm64",
+        "runtime_identity": "Record resolved image ID, package inventory, compiler, linked libraries and source hashes; a fresh image is not the historic matrix runtime.",
+        "runtime_recipe": "runtime/of13-interface-operator/Dockerfile"
+      },
+      "version": "of13-interface-operator-v1"
+    },
+    "head_blob_verified": true,
+    "path": "protocols/of13-interface-operator-v1.json",
+    "sha256": "8e4421692e722018567093daf35588fcdd45f4c7bc9c3fdf8f3e3e72afa8ac4e"
+  },
+  "resolved_image_id": "sha256:2e0f464f40a0b8c73e1d3db0853b85da26c1c87847d6e54b2d1f7384234bf552",
+  "runner_argv": [
+    "python",
+    "-m",
+    "tools.run_interface_operator_probe",
+    "--image",
+    "concentration-aware-ns:of13-interface-v1"
+  ],
+  "runtime_logs_sha256": {
+    "binary-sha256.txt": "851cb3128cb4c20e098cca95b2c399752981a3d7187f5e0232f5d7a91aeae74c",
+    "build.log": "e471e1469d338d6c6641963874bef5047afbf902ac2d67a58f11b3dd2f693538",
+    "linked-libraries.log": "51c0acb153ea5ca88b2ff18d2112916ab532e84e8a0770135df039be75190e1d",
+    "linked-library-sha256.log": "a8ce7c2a951079749c2f4d71d1600c0c28d8b580bc0d967033fc944a5bb91d4b",
+    "package-inventory.log": "bc5ec515c9a169481aa52381feac27dc5ff6ede08a26b6e484d6944703fdc930",
+    "package-source-sha256.log": "b139560c2f94eaeed1bbfaea2d4b908f0dc9223ba8cbb6b783fc59c630076ea1",
+    "runtime-environment.log": "ebbaa0877bb8b3d0bf18a9a369d369264ba5fc7df081b5a828db9d8022d08c70"
+  },
+  "schema": "of13-interface-operator-run/v1",
+  "scientific_quality": "NOT_ASSESSED",
+  "source_files_sha256": {
+    ".github/workflows/interface-operator.yml": "69155456613f6473fe97939390a66647acadc6eac038e032d708e5d1197132a0",
+    "protocols/of13-interface-operator-v1.json": "8e4421692e722018567093daf35588fcdd45f4c7bc9c3fdf8f3e3e72afa8ac4e",
+    "requirements-interface-operator.txt": "2d71c59a6a1c4e86b69efe2d1752e964644ef800988a50ce28a8d43d4ef617c5",
+    "runtime/of13-interface-operator/Dockerfile": "2d96d4979925301792c69afdc6a2bac31509a767df8d88c2a299a910d7196b54",
+    "runtime/of13-interface-operator/Make/files": "5dd752894f2c56e02378c8390796baadf88f5461c7698f2f694e5ada189d55bf",
+    "runtime/of13-interface-operator/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "runtime/of13-interface-operator/README.md": "bebe603dff771be91fa2b1e7dd4f8930d3961dd6ef7b391df82029187af44ad8",
+    "runtime/of13-interface-operator/fetch_pinned_package.sh": "f0f8aa276d0d7f78f23ffda42ed6e691ed124e9d518bceb28dbeda1db4d68fbe",
+    "runtime/of13-interface-operator/interfaceOperatorProbe.C": "15f09f45d58689fa7c61b91512c22500c9316eba5bacecfc831e490bc1bcd0de",
+    "runtime/of13-interface-operator/package-source-paths.txt": "c2184f8001c9bae804ccee4e84ba8ef21bd435375008308f1ebb8139f46fc3e8",
+    "runtime/of13-interface-operator/run_cases.sh": "314d17339d663954e7473d9729ecc32219d32a41df9963f93134bea1baa9e655",
+    "tools/analyze_interface_operator_probe.py": "663a50cb47157b04ddb41e99d1a825c5229fbfd859395603ad3e6794d129f1d3",
+    "tools/build_interface_operator_cases.py": "fc3f98d3c943333abb6601b6ad13abe1e8ec80079b2536abbfea55a8ac812a9e",
+    "tools/run_interface_operator_probe.py": "cc66515d8c91cf995cfdc25503965f7748606a3b4bf31f0803c2b58729d2b7b5"
+  },
+  "started_at": "2026-10-03T11:07:02.039645+00:00",
+  "status": "RUN_COMPLETE_OPERATOR_ONLY",
+  "tracked_status": "",
+  "utility_binary_sha256": "acb43cd9393705f2a57fcabdc5e32ab2cc1f1ad9ac9d46b843aac44aad4e62c0",
+  "work_files_sha256": {
+    "COMPLETED": "d6d1bba2cad79ae47131d82c7fd454d1f1cf07b9580361ac9969d757722b5e97",
+    "app/Dockerfile": "2d96d4979925301792c69afdc6a2bac31509a767df8d88c2a299a910d7196b54",
+    "app/Make/files": "5dd752894f2c56e02378c8390796baadf88f5461c7698f2f694e5ada189d55bf",
+    "app/Make/linuxArm64GccDPInt32Opt/files": "8d9cf32d1de12d596c4e9645c0df02220497088110f33cedf7c1e4b6ae0e52dd",
+    "app/Make/linuxArm64GccDPInt32Opt/interfaceOperatorProbe.C.dep": "99f7298ec163e5de6a6e8933406578c6d92100e26188468bcbaac2ffdde3b78b",
+    "app/Make/linuxArm64GccDPInt32Opt/interfaceOperatorProbe.o": "97b82b5851878e34ebf1e79ff8c6e7de11cc1951280340909158f80d96def2bb",
+    "app/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "app/README.md": "bebe603dff771be91fa2b1e7dd4f8930d3961dd6ef7b391df82029187af44ad8",
+    "app/fetch_pinned_package.sh": "f0f8aa276d0d7f78f23ffda42ed6e691ed124e9d518bceb28dbeda1db4d68fbe",
+    "app/interfaceOperatorProbe.C": "15f09f45d58689fa7c61b91512c22500c9316eba5bacecfc831e490bc1bcd0de",
+    "app/package-source-paths.txt": "c2184f8001c9bae804ccee4e84ba8ef21bd435375008308f1ebb8139f46fc3e8",
+    "app/run_cases.sh": "314d17339d663954e7473d9729ecc32219d32a41df9963f93134bea1baa9e655",
+    "binary-sha256.txt": "851cb3128cb4c20e098cca95b2c399752981a3d7187f5e0232f5d7a91aeae74c",
+    "build.log": "e471e1469d338d6c6641963874bef5047afbf902ac2d67a58f11b3dd2f693538",
+    "cases/nx16/0/U": "dfc8eeaae53ac13d8abd89c122d2ad0abc03d1dfb79e0c3a9af289f0f07dbfc5",
+    "cases/nx16/0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+    "cases/nx16/0/mu": "932788201e9039e2d075176e922c64080d84e9be6b7f152eb2ad6423403905c3",
+    "cases/nx16/0/shear": "69155ff8fbaf50de4dc50abd1afc2bd3634dfd2a8cb06bff8ad42b206c6513b3",
+    "cases/nx16/case_metadata.json": "232f99aee3a9c1e9cf563a9d303c126f7c23b6121973b4b8cb2c0aabffdc1b38",
+    "cases/nx16/constant/polyMesh/boundary": "59239b2c2062d02906785037b5f13135b0d02cfd347dfd5c65ada0708a273546",
+    "cases/nx16/constant/polyMesh/faces": "9a05ba3db0d436910bee7ed857232a25b014d59efc94cd730fba3e794694bf46",
+    "cases/nx16/constant/polyMesh/neighbour": "e25a775417daa0e386f307b773b6267687f72f8178a10a1553b3455c3f23bbaf",
+    "cases/nx16/constant/polyMesh/owner": "3629573fea44699658cedff81e3800f8d879d2325976655b0c3fde4583246461",
+    "cases/nx16/constant/polyMesh/points": "6d85528d60bc8c91f45e4891beab1bb8592094f651e498d76e8f51928ca1a394",
+    "cases/nx16/log.blockMesh": "ee22b4f354be2b7243fc2504119610795ffc8db921b138794690438d8a97c0d3",
+    "cases/nx16/log.interfaceOperatorProbe": "c39a3b61a5786874e2ea5e527360876cd9f351b6a325c15fae0ce7db43e132e0",
+    "cases/nx16/probe/arithmetic/after.json": "6cfb23515653be7493253aa356d8558113a92fc27eeca5f514f1bc33c7fb1abd",
+    "cases/nx16/probe/arithmetic/before.json": "7ade0e2413cd343e3bc36a57d27aac949deb9a862effe890e4c9b19d213f04dd",
+    "cases/nx16/probe/constant/before.json": "f6bbdb4c182310c8771dbd661c506895c10b1d3f20e9296c717d5067b5fef4c6",
+    "cases/nx16/probe/harmonic/after.json": "d00bbfc7479fb354f4960961bbee585065e8e7b081898dc1f2506153e8f3e113",
+    "cases/nx16/probe/harmonic/before.json": "979bdc4b7be714179067df2db37fdb6389dfbd0fdb90a7457d5e9c1e7d2865fc",
+    "cases/nx16/system/blockMeshDict": "063cb7814f532aac476ea00e3bde12d2d392ae20dc3bce0bb792def3a1835874",
+    "cases/nx16/system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+    "cases/nx16/system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+    "cases/nx16/system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479",
+    "cases/nx32/0/U": "b59b9a0efb539e29835964115ef7f01b4c1d1d08692e9b36285dda4a63671bdf",
+    "cases/nx32/0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+    "cases/nx32/0/mu": "6cdf79c38af5095e9ec7d20f24a6812d7e71b2e7ad4004b715edd179646666d6",
+    "cases/nx32/0/shear": "ee8ded8d45bcef1375fbdca87fb860811c1d334d468edc3bc262a48118b58dec",
+    "cases/nx32/case_metadata.json": "88e2cf202ba6add5466d9e5893507a470f84bdb33a58b4c2e284aeeccb057113",
+    "cases/nx32/constant/polyMesh/boundary": "c469344216e3b7b3088e5a299cde62147b8392c91b333875e2734007b88723fe",
+    "cases/nx32/constant/polyMesh/faces": "e1dc6142202c0cabf20a12d0790161b16f9c659457c5fd6a72ac017de70121cf",
+    "cases/nx32/constant/polyMesh/neighbour": "fca6668afa247d408947a48f072f4dc0aa424ed890460a250b85ffce687c4782",
+    "cases/nx32/constant/polyMesh/owner": "d3f59a5b70cf4e54bf5989a735ef6e963a974f8b6c328316b45b0ba86fe0df39",
+    "cases/nx32/constant/polyMesh/points": "2d30afe574df87bbcfc14a8eeea4aacbf9c847ccf19566d9457ff0dbe815f7d3",
+    "cases/nx32/log.blockMesh": "63d1eb96b038fa609498ec9700b9aea573d5cdd44fe691f0495e5f019e4f0b2e",
+    "cases/nx32/log.interfaceOperatorProbe": "38a711748a7fd810d50a4137c92664c9a3b9338299385f8d6f9d14684d648f16",
+    "cases/nx32/probe/arithmetic/after.json": "d1be9c871cd8d6e6bab3dc0a56a2d1a863ff6701b8f0de971927e1e0a16f5ba6",
+    "cases/nx32/probe/arithmetic/before.json": "56dd6dfa971b5f11f9ddb21e2e10f3f164384c215629bc2fb23525fe6928f11a",
+    "cases/nx32/probe/constant/before.json": "418ae71c42663e6635ffcd60af8dcc37b76c72230511459e71c26003ce39b661",
+    "cases/nx32/probe/harmonic/after.json": "f46d68b6cd67281b9afe73d0b0f2c2762d634c3b8167873bdad354d1aa90c4c9",
+    "cases/nx32/probe/harmonic/before.json": "5c43d4779b4d80c1337dadf5294476f2d022784b0dc3f8855ac25b025f069af6",
+    "cases/nx32/system/blockMeshDict": "f3a1ac6220cecd99b5ae0810e5b5acc8ac837e4062457fec8f1d6689acf07e23",
+    "cases/nx32/system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+    "cases/nx32/system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+    "cases/nx32/system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479",
+    "cases/nx64/0/U": "cbaaa06b0a4314d459f803f5e829bf745c566e181fbc76b5566512051ad2ab31",
+    "cases/nx64/0/constantControl": "db7e6b5c8ffde2ccc7ce58d6cd3dd89888971494e4e3aecd1278c65e5d6f75d8",
+    "cases/nx64/0/mu": "716194c22d5641e253536fac73a91b51338bca07bf0c63bb0a4b73ca56c0e8b7",
+    "cases/nx64/0/shear": "b0b9e3ab78f51d3e22b88e1448b9281aa7b1d96f22b684283a1d7858e093d283",
+    "cases/nx64/case_metadata.json": "8e0d189055a5bfe9c46ce2a4da74be52040de5fef6227a359c5b07c675e116dc",
+    "cases/nx64/constant/polyMesh/boundary": "9d6859d328eb78745724ade849fb52359aea027fc38e86ed38db62ea863e194b",
+    "cases/nx64/constant/polyMesh/faces": "72d6779c29e81a2dbcfa4958aafaf565ecdb7cd97daa22e78a97b554c4f2e798",
+    "cases/nx64/constant/polyMesh/neighbour": "36a96c4d1e4fe521eefb5ab04e2fb0dbd72251a0945acb0bad2948c3b1adb8db",
+    "cases/nx64/constant/polyMesh/owner": "61cdb022f55d126043bde1707962a343d9cf6c3a9ce4866af9117b93e4fc00a3",
+    "cases/nx64/constant/polyMesh/points": "70eaf0d056c7fc7134ad00e51ee0227f2b17ae92d0f1b3ae3f94c7ba86515589",
+    "cases/nx64/log.blockMesh": "f94452f93413c1b9c6b8e85978536fac01db92ee4f9b6e9802404b0c05e069ba",
+    "cases/nx64/log.interfaceOperatorProbe": "223dbdc29ee799a33defef18f361fab3d8c4aa658e9ff7688bc0cee4fae1efab",
+    "cases/nx64/probe/arithmetic/after.json": "21202b5e8fd0022d1f25b9ba2726db290fad16bb241ad8a1a5fdefa05f0c832d",
+    "cases/nx64/probe/arithmetic/before.json": "29ef24b75e2c8c3b6f5bab388d9884ba90582329cf9bc605ba86c46c612567cd",
+    "cases/nx64/probe/constant/before.json": "aed3e62f4b83d71e8a8bfd7fd675a6feeb459f61e6bb26223b37207f75eaaad7",
+    "cases/nx64/probe/harmonic/after.json": "f4d3cf52aa404661ef98638f2911ac13c7fc164e6925228d7e87cdcfe5fae226",
+    "cases/nx64/probe/harmonic/before.json": "cd3d8dc143b7d2c1c17ce370cd9fe8d09a64a82ae97854992f56a428906236d2",
+    "cases/nx64/system/blockMeshDict": "be6e32cf8719a12b1ea4d6bdb8799f0ba3aa528125c581d77125cc2a5f1c0669",
+    "cases/nx64/system/controlDict": "04e483e6bff03eef4b84a3b75ac710a4aac58c1875476d7c323da978f74f6d50",
+    "cases/nx64/system/fvSchemes": "ae827aebb229dec68cbbd7f0005472d8148c49902bfbd4ce075112fe1fe8f88d",
+    "cases/nx64/system/fvSolution": "61111ee53254c4b5b99b475bece12b70d21e3540978c470c5efc40dc20781479",
+    "command-logs/01-git-head.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/01-git-head.stdout": "48292ca2663072344dfb3522be49f271172dc3842199391b87ff60483c5edd56",
+    "command-logs/02-git-tracked-status.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/02-git-tracked-status.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/03-git-protocol-blob.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/03-git-protocol-blob.stdout": "8e4421692e722018567093daf35588fcdd45f4c7bc9c3fdf8f3e3e72afa8ac4e",
+    "command-logs/04-git-source-tracked.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/04-git-source-tracked.stdout": "491372fe6711572b0c7fd468a6cc652d1c2f96d645ac610ade1270561cd6ea2f",
+    "command-logs/05-docker-context.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/05-docker-context.stdout": "01666ec060466c14b9fa06c613fbac449163f2a2017558fe16526209ab78c6b0",
+    "command-logs/06-docker-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/06-docker-version.stdout": "0def8637cb4e98d70cf1459323f102a6d6902c7dae504bfe36ca90d1dfc0763c",
+    "command-logs/07-image-inspect.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/07-image-inspect.stdout": "3dfd9b3f96ec49dea3a062c2c0a1380862ad43d3310a5c2d10d0ba4285afbd8d",
+    "command-logs/09-container-inspect.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-logs/09-container-inspect.stdout": "13c73a6524dd34bc115aa355121c1b5e30cd0924adee037028c857b640ff7cdd",
+    "container-command.json": "dd322ddf17744f23092d00955bf8fdefad0ea983b18241129c7643b024deaeee",
+    "container-id": "80c8191c2225970bbca585ca86488cc96c088127abadc2bb42f67f70f046f838",
+    "container.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "interfaceOperatorProbe": "acb43cd9393705f2a57fcabdc5e32ab2cc1f1ad9ac9d46b843aac44aad4e62c0",
+    "linked-libraries.log": "51c0acb153ea5ca88b2ff18d2112916ab532e84e8a0770135df039be75190e1d",
+    "linked-library-sha256.log": "a8ce7c2a951079749c2f4d71d1600c0c28d8b580bc0d967033fc944a5bb91d4b",
+    "log.openfoam-environment": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "package-inventory.log": "bc5ec515c9a169481aa52381feac27dc5ff6ede08a26b6e484d6944703fdc930",
+    "package-source-sha256.log": "b139560c2f94eaeed1bbfaea2d4b908f0dc9223ba8cbb6b783fc59c630076ea1",
+    "protocol-frozen.json": "8e4421692e722018567093daf35588fcdd45f4c7bc9c3fdf8f3e3e72afa8ac4e",
+    "run-manifest-progress.json": "7346a0bdb6d121cad4ba65765444d4a71c89ec8080a92cf676c0e5598e68a2e3",
+    "run-script-state.txt": "ec3d54a97b5117b3184ef34b421ed3aaa69e57ba88eb0d058267beccb38ef333",
+    "runtime-environment.log": "ebbaa0877bb8b3d0bf18a9a369d369264ba5fc7df081b5a828db9d8022d08c70"
+  },
+  "work_root": "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/of13-interface-operator-v1"
+}

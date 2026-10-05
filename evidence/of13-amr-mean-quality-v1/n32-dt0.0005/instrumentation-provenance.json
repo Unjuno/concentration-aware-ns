@@ -1,0 +1,37 @@
+{
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "original_module_file_sha256": {
+    "Make/files": "8ddc720c6ba08247ecd5e88576481b2fbe357545d20fd2b16e4b28349a79ac3b",
+    "Make/options": "988d042122697ae042d99f2ad0895ab68fd81ed3ec3a9df23b0e68f1613356c1",
+    "correctPressure.C": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+    "incompressibleFluid.C": "07435202057db9850178690b61b4bc99cf46202cac9b0e78163a5f6ff52ae9d5",
+    "incompressibleFluid.H": "8781de41392ad7dc30d65c80d6cc4564744d16c672eaeede6fcdbce5571173b7",
+    "momentumPredictor.C": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+    "moveMesh.C": "f6543b7b004e67221d0a977d926198f0b0f6d56dd63d1d8647c887a457c9612e",
+    "setRDeltaT.C": "153f116837e664db4ceac450554b8066911fc0cd9b6085fc8e8e5bfe89f2f177"
+  },
+  "instrumented_module_file_sha256": {
+    "Make/files": "8ddc720c6ba08247ecd5e88576481b2fbe357545d20fd2b16e4b28349a79ac3b",
+    "Make/options": "988d042122697ae042d99f2ad0895ab68fd81ed3ec3a9df23b0e68f1613356c1",
+    "correctPressure.C": "1e6b6d38e1f2730368b5de45a4fc76017b06284748349149da41c90c6d84efb2",
+    "incompressibleFluid.C": "728c0357eb6dd01535dc8ed87990fb89025d46363a3e51189176234a65ca3172",
+    "incompressibleFluid.H": "61d47bd0d29810e7ddee276ba88a83f4ebd8a05047f61697ed48fb44e88fc3a5",
+    "momentumPredictor.C": "7921c5f86dcffc46fc7849ac9ec6adfe1c9c261041788406469b545617119d59",
+    "moveMesh.C": "cd7d59bd251653b9590c36bc99c7fbc28e64c66b791919eca3e02b5441c2c011",
+    "setRDeltaT.C": "153f116837e664db4ceac450554b8066911fc0cd9b6085fc8e8e5bfe89f2f177"
+  },
+  "stages": [
+    "preMap",
+    "mapped",
+    "postSolve"
+  ],
+  "state_times": [
+    0.002,
+    0.002,
+    0.05
+  ],
+  "tensor_convention": "Export transposed native tensors: gij=du_i/dx_j",
+  "equation_assembly_modified": false,
+  "measurement_noninterference": "UNVERIFIED until disabled-capture final U/p control matches",
+  "reference_evaluation": "Real-space g=((1+cos(q))/2)^4 and g'=-2*sin(q)*((1+cos(q))/2)^3; independent of forcing Fourier implementation."
+}

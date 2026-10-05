@@ -1,0 +1,35 @@
+{
+  "status": "PASS_SCOPED_SOURCE_AND_INITIALIZATION_AUDIT",
+  "source_commit": "e49f169fe86c4d433730df6d5011e79e8b8a42eb",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "test_suite": {
+    "passed": 297,
+    "skipped": 1,
+    "subtests_passed": 83,
+    "seconds": 102.46
+  },
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "publication_python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]"
+  },
+  "checks": [
+    "six pinned upstream blobs equal local bytes",
+    "all four archive and member hashes",
+    "twenty frozen original source identities",
+    "two independent recipe controls",
+    "complete locked local suite",
+    "compile checks",
+    "git diff --check"
+  ],
+  "not_run": [
+    "new CFD",
+    "clean-export replay",
+    "whole-history revalidation"
+  ],
+  "sha256": {
+    "README.md": "84b0260d21b9e0e51d20f5c01bda9f59afb7ffa766110f946e8ea14f902d7039",
+    "audit.log": "87cb65706dbd330098a7b9c89cc991de30768e16d5f4503eb1f423438d84fff7",
+    "test-suite.log": "2e2804277ab19576117b68fde4123cd6ab882f6f3ff8b2017619ee3dca8d8657",
+    "analysis.json": "e0e193811db7af7d18fcf49a3998e2cc094d2f5e38a387e50f0ac016462b1dac"
+  }
+}

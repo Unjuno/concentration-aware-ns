@@ -1,0 +1,36 @@
+{
+  "study_id": "su2-shared-high-gradient-v1",
+  "run_status": "INCOMPLETE",
+  "protocol_sha256": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+  "image_id": "sha256:61416b92eeea8a06202c1acea06cfb5695d2310a6e18cda4e7a3f2e6483838db",
+  "expected_cases": 5,
+  "attempted_cases": 1,
+  "reviewed_cases": 1,
+  "missing_cases": [
+    "n32-dt0.001",
+    "n64-dt0.00025",
+    "n64-dt0.0005",
+    "n64-dt0.001"
+  ],
+  "replay_atol": 1e-12,
+  "cases": [
+    {
+      "case": "n16-dt0.001",
+      "archive_sha256": "47ba08240c10b388528c78f310cf6eddf9e9bfbc2f86d3af505f28282a7c6550",
+      "replay_status": "PASS",
+      "standard_acceptance": "FAIL",
+      "quality_sampled": "FAIL",
+      "updated_solution_time": 0.05,
+      "expected_last_source_time": 0.049,
+      "reported_history_time": 0.049,
+      "quality_metric_errors": {
+        "velocity_relative_l2": 0.006180212230024557,
+        "energy_relative_error": 0.006610237183242338,
+        "max_gradient_relative_error_samples": 0.36094757472174444,
+        "max_vorticity_relative_error_samples": 0.34034032219011584,
+        "shell_spectrum_relative_l1": 0.006635793691178023
+      }
+    }
+  ],
+  "scope": "Archive integrity and rerun of the pinned postprocessor; not an independent solver implementation or continuum-extrema certificate."
+}

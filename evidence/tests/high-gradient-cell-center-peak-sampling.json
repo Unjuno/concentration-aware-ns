@@ -1,0 +1,58 @@
+{
+  "schema": "high-gradient-cell-center-peak-sampling/v1",
+  "scope": "Reference-field sampling only: exact analytic derivatives sampled on periodic uniform-grid cell centers, divided by certified N=4 continuum peaks.",
+  "parameters": {
+    "N": 4,
+    "time": 0.05,
+    "resolutions": [
+      16,
+      32,
+      64,
+      128
+    ]
+  },
+  "interpretation": "Fractions quantify reference peak undersampling only. They do not measure solver error, bound a numerical field between cells, or alter an acceptance gate.",
+  "rows": [
+    {
+      "n": 16,
+      "sampled_gradient_peak": 0.6358050129577034,
+      "certified_continuum_gradient_peak": 0.9586320997613064,
+      "gradient_fraction": 0.6632419393383708,
+      "sampled_vorticity_peak": 0.6978987068490939,
+      "certified_continuum_vorticity_peak": 1.0701331025633032,
+      "vorticity_fraction": 0.6521606566299168
+    },
+    {
+      "n": 32,
+      "sampled_gradient_peak": 0.8690546889027162,
+      "certified_continuum_gradient_peak": 0.9586320997613064,
+      "gradient_fraction": 0.9065570505297137,
+      "sampled_vorticity_peak": 0.9681315738921257,
+      "certified_continuum_vorticity_peak": 1.0701331025633032,
+      "vorticity_fraction": 0.9046833254416184
+    },
+    {
+      "n": 64,
+      "sampled_gradient_peak": 0.9356642035612573,
+      "certified_continuum_gradient_peak": 0.9586320997613064,
+      "gradient_fraction": 0.9760409689955428,
+      "sampled_vorticity_peak": 1.0440448346583968,
+      "certified_continuum_vorticity_peak": 1.0701331025633032,
+      "vorticity_fraction": 0.9756214737751624
+    },
+    {
+      "n": 128,
+      "sampled_gradient_peak": 0.9528539220242989,
+      "certified_continuum_gradient_peak": 0.9586320997613064,
+      "gradient_fraction": 0.993972476262326,
+      "sampled_vorticity_peak": 1.0635738048742074,
+      "certified_continuum_vorticity_peak": 1.0701331025633032,
+      "vorticity_fraction": 0.9938705777128245
+    }
+  ],
+  "provenance": {
+    "measurement_tool_sha256": "00359d6a7530674a8b7f1b4b7a759fcf7bfeefd49dd31bf193c2229dce293b65",
+    "reference_evaluator_sha256": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3",
+    "continuum_certificate_sha256": "08d8ea18118a03124bdd95e7bb0381600707a6e92843ee5840f4b003a72d9c81"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 111299711933,
+      "run_id": 37156115323,
+      "workflow_name": "Python verification",
+      "head_branch": "physicsnemo-global-hessian-audit",
+      "run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/runs/37156115323",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUTGBaM8AAAAZ6frTvQ",
+      "head_sha": "910485bb145f2b5fed8c0bde3be08da9c08a2a9b",
+      "url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/actions/jobs/111299711933",
+      "html_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37156115323/job/111299711933",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-03T21:43:39Z",
+      "started_at": "2026-10-03T21:47:29Z",
+      "completed_at": "2026-10-03T21:50:57Z",
+      "name": "tests",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-03T21:47:30Z",
+          "completed_at": "2026-10-03T21:47:32Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-03T21:47:32Z",
+          "completed_at": "2026-10-03T21:48:14Z"
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-03T21:48:14Z",
+          "completed_at": "2026-10-03T21:48:15Z"
+        },
+        {
+          "name": "Install verification dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-03T21:48:15Z",
+          "completed_at": "2026-10-03T21:48:29Z"
+        },
+        {
+          "name": "Run Python test suite",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-03T21:48:29Z",
+          "completed_at": "2026-10-03T21:50:54Z"
+        },
+        {
+          "name": "Recheck published native samples and analytic enclosures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-03T21:50:54Z",
+          "completed_at": "2026-10-03T21:50:54Z"
+        },
+        {
+          "name": "Preserve published-matrix verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-03T21:50:54Z",
+          "completed_at": "2026-10-03T21:50:55Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-03T21:50:55Z",
+          "completed_at": "2026-10-03T21:50:55Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-03T21:50:55Z",
+          "completed_at": "2026-10-03T21:50:55Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-03T21:50:55Z",
+          "completed_at": "2026-10-03T21:50:55Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Unjuno/concentration-aware-ns/check-runs/111299711933",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000095266,
+      "runner_name": "GitHub Actions 1000095266",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

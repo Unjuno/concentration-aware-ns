@@ -60,5 +60,12 @@ uv run --with-requirements requirements-verification.txt -- python -m tools.chec
 The saved seeded comparison evaluates `N=4,8,16` at 65 points per case,
 including the selected point, and compares velocity, full gradient, vorticity
 and forcing. It verifies implementation agreement to the stated floating-point
-tolerance; it does not certify between-point extrema, compiled solver forcing,
-or any CFD acceptance gate.
+tolerance; it does not certify compiled solver forcing or any CFD acceptance
+gate. For the shared `N=4` case, a separate exact-rational certificate proves
+that the selected-point derivative values are the continuous global maxima:
+`max |grad u|_F = sqrt(65)/8 * exp(-t)` and
+`max |curl u| = 9/8 * exp(-t)`. It reduces the trigonometric expressions to
+four bivariate polynomial gaps and verifies that all tensor-Bernstein
+coefficients on `[0,1]^2` are nonnegative. This sharpening is specific to
+`N=4`; the selected-point values remain only lower bounds for other `N`. See
+the [full derivation and coefficient receipt](../reports/high-gradient-global-peaks-analytic-certificate-2026-10-04.md).

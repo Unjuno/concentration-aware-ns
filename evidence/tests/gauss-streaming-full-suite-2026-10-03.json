@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-03",
+  "status": "PASS",
+  "base_commit": "35b9e8c52a66c1c33965e5a51b6be9d97f3defb9",
+  "working_tree_scope": "Includes uncommitted streaming CSV parser and regression test; run before commit.",
+  "command": "uv run --python 3.14.5 --with-requirements requirements-verification-locked.txt -- python -m pytest -q",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "python": "3.14.5",
+    "uv": "0.11.17"
+  },
+  "dependency_lock": {
+    "path": "requirements-verification-locked.txt",
+    "sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "result": {
+    "passed": 214,
+    "skipped": 1,
+    "subtests_passed": 5,
+    "duration_seconds": 97.28
+  },
+  "log": {
+    "path": "evidence/tests/gauss-streaming-full-suite-2026-10-03.log",
+    "bytes": 376,
+    "sha256": "f1ea2dae55fd62c25e0d353a76b6086ad8ed87ad0f31ef15c77ee31382c3a6d3"
+  },
+  "scope_limit": "Local benchmark-repository tests only; does not build/test upstream solvers or validate physical interpretations."
+}

@@ -1,0 +1,199 @@
+{
+  "captured_at_utc": "2026-10-05T01:15:52+00:00",
+  "github": {
+    "repository": {
+      "full_name": "openai/NavierStokesAndEuler",
+      "default_branch": "main",
+      "pushed_at": "2026-09-10T15:14:13Z",
+      "has_issues": false,
+      "has_discussions": false,
+      "open_issues_count": 0,
+      "license": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0",
+        "spdx_id": "Apache-2.0",
+        "url": "https://api.github.com/licenses/apache-2.0",
+        "node_id": "MDc6TGljZW5zZTI="
+      }
+    },
+    "repository_sha256": "ee39113888db08df93219670ee25f9a9fb75d392fab46a297197ba916e9597dc",
+    "main_commit": {
+      "sha": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "date": "2026-09-10T13:40:53Z",
+      "subject": "."
+    },
+    "main_commit_response_sha256": "042a037483c54819502febecd440278f2fe7172ae0b3e6749efb958a80337863",
+    "current_pr4": {
+      "url": null,
+      "state": "OPEN",
+      "headRefOid": "88cb0532d2d493df1eabf182c51904ca2ad8b43d",
+      "checks": [
+        {
+          "name": "changes",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "changes",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "changes",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "changes",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "exact-control",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "changes",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "tests",
+          "conclusion": "SUCCESS"
+        },
+        {
+          "name": "experiment",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "capture",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "matrix-replay",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "capture",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "width-sweep",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "operator",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "su2-cfl-successor",
+          "conclusion": "SKIPPED"
+        },
+        {
+          "name": "replay",
+          "conclusion": "SKIPPED"
+        }
+      ]
+    }
+  },
+  "arxiv": {
+    "part_ii_title": {
+      "query": "ti:\"Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part II\"",
+      "url": "https://export.arxiv.org/api/query?search_query=ti%3A%22Finite-Time+Blowup+for+Navier-Stokes+with+Smooth+Forcing%2C+Part+II%22&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "path": "evidence/upstream-refresh/arxiv-part_ii_title-2026-10-05.atom.xml",
+      "sha256": "b56eefb633f2da65c06407f3f04483175ccdcebec314dca91181b9ab0ac66eb3",
+      "total_results": 0,
+      "entries": []
+    },
+    "part_ii_phrase": {
+      "query": "all:\"Residual Correction via Oscillatory Pulses\"",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22Residual+Correction+via+Oscillatory+Pulses%22&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "path": "evidence/upstream-refresh/arxiv-part_ii_phrase-2026-10-05.atom.xml",
+      "sha256": "f8442c003e876c2ca2999c7807bc00a18505cd32cde3d21a086b58435a82bde7",
+      "total_results": 1,
+      "entries": [
+        {
+          "id": "http://arxiv.org/abs/2609.35406v2",
+          "title": "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder",
+          "published": "2026-09-28T15:27:16Z",
+          "summary": "This paper gives a readable and accessible version of the profile-construction part of OpenAI's manuscript \"Finite Time Blowup for Navier-Stokes\". We regard OpenAI's work as a major advance on the Navier-Stokes Millennium Prize Problem. The profiles are smooth and axi-symmetric. Inserting them into the Navier-Stokes equations gives a residual consisting of a divergence-form term and a remainder vanishing to infinite order in $1-t$ on fixed similarity sectors. The associated stress and radial shear satisfy the admissible cone condition. The stress need not be small. We introduce a new linear model that provides a clearer explanation of the inner core construction. The cancellation by oscillatory pulses will be treated in the companion paper \"Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part II: Residual Correction via Oscillatory Pulses\"."
+        }
+      ]
+    },
+    "october_navier_stokes": {
+      "query": "submittedDate:[202610010000 TO 202610052359] AND all:\"Navier-Stokes\"",
+      "url": "https://export.arxiv.org/api/query?search_query=submittedDate%3A%5B202610010000+TO+202610052359%5D+AND+all%3A%22Navier-Stokes%22&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "path": "evidence/upstream-refresh/arxiv-october_navier_stokes-2026-10-05.atom.xml",
+      "sha256": "a39d5cb9c7e39b88372a11637beb40419a8c3c4769c932d7e4a7e8f7ad8a7dba",
+      "total_results": 8,
+      "entries": [
+        {
+          "id": "http://arxiv.org/abs/2610.03303v1",
+          "title": "S$^{2}$-PINN: Stochastic Separable Physics-Informed Neural Networks",
+          "published": "2026-10-02T13:43:57Z",
+          "summary": "Uncertainty quantification (UQ) for random partial differential equations (PDEs) is ubiquitous in computational science and engineering. However, classical spectral solvers for this class of problems face the curse of dimensionality, and existing neural solvers often ignore the stochastic structure that makes moments and calibration tractable. We introduce a stochastic separable physics-informed neural network, dubbed S$^{2}$-PINN, that represents the solution $u(t,\\mathbf{x},\\mathbf{Z})$ of a random PDE with a learnable Gaussian spatial dictionary, Fourier temporal features, and a generalized polynomial chaos (gPC) stochastic basis, coupled by a low-rank Canonical Polyadic (CP) tensor decomposition core. The method is trained with a hybrid strong-form and gPC-projected residual loss. Our theoretical analysis establishes that the separable class is dense in $L^2$ under mild conditions, and the projected residual corresponds exactly to a stochastic Galerkin constraint. Furthermore, we show that mini-batch projection coefficients are logarithmically dependent on the number of gPC modes, and that the orthogonality penalty controls the conditioning of the learned spatial dictionary. Using four manufactured random PDE benchmarks, we show that S$^{2}$-PINN outperforms nine baselines in terms of mean and variance accuracy, as well as calibration, while using significantly fewer parameters. Further evaluations on non-manufactured Poisson and Darcy problems, a stochastic Navier--Stokes problem, a diffusion scaling study of higher random dimensions, and two stochastic inverse problems reveal the generalization capabilities of the proposed structure. Together, these results support stochastic separability as an effective design principle for physics-informed neural UQ. The code for the experiments can be found in https://github.com/DMax1314/s2pinn"
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.03243v1",
+          "title": "A Kinetic Theory of the Gated Self-Evolving LLM Agent",
+          "published": "2026-10-02T12:55:38Z",
+          "summary": "We find traces of fluid dynamics in the self-evolution of an LLM agent, and give the kinetic theory that predicts them. Gated self-evolution is the loop in which an agent rewrites its own skills under a validation gate. Self-evolution research has treated the agent as the unit; we study instead the individual instances inside it. Here the agent is DSH-plugin-based: it runs in production on DeepSeek Harness (DSH), and its plugins satisfy four architectural properties (permutation symmetry, reversibility, acyclicity, typed contracts), which license treating these instances as identical hard spheres; the theory is accordingly scoped to DSH-class plugin populations. On this scope the paper builds three theory layers. The rigorous layer, independent of any analogy, comprises an any-time hitting-time certificate bounding the expected rounds to any prescribed improvement, a resolution law that prices held-out validation budgets, and a separation theorem: the daemon must stay outside the population, because merging evaluator with evaluated voids the certificate. The kinetic layer is a master equation over the plugin x version x task grid with four operators (collision, reaction, external field, gate), where collision is co-activation. Its moment hierarchy, the step that turns a gas into fluid equations, generates the falsifiable statistical signatures. Throughout, the fluid reading is a bounded analogy: momentum is not conserved, so no Navier-Stokes limit exists. The measured layer runs on a faithful minimal instance, a large library of four-parameter skill plugins retrieved one per episode with a co-activation probe, in a one-model, one-task-family WebShop environment; every element maps to the DSH loop by architectural role. Population fluctuation scaling is density-gated: invisible at sparse edit density, it emerges at the predicted rate under tripled density, as directional evidence."
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.03236v1",
+          "title": "Weak-BV stability of inflow and outflow problems for the isentropic Euler system",
+          "published": "2026-10-02T12:45:08Z",
+          "summary": "We study the well-posedness of small BV solutions to the one-dimensional isentropic Euler system on the half-line under inflow and outflow boundary conditions. These boundary conditions are formulated in terms of admissible trace sets determined by Navier--Stokes boundary layers and zero-speed shocks. For both the inflow and outflow problems, we construct small BV solutions taking values in the subsonic region. These solutions are unique and satisfy the quantitative stability estimate \\begin{align*} \\|U(\\cdot, t)-V(\\cdot, t)\\|_{L^2} \\lesssim \\sqrt{\\|U(\\cdot, 0) - V(\\cdot, 0)\\|_{L^2}} \\, , \\end{align*} which holds for any such small BV solution $V$ and any $L^\\infty$ entropy solution $U$ satisfying the strong trace property and the inflow/outflow boundary conditions. In particular, we emphasize that $U$ may take values outside the subsonic region and need not have bounded variation or be constructed by the front tracking scheme. This establishes the first weak-BV stability and uniqueness theory for inflow and outflow initial-boundary value problems. A key difficulty lies in verifying that the boundary set is compatible with the $a$-contraction framework, and in proving that the front-tracking limit satisfies the prescribed inflow/outflow conditions."
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.03067v1",
+          "title": "Development of a class of dynamic RANS closures for coarse-grained approaches to turbulence",
+          "published": "2026-10-02T09:49:57Z",
+          "summary": "This work represents a crucial advancement in the development of a new class of turbulence closures conceived by Cimarelli et al. [1]. This new class of closures is based on the theoretical framework provided by the temporally filtered Navier-Stokes equations. This framework represents a unifying formalism for coarse-grained approaches to turbulence ranging from the statistical to the scale-resolving ones and provides exact equations relating turbulent stresses at different levels of coarsening. The latter have been used in Cimarelli et al. [1] as the theoretical foundation to derive a new class of closures based on the dynamic computation of the model coefficient appearing in the definition of eddy viscosity. Here, we extend this class of dynamic RANS models by deriving a new formulation based on the k-ω model including an alternative version where the non-physical decay of free-stream turbulence reproduced by the transport equations of k and ω is solved in an elegant way. A scale-resolving simulation campaign is performed and the analysis of the results reveals interesting features. Among others, the new dynamic k-ω model demonstrates strong robustness to a coarsening of the temporal resolution and successfully captures complex flow phenomena, including laminar-to-turbulent transition and the sensitivity of boundary-layer separation and reattachment to free-stream turbulence levels prescribed at the boundaries."
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.03011v1",
+          "title": "Global existence for viscous systems of conservation laws in $L^p$ framework",
+          "published": "2026-10-02T08:43:38Z",
+          "summary": "In this paper, which originates from Chapter 4 of the author's PhD thesis [1, Chap. 4], we investigate the global well-posedness of a class of partially diffusive hyperbolic systems in critical homogeneous Besov spaces. Our main objective is to extend the analysis developed in our previous work [2] to a functional framework in which the high-frequency com- ponents of the solution are controlled in $L^p$-based spaces with $p > 2$. This broader framework allows us to establish global existence under weaker smallness assumptions on the initial data and provides more precise information on the qualitative behavior of the resulting solutions. In particular, our analysis yields refined regularity. As an application, our global existence theorem applies to the multidimensional compressible Fourier-Navier-Stokes system"
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.02906v1",
+          "title": "Tangent Schrödinger Bridge Matching: Learning Stochastic Transport with Mechanistic Sensitivities",
+          "published": "2026-10-02T06:56:25Z",
+          "summary": "Predicting how stochastic systems respond to changes in viscosity, reaction rates, or external forces requires costly simulations, motivating reusable learned models. Yet matching observed outcome distributions does not ensure accurate intervention responses. We introduce Tangent Schrödinger Bridge Matching (Tangent-SBM), which learns stochastic transports from endpoint observations and mechanistic sensitivities. It propagates parameter derivatives alongside trajectories and supervises them against supplied targets. For average-response targets, single-rollout squared error also penalizes response variability; our objective uses two independent rollouts to match the mean without this additional penalty. We establish conditions under which sensitivity accuracy bounds finite-change prediction error and decision regret. Across Gaussian, stochastic double-well, PDEBench reaction--diffusion, and stochastic Navier--Stokes systems, Tangent-SBM improves sensitivity and finite-change prediction over matched conditional-bridge baselines while maintaining comparable endpoint and distributional accuracy. Controls examine target correctness, response objectives, and simulator-budget allocation. To test decision usefulness, we evaluate calibrated viscosity selection in Navier--Stokes: Tangent-SBM reduces tracking error relative to taking no action on every evaluated task."
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.01487v1",
+          "title": "The Vanishing-Diffusion Limit of an Incompressible Visco-Morphoelastic System: Weak Solutions and a Jaumann Defect",
+          "published": "2026-10-01T11:29:56Z",
+          "summary": "We study an incompressible visco-morphoelastic system in three dimensions in which the Eulerian effective strain is transported by the Zaremba-Jaumann rate and coupled to a Navier-Stokes momentum balance through a Kelvin-Voigt stress. The strain remains symmetric and splits into a scalar transport-relaxation equation for its trace and a deviatoric equation containing the nonlinear stretching and Jaumann terms. We regularize both equations by diffusion of order $\\varepsilon$, which admits a mechanical interpretation as weakly nonlocal remodeling with a characteristic length scale. For fixed $\\varepsilon>0$ we construct Leray-Hopf type weak solutions by a truncated Galerkin scheme and remove the truncation a posteriori using a maximum principle for the scalar variable. As $\\varepsilon\\to0$, the scalar variable converges strongly in $L^p((0,T)\\timesΩ)$ for every $1\\le p<\\infty$, by a DiPerna-Lions commutator argument on bounded Lipschitz domains, allowing the stretching term to be identified in the limit. In contrast, the Jaumann commutator is a product of two weakly convergent sequences, and its limit cannot be identified from the available estimates. We therefore obtain a defect \\[\\boldsymbol{\\mathcal{D}}\\in L^2(0,T;(H^2(Ω;\\mathbb{S}_0))^\\ast)\\] in the limiting deviatoric equation. We give two sufficient conditions for $\\boldsymbol{\\mathcal{D}}=0$. The energy-level cancellation used in related corotational viscoelastic models does not close here because the coefficient of the stretching term is itself an unknown."
+        },
+        {
+          "id": "http://arxiv.org/abs/2610.01239v1",
+          "title": "Structure of Convective-Reactive Zone in a Supernova Progenitor",
+          "published": "2026-10-01T07:37:47Z",
+          "summary": "Convective-reactive events are phases of stellar evolution where turbulent mixing and nuclear burning directly compete, since their timescales become similar within convection zones. During these events the convection zone structure is shaped by a complex and dynamic interaction of convective transport and nuclear burning of individual chemical elements, with plasma streams connecting the entrainment regions with the burning layers. Here we analyse a 3D hydrodynamic simulation of an oxygen--neon shell merger in a massive pre-supernova star. We study the emergent structure using the Reynolds-Averaged Navier-Stokes (RANS) mean-field composition transport equation. We find that the merged convective zone develops a complex, turbulence-driven mixing structure of multiple nested convective-reactive shells, all contained within the single convection zone. Key controlling factors include not only the mean stratification and mixing, but also emergent collective behaviour of involved nuclear reactions for every chemical isotope. Almost all layers show a quasi-steady balance between burning and mixing. We categorise the various layers, and discuss/contrast with 1D stellar evolution code treatments, highlighting some implications."
+        }
+      ]
+    }
+  },
+  "interpretation": "Bounded catalog and source-metadata refresh only. It does not establish exhaustive literature coverage, peer review, correctness of the new preprint, or acceptance of the OpenAI proof.",
+  "related_runs": {
+    "openai_lean_audit": {
+      "conclusion": "cancelled",
+      "createdAt": "2026-10-04T20:47:13Z",
+      "databaseId": 37233433718,
+      "event": "push",
+      "headSha": "766cf3424ed46ce60ea5626c3a624cf4fa891507",
+      "status": "completed",
+      "updatedAt": "2026-10-04T22:24:58Z",
+      "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37233433718"
+    },
+    "su2_matrix": {
+      "conclusion": "",
+      "createdAt": "2026-10-04T20:08:18Z",
+      "databaseId": 37230949147,
+      "event": "push",
+      "headSha": "6ff7e5288d846745e6a15b587eef4e9c71b1af83",
+      "status": "in_progress",
+      "updatedAt": "2026-10-04T20:25:03Z",
+      "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37230949147"
+    }
+  }
+}

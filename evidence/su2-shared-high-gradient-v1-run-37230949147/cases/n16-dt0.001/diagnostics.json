@@ -1,0 +1,130 @@
+{
+  "parameters": {
+    "n": 16,
+    "dt": 0.001,
+    "end": 0.05,
+    "sigma": 0.5,
+    "nu": 0.01,
+    "profile": "high-gradient",
+    "frequency": 4,
+    "status": "pilot; convergence unverified",
+    "study_id": "su2-shared-high-gradient-v1",
+    "protocol_sha256": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+    "image": "cans-su2-high-gradient",
+    "image_id": "sha256:61416b92eeea8a06202c1acea06cfb5695d2310a6e18cda4e7a3f2e6483838db",
+    "rho": 1.0,
+    "quality_thresholds": {
+      "velocity_relative_l2": 0.02,
+      "energy_relative_error": 0.02,
+      "max_gradient_relative_error_samples": 0.05,
+      "max_vorticity_relative_error_samples": 0.05,
+      "shell_spectrum_relative_l1": 0.05
+    }
+  },
+  "mms_profile": "high-gradient",
+  "quality": "UNCERTAIN",
+  "quality_sampled": "FAIL",
+  "quality_metric_errors": {
+    "velocity_relative_l2": 0.006180212230024557,
+    "energy_relative_error": 0.006610237183242338,
+    "max_gradient_relative_error_samples": 0.36094757472174444,
+    "max_vorticity_relative_error_samples": 0.34034032219011584,
+    "shell_spectrum_relative_l1": 0.006635793691178023
+  },
+  "updated_solution_time": 0.05,
+  "expected_last_source_time": 0.049,
+  "reported_history_time": 0.049,
+  "source_history_time_difference": 0.0,
+  "reported_and_source_time": 0.049,
+  "steps": 50,
+  "converged_steps": 49,
+  "periodic_duplicate_max_mismatch": 0.0,
+  "unique_points": 4096,
+  "velocity_relative_l2": 0.006180212230024557,
+  "energy_relative_error": 0.006610237183242338,
+  "computed": {
+    "mean_kinetic_energy": 0.0005777450246061127,
+    "max_gradient_fd2": 0.6126161683020496,
+    "max_vorticity_fd2": 0.7059236576506003,
+    "max_divergence_fd2": 0.056430398603645494,
+    "gradient_peak_index": [
+      3,
+      0,
+      0
+    ],
+    "vorticity_peak_index": [
+      1,
+      0,
+      0
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      1.9732212239812498e-27,
+      8.885089719841499e-10,
+      1.2265317092116579e-09,
+      6.690987788122456e-10,
+      0.000479805937906866,
+      9.758999116768427e-05,
+      3.41637499388536e-07,
+      3.438642112289739e-10,
+      3.022162235912224e-09,
+      1.297727058375128e-09,
+      1.0079728131491269e-11,
+      5.880356280031442e-14,
+      6.747296078279318e-16,
+      1.9434431536535146e-18,
+      2.4998071568482447e-29
+    ],
+    "spectrum_energy": 0.0005777450246061128,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "reference_sampled_fd2": {
+    "mean_kinetic_energy": 0.0005815894689390759,
+    "max_gradient_fd2": 0.6142916567585904,
+    "max_vorticity_fd2": 0.7087094583477324,
+    "max_divergence_fd2": 0.0569454653314137,
+    "gradient_peak_index": [
+      1,
+      0,
+      0
+    ],
+    "vorticity_peak_index": [
+      1,
+      0,
+      0
+    ],
+    "shell_width": 1.0,
+    "shell_energy": [
+      2.5968168047770566e-35,
+      1.8303691315495768e-34,
+      2.2616005941699027e-34,
+      7.274806063917066e-35,
+      0.00048218052397747753,
+      9.906486184963075e-05,
+      3.440567777329063e-07,
+      2.633423480542572e-11,
+      1.944406357028214e-34,
+      7.020948492960422e-36,
+      5.641446608330351e-37,
+      3.245303369696243e-37,
+      2.276409464772108e-40,
+      5.2868536406661515e-68,
+      3.854076721207784e-69
+    ],
+    "spectrum_energy": 0.000581589468939076,
+    "method": "periodic centered FD2; full FFT; uniform-grid samples only",
+    "acceptance": "NOT_EVALUATED"
+  },
+  "reference_gradient_peak_samples": 0.9586320997613065,
+  "reference_vorticity_peak_samples": 1.0701331025633032,
+  "gradient_peak_relative_error_samples": 0.36094757472174444,
+  "vorticity_peak_relative_error_samples": 0.34034032219011584,
+  "sha256": {
+    "restart_00049.csv": "a26774403af4c9aceb36d4bb2fa91f0e1f10b1fba01ffbb4f1160672d1fcfa5c",
+    "case.cfg": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+    "mesh.su2": "54697f919b516d73c39a07930d6bea2a71702a20a6a77b9d4986f3829ecc8b33",
+    "history.csv": "46a188d1c0f3b56833d2045645c3f6f8374ad2b9e1ec896d35d20c61b15f5228",
+    "solver.log": "961e84455b324485e301fe307984c98b229e44caf04ca20065ff389425c0c551"
+  }
+}

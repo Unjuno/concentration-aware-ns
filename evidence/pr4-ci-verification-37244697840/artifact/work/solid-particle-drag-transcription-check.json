@@ -1,0 +1,20 @@
+{
+  "status": "SCALAR_TRANSCRIPTION_CONTROLS_PASS",
+  "records": [
+    {
+      "path": "work/solid-particle-drag-O0.json",
+      "sha256": "23a40fd25d163437fc5635e2da85d9ca9ceae746832427590e074ca39e3e6986",
+      "output_difference": 3.142359313765622e-06
+    },
+    {
+      "path": "work/solid-particle-drag-O2.json",
+      "sha256": "23a40fd25d163437fc5635e2da85d9ca9ceae746832427590e074ca39e3e6986",
+      "output_difference": 3.142359313765622e-06
+    }
+  ],
+  "limits": [
+    "Synthetic scalar transcription, not an OpenFOAM binary/cloud run",
+    "Two-float quotient is not a continuous derivative",
+    "No trajectory, molecular viscosity or phase-transition inference"
+  ]
+}

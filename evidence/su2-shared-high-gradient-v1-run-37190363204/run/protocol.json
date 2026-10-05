@@ -1,0 +1,58 @@
+{
+  "study_id": "su2-shared-high-gradient-v1",
+  "status": "frozen before execution",
+  "source": {
+    "repository": "su2code/SU2",
+    "release": "v8.5.0",
+    "commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+    "source_archive_sha256": "316552bdf987a9254093f1179addc2afa2c396c8fe97fbeeae06250dccaea7e4"
+  },
+  "adapter": {
+    "patch": "runtime/su2/high_gradient.patch",
+    "mms_profile": "Fourier-envelope high-gradient",
+    "frequency_N": 4,
+    "viscosity": 0.01,
+    "density": 1.0,
+    "pressure": 0.0,
+    "energy_equation": false,
+    "forcing": "u_t + (u dot grad)u - nu laplacian(u); analytic, evaluated by the pinned USER_DEFINED_SOLUTION source hook"
+  },
+  "time": {
+    "start": 0.0,
+    "end": 0.05,
+    "marching": "dual-time first order",
+    "inner_iteration_cap": 3000,
+    "residual_log10_threshold": -10,
+    "CFL": 10,
+    "source_time": "The pinned driver sets physical time to TimeIter*dt before residual evaluation; final source call is expected at (steps-1)*dt. Record this separately from the printed history clock and completed field time.",
+    "completed_solution_time": "number_of_updates * dt; report separately from the source and history time"
+  },
+  "cases": {
+    "spatial": [[16, 0.001], [32, 0.001], [64, 0.001]],
+    "temporal": [[64, 0.001], [64, 0.0005], [64, 0.00025]],
+    "unique_case_pairs": [[16, 0.001], [32, 0.001], [64, 0.001], [64, 0.0005], [64, 0.00025]],
+    "expected_cases": 5,
+    "planned_updates": [50, 100, 200]
+  },
+  "sampling": {
+    "mesh": "periodic Cartesian vertex grid on [0,2*pi]^3; remove one duplicated high-side vertex in each periodic axis only after coordinate verification",
+    "phase_relation": "vertex phase differs from OpenFOAM cell centers; compare each solver against the same analytic field at its own actual sample coordinates"
+  },
+  "acceptance": {
+    "standard": "all planned updates completed, process exit 0, SU2 success marker present, and all four declared inner residuals reach log10 <= -10 at every time step",
+    "quality_thresholds": {
+      "velocity_relative_l2": 0.02,
+      "energy_relative_error": 0.02,
+      "max_gradient_relative_error_samples": 0.05,
+      "max_vorticity_relative_error_samples": 0.05,
+      "shell_spectrum_relative_l1": 0.05
+    },
+    "interpretation": "residual convergence and sampled solution-quality acceptance are separate; sampled derivative maxima do not certify continuum extrema"
+  },
+  "scope_limits": [
+    "The historical Gaussian SU2 study remains immutable and is not reinterpreted as this shared-reference study.",
+    "This protocol does not claim cross-solver discretizations or sample locations are identical.",
+    "The adapter C++ formulas have passed a separate compiled 257-point NumPy parity check; full SU2 build and solver integration remain to be executed.",
+    "No physical molecular alignment, deterministic particle location, phase transition, viscosity change, or Navier-Stokes blow-up conclusion follows from this benchmark."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PROSPECTIVE_SUCCESSOR_NOT_BUILT_OR_EXECUTED",
+  "predecessor": "protocols/su2-n32-full-horizon-cfl-control-v1.json",
+  "reason": "Original image inspect fails with containerd content-store operation-not-supported; exact-image v1 execution cannot start",
+  "source_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+  "build_inputs_sha256": {
+    "runtime/su2/Dockerfile": "59296c749f15961ede0adfaa21bd836b86c8afe6b9cf95e70c3446378f1a8f20",
+    "runtime/su2/mms.patch": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83"
+  },
+  "architecture": "linux/arm64",
+  "cases": "Two fresh matched n32/dt=.001/end=.05 runs, CFL10 then CFL100; prepared config/mesh identities remain unchanged",
+  "runtime_gate": "Healthy isolated container runtime; fresh separately named image; preserve image inspect, compiler and package versions, source and binary hashes before runs",
+  "comparison_rule": "Compare fresh baseline with fresh control in the same new image. Archived original output is historical context only; do not mix old baseline with new control or claim binary equivalence",
+  "numerical_gates": {
+    "expected_updates": 50,
+    "inner_cap": 3000,
+    "residual_log10_threshold": -10,
+    "threads": 2,
+    "quality_protocol": "protocols/su2-study-v1.json"
+  },
+  "stop_rule": "Do not run on image identity/source mismatch, preoccupied outputs or unverified capacity. Do not repair shared daemon or replace original evidence as part of this control."
+}

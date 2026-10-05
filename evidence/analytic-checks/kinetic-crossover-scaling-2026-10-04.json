@@ -1,0 +1,32 @@
+{
+  "scope": "Symbolic power-law and dimensional algebra only; no kinetic closure failure, material state, or physical transition is established.",
+  "sympy": "1.14.0",
+  "source_sha256": "9b07491ebeb2affcb2ddf5bd24f2a366df7fb119551e956739e06289c168fb3a",
+  "definitions": {
+    "remaining_time": "s=(T-t)/t_ref",
+    "core_rate": "Gamma_core=kappa/(t_ref*s)",
+    "relaxation_time": "tau_rel=tau0*s**alpha",
+    "strain_collision_indicator": "chi=tau_rel*Gamma_core",
+    "radial_core_scale": "ell_r=length0*s**(1/2)",
+    "mean_free_path": "lambda=lambda0*s**beta",
+    "local_knudsen": "Kn_r=lambda/ell_r"
+  },
+  "derived": {
+    "chi": "kappa*s**(alpha - 1)*tau0/t_ref",
+    "chi_power_in_s": "alpha - 1",
+    "fixed_relaxation_order_one_crossing": "kappa*tau0/t_ref",
+    "knudsen_ratio": "lambda0*s**(beta - 1/2)/length0",
+    "knudsen_power_in_s": "beta - 1/2",
+    "fixed_mean_free_path_order_one_crossing": "lambda0**2/length0**2",
+    "BGK_relaxation_model": "tau_rel=mu/p_thermodynamic only under the stated BGK kinetic model; not inferred from incompressible constraint pressure"
+  },
+  "controls": {
+    "fixed_relaxation_chi_power_is_minus_one": true,
+    "variable_relaxation_chi_power_is_alpha_minus_one": true,
+    "fixed_mean_free_path_kn_power_is_minus_one_half": true,
+    "variable_mean_free_path_kn_power_is_beta_minus_one_half": true,
+    "fixed_relaxation_crossing": true,
+    "fixed_mean_free_path_crossing": true
+  },
+  "success": true
+}

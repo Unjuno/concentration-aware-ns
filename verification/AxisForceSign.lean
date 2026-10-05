@@ -2795,6 +2795,38 @@ theorem axisDeformation_directional_ratio_sq
 
 #print axioms axisDeformation_directional_ratio_sq
 
+/-- The two transverse scales and the axial scale of the variational map have
+unit volume factor. This is an infinitesimal-flow statement. -/
+theorem terminalScale_volume_factor
+    (t0 t C : ℝ) (ht0 : t0 < 1) (ht : t < 1) :
+    terminalScale t0 (C/2) t ^ 2 * terminalScale t0 (-C) t = 1 := by
+  let Q : ℝ := (1-t)/(1-t0)
+  have hQ : 0 < Q := div_pos (by linarith) (by linarith)
+  have hr : terminalScale t0 (C/2) t ^ 2 = Q^C := by
+    rw [terminalScale]
+    change (Q^(C/2))^2 = Q^C
+    rw [← Real.rpow_natCast (Q^(C/2)) 2, ← Real.rpow_mul hQ.le]
+    congr 1
+    ring
+  have hs : terminalScale t0 (-C) t = Q^(-C) := by
+    rw [terminalScale]
+  calc
+    _ = Q^C * Q^(-C) := by rw [hr, hs]
+    _ = Q^(C + -C) := (Real.rpow_add hQ C (-C)).symm
+    _ = 1 := by simp
+
+/-- An isotropic Gaussian covariance transported by the linearized map keeps
+its determinant because the transverse/axial volume factor is one. -/
+theorem isotropic_covariance_determinant_preserved
+    (sigma r s : ℝ) (hvolume : r^2*s = 1) :
+    (sigma^2*r^2)*(sigma^2*r^2)*(sigma^2*s^2) = sigma^6 := by
+  calc
+    _ = sigma^6*(r^2*s)^2 := by ring
+    _ = sigma^6 := by rw [hvolume]; ring
+
+#print axioms terminalScale_volume_factor
+#print axioms isotropic_covariance_determinant_preserved
+
 theorem powerLawDeformation_hasDerivAt
     (t0 C t omega : ℝ) (theta : ℝ → ℝ) (dx : ProblemStatement.Space)
     (ht0 : t0 < 1) (ht : t < 1) (hθ : HasDerivAt theta omega t) :
@@ -3597,5 +3629,122 @@ theorem actual_ratio_negative_of_local_Z
     (div_pos (mul_pos hA hU) hd)
 
 #print axioms actual_ratio_negative_of_local_Z
+
+
+theorem uniform_amplitude_sufficient
+    (h eta b : ℝ) (hh0 : 0 ≤ h) (hh1 : h ≤ 1/1000)
+    (hx : eta^2 ≤ 1/4000000) (hb : 9/40 ≤ b) :
+    (1/2-h)/(2*(1-eta^2)) *
+      (1+2*(1/2-h)*eta^2/(1-eta^2)) <
+      5*b^2/(1+eta^2)^2 := by
+  have x0 : 0 ≤ eta^2 := sq_nonneg eta
+  have dpos : 0 < 1-eta^2 := by linarith
+  have dnonneg : 0 ≤ 1-eta^2 := dpos.le
+  have Dnonneg : 0 ≤ 1/2-h := by linarith
+  have Dle : 2*(1/2-h) ≤ 1 := by linarith
+  have hfraction : (2*(1/2-h)*eta^2)/(1-eta^2) ≤ eta^2/(1-eta^2) := by
+    apply div_le_div_of_nonneg_right _ dnonneg
+    have hc : 0 ≤ 1-2*(1/2-h) := by linarith
+    have hm := mul_nonneg hc x0
+    nlinarith
+  have hfactor :
+      1+2*(1/2-h)*eta^2/(1-eta^2) ≤ 1/(1-eta^2) := by
+    calc
+      _ = 1+(2*(1/2-h)*eta^2)/(1-eta^2) := by ring
+      _ ≤ 1+eta^2/(1-eta^2) := by linarith
+      _ = 1/(1-eta^2) := by field_simp; ring
+  have hleft : (1/2-h)/(2*(1-eta^2)) ≤ 1/(4*(1-eta^2)) := by
+    calc
+      _ ≤ (1/2)/(2*(1-eta^2)) :=
+        div_le_div_of_nonneg_right (by linarith) (by positivity)
+      _ = _ := by field_simp; ring
+  have hfactor_nonneg : 0 ≤ 1+2*(1/2-h)*eta^2/(1-eta^2) := by positivity
+  have hpref :
+      (1/2-h)/(2*(1-eta^2)) *
+        (1+2*(1/2-h)*eta^2/(1-eta^2)) ≤ 1/(4*(1-eta^2)^2) := by
+    calc
+      _ ≤ (1/(4*(1-eta^2)))*(1/(1-eta^2)) :=
+        mul_le_mul hleft hfactor hfactor_nonneg (by positivity)
+      _ = _ := by field_simp
+  have hsmall : 80*(1+eta^2)^2 < 81*(1-eta^2)^2 := by
+    nlinarith [sq_nonneg (eta^2)]
+  have hupper : 1/(4*(1-eta^2)^2) <
+      5*(9/40)^2/(1+eta^2)^2 := by
+    rw [div_lt_div_iff₀ (by positivity : 0 < 4*(1-eta^2)^2)
+      (by positivity : 0 < (1+eta^2)^2)]
+    norm_num at *
+    nlinarith
+  have hb2 : (9/40)^2 ≤ b^2 := by nlinarith
+  have hright : 5*(9/40)^2/(1+eta^2)^2 ≤ 5*b^2/(1+eta^2)^2 := by
+    apply div_le_div_of_nonneg_right
+    · nlinarith
+    · positivity
+  exact lt_of_le_of_lt hpref (lt_of_lt_of_le hupper hright)
+
+
+
+theorem outgoing_root_Z_positive_of_uniform_amplitude
+    (F : OutgoingProfile.Profile) (j eta : ℝ)
+    (small : NaturalAxisData.SmallParameters F.data.h j)
+    (interval : eta ∈ Set.Ioo (-j/4) (-j/5))
+    (root : NaturalAxisData.H F.data.h j eta = 0)
+    (hamplitude : 9/40 ≤ F.data.core.P) :
+    0 < NaturalAxisData.Z F.data.h j F.axisDatum eta := by
+  have hjpos := small.j_pos
+  have hjle := small.j_le
+  have hhpos := small.h_pos
+  have hhle := small.h_le
+  have heta_lower : -(1/4000 : ℝ) < eta := by
+    have : -(1/4000 : ℝ) ≤ -j/4 := by nlinarith
+    exact lt_of_le_of_lt this interval.1
+  have heta_upper : eta < 0 := by
+    exact lt_trans interval.2 (by nlinarith)
+  have heta_sq : eta^2 ≤ 1/4000000 := by
+    nlinarith [sq_nonneg (eta + 1/4000), sq_nonneg eta]
+  have hthreshold := uniform_amplitude_sufficient F.data.h eta F.data.core.P
+    hhpos.le hhle heta_sq hamplitude
+  have hshape : OutgoingSchedule.shape eta = 1/(1+eta^2) := by
+    simp [OutgoingSchedule.shape, one_div]
+  have hbound : NaturalAxisData.D F.data.h/(2*NaturalAxisData.d eta) *
+      (1+2*NaturalAxisData.D F.data.h*eta^2/NaturalAxisData.d eta) <
+      5*F.data.core.P^2*OutgoingSchedule.shape eta^2 := by
+    rw [hshape]
+    norm_num at *
+    exact hthreshold
+  have hA : 0 < NaturalAxisData.A F.data.h := by
+    unfold NaturalAxisData.A
+    linarith [small.h_le]
+  have hd : 0 < NaturalAxisData.d eta := by
+    unfold NaturalAxisData.d
+    nlinarith [heta_sq]
+  exact outgoing_root_Z_positive_of_prefix_bound F j eta hA hd heta_upper root hbound
+
+#print axioms outgoing_root_Z_positive_of_uniform_amplitude
+
+/-- The construction has at least one complete profile/root pair with positive
+local pressure sign. This is existential and is not identified with
+FinalSlowBase.actualProfile. -/
+theorem exists_profile_data_with_positive_root_pressure :
+    ∃ D : FinalSlowBase.ProfileData, ∃ eta : ℝ,
+      eta ∈ Set.Ioo (-D.nominal.axis.j/4) (-D.nominal.axis.j/5) ∧
+      NaturalAxisData.H D.outgoing.data.h D.nominal.axis.j eta = 0 ∧
+      0 < NaturalAxisData.Z D.outgoing.data.h D.nominal.axis.j
+        D.outgoing.axisDatum eta := by
+  obtain ⟨d⟩ := PreparedOutgoing.exists_prepared
+  obtain ⟨W, hW⟩ := NominalConeAssembly.exists_certificate d
+  obtain ⟨ld, v, hv⟩ := ModulatedProfileAssembly.exists_of_certificate W hW
+  let D : FinalSlowBase.ProfileData := ⟨d.profile, W, hW, ld, v, hv⟩
+  obtain ⟨eta, hinterval, hroot, _⟩ := NaturalAxisData.exists_unique_root W.axis.small
+  have hamplitude : 9/40 ≤ D.outgoing.data.core.P := by
+    dsimp [D]
+    exact le_trans (by norm_num : (9:ℝ)/40 ≤ 2) d.amplitude_lower
+  have hz := outgoing_root_Z_positive_of_uniform_amplitude D.outgoing W.axis.j
+    eta W.axis.small hinterval hroot hamplitude
+  exact ⟨D, eta, hinterval, hroot, hz⟩
+
+#print axioms exists_profile_data_with_positive_root_pressure
+
+
+#print axioms uniform_amplitude_sufficient
 
 end ConcentrationAware

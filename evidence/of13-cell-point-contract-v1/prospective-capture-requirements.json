@@ -1,0 +1,22 @@
+{
+  "schema": "cellPoint-prospective-capture-requirements/v1",
+  "status": "SPECIFICATION_ONLY_NOT_EXECUTED",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "required_records": [
+    "effective final polyMesh points, faces, owner, neighbour and boundary, including mesh instance times",
+    "final cell centres and velocity field with row/label identity",
+    "tetBasePtIs and ordered cellTetIndices for the witness segment neighbourhood",
+    "tet vertex coordinates, determinant values, fallback/warning counters and numerical small threshold",
+    "volPointInterpolation point values shared by the selected cells",
+    "cellPoint scheme selection and direct centre/face/segment evaluations",
+    "binary/package hashes and matching source files for interpolation paths",
+    "raw data hashes and original-manifest link"
+  ],
+  "acceptance_conditions": [
+    "verify conforming shared-face triangles and finite shared point values",
+    "verify no degenerate fallback or ambiguous tetrahedron search along the witnessed segment",
+    "verify centre interpolation and account for floating discrepancies in endpoint bounds",
+    "preserve old source/inputs; perform a prospective successor run rather than change old archives"
+  ],
+  "quality_gate": "No new solver quality verdict until conditions and interpretation are checked"
+}

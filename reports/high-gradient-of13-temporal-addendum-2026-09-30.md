@@ -52,6 +52,38 @@ differences are 1.3374e-5 and 9.4658e-6. The descriptive endpoint order is
 two-point observed orders are slightly negative. These finite-resolution
 quantities are not a temporal error certificate.
 
+## Independent repeat of the half-step row (2026-10-01)
+
+To distinguish archived post-processing replay from solver execution, the
+`n=64, dt=0.0005` row was executed again in a new work root using the same
+Foundation 13 image ID and frozen protocol. The new run source commit is
+`0dc1e99b06ef1632e9199891c8382a21ee2a267b`; its Docker CLI, context, image,
+protocol and input hashes are recorded under
+`evidence/of13-high-gradient-repeat-2026-10-01/`. The new run completed 100/100
+steps, recorded 100/100 PIMPLE convergence messages, ended with `End`, and
+passed the same standard and local gates.
+
+An independent archive comparator checked 40 files in each tarball. Thirty-five
+were byte-identical. The only five raw differences are `command.json`,
+`diagnostics.json`, `log.blockMesh`, `log.centres`, and `log.foamRun`: after
+normalizing the case mount path, runtime date/time/host/PID, cumulative
+ExecutionTime/ClockTime and the diagnostics pointer to the raw solver-log hash,
+the commands, logs and diagnostics match. In particular endpoint `U`, `p`,
+`C`, and `phi` are byte-identical, as are velocity, energy, spectrum, sampled
+gradient-peak and sampled-vorticity-peak errors. The repeat archive and source
+log hashes differ because these runs have different execution metadata. The
+comparison is reproducible with `tools.compare_openfoam_repeat`; its success is
+evidence for one fixed case on one image, not a guarantee for all OpenFOAM
+executions, a physical validation, or a mathematical conclusion.
+
+The comparator's evidence chain was then hardened and tested against hostile
+fixtures. It now checks every archived input hash, parses the raw 100-step time
+sequence and convergence records, requires `End` and zero exit, cross-checks
+diagnostic/manifest provenance, and allows only the five declared runtime/log
+members to differ. Four tests include coherent time-label tampering and an
+unexpected raw archive change; all are rejected. This tests the checker, not
+the solver, and does not strengthen the one-case scope.
+
 The additive cross-run index records all six spatial/temporal rows complete.
 The frozen high-gradient matrix's specific standard-PASS/local-FAIL concern is
 NOT_OBSERVED: n=64 and n=128 both pass both gates. This says nothing universal

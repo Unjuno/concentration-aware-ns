@@ -1,0 +1,49 @@
+{
+  "reference_family": "tools.reference: periodic exponential-envelope MMS, archive sigma and nu",
+  "supersedes": "Prior source-lag receipt used the unrelated high-gradient family and is inapplicable to SU2 study-v1",
+  "scope": "Analytic manufactured-force pointwise old-time versus target-time mismatch only. This is not a PDE solution-error attribution or a solver defect finding.",
+  "source_time_contract": "completed k updates represent k*dt; callback uses (k-1)*dt",
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "dt": 0.001,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.08505168681753739,
+      "rms_force_difference": 0.005395962987827801,
+      "max_relative_force_difference": 0.0019994238793487563,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "dt": 0.0005,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.04250459395535583,
+      "rms_force_difference": 0.0026966360757034904,
+      "max_relative_force_difference": 0.0009992122964530862,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "dt": 0.00025,
+      "endpoint": 0.05,
+      "sample_count": 4096,
+      "seed": 20261001,
+      "max_force_difference": 0.02124698726995484,
+      "rms_force_difference": 0.001347981851394919,
+      "max_relative_force_difference": 0.0004994812998654792,
+      "analytic_identity": "f(t)=exp(-t)*L + exp(-2t)*Q; f(t-h)-f(t)=(exp(h)-1)*exp(-t)*L + (exp(2h)-1)*exp(-2t)*Q"
+    }
+  ],
+  "successive_halving_force_difference_orders": [
+    1.0007196166161088,
+    1.0003597630504861
+  ],
+  "interpretation": "The sampled forcing mismatch scales approximately linearly with dt, consistent with first-order time-level displacement. It cannot quantify its contribution to endpoint velocity error because the discrete flow operator, nonlinear response, spatial error, and failed inner solves also contribute."
+}

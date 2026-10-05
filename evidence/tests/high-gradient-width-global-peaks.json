@@ -1,0 +1,718 @@
+{
+  "schema": "high-gradient-width-global-peaks/v1",
+  "scope": "Exact continuum extrema of the frozen width-v1 analytic reference only; no solver or simulation is used.",
+  "frequency_N": 4,
+  "envelope_powers": [
+    1,
+    2,
+    4
+  ],
+  "reduction": {
+    "variables": "s=sin(y/2)^2 and r=sin(z/2)^2 in [0,1]",
+    "envelope": "g_m(q)=(1-q)^m",
+    "branch_rule": "Each squared norm is a*sin(N*x)^2+b*cos(N*x)^2; certify both branches separately.",
+    "basis": "Exact tensor Bernstein basis on [0,1]^2 at each polynomial's exact bidegree."
+  },
+  "peaks_squared_at_time_zero": {
+    "1": {
+      "gradient_frobenius_squared": "1025/1024",
+      "vorticity_squared": "1089/1024"
+    },
+    "2": {
+      "gradient_frobenius_squared": "257/256",
+      "vorticity_squared": "289/256"
+    },
+    "4": {
+      "gradient_frobenius_squared": "65/64",
+      "vorticity_squared": "81/64"
+    }
+  },
+  "peaks_at_time_zero": {
+    "1": {
+      "gradient_frobenius": "5*sqrt(41)/32",
+      "vorticity": "33/32"
+    },
+    "2": {
+      "gradient_frobenius": "sqrt(257)/16",
+      "vorticity": "17/16"
+    },
+    "4": {
+      "gradient_frobenius": "sqrt(65)/8",
+      "vorticity": "9/8"
+    }
+  },
+  "time_dependence": "Both norms scale by exp(-t); their squares scale by exp(-2*t).",
+  "attainment_point": {
+    "x": "pi/(2*N)",
+    "y": "0",
+    "z": "0",
+    "N": 4
+  },
+  "width_certificates": {
+    "1": {
+      "all_gap_bernstein_coefficients_nonnegative": true,
+      "attained_at_center": true,
+      "bernstein_certificate_degrees": {
+        "gradient_sin_branch": [
+          2,
+          2
+        ],
+        "gradient_cos_branch": [
+          2,
+          2
+        ],
+        "vorticity_sin_branch": [
+          2,
+          2
+        ],
+        "vorticity_cos_branch": [
+          2,
+          2
+        ]
+      },
+      "branches": {
+        "gradient_sin_branch": {
+          "squared_upper_bound": "1025/1024",
+          "degree": [
+            2,
+            2
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "1025/1024",
+            "1025/1024",
+            "513/512",
+            "1",
+            "1025/1024",
+            "1",
+            "1025/1024",
+            "1025/1024"
+          ],
+          "all_nonnegative": true
+        },
+        "gradient_cos_branch": {
+          "squared_upper_bound": "1025/1024",
+          "degree": [
+            2,
+            2
+          ],
+          "gap_bernstein_coefficients": [
+            "1025/1024",
+            "993/1024",
+            "1025/1024",
+            "961/1024",
+            "1025/1024",
+            "1025/1024",
+            "1025/1024",
+            "1025/1024",
+            "1025/1024"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_sin_branch": {
+          "squared_upper_bound": "1089/1024",
+          "degree": [
+            2,
+            2
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "1089/1024",
+            "1089/1024",
+            "561/512",
+            "17/16",
+            "1089/1024",
+            "17/16",
+            "1089/1024",
+            "1089/1024"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_cos_branch": {
+          "squared_upper_bound": "1089/1024",
+          "degree": [
+            2,
+            2
+          ],
+          "gap_bernstein_coefficients": [
+            "1089/1024",
+            "1057/1024",
+            "1089/1024",
+            "1089/1024",
+            "1089/1024",
+            "1089/1024",
+            "1089/1024",
+            "1089/1024",
+            "1089/1024"
+          ],
+          "all_nonnegative": true
+        }
+      }
+    },
+    "2": {
+      "all_gap_bernstein_coefficients_nonnegative": true,
+      "attained_at_center": true,
+      "bernstein_certificate_degrees": {
+        "gradient_sin_branch": [
+          4,
+          4
+        ],
+        "gradient_cos_branch": [
+          4,
+          4
+        ],
+        "vorticity_sin_branch": [
+          4,
+          4
+        ],
+        "vorticity_cos_branch": [
+          4,
+          4
+        ]
+      },
+      "branches": {
+        "gradient_sin_branch": {
+          "squared_upper_bound": "257/256",
+          "degree": [
+            4,
+            4
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "517/512",
+            "1",
+            "257/256",
+            "257/256",
+            "257/256",
+            "511/512",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256"
+          ],
+          "all_nonnegative": true
+        },
+        "gradient_cos_branch": {
+          "squared_upper_bound": "257/256",
+          "degree": [
+            4,
+            4
+          ],
+          "gap_bernstein_coefficients": [
+            "257/256",
+            "241/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "225/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256",
+            "257/256"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_sin_branch": {
+          "squared_upper_bound": "289/256",
+          "degree": [
+            4,
+            4
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "629/512",
+            "9/8",
+            "289/256",
+            "289/256",
+            "289/256",
+            "575/512",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_cos_branch": {
+          "squared_upper_bound": "289/256",
+          "degree": [
+            4,
+            4
+          ],
+          "gap_bernstein_coefficients": [
+            "289/256",
+            "273/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256",
+            "289/256"
+          ],
+          "all_nonnegative": true
+        }
+      }
+    },
+    "4": {
+      "all_gap_bernstein_coefficients_nonnegative": true,
+      "attained_at_center": true,
+      "bernstein_certificate_degrees": {
+        "gradient_sin_branch": [
+          8,
+          8
+        ],
+        "gradient_cos_branch": [
+          8,
+          8
+        ],
+        "vorticity_sin_branch": [
+          8,
+          8
+        ],
+        "vorticity_cos_branch": [
+          8,
+          8
+        ]
+      },
+      "branches": {
+        "gradient_sin_branch": {
+          "squared_upper_bound": "65/64",
+          "degree": [
+            8,
+            8
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "267/256",
+            "1",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "253/256",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64"
+          ],
+          "all_nonnegative": true
+        },
+        "gradient_cos_branch": {
+          "squared_upper_bound": "65/64",
+          "degree": [
+            8,
+            8
+          ],
+          "gap_bernstein_coefficients": [
+            "65/64",
+            "57/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "49/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64",
+            "65/64"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_sin_branch": {
+          "squared_upper_bound": "81/64",
+          "degree": [
+            8,
+            8
+          ],
+          "gap_bernstein_coefficients": [
+            "0",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "387/256",
+            "5/4",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "317/256",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64"
+          ],
+          "all_nonnegative": true
+        },
+        "vorticity_cos_branch": {
+          "squared_upper_bound": "81/64",
+          "degree": [
+            8,
+            8
+          ],
+          "gap_bernstein_coefficients": [
+            "81/64",
+            "73/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64",
+            "81/64"
+          ],
+          "all_nonnegative": true
+        }
+      }
+    }
+  },
+  "provenance": {
+    "command": "python -m tools.check_high_gradient_width_peaks",
+    "python_version": "3.14.5",
+    "sympy_version": "1.14.0",
+    "checker_sha256": "b4150f7518627a15c67aeba726769cd69d59a8c2d67fab97b060f89bb4c88eca",
+    "reference_evaluator_sha256": "a79f8281a5410d2ec24b10c679c8cf2a254cd3c7341ca2af4c41bc9b9fef281a"
+  },
+  "limitations": [
+    "The certificates apply to the exact analytic reference, not a CFD or learned field.",
+    "They certify N=4 and width powers 1, 2, and 4 only.",
+    "They do not establish solver convergence, within-cell extrema, molecular alignment, a phase transition, viscosity collapse, or blow-up.",
+    "Existing solver acceptance denominators and historical classifications are unchanged."
+  ]
+}

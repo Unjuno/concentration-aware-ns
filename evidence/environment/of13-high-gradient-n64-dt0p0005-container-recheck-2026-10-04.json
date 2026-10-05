@@ -1,0 +1,39 @@
+{
+  "captured_at": "2026-10-04T11:39:36Z",
+  "case": "n64-dt0.0005",
+  "protocol_target_end": "0.05",
+  "time_step": "0.0005",
+  "process_probe": {
+    "status": "queried",
+    "records": []
+  },
+  "docker_all_states_probe": {
+    "status": "queried",
+    "returncode": 0,
+    "records": [],
+    "stderr": ""
+  },
+  "partial_output": {
+    "log": "work/of13-high-gradient-v2/n64-dt0.0005/log.foamRun",
+    "sha256": "ebeac15e96ad6e9a14eec09ad194db4136bbd9f5b9faa7c68ede144fa9dbca9e",
+    "time_record_count": 37,
+    "last_time_record": "0.0185s",
+    "completed_pimple_steps": 36,
+    "last_lines": [
+      "PIMPLE: Iteration 1",
+      "smoothSolver:  Solving for Ux, Initial residual = 0.0002481598902644166, Final residual = 8.556388712286172e-12, No Iterations 2",
+      "smoothSolver:  Solving for Uy, Initial residual = 0.0002494271099226251, Final residual = 1.784597738534447e-11, No Iterations 2",
+      "smoothSolver:  Solving for Uz, Initial residual = 0.0002552695811759869, Final residual = 8.017009499471785e-12, No Iterations 2",
+      "GAMG:  Solving for p, Initial residual = 0.005913233028380693, Final residual = 9.045542925523161e-11, No Iterations 23",
+      "time step continuity errors : sum local = 1.460157808191714e-20, global = -3.722423187742731e-24",
+      "GAMG:  Solving for p, Initial residual = 1.694329873075993e-05, Final residual = 2.175220696534576e-11, No Iterations 16",
+      "time step continuity errors : sum local = 8.183839767668782e-21, global = -1.171968605931858e-23",
+      "PIMPLE: Iteration 2",
+      "smoothSolver:  Solving for Ux, Initial residual = 1.400860149459257e-08, Final residual = 2.361417681753703e-12, No Iterations 1",
+      "smoothSolver:  Solving for Uy, Initial residual = 1.981442673351117e-08, Final residual = 2.149717656646422e-12, No Iterations 1",
+      "smoothSolver:  Solving for Uz, Initial residual = 1.181831772619689e-08, Final residual = 1.094679539373169e-12, No Iterations 1"
+    ]
+  },
+  "exit_json_present": false,
+  "interpretation": "No live host process and no Docker record were returned by successful probes. The --rm launch command means absence is consistent with removal after stop/exit but does not supply the missing solver exit code. Saved case log is partial and must not be interpreted as a completed run."
+}

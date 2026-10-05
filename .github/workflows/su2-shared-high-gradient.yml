@@ -1,0 +1,202 @@
+name: SU2 shared high-gradient MMS matrix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [physicsnemo-global-hessian-audit]
+    paths:
+      - '.github/workflows/su2-shared-high-gradient.yml'
+      - 'protocols/su2-shared-high-gradient-v1.json'
+      - 'runtime/su2/Dockerfile.high-gradient'
+      - 'runtime/su2/high_gradient.patch'
+      - 'tools/analyze_su2.py'
+      - 'tools/high_gradient_reference.py'
+      - 'tools/run_su2_high_gradient_study.py'
+      - 'tools/su2_case.py'
+
+permissions:
+  contents: read
+
+jobs:
+  build-image:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.head_commit.message, '[run-su2-shared-high-gradient]')
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build the pinned SU2 image with the shared MMS adapter
+        run: |
+          mkdir -p work/su2-image
+          docker build --platform linux/arm64 \
+            --iidfile work/su2-image/image-id \
+            -f runtime/su2/Dockerfile.high-gradient \
+            -t cans-su2-high-gradient runtime/su2 \
+            > work/su2-image/build.log 2>&1
+          docker image save cans-su2-high-gradient | gzip -1 > work/su2-image/image.tar.gz
+          mkdir -p work/su2-build-provenance
+          cp work/su2-image/image-id work/su2-build-provenance/
+          cp work/su2-image/build.log work/su2-build-provenance/
+
+      - name: Upload the shared image for matrix workers
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-image-${{ github.run_id }}
+          path: work/su2-image/
+          if-no-files-found: error
+          retention-days: 2
+
+      - name: Prepare build provenance
+        if: always()
+        run: |
+          mkdir -p work/su2-build-provenance
+          for file in image-id build.log; do
+            if test -f "work/su2-image/$file"; then
+              cp "work/su2-image/$file" work/su2-build-provenance/
+            fi
+          done
+
+      - name: Upload build provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-build-${{ github.run_id }}
+          path: work/su2-build-provenance/
+          if-no-files-found: warn
+          retention-days: 90
+
+  cases:
+    needs: build-image
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        case:
+          - n16-dt0.001
+          - n32-dt0.001
+          - n64-dt0.001
+          - n64-dt0.0005
+          - n64-dt0.00025
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-verification-locked.txt
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+
+      - name: Load the exact image built by the shared job
+        uses: actions/download-artifact@v4
+        with:
+          name: su2-image-${{ github.run_id }}
+          path: work/su2-image
+
+      - name: Load and verify the shared solver image
+        run: |
+          gzip -dc work/su2-image/image.tar.gz | docker image load
+          actual="$(docker image inspect cans-su2-high-gradient --format '{{.Id}}')"
+          expected="$(cat work/su2-image/image-id)"
+          echo "Loaded image ID: $actual"
+          test "$actual" = "$expected"
+
+      - name: Execute one frozen SU2 case
+        run: |
+          python -m tools.run_su2_high_gradient_study \
+            --protocol protocols/su2-shared-high-gradient-v1.json \
+            --root work/case/run \
+            --image cans-su2-high-gradient \
+            --case '${{ matrix.case }}' \
+            --allow-incomplete
+
+      - name: Preserve this case even when a run stops early
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-case-${{ github.run_id }}-${{ matrix.case }}
+          path: work/case/run/
+          if-no-files-found: warn
+          retention-days: 90
+
+  aggregate:
+    if: always() && needs.build-image.result == 'success'
+    needs: [build-image, cases]
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-verification-locked.txt
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install -r requirements-verification-locked.txt
+
+      - name: Download all available case and build evidence
+        if: needs.build-image.result == 'success'
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: su2-case-${{ github.run_id }}-*
+          path: work/case-artifacts
+          merge-multiple: false
+
+      - name: Download build provenance
+        if: needs.build-image.result == 'success'
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: su2-build-${{ github.run_id }}
+          path: work/su2-shared-high-gradient-v1/build
+
+      - name: Aggregate matrix coverage separately from solver acceptance
+        id: aggregate
+        run: |
+          python -m tools.run_su2_high_gradient_study \
+            --protocol protocols/su2-shared-high-gradient-v1.json \
+            --root work/su2-shared-high-gradient-v1/run \
+            --aggregate-case-artifacts work/case-artifacts \
+            --allow-incomplete
+
+      - name: Replay all available case archives and diagnostics
+        if: steps.aggregate.outcome == 'success'
+        run: |
+          python -m tools.replay_su2_high_gradient_study \
+            --root work/su2-shared-high-gradient-v1/run \
+            --output work/su2-shared-high-gradient-v1/run/replay.json
+
+      - name: Require complete coverage and valid archive replay
+        if: steps.aggregate.outcome == 'success'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('work/su2-shared-high-gradient-v1/run')
+          summary = json.loads((root / 'summary.json').read_text())
+          replay = json.loads((root / 'replay.json').read_text())
+          if summary['status'] != 'COMPLETE':
+              raise SystemExit('matrix case coverage is incomplete')
+          if replay['reviewed_cases'] != summary['expected_cases']:
+              raise SystemExit('not every archived case replayed successfully')
+          if replay['missing_cases']:
+              raise SystemExit(f"missing cases: {replay['missing_cases']}")
+          PY
+
+      - name: Preserve aggregate and any partial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: su2-shared-high-gradient-matrix-${{ github.sha }}-${{ github.run_id }}
+          path: work/su2-shared-high-gradient-v1/
+          if-no-files-found: warn
+          retention-days: 90

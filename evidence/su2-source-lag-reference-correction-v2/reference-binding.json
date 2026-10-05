@@ -1,0 +1,125 @@
+{
+  "status": "CORRECTED_REFERENCE_SOURCE_AND_ARCHIVE_BINDING",
+  "files_sha256": {
+    "runtime/su2/mms.patch": "5497ed077b25d968683643e065badde3b7a628af83c272ebe52561422af84c83",
+    "tools/reference.py": "8e8bba852e66a212d45d340628c3162dabc27c580e1a498f6e059fea2db2858c",
+    "tools/audit_su2_localized_source_lag.py": "1d7553f43ba23573aced8508ea8faf31b5d231f06a6dd1399a81b4452b9496f9",
+    "evidence/tests/su2-localized-source-lag-v2.json": "4e5e4589377273cee322c257eaea8d3f7e56903de3b31128a86dd4a3b2f2cd02"
+  },
+  "cases": [
+    {
+      "case": "n64-dt0.001",
+      "archive_sha256": "f6b802d516c68328e46d1b95ac5a691dfe359e7dee499c6973e1c651e6a527dc",
+      "parameters": {
+        "status": "frozen before execution",
+        "sigma": 0.5,
+        "nu": 0.01,
+        "end": 0.05,
+        "spatial_n": [
+          16,
+          32,
+          64
+        ],
+        "spatial_dt": 0.001,
+        "temporal_n": 64,
+        "temporal_dt": [
+          0.001,
+          0.0005,
+          0.00025
+        ],
+        "inner_cap": 3000,
+        "log10_residual_threshold": -10,
+        "image": "concentration-aware-ns:su2",
+        "relative_error_thresholds": {
+          "velocity_l2": 0.02,
+          "energy": 0.02,
+          "max_gradient": 0.05,
+          "max_vorticity": 0.05
+        },
+        "time_contract": "Completed k updates represent k*dt; unmodified source is evaluated at (k-1)*dt. Preserve both, do not silently shift the analytic reference.",
+        "sampling": "SU2 vertex grid. Remove duplicated periodic endpoints after verifying coordinates and report periodic value mismatch. Phase differs from OpenFOAM cell centers.",
+        "quality": "No PASS from residual convergence alone; derivative and temporal uncertainties remain explicit.",
+        "n": 64,
+        "dt": 0.001,
+        "image_id": "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643"
+      }
+    },
+    {
+      "case": "n64-dt0.0005",
+      "archive_sha256": "3d32f94d909271c3ae2e6af994e9421e6a377482e1002fdabe91a9cf82d777bf",
+      "parameters": {
+        "status": "frozen before execution",
+        "sigma": 0.5,
+        "nu": 0.01,
+        "end": 0.05,
+        "spatial_n": [
+          16,
+          32,
+          64
+        ],
+        "spatial_dt": 0.001,
+        "temporal_n": 64,
+        "temporal_dt": [
+          0.001,
+          0.0005,
+          0.00025
+        ],
+        "inner_cap": 3000,
+        "log10_residual_threshold": -10,
+        "image": "concentration-aware-ns:su2",
+        "relative_error_thresholds": {
+          "velocity_l2": 0.02,
+          "energy": 0.02,
+          "max_gradient": 0.05,
+          "max_vorticity": 0.05
+        },
+        "time_contract": "Completed k updates represent k*dt; unmodified source is evaluated at (k-1)*dt. Preserve both, do not silently shift the analytic reference.",
+        "sampling": "SU2 vertex grid. Remove duplicated periodic endpoints after verifying coordinates and report periodic value mismatch. Phase differs from OpenFOAM cell centers.",
+        "quality": "No PASS from residual convergence alone; derivative and temporal uncertainties remain explicit.",
+        "n": 64,
+        "dt": 0.0005,
+        "image_id": "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643"
+      }
+    },
+    {
+      "case": "n64-dt0.00025",
+      "archive_sha256": "f92537fce73c5d04a425f308e44d1d69a8884733013ab63c31d4e5d9d3463d92",
+      "parameters": {
+        "status": "frozen before execution",
+        "sigma": 0.5,
+        "nu": 0.01,
+        "end": 0.05,
+        "spatial_n": [
+          16,
+          32,
+          64
+        ],
+        "spatial_dt": 0.001,
+        "temporal_n": 64,
+        "temporal_dt": [
+          0.001,
+          0.0005,
+          0.00025
+        ],
+        "inner_cap": 3000,
+        "log10_residual_threshold": -10,
+        "image": "concentration-aware-ns:su2",
+        "relative_error_thresholds": {
+          "velocity_l2": 0.02,
+          "energy": 0.02,
+          "max_gradient": 0.05,
+          "max_vorticity": 0.05
+        },
+        "time_contract": "Completed k updates represent k*dt; unmodified source is evaluated at (k-1)*dt. Preserve both, do not silently shift the analytic reference.",
+        "sampling": "SU2 vertex grid. Remove duplicated periodic endpoints after verifying coordinates and report periodic value mismatch. Phase differs from OpenFOAM cell centers.",
+        "quality": "No PASS from residual convergence alone; derivative and temporal uncertainties remain explicit.",
+        "n": 64,
+        "dt": 0.00025,
+        "image_id": "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643"
+      }
+    }
+  ],
+  "patch_formula_observation": "q=-sin(d)/0.25; exponent=-t+sum((cos(d)-1)/0.25); cross-product a=(1,2,3)",
+  "reference_match": "tools.reference.fields sigma=.5; .25=sigma squared",
+  "scope": "Source/formula and archived-parameter inspection, not a new compiled helper or solver assembly proof"
+}

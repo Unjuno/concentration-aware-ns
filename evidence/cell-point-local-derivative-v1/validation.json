@@ -1,0 +1,33 @@
+{
+  "status": "PASS_ENCLOSED_LOCAL_IDEALIZED_PIECE_WITNESS",
+  "numerical_source_commit": "dc61811614770da398324339665a48a4d4ffb098",
+  "suite": {
+    "passed": 318,
+    "skipped": 1,
+    "subtests_passed": 83,
+    "seconds": 103.8
+  },
+  "selected_export_analysis_byte_identical": true,
+  "source_sha256": {
+    "tools/cell_point_local_derivative.py": "e52b4b0d77781b6f86cec1a1c99e7d161e086ba963b44d64e4aef84fdb5ab1ea",
+    "tools/audit_cell_point_local_derivative.py": "fefc4b0fa6977efc8ac190c6a3f4fe313dbb1ee337e1006a66b5c23722526e0e",
+    "tests/test_cell_point_local_derivative.py": "4ba2a7e255597e2e5d3a227c25ce9be370e7373f41c9e824045f0e486185771f",
+    "requirements-verification-locked.txt": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "evidence_sha256": {
+    "README.md": "e8d87310ca037e72c5619b9100ace086af0312f94694463c888c836dbb276c7b",
+    "audit.log": "c76add5fabdbf895b1d6339d7e5b3d13f6c2a2ddbb8dfcf5ce7ee527a7b4bba9",
+    "isolation.json": "7f026740297977cb44f910f97daa39d450bb912befe3bcf0cbefdaf2a83668ef",
+    "test-suite.log": "18ad60b3b699a289e8a2f1df25b531482dfbd19527df149c8177009ec1c8545f",
+    "analysis.json": "d19f5a01c928f8b283453cea86a2f9d95527ac02a88c94e60a7b75e24d1a6ed2",
+    "replay.log": "c76add5fabdbf895b1d6339d7e5b3d13f6c2a2ddbb8dfcf5ce7ee527a7b4bba9",
+    "isolate_replay.py": "9511b7f29303f506b34039c67378c0819e48d04722299e5b672ff05f8d440f12"
+  },
+  "not_claimed": [
+    "global partition/continuity proof",
+    "floating position-query branch certificate",
+    "new CFD",
+    "full upstream suite",
+    "original gate upgrade"
+  ]
+}

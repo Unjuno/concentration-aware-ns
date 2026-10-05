@@ -1,0 +1,159 @@
+{
+  "study_id": "physicsnemo-shared-high-gradient-v1",
+  "expected_models": 25,
+  "completed_models": 25,
+  "status": "COMPLETE",
+  "continuous_local_quality": "UNCERTAIN",
+  "runs": [
+    {
+      "seed": 709,
+      "case": "n16-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "7ddf9d933f8b9094522dc32995014b26328b4343a7972528b312a6fa01417e7d"
+    },
+    {
+      "seed": 709,
+      "case": "n32-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "f5d0f9578c7804dc22337ffd9e5015d99fd576868b684ad3b88fd86695be30bc"
+    },
+    {
+      "seed": 709,
+      "case": "n64-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "2a34cd38475e8e8c1aaaa694d6a0b949a99e97a0afae44e1eb2e8b58d2faf1ae"
+    },
+    {
+      "seed": 709,
+      "case": "n64-nt9",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "a1c99da2f9f3a61d3237382b8ee086e7cdbd39579931f3f6891d1adc1480b7b7"
+    },
+    {
+      "seed": 709,
+      "case": "n64-nt17",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "cab7e7d08763e01367b05f7711aab83dfac7c8b9f772f4de28b3fd95bf79b925"
+    },
+    {
+      "seed": 1729,
+      "case": "n16-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "d9c1af0298b1f7d69f59226b0b74ec52ddcf7788854a9a325fec49bc5ac5cd08"
+    },
+    {
+      "seed": 1729,
+      "case": "n32-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "ab367429d85585e5d1e3d727b0e7299deda4af6dd78d5b3045f2e3d78a4b351e"
+    },
+    {
+      "seed": 1729,
+      "case": "n64-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "e9813fdd8330246551a7288bb401f827d2afcff414d7c8386d33abd2c1679c97"
+    },
+    {
+      "seed": 1729,
+      "case": "n64-nt9",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "b7cfaee03c1f38005277bd030d2e34df7b56483e13d35889c4c9922f91a15bcf"
+    },
+    {
+      "seed": 1729,
+      "case": "n64-nt17",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "cde52077d415c240f05bca386e47044e940342559b564373197de44fa2ee55d9"
+    },
+    {
+      "seed": 2027,
+      "case": "n16-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "bbf33de2ce8afcd908fb61da14824d95cfd6b485a8e7bdf2cab027ab84d032a9"
+    },
+    {
+      "seed": 2027,
+      "case": "n32-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "9bd33455ae5215e3a38cd93de487592baecb8182bb77c5fee242aeadbe47974f"
+    },
+    {
+      "seed": 2027,
+      "case": "n64-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "029779836fd5ee7e61e2ea6ad48f6c1397ae044cd44d2e0a5e2faa735bd8ba5e"
+    },
+    {
+      "seed": 2027,
+      "case": "n64-nt9",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "741ce0bce6ed7059bd31c18c628363d61bf5cdbcd9fd09888bf969cd6d99e55b"
+    },
+    {
+      "seed": 2027,
+      "case": "n64-nt17",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "f86c91d010cb2f1ae5d654ee0140bec697539c5489decfdd071dc460cdd51da6"
+    },
+    {
+      "seed": 4093,
+      "case": "n16-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "0fe0770d82ec00f43383cb77bcaff563a06d30d1739c5ee28658a6714fd019be"
+    },
+    {
+      "seed": 4093,
+      "case": "n32-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "c36ce56bfff2709828de3f58f7df8af773f1ee3510b4d6fc9dda391ebe7a0a06"
+    },
+    {
+      "seed": 4093,
+      "case": "n64-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "1e2fcd88cad15fa743f78df2ed5e9d0d336819784ef593ca521610bec024b935"
+    },
+    {
+      "seed": 4093,
+      "case": "n64-nt9",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "becfe856c26b08001c0fcc43d3fe500c66995621bfd35d99d5339cf7d681880b"
+    },
+    {
+      "seed": 4093,
+      "case": "n64-nt17",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "342f2dce31c6341aec7f30a79ea3d2573b8fbb540cd14e468dda4dfe00613e64"
+    },
+    {
+      "seed": 8191,
+      "case": "n16-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "2a220d8a1312e3690431d05b762fe70c4d9d22ba052c9425155158bd7aeb4ae2"
+    },
+    {
+      "seed": 8191,
+      "case": "n32-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "c92f7473eef272dbe73ad3e8fb0dc231c388bf00c4506aab41c4e236a8deb384"
+    },
+    {
+      "seed": 8191,
+      "case": "n64-nt5",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "e93fbad5bed72b2d972097859af425d4576be6ead07f75585bf6974412954ae0"
+    },
+    {
+      "seed": 8191,
+      "case": "n64-nt9",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "5b916b2fd985e237717e579cc2380cf4e0b495494324dbd83b98af16145ddcf1"
+    },
+    {
+      "seed": 8191,
+      "case": "n64-nt17",
+      "sampled_quality": "FAIL",
+      "archive_sha256": "ac97dba7a0fa186fcd9c6c95b69d94f891e0a8a0c8bb164a7a50dfa480d2ce68"
+    }
+  ]
+}

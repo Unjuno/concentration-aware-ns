@@ -1,0 +1,31 @@
+{
+  "status": "PASS_CONDITIONAL_POINT_WITNESSES_AND_SELECTED_EXPORT_REPLAY",
+  "source_commit": "3711beb25d67daff4a04104b5ba983e2b4c98d5b",
+  "suite": {
+    "passed": 311,
+    "skipped": 1,
+    "subtests_passed": 83,
+    "seconds": 102.41
+  },
+  "precision_bits": 96,
+  "selected_export_analysis_byte_identical": true,
+  "commands": {
+    "audit": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m tools.audit_amr_point_gradient_bound --raw-map work/amr-p0-spectrum-raw-map.json --output evidence/amr-point-gradient-bound-v1 --source-commit 3711beb25d67daff4a04104b5ba983e2b4c98d5b",
+    "suite": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests"
+  },
+  "limits": [
+    "point-interpolating C1 or Lipschitz representative required",
+    "no curl bound",
+    "no new CFD or whole-history validation",
+    "same-host locked dependencies for selected export"
+  ],
+  "sha256": {
+    "README.md": "4d607cd9dc3b6b750ceaadcddbc99af6fcb85975aae55472a186767cbecde8ac",
+    "audit.log": "8869703d175a8efc9dfb1c2213c799b2cd63ba89ca45dc013d6ac851d1c2b13e",
+    "isolation.json": "9798afbc8762946b99991e1adc81c879a3e41d606fdde7d6858b3b093b46edbf",
+    "test-suite.log": "0a68955e1940b1cef91cb7d8d2eba72f77486afce0401a7f629b8e64c35052b6",
+    "analysis.json": "f917b592cfe1611828cd2c438d0232c681d98bdafd44c1c42256e16d4543f442",
+    "replay.log": "8869703d175a8efc9dfb1c2213c799b2cd63ba89ca45dc013d6ac851d1c2b13e",
+    "isolate_replay.py": "d0e73dfc4e955a727237367df468c420576a97852481ef9b65d8ca83a8536c64"
+  }
+}

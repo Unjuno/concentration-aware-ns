@@ -1,0 +1,67 @@
+{
+  "status": "frozen before width-specific solver execution; generated forcing parity passed; analyzer width handling regression-tested locally; hosted full verification pending",
+  "version": "width-v1",
+  "target": "OpenFOAM Foundation 13",
+  "profile": "localized analytic high-gradient periodic MMS",
+  "domain": "[0,2*pi)^3",
+  "frequency_N": 4,
+  "envelope": "h_m(q)=((1+cos(q))/2)^m, applied independently in y and z",
+  "envelope_powers": [
+    1,
+    2,
+    4
+  ],
+  "amplitude": "exp(-t)",
+  "viscosity": 0.01,
+  "end_time": 0.05,
+  "spatial_matrix": {
+    "cell_counts": [
+      32,
+      64,
+      128
+    ],
+    "delta_t": 0.001
+  },
+  "temporal_matrix": {
+    "cell_count": 64,
+    "delta_t": [
+      0.001,
+      0.0005,
+      0.00025
+    ]
+  },
+  "expected_unique_cases": 15,
+  "standard_acceptance": {
+    "complete_end_time_required": true,
+    "outer_corrector_residual_absolute": 1e-08,
+    "maximum_outer_correctors": 12
+  },
+  "local_quality_relative_error_thresholds": {
+    "velocity_l2": 0.02,
+    "energy": 0.02,
+    "max_gradient": 0.05,
+    "max_vorticity": 0.05,
+    "shell_spectrum": 0.05
+  },
+  "reference_resolution_gate": {
+    "artifact": "evidence/tests/high-gradient-width-v1-reference-only.json",
+    "method": "For each width and grid, evaluate the exact MMS at OpenFOAM cell centers, then apply the same periodic centered-FD2 diagnostics used on solver fields. Require gradient and vorticity peak floors <= the corresponding local-quality thresholds on both n=64 and n=128 before classifying a solver discrepancy.",
+    "required_fine_grid_counts": [
+      64,
+      128
+    ],
+    "shortest_envelope_wavelength_cells": "n/m; recorded as a descriptive guard, while the exact sampled FD2 floor is the decision gate",
+    "continuous_extrema_certified": false
+  },
+  "classification": {
+    "REPRODUCED": "For a fixed envelope power, both n=64 and n=128 pass standard acceptance and fail local quality, and both exact-reference FD2 floors pass the resolution gate.",
+    "NOT_OBSERVED": "For a fixed envelope power, both n=64 and n=128 pass standard acceptance and local quality, and both exact-reference FD2 floors pass the resolution gate.",
+    "otherwise": "UNCERTAIN"
+  },
+  "interpretation_limits": [
+    "A coarse-grid local-quality failure indicates resolution sensitivity, not a software defect.",
+    "A reproduced result concerns this frozen manufactured-solution matrix only.",
+    "No conclusion about molecular alignment, deterministic molecular positions, phase transition, viscosity collapse, real-fluid breakdown, or Navier-Stokes blow-up is permitted.",
+    "The OpenFOAM solver output itself remains fallible; preserve inputs, source/image hashes, residual histories, and sampled fields, and compare to the independent analytic reference."
+  ]
+}

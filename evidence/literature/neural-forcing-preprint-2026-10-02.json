@@ -1,0 +1,54 @@
+{
+  "audit_date": "2026-10-02",
+  "status": "CONDITIONAL_FRAMEWORK_CANDIDATE_SPECIFIC_CERTIFICATE_NOT_ESTABLISHED_IN_TEXT",
+  "source": {
+    "title": "The Neural Forcing for Three-Dimensional Incompressible Navier-Stokes finite time blowup",
+    "author": "Beibei Li",
+    "arxiv_id": "2609.23934",
+    "version": "v1",
+    "version_date": "2026-09-20",
+    "abstract_url": "https://arxiv.org/abs/2609.23934",
+    "full_text_url": "https://arxiv.org/html/2609.23934",
+    "source_kind": "preprint; not independently peer-reviewed here",
+    "associated_code_or_data_link_exposed_by_arxiv_record": false
+  },
+  "claims_checked": {
+    "integrated_reciprocal_vorticity": {
+      "conditional_implication": "A positive integrated reciprocal-maximum-vorticity slope on all required prefixes implies Riccati growth and finite-time loss of smooth continuation.",
+      "source_locations": ["Part II §5", "Part II §11"],
+      "assessment": "conditional mathematical closure, not a finite-grid inference"
+    },
+    "finite_resolution_candidate_transfer": {
+      "required_items": ["maximum-vorticity error enclosure", "time reconstruction error", "production or normalized-ratio error enclosure", "positive corrected certificate margin"],
+      "source_locations": ["Part II §§7.5-7.6", "Part II §7.10"],
+      "candidate_specific_error_numbers_substituted": false,
+      "candidate_specific_positive_validated_continuum_margin_demonstrated": false,
+      "author_stated_remaining_work": "candidate-specific validation of the stated error bounds"
+    },
+    "direct_continuum_route": {
+      "conditional_requirement": "A continuum loss theorem must establish a strict positive integrated certificate, robust on a nonempty open set of frozen forcing parameters.",
+      "loss_feasibility_distinguished_from_minimizer_existence": true,
+      "source_locations": ["Part II §§6.5-6.7", "Part II §8", "Part II §9.2"],
+      "specific_zero_continuum_loss_or_open_certificate_set_for_archived_examples_demonstrated": false
+    },
+    "forcing_and_probability": {
+      "stated_pointwise_amplitude_cap": "1e21 in manuscript units",
+      "probability_argument_scope": "one draw of a forcing parameter followed by frozen forcing",
+      "repeated_closed_loop_resampling_covered": false
+    }
+  },
+  "not_established": [
+    "an unconditional blow-up result for the archived neural trajectories",
+    "independent verification of the preprint's complete proofs",
+    "verification of the OpenAI Navier-Stokes construction",
+    "molecular alignment or deterministic molecular positions",
+    "a constitutive-viscosity change",
+    "a physical realizability or actuator-feasibility result",
+    "a defect in OpenFOAM, SU2, or PhysicsNeMo"
+  ],
+  "disposition": {
+    "upstream_post_warranted": false,
+    "reason": "This is a mathematical-method audit, not a reproducible software defect report.",
+    "report": "reports/neural-forcing-preprint-audit-2026-10-02.md"
+  }
+}

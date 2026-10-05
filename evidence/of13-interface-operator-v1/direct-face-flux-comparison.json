@@ -1,0 +1,99 @@
+{
+  "scope": "Direct ratios physicalFlux/Sf_x from preserved package snapshots; specified traction1; no matrix solve or package rerun",
+  "raw_archive_sha256": "b3a5cf8e4bc325e77d835d35afd5322e72804bc3f4142f1496a45dcca5bf2cd3",
+  "cases": [
+    {
+      "nx": 16,
+      "modes": {
+        "arithmetic": {
+          "actual_shear_flux_min": 1.0638855391456183,
+          "actual_shear_flux_max": 1.0638855393243936,
+          "actual_relative_flux_error_to_continuum_max": 0.06388553932439356,
+          "exact_nodal_interface_flux_ratios": [
+            25.5025
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 0.05462693055841977,
+            "finalResidual": 6.395373902844644e-13,
+            "iterations": 13
+          }
+        },
+        "harmonic": {
+          "actual_shear_flux_min": 0.9999999999999996,
+          "actual_shear_flux_max": 1.0000000000000009,
+          "actual_relative_flux_error_to_continuum_max": 8.881784197001252e-16,
+          "exact_nodal_interface_flux_ratios": [
+            1.0
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 2.3740253682501436e-18,
+            "finalResidual": 2.3740253682501436e-18,
+            "iterations": 0
+          }
+        }
+      }
+    },
+    {
+      "nx": 32,
+      "modes": {
+        "arithmetic": {
+          "actual_shear_flux_min": 1.0309540125682304,
+          "actual_shear_flux_max": 1.030954012807439,
+          "actual_relative_flux_error_to_continuum_max": 0.030954012807439035,
+          "exact_nodal_interface_flux_ratios": [
+            25.5025
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 0.02808043938538763,
+            "finalResidual": 3.8181043946447743e-13,
+            "iterations": 14
+          }
+        },
+        "harmonic": {
+          "actual_shear_flux_min": 0.9999999999999981,
+          "actual_shear_flux_max": 1.0000000000000009,
+          "actual_relative_flux_error_to_continuum_max": 1.887379141862766e-15,
+          "exact_nodal_interface_flux_ratios": [
+            1.0
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 7.3912154104321e-18,
+            "finalResidual": 7.3912154104321e-18,
+            "iterations": 0
+          }
+        }
+      }
+    },
+    {
+      "nx": 64,
+      "modes": {
+        "arithmetic": {
+          "actual_shear_flux_min": 1.0152411188354749,
+          "actual_shear_flux_max": 1.0152411198321387,
+          "actual_relative_flux_error_to_continuum_max": 0.015241119832138716,
+          "exact_nodal_interface_flux_ratios": [
+            25.5025
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 0.014240154591618065,
+            "finalResidual": 9.321873466116689e-13,
+            "iterations": 13
+          }
+        },
+        "harmonic": {
+          "actual_shear_flux_min": 0.9999999999999953,
+          "actual_shear_flux_max": 1.0000000000000009,
+          "actual_relative_flux_error_to_continuum_max": 4.6629367034256575e-15,
+          "exact_nodal_interface_flux_ratios": [
+            1.0
+          ],
+          "normalized_solver_performance": {
+            "initialResidual": 1.3651400934068985e-17,
+            "finalResidual": 1.3651400934068985e-17,
+            "iterations": 0
+          }
+        }
+      }
+    }
+  ]
+}

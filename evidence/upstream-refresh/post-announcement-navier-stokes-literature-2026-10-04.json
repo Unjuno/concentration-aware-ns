@@ -1,0 +1,40 @@
+{
+  "captured_at_utc": "2026-10-04T02:51:18Z",
+  "sources": [
+    {
+      "id": "2609.20803",
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "authors": ["Peter Constantin", "Mihaela Ignatova", "Vlad Vicol"],
+      "latest_version": "v2",
+      "latest_version_submitted_at_utc": "2026-09-29T19:56:14Z",
+      "url": "https://arxiv.org/abs/2609.20803",
+      "claim": "Under the paper's anisotropic Type II bounds and exact axisymmetry in a collapsing core, analytic spatial forcing implies regularity at the putative singular point. For constructions with those properties and force bounded in C2 through singular time, the force cannot vanish near the singular point or be locally uniformly real analytic in space.",
+      "scope_note": "This is a conditional regularity theorem, not a contradiction to a smooth nonanalytic forcing construction. It supplies no molecule-resolved dynamics, alignment, or constitutive viscosity result."
+    },
+    {
+      "id": "2609.10262",
+      "title": "Density of Forces Producing Navier-Stokes Blowup",
+      "authors": ["Shaozhen Cao", "Zhuoni Chi", "Ping Nie"],
+      "latest_version": "v4",
+      "latest_version_submitted_at_utc": "2026-09-22T06:15:09Z",
+      "url": "https://arxiv.org/abs/2609.10262",
+      "claim": "Starting from the OpenAI compact forced blowup solution, the authors construct a blowup solution near each given smooth solution while preserving its initial velocity; for fixed viscosity and zero initial velocity, blowup-producing smooth forces are dense in the relative L1_t H^s_x topology on T3 and R3 exactly for s<1/2.",
+      "scope_note": "Density in a low-regularity topology does not imply robustness under stronger norms or physical realizability. This does not establish particle alignment or a viscosity transition."
+    }
+  ],
+  "project_disposition": "Relevant post-announcement mathematical progress was found and recorded. Neither paper demonstrates a solver defect or supports the user's molecular-scale interpretation. No OpenAI issue was filed; the repository's issue tracker is disabled per the 2026-10-04 repository inventory.",
+  "openai_source_crosscheck": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "files": {
+      "NavierStokes/R3CompactCandidate.lean": "5831f975030543c5b670ee3b0ed116222848725df7b14892ba4d6592a47ae5f0",
+      "NavierStokes/R3/ProblemStatement.lean": "8b0a28b3b93fb8dfcf967d0082a5a2829a5e5f079de6662c846417057b0856d7",
+      "NavierStokes/R3/CandidateBreakdown.lean": "a9aa816d3aa474012f5e4020e1a2744ffcab3a89e8ef3d172235c8046e2c09e5",
+      "NavierStokes/R3/ActualCandidate.lean": "93d728679c20650ca6ae256b8f96618aaaf004904b589d8f69da759e740046fa"
+    },
+    "formalized_fields": ["force smoothness", "compact spatial support", "future time support", "force equals the momentum residual", "unbounded candidate speed"],
+    "related_lemma_scope": "force_nonzero_of_no_global_solution concludes nonzero at some positive time and some point; it does not conclude nonvanishing on every cylinder approaching the singular endpoint.",
+    "external_paper_scope": "The authors of arXiv:2609.20803 explicitly do not claim to have verified OpenAI's construction; their profile hypotheses are taken from that manuscript. Under those hypotheses and the claimed singularity, Corollary 2.3 rules out force vanishing identically on any space-time cylinder reaching the singular point. This does not entail a nonzero endpoint point value."
+  },
+  "effect_on_benchmark": "No CFD matrix or acceptance gate changed. The source-level distinction is documented; a full independent proof audit and molecular/constitutive bridge remain open."
+}

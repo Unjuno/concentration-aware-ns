@@ -1,0 +1,15 @@
+{
+  "checked_at_local_date": "2026-10-02",
+  "repository_head": "fdc9d82290dbd9d76964071540652a338b07aa50",
+  "command": "work/reference-check-env/bin/python -m pytest -q tests",
+  "exit_code": 0,
+  "result": "200 passed, 1 skipped, 5 subtests passed in 105.29s",
+  "environment": {
+    "python": "3.14.5",
+    "pytest": "9.1.1",
+    "environment_path": "work/reference-check-env"
+  },
+  "locked_requirements_file": "requirements-verification-locked.txt",
+  "locked_requirements_sha256": "58c0ffde867419ce64c9430e73103eb485d205e932b6b9194b82b826d975d6d5",
+  "capture_note": "The test process output was observed in the command session; no standalone raw pytest log was captured."
+}

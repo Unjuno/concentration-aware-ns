@@ -1,0 +1,13 @@
+{
+  "checked_utc": "2026-10-04T05:54:29Z",
+  "query": "all:\"Navier-Stokes\" AND submittedDate:[202609270000 TO 202610042359]",
+  "endpoint": "https://export.arxiv.org/api/query",
+  "total_results": 32,
+  "response_path": "evidence/upstream-refresh/arxiv-ns-window-2026-10-04.xml",
+  "response_sha256": "1461cf273428a7891decd2b0a6adc9c9bf562df004bad30d535d833cd572f01d",
+  "limits": [
+    "Bounded official arXiv API query only",
+    "Keyword/title/abstract indexing misses are possible",
+    "Submission does not imply peer review"
+  ]
+}

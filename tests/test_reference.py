@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 from tools.reference import fields
+from tools.reference_energy import mean_energy, periodic_vertex_mean_energy
 
 
 class ReferenceTests(unittest.TestCase):
@@ -39,3 +40,23 @@ class ReferenceTests(unittest.TestCase):
     def test_invalid_width(self):
         with self.assertRaises(ValueError):
             fields(self.x, sigma=0)
+
+    def test_analytic_vertex_energy_matches_direct_field_mean(self):
+        for n in (8, 16):
+            axis = 2*np.pi*np.arange(n)/n
+            xyz = np.stack(np.meshgrid(axis, axis, axis, indexing='ij'), axis=-1)
+            u = fields(xyz, time=.05, sigma=.5)['u']
+            direct = .5*np.mean(np.sum(u*u, axis=-1))
+            self.assertAlmostEqual(periodic_vertex_mean_energy(n, .05, .5), direct, places=14)
+
+    def test_vertex_energy_converges_to_continuum_integral(self):
+        exact = mean_energy(.05, .5)
+        e16 = periodic_vertex_mean_energy(16, .05, .5)
+        e32 = periodic_vertex_mean_energy(32, .05, .5)
+        self.assertLess(abs(e32/exact-1), 1e-13)
+        self.assertLess(abs(e16/exact-1), 1e-3)
+
+    def test_invalid_vertex_grid(self):
+        for n in (0, -1, 2.5, True):
+            with self.assertRaises(ValueError):
+                periodic_vertex_mean_energy(n)

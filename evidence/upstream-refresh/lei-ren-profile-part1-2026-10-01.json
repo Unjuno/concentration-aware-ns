@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-01",
+  "source": "https://arxiv.org/abs/2609.35406",
+  "title": "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder",
+  "authors": ["Zhen Lei", "Xiao Ren"],
+  "version_checked": "v2",
+  "submitted": "2026-09-28",
+  "last_revised": "2026-09-29",
+  "source_metadata_says": {
+    "scope": "readable account of the profile-construction part of OpenAI's manuscript",
+    "residual": "divergence-form term plus a remainder vanishing to infinite order on fixed similarity sectors",
+    "deferred": "cancellation by oscillatory pulses is for a companion Part II",
+    "publication_status": "comments state this is an expository article and will not be submitted to a journal"
+  },
+  "audit_scope": "arXiv metadata and abstract only; full derivation and source proof not reviewed",
+  "classification": "new explanatory source, not an independent verification of the full construction or peer review",
+  "effect_on_benchmark": "no change to Lean, solver matrix, or molecular/viscosity claims"
+}

@@ -241,10 +241,21 @@ Consequently **b>=9/40 suffices for local Z>0** under these conditions and the
 root equation, via the source prefix lower bound. This is substantially weaker
 than b>=2, which was used for the stronger global pressure condition. It does
 not prove that the selected actual profile has b>=9/40; no retained quantitative
-bound on that chosen amplitude has been established. It also does not make the
-local sufficient condition necessary. The factor inequalities above are a
-classical proof; only the endpoint arithmetic is executable here, and no new
-Lean theorem or molecular-viscosity conclusion is claimed.
+bound on that chosen amplitude has been established. It also does not make the local sufficient condition necessary. The full
+uniform inequality is now proved in Lean as
+`ConcentrationAware.uniform_amplitude_sufficient`, and
+`outgoing_root_Z_positive_of_uniform_amplitude` connects it to the actual
+outgoing pressure integrals. Combining this with the prepared-profile amplitude
+bound and `NaturalAxisData.exists_unique_root` proves existence of at least one
+complete `FinalSlowBase.ProfileData` with a root where `Z>0`.
+`exists_profile_data_with_positive_root_pressure` has only the standard
+`propext`, `Classical.choice`, and `Quot.sound` axioms; its complete replay is
+`evidence/lean-verification/axis-force-sign-pressure-uniform-2026-10-01.log`.
+
+This is an existential profile-data result, not a result about the separately
+selected `FinalSlowBase.actualProfile`. The latter still has no established
+`b>=9/40` premise, and no universal or actualProfile pressure sign is claimed.
+No molecular-viscosity conclusion follows.
 
 The executable check now covers both intermediate algebraic steps as well.
 Writing U(x)=(1+x)²/(20(1-x)²), it verifies by symbolic cancellation:
@@ -259,3 +270,24 @@ supply explicit certificates for the positive-factor inequalities; the sign
 argument still uses those stated real bounds. This strengthens the executable
 check beyond its original endpoint-only scope without resolving the selected
 profile's amplitude condition.
+
+## Prepared-witness amplitude provenance (2026-10-01)
+
+`verification/ActualProfilePressureProvenance.lean` now compiles against the
+pinned OpenAI source in the isolated Lean checker. It proves that the
+`PreparedOutgoing` construction yields at least one complete
+`FinalSlowBase.ProfileData` whose outgoing core amplitude satisfies `P >= 2`.
+It separately proves only `P > 0` for `FinalSlowBase.actualProfile`, directly
+from that selected profile's existing positivity field. Both declarations use
+only `propext`, `Classical.choice`, and `Quot.sound`; the checker output is
+preserved at
+`evidence/lean-verification/actual-profile-pressure-provenance-2026-10-01.log`.
+
+This does not prove that `actualProfile` fails `P >= 2` or the weaker
+`P >= 9/40` condition. It formalizes the provenance distinction: an existential
+prepared witness with a quantitative bound does not transfer that bound to a
+separately selected `Classical.choice` when the bound is not retained in
+`ProfileData`. The pressure-sign obligation remains to derive a sufficient
+moment/amplitude bound for the selected profile or enrich the selected record
+and its construction. This is an extension audit finding, not an upstream
+counterexample or a claim about a physical viscosity transition.

@@ -1,0 +1,12 @@
+{
+  "status": "CORRECTED_SU2_RECEIPT_REPRODUCED",
+  "byte_equal": true,
+  "output_sha256": "4e5e4589377273cee322c257eaea8d3f7e56903de3b31128a86dd4a3b2f2cd02",
+  "replay_source_commit": "1d9708e7d6d14e618b93aa425f5ff81b6f9faab4",
+  "limits": [
+    "Same host/dependency environment",
+    "Python audit hooks, not OS sandbox",
+    "Three archived inputs included; scientific output excluded before recomputation",
+    "No native SU2 rerun or continuum peak proof"
+  ]
+}

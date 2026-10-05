@@ -1,0 +1,75 @@
+{
+  "study_id": "physicsnemo-shared-high-gradient-v1",
+  "status": "prospective frozen matrix; not yet executed",
+  "source": {
+    "repository": "NVIDIA/physicsnemo",
+    "commit": "1b961314e42a0625502ba1592d25f706f1e02a24",
+    "release": "v2.2.1",
+    "source_archive_sha256": "f987c380db2d55caf8af494927a84d9a5c19ef67e2c462ea7aaeccedf2688bec"
+  },
+  "environment": {
+    "python": "3.14.5",
+    "torch": "2.11.0",
+    "device": "cpu",
+    "threads": 2,
+    "dtype": "float64"
+  },
+  "shared_mms": {
+    "implementation": "tools.high_gradient_reference.fields",
+    "frequency": 4,
+    "end_time": 0.05,
+    "viscosity": 0.01,
+    "pressure": 0.0,
+    "initial_velocity": "exact shared MMS; network predicts only a t-scaled correction",
+    "forcing": "independent analytic NumPy implementation; no learned or autodiff forcing"
+  },
+  "model": {
+    "input_features": 7,
+    "output_features": 4,
+    "layers": 3,
+    "width": 32,
+    "activation": "tanh",
+    "ansatz": "u=u_exact(x,0)+t*MLP(sin(x),cos(x),t/end)[:3]; p=MLP[...,3]",
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "steps": 5000,
+    "batch_size": 128,
+    "loss": "unweighted mean-square continuity plus the three momentum residuals"
+  },
+  "cases": {
+    "spatial": [[16, 5], [32, 5], [64, 5]],
+    "temporal": [[64, 5], [64, 9], [64, 17]],
+    "seeds": [709, 1729, 2027, 4093, 8191],
+    "unique_case_pairs": [[16, 5], [32, 5], [64, 5], [64, 9], [64, 17]],
+    "expected_models": 25
+  },
+  "sampling": {
+    "domain": "[0,2*pi)^3",
+    "space": "independent uniform periodic grid indices; cell-centered spatial coordinates",
+    "time": "uniform discrete selection from the declared time grid [0,end]",
+    "rng": "NumPy default_rng(seed); Torch manual_seed(seed)",
+    "training_budget": "fixed 5000 updates; not an optimizer-convergence claim"
+  },
+  "independent_evaluation": {
+    "spatial_nodes_per_axis": 64,
+    "fractional_cell_phase": 0.618034,
+    "time": 0.05,
+    "metrics": ["velocity_relative_l2", "energy_relative_error", "gradient_peak_relative_error_samples", "vorticity_peak_relative_error_samples", "shell_spectrum_relative_l1", "divergence_peak_normalized"],
+    "thresholds": {
+      "velocity_relative_l2": 0.02,
+      "energy_relative_error": 0.02,
+      "gradient_peak_relative_error_samples": 0.05,
+      "vorticity_peak_relative_error_samples": 0.05,
+      "shell_spectrum_relative_l1": 0.05,
+      "divergence_peak_normalized": 0.05
+    },
+    "continuous_extrema": "UNCERTAIN; finite grid does not certify continuum maxima"
+  },
+  "scope_limits": [
+    "This prospectively matched PhysicsNeMo experiment does not replace or reinterpret the historical Gaussian-streamfunction study.",
+    "The 64^3 validation is sampled, not a continuous-domain certificate.",
+    "Fixed update count does not establish optimizer convergence.",
+    "AMR is not applicable to this fixed-architecture PINN study.",
+    "A matched manufactured solution improves cross-target comparability but does not make discretization, sampling, or stopping semantics identical."
+  ]
+}

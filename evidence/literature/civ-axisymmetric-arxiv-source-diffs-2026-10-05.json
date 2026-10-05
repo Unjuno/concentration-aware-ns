@@ -1,0 +1,121 @@
+{
+  "record_type": "arxiv_source_version_diff_receipt",
+  "generated_at_utc": "2026-10-04T22:59:12.047071+00:00",
+  "sources": {
+    "2609.20803": {
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "versions": {
+        "v1": {
+          "archive_url": "https://export.arxiv.org/e-print/2609.20803v1",
+          "archive_sha256": "1ae815e1933006fb9612688b7bf1b2748fefedebed613f8f8bb4067e3d379ea7",
+          "archive_size_bytes": 50120,
+          "tex_path": "NSE_Anisotropic_Pointwise.tex",
+          "tex_sha256": "88c0a2b1a1754534670a6511c25ec173acf5599d069c23a73d90840d48b70193",
+          "tex_size_bytes": 172464
+        },
+        "v2": {
+          "archive_url": "https://export.arxiv.org/e-print/2609.20803v2",
+          "archive_sha256": "7cddc4cd6aac184591beb334c406ce9b8742204587e2a6ff010d59a1975abed5",
+          "archive_size_bytes": 50230,
+          "tex_path": "NSE_Anisotropic_Pointwise_update.tex",
+          "tex_sha256": "0eba18cdf12c1431dfe983c39ac463cfe87b75bf6006d34e7ccd182d50d218f7",
+          "tex_size_bytes": 172882
+        }
+      },
+      "source_diff": {
+        "hunk_count": 4,
+        "hunks": [
+          {
+            "header": "@@ -234,5 +234,5 @@\n",
+            "removed": [
+              "\\item[(b)] Neither~\\eqref{eq:aniso:bounds} nor the Type~I bound $|u|\\le C(-t)^{-1/2}$ implies the other: at $a=b=0$ the bounds on $u_z$ and $u_\\theta$ in~\\eqref{eq:aniso:bounds} are weaker by the factor $(-t)^{-h}$, while at every $b\\ge1$ the bound imposed on $u_r$ is smaller by the factor $(-t)^{hb}$ than the bound $(-t)^{-1/2-(a+b)/2}$ which the parabolic scaling attaches to a Type~I velocity bound. Theorem~\\ref{thm:aniso:main} is therefore not contained in the Type~I results of Chen, Strain, Yau, and Tsai~\\cite{CSTY08}, Chen, Strain, Tsai, and Yau~\\cite{CSTY09}, Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09}, or Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09}, nor are those results contained in it."
+            ],
+            "added": [
+              "\\item[(b)] Neither~\\eqref{eq:aniso:bounds} nor the Type~I bound $|u|\\le C(-t)^{-1/2}$ implies the other: at $a=b=0$ the bounds on $u_z$ and $u_\\theta$ in~\\eqref{eq:aniso:bounds} are weaker by the factor $(-t)^{-h}$, while at every $b\\ge1$ the bound imposed on $u_r$ is smaller by the factor $(-t)^{hb}$ than the bound $(-t)^{-1/2-(a+b)/2}$ which the parabolic scaling attaches to a Type~I velocity bound. Theorem~\\ref{thm:aniso:main} is therefore not contained in the Type~I results of Chen, Strain, Yau, and Tsai~\\cite{CSTY08}, Chen, Strain, Tsai, and Yau~\\cite{CSTY09}, Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09}, Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09}, or~Zhang~\\cite{QiZhang26}, nor are those results contained in it."
+            ]
+          },
+          {
+            "header": "@@ -270,5 +270,5 @@\n",
+            "removed": [
+              "Without swirl, axisymmetric solutions of 3D Navier-Stokes are globally regular; see~Ladyzhenskaya~\\cite{Ladyzhenskaya68} and also Ukhovskii and Yudovich~\\cite{UY68}. With swirl, the global regularity question is open and only conditional results are available. Singularities which obey a scale-invariant (so-called Type~I) pointwise bound are excluded: $|u|\\le C(r^2-t)^{-1/2}$ by Chen, Strain, Yau, and Tsai~\\cite{CSTY08}; $r|u|\\le C$ by Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09}, and $|u|\\le C(-t)^{-1/2}$ by Chen, Strain, Tsai, and Yau~\\cite{CSTY09}. Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09} proved a local Type~I regularity criterion which imposes the bound $\\le C (-t)^{-1/2}$ only on the meridional part of the velocity. For a detailed account of the many other conditional results available for axisymmetric Navier-Stokes, we refer to the book of Tsai~\\cite[Chapter~10]{Tsai18}."
+            ],
+            "added": [
+              "Without swirl, axisymmetric solutions of 3D Navier-Stokes are globally regular; see~Ladyzhenskaya~\\cite{Ladyzhenskaya68} and also Ukhovskii and Yudovich~\\cite{UY68}. With swirl, the global regularity question is open and only conditional results are available. Singularities which obey a scale-invariant (so-called Type~I) pointwise bound are excluded: $|u|\\le C(r^2-t)^{-1/2}$ by Chen, Strain, Yau, and Tsai~\\cite{CSTY08}; $r|u|\\le C$ by Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09}, and $|u|\\le C(-t)^{-1/2}$ by Chen, Strain, Tsai, and Yau~\\cite{CSTY09}. Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09} proved a local Type~I regularity criterion which imposes the bound $\\le C (-t)^{-1/2}$ only on the meridional part of the velocity. Zhang~\\cite{QiZhang26} recently proved regularity under the one-component one-sided Type~I assumption: $u_r \\geq - C (-t)^{-1/2}$ for some $C>0$, with $r u_\\theta$ bounded. For a detailed account of the many other conditional results available for axisymmetric Navier-Stokes, we refer to the book of Tsai~\\cite[Chapter~10]{Tsai18}."
+            ]
+          },
+          {
+            "header": "@@ -1643,11 +1643,12 @@\n",
+            "removed": [
+              "On putative self-similarity for incompressible 3D Euler. Courant Journal of Pure and Applied Mathematics, Accepted, 2026.",
+              "Regularity for axisymmetric Navier-Stokes with an Euler length.",
+              "\\emph{In preparation}, 2026."
+            ],
+            "added": [
+              "On putative self-similarity for incompressible 3D Euler, ",
+              "Courant Journal of Pure and Applied Mathematics, Accepted, 2026.",
+              "Regularity for axisymmetric Navier-Stokes with an Euler length,",
+              "\\href{https://arxiv.org/abs/2609.20762}{arXiv:2609.20762} (2026)."
+            ]
+          },
+          {
+            "header": "@@ -1951,4 +1952,9 @@\n",
+            "removed": [],
+            "added": [
+              "\\bibitem{QiZhang26}",
+              "Q.S.~Zhang,",
+              "On partial type I solutions to the Axially symmetric Navier-Stokes equations,",
+              "\\href{https://arxiv.org/abs/2604.07785}{arXiv:arXiv:2604.07785} (2026).",
+              ""
+            ]
+          }
+        ]
+      }
+    },
+    "2609.20762": {
+      "title": "Regularity for axisymmetric Navier-Stokes with an Euler length",
+      "versions": {
+        "v1": {
+          "archive_url": "https://export.arxiv.org/e-print/2609.20762v1",
+          "archive_sha256": "c90af909731646ddc54243c4cdf9c534cf9ad32ff6efa0cafb2ef9628446247f",
+          "archive_size_bytes": 33235,
+          "tex_path": "axineul91726.tex",
+          "tex_sha256": "a4d8272aef5404d09c7fe41b5ef7d37e46d9dd7739bb5627879d4b583230b977",
+          "tex_size_bytes": 111849
+        },
+        "v2": {
+          "archive_url": "https://export.arxiv.org/e-print/2609.20762v2",
+          "archive_sha256": "c9e96b9f36182abc1ee2c14e6ef8ff36614c37ea1da342dd2b619e2a3f710486",
+          "archive_size_bytes": 33356,
+          "tex_path": "axineul92926.tex",
+          "tex_sha256": "92158b24fbb7ab4e5714a5525791053b874b4167407bc02296ad85a20a3ecba9",
+          "tex_size_bytes": 112220
+        }
+      },
+      "source_diff": {
+        "hunk_count": 2,
+        "hunks": [
+          {
+            "header": "@@ -199,5 +199,5 @@\n",
+            "removed": [
+              "In the presence of swirl, the regularity of axisymmetric solutions to 3D Navier-Stokes has been established under the additional hypothesis of a Type~I bound, an assumption which is invariant under parabolic scaling. Chen, Strain, Yau, and Tsai~\\cite{CSTY08} proved regularity of the solution at $t=0$ assuming the pointwise bound $|u|\\leq C(r^2-t)^{-1/2}$. Chen, Strain, Tsai, and Yau~\\cite{CSTY09} and Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09} proved regularity assuming that $r|u|\\leq C$. Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09} imposed a temporal Type~I bound on the meridional velocity alone:~$ |b|\\leq C (-t)^{-1/2}$. All of these proofs rely on the structure of the equations satisfied by the circulation and by the potential vorticity $\\Omega=\\omega_\\theta/r$. We refer to the book of Tsai~\\cite[Chapter 10]{Tsai18} for a detailed account of the many conditional regularity results for solutions of 3D axisymmetric Navier-Stokes."
+            ],
+            "added": [
+              "In the presence of swirl, the regularity of axisymmetric solutions to 3D Navier-Stokes has been established under the additional hypothesis of a Type~I bound, an assumption which is invariant under parabolic scaling. Chen, Strain, Yau, and Tsai~\\cite{CSTY08} proved regularity of the solution at $t=0$ assuming the pointwise bound $|u|\\leq C(r^2-t)^{-1/2}$. Chen, Strain, Tsai, and Yau~\\cite{CSTY09} and Koch, Nadirashvili, Seregin, and \\v{S}ver\\'ak~\\cite{KNSS09} proved regularity assuming that $r|u|\\leq C$. Seregin and \\v{S}ver\\'ak~\\cite{SereginSverak09} imposed a temporal Type~I bound on the meridional velocity alone:~$ |b|\\leq C (-t)^{-1/2}$. Zhang~\\cite{QiZhang26} recently proved a one-component one-sided Type~I result: if $u_r \\geq - C (-t)^{-1/2}$ for some $C>0$, and if $r u_\\theta$ is bounded, then the solution is regular. All of these proofs rely on the structure of the equations satisfied by the circulation and by the potential vorticity $\\Omega=\\omega_\\theta/r$. We refer to the book of Tsai~\\cite[Chapter 10]{Tsai18} for a detailed account of the many conditional regularity results for solutions of 3D axisymmetric Navier-Stokes."
+            ]
+          },
+          {
+            "header": "@@ -1356,4 +1356,9 @@\n",
+            "removed": [],
+            "added": [
+              "\\bibitem{QiZhang26}",
+              "Q.S.~Zhang,",
+              "On partial type I solutions to the Axially symmetric Navier-Stokes equations,",
+              "\\href{https://arxiv.org/abs/2604.07785}{arXiv:arXiv:2604.07785} (2026).",
+              ""
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -11,9 +11,16 @@ been discharged for `FinalSlowBase.actualProfile`. See the final pressure
 retention audit. Thus the candidate-field implication is checked, while an
 unconditional negative-limit claim for the pinned selected profile is not.
 
-The infinitesimal material-separation alignment calculation below remains a
-hand-derived extension with symbolic checks, not a fully formalized deformation
-theorem. It establishes neither molecular orientation nor a phase transition.
+The current `verification/AxisForceSign.lean` source hash matches the saved
+2026-10-01 Lean run in
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json`. That source
+contains `actual_root_deformation_hasDerivAt` and
+`actual_root_variational_unique`, which derive the deformation ODE and prove
+uniqueness on compact subintervals of an existential terminal interval; their
+axiom reports list only standard Lean axioms. The later closed-form angular
+integration below is an analytic derivation checked with SymPy, not a Lean
+theorem. Neither result establishes molecular orientation or a phase
+transition.
 Earlier sections record intermediate results and outstanding work at that time;
 the current summary and final audits supersede their status descriptions. In
 particular, the later Lean chain now combines the full physical axial Laplacian,
@@ -104,11 +111,129 @@ to (tau/tau0)^(3C/2). This is directional alignment of infinitesimal material
 separations in this core. It is not molecular orientation or finite-particle
 packing, and does not establish a phase transition.
 
+## Cumulative transverse phase versus directional alignment
+
+For the selected construction, the local swirl rate in Lean is defined by
+`selectedAxisOmega` as the negative radial derivative of the swirl potential
+along the candidate axis. The profile construction gives the power-law rate
+`Omega=q^(-1-h) f_*` on a fixed-root trajectory, with `f_*` the corresponding
+axis swirl-profile value. Integrating that rate is not itself a Lean theorem;
+conditional on this profile identity, `eta_*` and `f_*` are constant along
+the path and the calculus gives the tangent-frame angle from `tau_0` to
+`tau=Q tau_0`:
+
+```text
+DeltaTheta(Q) = f_* d_*^(1+h) tau_0^(-h) (Q^(-h)-1)/h,  h>0.
+```
+
+For `h=0`, its limit is `f_* d_* log(1/Q)`. Thus a nonzero swirl coefficient
+gives unbounded cumulative phase if the mathematical core is followed all the
+way to `Q=0`; for positive `h`, the angular increment in each successive
+collapse-time decade grows like `Q^(-h)`. This does not prevent directional
+alignment: the transverse component of a material separation rotates while
+shrinking relative to its axial component, so its unit direction still tends
+to the axis. The calculation concerns the infinitesimal variational frame, not
+an off-axis particle's finite trajectory or a finite material filament.
+
+The [external preprint](https://arxiv.org/abs/2609.17642) reports
+`F_0(0)=0.336` for its closed 32-parameter match at exterior amplitude
+`c_inf=0.2`; the same [pinned repository snapshot](https://gitlab.umiacs.umd.edu/ramanid/swirl-collapse/-/blob/10377a74f81ab7f6edff0892a379d4937e17fd9b/results/axis_cone_report.md)
+retains an earlier five-parameter trial with `F_0(0)=0.262` and matching
+residual 0.437.
+These are stage-dependent computed profiles in a reduced leading-order
+problem, not values for `FinalSlowBase.actualProfile`; neither is used below.
+The preprint describes less than one particle revolution per time decade for
+its matched profile and explicitly says this is not winding of material lines.
+That particle-motion statement and the tangent-frame phase calculated here
+are different observables, so they are not a direct contradiction. Define the
+dimensionless scale
+`K=f_* d_*^(1+h) tau_0^(-h)`. The cumulative turns are
+
+```text
+turns(Q) = K (Q^(-h)-1)/(2 pi h),  h>0,
+turns(Q) = K log(1/Q)/(2 pi),    h=0.
+```
+
+The saved sensitivity table reports turns per unit `K` for the analytic `h=0`
+limit and two values inside the OpenAI range `0<h<0.01`, across several `Q`;
+any application must supply a coefficient extracted from the actual profile
+and justify continuation of the local profile law over that interval.
+For `h>0` and `K>0`, the formal one-turn threshold is
+`Q_1=(1+2 pi h/K)^(-1/h)`; for `h=0`, it is `exp(-2 pi/K)`. Those are
+conditional mathematical thresholds, not physical predictions. No external
+profile value or continuum cutoff is imported into this calculation.
+
+This separates “less than one turn per selected finite decade” from
+“unbounded phase over an infinite formal collapse interval.” It does not imply
+that molecules or finite particles make those turns. The symbolic derivative
+check and dimensionless sensitivity table are reproducible with
+`work/reference-check-env/bin/python -m tools.check_material_rotation_phase`;
+the artifact is `evidence/tests/material-rotation-phase.json`.
+
+Verification boundary: the current-source Lean evidence
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json` matches the
+current `AxisForceSign.lean` SHA-256 and covers the selected axis Jacobian,
+continuity of `selectedAxisOmega`, the integrated deformation ODE (under that
+angular rate), and uniqueness of its variational solution on compact
+subintervals below terminal time. The closed-form angular antiderivative and its analytic sensitivity values
+are checked separately by SymPy, which verifies the antiderivative by
+differentiation and evaluates the normalized floating-point table. This does
+not prove that the selected profile's swirl coefficient is nonzero, extract
+its value, or formalize the singular-limit divergence. Thus unbounded phase for
+the pinned selected solution remains conditional on a nonzero fixed-root swirl
+coefficient and the profile's power-law identity all the way to the formal
+terminal limit. No finite-particle or molecular claim follows.
+
 A small initial isotropic covariance, propagated by the linearized map F, has
 two decreasing eigenvalues and one increasing eigenvalue; its determinant stays
 constant. Thus directional alignment does not itself imply improved full-position
 certainty. Finite neighborhoods may leave the core; the linearization is not a
 uniform approximation for a fixed-size packet up to t=1.
+
+### Exact positional-probability check in the linearized Gaussian model
+
+This implication can be made quantitative without simulating particles. Put
+`Q=(1-t)/(1-t0)` and draw an initial displacement from the isotropic Gaussian
+`N(0, sigma^2 I)`. Under the exact variational map, its covariance eigenvalues
+are `sigma^2 Q^C`, `sigma^2 Q^C`, and `sigma^2 Q^(-2C)`. Their product is
+`sigma^6`; consequently the Gaussian differential entropy and peak density are
+constant. The transverse-to-axial directional factor is `Q^(3C/2)`, so almost
+every initial direction approaches the axis as `Q→0` (the exceptional set with
+zero axial component has Gaussian probability zero).
+
+At the same time, for any fixed radius `R`, membership in the radius-`R` ball
+around the packet center implies that the axial displacement is at most `R`.
+The axial Gaussian marginal therefore gives the exact upper bound
+
+```
+P(|displacement| <= R)
+  <= P(|axial displacement| <= R)
+  <= sqrt(2/pi) * (R/sigma) * Q^C  -> 0.
+```
+
+Thus directional alignment and increased probability of being near the
+center are different claims; in this linearized model, alignment improves while
+the probability of lying in any fixed bounded ball tends to zero. The scale
+volume identity is now Lean-checked: `terminalScale_volume_factor` proves the
+two transverse scales times the axial scale equal one, and
+`isotropic_covariance_determinant_preserved` proves the covariance eigenvalue
+product stays `sigma^6`. The declarations and full checker log are recorded in
+`evidence/lean-verification/axis-volume-covariance-2026-10-01.json`. The exact
+probability bound below remains a separate symbolic/analytic calculation; this
+does not extend the Gaussian result to nonlinear finite packets or molecules.
+The exact covariance and bound are reproduced by
+`work/reference-check-env/bin/python -m tools.check_alignment_uncertainty` and
+archived in `evidence/tests/alignment-uncertainty.json`. This remains an exact
+Gaussian calculation for the linearized flow, not a finite-size theorem for
+the nonlinear assembled PDE or a molecular model. In this model the Gaussian
+mass within a fixed-radius tube around the infinite axis tends to one, while
+the mass in every fixed finite cylinder tends to zero like Q^C. Transverse
+set concentration and bounded three-dimensional position certainty are
+different claims. See
+[linearized-axis-tube-concentration.md](linearized-axis-tube-concentration.md)
+and its symbolic replay. The nonlinear comparison
+currently certifies only sufficiently fast shrinking initial packets under
+non-effective constants; see [the packet bound](axis-packet-bound.md).
 
 ## Earlier field-transfer gap (superseded by the current Lean result)
 
@@ -1518,6 +1643,34 @@ pressure-qualified profile does not repair the existing choice retroactively.
 Source files were rehashed at the pinned `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`
 revision during this audit; local hashes are listed in the current turn's
 evidence rather than treated as source-level theorem proof.
+
+### Viscous Laplacian divided by material acceleration for the selected slow base
+
+The separate `ConcentrationAwareQualifiedProfile` extension now carries this
+same prepared amplitude-bound selection through its natural material curve. It
+proves that `nu * Δu / (∂t u + u·∇u)` has a finite axiswise limit for the selected
+`FinalSlowBase.velocity`, and combines the pressure-qualified root with the
+natural derivative sign to make that limit strictly negative for `nu > 0`.
+It also proves that the magnitude of this ratio tends to a strictly positive
+constant, so the ratio itself does not tend to zero on this selected field. The
+checker reports only `propext`, `Classical.choice` and `Quot.sound`, without
+`sorryAx`.
+
+This is the signed ratio of two field terms for an alternate slow-base velocity.
+Its nonzero limiting magnitude rules out vanishing of this particular ratio;
+it does not say that viscosity itself decreases or changes law. The proof does
+not identify its selection with `FinalSlowBase.actualProfile`, transfer it
+through the periodic/correction assembly, or connect it to molecular
+orientations, particle-position probabilities, or phase transitions. Replay
+evidence and exact source hashes are in
+`evidence/lean-verification/qualified-profile-pressure-2026-10-01.log`.
+
+The upstream unit-viscosity candidate equation is `a = Δu - ∇p + f`, from
+`ProblemStatement.navierStokesResidual = a - Δu + ∇p`. The ratio `Δu/a` is only
+between two terms and does not isolate the viscous share of this balance. The
+slow-base theorem does not assert the candidate PDE for its selected field;
+its arbitrary positive `nu` is only a multiplier on the Laplacian, with no
+corresponding viscosity-rescaled velocity/pressure/force construction.
 
 
 ## Pressure and negative slow-sum derivative share one witness

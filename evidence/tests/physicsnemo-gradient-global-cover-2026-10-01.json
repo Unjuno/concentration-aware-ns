@@ -1,0 +1,62 @@
+{
+  "scope": "Adaptive Arb enclosure of the continuous Frobenius norm of the PhysicsNeMo spatial gradient error over one full periodic domain. Not a preregistered quality gate and not a formally verified proof kernel.",
+  "archive": "evidence/physicsnemo-study-v1/n64-nt17.tar.gz",
+  "archive_sha256": "d19dc5bf0d93ecba0984b63ba153f6fa291d18d51bd3c10f9b1ce043e0b5671b",
+  "checkpoint_sha256": "c5e159ccd8f253904e94c22babfb780da961c02e866d4ea9c946470569fb7740",
+  "candidate_source": "evidence/tests/physicsnemo-local-interval-probe-2026-10-01.json",
+  "candidate_point": [
+    3.079742548222244,
+    2.9815677777975633,
+    3.276092089071606
+  ],
+  "candidate_point_lower_bound": 0.2509277804721837,
+  "global_upper_bound": 7.273953291435185,
+  "relative_gap_target": 0.1,
+  "achieved_upper_to_lower_ratio": 28.988234294933036,
+  "cover_domain": [
+    [
+      -3.2,
+      3.2
+    ],
+    [
+      -3.2,
+      3.2
+    ],
+    [
+      -3.2,
+      3.2
+    ]
+  ],
+  "periodic_cover_justification": "The exact interval [-16/5,16/5] contains [-pi,pi] because pi<22/7<16/5; each field input is 2pi-periodic.",
+  "initial_uniform_divisions_per_axis": 4,
+  "leaf_box_count": 8192,
+  "interval_evaluations": 16321,
+  "precision_decimal_digits": 40,
+  "small_box_taylor_width_threshold": 0.1,
+  "enclosure_method_counts": {
+    "direct_interval": 16320,
+    "quadratic_taylor": 0
+  },
+  "elapsed_seconds": 185.4534909580252,
+  "result": "CERTIFIED_ENCLOSURE_GAP_REMAINS",
+  "all_leaves_cover_domain": true,
+  "limitations": [
+    "The candidate lower bound is at one fixed point; it is not claimed to be the global maximum.",
+    "Arb interval arithmetic is not an independently verified proof kernel.",
+    "No PhysicsNeMo acceptance threshold was preregistered, so this does not change the quality verdict."
+  ],
+  "tool_path": "tools/physicsnemo_gradient_global_cover.py",
+  "tool_sha256": "b233b6498ef28f218b2b3435287cf416fb2e37094891f56aa5c86804d7096508",
+  "candidate_metadata_sha256": "3866024cdea29e03e4992b5572119c81c35111172ddd4c352669abf7965f8d49",
+  "environment": {
+    "python_flint": "0.9.0",
+    "purpose": "Arb interval evaluation",
+    "source_commit": "OpenAI repository not involved; frozen PhysicsNeMo model archive as hashed above",
+    "python": "3.14.5",
+    "pytorch": "2.11.0"
+  },
+  "execution_tool_sha256": "b233b6498ef28f218b2b3435287cf416fb2e37094891f56aa5c86804d7096508",
+  "current_tool_sha256": "4c8e7c633ab2fbe4a177d009c969a6eccae3ad43e9627805610e1b50958c9e79",
+  "repository_commit_at_execution": "9802c0078cbf9c273e5c6d3fa3d79b1fa0b6e164",
+  "execution_source_note": "The script was first run as an untracked working-tree file at the base commit above. The post-run version lazily imports PyTorch for lightweight CI tests; both exact source hashes are recorded."
+}

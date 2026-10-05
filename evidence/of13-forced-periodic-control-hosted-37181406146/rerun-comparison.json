@@ -1,0 +1,106 @@
+{
+  "workflow_run_id": 37181406146,
+  "workflow_url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37181406146",
+  "head_sha": "f823fa6355cb0451dc710ece6dd0a366b0736811",
+  "run_conclusion": "success",
+  "artifact_id": 11295302077,
+  "artifact_name": "of13-forced-periodic-control-f823fa6355cb0451dc710ece6dd0a366b0736811",
+  "artifact_size_bytes": 39822932,
+  "artifact_sha256": "ef6feb9d5fbcf387aab02a75105907c1696d567e57efdf65fc8fda319e0322cd",
+  "artifact_expires_at": "2027-01-02T05:58:15Z",
+  "run_status": "COMPLETE_WITH_DIAGNOSTICS",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "previous_source_commit": "1cacf3c282a2c6ea5a81354865bba1ab0e932427",
+  "previous_image_id": "sha256:383b0f958aa9867af6e2db9ec7681141393c9d213cd821c1f68a33f4353f0baf",
+  "new_image_id": "sha256:cdc8cd502b10dcbdaa0b2e1645fc70d297d7f7f0edd8aec396a2fa5fb05dfe27",
+  "previous_rootfs_layers": [
+    "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+    "sha256:bea3457e7fb9aacc97cd72ff0e922c24d7ff0ca43fcd93e2b9ef9b451559c8a9",
+    "sha256:34cac6a4f2af3e7e74fe97bba9f415e166a9954151c7003fab4f05a123ee734b"
+  ],
+  "new_rootfs_layers": [
+    "sha256:646eea22414270d74b0c9e9d6d3b9550701ae62e658a099825d4d15045a3630b",
+    "sha256:a7d67f87c204467924bd504a6476d9d42b61ae3b4b9ef61dafe9edaa5c32cb21",
+    "sha256:9c1962993a2aff21349fd109698c85ed997bbbc881938879504ed2161a7ce4a1"
+  ],
+  "base_layer_equal": true,
+  "upper_layers_equal": false,
+  "package_inventory_line_count": 393,
+  "package_inventory_sha256": "bc5ec515c9a169481aa52381feac27dc5ff6ede08a26b6e484d6944703fdc930",
+  "package_inventory_equal": true,
+  "cross_run_cases": [
+    {
+      "case": "spatial-n016-dt0p001",
+      "old_archive_sha256": "35b8a39234acdbb6f8b23396a1d360b9419eaf3e4eba4dfa11f43efb8163aeac",
+      "new_archive_sha256": "cac91dca1ab2e5674650d303539d4627520c2553a404f9908ae705b0972e4de2",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    },
+    {
+      "case": "spatial-n032-dt0p001",
+      "old_archive_sha256": "80eb6a0d5d8e692849d60384ced93f5f8f6613d4f439c90331b094da9a1f8e38",
+      "new_archive_sha256": "99c97ed7d87100c534e7aa7b98e5f88510cfee5ad691214bcc272447b1fb42cb",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    },
+    {
+      "case": "spatial-n064-dt0p001",
+      "old_archive_sha256": "8064f24ae8888083035c1789a097428ebff4c9fdb8c84ee81e2906cf124b9cf6",
+      "new_archive_sha256": "0c3663b0135ae6f2ee52c641ce72665daa454f16667025a2aa52586546f8f66e",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    },
+    {
+      "case": "temporal-n032-dt0p002",
+      "old_archive_sha256": "44c04e68f21358020ff0e8621cf700b6044e7c619132185ab1365b3a638f0976",
+      "new_archive_sha256": "a523ce570f97909f4b33a2f74d19dd2b07a6f349031966e9f12df18b333da203",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    },
+    {
+      "case": "temporal-n032-dt0p001",
+      "old_archive_sha256": "b8d7d7fcb28cbd635db1ed39fbe3c5ac4f1778d5fc714531375e164a582bf9da",
+      "new_archive_sha256": "a5d7dabc45e7c88df9dd52faf4e60e96475af0018ceed0c9c8609c822bf8c410",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    },
+    {
+      "case": "temporal-n032-dt0p0005",
+      "old_archive_sha256": "195a75040a5ab3ee4c49223fac7a3723729b0e12423b8ccdb6b3a94b9f83b62c",
+      "new_archive_sha256": "0c0a3ce0b4d8bd608cfa97d46685113e3d5bcfeabe55194ab21532a9316016a2",
+      "member_content_differences": [
+        "log.blockMesh",
+        "log.centres",
+        "log.foamRun"
+      ],
+      "all_saved_input_field_hashes_equal": true,
+      "all_numeric_diagnostics_identical": true
+    }
+  ],
+  "interpretation": "Both runs independently replay. The fixed protocol, installed package inventory, saved input/field hashes and numeric diagnostics match. Extracted case archives differ only in buildMesh, centres, and solver logs. Immutable image IDs and two upper rootfs layers differ, so this is not an exact container-image reproduction. The Dockerfile pins the base digest and Foundation package hash but apt indexes are not snapshot-pinned. These observations do not identify why upper-layer bytes differ. Each six-case run used one image consistently."
+}

@@ -1,0 +1,64 @@
+{
+  "captured_at_utc": "2026-10-01T14:24:45Z",
+  "scope": "Read-only GitHub API refresh after the previous 2026-10-01 snapshot; checks only current heads and existing records that affect this benchmark's report decisions.",
+  "targets": {
+    "openfoam_foundation_13": {
+      "repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+      "master_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+      "unchanged_from_prior_snapshot": true
+    },
+    "su2": {
+      "repository": "https://github.com/su2code/SU2",
+      "master_commit": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+      "discussion_2890": {
+        "url": "https://github.com/su2code/SU2/discussions/2890",
+        "closed_at": "2026-09-30T17:05:38Z",
+        "is_answered": false,
+        "maintainer_comments": 1,
+        "maintainer_comment_created_at": "2026-09-13T03:31:50Z",
+        "last_user_followup_created_at": "2026-09-26",
+        "scope": "Existing first- and second-order temporal-MMS reproducer remains recorded; closure did not mark the discussion answered. No duplicate issue created."
+      }
+    },
+    "physicsnemo": {
+      "repository": "https://github.com/NVIDIA/physicsnemo",
+      "main_commit": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+      "main_commit_date": "2026-09-30T20:31:05Z",
+      "main_commit_subject": "Refresh dependencies and require PyTorch 2.13+ (#2026)",
+      "power_spectrum_blob": "fb3e8cda3bc7916b8e56833dda240cb74463fabb",
+      "power_spectrum_matches_previous_snapshot": true,
+      "issue_2007": {
+        "state": "open",
+        "updated_at": "2026-09-28T00:41:11Z",
+        "url": "https://github.com/NVIDIA/physicsnemo/issues/2007"
+      },
+      "pr_2008": {
+        "state": "open",
+        "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+        "ahead_of_main_by": 2,
+        "behind_main_by": 11,
+        "url": "https://github.com/NVIDIA/physicsnemo/pull/2008"
+      },
+      "issue_2001": {
+        "state": "open",
+        "updated_at": "2026-09-18T05:01:57Z",
+        "url": "https://github.com/NVIDIA/physicsnemo/issues/2001"
+      },
+      "pr_1853": {
+        "state": "open",
+        "draft": true,
+        "head": "95a4cac597def5df014c2b4eac22bf42e25a9fd8",
+        "ahead_of_main_by": 1,
+        "behind_main_by": 95,
+        "url": "https://github.com/NVIDIA/physicsnemo/pull/1853"
+      },
+      "disposition": "Latest dependency and test maintenance commit does not change the audited power_spectrum implementation. Existing odd-width and nonperiodic-boundary findings remain tracked upstream and do not affect the periodic even-grid/autograd benchmark."
+    },
+    "openai_navier_stokes_and_euler": {
+      "repository": "https://github.com/openai/NavierStokesAndEuler",
+      "main_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "has_issues": false,
+      "has_discussions": false
+    }
+  }
+}

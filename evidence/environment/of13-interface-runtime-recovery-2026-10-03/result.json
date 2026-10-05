@@ -1,0 +1,18 @@
+{
+  "observed_at_utc": "2026-10-03T10:03:45.076026+00:00",
+  "harness_commit": "22f55578b6df322c37e406ae3e259e49b75a9d85",
+  "recipe_sha256": "838341d15826c96f64a66f30666b412f21672ed5b7d9fa8112f963d34cfdc3d1",
+  "command": [
+    "docker",
+    "build",
+    "--platform",
+    "linux/arm64",
+    "--pull",
+    "-t",
+    "concentration-aware-ns:of13-interface-20261003",
+    "runtime/openfoam13"
+  ],
+  "scope": "Additive runtime rebuild preflight; no solver or operator execution. Preserve existing image store.",
+  "exit_code": 1,
+  "build_log_sha256": "19245dbb3997a76429ad2c8757bbfd620dd70da9d5638aa7460a8a060700423b"
+}

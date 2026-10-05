@@ -1,0 +1,527 @@
+{
+  "schema_version": "openfoam-high-gradient-width-hosted-replay-v1",
+  "created_utc": "2026-10-04",
+  "workflow_run": {
+    "id": 37211431276,
+    "url": "https://github.com/Unjuno/concentration-aware-ns/actions/runs/37211431276",
+    "workflow": "Foundation 13 forced-periodic exact control",
+    "event": "workflow_dispatch",
+    "source_commit": "999fe90ae0e8fef106fd9db521541f71a2dfca43",
+    "job": "width-sweep",
+    "started_at": "2026-10-04T15:02:40Z",
+    "matrix_started_at": "2026-10-04T15:04:33Z",
+    "matrix_completed_at": "2026-10-04T17:40:32Z",
+    "job_completed_at": "2026-10-04T17:42:22Z",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 11310471311,
+    "name": "of13-high-gradient-width-999fe90ae0e8fef106fd9db521541f71a2dfca43-37211431276",
+    "size_bytes": 1288865979,
+    "sha256": "1f9b6113dde8427e8413ce149ff824d1c083add91dff7f7aa9ab3a1c9d61c277",
+    "created_at": "2026-10-04T17:42:17Z",
+    "expires_at": "2027-01-02T15:01:16Z",
+    "local_download": "work/of13-high-gradient-width-hosted-37211431276/",
+    "download_and_extraction": "SUCCESS"
+  },
+  "solver_runtime": {
+    "image": "concentration-aware-ns:of13",
+    "image_id": "sha256:a600a8d45bc5c0d6cc706b1409e57f7cb47cefb6dcd80df9d49f2985051649fc",
+    "platform": "linux/arm64",
+    "docker_cli_version": "Docker version 28.0.4, build b8034c0",
+    "docker_cli_sha256": "94128e4afada0d46de642165e79dd70beb08e6775014648013283ed901b68248",
+    "package_versions_sha256": "bc5ec515c9a169481aa52381feac27dc5ff6ede08a26b6e484d6944703fdc930"
+  },
+  "frozen_inputs": {
+    "protocol": "protocols/high-gradient-of13-width-v1.json",
+    "protocol_sha256": "869071525666ac931a4b37d535dbe0548b7343821e5021d47da1a7f2a8783fc8",
+    "manifest_sha256": "45f381eda09eedbddf95b206205fade7f9459dcf547ec8165983c1c886ea20f4",
+    "reference_resolution_artifact": "evidence/tests/high-gradient-width-v1-reference-only.json",
+    "reference_resolution_artifact_sha256": "cb49962d41ec8e5c3f94106ec7af6ba8e12b30cbf8ee97499536ed63acc8de0a",
+    "reference_resolution_audit_replayed": true,
+    "reference_resolution_gate": {
+      "1": {
+        "64": {
+          "passed": true,
+          "gradient_floor": 0.02548099629042407,
+          "vorticity_floor": 0.024780818749719023
+        },
+        "128": {
+          "passed": true,
+          "gradient_floor": 0.006407266823996839,
+          "vorticity_floor": 0.006231005201431013
+        }
+      },
+      "2": {
+        "64": {
+          "passed": true,
+          "gradient_floor": 0.025420113614395924,
+          "vorticity_floor": 0.024242002049495906
+        },
+        "128": {
+          "passed": true,
+          "gradient_floor": 0.006392056860615482,
+          "vorticity_floor": 0.006095056408207161
+        }
+      },
+      "4": {
+        "64": {
+          "passed": true,
+          "gradient_floor": 0.02524637015632816,
+          "vorticity_floor": 0.02365183719691493
+        },
+        "128": {
+          "passed": true,
+          "gradient_floor": 0.006348390344930982,
+          "vorticity_floor": 0.005945971317525763
+        }
+      }
+    }
+  },
+  "result": {
+    "status": "COMPLETE_WITH_DIAGNOSTICS",
+    "case_count": 15,
+    "completed_cases": 15,
+    "width_classifications": [
+      {
+        "envelope_power": 1,
+        "status": "NOT_OBSERVED",
+        "required_fine_grid_counts": [
+          64,
+          128
+        ],
+        "rule": "Persistent standard-PASS/local-FAIL or standard-PASS/local-PASS at every listed fine grid, after the exact-reference FD2 floors pass.",
+        "scope": "This frozen manufactured-solution benchmark only; it cannot establish a general solver defect or physical singularity."
+      },
+      {
+        "envelope_power": 2,
+        "status": "NOT_OBSERVED",
+        "required_fine_grid_counts": [
+          64,
+          128
+        ],
+        "rule": "Persistent standard-PASS/local-FAIL or standard-PASS/local-PASS at every listed fine grid, after the exact-reference FD2 floors pass.",
+        "scope": "This frozen manufactured-solution benchmark only; it cannot establish a general solver defect or physical singularity."
+      },
+      {
+        "envelope_power": 4,
+        "status": "NOT_OBSERVED",
+        "required_fine_grid_counts": [
+          64,
+          128
+        ],
+        "rule": "Persistent standard-PASS/local-FAIL or standard-PASS/local-PASS at every listed fine grid, after the exact-reference FD2 floors pass.",
+        "scope": "This frozen manufactured-solution benchmark only; it cannot establish a general solver defect or physical singularity."
+      }
+    ],
+    "cases": [
+      {
+        "case": "m1-spatial-n032-dt0p001",
+        "envelope_power": 1,
+        "group": "spatial",
+        "n": 32,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "FAIL",
+        "relative_errors": {
+          "velocity_l2": 0.012957310651231943,
+          "energy": 0.0006781163445923609,
+          "max_gradient": 0.1016556385294061,
+          "max_vorticity": 0.09638364127475402,
+          "shell_spectrum": 0.0006781163445926311
+        },
+        "archive": "archives/m1-spatial-n032-dt0p001.tar.gz",
+        "archive_sha256": "e5d3a664a21a0e1672815368925d563d34f10c0f35729f1313f6df6f2f1693e5",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m1-spatial-n064-dt0p001",
+        "envelope_power": 1,
+        "group": "spatial",
+        "n": 64,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.0032808940879792627,
+          "energy": 0.0002491133827825746,
+          "max_gradient": 0.0260027916224655,
+          "max_vorticity": 0.024646008455187503,
+          "shell_spectrum": 0.00024911338278257996
+        },
+        "archive": "archives/m1-spatial-n064-dt0p001.tar.gz",
+        "archive_sha256": "a7bd11f078de9614bcb79eaa11990e1cf989b748af6b42369f48113d3863a782",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m1-spatial-n128-dt0p001",
+        "envelope_power": 1,
+        "group": "spatial",
+        "n": 128,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.00083048211634442,
+          "energy": 0.00010289203728541204,
+          "max_gradient": 0.0065218984615691405,
+          "max_vorticity": 0.0061789714933306195,
+          "shell_spectrum": 0.00010289203728504052
+        },
+        "archive": "archives/m1-spatial-n128-dt0p001.tar.gz",
+        "archive_sha256": "dabeb9fe9d6bd507acd38028b44aa5a93bf91df91710223a9f06bcf8358de7c2",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m1-temporal-n064-dt0p0005",
+        "envelope_power": 1,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.0005,
+        "expected_steps": 100,
+        "observed_steps": 100,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 100,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.0032833347152320296,
+          "energy": 0.00022365119665274753,
+          "max_gradient": 0.02601575374452094,
+          "max_vorticity": 0.024658414343329847,
+          "shell_spectrum": 0.00022365119665268757
+        },
+        "archive": "archives/m1-temporal-n064-dt0p0005.tar.gz",
+        "archive_sha256": "f5f89efbc94e1d859d10deb584631f2e9d933aaba32a341de3a9e882544f6994",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m1-temporal-n064-dt0p00025",
+        "envelope_power": 1,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.00025,
+        "expected_steps": 200,
+        "observed_steps": 200,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 200,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.003288338741787136,
+          "energy": 0.00021091723500935304,
+          "max_gradient": 0.026022975263775377,
+          "max_vorticity": 0.024664618474393336,
+          "shell_spectrum": 0.0002109172350092463
+        },
+        "archive": "archives/m1-temporal-n064-dt0p00025.tar.gz",
+        "archive_sha256": "bdad7ed081ae503399b2283e0aa93ff7ef3447dcb68b89ee58651fe96c7ccb8c",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m2-spatial-n032-dt0p001",
+        "envelope_power": 2,
+        "group": "spatial",
+        "n": 32,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "FAIL",
+        "relative_errors": {
+          "velocity_l2": 0.015919632709420383,
+          "energy": 0.0005816541480907299,
+          "max_gradient": 0.1026989275169387,
+          "max_vorticity": 0.0942197033991894,
+          "shell_spectrum": 0.0005816541480906049
+        },
+        "archive": "archives/m2-spatial-n032-dt0p001.tar.gz",
+        "archive_sha256": "261139c25e5b3334dfb24cb061eaa6b195f26f89c09df483477a2f2f65662cac",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m2-spatial-n064-dt0p001",
+        "envelope_power": 2,
+        "group": "spatial",
+        "n": 64,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004039869627717437,
+          "energy": 0.00024431934993780817,
+          "max_gradient": 0.026311611555034333,
+          "max_vorticity": 0.0240981055479694,
+          "shell_spectrum": 0.00024431934993726103
+        },
+        "archive": "archives/m2-spatial-n064-dt0p001.tar.gz",
+        "archive_sha256": "cbe3ff2ff36edf0d67ba85b3ebb0fc1f0b6a7a0f7574a22242c768764dcacf5c",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m2-spatial-n128-dt0p001",
+        "envelope_power": 2,
+        "group": "spatial",
+        "n": 128,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.0010222484097042739,
+          "energy": 0.00010278563609470481,
+          "max_gradient": 0.006602929512277771,
+          "max_vorticity": 0.006042053185827435,
+          "shell_spectrum": 0.00010278563609450373
+        },
+        "archive": "archives/m2-spatial-n128-dt0p001.tar.gz",
+        "archive_sha256": "759aaa214a4fc071b2f00df1c9a82eec0074fae805876ba394d62178b2b9b8b6",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m2-temporal-n064-dt0p0005",
+        "envelope_power": 2,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.0005,
+        "expected_steps": 100,
+        "observed_steps": 100,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 100,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004042895552114243,
+          "energy": 0.00021886081402479603,
+          "max_gradient": 0.026324719920036824,
+          "max_vorticity": 0.024110509010210678,
+          "shell_spectrum": 0.00021886081402407872
+        },
+        "archive": "archives/m2-temporal-n064-dt0p0005.tar.gz",
+        "archive_sha256": "b280ad8bf341a82f7885bd54f5356dd12afd251d3792532162a4d50226daccb7",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m2-temporal-n064-dt0p00025",
+        "envelope_power": 2,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.00025,
+        "expected_steps": 200,
+        "observed_steps": 200,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 200,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004048805206088956,
+          "energy": 0.00020612834339880167,
+          "max_gradient": 0.026332219675545297,
+          "max_vorticity": 0.024116712208242602,
+          "shell_spectrum": 0.00020612834339802768
+        },
+        "archive": "archives/m2-temporal-n064-dt0p00025.tar.gz",
+        "archive_sha256": "0eaba0cfaeb8076e66ed1a7b269ebfe042e16f059141bd701f29f87a05669a1b",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m4-spatial-n032-dt0p001",
+        "envelope_power": 4,
+        "group": "spatial",
+        "n": 32,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "FAIL",
+        "relative_errors": {
+          "velocity_l2": 0.018760163452901005,
+          "energy": 0.0004842064845149198,
+          "max_gradient": 0.10280692516926555,
+          "max_vorticity": 0.09179855562344573,
+          "shell_spectrum": 0.00048420648451532846
+        },
+        "archive": "archives/m4-spatial-n032-dt0p001.tar.gz",
+        "archive_sha256": "13f8f3bed88221927b994baa5797266cb94dad5d6b570600f6eb211d6272afef",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m4-spatial-n064-dt0p001",
+        "envelope_power": 4,
+        "group": "spatial",
+        "n": 64,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004780664208810167,
+          "energy": 0.00024193409391482564,
+          "max_gradient": 0.026403708759847735,
+          "max_vorticity": 0.02348757012426952,
+          "shell_spectrum": 0.00024193414832326664
+        },
+        "archive": "archives/m4-spatial-n064-dt0p001.tar.gz",
+        "archive_sha256": "f8df4f06c7609579e438d30d7a688323d52f52d98cfb6bfc19a8760d5a498a6c",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m4-spatial-n128-dt0p001",
+        "envelope_power": 4,
+        "group": "spatial",
+        "n": 128,
+        "dt": 0.001,
+        "expected_steps": 50,
+        "observed_steps": 50,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 50,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.0012095963662190604,
+          "energy": 0.00010345679925848383,
+          "max_gradient": 0.0066305798969774725,
+          "max_vorticity": 0.0058899391647357306,
+          "shell_spectrum": 0.00010345681276103565
+        },
+        "archive": "archives/m4-spatial-n128-dt0p001.tar.gz",
+        "archive_sha256": "1bc2fd28efeee2e301607205313eb15c0da485da023a4f4b51cb4e37ea0e4ecd",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m4-temporal-n064-dt0p0005",
+        "envelope_power": 4,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.0005,
+        "expected_steps": 100,
+        "observed_steps": 100,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 100,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004784089312365405,
+          "energy": 0.00021648373536992314,
+          "max_gradient": 0.026416825296389865,
+          "max_vorticity": 0.023499967101779016,
+          "shell_spectrum": 0.0002164837910054835
+        },
+        "archive": "archives/m4-temporal-n064-dt0p0005.tar.gz",
+        "archive_sha256": "e0fb8eb03c4d7e09f58bf7e3a089b0b6e419257445f899f97eca2af2250e4786",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      },
+      {
+        "case": "m4-temporal-n064-dt0p00025",
+        "envelope_power": 4,
+        "group": "temporal",
+        "n": 64,
+        "dt": 0.00025,
+        "expected_steps": 200,
+        "observed_steps": 200,
+        "exit_code": 0,
+        "last_logged_time": 0.05,
+        "standard_acceptance": "PASS",
+        "maximum_observed_outer_correctors": 5,
+        "pimple_convergence_records": 200,
+        "local_quality": "PASS",
+        "relative_errors": {
+          "velocity_l2": 0.004790492072612257,
+          "energy": 0.0002037548577071881,
+          "max_gradient": 0.02642427914275765,
+          "max_vorticity": 0.023506168579229162,
+          "shell_spectrum": 0.0002037549139868133
+        },
+        "archive": "archives/m4-temporal-n064-dt0p00025.tar.gz",
+        "archive_sha256": "a6ff19ad4fb8eb61d9cd83e638e256b5a0f0e35abc9a564116e49d97286776f8",
+        "input_hashes_verified": 10,
+        "diagnostic_hashes_verified": 4
+      }
+    ]
+  },
+  "replay_verification": {
+    "archive_sha256_verified": 15,
+    "pre_run_input_hashes_verified": 150,
+    "diagnostic_file_hashes_verified": 60,
+    "postprocessor": "tools.analyze_openfoam.analyze rerun on every archived extracted case",
+    "postprocessor_comparison": "all saved diagnostics match replay; relative tolerance 1e-12 and absolute tolerance 1e-14 for floating-point values",
+    "classification_recomputed": true,
+    "scope": "Artifact and archive integrity plus replay of the stored analysis and gates; not an independent OpenFOAM implementation or a physical validation."
+  },
+  "limitations": [
+    "A coarse-grid local-quality failure indicates resolution sensitivity, not a software defect.",
+    "A reproduced result concerns this frozen manufactured-solution matrix only.",
+    "No conclusion about molecular alignment, deterministic molecular positions, phase transition, viscosity collapse, real-fluid breakdown, or Navier-Stokes blow-up is permitted.",
+    "The OpenFOAM solver output itself remains fallible; preserve inputs, source/image hashes, residual histories, and sampled fields, and compare to the independent analytic reference.",
+    "The n=32 quality failures are coarse-resolution results; the frozen persistent-discrepancy classification uses n=64 and n=128.",
+    "The workflow artifact is retained by GitHub until 2027-01-02; the local raw extraction under work/ is ignored by Git and is not in the committed receipt."
+  ]
+}

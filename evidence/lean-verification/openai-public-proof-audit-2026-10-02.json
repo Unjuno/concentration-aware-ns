@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-02",
+  "upstream": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "remote": "https://github.com/openai/NavierStokesAndEuler.git",
+    "branch": "main",
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "checkout": "work/openai-public-proof-audit",
+    "clean_git_worktree_before_build": true
+  },
+  "toolchain": {
+    "lean": "Lean (version 4.34.0-rc2, arm64-apple-darwin24.6.0, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+    "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
+    "host": "macOS arm64"
+  },
+  "build": {
+    "command": "PATH=\"$HOME/.elan/bin:$PATH\" lake build NavierStokes.ActualCandidateAssembly NavierStokes.R3.Theorem",
+    "result": "PASS",
+    "exit_code": 0,
+    "summary": "Build completed successfully (9350 jobs)."
+  },
+  "declarations": [
+    {
+      "name": "NavierStokes.ActualCandidateAssembly.selected_candidate",
+      "type": "ProblemStatement.candidateStatement",
+      "source": "NavierStokes/ActualCandidateAssembly.lean",
+      "source_sha256": "bba2f74a938039caec486ca6a35576efd21e6fe35c1ba695e4d21609d89b8a94",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "sorryAx_observed": false
+    },
+    {
+      "name": "NavierStokesR3.theorem_1_1",
+      "type": "ProblemStatement.breakdownStatement",
+      "source": "NavierStokes/R3/Theorem.lean",
+      "source_sha256": "e896ba297671c33d516d41fa47e7e186438b71ec14ab0738d3d3fc9e4df341cb",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "sorryAx_observed": false
+    },
+    {
+      "name": "NavierStokesR3.theorem_1_1_with_initial_rest",
+      "type": "for every positive viscosity, constructs fields with CandidateProperties, excludes a global smooth finite-energy solution for that force and datum, and has zero initial fields on the specified interval",
+      "source": "NavierStokes/R3/Theorem.lean",
+      "source_sha256": "e896ba297671c33d516d41fa47e7e186438b71ec14ab0738d3d3fc9e4df341cb",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "sorryAx_observed": false
+    }
+  ],
+  "definition_module_note": {
+    "source": "NavierStokes/ProblemStatement.lean",
+    "source_sha256": "d2f5cdf24a060acd41011b50492e89058991965e18d2cb797c58d915f95af633",
+    "interpretation": "The OPEN docstring says only that this module defines candidateStatement without proving it locally. It does not state that the repository has no proof; the imported assembly and theorem modules above supply proofs."
+  },
+  "interpretation_and_limits": [
+    "A clean checkout of the pinned public source compiles the named declarations and #print axioms reports no sorryAx for them.",
+    "This confirms the formal declarations and their Lean elaboration at the pinned revision; it is not an independent review of the mathematical correctness, modeling choices, or validity of the construction.",
+    "The theorem concerns the repository's formalized continuum Navier-Stokes proposition. It does not establish molecule ordering, particle-position determinism, a physical phase transition, optical-fluid behavior, or viscosity collapse.",
+    "The earlier conclusion that the whole-repository candidateStatement was OPEN was a false negative caused by reading the proposition-definition module in isolation; preserve the prior artifact as historical evidence and use this record as its correction."
+  ],
+  "reproduction": [
+    "Clone https://github.com/openai/NavierStokesAndEuler at commit f9e8bc5b38b6e212696e8a30e3e91517af887bbd.",
+    "With Lean 4.34.0-rc2, run: lake build NavierStokes.ActualCandidateAssembly NavierStokes.R3.Theorem.",
+    "Run lake env lean on a file importing those modules and applying #print axioms to the declarations listed above."
+  ]
+}

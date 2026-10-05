@@ -1,0 +1,18 @@
+{
+  "workflow_head_sha": "1fc853fa3a8c5e069c7fb0b78d6c24921af75d72",
+  "executed_merge_sha": "d6db731d1fad8475335357ce1cdb7665dfa423c8",
+  "paths_compared": [
+    "tools",
+    "protocols",
+    "requirements.txt",
+    "requirements-verification.txt",
+    "requirements-verification-locked.txt",
+    "evidence/cell-point-matrix-native-query-v1",
+    "evidence/cell-point-uniform-ball-error-v1",
+    "evidence/cell-point-uniform-ball-error-v2",
+    "evidence/cell-point-derivative-batches-v1",
+    "evidence/cell-point-matrix-neighborhood-v1",
+    "evidence/of13-cell-point-query-v1-n16/manifest.json"
+  ],
+  "changed_paths": []
+}

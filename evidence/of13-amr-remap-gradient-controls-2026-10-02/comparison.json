@@ -1,0 +1,134 @@
+{
+  "comparisons": {
+    "cap100000": {
+      "cell_centers_and_volumes_exactly_equal": true,
+      "dynamic": {
+        "cells": 101760,
+        "foam_vorticity_vs_curl_of_transposed_grad_relative_l2": 2.0774904044772602e-16,
+        "grad_U_sha256": "de216f5b611aec705cde89304c4287986716aca9116aa3f5eaab20f7661825bd",
+        "gradient_max_abs_component_error_interior": 0.1787520996235138,
+        "gradient_relative_l2_interior": 0.8979119207735965,
+        "interior_cells": 22560,
+        "interior_volume_fraction": 0.4218750000000001,
+        "original_solver_grad_byte_identical": true,
+        "velocity_relative_l2_all": 0.4011173084930783,
+        "vorticity_max_abs_component_error_interior": 0.1814418302072202,
+        "vorticity_relative_l2_interior": 1.1042080887268395,
+        "vorticity_sha256": "4adb045b4a82d1dbd373a7bbbc681fb664886b7c4655f2674308a54819b28178"
+      },
+      "fixed_final_mesh_control": {
+        "cells": 101760,
+        "foam_vorticity_vs_curl_of_transposed_grad_relative_l2": 2.242997761883483e-16,
+        "grad_U_sha256": "f84869247d658a1c3c9f5bb5eefdacd2af20bd7812b99111fbcf998ebe69ac47",
+        "gradient_max_abs_component_error_interior": 0.005733738180802694,
+        "gradient_relative_l2_interior": 0.01978399213319193,
+        "interior_cells": 22560,
+        "interior_volume_fraction": 0.4218750000000001,
+        "velocity_relative_l2_all": 0.0048261130583600416,
+        "vorticity_max_abs_component_error_interior": 0.005397300606795469,
+        "vorticity_relative_l2_interior": 0.02340267843652154,
+        "vorticity_sha256": "881c2a2f31a3730379fdb1d95b6bbc49110670c0211de00dc1d151183dc487d3"
+      },
+      "mesh_file_sha256": {
+        "boundary": "d414ae89cf4e80637ef579a539858680584df48d332e0f8133cef8fe65e53bf4",
+        "faces": "79451309bc9c682ce0cdb60a55c3a4e6bf6fd3396aac194d18292592aa0c9cbb",
+        "neighbour": "e7ae14d3aaaf400cfddf9051c31b2e33643fc260af2362cd095fb4d0ebfb7586",
+        "owner": "601605c688b0b0f5d82992324a34f98dfb65725a3f77ab3332921fa9d5d61eeb",
+        "points": "37506fe67a88cae939ed7bc59a2ca8030571eb9c1c3a8d263324381319e8c691",
+        "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+      }
+    },
+    "cap5000": {
+      "cell_centers_and_volumes_exactly_equal": true,
+      "dynamic": {
+        "cells": 16640,
+        "foam_vorticity_vs_curl_of_transposed_grad_relative_l2": 2.616903463144186e-16,
+        "grad_U_sha256": "97a8edba3039e7d58cbf6588214b1d89f822de48fbfb801a25f9d479f99c4cfa",
+        "gradient_max_abs_component_error_interior": 0.07456234414805729,
+        "gradient_relative_l2_interior": 0.4872341104871113,
+        "interior_cells": 4416,
+        "interior_volume_fraction": 0.42187500000000006,
+        "original_solver_grad_byte_identical": true,
+        "velocity_relative_l2_all": 0.37011818403189645,
+        "vorticity_max_abs_component_error_interior": 0.07083495164051261,
+        "vorticity_relative_l2_interior": 0.546454381903548,
+        "vorticity_sha256": "bbfa8dbe29ada6709c989beaffbb724cbd46b48b3cc4e106d1e2ba181c48a894"
+      },
+      "fixed_final_mesh_control": {
+        "cells": 16640,
+        "foam_vorticity_vs_curl_of_transposed_grad_relative_l2": 2.1971731696694493e-16,
+        "grad_U_sha256": "d9eca897d36675ed4c1a4c23222400da3bd75adf19870113670f5e4c308fa5e5",
+        "gradient_max_abs_component_error_interior": 0.017549376533093963,
+        "gradient_relative_l2_interior": 0.07348465501907071,
+        "interior_cells": 4416,
+        "interior_volume_fraction": 0.42187500000000006,
+        "velocity_relative_l2_all": 0.01878444718282939,
+        "vorticity_max_abs_component_error_interior": 0.01645350343273788,
+        "vorticity_relative_l2_interior": 0.08629989995339785,
+        "vorticity_sha256": "1715e5ac1977991d91b2cffb0de98313329c7671c0c4fa370df92690ae1a8a7b"
+      },
+      "mesh_file_sha256": {
+        "boundary": "1984b4bac98fe4a1142ef65b32179d350d0dc9ce17e54ce1230410bc53d12d5a",
+        "faces": "0d3a847945e4ffde0402f0258f05620ec3155b31ac9d1179b67804b65146132e",
+        "neighbour": "89a78e4e01a0d74b237a6042eca76a4554a77fd05402780f9ea8023e72480661",
+        "owner": "a8aefbed3e5e1128c88cb698dd669878da566fe463b8fb99cd29142323963843",
+        "points": "9d1124bde4d4ceafa40e984bd9c1c9a6b96c8e15b11ce2532e71de9ca762e572",
+        "system/fvSchemes": "f0ae48cd8975923d6c8f248bb49fdc65f7cf0e860b29ff2ef2da471fe9ea2cc0"
+      }
+    }
+  },
+  "inputs": {
+    "control-cap100000": {
+      "manifest": "evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json",
+      "path": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap100000.tar.gz",
+      "sha256": "2134292eac657f80b8cdddcd28679778ba25b89d8c648472b019c876bab23b27"
+    },
+    "control-cap5000": {
+      "manifest": "evidence/of13-high-gradient-remap-control-v2-manifest-2026-09-30.json",
+      "path": "evidence/of13-high-gradient-remap-control-v2-2026-09-30/cap5000.tar.gz",
+      "sha256": "edf395ef8737ce9f89ed570ce19a606a89dbbef4a448b4051398abccc17c921d"
+    },
+    "dynamic-cap100000": {
+      "manifest": "evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json",
+      "path": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap100000.tar.gz",
+      "sha256": "9beb7672a5d93b19ef2bf1d1a54e2c03d4d4fdbda258f448ef002b866859b446"
+    },
+    "dynamic-cap5000": {
+      "manifest": "evidence/of13-high-gradient-amr-v2-manifest-2026-09-30.json",
+      "path": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap5000.tar.gz",
+      "sha256": "6c9c209eb876416cab01fe569ed8aaebe3c60a9a88f1d7ce417bb57e6db85d75"
+    }
+  },
+  "limitations": [
+    "The fixed-final-mesh controls begin with the analytic field on the already-refined mesh. They do not isolate mapping alone from the subsequent evolution in the dynamic-AMR cases.",
+    "Gradient and vorticity compare Gauss-linear cell fields with exact point derivatives at cell centers on a common interior mask; no continuous maximum or cell-average derivative norm is certified.",
+    "This is a reproduced benchmark-path difference, not an upstream defect verdict. AMR quality attribution remains UNCERTAIN; no physical, singularity, or molecular inference follows."
+  ],
+  "postprocess_logs_sha256": {
+    "control-cap100000": "d145644a3c48c274244bffcfaa0d5067847f9c6d3eaba3d2baaeee4122818920",
+    "control-cap5000": "6d50c6dc497de9c97a082b95856e2709e7edeb566efd166d8338bc1f062331b8",
+    "dynamic-cap100000": "8e5522d513e7a3d54d6d7d9a2b31a6a9f0f82c04dd162b802884ce4c0edb8a5a",
+    "dynamic-cap5000": "160a38c664cba77e5fe4d582998f9ccc8895fa9bce409a7176bbd766720aad8c"
+  },
+  "runtime": {
+    "docker_context": "orbstack",
+    "image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "openfoam_package": "Foundation 13, package 20260624, arm64",
+    "package_sha256": "6da0f6460fbc33c8995cbc97caba52c6cb0342f52ed02ff57530d9d62e9ef360",
+    "platform": "linux/arm64",
+    "postprocess": "foamPostProcess -time 0.05 -funcs '(grad(U) vorticity)'",
+    "postprocess_log_normalization": "Captured output trailing whitespace is trimmed and exactly one final LF is retained.",
+    "protocol": "protocols/high-gradient-of13-v2.json",
+    "protocol_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+    "runtime_dockerfile_sha256": "838341d15826c96f64a66f30666b412f21672ed5b7d9fa8112f963d34cfdc3d1",
+    "source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "source_files_sha256": {
+      "src/OpenFOAM/primitives/Tensor/TensorI.H": "689d7ab3c086d28284155d3173b7ae986ac823414af3f23b7e5bc363f3fdd30d",
+      "src/finiteVolume/finiteVolume/fvc/fvcCurl.C": "57532eaee1ddeed718675d2351c0d3186db2128c1500d15471780027f01c0e17",
+      "src/finiteVolume/finiteVolume/gradSchemes/gaussGrad/gaussGrad.C": "9e419df4d574a4dc48ccd4eba02007e995ece0ef21e98895d16adc67bcc39380"
+    },
+    "tensor_convention": "OpenFOAM grad(U) is outerProduct<vector,vector> from Sf * U; transpose the derivative-index-first storage to compare against dU_i/dx_j. OpenFOAM vorticity is checked against the curl of that transposed tensor."
+  },
+  "scope": "Two Foundation-13 n=16 AMR endpoint meshes, each compared with its analytic-initialized fixed-final-mesh control; archived cases only, no solver integration rerun.",
+  "status": "REPLAYED_SAME_MESH_AMR_DERIVATIVE_COMPARISON"
+}

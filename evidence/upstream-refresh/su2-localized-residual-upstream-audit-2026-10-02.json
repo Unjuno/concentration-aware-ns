@@ -1,0 +1,80 @@
+{
+  "checked_at_utc": "2026-10-01T21:48:13Z",
+  "repository": {
+    "full_name": "su2code/SU2",
+    "url": "https://github.com/su2code/SU2",
+    "default_branch": "master",
+    "live_master_sha": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "live_master_committed_at": "2026-04-28T06:05:27Z",
+    "latest_release": "v8.5.0",
+    "latest_release_name": "SU2 version 8.5.0 Harrier",
+    "latest_release_published_at": "2026-04-27T20:33:19Z",
+    "license_api": "NOASSERTION",
+    "license_files": ["COPYING (LGPL-2.1 text)", "LICENSE.md (SU2 license page)"],
+    "root_contributing_md": "not present (GitHub API 404)",
+    "pull_request_guidance": {
+      "source": "https://github.com/su2code/SU2/blob/master/.github/pull_request_template.md",
+      "items": ["target develop", "include tests where necessary", "update appropriate docs where necessary"]
+    }
+  },
+  "benchmark_pin": {
+    "version": "v8.5.0",
+    "localized_study_source_sha": "7478e9d684537fbb123a5e170eb7956d51b54ca6",
+    "run_protocol": "protocols/su2-study-v1.json",
+    "runtime_metadata": "evidence/su2/runtime.json",
+    "case_count": 5,
+    "case_archives_hash_checked_against_summary": true,
+    "review_command": "work/reference-check-env/bin/python -m tools.review_su2_standard",
+    "review_result_matches_tracked_artifact": "evidence/tests/su2-standard-review.json"
+  },
+  "related_upstream_work": [
+    {
+      "kind": "issue",
+      "number": 2353,
+      "state": "open",
+      "url": "https://github.com/su2code/SU2/issues/2353",
+      "scope": "Time-varying boundary conditions and motion for implicit schemes"
+    },
+    {
+      "kind": "discussion",
+      "number": 2890,
+      "state": "closed",
+      "is_answered": false,
+      "visible_maintainer_comment": true,
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "scope": "MMS source-time semantics in first-order dual-time stepping; benchmark report is already posted here"
+    },
+    {
+      "kind": "issue",
+      "number": 2932,
+      "state": "open",
+      "assignees": [],
+      "comments": 0,
+      "url": "https://github.com/su2code/SU2/issues/2932",
+      "scope": "Opt-in MAX_RES_LOC history output for the point/coordinates of per-variable maximum residuals"
+    }
+  ],
+  "observed_archive_review": [
+    {
+      "cases": ["n16-dt0.001"],
+      "velocity_and_energy_thresholds": "fail",
+      "all_step_residual_threshold": "pass"
+    },
+    {
+      "cases": ["n32-dt0.001"],
+      "velocity_and_energy_thresholds": "fail",
+      "residual_converged_steps": "48/50"
+    },
+    {
+      "cases": ["n64-dt0.001", "n64-dt0.0005", "n64-dt0.00025"],
+      "velocity_and_energy_thresholds": "pass",
+      "residual_converged_steps": ["48/50", "97/100", "193/200"]
+    }
+  ],
+  "disposition": {
+    "standard_pass_local_fail_counterexample": "not observed in the frozen SU2 matrix",
+    "residual_location_observability": "not provided by archived MAX_RES magnitude history; already covered by issue 2932",
+    "upstream_report_filed": false,
+    "reason": "Related source-time and residual-location concerns already have upstream discussion/issue records; the frozen matrix does not reproduce a standard-pass/local-fail case or identify a new defect. Continuous derivative extrema remain uncertified."
+  }
+}

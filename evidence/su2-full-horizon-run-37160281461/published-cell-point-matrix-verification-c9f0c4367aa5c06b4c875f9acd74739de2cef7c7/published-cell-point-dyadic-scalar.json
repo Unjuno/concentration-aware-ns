@@ -1,0 +1,58 @@
+{
+  "status": "EXACT_RATIONAL_DYADIC_SCALAR_CHAIN_VERIFIED",
+  "results": {
+    "n32": {
+      "gradient": {
+        "absolute_lower": "1816906791/2147483648",
+        "relative_lower": "463426287/536870912",
+        "reference_peak_upper": "77655384756945122889233257959/79228162514264337593543950336",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      },
+      "curl": {
+        "absolute_lower": "497574083/4294967296",
+        "relative_lower": "426221221/4294967296",
+        "reference_peak_upper": "46245797149497201602857499059/39614081257132168796771975168",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      }
+    },
+    "n64": {
+      "gradient": {
+        "absolute_lower": "128416605/268435456",
+        "relative_lower": "2096279439/4294967296",
+        "reference_peak_upper": "77655384756945122889233257959/79228162514264337593543950336",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      },
+      "curl": {
+        "absolute_lower": "163991359/2147483648",
+        "relative_lower": "280949509/4294967296",
+        "reference_peak_upper": "46245797149497201602857499059/39614081257132168796771975168",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      }
+    },
+    "n32half": {
+      "gradient": {
+        "absolute_lower": "3588390339/4294967296",
+        "relative_lower": "1830533541/2147483648",
+        "reference_peak_upper": "77655384756945122889233257959/79228162514264337593543950336",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      },
+      "curl": {
+        "absolute_lower": "242878925/2147483648",
+        "relative_lower": "416099453/4294967296",
+        "reference_peak_upper": "46245797149497201602857499059/39614081257132168796771975168",
+        "absolute_floor_verified": true,
+        "independent_normalization_verified": true
+      }
+    }
+  },
+  "limits": [
+    "Checks scalar implications against recorded bounds; does not prove upstream reference formulas",
+    "Does not reconstruct geometry or prove correctness of the Arb kernel",
+    "No physical or original acceptance-gate claim"
+  ]
+}

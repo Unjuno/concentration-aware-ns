@@ -1,0 +1,30 @@
+{
+  "commit": "f49a482826f954e4e8f97fa5a1953856f36e54ea",
+  "commands": [
+    "uv run --python 3.14 --with-requirements requirements-verification-locked.txt python -m pytest -q",
+    "work/physicsnemo-env/bin/python -m pytest -q tests/test_physicsnemo_shared_mms.py"
+  ],
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "python": "3.14.5",
+    "numpy": "2.5.2",
+    "scipy": "1.16.2",
+    "sympy": "1.14.0",
+    "python_flint": "0.9.0",
+    "physicsnemo_torch": "2.11.0"
+  },
+  "results": {
+    "full_suite": "424 passed, 4 skipped, 89 subtests passed",
+    "focused_shared_mms": "2 passed"
+  },
+  "notes": [
+    "The locked full-suite environment does not include Torch, so the shared-MMS tests are exercised separately in the pinned PhysicsNeMo CPU environment.",
+    "Four suite skips are reported verbatim; the focused Torch checks pass separately."
+  ],
+  "sha256": {
+    "requirements-verification-locked.txt": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d",
+    "requirements-verification.txt": "fc7fc7afb6c8e6a4f188be21b26d9af64a511bb97fcdd10fefa525c20cd2402f",
+    "evidence/tests/full-suite-f49a482.log": "d3c999909f8c42ca297080682ae588796d967beb3992b5b7f8a9ec3c7984b844",
+    "evidence/tests/physicsnemo-shared-mms-f49a482.log": "0f756cfd33f42f4e339eace28b1a1cfc7d666f94c80b547be73f165308a0ea9a"
+  }
+}

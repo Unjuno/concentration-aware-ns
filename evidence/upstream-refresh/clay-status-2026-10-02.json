@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-01T21:05:10Z",
+  "subject": "OpenAI Navier-Stokes result and Clay Prize status",
+  "primary_sources": [
+    {
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "published": "2026-09-08",
+      "observed_claim": "OpenAI states its analytical proof and Lean formalization establish a forced finite-time singularity and says this resolves Clay alternatives C and D. The post also says it does not intend to claim the Millennium Prize."
+    },
+    {
+      "url": "https://www.claymath.org/news/navier-stokes-announcement/",
+      "published": "2026-09-11",
+      "observed_status": "CMI says the problem has apparently been settled and that prize evaluation and credit assignment are deliberately unhurried."
+    },
+    {
+      "url": "https://www.claymath.org/millennium/navier-stokes-equation/",
+      "checked": "2026-10-02",
+      "observed_page_label": "Active"
+    }
+  ],
+  "interpretation": "The current official problem page remains labeled Active, while CMI's news statement acknowledges the announcement and says evaluation is unhurried. This is evidence that no final prize adjudication is displayed on the checked page, not a mathematical rejection of OpenAI's proof."
+}

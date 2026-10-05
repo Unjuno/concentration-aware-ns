@@ -1,0 +1,459 @@
+{
+  "status": "PASS_NUMERICAL_INPUT_COMPATIBILITY_REPLAY_WITH_STRICT_BYTE_IDENTITY_FAIL",
+  "independent_input_byte_identity": "FAIL",
+  "allow_input_ulp_drift": true,
+  "case_id": "n16-dt0.001",
+  "source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+  "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+  "input_checks": {
+    "main": {
+      "independently_regenerated_input_files": 11,
+      "initial_input_differences": [
+        {
+          "path": "0/U",
+          "archived_sha256": "414267cb69bb982289a4fdffb4c7694bfb906608f5f6fc4bfde3a247980a4f0e",
+          "regenerated_sha256": "7fb88003de8e89f67d6d94ce431977f84f1a648fef3853477e0394dc2dbca36e",
+          "maximum_absolute_difference": 1.3877787807814457e-17,
+          "machine_scale_tolerance": 2.150315192447617e-15,
+          "byte_identity": "FAIL",
+          "numerical_compatibility": "PASS"
+        }
+      ],
+      "archived_log_final_fields_and_positive_module_load": "PASS"
+    },
+    "disabled-control": {
+      "independently_regenerated_input_files": 11,
+      "initial_input_differences": [
+        {
+          "path": "0/U",
+          "archived_sha256": "414267cb69bb982289a4fdffb4c7694bfb906608f5f6fc4bfde3a247980a4f0e",
+          "regenerated_sha256": "7fb88003de8e89f67d6d94ce431977f84f1a648fef3853477e0394dc2dbca36e",
+          "maximum_absolute_difference": 1.3877787807814457e-17,
+          "machine_scale_tolerance": 2.150315192447617e-15,
+          "byte_identity": "FAIL",
+          "numerical_compatibility": "PASS"
+        }
+      ],
+      "archived_log_final_fields_and_positive_module_load": "PASS"
+    }
+  },
+  "stock_library_payloads_verified": 167,
+  "final_snapshot_field_checks": {
+    "U": {
+      "maximum_absolute_difference": 5.551115123125783e-17,
+      "comparison_tolerance": 5e-13
+    },
+    "p": {
+      "maximum_absolute_difference": 6.938893903907228e-18,
+      "comparison_tolerance": 5e-13
+    }
+  },
+  "analysis": {
+    "status": "COMPLETE_SPECIFIED_MEAN_GATE_ANALYSIS",
+    "source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+    "case_id": "n16-dt0.001",
+    "case": {
+      "id": "n16-dt0.001",
+      "n": 16,
+      "dt": 0.001,
+      "refine_interval": 2,
+      "max_cells": 5000,
+      "expected_first_mapped_cells": 16640,
+      "candidate_prediction": {
+        "n": 16,
+        "initial_cells": 4096,
+        "raw_sensor_candidates": 1280,
+        "one_layer_periodic_face_buffer_candidates": 1792,
+        "predicted_cells_after_one_level": 16640,
+        "sensor_thresholds_strict": [
+          0.01,
+          1.1
+        ],
+        "buffer_layers": 1,
+        "status": "INDEPENDENT_STRUCTURED_GRID_PREDICTION_NOT_SOLVER_EVIDENCE"
+      },
+      "capture_disabled_control": true
+    },
+    "model": {
+      "profile": "smooth periodic localized high-gradient MMS",
+      "domain": "[0,2*pi)^3",
+      "frequency": 3,
+      "nu": 0.01,
+      "end": 0.05,
+      "pre_map_time": 0.002,
+      "max_refinement": 1
+    },
+    "archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+    "protocol_sha256": "4af9d09f64f98d11b58b47afe692222cc637c08c48ff88aea1f6b09f4bc10d7c",
+    "standard_acceptance": {
+      "status": "PASS",
+      "complete_end_time": true,
+      "observed_time_steps": 50,
+      "expected_time_steps": 50,
+      "time_sequence_matches_fixed_delta_t": true,
+      "time_sequence_mismatches_zero_based": [],
+      "pimple_convergence_records": 50,
+      "failed_or_missing_convergence_steps_zero_based": [],
+      "maximum_observed_outer_correctors": 6,
+      "maximum_allowed_outer_correctors": 12,
+      "configured_outer_correctors": 12,
+      "configured_residual_tolerance": 1e-08,
+      "outer_residual_control_configuration_matches_protocol": true,
+      "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+    },
+    "stages": [
+      {
+        "coverage": {
+          "finest_voxels": 32768,
+          "minimum_coverage": 1,
+          "maximum_coverage": 1
+        },
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": 0.08048563842444166,
+          "gradient_mean_mismatch_relative_l2": 0.13665828841335956,
+          "curl_mean_mismatch_relative_l2": 0.12378113995059471
+        },
+        "derivative_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.717785784642887,
+            "exact_cell_mean_integrated_energy": 5.767444805707295,
+            "mean_mismatch_integrated_energy": 0.12545792641083264,
+            "projection_floor_integrated_energy": 0.9503409789355919,
+            "mean_mismatch_relative_l2": 0.13665828841335956,
+            "projection_floor_relative_l2": 0.37612019514046857,
+            "p0_total_relative_l2": 0.40017732192688416,
+            "projection_fraction_of_squared_error": 0.8833816191972856
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.717785784642886,
+            "exact_cell_mean_integrated_energy": 5.767444805707296,
+            "mean_mismatch_integrated_energy": 0.10292837278241251,
+            "projection_floor_integrated_energy": 0.9503409789355901,
+            "mean_mismatch_relative_l2": 0.12378113995059471,
+            "projection_floor_relative_l2": 0.37612019514046824,
+            "p0_total_relative_l2": 0.39596486182485,
+            "projection_fraction_of_squared_error": 0.9022772545175415
+          }
+        },
+        "reference_operator_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.717785784642887,
+            "exact_cell_mean_integrated_energy": 5.767444805707295,
+            "mean_mismatch_integrated_energy": 0.11580253279918501,
+            "projection_floor_integrated_energy": 0.9503409789355919,
+            "mean_mismatch_relative_l2": 0.13129432465025162,
+            "projection_floor_relative_l2": 0.37612019514046857,
+            "p0_total_relative_l2": 0.39837746030350385,
+            "projection_fraction_of_squared_error": 0.8913818528888698
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.717785784642886,
+            "exact_cell_mean_integrated_energy": 5.767444805707296,
+            "mean_mismatch_integrated_energy": 0.10295649252238084,
+            "projection_floor_integrated_energy": 0.9503409789355901,
+            "mean_mismatch_relative_l2": 0.12379804712437914,
+            "projection_floor_relative_l2": 0.37612019514046824,
+            "p0_total_relative_l2": 0.3959701474408316,
+            "projection_fraction_of_squared_error": 0.902253166543855
+          }
+        },
+        "velocity_projection_floor_relative_l2": 0.36961478825927796,
+        "velocity_p0_total_relative_l2": 0.3782763932530563,
+        "sampled_peak_diagnostics": {
+          "gradient": {
+            "measured_sampled_peak": 0.7227615501251207,
+            "reference_sampled_peak": 0.9263483106710166,
+            "sampled_peak_relative_discrepancy": 0.21977344612246807
+          },
+          "curl": {
+            "measured_sampled_peak": 0.875117339251466,
+            "reference_sampled_peak": 1.094121288152445,
+            "sampled_peak_relative_discrepancy": 0.20016423341035017
+          }
+        },
+        "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+        "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+        "independent_uniform_operator_relative_differences": {
+          "measured": 2.2648054946764233e-15,
+          "reference": 2.2782180629109335e-15
+        },
+        "stage": "preMap",
+        "time": 0.002,
+        "cells": 4096,
+        "cell_budget_reached_or_exceeded": false,
+        "maximum_refinement_level": 0,
+        "local_mean_quality": {
+          "status": "FAIL",
+          "metrics": {
+            "velocity_mean_mismatch_relative_l2": {
+              "value": 0.08048563842444166,
+              "threshold": 0.02,
+              "status": "FAIL"
+            },
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.13665828841335956,
+              "threshold": 0.05,
+              "status": "FAIL"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.12378113995059471,
+              "threshold": 0.05,
+              "status": "FAIL"
+            }
+          }
+        },
+        "reference_operator_quality": {
+          "status": "FAIL",
+          "metrics": {
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.13129432465025162,
+              "threshold": 0.05,
+              "status": "FAIL"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.12379804712437914,
+              "threshold": 0.05,
+              "status": "FAIL"
+            }
+          }
+        }
+      },
+      {
+        "coverage": {
+          "finest_voxels": 32768,
+          "minimum_coverage": 1,
+          "maximum_coverage": 1
+        },
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": 0.32746003620487063,
+          "gradient_mean_mismatch_relative_l2": 0.3266789126294693,
+          "curl_mean_mismatch_relative_l2": 0.26405710578972436
+        },
+        "derivative_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.71778578464288,
+            "exact_cell_mean_integrated_energy": 6.467599101707776,
+            "mean_mismatch_integrated_energy": 0.7169161332529178,
+            "projection_floor_integrated_energy": 0.2501866829351034,
+            "mean_mismatch_relative_l2": 0.3266789126294693,
+            "projection_floor_relative_l2": 0.19298298473171144,
+            "p0_total_relative_l2": 0.37942264607259857,
+            "projection_fraction_of_squared_error": 0.2586970886107552
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.717785784642878,
+            "exact_cell_mean_integrated_energy": 6.467632624950798,
+            "mean_mismatch_integrated_energy": 0.4684053736698115,
+            "projection_floor_integrated_energy": 0.2501531596920801,
+            "mean_mismatch_relative_l2": 0.26405710578972436,
+            "projection_floor_relative_l2": 0.19297005512221127,
+            "p0_total_relative_l2": 0.3270528967795805,
+            "projection_fraction_of_squared_error": 0.3481319169945673
+          }
+        },
+        "reference_operator_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.71778578464288,
+            "exact_cell_mean_integrated_energy": 6.467599101707776,
+            "mean_mismatch_integrated_energy": 0.008274251503487685,
+            "projection_floor_integrated_energy": 0.2501866829351034,
+            "mean_mismatch_relative_l2": 0.03509548780866515,
+            "projection_floor_relative_l2": 0.19298298473171144,
+            "p0_total_relative_l2": 0.19614822369954857,
+            "projection_fraction_of_squared_error": 0.9679864521055749
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.717785784642878,
+            "exact_cell_mean_integrated_energy": 6.467632624950798,
+            "mean_mismatch_integrated_energy": 0.007361147522345277,
+            "projection_floor_integrated_energy": 0.2501531596920801,
+            "mean_mismatch_relative_l2": 0.03310241546562421,
+            "projection_floor_relative_l2": 0.19297005512221127,
+            "p0_total_relative_l2": 0.19578869243020153,
+            "projection_fraction_of_squared_error": 0.9714146075922071
+          }
+        },
+        "velocity_projection_floor_relative_l2": 0.18937516833324738,
+        "velocity_p0_total_relative_l2": 0.3782763932530564,
+        "sampled_peak_diagnostics": {
+          "gradient": {
+            "measured_sampled_peak": 0.8855774290663555,
+            "reference_sampled_peak": 0.9972729978783492,
+            "sampled_peak_relative_discrepancy": 0.11200099576507205
+          },
+          "curl": {
+            "measured_sampled_peak": 1.0461704546227593,
+            "reference_sampled_peak": 1.1870880632681686,
+            "sampled_peak_relative_discrepancy": 0.11870863923730268
+          }
+        },
+        "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+        "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+        "stage": "mapped",
+        "time": 0.002,
+        "cells": 16640,
+        "cell_budget_reached_or_exceeded": true,
+        "maximum_refinement_level": 1,
+        "local_mean_quality": {
+          "status": "FAIL",
+          "metrics": {
+            "velocity_mean_mismatch_relative_l2": {
+              "value": 0.32746003620487063,
+              "threshold": 0.02,
+              "status": "FAIL"
+            },
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.3266789126294693,
+              "threshold": 0.05,
+              "status": "FAIL"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.26405710578972436,
+              "threshold": 0.05,
+              "status": "FAIL"
+            }
+          }
+        },
+        "reference_operator_quality": {
+          "status": "PASS",
+          "metrics": {
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.03509548780866515,
+              "threshold": 0.05,
+              "status": "PASS"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.03310241546562421,
+              "threshold": 0.05,
+              "status": "PASS"
+            }
+          }
+        }
+      },
+      {
+        "coverage": {
+          "finest_voxels": 32768,
+          "minimum_coverage": 1,
+          "maximum_coverage": 1
+        },
+        "metrics": {
+          "velocity_mean_mismatch_relative_l2": 0.2845026264733988,
+          "gradient_mean_mismatch_relative_l2": 0.2830920953652696,
+          "curl_mean_mismatch_relative_l2": 0.26450206826950906
+        },
+        "derivative_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.102866653005934,
+            "exact_cell_mean_integrated_energy": 5.875581054259803,
+            "mean_mismatch_integrated_energy": 0.4890906570196172,
+            "projection_floor_integrated_energy": 0.22728559874613108,
+            "mean_mismatch_relative_l2": 0.2830920953652696,
+            "projection_floor_relative_l2": 0.19298298473171105,
+            "p0_total_relative_l2": 0.34261285272776726,
+            "projection_fraction_of_squared_error": 0.3172712620174452
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.102866653005933,
+            "exact_cell_mean_integrated_energy": 5.875611508919789,
+            "mean_mismatch_integrated_energy": 0.4269647540223903,
+            "projection_floor_integrated_energy": 0.22725514408614345,
+            "mean_mismatch_relative_l2": 0.26450206826950906,
+            "projection_floor_relative_l2": 0.1929700551222113,
+            "p0_total_relative_l2": 0.3274122573953475,
+            "projection_fraction_of_squared_error": 0.3473681322490779
+          }
+        },
+        "reference_operator_decomposition": {
+          "gradient": {
+            "exact_reference_integrated_energy": 6.102866653005934,
+            "exact_cell_mean_integrated_energy": 5.875581054259803,
+            "mean_mismatch_integrated_energy": 0.007516859750820951,
+            "projection_floor_integrated_energy": 0.22728559874613108,
+            "mean_mismatch_relative_l2": 0.03509548780866515,
+            "projection_floor_relative_l2": 0.19298298473171105,
+            "p0_total_relative_l2": 0.19614822369954815,
+            "projection_fraction_of_squared_error": 0.9679864521055749
+          },
+          "curl": {
+            "exact_reference_integrated_energy": 6.102866653005933,
+            "exact_cell_mean_integrated_energy": 5.875611508919789,
+            "mean_mismatch_integrated_energy": 0.006687337641023996,
+            "projection_floor_integrated_energy": 0.22725514408614345,
+            "mean_mismatch_relative_l2": 0.03310241546562421,
+            "projection_floor_relative_l2": 0.1929700551222113,
+            "p0_total_relative_l2": 0.19578869243020153,
+            "projection_fraction_of_squared_error": 0.9714146075922071
+          }
+        },
+        "velocity_projection_floor_relative_l2": 0.18937516833324694,
+        "velocity_p0_total_relative_l2": 0.3417670242307,
+        "sampled_peak_diagnostics": {
+          "gradient": {
+            "measured_sampled_peak": 0.8424044388235994,
+            "reference_sampled_peak": 0.9505345892179274,
+            "sampled_peak_relative_discrepancy": 0.11375719686675945
+          },
+          "curl": {
+            "measured_sampled_peak": 0.9959162720806276,
+            "reference_sampled_peak": 1.13145374133729,
+            "sampled_peak_relative_discrepancy": 0.11979055290096763
+          }
+        },
+        "spectrum": "UNAVAILABLE_PENDING_VALIDATED_NONUNIFORM_RECONSTRUCTION",
+        "continuous_extrema": "NOT_CERTIFIED_FOR_THE_NUMERICAL_FIELD",
+        "stage": "postSolve",
+        "time": 0.05,
+        "cells": 16640,
+        "cell_budget_reached_or_exceeded": true,
+        "maximum_refinement_level": 1,
+        "local_mean_quality": {
+          "status": "FAIL",
+          "metrics": {
+            "velocity_mean_mismatch_relative_l2": {
+              "value": 0.2845026264733988,
+              "threshold": 0.02,
+              "status": "FAIL"
+            },
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.2830920953652696,
+              "threshold": 0.05,
+              "status": "FAIL"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.26450206826950906,
+              "threshold": 0.05,
+              "status": "FAIL"
+            }
+          }
+        },
+        "reference_operator_quality": {
+          "status": "PASS",
+          "metrics": {
+            "gradient_mean_mismatch_relative_l2": {
+              "value": 0.03509548780866515,
+              "threshold": 0.05,
+              "status": "PASS"
+            },
+            "curl_mean_mismatch_relative_l2": {
+              "value": 0.03310241546562421,
+              "threshold": 0.05,
+              "status": "PASS"
+            }
+          }
+        }
+      }
+    ],
+    "instrumentation_control": "BYTE_IDENTICAL_FINAL_U_AND_P",
+    "quality_scope": "Full-domain volume-weighted mismatch against exact cube means, normalized by integrated continuum reference energy. Gradient/curl are specified P0 native Gauss tensors; projection floors and total P0 errors are separate. These 5% mean gates are new engineering tolerances, not a reuse of the original peak-error rule.",
+    "limits": [
+      "This is an AMR mean-quality study; it does not replace the frozen N=4 uniform benchmark or its peak/spectrum gates.",
+      "Sampled peak discrepancies are diagnostics; continuous extrema and AMR spectra remain separate open obligations.",
+      "The thresholds are prospective but informed by earlier N=4 diagnostics; no blinded study or independent benchmark-design novelty is claimed.",
+      "Source equivalence of the whole packaged runtime is not established; instrumented module source is verified and its load is recorded.",
+      "Quality failure alone does not imply an implementation bug, singularity, molecular alignment, phase transition or viscosity change."
+    ],
+    "overall_original_AMR_peak_spectrum_gate": "UNCERTAIN_SEPARATE_OPEN_OBLIGATIONS"
+  },
+  "scope": "Frozen mean analysis plus independently regenerated inputs, archived logs/final fields, positive module load and stock payload checks. No new CFD, compiled-module binary replay, whole-runtime source/compiler equivalence or continuous peak/spectrum claim."
+}

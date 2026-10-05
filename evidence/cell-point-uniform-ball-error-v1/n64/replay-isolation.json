@@ -1,0 +1,29 @@
+{
+  "status": "PASS_GIT_DIRECTORY_FREE_EXPORT_WITH_PROCESS_NETWORK_AND_GIT_OPEN_GUARDS",
+  "actual_cwd": "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/work/uniform-ball-clean-d4f/source",
+  "tools_module_origins": {
+    "tools.reference": "tools/reference.py",
+    "tools.high_gradient_reference": "tools/high_gradient_reference.py",
+    "tools.openfoam_case": "tools/openfoam_case.py",
+    "tools.openfoam_amr_case": "tools/openfoam_amr_case.py",
+    "tools.prepare_amr_mean_quality_module": "tools/prepare_amr_mean_quality_module.py",
+    "tools.metrics": "tools/metrics.py",
+    "tools.high_gradient_acceptance": "tools/high_gradient_acceptance.py",
+    "tools.analyze_openfoam": "tools/analyze_openfoam.py",
+    "tools.run_high_gradient_openfoam": "tools/run_high_gradient_openfoam.py",
+    "tools.run_amr_mean_quality": "tools/run_amr_mean_quality.py",
+    "tools.cell_point_matrix_query_spec": "tools/cell_point_matrix_query_spec.py",
+    "tools.amr_derivative_projection": "tools/amr_derivative_projection.py",
+    "tools.amr_projection_decomposition": "tools/amr_projection_decomposition.py",
+    "tools.analyze_amr_gauss_gradient": "tools/analyze_amr_gauss_gradient.py",
+    "tools.reconstruct_amr_published_archive": "tools/reconstruct_amr_published_archive.py",
+    "tools.compare_amr_resolution_volume_integrated": "tools/compare_amr_resolution_volume_integrated.py",
+    "tools.high_gradient_cell_average": "tools/high_gradient_cell_average.py",
+    "tools.analyze_amr_mean_quality": "tools/analyze_amr_mean_quality.py",
+    "tools.amr_arb_mean_certificate": "tools/amr_arb_mean_certificate.py",
+    "tools.amr_point_gradient_bound": "tools/amr_point_gradient_bound.py",
+    "tools.cell_point_local_derivative": "tools/cell_point_local_derivative.py"
+  },
+  "blocked_attempts": [],
+  "scope": "Raw archives are external SHA-verified data; required source/input files are included in the frozen selected export. The exported analysis completed without Python process/network/Git-object opens; dependencies are the locked same-host verification environment."
+}

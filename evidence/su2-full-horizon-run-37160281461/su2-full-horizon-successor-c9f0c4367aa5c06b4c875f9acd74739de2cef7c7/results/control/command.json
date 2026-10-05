@@ -1,0 +1,1 @@
+["docker", "run", "--rm", "--cpus", "2", "--user", "1001:1001", "-e", "OMP_NUM_THREADS=2", "-v", "/home/runner/work/concentration-aware-ns/concentration-aware-ns/work/su2-hosted-successor/results/control:/case", "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92", "SU2_CFD", "case.cfg"]

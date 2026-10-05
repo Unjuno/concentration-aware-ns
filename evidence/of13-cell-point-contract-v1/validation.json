@@ -1,0 +1,32 @@
+{
+  "status": "PASS_SCOPED_SOURCE_AFFINE_AND_ARCHIVE_AUDIT_ACTUAL_MESH_UNVERIFIED",
+  "numerical_source_commit": "5207235c60417112cb35e620df8e9ecde37b8d75",
+  "test_suite": {
+    "passed": 312,
+    "skipped": 1,
+    "subtests_passed": 83,
+    "seconds": 104.78
+  },
+  "commands": {
+    "audit": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m tools.audit_cell_point_contract --upstream work/openfoam13-source-20260624 --raw-map work/amr-p0-spectrum-raw-map.json --output evidence/of13-cell-point-contract-v1 --source-commit 5207235c60417112cb35e620df8e9ecde37b8d75",
+    "suite": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests"
+  },
+  "not_run": [
+    "actual cellPoint C++ evaluation",
+    "new CFD",
+    "full upstream suite",
+    "clean-export replay"
+  ],
+  "source_sha256": {
+    "tools/audit_cell_point_contract.py": "e003670d7d506176b9301c13301512e70e7bd0cd9686a930b79d833724a7efef",
+    "tests/test_cell_point_contract.py": "1767c4b74488addf1d475c0dfc434d87d5e11ae51bffe17e36d3fecd274eaf12",
+    "requirements-verification-locked.txt": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+  },
+  "evidence_sha256": {
+    "README.md": "2e7d4eb039f1cabee78a7460fac27e4f66621914c151a064a89857e738f345f2",
+    "prospective-capture-requirements.json": "02482108d8545f0a0d8e7b38c154f12b7d4b50510ace20f8f90d4bf8b4848496",
+    "audit.log": "ddaafb3e64067af75ea0c6c4a749847496f6859d275637b20eb57802845b3f5e",
+    "test-suite.log": "d99bcbe288045217c59c061c61bb03291962673858de0f7d1223515ce5054fb7",
+    "analysis.json": "2f1b958a40dad3196df6ed96e2be556c74c86ad463ecf5d35ec82d9d9d4251c0"
+  }
+}

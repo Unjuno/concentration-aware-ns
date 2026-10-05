@@ -1,0 +1,61 @@
+{
+  "scope": "Archived AMR sensor-to-level correspondence; not an independent discovery test.",
+  "archive": "evidence/of13-amr-first-refinement-v1/amr-cap5000.tar.gz",
+  "archive_sha256": "fd75da715a0a85b58188baa88486bc90d3d124c3eab812ba8e388fa0a3ff87a4",
+  "protocol": "protocols/high-gradient-of13-amr-first-refinement-v1.json",
+  "protocol_sha256": "8344fe82548bed1b37f04023bf531cf5fdbbd5741e82b626fe5ef299ece3584d",
+  "audit_script": "/Users/taka/Documents/Codex/2026-09-09/new-chat/outputs/concentration-aware-ns/tools/audit_amr_sensor_mapping.py",
+  "audit_script_sha256": "ed57dbe445794c3088f66e739e528b372ba276f830b0286d413dc28ea46154f8",
+  "checkpoint": "0.003",
+  "cells": 16640,
+  "sensor_formula": "g(y)*g(z), g(q)=(1+cos(q))^4/16",
+  "analytic_formula_max_abs_residual": 3.3306690738754696e-15,
+  "analytic_formula_rms_residual": 3.138642216332196e-16,
+  "levels": [
+    {
+      "level": 0,
+      "cells": 2304,
+      "cell_fraction": 0.13846153846153847,
+      "volume_fraction": 0.5625000000000001,
+      "sensor_quantiles_min_median_p95_max": [
+        7.258258636908249e-17,
+        7.228191448540566e-07,
+        0.0008923414941141047,
+        0.0008923414941141331
+      ]
+    },
+    {
+      "level": 1,
+      "cells": 14336,
+      "cell_fraction": 0.8615384615384616,
+      "volume_fraction": 0.43749999999999994,
+      "sensor_quantiles_min_median_p95_max": [
+        0.0006897026235763593,
+        0.04586006838891234,
+        0.776422797951425,
+        0.9809004354795604
+      ]
+    }
+  ],
+  "thresholds": {
+    "0.01": {
+      "cell_fraction": 0.6230769230769231,
+      "volume_fraction": 0.31640625,
+      "selected_volume_at_level1_fraction": 1.0,
+      "level1_volume_above_threshold_fraction": 0.7232142857142858
+    },
+    "0.1": {
+      "cell_fraction": 0.33076923076923076,
+      "volume_fraction": 0.1679687499999999,
+      "selected_volume_at_level1_fraction": 1.0,
+      "level1_volume_above_threshold_fraction": 0.38392857142857123
+    },
+    "0.5": {
+      "cell_fraction": 0.1,
+      "volume_fraction": 0.05078124999999996,
+      "selected_volume_at_level1_fraction": 1.0,
+      "level1_volume_above_threshold_fraction": 0.11607142857142849
+    }
+  },
+  "interpretation": "The source hook prescribes this analytic envelope; level overlap is by construction, with threshold and buffer effects."
+}

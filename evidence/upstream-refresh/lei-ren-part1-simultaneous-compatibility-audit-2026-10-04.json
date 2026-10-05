@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-10-04T01:41:27Z",
+  "primary_source": {
+    "title": "Finite-Time Blowup for Navier-Stokes with Smooth Forcing, Part I: Construction of Self-Similar Solutions with Admissible Stress and Flat Remainder",
+    "authors": ["Zhen Lei", "Xiao Ren"],
+    "version": "arXiv:2609.35406v2",
+    "url": "https://arxiv.org/pdf/2609.35406v2",
+    "downloaded_pdf_sha256": "8396b998dcf737cd6a7c12ff1019c6b2fd308a7e6f0907c0c6647a9b2ec64e8d"
+  },
+  "secondary_claim_checked": "A machine-generated summary characterized the profile construction as conditional on Assumption 12.1, allegedly not discharged by the paper.",
+  "primary_source_crosswalk": {
+    "assumption": "Section 12.1 lists the joint compatibility requirements for the assembly theorem and says Theorem 12.4 proves them for the concrete construction.",
+    "existence_statement": "Theorem 12.4 states that compatible construction data exist.",
+    "parameter_order": [
+      "Fix admissible dimensionless outer data P_* and delta and the axis shift j.",
+      "Choose the core scale Lambda after those data are fixed.",
+      "Increase C_* subject to finitely many stated lower bounds, with R_ref=110(C_* P_*)^10, rebuilding dependent profiles and moments.",
+      "Close the five-moment tolerance and verify all four clauses of Assumption 12.1 for the same data."
+    ],
+    "common_quantities": "Theorem 12.4 states that the waiting length tau and restored axis pressure P0pre are fixed across the sufficiently-large-C_* family.",
+    "sections": ["1.3", "12.1", "12.4", "12.5"]
+  },
+  "finding": "The secondary summary is incomplete if it implies the compatibility requirement remains an unresolved existence assumption. The primary source explicitly states and proves a simultaneous-choice theorem; its warning is against varying one parameter while freezing dependent data.",
+  "limits": [
+    "Textual/source-level cross-check only; Theorem 12.4 and the cited supporting lemmas were not independently proved here.",
+    "The lower-order coefficient induction was not audited.",
+    "Part II residual cancellation remains unlocated and unverified.",
+    "No conclusion about the complete OpenAI construction, a solver defect, or physical behavior follows."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "format": "zstandard-compressed compact AMR review tarball split into GitHub-compatible parts",
+  "archive": "amr-stage-snapshot-n64-review.tar.gz.zst",
+  "archive_bytes": 257733606,
+  "archive_sha256": "b415c1ea1256f90db267acc5822f6b53ddf18634307a2884f8a00af2598a9c09",
+  "source_tar_gz": "amr-stage-snapshot-n64-review.tar.gz",
+  "source_tar_gz_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+  "parts": [
+    {
+      "path": "amr-stage-snapshot-n64-review.tar.gz.zst.part-00",
+      "bytes": 78643200,
+      "sha256": "913b9859f48b3b4d0d550c13218b01672e90b23bac6329ab626867ba0837127f"
+    },
+    {
+      "path": "amr-stage-snapshot-n64-review.tar.gz.zst.part-01",
+      "bytes": 78643200,
+      "sha256": "6e805fee36a2cc93377be624d480ed5e52a46a702ec1a42ff4834de32234fbb1"
+    },
+    {
+      "path": "amr-stage-snapshot-n64-review.tar.gz.zst.part-02",
+      "bytes": 78643200,
+      "sha256": "c2ea577f72ffa34e35f0a98edf3c09cbce3eb2008a3930f8e050de7a37c3dc64"
+    },
+    {
+      "path": "amr-stage-snapshot-n64-review.tar.gz.zst.part-03",
+      "bytes": 21804006,
+      "sha256": "4edb8850c3f80cd6daf5224e9db39f1d01dd40cb339aa4530e4905f3e2bdef20"
+    }
+  ],
+  "reassemble": "cat amr-stage-snapshot-n64-review.tar.gz.zst.part-* > amr-stage-snapshot-n64-review.tar.gz.zst",
+  "decompress": "zstd -d amr-stage-snapshot-n64-review.tar.gz.zst -o amr-stage-snapshot-n64-review.tar.gz",
+  "source_tar_gz_bytes": 278621920
+}

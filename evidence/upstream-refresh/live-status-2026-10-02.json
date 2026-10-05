@@ -1,0 +1,88 @@
+{
+  "checked_at_utc": "2026-10-01T23:36:05Z",
+  "scope": "Read-only refresh of benchmark-relevant default-branch heads and existing upstream records; targeted, not exhaustive.",
+  "OpenFOAM Foundation 13": {
+    "repository": "https://github.com/OpenFOAM/OpenFOAM-13",
+    "default_branch": "master",
+    "head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "open_issues": [
+      {
+        "number": 5,
+        "title": "Documentation does not reflect the source code"
+      },
+      {
+        "number": 4,
+        "title": "Installation on Almalinux"
+      },
+      {
+        "number": 3,
+        "title": "Migration to organization"
+      },
+      {
+        "number": 2,
+        "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases"
+      }
+    ],
+    "disposition": "No issue matches the tested AMR selection/map path; no new report justified."
+  },
+  "SU2": {
+    "repository": "https://github.com/su2code/SU2",
+    "default_branch": "master",
+    "head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "benchmark_release": "v8.5.0",
+    "benchmark_commit": "12eb826f049ef7f67df974dfcb44cf36ee07c0f8",
+    "discussion_2890": {
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "latest_graphql_updated_at": "2026-09-30T17:05:38Z",
+      "visible_comments": 1,
+      "maintainer_reply_date": "2026-09-13",
+      "maintainer_assessment": "Agreed with old-time source diagnosis and recommended a BDF2 regression; noted global PhysicalTime shift may alter other semantics."
+    },
+    "issue_2353": {
+      "url": "https://github.com/su2code/SU2/issues/2353",
+      "state": "open",
+      "updated_at": "2026-09-30T17:05:37Z",
+      "latest_relevant_followup": "MAX_TIME/restart-clock control, posted 2026-09-27"
+    },
+    "disposition": "Existing records cover the scoped temporal source/history observations; do not duplicate. Frozen v8.5.0 evidence is not relabeled as current-master testing."
+  },
+  "NVIDIA PhysicsNeMo": {
+    "repository": "https://github.com/NVIDIA/physicsnemo",
+    "default_branch": "main",
+    "head": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+    "head_commit_date": "2026-10-01T14:06:57Z",
+    "issue_2007": {
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+      "state": "open",
+      "updated_at": "2026-09-28T00:41:11Z",
+      "current_main_source_sha256": "13e7847c62b9285daafdf88307bd548e0f18e1f5d4fa0bf33f3552303deb8552",
+      "current_main_reproduction": "evidence/upstream-refresh/physicsnemo-issue-2007-current-main-2026-10-02.json",
+      "reproduced": true
+    },
+    "pr_2008": {
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "state": "open",
+      "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "base": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "behind_current_main": true,
+      "mergeable": "MERGEABLE",
+      "review_decision": "REVIEW_REQUIRED",
+      "checks": "focused report, Greptile and pre-commit checks passed; full framework suite not established",
+      "source_sha256": "f66a9028c0a18804471c260a32aed1e3b0e9b59655df0c821d4bb904cdd8c983",
+      "fix_control": "evidence/upstream-refresh/physicsnemo-pr2008-current-control-2026-10-02.json",
+      "fix_control_passed": true
+    },
+    "disposition": "The defect remains on current main and the existing PR suppresses the focused odd-width controls. No duplicate issue/PR; issue and PR state remain open."
+  },
+  "OpenAI/NavierStokesAndEuler": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "public_commits_observed": 2,
+    "note": "Lean formalization repository; no new implementation change observed in this refresh."
+  },
+  "limits": [
+    "Default-branch metadata and issue lists do not constitute an exhaustive code or issue audit.",
+    "PhysicsNeMo results are deterministic focused CPU controls, not a full upstream test suite.",
+    "No benchmark observation establishes a continuous-field blow-up, physical hazard, or untracked solver defect."
+  ]
+}

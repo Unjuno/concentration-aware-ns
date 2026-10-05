@@ -1,0 +1,66 @@
+{
+  "protocol": "protocols/su2-shared-high-gradient-v1.json",
+  "mms_profile": "Fourier-envelope high-gradient",
+  "benchmark_commit": "0dece1c93181f6ee66630873bede46c16dfe29a7",
+  "frequency_N": 4,
+  "viscosity": 0.01,
+  "evaluation_time": 0.05,
+  "sample_phase": "unique periodic vertices x_i=2*pi*i/n; duplicates omitted by construction",
+  "scope": "analytic reference sampled without a solver; isolates the FD2 diagnostic floor, not SU2 error",
+  "thresholds": {
+    "max_gradient_relative_error_samples": 0.05,
+    "max_vorticity_relative_error_samples": 0.05
+  },
+  "environment": {
+    "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.2"
+  },
+  "sha256": {
+    "protocols/su2-shared-high-gradient-v1.json": "dacd7638a306a810c986ce8d5922f16e55a76698b67d97f7ff892b7f6c9b60aa",
+    "tools/high_gradient_reference.py": "359fd91446a369930ce252b852a4c375be18482489031b3930e5cc07723d58c3",
+    "tools/metrics.py": "624f998773b9e5a6c4cd9a3c5ddb89284267484b945433d3cc145add57cf1427",
+    "tools/audit_su2_high_gradient_resolution.py": "c21a09da4ccfbb1318ba8a56aef4934deebe7393d32f1e7bce72126b789ed86e"
+  },
+  "rows": [
+    {
+      "n": 16,
+      "unique_periodic_vertices": 4096,
+      "mean_kinetic_energy": 0.0005815894689390759,
+      "gradient_peak_exact_sampled": 0.9586320997613065,
+      "gradient_peak_fd2": 0.6142916567585904,
+      "gradient_peak_relative_error_floor": 0.3591997838257812,
+      "vorticity_peak_exact_sampled": 1.0701331025633032,
+      "vorticity_peak_fd2": 0.7087094583477324,
+      "vorticity_peak_relative_error_floor": 0.3377370939650855,
+      "fd2_divergence_peak_on_exact_velocity": 0.056945465331413786,
+      "operator_floor": "FAIL"
+    },
+    {
+      "n": 32,
+      "unique_periodic_vertices": 32768,
+      "mean_kinetic_energy": 0.0005815894689390757,
+      "gradient_peak_exact_sampled": 0.9586320997613065,
+      "gradient_peak_fd2": 0.8640633266852289,
+      "gradient_peak_relative_error_floor": 0.0986497041979135,
+      "vorticity_peak_exact_sampled": 1.0701331025633032,
+      "vorticity_peak_fd2": 0.9711760383004333,
+      "vorticity_peak_relative_error_floor": 0.09247173461491545,
+      "fd2_divergence_peak_on_exact_velocity": 0.015930348493396085,
+      "operator_floor": "FAIL"
+    },
+    {
+      "n": 64,
+      "unique_periodic_vertices": 262144,
+      "mean_kinetic_energy": 0.0005815894689390761,
+      "gradient_peak_exact_sampled": 0.9586320997613065,
+      "gradient_peak_fd2": 0.9344309797474629,
+      "gradient_peak_relative_error_floor": 0.02524547218882978,
+      "vorticity_peak_exact_sampled": 1.0701331025633032,
+      "vorticity_peak_fd2": 1.0448260355978316,
+      "vorticity_peak_relative_error_floor": 0.023648522697646907,
+      "fd2_divergence_peak_on_exact_velocity": 0.00410371321133321,
+      "operator_floor": "PASS"
+    }
+  ]
+}

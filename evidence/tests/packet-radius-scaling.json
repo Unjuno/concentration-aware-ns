@@ -1,7 +1,7 @@
 {
   "scope": "Algebraic scaling consequences of the classical sufficient packet and tube bounds. Assumes C>1, Q->0, an available tube radius rho0*Q^r and Hessian factor k<=k0*Q^-kappa with r,kappa>=0. Does not prove these envelopes for the selected flow or show a packet actually loses alignment.",
   "sympy": "1.14.0",
-  "source_sha256": "9deb902d5eac3b1545940d01c0254f5127f2462a25d9a8fe5f7fda4983751e05",
+  "source_sha256": "41bbeaf973c617ec09f3debcb37b58620321ef7592df2a1c65414c87b1f1ddb1",
   "assumptions": {
     "tube_radius": "rho(Q)=rho0*Q^r, with rho0>0 and r>=0",
     "half_hessian_bound": "0<=k(Q)<=k0*Q^(-kappa), with k0>0 and kappa>=0",
@@ -11,7 +11,8 @@
   "formulas": {
     "I_upper": "I(Q)<=tau0/(C-1)*Q^(1-C)",
     "tube_radius_sufficient_power": "Q^(C+max(r,kappa-1))",
-    "angle_error_sufficient_power": "Q^(C+kappa-1)",
+    "fixed_cone_angle_sufficient_power": "Q^(C+kappa-1)",
+    "transverse_component_relative_error_power": "Q^(kappa+5C/2-1)",
     "combined_sufficient_initial_radius_power": "Q^(C+max(r,kappa-1))",
     "fixed_rho_bounded_k_case": "Q^C"
   },
@@ -19,8 +20,8 @@
     "integral_upper_difference": "0",
     "tube_power_case_kappa_ge_r_plus_1": "0",
     "tube_power_case_kappa_le_r_plus_1": "0",
-    "angle_power_case_kappa_ge_r_plus_1": "0",
-    "angle_power_case_kappa_le_r_plus_1": "0",
+    "fixed_cone_angle_power_identity": "0",
+    "transverse_relative_error_power_identity": "0",
     "second_denominator_case_kappa_ge_r_plus_1": "0",
     "second_denominator_case_kappa_le_r_plus_1": "0"
   },
@@ -40,8 +41,10 @@
     "C_upper": "4",
     "tube_power_exponent": "43",
     "angle_error_power_exponent": "43",
+    "transverse_relative_error_power_exponent": "49",
     "hessian_term_denominator_exponent": "85/2",
     "Hessian_denominator_exponent_gap": "77/2",
+    "integral_upper": "I(Q)<=tau0/3*(Q^(-3)-1)<tau0/3*Q^(-3), by integral ordering for C<4",
     "tube_prefactor": "rho0/(1+B), B=k0*rho0*tau0/3",
     "angle_prefactor": "3*E0/(2*(1+E0)*k0*tau0), E0=tan(theta_target)*cos(theta0)/(1+tan(theta_target))",
     "common_prefactor": "K < min(rho0/(1+B), 3*E0/(2*(1+E0)*k0*tau0))",
@@ -52,8 +55,80 @@
       "tube_denominator_dominant_term": "0"
     },
     "controls": {
-      "Hessian_denominator_term_dominates_linear_amplification": true
+      "Hessian_denominator_term_dominates_linear_amplification": true,
+      "transverse_relative_error_requires_stricter_power": true,
+      "exact_integral_matches_exponential_representation": true,
+      "upper_integral_matches_exponential_representation": true,
+      "one_third_integral_bound_assumptions_hold": true
     },
+    "success": true
+  },
+  "distributional_finite_packet_specialization": {
+    "initial_packet_radius": "delta0*Q^44",
+    "excluded_near_transverse_band": "abs(cos(theta0)) < Q^(1/2)",
+    "nonlinear_ratio_power": "Q^(5-C-1/2)/(1-D*delta0*Q^(5-C))",
+    "linear_transverse_to_axial_ratio_power": "Q^(3*C/2-1/2)",
+    "all_direction_absolute_endpoint_upper": "delta0*Q^(44-C)/(1-D*delta0*Q^(5-C)) = O(Q^40)",
+    "good_direction_endpoint_lower": "delta0*Q^(44+1/2-C)/2 when Z/A <= 1/2",
+    "good_direction_endpoint_to_initial_radius_lower": "Q^(1/2-C)/2 -> infinity for lambda-probability tending to one",
+    "interpretation": "Absolute endpoint localization occurs for an initial packet already shrinking as Q^44; for a probability-one limiting set of directions, the flow still expands displacement relative to that initial radius. This does not show contraction of a fixed-size packet.",
+    "power_checks": {
+      "nonlinear_denominator_decay_exponent": "1",
+      "absolute_endpoint_upper_exponent_at_C4": "40",
+      "good_direction_endpoint_lower_exponent_at_C4": "81/2",
+      "relative_displacement_exponent_at_C_lower": "-6999999/2000000",
+      "good_direction_nonlinear_ratio_exponent_at_C4": "1/2"
+    },
+    "input_C_interval": "[7999999/2000000, 4)",
+    "strict_upper_bound_used": "C < 4 implies 5-C-1/2 > 1/2",
+    "limiting_probability": "1 - lambda(E), E = exactly transverse directions; equals 1 when lambda(E)=0",
+    "scope": "Conditional on the Lean-derived tube/Hessian power envelopes and classical finite-time packet comparison; constants remain non-effective. Applies to continuum tracer packets, not molecules.",
+    "residuals": {
+      "packet_beta_minus_tube_exponent": "1",
+      "nonlinear_power_minus_cutoff_power": "4 - C",
+      "linear_ratio_power_minus_cutoff_power_at_C_lower": "19999997/4000000"
+    },
+    "controls": {
+      "packet_radius_is_inside_Q43_tube_allowance_for_small_Q": true,
+      "nonlinear_ratio_power_is_above_half_when_C_is_strictly_below_4": true,
+      "linear_ratio_vanishes_uniformly_outside_band": true,
+      "nonlinear_denominator_correction_vanishes": true,
+      "absolute_endpoint_radius_vanishes": true,
+      "relative_displacement_lower_bound_diverges": true,
+      "good_direction_endpoint_lower_power_is_positive": true
+    },
+    "success": true
+  },
+  "anti_concentration_rate_specialization": {
+    "good_direction_event": "c >= Q",
+    "nonlinear_ratio_decay_power": "4 - C",
+    "linear_ratio_decay_power": "3*C/2 - 1",
+    "strict_C_bound_used": "C < 4 implies 4-C > 0",
+    "anti_concentration_assumption": "lambda{c<epsilon} <= L*epsilon^beta",
+    "conditional_endpoint_cone_failure_bound": "L*Q^beta for sufficiently small Q",
+    "uniform_unoriented_sphere_example": "L=1, beta=1 because c=|omega_3| is uniform on [0,1]",
+    "limitations": "The small-Q threshold remains non-effective through tube/Hessian constants; this is exponent arithmetic, not evidence that the envelopes hold for the selected flow.",
+    "residuals": {
+      "nonlinear_power_identity": "0",
+      "linear_power_at_C_lower": "19999997/4000000"
+    },
+    "controls": {
+      "s_one_below_nonlinear_limiting_power_for_C_lt4": true,
+      "linear_ratio_power_positive_at_C_lower": true,
+      "uniform_sphere_exceptional_probability_power_is_one": true
+    },
+    "success": true
+  },
+  "linear_tangent_orientation_uniform_law": {
+    "singular_values": "transverse Q^(C/2) (twice), axial Q^(-C)",
+    "determinant": "Q^(C/2)*Q^(C/2)*Q^(-C)=1",
+    "initial_law": "uniform unoriented sphere; c=|omega_3| uniform on [0,1]",
+    "fixed_cone_parameter": "m=tan(theta_star)>0",
+    "cone_cutoff": "c_star=Q^(3C/2)/sqrt(m^2+Q^(3C))",
+    "exact_linear_failure_probability": "c_star",
+    "asymptotic_failure_probability": "Q^(3C/2)/tan(theta_star)",
+    "symbolic_cutoff_residual": "0",
+    "limitations": "This is the tangent (linearized) flow-map orientation law only; it says nothing by itself about finite-size particles, centers, molecular alignment, or the nonlinear packet remainder.",
     "success": true
   },
   "success": true

@@ -1,0 +1,18 @@
+{
+  "status": "FROZEN_PREPARED_NOT_EXECUTED",
+  "case": "n32-dt0.001",
+  "end": 0.05,
+  "expected_updates": 50,
+  "baseline_archive_sha256": "d286bade57a7daf41fe55faebd2afc5215f94084e81713331e1fd46292eaf193",
+  "image_id_required": "sha256:c496fe61337ebef922bbd35d18f3a4d0f30c1524c0fc08fbcfff7b5c68d54643",
+  "mesh_sha256": "7a98a09c4a1182443cd610ddd76ed33ae2edb5faefa8fab0e385a41f277fbfa0",
+  "baseline_config_sha256": "29661bbbbe7cf55cb8df5a007e46e512631c02989bf1a133544d9cffd18891b5",
+  "control_config_sha256": "cae4ea96a55b686acbdb18abfaa2f002c340a0d56ec0b8752ef560ed59a1030b",
+  "only_configuration_change": "CFL_NUMBER 10 -> 100",
+  "threads": 2,
+  "inner_cap": 3000,
+  "all_updates_residual_threshold": -10,
+  "quality_protocol": "protocols/su2-study-v1.json",
+  "execution_rule": "Fresh isolated directories and pinned original image, serial paired runs; preserve exits, all update histories and final fields; verify image/source before execution",
+  "disposition": "Readiness only. No native run, convergence improvement, endpoint attribution or acceptance claim. One-step prior result does not satisfy this horizon."
+}

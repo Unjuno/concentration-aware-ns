@@ -1,0 +1,1 @@
+Bounded-batch floating search plus Arb96 enclosure of one selected captured affine piece per completed case. n16 reproduces the earlier witness exactly; n32 is newly captured. Two JSONs reproduce byte for byte in a guarded same-host Git-directory-free export. The matrix is incomplete; native position selection/global continuity and original gates are separate.

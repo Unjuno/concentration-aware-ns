@@ -1,0 +1,223 @@
+{
+  "status": "ANALYZED_FINAL_STATE_EXACT_MATCH",
+  "run_manifest_sha256": "3a46b346616f673b4a3dd9683af983f5f42ed072f4a055ebbda03b1f0c33d811",
+  "stage_capture_manifest_sha256": "3a46b346616f673b4a3dd9683af983f5f42ed072f4a055ebbda03b1f0c33d811",
+  "provenance_correction_sha256": "8e3304c1b06bbdb39104330083009425de89152856ba2711be3cbafb05fcfe28",
+  "stage_times": {
+    "mapped": "0.002",
+    "afterCorrectPhi": "0.003",
+    "prePressure": "0.003",
+    "postPressure": "0.003",
+    "postSolve": "0.003"
+  },
+  "mesh": {
+    "cells_each_stage": 16640,
+    "faces_each_stage": 48816,
+    "topology_equal_across_all_stages": true,
+    "total_cell_volume": 248.05021344239844
+  },
+  "volume_weighted_velocity_relative_l2_error_vs_exact_mms": {
+    "mapped": 0.41795531114604173,
+    "afterCorrectPhi": 0.41815612180560235,
+    "prePressure": 0.41789766914559584,
+    "postPressure": 0.399476921297029,
+    "postSolve": 0.399476921297029
+  },
+  "independent_parent_value_mapping_audit": {
+    "parent_grid_cells_per_axis": 16,
+    "mapped_cells": 16640,
+    "parent_group_size_counts": {
+      "1": 2304,
+      "8": 1792
+    },
+    "parent_volume_closure_relative_max": 6.531086649958597e-15,
+    "mapped_vs_parent_injection_relative_l2": 1.787206503911881e-16,
+    "mapped_vs_parent_injection_max_abs": 5.551115123125783e-17,
+    "source_parent_archive_sha256": "fd75da715a0a85b58188baa88486bc90d3d124c3eab812ba8e388fa0a3ff87a4",
+    "source_stage_archive_sha256": "1f10fc45d73a9b80ec587e134850df9a836ee5e12d1e0520bb4c6882909606f8",
+    "mapped_vs_exact_child_cell_center_relative_l2": 0.41795531114604173,
+    "independent_parent_injection_vs_exact_child_cell_center_relative_l2": 0.41795531114604173,
+    "point_sample_error_decomposition": {
+      "inherited_parent_solution_error_squared_relative": 0.0034514737082288163,
+      "exact_parent_to_child_center_change_squared_relative": 0.17224822217151312,
+      "twice_normalized_cross_term": -0.0010130537645573667,
+      "total_mapped_error_squared_relative": 0.17468664211518453,
+      "squared_error_identity_residual": -3.664603343001005e-17,
+      "interpretation": "Algebraic decomposition at cell centers: parent numerical error plus exact-reference change from parent center to mapped child center. Not a canonical finite-volume interpolation error bound."
+    },
+    "by_cell_level": {
+      "0": {
+        "cells": 2304,
+        "volume_fraction": 0.5625000000000001,
+        "mapped_vs_exact_cell_center_relative_l2": 3.3834182319908424,
+        "parent_injection_vs_exact_cell_center_relative_l2": 3.383418231990843
+      },
+      "1": {
+        "cells": 14336,
+        "volume_fraction": 0.43749999999999994,
+        "mapped_vs_exact_cell_center_relative_l2": 0.4179222139301903,
+        "parent_injection_vs_exact_cell_center_relative_l2": 0.4179222139301903
+      }
+    },
+    "scope": "Archived t=0.002 parent field is injected to geometrically containing uniform-grid parents. This post-hoc point-sample diagnostic is not an OpenFOAM defect verdict or a finite-volume cell-average accuracy claim."
+  },
+  "change_in_exact_mms_velocity_error_percentage_points": {
+    "mapped_to_afterCorrectPhi": 0.020081065956062405,
+    "afterCorrectPhi_to_prePressure": -0.0258452660006514,
+    "prePressure_to_postPressure": -1.8420747848566843,
+    "postPressure_to_postSolve": 0.0
+  },
+  "reconstructed_finite_volume_phi_divergence": {
+    "method": "sum oriented face phi into owner cells and subtract from internal neighbours, then divide by cell volume",
+    "stages": {
+      "mapped": {
+        "volume_weighted_rms_cell_div_phi": 0.9527125985179027,
+        "max_abs_cell_div_phi": 9.262400417261341,
+        "sum_abs_net_cell_flux": 79.5925877473378,
+        "global_net_cell_flux": 3.885780586188048e-16
+      },
+      "afterCorrectPhi": {
+        "volume_weighted_rms_cell_div_phi": 0.09663522928595389,
+        "max_abs_cell_div_phi": 0.8657489501890147,
+        "sum_abs_net_cell_flux": 3.692773751032887,
+        "global_net_cell_flux": -2.277607566217523e-18
+      },
+      "prePressure": {
+        "volume_weighted_rms_cell_div_phi": 0.09663522928595389,
+        "max_abs_cell_div_phi": 0.8657489501890147,
+        "sum_abs_net_cell_flux": 3.692773751032887,
+        "global_net_cell_flux": -2.277607566217523e-18
+      },
+      "postPressure": {
+        "volume_weighted_rms_cell_div_phi": 0.09653278457088255,
+        "max_abs_cell_div_phi": 0.8647878088719679,
+        "sum_abs_net_cell_flux": 3.6889185525460406,
+        "global_net_cell_flux": 2.0477180417101136e-17
+      },
+      "mapped_to_afterCorrectPhi_rms_reduction_fraction": 0.8985683306421207
+    },
+    "scope_note": "Derived from recorded face phi and topology; it is a diagnostic reconstruction, not an independent solver run."
+  },
+  "stage_transition_relative_l2_changes": {
+    "mapped_to_afterCorrectPhi": {
+      "cell_U": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 6.4516662679699515,
+        "current_l2_norm": 6.4516662679699515
+      },
+      "cell_p": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 9.20021473275673,
+        "current_l2_norm": 9.20021473275673
+      },
+      "face_phi": {
+        "relative_l2_change_from_previous": 0.9734986122837801,
+        "absolute_l2_change": 0.8036054300525558,
+        "previous_l2_norm": 0.8254818444654346,
+        "current_l2_norm": 0.22394558894167474
+      },
+      "face_Uf": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 9.995447790206514,
+        "current_l2_norm": 9.995447790206514
+      }
+    },
+    "afterCorrectPhi_to_prePressure": {
+      "cell_U": {
+        "relative_l2_change_from_previous": 0.004934483110715876,
+        "absolute_l2_change": 0.03183563823527305,
+        "previous_l2_norm": 6.4516662679699515,
+        "current_l2_norm": 6.444046438389228
+      },
+      "cell_p": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 9.20021473275673,
+        "current_l2_norm": 9.20021473275673
+      },
+      "face_phi": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 0.22394558894167474,
+        "current_l2_norm": 0.22394558894167474
+      },
+      "face_Uf": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 9.995447790206514,
+        "current_l2_norm": 9.995447790206514
+      }
+    },
+    "prePressure_to_postPressure": {
+      "cell_U": {
+        "relative_l2_change_from_previous": 0.04833702816416536,
+        "absolute_l2_change": 0.3114860541836096,
+        "previous_l2_norm": 6.444046438389228,
+        "current_l2_norm": 6.39962681568214
+      },
+      "cell_p": {
+        "relative_l2_change_from_previous": 17.309052538397076,
+        "absolute_l2_change": 159.24700017382108,
+        "previous_l2_norm": 9.20021473275673,
+        "current_l2_norm": 153.72953101397584
+      },
+      "face_phi": {
+        "relative_l2_change_from_previous": 0.0015947876359678724,
+        "absolute_l2_change": 0.0003571456563737264,
+        "previous_l2_norm": 0.22394558894167474,
+        "current_l2_norm": 0.22370884562963536
+      },
+      "face_Uf": {
+        "relative_l2_change_from_previous": 0.06898595939785106,
+        "absolute_l2_change": 0.6895455554185266,
+        "previous_l2_norm": 9.995447790206514,
+        "current_l2_norm": 9.901786103051926
+      }
+    },
+    "postPressure_to_postSolve": {
+      "cell_U": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 6.39962681568214,
+        "current_l2_norm": 6.39962681568214
+      },
+      "cell_p": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 153.72953101397584,
+        "current_l2_norm": 153.72953101397584
+      },
+      "face_phi": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 0.22370884562963536,
+        "current_l2_norm": 0.22370884562963536
+      },
+      "face_Uf": {
+        "relative_l2_change_from_previous": 0.0,
+        "absolute_l2_change": 0.0,
+        "previous_l2_norm": 9.901786103051926,
+        "current_l2_norm": 9.901786103051926
+      }
+    }
+  },
+  "final_field_sha256": {
+    "instrumented": {
+      "U": "9af689b21808ffb3b95a313b558e9d90851495670cbf7ed509b6d99f840109f7",
+      "p": "78a41e659258923e90cf563e7dcbd5f8dbb0b4fbde096292d0f9db7449312a9d",
+      "phi": "272a6dbed24f856c1b7ec0a1beab5e2b775b4b56b31f883cbb2a62a8dae66675",
+      "Uf": "b47899e3335f1fa235a5866d549f11fd3413127fda217678251043623c958941"
+    },
+    "unmodified_control": {
+      "U": "9af689b21808ffb3b95a313b558e9d90851495670cbf7ed509b6d99f840109f7",
+      "p": "78a41e659258923e90cf563e7dcbd5f8dbb0b4fbde096292d0f9db7449312a9d",
+      "phi": "272a6dbed24f856c1b7ec0a1beab5e2b775b4b56b31f883cbb2a62a8dae66675",
+      "Uf": "b47899e3335f1fa235a5866d549f11fd3413127fda217678251043623c958941"
+    },
+    "exact_byte_match": true
+  },
+  "scope": "One n=16, first-refinement mechanism diagnostic. The final U/p/phi/Uf byte match establishes noninterference for this run only. Stage differences locate changes in this run; they are not a general solver defect, convergence result, PDE singularity, or physical claim."
+}

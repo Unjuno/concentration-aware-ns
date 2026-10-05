@@ -1,0 +1,231 @@
+{
+  "status": "ARCHIVE_AND_DIAGNOSTIC_REPLAY_PASS",
+  "source_commit": "0622352cba68c9c1814d249154de94cdd6d40372",
+  "image_inspect": "sha256:eddcfa196d21d4b027370be0449399c853787462e50c857b02bd95497ac9f193 linux/arm64",
+  "run_protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "acceptance_recheck_source": "protocols/high-gradient-of13-v2.json",
+  "acceptance_recheck_source_sha256": "838ac4d91d8a816f96cebf02d780a9ec7df265ae3b45748d2a2c795c6d80d93d",
+  "acceptance_recheck_scope": "Applied after execution from the repository's existing Foundation 13 standard gate; not a claim that this threshold was frozen in the archived v1 run protocol.",
+  "cases": [
+    {
+      "name": "spatial-n016-dt0p001",
+      "group": "spatial",
+      "n": 16,
+      "dt": 0.001,
+      "expected_and_observed_steps": 50,
+      "archive_sha256": "d32308befa23661b3442d7aeeb59af83607f640c11c3b9a63a6eb89db77366de",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 50,
+        "expected_time_steps": 50,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 50,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 5,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.0027056170502904836,
+        "pressure_relative_l2_gauge_invariant": 0.11678496411533484,
+        "energy_relative_error_cell_samples": 9.23109248191405e-05,
+        "shell_spectrum_relative_l1_error": 9.231092481972743e-05,
+        "gradient_peak_relative_error_cell_samples": 0.024963290111027756,
+        "vorticity_peak_relative_error_cell_samples": 0.020372285581565383
+      }
+    },
+    {
+      "name": "spatial-n032-dt0p001",
+      "group": "spatial",
+      "n": 32,
+      "dt": 0.001,
+      "expected_and_observed_steps": 50,
+      "archive_sha256": "ced703583bf75933d426664aa8135ad08c495cf30cfad72608c23362df993165",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 50,
+        "expected_time_steps": 50,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 50,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 5,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.0006980190090314366,
+        "pressure_relative_l2_gauge_invariant": 0.032320999416203776,
+        "energy_relative_error_cell_samples": 2.2724689108107868e-05,
+        "shell_spectrum_relative_l1_error": 2.2724689108175468e-05,
+        "gradient_peak_relative_error_cell_samples": 0.006243045440945417,
+        "vorticity_peak_relative_error_cell_samples": 0.004915506626529776
+      }
+    },
+    {
+      "name": "spatial-n064-dt0p001",
+      "group": "spatial",
+      "n": 64,
+      "dt": 0.001,
+      "expected_and_observed_steps": 50,
+      "archive_sha256": "122f1bccf5506119635398c4935d8b3d25c195035baf2617b559f424d3d3e6f4",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 50,
+        "expected_time_steps": 50,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 50,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 5,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.00017333431511727364,
+        "pressure_relative_l2_gauge_invariant": 0.0070601998436658,
+        "energy_relative_error_cell_samples": 5.7121226276541465e-06,
+        "shell_spectrum_relative_l1_error": 5.7121226276187744e-06,
+        "gradient_peak_relative_error_cell_samples": 0.0015644025002935387,
+        "vorticity_peak_relative_error_cell_samples": 0.001216647761332459
+      }
+    },
+    {
+      "name": "temporal-n032-dt0p002",
+      "group": "temporal",
+      "n": 32,
+      "dt": 0.002,
+      "expected_and_observed_steps": 25,
+      "archive_sha256": "5dcb817b3cdf92e6902c75490d7c60169618916f742409973ec025442c5ce483",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 25,
+        "expected_time_steps": 25,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 25,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 5,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.0006983717098543446,
+        "pressure_relative_l2_gauge_invariant": 0.0326685731285412,
+        "energy_relative_error_cell_samples": 2.3047337489017047e-05,
+        "shell_spectrum_relative_l1_error": 2.3047337488730763e-05,
+        "gradient_peak_relative_error_cell_samples": 0.006241620670390543,
+        "vorticity_peak_relative_error_cell_samples": 0.004915766509585527
+      }
+    },
+    {
+      "name": "temporal-n032-dt0p001",
+      "group": "temporal",
+      "n": 32,
+      "dt": 0.001,
+      "expected_and_observed_steps": 50,
+      "archive_sha256": "fbfd2ae3e157426cd0b4b85065bcc03280a3a06ef4ed80b92b8438c9de88c9b1",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 50,
+        "expected_time_steps": 50,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 50,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 5,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.0006980190090314366,
+        "pressure_relative_l2_gauge_invariant": 0.032320999416203776,
+        "energy_relative_error_cell_samples": 2.2724689108107868e-05,
+        "shell_spectrum_relative_l1_error": 2.2724689108175468e-05,
+        "gradient_peak_relative_error_cell_samples": 0.006243045440945417,
+        "vorticity_peak_relative_error_cell_samples": 0.004915506626529776
+      }
+    },
+    {
+      "name": "temporal-n032-dt0p0005",
+      "group": "temporal",
+      "n": 32,
+      "dt": 0.0005,
+      "expected_and_observed_steps": 100,
+      "archive_sha256": "c9a4cbe001d12b06eaf7a65f361d26f7e52c245bacc5761584f55f79b5849e11",
+      "diagnostics_replayed": true,
+      "standard_acceptance_recheck": {
+        "status": "PASS",
+        "complete_end_time": true,
+        "observed_time_steps": 100,
+        "expected_time_steps": 100,
+        "time_sequence_matches_fixed_delta_t": true,
+        "time_sequence_mismatches_zero_based": [],
+        "pimple_convergence_records": 100,
+        "failed_or_missing_convergence_steps_zero_based": [],
+        "maximum_observed_outer_correctors": 4,
+        "maximum_allowed_outer_correctors": 12,
+        "configured_outer_correctors": 12,
+        "configured_residual_tolerance": 1e-08,
+        "outer_residual_control_configuration_matches_protocol": true,
+        "evidence_scope": "OpenFOAM PIMPLE convergence messages, completed time log, and checked fvSolution residual-control settings; these certify the configured numerical stopping criterion, not physical accuracy."
+      },
+      "metrics": {
+        "velocity_relative_l2": 0.0006971709044088239,
+        "pressure_relative_l2_gauge_invariant": 0.03167404979684368,
+        "energy_relative_error_cell_samples": 2.257143925384765e-05,
+        "shell_spectrum_relative_l1_error": 2.257143925342893e-05,
+        "gradient_peak_relative_error_cell_samples": 0.006245872187754764,
+        "vorticity_peak_relative_error_cell_samples": 0.004915386690681894
+      }
+    }
+  ],
+  "spatial_velocity_observed_orders": [
+    1.9546194257342775,
+    2.009709031502043
+  ],
+  "spatial_pressure_observed_orders": [
+    1.853310827109758,
+    2.1946908835496957
+  ],
+  "temporal_velocity_total_error_differences": [
+    3.527008229079658e-07,
+    8.481046226127813e-07
+  ],
+  "temporal_pressure_total_error_differences": [
+    0.000347573712337422,
+    0.0006469496193600988
+  ],
+  "temporal_convergence_assessment": "UNCERTAIN: total-error differences do not isolate the time-discretization error from the fixed-grid spatial floor; the matrix is a completed step-size comparison but not a resolved temporal-order estimate.",
+  "limits": [
+    "solver/source calibration for a smooth fixed-spectrum solution only",
+    "space/time convergence is measured, not presumed",
+    "no concentration, molecular, singularity, constitutive-transition, or engineering inference"
+  ]
+}

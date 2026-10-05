@@ -1,0 +1,1739 @@
+{
+  "status": "MEASURED_NAMED_BAND_RECONSTRUCTION_ONLY",
+  "source_commit": "21754518dbecefc3fed8c19badb97f28756ccb26",
+  "protocol_sha256": "0e04da41c1cb50583811656e069ec5fa5f979a3195157e58c1c9256c6fa4e991",
+  "input_analysis_sha256": "05ffbc6c2198cdc0e556e47597fba4f19c5817d4d24f11c75610d60ea815a3e8",
+  "sources_sha256": {
+    "tools/amr_band_reconstruction.py": "eaedb9e48d6d5066c24f5e4120764c4b125f68a1092c7049de2e1b9cd0f1ee88",
+    "tools/audit_amr_band_reconstruction.py": "bfcb43f9481dc019c06af7950c0987105e5b61320388edd8c8e91f25cf2b8563",
+    "tools/amr_p0_spectrum.py": "a059ca8a6dc90650865085c2c88002ad2cb3d99accc8d74000854b3a8fee8187"
+  },
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "input_coefficients_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.08549694550460851,
+                "relative_peak_error_lower": 0.05100127166576193,
+                "relative_peak_error_upper": 0.17178260456422417,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.09427612890155919,
+                  "analytic_peak_upper": 0.1756214456059987,
+                  "lipschitz_bound": 0.47837891846820796,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.00019796469468085116,
+                  "parseval_mean_square": 0.00019796469468085114,
+                  "maximum_imaginary_residual": 5.304736239984118e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.07707619200103781,
+                "relative_peak_error_lower": 0.05144227989955673,
+                "relative_peak_error_upper": 0.14817717569814254,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.10524774547769894,
+                  "analytic_peak_upper": 0.18074358805998836,
+                  "lipschitz_bound": 0.44397908799819874,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.0001608892568924707,
+                  "parseval_mean_square": 0.00016088925689247073,
+                  "maximum_imaginary_residual": 5.799463416121907e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.707543778838043e-05,
+                "longitudinal_mean_square": 3.206356112880148e-06,
+                "longitudinal_relative_to_reference_l2": 0.036651395376663086,
+                "divergence_free_band_error_relative_l2": 0.07411144222688512,
+                "orthogonal_error_identity_residual": -8.470329472543003e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.08549694550460851,
+                "relative_peak_error_lower": 0.06567814087830591,
+                "relative_peak_error_upper": 0.13199899407072016,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.09427612890155919,
+                  "analytic_peak_upper": 0.13494878725377896,
+                  "lipschitz_bound": 0.47837891846820796,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.00019796469468085116,
+                  "parseval_mean_square": 0.00019796469468085114,
+                  "maximum_imaginary_residual": 5.768618573565044e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.07707619200103781,
+                "relative_peak_error_lower": 0.06445609782169444,
+                "relative_peak_error_upper": 0.11723068168729456,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.10524774547769894,
+                  "analytic_peak_upper": 0.14299566676884365,
+                  "lipschitz_bound": 0.44397908799819874,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.00016088925689247073,
+                  "parseval_mean_square": 0.00016088925689247073,
+                  "maximum_imaginary_residual": 6.235556428285391e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.707543778838043e-05,
+                "longitudinal_mean_square": 3.206356112880148e-06,
+                "longitudinal_relative_to_reference_l2": 0.036651395376663086,
+                "divergence_free_band_error_relative_l2": 0.07411144222688512,
+                "orthogonal_error_identity_residual": -8.470329472543003e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 0.0003252296902268785,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.36913032798800993,
+          "band_velocity_error_relative_l2": 0.08267908231230808
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "input_coefficients_sha256": "2d5bfe3c211099ead3d3d8a58bdd9240525cd9dcd83fc929bb3e328183012010",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.08549694550460851,
+                "relative_peak_error_lower": 0.05100127166576193,
+                "relative_peak_error_upper": 0.17178260456422417,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.09427612890155919,
+                  "analytic_peak_upper": 0.1756214456059987,
+                  "lipschitz_bound": 0.47837891846820796,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.00019796469468085116,
+                  "parseval_mean_square": 0.00019796469468085114,
+                  "maximum_imaginary_residual": 5.304736239984118e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.07707619200103781,
+                "relative_peak_error_lower": 0.05144227989955673,
+                "relative_peak_error_upper": 0.14817717569814254,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.10524774547769894,
+                  "analytic_peak_upper": 0.18074358805998836,
+                  "lipschitz_bound": 0.44397908799819874,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.0001608892568924707,
+                  "parseval_mean_square": 0.00016088925689247073,
+                  "maximum_imaginary_residual": 5.799463416121907e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.707543778838043e-05,
+                "longitudinal_mean_square": 3.206356112880148e-06,
+                "longitudinal_relative_to_reference_l2": 0.036651395376663086,
+                "divergence_free_band_error_relative_l2": 0.07411144222688512,
+                "orthogonal_error_identity_residual": -8.470329472543003e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.08549694550460851,
+                "relative_peak_error_lower": 0.06567814087830591,
+                "relative_peak_error_upper": 0.13199899407072016,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.09427612890155919,
+                  "analytic_peak_upper": 0.13494878725377896,
+                  "lipschitz_bound": 0.47837891846820796,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.00019796469468085116,
+                  "parseval_mean_square": 0.00019796469468085114,
+                  "maximum_imaginary_residual": 5.768618573565044e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.07707619200103781,
+                "relative_peak_error_lower": 0.06445609782169444,
+                "relative_peak_error_upper": 0.11723068168729456,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.10524774547769894,
+                  "analytic_peak_upper": 0.14299566676884365,
+                  "lipschitz_bound": 0.44397908799819874,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.00016088925689247073,
+                  "parseval_mean_square": 0.00016088925689247073,
+                  "maximum_imaginary_residual": 6.235556428285391e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.707543778838043e-05,
+                "longitudinal_mean_square": 3.206356112880148e-06,
+                "longitudinal_relative_to_reference_l2": 0.036651395376663086,
+                "divergence_free_band_error_relative_l2": 0.07411144222688512,
+                "orthogonal_error_identity_residual": -8.470329472543003e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 0.0003252296902268785,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.36913032798800993,
+          "band_velocity_error_relative_l2": 0.08267908231230808
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "input_coefficients_sha256": "7d6806e136d54d8cf2effe8269ba53bd4a2226421878ba159a07103af7d23fc2",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.08011381512643952,
+                "relative_peak_error_lower": 0.04913425720094467,
+                "relative_peak_error_upper": 0.19265243168206822,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.08656832138535718,
+                  "analytic_peak_upper": 0.1877269933111631,
+                  "lipschitz_bound": 0.5948981211220271,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.0001579098072839005,
+                  "parseval_mean_square": 0.0001579098072839005,
+                  "maximum_imaginary_residual": 3.503176977217848e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.7618730050465237,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.0792766872488115,
+                "relative_peak_error_lower": 0.05328715471159171,
+                "relative_peak_error_upper": 0.16884692691879633,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.10391278624840217,
+                  "analytic_peak_upper": 0.1963037573709431,
+                  "lipschitz_bound": 0.5433366619299966,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.00015462697632810692,
+                  "parseval_mean_square": 0.0001546269763281069,
+                  "maximum_imaginary_residual": 3.6401307202225367e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.950053194073012,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 3.2828309557935677e-06,
+                "longitudinal_mean_square": 2.4104035941256484e-07,
+                "longitudinal_relative_to_reference_l2": 0.010543277906587566,
+                "divergence_free_band_error_relative_l2": 0.07609829491150215,
+                "orthogonal_error_identity_residual": 6.352747104407253e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.08011381512643952,
+                "relative_peak_error_lower": 0.06327384712175588,
+                "relative_peak_error_upper": 0.140746033490487,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.08656832138535718,
+                  "analytic_peak_upper": 0.13714765734826015,
+                  "lipschitz_bound": 0.5948981211220271,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.0001579098072839005,
+                  "parseval_mean_square": 0.0001579098072839005,
+                  "maximum_imaginary_residual": 3.510739253708353e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.368153278538232,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.5700924586837752e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.0792766872488115,
+                "relative_peak_error_lower": 0.06676768726884745,
+                "relative_peak_error_upper": 0.12911276248401662,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.10391278624840217,
+                  "analytic_peak_upper": 0.15010827180967262,
+                  "lipschitz_bound": 0.5433366619299966,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.00015462697632810695,
+                  "parseval_mean_square": 0.0001546269763281069,
+                  "maximum_imaginary_residual": 3.795595967549959e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.55633346756472,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.942890293094024e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 3.2828309557935677e-06,
+                "longitudinal_mean_square": 2.4104035941256484e-07,
+                "longitudinal_relative_to_reference_l2": 0.010543277906587566,
+                "divergence_free_band_error_relative_l2": 0.07609829491150215,
+                "orthogonal_error_identity_residual": 6.352747104407253e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 0.00024048065026447676,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.33302040125802246,
+          "band_velocity_error_relative_l2": 0.07682519897438267
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "input_coefficients_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.02234344284700627,
+                "relative_peak_error_lower": 0.013154039426261425,
+                "relative_peak_error_upper": 0.044617360579532736,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.024315313638717036,
+                  "analytic_peak_upper": 0.04561442867849923,
+                  "lipschitz_bound": 0.12525672072901117,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.3520312589369514e-05,
+                  "parseval_mean_square": 1.3520312589369515e-05,
+                  "maximum_imaginary_residual": 7.122764002788978e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019360735007070397,
+                "relative_peak_error_lower": 0.013013041448093626,
+                "relative_peak_error_upper": 0.037563553360822594,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.026623883639953258,
+                  "analytic_peak_upper": 0.0458192794047364,
+                  "lipschitz_bound": 0.1128850810046084,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.015150019893016e-05,
+                  "parseval_mean_square": 1.015150019893016e-05,
+                  "maximum_imaginary_residual": 7.6879277913522e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.36881239043935e-06,
+                "longitudinal_mean_square": 2.8972709763602126e-07,
+                "longitudinal_relative_to_reference_l2": 0.01101740193970063,
+                "divergence_free_band_error_relative_l2": 0.01857107140993575,
+                "orthogonal_error_identity_residual": 4.235164736271502e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.02234344284700627,
+                "relative_peak_error_lower": 0.016939437514785768,
+                "relative_peak_error_upper": 0.034200587605646426,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.024315313638717036,
+                  "analytic_peak_upper": 0.034964871158608135,
+                  "lipschitz_bound": 0.12525672072901117,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.3520312589369515e-05,
+                  "parseval_mean_square": 1.3520312589369515e-05,
+                  "maximum_imaginary_residual": 7.070647034855465e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019360735007070397,
+                "relative_peak_error_lower": 0.016305068013583793,
+                "relative_peak_error_upper": 0.02969517041744086,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.026623883639953258,
+                  "analytic_peak_upper": 0.03622158152234483,
+                  "lipschitz_bound": 0.1128850810046084,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.0151500198930163e-05,
+                  "parseval_mean_square": 1.015150019893016e-05,
+                  "maximum_imaginary_residual": 7.691544293243471e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.36881239043935e-06,
+                "longitudinal_mean_square": 2.8972709763602126e-07,
+                "longitudinal_relative_to_reference_l2": 0.01101740193970063,
+                "divergence_free_band_error_relative_l2": 0.01857107140993575,
+                "orthogonal_error_identity_residual": 4.235164736271502e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 8.558300605065843e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.18935570932513313,
+          "band_velocity_error_relative_l2": 0.021593235950497378
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "input_coefficients_sha256": "7a9525355faa8c131c5e14b8f0d317eee0f22d5fe29de8b1df4a19023c4c19f5",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.02234344284700627,
+                "relative_peak_error_lower": 0.013154039426261425,
+                "relative_peak_error_upper": 0.044617360579532736,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.024315313638717036,
+                  "analytic_peak_upper": 0.04561442867849923,
+                  "lipschitz_bound": 0.12525672072901117,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.3520312589369514e-05,
+                  "parseval_mean_square": 1.3520312589369515e-05,
+                  "maximum_imaginary_residual": 7.122764002788978e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019360735007070397,
+                "relative_peak_error_lower": 0.013013041448093626,
+                "relative_peak_error_upper": 0.037563553360822594,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.026623883639953258,
+                  "analytic_peak_upper": 0.0458192794047364,
+                  "lipschitz_bound": 0.1128850810046084,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.015150019893016e-05,
+                  "parseval_mean_square": 1.015150019893016e-05,
+                  "maximum_imaginary_residual": 7.6879277913522e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.36881239043935e-06,
+                "longitudinal_mean_square": 2.8972709763602126e-07,
+                "longitudinal_relative_to_reference_l2": 0.01101740193970063,
+                "divergence_free_band_error_relative_l2": 0.01857107140993575,
+                "orthogonal_error_identity_residual": 4.235164736271502e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.02234344284700627,
+                "relative_peak_error_lower": 0.016939437514785768,
+                "relative_peak_error_upper": 0.034200587605646426,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.024315313638717036,
+                  "analytic_peak_upper": 0.034964871158608135,
+                  "lipschitz_bound": 0.12525672072901117,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.3520312589369515e-05,
+                  "parseval_mean_square": 1.3520312589369515e-05,
+                  "maximum_imaginary_residual": 7.070647034855465e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019360735007070397,
+                "relative_peak_error_lower": 0.016305068013583793,
+                "relative_peak_error_upper": 0.02969517041744086,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.026623883639953258,
+                  "analytic_peak_upper": 0.03622158152234483,
+                  "lipschitz_bound": 0.1128850810046084,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.0151500198930163e-05,
+                  "parseval_mean_square": 1.015150019893016e-05,
+                  "maximum_imaginary_residual": 7.691544293243471e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.36881239043935e-06,
+                "longitudinal_mean_square": 2.8972709763602126e-07,
+                "longitudinal_relative_to_reference_l2": 0.01101740193970063,
+                "divergence_free_band_error_relative_l2": 0.01857107140993575,
+                "orthogonal_error_identity_residual": 4.235164736271502e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 8.558300605065843e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.18935570932513313,
+          "band_velocity_error_relative_l2": 0.021593235950497378
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "input_coefficients_sha256": "fc7efae5beba24922e63cf632010b8b3aed88342509cb5e65dca32a846c47a2d",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.020129167071109875,
+                "relative_peak_error_lower": 0.012296291302374415,
+                "relative_peak_error_upper": 0.044923288774056484,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.021664503707841842,
+                  "analytic_peak_upper": 0.04377475984897059,
+                  "lipschitz_bound": 0.13002691302166836,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 9.968868901008675e-06,
+                  "parseval_mean_square": 9.968868901008676e-06,
+                  "maximum_imaginary_residual": 5.983842067093855e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.7618730050465237,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019910395649696794,
+                "relative_peak_error_lower": 0.013339681704051365,
+                "relative_peak_error_upper": 0.03986060695504648,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.02601308891490268,
+                  "analytic_peak_upper": 0.04634248937278647,
+                  "lipschitz_bound": 0.11955398292301164,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 9.753355544903389e-06,
+                  "parseval_mean_square": 9.75335554490339e-06,
+                  "maximum_imaginary_residual": 6.135011739898185e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.950053194073012,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 2.1551335610528482e-07,
+                "longitudinal_mean_square": 1.7071166701741036e-08,
+                "longitudinal_relative_to_reference_l2": 0.002805836578361568,
+                "divergence_free_band_error_relative_l2": 0.0190929712467129,
+                "orthogonal_error_identity_residual": 8.007108329513308e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.020129167071109875,
+                "relative_peak_error_lower": 0.01583485129019222,
+                "relative_peak_error_upper": 0.03357810464371293,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.021664503707841842,
+                  "analytic_peak_upper": 0.032719631778406214,
+                  "lipschitz_bound": 0.13002691302166836,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 9.968868901008676e-06,
+                  "parseval_mean_square": 9.968868901008676e-06,
+                  "maximum_imaginary_residual": 6.394878414822212e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.368153278538232,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.5700924586837752e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019910395649696794,
+                "relative_peak_error_lower": 0.016714341403713938,
+                "relative_peak_error_upper": 0.031117634229035546,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.02601308891490268,
+                  "analytic_peak_upper": 0.03617778914384458,
+                  "lipschitz_bound": 0.11955398292301164,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 9.75335554490339e-06,
+                  "parseval_mean_square": 9.75335554490339e-06,
+                  "maximum_imaginary_residual": 6.399806977568258e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.55633346756472,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.942890293094024e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 2.1551335610528482e-07,
+                "longitudinal_mean_square": 1.7071166701741036e-08,
+                "longitudinal_relative_to_reference_l2": 0.002805836578361568,
+                "divergence_free_band_error_relative_l2": 0.0190929712467129,
+                "orthogonal_error_identity_residual": 8.007108329513308e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 6.0444531056615125e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.16695878563424002,
+          "band_velocity_error_relative_l2": 0.019298037981418683
+        }
+      ]
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "input_coefficients_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.005658777177734216,
+                "relative_peak_error_lower": 0.0033148007700608407,
+                "relative_peak_error_upper": 0.011270425291817118,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.0061274273067005655,
+                  "analytic_peak_upper": 0.011522286481593792,
+                  "lipschitz_bound": 0.03172631199840003,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 8.672248873052416e-07,
+                  "parseval_mean_square": 8.672248873052415e-07,
+                  "maximum_imaginary_residual": 1.0623031963411106e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004843080059438474,
+                "relative_peak_error_lower": 0.00326081143931003,
+                "relative_peak_error_upper": 0.00941868047634379,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.006671419950386538,
+                  "analytic_peak_upper": 0.011488720149133446,
+                  "lipschitz_bound": 0.02832977917323,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 6.352283065503434e-07,
+                  "parseval_mean_square": 6.352283065503435e-07,
+                  "maximum_imaginary_residual": 1.2335118693002402e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 2.319965807548946e-07,
+                "longitudinal_mean_square": 1.9932337166645448e-08,
+                "longitudinal_relative_to_reference_l2": 0.0028897731282257425,
+                "divergence_free_band_error_relative_l2": 0.004642694211431566,
+                "orthogonal_error_identity_residual": 6.88214269644119e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.005658777177734216,
+                "relative_peak_error_lower": 0.004268716148615671,
+                "relative_peak_error_upper": 0.008631957771171948,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.0061274273067005655,
+                  "analytic_peak_upper": 0.008824856894147179,
+                  "lipschitz_bound": 0.03172631199840003,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 8.672248873052418e-07,
+                  "parseval_mean_square": 8.672248873052415e-07,
+                  "maximum_imaginary_residual": 1.1525898064783524e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004843080059438474,
+                "relative_peak_error_lower": 0.004085728344868296,
+                "relative_peak_error_upper": 0.007444021387182895,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.006671419950386538,
+                  "analytic_peak_upper": 0.009080070049759992,
+                  "lipschitz_bound": 0.02832977917323,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 6.352283065503435e-07,
+                  "parseval_mean_square": 6.352283065503435e-07,
+                  "maximum_imaginary_residual": 1.2479358346684405e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 2.319965807548946e-07,
+                "longitudinal_mean_square": 1.9932337166645448e-08,
+                "longitudinal_relative_to_reference_l2": 0.0028897731282257425,
+                "divergence_free_band_error_relative_l2": 0.004642694211431566,
+                "orthogonal_error_identity_residual": 6.88214269644119e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 2.1663111412293778e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.09526756225863427,
+          "band_velocity_error_relative_l2": 0.00546858283959163
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "input_coefficients_sha256": "13b08ae93e347651e6fcaad699c5bb389167fcbecb36dccfeccc108bc2f419f6",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.005658777177734216,
+                "relative_peak_error_lower": 0.0033148007700608407,
+                "relative_peak_error_upper": 0.011270425291817118,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.0061274273067005655,
+                  "analytic_peak_upper": 0.011522286481593792,
+                  "lipschitz_bound": 0.03172631199840003,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 8.672248873052416e-07,
+                  "parseval_mean_square": 8.672248873052415e-07,
+                  "maximum_imaginary_residual": 1.0623031963411106e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004843080059438474,
+                "relative_peak_error_lower": 0.00326081143931003,
+                "relative_peak_error_upper": 0.00941868047634379,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.006671419950386538,
+                  "analytic_peak_upper": 0.011488720149133446,
+                  "lipschitz_bound": 0.02832977917323,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 6.352283065503434e-07,
+                  "parseval_mean_square": 6.352283065503435e-07,
+                  "maximum_imaginary_residual": 1.2335118693002402e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 2.319965807548946e-07,
+                "longitudinal_mean_square": 1.9932337166645448e-08,
+                "longitudinal_relative_to_reference_l2": 0.0028897731282257425,
+                "divergence_free_band_error_relative_l2": 0.004642694211431566,
+                "orthogonal_error_identity_residual": 6.88214269644119e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.005658777177734216,
+                "relative_peak_error_lower": 0.004268716148615671,
+                "relative_peak_error_upper": 0.008631957771171948,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.0061274273067005655,
+                  "analytic_peak_upper": 0.008824856894147179,
+                  "lipschitz_bound": 0.03172631199840003,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 8.672248873052418e-07,
+                  "parseval_mean_square": 8.672248873052415e-07,
+                  "maximum_imaginary_residual": 1.1525898064783524e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004843080059438474,
+                "relative_peak_error_lower": 0.004085728344868296,
+                "relative_peak_error_upper": 0.007444021387182895,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.006671419950386538,
+                  "analytic_peak_upper": 0.009080070049759992,
+                  "lipschitz_bound": 0.02832977917323,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 6.352283065503435e-07,
+                  "parseval_mean_square": 6.352283065503435e-07,
+                  "maximum_imaginary_residual": 1.2479358346684405e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 2.319965807548946e-07,
+                "longitudinal_mean_square": 1.9932337166645448e-08,
+                "longitudinal_relative_to_reference_l2": 0.0028897731282257425,
+                "divergence_free_band_error_relative_l2": 0.004642694211431566,
+                "orthogonal_error_identity_residual": 6.88214269644119e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 2.1663111412293778e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.09526756225863427,
+          "band_velocity_error_relative_l2": 0.00546858283959163
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "input_coefficients_sha256": "983ca6ce3fcb376fe1429e7332c6813c407a7654b6d43e17bf314c60caea2fa0",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.005022728610504358,
+                "relative_peak_error_lower": 0.003085973152610507,
+                "relative_peak_error_upper": 0.01112672762140633,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.005437092791882768,
+                  "analytic_peak_upper": 0.010842256718596618,
+                  "lipschitz_bound": 0.031786912611081214,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 6.206885035812846e-07,
+                  "parseval_mean_square": 6.206885035812847e-07,
+                  "maximum_imaginary_residual": 9.604642507950794e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.7618730050465237,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004964814532193695,
+                "relative_peak_error_lower": 0.0033372469246804267,
+                "relative_peak_error_upper": 0.00980018450913135,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.0065078090248834024,
+                  "analytic_peak_upper": 0.011393829175204453,
+                  "lipschitz_bound": 0.028733910319841308,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 6.064574487140082e-07,
+                  "parseval_mean_square": 6.064574487140082e-07,
+                  "maximum_imaginary_residual": 1.1751887238428585e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.950053194073012,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 1.4231054867276007e-08,
+                "longitudinal_mean_square": 1.1400170970366402e-09,
+                "longitudinal_relative_to_reference_l2": 0.0007250808801551266,
+                "divergence_free_band_error_relative_l2": 0.004758609004836148,
+                "orthogonal_error_identity_residual": -1.1994118882018901e-23,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.005022728610504358,
+                "relative_peak_error_lower": 0.003974037761099319,
+                "relative_peak_error_upper": 0.008353237363679773,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.005437092791882768,
+                  "analytic_peak_upper": 0.008139674755239693,
+                  "lipschitz_bound": 0.031786912611081214,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 6.206885035812848e-07,
+                  "parseval_mean_square": 6.206885035812847e-07,
+                  "maximum_imaginary_residual": 9.638384548308656e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.368153278538232,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.5700924586837752e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.004964814532193695,
+                "relative_peak_error_lower": 0.004181500404965606,
+                "relative_peak_error_upper": 0.007698876061718157,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.0065078090248834024,
+                  "analytic_peak_upper": 0.008950819100043927,
+                  "lipschitz_bound": 0.028733910319841308,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 6.064574487140082e-07,
+                  "parseval_mean_square": 6.064574487140082e-07,
+                  "maximum_imaginary_residual": 1.184391971662367e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.55633346756472,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.942890293094024e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 1.4231054867276007e-08,
+                "longitudinal_mean_square": 1.1400170970366402e-09,
+                "longitudinal_relative_to_reference_l2": 0.0007250808801551266,
+                "divergence_free_band_error_relative_l2": 0.004758609004836148,
+                "orthogonal_error_identity_residual": -1.1994118882018901e-23,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 8.23011849507933e-06,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.061607532529912176,
+          "band_velocity_error_relative_l2": 0.0048135332079122725
+        }
+      ]
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "stages": [
+        {
+          "stage": "preMap",
+          "time": 0.002,
+          "input_coefficients_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.02234743665007923,
+                "relative_peak_error_lower": 0.013155235285921545,
+                "relative_peak_error_upper": 0.04462426487921168,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.024317524191822544,
+                  "analytic_peak_upper": 0.04562148726917312,
+                  "lipschitz_bound": 0.1252852312697849,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.352514642740016e-05,
+                  "parseval_mean_square": 1.352514642740016e-05,
+                  "maximum_imaginary_residual": 5.5501593971803576e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019361292906403885,
+                "relative_peak_error_lower": 0.013013371025167371,
+                "relative_peak_error_upper": 0.03756466990130351,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.026624557934406004,
+                  "analytic_peak_upper": 0.04582064133873052,
+                  "lipschitz_bound": 0.1128891249037955,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.0152085259031731e-05,
+                  "parseval_mean_square": 1.0152085259031728e-05,
+                  "maximum_imaginary_residual": 5.625388060782824e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.3730611683684213e-06,
+                "longitudinal_mean_square": 2.901196361662163e-07,
+                "longitudinal_relative_to_reference_l2": 0.011024862910620572,
+                "divergence_free_band_error_relative_l2": 0.018571637027815984,
+                "orthogonal_error_identity_residual": 3.1763735522036263e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.02234743665007923,
+                "relative_peak_error_lower": 0.0169409775124498,
+                "relative_peak_error_upper": 0.03420512087222731,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.024317524191822544,
+                  "analytic_peak_upper": 0.034969505730497834,
+                  "lipschitz_bound": 0.1252852312697849,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.3525146427400163e-05,
+                  "parseval_mean_square": 1.352514642740016e-05,
+                  "maximum_imaginary_residual": 6.008824542769112e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019361292906403885,
+                "relative_peak_error_lower": 0.016305480966745018,
+                "relative_peak_error_upper": 0.029696005087659516,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.026624557934406004,
+                  "analytic_peak_upper": 0.036222599636568265,
+                  "lipschitz_bound": 0.1128891249037955,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.0152085259031733e-05,
+                  "parseval_mean_square": 1.0152085259031728e-05,
+                  "maximum_imaginary_residual": 6.012684207168349e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.3730611683684213e-06,
+                "longitudinal_mean_square": 2.901196361662163e-07,
+                "longitudinal_relative_to_reference_l2": 0.011024862910620572,
+                "divergence_free_band_error_relative_l2": 0.018571637027815984,
+                "orthogonal_error_identity_residual": 3.1763735522036263e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 8.558291961595701e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.18935561370504989,
+          "band_velocity_error_relative_l2": 0.021597530046070613
+        },
+        {
+          "stage": "mapped",
+          "time": 0.002,
+          "input_coefficients_sha256": "b28ad12ab7bb58789999ee5b4827f1e7a9ca6c8f9a59581c7770a5b56dca7b27",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.02234743665007923,
+                "relative_peak_error_lower": 0.013155235285921545,
+                "relative_peak_error_upper": 0.04462426487921168,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.024317524191822544,
+                  "analytic_peak_upper": 0.04562148726917312,
+                  "lipschitz_bound": 0.1252852312697849,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.352514642740016e-05,
+                  "parseval_mean_square": 1.352514642740016e-05,
+                  "maximum_imaginary_residual": 5.5501593971803576e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.8485054553031557,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 8.326672684688674e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019361292906403885,
+                "relative_peak_error_lower": 0.013013371025167371,
+                "relative_peak_error_upper": 0.03756466990130351,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.026624557934406004,
+                  "analytic_peak_upper": 0.04582064133873052,
+                  "lipschitz_bound": 0.1128891249037955,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 1.0152085259031731e-05,
+                  "parseval_mean_square": 1.0152085259031728e-05,
+                  "maximum_imaginary_residual": 5.625388060782824e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 2.045938587543159,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.027082362443533525,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.3730611683684213e-06,
+                "longitudinal_mean_square": 2.901196361662163e-07,
+                "longitudinal_relative_to_reference_l2": 0.011024862910620572,
+                "divergence_free_band_error_relative_l2": 0.018571637027815984,
+                "orthogonal_error_identity_residual": 3.1763735522036263e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.02234743665007923,
+                "relative_peak_error_lower": 0.0169409775124498,
+                "relative_peak_error_upper": 0.03420512087222731,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.024317524191822544,
+                  "analytic_peak_upper": 0.034969505730497834,
+                  "lipschitz_bound": 0.1252852312697849,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.3525146427400163e-05,
+                  "parseval_mean_square": 1.352514642740016e-05,
+                  "maximum_imaginary_residual": 6.008824542769112e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.0223470883534038,
+                  "analytic_peak_upper": 1.4354262718282798,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533528,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 1.6653345369377348e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019361292906403885,
+                "relative_peak_error_lower": 0.016305480966745018,
+                "relative_peak_error_upper": 0.029696005087659516,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.026624557934406004,
+                  "analytic_peak_upper": 0.036222599636568265,
+                  "lipschitz_bound": 0.1128891249037955,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 1.0152085259031733e-05,
+                  "parseval_mean_square": 1.0152085259031728e-05,
+                  "maximum_imaginary_residual": 6.012684207168349e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.2197802205934072,
+                  "analytic_peak_upper": 1.6328594040682831,
+                  "lipschitz_bound": 4.858506452201368,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.027082362443533535,
+                  "parseval_mean_square": 0.027082362443533528,
+                  "maximum_imaginary_residual": 2.355138688025663e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.0842021724855044e-19,
+                "band_divergence_mean_square": 3.3730611683684213e-06,
+                "longitudinal_mean_square": 2.901196361662163e-07,
+                "longitudinal_relative_to_reference_l2": 0.011024862910620572,
+                "divergence_free_band_error_relative_l2": 0.018571637027815984,
+                "orthogonal_error_identity_residual": 3.1763735522036263e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 8.558291961595701e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.18935561370504989,
+          "band_velocity_error_relative_l2": 0.021597530046070613
+        },
+        {
+          "stage": "postSolve",
+          "time": 0.05,
+          "input_coefficients_sha256": "7e7717682125239c4bde471a948bc21072e75ea3bf7400d843044ad4d781e981",
+          "grids": [
+            {
+              "gradient": {
+                "relative_l2": 0.02015928069774775,
+                "relative_peak_error_lower": 0.012294880154656887,
+                "relative_peak_error_upper": 0.045642309140453245,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.021662017444772197,
+                  "analytic_peak_upper": 0.044475397418580455,
+                  "lipschitz_bound": 0.13416187287250494,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 9.998718456795408e-06,
+                  "parseval_mean_square": 9.998718456795408e-06,
+                  "maximum_imaginary_residual": 5.684420548804558e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.7618730050465237,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019931662769519628,
+                "relative_peak_error_lower": 0.013332829924293707,
+                "relative_peak_error_upper": 0.040287145536541426,
+                "error": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 0.025999727579901176,
+                  "analytic_peak_upper": 0.04683838898872321,
+                  "lipschitz_bound": 0.1225488658836755,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 9.774202600355405e-06,
+                  "parseval_mean_square": 9.774202600355405e-06,
+                  "maximum_imaginary_residual": 5.208472444450834e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 32,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.950053194073012,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.1700436903969579,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.1102230246251565e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 2.245158564399989e-07,
+                "longitudinal_mean_square": 1.7237740569625943e-08,
+                "longitudinal_relative_to_reference_l2": 0.002819492483146496,
+                "divergence_free_band_error_relative_l2": 0.019108384885352197,
+                "orthogonal_error_identity_residual": 5.591740940858467e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            },
+            {
+              "gradient": {
+                "relative_l2": 0.02015928069774775,
+                "relative_peak_error_lower": 0.015833034050041835,
+                "relative_peak_error_upper": 0.033936339079034775,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.021662017444772197,
+                  "analytic_peak_upper": 0.03306870743167632,
+                  "lipschitz_bound": 0.13416187287250494,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 9.99871845679541e-06,
+                  "parseval_mean_square": 9.998718456795408e-06,
+                  "maximum_imaginary_residual": 5.963396522538416e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.9744335520299401,
+                  "analytic_peak_upper": 1.368153278538232,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.5700924586837752e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "curl": {
+                "relative_l2": 0.019931662769519628,
+                "relative_peak_error_lower": 0.016705756267379104,
+                "relative_peak_error_upper": 0.0313251572712528,
+                "error": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 0.025999727579901176,
+                  "analytic_peak_upper": 0.03641905828431219,
+                  "lipschitz_bound": 0.1225488658836755,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 9.774202600355409e-06,
+                  "parseval_mean_square": 9.774202600355405e-06,
+                  "maximum_imaginary_residual": 5.827203932064065e-17,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                },
+                "reference": {
+                  "sample_count_per_axis": 64,
+                  "sampled_peak_lower": 1.1626137410564281,
+                  "analytic_peak_upper": 1.55633346756472,
+                  "lipschitz_bound": 4.6308066543271815,
+                  "covering_radius": 0.08502184519847895,
+                  "grid_mean_square": 0.024603351750080764,
+                  "parseval_mean_square": 0.02460335175008076,
+                  "maximum_imaginary_residual": 1.942890293094024e-16,
+                  "arithmetic_scope": "Analytical enclosure formula evaluated in floating point; no interval-arithmetic certificate."
+                }
+              },
+              "helmholtz": {
+                "reference_maximum_divergence_coefficient": 1.734723475976807e-18,
+                "band_divergence_mean_square": 2.245158564399989e-07,
+                "longitudinal_mean_square": 1.7237740569625943e-08,
+                "longitudinal_relative_to_reference_l2": 0.002819492483146496,
+                "divergence_free_band_error_relative_l2": 0.019108384885352197,
+                "orthogonal_error_identity_residual": 5.591740940858467e-22,
+                "scope": "Removing longitudinal modes gives the L2-nearest divergence-free polynomial in this band; this is not a CFD correction or evidence about omitted modes."
+              }
+            }
+          ],
+          "discarded_p0_velocity_mass": 5.942655287707963e-05,
+          "discarded_p0_velocity_norm_relative_to_reference": 0.16554689537803793,
+          "band_velocity_error_relative_l2": 0.0193152766169495
+        }
+      ]
+    }
+  ],
+  "same_time_map_identities": [
+    {
+      "case_id": "n16-dt0.001",
+      "preMap_mapped_diagnostics_exact_identity": true
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "preMap_mapped_diagnostics_exact_identity": true
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "preMap_mapped_diagnostics_exact_identity": true
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "preMap_mapped_diagnostics_exact_identity": true
+    }
+  ],
+  "limits": [
+    "Finite projection removes all outside-cube modes; discarded velocity mass is separately reported, and original cell averages are generally not preserved.",
+    "These derivatives belong to the named smooth projection, not native Gauss tensors or ordinary P0 derivatives.",
+    "Analytic peak-enclosure formulas are evaluated in floating point, without a rounding-certified interval implementation.",
+    "Helmholtz projection is a diagnostic nearest divergence-free band polynomial, not an executed solver correction.",
+    "No new retrospective PASS/FAIL threshold, original full AMR gate completion or physical inference follows."
+  ],
+  "quality_verdict": "NO_NEW_THRESHOLD_OR_ORIGINAL_FULL_FIELD_GATE_COMPLETION"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "INTERIOR_GAUSS_GRADIENT_AND_CURL_RECONSTRUCTED",
+  "protocol": "protocols/high-gradient-of13-amr-same-run-map-v8-n128.json",
+  "archive_sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100",
+  "method": "Finite-volume Gauss gradient. Mapped stage uses captured face-interpolated Uf and oriented area vectors; uniform preMap stage can be replayed without face CSVs using centered periodic differences, equivalent to arithmetic-midpoint Gauss interpolation on a uniform orthogonal mesh.",
+  "reference": "Analytic MMS point gradient and vorticity evaluated at cell centers.",
+  "boundary_treatment": "A shared physical interior mask excludes centers within two base-grid widths (0.098174770424681035) of any periodic boundary, aligning the retained coarse-cell and refined-cell faces for both preMap and mapped stages; paired cyclic boundary faces are absent from the snapshot. Metrics are volume weighted over this same physical subdomain.",
+  "stages": [
+    {
+      "stage": "preMap",
+      "time": "0.002",
+      "cells": 2097152,
+      "gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+      "interior_cells": 1906624,
+      "interior_volume_fraction": 0.9091491699218756,
+      "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.006083641668740466,
+      "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.005901427864591952,
+      "gauss_gradient_max_abs_component_error_interior": 0.006551515829501975,
+      "gauss_vorticity_max_abs_component_error_interior": 0.006431611958304551
+    },
+    {
+      "stage": "mapped",
+      "time": "0.002",
+      "cells": 6949888,
+      "gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+      "interior_cells": 6052192,
+      "interior_volume_fraction": 0.9091491699218757,
+      "interior_gauss_gradient_relative_l2_vs_exact_point_gradient": 0.05247217916349433,
+      "interior_gauss_vorticity_relative_l2_vs_exact_point_vorticity": 0.046854174427829826,
+      "gauss_gradient_max_abs_component_error_interior": 0.048104217076811145,
+      "gauss_vorticity_max_abs_component_error_interior": 0.042229039100450644
+    }
+  ],
+  "same_parent_face_audit": {
+    "internal_faces": 20784264,
+    "same_parent_internal_faces": 8318976,
+    "same_parent_internal_face_fraction": 0.4002535764557263,
+    "same_parent_Uf_max_abs_difference_from_injected_parent_value": 0.0,
+    "interpretation": "Same-parent child interfaces carry the injected constant parent value; these interfaces introduce no subcell slope in mapped U."
+  },
+  "interpretation_limits": [
+    "This is an interior Gauss reconstruction from captured face Uf, not necessarily the solver's configured or stored grad(U) field.",
+    "The exact reference is sampled at cell centers, not volume averaged; this is not a cell-integrated gradient norm.",
+    "Periodic-boundary cells are excluded because paired cyclic boundary faces are not present in the face snapshot.",
+    "A discrete gradient/vorticity discrepancy is not evidence of blow-up, particle alignment, phase transition, or constitutive-viscosity change."
+  ]
+}

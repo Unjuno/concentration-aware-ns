@@ -1,0 +1,72 @@
+{
+  "status": "ENCLOSED_UNIFORM_IDEALIZED_BALL_ERROR_LOWER_BOUND",
+  "case_id": "n32-dt0.001",
+  "numerical_source_commit": "d4f10ead169e40006a438346c85a6b3a6054b40a",
+  "protocol_sha256": "b4211850d3ace2878997fee75e1f6b0419b4e5d782738be526bb728b1f9d23d6",
+  "witness_sha256": "61b83d118067cc7f9a824489b6035bc94b77c6416fa3bbb28afa7a1e8399bbb9",
+  "neighborhood_sha256": "688309b8149a8d26fc3cb6c1a0e6f97d0a6236de9c609fdaebb0b093353bea67",
+  "precision_bits": 128,
+  "radius": {
+    "lower_rational": "1/4096",
+    "upper_rational": "1/4096",
+    "ball": "0.00024414062500000000000000000000000000000",
+    "display_lower": 0.000244140625,
+    "display_upper": 0.000244140625
+  },
+  "reference_box": [
+    {
+      "lower_rational": "34153105123252661/9007199254740992",
+      "upper_rational": "34157503169771957/9007199254740992",
+      "ball": "[3.792 +/- 2.45e-4]",
+      "display_lower": 3.79175636702785,
+      "display_upper": 3.7922446482787593
+    },
+    {
+      "lower_rational": "15881850569909639/144115188075855872",
+      "upper_rational": "15952219314218375/144115188075855872",
+      "ball": "[0.110 +/- 6.91e-4]",
+      "display_lower": 0.11020247610231154,
+      "display_upper": 0.11069075735322104
+    },
+    {
+      "lower_rational": "27687909189668993/4503599627370496",
+      "upper_rational": "27690108212928641/4503599627370496",
+      "ball": "[6.148 +/- 4.40e-4]",
+      "display_lower": 6.147950857220195,
+      "display_upper": 6.148439138471105
+    }
+  ],
+  "gradient_error_lower": {
+    "lower_rational": "143950186547817956851480436101912368517/170141183460469231731687303715884105728",
+    "upper_rational": "143950186547817956851480436101912368517/170141183460469231731687303715884105728",
+    "ball": "[0.84606315543387226637749505525700444828 +/- 2.64e-39]",
+    "display_lower": 0.8460631554338722,
+    "display_upper": 0.8460631554338722
+  },
+  "curl_error_lower": {
+    "lower_rational": "315375042681488283909107678924010849009/2722258935367507707706996859454145691648",
+    "upper_rational": "315375042681488283909107678924010849009/2722258935367507707706996859454145691648",
+    "ball": "[0.11585049408200852664013966028615627954 +/- 1.81e-39]",
+    "display_lower": 0.11585049408200852,
+    "display_upper": 0.11585049408200852
+  },
+  "gradient_relative_reference_peak_error_lower": {
+    "lower_rational": "293731305548626211827344498433179915867/340282366920938463463374607431768211456",
+    "upper_rational": "293731305548626211827344498433179915867/340282366920938463463374607431768211456",
+    "ball": "[0.86319872583016336379232499055273355083 +/- 2.97e-39]",
+    "display_lower": 0.8631987258301633,
+    "display_upper": 0.8631987258301633
+  },
+  "curl_relative_reference_peak_error_lower": {
+    "lower_rational": "270149793869253990613454865043980844773/2722258935367507707706996859454145691648",
+    "upper_rational": "270149793869253990613454865043980844773/2722258935367507707706996859454145691648",
+    "ball": "[0.099237361427847970456276859867111172458 +/- 4.14e-40]",
+    "display_lower": 0.09923736142784798,
+    "display_upper": 0.09923736142784798
+  },
+  "limits": [
+    "Componentwise interval infima on a containing box, not sharp minima",
+    "Certified idealized ball only; native floating search and global continuity remain separate",
+    "No CFD evolution, original acceptance upgrade or physical claim"
+  ]
+}

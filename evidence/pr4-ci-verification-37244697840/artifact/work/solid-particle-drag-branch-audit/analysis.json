@@ -1,0 +1,59 @@
+{
+  "status": "CONDITIONAL_DRAG_BRANCH_AUDIT",
+  "analysis_source_commit": "83585008e89c540df4a16a461eb2226328492b34",
+  "consumer_record_sha256": "32fabc9955a8bd525b7f88cc73c0fcb0689bfe1ac78890f02c16ec59b9d57de8",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "precision_bits": 128,
+  "assumptions": {
+    "nu": 1,
+    "diameter": 1,
+    "density_ratio": 1,
+    "dt": 1,
+    "old_particle_velocity": 0,
+    "gravity": 0,
+    "carrier_direction": "one positive coordinate axis"
+  },
+  "idealized_branch_jump": {
+    "lower_rational": "280307817513821319598576962281769594421/89202980794122492566142873090593446023921664",
+    "upper_rational": "280307817513821319598576962281769595437/89202980794122492566142873090593446023921664",
+    "ball": "[3.14235931376287102532641394265376829e-6 +/- 8.14e-42]",
+    "display_lower": 3.142359313762871e-06,
+    "display_upper": 3.142359313762871e-06
+  },
+  "python_transcription_controls": {
+    "source": {
+      "input_difference": 1.734723475976807e-18,
+      "output_difference": 3.142359313765622e-06,
+      "two_float_quotient": 1811446814021.0
+    },
+    "continuous": {
+      "input_difference": 1.734723475976807e-18,
+      "output_difference": 1.734723475976807e-18,
+      "two_float_quotient": 1.0
+    },
+    "constant": {
+      "input_difference": 1.734723475976807e-18,
+      "output_difference": 3.469446951953614e-18,
+      "two_float_quotient": 2.0
+    }
+  },
+  "exact_radial_sensitivity_controls": 20,
+  "radial_formula": "x/(1+x)+p*theta*x/(1+x)^2",
+  "positive_margin_formula": "(1+(1-p*theta)*x)/(1+x)^2",
+  "viscosity_elasticity_formula": "(1+(1-p)*z)/(1+z) = 1-p*theta",
+  "viscosity_elasticity_bounds": {
+    "lower_limit": "1409626683366965/4503599627370496",
+    "upper_limit": "1"
+  },
+  "symbolic_family_assumptions": "Fixed positive density/diameter/viscosity, zero body force; within one Reynolds branch; x=dt*Dc, z=0.15*Re^p, theta=z/(1+z)",
+  "environment": {
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+  },
+  "limits": [
+    "Body-force-free fixed positive properties; actual trajectories/fields not executed",
+    "Real branch limits with decoded binary64 literals; Python two-float quotients are not continuous derivatives",
+    "Continuous and constant variants are negative controls, not production fixes",
+    "No native OpenFOAM binary equivalence, physical transition, viscosity law or violated contract claim"
+  ]
+}

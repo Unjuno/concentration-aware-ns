@@ -1,0 +1,80 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v6-n32-dt0005",
+  "status": "additive n=32 fixed-map-time temporal-step control; exploratory, no quality threshold",
+  "runner": "tools.run_amr_stage_snapshot_v4",
+  "reproduction": {
+    "run": "CANS_AMR_STAGE_PROTOCOL=protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json CANS_AMR_STAGE_RUN_ROOT=work/of13-amr-same-run-map-v6-n32-dt0005 CANS_AMR_STAGE_EVIDENCE=evidence/of13-amr-same-run-map-v6-n32-dt0005 python3 -m tools.run_amr_stage_snapshot_v4",
+    "analyze": "CANS_AMR_STAGE_PROTOCOL=protocols/high-gradient-of13-amr-same-run-map-v6-n32-dt0005.json CANS_AMR_STAGE_EVIDENCE=evidence/of13-amr-same-run-map-v6-n32-dt0005 python3 -m tools.analyze_amr_same_run_map"
+  },
+  "target": {
+    "implementation": "OpenFOAM Foundation 13",
+    "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "container_image_id": "sha256:dd2b2eb63b12896a9b6e7a46563ed96b26d1c78c3e3749536d40d456895f722b",
+    "platform": "linux/arm64"
+  },
+  "case": {
+    "inherits": "protocols/high-gradient-of13-amr-stage-snapshot-v3.json",
+    "initial_grid_cells_per_axis": 32,
+    "initial_cells": 32768,
+    "max_cells": 120000,
+    "max_refinement": 2,
+    "delta_t": 0.0005,
+    "end_time": 0.0025,
+    "refine_interval": 4,
+    "frequency": 4,
+    "expected_mapped_cells": 118784,
+    "predicted_sensor_candidates": 10368,
+    "predicted_buffered_candidates": 12288,
+    "pre_map_time": 0.002,
+    "solver_stage_time": 0.0025,
+    "case_directory": "amr-n32-dt0005-cap120000",
+    "archive_name": "amr-stage-snapshot-n32-dt0005.tar.gz",
+    "container_name": "cans-amr-same-run-map-v6-n32-dt0005",
+    "candidate_prediction": {
+      "method": "tools.predict_amr_grid_candidates using analytic g(y)g(z), strict thresholds 0.01<sensor<1.1, and one periodic six-face-neighbor buffer layer",
+      "status": "prediction only; actual selected count must match captured Foundation log and mapped topology",
+      "predicted_cells_after_one_level": 118784
+    },
+    "temporal_comparison": {
+      "baseline_protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+      "baseline_delta_t": 0.001,
+      "fixed_first_map_time": 0.002,
+      "baseline_refine_interval": 2,
+      "this_refine_interval": 4,
+      "interpretation": "Compares two discrete pre-map evolutions sampled at the same first-map time. It is not an isolated formal order study because changing delta_t also changes the number of steps and refineInterval."
+    }
+  },
+  "new_measurement": {
+    "preMap": "write C, V, U, p, face centers/areas/owners/neighbours/phi/Uf immediately before mesh_.update() at t=0.002",
+    "mapped": "same fields immediately after mesh_.update() at t=0.002",
+    "equation_changes": false,
+    "same_run_pair_required": true,
+    "temporal_control": "Repeat n=32 first-map capture at delta_t=0.0005 with refineInterval=4 so first adaptation still occurs at t=0.002; mapped snapshot same time, later stages at t=0.0025."
+  },
+  "acceptance": {
+    "measurement_gate": "Exactly six named stage events; preMap has 32768 cells and mapped has 118784 cells, both at t=0.002; solver-stage snapshots are at t=0.0025; solver exits zero with End; LD_DEBUG confirms instrumented library load.",
+    "analysis": [
+      "Compare mapped cell values against piecewise-constant injection from this run's preMap field using geometrically containing uniform-grid parents.",
+      "Check parent-child volume closure, cell counts, levels, domain integral and weighted relative L2/max absolute differences.",
+      "Compare stored parent and mapped child DOFs with the analytic finite-volume average of the smooth MMS using the independently quadrature-checked closed form; label this a DOF diagnostic, not an assumed OpenFOAM storage definition or a continuous reconstruction norm.",
+      "Decompose point-sample error algebraically into inherited parent-center error, exact-reference center shift, and cross term; do not label this finite-volume truncation error.",
+      "Compare mapped and exact-MMS cell-center samples only as point-sample diagnostics; keep finite-volume cell-average accuracy claims separate.",
+      "Compare preMap and mapped face flux/divergence only after matching geometric face relationships; no assumption that face indices persist across remapping."
+    ],
+    "quality_gate": "None. The run is a mapping-mechanism diagnostic, not a convergence or solver-quality pass/fail."
+  },
+  "limits": [
+    "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
+    "A single n=32 event supplements but does not establish an AMR convergence study or general guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time matches the prior n=16 first-refinement diagnostic and is therefore exploratory, not blinded or preregistered before all prior observations.",
+    "This is a fixed-first-map-time temporal-step control, not a formal temporal convergence order study; halving delta_t doubles the pre-map steps and refineInterval is adjusted to preserve the adaptation time."
+  ],
+  "limitations": [
+    "The candidate count is predicted independently from the structured-grid analytic sensor and source-inspected periodic face-neighbor buffering; the actual Foundation selection log and captured mapped count must confirm it.",
+    "A single n=32 event supplements but does not establish an AMR convergence study or general guarantee.",
+    "The packaged solver stack is not proven source-equivalent; only the instrumented incompressibleFluid module is compiled from the pinned source commit and library load is recorded.",
+    "The trigger time matches the prior n=16 first-refinement diagnostic and is therefore exploratory, not blinded or preregistered before all prior observations.",
+    "This is a fixed-first-map-time temporal-step control, not a formal temporal convergence order study; halving delta_t doubles the pre-map steps and refineInterval is adjusted to preserve the adaptation time."
+  ]
+}

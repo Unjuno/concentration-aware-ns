@@ -1,0 +1,96 @@
+{
+  "format": "zstandard-compressed compact AMR review tarball split into GitHub-compatible parts",
+  "archive": "amr-stage-snapshot-n128-review.tar.gz.zst",
+  "archive_bytes": 1107717919,
+  "archive_sha256": "68f635f06c1a00bca533e30556deeba472dd25fa91c24b1cc8ab563607a51da9",
+  "source_tar_gz": "amr-stage-snapshot-n128-review.tar.gz",
+  "source_tar_gz_sha256": "e08e17eaf9789bf5c7cc9d8c368ec48dae2d2104e5d4be457cd39b4d955721bb",
+  "source_tar_gz_bytes": 1158891275,
+  "parts": [
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-00",
+      "bytes": 78643200,
+      "sha256": "90634c86f1b327daeb51eceaf5d53ccfdfc57329396989663c8a89d033999dc6"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-01",
+      "bytes": 78643200,
+      "sha256": "941cbae54274588baff2e7249171eaad6b94d4ccab62f399a69aea30e303acf9"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-02",
+      "bytes": 78643200,
+      "sha256": "6b6f97790f1b87073c2246df6338189d76d30a1ac0b59e5161eba97a7684d97c"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-03",
+      "bytes": 78643200,
+      "sha256": "97077975d2945527ca0d1fd16902c22b36849172849cf3eac60371f68008d8d4"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-04",
+      "bytes": 78643200,
+      "sha256": "24f8821917b373ac908d9bce19023811f0bf6d8b495f29e1bb1ac597d06abefc"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-05",
+      "bytes": 78643200,
+      "sha256": "6f8136e4655ba2259b3b15266b4440676fb54586deea5f331c90df0647c5b978"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-06",
+      "bytes": 78643200,
+      "sha256": "a8d6305feab5915ed1384190cd216ef0108f66a57a38631f8f3bb31abef5b6fe"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-07",
+      "bytes": 78643200,
+      "sha256": "5e9c5a8ceb1438e653c4767eea3fb2a29c7b01ce15495a2a0d248b77e0d8f124"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-08",
+      "bytes": 78643200,
+      "sha256": "a9a71095238e5be666bf441879e1b157d7bf382aad8eab87ad85168c2354c25e"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-09",
+      "bytes": 78643200,
+      "sha256": "e8812fc4acdec3d3731a3437355d3a4c5020815388b3e12b04e49f877cb2bf1a"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-10",
+      "bytes": 78643200,
+      "sha256": "514c4bb40dae334881fbb410ae6ec1fb5f9410aeacdb524b5f4d5b28e796baf1"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-11",
+      "bytes": 78643200,
+      "sha256": "9c1a9373d8ce443f50e63829604651221cdf1f77350ebbe485c6ec5b1273785f"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-12",
+      "bytes": 78643200,
+      "sha256": "d272fd5dac11e8ea68101a1845f005a27f40d72750aa7fb56383e6daae99ab42"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-13",
+      "bytes": 78643200,
+      "sha256": "8f1052682f84d30dc6effb1abf793e1e3c1be8d0ef86eeed98e656eb12839a9a"
+    },
+    {
+      "path": "amr-stage-snapshot-n128-review.tar.gz.zst.part-14",
+      "bytes": 6713119,
+      "sha256": "73f388cdd622d224e1b57f478b71f769f5e2f4ad196b6999b1fffb2052134b0a"
+    }
+  ],
+  "reassemble": "cat amr-stage-snapshot-n128-review.tar.gz.zst.part-* > amr-stage-snapshot-n128-review.tar.gz.zst",
+  "decompress": "zstd -d amr-stage-snapshot-n128-review.tar.gz.zst -o amr-stage-snapshot-n128-review.tar.gz",
+  "distribution": {
+    "type": "GitHub release assets (the data parts are kept out of Git history to keep repository clones smaller)",
+    "repository": "Unjuno/concentration-aware-ns",
+    "tag": "of13-amr-same-run-map-v8-n128",
+    "release_url": "https://github.com/Unjuno/concentration-aware-ns/releases/tag/of13-amr-same-run-map-v8-n128",
+    "download_command": "gh release download of13-amr-same-run-map-v8-n128 --repo Unjuno/concentration-aware-ns --dir evidence/of13-amr-same-run-map-v8-n128",
+    "assets": "All 15 part files listed above; concatenate in order and run the recorded reconstruction command."
+  }
+}

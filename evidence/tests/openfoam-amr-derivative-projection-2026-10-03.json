@@ -1,0 +1,414 @@
+{
+  "status": "PASS_ARCHIVED_DERIVATIVE_PROJECTION_REPLAY",
+  "identity": "||G_h-Du||^2 = ||G_h-P_h(Du)||^2 + ||P_h(Du)-Du||^2",
+  "representation": "Arbitrary constant gradient tensor per cube, and its constant curl; P_h is the exact volume-average projection on those cubes.",
+  "reference_integration": "Finite Fourier products with analytic sinc interval factors, evaluated in floating point; not interval arithmetic.",
+  "support": {
+    "cube_region": "[pi/4,7*pi/4]^3",
+    "domain_volume_fraction": 0.421875
+  },
+  "source_sha256": {
+    "tools/audit_amr_derivative_projection.py": "1e9a817a32296d4545050c395c2190f31f6fa625aef01970955c88937453e6bb",
+    "tools/amr_derivative_projection.py": "e20c2443dbd0e27c16ec5ce203ecb971f6336299654cc01dd9d61a91a03d9770",
+    "tools/analyze_amr_gauss_gradient.py": "050dd8f181b72d6997c3261a24a602906e26ea6c36d4b839909351f59b18d7a8",
+    "tools/compare_amr_resolution_volume_integrated.py": "ef00f3fd33ca9202983363e631a09940ae2dabf46dea1e334a3cf1327943e49e"
+  },
+  "independent_quadrature_artifact": {
+    "path": "evidence/of13-amr-volume-integrated-comparison-2026-10-02.json",
+    "sha256": "40235b90c28a701548c101c00cd333b5bc44dfd6c91b9ffb9bd22f7665ed1366"
+  },
+  "cases": [
+    {
+      "n": 16,
+      "archive_sha256": "178d764fd5a4d519d3cc1ea2692d8fde9c2318a4e85910cfb36854e9b95869ed",
+      "manifest_sha256": "4cee2516a3ed92fadaa45ecd07dd53b17706a0eb10ddb6525ceaf8286d5c95d4",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v4.json",
+      "protocol_sha256": "909a7b9b495cb3938e584b4edf297052c942fa26de1ab5c7f06bc8cfecca878d",
+      "time": 0.002,
+      "frequency": 4,
+      "rows": [
+        {
+          "stage": "preMap",
+          "operator": "Gauss",
+          "cells": 4096,
+          "retained_cells": 1728,
+          "integrated_physical_volume": 104.64618379601187,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838183,
+              "exact_cell_mean_integrated_energy": 0.05968779281652098,
+              "mean_mismatch_integrated_energy": 0.0035645898647841314,
+              "projection_floor_integrated_energy": 0.02225874645186085,
+              "mean_mismatch_relative_l2": 0.20856406138227307,
+              "projection_floor_relative_l2": 0.5211767610669209,
+              "p0_total_relative_l2": 0.5613592289937656,
+              "projection_fraction_of_squared_error": 0.8619624582557716
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.0461737502945975,
+              "exact_cell_mean_integrated_energy": 0.03264326042598974,
+              "mean_mismatch_integrated_energy": 0.0027578512549536467,
+              "projection_floor_integrated_energy": 0.013530489868607762,
+              "mean_mismatch_relative_l2": 0.24439248333682662,
+              "projection_floor_relative_l2": 0.5413263719171741,
+              "p0_total_relative_l2": 0.5939376455862617,
+              "projection_fraction_of_squared_error": 0.8306855661952978
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.5613592289937656,
+              "absolute_difference": 0.0
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.5939376455862617,
+              "absolute_difference": 0.0
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "Gauss",
+          "cells": 16640,
+          "retained_cells": 4416,
+          "integrated_physical_volume": 104.64618379601185,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838175,
+              "exact_cell_mean_integrated_energy": 0.07576100860885568,
+              "mean_mismatch_integrated_energy": 0.01793541316297352,
+              "projection_floor_integrated_energy": 0.006185530659526067,
+              "mean_mismatch_relative_l2": 0.46783249511662184,
+              "projection_floor_relative_l2": 0.2747408093373672,
+              "p0_total_relative_l2": 0.542540096031985,
+              "projection_fraction_of_squared_error": 0.2564381686323698
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.04617375029459745,
+              "exact_cell_mean_integrated_energy": 0.042380104859001885,
+              "mean_mismatch_integrated_energy": 0.012674217844701893,
+              "projection_floor_integrated_energy": 0.003793645435595565,
+              "mean_mismatch_relative_l2": 0.5239176250864612,
+              "projection_floor_relative_l2": 0.2866360392304304,
+              "p0_total_relative_l2": 0.5972017220855501,
+              "projection_fraction_of_squared_error": 0.23036658557484943
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.5425400960319853,
+              "absolute_difference": 2.220446049250313e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.5972017220855502,
+              "absolute_difference": 1.1102230246251565e-16
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "least_squares",
+          "cells": 16640,
+          "retained_cells": 4416,
+          "integrated_physical_volume": 104.64618379601185,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838175,
+              "exact_cell_mean_integrated_energy": 0.07576100860885568,
+              "mean_mismatch_integrated_energy": 0.01798359641411857,
+              "projection_floor_integrated_energy": 0.006185530659526067,
+              "mean_mismatch_relative_l2": 0.46846048654382133,
+              "projection_floor_relative_l2": 0.2747408093373672,
+              "p0_total_relative_l2": 0.5430817063464994,
+              "projection_fraction_of_squared_error": 0.2559269369008827
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.04617375029459745,
+              "exact_cell_mean_integrated_energy": 0.042380104859001885,
+              "mean_mismatch_integrated_energy": 0.012724602919662738,
+              "projection_floor_integrated_energy": 0.003793645435595565,
+              "mean_mismatch_relative_l2": 0.5249579829956126,
+              "projection_floor_relative_l2": 0.2866360392304304,
+              "p0_total_relative_l2": 0.5981146235434566,
+              "projection_fraction_of_squared_error": 0.2296639058818802
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.5430817063464997,
+              "absolute_difference": 2.220446049250313e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.5981146235434567,
+              "absolute_difference": 1.1102230246251565e-16
+            }
+          }
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "archive_sha256": "e4a0ec53e9a70f876d9b60a553375097c45854cfa59ed7b9e7dab88ed171c8f1",
+      "manifest_sha256": "eca058ec1f29585e2e4d9fa51be5ae69d0c75540e55b7c8a7dccc9dac36e44f1",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v5-n32.json",
+      "protocol_sha256": "56831c3f34fceaaa45e1395ec850b4b96210aed5911164d6f007d9f9ed2ebf99",
+      "time": 0.002,
+      "frequency": 4,
+      "rows": [
+        {
+          "stage": "preMap",
+          "operator": "Gauss",
+          "cells": 32768,
+          "retained_cells": 13824,
+          "integrated_physical_volume": 104.64618379601188,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838179,
+              "exact_cell_mean_integrated_energy": 0.07578593812905234,
+              "mean_mismatch_integrated_energy": 0.0003095321964033557,
+              "projection_floor_integrated_energy": 0.006160601139329452,
+              "mean_mismatch_relative_l2": 0.06145929951176483,
+              "projection_floor_relative_l2": 0.274186606965203,
+              "p0_total_relative_l2": 0.2809902861943229,
+              "projection_fraction_of_squared_error": 0.952159842720104
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.04617375029459747,
+              "exact_cell_mean_integrated_energy": 0.042389718226582204,
+              "mean_mismatch_integrated_energy": 0.0002458887236261733,
+              "projection_floor_integrated_energy": 0.0037840320680152667,
+              "mean_mismatch_relative_l2": 0.07297460137295873,
+              "projection_floor_relative_l2": 0.2862726307950408,
+              "p0_total_relative_l2": 0.29542733723854325,
+              "projection_fraction_of_squared_error": 0.9389842291351786
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.28099028619432354,
+              "absolute_difference": 6.106226635438361e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.2954273372385439,
+              "absolute_difference": 6.661338147750939e-16
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "Gauss",
+          "cells": 118784,
+          "retained_cells": 31296,
+          "integrated_physical_volume": 104.64618379601187,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838183,
+              "exact_cell_mean_integrated_energy": 0.08034641571650808,
+              "mean_mismatch_integrated_energy": 0.004761039019537009,
+              "projection_floor_integrated_energy": 0.00160012355187375,
+              "mean_mismatch_relative_l2": 0.2410380258488796,
+              "projection_floor_relative_l2": 0.1397370112307145,
+              "p0_total_relative_l2": 0.2786140021836986,
+              "projection_fraction_of_squared_error": 0.2515457723192381
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.0461737502945975,
+              "exact_cell_mean_integrated_energy": 0.045193016982755366,
+              "mean_mismatch_integrated_energy": 0.003530689557623819,
+              "projection_floor_integrated_energy": 0.000980733311842133,
+              "mean_mismatch_relative_l2": 0.2765235932083407,
+              "projection_floor_relative_l2": 0.1457397057919873,
+              "p0_total_relative_l2": 0.31257856523630484,
+              "projection_fraction_of_squared_error": 0.21738891259338525
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.27861400218369875,
+              "absolute_difference": 1.6653345369377348e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.31257856523630534,
+              "absolute_difference": 4.996003610813204e-16
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "least_squares",
+          "cells": 118784,
+          "retained_cells": 31296,
+          "integrated_physical_volume": 104.64618379601187,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838183,
+              "exact_cell_mean_integrated_energy": 0.08034641571650808,
+              "mean_mismatch_integrated_energy": 0.004792171345412967,
+              "projection_floor_integrated_energy": 0.00160012355187375,
+              "mean_mismatch_relative_l2": 0.2418248128338228,
+              "projection_floor_relative_l2": 0.1397370112307145,
+              "p0_total_relative_l2": 0.27929495593333986,
+              "projection_fraction_of_squared_error": 0.25032067161872346
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.0461737502945975,
+              "exact_cell_mean_integrated_energy": 0.045193016982755366,
+              "mean_mismatch_integrated_energy": 0.0035518521438489097,
+              "projection_floor_integrated_energy": 0.000980733311842133,
+              "mean_mismatch_relative_l2": 0.27735108192829167,
+              "projection_floor_relative_l2": 0.1457397057919873,
+              "p0_total_relative_l2": 0.3133108432389932,
+              "projection_fraction_of_squared_error": 0.21637392641119205
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.27929495593334,
+              "absolute_difference": 1.1102230246251565e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.3133108432389937,
+              "absolute_difference": 4.996003610813204e-16
+            }
+          }
+        }
+      ]
+    },
+    {
+      "n": 64,
+      "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+      "manifest_sha256": "d4bd2ead8633bdb06be83c2c0cd419608ceb2f4b6903cdafc1ddd3a64efaaf5b",
+      "protocol": "protocols/high-gradient-of13-amr-same-run-map-v7-n64.json",
+      "protocol_sha256": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+      "time": 0.002,
+      "frequency": 4,
+      "rows": [
+        {
+          "stage": "preMap",
+          "operator": "Gauss",
+          "cells": 262144,
+          "retained_cells": 110592,
+          "integrated_physical_volume": 104.64618379601188,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838183,
+              "exact_cell_mean_integrated_energy": 0.08036621096628431,
+              "mean_mismatch_integrated_energy": 2.132589279720491e-05,
+              "projection_floor_integrated_energy": 0.0015803283020975195,
+              "mean_mismatch_relative_l2": 0.01613200330044708,
+              "projection_floor_relative_l2": 0.13886997275576085,
+              "p0_total_relative_l2": 0.13980382993205656,
+              "projection_fraction_of_squared_error": 0.9866850829191587
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.04617375029459751,
+              "exact_cell_mean_integrated_energy": 0.045200486957820925,
+              "mean_mismatch_integrated_energy": 1.6760139763663664e-05,
+              "projection_floor_integrated_energy": 0.0009732633367765878,
+              "mean_mismatch_relative_l2": 0.019052029397940467,
+              "projection_floor_relative_l2": 0.14518361530526097,
+              "p0_total_relative_l2": 0.14642835100241344,
+              "projection_fraction_of_squared_error": 0.9830709673449018
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.1398038299320574,
+              "absolute_difference": 8.326672684688674e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.1464283510024133,
+              "absolute_difference": 1.3877787807814457e-16
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "Gauss",
+          "cells": 901888,
+          "retained_cells": 235584,
+          "integrated_physical_volume": 104.64618379601187,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838182,
+              "exact_cell_mean_integrated_energy": 0.08154051064816037,
+              "mean_mismatch_integrated_energy": 0.0012034993361503307,
+              "projection_floor_integrated_energy": 0.00040602862022144637,
+              "mean_mismatch_relative_l2": 0.12118744207820624,
+              "projection_floor_relative_l2": 0.07039033222438766,
+              "p0_total_relative_l2": 0.14014704773243802,
+              "projection_fraction_of_squared_error": 0.2522656525561211
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.0461737502945975,
+              "exact_cell_mean_integrated_energy": 0.04592554962363648,
+              "mean_mismatch_integrated_energy": 0.0009117732288862603,
+              "projection_floor_integrated_energy": 0.0002482006709610199,
+              "mean_mismatch_relative_l2": 0.14052249211842918,
+              "projection_floor_relative_l2": 0.07331686739442586,
+              "p0_total_relative_l2": 0.15849900263315794,
+              "projection_fraction_of_squared_error": 0.21397091002969765
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.14014704773243858,
+              "absolute_difference": 5.551115123125783e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.15849900263315844,
+              "absolute_difference": 4.996003610813204e-16
+            }
+          }
+        },
+        {
+          "stage": "mapped",
+          "operator": "least_squares",
+          "cells": 901888,
+          "retained_cells": 235584,
+          "integrated_physical_volume": 104.64618379601187,
+          "decomposition": {
+            "gradient": {
+              "exact_reference_integrated_energy": 0.08194653926838182,
+              "exact_cell_mean_integrated_energy": 0.08154051064816037,
+              "mean_mismatch_integrated_energy": 0.0012166696458956532,
+              "projection_floor_integrated_energy": 0.00040602862022144637,
+              "mean_mismatch_relative_l2": 0.12184873586900204,
+              "projection_floor_relative_l2": 0.07039033222438766,
+              "p0_total_relative_l2": 0.1407192712585362,
+              "projection_fraction_of_squared_error": 0.25021818824828024
+            },
+            "curl": {
+              "exact_reference_integrated_energy": 0.0461737502945975,
+              "exact_cell_mean_integrated_energy": 0.04592554962363648,
+              "mean_mismatch_integrated_energy": 0.0009194941038526373,
+              "projection_floor_integrated_energy": 0.0002482006709610199,
+              "mean_mismatch_relative_l2": 0.14111620850756643,
+              "projection_floor_relative_l2": 0.07331686739442586,
+              "p0_total_relative_l2": 0.15902561852759067,
+              "projection_fraction_of_squared_error": 0.21255612024180565
+            }
+          },
+          "independent_quadrature_comparison": {
+            "gradient": {
+              "saved_gauss8_relative_l2": 0.14071927125853673,
+              "absolute_difference": 5.273559366969494e-16
+            },
+            "curl": {
+              "saved_gauss8_relative_l2": 0.15902561852759117,
+              "absolute_difference": 4.996003610813204e-16
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Retrospective diagnostic; no preregistered AMR quality threshold or quality verdict is introduced.",
+    "The n=16 run's original protocol hash was not serialized; the current protocol hash is a replay identity and does not repair that historical limitation.",
+    "The P0 representation floor is a best-approximation bound for that explicit representation, not a bound on every solver reconstruction.",
+    "No solver, time trajectory, instrumentation library or n=128 derivative operator is rerun here.",
+    "An operator mismatch includes the archived velocity error and post-processing error; it does not isolate a defect in the solver or mapping.",
+    "Closed formulas and saved quadrature are independently evaluated numerical checks, not rigorous enclosures."
+  ]
+}

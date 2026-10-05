@@ -1,0 +1,13 @@
+{
+  "github_actions_run_id": 37199509312,
+  "github_actions_artifact_id": 11302697676,
+  "github_actions_artifact_name": "of13-forced-periodic-control-0622352cba68c9c1814d249154de94cdd6d40372",
+  "github_actions_artifact_size_bytes": 39827681,
+  "github_actions_artifact_created_at_utc": "2026-10-04T11:47:42Z",
+  "github_actions_artifact_expires_at_utc": "2027-01-02T11:47:42Z",
+  "source_commit": "0622352cba68c9c1814d249154de94cdd6d40372",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "image_inspect": "sha256:eddcfa196d21d4b027370be0449399c853787462e50c857b02bd95497ac9f193 linux/arm64",
+  "compared_run_ids": [37174784940, 37196452449, 37197955693],
+  "interpretation": "Independent replay verifies all six archived cases, inputs, fields, diagnostics, time steps, zero exits, and retrospective standard stopping checks. All six scalar diagnostics in each case match run 37197955693 exactly across a fourth recorded runtime image; all six archive hashes differ. Local quality remains UNCERTAIN and temporal order is not isolated from the spatial error floor."
+}

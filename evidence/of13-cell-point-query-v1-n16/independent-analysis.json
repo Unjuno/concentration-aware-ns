@@ -1,0 +1,33 @@
+{
+  "status": "FINITE_NATIVE_POSITION_REPLAY_VERIFIED",
+  "runtime_source_commit": "4bea7e3731e7e19ac1741f928f82845332f0fe71",
+  "manifest_sha256": "007531f277246cf59d27a68fd221a8265ba1b6022a2347a5aa01c18d13206571",
+  "measurements": {
+    "queries": 19,
+    "candidates_per_query": 12,
+    "selected_face": 22295,
+    "selected_tetPt": 2,
+    "minimum_native_barycentric_weight": 0.21021126422702344,
+    "maximum_weighted_value_component_discrepancy": 2.7755575615628914e-17,
+    "maximum_explicit_overload_component_discrepancy": 0.0,
+    "floating_secant_diagnostics": [
+      {
+        "h": 0.00390625,
+        "maximum_absolute_component_discrepancy": 1.7486012637846216e-15
+      },
+      {
+        "h": 0.000244140625,
+        "maximum_absolute_component_discrepancy": 2.398081733190338e-14
+      },
+      {
+        "h": 1.52587890625e-05,
+        "maximum_absolute_component_discrepancy": 8.414380303634061e-13
+      }
+    ]
+  },
+  "limits": [
+    "read-only replay of existing fields; no CFD evolution",
+    "finite position samples and floating secants do not certify a continuum derivative or complete neighborhood",
+    "original gates and physical claims unchanged"
+  ]
+}

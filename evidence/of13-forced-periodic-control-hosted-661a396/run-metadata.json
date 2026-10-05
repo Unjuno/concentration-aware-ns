@@ -1,0 +1,20 @@
+{
+  "github_actions_run_id": 37201155941,
+  "github_actions_artifact_id": 11303191259,
+  "github_actions_artifact_name": "of13-forced-periodic-control-661a3969e2466bb2473bb52ee32dbd1269813aca",
+  "github_actions_artifact_size_bytes": 39820267,
+  "github_actions_artifact_created_at_utc": "2026-10-04T12:15:03Z",
+  "github_actions_artifact_expires_at_utc": "2027-01-02T12:09:48Z",
+  "github_actions_artifact_zip_sha256": "d87aadd9380ed347b0617c67f49351f1209489d7511927f0c3b266ef986b6e1c",
+  "source_commit": "661a3969e2466bb2473bb52ee32dbd1269813aca",
+  "protocol_sha256": "6e7f52520159c1c65dd3e1e4a48152876c2807d45ce89f29030c7a8022206e78",
+  "image_inspect": "sha256:62ae72eae52c3cc43db4165e61f907c8c63575ac6c745f2af757a4698833b0b8 linux/arm64",
+  "compared_run_ids": [37200525739],
+  "interpretation": "Independent replay passes the six archived cases, their recorded input/endpoint hashes, diagnostics, step counts, exit codes and retrospective Foundation 13 stopping check. All 36 scalar diagnostics exactly match run 37200525739, while all per-case archive hashes and the recorded runtime image differ. Spatial observed orders reproduce; temporal-order assessment remains UNCERTAIN because total-error differences do not isolate temporal error from the fixed-grid spatial floor.",
+  "limitations": [
+    "Smooth periodic control only; it does not exercise the localized high-gradient profile or AMR.",
+    "Cell-sampled diagnostics do not certify continuous extrema or physical validity.",
+    "The three time-step cases complete, but the temporal-order estimate remains unresolved.",
+    "The GitHub Actions archive expires on 2027-01-02; the ZIP checksum is recorded for retrieval verification."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "commit": "1160042e53d2db0a372f6a7a60bec9570784bd06",
+  "dependency_mode": "locked",
+  "scope": "Tracked-only fixed-commit export, fresh venv, same host/interpreter. No solver build, training, Lean execution or verdict upgrade.",
+  "runner_sha256": "4e6d74c27bf5d1187493e864d139e6fdbd775defe47e3a10d208d00937d6c09c",
+  "archive_sha256": "1145aa802393bd3602c92d0ae0e9c0acdfbc560df4c33fde542cd829ddbdac1f",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "name": "venv",
+      "exit_code": 0,
+      "log": "venv.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "exit_code": 0,
+      "log": "install.log",
+      "log_sha256": "af7458f509973443959d97bfca4a3e01669d0893de9fb84b1953432d71a4e644"
+    },
+    {
+      "name": "report-replay",
+      "exit_code": 0,
+      "log": "report-replay.log",
+      "log_sha256": "c434958d21e03724de910cdcc795b51a451bc53d76dd6df14588099c118c7b4d"
+    },
+    {
+      "name": "su2-standard",
+      "exit_code": 0,
+      "log": "su2-standard.log",
+      "log_sha256": "4c76abf451b899cc062c0a9935480e0b20c4cf2b56b4204d0f9fb501343c6f76"
+    },
+    {
+      "name": "axis-force",
+      "exit_code": 0,
+      "log": "axis-force.log",
+      "log_sha256": "76916d66d8f9e52e4ba065a7b90d7e7d2ad7462057e74780d205ab542fd4247a"
+    },
+    {
+      "name": "axis-dissipation",
+      "exit_code": 0,
+      "log": "axis-dissipation.log",
+      "log_sha256": "9b71414ad0265dd563797fe97b50124e9ee38037b51ea8c00a95a05277c05501"
+    },
+    {
+      "name": "axis-deformation",
+      "exit_code": 0,
+      "log": "axis-deformation.log",
+      "log_sha256": "c3dc1f30bff4ad0aceefa2cb6fe7fd011d8ebee8fa630638a953fedaa97980a6"
+    },
+    {
+      "name": "axis-packet",
+      "exit_code": 0,
+      "log": "axis-packet.log",
+      "log_sha256": "f2ca648a3abcd46e7faebbc07b0539a95eb628c270cff6cc8d5f3588f42b6737"
+    },
+    {
+      "name": "alignment-uncertainty",
+      "exit_code": 0,
+      "log": "alignment-uncertainty.log",
+      "log_sha256": "5146a45a26ac4040463dc837310f5c1042c4e455b7d1b53635a74e4a2970d616"
+    }
+  ],
+  "success": false,
+  "packages": [
+    "iniconfig==2.3.0",
+    "mpmath==1.3.0",
+    "numpy==2.5.2",
+    "packaging==26.3",
+    "pluggy==1.6.0",
+    "Pygments==2.21.0",
+    "pytest==9.1.1",
+    "python-flint==0.9.0",
+    "scipy==1.16.2",
+    "sympy==1.14.0"
+  ],
+  "compared_files": 227,
+  "changed_files": [
+    "evidence/tests/force-concentration-scaling-2026-10-03.json",
+    "evidence/tests/spherical-orientation-diffusion-equator-avoidance-2026-10-03.json",
+    "reports/su2-n16-dt0.001-gate.json",
+    "reports/su2-n32-dt0.001-gate.json",
+    "reports/su2-n64-dt0.00025-gate.json",
+    "reports/su2-n64-dt0.0005-gate.json",
+    "reports/su2-n64-dt0.001-gate.json"
+  ],
+  "replay_steps": 43,
+  "replay_success": true,
+  "log_sanitization": "Local absolute clean-export root replaced with <CLEAN_EXPORT_ROOT>; result log hash updated to match sanitized install.log."
+}

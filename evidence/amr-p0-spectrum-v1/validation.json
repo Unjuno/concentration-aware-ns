@@ -1,0 +1,16 @@
+{
+  "status": "PASS_LOCAL_SPECTRUM_METHOD_AND_FULL_SUITE",
+  "full_suite_command": "uv run --python /opt/homebrew/bin/python3 --with-requirements requirements-verification-locked.txt python -m pytest -q tests",
+  "passed": 281,
+  "skipped": 1,
+  "subtests_passed": 83,
+  "python": "3.14.5 macOS arm64",
+  "log_sha256": "53d92b65d34c9e42e0c5fee14b820d85978406980d6e49e8cc2fec427da44639",
+  "source_sha256": {
+    "tools/amr_p0_spectrum.py": "a059ca8a6dc90650865085c2c88002ad2cb3d99accc8d74000854b3a8fee8187",
+    "tools/audit_amr_p0_spectrum.py": "69356f52c2790ebee52353ac62144b9b24151333fd6dc0b9ba57800daab1692f",
+    "tests/test_amr_p0_spectrum.py": "d15f93d00c74d762421a799b5ac1cf229e0ff38d0ed9ca47fa1e279876802bea",
+    "protocols/amr-p0-spectrum-v1.json": "47ef19b15086968c123c2058513e89f6f6948fb1b1c1bbc30c522184bdfc2fa4"
+  },
+  "scope": "Method controls and archived-input spectral diagnostics; no new CFD or original solver-quality gate conclusion."
+}

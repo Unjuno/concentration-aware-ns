@@ -1,0 +1,1 @@
+Independently verified n32 native capture from unchanged original recipe, source 4e60b230. Complete fields, mesh, CSVs, GPL license and probe source are in the checksum-verified public release asset linked in publication.json. This proves capture integrity/topology diagnostics, not global continuity or solver-quality acceptance. Matrix remains partial.

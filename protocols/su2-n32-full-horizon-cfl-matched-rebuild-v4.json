@@ -1,0 +1,68 @@
+{
+  "status": "FROZEN_TWO_JOB_SAME_IMAGE_PAIR_NOT_EXECUTED",
+  "created_from": "2026-10-04 audit of SU2 full-horizon run 37160281461 and rejected control-only continuation 37179161618",
+  "prior_completed_baseline": {
+    "workflow_run_id": 37160281461,
+    "image_id": "sha256:4fbff71542a3fce61a65ad27edd8c1f5364b76f1a629395e75b00f8788ed3d92",
+    "manifest_sha256": "92c1945f68d1ea2ae87ea070a498e8fb9aead11959adaa7be258f9c204796ed3",
+    "receipt_sha256": "bd732d4398015bd5fe851ffe83041ebe737f1c52e786b0d4d30408b4c34d7d2c",
+    "completion": "50 updates, solver exit 0, 48/50 inner-residual steps; local quality UNCERTAIN"
+  },
+  "rejected_old_baseline_continuation": {
+    "workflow_run_id": 37179161618,
+    "artifact_id": 11294596244,
+    "artifact_sha256": "bbc9629df3c801b9baf0de65c068037ce2d37e1a051db81abd22849d2fc383ca",
+    "result": "CONTROL_NOT_STARTED_IMAGE_IDENTITY_GATE_REJECTED",
+    "reason": "Rebuild had a different immutable image ID and different rootfs layers; do not pair it with the old baseline despite equality of the measured solver binary, patched source, package-version list, compiler, source and recipe."
+  },
+  "inputs": {
+    "protocol": "protocols/su2-n32-full-horizon-cfl-control-v1.json",
+    "sha256": "35aed7cb0abc146dd001c88419e30b1c1cce5cb90d15f227489022a7240936fe",
+    "quality_protocol": "protocols/su2-study-v1.json",
+    "quality_sha256": "d0cc3b9715a347ca70025524fe70cf1517c2fdce52a7153c7b36099e038b7670"
+  },
+  "execution": {
+    "workflow": ".github/workflows/su2-full-horizon-cfl-matched-rebuild.yml",
+    "platform": "linux/arm64",
+    "jobs": [
+      {
+        "name": "baseline",
+        "case": "CFL=10",
+        "timeout_minutes": 360,
+        "actions": "Build and measure one fresh immutable image, run the frozen baseline only, save that exact image with docker save, then upload image and complete-or-partial baseline evidence."
+      },
+      {
+        "name": "control",
+        "case": "CFL=100",
+        "timeout_minutes": 360,
+        "needs": "baseline success",
+        "actions": "Download and docker-load the baseline job's image archive, require exact image-ID and measured receipt equality, run the frozen control only, independently review both raw cases, then upload the combined evidence."
+      }
+    ],
+    "case_parameters": {
+      "n": 32,
+      "dt": 0.001,
+      "end_time": 0.05,
+      "expected_physical_updates": 50,
+      "threads": 2,
+      "inner_cap": 3000,
+      "residual_log10_threshold": -10
+    },
+    "comparison": "Both fresh cases must use the same saved image bytes and immutable ID. The old archived baseline is not part of this matched pair."
+  },
+  "acceptance": {
+    "execution": "Each solver exits 0, records all 50 unique physical updates, and passes the frozen reported-time consistency check.",
+    "runtime": "Loaded control image ID and all measured receipt fields exactly equal the baseline image receipt.",
+    "review": "tools/review_su2_full_horizon_cfl_pair.py recomputes both cases from raw completed outputs and reports per-step residual convergence separately from frozen sampled quality thresholds.",
+    "limits": [
+      "A complete numerical run does not imply local-quality PASS.",
+      "Sampled grid derivatives do not certify continuous extrema.",
+      "Neither run can establish singularity, molecular alignment, deterministic particle positions, or a constitutive viscosity change."
+    ]
+  },
+  "stopping_rules": [
+    "Never run CFL=100 from a rebuilt image paired with the historical CFL=10 result.",
+    "Never start control if baseline did not complete and its exact image archive and receipt were not uploaded.",
+    "Never accept a partial run, timeout, or changed image as a completed pair."
+  ]
+}

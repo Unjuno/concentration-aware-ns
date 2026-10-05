@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "checker": "tools/check_fluid_of_light_bridge.py",
+  "checker_sha256": "c57066f98b8d92437bd0b7ccc5ad68a5126ea5b8b6843c439074b6e1a02bfd6c",
+  "sympy_version": "1.14.0",
+  "equation": "i*psi_z + (1/(2*k))*psi_xx - g*|psi|^2*psi = 0",
+  "madelung_variables": "psi=sqrt(rho)*exp(i*phi); v=phi_x/k",
+  "continuity_equation": "rho_z + (rho*v)_x = 0",
+  "phase_equation": "phi_z + phi_x^2/(2*k) + g*rho - (1/(2*k))*sqrt(rho)_xx/sqrt(rho) = 0",
+  "velocity_equation": "v_z + v*v_x = -(g/k)*rho_x + (1/(2*k^2))*d_x(sqrt(rho)_xx/sqrt(rho))",
+  "viscous_laplacian_term_present": false,
+  "smooth_scalar_phase_vorticity": "0",
+  "phase_vortex_circulation": "2*pi*winding/k",
+  "phase_vortex_curl_scope": "zero pointwise away from rho=0; circulation is concentrated at the phase defect, not a smooth distributed vorticity field",
+  "identities": {
+    "nlse_real_part_equals_negative_bernoulli": true,
+    "nlse_imaginary_part_gives_continuity": true,
+    "bernoulli_gradient_equals_euler_residual": true,
+    "effective_velocity_is_phase_gradient": true,
+    "smooth_scalar_phase_has_zero_vorticity": true,
+    "phase_vortex_is_irrotational_away_from_its_zero": true,
+    "phase_vortex_circulation_is_quantized_by_winding": true
+  },
+  "assumptions": [
+    "rho>0 on the patch considered",
+    "smooth envelope",
+    "paraxial NLSE regime"
+  ],
+  "scope": "Exact amplitude-phase identities for one conservative optical NLSE convention, plus the scalar-phase irrotationality and point-vortex circulation identities. No photon molecular positions, incompressible 3-D Navier-Stokes equivalence, viscous closure, OpenAI-profile mapping, or physical transition is established."
+}

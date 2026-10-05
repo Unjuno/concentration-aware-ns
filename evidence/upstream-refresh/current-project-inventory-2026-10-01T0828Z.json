@@ -1,0 +1,76 @@
+{
+  "observed_at_utc": "2026-10-01T08:28:03Z",
+  "scope": "Read-only live GitHub metadata and focused existing-record refresh for the three audited benchmark targets. This is not an exhaustive issue search or source-code revalidation.",
+  "openfoam": {
+    "repository": "OpenFOAM/OpenFOAM-13",
+    "default_branch": "master",
+    "head": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+    "head_commit_date": "2026-06-23T20:54:34Z",
+    "pushed_at": "2026-06-24T08:41:09Z",
+    "license_api_spdx": "NOASSERTION",
+    "license_file": {"path": "COPYING", "git_blob": "7d136509e0408ed3a9b45ab85a173431d3b24614", "url": "https://github.com/OpenFOAM/OpenFOAM-13/blob/18870c24d21c6b982e2cdec27b2f59738cca5f90/COPYING", "declared_license": "GNU GPL version 3 or (at the recipient's option) any later version"},
+    "has_issues": true,
+    "open_issue_count_api": 5,
+    "open_issue_count_note": "GitHub repository metadata count includes pull requests; the listed open issue endpoint returned four issue records.",
+    "listed_open_issues": [
+      {"number": 5, "title": "Documentation does not reflect the source code", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/5", "updated_at": "2026-01-12T10:13:56Z"},
+      {"number": 4, "title": "Installation on Almalinux", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/4", "updated_at": "2025-12-05T17:54:58Z"},
+      {"number": 3, "title": "Migration to organization", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/3", "updated_at": "2025-11-24T00:22:20Z"},
+      {"number": 2, "title": "Large inconsistency between versions in two phase flows with significant viscosity differences between phases", "url": "https://github.com/OpenFOAM/OpenFOAM-13/issues/2", "updated_at": "2025-08-29T19:28:04Z"}
+    ],
+    "disposition": "No listed GitHub issue matches the measured AMR field-transfer behavior. The Foundation repository directs bug reporting to bugs.openfoam.org; this GitHub inventory is not claimed to cover that separate tracker."
+  },
+  "su2": {
+    "repository": "su2code/SU2",
+    "default_branch": "master",
+    "head": "bc15466602a687d6fb796d5df7a12ce3fde0949a",
+    "head_commit_date": "2026-04-28T06:05:27Z",
+    "pushed_at": "2026-09-30T16:19:09Z",
+    "license_api_spdx": "NOASSERTION",
+    "license_file": {"path": "COPYING", "git_blob": "20fb9c7da21cb5a29e10f614a03661a935181652", "url": "https://github.com/su2code/SU2/blob/bc15466602a687d6fb796d5df7a12ce3fde0949a/COPYING", "declared_license": "GNU Lesser General Public License version 2.1"},
+    "has_issues": true,
+    "discussion_2890": {
+      "url": "https://github.com/su2code/SU2/discussions/2890",
+      "updated_at": "2026-09-30T17:05:38Z",
+      "top_level_comment_count": 1,
+      "maintainer_comment": "sbryngelson, 2026-09-13T03:31:50Z",
+      "nested_author_followup": "Unjuno, 2026-09-26T14:00:52Z",
+      "disposition": "Existing discussion contains the maintainer's time-level diagnosis and the author's BDF2 reproduction. No accepted fix or later comment was observed in the GraphQL thread."
+    },
+    "issue_2353": {
+      "state": "open",
+      "title": "Evaluate time-varying boundary conditions and motion at the end of the time step for implicit temporal schemes",
+      "url": "https://github.com/su2code/SU2/issues/2353",
+      "updated_at": "2026-09-30T17:05:37Z",
+      "comment_count": 8,
+      "latest_benchmark_followup": "https://github.com/su2code/SU2/issues/2353#issuecomment-5851174679",
+      "disposition": "Existing temporal-output and restart-clock work overlaps this benchmark's observations; no duplicate issue was filed."
+    }
+  },
+  "physicsnemo": {
+    "repository": "NVIDIA/physicsnemo",
+    "default_branch": "main",
+    "head": "b08dd3f61ac44c784f7c03b0cc93947226365cad",
+    "head_commit_date": "2026-09-30T20:31:05Z",
+    "pushed_at": "2026-10-01T04:53:29Z",
+    "license_api_spdx": "Apache-2.0",
+    "license_file": {"path": "LICENSE.txt", "git_blob": "82676a5d11201bc4b7dedfa819fb37b2abe81d08", "url": "https://github.com/NVIDIA/physicsnemo/blob/b08dd3f61ac44c784f7c03b0cc93947226365cad/LICENSE.txt", "declared_license": "Apache License version 2.0"},
+    "has_issues": true,
+    "issue_2007": {
+      "state": "open",
+      "title": "power_spectrum in metrics.general puts the zero frequency half a cell off along an odd width",
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2007",
+      "updated_at": "2026-09-28T00:41:11Z"
+    },
+    "pr_2008": {
+      "state": "open",
+      "title": "Fix zero frequency index along the width in metrics.general.power_spectrum",
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/2008",
+      "head": "7407608723062dc11ba5332e9ff3774f42bb02d9",
+      "base": "ff5d19d08123de47ca446caed1d70a225d540184",
+      "mergeable_state": "behind",
+      "updated_at": "2026-09-30T08:39:08Z"
+    },
+    "disposition": "The existing issue and PR cover the reproduced odd-width spectrum defect and proposed focused fix. No duplicate report is appropriate; full framework validation and maintainer acceptance remain unverified."
+  }
+}

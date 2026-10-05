@@ -1,0 +1,29 @@
+{
+  "schema": "amr-p0-spectrum/v1",
+  "status": "archived-input analytic diagnostic; no prospective solver-quality threshold",
+  "input_protocol": "protocols/of13-amr-mean-quality-v1.json",
+  "input_source_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "input_evidence": "evidence/of13-amr-mean-quality-v1",
+  "case_ids": ["n16-dt0.001", "n32-dt0.001", "n64-dt0.001", "n32-dt0.0005"],
+  "stages": ["preMap", "mapped", "postSolve"],
+  "cutoff_cube": 7,
+  "representation": "Cell-constant velocity on validated dyadic cubes; repeat constants on finest voxels without interpolation",
+  "normalization": "c_k=(2*pi)^-3 integral v(x) exp(-i*k.x); squared norm is the mean of |v|^2, not kinetic energy",
+  "coefficient_formula": "Normalized voxel FFT at k modulo m, multiplied by exp(-i*pi*sum(k)/m) and product sinc(k_j/m)",
+  "tail_formula": "All modes outside the finite cube: mean(|v|^2)-sum_inside |c_k|^2. Reference support is wholly inside the cube, so global L2 error squared is inside coefficient mismatch plus this outside mass.",
+  "independent_controls": [
+    "Whole-domain nonoverlapping dyadic cube coverage",
+    "Actual-cell and voxel squared norms agree",
+    "Selected coefficient comparison with direct analytic cube integrals",
+    "Binomial real-space reference coefficients and Parseval norm",
+    "Global spectral error equals previously archived spatial P0 error",
+    "Parent-value injection preserves all computed finite-band coefficients and total norm"
+  ],
+  "limits": [
+    "No original peak/spectrum quality threshold is reused or retroactively introduced.",
+    "Shells beyond index 7 are cube-truncated; the outside-cube mass is exact in the declared representation but is not resolved into individual shells.",
+    "Formula exactness is analytic; floating implementation has no interval certificate.",
+    "P0 velocity jumps do not define an ordinary finite continuum gradient norm; native Gauss tensors are separate quantities.",
+    "No solver defect, physical singularity, molecular ordering or viscosity reduction follows."
+  ]
+}

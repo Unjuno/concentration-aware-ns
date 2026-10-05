@@ -120,6 +120,15 @@ any molecular or material-viscosity conclusion. The captured run and exact
 artifact hashes are indexed at
 `evidence/lean-verification/axis-force-nanoda-2026-09-30.json`.
 
+`check_selected_schedule_tail_pressure_nanoda.sh` independently checks the
+selected-schedule tail-pressure extension and its existential rate-capped
+profile results. The current source also proves that the nonnegative
+clock-weight mass after `flattenEnd` is at most `P^2/50` for that existential
+rate-capped full `ProfileData`. The check processes about 612 MiB of exported
+proof terms. It does not transfer the cap or mass estimate to
+`FinalSlowBase.actualProfile`; summary, logs, and hashes are in
+`evidence/lean-verification/selected-schedule-tail-mass-nanoda-2026-10-02.json`.
+
 The first real landrun filesystem control failed before executing either test:
 this pinned landrun requests Landlock ABI v9, but the current kernel provides
 ABI v8. Both allowed and denied reads exited at sandbox setup, so this is **not**
@@ -222,3 +231,15 @@ owner 0:0 in the native volume versus 501:20 as seen on the macOS source. This i
 an ownership translation issue, not a theorem failure. All copied volume files
 were assigned to UID501:GID20 via `chown -R 501:20 /verify`; mounts remain read-only
 except the fresh .lake subtree. The retry uses comparator-ns-native-owned.log.
+
+### Finite-packet exceptional-band measure lemma
+
+`sh runtime/lean-verification/check_finite_packet_probability.sh` compiles
+`verification/FinitePacketProbability.lean` in the existing prepared pinned
+Lean project and prints the theorem's axiom dependencies. The script checks the
+source hash before running. A prepared project is required under
+`work/lean-verification/independent-source` (or `CANS_LEAN_SOURCE_ROOT`); see
+the source/dependency preparation instructions above. This is a Lean
+elaboration and axiom audit, not an independent kernel-checker run. The exact
+scope, environment, output and limitations are indexed in
+`evidence/lean-verification/finite-packet-probability-2026-10-01.json`.

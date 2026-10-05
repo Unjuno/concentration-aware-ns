@@ -1,0 +1,21 @@
+{
+  "scope": "Exact chain-rule identities for smooth forced incompressible Navier-Stokes fields under a constant Galilean boost; not a constitutive model or molecular simulation.",
+  "sympy": "1.14.0",
+  "assumptions": [
+    "V is constant",
+    "u, p, and f are smooth",
+    "the force is transformed with the observer frame",
+    "nu is constant"
+  ],
+  "boost": "u'(x',t)=u(x'+Vt,t)-V; p'(x',t)=p(x'+Vt,t); f'(x',t)=f(x'+Vt,t)",
+  "checks": {
+    "material_acceleration_invariant": true,
+    "velocity_gradient_invariant": true,
+    "divergence_invariant": true,
+    "laplacian_invariant": true,
+    "symmetric_strain_rate_invariant": true,
+    "pressure_gradient_invariant": true,
+    "constant_viscosity_ns_rhs_invariant": true
+  },
+  "success": true
+}

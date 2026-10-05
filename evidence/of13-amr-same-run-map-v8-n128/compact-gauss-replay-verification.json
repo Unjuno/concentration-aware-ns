@@ -1,0 +1,15 @@
+{
+  "status": "PASS_MAPPED_STAGE_REPLAY_WITH_DECLARED_PREMAP_FALLBACK",
+  "compact_archive_sha256": "e08e17eaf9789bf5c7cc9d8c368ec48dae2d2104e5d4be457cd39b4d955721bb",
+  "as_run_archive_sha256": "d3fbd66c19f2a5274f364d062ee579248656b24a76efdf603898e62cebcb0100",
+  "mapped_stage_exact_json_match": true,
+  "same_parent_face_audit_exact_match": true,
+  "preMap_as_run_gradient_method": "Gauss sum of captured Uf outer oriented face area S divided by cell volume",
+  "preMap_compact_replay_gradient_method": "periodic centered difference, equivalent to the arithmetic-midpoint Gauss face sum on the uniform orthogonal preMap grid",
+  "preMap_gradient_relative_l2_as_run": 0.006083641668740466,
+  "preMap_gradient_relative_l2_compact_replay": 0.0060842955242115995,
+  "preMap_vorticity_relative_l2_as_run": 0.005901427864591952,
+  "preMap_vorticity_relative_l2_compact_replay": 0.005901427864591833,
+  "explanation": "The public compact archive omits preMap_faces.csv. Its preMap result therefore uses the documented periodic centered-difference fallback; the original as-run audit used captured preMap face data. The mapped stage and same-parent face audit replay exactly.",
+  "scope": "Replays numerical postprocessing from the compact archive; does not re-run or certify OpenFOAM or imply continuum or physical behavior."
+}

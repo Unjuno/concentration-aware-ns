@@ -1,0 +1,32 @@
+{
+  "status": "PASS_RECORDED_HARNESS_SOURCES_MATCH_COMMIT",
+  "run_manifest": "evidence/of13-amr-same-run-map-v8-n128/manifest.json",
+  "run_source_commit": "e92a77ed172e9410fa076f079113b49ff53915a2",
+  "captured_startup_porcelain": [
+    "?? protocols/high-gradient-of13-amr-same-run-map-v8-n128.json"
+  ],
+  "protocol_sha256": "c57730737982a7583db20193c4f4b2ce1ec9e5fa44494d8de42a55838a552f00",
+  "tracked_harness_sources": [
+    {
+      "path": "tools/run_amr_stage_snapshot_v4.py",
+      "sha256": "006c1e5b6d355d7247e0b53ca472e4b619343e25a003e90b2e5e664ea35d5024",
+      "matches_recorded_commit_blob": true
+    },
+    {
+      "path": "tools/openfoam_amr_case.py",
+      "sha256": "39a31a57a72b0a01d3b988510881cfdde37bb9226f6309b5082a6328c4323806",
+      "matches_recorded_commit_blob": true
+    },
+    {
+      "path": "tools/package_amr_stage_evidence.py",
+      "sha256": "9ef672f2d4635808722406324427ff2dcdf215d781857fd3949f3ce090e85b4e",
+      "matches_recorded_commit_blob": true
+    },
+    {
+      "path": "tools/run_high_gradient_openfoam.py",
+      "sha256": "cf46df19e8c6ff2057bcedcbd146093c8e7c4a5f053d1d1fc1708ce0362fe314",
+      "matches_recorded_commit_blob": true
+    }
+  ],
+  "scope": "The runner's captured startup status contains only the untracked frozen protocol. These tracked source blobs are therefore recoverable from the recorded commit; this verifies provenance, not solver-stack source equivalence or scientific validity."
+}

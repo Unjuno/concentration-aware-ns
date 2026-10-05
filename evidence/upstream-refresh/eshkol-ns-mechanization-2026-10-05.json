@@ -1,0 +1,85 @@
+{
+  "observed_at_utc": "2026-10-05T00:43:02Z",
+  "repository": "https://github.com/tsotchke/eshkol",
+  "commit": "c10c146e32c21a46552779fdeedd215e03d3d209",
+  "commit_signature_verified": true,
+  "commit_date": "2026-10-05T00:22:18Z",
+  "commit_message_scope": "CUDA lazy-loading and Windows/CUDA test fixes; not a Navier-Stokes-example change",
+  "license": "MIT",
+  "reviewed_source_sha256": {
+    "docs/NAVIER_STOKES_EXAMPLES.md": "cc50e49029ccc34deaf7419a48840b139d1668fae480ad5b11704c9fb4c5291b",
+    "CMakeLists.txt": "f8aa721fdb95ca8a26c818e5a68be39204cd6c8bd91686ad573af06292443f11",
+    ".github/workflows/ci.yml": "bfdd46cc75375d08ad91daca367eaf0f61fefeb9bd3964f7cd5ddd338e54c2c1",
+    "CONTRIBUTING.md": "9baa3c9deacf4e1e77f58c13cbd7baeac060ca8840cf8bddaf6e4cb283548c3c",
+    "scripts/check_ns_evidence_ledger.py": "00942b9c56300a25ca0a2468d979c40990410c099a14843f66eab8f585baba11",
+    "examples/mathematics_navier_stokes_first_principles.esk": "ee7ca7df5fb98ad75d14f670405ba348d4e02a144ee961f86cb0680d1864f199",
+    "examples/mathematics_navier_stokes_pulse_stress.esk": "df6bef6bc9cf6f15debb860401ad08a460ef80981f10cc1b3f2ce72da6a9b42d",
+    "examples/mathematics_navier_stokes_stress_cone.esk": "9f42d15e596b5ddd5bcde8624f6b3599a439834dffec0624f8a939f994f57e4c",
+    "examples/mathematics_navier_stokes_residual_order_n.esk": "6e3ebda54051e7da69aa165959e5866cfd706f8edc99b36b2107365427f22c81"
+  },
+  "independent_exact_check": {
+    "method": "Python fractions.Fraction algebra from the displayed balance equations",
+    "exponents": {
+      "radial_length": "1/2",
+      "axial_length": "1/2-h",
+      "azimuthal_velocity": "-(1/2+h)",
+      "axial_velocity": "-(1/2+h)",
+      "radial_velocity": "-1/2",
+      "core_energy": "1/2-3h"
+    },
+    "balance_positivity_intersection": "0<h<1/6",
+    "paper_parameter_interval": "0<h<1/100, strictly contained"
+  },
+  "upstream_ci": {
+    "run_id": 37247264764,
+    "head": "c10c146e32",
+    "status_at_observation": "in_progress",
+    "completed_jobs_observed": {
+      "linux-x64-xla": "success",
+      "macos-arm64-xla": "success"
+    },
+    "navier_stokes_example_execution_verified": false,
+    "reason": "workflow remained active and logs were unavailable; completed XLA job names alone do not establish execution of these example tests",
+    "lite_lanes_observed_in_progress_at_2026-10-05T00:48Z": [
+      "linux-arm64-lite",
+      "linux-x64-lite",
+      "macos-arm64-lite"
+    ],
+    "source_wiring": "CMake generates JIT/AOT CTest entries; scripts/run_all_tests.sh calls scripts/run_examples_tests.sh, which iterates examples/*.esk; CI assigns run_all_tests.sh to the lite lanes",
+    "later_status_query": "HTTP 403 rate limit at 2026-10-05T00:54:49Z; no retry; completed run result remains unknown"
+  },
+  "local_reproduction": {
+    "status": "not_run",
+    "first_attempt": "system compiler blocked by unaccepted Xcode license",
+    "second_attempt": "Nix Clang worked for compiler identification, but CMake could not locate Apple ImageIO SDK framework",
+    "interpretation": "environment/setup limitation; no test result"
+  },
+  "source_archive_sha256": "8f41f8785f061ee863344fab3a39b11d7755e999cdb0d1ec1afaf96fed64cdc9",
+  "openai_source_check": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "license": "Apache-2.0",
+    "issues_enabled": false,
+    "discussions_enabled": false
+  },
+  "documentation_discrepancy": {
+    "cmake_criteria": 14,
+    "generated_jit_aot_ctest_entries": 28,
+    "distinct_source_programs": 12,
+    "guide_program_count": 9,
+    "omitted_programs": [
+      "mathematics_navier_stokes_mean_corrections.esk",
+      "mathematics_navier_stokes_residual_ladder.esk",
+      "mathematics_navier_stokes_localization.esk"
+    ],
+    "all_cmake_source_files_exist": true,
+    "evidence_ledger_self_check": "PASS, 84 rows; this gate does not validate the user guide",
+    "issue_submitted": true,
+    "issue_number": 741,
+    "issue_url": "https://github.com/tsotchke/eshkol/issues/741",
+    "issue_state_at_readback": "OPEN",
+    "duplicate_search": "No matching Navier-Stokes example issue found; full issue search returned only unrelated reports",
+    "issue_content_readback_verified": true
+  },
+  "reporting_decision": "Eshkol documentation discrepancy reported as issue 741; no mathematical or solver issue reported."
+}

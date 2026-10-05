@@ -1,0 +1,11 @@
+{
+  "numeric_source_commit": "9fb48a8bebbdd4d98b4d28006f861455743ecba7",
+  "all_three_export_jsons_byte_identical": true,
+  "new_node_controls": "4 passed",
+  "ball_and_chunk_controls": "9 passed, 4 subtests passed",
+  "full_suite_log": "full-suite.log",
+  "limits": [
+    "same-host selected export",
+    "native larger-target position replay remains open"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "Python 3.12 compatibility check for full-sphere orientation-diffusion algebra and its focused regression tests; not the full benchmark suite.",
+  "commit": "5e31b402087a0ad958f2318e52633885de335978",
+  "command_tests": "uv run --python 3.12.10 --with-requirements requirements-verification-locked.txt python -m pytest -q tests/test_spherical_orientation_diffusion.py",
+  "command_checker": "uv run --python 3.12.10 --with-requirements requirements-verification-locked.txt python -c \"from tools.check_spherical_orientation_diffusion import derive; print(json.dumps(derive()))\"",
+  "python_version": "3.12.10",
+  "sympy_version": "1.14.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "focused_test_log_sha256": "ddbd0712af33e863d4366889aff9628df09ba730f737868ac9a237842c8813ae",
+  "focused_test_output": "....                                                                     [100%]\n4 passed in 1.74s",
+  "checker_identities_pass": true,
+  "checker_identity_count": 13,
+  "checker_sha256": "a7df877ef60a2f498b5ba7a34f2db33530ab503ab8f48d183118db14637a9ce4",
+  "requirements_lock_sha256": "9cdc86c62ad3029896bf35a9d301d24233019f8cfa15926741e0499f041b468d"
+}

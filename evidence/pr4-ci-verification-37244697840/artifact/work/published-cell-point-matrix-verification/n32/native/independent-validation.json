@@ -1,0 +1,18 @@
+{
+  "runtime_source_commit": "560a786f35749dcc0c1d24ebcc6839a1edcd0f77",
+  "auditor_source_commit": "456b09ac33bdfbfbf36e5f7ae0a9d720cdf695b9",
+  "binary_hash_matches_downloaded": true,
+  "installed_sources_match_prior_independent_n16_pin": true,
+  "complete_candidate_sets_match_enclosed_ball": true,
+  "exact_rational_ball_membership": true,
+  "hosted_analysis_equal": false,
+  "secant_diagnostic_absolute_differences": [
+    1.3877787807814457e-17,
+    0.0,
+    1.3877787807814457e-17
+  ],
+  "limits": [
+    "Native samples only; no global floating search guarantee",
+    "Cross-host floating diagnostics preserved rather than overwritten"
+  ]
+}

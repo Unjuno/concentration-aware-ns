@@ -1,0 +1,34 @@
+{
+  "version": "high-gradient-of13-amr-same-run-map-v7-n64-package-a1",
+  "scope": "Post-run publication packaging only; solver inputs, run protocol, solver execution, and acceptance criteria are unchanged.",
+  "run_protocol": "protocols/high-gradient-of13-amr-same-run-map-v7-n64.json",
+  "run_protocol_sha256": "9cd80353a5f9cbcbcd82eb8309406b00d65df6b2fd34b4535671311b714fa4a7",
+  "archive": "evidence/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz",
+  "archive_sha256": "a9933f34d824cdd40adf10052fc121f62041bbf943a69b24102e3c141a26c6b5",
+  "archive_bytes": 278621920,
+  "split_zstandard_manifest": "evidence/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz.zst.parts.json",
+  "split_zstandard_manifest_sha256": "836e9fe1d1efe4bb51e3aaf24a649e0f02cb6d939def4536178b7740b66b99e6",
+  "included": [
+    "preMap cell snapshot at t=0.002",
+    "mapped cell snapshot at t=0.002",
+    "mapped internal-face snapshot at t=0.002",
+    "case inputs and solver log"
+  ],
+  "excluded": [
+    "preMap face snapshot",
+    "all t=0.003 PIMPLE stage snapshots",
+    "generated dynamicCode"
+  ],
+  "full_as_run_archive": {
+    "path": "work/of13-amr-same-run-map-v7-n64/archive-recovery/amr-stage-snapshot-n64-full.tar.gz",
+    "bytes": 996285706,
+    "sha256": "7f9cba57e985007c73d8b6e1baf217f18e5f0d33dec168fe59ed999959c5dbdf",
+    "public": false
+  },
+  "reconstruction": "python3 -m tools.reconstruct_amr_published_archive evidence/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz.zst.parts.json work/of13-amr-same-run-map-v7-n64/amr-stage-snapshot-n64-review.tar.gz",
+  "limits": [
+    "This compact archive suffices to replay same-run parent injection and Gauss-gradient/vorticity diagnostics.",
+    "Later PIMPLE stage numerical comparisons are not published from this compact package.",
+    "The full archive and raw case remain locally under ignored work/; their as-run hashes are retained in manifest-as-run.json and manifest.json."
+  ]
+}

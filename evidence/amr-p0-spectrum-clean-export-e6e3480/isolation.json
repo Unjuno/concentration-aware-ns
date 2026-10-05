@@ -1,0 +1,26 @@
+{
+  "status": "PASS_GIT_DIRECTORY_FREE_EXPORT_WITH_PROCESS_NETWORK_AND_GIT_OPEN_GUARDS",
+  "actual_cwd": "source directory in the fresh Git-directory-free export (runtime asserted)",
+  "tools_module_origins": {
+    "tools.amr_derivative_projection": "tools/amr_derivative_projection.py",
+    "tools.amr_projection_decomposition": "tools/amr_projection_decomposition.py",
+    "tools.high_gradient_reference": "tools/high_gradient_reference.py",
+    "tools.analyze_amr_gauss_gradient": "tools/analyze_amr_gauss_gradient.py",
+    "tools.reconstruct_amr_published_archive": "tools/reconstruct_amr_published_archive.py",
+    "tools.compare_amr_resolution_volume_integrated": "tools/compare_amr_resolution_volume_integrated.py",
+    "tools.high_gradient_acceptance": "tools/high_gradient_acceptance.py",
+    "tools.high_gradient_cell_average": "tools/high_gradient_cell_average.py",
+    "tools.reference": "tools/reference.py",
+    "tools.openfoam_case": "tools/openfoam_case.py",
+    "tools.openfoam_amr_case": "tools/openfoam_amr_case.py",
+    "tools.prepare_amr_mean_quality_module": "tools/prepare_amr_mean_quality_module.py",
+    "tools.metrics": "tools/metrics.py",
+    "tools.analyze_openfoam": "tools/analyze_openfoam.py",
+    "tools.run_high_gradient_openfoam": "tools/run_high_gradient_openfoam.py",
+    "tools.run_amr_mean_quality": "tools/run_amr_mean_quality.py",
+    "tools.analyze_amr_mean_quality": "tools/analyze_amr_mean_quality.py",
+    "tools.amr_p0_spectrum": "tools/amr_p0_spectrum.py"
+  },
+  "blocked_attempts": [],
+  "scope": "Raw input tarballs are external checked data. The exported analysis completed without Python process/network/Git-object opens; dependencies are the locked same-host verification environment."
+}

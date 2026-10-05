@@ -1,0 +1,57 @@
+{
+  "checked_at_utc": "2026-10-01T21:43:24Z",
+  "repository": {
+    "full_name": "NVIDIA/physicsnemo",
+    "url": "https://github.com/NVIDIA/physicsnemo",
+    "license": "Apache-2.0",
+    "default_branch": "main",
+    "live_main_sha": "83d6a337eecfc70e215ed1978af8dba9a38580fb",
+    "live_main_message": "docs: fix broken links in example READMEs (#2040)",
+    "live_main_committed_at": "2026-10-01T14:06:57Z"
+  },
+  "historical_benchmark_pin": {
+    "commit": "1b961314e42a0625502ba1592d25f706f1e02a24",
+    "committed_at": "2026-08-31T21:03:09Z",
+    "message": "Fix Python 3.14 support for 2.2.1 (#1955)",
+    "version_line": "2.2.1",
+    "evidence": "protocols/physicsnemo-study-v1.json"
+  },
+  "related_upstream_work": [
+    {
+      "kind": "issue",
+      "number": 2001,
+      "state": "open",
+      "assignees": [],
+      "labels": [],
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/2001",
+      "scope": "Periodic-only finite-difference/spectral grid gradients and missing user-facing warning for non-periodic boundaries"
+    },
+    {
+      "kind": "issue",
+      "number": 1852,
+      "state": "open",
+      "url": "https://github.com/NVIDIA/physicsnemo/issues/1852",
+      "labels": ["enhancement", "? - Needs Triage", "stale"],
+      "scope": "Opt-in one-sided non-periodic grid-gradient boundary mode"
+    },
+    {
+      "kind": "pull_request",
+      "number": 1853,
+      "state": "open",
+      "draft": true,
+      "url": "https://github.com/NVIDIA/physicsnemo/pull/1853",
+      "scope": "Implementation for non-periodic grid-gradient mode"
+    }
+  ],
+  "benchmark_path": {
+    "training_script": "tools/train_physicsnemo_pilot.py",
+    "gradient_backend": "PhysicsInformer grad_method=autodiff; local gradient diagnostics use PyTorch autograd",
+    "domain": "periodic [0, 2*pi)^3",
+    "boundary_issue_applicability": "Not applicable to the chosen benchmark execution path; does not explain/invalidate its periodic autograd results"
+  },
+  "contribution_policy": {
+    "source": "https://github.com/NVIDIA/physicsnemo/blob/main/CONTRIBUTING.md",
+    "guidance": "Start with an issue to discuss contribution ideas because similar work may already be underway."
+  },
+  "disposition": "No duplicate report filed. Existing boundary-reporting and feature work are recorded; no defect is reproduced on the benchmark path. PhysicsNeMo numerical-quality verdict remains UNCERTAIN for separate continuous-peak and preregistration limitations."
+}

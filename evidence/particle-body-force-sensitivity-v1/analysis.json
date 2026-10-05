@@ -1,0 +1,52 @@
+{
+  "status": "CONDITIONAL_BODY_FORCE_COUNTEREXAMPLE",
+  "analysis_source_commit": "902b47e058bb824a382523d05c5796f0a9b76769",
+  "consumer_record_sha256": "32fabc9955a8bd525b7f88cc73c0fcb0689bfe1ac78890f02c16ec59b9d57de8",
+  "upstream_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "precision_bits": 128,
+  "assumptions": {
+    "nu": 1,
+    "diameter": 1,
+    "dt": 1,
+    "carrier_speed": 1,
+    "density_ratio": 0.5,
+    "old_particle_velocity": 0,
+    "Re": 1
+  },
+  "update_formula": "(x*r+b)/(1+x)",
+  "derivative_formula": "x/(1+x)+(r-b)*dx_dr/(1+x)^2",
+  "controls": {
+    "zero_force": {
+      "dt_body_force": 0,
+      "derivative": {
+        "lower_rational": "312751384496658332407270672391170780971/340282366920938463463374607431768211456",
+        "upper_rational": "312751384496658332407270672391170780977/340282366920938463463374607431768211456",
+        "ball": "[0.91909371421917755049174474382807519310 +/- 7.47e-39]",
+        "display_lower": 0.9190937142191775,
+        "display_upper": 0.9190937142191775
+      }
+    },
+    "opposing_force": {
+      "dt_body_force": -20,
+      "derivative": {
+        "lower_rational": "180874120799306238868338471200256900205/170141183460469231731687303715884105728",
+        "upper_rational": "180874120799306238868338471200256900207/170141183460469231731687303715884105728",
+        "ball": "[1.0630825360476624887879000536418516844 +/- 1.96e-38]",
+        "display_lower": 1.0630825360476626,
+        "display_upper": 1.0630825360476626
+      }
+    }
+  },
+  "amplification_body_force_threshold": {
+    "lower_rational": "-14937673456755700268215659580301238207/1329227995784915872903807060280344576",
+    "upper_rational": "-119501387654045602145725276642409905655/10633823966279326983230456482242756608",
+    "ball": "[-11.237856488220388657399922917383636839 +/- 5.34e-37]",
+    "display_lower": -11.23785648822039,
+    "display_upper": -11.23785648822039
+  },
+  "limits": [
+    "Fixed scalar positive high-Re branch; local derivative only",
+    "No native solver, cloud, trajectory or physical-instability claim",
+    "No body-force-free result is contradicted or gate changed"
+  ]
+}

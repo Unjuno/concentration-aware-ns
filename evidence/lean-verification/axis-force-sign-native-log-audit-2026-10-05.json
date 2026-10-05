@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "checks": {
+    "source_sha256_matches_manifest": true,
+    "log_sha256_matches_manifest": true,
+    "printed_declarations_have_axiom_reports": true,
+    "no_unexpected_axiom_reports": true,
+    "all_axioms_allowed": true,
+    "no_sorryAx": true,
+    "no_lean_errors": true
+  },
+  "execution_exit_code": -5,
+  "execution_clean_exit": false,
+  "source": "verification/AxisForceSign.lean",
+  "source_sha256": "a61600fcc260fb75c00323bb53c94d96effa24b2c4e82c66355c352fe7eb0dce",
+  "log": "evidence/lean-verification/axis-force-sign-native-rerun-2026-10-05.log",
+  "log_sha256": "218b874d977ba900f1ce51154f24d963964a4eb4dd6606892ee0679fdd1bc714",
+  "printed_declaration_count": 156,
+  "axiom_report_count": 156,
+  "unreported_declarations": [],
+  "unexpected_reports": [],
+  "unexpected_axioms": {},
+  "scope": "Checks saved source/log hash consistency, complete #print coverage, allowed axioms, and absence of Lean error/sorryAx markers. Does not run Lean or authenticate the log origin."
+}

@@ -1,0 +1,17 @@
+{
+  "checked_on": "2026-10-01",
+  "repository": "openai/NavierStokesAndEuler",
+  "url": "https://github.com/openai/NavierStokesAndEuler",
+  "method": "gh api repos/openai/NavierStokesAndEuler",
+  "github_metadata": {
+    "archived": false,
+    "default_branch": "main",
+    "has_issues": false,
+    "has_discussions": false,
+    "open_issues_count": 0,
+    "pushed_at": "2026-09-10T15:14:13Z",
+    "updated_at": "2026-09-30T19:48:26Z"
+  },
+  "pull_requests": [],
+  "outreach_decision": "No upstream issue or discussion was filed because both GitHub surfaces are disabled and no reproducible repository defect was established by this audit. Do not infer that updated_at reflects a code push; pushed_at is the recorded latest push timestamp."
+}

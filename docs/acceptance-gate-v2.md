@@ -12,6 +12,72 @@ leave the result uncertain. A review file may cover multiple requirements, but
 must actually substantiate each one; identical references do not create evidence.
 The standard acceptance decision also needs a reviewed artifact.
 
+Every v2 report must also provide a non-empty top-level `scope`. The CLI echoes
+this scope beside its verdicts, and missing/blank scope keeps all verdicts
+uncertain. The scope is a declared interpretation boundary, not independent
+proof that the metric or its claimed field object was computed correctly.
+Distinguish sampled/discrete quantities, named reconstructions and the
+underlying solver field; a reconstruction's continuous bound does not transfer
+to an unspecified finite-volume field. A local-quality PASS applies only to
+the frozen manufactured solution, input representation, sampling/reconstruction
+operator, and reported error metric. Finite cell averages, face values, or any
+other finite set of samples cannot by themselves certify a universal continuous
+field peak bound: a smooth divergence-free perturbation can be supported inside
+one cell, preserve its averages and face traces, and have arbitrarily large
+gradients. This is an identifiability limit, not a claim that the solver field
+contains such a perturbation or fails the fixed benchmark. A continuum-bound
+claim needs an explicit reconstruction plus a validated bound, or an
+independent regularity/unresolved-mode estimate.
+
+The conditional finite-mesh extension and its force-variation assumptions are
+spelled out in `reports/finite-mesh-observation-nullspace-2026-10-03.md`; that
+result does not apply to a fixed known manufactured forcing or prove a software
+defect. Keep the hypothesis/reproduction verdict tied to the exact stated
+observable family.
+
+Spectral metrics must name the reconstructed field, coefficient normalization,
+mode set and omitted-mode treatment. A finite-band result supports that band;
+a whole-field L2 claim also needs the outside mass or a valid upper bound for
+it. For a declared cube-constant velocity, analytic cell integrals and Parseval
+can recover complete outside-band mass; this does not certify an ordinary
+continuum gradient or dissipation norm for a discontinuous P0 field. Native
+Gauss tensors and derivatives of a named continuous reconstruction are distinct
+objects. The archived example and formula controls are in
+`reports/openfoam-amr-p0-spectrum-2026-10-03.md`. No earlier solver verdict or
+quality threshold is changed by this scope requirement.
+
+A finite Fourier projection is a valid named smooth reconstruction, but removes
+outside modes and generally changes the original cell averages. Its derivative
+quality must be reported with that discarded mass and reconstruction operator.
+An analytical Lipschitz/grid enclosure formula evaluated in floating point is
+not an interval-certified rounding budget. Do not substitute such endpoints for
+reviewed numerical error bounds without accounting for arithmetic uncertainty.
+The archived example is
+`reports/openfoam-amr-band-reconstruction-2026-10-03.md`; it adds diagnostics
+without changing any original solver verdict or retrospective threshold.
+
+Mean conservation is a separate reconstruction requirement. A filtered
+polynomial need not preserve native cell averages, and a mean-preserving
+polynomial need not have a consistent derivative operator. Exact-native-mean
+controls must accompany claims about such an operator. A lower bound derived
+from prescribed native means can constrain every periodic H1 reconstruction
+with those means, but must state the partition, mean interpretation, metric
+and arithmetic uncertainty. Cell-centered solver variables alone do not
+establish an upstream exact-average guarantee. Curl bounds additionally need
+a divergence-free reconstruction. The conditional example and its limits are
+in `reports/openfoam-amr-mean-constraint-gradient-2026-10-04.md`; none of its
+uncertified floating endpoints changes the original gate.
+
+Outward arithmetic enclosure can substantiate a conditional lower bound without
+settling the field interpretation. An Arb certificate for decoded binary64
+nominal means on canonical dyadic geometry does not cover other decoding
+conventions, rounded geometry as a distinct exact tiling or unpublished internal
+solver values. A scoped threshold exclusion still needs those conditions in
+the reviewed gate. The new four-case certificate is recorded in
+`reports/openfoam-amr-arb-mean-certificate-2026-10-04.md`; it leaves original
+solver verdicts unchanged. A rational scalar-chain checker validates only that
+chain, not Fourier enclosure correctness or analytic/source interpretation.
+
 Each metric has name, error_lower, error_upper and tolerance. The bounds refer to
 the same defined nonnegative error and include the review's uncertainty budget.
 Null error_upper denotes an unavailable upper bound, not zero uncertainty.
@@ -40,3 +106,30 @@ the configured time units. A complete-looking log with duplicate or skipped
 time labels is a failed run-level gate, even if its record count and final time
 match. This checks the logged schedule; it does not independently prove that
 the solver advanced its internal physical clock correctly.
+
+## Input representation audit condition
+
+An exact-native-mean reconstruction condition must not be inferred solely from
+finite-volume storage or volume weighting. Record the actual initialization
+and source quadrature separately from the engineering comparison target.
+The frozen AMR mean-quality inputs use centre-evaluated velocity and forcing;
+the exact cell-mean target is a separate diagnostic. Initial representation
+error must not be subtracted from later solver error without a validated
+controlled evolution comparison. This condition refines interpretation only;
+all original thresholds remain unchanged. See
+[the source/input audit](../reports/openfoam-amr-input-representation-2026-10-04.md).
+
+A point-interpolating C1/Lipschitz reconstruction can instead be constrained
+by an error chord between stored native points. Such a bound concerns the
+peak norm of the gradient-error field, not only the difference of peak values.
+It requires the interpolation and regularity condition explicitly; H1 alone
+or an infinity-norm curl transfer is insufficient. The source-bound example is
+[the point witness report](../reports/openfoam-amr-point-gradient-bound-2026-10-04.md).
+The original gate is unchanged.
+
+A named built-in interpolation must be checked on the actual mesh before
+transferring a continuous bound. For `cellPoint`, nondegenerate conforming
+tetrahedra and shared point values matter; its quarter-weight degenerate
+fallback need not reproduce centre data. The original four-case archive lacks
+polyMesh and therefore cannot establish these conditions. See
+[the source/runtime gap](../reports/openfoam-cell-point-contract-2026-10-04.md).

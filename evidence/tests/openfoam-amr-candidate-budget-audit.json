@@ -1,0 +1,49 @@
+{
+  "scope": "Retrospective candidate reconstruction for cap4096 from archived sensor/mesh and pinned Foundation 13 buffering semantics; not a solver rerun or defect finding.",
+  "archive": "evidence/of13-high-gradient-amr-v2-2026-09-30/cap4096.tar.gz",
+  "archive_sha256": "3c1056a859dad0224ec6ba5e3d713dcc8e54c42d222f03a0ebbd166c561e35d4",
+  "foundation_source_commit": "18870c24d21c6b982e2cdec27b2f59738cca5f90",
+  "source_file": "src/fvMeshTopoChangers/refiner/refiner_fvMeshTopoChanger.C",
+  "source_file_sha256": "4b0635ea65709ef917f05fd9375558a0fe9d1064eaf561521fbd2abf5f20af96",
+  "checkpoint": "0.05",
+  "mesh": {
+    "cells": 4096,
+    "structured_periodic_shape": [
+      16,
+      16,
+      16
+    ],
+    "max_center_grid_error": 7.105427357601002e-15,
+    "uniform_cell_volume": 0.06055913414121054
+  },
+  "sensor": {
+    "formula": "g(y)*g(z), g(q)=(1+cos(q))^4/16",
+    "max_abs_residual": 9.992007221626409e-16,
+    "lower_refine_level_strict": 0.01,
+    "upper_refine_level_strict": 1.1
+  },
+  "candidate_reconstruction": {
+    "raw_sensor_eligible_cells": 1280,
+    "buffer_layers": 1,
+    "periodic_face_neighbor_buffered_cells": 1792,
+    "buffer_added_cells": 512,
+    "max_refinement": 2,
+    "pre_maxCells_guard_candidate_count": 1792,
+    "initial_global_cells": 4096,
+    "maxCells": 4096,
+    "selection_guard_skips_when_current_cells_equal_maxCells": true,
+    "blocked_by_guard_at_each_eligible_check": 1792,
+    "eligible_check_count": "not inferred from unrefinement diagnostics"
+  },
+  "cross_check": {
+    "case": "cap5000",
+    "archived_logged_selected_cells": 1792,
+    "matches_reconstructed_buffered_count": true,
+    "mesh_growth": "4096 to 16640 (7*1792 added cells)"
+  },
+  "limits": [
+    "Sensor field is stationary and final checkpoint confirms the prescribed analytic sensor; the per-check candidate count is inferred to remain the same because the mesh did not change.",
+    "The number of eligible adaptation checks is not reconstructed here.",
+    "This establishes candidates bypassed by the configured maxCells selection guard, not that the cap policy is erroneous."
+  ]
+}

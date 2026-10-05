@@ -1,0 +1,20 @@
+{
+  "status": "SINGLE_CASE_COMPLETE_NOT_PAIRED",
+  "completed_cases": 1,
+  "expected_cases": 1,
+  "case_labels": [
+    "control"
+  ],
+  "preflight_only": false,
+  "cases": [
+    {
+      "case": "control",
+      "converged_steps": 50,
+      "steps": 50,
+      "velocity_relative_l2": 0.022771503357510187
+    }
+  ],
+  "selected_image_id": "sha256:0efbefdedf95b5451e1a10e61b2f340382d71b3d1fea496adb7a5c14f0ecbcd7",
+  "successor_receipt_sha256": "65f5004b3776cdb6d87d8d38b9072237803ff419f1ac1ee37075340b4bcc5d1d",
+  "preflight_status": "SUCCESSOR_ACTUAL_PROBE_VERIFIED"
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "of13-amr-mean-raw-assets/v1",
+  "frozen_commit": "3566f89058071910a41bb68010eb258c7bbc3d74",
+  "workflow_run": 37124421538,
+  "cases": [
+    {
+      "case_id": "n16-dt0.001",
+      "raw_archive_sha256": "ca9ee9aef3b92fe377abc7c21383f44f991015e4b18408c1a1612eb8e7450b12",
+      "bytes": 6715834,
+      "release_asset": "amr-mean-quality-n16-dt0.001-raw.tar.gz",
+      "download_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-amr-mean-quality-v1-3566f89/amr-mean-quality-n16-dt0.001-raw.tar.gz"
+    },
+    {
+      "case_id": "n32-dt0.001",
+      "raw_archive_sha256": "275b69f01f5d3a3f103c45bb42e4d8627af1951a208206e44bb8b6ebca817f98",
+      "bytes": 46703895,
+      "release_asset": "amr-mean-quality-n32-dt0.001-raw.tar.gz",
+      "download_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-amr-mean-quality-v1-3566f89/amr-mean-quality-n32-dt0.001-raw.tar.gz"
+    },
+    {
+      "case_id": "n32-dt0.0005",
+      "raw_archive_sha256": "f7d14c4ee89fc9c7bbfd4068e72aae652b6be7096370282fcd5a491030211ae8",
+      "bytes": 46701576,
+      "release_asset": "amr-mean-quality-n32-dt0.0005-raw.tar.gz",
+      "download_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-amr-mean-quality-v1-3566f89/amr-mean-quality-n32-dt0.0005-raw.tar.gz"
+    },
+    {
+      "case_id": "n64-dt0.001",
+      "raw_archive_sha256": "bc5f2aafd3890c82ef7a5c5b9e266b37cb14f633b6b97f9dec8f7b4cd5d8bcbd",
+      "bytes": 370732882,
+      "release_asset": "amr-mean-quality-n64-dt0.001-raw.tar.gz",
+      "download_url": "https://github.com/Unjuno/concentration-aware-ns/releases/download/of13-amr-mean-quality-v1-3566f89/amr-mean-quality-n64-dt0.001-raw.tar.gz"
+    }
+  ],
+  "n64_status": "COMPLETE_HOSTED_AND_INDEPENDENT_NUMERICAL_ARCHIVE_REPLAY"
+}
