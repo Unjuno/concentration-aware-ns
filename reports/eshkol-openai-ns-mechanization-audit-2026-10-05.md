@@ -36,11 +36,16 @@ paper's elliptic system; and the pulse checks do not implement the complete
 infinite correction hierarchy.
 
 The project documentation says its nine examples are exercised in JIT and AOT
-CTest runs. That claim was not independently reproduced here. The current
+CTest runs. The pinned CMake source indeed generates JIT and AOT CTest entries
+for every criterion. The full-suite runner also calls
+`scripts/run_examples_tests.sh`, which iterates over all `examples/*.esk`,
+including the three programs omitted from the guide; the workflow assigns that
+runner to the lite lanes. Thus source wiring suggests the examples are
+exercised, but their result was not independently reproduced here. The
 upstream CI run (`37247264764`, head `c10c146e32`) was still in progress at
-00:43 UTC; the Linux x64 and macOS ARM64 XLA jobs had completed successfully,
-but their logs were unavailable while the matrix remained active, and this
-audit does not establish that those jobs executed the Navier–Stokes examples.
+00:48 UTC, with Linux ARM64/x64 and macOS ARM64 lite lanes active. A later
+GitHub API status request returned HTTP 403 for rate limiting, so no completion
+result is claimed.
 No local Eshkol binary was built: the system compiler stopped at the Xcode
 license gate, and a Nix Clang retry configured the compiler but could not find
 the Apple ImageIO SDK framework. These are environment limits, not mathematical
@@ -61,9 +66,28 @@ licensed MIT, at a commit whose GitHub signature reports verified. The commit
 adds CUDA build fixes; the audited example sources are pinned and hashed in
 [`eshkol-ns-mechanization-2026-10-05.json`](../evidence/upstream-refresh/eshkol-ns-mechanization-2026-10-05.json).
 The referenced OpenAI repository remains at `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`,
-Apache-2.0, with GitHub Issues and Discussions disabled. No upstream issue or
-PR is warranted: this audit found a scoped complementary calculation, not a
-reproducible error in either project.
+Apache-2.0, with GitHub Issues and Discussions disabled.
+
+The Eshkol snapshot also contains a reproducible documentation discrepancy:
+`docs/NAVIER_STOKES_EXAMPLES.md` says nine programs and 18 JIT/AOT tests, while
+`CMakeLists.txt` registers 14 `ns_*` criteria (28 generated CTest entries)
+over 12 distinct source files. The guide omits
+`mathematics_navier_stokes_mean_corrections.esk`,
+`mathematics_navier_stokes_residual_ladder.esk`, and
+`mathematics_navier_stokes_localization.esk`. Both counts were taken from the
+same pinned tree, and all 12 referenced files exist. The Python evidence-ledger
+self-check passes its 84-row consistency test, but compares the ledger with
+the design pipeline table and does not check this user guide. This is a
+documentation synchronization issue, not a mathematical or compiler defect.
+
+The project's contribution guide asks reporters to check existing Issues
+before opening one. The authenticated issue-list request returned HTTP 403
+for API rate limiting, so duplicate status could not be confirmed; no issue
+was submitted. The prepared candidate is **“Synchronize the Navier–Stokes
+examples guide with the current CTest matrix.”** It would cite the
+`ESHKOL_NS_EXAMPLES` list and the three omitted programs, and request updating
+the guide or adding a small consistency check. Recheck the issue list when API
+access is available before posting.
 
 This is a useful addition to the analytical cross-check map, not evidence for
 molecular alignment, particle-position certainty, a viscosity transition,

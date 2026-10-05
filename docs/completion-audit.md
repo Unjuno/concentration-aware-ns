@@ -2291,9 +2291,15 @@ project additionally mechanizes selected truncated profile and stress
 calculations, while its own documentation limits these to scalar exact
 subcalculations, an `eta=0` reduction, and tolerance-based physical residual
 samples; its residual-order example is a scalar model, not the full elliptic
-hierarchy. The full examples were not locally executed because the macOS SDK
-ImageIO framework was unavailable after the system compiler's Xcode-license
-gate. GitHub CI run 37247264764 was still active and did not yet expose logs,
-so no JIT/AOT pass is claimed. No upstream issue or PR is warranted. Provenance
-and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
+hierarchy. A static comparison also found the guide says 9 programs/18 tests,
+while pinned CMake registers 14 criteria/28 JIT-AOT entries across 12 sources,
+omitting three programs. CMake and the full-suite runner do wire them for
+execution, so this is stale guide coverage rather than an established CI test
+omission. The evidence-ledger self-check does not cover that guide. The
+examples were not locally executed because the macOS SDK ImageIO framework was
+unavailable after the system compiler's Xcode-license gate; the relevant lite
+CI lanes were active, then GitHub API rate limiting prevented a fresh status
+check. No issue was submitted because contribution guidance requires a
+duplicate check that the rate limit prevented. Provenance, prepared issue
+scope and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
 and [`pinned source record`](../evidence/upstream-refresh/eshkol-ns-mechanization-2026-10-05.json).

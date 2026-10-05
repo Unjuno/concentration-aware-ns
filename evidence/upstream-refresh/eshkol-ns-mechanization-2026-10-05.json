@@ -8,6 +8,10 @@
   "license": "MIT",
   "reviewed_source_sha256": {
     "docs/NAVIER_STOKES_EXAMPLES.md": "cc50e49029ccc34deaf7419a48840b139d1668fae480ad5b11704c9fb4c5291b",
+    "CMakeLists.txt": "f8aa721fdb95ca8a26c818e5a68be39204cd6c8bd91686ad573af06292443f11",
+    ".github/workflows/ci.yml": "bfdd46cc75375d08ad91daca367eaf0f61fefeb9bd3964f7cd5ddd338e54c2c1",
+    "CONTRIBUTING.md": "9baa3c9deacf4e1e77f58c13cbd7baeac060ca8840cf8bddaf6e4cb283548c3c",
+    "scripts/check_ns_evidence_ledger.py": "00942b9c56300a25ca0a2468d979c40990410c099a14843f66eab8f585baba11",
     "examples/mathematics_navier_stokes_first_principles.esk": "ee7ca7df5fb98ad75d14f670405ba348d4e02a144ee961f86cb0680d1864f199",
     "examples/mathematics_navier_stokes_pulse_stress.esk": "df6bef6bc9cf6f15debb860401ad08a460ef80981f10cc1b3f2ce72da6a9b42d",
     "examples/mathematics_navier_stokes_stress_cone.esk": "9f42d15e596b5ddd5bcde8624f6b3599a439834dffec0624f8a939f994f57e4c",
@@ -35,7 +39,14 @@
       "macos-arm64-xla": "success"
     },
     "navier_stokes_example_execution_verified": false,
-    "reason": "workflow remained active and logs were unavailable; completed job names alone do not establish execution of these example tests"
+    "reason": "workflow remained active and logs were unavailable; completed XLA job names alone do not establish execution of these example tests",
+    "lite_lanes_observed_in_progress_at_2026-10-05T00:48Z": [
+      "linux-arm64-lite",
+      "linux-x64-lite",
+      "macos-arm64-lite"
+    ],
+    "source_wiring": "CMake generates JIT/AOT CTest entries; scripts/run_all_tests.sh calls scripts/run_examples_tests.sh, which iterates examples/*.esk; CI assigns run_all_tests.sh to the lite lanes",
+    "later_status_query": "HTTP 403 rate limit at 2026-10-05T00:54:49Z; no retry; completed run result remains unknown"
   },
   "local_reproduction": {
     "status": "not_run",
@@ -51,5 +62,21 @@
     "issues_enabled": false,
     "discussions_enabled": false
   },
-  "reporting_decision": "No upstream report: no reproduced technical defect; this is a scoped complementary mechanization with explicit limitations."
+  "documentation_discrepancy": {
+    "cmake_criteria": 14,
+    "generated_jit_aot_ctest_entries": 28,
+    "distinct_source_programs": 12,
+    "guide_program_count": 9,
+    "omitted_programs": [
+      "mathematics_navier_stokes_mean_corrections.esk",
+      "mathematics_navier_stokes_residual_ladder.esk",
+      "mathematics_navier_stokes_localization.esk"
+    ],
+    "all_cmake_source_files_exist": true,
+    "evidence_ledger_self_check": "PASS, 84 rows; this gate does not validate the user guide",
+    "issue_candidate": "Synchronize the Navier-Stokes examples guide with the current CTest matrix",
+    "issue_submitted": false,
+    "reason_not_submitted": "GitHub API rate limit blocked the required duplicate-issue check; contribution guidance asks reporters to check existing issues first"
+  },
+  "reporting_decision": "No mathematical issue; a concrete documentation issue is prepared but awaits duplicate checking after API access returns."
 }
