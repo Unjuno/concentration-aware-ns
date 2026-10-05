@@ -1,0 +1,55 @@
+{
+  "observed_at_utc": "2026-10-05T00:43:02Z",
+  "repository": "https://github.com/tsotchke/eshkol",
+  "commit": "c10c146e32c21a46552779fdeedd215e03d3d209",
+  "commit_signature_verified": true,
+  "commit_date": "2026-10-05T00:22:18Z",
+  "commit_message_scope": "CUDA lazy-loading and Windows/CUDA test fixes; not a Navier-Stokes-example change",
+  "license": "MIT",
+  "reviewed_source_sha256": {
+    "docs/NAVIER_STOKES_EXAMPLES.md": "cc50e49029ccc34deaf7419a48840b139d1668fae480ad5b11704c9fb4c5291b",
+    "examples/mathematics_navier_stokes_first_principles.esk": "ee7ca7df5fb98ad75d14f670405ba348d4e02a144ee961f86cb0680d1864f199",
+    "examples/mathematics_navier_stokes_pulse_stress.esk": "df6bef6bc9cf6f15debb860401ad08a460ef80981f10cc1b3f2ce72da6a9b42d",
+    "examples/mathematics_navier_stokes_stress_cone.esk": "9f42d15e596b5ddd5bcde8624f6b3599a439834dffec0624f8a939f994f57e4c",
+    "examples/mathematics_navier_stokes_residual_order_n.esk": "6e3ebda54051e7da69aa165959e5866cfd706f8edc99b36b2107365427f22c81"
+  },
+  "independent_exact_check": {
+    "method": "Python fractions.Fraction algebra from the displayed balance equations",
+    "exponents": {
+      "radial_length": "1/2",
+      "axial_length": "1/2-h",
+      "azimuthal_velocity": "-(1/2+h)",
+      "axial_velocity": "-(1/2+h)",
+      "radial_velocity": "-1/2",
+      "core_energy": "1/2-3h"
+    },
+    "balance_positivity_intersection": "0<h<1/6",
+    "paper_parameter_interval": "0<h<1/100, strictly contained"
+  },
+  "upstream_ci": {
+    "run_id": 37247264764,
+    "head": "c10c146e32",
+    "status_at_observation": "in_progress",
+    "completed_jobs_observed": {
+      "linux-x64-xla": "success",
+      "macos-arm64-xla": "success"
+    },
+    "navier_stokes_example_execution_verified": false,
+    "reason": "workflow remained active and logs were unavailable; completed job names alone do not establish execution of these example tests"
+  },
+  "local_reproduction": {
+    "status": "not_run",
+    "first_attempt": "system compiler blocked by unaccepted Xcode license",
+    "second_attempt": "Nix Clang worked for compiler identification, but CMake could not locate Apple ImageIO SDK framework",
+    "interpretation": "environment/setup limitation; no test result"
+  },
+  "source_archive_sha256": "8f41f8785f061ee863344fab3a39b11d7755e999cdb0d1ec1afaf96fed64cdc9",
+  "openai_source_check": {
+    "repository": "https://github.com/openai/NavierStokesAndEuler",
+    "head": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "license": "Apache-2.0",
+    "issues_enabled": false,
+    "discussions_enabled": false
+  },
+  "reporting_decision": "No upstream report: no reproduced technical defect; this is a scoped complementary mechanization with explicit limitations."
+}

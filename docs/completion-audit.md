@@ -2280,3 +2280,20 @@ compiler license is unaccepted; hosted Linux CI is its required execution
 gate. The local full suite is 445 passed, five skipped, 89 subtests. No
 non-default-width solver experiment or frozen width protocol exists yet, and
 the AMR case generator is unchanged.
+
+### Independent exact-arithmetic cross-check map extended — 2026-10-05
+
+Pinned and source-audited Eshkol's MIT-licensed Navier–Stokes examples at
+`c10c146e32c21a46552779fdeedd215e03d3d209`. An independent Python
+`Fraction` derivation reproduces the displayed balance exponents and the
+positivity interval `0<h<1/6`, containing the paper's `0<h<1/100`. The external
+project additionally mechanizes selected truncated profile and stress
+calculations, while its own documentation limits these to scalar exact
+subcalculations, an `eta=0` reduction, and tolerance-based physical residual
+samples; its residual-order example is a scalar model, not the full elliptic
+hierarchy. The full examples were not locally executed because the macOS SDK
+ImageIO framework was unavailable after the system compiler's Xcode-license
+gate. GitHub CI run 37247264764 was still active and did not yet expose logs,
+so no JIT/AOT pass is claimed. No upstream issue or PR is warranted. Provenance
+and limits: [`Eshkol mechanization audit`](../reports/eshkol-openai-ns-mechanization-audit-2026-10-05.md)
+and [`pinned source record`](../evidence/upstream-refresh/eshkol-ns-mechanization-2026-10-05.json).
